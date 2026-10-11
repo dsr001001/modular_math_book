@@ -1,0 +1,59 @@
+\documentclass[11pt,twoside,openright]{book}
+\input{preamble.tex}
+
+\title{From First Courses to the Modular Degree\\[1ex]
+\large A modular textbook on the arithmetic behind\\
+``Local factors of the adjoint $L$-function and the $\ell$-adic valuations of the modular degree''}
+\author{}
+\date{Version of \today}
+
+\begin{document}
+\frontmatter
+\maketitle
+\input{frontmatter/preface.tex}
+\tableofcontents
+
+\mainmatter
+
+\part{Algebra}
+\include{chapters/ch01_groups}
+\include{chapters/ch02_rings}
+\include{chapters/ch03_modules}
+\include{chapters/ch04_reps}
+
+\part{Number fields and local fields}
+\include{chapters/ch05_galois}
+\include{chapters/ch06_ant}
+\include{chapters/ch07_local}
+
+\part{Curves and elliptic curves}
+\include{chapters/ch08_curves}
+\include{chapters/ch09_ellcurves}
+\include{chapters/ch10_reduction}
+\include{chapters/ch11_galrep}
+
+\part{Modular forms and modular curves}
+\include{chapters/ch12_modforms}
+\include{chapters/ch13_hecke}
+\include{chapters/ch14_moddeg}
+\include{chapters/ch15_modgalrep}
+
+\part{Cohomology, Selmer groups and $L$-functions}
+\include{chapters/ch16_cohomology}
+\include{chapters/ch17_galcoh}
+\include{chapters/ch18_blochkato}
+\include{chapters/ch19_lfunctions}
+
+\part{Congruences, the modular degree and the paper}
+\include{chapters/ch20_congruence}
+\include{chapters/ch21_paper}
+\include{chapters/ch22_computation}
+
+\appendix
+\include{chapters/chA_prereq}
+\include{chapters/chB_notation}
+
+\backmatter
+\bibliographystyle{amsplain}
+\bibliography{refs,bib/ch01,bib/ch02,bib/ch03,bib/ch04,bib/ch05,bib/ch06,bib/ch07,bib/ch08,bib/ch09,bib/ch10,bib/ch11,bib/ch12,bib/ch13,bib/ch14,bib/ch15,bib/ch16,bib/ch17,bib/ch18,bib/ch19,bib/ch20,bib/ch21,bib/ch22,bib/chA,bib/chB}
+\end{document}

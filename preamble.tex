@@ -1,0 +1,185 @@
+% Shared preamble for the book. Chapters must not define macros; everything lives here.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,longtable}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{microtype}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev,nameinlink]{cleveref}
+
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=green!40!black,urlcolor=blue!50!black}
+
+% ---------- listings (PARI/GP) ----------
+\lstdefinelanguage{GP}{
+  morekeywords={my,for,if,return,while,until,forprime,fordiv,local,break,next},
+  sensitive=true,
+  morecomment=[l]{\\\\},
+  morestring=[b]",
+}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,columns=fullflexible,keepspaces=true,
+  frame=single,xleftmargin=1em,framexleftmargin=0.5em,showstringspaces=false}
+
+% ---------- theorem environments: one counter per chapter ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{convention}[theorem]{Convention}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{paperlink}[theorem]{In the paper}
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{definition}{Definition}{Definitions}
+\crefname{example}{Example}{Examples}
+\crefname{exercise}{Exercise}{Exercises}
+\crefname{construction}{Construction}{Constructions}
+\crefname{convention}{Convention}{Conventions}
+\crefname{remark}{Remark}{Remarks}
+\crefname{warning}{Warning}{Warnings}
+\crefname{paperlink}{Paper link}{Paper links}
+\crefname{chapter}{Chapter}{Chapters}
+\crefname{section}{Section}{Sections}
+\crefname{equation}{equation}{equations}
+
+% ---------- number sets ----------
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\HH}{\mathcal{H}}          % upper half plane
+\newcommand{\Qbar}{\overline{\Q}}
+\newcommand{\Fbar}{\overline{\F}}
+\newcommand{\Ql}{\Q_\ell}
+\newcommand{\Zl}{\Z_\ell}
+\newcommand{\Qp}{\Q_p}
+\newcommand{\Zp}{\Z_p}
+\newcommand{\Fp}{\F_p}
+\newcommand{\Fl}{\F_\ell}
+\newcommand{\Fq}{\F_q}
+\newcommand{\GQ}{G_{\Q}}
+\newcommand{\GQp}{G_{\Q_p}}
+
+% ---------- the paper's macros ----------
+\newcommand{\degphi}{\deg\varphi_E}
+\DeclareMathOperator{\ord}{ord}
+\newcommand{\Phig}{\Phi^{\mathrm{geom}}}
+\DeclareMathOperator{\Gal}{Gal}
+\newcommand{\ad}{\operatorname{ad}^0}
+\newcommand{\Sym}{\operatorname{Sym}^2}
+\newcommand{\nv}{\mathrm{nv}}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\Tam}{Tam}
+\DeclareMathOperator{\len}{length}
+\newcommand{\Ns}{3\mathrm{Ns}}
+
+% ---------- operators ----------
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Sel}{Sel}
+\DeclareMathOperator{\Sha}{Sha}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Mat}{M}
+\DeclareMathOperator{\tors}{tors}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\cond}{cond}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\charpoly}{charpoly}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Swan}{Swan}
+\DeclareMathOperator{\Art}{Art}
+\DeclareMathOperator{\Norm}{Norm}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Inf}{Inf}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{sp}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\WD}{WD}
+\DeclareMathOperator{\Dcris}{D_{\mathrm{cris}}}
+\DeclareMathOperator{\DdR}{D_{\mathrm{dR}}}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Ram}{Ram}
+\DeclareMathOperator{\genus}{genus}
+
+% ---------- shorthands ----------
+\newcommand{\rhobar}{\bar\rho}
+\newcommand{\chil}{\chi_\ell}
+\newcommand{\Hf}{H^1_f}
+\newcommand{\Hur}{H^1_{\mathrm{ur}}}
+\newcommand{\HSigma}{H^1_\Sigma}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\iso}{\simeq}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\sm}[4]{\begin{psmallmatrix}#1&#2\\#3&#4\end{psmallmatrix}}
+\newcommand{\Mtwo}[4]{\begin{pmatrix}#1&#2\\#3&#4\end{pmatrix}}
+\newcommand{\kod}[1]{\mathrm{#1}}      % Kodaira symbols: \kod{I}_n, \kod{II}^*, \kod{I}_0^*
+\newcommand{\Tl}{T_\ell}
+\newcommand{\Vl}{V_\ell}
+\newcommand{\Bcris}{B_{\mathrm{cris}}}
+\newcommand{\BdR}{B_{\mathrm{dR}}}
+\newcommand{\Bst}{B_{\mathrm{st}}}
+\newcommand{\Qlmod}{\Q_\ell/\Z_\ell}
+\newcommand{\ur}{\mathrm{ur}}
+\newcommand{\tame}{\mathrm{tame}}
+\newcommand{\curve}[1]{\texttt{#1}}    % Cremona labels: \curve{121a1}
+\newcommand{\paperref}[1]{\textsf{[paper: #1]}}
