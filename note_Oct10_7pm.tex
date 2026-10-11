@@ -1,0 +1,547 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,url,array}
+\usepackage[margin=1.1in]{geometry}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\degphi}{\deg\varphi_E}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Phig}{\Phi^{\mathrm{geom}}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\ad}{\operatorname{ad}^0}
+\newcommand{\Sym}{\operatorname{Sym}^2}
+\newcommand{\nv}{\mathrm{nv}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Fitt}{\operatorname{Fitt}}
+\newcommand{\Tam}{\operatorname{Tam}}
+\newcommand{\len}{\operatorname{length}}
+\newcommand{\Ns}{3\mathrm{Ns}}
+
+\title[Local factors of the adjoint and the modular degree]{Local factors of the adjoint $L$-function and the $\ell$-adic valuations of the modular degree}
+\author{Dharmaj Soni}
+\email{dharmaj.soni@gmail.com}
+\urladdr{https://orcid.org/0009-0007-6397-3351}
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+Let $E/\Q$ be the $X_0(N)$-optimal curve of its isogeny class, $\varphi_E\colon X_0(N)\to E$ its modular parametrisation and $f$ its newform. For an odd prime $\ell$ not dividing $2N$ such that the mod $\ell$ representation of $E$ is absolutely irreducible on $\Gal(\overline\Q/\Q(\sqrt{\ell^*}))$, we prove
+\[
+v_\ell(\degphi)\ \ge\ \sum_{q\mid N}e_\ell(E,q)+\sum_{q\mid N}t_\ell(E,q),
+\]
+where $e_\ell(E,q)$ is the $\ell$-adic valuation of the Euler factor at $s=1$ of the adjoint $L$-function $L(\ad f,s)$ that the naive adjoint $L$-function omits (it is nonzero only at the additive primes: for a tame $q\ge5$ it is $v_\ell(q-\chi_{-3}(q))$ for the Kodaira types $\mathrm{II},\mathrm{II}^*,\mathrm{IV},\mathrm{IV}^*$, $v_\ell(q-\chi_{-4}(q))$ for $\mathrm{III},\mathrm{III}^*$, $v_\ell(q^2-1)$ for $\mathrm{I}_n^*$ and $v_\ell(q-1)+v_\ell((q+1)^2-a_q(E')^2)$ for $\mathrm{I}_0^*$, with $E'$ the twist of good reduction), and $t_\ell(E,q)$ is the $\ell$-part of the valuation of the Tate parameter at a potentially multiplicative prime. The proof assembles the theorem of Diamond, Flach and Guo identifying the length of the $\Sigma$-imprimitive adjoint Selmer group with the valuation of a congruence ideal, their formula for the variation of that ideal with $\Sigma$, the local Tamagawa formula of Fontaine and Perrin-Riou, a computation of the Tamagawa factor of the adjoint at a multiplicative prime, and the comparison of the modular degree with the congruence number of Agashe, Ribet and Stein. More precisely, $v_\ell(\degphi)$ is bounded below by, and when multiplicity one holds at level $N$ equals, the length of the Bloch--Kato Selmer group of $\ad V_\ell E$ plus the Tamagawa factors plus the omitted Euler factors; the data confirm the Tamagawa factor formula, which raises the bound by one whenever a Steinberg prime $q\equiv1\pmod\ell$ has a Tate parameter whose unit part is an $\ell$-th power. Without the irreducibility over $\Q(\sqrt{\ell^*})$ the terms of the types $\mathrm{I}_0^*$ and $\mathrm{I}_n^*$ still hold, by an elementary twisting argument, but the inequality itself fails: for $\ell=3$ exactly the curves whose mod $3$ image is the normaliser of a split Cartan subgroup violate it, by exactly one, in a third of the cases, the one being the length of $H^0(\Q,\ad\rho(1)\otimes\Q_3/\Z_3)$. With that correction term the inequality holds with no exception, with Euler factors computed by PARI at every bad prime, for every optimal curve of conductor at most $500000$ and for $893$ curves outside the tables, at $\ell=3,5,7,11,13$, also at primes $\ell$ dividing $N$ where no theorem applies, with equality in $57\%$ of the cases with a positive bound at $\ell=3$. We describe the extra terms at $q=\ell=3$ and the failure in the Eisenstein case.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Let $E/\Q$ be an elliptic curve of conductor $N$ and let $f=f_E\in S_2(\Gamma_0(N))$ be the newform attached to it. Among the curves in the isogeny class of $E$ there is a distinguished one, the $X_0(N)$-optimal curve, for which the modular parametrisation $\varphi_E\colon X_0(N)\to E$ has minimal degree; throughout, $E$ denotes this curve and $\degphi$ its \emph{modular degree}. The modular degree is computable \cite{Cremona97,Watkins02}, and its size is tied to deep questions (the conjectured bound $\degphi\ll_\varepsilon N^{2+\varepsilon}$ is equivalent to a form of the $abc$ conjecture, see \cite[\S2]{ARS12} and the references there), but its prime factorisation is not understood. The purpose of this note is to describe, and for the most part prove, a local-to-global divisibility: the $\ell$-adic valuation of $\degphi$ is bounded below by local invariants of $E$ at the bad primes, and the right invariants are the local factors of the adjoint $L$-function.
+
+The classical route to the degree is the Petersson norm. Up to explicit factors $\degphi$ is $\langle f,f\rangle$ divided by the area of the period lattice of $E$ (Zagier \cite{Zagier85}, Watkins \cite{Watkins02}), and $\langle f,f\rangle$ is the special value $L(\Sym f,2)$ up to the local factors at the bad primes (Rankin, Shimura; see \cite[Lemma 2.12]{DFG04}); Flach's finiteness theorem for the symmetric square \cite{Flach92} is the first place where the modular degree meets the Selmer group of $\Sym f$. By a theorem of Agashe, Ribet and Stein \cite[Theorem 2.2]{ARS12}, $\degphi$ divides the \emph{congruence number} $r_E$, the largest integer $r$ such that $f\equiv g\pmod r$ coefficientwise for some integral cusp form $g$ of level $N$ orthogonal to $f$, with $v_p(\degphi)=v_p(r_E)$ for every prime $p$ with $p^2\nmid N$. The congruence number is the congruence ideal of $f$ in the full Hecke algebra of level $N$ (Lemma~\ref{lem:crit}), and the theory of such ideals, from Hida \cite{Hida81} to Diamond, Flach and Guo \cite{DFG04}, expresses them through the adjoint Selmer group and the adjoint $L$-value. The $L$-function that appears there is the \emph{naive} one: the Euler product of $\sum a_n(f)^2n^{-s}$, which has the true local factor at the primes of good or multiplicative reduction and the trivial factor at the additive primes. The point of this note is that the primes at which the naive and the true adjoint $L$-functions differ are exactly the primes at which the modular degree acquires extra local divisibility, that the amount is the valuation of the omitted factor, and that this is a consequence of the theorems of \cite{DFG04} once they are read for elliptic curves, with a precise boundary at the one hypothesis they need.
+
+\subsection{The local terms}
+Let $V=V_\ell E$, $T=T_\ell E$, $\rho=\rho_{E,\ell}$, $\bar\rho$ its reduction, and $A_f=\ad V$ the trace-zero adjoint. We follow the conventions of \cite[\S1.7.2]{DFG04}: for a prime $p$ let $\delta_p=\dim V^{I_p}$, so $\delta_p=2$, $1$, $0$ for good, multiplicative, additive reduction; $L_p(A_f,s)=\det(1-\Frob_p\,p^{-s}\mid A_f^{I_p})^{-1}$ is the true local factor, and the naive factor is $L_p^{\nv}(A_f,s)=L_p(A_f,s)$ if $\delta_p>0$ and $1$ if $\delta_p=0$. In the normalisation of the symmetric square, $L_p(\Sym f,s)=L_p(A_f,s-1)$, and PARI's \texttt{lfunsympow(E,2)} returns these factors at every prime, including $2$ and $3$ \cite{PARI}.
+
+\begin{definition}\label{def:terms}
+For a bad prime $q\ne\ell$ put
+\[
+e_\ell(E,q)=v_\ell\Bigl(\frac{L_q(A_f,1)^{-1}}{L_q^{\nv}(A_f,1)^{-1}}\Bigr)=v_\ell\Bigl(\frac{P_q(q^{-2})}{1-a_q(E)^2q^{-2}}\Bigr),\quad
+t_\ell(E,q)=\begin{cases}v_\ell(-v_q(j_E))&\text{if }v_q(j_E)<0,\\0&\text{otherwise,}\end{cases}
+\]
+where $P_q(X)$ is the polynomial with $L_q(\Sym f,s)=P_q(q^{-s})^{-1}$. So $e_\ell$ is the valuation of the Euler factor that the naive $L$-function omits; it is $0$ at a multiplicative prime, where the naive factor is the true one. The term $t_\ell$ is the $\ell$-part of the valuation of the Tate parameter at a potentially multiplicative prime, which is $v_\ell(n)$ for a Kodaira symbol $\mathrm{I}_n$ at any $q$ and $\mathrm{I}_n^*$ at odd $q$, while a symbol $\mathrm{I}_n^*$ at $q=2$ can have potentially good reduction, and then $t_\ell=0$. Both terms are invariant under quadratic twist.
+\end{definition}
+
+For a tame prime $q\ge5$ the omitted factor is read off the Kodaira type (Lemma~\ref{lem:euler}). With $\chi_{-3}$, $\chi_{-4}$ the quadratic characters of $\Q(\sqrt{-3})$ and $\Q(i)$, $E'$ the quadratic twist of $E$ by $\Q(\sqrt{q^*})$, $q^*=(-1)^{(q-1)/2}q$, and $\alpha,\beta$ the roots of $X^2-a_q(E')X+q$ (for type $\mathrm{I}_0^*$, where $E'$ has good reduction at $q$):
+\begin{center}\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lll}
+\toprule
+type at $q\ge5$ & $L_q(A_f,s)^{-1}$ & $e_\ell(E,q)$\\
+\midrule
+$\mathrm{I}_n$ & $1-q^{-1-s}$ & $0$\\
+$\mathrm{I}_n^*$ & $1-q^{-1-s}$ & $v_\ell(q^2-1)$\\
+$\mathrm{II},\mathrm{II}^*,\mathrm{IV},\mathrm{IV}^*$ & $1-\chi_{-3}(q)q^{-s}$ & $v_\ell(q-\chi_{-3}(q))$\\
+$\mathrm{III},\mathrm{III}^*$ & $1-\chi_{-4}(q)q^{-s}$ & $v_\ell(q-\chi_{-4}(q))$\\
+$\mathrm{I}_0^*$ & $(1-\tfrac{\alpha}{\beta}q^{-s})(1-q^{-s})(1-\tfrac{\beta}{\alpha}q^{-s})$ & $v_\ell(q-1)+v_\ell\bigl((q+1)^2-a_q(E')^2\bigr)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The theorem}
+For a prime $p\ne\ell$ and a $G_{\Q_p}$-stable $\Z_\ell$-lattice $M$ the \emph{Tamagawa factor} is $\Tam_p(M)=\Fitt_{\Z_\ell}\bigl(H^1(I_p,M)_{\mathrm{tor}}\bigr)^{G_{\Q_p}}$, an ideal of $\Z_\ell$ \cite[p.~708]{DFG04}, \cite[I.4.2.2]{FPR94}; for $M=\ad T$ at a prime of multiplicative reduction its valuation is at least $t_\ell(E,p)$ (Lemma~\ref{lem:tamfactor}), and at a prime of good reduction it is $0$. Let $H^1_f(\Q,\ad T\otimes\Q_\ell/\Z_\ell)$ be the Bloch--Kato Selmer group \cite[\S2.1]{DFG04}.
+
+\begin{theorem}\label{thm:main}
+Let $E$ be $X_0(N)$-optimal and let $\ell$ be an odd prime not dividing $2N$ such that $\bar\rho_{E,\ell}$ is absolutely irreducible when restricted to $\Gal(\overline\Q/\Q(\sqrt{\ell^*}))$, $\ell^*=(-1)^{(\ell-1)/2}\ell$. Then
+\begin{equation}\label{eq:identity}
+v_\ell(\degphi)\ \ge\ \len_{\Z_\ell}H^1_f(\Q,\ad T\otimes\Q_\ell/\Z_\ell)\ +\ \sum_{q\mid N}v_\ell\bigl(\Tam_q(\ad T)\bigr)\ +\ \sum_{q\mid N}e_\ell(E,q),
+\end{equation}
+with equality when $H^1(X_0(N),\Z_\ell)$, localised at the maximal ideal of the Hecke algebra attached to $(f,\ell)$, is free over the localised Hecke algebra. In particular
+\begin{equation}\label{eq:thm}
+v_\ell(\degphi)\ \ge\ \sum_{q\mid N}e_\ell(E,q)+\sum_{q\mid N}t_\ell(E,q).
+\end{equation}
+\end{theorem}
+
+The hypothesis is the one under which Diamond, Flach and Guo prove the Tamagawa number conjecture for the adjoint motive of $f$ \cite[Theorem 0.1]{DFG04}; in their notation it says that $\ell$ is not in the exceptional set $S_f$. Theorem~\ref{thm:main} is an assembly of their results. Their Theorem 3.7 identifies the length of the $\Sigma$-imprimitive adjoint Selmer group, $\Sigma$ the set of bad primes, with the valuation of the naive $\Sigma$-finite congruence ideal; their Proposition 1.4 says that this ideal is the congruence ideal at level $N$ times the naive Euler factors at the multiplicative primes; their Lemma 2.1 compares the $\Sigma$-imprimitive Selmer group with the Bloch--Kato one, the local indices being, by the formula of Fontaine and Perrin-Riou, the true Euler factors times the Tamagawa factors; and the inequality between the congruence ideal and the congruence number is the algebra of \cite[Lemma 4.17]{DDT}, with the modular degree entering through \cite{ARS12}. The naive factors at the multiplicative primes cancel, the true factors at the additive primes are the omitted ones, and \eqref{eq:identity} appears. What this note adds is the reading of the local terms for elliptic curves (Lemmas~\ref{lem:euler} and~\ref{lem:tamfactor}), the observation that the assembly bounds the modular degree, the twisting theorems that hold without the hypothesis on $\Q(\sqrt{\ell^*})$ (Theorem~\ref{thm:quant}), the identification of the curves for which that hypothesis fails and of what happens to them (Proposition~\ref{prop:ns} and Section~\ref{sec:anomaly}), and the computations, which test \eqref{eq:identity} well beyond the inequality.
+
+\subsection{Beyond the hypotheses}
+The data suggest that the inequality survives the loss of the hypotheses, with two modifications: a weight at the prime $\ell$ itself when $\ell\mid N$, and a correction term when the representation is induced from $\Q(\sqrt{\ell^*})$.
+
+\begin{conjecture}\label{conj:euler}
+Let $E$ be $X_0(N)$-optimal and without complex multiplication, let $\ell$ be an odd prime such that $E[\ell]$ is irreducible, and let $h_\ell(E)$ be the length of $H^0(\Q,\ad T(1)\otimes\Q_\ell/\Z_\ell)$. Then
+\begin{equation}\label{eq:rule}
+v_\ell(\degphi)\ \ge\ \sum_{q\mid N,\ q\ne\ell}e_\ell(E,q)\ +\ \sum_{q\mid N}t_\ell(E,q)\ +\ [\ell=3]\,w_3(E)\ -\ h_\ell(E),
+\end{equation}
+where $w_3(E)$ is the weight of the prime $3$ itself when $3\mid N$ and the reduction at $3$ is potentially good: $1$ for the types $\mathrm{II},\mathrm{IV},\mathrm{III}^*$, $2$ for $\mathrm{II}^*,\mathrm{IV}^*$ and $0$ for $\mathrm{III},\mathrm{I}_0^*$.
+\end{conjecture}
+
+The term $h_\ell(E)$ vanishes under the hypothesis of Theorem~\ref{thm:main} (Lemma~\ref{lem:h0}) and is positive exactly when $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$; for $\ell=3$ this happens precisely when the image of $\bar\rho_{E,3}$ is the normaliser of a split Cartan subgroup, the image labelled $\Ns$ in the tables \cite{Sutherland16}, and then $h_3(E)=1$ for every such curve of the tables (Proposition~\ref{prop:ns}, Section~\ref{sec:anomaly}). For these curves the inequality without the correction fails by exactly one in a third of the cases, so the hypothesis of Theorem~\ref{thm:main} is sharp, and the correction is the term that Lemma 2.1 of \cite{DFG04} produces when $H^0(\Q,\ad T(1)\otimes\Q_\ell/\Z_\ell)\ne0$ (Remark~\ref{rem:ns}). The weights $w_3$ at $q=\ell=3$ are empirical (Section~\ref{sec:wild}); at $q=\ell\ge5$ no term is needed. The terms at the wild primes $2$ and $3$ are the ones of Definition~\ref{def:terms} with PARI's Euler factor, and they reproduce every minimum observed in the tables, including the irregular behaviour of the prime $2$ noted in an earlier version of this note (Section~\ref{sec:wild}). On the four ranges of Section~\ref{sec:data}, \eqref{eq:rule} holds with no exception at $\ell=3,5,7,11,13$, including the curves with $\ell\mid N$, which no theorem covers.
+
+\subsection{Local component groups}
+The rule contains the two statements of the earlier version of this note. For a bad prime $q$ let $\Phig_q=\Phi_q(\overline\F_q)$ be the group of components of the special fibre of the N\'eron model of $E$ at $q$ over the algebraic closure. Its order is read off the Kodaira type: $n$ for type $\mathrm{I}_n$; $1$ for $\mathrm{II},\mathrm{II}^*$; $2$ for $\mathrm{III},\mathrm{III}^*$; $3$ for $\mathrm{IV},\mathrm{IV}^*$; $4$ for $\mathrm{I}_0^*$ and $\mathrm{I}_n^*$ \cite[IV.9]{SilvermanATAEC}. The Tamagawa number $c_q=\#\Phi_q(\F_q)$ counts only the components defined over $\F_q$; the statements below are about $\Phig_q$, not $c_q$. For an odd prime $q$ let $E^{(q)}$ be the quadratic twist of $E$ by $\Q(\sqrt{q^*})$; it has the same reduction type as $E$ at every prime other than $q$, while at $q$ the Kodaira types are exchanged (Lemma~\ref{lem:twist}):
+\[
+\mathrm{I}_n\leftrightarrow\mathrm{I}_n^*,\qquad \mathrm{II}\leftrightarrow\mathrm{IV}^*,\qquad \mathrm{IV}\leftrightarrow\mathrm{II}^*,\qquad \mathrm{III}\leftrightarrow\mathrm{III}^*,\qquad \mathrm{I}_0\leftrightarrow\mathrm{I}_0^*
+\]
+(the first and the last for every odd $q$, the three others for $q\ge5$). Define the \emph{twist-symmetrised} weight
+\[
+w_\ell(E,q)=\begin{cases}
+v_\ell(n) & \text{if the type at $q$ is $\mathrm{I}_n$, or $\mathrm{I}_n^*$ with $q$ odd},\\
+1 & \text{if $\ell=3$ and the type is $\mathrm{IV}$ or $\mathrm{IV}^*$, or $\mathrm{II}$ or $\mathrm{II}^*$ with $q$ odd},\\
+0 & \text{otherwise},
+\end{cases}
+\]
+so that
+\[
+w_\ell(E,q)=\max\bigl(v_\ell(\#\Phig_q(E)),\ v_\ell(\#\Phig_q(E^{(q)}))\bigr)\ \text{for }q\ge5,\qquad w_\ell(E,2)=v_\ell(\#\Phig_2(E)).
+\]
+The two inequalities are
+\begin{equation}\label{eq:main}
+v_\ell(\degphi)\ \ge\ \sum_{q\mid N} v_\ell\bigl(\#\Phig_q\bigr),
+\end{equation}
+\begin{equation}\label{eq:twist}
+v_\ell(\degphi)\ \ge\ \sum_{q\mid N} w_\ell(E,q),
+\end{equation}
+of which the second implies the first. Both were conjectured in the earlier version under the hypotheses of Conjecture~\ref{conj:euler}, and both hold with no exception on the same ranges (Section~\ref{sec:forms}).
+
+\begin{proposition}\label{prop:forms}
+Under the hypothesis of Theorem~\ref{thm:main}, \eqref{eq:main} and \eqref{eq:twist} hold, except possibly when $\ell=3$ and $E$ has type $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$, where they hold as soon as $e_3(E,2)\ge1$; the same is true under Conjecture~\ref{conj:euler} with $h_\ell(E)=0$. The inequality $e_3(E,2)\ge1$ holds for all $92{,}812$ curves of type $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$ in the working set, where PARI's factor at $2$ is $1+2X$ for every one of them.
+\end{proposition}
+\begin{proof}
+Compare the two sides term by term; $w_\ell(E,q)\ge v_\ell(\#\Phig_q)$, so it suffices to treat \eqref{eq:twist}. At a prime of type $\mathrm{I}_n$ both sides have $v_\ell(n)=t_\ell(E,q)$. At a prime of type $\mathrm{I}_n^*$ with $q$ odd, $t_\ell(E,q)=v_\ell(n)=w_\ell(E,q)$; with $q=2$, $w_\ell(E,2)=v_\ell(4)=0$. At $q\ge5$ of type $\mathrm{II},\mathrm{II}^*,\mathrm{IV},\mathrm{IV}^*$ and $\ell=3$, $e_3(E,q)=v_3(q-\chi_{-3}(q))\ge1=w_3(E,q)$ since $q\equiv\chi_{-3}(q)\pmod3$; for $\ell\ge5$ both weights are $0$. At $q=3$ of these types and $\ell=3$, $w_3(E)\ge1=w_3(E,3)$ by definition, and for $\ell\ge5$ the weight is $0$. At $q=2$ of type $\mathrm{II},\mathrm{II}^*$, $w_\ell(E,2)=0$; of type $\mathrm{IV},\mathrm{IV}^*$ and $\ell=3$, $w_3(E,2)=1$, which is the excepted case. The types $\mathrm{III},\mathrm{III}^*,\mathrm{I}_0^*$ have $w_\ell=0$ for odd $\ell$. All other terms of \eqref{eq:thm} and \eqref{eq:rule} are nonnegative.
+\end{proof}
+
+\subsection{History, and the statements proved without the hypothesis on \texorpdfstring{$\Q(\sqrt{\ell^*})$}{Q(sqrt l*)}}
+The multiplicative part of \eqref{eq:main} has a long history. Ribet and Takahashi \cite{RibetTakahashi97,Takahashi01} compared $\degphi$ with the degree of a parametrisation by a Shimura curve and found the product of the $n_q$ over the primes of the quaternion discriminant, up to primes where $E[\ell]$ is reducible; Pasten \cite{Pasten} controls that error term. Pollack and Weston \cite{PollackWeston11} conjectured, and proved for weight $2$ and square-free level when $\bar\rho$ is ramified at two primes at least, and Kim and Ota \cite{KimOta} proved under the hypotheses recalled in Remark~\ref{rem:ko}, that moving a prime $q$ into the ``new'' part of the level changes the congruence ideal of $f_E$ in the full space $S_2(\Gamma_0(N))$ by exactly the \emph{Tamagawa exponent} $t_q$, the largest $t$ with $\rho_{E,\ell}\bmod\ell^t$ unramified at $q$; for multiplicative $q$ one has $t_q=v_\ell(n_q)=t_\ell(E,q)$ whether or not the reduction is split (Lemma~\ref{lem:tamagawa-exp}). Theorem~\ref{thm:main} contains the inequality $v_\ell(\degphi)\ge\sum_{q\,\|\,N}t_\ell(E,q)$ for every multiplicative prime, including the primes $q\equiv\pm1\pmod\ell$ and the prime $\ell=3$, which the formula of Kim and Ota excludes; it does not contain their equality.
+
+Two statements hold under weaker hypotheses than Theorem~\ref{thm:main}, by level lowering and twisting rather than by the Taylor--Wiles method, and they matter exactly where that method does not apply.
+
+\begin{theorem}\label{thm:qual}
+Let $E/\Q$ have conductor $N$ and let $\ell$ be an odd prime not dividing $N$ such that $\bar\rho_{E,\ell}$ is irreducible and, if $\ell=3$, absolutely irreducible when restricted to $\Gal(\overline\Q/\Q(\sqrt{-3}))$. Let $q\neq\ell$ be a prime at which $E$ has additive reduction of one of the following kinds:
+\begin{enumerate}
+\item[(a)] type $\mathrm{IV}$ or $\mathrm{IV}^*$, with $q\ge5$ and $\ell=3$;
+\item[(b)] type $\mathrm{II}$ or $\mathrm{II}^*$, with $q\ge5$ and $\ell=3$;
+\item[(c)] type $\mathrm{I}_n^*$ with $\ell\mid n$, $q$ odd.
+\end{enumerate}
+Then $\ell$ divides the modular degree of the $X_0(N)$-optimal curve in the isogeny class of $E$.
+\end{theorem}
+
+For $\ell\ge5$ Theorem~\ref{thm:qual} needs only the irreducibility of $\bar\rho$; its proof (Section~\ref{sec:proof}) lowers the level of $\bar\rho$, or of its twist $\bar\rho\otimes\chi_q$, and twists back. The quantitative version of case (c), and of the type $\mathrm{I}_0^*$, is the following, which needs no hypothesis beyond the irreducibility of $E[\ell]$.
+
+\begin{theorem}\label{thm:quant}
+Let $\ell$ be an odd prime with $\ell\nmid 2N$ and $E[\ell]$ irreducible, let $S$ be the set of primes $q\ge5$ at which $E$ has type $\mathrm{I}_0^*$ or $\mathrm{I}_n^*$, and let $E_S$ be the twist of $E$ by the product of the characters $\chi_q$, $q\in S$. Then
+\[
+v_\ell(\degphi)\ \ge\ v_\ell(r_{E_S})+\sum_{q\in S}e_\ell(E,q)\ \ge\ \sum_{q\in S}e_\ell(E,q).
+\]
+\end{theorem}
+
+The proof (Section~\ref{sec:twisting}) uses the formula of \cite[Proposition 1.4]{DFG04} for the depleted form of $f_{E_S}$, which lives at level $N$, and an elementary transport of congruences along the twist; under the hypothesis of Theorem~\ref{thm:main} the identity \eqref{eq:identity} for $E$ and for $E_S$ shows that the first inequality is then an equality when multiplicity one holds at both levels.
+
+\begin{proposition}\label{prop:ns}
+Let $E/\Q$ be without complex multiplication with $E[3]$ irreducible. Then $\bar\rho_{E,3}$ is absolutely irreducible on $\Gal(\overline\Q/\Q(\sqrt{-3}))$ unless its image is conjugate to the normaliser $N_s(\F_3)$ of a split Cartan subgroup of $\mathrm{GL}_2(\F_3)$, and in that case $\bar\rho_{E,3}\simeq\bar\rho_{E,3}\otimes\chi_{-3}$, $H^0(\Q,\ad\bar\rho_{E,3}(1))\ne0$ and $h_3(E)\ge1$. The $3$-division polynomial of $E$ then factors as a product of two irreducible quadratics, and otherwise it is irreducible.
+\end{proposition}
+
+The last statement concerns the Eisenstein case, in which \eqref{eq:main} can fail.
+
+\begin{conjecture}\label{conj:eis}
+Let $E$ be optimal, not CM, with a rational $\ell$-isogeny, $\ell$ odd, and let $D$ be the deficit $\sum_q v_\ell(\#\Phig_q)-v_\ell(\degphi)$ of \eqref{eq:main}. Then
+\[
+D\ \le\ v_\ell\bigl(\#E(\Q)_{\mathrm{tors}}\bigr)+\bigl[\,E[3]\simeq\Z/3\oplus\mu_3\,\bigr],
+\]
+where $[\,\cdot\,]$ is $1$ if the condition holds and $0$ otherwise, and also $D\le$ the number of curves in the isogeny class of $E$ with a rational point of order $\ell$. In particular $D\le0$ when $E$ has no rational $\ell$-torsion point, $D\le1$ for $\ell\ge5$, and $D\le2$ for $\ell=3$, since a point of order $9$ and the image $\Z/3\oplus\mu_3$ do not occur together in the tables (Section~\ref{sec:eis}).
+\end{conjecture}
+
+Section~\ref{sec:local} collects the local facts, Section~\ref{sec:proof} proves Theorem~\ref{thm:qual}, Section~\ref{sec:quant} proves Theorems~\ref{thm:main} and~\ref{thm:quant}, Section~\ref{sec:boundary} proves Proposition~\ref{prop:ns} and explains the correction term, Section~\ref{sec:data} describes the computations and Section~\ref{sec:two} discusses the prime $2$, where the analogous statements overlap with the literature on Watkins's conjecture.
+
+\section{Local invariants}\label{sec:local}
+
+Let $q$ be a prime of bad reduction. We use Tate's algorithm \cite[IV.9]{SilvermanATAEC} for the Kodaira type and $c_q$, and the following facts.
+
+\begin{lemma}\label{lem:tamagawa-exp}
+Let $q$ be a prime of multiplicative reduction, $n_q=v_q(\Delta_E)$, and $\ell\ne q$ a prime. Then $\rho_{E,\ell}\bmod\ell^t$ is unramified at $q$ if and only if $\ell^t\mid n_q$. This holds for split and for nonsplit reduction.
+\end{lemma}
+
+\begin{proof}
+Over the unramified quadratic extension of $\Q_q$ (which does not change the inertia group) $E$ is a Tate curve with parameter $u$, $v_q(u)=n_q$. The $\ell^t$-torsion is generated by $\mu_{\ell^t}$ and an $\ell^t$-th root of $u$, so inertia acts trivially on $E[\ell^t]$ exactly when $u$ is an $\ell^t$-th power in $\Q_q^{\mathrm{ur}}$ up to units, that is, when $\ell^t\mid n_q$.
+\end{proof}
+
+\begin{lemma}\label{lem:IV}
+Let $q\ge5$ be a prime at which $E$ has reduction of type $\mathrm{IV}$ or $\mathrm{IV}^*$. Then the image of the inertia group $I_q$ in $\operatorname{Aut}(T_3E)$ is cyclic of order $3$, and its image in $\operatorname{Aut}(E[3])$ is a nontrivial unipotent subgroup. Consequently $E[3]^{I_q}$ is a line, $\bar\rho_{E,3}$ is tamely ramified at $q$, and the Serre conductor of $\bar\rho_{E,3}$ has exponent $1$ at $q$.
+\end{lemma}
+
+\begin{proof}
+For $q\ge5$ the reduction is potentially good and the semistability defect, the order of the image of $I_q$ in $\operatorname{Aut}(T_\ell E)$ for any $\ell\ne q$, equals $12/\gcd(v_q(\Delta_E),12)$ \cite{Kraus90}; for $v_q(\Delta_E)\in\{4,8\}$ this is $3$. The image is tame since $q\ne3$, hence cyclic, generated by an element $\sigma$ of order $3$ with determinant $1$, so with eigenvalues the two primitive cube roots of unity. Hence $\sigma^2+\sigma+1$ annihilates $T=T_3E$, and $T$ is a module over $\Z_3[\sigma]/(\sigma^2+\sigma+1)\simeq\Z_3[\zeta_3]$, a discrete valuation ring with uniformiser $\pi=1-\zeta_3$ and residue field $\F_3$. Being torsion-free of $\Z_3$-rank $2$, $T$ is free of rank one over $\Z_3[\zeta_3]$, and $E[3]=T/3T\simeq\Z_3[\zeta_3]/(\pi^2)$ with $\sigma$ acting as multiplication by $\zeta_3=1-\pi$. Since $\pi\ne0$ in $\Z_3[\zeta_3]/(\pi^2)$, this is a nontrivial unipotent automorphism of order $3$; its fixed space is the line $\pi\Z_3[\zeta_3]/(\pi^2)$. The Serre conductor exponent at $q$ is $\dim E[3]-\dim E[3]^{I_q}=1$, there being no wild part.
+\end{proof}
+
+\begin{remark}\label{rem:types}
+For the other additive types at $q\ge5$ the image of inertia mod $3$ is not unipotent: it has order $2$ or $4$ (types $\mathrm{I}_0^*$, $\mathrm{III}$, $\mathrm{III}^*$, defects $2$ and $4$), or it is minus a unipotent (types $\mathrm{II}$, $\mathrm{II}^*$, defect $6$), or it is a ramified quadratic character times a unipotent (type $\mathrm{I}_n^*$). In the last two cases $E[3]^{I_q}=0$ and the Serre conductor of $\bar\rho_{E,3}$ has exponent $2$ at $q$, the same as the conductor of $E$; these are the types whose twist by $\chi_q$ lowers the conductor exponent.
+\end{remark}
+
+\begin{lemma}\label{lem:twist}
+Let $q$ be an odd prime, $\chi=\chi_q$ the quadratic character of conductor $q$ and $E^{(q)}$ the twist of $E$ by $\chi$, that is, by $\Q(\sqrt{q^*})$.
+\begin{enumerate}
+\item[(i)] At every prime $p\ne q$ the curves $E$ and $E^{(q)}$ have the same Kodaira type, the same geometric component group and the same conductor exponent.
+\item[(ii)] If $E$ has type $\mathrm{I}_n$ at $q$ ($n\ge0$) then $E^{(q)}$ has type $\mathrm{I}_n^*$ at $q$, and conversely, with the same $n$. If $q\ge5$ and $E$ has type $\mathrm{II}$, $\mathrm{III}$, $\mathrm{IV}$ at $q$ then $E^{(q)}$ has type $\mathrm{IV}^*$, $\mathrm{III}^*$, $\mathrm{II}^*$ respectively, and conversely. The conductor exponent of $E^{(q)}$ at $q$ is $2$ when its reduction is additive and $1$ when it is of type $\mathrm{I}_n$, $n\ge1$.
+\item[(iii)] (Atkin--Li \cite{AtkinLi78}) Let $g$ be a newform of weight $2$ on $\Gamma_0(M)$ with $q^2\nmid M$. Then the twist $g\otimes\chi$, with coefficients $a_n(g\otimes\chi)=\chi(n)a_n(g)$, is a newform of weight $2$ on $\Gamma_0(M')$, $M'=\operatorname{lcm}(M,q^2)$; that is, $M'=Mq^2$ if $q\nmid M$ and $M'=Mq$ if $q\,\|\,M$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) The character $\chi$ is unramified at $p$, so $E$ and $E^{(q)}$ become isomorphic over an unramified extension of $\Q_p$, and the Kodaira type, the geometric component group and the conductor exponent are invariant under unramified base change. (ii) If $(a_1,a_2,a_3,a_4,a_6)$ is a minimal model of $E$ at $q$ with invariants $c_4,c_6,\Delta$, the twist has a model with invariants $q^{2}c_4$, $q^{3}c_6$, $q^{6}\Delta$ and the same $j$-invariant. For potentially multiplicative reduction, $v_q(j)<0$, the type is $\mathrm{I}_n$ or $\mathrm{I}_n^*$ with $n=-v_q(j)$ according as the reduction is multiplicative or additive, and a ramified quadratic twist exchanges the two. For $n=0$: a model $y^2=x^3+a_2x^2+a_4x+a_6$ with good reduction at $q$ has twist $y^2=x^3+q^*a_2x^2+q^{*2}a_4x+q^{*3}a_6$, for which the cubic $T^3+a_2T^2+a_4T+a_6$ of Tate's algorithm has distinct roots modulo $q$, the criterion for type $\mathrm{I}_0^*$; conversely a curve of type $\mathrm{I}_0^*$ at an odd $q$ has a model of the latter shape, and its twist has good reduction. For $q\ge5$ and potentially good reduction the type is determined by $v_q(\Delta)$ of a minimal model, which lies in $\{0,2,3,4,6,8,9,10\}$ for the types $\mathrm{I}_0,\mathrm{II},\mathrm{III},\mathrm{IV},\mathrm{I}_0^*,\mathrm{IV}^*,\mathrm{III}^*,\mathrm{II}^*$; the twisted model has $v_q(\Delta)$ increased by $6$, and is minimal exactly when the result is less than $12$, otherwise $12$ is subtracted. The conductor exponents are the standard ones for $q$ odd (tame). (iii) is \cite[Theorem 3.1]{AtkinLi78}; in the case $q\,\|\,M$, the local component of $g$ at $q$ is an unramified twist of the Steinberg representation, whose twist by a ramified quadratic character has conductor exponent $2$.
+\end{proof}
+
+\begin{lemma}[the omitted factors at tame primes]\label{lem:euler}
+Let $q\ge5$ be a bad prime, $q\ne\ell$. Then $L_q(A_f,s)^{-1}$ and $e_\ell(E,q)$ are as in the table of Section~1.
+\end{lemma}
+
+\begin{proof}
+The inertia group acts on $V$ through a finite cyclic quotient when the reduction is potentially good, and through a quadratic character times a unipotent when it is potentially multiplicative; $L_q(A_f,s)^{-1}=\prod(1-\lambda q^{-s})$ over the eigenvalues $\lambda$ of Frobenius on $(\ad V)^{I_q}$, in the normalisation in which a good prime has the eigenvalues $\alpha/\beta,1,\beta/\alpha$ on $\ad V$.
+
+\emph{Type $\mathrm{I}_n$.} The local component of $f$ is an unramified twist of the Steinberg representation; $(\ad V)^{I_q}$ is a line with eigenvalue $q^{-1}$, so $L_q(A_f,s)^{-1}=1-q^{-1-s}$, which is also the naive factor since $a_q^2=1$: $e_\ell=0$. \emph{Type $\mathrm{I}_n^*$.} $V=V'\otimes\chi_q$ with $V'$ Steinberg at $q$ (Lemma~\ref{lem:twist}), $\ad V=\ad V'$ and $a_q=0$, so the naive factor is $1$ and $e_\ell=v_\ell(1-q^{-2})=v_\ell(q^2-1)$. \emph{Types $\mathrm{II},\mathrm{II}^*,\mathrm{IV},\mathrm{IV}^*$.} The image of $I_q$ in $\operatorname{Aut}V$ is cyclic of order $3$ or $6$ \cite{Kraus90}, generated by $\sigma$ or $-\sigma$ with $\sigma$ of order $3$ and eigenvalues $\zeta_3^{\pm1}$. On $\ad V$ the sign disappears and the invariants form the line spanned by $\sqrt{-3}\in\Z_\ell[\zeta_3]\simeq\operatorname{End}_{I_q}(V)$; Frobenius centralises $\sigma$ if $q\equiv1\pmod3$ and inverts it if $q\equiv2$, so it acts on the line by $\chi_{-3}(q)$, and $e_\ell=v_\ell(1-\chi_{-3}(q)q^{-1})=v_\ell(q-\chi_{-3}(q))$. \emph{Types $\mathrm{III},\mathrm{III}^*$.} The image has order $4$, eigenvalues $\pm i$; the invariant line of $\ad V$ is spanned by the diagonal element, on which Frobenius acts by $\chi_{-4}(q)$, and $e_\ell=v_\ell(q-\chi_{-4}(q))$. \emph{Type $\mathrm{I}_0^*$.} $V=V'\otimes\chi_q$ with $V'$ unramified with Frobenius eigenvalues $\alpha,\beta$; $\ad V$ is unramified with eigenvalues $\alpha/\beta,1,\beta/\alpha$, and
+\[
+L_q(A_f,1)^{-1}=\Bigl(1-\frac{\alpha}{\beta q}\Bigr)\Bigl(1-\frac1q\Bigr)\Bigl(1-\frac{\beta}{\alpha q}\Bigr)=\frac{q-1}{q}\cdot\frac{(q+1)^2-a_q(E')^2}{q^2},
+\]
+using $\alpha\beta=q$ and $\alpha+\beta=a_q(E')$. In each case the values were confirmed against PARI's \texttt{lfunsympow} on every curve of the tables.
+\end{proof}
+
+\begin{remark}\label{rem:wild}
+At $q=2,3$ the Kodaira type does not determine $L_q(A_f,s)$, but PARI does, and Definition~\ref{def:terms} applies verbatim: for instance a type $\mathrm{IV}$ at $2$ has $P_2(X)=1+2X$ and $e_3=v_3(1+\tfrac12)=1$, a type $\mathrm{II}$ at $2$ has $P_2=1$ and $e_3=0$, and a type $\mathrm{I}_n^*$ at $2$ has potentially good reduction in about half of the cases, with a cubic $P_2$ and $t_\ell=0$. At $q=\ell$ the Euler factor is not the relevant quantity, and the weights $w_3$ of Conjecture~\ref{conj:euler} are empirical.
+\end{remark}
+
+\begin{lemma}[the Tamagawa factor at a multiplicative prime]\label{lem:tamfactor}
+Let $q$ be a prime of multiplicative reduction, $n=n_q$, $\ell$ an odd prime different from $q$, $T=T_\ell E$ and $M=\ad T$. Let $q_E\in\Q_q^\times$ be the Tate parameter, $u=q_Eq^{-n}$ its unit part, and $c\in\Z/\ell^{v_\ell(q-1)}$ the class of $u$ in $\F_q^\times/(\F_q^\times)^{\ell^{v_\ell(q-1)}}$, so that $v_\ell(c)\ge k$ if and only if $u$ is an $\ell^k$-th power in $\F_q^\times$, for $k\le v_\ell(q-1)$. Then $H^1(I_q,M)_{\mathrm{tor}}\simeq(\Z/\ell^{v_\ell(n)})^2$ and
+\[
+v_\ell\bigl(\Tam_q(\ad T)\bigr)=v_\ell(n)+\min\bigl(v_\ell(n),v_\ell(q-1),v_\ell(c)\bigr).
+\]
+In particular $v_\ell(\Tam_q(\ad T))\ge t_\ell(E,q)$, with equality unless $q\equiv1\pmod\ell$, $\ell\mid n$ and $u$ is an $\ell$-th power in $\F_q^\times$.
+\end{lemma}
+
+\begin{proof}
+Over the unramified quadratic extension of $\Q_q$ the curve is a Tate curve, so $T$ has a basis $e_1,e_2$ in which $G=G_{\Q_q}$ acts through matrices $\begin{psmallmatrix}\chi_\ell\varepsilon&\kappa\\0&\varepsilon\end{psmallmatrix}$, with $\varepsilon$ unramified of order at most $2$ and $\kappa$ the Kummer class of $q_E$ in $H^1(G,\Z_\ell(1))=\varprojlim\Q_q^\times/(\Q_q^\times)^{\ell^k}$. The inertia group $I=I_q$ acts through its maximal pro-$\ell$ tame quotient, generated by an element $t$ with $te_1=e_1$, $te_2=e_2+n'e_1$, $v_\ell(n')=v_\ell(n)$, since the restriction of $\kappa$ to $I$ is $n$ times the tame character; the kernel of $I\to\langle t\rangle$ has trivial pro-$\ell$ quotient, so by inflation-restriction $H^1(I,M')=H^1(\langle t\rangle,M')=M'/(t-1)M'$ for every $\Z_\ell$-module $M'$ of finite type with this action. In the basis $e=e_1\otimes e_2^\vee$, $h=e_1\otimes e_1^\vee-e_2\otimes e_2^\vee$, $f=e_2\otimes e_1^\vee$ of $M=\ad T$ one has $(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$, and as $2$ is a unit, $(t-1)M=n'(\Z_\ell e\oplus\Z_\ell h)$; so $H^1(I,M)=(\Z_\ell/n')\bar e\oplus(\Z_\ell/n')\bar h\oplus\Z_\ell\bar f$ and its torsion is $(\Z/\ell^{v_\ell(n)})^2$. The group $G/I$ acts on $H^1(I,M)$ by $(\sigma\cdot c)(i)=\sigma c(\sigma^{-1}i\sigma)$; as $\Frob^{-1}t\Frob=t^{q^{-1}}$ and $c(t^k)\equiv k\,c(t)$ modulo $(t-1)M$, the arithmetic Frobenius acts on $M/(t-1)M$ as $q^{-1}\rho(\Frob)$. Writing $\rho(\Frob)=\begin{psmallmatrix}\varepsilon q&c'\\0&\varepsilon\end{psmallmatrix}$, the adjoint action sends $e$ to $qe$ and $h$ to $h-2c'\varepsilon e$, so on the torsion $\bar e\mapsto\bar e$ and $\bar h\mapsto q^{-1}(\bar h-2c'\varepsilon\bar e)$. The fixed points are the $x\bar e+y\bar h$ with $(q-1)y\equiv0$ and $c'y\equiv0\pmod{\ell^{v_\ell(n)}}$: $\ell^{v_\ell(n)}$ choices of $x$ and $\ell^{\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))}$ of $y$. Finally $c'$ is the image of $\kappa$ in $H^1(G/I,\Z_\ell(1)^I)=\Z_\ell(1)/(q-1)\simeq\Z/\ell^{v_\ell(q-1)}$, the class of the unit part of $q_E$ in $\F_q^\times\otimes\Z_\ell$ by Kummer theory, well defined modulo $q-1$; so $v_\ell(c')=v_\ell(c)$ in the sense stated. The identification of $\Tam_q$ with the Fitting ideal of the $G$-invariants of the torsion of $H^1(I,M)$ is \cite[I.4.2.2]{FPR94}, as recalled in \cite[p.~708]{DFG04}. As a check, the same computation for $M=T$ gives $(\Z/\ell^{v_\ell(n)})\bar e_1$ with $\Frob$ acting by $\varepsilon$, that is, the $\ell$-part of the Tamagawa number $c_q(E)$, as it should.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:qual}}\label{sec:proof}
+
+Throughout this section $\ell$ is odd and $\ell\nmid N$. Let $f=f_E\in S_2(\Gamma_0(N))$ be the newform of the isogeny class of $E$, let $E_0$ be the optimal curve in the class, and let $r=r_{E_0}$ be its congruence number: the largest integer $r$ such that $f\equiv g\pmod r$ coefficientwise for some $g\in S_2(\Gamma_0(N))$ with integer coefficients orthogonal to $f$ \cite[\S2]{ARS12}. By \cite[Theorem 2.2]{ARS12}, $\deg\varphi_{E_0}$ divides $r$ and $v_p(\deg\varphi_{E_0})=v_p(r)$ for every prime $p$ with $p^2\nmid N$; as $\ell\nmid N$ it suffices to prove $\ell\mid r$. Let $\T$ be the Hecke algebra of level $N$, the subring of $\operatorname{End}S_2(\Gamma_0(N))$ generated over $\Z$ by all $T_n$, $n\ge1$, including the operators $U_p$ for $p\mid N$, and write $\bar\rho=\bar\rho_{E,\ell}$, irreducible by hypothesis. The two lemmas below reduce the theorem to the production of a congruent newform of lower level.
+
+\begin{lemma}[congruence criterion]\label{lem:crit}
+Let $\phi_f\colon\T\to\Z$, $T_n\mapsto a_n(f)$, let $I=\ker\phi_f$ and let $J$ be the annihilator in $\T$ of the orthogonal complement $f^\perp$ of $f$. Then $\T/(I+J)$ is cyclic of order $r$; equivalently, $r$ generates the congruence ideal $\phi_f(J)=\phi_f(\operatorname{Ann}_\T I)$. Consequently, if there is a normalised eigenform $g\in S_2(\Gamma_0(N))\otimes\overline\Q$ for all of $\T$, orthogonal to $f$, with coefficients in the ring of integers $\mathcal{O}$ of a number field, and a prime $\lambda\mid\ell$ of $\mathcal{O}$ such that $a_n(g)\equiv a_n(f)\pmod\lambda$ for every $n\ge1$, then $\ell\mid r$. The same statements hold with $\Z$ replaced by $\Z_\ell$ and $r$ by its $\ell$-part.
+\end{lemma}
+
+\begin{proof}
+Writing $\T\otimes\Q=\Q\times\T'$ with $\T'$ acting faithfully on $f^\perp$ (the $f$-line is $\T$-stable, and so is $f^\perp$, because $f$ is an eigenvector of the adjoints of the $T_n$ as well), one has $I=\T\cap(0\times\T')$ and $J=\T\cap(\Q\times0)$, so $I\cap J=0$ and $\T/(I+J)\simeq\Z/\phi_f(J)$ is cyclic, of order $r'$ say. The pairing $S_2(\Gamma_0(N);\Z)\times\T\to\Z$, $(g,t)\mapsto a_1(tg)$, is perfect \cite[Theorem 2.2]{Ribet83}, \cite[Lemma 2.1]{AU96} (see \cite[\S3]{ARS12}), and under it the forms killed by $I$ are $\Z f$ and the forms killed by $J$ are $L=f^\perp\cap S_2(\Gamma_0(N);\Z)$. Dualising the inclusion $\T\subset\T/I\times\T/J$, whose cokernel is $\T/(I+J)$, shows that $\Z f\oplus L$ has index $r'$ in $S_2(\Gamma_0(N);\Z)$. The quotient $S_2(\Gamma_0(N);\Z)/(\Z f\oplus L)$ embeds in $\Q f/\Z f$ by projection onto $\Q f$ along $f^\perp$, so it is cyclic, generated by the class of a form $h$ with projection $f/r'$; then $r'h=f+g_0$ with $g_0\in L$, so $f\equiv-g_0\pmod{r'}$ and $r'\le r$; conversely a congruence $f\equiv g_1\pmod r$ with $g_1\in L$ gives the integral form $(f-g_1)/r$, whose class has order $r$, so $r\mid r'$. Hence $r=r'=\#\T/(I+J)$. Now let $\phi_g\colon\T\to\mathcal{O}$ be the eigencharacter of $g$. It kills $J$ because $g\in f^\perp$, and $\phi_g\equiv\phi_f\pmod\lambda$ on all of $\T$ by hypothesis, so $\phi_g(I)\subset\lambda$. Thus $I+J$ lies in the kernel of $\T\to\mathcal{O}/\lambda$, a maximal ideal of residue characteristic $\ell$, and $\ell$ divides $\#\T/(I+J)=r$. Every step holds verbatim over $\Z_\ell$, the pairing being perfect after tensoring with $\Z_\ell$.
+\end{proof}
+
+\begin{lemma}[oldforms]\label{lem:old}
+Let $h$ be a newform of weight $2$ on $\Gamma_0(M)$ with $M\mid N$ and $h\ne f$, with coefficients in $\mathcal{O}$, and let $\lambda\mid\ell$ be a prime of $\mathcal{O}$ such that $a_p(h)\equiv a_p(f)\pmod\lambda$ for all primes $p\nmid\ell N$. Assume that $p\nmid M$ for every prime $p\,\|\,N$ at which $\bar\rho$ is unramified. Then, after enlarging $\mathcal{O}$ and $\lambda$, the span of the forms $h(dz)$, $d\mid N/M$, contains an eigenform $g$ as in Lemma~\ref{lem:crit}. Consequently $\ell\mid r$.
+\end{lemma}
+
+\begin{proof}
+The forms $h(dz)$, $d\mid N/M$, span a $\T$-stable subspace $V$ of $S_2(\Gamma_0(N))$ orthogonal to the newform $f$ (whether $M<N$, or $M=N$ and $h\ne f$). On $V$ the operators $T_n$ with $(n,N)=1$ act by the scalars $a_n(h)$, and $U_p$ for $p\mid M$ with $v_p(M)=v_p(N)$ acts by $a_p(h)$. For $p\mid N/M$ put $e_p=v_p(N/M)$; on the span of $h(p^jz)$, $0\le j\le e_p$, one has $U_ph(p^jz)=h(p^{j-1}z)$ for $j\ge1$, and $U_ph=a_p(h)h-p\,h(pz)$ if $p\nmid M$, $U_ph=a_p(h)h$ if $p\mid M$. The eigenvalues of $U_p$ there are therefore the roots $\alpha_p,\beta_p$ of $X^2-a_p(h)X+p$, together with $0$ if $e_p\ge2$, when $p\nmid M$; and $a_p(h)$, together with $0$ if $e_p\ge1$, when $p\mid M$. The operator $U_p$ is not semisimple on this span when $0$ is a repeated eigenvalue, but each listed eigenvalue has an eigenvector: the $p$-stabilisations $h-\beta_ph(pz)$, $h-\alpha_ph(pz)$ for $\alpha_p,\beta_p$, the form $h$ for $a_p(h)$, and the depleted forms $h-a_p(h)h(pz)+p\,h(p^2z)$ (if $p\nmid M$), $h-a_p(h)h(pz)$ (if $p\,\|\,M$) or $h$ itself (if $p^2\mid M$, where $a_p(h)=0$) for the eigenvalue $0$. Since $V$ is the tensor product of these local spaces and $\T$ is commutative, for every choice of one such eigenvalue $\mu_p$ at each $p\mid N/M$ there is a common eigenform $g\in V\otimes\overline\Q$ of all of $\T$ with $U_pg=\mu_pg$ for $p\mid N/M$, $U_pg=a_p(h)g$ for the other $p\mid N$, and $T_ng=a_n(h)g$ for $(n,N)=1$; normalise it by $a_1(g)=1$. We choose the $\mu_p$ and check $a_p(g)\equiv a_p(f)\pmod\lambda$ prime by prime; the congruence for all $n$ then follows from the multiplicativity of the coefficients, from $a_{p^k}=a_p^k$ for $p\mid N$, and from the recursion $a_{p^{k+1}}=a_pa_{p^k}-p\,a_{p^{k-1}}$ for $p\nmid N$, which $f$ and $g$ both satisfy.
+
+\emph{$p\nmid\ell N$.} $a_p(g)=a_p(h)\equiv a_p(f)$ by hypothesis. Consequently $\bar\rho_h\simeq\bar\rho$ by Chebotarev and Brauer--Nesbitt, $\bar\rho$ being irreducible.
+
+\emph{$p=\ell$.} Both $f$ and $h$ have weight $2$ and level prime to $\ell$. By the theorems of Deligne and Fontaine describing $\bar\rho_f|_{D_\ell}$ and $\bar\rho_h|_{D_\ell}$ \cite[\S2]{Edixhoven92}, the residue class of $a_\ell$ is determined by the restriction to $D_\ell$: it is $0$ when that restriction is irreducible, and otherwise the eigenvalue of Frobenius on the unramified quotient. Hence $a_\ell(h)\equiv a_\ell(f)$.
+
+\emph{$p^2\mid N$.} Here $E$ has additive reduction at $p$ and $a_p(f)=0$. If $v_p(M)=v_p(N)$ then $a_p(h)=0$, because a newform on $\Gamma_0(M)$ with $p^2\mid M$ has $a_p=0$ \cite[Theorem 3]{AtkinLehner70}. Otherwise $e_p\ge1$, and $e_p\ge2$ if $p\nmid M$, so $0$ is an available eigenvalue: take $\mu_p=0$.
+
+\emph{$p\,\|\,N$, $\bar\rho$ unramified at $p$.} By hypothesis $p\nmid M$, so $e_p=1$ and $\mu_p\in\{\alpha_p,\beta_p\}$. Here $\rho_{E,\ell}|_{D_p}$ is an extension of an unramified character $\varepsilon$ by $\varepsilon\chi_\ell$ with $\varepsilon(\mathrm{Frob}_p)=a_p(f)=\pm1$ \cite[Theorem 3.1(e)]{DDT}, so the eigenvalues of $\bar\rho(\mathrm{Frob}_p)$ are $a_p(f)p$ and $a_p(f)$. As $\bar\rho_h\simeq\bar\rho$ is unramified at $p$ and $p\nmid M$, the characteristic polynomial of $\bar\rho_h(\mathrm{Frob}_p)$ is $X^2-a_p(h)X+p\equiv(X-a_p(f)p)(X-a_p(f))\pmod\lambda$, so one of $\alpha_p,\beta_p$ is congruent to $a_p(f)$ modulo a prime above $\lambda$ in $\mathcal{O}[\alpha_p]$; take it as $\mu_p$.
+
+\emph{$p\,\|\,N$, $\bar\rho$ ramified at $p$.} Then $p\mid M$, since otherwise $\bar\rho_h$ would be unramified at $p$; so $v_p(M)=1=v_p(N)$ and $a_p(g)=a_p(h)=\pm1$. Both $\bar\rho|_{D_p}$ and $\bar\rho_h|_{D_p}$ are extensions of an unramified character by its twist by $\bar\chi_\ell$, with Frobenius eigenvalue $a_p(f)$, respectively $a_p(h)$, on the unramified quotient \cite[Theorem 3.1(e)]{DDT}, and both are non-split because $\bar\rho$ is ramified at $p$. A non-split extension of two characters has a unique stable line, so the isomorphism $\bar\rho|_{D_p}\simeq\bar\rho_h|_{D_p}$ matches the sublines and hence the quotients, and $a_p(h)\equiv a_p(f)$.
+
+In all cases $a_p(g)\equiv a_p(f)\pmod\lambda$, and Lemma~\ref{lem:crit} applies.
+\end{proof}
+
+We use the optimal-level theorem of Ribet, Carayol and Diamond \cite{Ribet90,Carayol89,Diamond95} in the form of \cite[Theorem 3.15]{DDT}: \emph{let $\ell$ be odd and let $\bar\sigma\colon\Gal(\overline\Q/\Q)\to\mathrm{GL}_2(\overline{\F}_\ell)$ be irreducible and modular, absolutely irreducible on $\Gal(\overline\Q/\Q(\sqrt{-3}))$ if $\ell=3$; then $\bar\sigma$ arises from a newform of weight $2$ and level $N(\bar\sigma)\ell^{\delta(\bar\sigma)}$ with nebentypus of order prime to $\ell$, where $N(\bar\sigma)$ is the Serre conductor and $\delta(\bar\sigma)=0$ when $\bar\sigma|_{D_\ell}$ is good.} For $\bar\sigma=\bar\rho_{E',\ell}$ with $E'$ an elliptic curve of conductor prime to $\ell$, the restriction to $D_\ell$ comes from the finite flat group scheme $E'[\ell]$ and is good, and $\det\bar\sigma=\bar\chi_\ell$ forces the nebentypus, which is trivial modulo $\lambda$ and of order prime to $\ell$, to be trivial. So in that case $\bar\sigma$ arises from a newform of weight $2$ on $\Gamma_0(N(\bar\sigma))$. Recall also that $N(\bar\rho_{E',\ell})$ divides the conductor of $E'$ \cite{Carayol89}, and that $N(\bar\sigma)$ is prime to every prime at which $\bar\sigma$ is unramified.
+
+\medskip\noindent\emph{Case (a).} Here $q^2\,\|\,N$ and $\ell=3$. By Lemma~\ref{lem:IV} the Serre conductor $M=N(\bar\rho)$ has exponent exactly $1$ at $q$, so $M\mid N/q$. The optimal-level theorem gives a newform $g$ of weight $2$ on $\Gamma_0(M)$ with $\bar\rho_g\simeq\bar\rho$, that is, $a_p(g)\equiv a_p(f)\pmod\lambda$ for all $p\nmid 3N$. Take $h=g$: it has level $M<N$, and $p\nmid M$ for every prime $p$ at which $\bar\rho$ is unramified. Lemma~\ref{lem:old} gives $3\mid r$.
+
+\medskip\noindent\emph{Case (b).} Here $q^2\,\|\,N$, $\ell=3$, and $E$ has type $\mathrm{II}$ or $\mathrm{II}^*$ at $q\ge5$. Let $\chi=\chi_q$ and $E'=E^{(q)}$. By Lemma~\ref{lem:twist}, $E'$ has type $\mathrm{IV}^*$ or $\mathrm{IV}$ at $q$, the same types as $E$ elsewhere, and conductor $N$; its newform is $f'=f\otimes\chi$, a newform of weight $2$ on $\Gamma_0(N)$, and $\bar\rho_{E',3}=\bar\rho\otimes\chi$ satisfies the hypotheses of the optimal-level theorem since $\bar\rho$ does. By Lemma~\ref{lem:IV} applied to $E'$, the Serre conductor $M=N(\bar\rho\otimes\chi)$ has exponent exactly $1$ at $q$, and $M\mid N/q$. The optimal-level theorem gives a newform $g$ of weight $2$ on $\Gamma_0(M)$ with $a_p(g)\equiv a_p(f')=\chi(p)a_p(f)\pmod\lambda$ for all $p\nmid 3N$. As $q\,\|\,M$, Lemma~\ref{lem:twist}(iii) says that $h=g\otimes\chi$ is a newform on $\Gamma_0(Mq)$, and $Mq\mid N$. For $p\nmid 3N$,
+\[
+a_p(h)=\chi(p)a_p(g)\equiv\chi(p)^2a_p(f)=a_p(f)\pmod\lambda .
+\]
+Moreover $h\ne f$: otherwise $g=h\otimes\chi=f\otimes\chi=f'$ would have level $N$, whereas $M<N$. Finally, if $p\,\|\,N$ and $\bar\rho$ is unramified at $p$, then $p\ne q$, so $\bar\rho\otimes\chi$ is unramified at $p$ as well and $p\nmid M$, hence $p\nmid Mq$. Lemma~\ref{lem:old} gives $3\mid r$.
+
+\medskip\noindent\emph{Case (c).} Here $E$ has type $\mathrm{I}_n^*$ at an odd prime $q\ne\ell$ with $\ell\mid n$, so $q^2\,\|\,N$. Let $\chi=\chi_q$ and $E'=E^{(q)}$. By Lemma~\ref{lem:twist}, $E'$ has multiplicative reduction of type $\mathrm{I}_n$ at $q$ and conductor $N/q$, so $f'=f\otimes\chi$ is a newform of weight $2$ on $\Gamma_0(N/q)$ with $q\,\|\,N/q$. By Lemma~\ref{lem:tamagawa-exp} applied to $E'$, $\bar\rho\otimes\chi=\bar\rho_{E',\ell}$ is unramified at $q$, so the Serre conductor $M=N(\bar\rho\otimes\chi)$ is prime to $q$ and $M\mid N/q^2$. The optimal-level theorem (this is the case of Ribet's theorem \cite{Ribet90}, $q$ exactly dividing the level and $\bar\rho\otimes\chi$ unramified at $q$) gives a newform $g$ of weight $2$ on $\Gamma_0(M)$ with $a_p(g)\equiv\chi(p)a_p(f)\pmod\lambda$ for all $p\nmid\ell N$. As $q\nmid M$, $h=g\otimes\chi$ is a newform on $\Gamma_0(Mq^2)$ with $Mq^2\mid N$, congruent to $f$ at all $p\nmid\ell N$ by the computation of case (b), and $h\ne f$ since $g=h\otimes\chi$ would otherwise equal $f'$, of level $N/q\ne M$. The hypothesis of Lemma~\ref{lem:old} holds as in case (b), and $\ell\mid r$. \qed
+
+\begin{example}
+The congruences produced by the proof can be seen directly on the tables (labels as in \cite{Cremona97}). (b): the curve 121a1 has type $\mathrm{II}$ at $11$; its twist by $-11$ lies in the class 121c and has type $\mathrm{IV}^*$ at $11$; its mod $3$ representation has conductor $11$ and is congruent to the form of 11a1; twisting back, $f_{\text{11a}}\otimes\chi_{-11}$ is the form of 121d, and indeed $a_p(\text{121a1})\equiv\chi_{-11}(p)\,a_p(\text{11a1})\pmod 3$ for all $p\ne3,11$ (checked for $p<500$), while $\deg\varphi_{\text{121a1}}=6$: here $e_3(E,11)=v_3(11+1)=1$ and the bound is attained. (c) at $\ell=3$: 539c1 has type $\mathrm{I}_3^*$ at $7$; its twist by $-7$ has conductor $77$ and type $\mathrm{I}_3$ at $7$, and $a_p(\text{539c1})\equiv\chi_{-7}(p)\,a_p(\text{11a1})\pmod3$ for all $p\ne3,7,11$ (checked for $p<1000$); $\deg\varphi_{\text{539c1}}=2^5\cdot3^2$, and the two terms $e_3(E,7)=v_3(48)=1$ and $t_3(E,7)=v_3(3)=1$ are both attained. (c) at $\ell=5$: 980i1 has type $\mathrm{I}_5^*$ at $7$; its twist by $-7$ has conductor $140$ and type $\mathrm{I}_5$ at $7$, and $a_p(\text{980i1})\equiv\chi_{-7}(p)\,a_p(\text{20a1})\pmod5$ for all $p\ne2,5,7$ (checked for $p<1000$); $\deg\varphi_{\text{980i1}}=2^6\cdot3^2\cdot5$.
+\end{example}
+
+\begin{remark}
+The hypothesis $\ell\nmid N$ is used in the optimal-level theorem, in Lemma~\ref{lem:old} at $p=\ell$, and to pass from the congruence number to the modular degree. The last step needs only $\ell^2\nmid N$, and it cannot be dropped there: Table 1 of \cite{ARS12} lists the curve 99A1, of conductor $9\cdot11$, with modular degree $4$ and congruence number $12$. The data nevertheless show the conclusion of the theorem for every curve with $\ell\,\|\,N$ or $\ell^2\mid N$ and a prime of one of the three kinds; so do they at $q=3$ in cases (a) and (b), where Lemma~\ref{lem:IV} does not apply because the ramification is wild.
+\end{remark}
+
+\section{The congruence ideal and the adjoint Selmer group}\label{sec:quant}
+
+\subsection{Congruence ideals}\label{sec:dfg}
+Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ with rational coefficients, $\lambda=\ell$ a prime not dividing $2M$, and $\Sigma$ a finite set of primes. Put $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$ and let $f^\Sigma=\sum_{(n,\Sigma)=1}a_n(f)q^n$ be the $\Sigma$-depleted eigenform, of level $M^\Sigma$. Diamond, Flach and Guo define \cite[\S\S1.5.3, 1.6.2, 1.7.3]{DFG04} a lattice $M_{f^\Sigma,\lambda}$ and an ideal $\eta^\Sigma_{f,\lambda}\subset\Z_\ell$ as follows. The integral structure $M(M^\Sigma,1)_{!,\lambda}$ is $H^1(X_0(M^\Sigma),\Z_\ell)$, with its Hecke action; the lattice $M_{f^\Sigma,\lambda}$ is the kernel on it of the kernel of the eigencharacter of $f^\Sigma$ \cite[\S1.6.2]{DFG04}; the pairing $\hat\delta_!$ is the cup product composed with the operator $[UwU]\omega$, $w=\begin{psmallmatrix}0&-1\\M^\Sigma&0\end{psmallmatrix}$ \cite[(13), (14)]{DFG04}, which for weight $2$ and trivial character is the Atkin--Lehner involution $w_{M^\Sigma}$; it is perfect and alternating on $H^1(X_0(M^\Sigma),\Z_\ell)$, and the Hecke operators, $U_p$ included, are self-adjoint for it, because $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup product (this is what the composition with $w$ is for; see \cite[\S\S1.6.1, 1.8.2]{DFG04} and \cite[\S4.4]{DDT}). The restriction of $\hat\delta_!$ to the rank-two lattice $M_{f^\Sigma,\lambda}$ takes its values in an ideal of $\Z_\ell$, which is $\eta^\Sigma_{f,\lambda}$, the \emph{naive $\Sigma$-finite congruence ideal}; equivalently the Gram determinant of the pairing on $M_{f^\Sigma,\lambda}$ is $(\eta^\Sigma_{f,\lambda})^2$ up to a unit.
+
+\begin{theorem}[{\cite[Proposition 1.4(c)]{DFG04}}]\label{thm:dfg14}
+If $\bar\rho_f$ is irreducible then
+\[
+\eta^\Sigma_{f,\lambda}=\eta^{\emptyset}_{f,\lambda}\prod_{p\in\Sigma}L_p^{\nv}(A_f,1)^{-1}.
+\]
+\end{theorem}
+Only the primes with $\delta_p\ge1$ contribute: adding an additive prime to $\Sigma$ changes neither the level nor the ideal; adding a good prime $p$ multiplies the ideal by $(1-\frac\alpha\beta p^{-1})(1-p^{-1})(1-\frac\beta\alpha p^{-1})$, Wiles's level-raising factor; adding a multiplicative prime multiplies it by $1-p^{-2}$.
+
+We also need the following piece of commutative algebra, which is the inequality half of \cite[Lemma 4.17]{DDT}. Let $\mathcal{O}$ be a discrete valuation ring, $\T$ a commutative $\mathcal{O}$-algebra, finite and free as an $\mathcal{O}$-module, acting on an $\mathcal{O}$-module $L$ free of finite rank with a perfect $\mathcal{O}$-bilinear pairing for which $\T$ is self-adjoint; let $\pi\colon\T\to\mathcal{O}$ be a surjective $\mathcal{O}$-algebra homomorphism, $\wp=\ker\pi$, $I=\operatorname{Ann}_\T(\wp)$ and $\eta=\pi(I)$, the congruence ideal of $\pi$; and suppose that $L[\wp]$ is free of rank $d$ over $\mathcal{O}$ with Gram determinant $\Delta\ne0$.
+
+\begin{lemma}\label{lem:ddt417}
+$\eta^d\subseteq\Delta\mathcal{O}$, that is, $d\cdot v(\eta)\ge v(\Delta)$; and equality holds if $L$ is free over $\T$.
+\end{lemma}
+\begin{proof}
+Since $L$ is torsion-free and $\wp\cap I=0$, the sum $L[\wp]+L[I]$ is direct. For $t\in I$ with $\pi(t)$ a generator of $\eta$ and $x\in L$, one has $tx\in L[\wp]$ (as $\wp I=0$) and $(\pi(t)-t)x\in L[I]$ (as $s(\pi(t)-t)\in\wp\cap I=0$ for $s\in I$), so $Q=L/(L[\wp]\oplus L[I])$ is killed by $\eta$. The pairing identifies $L/L[\wp]^\perp$ with $\operatorname{Hom}(L[\wp],\mathcal{O})$, because $L[\wp]$ is saturated, and $L[\wp]^\perp=L[I]$: for $y\in L[I]$ and $x\in L[\wp]$, $\pi(t)\langle x,y\rangle=\langle tx,y\rangle=\langle x,ty\rangle=0$; conversely if $y\perp L[\wp]$ then $\langle ty,z\rangle=\langle y,tz\rangle=0$ for all $z$, since $tz\in L[\wp]$, so $ty=0$. Hence $Q$ is the cokernel of $L[\wp]\to\operatorname{Hom}(L[\wp],\mathcal{O})$, of order $\#\mathcal{O}/\Delta$, and it is generated by $d$ elements and killed by $\eta$, so $\#\mathcal{O}/\Delta\le\#(\mathcal{O}/\eta)^d$. If $L\simeq\T^d$ then $Q\simeq(\T/(\wp+I))^d\simeq(\mathcal{O}/\eta)^d$.
+\end{proof}
+
+\begin{lemma}\label{lem:hecke}
+Let $E$ be $X_0(N)$-optimal, $\ell$ an odd prime with $\ell\nmid 2N$ and $\bar\rho$ irreducible, and $\mathfrak m$ the maximal ideal of $\T\otimes\Z_\ell$ containing $\ell$ and $\ker\phi_f$. Then $v_\ell(\degphi)=v_\ell(r_E)\ge v_\lambda(\eta^\emptyset_{f,\lambda})$, with equality if $H^1(X_0(N),\Z_\ell)_{\mathfrak m}$ is free over $\T_{\mathfrak m}$.
+\end{lemma}
+\begin{proof}
+$v_\ell(\degphi)=v_\ell(r_E)$ is \cite[Theorem 2.2]{ARS12}, as $\ell^2\nmid N$, and $r_E\Z_\ell$ is the congruence ideal $\phi_f(\operatorname{Ann}_\T\ker\phi_f)\Z_\ell$ by Lemma~\ref{lem:crit}; the congruence ideal is computed in $\T_{\mathfrak m}$, since the other local factors of $\T\otimes\Z_\ell$ are killed by $\phi_f$ and lie in the annihilator. Apply Lemma~\ref{lem:ddt417} to $\mathcal{O}=\Z_\ell$, $\T_{\mathfrak m}$, $\pi=\phi_f$, and $L=H^1(X_0(N),\Z_\ell)_{\mathfrak m}$ with the pairing $\hat\delta_!$ of Section~\ref{sec:dfg}, perfect and alternating with $\T$ self-adjoint; $L[\wp]=M_{f,\lambda}$ has rank $2$ and Gram determinant $(\eta^\emptyset_{f,\lambda})^2$ up to a unit, so $2v_\ell(r_E)\ge2v_\lambda(\eta^\emptyset_{f,\lambda})$, with equality if $L$ is free.
+\end{proof}
+
+\begin{remark}\label{rem:free}
+Freeness of $H^1(X_0(N),\Z_\ell)_{\mathfrak m}$ over $\T_{\mathfrak m}$ holds when $J_0(N)[\mathfrak m]$ is two-dimensional, since the localised Hecke algebra is then Gorenstein and the Tate module is free of rank two \cite{Tilouine97}; and $J_0(N)[\mathfrak m]$ is two-dimensional for $\ell\nmid2N$ and $\bar\rho$ irreducible: \cite[Theorem 3.5]{RibetStein} gives it for $J_1(N)$, the only possible exception there having Serre weight $\ell$, which does not occur in weight $2$ with $\ell\nmid N$, and $J_0(N)[\mathfrak m]$ injects into $J_1(N)[\mathfrak m']$ under the pull-back map, whose kernel, the Shimura subgroup, is Eisenstein. So the equality $v_\ell(\degphi)=v_\lambda(\eta^\emptyset_{f,\lambda})$ holds under the hypotheses of Lemma~\ref{lem:hecke}; the inequality is all that \eqref{eq:thm} needs.
+\end{remark}
+
+\subsection{The theorem of Diamond, Flach and Guo}
+Let now $f=f_E$, $\Sigma$ the set of primes dividing $N$, $\lambda=\ell\nmid2N$, $A=A_{f,\lambda}=\ad T$ (the lattice $M_{f,\lambda}$ of \cite{DFG04} and $T_\ell E$ are homothetic when $\bar\rho$ is irreducible, so their adjoints coincide), $W=A\otimes\Q_\ell/\Z_\ell$, $T^D=\operatorname{Hom}(A,\Z_\ell(1))\simeq A(1)$ (via the trace form), $V^D=T^D\otimes\Q_\ell$ and $W^D=V^D/T^D$. Let $H^1_f(\Q,W)$ be the Bloch--Kato Selmer group and $H^1_\Sigma(\Q,W)\supseteq H^1_f(\Q,W)$ the group defined in \cite[\S2.1]{DFG04}, with no condition at the primes of $\Sigma$, the Bloch--Kato condition at $\ell$ and the unramified condition elsewhere. Let $S_f$ be the set of primes $\lambda$ such that $\lambda\mid 2N$ or $\bar\rho|_{\Gal(\overline\Q/\Q(\sqrt{\ell^*}))}$ is not absolutely irreducible \cite[(31)]{DFG04}; the hypothesis of Theorem~\ref{thm:main} is $\ell\notin S_f$.
+
+\begin{theorem}[{\cite[Theorem 3.7]{DFG04}}]\label{thm:dfg37}
+If $\ell\notin S_f$, then $H^1_\Sigma(\Q,W)$ is finite of length $v_\lambda(\eta^\Sigma_{f,\lambda})$.
+\end{theorem}
+The theorem is stated in \cite{DFG04} for a finite set $\Sigma$ not containing $\ell$ such that $M_{f,\lambda}$ is minimally ramified outside $\Sigma$, which holds for the set of primes dividing $N$, outside of which $\rho$ is unramified; this is the form given as Theorem 0.2 there.
+
+\begin{theorem}[{\cite[Theorem 2.7]{DFG04}}]\label{thm:dfg27}
+If $\ell\notin S_f$, then $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$ (and the same for $A\otimes\Q_\ell$).
+\end{theorem}
+
+\begin{lemma}[{\cite[Lemma 2.1]{DFG04}}]\label{lem:dfg21}
+Suppose $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$, and let $\Sigma$ be a nonempty finite set of primes containing every prime $p\ne\ell$ at which $W$ is ramified. Put $H^1_f(\Q_p,T^D)=\iota^{-1}H^1_f(\Q_p,V^D)$, $\iota\colon H^1(\Q_p,T^D)\to H^1(\Q_p,V^D)$. Then there is an exact sequence
+\[
+0\to H^1_f(\Q,W)\to H^1_\Sigma(\Q,W)\to\bigoplus_{p\in\Sigma\cup\{\infty\}}H^1_f(\Q_p,T^D)^*\to H^0(\Q,W^D)^*\to0,
+\]
+where $^*$ is the Pontryagin dual.
+\end{lemma}
+For $p\in\Sigma$ the group $H^1_f(\Q_p,V^D)=H^1_{\mathrm{ur}}(\Q_p,V^D)=(V^D)^{I_p}/(\Frob_p-1)$ vanishes, because $\det(1-\Frob_p\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}\ne0$; so $H^1_f(\Q_p,T^D)$ is the torsion of $H^1(\Q_p,T^D)$, a finite group. At $\infty$, $H^1(\R,T^D)$ is killed by $2$, so $H^1_f(\R,T^D)=0$ for $\ell$ odd.
+
+\begin{lemma}[{\cite[I.4.2.2]{FPR94}, as recalled in the proof of \cite[Theorem 2.15]{DFG04}}]\label{lem:fpr}
+For $p\in\Sigma$,
+\[
+\Fitt_{\Z_\ell}H^1_f(\Q_p,T^D)=L_p(A_f,1)^{-1}\cdot\Tam_p(T^D),\qquad\text{and}\qquad\Tam_p(T^D)=\Tam_p(A)
+\]
+\cite[(57)]{DFG04}; here $L_p(A_f,1)^{-1}=L_p(A_f(1),0)^{-1}$ is a nonzero rational number which is an $\ell$-adic integer, of valuation $e_\ell(E,p)$ at an additive prime and $v_\ell(1-p^{-2})$ at a multiplicative one.
+\end{lemma}
+
+\begin{lemma}\label{lem:h0}
+Let $\ell$ be odd with $\bar\rho$ irreducible. Then $H^0(\Q,W^D)=H^0(\Q,\ad T(1)\otimes\Q_\ell/\Z_\ell)$ is finite, and it vanishes if and only if $\bar\rho\not\simeq\bar\rho\otimes\bar\chi_\ell$. For $\ell\ge5$ it always vanishes; for $\ell=3$ it vanishes if and only if $\bar\rho_{E,3}$ is absolutely irreducible on $\Gal(\overline\Q/\Q(\sqrt{-3}))$. Its length $h_\ell(E)$ is the largest $k$ such that $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$, and for $E$ without complex multiplication it is finite.
+\end{lemma}
+\begin{proof}
+The $\ell$-torsion of $H^0(\Q,W^D)$ is $H^0(\Q,\ad\bar\rho\otimes\bar\chi_\ell)$, the space of trace-zero $G_\Q$-maps $\bar\rho\to\bar\rho\otimes\bar\chi_\ell$; a nonzero such map is an isomorphism, $\bar\rho$ being irreducible, and comparing determinants it forces $\bar\chi_\ell^2=1$, so $\ell=3$ and $\bar\chi_3=\chi_{-3}$; conversely an isomorphism $\phi\colon\bar\rho\to\bar\rho\otimes\chi_{-3}$ has trace $0$, since $\operatorname{tr}\phi=\operatorname{tr}(\bar\rho(g)^{-1}\phi\bar\rho(g))=\chi_{-3}(g)\operatorname{tr}\phi$ for every $g$. For $\ell=3$ and $\bar\rho$ irreducible, $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$ holds if and only if $\bar\rho$ is induced from $\Gal(\overline\Q/\Q(\sqrt{-3}))$, that is, if and only if its restriction there is not absolutely irreducible. The description of the length follows in the same way from the $\ell^k$-torsion, and the finiteness from the fact that $\rho\simeq\rho\otimes\chi_\ell$ would force $a_p=0$ at all primes inert in $\Q(\sqrt{\ell^*})$, which happens only for curves with complex multiplication by that field.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:main}}
+Let $\ell\notin S_f$, $\Sigma$ the set of primes dividing $N$. By Lemma~\ref{lem:hecke}, $v_\ell(\degphi)\ge v_\lambda(\eta^\emptyset_{f,\lambda})$, with equality in the free case. By Theorem~\ref{thm:dfg14},
+\[
+v_\lambda(\eta^\emptyset_{f,\lambda})=v_\lambda(\eta^\Sigma_{f,\lambda})-\sum_{p\in\Sigma}v_\ell\bigl(L_p^{\nv}(A_f,1)^{-1}\bigr).
+\]
+By Theorem~\ref{thm:dfg37}, $v_\lambda(\eta^\Sigma_{f,\lambda})=\len H^1_\Sigma(\Q,W)$. By Theorem~\ref{thm:dfg27} the hypotheses of Lemma~\ref{lem:dfg21} hold, and $H^0(\Q,W^D)=0$ by Lemma~\ref{lem:h0}, so
+\[
+\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\len H^1_f(\Q_p,T^D),
+\]
+and by Lemma~\ref{lem:fpr} each local term is $v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(A))$. Hence
+\[
+v_\lambda(\eta^\emptyset_{f,\lambda})=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}v_\ell\bigl(\Tam_p(\ad T)\bigr)+\sum_{p\in\Sigma}v_\ell\Bigl(\frac{L_p(A_f,1)^{-1}}{L^{\nv}_p(A_f,1)^{-1}}\Bigr),
+\]
+and the last sum is $\sum_{p\mid N}e_\ell(E,p)$ by Definition~\ref{def:terms}: at a multiplicative prime the true and the naive factors coincide, at an additive prime the naive factor is $1$. This is \eqref{eq:identity}. For \eqref{eq:thm}, the Selmer length is nonnegative, $v_\ell(\Tam_p(\ad T))\ge t_\ell(E,p)$ at a multiplicative prime by Lemma~\ref{lem:tamfactor}, and $v_\ell(\Tam_p(\ad T))\ge0$ at an additive prime, where $t_\ell(E,p)=0$ unless the type is $\mathrm{I}_n^*$; at such a prime $p$ the curve $E_{\{p\}}$ of Lemma~\ref{lem:twist} is multiplicative with the same Tate parameter valuation, $\ad T$ is unchanged by the twist, and Lemma~\ref{lem:tamfactor} applies to it. \qed
+
+\begin{remark}\label{rem:ko}
+(1) At a multiplicative prime $q\equiv1\pmod\ell$ with $\ell\mid n$ whose Tate parameter has an $\ell$-th power as unit part, Lemma~\ref{lem:tamfactor} gives $v_\ell(\Tam_q)\ge t_\ell(E,q)+1$, and \eqref{eq:identity} raises the bound accordingly; Section~\ref{sec:tam} tests this on the tables. (2) The formula of Kim and Ota \cite[Theorem 1.1]{KimOta} concerns the same congruence ideal: for $N=N^+N^-$ with $N^-$ square-free, $\ell\ge5$, $\ell\nmid N$, $\ell\notin S_f$, and $\bar\rho$ ramified at every $q\mid N^-$ with $q\equiv\pm1\pmod\ell$, it says $\ord_\lambda\eta_f(N)=\ord_\lambda\eta_f(N^+,N^-)+\sum_{q\mid N^-}t_f(q)$, where $\eta_f(N^+,N^-)$ is the congruence ideal in the $N^-$-new quotient of the Hecke algebra and $t_f(q)$ the Tamagawa exponent \cite[Definition 2.12]{KimOta}, which is $t_\ell(E,q)$ by Lemma~\ref{lem:tamagawa-exp}. Since $\eta_f(N^+,N^-)$ is integral, this gives $v_\ell(r_E)\ge\sum_{q\mid N^-}t_\ell(E,q)$, which \eqref{eq:thm} contains, without the conditions $\ell\ge5$ and $q\not\equiv\pm1$; the equality is theirs.
+\end{remark}
+
+\subsection{Twist monotonicity and the Euler terms without the hypothesis on \texorpdfstring{$\Q(\sqrt{\ell^*})$}{Q(sqrt l*)}}\label{sec:twisting}
+\begin{theorem}\label{thm:twist}
+Let $E/\Q$ have conductor $N$, $S$ a set of odd primes, $D=\prod_{q\in S}q$, $\chi_S$ the product of the quadratic characters of conductor $q\in S$, and $E_S=E\otimes\chi_S$ of conductor $N_S$. If $q^2\mid N$ for every $q\in S$ and $\operatorname{lcm}(N_S,D^2)\mid N$, then $r_{E_S}\mid r_E$; if moreover $\operatorname{lcm}(N,D^2)\mid N_S$, then $r_{E_S}=r_E$.
+\end{theorem}
+\begin{proof}
+Let $f=f_E$, $g=f_{E_S}$ and $\iota\colon h\mapsto h\otimes\chi_S=\sum\chi_S(n)a_n(h)q^n$, which maps $S_2(\Gamma_0(N_S))$ into $S_2(\Gamma_0(\operatorname{lcm}(N_S,D^2)))\subset S_2(\Gamma_0(N))$, preserves integrality, and sends an eigenform of all $T_n$, $(n,N_S)=1$, to an eigenform with eigenvalues twisted by $\chi_S(n)$. Then $\iota(g)=f$: both are multiplicative, $a_p(f)=\chi_S(p)a_p(g)$ for $p\nmid D$ since the twist is unramified outside $S$, and $a_{q^k}(f)=0$ for $q\in S$ since $q^2\mid N$. If $h$ is a generalised eigenform of level dividing $N_S$ for a system of $T_p$-eigenvalues, $p\nmid N_S$, differing from that of $g$ at infinitely many $p$, then $\iota(h)$ is a generalised eigenform for a system differing from that of $f$ at infinitely many $p$, so $\iota(h)\in f^\perp$; hence $\iota$ maps $g^\perp$, the $\T$-stable complement of the $g$-line (the sum of the generalised eigenspaces of the other systems of eigenvalues), into $f^\perp$. A congruence $g\equiv h\pmod r$ with $h\in g^\perp$ integral therefore gives $f\equiv\iota(h)\pmod r$ with $\iota(h)\in f^\perp$ integral, and $r\mid r_E$ by Lemma~\ref{lem:crit}. With $r=r_{E_S}$ this is the first claim; the second hypothesis makes the situation symmetric.
+\end{proof}
+The hypotheses hold when (a) $E$ has type $\mathrm{I}_n^*$ at each $q\in S$ ($N_S=N/D$), (b) type $\mathrm{I}_0^*$ at each $q\in S$ ($N_S=N/D^2$, $E_S$ good at $S$), (c) type $\mathrm{II}$, $\mathrm{III}$, $\mathrm{IV}$ or a dual at each $q\in S$, $q\ge5$ ($N_S=N$, equality). On the working set, for the $157{,}938$ pairs (curve, prime of type $\mathrm{I}_n^*$) and the $292{,}580$ pairs (curve, prime of potentially good additive type), $v_\ell(\degphi)\ge v_\ell(\deg\varphi_{E_q})$ holds for $\ell\in\{3,5,7,11,13\}$, $\ell^2\nmid N$, with no exception, with equality in every pair of case (c) and strict inequality only in case (b), where the difference is the Euler term of Theorem~\ref{thm:quant}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:quant}]
+Write $f=f_E$, $g=f_{E_S}$ of level $N_S$, $D=\prod_{q\in S}q$, $\Sigma=S$, and $\mathcal{O}=\Z_\ell$. By Lemma~\ref{lem:twist}, $E_S$ has good reduction at the $\mathrm{I}_0^*$ primes of $S$ and multiplicative reduction at the $\mathrm{I}_n^*$ primes, so $\delta_q=2$, resp.\ $1$, for $g$ at $q\in S$, and $N_S^\Sigma=N_S\prod_{q\in S}q^{\delta_q}=N$: the $S$-depleted form $g^S$ lives at level $N$, and $\iota(g^S)=f$ with $\iota$ the twist map of Theorem~\ref{thm:twist}, which kills the coefficients at multiples of $D$ and so does not distinguish $g$ from $g^S$.
+
+\emph{Step 1: the twist map and the full Hecke algebra.} Let $\T$ be the full Hecke algebra of level $N$, $\pi\colon\T\to\Z$ the eigencharacter of $g^S$, and $\mathfrak{m}$ the maximal ideal of $\T_\ell=\T\otimes\Z_\ell$ containing $\ker\pi$ and $\ell$; it contains $U_q$ for $q\in S$. The congruence ideal $\eta^{\mathrm{Hecke}}(g^S)=\pi(\operatorname{Ann}_\T\ker\pi)$ is computed in $\T_{\mathfrak m}$, and the generalised eigenspace of $\pi$ in $S_2(\Gamma_0(N))\otimes\overline\Q$ is the line of $g^S$: strong multiplicity one identifies the forms with the $T_p$-eigenvalues of $g$, $p\nmid N$, with the span of the $g(dz)$, $d\mid N/N_S$, and on that span the operators $U_q$, $q\in S$, have the eigenvalue $0$ with multiplicity one. The generalised eigenforms of $\T$ whose eigencharacter is congruent to $\pi$ modulo $\mathfrak m$ have $U_q\equiv0$ at $q\in S$. Among the stabilisations of $g$, only $g^S$ qualifies: the others have $U_q$-eigenvalue $a_q(g)=\pm1$ (multiplicative case) or a root $\alpha,\beta$ of $X^2-a_q(g)X+q$ (good case), which are $\ell$-adic units since $\ell\ne q$. So the $\mathfrak m$-component of $S_2(\Gamma_0(N);\Z_\ell)$ is the sum of the line of $g^S$ and of generalised eigenspaces of systems of eigenvalues with $U_q=0$ for $q\in S$ arising from newforms $h\ne g$ of level dividing $N$. For a form $h'$ in such a generalised eigenspace, $\iota(h')=h'\otimes\chi_S$ lies in $S_2(\Gamma_0(N))$ (the level of a twist by $\chi_S$ divides $\operatorname{lcm}(N,D^2)=N$) and, since $\iota$ intertwines $T_p$ with $\chi_S(p)T_p$ for $p\nmid DN$, in the generalised eigenspace of the system $\chi_S(p)a_p(h)$, which differs from that of $f$ at infinitely many $p$; so $\iota(h')\in f^\perp$. Now the proof of Lemma~\ref{lem:crit}, carried out over $\Z_\ell$ with the pairing $S_2(\Gamma_0(N);\Z_\ell)\times\T_\ell\to\Z_\ell$, shows that $\ell^{v_\ell(\eta^{\mathrm{Hecke}}(g^S))}$ is the largest power $\ell^t$ for which $g^S\equiv h\pmod{\ell^t}$ coefficientwise with $h\in S_2(\Gamma_0(N);\Z_\ell)$ in the $\T$-stable complement of the $g^S$-line; and projecting $h$ to the $\mathfrak m$-component (an idempotent of $\T_\ell$, so the projection stays in the complement and the congruence survives) we may take $h$ in the sum of the generalised eigenspaces above. Then $f=\iota(g^S)\equiv\iota(h)\pmod{\ell^t}$ with $\iota(h)\in f^\perp$ integral, and the $\Z_\ell$-version of Lemma~\ref{lem:crit} for $f$ gives
+\[
+v_\ell(r_E)\ \ge\ v_\ell(\eta^{\mathrm{Hecke}}(g^S)).
+\]
+
+\emph{Step 2: Hecke versus cohomological congruence ideal.} Apply Lemma~\ref{lem:ddt417} to the module $L=H^1(X_0(N),\Z_\ell)_{\mathfrak m}$, with the pairing of Section~\ref{sec:dfg}, and to $\pi$: $L[\wp]$ is the rank-two lattice $M_{g^S,\lambda}$, whose Gram determinant is $(\eta^S_{g,\lambda})^2$ up to a unit. Hence
+\[
+v_\ell(\eta^{\mathrm{Hecke}}(g^S))\ \ge\ v_\lambda(\eta^S_{g,\lambda}).
+\]
+Freeness of $L$ over $\T_{\mathfrak m}$ is not needed for this inequality.
+
+\emph{Step 3: the formula of Diamond, Flach and Guo.} By Theorem~\ref{thm:dfg14} applied to $g$ (its residual representation $\bar\rho\otimes\chi_S$ is irreducible and $\ell\nmid 2N_S$),
+\[
+v_\lambda(\eta^S_{g,\lambda})=v_\lambda(\eta^\emptyset_{g,\lambda})+\sum_{q\in S}v_\ell\bigl(L_q^{\nv}(A_g,1)^{-1}\bigr)=v_\lambda(\eta^\emptyset_{g,\lambda})+\sum_{q\in S}e_\ell(E,q),
+\]
+the last equality because $A_g=A_f$ and, at $q\in S$, $g$ has $\delta_q\ge1$, so that its naive factor is the true one, which is the factor that $f$ (with $a_q(f)=0$) omits; the values are those of Lemma~\ref{lem:euler}.
+
+\emph{Step 4: the level $N_S$.} By Lemma~\ref{lem:hecke} applied to $E_S$ in the free case (Remark~\ref{rem:free}, as $\ell\nmid2N_S$ and $\bar\rho_g$ is irreducible), $v_\lambda(\eta^\emptyset_{g,\lambda})=v_\ell(r_{E_S})$. Putting the steps together and using $v_\ell(\degphi)=v_\ell(r_E)$ (as $\ell\nmid N$) proves the first inequality; the second holds because $r_{E_S}$ is an integer.
+\end{proof}
+
+\begin{remark}
+(1) Theorem~\ref{thm:quant} is the quantitative form of the twist-and-lower argument of Section~\ref{sec:proof}, read in the other direction: the level is raised, from $N_S$ to $N_S\prod q^{\delta_q}=N$, and the price is the level-raising Euler factor. For $\ell=3$ it says that a single prime of type $\mathrm{I}_n^*$, with $3\mid n$ or not, forces $3\mid\degphi$, and that a prime of type $\mathrm{I}_0^*$ with $q\equiv1\pmod3$ does too; neither is in Theorem~\ref{thm:qual}, and neither needs the hypothesis on $\Q(\sqrt{-3})$. (2) Under the hypothesis of Theorem~\ref{thm:main}, the identity \eqref{eq:identity} for $E$ and for $E_S$, whose adjoint lattices, Selmer groups and Tamagawa factors coincide, gives $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\lambda(\eta^\emptyset_{g,\lambda})+\sum_{q\in S}e_\ell(E,q)$; so the first inequality of Theorem~\ref{thm:quant} is an equality when $H^1(X_0(N),\Z_\ell)_{\mathfrak m}$ is free, that is, under multiplicity one at level $N$. (3) Step 1 is where the argument would fail for the potentially good types $\mathrm{II}$, $\mathrm{IV}$, $\mathrm{III}$ and their duals: there the quadratic twist does not lower the level, $f$ is its own depletion, and Theorem~\ref{thm:dfg14} gives no factor. For these types the omitted factor is reached only through Theorem~\ref{thm:dfg37}, that is, with the hypothesis on $\Q(\sqrt{\ell^*})$, and Section~\ref{sec:anomaly} shows that the hypothesis cannot be dropped there.
+\end{remark}
+
+\section{The boundary of the hypothesis}\label{sec:boundary}
+
+\begin{proof}[Proof of Proposition~\ref{prop:ns}]
+Since $\det\bar\rho_{E,3}=\chi_{-3}$ cuts out $\Q(\sqrt{-3})$, the image of $\Gal(\overline\Q/\Q(\sqrt{-3}))$ is the subgroup of determinant $1$ of the image $H$ of $\bar\rho_{E,3}$. For a curve without complex multiplication with $E[3]$ irreducible, $H$ is conjugate to one of $\mathrm{GL}_2(\F_3)$, the normaliser $N_{ns}(\F_3)$ of a nonsplit Cartan subgroup (order $16$) and the normaliser $N_s(\F_3)$ of a split Cartan subgroup (order $8$) \cite{Zywina15}; these are the subgroups with surjective determinant acting irreducibly on $\F_3^2$ that contain an element of determinant $-1$ and trace $0$ (complex conjugation), the nonsplit Cartan subgroup itself being excluded by the last condition. Their determinant-one subgroups are $\mathrm{SL}_2(\F_3)$, the quaternion group $Q_8$ and the cyclic group of order $4$ generated by $\begin{psmallmatrix}0&1\\-1&0\end{psmallmatrix}$. The first two act absolutely irreducibly on $\F_3^2$ (they are non-abelian and act faithfully), the third is abelian, hence absolutely reducible. In the third case $\bar\rho|_{\Gal(\overline\Q/\Q(\sqrt{-3}))}\otimes\F_9=\psi\oplus\psi^{-1}$ for a character $\psi$ of order $4$, and $\bar\rho\simeq\operatorname{Ind}\psi$ by Frobenius reciprocity, so $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$ and $H^0(\Q,\ad\bar\rho(1))\ne0$ as in the proof of Lemma~\ref{lem:h0}; $h_3(E)\ge1$ follows. Finally the four roots of the $3$-division polynomial correspond to the four lines of $\F_3^2$, on which $N_s(\F_3)$ has two orbits of size two (the two lines of the Cartan subgroup and the two others), whereas $N_{ns}(\F_3)$ and $\mathrm{GL}_2(\F_3)$ are transitive; so the division polynomial, which has no rational root when $E[3]$ is irreducible, factors as two quadratics in the first case and is irreducible otherwise.
+\end{proof}
+
+\begin{remark}\label{rem:ns}
+When $\ell=3$ and the image is $N_s(\F_3)$, Theorem~\ref{thm:dfg37} does not apply, but the exact sequence of Lemma~\ref{lem:dfg21} still does whenever $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$, and it then reads
+\[
+\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\bigl(v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(A))\bigr)-h_\ell(E).
+\]
+If $v_\lambda(\eta^\Sigma_{f,\lambda})$ were still the length of $H^1_\Sigma(\Q,W)$, as in Theorem~\ref{thm:dfg37}, then \eqref{eq:identity} would hold with $h_\ell(E)$ subtracted on the right: this is the shape of Conjecture~\ref{conj:euler}. Section~\ref{sec:anomaly} shows that on the tables the correction is exactly what is observed: $h_3(E)=1$ for every curve with image $N_s(\F_3)$, the inequality \eqref{eq:thm} fails for $31\%$, $23\%$ and $18\%$ of them on the three ranges, always by exactly one, and never for any other curve.
+\end{remark}
+
+\section{The computations}\label{sec:data}
+
+\subsection{Data and protocol}
+We used Cremona's tables \cite{Cremona97} in the form of the \texttt{ecdata} repository at commit \texttt{25cec5e}, which contain every elliptic curve over $\Q$ of conductor below $500000$ with its Kodaira symbols, Tamagawa numbers, modular degree, isogeny class, torsion and the images of the mod $\ell$ Galois representations in the notation of \cite{Sutherland16}. Optimality is determined in the tables for every class of conductor at most $400000$ and for $359{,}009$ further classes up to $500000$. The ranges are the working set ($N\le300000$), the hold-out ($300000<N\le400000$), the extension ($400000<N\le500000$) and the out-of-table set of Section~\ref{sec:oot}. The component-group inequality \eqref{eq:main} and Conjecture~\ref{conj:eis} were found on the working set, written down, and then tested once on the hold-out, which had been held back, and afterwards on the extension; nothing was adjusted after the hold-out test. The twist-symmetrised form \eqref{eq:twist} replaced an earlier, weaker formulation of the same phenomenon on the working set and was then tested once on the hold-out and the extension. The Euler-factor rule came next: it was formulated on the working set from the minima by Kodaira type (Section~\ref{sec:iso}), the terms at $2$ and $3$ were fixed afterwards by PARI's Euler factors, and the rule was tested on all four ranges; the correction term $h_\ell(E)$ was identified last, from the exceptions. Since the hold-out and the extension had already been used for \eqref{eq:main} and \eqref{eq:twist}, they are a confirmation and not a blind test for Conjecture~\ref{conj:euler}; the out-of-table curves, generated before the rule was formulated, are. The Kodaira types and discriminant exponents at the bad primes were recomputed with PARI/GP 2.15 \cite{PARI} from the $a$-invariants, the Euler factors of $\Sym f$ at every bad prime were computed with \texttt{lfunsympow} and \texttt{lfuneuler}, the Tate parameters with \texttt{ellinit} over $\Q_q$, and fifteen modular degrees spanning the configurations were recomputed with \texttt{ellmoddegree}, all agreeing with the tables. The mod $3$ images of the tables were checked against the factorisation of the $3$-division polynomial (Proposition~\ref{prop:ns}) on every curve for which it mattered.
+
+\subsection{The rule on whole ranges}
+Table~\ref{tab:uniform} checks \eqref{eq:rule}, with PARI's Euler factors at every bad prime $q\ne\ell$, the terms $t_\ell$, $w_3$ as defined, and $h_3(E)=1$ for the curves with image $\Ns$ (and $h_\ell=0$ otherwise, Lemma~\ref{lem:h0}), on the four ranges at $\ell=3,5,7,11,13$: no violation at any $\ell$. It also reports the number of violations when the correction term is dropped (all are curves with image $\Ns$, Section~\ref{sec:anomaly}) and the behaviour of the rule with the terms of the types $\mathrm{III}$, $\mathrm{III}^*$ left out, which is the form that holds for every curve of the tables without any correction; the weights $w_3$ at $q=\ell=3$ only sharpen the bound, and at $\ell\ge5$ nothing is needed at $q=\ell$.
+
+\begin{table}[ht]\centering\footnotesize
+\input{tables/euler_uniform.tex}
+\caption{Conjecture~\ref{conj:euler} with PARI's factors at all primes: curves with $E[\ell]$ irreducible, not CM, with a positive bound in \eqref{eq:rule}; violations; equality rate among them; violations when the correction term $h_\ell$ is dropped; and the rule without the type $\mathrm{III}$ terms (``III-free'': positive bounds, violations, equality rate).}\label{tab:uniform}
+\end{table}
+
+\subsection{Calibration and sharpness}\label{sec:sharp}
+The zero counts are not tautological. Among the $366{,}151$ working-set curves with $E[3]$ irreducible, not CM, and right-hand side $0$ in \eqref{eq:rule}, the prime $3$ does not divide $\degphi$ for $53.2\%$. If the valuation of the degree were independent of the local data, the $867{,}578$ working-set curves with a positive bound at $\ell=3$ would produce roughly $605{,}000$ violations (summing over them the proportion of bound-$0$ curves whose valuation is smaller than the bound); there are none. The bounds are attained: among working-set curves with a positive bound, $v_\ell(\degphi)$ equals the right-hand side of \eqref{eq:rule} in $57.5\%$ of the cases at $\ell=3$, $75.6\%$ at $\ell=5$, $84.1\%$ at $\ell=7$, $91.6\%$ at $\ell=11$ and $92.4\%$ at $\ell=13$, and the mean excess at $\ell=3$ is $0.63$. Under the hypothesis of Theorem~\ref{thm:main} the identity \eqref{eq:identity} says what the excess is: the length of the Bloch--Kato Selmer group of the adjoint plus the excess of the Tamagawa factors over the terms $t_\ell$. The whole odd part of $\degphi$ is another matter: for the $1{,}226{,}216$ working-set optimal non-CM curves with no isogeny of odd degree, the odd part of $\degphi$ equals $\prod_\ell\ell^{\,b_\ell}$, with $b_\ell$ the right-hand side of \eqref{eq:twist}, in only $1.85\%$ of cases; the quotient is most often $9$, $3$, $15$, $45$, $27$ or $21$, its smallest prime factor is $3$ in $63\%$ of the cases and divides $N$ in $52\%$. So the local factors account for a definite, sharp part of the modular degree and for little of the rest, which is governed by the adjoint Selmer group and by the size of the Petersson norm.
+
+\subsection{The Tamagawa factors}\label{sec:tam}
+Lemma~\ref{lem:tamfactor} and the identity \eqref{eq:identity} predict that the bound can be raised, at a prime $q$ of type $\mathrm{I}_n$ with $\ell\mid n$ and $q\equiv1\pmod\ell$, by $\min(v_\ell(n),v_\ell(q-1),v_\ell(c_q))$, where $v_\ell(c_q)\ge k$ means that the unit part of the Tate parameter at $q$ is an $\ell^k$-th power in $\F_q^\times$. We computed the Tate parameters with PARI for the working-set curves that satisfy the hypothesis of Theorem~\ref{thm:main} ($\ell\nmid N$, and at $\ell=3$ image not $\Ns$) and have such a prime. At $\ell=3$ there are $46{,}222$ such curves, $12{,}095$ of them with a positive extra term ($12{,}125$ in total); the strengthened inequality has no exception, and the number of curves attaining the bound rises from $20{,}822$ ($45.0\%$) to $28{,}007$ ($60.6\%$). At $\ell=5$ there are $10{,}940$ such curves, $1{,}646$ with a positive extra term; again no exception, and equality rises from $7{,}333$ ($67.0\%$) to $8{,}610$ ($78.7\%$). This tests the identity, not only the inequality: the extra divisibility of the modular degree is exactly where the Tamagawa factor of the adjoint exceeds $\ell^{t_\ell}$.
+
+\subsection{Each term in isolation}\label{sec:iso}
+For working-set curves with exactly one additive prime $q\ge5$, $q\ne\ell$, and no multiplicative prime with $\ell\mid n$, Table~\ref{tab:iso} gives the minimum of $v_\ell(\degphi)$ by Kodaira type and by $e_\ell(E,q)$. In every cell, for $\ell=3,5,7$, the minimum equals $e_\ell$ and every curve has $v_\ell(\degphi)\ge e_\ell$; for $\mathrm{I}_n^*$ the excess over $e_\ell$ has minimum exactly $v_\ell(n)$ in every cell. The cells with $e=0$ ($\mathrm{III}$: $5{,}534$ curves, $\mathrm{I}_0^*$: $5{,}394$) have minimum $0$, and for $\mathrm{I}_0^*$ the term runs up to $e=6$ (minimum $6$). Multiplicative primes show no Euler term: for curves with a single multiplicative prime $q$ with $\ell\mid n$ and no additive prime, $\min(v_\ell(\degphi)-v_\ell(n))=0$ for every value of $v_\ell(q^2-1)$ up to $6$. For two primes of potentially good type the terms add: for the $2{,}502$ working-set curves with exactly two odd primes of type $\mathrm{II}$ or $\mathrm{II}^*$ and no other contribution, $9\mid\degphi$ always, and the mechanism is not a congruence between $f$ and its own quadratic twist by the character ramified at both primes, which never occurs ($0$ of $2{,}502$).
+
+\begin{table}[ht]\centering\footnotesize
+\input{tables/euler_iso3.tex}
+\caption{Working set, $\ell=3$: minimum of $v_3(\degphi)$ (number of curves) over curves with $E[3]$ irreducible whose only additive prime is a single $q\ge5$ of the given type with $e_3(E,q)=e$, and no multiplicative $3$-contribution. The same holds at $\ell=5$ and $7$.}\label{tab:iso}
+\end{table}
+
+\subsection{The two corollary forms}\label{sec:forms}
+Table~\ref{tab:counts} gives, for each range and each small prime $\ell$, the number of optimal non-CM curves with $E[\ell]$ irreducible and a positive right-hand side in \eqref{eq:main} and in \eqref{eq:twist}, the number of violations of each inequality, and the number of Eisenstein curves with a positive bound together with the violations of Conjecture~\ref{conj:eis}. There are none. Among working-set curves with a positive bound, equality holds in \eqref{eq:twist} for $39.4\%$ at $\ell=3$, $71.1\%$ at $\ell=5$, $81.2\%$ at $\ell=7$ and $91.5\%$ at $\ell=13$, and in \eqref{eq:main} for $36.9\%$, $69.7\%$, $80.4\%$ and $91.2\%$; the rule raises these to the rates of Section~\ref{sec:sharp} and bounds $867{,}578$ curves instead of $705{,}563$ at $\ell=3$. The hypothesis of Theorem~\ref{thm:main} fails on the working set for the $1{,}170$ curves with image $\Ns$ at $\ell=3$, for the curves with $\ell\mid N$ (which include $455{,}707$ of the $913{,}244$ working-set pairs $(E,\ell)$ with $E[\ell]$ irreducible and a positive multiplicative bound at $\ell=3$, and $175{,}798$ at $\ell\ge5$), and for the curves whose mod $\ell$ representation is induced from $\Q(\sqrt{\ell^*})$ with $\ell\ge5$, which we did not single out; none of them violates \eqref{eq:rule}.
+
+\begin{table}[ht]
+\centering\footnotesize
+\input{tables/counts.tex}
+\caption{Verification counts for the two corollary forms. ``\eqref{eq:main} $>0$'' is the number of curves with $E[\ell]$ irreducible, not CM, for which the right-hand side of \eqref{eq:main} is positive, and ``viol.'' the number of violations; likewise for \eqref{eq:twist}. The last column counts the Eisenstein curves with a positive bound in \eqref{eq:main} and the violations of Conjecture~\ref{conj:eis}.}\label{tab:counts}
+\end{table}
+
+\subsection{The boundary: the normaliser of a split Cartan subgroup at \texorpdfstring{$\ell=3$}{l=3}}\label{sec:anomaly}
+Table~\ref{tab:ns} records what happens to the inequality \eqref{eq:thm}, with all types included and no correction, on the curves for which the hypothesis of Theorem~\ref{thm:main} fails at $\ell=3$. There are $364$, $68$, $43$ and $0$ violations on the four ranges, all at $\ell=3$; every one of them is a curve with image $\Ns$ in the tables, and the $3$-division polynomial of every one of them factors as two quadratics, as Proposition~\ref{prop:ns} requires; no curve with image $\mathrm{GL}_2(\F_3)$ or $N_{ns}(\F_3)$ violates \eqref{eq:thm}. Conversely every $\Ns$ curve of the tables has a prime of type $\mathrm{III}$ or $\mathrm{III}^*$ with a positive term $e_3$, and the inequality fails for $31\%$, $23\%$ and $18\%$ of them, always by exactly one; the violation involves a prime $p\equiv-1\pmod3$ with $t_3(E,p)\ge1$ in every case. For every $\Ns$ curve of the tables $h_3(E)=1$: by Lemma~\ref{lem:h0}, $h_3(E)\ge1$, and $h_3(E)\le1$ because some prime $p<1223$ inert in $\Q(\sqrt{-3})$ has $9\nmid a_p$; for the other curves $h_3(E)=0$. So the correction of Conjecture~\ref{conj:euler} is exactly one on exactly these curves, and with it there is no exception. The residue classes of the type $\mathrm{III}$ primes of the violating curves are $q\equiv1$ and $q\equiv11\pmod{12}$ in comparable numbers, with some $q=2$; what the violations have in common is the image, not the prime.
+
+\begin{table}[ht]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\input{tables/ns3.tex}
+\caption{The curves with image $\Ns$ (mod $3$ image the normaliser of a split Cartan subgroup), with $E[3]$ irreducible, not CM, optimal: how many have a positive type $\mathrm{III}$ term, how many violate \eqref{eq:thm} (all types, no correction), how many other curves do, how many have $h_3(E)=1$, the residue classes mod $12$ of the type $\mathrm{III}$ primes of the violating curves (or $q=2$), and the shortfall.}\label{tab:ns}
+\end{table}
+
+\subsection{The wild primes and the prime \texorpdfstring{$\ell$}{l}}\label{sec:wild}
+Table~\ref{tab:isolated}, kept from the earlier version, isolates the additive types at $\ell=3$ with the weights of \eqref{eq:twist}: for the untwisted types it lists, for working-set curves with no multiplicative prime $q$ with $3\mid n_q$ and all additive primes of a single Kodaira type, the minimum of $v_3(\degphi)$ by type and number of primes; for the twisted types the minimum over the curves whose only contribution to \eqref{eq:twist} comes from primes of the given type at odd $q$, or at $q=2$, with the given total weight. The rows show that the prime $2$ contributes nothing through the types $\mathrm{II}$, $\mathrm{II}^*$ ($v_3(\degphi)=0$ for $14{,}182$ of the $44{,}672$ curves whose only candidate is such a prime) and nothing through a type $\mathrm{I}_n^*$ with $3\,\|\,n$, although with $9\mid n$ the minimum is $1$. Definition~\ref{def:terms} with PARI's factor explains every one of these minima: a type $\mathrm{II}$ at $2$ has $P_2=1$ and $e_3=0$; a type $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$ has $e_3=1$; a type $\mathrm{I}_n^*$ at $2$ has $t_3=v_3(-v_2(j))$ when it is potentially multiplicative and $0$ otherwise, and the index $n$ of the symbol is not the valuation of the Tate parameter at $2$, which is why $n$ was not the right invariant. With the weights of \eqref{eq:twist} at $2$ counted as if $2$ were odd, \eqref{eq:twist} fails thousands of times in each range; with the terms of Definition~\ref{def:terms} it never does. At $q=3$ with potentially good reduction and $\ell=3$, the minima of $v_3(\degphi)$ over curves with a single wild additive prime are $1$ for $\mathrm{II},\mathrm{IV},\mathrm{III}^*$, $2$ for $\mathrm{II}^*,\mathrm{IV}^*$ and $0$ for $\mathrm{III},\mathrm{I}_0^*$: these are the weights $w_3$ of Conjecture~\ref{conj:euler}, which lie outside the range of Theorem~\ref{thm:main} ($\ell\mid N$) and which we cannot derive from an Euler factor. For $\ell=5,7$ no term is needed at $q=\ell$ or at $q=2,3$ beyond Definition~\ref{def:terms}.
+
+\begin{table}[ht]
+\centering\small
+\input{tables/isolated3.tex}
+\caption{Minimum of $v_3(\degphi)$ (number of curves) over working-set curves with $E[3]$ irreducible whose only possible contributions at $3$ come from the primes named in the row, with the given number of primes (untwisted rows) or total weight of \eqref{eq:twist} (twisted rows).}\label{tab:isolated}
+\end{table}
+
+\subsection{Out of table}\label{sec:oot}
+To test the statements beyond the tables, we generated curves with prescribed local types and conductor between $500000$ and $4\cdot10^6$ (families with a type $\mathrm{IV}$ or $\mathrm{IV}^*$ prime, with two or three type $\mathrm{II}$ primes, with mixed types, and random curves), kept those with trivial isogeny class (so that the curve is optimal and $E[\ell]$ is irreducible for every $\ell$) and not CM, and computed their modular degrees with \texttt{ellmoddegree}. Table~\ref{tab:oot} summarises them; none has image $\Ns$, and Conjecture~\ref{conj:euler} and its two corollary forms hold for all of them (Tables~\ref{tab:uniform} and~\ref{tab:counts}, last rows), with equality in \eqref{eq:rule} for $52.5\%$ of the $828$ curves with a positive bound at $\ell=3$.
+
+\begin{table}[ht]
+\centering\small
+\input{tables/oot.tex}
+\caption{Curves outside the tables, with modular degrees computed independently.}\label{tab:oot}
+\end{table}
+
+\subsection{The Eisenstein case}\label{sec:eis}
+Among the $75{,}430$ working-set optimal non-CM curves with a rational $3$-isogeny, $67{,}845$ have a positive bound in \eqref{eq:main} and $2{,}777$ a positive deficit $D$; $D=2$ occurs $22$ times. No curve without a rational $3$-torsion point has a deficit, whatever its $3$-isogeny structure. With a rational point of order $3$ and mod $3$ image of Borel type, $D\le1$; $D=2$ occurs only when $E[3]\simeq\Z/3\oplus\mu_3$ (the split Cartan image \texttt{3Cs.1.1} in the notation of \cite{Sutherland16}, seventeen curves, all of rank $0$ and torsion $\Z/3$) or when $E$ has a point of order $9$ (five curves). The two sources of a deficit of $2$ never combine: none of the $2{,}065$ curves of conductor at most $400000$ with mod $3$ image \texttt{3Cs.1.1} has a point of order $9$ (their torsion is $\Z/3$ or $\Z/6$), and the $18$ optimal curves with a point of order $9$ all have image \texttt{3B.1.1}. We have not proved that the two cannot coexist, so the bound $D\le2$ is part of the conjecture. The bounds of Conjecture~\ref{conj:eis} hold with no exception on all three ranges, and the torsion bound is attained with $D>0$ in $2{,}773$ cases. For $\ell=5$ and $7$ the deficits are at most $1$ and occur only with a rational $\ell$-torsion point ($192$ and $18$ cases in the working set). Measured against the stronger bound \eqref{eq:twist} the deficit is not controlled by the torsion: it exceeds the bound of Conjecture~\ref{conj:eis} for $1{,}148$ working-set curves at $\ell=3$ ($189$ and $39$ on the hold-out and the extension) and for $141$ at $\ell=5$. In the Eisenstein case the additive terms do not contribute reliably, and Conjecture~\ref{conj:eis} is stated for \eqref{eq:main} only.
+
+\section{The prime 2}\label{sec:two}
+At $\ell=2$ the modular degree is the subject of Watkins's conjecture $2^{\operatorname{rank}E(\Q)}\mid\degphi$ \cite{Watkins02} and of a substantial literature \cite{Dummigan06,CalegariEmerton09,Yazdani11,CaroPasten22,HatleyKundu,BKP}, and the mod $2$ representation has a rational $2$-isogeny for a large fraction of curves. We record only the following. For working-set optimal curves without a rational $2$-isogeny and not CM, the inequality $v_2(\degphi)\ge\sum_{q\,\|\,N}v_2(n_q)+\#\{q:\ \text{type }\mathrm{III},\mathrm{III}^*,\mathrm{I}_0^*\text{ or }\mathrm{I}_n^*\}$ holds with no exception on all three ranges ($964{,}432$, $325{,}510$ and $313{,}741$ curves), while counting $\mathrm{I}_0^*$ with weight $2=v_2(\#\Phig_q)$ fails ($123$, $26$ and $20$ exceptions). The isolated-configuration minima suggest that types $\mathrm{III}$, $\mathrm{III}^*$ and $\mathrm{I}_n^*$ contribute $3$ each and types $\mathrm{II}$, $\mathrm{IV}$ and $\mathrm{I}_0^*$ contribute $1$ each, in line with the theorem of Calegari and Emerton that a curve of odd modular degree has at most two odd bad primes and a rational $2$-torsion point or prime conductor \cite{CalegariEmerton09}. We have not attempted to reconcile the exponents with the results of \cite{Dummigan06,CaroPasten22,HatleyKundu,BKP}, nor with the Euler factors at $\ell=2$, which lie outside the range of \cite{DFG04}.
+
+\section{Open questions}
+\begin{enumerate}
+\item Extend Theorem~\ref{thm:main} to the primes $\ell$ dividing $N$, where the data show the inequality with the weights $w_3$ at $q=\ell=3$: identify these weights with the local term at $\ell$ of the congruence-ideal formula, where the Euler factor is replaced by a condition at $\ell$.
+\item Prove the corrected identity of Remark~\ref{rem:ns} for the curves with image $N_s(\F_3)$, that is, establish $v_\lambda(\eta^\Sigma_{f,\lambda})=\len H^1_\Sigma(\Q,W)$ without the hypothesis on $\Q(\sqrt{-3})$ in this dihedral case; the data say that the conclusion holds with the correction $h_3(E)=1$.
+\item Compute the Tamagawa factors of $\ad T$ at the additive primes, and the length of the adjoint Selmer group for curves attaining or exceeding the bound, so as to account for the excess in \eqref{eq:identity} curve by curve.
+\item Identify the deficit of Conjecture~\ref{conj:eis} with a natural invariant of the Eisenstein ideal at $\ell$, presumably through the cuspidal subgroup of $J_0(N)$ \cite{Mazur77}.
+\item Reconcile Section~\ref{sec:two} with the literature on Watkins's conjecture and with the Euler factors at $\ell=2$.
+\end{enumerate}
+
+\appendix
+\section{Reproducibility}
+All scripts, the pinned data commit and the result tables are in the repository \url{https://github.com/dsr001001/mcptrial} (directory \texttt{ecmine}). The symmetric-square Euler factors are computed by \texttt{scripts/step10\_sym2\_euler.py}, the rule is checked on the whole ranges by \texttt{scripts/step10\_rule.py} and \texttt{scripts/step11\_tw\_boundary.py} (correction term, image statistics), the Tamagawa factors by \texttt{scripts/step12\_tamagawa.py}, the two corollary forms by \texttt{scripts/conj\_check.py}; each runs on the full tables in minutes to hours. A single curve can be checked against \eqref{eq:rule} in PARI/GP (version 2.15) with the following functions, which return $[v_\ell(\degphi),\text{bound}]$; they are the file \texttt{scripts/euler\_rule.gp}.
+{\footnotesize\begin{verbatim}
+rule(E, l, {iii = 0}) =
+{ my(R = ellglobalred(E), P = R[4][,1], K = R[5], S = lfunsympow(E, 2), b = 0, j = E.j);
+  for(i = 1, #P,
+    my(q = P[i], k = K[i][2], e = 0, t = 0, vj = valuation(j, q));
+    if(q != l,
+      my(F = 1/lfuneuler(S, q), r = subst(F, x, 1/q^2)); \\ P_q(q^{-2}): omitted factor
+      if(k >= 5, r /= (1 - 1/q^2));                     \\ multiplicative: naive one out
+      if(abs(k) != 3 || iii, e = valuation(r, l)),      \\ III, III* (codes 3,-3) if iii
+      if(l == 3, e = if(k == 4 || k == 2, 1,
+                     if(k == -4 || k == -2, 2, if(k == -3, 1, 0)))));   \\ w_3 at q = 3
+    if(vj < 0, t = valuation(-vj, l));                   \\ Tamagawa exponent
+    b += e + t);
+  if(iii && l == 3, b -= ns3(E));                        \\ the correction term h_3
+  [valuation(ellmoddegree(E), l), b]; }
+ns3(E) = my(F = factor(elldivpol(E, 3))); (#F[,1] == 2 && poldegree(F[1,1]) == 2);
+\end{verbatim}}
+Here \texttt{K[i][2]} is PARI's Kodaira code ($n+4$ for $\mathrm{I}_n$, $-(n+4)$ for $\mathrm{I}_n^*$, $\pm2$ for $\mathrm{II}/\mathrm{II}^*$, $\pm3$ for $\mathrm{III}/\mathrm{III}^*$, $\pm4$ for $\mathrm{IV}/\mathrm{IV}^*$, $-1$ for $\mathrm{I}_0^*$), \texttt{rule(E,l)} leaves the type $\mathrm{III}$ terms out and \texttt{rule(E,l,1)} is \eqref{eq:rule}. For example \texttt{rule(ellinit([1,1,1,-30,-76]), 3)} (the curve 121a1) returns \texttt{[1, 1]}; for 726a1, a curve with image $\Ns$ and type $\mathrm{III}$ at $11$, \texttt{rule(E,3)} and \texttt{rule(E,3,1)} both return \texttt{[2, 2]}, the type $\mathrm{III}$ term and the correction cancelling; \texttt{ellmoddegree} needs \texttt{parisizemax} of a few hundred megabytes for conductors in the thousands. The pipeline was rerun from a clean clone and reproduced every count of Table~\ref{tab:counts}. Lemma~\ref{lem:twist}(ii) was also checked numerically, with the script \texttt{twist\_lemma\_check.gp} of the repository, on $4{,}577$ random pairs (curve, odd bad prime), with no exception, and Lemma~\ref{lem:euler} against \texttt{lfunsympow} on every curve of the tables.
+
+\section*{Statement on the use of an AI system}
+This work was carried out with an AI system (Claude, Anthropic) at every stage, and it would not have been done without it. The author set the goal, a search for new relations in Cremona's tables, chose the data and the protocol (a frozen snapshot of the tables, a working set, a range held back for one-time tests, and a list of tests fixed before any was run), and decided at each step what to pursue and what to keep. Under that direction, and in discussion with the author, the AI system did the rest: it built the feature table and the list of known relations to be excluded; ran the pre-registered search, which produced the candidate relation between the modular degree and the local invariants; searched the literature and identified the results of Ribet--Takahashi, Pollack--Weston, Kim--Ota, Agashe--Ribet--Stein and Diamond--Flach--Guo behind the statements; replaced the Tamagawa number by the geometric component group and formulated the conjectures and their successive refinements, up to the Euler-factor rule and its correction term; wrote and ran the verification code in Python and PARI/GP on the four ranges, generated the out-of-table curves and computed their modular degrees and Tate parameters; read the published text of \cite{DFG04} and assembled the proof of Theorem~\ref{thm:main} from its statements, computed the Tamagawa factor of Lemma~\ref{lem:tamfactor}, and proposed and wrote the proofs of Theorems~\ref{thm:qual} and~\ref{thm:quant} and of Proposition~\ref{prop:ns}; drafted every version of the text and the tables; and prepared the responses to reports on earlier versions, two of them written by AI systems, from which the identification of the local factors and of the boundary of the hypothesis arose. The scripts, the result files and the pinned data commit are in the repository named in the appendix, so that every count can be rerun; the proofs cite the published statements they use, with their numbering. The author takes full responsibility for all statements, proofs, computations and errors.
+
+\bibliographystyle{amsplain}
+\bibliography{refs}
+\end{document}
