@@ -127,3 +127,47 @@ presence of complex conjugation (eigenvalues +1 and -1 are distinct).
 **Fix:** add "(hence absolutely irreducible, complex conjugation having distinct eigenvalues +1 and -1)"
 after "irreducible" in both places, and "over a common finite extension of F_l" after "rhobar_h = rhobar".
 Minor gap; confidence high.
+
+## From the Chapter 6 outline (algebraic number theory, Frobenius)
+
+Source: `outlines/ch06_ant.md`, Part 13. Point 11 was also checked independently by the orchestrating
+session; points 12 to 14 are as reported by the outline agent.
+
+### 11. The Frobenius convention: the L-factors need the geometric Frobenius, Lemma lem:tamfactor uses the arithmetic one
+
+Section 1.1 defines L_p(A_f, s) = det(1 - Frob_p p^{-s} | A_f^{I_p})^{-1} without saying which Frobenius.
+At a multiplicative prime, the inertia-fixed line of ad V is spanned by e = e_1 tensor e_2^vee (the map
+e_2 -> e_1), on which Frobenius acts by the cyclotomic character chi_l(Frob).
+
+* With the arithmetic Frobenius, chi_l(Frob) = q, so the factor would be 1 - q^{1-s}.
+* With the geometric Frobenius, chi_l(Frob) = q^{-1}, giving the tabulated 1 - q^{-1-s}.
+
+The table of Section 1, the proof of Lemma lem:euler (type I_n: "a line with eigenvalue q^{-1}"), PARI's
+factors and the identity L_p(A_f, 1) = L_p(A_f(1), 0) of Lemma lem:fpr are all correct with the
+**geometric** Frobenius, which is also DFG04's convention. But the proof of Lemma lem:tamfactor writes
+rho(Frob) = [[eps q, c'], [0, eps]], which is the **arithmetic** Frobenius. Both computations are right in
+their own convention; the paper never says which one it uses where.
+
+**Action:** in Section 1.1 and in the proof of Lemma lem:euler, say "geometric Frobenius"; in the proof of
+Lemma lem:tamfactor, say "arithmetic Frobenius" (or rewrite it with the geometric one). No number in the
+paper changes. Confidence: high (checked twice).
+
+### 12. Lemma lem:euler: "Z_l[zeta_3] = End_{I_q}(V)" should be stated for T, or with Q_l coefficients
+
+For V with inertia acting through sigma of order 3 (eigenvalues zeta_3 and zeta_3^{-1}), the correct
+statements are End_{I_q}(T) = Z_l[sigma] = Z_l tensor Z[zeta_3] and End_{I_q}(V) = Q_l tensor Q(zeta_3).
+The latter is not a field when l = 1 mod 3 (it is Q_l x Q_l). The argument of the lemma is unaffected.
+**Action:** replace V by T, or Z_l by Q_l and say "tensor". Confidence: high.
+
+### 13. Lemma lem:IV: notation slip in "Z_3[sigma]/(sigma^2 + sigma + 1)"
+
+The quotient is of the polynomial ring: Z_3[X]/(X^2 + X + 1), with sigma acting as X. As written,
+Z_3[sigma] already satisfies the relation. **Action:** write Z_3[X]/(X^2 + X + 1). Confidence: high.
+
+### 14. Addition to point 5 (Lemma lem:h0): the CM alternative never arises when l does not divide N
+
+An elliptic curve over Q with CM by Q(sqrt(l*)) needs that field to have class number 1, so
+l* is in {-3, -7, -11, -19, -43, -67, -163}, that is l in {3, 7, 11, 19, 43, 67, 163}. Such a curve has bad
+reduction at the prime ramified in the CM field, so l divides N. Under the paper's standing hypothesis
+l not dividing N, the CM case cannot occur at all. This is a side remark: point 5 already removes the need
+for the CM argument. Confidence: medium-high (the conductor fact is standard but was not re-derived).
