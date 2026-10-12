@@ -1,6 +1,6 @@
 # Line-up for Chapter 1: Groups, group actions and matrix groups over finite fields
 
-Label `ch:groups`, file `chapters/ch01_groups.tex`, Part I (Algebra). Target length 1900 lines (card excluded).
+Label `ch:groups`, file `chapters/ch01_groups.tex`, Part I (Algebra). Target length 1910 lines (card excluded; see Part 2).
 
 This chapter is the first of the book: it relies on no earlier chapter, only on the assumed background
 (linear algebra over R and C, elementary group theory as in RHB Chapters 28 and 29). Every result is
@@ -29,7 +29,13 @@ Conventions fixed for the whole chapter (and inherited by the book):
 
 Rigour tags: **PH** = proved here, **SK** = proof sketched here, **ST** = stated; reference.
 
----
+Each line-up item gives: number and label-ready name, kind, rigour tag, the precise statement, a reference
+(DF = Dummit-Foote, 3rd edition; section numbers only where sure), and the paper's use (by the paper's
+`\label` names, or "background"). All group orders and subgroup claims for $\mathrm{GL}_2(\mathbb{F}_3)$ below
+were checked by hand and by a complete enumeration of the 48 elements and the 55 subgroups (16 conjugacy
+classes) of $\mathrm{GL}_2(\mathbb{F}_3)$, and the orders for $q = 5, 7$ by enumeration.
+
+________________________________________________________________________________
 
 ## Section 1. Groups, subgroups, cosets, quotients and cyclic groups
 
@@ -85,6 +91,696 @@ $\ell$-primary part $A[\ell^\infty] = \{a : \ell^k a = 0 \text{ for some } k\}$ 
 $\ell^{v_\ell(\#A)}$, $A = \bigoplus_\ell A[\ell^\infty]$ (sum over the primes dividing $\#A$), and $A[\ell^\infty]$
 is the unique Sylow $\ell$-subgroup of $A$ and the image of the idempotent projector; $v_\ell(\#A) = v_\ell(\#A[\ell^\infty])$.
 (Foretaste: $A[\ell^\infty] = A \otimes \mathbb{Z}_\ell$, Chapter 3.) The exponent of $A$ divides $\#A$ and has the same
-prime divisors. Reference: DF Section 5.2. Paper use: Definition def:terms and Section 1.4 of the paper
+prime divisors. Proof note (correction to the order of proofs): the splitting $A = A[m] \oplus A[n]$ for
+$\#A = mn$, $\gcd(m,n) = 1$, is Bezout; the order statement $\#A[\ell^\infty] = \ell^{v_\ell(\#A)}$ needs
+Cauchy's theorem for abelian groups ($\ell \mid \#A$ implies an element of order $\ell$), which is proved here
+by induction on $\#A$ in three lines, ahead of the general Cauchy theorem 3.6. Reference: DF Section 5.2. Paper use: Definition def:terms and Section 1.4 of the paper
 ("the $\ell$-part of the Tamagawa number", $v_\ell(\#\Phi^{\mathrm{geom}}_q)$), Lemma lem:tamfactor ($H^1(I_q,M)_{\mathrm{tor}}$
 as a finite abelian $\ell$-group, "the $\ell$-part of $c_q(E)$").
+
+________________________________________________________________________________
+
+## Section 2. Direct and semidirect products; dihedral, quaternion and semidihedral groups
+
+**2.1 `prop:groups:directproduct` (definition and proposition, PH).** The direct product $G \times H$. (Recognition)
+if $H, K \trianglelefteq G$, $H \cap K = 1$ and $HK = G$, then $(h,k) \mapsto hk$ is an isomorphism
+$H \times K \to G$; in particular elements of $H$ and $K$ commute. Reference: DF Sections 5.1, 5.4. Paper use:
+background ($\mathrm{B}(\mathbb{F}_3) = \{\pm I\} \times S_3$ in 5.5; $\hat{\mathbb{Z}} = \prod_p \mathbb{Z}_p$ in 7.2).
+
+**2.2 `prop:groups:crtgroups` (proposition, PH).** $C_m \times C_n \simeq C_{mn}$ if and only if $\gcd(m,n) = 1$.
+Consequently $\mathbb{Z}/n \simeq \prod_{p \mid n} \mathbb{Z}/p^{v_p(n)}$ as groups (the ring version, the Chinese remainder
+theorem, is in Chapter 2), and a cyclic group is the direct product of its $\ell$-primary parts. Reference: DF
+Section 5.1. Paper use: background (Lemma lem:tamfactor, $\mathbb{Z}_\ell(1)/(q-1) \simeq \mathbb{Z}/\ell^{v_\ell(q-1)}$ as the
+$\ell$-part of a cyclic group of order $q - 1$).
+
+**2.3 `def:groups:semidirect` (construction and proposition, PH).** Given groups $N$, $H$ and a homomorphism
+$\theta\colon H \to \mathrm{Aut}(N)$, the semidirect product $N \rtimes_\theta H$ is the set $N \times H$ with
+$(n,h)(n',h') = (n\,\theta(h)(n'),\, hh')$; $N$ is normal, $H$ is a complement, and $hnh^{-1} = \theta(h)(n)$
+(convention C2). (Recognition) if $N \trianglelefteq G$, $H \le G$, $N \cap H = 1$ and $NH = G$, then
+$G \simeq N \rtimes_\theta H$ with $\theta$ = conjugation. Equivalently, a short exact sequence
+$1 \to N \to G \to Q \to 1$ splits (has a homomorphic section $Q \to G$) iff $G \simeq N \rtimes Q$. The
+semidirect product is direct iff $\theta$ is trivial. Examples to be given: $D_n = C_n \rtimes C_2$;
+$\mathrm{B} = \mathrm{U} \rtimes \mathrm{T}$ (5.5); $\mathrm{GL}_2(F) = \mathrm{SL}_2(F) \rtimes F^\times$ (5.1);
+$N_s = C_s \rtimes C_2$, $N_{ns} = C_{ns} \rtimes C_2$ (5.8); $\mathrm{SL}_2(\mathbb{F}_3) = Q_8 \rtimes C_3$ (6.4); $S_4 = V_4 \rtimes S_3$;
+foretaste: the tame Galois group $\bigl(\prod_{\ell \ne p}\mathbb{Z}_\ell(1)\bigr) \rtimes \hat{\mathbb{Z}}$ of $\mathbb{Q}_p$, with $\mathrm{Frob}\, t\, \mathrm{Frob}^{-1} = t^p$
+(Chapter 7). Reference: DF Section 5.5. Paper use: background (Lemma lem:tamfactor uses
+$\mathrm{Frob}^{-1} t \mathrm{Frob} = t^{q^{-1}}$, made precise in Chapter 7).
+
+**2.4 `def:groups:dihedral` (definition and proposition, PH).** For $n \ge 2$, $D_n = \langle r, s \mid r^n = s^2 = 1,
+srs^{-1} = r^{-1}\rangle$, of order $2n$, $= C_n \rtimes C_2$ with $C_2$ acting by inversion; the symmetry group of
+the regular $n$-gon for $n \ge 3$ (RHB analogue, one sentence). Facts: every element outside $\langle r\rangle$ has
+order 2; for $n \ge 3$ the centre is trivial if $n$ is odd and $\{1, r^{n/2}\}$ if $n$ is even; $D_2 = V_4$; $D_3 \simeq S_3$;
+$D_6 \simeq C_2 \times S_3$. (Recognition) if $G$ is generated by $r$ of order $n$ and $s$ of order 2 with
+$srs^{-1} = r^{-1}$ and $\#G = 2n$, then $G \simeq D_n$. $D_4$ has five elements of order 2 and two of order 4.
+Reference: DF Section 1.2. Paper use: Proposition prop:ns ($N_s(\mathbb{F}_3) \simeq D_4$, "dihedral"),
+Section sec:anomaly (image 3Ns); Chapter 4 ("the dihedral case").
+
+**2.5 `def:groups:quaternion` (definition and proposition, PH).** $Q_8 = \{\pm 1, \pm i, \pm j, \pm k\}$ with
+$i^2 = j^2 = k^2 = ijk = -1$; equivalently $\langle i, j \mid i^4 = 1, i^2 = j^2, jij^{-1} = i^{-1}\rangle$. Facts:
+$-1$ is the unique element of order 2; the six elements $\pm i, \pm j, \pm k$ have order 4; $Z(Q_8) = [Q_8,Q_8] =
+\{\pm 1\}$ and $Q_8/\{\pm1\} \simeq V_4$; every subgroup is normal; every nontrivial subgroup contains $-1$, so $Q_8$ is
+not a semidirect product of two proper subgroups; $Q_8 \not\simeq D_4$ (count elements of order 2). (Recognition)
+a non-abelian group of order 8 with a unique element of order 2 is isomorphic to $Q_8$. Reference: DF Section
+1.5. Paper use: Proposition prop:ns (the determinant-one subgroup of $N_{ns}(\mathbb{F}_3)$ is $Q_8$).
+
+**2.6 `def:groups:semidihedral` (definition and proposition, PH).** $SD_{16} = \langle a, x \mid a^8 = x^2 = 1,
+xax^{-1} = a^3\rangle$, of order 16, $= C_8 \rtimes C_2$ with $C_2$ acting by $a \mapsto a^3$. Facts: the elements
+$a^i x$ satisfy $(a^i x)^2 = a^{4i}$, so they have order 2 for $i$ even and order 4 for $i$ odd; the numbers of
+elements of orders $1, 2, 4, 8$ are $1, 5, 6, 4$; $Z(SD_{16}) = \{1, a^4\}$; the three subgroups of index 2 are
+$\langle a\rangle \simeq C_8$, $\langle a^2, x\rangle \simeq D_4$ and $\langle a^2, ax\rangle \simeq Q_8$. Comparison table of the
+four non-abelian groups of order 16 with a cyclic subgroup of index 2, by numbers of elements of orders
+$1,2,4,8$: $D_8$ (dihedral of order 16): $1, 9, 2, 4$; $SD_{16}$: $1, 5, 6, 4$; $Q_{16}$ (generalised quaternion):
+$1, 1, 10, 4$; $M_{16} = C_8 \rtimes C_2$ with $a \mapsto a^5$: $1, 3, 4, 8$. (Recognition) a group of order 16 generated
+by $a$ of order 8 and $x$ of order 2 with $xax^{-1} = a^3$ is $SD_{16}$ (it is a quotient of the presented group,
+which has order at most 16). Reference: DF Section 5.5 (semidirect products of $C_8$ by $C_2$); the comparison
+table is a direct count. Paper use: Proposition prop:ns ($N_{ns}(\mathbb{F}_3)$ of order 16).
+
+**2.7 `thm:groups:order8` (theorem, SK).** Every group of order 8 is isomorphic to exactly one of $C_8$,
+$C_4 \times C_2$, $C_2^3$, $D_4$, $Q_8$. Sketch: abelian case by 4.1; non-abelian case: there is an element $r$ of
+order 4 (exponent 2 forces abelian), $\langle r\rangle$ is normal of index 2, any $s \notin \langle r\rangle$ has
+$s^2 \in \{1, r^2\}$ and $srs^{-1} = r^{-1}$, giving $D_4$ or $Q_8$. Reference: DF Chapter 5 (table of groups of
+small order). Paper use: background (the names "dihedral" and "quaternion" in Proposition prop:ns are
+isomorphism types; the chapter identifies them by the recognition criteria 2.4, 2.5, so this theorem is
+context only).
+
+________________________________________________________________________________
+
+## Section 3. Group actions, orbit-stabiliser, p-groups and the Sylow theorems
+
+**3.1 `def:groups:action` (definition, background).** A (left) action of $G$ on a set $X$; the associated
+permutation representation $G \to \mathrm{Sym}(X)$; kernel, faithful, transitive; orbit $Gx$, stabiliser $G_x$,
+fixed set $X^G$; restriction of an action to a subgroup; examples: left multiplication on $G/H$; conjugation on
+$G$ and on the set of subgroups; $\mathrm{GL}_2(F)$ on $F^2$, on $F^2 \setminus \{0\}$, on $\mathbb{P}^1(F)$. Reference: DF
+Sections 1.7, 4.1. Paper use: Proposition prop:ns ("orbits on the four lines").
+
+**3.2 `thm:groups:orbitstab` (theorem, PH).** (Orbit-stabiliser) Let $G$ act on $X$ and $x \in X$. Then
+$gG_x \mapsto gx$ is a well-defined bijection $G/G_x \to Gx$, so $\#Gx = [G : G_x]$ when $G$ is finite;
+$G_{gx} = gG_xg^{-1}$; the orbits partition $X$, and for finite $X$, $\#X = \sum_i [G : G_{x_i}]$ over orbit
+representatives. Reference: DF Section 4.1. Paper use: Proposition prop:ns.
+
+**3.3 `prop:groups:suborbits` (proposition, PH).** Let $G$ act transitively on a finite set $X$, $x \in X$, and
+$H \le G$. (i) The $H$-orbits on $X$ correspond bijectively to the double cosets $H \backslash G / G_x$; $H$ is
+transitive iff $G = HG_x$. (ii) If $H \trianglelefteq G$, then $G$ permutes the $H$-orbits transitively, so all
+$H$-orbits have the same size, which divides $\#X$. (iii) In particular if $[G:H] = 2$, either $H$ is transitive
+or $X$ is the union of exactly two $H$-orbits of equal size $\#X/2$, interchanged by every element of
+$G \setminus H$. Reference: elementary (DF Section 4.1, exercises). Paper use: Proposition prop:ns (the
+determinant-one subgroup $C_4$ of $N_s(\mathbb{F}_3)$ has the same two orbits of size two; the Galois-theoretic reading
+of orbits as factor degrees is Chapter 5).
+
+**3.4 `lem:groups:burnside` (lemma, PH).** (Orbit-counting lemma) For a finite group acting on a finite set,
+the number of orbits is $\frac{1}{\#G}\sum_{g \in G} \#X^g$. Reference: DF Section 4.1 (exercises). Paper use:
+background (exercise: recount the orbits of 6.5 and 6.6 from the class table 6.1; foretaste of the
+Chebotarev densities of Chapter 22).
+
+**3.5 `thm:groups:classeq` (theorem, PH).** (Class equation) For finite $G$,
+$\#G = \#Z(G) + \sum [G : C_G(g_i)]$ over representatives of the non-central conjugacy classes. Let $p$ be a
+prime. (i) If a $p$-group $P$ acts on a finite set $X$ then $\#X \equiv \#X^P \pmod p$. (ii) A nontrivial finite
+$p$-group has nontrivial centre. (iii) A group of order $p^2$ is abelian. (iv) A group of order $p^n$ has a
+normal subgroup of order $p^k$ for every $0 \le k \le n$, and every subgroup of index $p$ in a $p$-group is
+normal. Reference: DF Sections 4.3, 6.1. Paper use: background (used in 3.7; pro-$p$ groups 7.3, the wild
+inertia of Chapter 7).
+
+**3.6 `thm:groups:cauchy` (theorem, PH).** (Cauchy) If a prime $p$ divides $\#G$, then $G$ has an element of
+order $p$. (Proof: $C_p$ acts on $\{(g_1,\dots,g_p) : g_1\cdots g_p = 1\}$ by rotation; apply 3.5(i).) Reference:
+DF Section 3.4 (abelian case) and Section 4.5. Paper use: background.
+
+**3.7 `thm:groups:sylow` (theorem, PH).** (Sylow) Let $\#G = p^a m$ with $p \nmid m$. (i) $G$ has a subgroup of
+order $p^a$ (a Sylow $p$-subgroup). (ii) Every $p$-subgroup of $G$ is contained in a Sylow $p$-subgroup, and any
+two Sylow $p$-subgroups are conjugate. (iii) The number $n_p$ of Sylow $p$-subgroups equals $[G : N_G(P)]$ for any
+Sylow $P$, divides $m$, and satisfies $n_p \equiv 1 \pmod p$. (iv) $P \trianglelefteq G$ iff $n_p = 1$; a normal Sylow
+subgroup contains every $p$-element of $G$. Reference: DF Section 4.5. Paper use: background
+(6.3, 6.6, 6.7: $N_{ns}(\mathbb{F}_3)$ is a Sylow 2-subgroup of $\mathrm{GL}_2(\mathbb{F}_3)$ and $N_s(\mathbb{F}_3)$ lies in one; the subgroups
+of order 3 in Lemma lem:IV are the Sylow 3-subgroups).
+
+**3.8 `ex:groups:sylowsmall` (worked example, PH).** (a) A group of order 15 is cyclic. (b) In $S_4$: $n_2 = 3$,
+$n_3 = 4$. (c) In $\mathrm{GL}_2(\mathbb{F}_3)$: $n_3 = 4$ (the four groups $\mathrm{U}_L$ of 5.6, one for each line $L$) and $n_2 = 3$
+(the three conjugates of $N_{ns}(\mathbb{F}_3)$). (d) In $\mathrm{SL}_2(\mathbb{F}_3)$: $n_2 = 1$ (the Sylow 2-subgroup is $Q_8$) and
+$n_3 = 4$. Paper use: background for 6.4 to 6.7.
+
+________________________________________________________________________________
+
+## Section 4. Finite abelian groups
+
+**4.1 `thm:groups:finiteabelian` (theorem, PH).** (Structure theorem) Every finite abelian group $A$ is
+isomorphic to $\bigoplus_{i} \mathbb{Z}/\ell_i^{e_i}$ for primes $\ell_i$ and $e_i \ge 1$, and the multiset of prime powers
+$\ell_i^{e_i}$ (the elementary divisors) is determined by $A$. Equivalently $A \simeq \mathbb{Z}/d_1 \oplus \dots \oplus \mathbb{Z}/d_r$
+with $1 < d_1 \mid d_2 \mid \dots \mid d_r$ (invariant factors), uniquely. For each prime $\ell$ the numbers
+$\#A[\ell^k]$, $k \ge 1$, determine the $\ell$-primary part. Proof: reduce to $\ell$-groups by 1.8; for an
+$\ell$-group split off a cyclic subgroup generated by an element of maximal order; uniqueness by counting
+$\#A[\ell^k]$. The general version for finitely generated modules over a PID is Chapter 3. Reference: DF Section
+5.2. Paper use: background (component groups $\mathbb{Z}/n$, $\mathbb{Z}/2$, $\mathbb{Z}/3$, $(\mathbb{Z}/2)^2$, $\mathbb{Z}/4$ of the paper's Section
+1.4; $H^1(I_q, M)_{\mathrm{tor}} \simeq (\mathbb{Z}/\ell^{v_\ell(n)})^2$ in Lemma lem:tamfactor).
+
+**4.2 `cor:groups:cyclic` (corollary, PH).** (i) A finite abelian group $A$ is cyclic iff $\#A[\ell] \le \ell$ for
+every prime $\ell$, iff for every $d$ the equation $da = 0$ has at most $d$ solutions. (ii) Every finite
+subgroup of the multiplicative group $K^\times$ of a field $K$ is cyclic (a polynomial of degree $d$ has at most $d$
+roots). In particular $\mathbb{F}_p^\times$ is cyclic of order $p - 1$, the group $\mu_n(K)$ of $n$-th roots of unity in $K$ is
+cyclic, and the multiplicative group of the field $\mathbb{F}_q[\sqrt{\varepsilon}]$ of 5.8 is cyclic of order $q^2 - 1$.
+Reference: DF Sections 5.2, 9.5. Paper use: Lemma lem:tamfactor and Lemma lem:h0 (cyclicity of $\mathbb{F}_q^\times$ and of
+$\mathbb{F}_\ell^\times$; restated with field theory in Chapter 2); Proposition prop:ns ($C_{ns}(\mathbb{F}_3) \simeq C_8$).
+
+**4.3 `prop:groups:torsioncount` (proposition, PH).** For a finite abelian group $A$ and $n \ge 1$, the
+sequence $0 \to A[n] \to A \xrightarrow{n} A \to A/nA \to 0$ is exact, so $\#A[n] = \#A/nA$. For
+$A \simeq \bigoplus_i \mathbb{Z}/\ell^{e_i}$ (an $\ell$-group), $\#A[\ell^k] = \#A/\ell^kA = \ell^{\sum_i \min(k, e_i)}$. Reference:
+elementary. Paper use: Lemma lem:tamfactor (counting the Frobenius-fixed points of
+$(\mathbb{Z}/\ell^{v_\ell(n)})^2$: the solutions $y$ of $(q-1)y \equiv 0$ and $c'y \equiv 0 \pmod{\ell^{v_\ell(n)}}$ number
+$\ell^{\min(v_\ell(n), v_\ell(q-1), v_\ell(c'))}$), Lemma lem:h0 (length of a finite $\ell$-group).
+
+**4.4 `ex:groups:componentgroups` (worked example, PH).** The groups $\mathbb{Z}/n$, $\mathbb{Z}/2$, $\mathbb{Z}/3$, $(\mathbb{Z}/2)^2$, $\mathbb{Z}/4$ that occur as
+geometric component groups (Chapter 10) and their $\ell$-parts: $v_\ell(\#\mathbb{Z}/n) = v_\ell(n)$; $(\mathbb{Z}/2)^2$ and $\mathbb{Z}/4$ have
+the same order but are not isomorphic (count $\#A[2]$); for odd $\ell$ only $\mathbb{Z}/n$ and $\mathbb{Z}/3$ contribute.
+Paper use: the paper's Section 1.4 ($v_\ell(\#\Phi^{\mathrm{geom}}_q)$), Definition def:terms (background).
+
+________________________________________________________________________________
+
+## Section 5. The groups GL_2, SL_2, PGL_2, PSL_2; Borel, unipotent and Cartan subgroups
+
+Throughout, $F$ is a field and $\mathbb{F}_q$ a finite field with $q$ elements (convention C4).
+
+**5.1 `def:groups:gl2` (definition and proposition, PH).** $\mathrm{GL}_2(F)$, $\mathrm{SL}_2(F) = \ker(\det)$,
+$\mathrm{PGL}_2(F) = \mathrm{GL}_2(F)/F^\times I$, $\mathrm{PSL}_2(F) = \mathrm{SL}_2(F)/\{\pm I\}$. Facts: (i) $Z(\mathrm{GL}_2(F)) = F^\times I$ (a
+matrix commuting with all elementary matrices is scalar) and $Z(\mathrm{SL}_2(F)) = \{\pm I\}$; (ii) $\det$ is surjective
+and $d \mapsto \mathrm{diag}(1,d)$ is a section, so $\mathrm{GL}_2(F) \simeq \mathrm{SL}_2(F) \rtimes F^\times$; (iii) $\mathrm{SL}_2(F)$ is generated
+by the elementary matrices $\begin{pmatrix}1&b\\0&1\end{pmatrix}$, $\begin{pmatrix}1&0\\c&1\end{pmatrix}$; (iv) if $\mathrm{char} F \ne 2$, the only
+element of order 2 in $\mathrm{SL}_2(F)$ is $-I$ (an element with $g^2 = 1$ is diagonalisable with eigenvalues $\pm 1$ of
+product 1); (v) $\mathrm{PSL}_2(F)$ is the image of $\mathrm{SL}_2(F)$ in $\mathrm{PGL}_2(F)$, of index
+$[F^\times : (F^\times)^2]$. Reference: DF Section 1.4; Lang Chapter XIII. Paper use: background (Proposition
+prop:ns, Lemma lem:h0: $\det \bar\rho = \bar\chi_\ell$).
+
+**5.2 `prop:groups:orders` (proposition, PH).** $\#\mathrm{GL}_2(\mathbb{F}_q) = (q^2-1)(q^2-q) = q(q-1)^2(q+1)$ (count ordered
+bases); $\#\mathrm{SL}_2(\mathbb{F}_q) = \#\mathrm{PGL}_2(\mathbb{F}_q) = q(q^2-1)$; $\#\mathrm{PSL}_2(\mathbb{F}_q) = q(q^2-1)/\gcd(2, q-1)$. More generally
+$\#\mathrm{GL}_n(\mathbb{F}_q) = \prod_{i=0}^{n-1}(q^n - q^i)$ (remark). Table (verified by enumeration):
+
+| $q$ | $\mathrm{GL}_2$ | $\mathrm{SL}_2$ | $\mathrm{PGL}_2$ | $\mathrm{PSL}_2$ |
+|-|-|-|-|-|
+| 3 | 48 | 24 | 24 | 12 |
+| 5 | 480 | 120 | 120 | 60 |
+| 7 | 2016 | 336 | 336 | 168 |
+
+Reference: DF Section 1.4 (exercises), Lang Chapter XIII. Paper use: Proposition prop:ns (order 48), background
+for $\ell = 5, 7$ (Section sec:data).
+
+**5.3 `prop:groups:projline` (proposition, PH).** Let $\mathbb{P}^1(F)$ be the set of lines of $F^2$ (convention C1);
+$\#\mathbb{P}^1(\mathbb{F}_q) = q + 1$. (i) $\mathrm{GL}_2(F)$ acts on $\mathbb{P}^1(F)$ by $g[v] = [gv]$, through Moebius transformations in the
+coordinate $x = [x:1]$, $\infty = [1:0]$. (ii) The kernel of the action is $F^\times I$, so $\mathrm{PGL}_2(F)$ acts faithfully.
+(iii) $\mathrm{PGL}_2(F)$ acts sharply 3-transitively: for two triples of distinct lines there is exactly one element
+of $\mathrm{PGL}_2(F)$ carrying one to the other. (iv) The stabiliser of $\infty = [e_1]$ is the upper triangular group
+$\mathrm{B}(F)$, so $\mathbb{P}^1(F) \simeq \mathrm{GL}_2(F)/\mathrm{B}(F)$ and $[\mathrm{GL}_2(\mathbb{F}_q) : \mathrm{B}(\mathbb{F}_q)] = q + 1$. (v) $\mathrm{SL}_2(F)$ is
+transitive, indeed 2-transitive, on $\mathbb{P}^1(F)$. Reference: Lang Chapter XIII; DF Section 4.1 (exercises).
+Paper use: Proposition prop:ns ("the four lines of $\mathbb{F}_3^2$"), Chapter 9 (the roots of the 3-division
+polynomial correspond to the lines of $E[3]$).
+
+**5.4 `thm:groups:smallpgl` (theorem; (i), (ii) PH, (iii) SK, (iv) ST).** (i) The action on the four lines of
+$\mathbb{F}_3^2$ gives isomorphisms $\mathrm{PGL}_2(\mathbb{F}_3) \simeq S_4$ and $\mathrm{PSL}_2(\mathbb{F}_3) \simeq A_4$ (faithful by 5.3(ii), orders 24 and 12;
+$\mathrm{SL}_2(\mathbb{F}_3)$ is generated by elements of order 3, which act as 3-cycles). (ii) For $g \in \mathrm{GL}_2(\mathbb{F}_3)$,
+$\det g \in \{\pm 1\} = \mathbb{F}_3^\times$ equals the sign of the permutation of the four lines induced by $g$. (Proof: both
+are homomorphisms to $\{\pm 1\}$; $\mathrm{SL}_2(\mathbb{F}_3)$ lies in both kernels by (i), and both kernels have index 2.)
+(iii) $\mathrm{PGL}_2(\mathbb{F}_5) \simeq S_5$ and $\mathrm{PSL}_2(\mathbb{F}_5) \simeq A_5$ (sketch via the action on the five Sylow 2-subgroups of
+$\mathrm{PSL}_2(\mathbb{F}_5)$, or reference). (iv) $\mathrm{PSL}_2(\mathbb{F}_q)$ is simple for $q \ge 4$; $\mathrm{PSL}_2(\mathbb{F}_7)$ is simple of order 168
+and isomorphic to $\mathrm{GL}_3(\mathbb{F}_2)$. Reference: (iii), (iv) Lang Chapter XIII; DF Section 4.6 and exercises.
+Paper use: Proposition prop:ns via (ii) (the sign of the permutation of the roots of the 3-division polynomial is
+$\det \bar\rho_{E,3} = \chi_{-3}$; the discriminant consequence is Chapter 5 and 11); (iii), (iv) background.
+
+**5.5 `def:groups:borel` (definition and proposition, PH).** A Borel subgroup of $\mathrm{GL}_2(F)$ is the stabiliser
+$\mathrm{B}_L$ of a line $L \in \mathbb{P}^1(F)$; $\mathrm{B} = \mathrm{B}_{[e_1]}$ is the upper triangular group. Its unipotent radical
+$\mathrm{U} = \{\begin{pmatrix}1&b\\0&1\end{pmatrix}\} \simeq (F,+)$ is normal, the diagonal torus $\mathrm{T} = C_s(F)$ is a complement, so
+$\mathrm{B} = \mathrm{U} \rtimes \mathrm{T}$ with $\mathrm{diag}(a,d)$ acting on $\mathrm{U}$ by $b \mapsto (a/d)b$. Facts: $\#\mathrm{B}(\mathbb{F}_q) = q(q-1)^2$; the Borel
+subgroups are all conjugate and correspond bijectively to the $q+1$ lines; $N_{\mathrm{GL}_2(F)}(\mathrm{B}) = \mathrm{B}$; a subgroup
+of $\mathrm{GL}_2(F)$ stabilises a line iff it is contained in a Borel subgroup. For $q = 3$: $\#\mathrm{B}(\mathbb{F}_3) = 12$ and
+$\mathrm{B}(\mathbb{F}_3) = \{\pm I\} \times \langle \mathrm{U}, \mathrm{diag}(1,-1)\rangle \simeq C_2 \times S_3 \simeq D_6$; its image in $\mathrm{PGL}_2(\mathbb{F}_3) = S_4$ is the point
+stabiliser $S_3$. Reference: Lang Chapter XIII; Serre72 Section 2. Paper use: the Eisenstein case (Section
+sec:eis and Conjecture conj:eis: a rational $\ell$-isogeny means image in a Borel subgroup, Chapter 11);
+Sutherland's labels 3B, 3B.1.1, 3B.1.2 (6.10).
+
+**5.6 `def:groups:unipotent` (definition and proposition, PH).** $u \in \mathrm{GL}_2(F)$ is unipotent if $(u - 1)^2 = 0$,
+equivalently its characteristic polynomial is $(X-1)^2$. (i) A unipotent $u \ne 1$ is conjugate to
+$\begin{pmatrix}1&1\\0&1\end{pmatrix}$, and its fixed vectors form exactly one line, $\ker(u-1) = \mathrm{im}(u-1)$; it fixes no
+other line of $F^2$. (ii) If $\mathrm{char} F = p > 0$, a unipotent $u \ne 1$ has order $p$, and conversely every element
+of order $p$ (indeed of $p$-power order) of $\mathrm{GL}_2(F)$ is unipotent ($x^p = 1$ gives $(x-1)^p = 0$). (iii) The
+unipotent elements of $\mathrm{B}$ are exactly $\mathrm{U}$; for each line $L$ the group $\mathrm{U}_L$ of unipotents fixing $L$
+pointwise is the unipotent radical of $\mathrm{B}_L$. (iv) "Minus a unipotent": $-u$ with $u \ne 1$ unipotent has
+characteristic polynomial $(X+1)^2$, has no nonzero fixed vector when $\mathrm{char} F \ne 2$, still stabilises exactly one
+line, and has order $2p$ in characteristic $p$ odd. (v) In $\mathrm{GL}_2(\mathbb{F}_3)$: the 8 elements of order 3 are the
+nontrivial unipotents and form one conjugacy class; the 4 subgroups of order 3 are the Sylow 3-subgroups
+$\mathrm{U}_L$, one for each line $L$, and $\mathrm{U}_L$ fixes exactly the line $L$; the 8 elements of order 6 are the $-u$; the
+8 elements of order 3 generate $\mathrm{SL}_2(\mathbb{F}_3)$. Reference: elementary linear algebra; Serre72 Section 2.
+Paper use: Lemma lem:IV (the image of $I_q$ in $\mathrm{Aut}(E[3])$ is a nontrivial unipotent subgroup, so $E[3]^{I_q}$
+is a line), Remark rem:types ("minus a unipotent": $E[3]^{I_q} = 0$; "a ramified quadratic character times a
+unipotent").
+
+**5.7 `lem:groups:borelcommutator` (lemma, PH).** Let $K$ be a field and $H \le \mathrm{B}(K)$. Then
+$[H,H] \le \mathrm{U}(K)$. If $\mathrm{char} K = p > 0$ then $\mathrm{U}(K)$ is an elementary abelian $p$-group, so: (i) a subgroup of
+$\mathrm{B}(K)$ of finite order prime to $p$ meets $\mathrm{U}(K)$ trivially and is abelian; (ii) a finite subgroup $H$ of
+$\mathrm{GL}_2(K)$ whose commutator subgroup is not a $p$-group stabilises no line of $K^2$. Applied with
+$K = \overline{\mathbb{F}}_3$ (or $\mathbb{F}_9$): $N_s(\mathbb{F}_3)$, $N_{ns}(\mathbb{F}_3)$, $Q_8$ (non-abelian, order prime to 3) and $\mathrm{SL}_2(\mathbb{F}_3)$,
+$\mathrm{GL}_2(\mathbb{F}_3)$ (commutator subgroup containing $Q_8$) stabilise no line of $\overline{\mathbb{F}}_3^2$, whereas the abelian group
+$C_4 = \langle J \rangle$ does (6.5). Reference: elementary. Paper use: Proposition prop:ns (the paper's "the first
+two act absolutely irreducibly on $\mathbb{F}_3^2$ (they are non-abelian and act faithfully)"; non-abelian plus faithful
+is not enough in general (the Borel subgroup is a counterexample), and this lemma supplies the missing step;
+absolute irreducibility as a notion is Chapter 4).
+
+**5.8 `def:groups:cartan` (definition and proposition, PH).** Let $q$ be odd and fix a non-square
+$\varepsilon \in \mathbb{F}_q^\times$ (for $q = 3$, $\varepsilon = -1$).
+(i) The split Cartan subgroup is $C_s(\mathbb{F}_q) = \{\mathrm{diag}(a,d)\} \simeq (\mathbb{F}_q^\times)^2$, the subgroup
+stabilising each of the two lines $[e_1]$, $[e_2]$ (conjugates: the stabiliser of each of two distinct lines). Its normaliser is
+$N_s(\mathbb{F}_q) = C_s(\mathbb{F}_q) \cup wC_s(\mathbb{F}_q)$, $w = \begin{pmatrix}0&1\\1&0\end{pmatrix}$, the stabiliser of the set $\{[e_1],[e_2]\}$
+(proof that the normaliser is no bigger: $C_s$ contains a non-scalar $\mathrm{diag}(1,d)$, $d \ne 1$, whose eigenlines are
+$[e_1]$, $[e_2]$; this needs $q \ge 3$).
+(ii) The nonsplit Cartan subgroup is $C_{ns}(\mathbb{F}_q) = \{\begin{pmatrix}a&\varepsilon b\\b&a\end{pmatrix} : (a,b) \ne (0,0)\}$, the image of
+$\mathbb{F}_q[\sqrt\varepsilon]^\times$ (a field with $q^2$ elements, constructed here as $\{a + b\sqrt\varepsilon\}$; it is $\mathbb{F}_{q^2}$ of Chapter 2)
+acting on itself by multiplication in the basis $1, \sqrt\varepsilon$; $\det = $ norm $a^2 - \varepsilon b^2$, trace $= 2a$; it is
+cyclic of order $q^2 - 1$ by 4.2. Its normaliser is $N_{ns}(\mathbb{F}_q) = C_{ns}(\mathbb{F}_q) \cup C_{ns}(\mathbb{F}_q)\sigma$,
+$\sigma = \mathrm{diag}(1,-1)$, the matrix of the conjugation $a + b\sqrt\varepsilon \mapsto a - b\sqrt\varepsilon$; $\sigma c \sigma^{-1} = c^q$ for
+$c \in C_{ns}$.
+(iii) Intrinsically: a Cartan subgroup is the unit group $A^\times$ of a commutative semisimple subalgebra
+$A \subset M_2(\mathbb{F}_q)$ of dimension 2, split if $A \simeq \mathbb{F}_q \times \mathbb{F}_q$, nonsplit if $A$ is a field; all split ones are
+conjugate, and all nonsplit ones are conjugate (a field $A \simeq \mathbb{F}_{q^2}$ makes $\mathbb{F}_q^2$ a one-dimensional $A$-vector
+space). Each Cartan subgroup has index 2 in its normaliser.
+Reference: Serre72 Section 2; Lang Chapter XIII. Paper use: Proposition prop:ns, Section sec:anomaly, Remark
+rem:ns, the abstract ("the normaliser of a split Cartan subgroup").
+
+**5.9 `prop:groups:cartanfacts` (proposition, PH).** Let $q$ be odd.
+(i) $\#C_s = (q-1)^2$, $\#N_s = 2(q-1)^2$, $\#C_{ns} = q^2 - 1$, $\#N_{ns} = 2(q^2-1)$. For $q = 3, 5, 7$: $C_s$: 4, 16, 36;
+$N_s$: 8, 32, 72; $C_{ns}$: 8, 24, 48; $N_{ns}$: 16, 48, 96; Borel: 12, 80, 252 (verified by enumeration).
+(ii) Every element of $N_s \setminus C_s$ and of $N_{ns} \setminus C_{ns}$ has trace 0. In $N_s$:
+$\begin{pmatrix}0&b\\c&0\end{pmatrix}^2 = bc\,I$ and its determinant is $-bc$. In $N_{ns}$: $(c\sigma)^2 = N(c)\,I$ and
+$\det(c\sigma) = -N(c)$, where $N(c) = \det c$.
+(iii) $\det(C_{ns}) = \mathbb{F}_q^\times$ (the norm is surjective; count: the kernel has order $q+1$).
+(iv) Determinant-one subgroups: $C_s \cap \mathrm{SL}_2 \simeq C_{q-1}$; $\#(N_s \cap \mathrm{SL}_2) = 2(q-1)$; $C_{ns} \cap \mathrm{SL}_2 \simeq C_{q+1}$;
+$\#(N_{ns} \cap \mathrm{SL}_2) = 2(q+1)$.
+(v) Orbits on $\mathbb{P}^1(\mathbb{F}_q)$ (coordinate $x$ of C1; $\mathrm{diag}(a,d)$ acts by $x \mapsto ax/d$): $C_s$ has orbits $\{\infty\}$,
+$\{0\}$, $\mathbb{F}_q^\times$ (sizes $1, 1, q-1$); $N_s$ has orbits $\{0, \infty\}$, $\mathbb{F}_q^\times$ (sizes $2$, $q-1$); $\mathrm{B}$ has orbits $\{\infty\}$,
+$\mathbb{F}_q$ (sizes $1$, $q$); $C_{ns}$ acts transitively, indeed $C_{ns}/\mathbb{F}_q^\times I \simeq C_{q+1}$ acts simply transitively,
+because $C_{ns}$ acts simply transitively on $\mathbb{F}_q^2 \setminus \{0\}$; hence $N_{ns}$ is transitive. In particular
+$C_{ns}$ and $N_{ns}$ stabilise no line of $\mathbb{F}_q^2$.
+Reference: Serre72 Section 2. Paper use: Proposition prop:ns (orders 8 and 16, orbits on the four lines);
+Chapter 11 (Zywina's lists).
+
+**5.10 `thm:groups:dickson` (theorem, ST; the case $\ell = 3$ PH in 6.7).** (Dickson) Let $\ell$ be a prime,
+$G \le \mathrm{GL}_2(\mathbb{F}_\ell)$ a subgroup and $\bar G$ its image in $\mathrm{PGL}_2(\mathbb{F}_\ell)$.
+(a) If $\ell \mid \#G$, then either $G \supseteq \mathrm{SL}_2(\mathbb{F}_\ell)$ or $G$ is contained in a Borel subgroup.
+(b) If $\ell \nmid \#G$, then exactly one of the following holds: $\bar G$ is cyclic and $G$ is contained in a Cartan
+subgroup (split or nonsplit); $\bar G$ is dihedral (of order $2n$, $n \ge 2$) and $G$ is contained in the normaliser of
+a Cartan subgroup but not in the Cartan subgroup; $\bar G$ is isomorphic to $A_4$, $S_4$ or $A_5$ (the exceptional
+case).
+Consequently, a subgroup of $\mathrm{GL}_2(\mathbb{F}_\ell)$ not containing $\mathrm{SL}_2(\mathbb{F}_\ell)$ is contained in a Borel subgroup, in the
+normaliser of a split or a nonsplit Cartan subgroup, or in the preimage of an exceptional subgroup of
+$\mathrm{PGL}_2(\mathbb{F}_\ell)$. Do not state this as a list of maximal subgroups without care: for $\ell = 3$,
+$N_s(\mathbb{F}_3) \subset N_{ns}(\mathbb{F}_3)$ in the standard models (6.6), and for $\ell = 5$, $N_s(\mathbb{F}_5)$ (order 32, a Sylow
+2-subgroup) lies in a subgroup of order 96 with projective image $S_4$ (checked by enumeration). Reference:
+Serre72 Section 2; Dickson's 1901 book (add to `bib/ch01.bib` if cited). Paper use: background for Proposition
+prop:ns (the list of possible images at $\ell = 3$ that the paper attributes to Zywina15) and for Chapter 11;
+Chapter 4 restates it for $\mathrm{PGL}_2$.
+
+________________________________________________________________________________
+
+## Section 6. The group GL_2(F_3) in full, and GL_2(F_5), GL_2(F_7)
+
+Notation for this section: $J = \begin{pmatrix}0&-1\\1&0\end{pmatrix}$ (order 4, $J^2 = -I$); $\sigma = \mathrm{diag}(1,-1)$;
+$w = \begin{pmatrix}0&1\\1&0\end{pmatrix} = J\sigma$; $u = \begin{pmatrix}1&1\\0&1\end{pmatrix}$. The paper's generator
+$\begin{pmatrix}0&1\\-1&0\end{pmatrix}$ of $C_4$ is $J^{-1} = -J$. The four lines of $\mathbb{F}_3^2$ are $\infty = [1:0]$, $0 = [0:1]$,
+$1 = [1:1]$, $-1 = [-1:1]$ (convention C1).
+
+**6.1 `prop:groups:gl23classes` (proposition, PH).** $\mathrm{GL}_2(\mathbb{F}_3)$ has order 48, centre $\{\pm I\}$, commutator
+subgroup $\mathrm{SL}_2(\mathbb{F}_3)$, and exactly 8 conjugacy classes:
+
+| rep. | size | order | det | trace | char. poly | lines fixed | image in $S_4$ |
+|-|-|-|-|-|-|-|-|
+| $I$ | 1 | 1 | 1 | $-1$ | $(X-1)^2$ | 4 | identity |
+| $-I$ | 1 | 2 | 1 | $1$ | $(X+1)^2$ | 4 | identity |
+| $\sigma$ | 12 | 2 | $-1$ | 0 | $X^2 - 1$ | 2 | transposition |
+| $u$ | 8 | 3 | 1 | $-1$ | $(X-1)^2$ | 1 | 3-cycle |
+| $J$ | 6 | 4 | 1 | 0 | $X^2 + 1$ | 0 | double transposition |
+| $-u$ | 8 | 6 | 1 | $1$ | $(X+1)^2$ | 1 | 3-cycle |
+| $\begin{pmatrix}1&-1\\1&1\end{pmatrix}$ | 6 | 8 | $-1$ | $-1$ | $X^2 + X - 1$ | 0 | 4-cycle |
+| $\begin{pmatrix}0&1\\1&1\end{pmatrix}$ | 6 | 8 | $-1$ | $1$ | $X^2 - X - 1$ | 0 | 4-cycle |
+
+The representative $\begin{pmatrix}1&-1\\1&1\end{pmatrix}$ of the first order-8 class lies in $C_{ns}(\mathbb{F}_3)$ (it is
+$1 + \sqrt{-1}$; trace $2 = -1$, determinant $2 = -1$); both order-8 classes meet $C_{ns}(\mathbb{F}_3)$: with $a$ as in 6.6, $a$ and $a^3$ have trace $-1$, while $a^5 = -a$ and $a^7 = -a^3$ have trace $1$.
+Sizes sum to 48. Classes are determined by the characteristic polynomial except that $(X \mp 1)^2$ splits into
+the scalar and the non-scalar class. Element-order statistics: orders $1, 2, 3, 4, 6, 8$ occur $1, 13, 8, 6, 8,
+12$ times. Reference: direct computation (verified by enumeration). Paper use: Proposition prop:ns, Lemma
+lem:IV, Remark rem:types (orders and fixed lines of the possible images of inertia mod 3), Lemma lem:h0.
+
+**6.2 `conv:groups:models` (convention).** Standard models, fixed for the whole book (with $\varepsilon = -1$ in 5.8):
+$C_s(\mathbb{F}_3) = \{\mathrm{diag}(\pm1,\pm1)\} \simeq V_4$; $N_s(\mathbb{F}_3) = C_s(\mathbb{F}_3) \cup wC_s(\mathbb{F}_3) = \langle J, \sigma\rangle$;
+$C_{ns}(\mathbb{F}_3) = \{\begin{pmatrix}a&-b\\b&a\end{pmatrix} : (a,b) \ne (0,0)\}$ (the image of $\mathbb{F}_3[i]^\times = \mathbb{F}_9^\times$, $i^2 = -1$, $J \leftrightarrow i$);
+$N_{ns}(\mathbb{F}_3) = C_{ns}(\mathbb{F}_3) \cup C_{ns}(\mathbb{F}_3)\sigma$; $\mathrm{B}(\mathbb{F}_3)$ upper triangular; $\mathrm{U} = \langle u\rangle$;
+$Q_8 = \{\pm I, \pm J, \pm\begin{pmatrix}1&1\\1&-1\end{pmatrix}, \pm\begin{pmatrix}1&-1\\-1&-1\end{pmatrix}\}$; $C_4 = \langle J\rangle = \{\pm I, \pm J\}$.
+"Image $N_s(\mathbb{F}_3)$" always means "conjugate to this model" (C5). With these models
+$N_s(\mathbb{F}_3) \subset N_{ns}(\mathbb{F}_3)$ and $C_4 = N_s(\mathbb{F}_3) \cap \mathrm{SL}_2(\mathbb{F}_3) = C_{ns}(\mathbb{F}_3) \cap \mathrm{SL}_2(\mathbb{F}_3)$ (verified).
+
+**6.3 `prop:groups:gl23subgroups` (proposition, PH; the writer may present the table with a remark that it
+was checked by computer, and prove only the rows used).** $\mathrm{GL}_2(\mathbb{F}_3)$ has 55 subgroups in 16 conjugacy classes:
+
+| order | type | conjugates | stable lines | orbit sizes on $\mathbb{P}^1$ | det onto $\mathbb{F}_3^\times$ | has det $-1$, trace 0 | name |
+|-|-|-|-|-|-|-|-|
+| 1 | $1$ | 1 | 4 | 1,1,1,1 | no | no | |
+| 2 | $C_2$ | 1 | 4 | 1,1,1,1 | no | no | $\{\pm I\}$ |
+| 2 | $C_2$ | 12 | 2 | 1,1,2 | yes | yes | $\langle\sigma\rangle$, 3Cs.1.1 |
+| 3 | $C_3$ | 4 | 1 | 1,3 | no | no | $\mathrm{U}$ |
+| 4 | $V_4$ | 6 | 2 | 1,1,2 | yes | yes | $C_s$, 3Cs |
+| 4 | $C_4$ | 3 | 0 | 2,2 | no | no | $\langle J\rangle$ |
+| 6 | $S_3$ | 4 | 1 | 1,3 | yes | yes | 3B.1.1 |
+| 6 | $S_3$ | 4 | 1 | 1,3 | yes | yes | 3B.1.2 |
+| 6 | $C_6$ | 4 | 1 | 1,3 | no | no | $\{\pm I\} \times \mathrm{U}$ |
+| 8 | $C_8$ | 3 | 0 | 4 | yes | no | $C_{ns}$, 3Cn |
+| 8 | $D_4$ | 3 | 0 | 2,2 | yes | yes | $N_s$, 3Ns |
+| 8 | $Q_8$ | 1 | 0 | 4 | no | no | $Q_8$ |
+| 12 | $D_6$ | 4 | 1 | 1,3 | yes | yes | $\mathrm{B}$, 3B |
+| 16 | $SD_{16}$ | 3 | 0 | 4 | yes | yes | $N_{ns}$, 3Nn |
+| 24 | $\mathrm{SL}_2(\mathbb{F}_3)$ | 1 | 0 | 4 | no | no | |
+| 48 | $\mathrm{GL}_2(\mathbb{F}_3)$ | 1 | 0 | 4 | yes | yes | |
+
+Consequences: the subgroups with surjective determinant form 9 conjugacy classes, and all of them except
+$C_{ns}(\mathbb{F}_3)$ contain an element of determinant $-1$ and trace 0; every subgroup of order divisible by 3 either
+contains $\mathrm{SL}_2(\mathbb{F}_3)$ or stabilises a line (Dickson 5.10(a) for $\ell = 3$). Reference: computation. Paper use:
+Proposition prop:ns, Section sec:eis (3Cs.1.1, 3B.1.1), Section sec:anomaly (3Ns).
+
+**6.4 `prop:groups:sl23` (proposition, PH).** (i) $\mathrm{SL}_2(\mathbb{F}_3)$ has order 24 and element-order statistics
+$1, 1, 8, 6, 8$ for orders $1, 2, 3, 4, 6$; $-I$ is its unique element of order 2 (5.1(iv)). (ii) The 8 elements of
+order dividing 4 form the subgroup $Q_8$ of 6.2, which is the unique Sylow 2-subgroup of $\mathrm{SL}_2(\mathbb{F}_3)$, hence
+characteristic in $\mathrm{SL}_2(\mathbb{F}_3)$ and normal in $\mathrm{GL}_2(\mathbb{F}_3)$; it is isomorphic to $Q_8$ by 2.5 (non-abelian, unique
+involution), with $i = J$, $j = \begin{pmatrix}1&1\\1&-1\end{pmatrix}$. (iii) $\mathrm{SL}_2(\mathbb{F}_3) = Q_8 \rtimes \mathrm{U} \simeq Q_8 \rtimes C_3$, with $u$
+permuting $i, j, k$ cyclically up to sign. (iv) $[\mathrm{SL}_2(\mathbb{F}_3), \mathrm{SL}_2(\mathbb{F}_3)] = Q_8$, and $\mathrm{SL}_2(\mathbb{F}_3)$ has no subgroup of
+order 12. (v) $\mathrm{SL}_2(\mathbb{F}_3)/\{\pm I\} \simeq A_4$; $\mathrm{SL}_2(\mathbb{F}_3) \not\simeq S_4$ (one involution versus nine);
+$\mathrm{GL}_2(\mathbb{F}_3)/Q_8 \simeq S_3$. (vi) $Q_8$ acts transitively on the four lines; its image in $S_4$ is the normal $V_4$.
+Reference: direct computation; DF Chapter 4 (exercises). Paper use: Proposition prop:ns (determinant-one
+subgroups $\mathrm{SL}_2(\mathbb{F}_3)$ and $Q_8$).
+
+**6.5 `prop:groups:ns3` (proposition, PH).** (i) $N_s(\mathbb{F}_3) = \langle J, \sigma\rangle$ has order 8 and is dihedral,
+$N_s(\mathbb{F}_3) \simeq D_4$, by 2.4 with $r = J$, $s = \sigma$, $\sigma J \sigma^{-1} = J^{-1}$. Its elements: $\pm I$, $\pm J$ and the four
+elements $\pm\sigma$, $\pm w$, which are exactly its elements of determinant $-1$, all of trace 0 and order 2. (ii) It is
+the normaliser of $C_s(\mathbb{F}_3)$ and the stabiliser of the pair of lines $\{\infty, 0\}$; it has 3 conjugates, one for
+each partition of the four lines into two pairs. (iii) Its determinant-one subgroup is
+$C_4 = \langle J\rangle \simeq C_4$, cyclic, abelian, generated by (the paper's) $-J$. (iv) Orbits on the four lines:
+$\{\infty, 0\}$ (the two lines of the Cartan subgroup) and $\{1, -1\}$ (the other two), each of size 2; $C_4$ has the
+same two orbits ($J$ swaps $\infty$ and $0$, and $1$ and $-1$). (v) $N_s(\mathbb{F}_3)$ stabilises no line of $\mathbb{F}_3^2$, and no
+line of $\overline{\mathbb{F}}_3^2$ (5.7: non-abelian of order prime to 3). $C_4$ stabilises no line of $\mathbb{F}_3^2$ ($X^2 + 1$ is
+irreducible over $\mathbb{F}_3$), but stabilises the two eigenlines of $J$ in $\mathbb{F}_9^2$, with eigenvalues $\pm i \in \mathbb{F}_9$,
+interchanged by $\sigma$ (the representation-theoretic reading, $\psi \oplus \psi^{-1}$ with $\psi$ of order 4 and
+$\mathrm{Ind}\,\psi$, is Chapter 4). (vi) Image in $\mathrm{PGL}_2(\mathbb{F}_3) = S_4$: the non-normal Klein group generated by the
+transpositions $(\infty\ 0)$ and $(1\ -1)$. (vii) $N_s(\mathbb{F}_3)$ is contained, with index 2, in the Sylow 2-subgroup
+$N_{ns}(\mathbb{F}_3)$ (6.6). Reference: direct computation. Paper use: Proposition prop:ns ("$N_s(\mathbb{F}_3)$ (order 8)",
+"the cyclic group of order 4 generated by $\begin{pmatrix}0&1\\-1&0\end{pmatrix}$", "two orbits of size two (the two lines
+of the Cartan subgroup and the two others)"), Section sec:anomaly and Remark rem:ns (image 3Ns), Lemma lem:h0
+(the case $\bar\rho \simeq \bar\rho \otimes \chi_{-3}$).
+
+**6.6 `prop:groups:nns3` (proposition, PH).** (i) $C_{ns}(\mathbb{F}_3) \simeq C_8$, generated by
+$a = \begin{pmatrix}1&-1\\1&1\end{pmatrix}$ ($= 1 + i$; $a^2 = 2i = -J$, $a^4 = -I$). (ii) $N_{ns}(\mathbb{F}_3) = \langle a, \sigma\rangle$ has
+order 16 and $\sigma a \sigma^{-1} = a^3$ (conjugation is the Frobenius $c \mapsto c^3$ of $\mathbb{F}_9$), so
+$N_{ns}(\mathbb{F}_3) \simeq SD_{16}$ by 2.6; element-order statistics $1, 5, 6, 4$ for orders $1, 2, 4, 8$. (iii) It is a Sylow
+2-subgroup of $\mathrm{GL}_2(\mathbb{F}_3)$ ($48 = 16 \cdot 3$), with 3 conjugates. (iv) Its determinant-one subgroup is $Q_8$ (the
+$c\sigma$ with $N(c) = -1$, of order 4, together with $C_{ns} \cap \mathrm{SL}_2 = \langle J\rangle$); its three index-2 subgroups are
+$C_{ns}(\mathbb{F}_3) \simeq C_8$, $N_s(\mathbb{F}_3) = \langle a^2, \sigma\rangle \simeq D_4$ and $Q_8 = \langle a^2, a\sigma\rangle$. (v) Its elements of
+determinant $-1$ and trace 0 are the four involutions $c\sigma$ with $N(c) = 1$, namely $\pm\sigma, \pm w$ (the same
+four as in $N_s(\mathbb{F}_3)$); $C_{ns}(\mathbb{F}_3)$ itself contains none: its elements of determinant $-1$ are the four elements
+of order 8, of trace $\pm 1$. (vi) $C_{ns}(\mathbb{F}_3)$, hence $N_{ns}(\mathbb{F}_3)$, acts transitively on the four lines
+($C_{ns}/\{\pm I\} \simeq C_4$ acts simply transitively); image in $S_4$: a Sylow 2-subgroup $D_4$; $Q_8$ is also
+transitive. Reference: direct computation. Paper use: Proposition prop:ns ("$N_{ns}(\mathbb{F}_3)$ (order 16)", its
+determinant-one subgroup $Q_8$, transitivity; "the nonsplit Cartan subgroup itself being excluded by the last
+condition"), Section sec:anomaly (no curve with image $N_{ns}(\mathbb{F}_3)$ violates the inequality).
+
+**6.7 `thm:groups:threeimages` (theorem, PH).** (Group-theoretic core of Proposition prop:ns.) Let
+$H \le \mathrm{GL}_2(\mathbb{F}_3)$ satisfy: (a) $\det(H) = \mathbb{F}_3^\times$; (b) $H$ stabilises no line of $\mathbb{F}_3^2$; (c) $H$ contains an element of
+determinant $-1$ and trace 0. Then $H$ is conjugate to exactly one of $\mathrm{GL}_2(\mathbb{F}_3)$, $N_{ns}(\mathbb{F}_3)$, $N_s(\mathbb{F}_3)$
+(orders 48, 16, 8). Their determinant-one subgroups $H \cap \mathrm{SL}_2(\mathbb{F}_3)$, of index 2 in $H$, are $\mathrm{SL}_2(\mathbb{F}_3)$, $Q_8$
+and $C_4 = \langle J\rangle$ respectively; the first two stabilise no line of $\overline{\mathbb{F}}_3^2$ (5.7), the third is abelian and
+stabilises two lines of $\mathbb{F}_9^2$. The subgroup $C_{ns}(\mathbb{F}_3)$ satisfies (a) and (b) but not (c). Proof (to be given in
+full): if $3 \mid \#H$, a Sylow 3-subgroup is some $\mathrm{U}_L$ (5.6); it is not normal in $H$, otherwise
+$H \le N(\mathrm{U}_L) = \mathrm{B}_L$ would stabilise $L$; so $H$ contains all four $\mathrm{U}_L$, hence all 8 elements of order 3,
+which generate $\mathrm{SL}_2(\mathbb{F}_3)$ (they generate a subgroup of $\mathrm{SL}_2(\mathbb{F}_3)$ with at least 9 elements, and there is no
+subgroup of order 12 by 6.4(iv)); with (a), $H = \mathrm{GL}_2(\mathbb{F}_3)$. If $3 \nmid \#H$, $H$ is a 2-group, so by Sylow it is
+conjugate into $N_{ns}(\mathbb{F}_3)$; run through the subgroups of $SD_{16}$ using 6.6: of the index-2 subgroups only
+$N_s$ satisfies (a), (b), (c); subgroups of order at most 4 with (a) are conjugate to $\langle\sigma\rangle$ or $C_s$ and
+stabilise a line. Reference: proved here; for the list of images of $\bar\rho_{E,3}$ see Zywina15 and Chapter 11.
+Paper use: Proposition prop:ns (the list of three images, the determinant-one subgroups), Lemma lem:h0 (for
+$\ell = 3$, "absolutely irreducible on $\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q}(\sqrt{-3}))$" fails exactly in the $N_s$ case), Theorem
+thm:main hypothesis at $\ell = 3$.
+
+**6.8 `cor:groups:orbitdichotomy` (corollary, PH).** For $H$ as in 6.7, the following are equivalent:
+(i) $H$ is conjugate to $N_s(\mathbb{F}_3)$; (ii) $H$ has two orbits (each of size 2) on the four lines of $\mathbb{F}_3^2$;
+(iii) $H$ is not transitive on the four lines; (iv) $H \cap \mathrm{SL}_2(\mathbb{F}_3)$ is abelian; (v) $H \cap \mathrm{SL}_2(\mathbb{F}_3)$ stabilises a
+line of $\overline{\mathbb{F}}_3^2$. Otherwise $H$ is transitive on the four lines. Reference: 6.5, 6.6, 6.7. Paper use:
+Proposition prop:ns (the 3-division polynomial factors as two irreducible quadratics exactly in the $N_s$ case and
+is irreducible otherwise; the translation from orbits to factors is Chapters 5 and 9), Section sec:data and
+the appendix (the PARI test `ns3`), Section sec:anomaly.
+
+**6.9 `prop:groups:cc` (proposition, PH).** Let $q$ be odd. An element $g \in \mathrm{GL}_2(\mathbb{F}_q)$ has $\det g = -1$ and
+$\mathrm{tr}\, g = 0$ iff its characteristic polynomial is $X^2 - 1$ iff $g$ is conjugate to $\sigma = \mathrm{diag}(1,-1)$; such $g$
+has order 2, fixes exactly two lines (its eigenlines) and, for $q = 3$, swaps the other two. They form one class
+of $q(q+1)$ elements (12 for $q = 3$). Counts in the standard subgroups for $q = 3$: $\mathrm{GL}_2$: 12; $\mathrm{B}$: 6; $N_s$: 4;
+$N_{ns}$: 4; $C_s$: 2; $C_{ns}$: 0; $\mathrm{SL}_2$: 0. Reference: elementary. Paper use: Proposition prop:ns ("contain an
+element of determinant $-1$ and trace 0 (complex conjugation)"); Chapter 11 (complex conjugation has
+determinant $-1$ and trace 0, and for $\ell$ odd its distinct eigenvalues $\pm1$ make irreducibility over
+$\mathbb{F}_\ell$ equivalent to absolute irreducibility).
+
+**6.10 `ex:groups:sutherland3` (worked example and convention; group facts PH, labels ST).** Sutherland's labels
+at $\ell = 3$ (Sutherland16) attached to the standard models, defined intrinsically so that the row/column
+convention does not matter: 3Cs.1.1: image $\{\mathrm{diag}(1, \pm1)\}$, i.e. $E[3] \simeq \mathbb{Z}/3 \oplus \mu_3$ (order 2, index 24);
+3Cs: $C_s$ (order 4); 3B.1.1: $\{\begin{pmatrix}1&*\\0&*\end{pmatrix}\}$, a fixed nonzero vector, i.e. a rational point of order 3
+(order 6); 3B.1.2: $\{\begin{pmatrix}*&*\\0&1\end{pmatrix}\}$, a stable line on which the group acts by the determinant, with
+trivial quotient (order 6); 3Ns: $N_s(\mathbb{F}_3)$ (order 8); 3B: $\mathrm{B}(\mathbb{F}_3)$ (order 12); 3Nn: $N_{ns}(\mathbb{F}_3)$ (order 16);
+3Cn: $C_{ns}(\mathbb{F}_3)$ (order 8; never the image for $E/\mathbb{Q}$, by 6.9 and the presence of complex conjugation,
+Chapter 11). Surjective image: $\mathrm{GL}_2(\mathbb{F}_3)$, no proper label. These are the 9 classes with surjective
+determinant in 6.3. Reference: Sutherland16 (tables of subgroup labels); Zywina15 (which occur for $E/\mathbb{Q}$).
+Paper use: Section sec:anomaly and the abstract (3Ns), Section sec:eis and Conjecture conj:eis (3Cs.1.1,
+3B.1.1, 3B), Section sec:data (images from the tables).
+
+**6.11 `prop:groups:imagesS4` (proposition, PH).** Under $\mathrm{PGL}_2(\mathbb{F}_3) \simeq S_4$ (5.4): $\mathrm{GL}_2 \mapsto S_4$;
+$\mathrm{SL}_2 \mapsto A_4$; $N_{ns} \mapsto D_4$ (a Sylow 2-subgroup); $Q_8 \mapsto$ the normal $V_4$; $N_s \mapsto$ a non-normal $V_4$;
+$C_{ns} \mapsto C_4$; $C_s \mapsto C_2$ (a transposition); $\langle J\rangle \mapsto C_2$ (a double transposition); $\mathrm{B} \mapsto S_3$ (a
+point stabiliser); $\mathrm{U} \mapsto A_3$. Image orders 24, 12, 8, 4, 4, 4, 2, 2, 6, 3 (verified). Reference:
+computation. Paper use: background for Proposition prop:ns (the Galois group of the 3-division polynomial is the
+image in $S_4$, Chapter 5).
+
+**6.12 `ex:groups:gl2f5f7` (worked example, PH for orders, ST for the isomorphisms).** For $q = 5$ and $q = 7$
+($\varepsilon = 2$ and $\varepsilon = 3$ respectively): $\#\mathrm{GL}_2 = 480$, $2016$; $\#\mathrm{SL}_2 = 120$, $336$; $\#\mathrm{PGL}_2 = 120$, $336$;
+$\#\mathrm{PSL}_2 = 60$, $168$; $\#\mathrm{B} = 80$, $252$; $\#C_s = 16$, $36$; $\#N_s = 32$, $72$; $\#C_{ns} = 24$, $48$; $\#N_{ns} = 48$, $96$;
+$\#\mathbb{P}^1 = 6$, $8$. $\mathrm{PGL}_2(\mathbb{F}_5) \simeq S_5$, $\mathrm{PSL}_2(\mathbb{F}_5) \simeq A_5$, $\mathrm{PSL}_2(\mathbb{F}_7) \simeq \mathrm{GL}_3(\mathbb{F}_2)$ simple. At $\ell = 5$ the
+exceptional case $\bar G \simeq S_4$ of 5.10 occurs inside $\mathrm{PGL}_2(\mathbb{F}_5) \simeq S_5$ and contains the image of $N_s(\mathbb{F}_5)$.
+For $\ell \ge 5$ the character $\chi_{\ell^*}$ differs from $\bar\chi_\ell$, so the $\ell = 3$ coincidence of 6.7 has no analogue
+(Lemma lem:h0; Chapter 4). Reference: as 5.2, 5.4. Paper use: background (the computations at
+$\ell = 5, 7$, Section sec:data).
+
+________________________________________________________________________________
+
+## Section 7. Inverse limits and profinite groups
+
+**7.1 `def:groups:inverselimit` (definition and proposition; PH except Tychonoff, ST).** An inverse system of
+groups $(G_n, \pi_n\colon G_{n+1} \to G_n)_{n \ge 1}$ (index set $\mathbb{N}$; the general directed index set in a remark, needed
+for Galois groups in Chapter 5); its inverse limit $\varprojlim G_n = \{(g_n) \in \prod G_n : \pi_n(g_{n+1}) = g_n\}$, with
+the universal property. Give each finite $G_n$ the discrete topology and $\prod G_n$ the product topology; then
+$\varprojlim G_n$ is a closed subgroup, compact (Tychonoff) and Hausdorff. A profinite group is a topological group
+isomorphic to an inverse limit of finite groups. Reference: Neukirch Chapter IV, Sections 1 and 2; NSW Chapter I,
+Section 1. Paper use: background ($G_\mathbb{Q}$, $G_{\mathbb{Q}_p}$, $I_p$ and continuity throughout; Section 1.1 of the paper).
+
+**7.2 `ex:groups:zp` (worked example, PH for the algebra).** $\mathbb{Z}_p = \varprojlim \mathbb{Z}/p^n$ (a ring; its analysis and its
+description as a completion are Chapter 7); $\mathbb{Z}_p^\times = \varprojlim (\mathbb{Z}/p^n)^\times$, and an element of $\mathbb{Z}_p$ is a unit iff
+its image in $\mathbb{Z}/p$ is nonzero; $\mathbb{Z}_p$ is torsion-free and its open subgroups are the $p^n\mathbb{Z}_p$;
+$\hat{\mathbb{Z}} = \varprojlim \mathbb{Z}/n \simeq \prod_p \mathbb{Z}_p$ (by 2.2); foretaste: $\mathbb{Z}_\ell(1) = \varprojlim \mu_{\ell^n}$, isomorphic to $\mathbb{Z}_\ell$ as a group
+after choosing a compatible system of roots of unity (Chapters 5 and 7). Reference: Neukirch Chapter II,
+Section 1 (for $\mathbb{Z}_p$), Chapter IV, Section 2. Paper use: background (coefficients $\mathbb{Z}_\ell$, $T_\ell E$, $\mathbb{Z}_\ell(1)$ in Lemma
+lem:tamfactor, $\mathbb{Q}_\ell/\mathbb{Z}_\ell$ in Lemma lem:h0).
+
+**7.3 `prop:groups:profinite` (proposition; PH except (v), ST).** Let $G = \varprojlim G_n$ be profinite and $U_n$ the
+kernel of $G \to G_n$. (i) The $U_n$ form a basis of open neighbourhoods of 1. (ii) A subgroup of $G$ is open iff it
+is closed of finite index. (iii) A homomorphism from $G$ to a finite group, continuous for the discrete topology,
+has open kernel; if the maps $G \to G_n$ are surjective, it factors through some $G_n$. (iv) Closed subgroups and
+quotients by closed normal subgroups of profinite groups are profinite; the image of a continuous homomorphism
+from a profinite group to a Hausdorff topological group (such as $\mathrm{GL}_2(\mathbb{Z}_\ell)$) is closed. (v) A topological group
+is profinite iff it is compact, Hausdorff and totally disconnected. (vi) A pro-$p$ group is an inverse limit of
+finite $p$-groups; closed subgroups and quotients of pro-$p$ groups are pro-$p$; every continuous homomorphism
+from a pro-$p$ group to a finite group of order prime to $p$ is trivial. Reference: Neukirch Chapter IV, Section 2;
+NSW Chapter I, Section 1. Paper use: background (Lemma lem:tamfactor: "the kernel of $I \to \langle t\rangle$ has
+trivial pro-$\ell$ quotient", made precise in Chapter 7; Lemma lem:h0: $\rho \bmod \ell^k$ factors through a finite
+quotient of $G_\mathbb{Q}$).
+
+**7.4 `prop:groups:gl2zl` (proposition, PH).** Let $\ell$ be a prime. (i) $\mathrm{GL}_2(\mathbb{Z}_\ell) = \varprojlim \mathrm{GL}_2(\mathbb{Z}/\ell^n)$, and
+each reduction map $\mathrm{GL}_2(\mathbb{Z}/\ell^{n+1}) \to \mathrm{GL}_2(\mathbb{Z}/\ell^n)$ is surjective with kernel
+$\{1 + \ell^n X\} \simeq (M_2(\mathbb{F}_\ell), +)$ of order $\ell^4$; so $\#\mathrm{GL}_2(\mathbb{Z}/\ell^n) = \ell^{4(n-1)}(\ell^2-1)(\ell^2-\ell)$ (for $\ell = 3$,
+$n = 2$: $81 \cdot 48 = 3888$). (ii) The kernel $\Gamma(\ell) = 1 + \ell M_2(\mathbb{Z}_\ell)$ of reduction mod $\ell$ is a pro-$\ell$ group.
+(iii) If $\ell$ is odd, $\Gamma(\ell)$ is torsion-free (if $g = 1 + \ell^k A$ with $A \not\equiv 0 \bmod \ell$, then
+$g^m \equiv 1 + m\ell^k A \bmod \ell^{k+1}$ for $\ell \nmid m$ and $g^\ell \equiv 1 + \ell^{k+1}A \bmod \ell^{k+2}$); hence every finite
+subgroup of $\mathrm{GL}_2(\mathbb{Z}_\ell)$ maps isomorphically onto its image in $\mathrm{GL}_2(\mathbb{F}_\ell)$. For $\ell = 2$ this fails ($-I \in \Gamma(2)$).
+Reference: elementary; Serre72 Section 4 for context. Paper use: Lemma lem:IV (the image of $I_q$ in
+$\mathrm{Aut}(T_3E) = \mathrm{GL}_2(\mathbb{Z}_3)$ is cyclic of order 3 and its image in $\mathrm{Aut}(E[3])$ is nontrivial, consistently with (iii)),
+Lemma lem:h0 (the representations $\rho \bmod \ell^k$ and the largest $k$ with $\rho \bmod \ell^k \simeq (\rho\otimes\chi_\ell) \bmod \ell^k$),
+Lemma lem:tamagawa-exp ($\rho \bmod \ell^t$).
+
+**7.5 `ex:groups:galoisprofinite` (worked example, ST; forward pointers).** Statements, proved in Chapters 5
+and 7: $\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q}) = \varprojlim \mathrm{Gal}(K/\mathbb{Q})$ over finite Galois $K/\mathbb{Q}$; $\mathrm{Gal}(\mathbb{Q}(\mu_{\ell^\infty})/\mathbb{Q}) \simeq \mathbb{Z}_\ell^\times$ (the
+cyclotomic character); $\mathrm{Gal}(\overline{\mathbb{F}}_q/\mathbb{F}_q) \simeq \hat{\mathbb{Z}}$, topologically generated by Frobenius; a procyclic group
+(topologically generated by one element) is a quotient of $\hat{\mathbb{Z}}$; the tame inertia group
+$\prod_{\ell \ne p}\mathbb{Z}_\ell(1)$ is procyclic and the wild inertia group is pro-$p$. Reference: Neukirch Chapter IV,
+Section 1; Chapter II, Section 9; Chapter 5 and Chapter 7 of this book. Paper use: background (Section 1.1;
+Lemma lem:tamfactor; Lemma lem:IV "the image is tame since $q \ne 3$, hence cyclic").
+
+________________________________________________________________________________
+
+## Coverage check: PLAN.md scope and paper hooks to line-up items
+
+| PLAN.md scope item or paper hook | line-up items |
+|-|-|
+| groups, subgroups, cosets | 1.1, 1.2 |
+| normal subgroups, quotients | 1.4, 1.6 |
+| homomorphism theorems | 1.5, 1.6 |
+| cyclic groups | 1.3, 2.2 |
+| direct and semidirect products | 2.1, 2.2, 2.3 |
+| group actions, orbits and stabilisers, orbit-stabiliser | 3.1, 3.2, 3.3, 3.4 |
+| Sylow theorems (statement and use for small groups) | 3.6, 3.7, 3.8 |
+| p-groups | 3.5, 7.3(vi) |
+| quaternion group $Q_8$ | 2.5, 6.4 |
+| dihedral groups | 2.4, 6.5 |
+| finite abelian groups (structure theorem) | 1.8, 4.1, 4.2, 4.3, 4.4 |
+| profinite groups as inverse limits, $\mathbb{Z}_p$, Galois groups to come | 7.1, 7.2, 7.3, 7.4, 7.5 |
+| $\mathrm{GL}_2(F)$, $\mathrm{SL}_2(F)$, $\mathrm{PGL}_2$, $\mathrm{PSL}_2$ over a field | 5.1, 5.4 |
+| orders over $\mathbb{F}_q$ | 5.2 |
+| Borel subgroups | 5.5 |
+| split and nonsplit Cartan subgroups and their normalisers | 5.8, 5.9 |
+| unipotent elements | 5.6 |
+| action on $\mathbb{P}^1(\mathbb{F}_q)$, orbits of subgroups on lines | 5.3, 5.9(v), 6.5(iv), 6.6(vi), 6.8 |
+| $\mathrm{GL}_2(\mathbb{F}_3)$ of order 48 | 6.1, 6.3 |
+| $\mathrm{SL}_2(\mathbb{F}_3)$ of order 24, $Q_8$ | 6.4 |
+| $N_s(\mathbb{F}_3)$ of order 8, dihedral | 6.5 |
+| $N_{ns}(\mathbb{F}_3)$ of order 16, semidihedral | 2.6, 6.6 |
+| determinant-one subgroups $\mathrm{SL}_2(\mathbb{F}_3)$, $Q_8$, $C_4$ | 6.4, 6.5(iii), 6.6(iv), 6.7 |
+| elements of determinant $-1$ and trace 0 | 6.9, 6.5(i), 6.6(v) |
+| two orbits of size two of $N_s(\mathbb{F}_3)$ versus transitivity of $N_{ns}(\mathbb{F}_3)$, $\mathrm{GL}_2(\mathbb{F}_3)$ | 6.5(iv), 6.6(vi), 6.8 |
+| $\mathrm{GL}_2(\mathbb{F}_5)$, $\mathrm{GL}_2(\mathbb{F}_7)$ orders | 5.2, 6.12 |
+| Dickson's classification (statement), maximal subgroup types | 5.10, 6.3 (case $\ell = 3$) |
+| Proposition prop:ns | 1.6(ii), 3.3, 5.4(ii), 5.7, 5.9, 6.2, 6.4 to 6.9, 6.11 |
+| Lemma lem:IV | 5.6, 6.1, 7.4 |
+| Remark rem:types | 5.6(iv), 6.1 |
+| Section sec:anomaly (image 3Ns) | 6.5, 6.8, 6.10 |
+| the Eisenstein case (Borel image), Section sec:eis, Conjecture conj:eis | 5.5, 6.3, 6.10 |
+| Lemma lem:h0 | 1.3(iv), 6.7, 6.9, 7.3, 7.4 |
+| also: Lemma lem:tamfactor, Lemma lem:crit, Lemma lem:tamagawa-exp (background) | 1.3, 2.2, 4.1, 4.3, 7.4 |
+
+________________________________________________________________________________
+
+## Part 2. Section-by-section plan with target line counts
+
+Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,200).
+
+| section | title | contents | target lines |
+|-|-|-|-|
+| (starred) | Core results at a glance | the card: items 1.1 to 7.5, each stated precisely with tag and `\Cref` | (excluded) |
+| (starred) | Where the paper uses this chapter | prop:ns, lem:IV, rem:types, sec:anomaly, sec:eis and conj:eis, lem:h0; lem:tamfactor, lem:crit as background | 40 |
+| 1 | Groups, subgroups, cosets, quotients and cyclic groups | 1.1 to 1.8; conventions C1 to C5 as a `convention` environment at the start | 230 |
+| 2 | Products and the small groups | 2.1 to 2.7; the comparison table of groups of order 16 | 200 |
+| 3 | Group actions and the Sylow theorems | 3.1 to 3.8 | 260 |
+| 4 | Finite abelian groups | 4.1 to 4.4 | 150 |
+| 5 | Matrix groups over a field | 5.1 to 5.10; the orders table; one figure-free description of $\mathbb{P}^1(\mathbb{F}_3)$ | 330 |
+| 6 | The group $\mathrm{GL}_2(\mathbb{F}_3)$ in full | 6.1 to 6.12; class table, subgroup table, the theorem 6.7 with full proof, `paperlink` boxes for prop:ns, lem:IV, rem:types, sec:anomaly | 380 |
+| 7 | Inverse limits and profinite groups | 7.1 to 7.5 | 170 |
+| 8 | Exercises | 14 exercises, graded (list below) | 110 |
+| 9 | Notes and references | DF, Lang, Serre72, Sutherland16, Zywina15, Neukirch, NSW; which numbers were cited | 40 |
+| | **total** | | **1910** |
+
+Exercises (Section 8), graded easy to harder:
+1. Show $\#\mathrm{GL}_2(\mathbb{Z}/9) = 3888$ and $\#\mathrm{SL}_2(\mathbb{Z}/9) = 648$.
+2. Compute the conjugacy classes of $D_4$ and of $Q_8$; deduce that they have the same character degrees (RHB link).
+3. Prove that $C_8 \times C_2$, $D_8$, $SD_{16}$, $Q_{16}$, $M_{16}$ are pairwise non-isomorphic (element orders).
+4. Find all subgroups of $SD_{16}$ and identify each.
+5. Verify the class table 6.1 and use the orbit-counting lemma 3.4 to count the orbits of $N_s(\mathbb{F}_3)$ on $\mathbb{P}^1(\mathbb{F}_3)$.
+6. Check the paper's claim that the determinant-one subgroup of $N_s(\mathbb{F}_3)$ is cyclic of order 4 generated by
+   $\begin{pmatrix}0&1\\-1&0\end{pmatrix}$, and that of $N_{ns}(\mathbb{F}_3)$ is $Q_8$.
+7. Check the paper's claim that $N_s(\mathbb{F}_3)$ has two orbits of size two on the four lines and $N_{ns}(\mathbb{F}_3)$ is transitive.
+8. Show that $C_{ns}(\mathbb{F}_3)$ contains no element of determinant $-1$ and trace 0, and conclude that 3Cn cannot
+   contain the image of a complex conjugation.
+9. Show that a subgroup of $\mathrm{GL}_2(\mathbb{F}_3)$ of order 6 stabilises a line; classify the subgroups of order 6 up to
+   conjugacy (two copies of $S_3$, one $C_6$).
+10. Prove that $\det g$ is the sign of the permutation of the four lines for $g \in \mathrm{GL}_2(\mathbb{F}_3)$ (5.4(ii)).
+11. For $q$ odd, show that $N_{ns}(\mathbb{F}_q) \cap \mathrm{SL}_2(\mathbb{F}_q)$ has a unique element of order 2, namely $-I$, and
+    that its other elements outside $C_{ns}$ have order 4.
+12. Show that $N_s(\mathbb{F}_5)$ is a Sylow 2-subgroup of $\mathrm{GL}_2(\mathbb{F}_5)$ and that its image in $\mathrm{PGL}_2(\mathbb{F}_5) \simeq S_5$ lies in a
+    copy of $S_4$ (hard).
+13. Show that $1 + 3M_2(\mathbb{Z}_3)$ is torsion-free and that $1 + 2M_2(\mathbb{Z}_2)$ is not.
+14. Show that the image of a continuous homomorphism $\mathbb{Z}_p \to \mathrm{GL}_2(\mathbb{F}_\ell)$ is cyclic of $p$-power order;
+    deduce that it is trivial when $p \nmid \#\mathrm{GL}_2(\mathbb{F}_\ell)$ (foretaste of tame inertia, Chapter 7).
+
+________________________________________________________________________________
+
+## Part 3. Dependencies and forward pointers
+
+Results from other chapters used here: none. The chapter uses only PLAN.md Section 2 (linear algebra over a
+field: determinants, eigenvalues, change of basis; elementary group theory as in RHB). Two points need a word:
+(a) the finite fields: the chapter needs only $\mathbb{F}_p = \mathbb{Z}/p$ (Bezout) and the field $\mathbb{F}_q[\sqrt\varepsilon]$ built by hand in 5.8;
+general $\mathbb{F}_q$ is Chapter 2, and every statement for $\mathbb{F}_q$ may be read with $q = p$; (b) Tychonoff's theorem
+(7.1) and the topological characterisation of profinite groups (7.3(v)) are stated with references.
+
+Forward pointers (chapters that use this one):
+* Chapter 2 (`ch:rings`): cyclicity of $\mathbb{F}_q^\times$ (4.2, restated with field theory), the index
+  $[\mathbb{F}_q^\times : (\mathbb{F}_q^\times)^{\ell^k}]$ (1.3(ii)), $(\mathbb{Z}/n)^\times = \mathrm{Aut}(C_n)$ (1.3(iii)), Chinese remainder (2.2).
+* Chapter 3 (`ch:modules`): structure theorem over a PID generalises 4.1; $\mathbb{Z}_\ell$ as a DVR (7.2); lengths of finite
+  $\ell$-groups (4.3); Pontryagin duality of finite abelian groups.
+* Chapter 4 (`ch:reps`): representations of $N_s(\mathbb{F}_3)$, $C_4$, $Q_8$, $\mathrm{SL}_2(\mathbb{F}_3)$ on $\mathbb{F}_3^2$ and $\mathbb{F}_9^2$; absolute
+  irreducibility (5.7 is the group-theoretic input); $\psi$ of order 4 and $\mathrm{Ind}\,\psi$; Clifford theory for index 2
+  (3.3(iii) is the permutation analogue); Dickson for $\mathrm{PGL}_2$ (5.10); unipotent and minus-unipotent fixed spaces
+  (5.6).
+* Chapter 5 (`ch:galois`): profinite Galois groups and the Krull topology (7.1 to 7.5); the factorisation pattern
+  of the 3-division polynomial as the orbit pattern on lines (6.8) and its discriminant via det = sign (5.4(ii)).
+* Chapter 6 (`ch:ant`) and Chapter 7 (`ch:local`): decomposition and inertia groups as stabilisers (3.2), the
+  semidirect structure of the tame Galois group (2.3), pro-$p$ wild inertia (7.3(vi)), $\mathbb{Z}_p$ (7.2).
+* Chapter 9 (`ch:ellcurves`): $E[m] \simeq (\mathbb{Z}/m)^2$ and $\mathrm{Aut}(E[m]) = \mathrm{GL}_2(\mathbb{Z}/m)$, $T_\ell E$ and $\mathrm{GL}_2(\mathbb{Z}_\ell)$ (7.4), the four
+  lines of $E[3]$ (5.3).
+* Chapter 10 (`ch:reduction`): component groups as finite abelian groups (4.1, 4.4).
+* Chapter 11 (`ch:galrep`): Proposition prop:ns (6.5 to 6.10), Lemma lem:IV (5.6, 7.4), Remark rem:types (5.6(iv),
+  6.1), Zywina's lists and Sutherland's labels (6.10), the Eisenstein case (5.5), complex conjugation (6.9).
+* Chapter 15 (`ch:modgalrep`): Serre conductor exponents through fixed spaces of inertia images (5.6).
+* Chapters 16 and 17 (`ch:cohomology`, `ch:galcoh`): cohomology of finite and profinite groups (7.3), inflation
+  and restriction through quotients.
+* Chapter 21 (`ch:paper`) and Chapter 22 (`ch:computation`): the labels 3Ns, 3Nn, 3B, 3Cs.1.1 and the `ns3` test
+  (6.8, 6.10).
+
+________________________________________________________________________________
+
+## Part 4. Notes for the writer
+
+Conventions to fix (state them once, in Section 1, as `convention` environments):
+* C1 to C5 above. Column vectors, left action; lines $[v]$; Moebius coordinate with $\infty = [1:0] = [e_1]$.
+* $D_n$ has order $2n$ (so $N_s(\mathbb{F}_3) \simeq D_4$; Dummit-Foote writes $D_8$). Say so in a footnote-free sentence.
+* Standard models 6.2, with $\varepsilon = -1$ at $q = 3$; $J = \begin{pmatrix}0&-1\\1&0\end{pmatrix}$; the paper's generator
+  $\begin{pmatrix}0&1\\-1&0\end{pmatrix} = -J = J^{-1}$ generates the same $C_4$.
+* $C_s$, $N_s$, $C_{ns}$, $N_{ns}$, $\mathrm{B}$, $\mathrm{U}$ always mean the standard models; "image $X$" means "conjugate to $X$".
+  Use the paper's macro `\Ns` only for the label 3Ns, and write $N_s(\mathbb{F}_3)$, $N_{ns}(\mathbb{F}_3)$ for the groups (the paper
+  writes `N_{ns}`, `N_s` in subscripts).
+* Sutherland's labels: define each by an intrinsic property (6.10), not by matrices alone. Transposition
+  (row versus column convention) swaps 3B.1.1 and 3B.1.2; the intrinsic definitions (fixed vector versus trivial
+  quotient) are convention-free. The writer should double-check the label list and the index of each group
+  against the tables of Sutherland16 before finalising.
+
+Pitfalls:
+* The paper justifies the absolute irreducibility of $\mathrm{SL}_2(\mathbb{F}_3)$ and $Q_8$ by "non-abelian and faithful". That is
+  not sufficient in general (a Borel subgroup is non-abelian and faithful); use 5.7 (commutator subgroup inside
+  the unipotent radical). Do not "correct" the paper; supply the step.
+* $C_4 = \langle J\rangle$ is irreducible over $\mathbb{F}_3$ (no stable $\mathbb{F}_3$-line) but not absolutely irreducible. The paper's
+  hypothesis is about absolute irreducibility; the distinction is exactly the $N_s$ case. Keep "stabilises no line of
+  $K^2$" (group language) here and leave the word "absolutely irreducible" to Chapter 4, with a pointer.
+* $N_s(\mathbb{F}_3)$ is contained in $N_{ns}(\mathbb{F}_3)$ (index 2, standard models); the two cases of Proposition prop:ns are
+  distinguished by orbits and by the determinant-one subgroup, not by maximality. Never call $N_s(\mathbb{F}_\ell)$ maximal
+  for $\ell = 3$ or $\ell = 5$ (6.12, 5.10).
+* $N_s(\mathbb{F}_3)$ itself acts absolutely irreducibly on $\mathbb{F}_3^2$; only its determinant-one subgroup does not. Do not
+  write "the image $N_s(\mathbb{F}_3)$ is reducible".
+* Every element of $N \setminus C$ has trace 0, for both normalisers; the determinant $-1$, trace 0 elements of
+  $\mathrm{GL}_2(\mathbb{F}_3)$ are 12 in number and all conjugate to $\mathrm{diag}(1,-1)$; $C_{ns}(\mathbb{F}_3)$ has none, which is the reason 3Cn
+  does not occur.
+* Elements of order 3 of $\mathrm{GL}_2(\mathbb{F}_3)$ are unipotent (characteristic 3), whereas in $\mathrm{GL}_2(\mathbb{Z}_3)$ an element of order 3
+  has eigenvalues the primitive cube roots of unity (Lemma lem:IV); the two are compatible through 7.4(iii) and
+  the $\mathbb{Z}_3[\zeta_3]$ computation of Chapter 4 and 11. Do not attempt the $\mathbb{Z}_3[\zeta_3]$ argument here.
+* Cartan subgroups need $q$ odd here ($\varepsilon$ a non-square; for $q = 2$, $C_s$ is trivial and its normaliser is everything).
+  The normaliser claim for $C_s$ needs $q \ge 3$.
+* Do not confuse the field size $q$ with the paper's bad prime $q$ (C4).
+* Typography (PLAN.md 7.2): no dash ligatures; write "Diamond-Flach-Guo" with a plain hyphen; number ranges with
+  "to"; no Unicode. Tables 6.1 and 6.3 should be `tabular` with `booktabs`.
+
+Leave to other chapters:
+* Chapter 2: construction and uniqueness of $\mathbb{F}_q$, Frobenius automorphism, quadratic residues; Chapter 1 builds
+  only $\mathbb{F}_q[\sqrt\varepsilon]$ by hand.
+* Chapter 4: characters, Schur, Maschke, absolute irreducibility, induced representations, Frobenius reciprocity,
+  $\bar\rho \simeq \bar\rho \otimes \chi$, the trace-zero argument of Lemma lem:h0, Brauer-Nesbitt.
+* Chapter 5: the Galois group of a polynomial as a permutation group, the dictionary orbits/factors, the
+  discriminant, the Krull topology, Chebotarev.
+* Chapter 11: which subgroups occur as images of $\bar\rho_{E,3}$ (Zywina15), the proof of Proposition prop:ns as a
+  whole, Lemma lem:IV and Remark rem:types as statements about elliptic curves, the Serre conductor.
