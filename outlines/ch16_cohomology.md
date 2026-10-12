@@ -19,7 +19,7 @@ Conventions fixed for the whole chapter (and for Chapters 17, 18, which inherit 
   (proved in Chapter 7; imported here as a stated fact).
 * $\mathrm{ad}^0T$ (the paper's `\ad T`) is the module of trace-zero endomorphisms of $T$ with $g\cdot\varphi=\rho(g)\varphi\rho(g)^{-1}$.
 
----
+____
 
 ## 1. Core results, in teaching order
 
@@ -413,7 +413,7 @@ $\det(1-\operatorname{Frob}_p\mid V^{I_p})\ne0$. This is the paper's argument th
 $\det(1-\operatorname{Frob}_p\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}\ne0$ (the equality $H^1_f=H^1_{\mathrm{ur}}$ at $p\ne\ell$ and the value of the determinant are Chapters 18 and 19).
 *Proved here.* Serre, Local Fields, Chapter XIII, Section 1; Rubin, Euler Systems, Section 1.3. The paragraph after Lemma lem:dfg21.
 
----
+____
 
 ## 2. Section plan (titles, contents, target line counts; total 2000 lines excluding the card)
 
@@ -480,7 +480,7 @@ $\det(1-\operatorname{Frob}_p\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}\ne0$ (the equality
 14. Notes and references (40 lines): Brown, Weibel, Serre (Local Fields; Galois Cohomology), NSW, Cassels-Frohlich, Milne CFT, Tate 1976, Rubin Appendix B; which theorem
     numbers were cited; the history of the Hochschild-Serre spectral sequence in one sentence; where the paper's conventions come from (DFG04, FPR94).
 
----
+____
 
 ## 3. Results from earlier chapters this chapter relies on
 
@@ -504,7 +504,7 @@ $\det(1-\operatorname{Frob}_p\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}\ne0$ (the equality
 * `ch:galrep` (motivation only, not used logically): the shape $\begin{psmallmatrix}\chi_\ell\varepsilon&\kappa\\0&\varepsilon\end{psmallmatrix}$ of $\rho_{E,\ell}|_{G_{\mathbb{Q}_q}}$ at a prime of
   multiplicative reduction (DDT, Theorem 3.1(e); Lemma lem:tamagawa-exp), and the unipotence of the inertia action.
 
----
+____
 
 ## 4. Notes for the writer
 
@@ -555,3 +555,34 @@ Conventions to fix and keep (they must agree with Chapters 7, 17, 18):
     `\Norm`, `\tors`, `\sm{a}{b}{c}{d}`, `\Mtwo`, `\paperlink`, `\warning`, `\construction`, `\convention`. Write $\varprojlim$, $\varinjlim$ with the amsmath commands.
 17. Each section opens with one paragraph saying what it is for and where the paper uses it. Every theorem has a proof, a labelled sketch, or "We do not prove this; see ...".
 18. The card must list all 48 entries with rigour tags; the entries of Section 10 are the ones an expert will look up, so their statements must be exactly those above.
+
+## 5. Consistency with the later outlines and the Frobenius convention
+
+Added after the Chapters 1, 5 and 6 outlines and `important/important_notes.md` were written.
+
+1. **Two Frobenius conventions in the paper.** This chapter uses the arithmetic Frobenius throughout, which
+   is the convention of the paper's proof of Lemma lem:tamfactor (rho(Frob) = [[eps q, c'], [0, eps]]) and of
+   the conjugation-action formula above. The L-factors of the paper's Section 1.1, the table of omitted
+   factors and the proof of Lemma lem:euler are correct only with the geometric Frobenius Frob^{-1}
+   (important_notes point 11: at a multiplicative prime the inertia-fixed line of ad V has arithmetic
+   eigenvalue q, so the arithmetic convention would give 1 - q^{1-s} instead of 1 - q^{-1-s}). The writer
+   must keep the arithmetic convention here, say so in a convention box at the start of the chapter, and
+   add a warning that Chapters 18 and 19 compute L-factors with the geometric Frobenius, with a
+   one-line translation: an eigenvalue lambda of the arithmetic Frobenius is lambda^{-1} for the geometric
+   one. Chapters 5 (convention C2) and 6 (item 3.7) fix Frob_P as the arithmetic Frobenius; this agrees.
+2. **The class c' in Lemma lem:tamfactor.** Writer note 10 above records that c' = kappa(Frob) depends on the
+   lift of Frobenius and on the cocycle. important_notes point 7 gives the clean fix: write
+   q_E = q^n u, so kappa = n kappa_q + kappa_u with kappa_u unramified, and choose the lift of Frobenius that
+   fixes a compatible system of l-power roots of q. Then c' = kappa_u(Frob) is the class of u in
+   F_q^x tensor Z_l, and in general c' is well defined modulo (n', q - 1) Z_l, which does not change
+   min(v_l(n), v_l(q - 1), v_l(c')). The Kummer-theoretic side of this is in Chapters 5 and 17; this chapter
+   proves only the group-cohomological part (H^1 of the procyclic quotient and the invariants).
+3. **Absolute irreducibility.** Wherever this chapter's examples use "rhobar irreducible" to conclude that
+   an equivariant map is an isomorphism or that H^0 is a line, say "absolutely irreducible" (important_notes
+   point 10). For rhobar_{E,l} with l odd the two agree because of complex conjugation.
+
+## 6. Points for important_notes.md
+
+None beyond those already recorded. The computation of H^1(I_q, ad T) in the paper's Lemma lem:tamfactor,
+(t - 1)M = n'(Z_l e + Z_l h) and H^1 = (Z_l/n')^2 + Z_l, was rechecked in Section 10 of this outline and is
+correct, given that l is odd (writer note 8).
