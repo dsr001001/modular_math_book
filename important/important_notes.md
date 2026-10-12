@@ -171,3 +171,102 @@ l* is in {-3, -7, -11, -19, -43, -67, -163}, that is l in {3, 7, 11, 19, 43, 67,
 reduction at the prime ramified in the CM field, so l divides N. Under the paper's standing hypothesis
 l not dividing N, the CM case cannot occur at all. This is a side remark: point 5 already removes the need
 for the CM argument. Confidence: medium-high (the conductor fact is standard but was not re-derived).
+
+## From the Chapter 21 outline (the guided tour of the paper)
+
+Source: `outlines/ch21_paper.md`, Section 9, with full arguments. Points 15 and 17 were also checked
+independently by the orchestrating session; the others are as reported by the outline agent, which checked
+the numerical claims in Python against Cremona's ecdata files. The Chapter 21 outline places all points of
+this file at the paper items they concern (its Part C).
+
+### 15. Definition def:terms: e_l(E, q) is not invariant under quadratic twist
+
+The definition ends "Both terms are invariant under quadratic twist." That holds for t_l, not for e_l when
+the twist is ramified at q and changes the type there. Example: 11a1 is multiplicative at 11, so
+e_3(E, 11) = 0; its twist by chi_{-11} (class 121d) has type I_1^* at 11, so e_3 = v_3(11^2 - 1) = 1. The true
+adjoint factor is twist-invariant; the naive one is not, so their ratio is not.
+
+**Action:** restrict the sentence to t_l, or to twists unramified at q. Confidence: high (checked twice).
+
+### 16. Remark after Theorem thm:twist: strict inequality is not "only in case (b)"
+
+The paper reports, for the data, "equality in every pair of case (c) and strict inequality only in case
+(b)". This contradicts Theorem thm:quant, which predicts a gap of e_l(E, q) = v_l(q^2 - 1) in case (a) (type
+I_n^*) too. The agent's counterexamples in case (a), comparing v_3 of the modular degrees:
+
+* 539c1 versus 77c1: 2 versus 1;
+* 980i1 versus 140b1: 2 versus 1;
+* 121d1 versus 11a1: 1 versus 0.
+
+**Action:** re-run the count and correct the sentence (strict inequality in cases (a) and (b), with the
+difference the Euler term). Confidence: high, as reported (modular degrees from ecdata).
+
+### 17. Conjecture conj:eis and Section sec:eis: the bound D <= 2 is provable, not conjectural
+
+The paper says it has "not proved that the two [sources of a deficit of 2] cannot coexist". They cannot, for
+E without CM. If E[3] = Z/3 + mu_3 and P is a rational point of order 9, compose the dual of E -> E/mu_3
+with E -> E/<P>. The kernel has order 27, and it contains no full 3-torsion, because the dual isogeny maps
+E'[3] onto mu_3, and mu_3 meets <P> trivially (the rational 3-torsion line is not mu_3). So this is a
+rational cyclic 27-isogeny, and over Q that forces CM.
+
+**Action:** replace "we have not proved" by this argument; D <= 2 then follows from the first bound.
+Confidence: high (checked twice).
+
+### 18. Proof of Theorem thm:main: the case of an I_n^* prime at q = 2 is not covered
+
+The proof handles additive potentially multiplicative primes through Lemma lem:twist, which is for odd q
+only. A prime q = 2 of type I_n^* with v_2(j) < 0 (so t_l(E, 2) may be positive) needs a separate local
+argument: over the ramified quadratic extension that makes the reduction multiplicative, the Tamagawa
+computation of Lemma lem:tamfactor applies to ad T, which is unchanged by the twist. **Action:** add that
+case. Confidence: high, as reported.
+
+### 19. Lemma lem:ddt417: wp intersect I = 0 is used without proof (harmless)
+
+It holds because T is reduced (T tensor Q is a product of fields) and I = Ann(wp). **Action:** add one line.
+
+### 20. Theorem thm:qual, cases (b) and (c): "g = h tensor chi" is not literally right
+
+h tensor chi is the q-depletion of g, not g itself, since a_q(h) = 0. The conclusion h != f still follows,
+by strong multiplicity one. **Action:** rephrase. Confidence: high, as reported.
+
+### 21. The example 980i1 lies outside the hypotheses of Theorem thm:qual
+
+980 = 2^2 * 5 * 7^2, so l = 5 divides N. The example illustrates the congruence, not the theorem.
+**Action:** say so.
+
+### 22. Remark rem:types groups the additive types incompletely
+
+Some types are listed under the wrong description of the inertia image mod 3. **Action:** see the outline's
+item A2.3 for the corrected grouping. Confidence: high, as reported.
+
+### 23. Section sec:tam: c_q means two things
+
+c_q is the Tamagawa number elsewhere in the paper, but sec:tam uses it for the class of the unit part of
+the Tate parameter. **Action:** rename the class, for example to c(u).
+
+### 24. The abstract calls the thm:quant argument "elementary"
+
+The outer inequality of Theorem thm:quant is elementary, but the middle term uses multiplicity one at
+level N_S (Lemma lem:hecke in the free case). **Action:** reword. Confidence: high, as reported.
+
+### 25. The abstract's wording on "every optimal curve" and "a third of the cases"
+
+These overstate slightly what the tables show (optimality is determined only up to 400000 and for some
+classes beyond; the violation rates are 31%, 23% and 18%, not one third). **Action:** reword. Confidence:
+medium.
+
+### 26. Section 4.2: M_{f,lambda} is homothetic to the dual of T_l E, not to T_l E
+
+H^1 of X_0(N) gives the dual of the Tate module. The adjoints agree up to the trace-form isomorphism, so
+nothing breaks. **Action:** say "the dual of T_l E", or note that ad is insensitive to dualising.
+Confidence: medium-high (depends on DFG04's normalisation of M_{f,lambda}).
+
+### 27. Observation: optimality plays no role at l when E[l] is irreducible
+
+Isogenous curves are linked by isogenies of degree prime to l in that case, so v_l(deg) does not depend on
+which curve of the class is optimal. Not an error; worth one sentence.
+
+### 28. Lemma lem:twist, proof: "the conductor exponents are the standard ones for q odd (tame)"
+
+At q = 3 a general additive curve can be wildly ramified, so "tame" is wrong in general. It is right for
+the exchanges the lemma actually lists. **Action:** restrict the remark. Confidence: high, as reported.
