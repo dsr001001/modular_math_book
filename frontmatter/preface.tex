@@ -1,3 +1,403 @@
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
-(Preface to be written.)
+
+This book exists for one paper: the research note
+\begin{quote}
+D. Soni, \emph{Local factors of the adjoint $L$-function and the $\ell$-adic valuations of the
+modular degree} (version of 10 October 2026),
+\end{quote}
+a short text that uses, without pausing, elliptic curves over local fields, Galois representations
+and their adjoints, modular forms and Hecke algebras, Galois cohomology and Bloch-Kato Selmer
+groups, the commutative algebra of congruence ideals, and large computations on Cremona's tables.
+The book takes a reader who has none of this, but who has the background listed below, to the
+point where every definition, every proof and every table of the paper can be read with
+understanding. It also serves a second reader: the specialist who has seen all of this, has
+forgotten the exact form of one statement, and opens one chapter to find it at the top.
+
+\section*{What the paper proves}
+
+Let $E$ be an elliptic curve over $\Q$ of conductor $N$. By the modularity theorem there is a
+newform $f=f_E$ of weight $2$ on $\Gamma_0(N)$ with the same $L$-function as $E$, and a nonconstant
+map of curves $\varphi_E\colon X_0(N)\to E$ from the modular curve $X_0(N)$ to $E$. Among the
+curves isogenous to $E$ there is one, the $X_0(N)$-optimal curve, for which the degree of this map
+is smallest; the paper always takes $E$ to be that curve and calls $\degphi$ the modular degree.
+The modular degree is an integer that can be computed, curve by curve, and the tables list it;
+what is not understood is its prime factorisation.
+
+The paper proves that the $\ell$-adic valuation $v_\ell(\degphi)$, for an odd prime $\ell$, is
+bounded below by invariants of $E$ at the primes of bad reduction. Two invariants enter.
+\begin{itemize}
+\item At a bad prime $q$, the adjoint $L$-function $L(\ad f,s)$ has a local Euler factor
+$L_q(A_f,s)$, defined through the inertia invariants of the trace-zero adjoint $A_f=\ad V_\ell E$.
+The naive adjoint $L$-function, the one built from the coefficients $a_n(f)$ alone, has the same
+factor when $E$ has good or multiplicative reduction at $q$ and the trivial factor $1$ when the
+reduction is additive. The first invariant is
+\[
+e_\ell(E,q)=v_\ell\Bigl(\frac{L_q(A_f,1)^{-1}}{L_q^{\nv}(A_f,1)^{-1}}\Bigr),
+\]
+the $\ell$-adic valuation of the Euler factor at $s=1$ that the naive $L$-function omits. It is
+zero at multiplicative primes. At an additive prime $q\ge5$ it is read off the Kodaira type:
+$v_\ell(q-\chi_{-3}(q))$ for the types $\kod{II}$, $\kod{II}^*$, $\kod{IV}$, $\kod{IV}^*$;
+$v_\ell(q-\chi_{-4}(q))$ for $\kod{III}$, $\kod{III}^*$; $v_\ell(q^2-1)$ for $\kod{I}_n^*$; and
+$v_\ell(q-1)+v_\ell((q+1)^2-a_q(E')^2)$ for $\kod{I}_0^*$, where $E'$ is the quadratic twist of
+$E$ that has good reduction at $q$. Here $\chi_{-3}$ and $\chi_{-4}$ are the quadratic characters
+of $\Q(\sqrt{-3})$ and $\Q(i)$.
+\item At a prime $q$ where $E$ has potentially multiplicative reduction, that is, where
+$v_q(j_E)<0$, the second invariant is $t_\ell(E,q)=v_\ell(-v_q(j_E))$, the $\ell$-part of the
+valuation of the Tate parameter; it is $0$ at every other prime.
+\end{itemize}
+The main theorem (\paperref{Theorem thm:main}) says: if $E$ is $X_0(N)$-optimal, $\ell$ is an odd
+prime not dividing $2N$, and the mod $\ell$ Galois representation $\rhobar_{E,\ell}$ on $E[\ell]$
+is absolutely irreducible when restricted to $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$, where
+$\ell^*=(-1)^{(\ell-1)/2}\ell$, then
+\[
+v_\ell(\degphi)\ \ge\ \sum_{q\mid N}e_\ell(E,q)+\sum_{q\mid N}t_\ell(E,q).
+\]
+This is the shadow of a more precise statement, which the paper also proves: under the same
+hypothesis,
+\[
+v_\ell(\degphi)\ \ge\ \len_{\Zl}\Hf(\Q,\ad T\otimes\Qlmod)
++\sum_{q\mid N}v_\ell\bigl(\Tam_q(\ad T)\bigr)+\sum_{q\mid N}e_\ell(E,q),
+\]
+with equality when a multiplicity one statement holds at level $N$. Here $T=\Tl E$ is the Tate
+module, $\Hf$ is the Bloch-Kato Selmer group of the adjoint, and $\Tam_q$ is the Tamagawa factor of
+Fontaine and Perrin-Riou. The first inequality follows from the second because the Selmer length
+is nonnegative and because the paper computes the Tamagawa factor at a multiplicative prime
+(\paperref{Lemma lem:tamfactor}): its valuation is $v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c))$,
+where $n$ is the valuation of the discriminant and $c$ records whether the unit part of the Tate
+parameter is an $\ell$-th power; in particular it is at least $t_\ell(E,q)$.
+
+\emph{The assembly.} The proof of the main theorem is not a new argument but a reading, for
+elliptic curves, of theorems already in the literature, and the book is organised around those
+theorems. They are: the theorem of Diamond, Flach and Guo identifying the length of the
+$\Sigma$-imprimitive adjoint Selmer group with the valuation of a congruence ideal (their Theorem
+3.7); their formula for how that ideal changes with $\Sigma$ (their Proposition 1.4); their exact
+sequence comparing the $\Sigma$-imprimitive and the Bloch-Kato Selmer groups (their Lemma 2.1),
+whose local terms are, by the formula of Fontaine and Perrin-Riou, the true Euler factors times the
+Tamagawa factors; the comparison of the modular degree with the congruence number due to Agashe,
+Ribet and Stein; and the inequality half of Wiles's numerical criterion, in the form of Lemma 4.17
+of Darmon, Diamond and Taylor, which relates the congruence number to the cohomological congruence
+ideal. The naive Euler factors at the multiplicative primes cancel, the true factors at the
+additive primes are the omitted ones, and the inequality appears. Two further statements are proved
+by level lowering (Ribet, Carayol, Diamond) and by quadratic twisting rather than by the
+Taylor-Wiles method, and hold under weaker hypotheses: that $\ell$ divides the modular degree as
+soon as $E$ has a prime of type $\kod{IV}$, $\kod{IV}^*$, $\kod{II}$ or $\kod{II}^*$ (for $\ell=3$)
+or of type $\kod{I}_n^*$ with $\ell\mid n$ (\paperref{Theorem thm:qual}), and a quantitative
+version for the types $\kod{I}_0^*$ and $\kod{I}_n^*$ (\paperref{Theorem thm:quant}), which needs
+only the irreducibility of $E[\ell]$.
+
+\emph{The boundary.} The hypothesis on $\Q(\sqrt{\ell^*})$ is the hypothesis of Diamond, Flach
+and Guo, and the paper shows that it is sharp. For $\ell=3$ it fails, for a curve without complex
+multiplication with $E[3]$ irreducible, exactly when the image of $\rhobar_{E,3}$ is the
+normaliser of a split Cartan subgroup of $\GL_2(\F_3)$ (the image labelled $\Ns$ in the tables);
+then $\rhobar\iso\rhobar\otimes\chi_{-3}$, and a correction term $h_3(E)$, the length of
+$H^0(\Q,\ad T(1)\otimes\Q_3/\Z_3)$, appears with the value $1$ (\paperref{Proposition prop:ns}).
+On the tables exactly these curves violate the inequality, always by exactly one, in about a third
+of the cases, and with the correction there is no exception. The paper states a conjecture
+(\paperref{Conjecture conj:euler}) with this correction and with a weight at the prime $3$ itself
+when $3\mid N$, valid also when $\ell$ divides $N$, where no theorem applies; and a second
+conjecture for the Eisenstein case, when $E$ has a rational $\ell$-isogeny
+(\paperref{Conjecture conj:eis}).
+
+\emph{The computations.} Everything was tested on Cremona's tables of elliptic curves of
+conductor at most $500000$, with a protocol fixed in advance: a working set ($N\le300000$) on
+which the statements were found, a hold-out ($300000<N\le400000$) on which they were tested once,
+an extension ($400000<N\le500000$), and $893$ curves of conductor between $500000$ and four
+million, generated and computed independently. The Euler factors at the wild primes $2$ and $3$
+are taken from PARI. At $\ell=3,5,7,11,13$ the conjecture holds with no exception; at $\ell=3$ the
+bound is attained for $57\%$ of the curves with a positive bound; and a calibration argument shows
+that the absence of violations is far from what independence of the two sides would predict.
+
+\section*{Who the book is for, and the two ways to read it}
+
+The reader we have in mind has taken a first course in real analysis (sequences, series,
+continuity, differentiation, the Riemann integral, uniform convergence, metric spaces at an
+elementary level), a first course in linear algebra (vector spaces over $\R$ and $\C$, matrices,
+determinants, eigenvalues, diagonalisation, inner products, the Jordan form as a statement), an
+introduction to complex analysis (holomorphic functions, Cauchy's theorem, residues, Laurent
+series, Mobius transformations), an elementary course in statistics (means, variances,
+distributions, hypothesis tests), and has worked through Riley, Hobson and Bence,
+\emph{Mathematical Methods for Physics and Engineering}: Fourier series and transforms,
+differential equations, special functions, tensors, finite groups and their representations,
+probability. \Cref{ch:prereq} restates exactly what we assume from these courses, as a list of
+precise statements with references, and says where each is first used.
+
+The reader has not seen abstract algebra beyond Riley, Hobson and Bence, nor Galois theory,
+algebraic number theory, topology, algebraic geometry, homological algebra, modular forms,
+$p$-adic numbers or Galois cohomology. Every one of these is built from the beginning, with full
+proofs where the proofs are short enough to teach something, and with precise statements and
+references where they are not.
+
+Two readings must both work, and the book is built so that they do.
+
+\emph{Linear mode.} The chapters are in dependency order. A reader with the background above can
+start at \Cref{ch:groups} and read to \Cref{ch:computation}, in order, skipping nothing. This is
+a long road, and the paper is at the end of it.
+
+\emph{Refresher mode.} Every chapter opens with a card, \emph{Core results at a glance}: a
+numbered list of the definitions, theorems, lemmas and constructions of the chapter, each stated
+precisely (not summarised), each tagged with its level of rigour, and each pointing to the place in
+the chapter where it is proved or discussed. A specialist who has forgotten the exact normalisation
+of the Fontaine-Perrin-Riou Tamagawa factor, or the exact hypotheses of the Atkin-Li twisting
+theorem, reads the card and stops. The cards together form a second, short book inside the first;
+the reading guide at the end of this preface says which card to open for which topic.
+
+\section*{How the book is organised}
+
+The book has six Parts and two appendices. One chapter is one topic, readable on its own given the
+cards of the chapters before it.
+
+\emph{Part I, Algebra.} \Cref{ch:groups} builds group theory from the axioms to the matrix groups
+$\GL_2(\F_q)$, with the subgroups of $\GL_2(\F_3)$ in full detail: the normalisers of the split and
+nonsplit Cartan subgroups and their orbits on the four lines of $\F_3^2$ are the key to the boundary
+of the paper's hypothesis. \Cref{ch:rings} does rings, fields, finite fields, quadratic
+reciprocity, the characters $\chi_{-3}$, $\chi_{-4}$ and $\chi_q$, and $\ell$-adic valuations.
+\Cref{ch:modules} is the commutative algebra the paper leans on: modules, exact sequences, tensor
+products, discrete valuation rings and $\Zl$, lengths, Fitting ideals, Pontryagin duality, perfect
+pairings and Gram determinants, Gorenstein rings. \Cref{ch:reps} is the representation theory of
+finite groups over any field, including characteristic $\ell$: Schur, Maschke and its failure,
+Brauer-Nesbitt, induction and Clifford theory, the adjoint representation and its trace-zero part.
+
+\emph{Part II, Number fields and local fields.} \Cref{ch:galois} is Galois theory, finite and
+infinite, with Kummer theory, Chebotarev's theorem and the absolute Galois group $\GQ$.
+\Cref{ch:ant} is algebraic number theory: rings of integers, the splitting of primes,
+decomposition and inertia groups, Frobenius elements, the quadratic and cyclotomic fields, and the
+ring $\Z[\zeta_3]$. \Cref{ch:local} is the theory of $\Q_p$ and its extensions: Hensel's lemma, the
+structure of $\Q_p^\times$, unramified and tamely ramified extensions, the tame character,
+Weil-Deligne representations and conductors.
+
+\emph{Part III, Curves and elliptic curves.} \Cref{ch:curves} gives the language of algebraic
+curves and compact Riemann surfaces: divisors, Riemann-Roch, Jacobians, and the cohomology $H^1$
+with its cup product. \Cref{ch:ellcurves} is elliptic curves over fields: Weierstrass equations, the
+group law, isogenies, torsion, the Tate module, complex multiplication, curves over $\C$ and over
+finite fields, quadratic twists, and the Cremona labels. \Cref{ch:reduction} is elliptic curves over
+$\Q_p$: minimal models, reduction types, Neron models and component groups, the Kodaira symbols and
+Tate's algorithm, the Tate curve, Kraus's semistability defect, and the effect of a quadratic twist
+on the reduction type. \Cref{ch:galrep} is the Galois representation $\rho_{E,\ell}$ and its
+reduction: the local behaviour at every kind of prime, the possible images, the Serre conductor,
+and the paper's Proposition prop:ns and Lemmas lem:IV, lem:tamagawa-exp and lem:h0 proved in full.
+
+\emph{Part IV, Modular forms and modular curves.} \Cref{ch:modforms} is modular forms and the
+curves $X_0(N)$ as Riemann surfaces. \Cref{ch:hecke} is Hecke operators, newforms, oldforms and
+their $U_p$-eigenvalues, the Atkin-Li twisting theorem, and the perfect pairing between integral
+cusp forms and the Hecke algebra. \Cref{ch:moddeg} is the arithmetic of $X_0(N)$ and $J_0(N)$: the
+modularity theorem, the modular parametrisation and the modular degree, the optimal curve, the
+congruence number and the theorem of Agashe, Ribet and Stein, multiplicity one and the Gorenstein
+property. \Cref{ch:modgalrep} is the Galois representation of a newform, local-global
+compatibility, Serre's conjecture and the optimal-level theorem, Ribet's level lowering, the paper's
+Lemmas lem:crit and lem:old, and the proof of the paper's Theorem thm:qual.
+
+\emph{Part V, Cohomology, Selmer groups and $L$-functions.} \Cref{ch:cohomology} is homological
+algebra and group cohomology, with the computation of $H^1$ of a procyclic group and the
+inflation-restriction sequence that the paper's Lemma lem:tamfactor needs. \Cref{ch:galcoh} is
+Galois cohomology, local and global: Kummer theory, Tate local duality, Selmer structures and the
+Greenberg-Wiles formula. \Cref{ch:blochkato} is the Bloch-Kato Selmer group, the
+Fontaine-Perrin-Riou Tamagawa factor, the adjoint motive, the theorems of Diamond, Flach and Guo
+that the paper imports, and the full computation of the Tamagawa factor at a multiplicative prime.
+\Cref{ch:lfunctions} is $L$-functions: Euler products, the local factors of the adjoint and of the
+symmetric square, the naive versus the true adjoint $L$-function, the Rankin-Selberg method and the
+Petersson norm, and the paper's table of Euler factors derived in full (Lemma lem:euler).
+
+\emph{Part VI, Congruences, the modular degree and the paper.} \Cref{ch:congruence} is the theory
+of congruence ideals: Hecke algebras and their localisations, Wiles's numerical criterion and the
+paper's Lemma lem:ddt417, the lattices and ideals of Diamond, Flach and Guo with their Theorems
+3.7 and 2.7 and Proposition 1.4, the assembly of the paper's main theorem step by step, the twist
+monotonicity theorem, and the proof of the paper's Theorem thm:quant. \Cref{ch:paper} is a guided
+tour of the paper, in the paper's order, expanding every compressed step. \Cref{ch:computation} is
+PARI/GP, Cremona's tables, the paper's data protocol and its statistics, and the paper's function
+\texttt{rule(E, l)} explained line by line.
+
+\emph{Back matter.} \Cref{ch:prereq} is the list of what we assume from the reader's first courses.
+\Cref{ch:notation} is the table of every symbol of the paper and of the book, with the chapter where
+it is defined, and the conventions.
+
+\section*{The dependency graph}
+
+Each chapter depends directly on the chapters listed against it; it also uses, through them,
+whatever they depend on. Everything else a chapter needs is proved inside it or is in
+\Cref{ch:prereq}. Four chapters have no predecessor and can be started at once.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Chapter & depends directly on \\
+\midrule
+\Cref{ch:groups} (groups) & nothing \\
+\Cref{ch:rings} (rings, fields, characters) & nothing \\
+\Cref{ch:modules} (modules, commutative algebra) & \Cref{ch:rings} \\
+\Cref{ch:reps} (representations of finite groups) & \Cref{ch:groups} \\
+\Cref{ch:galois} (Galois theory) & \Cref{ch:rings} \\
+\Cref{ch:ant} (algebraic number theory) & \Cref{ch:galois} \\
+\Cref{ch:local} (local fields) & \Cref{ch:ant} \\
+\Cref{ch:curves} (curves and Riemann surfaces) & nothing \\
+\Cref{ch:ellcurves} (elliptic curves) & \Cref{ch:curves} \\
+\Cref{ch:reduction} (reduction, Kodaira types, Tate curves) & \Cref{ch:local}, \Cref{ch:ellcurves} \\
+\Cref{ch:galrep} (Galois representations of elliptic curves) & \Cref{ch:reps}, \Cref{ch:ellcurves}, \Cref{ch:reduction} \\
+\Cref{ch:modforms} (modular forms) & nothing \\
+\Cref{ch:hecke} (Hecke operators, newforms) & \Cref{ch:modforms} \\
+\Cref{ch:moddeg} (modular curves over $\Q$, modular degree) & \Cref{ch:hecke} \\
+\Cref{ch:modgalrep} (Galois representations of newforms) & \Cref{ch:local}, \Cref{ch:galrep}, \Cref{ch:hecke}, \Cref{ch:moddeg} \\
+\Cref{ch:cohomology} (group cohomology) & \Cref{ch:modules} \\
+\Cref{ch:galcoh} (Galois cohomology, Selmer groups) & \Cref{ch:cohomology} \\
+\Cref{ch:blochkato} (Bloch-Kato, Tamagawa factors) & \Cref{ch:galcoh} \\
+\Cref{ch:lfunctions} ($L$-functions) & \Cref{ch:local}, \Cref{ch:galrep}, \Cref{ch:blochkato} \\
+\Cref{ch:congruence} (congruence ideals, DFG) & \Cref{ch:modules}, \Cref{ch:hecke}, \Cref{ch:moddeg}, \Cref{ch:modgalrep}, \\
+ & \Cref{ch:blochkato}, \Cref{ch:lfunctions} \\
+\Cref{ch:paper} (the paper) & everything before it \\
+\Cref{ch:computation} (computation and data) & \Cref{ch:ellcurves}, \Cref{ch:reduction}, \Cref{ch:galrep}, \Cref{ch:moddeg}, \\
+ & \Cref{ch:lfunctions}, \Cref{ch:paper} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In words: there are three algebraic strands (groups to representations to Galois representations;
+rings to modules to cohomology to Galois cohomology to Bloch-Kato; rings to Galois theory to number
+fields to local fields to reduction), one geometric strand (curves to elliptic curves to reduction),
+and one modular strand (modular forms to Hecke operators to the modular degree to the Galois
+representations of newforms). They meet in \Cref{ch:lfunctions} and \Cref{ch:congruence}, and
+everything meets in \Cref{ch:paper}.
+
+\section*{How to read a chapter}
+
+Every chapter has the same shape.
+\begin{enumerate}
+\item \emph{Core results at a glance.} The card: the numbered definitions, theorems, lemmas,
+propositions and constructions of the chapter, stated in full, each tagged \emph{(proved here)},
+\emph{(proof sketched here)} or \emph{(stated; reference)}, and each pointing to the numbered
+environment in the chapter where it lives. The card is complete: every numbered theorem,
+proposition and lemma of the chapter is on it, and so is every definition the paper uses.
+\item \emph{Where the paper uses this chapter.} A list of the paper's lemmas, theorems, remarks,
+definitions and sections that depend on the chapter, and which results of the chapter they use.
+The paper's results are named by the labels of the paper's own source, so that reader and paper
+agree on names: the paper's main theorem is \paperref{Theorem thm:main}, its computation of the
+Tamagawa factor is \paperref{Lemma lem:tamfactor}, its description of the boundary is
+\paperref{Proposition prop:ns}, and so on.
+\item \emph{The numbered sections.} Each section opens with one paragraph saying what it is for
+and where in the paper it is used. Inside the text, a remark headed \emph{In the paper} marks the
+exact place where a result of the chapter enters the paper, so that a reader going line by line
+through the paper can find the way back.
+\item \emph{Exercises.} Between eight and twenty, graded from routine to hard. Some of them read
+``check the paper's claim that \ldots''; these are the ones to do.
+\item \emph{Notes and references.} Where to read more, which sources the chapter followed, and
+which theorem numbers it cited.
+\end{enumerate}
+Chapters refer to one another only by chapter number, never by the number of a theorem in another
+chapter, so that each chapter can be revised on its own. The running examples are the curves of
+the paper, in Cremona's labels: \curve{11a1}, \curve{20a1}, \curve{121a1}, \curve{121c},
+\curve{121d}, \curve{539c1}, \curve{980i1}, \curve{726a1} and \curve{99A1}. They recur wherever a
+chapter's topic allows, and \Cref{ch:computation} shows how to reproduce every number quoted about
+them.
+
+\section*{Three levels of rigour}
+
+Every result on a card, and every numbered theorem in the text, carries one of three tags.
+\begin{description}
+\item[(proved here)] The proof is in the book, complete. This is every result of Parts I and II,
+most of Part III, the commutative algebra of Part VI, and every lemma of the paper itself: the
+paper's proofs are written for experts, and the book expands each compressed step.
+\item[(proof sketched here)] The statement is precise, with all its hypotheses. The shape of the
+proof is explained, in a paragraph or a page, enough to see why the statement is true and what it
+costs; a reference with a theorem number carries the rest. A sketch is always labelled as a sketch
+and never presented as a proof.
+\item[(stated; reference)] The statement is precise, with all its hypotheses, and no proof is
+given; the reference says where one is. This is the status of the deep theorems: modularity,
+Serre's conjecture, the level-lowering theorems, the theorems of Diamond, Flach and Guo, the
+formula of Fontaine and Perrin-Riou, Tate local duality, Poitou-Tate.
+\end{description}
+The rule that governs the choice is that a card entry that is wrong is worse than one that is
+missing. A theorem number from a standard reference is cited only when we are sure of it;
+otherwise the chapter or section is cited. Where the book states a theorem without proof, it
+says so in those words.
+
+\section*{Conventions}
+
+\emph{Notation follows the paper.} The paper's symbols are the book's: $V=V_\ell E$, $T=\Tl E$,
+$\rho=\rho_{E,\ell}$, $\rhobar$, $A_f=\ad V$ (the trace-zero adjoint, always), $\delta_p$,
+$L_p(A_f,s)$ and $L_p^{\nv}(A_f,s)$, $P_q(X)$, $e_\ell(E,q)$, $t_\ell(E,q)$, $n_q$, $q_E$ and its
+unit part $u$, $\Tam_p$, $\Fitt$, $\Hf$, $\HSigma$, $W$, $T^D$, $V^D$, $W^D$, $S_f$,
+$\eta^\Sigma_{f,\lambda}$, $M_{f,\lambda}$, $\hat\delta_!$, $\phi_f$, $I$, $J$, $r_E$, $\degphi$,
+$\Phi_q$, $\Phig_q$, $c_q$, $w_\ell(E,q)$, $w_3(E)$, $h_\ell(E)$, $\chi_{-3}$, $\chi_{-4}$,
+$\chi_q$, $q^*$, $\ell^*$, $E^{(q)}$, $E_S$, $N_s(\F_3)$, $N_{ns}(\F_3)$, $\Ns$. \Cref{ch:notation}
+lists them all with the chapter where each is defined.
+
+\emph{Valuations and lengths.} $v_\ell$ is the $\ell$-adic valuation normalised by $v_\ell(\ell)=1$,
+extended to $\Q$ and to the fraction field of a discrete valuation ring; ``length'' means
+$\Zl$-length (or $\mathcal{O}$-length when a ring $\mathcal{O}$ is named).
+
+\emph{Frobenius.} Arithmetic and geometric Frobenius are inverse to each other, and the literature
+uses both. Every chapter that uses a Frobenius element fixes, at the point where it first appears,
+which one it means and how the local $L$-factor $\det(1-\Frob_p\,p^{-s}\mid V^{I_p})^{-1}$ reads
+with that choice. The paper's convention is restated wherever it matters: a good prime has
+Frobenius eigenvalues $\alpha/\beta$, $1$, $\beta/\alpha$ on $\ad V$, and
+$L_p(\Sym f,s)=L_p(A_f,s-1)$ relates the symmetric square to the adjoint.
+
+\emph{Names.} Double and triple names are hyphenated: Bloch-Kato, Atkin-Lehner, Atkin-Li,
+Brauer-Nesbitt, Diamond-Flach-Guo, Fontaine-Perrin-Riou, Taylor-Wiles, Riemann-Roch. A result is
+named by its authors on first appearance (the theorem of Agashe, Ribet and Stein) and by the
+book's label afterwards.
+
+\emph{Kodaira symbols and labels.} The Kodaira symbols are $\kod{I}_0$, $\kod{I}_n$, $\kod{II}$,
+$\kod{III}$, $\kod{IV}$, $\kod{I}_0^*$, $\kod{I}_n^*$, $\kod{IV}^*$, $\kod{III}^*$, $\kod{II}^*$;
+PARI's integer codes for them are explained in \Cref{ch:reduction} and \Cref{ch:computation}.
+Cremona labels are set in typewriter type, \curve{121a1}; the paper's class labels \curve{121c}
+and \curve{121d} and the older capitalised label \curve{99A1} are kept as the paper writes them.
+
+\emph{Typography.} Sentences are short. There are no dashes in the book: a parenthesis, a colon
+or a semicolon does the work. Number ranges are written ``pages 663 to 727''.
+
+\section*{A reading guide for the expert}
+
+The specialist who wants one statement should go straight to the card of the chapter that holds
+it. A dozen of the most likely requests:
+\begin{itemize}
+\item To recall the Fontaine-Perrin-Riou Tamagawa factor
+$\Tam_p(M)=\Fitt_{\Zl}(H^1(I_p,M)_{\tors})^{\GQp}$, its relation to the torsion of
+$H^1(\Q_p,T^D)$ and the Euler factor, the exceptional set $S_f$, and the exact sequence of Lemma
+2.1 of Diamond, Flach and Guo, open \Cref{ch:blochkato}.
+\item For the Atkin-Li twisting theorem ($g\otimes\chi$ is a newform of level
+$\operatorname{lcm}(M,q^2)$), the eigenvalues of $U_p$ on oldforms with the stabilisations and the
+depleted forms, and the perfect pairing $S_2(\Gamma_0(N);\Z)\times\T\to\Z$, open \Cref{ch:hecke}.
+\item For Tate's algorithm, the Kodaira types with their geometric component groups, Kraus's
+semistability defect $12/\gcd(v_q(\Delta),12)$, and the exchange of types under the twist by
+$\Q(\sqrt{q^*})$, open \Cref{ch:reduction}.
+\item For Theorem 3.7, Proposition 1.4, Lemma 2.1 and Theorem 2.7 of Diamond, Flach and Guo as
+read for weight $2$, Wiles's numerical criterion in the form of DDT Lemma 4.17, the lattice
+$M_{f,\lambda}$ and the pairing $\hat\delta_!$, and the assembly of the main theorem, open
+\Cref{ch:congruence}.
+\item For the theorem of Agashe, Ribet and Stein, the congruence number, the Manin constant, the
+formula of Zagier and Watkins for the modular degree, and multiplicity one with the Gorenstein
+property (Tilouine, Ribet-Stein), open \Cref{ch:moddeg}.
+\item For the optimal-level theorem (DDT Theorem 3.15), Ribet's level lowering, local-global
+compatibility at a multiplicative prime (DDT Theorem 3.1(e)), the Deligne-Fontaine description of
+$\rhobar$ at $\ell$, and the congruence criterion and oldform lemma of the paper, open
+\Cref{ch:modgalrep}.
+\item For $\GL_2(\F_3)$, its subgroups $N_s(\F_3)$ and $N_{ns}(\F_3)$, their determinant-one
+subgroups and their orbits on the four lines of $\F_3^2$, open \Cref{ch:groups}; for the images of
+$\rhobar_{E,3}$, Zywina's list, the Sutherland labels, and the paper's Proposition prop:ns and
+Lemma lem:h0, open \Cref{ch:galrep}.
+\item For Brauer-Nesbitt, Clifford theory for an index-two subgroup, induced representations and
+Frobenius reciprocity, and the identity $\ad\rho=\Sym\rho\otimes\det\rho^{-1}$, open
+\Cref{ch:reps}.
+\item For the tame character, the relation $\Frob^{-1}t\Frob=t^{q^{-1}}$, the Kummer class of a
+uniformiser and its restriction to inertia, Weil-Deligne representations, and the conductor of a
+ramified twist of Steinberg, open \Cref{ch:local}.
+\item For inflation-restriction, $H^1(\langle t\rangle,M)=M/(t-1)M$ for a procyclic group, and the
+conjugation action of $G/I$ on $H^1(I,M)$, open \Cref{ch:cohomology}; for Tate local duality, the
+Greenberg-Wiles formula and the comparison of Selmer groups for two sets of local conditions, open
+\Cref{ch:galcoh}.
+\item For the table of Euler factors of the adjoint at the bad primes, the naive versus the true
+adjoint $L$-function, the Rankin-Selberg formula for the Petersson norm, and what PARI's
+\texttt{lfunsympow} returns, open \Cref{ch:lfunctions}.
+\item For Fitting ideals, lengths, Pontryagin duality, saturated sublattices and Gram
+determinants, open \Cref{ch:modules}; for Chebotarev's theorem and $\Q(\sqrt{\ell^*})$ as the
+quadratic subfield of $\Q(\zeta_\ell)$, open \Cref{ch:galois}; for $\Z_3[\zeta_3]$ as a discrete
+valuation ring and the Frobenius of $\Q(\sqrt{-3})$, open \Cref{ch:ant}.
+\item For the paper line by line, with the table ``hypothesis, where it is used, what fails
+without it'', open \Cref{ch:paper}; for the data protocol, the calibration argument and the PARI
+function \texttt{rule(E, l)}, open \Cref{ch:computation}.
+\end{itemize}
+
+\section*{Acknowledgement}
+
+This book was drafted with the assistance of an AI system, under human direction and with human
+responsibility for its plan, its claims and its errors.
