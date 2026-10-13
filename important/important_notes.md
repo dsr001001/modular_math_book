@@ -631,3 +631,56 @@ bib files before adding a key.
 
 Chapter 11 uses the Tate curve as a black box from Chapter 10 and proves Lemma lem:tamagawa-exp from it.
 When the Chapter 10 outline lands, check that it does not also prove lem:tamagawa-exp.
+
+## From the Chapter 10 outline (reduction, Kodaira types, Tate curves)
+
+Source: `outlines/ch10_reduction.md`. The outline gives a second, independent proof of point 43 (via the
+conductor: types IV and IV* at 2 have conductor exponent 2, by Dokchitser-Dokchitser 2015, Theorem 3.1,
+hence tame reduction, and the inertia image is cyclic of order exactly 3), checked on all 14,431 curves of
+these types below conductor 30,000. Point 50 was also checked independently by the orchestrating session
+with PARI; points 51 to 53 are as reported.
+
+### 50. Remark rem:wild and Section sec:wild: "a type II at 2 has P_2 = 1 and e_3 = 0" is false in general
+
+PARI, checked by the orchestrating session:
+
+| Curve | Type at 2 | P_2(X) | e_3(E, 2) | modular degree |
+|-|-|-|-|-|
+| 336f1 | II | 1 + 2X | 1 | 24 |
+| 1232l1 | II* | cubic, -8X^3 - 4X^2 + 2X + 1 | 2 | 288 = 2^5 3^2 |
+
+Among optimal non-CM curves below conductor 10,000 (outline agent's count): type II at 2 has P_2 = 1 for
+1,092 curves, 1 + 2X for 371 and a cubic for 74; type II* has 514, 74 and 191. Likewise "a type I_n^* at 2
+with potentially good reduction has a cubic P_2" holds only in a minority of cases (876 with P_2 = 1, 111
+cubic, 8 with 1 + 2X). The paper's rule and tables use PARI's factor at 2, so **no theorem or count changes**;
+only the illustrative sentences are wrong, and 1232l1 is a nice example where the bound of Theorem thm:main
+at l = 3 is attained by the prime 2 alone. **Action:** replace the two sentences by "the Kodaira type at 2
+does not determine P_2; for instance ...". Confidence: high (checked twice).
+
+### 51. Optional: the type exchanges also hold at q = 3
+
+The exchanges II <-> IV*, III <-> III*, IV <-> II* under the twist by Q(sqrt(-3)) also hold at q = 3, with
+the conductor exponent unchanged; true for all 5,122 such pairs below conductor 10,000. Lemma lem:twist (ii)
+states them only for q >= 5. Optional strengthening; one step of the sketched proof needs a reference.
+
+### 52. Appendix: the PARI Kodaira codes n + 4 and -(n + 4) are valid only for n >= 1
+
+I_0 has code 1 and I_0^* has code -1, not 4 and -4. Low importance.
+
+### 53. Definition def:terms is for q != l, but (eq:rule) and rule(E, l) use t_l at q = l
+
+For example 726a1 at q = l = 3. **Action:** extend the definition of t_l(E, q) to q = l (the formula
+v_l(-v_q(j_E)) makes sense there), or say so. Expository.
+
+## Book-internal consistency (continued)
+
+### B16. Errors and leftovers in other outlines found by the Chapter 10 outline
+
+* Chapter 7 outline, Exercise 10 and its verification log: the coefficient of j^{-3} in q(j) is 750420, not
+  356652 (q = j^{-1} + 744 j^{-2} + 750420 j^{-3} + ...).
+* Chapter 11 item 2.2 duplicates Chapter 10 item 4.5 (E[l^k]^I = Phig[l^k]); Chapter 11 should cite 4.5.
+* Chapters 7 and 21 still treat type IV at 2 as open, and Chapter 7 allows order 6 there, which never
+  happens. Chapter 21 item A2.6 repeats the false "type II at 2 has P_2 = 1" (point 50).
+* PLAN.md's "Kraus's conditions at 2 and 3" are Kraus 1989 (Acta Arith. 54), not Kraus90. PLAN.md's key
+  TateAlgorithm does not exist; the algorithm is Tate75 in refs.bib.
+* Following B14, SerreTate68, DokDok15, KramerTunnell82, Lorenzini10 and Papadopoulos93 belong in refs.bib.
