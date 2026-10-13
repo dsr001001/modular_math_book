@@ -61,8 +61,12 @@ written outlines assume):
   principal divisors, $\operatorname{Pic}^0$, Riemann-Roch (statement) and its consequence "a genus-one curve with a
   rational point is a plane cubic", degree of a morphism (three descriptions), separable and inseparable
   morphisms, differentials, compact Riemann surfaces versus curves over $\C$, Jacobians as complex tori,
-  Abel-Jacobi. Chapter 9 *uses* these and proves only what is specific to genus one. If Chapter 8 does not
-  prove "$P\mapsto[(P)-(O)]$ is a bijection $E\to\operatorname{Pic}^0(E)$", Chapter 9 does (item 2.3).
+  Abel-Jacobi. Its finished outline (`outlines/ch08_curves.md`, split section 6.3) also proves, for a general
+  genus-one curve, that a genus-one curve with a rational point has a Weierstrass equation (its 5.6), the
+  bijection $P\mapsto$ class of $(P)-(O)$ onto $\operatorname{Pic}^0$ (its 5.7, which gives associativity of the group law), and that
+  every nonconstant morphism between genus-one curves in characteristic $0$ is unramified (its 7.3(b)). Chapter 9
+  cites these from `\Cref{ch:curves}` and does not reprove them; it proves the identification of the $\operatorname{Pic}^0$
+  structure with the chord-tangent law (item 2.3) and everything else in its PLAN.md scope.
 * **Chapter 10** supplies: minimal models (existence, uniqueness, the criterion), reduction types, the reduction
   map and its injectivity on prime-to-$p$ torsion (formal group), the Neron model and Neron differential, Kodaira
   types, Tate's algorithm, conductor exponents, the Tate curve, and the *proofs* of Lemma lem:twist (i), (ii) on
@@ -148,7 +152,7 @@ in the appendix, e.g. 121a1 $=[1,1,1,-30,-76]$), Lemma lem:twist (ii) (models $y
 **1.2 `prop:ellcurves:smooth`** (proposition; P). The curve of 1.1 is smooth iff $\Delta\ne0$. If $\Delta=0$ it has exactly
 one singular point, a node if $c_4\ne0$ and a cusp if $c_4=0$. A smooth Weierstrass curve with $O$ is an elliptic
 curve; conversely every elliptic curve over $K$ is isomorphic to a smooth Weierstrass curve with $O\mapsto[0:1:0]$
-(via $x\in L(2O)$, $y\in L(3O)$, Riemann-Roch from Chapter 8; S here). Reference: AEC III.1.4(a) (verify) and III.3.1.
+(via $x\in L(2O)$, $y\in L(3O)$; proved in Chapter 8, item 5.6, cited here, not reproved). Reference: AEC III.1.4(a) (verify) and III.3.1.
 Paper: background (the singular reductions of Chapter 10: node $=$ multiplicative, cusp $=$ additive).
 
 **1.3 `prop:ellcurves:coordchange`** (proposition; P). The admissible changes of coordinates are
@@ -213,11 +217,11 @@ for $\sigma\in G_K$; addition and negation are morphisms. Commutativity, identit
 the construction; associativity is 2.3 (a direct verification is possible but long; mention it). Reference:
 AEC III.2.2, III.3.6 (verify). Paper: background (every group of points: $E(\Q)_{\mathrm{tors}}$, $E[\ell]$, $E(\F_q)$).
 
-**2.3 `prop:ellcurves:pic0`** (proposition; P given Chapter 8's Riemann-Roch). The map $\kappa\colon E(\bar K)\to\operatorname{Pic}^0(E)$,
-$P\mapsto[(P)-(O)]$ is a bijection with $\kappa(P+Q)=\kappa(P)+\kappa(Q)$; hence $+$ is associative. Corollary: a divisor
-$D=\sum n_P(P)$ is principal iff $\deg D=0$ and $\sum[n_P]P=O$ in $E$. Proof: Riemann-Roch gives $\dim L(D+(O))=1$
-for $\deg D=0$, so $D\sim(P)-(O)$ for a unique $P$; the line and the vertical line of 2.1 give
-$(P)+(Q)+(R)-3(O)$ and $(R)+(-R)-2(O)$ as divisors of functions. Reference: AEC III.3.4, III.3.5 (verify). Paper:
+**2.3 `prop:ellcurves:pic0`** (proposition; P given Chapter 8, item 5.7). The bijection $\kappa\colon E(\bar K)\to\operatorname{Pic}^0(E)$,
+$P\mapsto[(P)-(O)]$ of Chapter 8 (cited, not reproved) satisfies $\kappa(P+Q)=\kappa(P)+\kappa(Q)$ for the chord-tangent law; hence $+$
+is associative. Corollary: a divisor $D=\sum n_P(P)$ is principal iff $\deg D=0$ and $\sum[n_P]P=O$ in $E$. Proof (the part
+done here): the line through $P,Q$ and the vertical line through $R$ of 2.1 have divisors $(P)+(Q)+(R)-3(O)$ and
+$(R)+(-R)-2(O)$, so $(P)+(Q)\sim(P+Q)+(O)$. Reference: AEC III.3.4, III.3.5 (verify). Paper:
 background (and the model for Jacobians, Chapters 8 and 14).
 
 **2.4 `ex:ellcurves:torsion-points`** (worked example; P). On 11a1, $P=(5,5)$ has order $5$:
@@ -236,7 +240,7 @@ Reference: AEC III.4. Paper: background (isogeny classes, Section 1; Conjecture 
 
 **3.2 `thm:ellcurves:isog-hom`** (theorem; S). (i) An isogeny is a group homomorphism (through 2.3: $\varphi_*$ on
 $\operatorname{Pic}^0$). (ii) A nonconstant isogeny has finite kernel of order $\deg_s\varphi$; if $\varphi$ is separable, $\#\ker\varphi=\deg\varphi$,
-$\varphi$ is unramified, and $\bar K(E_1)/\varphi^*\bar K(E_2)$ is Galois with group $\ker\varphi$ acting by translations. Reference:
+$\varphi$ is unramified (Chapter 8, item 7.3(b), cited), and $\bar K(E_1)/\varphi^*\bar K(E_2)$ is Galois with group $\ker\varphi$ acting by translations. Reference:
 AEC III.4.8, III.4.10 (verify). Paper: background.
 
 **3.3 `thm:ellcurves:quotient`** (theorem; R). Let $\Phi\subset E(\bar K)$ be a finite subgroup. There are an elliptic curve
@@ -366,7 +370,8 @@ $T_\ell E\simeq\Hom_{\Z_\ell}(T_\ell E,\Z_\ell(1))=T_\ell E^\vee(1)$ and $E[\ell
 $T_\ell E^\vee\simeq T_\ell E(-1)$ and $\rho^\vee\simeq\rho\otimes(\chi_\ell^{\mathrm{cyc}})^{-1}$ (Chapter 4's $V^\vee\simeq V\otimes\det^{-1}$ in dimension two).
 Consequently $\ad(T_\ell E^\vee)=\ad(T_\ell E)$ as $G_K$-modules (Chapter 4), and a lattice homothetic to $T_\ell E^\vee$ has the
 same adjoint as $T_\ell E$. Paper: Section 4.2 ("the lattice $M_{f,\lambda}$ of DFG04 and $T_\ell E$ are homothetic"), which
-is right up to dualising (important_notes.md point 26: the cohomology $H^1$ gives the dual); Chapter 18 ($T^D$).
+is right up to dualising (important_notes.md point 26: the cohomology $H^1$ gives the dual; point 40: for the
+optimal curve $M_{f,\lambda}=H^1(E,\Z_\ell)=\Hom(T_\ell E,\Z_\ell)$, which by this item is exactly $T_\ell E(-1)$); Chapter 18 ($T^D$).
 
 **5.6 `cor:ellcurves:complex-conj`** (corollary; P). Let $E/\Q$, $\ell$ odd, $c$ a complex conjugation. Then $\bar\rho_{E,\ell}(c)$ has
 order dividing $2$ and determinant $\chi_\ell(c)=-1$, hence eigenvalues $1,-1$, trace $0$, and is conjugate to $\operatorname{diag}(1,-1)$;
@@ -768,3 +773,182 @@ $7$, $\degphi=72$, $=\text{11a3}^{(-7)}$), 14a1 ($E[3]\simeq\Z/3\oplus\mu_3$), 3
 Note that 539c1, 726a1 and 99a1 have rank $1$. Reference: Cremona97 and `ecdata` (`allcurves`, `allisog`, `degphi`,
 `galrep`, `alllabels`). Paper: the Example of Section 3, the remark on 99A1 (ARS12 Table 1: $r_E=12$, not recomputed
 here), the appendix (121a1, 726a1), Section sec:anomaly (726a1), Section sec:eis.
+
+## 3. Section-by-section plan with target line counts
+
+Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,200).
+
+| section | title | contents | target lines |
+|-|-|-|-|
+| (starred) | Core results at a glance | the card: every item of Part 2, stated as above, with tag and `\Cref` | (excluded) |
+| (starred) | Where the paper uses this chapter | Section 1.1 ($V,T,\rho,\bar\rho$); def:terms ($j$, $v_q(j)$, $a_q$, twist invariance); the table ($E'$, $a_q(E')$, $\alpha,\beta$); Section 1.4 and lem:twist (ii); lem:euler ($V=V'\otimes\chi_q$); thm:twist, thm:quant ($E_S$); thm:qual and the Section 3 Example (twists, labels, $a_p$); lem:h0 (CM); prop:ns ($\psi_3$, $\det$, complex conjugation); conj:eis and sec:eis (torsion, isogenies, $\Z/3\oplus\mu_3$, item 9.8); Section 1 (isogeny class, period lattice); sec:oot (trivial class); the appendix (`ellinit`, `elldivpol`) | 40 |
+| 1 | Weierstrass equations and their invariants | conventions C1 to C8 as `convention` environments; 1.1 to 1.6; the invariants table; `paperlink` for def:terms ($v_q(j)$) and lem:twist (ii) | 190 |
+| 2 | The group law | 2.1 to 2.4; a figure in words (chord and tangent); `paperlink` for torsion in sec:eis | 150 |
+| 3 | Isogenies | 3.1 to 3.6; `warning` that "isogenous" means over $\Q$ unless stated | 180 |
+| 4 | Division polynomials | 4.1 to 4.6; the factorisation table (`booktabs`); `paperlink` for prop:ns, sec:data, the appendix `ns3` | 160 |
+| 5 | The Weil pairing, the Tate module and the Galois representations | 5.1 to 5.7; `convention` on Frobenius (5.7); `paperlink` for Section 1.1, Section 4.2 (point 26), prop:ns | 170 |
+| 6 | Endomorphisms and complex multiplication | 6.1 to 6.5; the table of the 13 $j$-invariants with discriminants; `warning` on $\chi_\ell$ versus $\chi_{\ell^*}$ in lem:h0 (points 5, 14) | 150 |
+| 7 | Elliptic curves over $\C$ | 7.1 to 7.7; the 11a1 numbers; RHB aside (Fourier series on a torus); `paperlink` for Section 1 and Chapter 14 | 210 |
+| 8 | Elliptic curves over finite fields | 8.1 to 8.7; the $a_p$ table; `paperlink` for the table of Section 1 and lem:euler ($\alpha,\beta$) | 160 |
+| 9 | Elliptic curves over $\Q$: Mordell-Weil, torsion, isogenies | 9.1 to 9.10; 9.8 with full proof and a `paperlink` to conj:eis and sec:eis (point 17); 9.9 with a `paperlink` to optimality (point 27) | 200 |
+| 10 | Quadratic twists | 10.1 to 10.7; `warning` on $q$ versus $q^*$ (point 29) and on curve-level versus class-level twist identifications; `paperlink` for lem:twist, lem:euler, thm:twist, thm:quant, the Section 3 Example | 170 |
+| 11 | The $L$-function | 11.1; forward pointers to Chapters 14 and 19 | 70 |
+| 12 | Labels and the running examples | 12.1, 12.2; the big table; GP one-liners in `lstlisting` (`ellinit`, `ellglobalred`, `elltors`, `ellisomat`, `elldivpol`) with a pointer to Chapter 22 | 120 |
+| 13 | Exercises | the 17 exercises of Part 4 | 130 |
+| 14 | Notes and references | Silverman AEC and ATAEC, Cremona97, Washington EC, Cox, DiamondShurman, Husemoller, Knapp, MilneEC, Mazur77, Mazur78, Kenku, Faltings, Velu, Serre (SerreAbelian), Cohen (AGM); which theorem numbers were cited and checked | 40 |
+| | **total** | | **2,140** |
+
+## 4. Coverage table and exercises
+
+### 4.1 Coverage: PLAN.md scope, Section 6 map rows and paper hooks to line-up items
+
+| PLAN.md scope item, Section 6 row, or paper hook | line-up items |
+|-|-|
+| Weierstrass equations (general and short) | 1.1, 1.2 |
+| $b_2,b_4,b_6,b_8,c_4,c_6,\Delta,j$; discriminant and smoothness | 1.1, 1.2, 1.6 |
+| changes of coordinates $(u,r,s,t)$ and the transformation of $c_4,c_6,\Delta$ | 1.3, 1.4 |
+| the group law (chord-tangent; associativity via Riemann-Roch) | 2.1, 2.2, 2.3 |
+| the group of points over any field | 2.2, 2.4 |
+| isogenies: definition, degree, separable isogenies and kernels | 3.1, 3.2, 3.3, 3.6 |
+| the dual isogeny; $\deg[m]=m^2$ | 3.4, 3.5, 7.4 |
+| structure of $E[m]$ ($\Z/m\times\Z/m$ when char $\nmid m$) | 3.5, 7.4 |
+| division polynomials; degree $(m^2-1)/2$ for odd $m$ | 4.1, 4.2, 4.3, 4.4 |
+| the 3-division polynomial, degree 4, roots $=$ $x$-coordinates of the four lines of $E[3]$ | 4.5, 4.6 |
+| Weil pairing: nondegenerate, alternating, Galois-equivariant; $\det=$ cyclotomic | 5.1, 5.2, 5.3 |
+| Tate module $T_\ell E$ (free of rank 2) and $V_\ell E$ | 5.3, 5.5 |
+| the Galois action: $\rho_{E,\ell}$ and $\bar\rho_{E,\ell}$ | 5.4, 5.6, 5.7 |
+| endomorphism rings ($\Z$, imaginary quadratic order, quaternion order) | 6.1, 6.2, 7.4(iii) |
+| complex multiplication; the 13 $j$-invariants; $a_p=0$ at inert primes | 6.3, 6.4, 6.5, 8.4 |
+| curves over $\C$: lattices, $\wp$, uniformisation, periods | 7.1, 7.2, 7.3, 7.4 |
+| the period lattice $\Lambda_E$ of a curve over $\Q$ and its area | 7.6, 7.7 |
+| isomorphism classes $=$ lattices up to homothety $=$ $\SL_2(\Z)\backslash\mathfrak H$ | 7.4, 7.5 |
+| curves over finite fields: Frobenius endomorphism, $a_p=p+1-\#E(\F_p)$ | 8.1, 8.7 |
+| the Hasse bound | 8.2 |
+| characteristic polynomial $X^2-a_pX+p$ on $T_\ell E$; $\alpha\beta=p$ | 8.3, 8.6 |
+| Mordell-Weil, rank and torsion | 9.1, 9.2 |
+| Mazur's torsion theorem | 9.3 |
+| isogenies over $\Q$ and isogeny classes (finite; Cremona's class labels) | 9.4, 12.1 |
+| rational $\ell$-isogenies and reducibility of $E[\ell]$; rational $\ell$-torsion | 9.5, 9.6, 5.2(iii) |
+| the structure $\Z/3+\mu_3$ | 9.7, 9.8 |
+| quadratic twists: definition, model $y^2=x^3+da_2x^2+d^2a_4x+d^3a_6$ | 10.1 |
+| effect on $c_4,c_6,\Delta$ ($d^2,d^3,d^6$), same $j$ | 10.2 |
+| $a_p(E^{(d)})=\chi_d(p)a_p(E)$; $\rho_{E^{(d)},\ell}=\rho_{E,\ell}\otimes\chi_d$ | 10.3, 10.4, 10.6 |
+| $L(E,s)$ by its Euler product with the bad factors; continuation stated | 11.1 |
+| Cremona and LMFDB labels (11a1, 121a1, 539c1, 980i1, 726a1, 99A1 explained) | 12.1, 12.2 |
+| Section 6 row: $\rho_{E,\ell}$, $\bar\rho$, $T_\ell E$, $V_\ell E$, $E[\ell]$ (with Chapters 4, 5, 11) | 5.3, 5.4, 5.5, 5.6 |
+| Section 6 row: the twist $E'$ of good reduction, $a_q(E')$, quadratic twists and their invariants (with Chapter 10) | 8.3, 10.1, 10.2, 10.5 |
+| Section 6 row: 3-division polynomial, its factorisation pattern (with Chapters 5, 11) | 4.4, 4.5, 4.6 |
+| Section 6 row: Eisenstein case, rational $\ell$-isogeny, $\Z/3+\mu_3$, torsion (with Chapters 11, 14) | 9.3, 9.5, 9.6, 9.7, 9.8 |
+| Section 6 row: the worked examples 11a1, 20a1, 121a1, 539c1, 980i1, 726a1, 99A1 | 1.6, 4.6, 8.7, 10.2, 12.2 |
+| hook: Lemma lem:twist (ii) (models and invariants of twists; $q$ versus $q^*$) | 10.1, 10.2 |
+| hook: Lemma lem:h0 (CM and $a_p=0$) | 6.2, 6.4, 6.5, 8.4 |
+| hook: Proposition prop:ns (3-division polynomial; $\det\bar\rho_3=\chi_{-3}$; complex conjugation) | 4.5, 4.6, 5.2, 5.6 |
+| hook: Definition def:terms ($v_q(j)$; twist invariance) | 1.3, 1.6, 10.7 |
+| hook: the twist $E'$ of good reduction and $a_q(E')$ in the table of Section 1 | 8.3, 8.5, 10.5 |
+| hook: Conjecture conj:eis (torsion, isogeny class, $\Z/3+\mu_3$) | 9.3, 9.4, 9.7, 9.8 |
+| hook: Section 1.1 ($V,T,\rho,\bar\rho$) | 5.3, 5.4 |
+| also: Lemma lem:euler ($V=V'\otimes\chi_q$, $\alpha\beta=q$) | 8.3, 10.3, 10.5 |
+| also: Theorems thm:twist, thm:quant ($E_S$, $\chi_S$) | 10.4, 10.6 |
+| also: Theorem thm:qual and the Section 3 Example (twists by $-11$, $-7$; labels; $a_p$) | 8.7, 10.2, 10.4, 12.2 |
+| also: Lemma lem:old ($X^2-a_pX+p$, multiplicativity of $a_n$) | 8.3, 8.6, 11.1 |
+| also: Section 4.2 ($T^D$, $M_{f,\lambda}$ versus $T_\ell E$, point 26) | 5.3, 5.5 |
+| also: Section 1 (isogeny class, optimal curve, area of the period lattice) | 7.6, 7.7, 9.4, 12.1 |
+| also: Section sec:oot (trivial isogeny class) and point 27 | 9.9, 9.10 |
+| also: the appendix (`ellinit`, `elldivpol`, `ns3`) | 1.1, 4.5, 12.1 |
+| also: what Chapters 1, 2, 4, 5, 6, 21 assume from Chapter 9 (Part 5) | 3.5, 4.4, 4.5, 5.2, 5.4, 6.2, 6.5, 8.2, 8.5, 10.3, 10.4, 9.8 |
+
+### 4.2 Exercises (Section 13 of the chapter), graded from easy to harder
+
+1. Compute $b_2,b_4,b_6,b_8,c_4,c_6,\Delta,j$ for 11a1 $[0,-1,1,-10,-20]$; verify $4b_8=b_2b_6-b_4^2$, $1728\Delta=c_4^3-c_6^2$ and
+   $j=-2^{12}\cdot31^3/11^5$ (1.1, 1.6).
+2. From 1.3 show that $v_q(j)=3v_q(c_4)-v_q(\Delta)$ is independent of the model, and that $v_q(\Delta)$ changes by multiples of $12$.
+   Deduce that a model with $v_q(\Delta)<12$ is minimal at $q$ (the converse direction is Chapter 10).
+3. Using 2.1, check that $(5,5)$ on 11a1 has order $5$ and list its multiples. With $\#\tilde E(\F_3)=5$ and $\#\tilde E(\F_7)=10$ and
+   9.2, show $E(\Q)_{\mathrm{tors}}\simeq\Z/5$. Do the same for 20a1 ($\Z/6$).
+4. Compute $\psi_3$ for 20a1 and 14a1, find their rational roots and the corresponding $3$-torsion points, and explain the
+   factorisation patterns $1+3$ and $1+1+2$ by the orbits on the four lines (4.5, 9.7).
+5. Check the paper's claim (Proposition prop:ns, Section sec:anomaly) for 726a1: $\psi_3=(x^2-x-74)(3x^2+8x+20)$; the two
+   quadratic fields are $\Q(\sqrt{33})$ and $\Q(\sqrt{-11})$ and the third quadratic subfield of their compositum is $\Q(\sqrt{-3})$;
+   and $3\mid a_p$ for the good primes $p\equiv2\pmod3$, $p<40$ (use 8.7).
+6. Check the paper's claim (Example of Section 3) that the twist of 121a1 by $-11$ lies in the class 121c with
+   $\Delta=-11^8$: compute the twisted model by 10.1, its $c_4,c_6$, and identify it with 121c2 by 10.2(ii). Then twist by
+   $+11$ and show the result is not isomorphic over $\Q$ to any curve of conductor $121$ (it is 1936k2): the point of
+   important_notes.md point 29.
+7. Check the paper's claim that $f_{11a}\otimes\chi_{-11}$ is the form of 121d: verify $a_p(\text{121d1})=\chi_{-11}(p)a_p(\text{11a1})$ for $p\le50$
+   by point counting. Show from $j$-invariants that 121d1 is the twist of 11a3, not of 11a1, and explain why the
+   $a_p$ cannot see the difference (9.4).
+8. Check the paper's claim that the twist of 539c1 by $-7$ has conductor $77$ and type $\mathrm I_3$ at $7$: show that it is
+   77c1 (same $j=167^3/(7^3\cdot11^2)$), with $v_7(\Delta)=3$ against $9$ for 539c1 (Chapter 10 for the types).
+9. For 11a1 and $p=3,5,7,13$ compute $\#E(\F_{p^2})$ from $a_p$ by 8.3 and compare with a direct count ($15,35,60,180$).
+   Show $|\alpha|=\sqrt p$.
+10. Prove 8.5. Using it, check the paper's $\mathrm I_0^*$ term on 539d1: $E'=$ 11a3, $a_7=-2$, $e_3(E,7)=v_3(6)+v_3(60)=2=v_3(72)$,
+    and show that the value does not depend on which twist of good reduction is used (10.5).
+11. Show that $a_p(\text{27a1})=0$ for the primes $p\equiv2\pmod3$, $p\le50$, and $a_p(\text{121b1})=0$ for $p$ inert in $\Q(\sqrt{-11})$, $p\le50$,
+    and explain both by 6.5. Compute $j\bigl(\frac{1+\sqrt{-163}}2\bigr)$ numerically and compare with 6.4.
+12. Use the Weil pairing to show that complex conjugation acts on $E[\ell]$ ($\ell$ odd) with eigenvalues $1,-1$, and that a rational
+    point of order $\ell$ forces $E[\ell]/(\Z/\ell)\simeq\mu_\ell$ (5.2, 5.6).
+13. Show $a_p(\text{11a1})\equiv1+p\pmod5$ for every good $p$ and check it for $p<100$; explain by $E[5]\simeq\Z/5\oplus\mu_5$ (9.7). Which of the
+    two $5$-isogenous curves has a rational $5$-torsion point, and why?
+14. Check the claim of 9.8 (important_notes.md point 17) in detail: prove that a non-CM curve with $E[3]\simeq\Z/3\oplus\mu_3$ has no
+    rational point of order $9$, and deduce that the bound "$D\le2$ for $\ell=3$" of Conjecture conj:eis follows from its
+    first bound and Mazur's theorem.
+15. Check the paper's statement (Section sec:oot) that a curve with trivial isogeny class is optimal and has $E[\ell]$
+    irreducible for every $\ell$ (9.10). Show more generally (9.9) that if $E[\ell]$ is irreducible then $T_\ell E\simeq T_\ell E'$ for all $E'$ in
+    the class.
+16. For $\Lambda=\Z+\Z i$ and $\Lambda=\Z+\Z e^{2\pi i/3}$ show $g_3=0$, resp. $g_2=0$, hence $j=1728$, resp. $0$, and compute $\End$. For 11a1,
+    compute $\omega_1$ by the AGM (formula of 7.6(iii)) and check that the reduced $\tau$ gives $j(\tau)=j(E)$ (7.7).
+17. Using the `alllabels` file of `ecdata`, translate 11a1, 539c1, 726a1, 980i1 into LMFDB labels. Explain why Cremona's
+    curve number $1$ is the optimal curve while the LMFDB's number $1$ need not be, and look up the exception 990h.
+
+## 5. Dependencies and forward pointers
+
+Results from other chapters used here (by chapter label only):
+* Chapter 1 (`ch:groups`): finite abelian groups (structure; $\#E[d]=d^2$ for all $d\mid m$ forces $(\Z/m)^2$), $\GL_2(\Z/m)$,
+  $\GL_2(\Z_\ell)$ and inverse limits (its 7.4), the four lines of $\F_3^2$ (5.3), $\det=$ sign on lines (5.4(ii)), Borel subgroups (5.5),
+  the orbit table and Sutherland labels (6.8, 6.10), complex-conjugation elements (6.9).
+* Chapter 2 (`ch:rings`): finite fields, the quadratic character $\eta$ of $\F_{\mathfrak q}^\times$, Kronecker symbols, $q^*$ and $\chi_q$ (C5), $v_p$.
+* Chapter 3 (`ch:modules`): $\Z_\ell$, free modules of finite rank, inverse limits of $\Z/\ell^n$-modules, Pontryagin duality
+  ($E[\ell^\infty]$ versus $T_\ell E$).
+* Chapter 4 (`ch:reps`): twisting by characters, $\ad(V\otimes\chi)=\ad V$, $V^\vee\simeq V\otimes\det^{-1}$ in dimension two,
+  semisimplification.
+* Chapter 5 (`ch:galois`): Galois theory of a polynomial (galois:galois-group-polynomial, galois:quartic-on-lines,
+  galois:discriminant), profinite groups and continuity, the cyclotomic character, complex conjugation, quadratic
+  characters of $G_K$.
+* Chapter 6 (`ch:ant`): imaginary quadratic orders and class number one (statements), splitting of $p$ in $\Q(\sqrt d)$, the
+  Frobenius element $\Frob_p$, $D_p$ and $I_p$, the arithmetic/geometric convention (its 3.7), its CM preview 6.5.
+* Chapter 7 (`ch:local`, outlined in parallel): only the words "unramified at $p$", $I_p\subset D_p\simeq G_{\Q_p}$ (also in
+  Chapter 6).
+* Chapter 8 (`ch:curves`): projective plane and smooth plane curves, function fields, divisors and $\operatorname{Pic}^0$, Riemann-Roch,
+  Weierstrass model of a genus-one curve with a point (its 5.6), $\operatorname{Pic}^0$ bijection (its 5.7), degree and
+  separability of morphisms, unramified morphisms between genus-one curves (its 7.3(b)), differentials, the
+  Frobenius morphism, compact Riemann surfaces, $H_1$ and Abel-Jacobi.
+* Background (PLAN.md Section 2): complex analysis (Liouville, Laurent series, meromorphic functions, the residue
+  theorem for the $\wp$-function), linear algebra (quadratic forms, Cauchy-Schwarz for 8.2), real analysis (convergence
+  of lattice sums).
+
+Black boxes imported from later chapters (stated with a forward `\Cref`, never used in the proof of an earlier item
+of the chapter except 8.6, 9.2 and 9.9(iii), which say so): minimal models, conductor, Kodaira types, injectivity of
+reduction on prime-to-$p$ torsion, the Tate curve (Chapter 10); Neron-Ogg-Shafarevich, mod $\ell$ images and their labels
+(Chapter 11); the fundamental domain and the bijectivity of $j$ (Chapter 12); modularity, optimal curves, modular
+degree, Manin constant (Chapter 14); analytic continuation of $L(E,s)$ (Chapter 19).
+
+Forward pointers (chapters that use this one):
+* Chapter 10 (`ch:reduction`): Weierstrass data and coordinate changes (1.1 to 1.3) for minimal models and Tate's
+  algorithm; twists and their invariants (10.1, 10.2) for Lemma lem:twist (i), (ii); $\#\tilde E(\F_p)$ and $a_p$ at bad primes
+  (8.7, 11.1); the Tate curve's $E_q[\ell^t]$ uses $E[\ell^t]$ (3.5, 5.3); 9.9(iii).
+* Chapter 11 (`ch:galrep`): $\rho$, $\bar\rho$, $\det=\chi_\ell$, complex conjugation (5.2 to 5.6); the division polynomial (4.5, 4.6) for
+  Proposition prop:ns; CM (6.5) and twists (10.3) for Lemma lem:h0; rational isogenies and $\Z/\ell\oplus\mu_\ell$ (9.5 to 9.8) for the
+  Eisenstein case and the labels 3B.1.1, 3Cs.1.1; 8.6 (easy half of Neron-Ogg-Shafarevich).
+* Chapter 12 (`ch:modforms`): lattices, $\SL_2(\Z)\backslash\mathfrak H$, $j(\tau)$ (7.1 to 7.5); 11a1's coefficients (8.7).
+* Chapter 13 (`ch:hecke`): $X^2-a_pX+p$ and the recursion (8.3, 11.1); twisting newforms matches 10.4.
+* Chapter 14 (`ch:moddeg`): isogeny classes, labels and optimality convention (9.4, 9.9, 12.1), the dual isogeny (3.4), the
+  period lattice and its area (7.6, 7.7), $L(E,s)$ (11.1), torsion (9.3) for Mazur's Eisenstein-ideal results.
+* Chapter 15 (`ch:modgalrep`): $\rho_{E,\ell}$ versus $\rho_{f,\lambda}$, $T_\ell E$ versus $M_{f,\lambda}$ (5.5, important_notes.md points 26, 40), twisting
+  (10.3, 10.4) in Theorem thm:qual (b), (c).
+* Chapters 17, 18 (`ch:galcoh`, `ch:blochkato`): $E[n]$ and the Kummer sequence, $T(1)$, $T^D$ (5.3, 5.5).
+* Chapter 19 (`ch:lfunctions`): $L(E,s)$, the Frobenius convention (5.7), $\alpha,\beta$ (8.3), the $\mathrm I_0^*$ factor via 8.5 and 10.5.
+* Chapters 21, 22 (`ch:paper`, `ch:computation`): every hook of Part 0, the running examples table (12.2), 9.8 for
+  Conjecture conj:eis, the PARI commands.
+* Chapters 1, 2, 4, 5, 6 already point here for: $E[m]\simeq(\Z/m)^2$ and $T_\ell E$ (Chapter 1), $\#E(\F_q)=q+1-a_q$, Hasse and twists
+  (Chapter 2), twists $\rho\otimes\chi_d$ and the Weil pairing (Chapter 4), $\det\rho_{E,\ell}=\chi_\ell$ and the roots of $\psi_3$ (Chapter 5),
+  CM and $a_p=0$ (Chapter 6). All are delivered: 3.5, 5.3, 8.1, 8.2, 10.1 to 10.4, 5.2, 4.4, 4.5, 6.2, 6.5.
