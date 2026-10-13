@@ -222,7 +222,14 @@ case. Confidence: high, as reported.
 
 ### 19. Lemma lem:ddt417: wp intersect I = 0 is used without proof (harmless)
 
-It holds because T is reduced (T tensor Q is a product of fields) and I = Ann(wp). **Action:** add one line.
+The proof uses wp intersect I = 0, where wp = ker pi and I = Ann(wp). This needs a short argument, and it
+is NOT "because T is reduced": the full Hecke algebra can contain nilpotents (U_p has a Jordan block at
+eigenvalue 0, for example U_2 at level 88 on the span of f_11(z), f_11(2z), f_11(4z), f_11(8z)). The correct
+argument: take t in I with pi(t) = eta. For x in wp intersect I, tx = 0 (as t kills wp) and
+(pi(t) - t)x = 0 (as pi(t) - t lies in wp and x kills wp). So eta x = 0, and x = 0 when eta is nonzero
+because T is torsion-free. When eta = 0 the lemma is trivial. **Action:** add these two lines.
+Confidence: high. (Corrected after the Chapter 3 outline: an earlier version of this note gave the wrong
+reason.)
 
 ### 20. Theorem thm:qual, cases (b) and (c): "g = h tensor chi" is not literally right
 
@@ -339,3 +346,45 @@ says the geometric Frobenius on V_l E has eigenvalues alpha, beta, which is a sl
 alpha/beta, 1, beta/alpha are the same for both conventions, so no number changes. **Action:** the
 Chapter 19 and 21 writers must state this correctly. Found by the Chapter 4 outline agent; checked by the
 orchestrating session.
+
+## From the Chapter 3 outline (modules, Fitting ideals, pairings, Hecke-type algebras)
+
+Source: `outlines/ch03_modules.md`, final section. Point 35 was also checked independently by the
+orchestrating session; the others are as reported by the outline agent. The agent's first point corrected
+point 19 above. None changes a result.
+
+### 35. Lemma lem:hecke: the other local factors lie in the kernel, not in the annihilator
+
+The proof says "the other local factors of T tensor Z_l are killed by phi_f and lie in the annihilator".
+They lie in ker phi_f = wp, but not in Ann(wp) in general: if e' is the idempotent of another local factor,
+e' wp = wp intersect T_{m'}, which is usually nonzero. The conclusion, that the congruence ideal can be
+computed in T_m, is still right, because phi_f factors through the projection to T_m and the annihilator
+of wp decomposes along the idempotents. **Action:** replace "lie in the annihilator" by "lie in the kernel,
+and Ann(wp) is the annihilator of wp_m inside T_m". Confidence: high (checked twice).
+
+### 36. Lemma lem:hecke and Theorem thm:quant Step 2: why the pairing stays perfect on the m-component
+
+Both proofs apply Lemma lem:ddt417 to L = H^1(X_0(N), Z_l)_m with the pairing delta-hat, which needs that
+pairing to be perfect on the m-component. One sentence fixes it: the idempotent e_m is self-adjoint for
+delta-hat (all Hecke operators are), so H^1 splits orthogonally into its local components and the pairing is
+perfect on each. **Action:** add that sentence. Confidence: high, as reported.
+
+### 37. Section 1.2: the placement of the G_{Q_p} superscript in the definition of Tam_p
+
+The display reads as Fitt(H^1(I_p, M)_tor)^{G_{Q_p}}, that is, as invariants of an ideal. What is meant is
+the Fitting ideal of the invariants: Fitt_{Z_l}( (H^1(I_p, M)_tor)^{G_{Q_p}} ). **Action:** move the
+parenthesis. Notation only.
+
+### 38. Lemma lem:ddt417: orders versus lengths
+
+The lemma is stated for an arbitrary DVR O but counts #O/Delta and #(O/eta)^d, which are finite only when
+the residue field is finite. For O = Z_l (the only case used) this is fine. **Action:** state it with
+lengths, or for O with finite residue field. Low importance.
+
+## Book-internal consistency (continued)
+
+### B2. Jordan-Holder is proved in both Chapter 3 and Chapter 4
+
+Chapter 3 needs Jordan-Holder for the length of a module over a local ring and proves it (the proof works
+over any ring); PLAN.md and the Chapter 4 outline also place it in Chapter 4. **Action:** keep the proof in
+Chapter 3 and let Chapter 4 cite it for composition factors of representations.
