@@ -388,3 +388,66 @@ lengths, or for O with finite residue field. Low importance.
 Chapter 3 needs Jordan-Holder for the length of a module over a local ring and proves it (the proof works
 over any ring); PLAN.md and the Chapter 4 outline also place it in Chapter 4. **Action:** keep the proof in
 Chapter 3 and let Chapter 4 cite it for composition factors of representations.
+
+## From the Chapter 8 outline (curves, Jacobians, cup product, correspondences)
+
+Source: `outlines/ch08_curves.md`, final section. Point 39 was also checked independently by the
+orchestrating session; points 40 and 41 are as reported by the outline agent.
+
+### 39. Lemma lem:hecke is always an equality: the multiplicity-one hypothesis in Theorem thm:main is not needed (SIGNIFICANT)
+
+For the X_0(N)-optimal curve E, the kernel of J_0(N) -> E is connected, so phi_*: H_1(X_0(N), Z) -> H_1(E, Z)
+is surjective and the image of phi^*: H^1(E, Z_l) -> H^1(X_0(N), Z_l) is a saturated rank-two sublattice
+on which the Hecke algebra acts through phi_f. Hence it is exactly M_{f,lambda} = H^1(X_0(N), Z_l)[wp].
+By the projection formula, the cup product on it is <phi^* a, phi^* b> = <a, phi_* phi^* b> = deg(phi_E) <a, b>_E,
+and the cup product on H^1(E, Z) is unimodular. The pairing delta-hat composes the cup product with w_N,
+which acts on M_{f,lambda} by the Atkin-Lehner sign of f, plus or minus 1. So the Gram determinant of
+delta-hat on M_{f,lambda} is (deg phi_E)^2 up to a unit, and
+
+    v_lambda(eta^empty_{f,lambda}) = v_l(deg phi_E)    for every l not dividing 2N, with no freeness hypothesis.
+
+Consequences, if DFG04's eta is normalised as the paper describes it (Section 4.1):
+
+* Lemma lem:hecke becomes v_l(deg phi_E) = v_l(eta^empty) unconditionally; the comparison with r_E is then
+  the theorem of Agashe-Ribet-Stein.
+* The identity (eq:identity) of Theorem thm:main holds **with equality** whenever l is not in S_f: the
+  phrase "with equality when H^1(X_0(N), Z_l)_m is free over T_m" can be dropped, and Remark rem:free is not
+  needed for it.
+* Step 4 of the proof of Theorem thm:quant likewise needs no freeness (apply the same argument to the
+  optimal curve in the class of g); this partly answers point 24.
+
+This is a classical fact in another guise (the modular degree is the index computed from the intersection
+pairing on the image of H^1(E)). **Action:** state it as a lemma, which both simplifies and strengthens
+the paper. Confidence: high for the mathematics (checked twice); medium on the exact normalisation of
+eta in DFG04, which should be checked against DFG04 Sections 1.6 and 1.7 before the paper is changed.
+
+### 40. Supplement to point 26: M_{f,lambda} for the optimal curve, exactly
+
+For the optimal curve, phi^* identifies M_{f,lambda} with H^1(E, Z_l) = Hom(T_l E, Z_l), which is
+T_l E(-1) as a G_Q-module (via the Weil pairing). This is an equality, not just a homothety, and needs no
+irreducibility of rhobar. Since ad is insensitive to dualising and twisting, A_f = ad T in the paper is
+right. Confidence: high, as reported.
+
+### 41. Remark rem:free: the Tate module versus H^1 as Hecke modules (expository)
+
+Identifying T_l J_0(N) with H^1(X_0(N), Z_l) as Hecke modules uses Poincare duality composed with w_N; the
+resulting identification is not Galois-equivariant. Freeness over T_m still transfers. **Action:** one
+clarifying clause. Low importance.
+
+## Book-internal consistency (continued)
+
+### B3. Chapter 21 outline, items A4.4 and A4.6, need updating
+
+A4.4 still says the other local factors lie in the annihilator (corrected to the kernel in point 35), and
+A4.6 says M_{f,lambda} is homothetic to T_l E, contradicting its own A4.1 and points 26 and 40. Both must be
+fixed when Chapter 21 is written; point 39 also changes how A4 should present Lemma lem:hecke.
+
+### B4. The symbol * is overloaded
+
+Chapter 3's outline uses * for adjoints, Chapter 4 and the paper use it for Pontryagin duals, and Chapter 8
+needs it for pullbacks of divisors and cohomology. The Chapter 8 outline uses A^dagger for adjoints.
+**Action:** Appendix B must fix one convention for the whole book.
+
+### B5. The Chapter 3 outline lists Chapter 8 as a user of Gorenstein rings
+
+It is not; the users are Chapters 14 and 20. Fix when Chapter 3 is written.
