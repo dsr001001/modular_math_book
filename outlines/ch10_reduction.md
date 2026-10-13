@@ -120,3 +120,433 @@ book's level, states the rest precisely, and checks all of it on the paper's cur
   `booktabs` table (components, multiplicities, intersection pattern in words) and, if the writer wishes, as small
   LaTeX `picture` environments (no package needed). Bibliography keys: the paper's and `refs.bib`'s (`Tate75` is Tate's
   algorithm; PLAN.md's list also names `TateAlgorithm`, which is not in `refs.bib`: use `Tate75`).
+
+## 2. Line-up of the core results, in teaching order
+
+### Section 1. Integral and minimal Weierstrass models
+
+**1.1 `def:reduction:minimal`** (definition and proposition; P). In the setting R1, a Weierstrass model of $E/K$ is
+*integral* if all $a_i\in\mathcal O$; then $b_i,c_4,c_6,\Delta\in\mathcal O$. It is *minimal* if $v(\Delta)$ is least among integral models of $E$.
+(i) Minimal models exist (scale any model by $u=\pi^{-k}$, $k\gg0$, to make it integral; $v(\Delta)\in\Z_{\ge0}$). (ii) Two minimal models
+differ by a change $(u,r,s,t)$ with $u\in\mathcal O^\times$ and $r,s,t\in\mathcal O$ (S: AEC VII.1.3(d) (verify); the proof uses that $u\in\mathcal O^\times$ and then the
+integrality of $r,s,t$ from the transformation formulas of Chapter 9, item 1.3, with care at $p=2,3$). (iii) The invariant
+differential $\omega=dx/(2y+a_1x+a_3)$ of a minimal model is well defined up to $\mathcal O^\times$ (the *Neron differential*); $v(\Delta_{\min})$, and
+$v(c_4)$, $v(c_6)$ of a minimal model, are invariants of $E/K$, and so is $v(j)=3v(c_4)-v(\Delta)$ for any model. Reference: AEC VII.1.
+Paper: Section 2 ("Tate's algorithm ... for the Kodaira type"), Definition def:terms ($v_q(j_E)$), Lemma lem:twist (ii)
+("a minimal model of $E$ at $q$"); Chapter 9's period lattice uses the Neron differential.
+
+**1.2 `prop:reduction:min-criterion`** (proposition; P for (i), (ii); R for (iii)). Let a model be integral.
+(i) (any $p$) If $v(\Delta)<12$, or $v(c_4)<4$, or $v(c_6)<6$, the model is minimal. (ii) ($p\ge5$) The model is minimal iff
+$v(\Delta)<12$ or $v(c_4)<4$; equivalently, a non-minimal integral model becomes minimal after $(x,y)\mapsto(\pi^{2}x,\pi^{3}y)$ repeated
+until one of the two holds. (iii) (Kraus's conditions, for $K=\Q_p$ with $p=2,3$; R) Integers $c_4,c_6$ with $\Delta=(c_4^3-c_6^2)/1728\in\Z\setminus\{0\}$
+are the invariants of an integral Weierstrass model over $\Z$ iff $v_3(c_6)\ne2$ and either $c_6\equiv-1\pmod4$, or $v_2(c_4)\ge4$ and
+$c_6\equiv0$ or $8\pmod{32}$. Consequently a model over $\Z$ with $p^4\mid c_4$, $p^6\mid c_6$, $p^{12}\mid\Delta$ ($p\in\{2,3\}$) is non-minimal at $p$ iff
+$(c_4/p^4,c_6/p^6)$ satisfies the condition at $p$ (the condition at the other prime being inherited). Proof of (i): $(u,r,s,t)$ with $u\in\mathcal O$,
+$v(u)\ge1$ would make $\Delta'=u^{-12}\Delta$ etc. non-integral. (ii): if $v(c_4)\ge4$, $v(\Delta)\ge12$, then $v(c_6)\ge6$ ($c_6^2=c_4^3-1728\Delta$),
+and for $p\ge5$ the model $y^2=x^3-27c_4\pi^{-4}x-54c_6\pi^{-6}$ is integral (the factors $27$, $54$, $2$, $3$ are units). Reference: AEC VII.1.1 and
+Exercise 7.1 (verify); for (iii) A. Kraus, "Quelques remarques a propos des invariants $c_4$, $c_6$ et $\Delta$ d'une courbe elliptique",
+Acta Arith. 54 (1989), 75 to 80 (key `Kraus89`, add to `bib/ch10.bib`; not the paper's `Kraus90`); Cremona's book (CremonaBook)
+Section 3.2 for the algorithmic use. Data check: 20,000 random integral models all satisfy (iii); on the $8{,}248$ pairs (curve, $p\in\{2,3\}$)
+of `ecdata` below conductor $10{,}000$ whose minimal model has $p^4\mid c_4$, $p^6\mid c_6$, $p^{12}\mid\Delta$, (iii) correctly says "minimal" every
+time. Paper: Lemma lem:twist (ii) ("is minimal exactly when the result is less than $12$, otherwise $12$ is subtracted": that
+is (ii), plus $v(c_4)\ge4$ for potentially good reduction with $v(\Delta)\ge12$).
+
+**1.3 `thm:reduction:global-minimal`** (theorem; S). Every $E/\Q$ has a *global minimal model*: a model over $\Z$ minimal at every
+prime; it is unique up to $(u,r,s,t)$ with $u=\pm1$, $r,s,t\in\Z$, and its discriminant $\Delta_E$ is the minimal discriminant. Sketch:
+minimal models at the finitely many primes dividing $\Delta$ of a given integral model are glued because $\Z$ has class number one
+(AEC VIII.8.2 (verify)). Cremona's tables list the global minimal model, normalised by $a_1,a_3\in\{0,1\}$, $a_2\in\{-1,0,1\}$
+(CremonaBook 3.2, verify the normalisation before printing). Paper: Section 1 ("$E$"), the appendix (`ellinit([1,1,1,-30,-76])`),
+Section sec:data ("recomputed with PARI ... from the $a$-invariants").
+
+**1.4 `ex:reduction:minimal-examples`** (worked example; P). (a) The twist of 121a1 $[1,1,1,-30,-76]$ ($\Delta=-11^2$) by $-11$, written
+with $b$-invariants as in Chapter 9 (item 10.1), has $v_{11}(\Delta)=2+6=8<12$, hence is minimal: it is 121c2 ($\Delta=-11^8$). Twisting 121c2
+back by $-11$ gives $v_{11}(\Delta)=14$ and $v_{11}(c_4)=3+2=5\ge4$, so it is not minimal at $11$; one step of 1.2(ii) gives $v_{11}(\Delta)=2$:
+121a1 again. (b) 140b1 $[0,0,0,32,212]$ has $v_2(\Delta)=8$, $v_2(c_4)=9$, $v_2(j)=19$: minimal by 1.2(i), although $c_4$ is very divisible
+by $2$. (c) The short model $y^2=x^3-27c_4x-54c_6$ of 11a1 has discriminant $6^{12}\Delta$ and is not minimal at $2$ and $3$. All
+checked. Paper: background.
+
+### Section 2. Reduction modulo $\pi$
+
+**2.1 `def:reduction:types`** (definition and proposition; P). Let the model be minimal and $\tilde E$ its reduction over $k$
+(Chapter 8 for singular points of plane cubics; Chapter 9, item 1.2: one singular point, a node if $\tilde c_4\ne0$, a cusp if
+$\tilde c_4=0$). $E$ has *good* reduction if $\tilde E$ is smooth, i.e. $v(\Delta)=0$; *multiplicative* reduction if $\tilde E$ has a node, i.e.
+$v(\Delta)>0=v(c_4)$; *additive* reduction if $\tilde E$ has a cusp, i.e. $v(\Delta)>0$, $v(c_4)>0$. Multiplicative reduction is *split* if the two
+tangent directions at the node are defined over $k$ and *nonsplit* otherwise. Over $\Q$ with $p$ bad, $a_p:=p+1-\#\tilde E(\F_p)$ (singular point
+counted) is $1$, $-1$, $0$ in the three cases split, nonsplit, additive (P: count $\tilde E_{\mathrm{ns}}(\F_p)$ by 2.3). Reference: AEC VII.5;
+VII.2. Paper: Section 1.1 ($\delta_p=2,1,0$), the table and Definition def:terms ($a_q(E)$, $a_q^2=1$ at multiplicative $q$),
+Lemma lem:old ($a_p(f)=\pm1$ for $p\,\|\,N$), the appendix (`k >= 5` detects multiplicative primes).
+
+**2.2 `prop:reduction:split`** (proposition; P). Let $E$ have multiplicative reduction. (i) After moving the node to $(0,0)$ the tangent
+cone is $y^2+a_1xy-a_2x^2$; reduction is split iff $T^2+a_1T-a_2$ has a root in $k$. (ii) For $p$ odd, reduction is split iff $-c_6$ is a
+square in $k^\times$ (equivalently $-c_4/c_6$, since $\tilde c_4^3=\tilde c_6^2$ makes $\tilde c_4$ a square). (iii) Split and nonsplit are exchanged by the
+unramified quadratic twist, and become equal over the unramified quadratic extension of $K$. Data check: for all $127{,}592$
+pairs (curve, odd multiplicative $p$) below conductor $10{,}000$, $a_p=\bigl(\frac{-c_6}{p}\bigr)$. Reference: ATAEC V.5 (verify); Cremona's book
+3.2. Paper: Lemma lem:tamagawa-exp ("This holds for split and for nonsplit reduction"), Lemma lem:tamfactor ($\varepsilon$ of order at
+most $2$), Lemma lem:old ($\varepsilon(\Frob_p)=a_p(f)$).
+
+**2.3 `prop:reduction:Ens`** (proposition; P). The nonsingular points $\tilde E_{\mathrm{ns}}(k)$ form a group under the chord-tangent law,
+and $\tilde E_{\mathrm{ns}}(k)\simeq k^+$ (cusp), $k^\times$ (split node), $\ker(N\colon l^\times\to k^\times)$ (nonsplit node, $l/k$ the quadratic extension).
+For $k=\F_p$ the orders are $p$, $p-1$, $p+1$. Reference: AEC III.2.5 (verify) and Exercise 3.5. Paper: background (via 2.1:
+$a_p\in\{0,1,-1\}$; and via 4.2: the identity component of the special fibre of the Neron model).
+
+**2.4 `prop:reduction:filtration`** (proposition; P). Define $E_0(K)=\{P:\tilde P\in\tilde E_{\mathrm{ns}}(k)\}$ and $E_1(K)=\{P:\tilde P=\tilde O\}$. Then
+$E_0(K)$ is a subgroup, reduction $E_0(K)\to\tilde E_{\mathrm{ns}}(k)$ is a surjective homomorphism (surjectivity by Hensel, Chapter 7) with
+kernel $E_1(K)$:
+$$0\to E_1(K)\to E_0(K)\to\tilde E_{\mathrm{ns}}(k)\to0 .$$
+Reference: AEC VII.2.1 (verify). Paper: Section 1.4 ($c_q=[E(\Q_q):E_0(\Q_q)]$ via 4.2), background.
+
+**2.5 `thm:reduction:formal-group`** (theorem; S for (i), (ii); P for (iii) given (ii)). (i) The power series $w(z)=z^3+a_1zw+a_2z^2w+\cdots$
+($z=-x/y$, $w=-1/y$) and the addition law define a one-parameter formal group $\hat E$ over $\Z[a_1,\dots,a_6]$, and $z$ gives an
+isomorphism $E_1(K)\simeq\hat E(\mathfrak m)$. (ii) For $r>v(p)/(p-1)$ the formal logarithm is an isomorphism $\hat E(\mathfrak m^r)\simeq\mathfrak m^r$ (additive group).
+(iii) Consequently: $E_1(K)$ has no nonzero torsion of order prime to $p$ (for $m$ prime to $p$, $[m]$ is invertible on $\hat E(\mathfrak m)$
+since $[m](z)=mz+\cdots$ with $m\in\mathcal O^\times$). Only (iii) is used later; (i), (ii) are stated so that the reader knows where (iii) comes
+from. Reference: AEC IV.2 to IV.6, VII.2.2, VII.3.1 (verify all). Paper: background (it is the input of 2.6).
+
+**2.6 `cor:reduction:torsion-injects`** (corollary; P given 2.4, 2.5). Let $m$ be prime to $p$. (i) Reduction $E_0(K)[m]\to\tilde E_{\mathrm{ns}}(k)$ is
+injective. (ii) If $E$ has good reduction, $E(K)[m]\hookrightarrow\tilde E(k)$, and over $K^{\mathrm{ur}}$ (or its completion) reduction is an isomorphism
+$E[m]\to\tilde E[m]$ (injective by (i) applied over the finite unramified extensions, bijective by counting: both have $m^2$ elements,
+Chapter 9, item 3.5), compatible with $G_K\to G_k$; hence inertia acts trivially on $E[m]$ and on $T_\ell E$ for $\ell\ne p$. Reference: AEC VII.3.1,
+VII.7 (verify). Paper: Section 1.1 (good primes are unramified, $\delta_p=2$); Chapter 9's items 8.6 and 9.2 and Chapter 11's
+Neron-Ogg-Shafarevich criterion use (ii).
+
+**2.7 `prop:reduction:index-finite`** (proposition; S). $E(K)/E_0(K)$ is finite; it is trivial when the reduction is good, and its order is
+computed in 4.2 and 7.6. Reference: AEC VII.6.1 (Kodaira-Neron; verify). Paper: Section 1.4 ($c_q$).
+
+### Section 3. Potentially good and potentially multiplicative reduction
+
+**3.1 `def:reduction:potential`** (definition and theorem; S). $E/K$ has *potentially good* (resp. *potentially multiplicative*) reduction
+if it has good (resp. multiplicative) reduction over some finite extension of $K$. (i) $E$ has potentially good reduction iff $v(j)\ge0$;
+(ii) potentially multiplicative iff $v(j)<0$ (and then the reduction is multiplicative over every finite extension over which it is
+semistable). Proof sketch: good reduction over $L$ forces $j$ integral ($j=c_4^3/\Delta$ with $\Delta$ a unit); conversely for $p\ge3$ use a
+Legendre model $y^2=x(x-1)(x-\lambda)$ over $K(E[2])$ and $j=2^8(\lambda^2-\lambda+1)^3/(\lambda^2(\lambda-1)^2)$, $p=2$ by a similar cubic model
+(cite). Multiplicative reduction has $v(j)=-v(\Delta)<0$. Reference: AEC VII.5.5 (verify). Paper: Definition def:terms (the case
+split $v_q(j_E)<0$), Remark rem:wild ("a type $\mathrm I_n^*$ at $2$ has potentially good reduction in about half of the cases").
+
+**3.2 `thm:reduction:semistable`** (theorem, semistable reduction; S). For every $E/K$ there is a finite extension $L/K$ over which $E$
+has good or multiplicative (semistable) reduction; one may take $L=K(E[m])$ for any $m\ge3$ prime to $p$ (R, Serre-Tate). Sketch: (i) of 3.1
+for $v(j)\ge0$; the Tate curve (7.3) for $v(j)<0$. Reference: AEC VII.5.4 (verify); SerreTate68 Section 2 (key in `bib/ch07.bib`; copy
+to `bib/ch10.bib`). Paper: Lemma lem:IV, Lemma lem:euler ("the inertia group acts on $V$ through a finite cyclic quotient when the
+reduction is potentially good, and through a quadratic character times a unipotent when it is potentially multiplicative").
+
+**3.3 `rem:reduction:types-of-the-four-cases`** (remark; P given 2.1, 3.1). The four classes: good ($\mathrm I_0$); multiplicative ($\mathrm I_n$, $n\ge1$);
+additive potentially multiplicative ($\mathrm I_n^*$, $n\ge1$, item 7.7); additive potentially good (all other symbols, and at $p=2$ also $\mathrm I_n^*$).
+This is the first appearance of the symbols, used as names until Section 5 defines them. Paper: Definition def:terms, Section 1.1.
+
+### Section 4. Neron models and component groups
+
+**4.1 `def:reduction:neron`** (definition and theorem; R). Let $R=\mathcal O$ (or $\Z_p$). A *Neron model* of $E/K$ is a smooth separated group
+scheme $\mathcal E$ of finite type over $R$ with generic fibre $E$ such that for every smooth $R$-scheme $S$ every $K$-morphism $S_K\to E$
+extends uniquely to an $R$-morphism $S\to\mathcal E$ (Neron mapping property). It exists and is unique up to unique isomorphism
+(Neron); for elliptic curves it is the smooth locus of the minimal regular proper model. The writer gives one paragraph of
+intuition (the best smooth integral model whose $R$-points are all of $E(K)$) and no scheme theory beyond the words used.
+Reference: NeronModels; BLR 1.2 and 1.4 (verify); ATAEC IV.5, IV.6 (verify). Paper: Section 1.4 ("the special fibre of the Neron
+model of $E$ at $q$").
+
+**4.2 `prop:reduction:component-group`** (proposition; R for (i); P for (ii) given (i)). (i) $\mathcal E(R)=E(K)$; the identity component
+$\mathcal E^0$ of the special fibre $\mathcal E_k$ is $\tilde E_{\mathrm{ns}}$ (for the minimal model) and $\mathcal E^0(R)=E_0(K)$; the component group
+$\Phi=\mathcal E_k/\mathcal E_k^0$ is a finite etale group scheme over $k$, i.e. a finite abelian group $\Phi(\bar k)$ with a continuous action of
+$\Gal(\bar k/k)$. (ii) $E(K)/E_0(K)\simeq\Phi(k)$ (Hensel on the smooth $\mathcal E$). Definitions: $\Phig_p=\Phi_p(\bar\F_p)$ (geometric component group),
+$c_p=\#\Phi_p(\F_p)=[E(\Q_p):E_0(\Q_p)]$ (Tamagawa number). As $\Phi_p(\F_p)$ is the subgroup of Frobenius invariants of $\Phig_p$, $c_p\mid\#\Phig_p$,
+with equality iff Frobenius acts trivially on $\Phig_p$.
+Reference: ATAEC IV.9 Corollary 9.2 (verify), BLR 9.5 (verify). Paper: Section 1.4 (definitions of $\Phig_q$ and $c_q$, "the statements
+below are about $\Phig_q$, not $c_q$"), Lemma lem:tamfactor (the check "the $\ell$-part of the Tamagawa number $c_q(E)$"), (eq:main).
+
+**4.3 `prop:reduction:etale-base-change`** (proposition; R). The formation of the Neron model commutes with unramified (more
+generally etale) base change, e.g. from $K$ to a finite unramified extension $K'$ or to $\widehat{K^{\mathrm{ur}}}$. Consequently the reduction
+type, the Kodaira symbol, $\Phig$, $v(\Delta_{\min})$ and $f$ are unchanged under unramified extension, while $c$ can change (only $\Gal(\bar k/k)$-
+invariants are counted). Reference: BLR 7.2, Theorem 1 (verify); ATAEC IV.6 (verify). Paper: Lemma lem:twist (i) (its proof: "the
+Kodaira type, the geometric component group and the conductor exponent are invariant under unramified base change"), Lemma
+lem:tamagawa-exp ("which does not change the inertia group").
+
+**4.4 `def:reduction:tamagawa`** (definition and remark; P). The Tamagawa number $c_p$ of $E/\Q$ at $p$ (with $c_p=1$ at good $p$); the
+global product $\prod_pc_p$ (one sentence: the factor in the Birch and Swinnerton-Dyer formula; Chapter 22 for `ecdata`'s columns). The
+$\ell$-part of $c_p$ at a multiplicative prime of type $\mathrm I_n$ is $\ell^{v_\ell(n)}$ when the reduction is split and $1$ when it is nonsplit and $\ell$ is odd
+(item 7.6). Paper: Section 1.4,
+the history paragraph (Ribet-Takahashi's product of the $n_q$), Lemma lem:tamfactor ("as it should").
+
+### Section 5. Kodaira symbols and Tate's algorithm
+
+**5.1 `thm:reduction:kodaira-neron`** (theorem with table; R, with the pictures described). The special fibre of the minimal regular
+model of $E$ over $R$ (with $k$ algebraically closed, or over $\bar k$) is one of the following configurations; the Neron model's special
+fibre is the union of its multiplicity-one components minus their intersection points. With $m$ = number of irreducible components
+of the special fibre over $\bar k$:
+
+| symbol | $m$ | configuration (over $\bar k$) | $\Phig$ | $\#\Phig$ | possible $c$ (over finite $k$) |
+|-|-|-|-|-|-|
+| $\mathrm I_0$ | 1 | smooth elliptic curve | $0$ | 1 | 1 |
+| $\mathrm I_1$ | 1 | nodal rational curve | $0$ | 1 | 1 |
+| $\mathrm I_n$, $n\ge2$ | $n$ | $n$ lines of multiplicity 1 in a cycle | $\Z/n$ | $n$ | $n$ (split); $1$ ($n$ odd) or $2$ ($n$ even) (nonsplit) |
+| $\mathrm{II}$ | 1 | cuspidal rational curve | $0$ | 1 | 1 |
+| $\mathrm{III}$ | 2 | two lines tangent at one point | $\Z/2$ | 2 | 2 |
+| $\mathrm{IV}$ | 3 | three concurrent lines | $\Z/3$ | 3 | 1 or 3 |
+| $\mathrm I_0^*$ | 5 | one line of multiplicity 2 meeting four of multiplicity 1 ($\tilde D_4$) | $(\Z/2)^2$ | 4 | 1, 2 or 4 |
+| $\mathrm I_n^*$, $n\ge1$ | $n+5$ | a chain of $n+1$ lines of multiplicity 2 with two of multiplicity 1 at each end ($\tilde D_{n+4}$) | $\Z/4$ ($n$ odd), $(\Z/2)^2$ ($n$ even) | 4 | 2 or 4 |
+| $\mathrm{IV}^*$ | 7 | $\tilde E_6$: multiplicities $1,2,3,2,1,2,1$ | $\Z/3$ | 3 | 1 or 3 |
+| $\mathrm{III}^*$ | 8 | $\tilde E_7$: multiplicities $1,2,3,4,3,2,1,2$ | $\Z/2$ | 2 | 2 |
+| $\mathrm{II}^*$ | 9 | $\tilde E_8$: multiplicities $1,2,3,4,5,6,4,2,3$ | $0$ | 1 | 1 |
+
+$\Phig$ is the group of multiplicity-one components (the dual group of the extended Dynkin diagram modulo its root lattice:
+the RHB aside "the centre of the simply connected compact Lie group of type $A_{n-1},D_{n+4},E_6,E_7,E_8$" is one sentence, optional).
+Reference: Kodaira; NeronModels; ATAEC IV.8, IV.9 Table 4.1 (verify); Tate75. Data check: every value of $c$ in the last column, and
+only those, occurs among the $211{,}455$ pairs (curve, bad prime) below conductor $10{,}000$ (for $\mathrm{IV},\mathrm{IV}^*$: $c\in\{1,3\}$;
+$\mathrm I_0^*$: $\{1,2,4\}$; $\mathrm I_n^*$: $\{2,4\}$). Paper: Section 1.4 (the list of orders $n;1;2;3;4$ and "\cite[IV.9]{SilvermanATAEC}"), (eq:main),
+(eq:twist), Section sec:forms, Conjecture conj:eis (the deficit uses $\#\Phig_q$), Section sec:two ($v_2(\#\Phig_q)=2$ for $\mathrm I_0^*$).
+
+**5.2 `thm:reduction:tate-algorithm`** (theorem, Tate's algorithm; S: statement in full, proof by reference, each step made
+plausible by the change of coordinates it performs). Input: an integral model over $R$, $\pi$, $k$ (perfect). Output: the Kodaira
+symbol, $m$, $f$ (via Ogg's formula 6.2), $c$, and a minimal model. Write $a_{i,j}=a_i/\pi^j$ and $P(T)$, $Q(Y)$ for the auxiliary
+polynomials over $k$:
+1. If $\pi\nmid\Delta$: $\mathrm I_0$.
+2. Change coordinates so that $\pi\mid a_3,a_4,a_6$ (singular point at $(0,0)$). If $\pi\nmid b_2$: $\mathrm I_n$ with $n=v(\Delta)$; split iff $T^2+a_1T-a_2$
+   splits over $k$; $c=n$ (split), $1$ or $2$ by the parity of $n$ (nonsplit).
+3. If $\pi^2\nmid a_6$: $\mathrm{II}$, $c=1$.
+4. If $\pi^3\nmid b_8$: $\mathrm{III}$, $c=2$.
+5. If $\pi^3\nmid b_6$: $\mathrm{IV}$, $c=3$ if $Y^2+a_{3,1}Y-a_{6,2}$ has a root in $k$, else $c=1$.
+6. Change coordinates so that $\pi\mid a_1,a_2$, $\pi^2\mid a_3,a_4$, $\pi^3\mid a_6$. Let $P(T)=T^3+a_{2,1}T^2+a_{4,2}T+a_{6,3}$. If $P$ has distinct roots:
+   $\mathrm I_0^*$, $c=1+\#\{\text{roots of }P\text{ in }k\}$.
+7. If $P$ has one simple and one double root: $\mathrm I_n^*$ for some $n\ge1$, found by a subprocedure (translate the double root to $0$,
+   then alternately test the quadratics $Y^2+a_{3,j}Y-a_{6,2j}$ and $a_{2,1}X^2+a_{4,j+1}X+a_{6,2j+1}$ for distinct roots, translating when
+   they have a double root; each translation raises $n$ by one); $c\in\{2,4\}$ (4 iff the final quadratic splits).
+8. If $P$ has a triple root, translate it to $0$ (so $\pi^2\mid a_2$, $\pi^3\mid a_4$, $\pi^4\mid a_6$). If $Y^2+a_{3,2}Y-a_{6,4}$ has distinct roots: $\mathrm{IV}^*$, $c=3$
+   or $1$ according as the roots are in $k$ or not.
+9. Otherwise translate so that $\pi^3\mid a_3$, $\pi^5\mid a_6$. If $\pi^4\nmid a_4$: $\mathrm{III}^*$, $c=2$.
+10. If $\pi^6\nmid a_6$: $\mathrm{II}^*$, $c=1$.
+11. Otherwise the model is not minimal: replace $a_i$ by $a_i/\pi^i$ and go to step 1.
+The writer prints the explicit translations of steps 2 and 6 for $p\ge3$ and for $p=2$ (they differ only in how one divides by $2$;
+Cremona's book gives both). Reference: Tate75; ATAEC IV.9, Algorithm 9.4 (verify the number); CremonaBook 3.2 (the version with explicit
+formulas). Data check: an independent Python implementation of steps 1 to 11 (structure of Cremona's book) agrees with PARI's
+`elllocalred` on the Kodaira symbol, $f$ and $c$ for all pairs (curve, bad prime) tested (Part 6.6). Paper: Section 2 ("We use Tate's
+algorithm ... for the Kodaira type and $c_q$"), Section sec:data (types recomputed with PARI), the appendix.
+
+**5.3 `cor:reduction:tame-table`** (corollary; P from 5.2). Let $p\ge5$ and the model be minimal. Then
+(i) $v(\Delta)=0$: $\mathrm I_0$; (ii) $v(c_4)=0<v(\Delta)=n$: $\mathrm I_n$; (iii) if $v(c_4)>0$ and $v(j)\ge0$, the type is determined by $v(\Delta)\in\{2,3,4,6,8,9,10\}$:
+$\mathrm{II},\mathrm{III},\mathrm{IV},\mathrm I_0^*,\mathrm{IV}^*,\mathrm{III}^*,\mathrm{II}^*$ respectively; (iv) if $v(c_4)>0$ and $v(j)<0$: $v(c_4)=2$, $v(\Delta)=n+6$, $v(j)=-n$, type $\mathrm I_n^*$. In particular $f=2$ for
+every additive type and $f=v(\Delta)+1-m$ can be read off. Proof: for $p\ge5$ use the short model $y^2=x^3+Ax+B$ ($A=-27c_4$, $B=-54c_6$ up to
+units) and run steps 2 to 10 with $(v(A),v(B),v(\Delta))$. The resulting table, for $p\ge5$ and a minimal model, is
+$(v(c_4),v(c_6),v(\Delta))=$ $(0,0,n)$ for $\mathrm I_n$; $(\ge1,1,2)$ for $\mathrm{II}$; $(1,\ge2,3)$ for $\mathrm{III}$; $(\ge2,2,4)$ for $\mathrm{IV}$; $(\ge2,\ge3,6)$ for $\mathrm I_0^*$;
+$(2,3,n+6)$ for $\mathrm I_n^*$; $(\ge3,4,8)$ for $\mathrm{IV}^*$; $(3,\ge5,9)$ for $\mathrm{III}^*$; $(\ge4,5,10)$ for $\mathrm{II}^*$ (checked on every such pair below conductor
+$10{,}000$; compare ATAEC IV.9 Table 4.1 and Papadopoulos 1993, key `Papadopoulos93`, J. Number Theory 44 (1993), 119 to 152, add to
+`bib/ch10.bib`, which also gives the tables at $p=2,3$). Data check (`ecdata`, conductor below
+$10{,}000$, potentially good additive pairs with $p\ge5$): $v_p(\Delta)$ is $2,3,4,6,8,9,10$ for $\mathrm{II},\mathrm{III},\mathrm{IV},\mathrm I_0^*,\mathrm{IV}^*,\mathrm{III}^*,\mathrm{II}^*$ in
+all $9{,}699$ cases. Paper: Lemma lem:twist (ii) (proof: "the type is determined by $v_q(\Delta)$ of a minimal model, which lies in
+$\{0,2,3,4,6,8,9,10\}$"), Lemma lem:IV ("$v_q(\Delta_E)\in\{4,8\}$"), the table of Section 1, Definition def:terms.
+
+**5.4 `prop:reduction:I0star-cubic`** (proposition; P). Let $p$ be odd and $E$ have a model $y^2=x^3+a_2x^2+a_4x+a_6$ with $p\mid a_2$, $p^2\mid a_4$,
+$p^3\mid a_6$. Then $E$ has type $\mathrm I_0^*$ iff $P(T)=T^3+(a_2/p)T^2+(a_4/p^2)T+a_6/p^3$ has distinct roots mod $p$; then $c=1+\#\{\text{roots in }\F_p\}$.
+Conversely every curve of type $\mathrm I_0^*$ at odd $p$ has such a model. Corollary (the paper's sentence, corrected): if
+$y^2=x^3+a_2x^2+a_4x+a_6$ has good reduction at $p$, its twist $y^2=x^3+p^*a_2x^2+p^{*2}a_4x+p^{*3}a_6$ has cubic
+$T^3+\varepsilon a_2T^2+a_4T+\varepsilon a_6$ with $\varepsilon=p^*/p=\pm1$, whose roots are $\varepsilon$ times those of $T^3+a_2T^2+a_4T+a_6$; so the twist has type
+$\mathrm I_0^*$ (important_notes.md point 45). Proof: step 6 of 5.2; the converse by step 6's coordinate change and completing the
+square ($p$ odd). Paper: Lemma lem:twist (ii) ("the cubic $T^3+a_2T^2+a_4T+a_6$ of Tate's algorithm has distinct roots modulo $q$"),
+the table ($E'$ for type $\mathrm I_0^*$), Theorem thm:quant ($E_S$ good at the $\mathrm I_0^*$ primes).
+
+**5.5 `conv:reduction:pari-codes`** (convention and table; P as a dictionary). PARI's `elllocalred(E,p)` returns $[f_p,\,k_p,\,[u,r,s,t],\,c_p]$
+and `ellglobalred(E)` returns $[N,\,[u,r,s,t],\,\prod c_p,\,\text{factorisation of }N,\,\text{the list of local data}]$, so that the paper's `R[4]` is the factorised
+conductor and `R[5][i]` is $[f,k,[u,r,s,t],c]$ at the $i$-th bad prime (`K[i][2]` is $k$). The Kodaira code $k_p$:
+
+| code | symbol | $m$ | $\#\Phig$ | $f$ at $p\ge5$ | $v(\Delta_{\min})$ at $p\ge5$ |
+|-|-|-|-|-|-|
+| $1$ | $\mathrm I_0$ | 1 | 1 | 0 | 0 |
+| $n+4$ ($n\ge1$) | $\mathrm I_n$ | $n$ | $n$ | 1 | $n$ |
+| $2$ | $\mathrm{II}$ | 1 | 1 | 2 | 2 |
+| $3$ | $\mathrm{III}$ | 2 | 2 | 2 | 3 |
+| $4$ | $\mathrm{IV}$ | 3 | 3 | 2 | 4 |
+| $-1$ | $\mathrm I_0^*$ | 5 | 4 | 2 | 6 |
+| $-(n+4)$ ($n\ge1$) | $\mathrm I_n^*$ | $n+5$ | 4 | 2 | $n+6$ |
+| $-4$ | $\mathrm{IV}^*$ | 7 | 3 | 2 | 8 |
+| $-3$ | $\mathrm{III}^*$ | 8 | 2 | 2 | 9 |
+| $-2$ | $\mathrm{II}^*$ | 9 | 1 | 2 | 10 |
+
+The formulas "$n+4$ for $\mathrm I_n$, $-(n+4)$ for $\mathrm I_n^*$" hold for $n\ge1$ only: $-(0+4)=-4$ is $\mathrm{IV}^*$, and $\mathrm I_0^*$ is $-1$ (Part 8, N4). Hence
+`k >= 5` detects multiplicative reduction and `abs(k) == 3` the types $\mathrm{III},\mathrm{III}^*$, as the appendix's `rule` uses. Reference:
+PARI users' guide, `elllocalred` (PARIusers; verify the order of the output vector against the installed version: checked on
+PARI 2.17.2). Paper: the appendix (`K[i][2]`, the comments `III, III* (codes 3,-3)`, `k == 4 || k == 2`, `k == -4 || k == -2`, `k == -3`).
+
+**5.6 `ex:reduction:tate-running`** (worked example; P, every number recomputed). Tate's algorithm by hand on the paper's curves
+(models are `ecdata`'s minimal ones):
+* 121a1 $[1,1,1,-30,-76]$ at $11$: $v(\Delta)=2$, $v(c_4)=1$; step 2 with $(r,t)=(6,2)$ gives $[1,19,11,88,-22]$, and $v(a_6)=1<2$: type $\mathrm{II}$, $c=1$, $f=2$.
+* 121c2 $[1,1,0,-3632,82757]$ at $11$: $v(\Delta)=8$; step 2 $(r,t)=(6,8)$, step 6 $(s,t)=(5,110)$ gives $[11,-11,242,-4840,46585]$ with $P(T)\equiv(T-4)^3\pmod{11}$:
+  triple root, step 8: $\mathrm{IV}^*$, $c=1$, $f=2$.
+* 539d1 $[0,1,1,-16,-66]$ at $7$: step 6 gives $[0,7,49,0,-686]$, $P(T)=T^3+T^2-2=(T-1)(T^2+2T+2)$ with the quadratic irreducible mod $7$: $\mathrm I_0^*$, $c=2$.
+* 539c1 $[1,0,1,170,-3237]$ at $7$: step 6 gives $[7,0,49,49,-3087]$, $P(T)=T^3+T-9\equiv(T-1)(T^2+T+2)$, and $T^2+T+2\equiv(T-3)^2\pmod7$: double root,
+  step 7: $\mathrm I_3^*$, $c=4$, $f=2$, $v(\Delta)=9=3+6$.
+* 726a1 $[1,1,0,-35,-51]$: at $11$ step 2 gives $[1,19,22,77,-121]$, $v(a_6)=2$, $v(b_8)=2<3$: $\mathrm{III}$, $c=2$; at $2$: $\mathrm I_6$ nonsplit ($a_2=-1$), $c=2$;
+  at $3$: $\mathrm I_3$ nonsplit, $c=1$.
+* 20a1 $[0,1,0,4,4]$ at $2$: $v(\Delta)=8$, $v(c_4)=4$; step 6 $(s,t)=(1,2)$ gives $[2,0,4,0,0]$, $P(T)=T^3$; step 8: $Y^2+Y$ has distinct roots in $\F_2$:
+  $\mathrm{IV}^*$, $c=3$, $f=8+1-7=2$.
+* 99a1 $[1,-1,1,-2,0]$ at $3$: step 2 gives $[1,5,3,6,0]$, $v(b_8)=2$: $\mathrm{III}$, $c=2$, $f=3+1-2=2$.
+* 980i1 at $2$: $\mathrm{IV}^*$, $c=1$; at $5$: $\mathrm I_1$; at $7$: $\mathrm I_5^*$, $c=2$, $v_7(\Delta)=11$.
+Paper: the Example of Section 3, the remark on 99A1, the appendix (121a1, 726a1), Section sec:anomaly (726a1, type $\mathrm{III}$ at $11$).
+
+### Section 6. The conductor and the semistability defect
+
+**6.1 `def:reduction:conductor-exponent`** (definition and proposition; R for independence of $\ell$, P for the values). For $\ell\ne p$ let
+$V=V_\ell E$ as a $G_K$-representation. The conductor exponent is the Artin conductor of Chapter 7: $f_p(E)=a(V)=\dim V-\dim V^{I_K}+\operatorname{sw}(V)$, where
+$\operatorname{sw}(V)\ge0$ is the Swan conductor; it is independent of $\ell$ (Serre-Tate; Ogg) and vanishes iff wild inertia acts trivially. Values: $f=0$
+(good), $f=1$ (multiplicative), $f=2+\operatorname{sw}$ (additive), with $\operatorname{sw}=0$ for $p\ge5$. Proof of the values given Chapter 11's
+Neron-Ogg-Shafarevich criterion and the Tate curve (7.5): good means $V$ unramified; multiplicative means $V^{I}$ a line with unipotent
+(tame) action; additive means $V^{I}=0$; for $p\ge5$ every finite subgroup of $\GL_2(\Z_\ell)$ arising (orders dividing $24$) has order prime to $p$
+by 6.6, so wild inertia acts trivially. Reference: SerreTate68 Section 3 (verify), Ogg, ATAEC IV.10 (verify). Paper: Lemma lem:twist (i),
+(ii) (conductor exponents), Lemma lem:IV and Remark rem:types (the conductor of $E$ versus the Serre conductor of $\bar\rho$), Theorem
+thm:qual ($q^2\,\|\,N$ at additive $q\ge5$), Section 1 ("$\Sigma$ the set of bad primes"), Remark rem:wild.
+
+**6.2 `thm:reduction:ogg`** (theorem, Ogg's formula; R). $f_p=v_p(\Delta_{\min})+1-m_p$, with $m_p$ the number of irreducible components of the
+special fibre of the minimal regular model over $\bar k$ (the column $m$ of 5.1). Due to Ogg (Ogg) for $p\ne2$ and in general to Saito
+(T. Saito, Duke Math. J. 57 (1988), 151 to 173, key `Saito88`, add to `bib/ch10.bib`, verify). Reference: ATAEC IV.11.1 (verify).
+Data check: no failure on the $211{,}455$ pairs (curve, bad prime) below conductor $10{,}000$. Paper: background (the proof of Lemma lem:twist (ii)
+can be phrased through it; the writer uses it in 8.2 (d) and in 8.3).
+
+**6.3 `thm:reduction:conductor-bounds`** (theorem; R). $f_2\le8$, $f_3\le5$, $f_p\le2$ for $p\ge5$; all values $2,\dots,8$ at $2$ and $2,\dots,5$ at $3$ occur for
+additive reduction over $\Q$. Reference: Brumer-Kramer, "The conductor of an abelian variety", Compositio Math. 92 (1994) (key `BrumerKramer94`,
+verify), or Lockhart-Rosen-Silverman, J. Algebraic Geom. 2 (1993) (verify); ATAEC IV.10 exercises (verify). Data check: the maxima below
+conductor $10{,}000$ are $8$ at $2$ and $5$ at $3$. Paper: background (PLAN.md scope; Remark rem:wild).
+
+**6.4 `def:reduction:conductor`** (definition and proposition; P for (i), R for (ii)). (i) The conductor of $E/\Q$ is $N=\prod_pp^{f_p}$; $p\mid N$
+iff $E$ has bad reduction at $p$; $p\,\|\,N$ iff multiplicative; $p^2\mid N$ iff additive; $p^3\nmid N$ for $p\ge5$. (ii) Isogenous curves have the same
+conductor ($V_\ell E\simeq V_\ell E'$, Chapter 9, item 9.4, and 6.1). Examples (all checked): 11a1: $11$; 20a1: $2^2\cdot5$; 99a1: $3^2\cdot11$; 121a1, 121c2, 121d1:
+$11^2$; 539c1: $7^2\cdot11$; 726a1: $2\cdot3\cdot11^2$; 980i1: $2^2\cdot5\cdot7^2$. Paper: Section 1 (level $N$), Theorem thm:main ("$\ell\nmid2N$"), Theorem thm:qual
+("$q^2\,\|\,N$"), Remark after Theorem thm:qual (99A1, $9\cdot11$).
+
+**6.5 `thm:reduction:serre-tate`** (theorem; R, with the consequence P). Let $E/K$ have potentially good reduction. (i) There is a
+smallest extension $L$ of $K^{\mathrm{ur}}$ over which $E$ has good reduction; $L=K^{\mathrm{ur}}(E[m])$ for every $m\ge3$ prime to $p$, and $L/K^{\mathrm{ur}}$ is
+Galois. (ii) Put $G_{\mathrm{ss}}=\Gal(L/K^{\mathrm{ur}})$, the *semistability group*, and $e=\#G_{\mathrm{ss}}$ (the *semistability defect*). For every $\ell\ne p$ the image of
+$I_K$ in $\operatorname{Aut}(T_\ell E)$ is isomorphic to $G_{\mathrm{ss}}$ (by Neron-Ogg-Shafarevich over $L$, Chapter 11, the kernel of $I_K\to\operatorname{Aut}T_\ell E$ is $I_L$).
+(iii) $G_{\mathrm{ss}}$ embeds in $\SL_2(\Z/m)$ for every $m\ge3$ prime to $p$ (the determinant is the cyclotomic character, trivial on $I_K$ mod $m$), and in
+$\operatorname{Aut}(\tilde E_L)$ (it acts faithfully on the reduction over $L$); so $e\in\{1,2,3,4,6\}$ for $p\ge5$, $e\mid24$ for $p=2$ and $e\mid12$ for $p=3$, and
+the reduction over $L$ has $j(\tilde E_L)\in\{0,1728\}$ when $e>2$. Reference: SerreTate68 Section 2, Corollaries 2 and 3 (verify);
+Serre72 Section 5.6 (verify). Paper: Lemma lem:IV ("the order of the image of $I_q$ in $\operatorname{Aut}(T_\ell E)$ for any $\ell\ne q$"), Lemma lem:euler,
+Remark rem:types.
+
+**6.6 `thm:reduction:kraus`** (theorem, Kraus; S for $p\ge5$, R for $p=2,3$). Let $E/K$ have potentially good reduction, $K/\Q_p$ finite.
+(i) If $p\ge5$, $G_{\mathrm{ss}}$ is cyclic of order $e=12/\gcd(v(\Delta_{\min}),12)$; by type: $\mathrm I_0,\mathrm{II},\mathrm{III},\mathrm{IV},\mathrm I_0^*,\mathrm{IV}^*,\mathrm{III}^*,\mathrm{II}^*$ give $e=1,6,4,3,2,3,4,6$.
+(ii) If $p=3$, $G_{\mathrm{ss}}$ is cyclic of order $1,2,3,4,6$ or the non-abelian group $\Z/3\rtimes\Z/4$ of order $12$. (iii) If $p=2$, $G_{\mathrm{ss}}$ is cyclic
+of order $1,2,3,4,6$, or quaternion of order $8$, or $\SL_2(\F_3)$ of order $24$; for $K=\Q_2$ Kraus determines which in terms of
+$v(c_4),v(c_6),v(\Delta)$ and congruences on the unit parts. Sketch of (i): over $K'=K^{\mathrm{ur}}(\pi^{1/e})$ (tame, cyclic) the change $u=\pi^{v(\Delta)/12}$ makes
+$\Delta'$ a unit and $c_4',c_6'$ integral (they have valuations $\ge0$ because $v(j)\ge0$ and by 5.3's table), so $E$ has good reduction over $K'$;
+conversely $e\,v(\Delta)\equiv0\pmod{12}$ is necessary (the discriminant of a good model over $L$ is a unit and $v_L=e\,v$), so $L=K'$; tame
+implies cyclic (Chapter 7, the tame quotient is procyclic). Reference: Kraus90 (the paper's citation; the theorem numbers of Kraus90 are not
+certain: Dokchitser-Dokchitser cite its Theorem 1 for $p=3$, Pineda-Martin cites its Theorem 2 for $p=2$, Billerey quotes a Theorem 3 for the
+$2$-adic criterion; cite Kraus90 without a number unless checked); Serre72 Section 5.6. Paper: Lemma lem:IV ("equals $12/\gcd(v_q(\Delta_E),12)$
+\cite{Kraus90}; for $v_q(\Delta_E)\in\{4,8\}$ this is $3$"), Remark rem:types ("defects $2$ and $4$", "defect $6$"), Lemma lem:euler ("cyclic of order
+$3$ or $6$ \cite{Kraus90}"), PLAN.md Section 6 row "Kraus's semistability defect".
+
+**6.7 `thm:reduction:tame-additive`** (theorem; R). (Dokchitser-Dokchitser, "Local invariants of isogenous elliptic curves", Trans.
+Amer. Math. Soc. 367 (2015), Theorem 3.1 (number checked in arXiv:1208.5519v4; journal pages to verify), resting on Kramer-Tunnell 1982,
+Proposition 8.20, for $l=2$ and on Kraus90 for $l=3$.) Let $K/\Q_l$ be finite and $E/K$ have additive potentially good reduction. Then $E$ has
+tame reduction, equivalently $f=2$, iff (a) $l\ge5$; or (b) $l=3$ and the type is $\mathrm{III}$, $\mathrm{III}^*$ or $\mathrm I_0^*$; or (c) $l=2$ and the type is $\mathrm{IV}$ or $\mathrm{IV}^*$.
+Data check (`ecdata`): at $2$, among the potentially good additive pairs with conductor below $30{,}000$, $f_2=2$ occurs for exactly the $14{,}431$
+pairs of type $\mathrm{IV}$ or $\mathrm{IV}^*$ and for no other type; at $3$, below $10{,}000$, types $\mathrm{III},\mathrm{III}^*,\mathrm I_0^*$ always have $f_3=2$ and types $\mathrm{II},\mathrm{II}^*,
+\mathrm{IV},\mathrm{IV}^*$ always have $f_3\in\{3,4,5\}$. Keys to add: `DokDok15`, `KramerTunnell82` (Compositio Math. 46 (1982), 307 to 352). Paper: Remark rem:wild,
+Section sec:wild, the remark after Theorem thm:qual ("at $q=3$ in cases (a) and (b), where Lemma lem:IV does not apply because the
+ramification is wild": this is (b)), Proposition prop:forms (via 6.8).
+
+**6.8 `cor:reduction:IV-at-2`** (corollary; P given 6.5, 6.7, 7.7). Let $E/\Q_2$ have Kodaira type $\mathrm{IV}$ or $\mathrm{IV}^*$. Then: (i) $E$ has potentially good
+reduction; (ii) $f_2=2$; (iii) $G_{\mathrm{ss}}$ is cyclic of order $3$, so for every odd $\ell$ the image of $I_2$ in $\operatorname{Aut}(T_\ell E)$ is cyclic of order $3$,
+generated by $\sigma$ with $\det\sigma=1$ and eigenvalues $\zeta_3^{\pm1}$; (iv) every Frobenius lift $\Phi$ satisfies $\Phi\sigma\Phi^{-1}=\sigma^{-1}$ in the image. Proof: (i)
+by 7.7 an additive potentially multiplicative curve has type $\mathrm I_m^*$; (ii) by 6.7(c); (iii) $f=2=\dim V-\dim V^{I}+\operatorname{sw}$ with $V^{I}=0$ forces
+$\operatorname{sw}(V)=0$, so the wild inertia group $P_2$ acts trivially on $V$ and on $T_\ell E$ (Chapter 7: $\operatorname{sw}=0$ iff $P$ acts trivially), the image of $I_2$ is
+a finite quotient of the tame quotient $I_2/P_2\simeq\prod_{l\ne2}\Z_l(1)$, hence cyclic of odd order; it divides $24$ (6.5(iii)), so it is $1$ or $3$, and not $1$
+because the reduction is additive; (iv) the tame relation of Chapter 7 ($\Frob\,t\,\Frob^{-1}=t^2$, and $\sigma^2=\sigma^{-1}$). This is the curve-theoretic half of the
+answer to important_notes.md point 43 (Part 7); the Euler-factor half is the `paperlink` below. Data check: for all $14{,}431$ pairs of type
+$\mathrm{IV}$, $\mathrm{IV}^*$ at $2$ with conductor below $30{,}000$, the four roots of the $3$-division polynomial generate over $\Q_2$ fields with
+ramification indices $1,3,3,3$ (so the projective image of inertia is cyclic of order $3$, consistent with $G_{\mathrm{ss}}\simeq\Z/3$), and $f_2=2$; PARI's $P_2(X)$
+is $1+2X$ on a sample of $400$ of them. `paperlink`: with (iii), (iv) the proof of Lemma lem:euler for $\mathrm{II},\mathrm{II}^*,\mathrm{IV},\mathrm{IV}^*$ applies verbatim at $q=2$ (it
+uses only that the image of inertia is cyclic of order prime to $q$ and the tame relation): the invariant line of $\ad V$ is spanned by $2\sigma+1$,
+the geometric Frobenius acts on it by $\chi_{-3}(2)=-1$, so $L_2(A_f,s)^{-1}=1+2^{-s}$, $P_2(X)=1+2X$ and $e_\ell(E,2)=v_\ell(3/2)$, which is $1$ for $\ell=3$ and $0$ for
+$\ell\ge5$ (Chapter 7, item 9.5(ii), which assumed exactly (iii); Chapter 19 for the factor). Hence the exception in Proposition prop:forms is
+empty. Paper: Proposition prop:forms, Remark rem:wild ("a type $\mathrm{IV}$ at $2$ has $P_2(X)=1+2X$"), Section sec:wild ("a type $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$ has
+$e_3=1$"), important_notes.md point 43.
+
+**6.9 `ex:reduction:defects`** (worked example; P). Semistability defects of the paper's additive primes: 121a1 at $11$ ($\mathrm{II}$, $v=2$): $e=6$;
+121c1 ($\mathrm{IV}$, $v=4$) and 121c2 ($\mathrm{IV}^*$, $v=8$) at $11$: $e=3$; 539d1 at $7$ ($\mathrm I_0^*$): $e=2$; 726a1 at $11$ ($\mathrm{III}$, $v=3$): $e=4$; 99a1 at $3$ ($\mathrm{III}$,
+$f_3=2$, tame by 6.7): $e=4$; 20a1, 140b1, 980i1 at $2$ ($\mathrm{IV}^*$): $e=3$ by 6.8; 80b1 $=\text{20a1}^{(-1)}$ at $2$ ($\mathrm I_0^*$, $f_2=4$): $G_{\mathrm{ss}}$ cyclic of order $6$
+(the twist of the order-$3$ group by the wildly ramified character of $\Q_2(i)$). The potentially multiplicative primes (539c1 and 980i1 at $7$,
+121d1 at $11$) have no defect (infinite image of inertia, item 7.5). Paper: the Example of Section 3, Section sec:anomaly (726a1).
+
+### Section 7. The Tate curve
+
+**7.1 `thm:reduction:tate-curve`** (theorem, Tate; S). Let $\mathsf q\in K^\times$ with $v(\mathsf q)>0$. Put $s_k(\mathsf q)=\sum_{n\ge1}n^k\mathsf q^n/(1-\mathsf q^n)$,
+$a_4(\mathsf q)=-5s_3(\mathsf q)$, $a_6(\mathsf q)=-(5s_3(\mathsf q)+7s_5(\mathsf q))/12$. (i) These series have coefficients in $\Z$ (for $a_6$: $5n^3+7n^5\equiv0\pmod{12}$), converge, and
+$E_{\mathsf q}\colon y^2+xy=x^3+a_4(\mathsf q)x+a_6(\mathsf q)$ is an elliptic curve over $K$ with $\Delta=\mathsf q\prod_{n\ge1}(1-\mathsf q^n)^{24}$, $c_4=1+240s_3(\mathsf q)$ and
+$j(E_{\mathsf q})=1/\mathsf q+744+196884\,\mathsf q+\cdots\in\mathsf q^{-1}\Z[[\mathsf q]]$. (ii) The model is minimal with split multiplicative reduction of type
+$\mathrm I_n$, $n=v(\mathsf q)=-v(j)$. (iii) There is an isomorphism of groups $\phi\colon\bar K^\times/\mathsf q^{\Z}\to E_{\mathsf q}(\bar K)$, given by explicit power series,
+which is $G_K$-equivariant; in particular $E_{\mathsf q}(L)\simeq L^\times/\mathsf q^{\Z}$ for every algebraic $L/K$. Proof sketch: the series are the
+$q$-expansions of the Weierstrass functions of the lattice $\Z+\Z\tau$ with $\mathsf q=e^{2\pi i\tau}$ (Chapter 9, Section 7; Chapter 12), rewritten so that
+they make sense $p$-adically; the identities hold formally because they hold over $\C$. RHB aside (one sentence): the map $\C^\times\to\C/(\Z+\Z\tau)$,
+$u=e^{2\pi iz}$, is the complex picture; Tate's insight is that $\C^\times/\mathsf q^{\Z}$ makes sense over $K$. Reference: ATAEC V.3, Theorem 3.1 (verify);
+Tate's 1959 manuscript (not needed). Paper: Lemma lem:tamagawa-exp ("$E$ is a Tate curve with parameter ..."), Lemma lem:tamfactor.
+
+**7.2 `prop:reduction:j-inverse`** (proposition; P). The series $j(\mathsf q)$ of 7.1 has an inverse $\mathsf q(j)=j^{-1}+744j^{-2}+750420j^{-3}+872769632j^{-4}+\cdots\in j^{-1}\Z[[j^{-1}]]$
+(series reversion; coefficients checked with PARI's `serreverse`). For $j_0\in K$ with $v(j_0)<0$ the series converges and gives the unique
+$\mathsf q\in K^\times$, $v(\mathsf q)>0$, with $j(E_{\mathsf q})=j_0$; $v(\mathsf q)=-v(j_0)$. Proof: $\Z$-coefficients by induction; convergence because $v(j_0^{-1})>0$; uniqueness
+because $j$ is injective on $\{v(\mathsf q)>0\}$ ($j(\mathsf q)\mathsf q=1+744\mathsf q+\cdots$ is a unit power series). Paper: Definition def:terms ("the valuation of the
+Tate parameter"), the appendix (`valuation(j, q)`), Section sec:data ("the Tate parameters with `ellinit` over $\Q_q$").
+
+**7.3 `thm:reduction:tate-uniformisation`** (theorem; S). Let $E/K$ have $v(j)<0$, let $\mathsf q_E=\mathsf q(j_E)$ (7.2) and $\gamma=-c_4/c_6\in K^\times/(K^\times)^2$ (from any
+model). Then $E\simeq E_{\mathsf q_E}$ over $K(\sqrt\gamma)$, and over $K$ iff $\gamma$ is a square; i.e. $E$ is the quadratic twist of $E_{\mathsf q_E}$ by $\chi_\gamma$. Moreover: $E$ has
+split multiplicative reduction iff $\gamma\in(K^\times)^2$; nonsplit multiplicative iff $K(\sqrt\gamma)/K$ is the unramified quadratic extension; additive (type
+$\mathrm I_m^*$, 7.7) iff $K(\sqrt\gamma)/K$ is ramified. In the multiplicative case $n:=v(\Delta_{\min})=-v(j)=v(\mathsf q_E)$. Proof sketch: two curves with the same
+$j\ne0,1728$ are quadratic twists of each other (Chapter 9, item 10.2(ii)) and the twisting class is read off $c_4,c_6$; the reduction type of a
+twist by an unramified character is multiplicative (4.3), by a ramified one additive. Reference: ATAEC V.5, Theorem 5.3 and Lemma 5.2 (verify).
+Paper: Lemma lem:tamagawa-exp ("Over the unramified quadratic extension of $\Q_q$ (which does not change the inertia group) $E$ is a Tate
+curve"), Lemma lem:tamfactor (the same), Lemma lem:euler ("through a quadratic character times a unipotent when it is potentially
+multiplicative"), Lemma lem:twist (ii) ("a ramified quadratic twist exchanges the two"), Section 1.1 (the paper's $\varepsilon$).
+
+**7.4 `def:reduction:tate-parameter`** (definition and proposition; P). For $E/\Q_q$ with $v_q(j)<0$, the *Tate parameter* is $q_E=\mathsf q(j_E)\in\Q_q^\times$, with
+$v_q(q_E)=-v_q(j_E)=:\nu$ (for multiplicative reduction $\nu=n_q=v_q(\Delta_{\min})$, the paper's $n$); its *unit part* is $u=q_Eq^{-\nu}\in\Z_q^\times$, and $\bar u\in\F_q^\times$
+its reduction, whose class in $\F_q^\times/(\F_q^\times)^{\ell^k}$ ($k\le v_\ell(q-1)$) is the class $c(u)$ of Lemma lem:tamfactor (Chapter 2 does the finite-field
+arithmetic; important_notes.md point 31). (i) $q_E$ depends only on $j_E$, so it is the same for $E$ and all its quadratic twists (e.g. 539c1 at $7$ and
+its twist 77c1). (ii) (isogenies; P) If $\varphi\colon E\to E'$ is an isogeny over $\Q_q$ of prime degree $d$ and $v_q(j)<0$, then $\nu(E')\in\{d\,\nu(E),\nu(E)/d\}$
+(over a field where both are Tate curves, the kernel is $\mu_d$, giving $\mathsf q\mapsto\mathsf q^d$, or generated by the image of $\mathsf q^{1/d}$, giving $\mathsf q\mapsto\mathsf q^{1/d}$
+up to roots of unity); so $v_\ell(\nu)$ and $t_\ell(E,q)$ are unchanged by isogenies of degree prime to $\ell$ (this proves Chapter 9's item 9.9(iii)). Paper:
+Definition def:terms ($t_\ell(E,q)=v_\ell(-v_q(j_E))$, "the $\ell$-part of the valuation of the Tate parameter"), Lemma lem:tamfactor ($q_E$, $u=q_Eq^{-n}$, $c$),
+Section sec:tam, the history paragraph ("$t_q=v_\ell(n_q)=t_\ell(E,q)$").
+
+**7.5 `prop:reduction:tate-torsion`** (proposition; P given 7.1(iii) and Chapter 5's Kummer theory). Let $\ell\ne p$ (or any $\ell$), $t\ge1$. (i) In $E_{\mathsf q}(\bar K)=\bar K^\times/\mathsf q^{\Z}$,
+$E_{\mathsf q}[\ell^t]=\{\zeta^a(\mathsf q^{1/\ell^t})^b\}$ for a fixed $\ell^t$-th root $\mathsf q^{1/\ell^t}$ and a primitive $\ell^t$-th root of unity $\zeta$; there is an exact sequence of
+$G_K$-modules $0\to\mu_{\ell^t}\to E_{\mathsf q}[\ell^t]\to\Z/\ell^t\to0$, the quotient generated by the class of $\mathsf q^{1/\ell^t}$. (ii) In the basis $e_1=(\zeta_{\ell^k})_k$,
+$e_2=(\mathsf q^{1/\ell^k})_k$ of $T_\ell E_{\mathsf q}$, $\sigma\in G_K$ acts by $\begin{psmallmatrix}\chi_\ell(\sigma)&\kappa(\sigma)\\0&1\end{psmallmatrix}$ with $\kappa$ the Kummer cocycle of $\mathsf q$ (Chapter 5:
+$\sigma(\mathsf q^{1/\ell^k})=\zeta_{\ell^k}^{\kappa(\sigma)}\mathsf q^{1/\ell^k}$). (iii) If $E\simeq E_{\mathsf q_E}\otimes\varepsilon$ for a quadratic character $\varepsilon$ (7.3), then $T_\ell E$ has the matrices
+$\begin{psmallmatrix}\chi_\ell\varepsilon&\varepsilon\kappa\\0&\varepsilon\end{psmallmatrix}$: the corner is $\varepsilon\kappa$, not $\kappa$ (important_notes.md point 42). The consequences for ramification ($\rho\bmod\ell^t$
+unramified iff $\ell^t\mid n$, the paper's Lemma lem:tamagawa-exp) are proved in Chapter 11 from (ii) and Chapter 7's Kummer theory. Reference: ATAEC
+V.5 (verify); SerreAbelian IV.A.1.2 (verify). Paper: Lemma lem:tamagawa-exp ("The $\ell^t$-torsion is generated by $\mu_{\ell^t}$ and an $\ell^t$-th root"),
+Lemma lem:tamfactor (the matrices), PLAN.md scope.
+
+**7.6 `prop:reduction:tate-tamagawa`** (proposition; P given 7.1, 7.3). Let $E$ have multiplicative reduction of type $\mathrm I_n$. Split case:
+$E(K)\simeq K^\times/q_E^{\Z}$, $E_0(K)$ corresponds to $\mathcal O^\times q_E^{\Z}/q_E^{\Z}$, so $E(K)/E_0(K)\simeq\Z/n$ via $v$ and $c=n$. Nonsplit case: $E(K)$ is the
+subgroup of $E_{q_E}(K')=K'^\times/q_E^{\Z}$ ($K'$ unramified quadratic) on which Frobenius acts by $x\mapsto$ (conjugate of $x$)$^{-1}$; the component group
+is $\Z/n$ with Frobenius acting by $-1$, whose invariants have order $1$ ($n$ odd) or $2$ ($n$ even). Data check: $c_p$ agrees with this rule for
+all $86{,}856$ multiplicative pairs (curve number 1, conductor below $10{,}000$). Reference: ATAEC IV.9 Table 4.1, V.4 (verify). Paper: Section 1.4
+($\#\Phig_q=n$ for $\mathrm I_n$; $c_q$ "counts only the components defined over $\F_q$"), Lemma lem:tamfactor (the check "the $\ell$-part of the
+Tamagawa number $c_q(E)$, as it should"), important_notes.md (Chapter 16's deferral).
+
+**7.7 `thm:reduction:potmult-additive`** (theorem; S for $p$ odd, R for $p=2$). Let $E/K$ have additive potentially multiplicative reduction,
+$\nu=-v(j)>0$, and let $L=K(\sqrt\gamma)$ be the ramified quadratic extension of 7.3, with different exponent $s_{L/K}$. Then $E$ has type $\mathrm I_m^*$ with
+$m=\nu+4(s_{L/K}-1)$. For $p$ odd $s_{L/K}=1$, so $m=\nu$ (and $f=2$, $v(\Delta_{\min})=\nu+6$); for $K=\Q_2$, $s_{L/K}\in\{2,3\}$ (the conductor exponent of the quadratic
+character), so $m=\nu+4$ (then $f_2=4$) or $m=\nu+8$ (then $f_2=6$). Proof for $p$ odd: twist the Tate curve by $\pi$ (5.4's model), run step 7 of 5.2.
+Reference: D. Lorenzini, "Models of curves and wild ramification", Pure Appl. Math. Q. 6 (2010), Theorem 2.8 (as cited by Praveen,
+arXiv:2607.02678; key `Lorenzini10`, verify statement and number before printing). Data check: below conductor $10{,}000$ every potentially
+multiplicative additive pair has type $\mathrm I_m^*$ (at $p=2$: $3{,}732$ pairs; at $3$: $7{,}805$; at $p\ge5$: all), and at $p=2$ always $m-\nu\in\{4,8\}$, with
+$m-\nu=4$ exactly when $f_2=4$ and $8$ when $f_2=6$; examples 208a1 ($\mathrm I_5^*$, $\nu=1$), 304b1 ($\mathrm I_7^*$, $\nu=3$), 832c1 ($\mathrm I_9^*$, $\nu=1$), 336d1 ($\mathrm I_{12}^*$, $\nu=8$). Paper:
+Definition def:terms ("$v_\ell(n)$ for a Kodaira symbol $\mathrm I_n$ at any $q$ and $\mathrm I_n^*$ at odd $q$, while a symbol $\mathrm I_n^*$ at $q=2$ can have potentially good
+reduction"), Section sec:wild ("the index $n$ of the symbol is not the valuation of the Tate parameter at $2$"), important_notes.md point 18
+(the $\mathrm I_n^*$ primes at $2$ in the proof of Theorem thm:main).
+
+**7.8 `ex:reduction:tate-parameters`** (worked example; P, all recomputed by the series of 7.2 and by PARI's `ellinit(E, O(q^k)).tate`). Tate
+parameters $q_E=q^\nu u$ and $\bar u\in\F_q^\times$:
+
+| curve, prime | type | $a_q$ | $\nu$ | $\bar u\bmod q$ | remark |
+|-|-|-|-|-|-|
+| 11a1, $11$ | $\mathrm I_5$ | $1$ | $5$ | $10\equiv-1$ | $\bar u$ a 5th power in $\F_{11}^\times=\{\pm1\}\cdot(\text{5th powers})$: Lemma lem:tamfactor's extra term at $\ell=5$ |
+| 11a3, $11$ | $\mathrm I_1$ | $1$ | $1$ | $8$ | |
+| 20a1, $5$ | $\mathrm I_2$ | $-1$ | $2$ | $1$ | nonsplit |
+| 77c1, $7$ | $\mathrm I_3$ | $-1$ | $3$ | $5$ | same $q_E$ as 539c1 at $7$ ($\mathrm I_3^*$) |
+| 77c1 and 539c1, $11$ | $\mathrm I_2$ | $1$ | $2$ | $3$ | |
+| 140b1, $7$ | $\mathrm I_5$ | $-1$ | $5$ | $1$ | same $q_E$ as 980i1 at $7$ ($\mathrm I_5^*$) |
+| 140b1 and 980i1, $5$ | $\mathrm I_1$ | $-1$ | $1$ | $2$ | |
+| 726a1, $2$ | $\mathrm I_6$ | $-1$ | $6$ | $1$ | |
+| 726a1, $3$ | $\mathrm I_3$ | $-1$ | $3$ | $2$ | |
+
+Values of $t_\ell$: $t_5(\text{11a1},11)=1$; $t_3(\text{539c1},7)=t_3(\text{77c1},7)=1$; $t_5(\text{980i1},7)=1$; $t_3(\text{726a1},3)=1$, $t_3(\text{726a1},2)=1$. Paper: Definition def:terms,
+the Example of Section 3 ("$t_3(E,7)=v_3(3)=1$"), Lemma lem:tamfactor, Section sec:tam, Section sec:anomaly ("a prime $p\equiv-1\pmod3$ with
+$t_3(E,p)\ge1$": for 726a1 that is $p=2$).

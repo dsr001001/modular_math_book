@@ -470,18 +470,26 @@ Tate curve twisted by eps, and [[chi_l, kappa], [0, 1]] tensor eps = [[chi_l eps
 untouched, and at Frobenius c' only changes by the sign eps(Frob), which does not affect v_l(c').
 Confidence: high (checked twice).
 
-### 43. Open question: is the exception in Proposition prop:forms (type IV or IV* at 2, l = 3) provable?
+### 43. Proposition prop:forms: the exception (type IV or IV* at 2, l = 3) is a theorem (SETTLED)
 
-The proof of Lemma lem:euler uses q >= 5 only to know that the image of inertia is cyclic and tame. If for
-types IV and IV* at q = 2 the image of inertia on T_3 E is cyclic of order 3 or 6 (tame, since 3 is not 2),
-the same computation applies: the invariant line of ad V has Frobenius eigenvalue chi_{-3}(2) = -1, so
-P_2(X) = 1 + 2X and e_3(E, 2) = v_3(3/2) = 1. That is exactly what PARI gives for all 92,812 such curves in
-the working set, and it would turn the exception in Proposition prop:forms into a theorem.
+The proof of Lemma lem:euler uses q >= 5 only to know that the image of inertia is cyclic and tame. For
+types IV and IV* at q = 2 this holds too, so the exception in Proposition prop:forms disappears.
 
-**Not verified:** at q = 2 the image of inertia for potentially good reduction can also be non-abelian
-(of order 8 or 24), and whether types IV and IV* at 2 force a cyclic image of order 3 or 6 has to be checked
-against Kraus90. **Action:** check Kraus's classification at 2; if confirmed, prove the case. Confidence:
-open.
+Proof (from the Chapter 11 outline, checked by the orchestrating session): for additive reduction at q
+not equal to l, the formal group and the additive group G_a have no l-torsion and E_0(Q_q^ur) is
+l-divisible, so E[l^k]^{I_q} is isomorphic to the l^k-torsion of the geometric component group. For types
+IV and IV* the component group is Z/3, so inertia fixes a line of E[3]; its determinant is trivial on
+inertia, so its image in GL_2(F_3) is unipotent of order 3. Reduction mod 3 is injective on finite
+subgroups of GL_2(Z_3) (the kernel of GL_2(Z_3) -> GL_2(F_3) is torsion-free), so the image of inertia on
+T_3 E is cyclic of order 3, prime to 2, hence tame; for potentially good reduction the image is the same
+for every l not equal to 2. The computation of Lemma lem:euler then gives the invariant line of ad V with
+Frobenius eigenvalue chi_{-3}(2) = -1, so P_2(X) = 1 + 2X and e_3(E, 2) = v_3(3/2) = 1.
+
+Consequences: Proposition prop:forms holds with no exception, and case (a) of Theorem thm:qual extends
+from q >= 5 to q = 2 (the Serre conductor of rhobar_{E,3} has exponent 1 at 2). Checked on all 4,750
+curves of conductor below 10,000 with type IV or IV* at 2 (inertia mod 3 of order 3 with a fixed line,
+f_2 = 2; P_2 = 1 + 2X on more than 60 sampled curves with PARI). **Action:** replace the exception and the
+appeal to the 92,812 curves by this argument. Confidence: high (checked twice).
 
 ## Book-internal consistency (continued)
 
@@ -569,3 +577,57 @@ consequences; Chapter 13 cites them and proves the perfect pairing with the Heck
 ### B12. Chapter 21 outline, item A3.2
 
 It contains a sentence about adjoints that corrects itself midway; clean it up when Chapter 21 is written.
+
+## From the Chapter 11 outline (Galois representations of elliptic curves)
+
+Source: `outlines/ch11_galrep.md`, Part 7. The agent's first point settled point 43 (rewritten above).
+Point 47 was also checked independently by the orchestrating session; points 48 and 49 are as reported,
+checked by the agent with PARI on Cremona's tables below conductor 10,000.
+
+### 47. The hypothesis l not in S_f is automatic for l >= 5 not dividing N, given E[l] irreducible
+
+If l >= 5, l does not divide N and E[l] is irreducible, then rhobar is absolutely irreducible on
+Gal(Qbar/Q(sqrt(l*))). Otherwise rhobar = rhobar tensor chi_{l*}; restrict to inertia at l, where E has good
+reduction: in the ordinary case rhobar|I_l has characters {omega, 1}, in the supersingular case {omega_2,
+omega_2^l}, and chi_{l*}|I_l = omega^{(l-1)/2}. Matching the twisted characters with the untwisted ones
+forces l = 3 in both cases. For l = 3 the hypothesis fails exactly for image 3Ns, whose curves are
+ordinary at 3. So, for l not dividing 2N, "l not in S_f" is equivalent to "E[l] irreducible and h_l(E) = 0".
+Consequences: the clause in Section sec:forms about curves "induced from Q(sqrt(l*)) with l >= 5, which we
+did not single out" concerns only curves with l dividing N; the hypothesis of Theorem thm:main can be
+restated more simply. Probably known in the literature; no citation found yet. Confidence: high (checked
+twice).
+
+### 48. Section sec:anomaly: the observations on 3Ns curves are theorems
+
+Every curve with image 3Ns has a prime p other than 3 at which inertia acts through a cyclic group of order 4;
+for p >= 5 this means type III or III* with p = 1 or 11 mod 12, and in every case e_3(E, p) >= 1. Every
+multiplicative prime other than 3 has 3 dividing n_p. Checked on all 120 3Ns curves below conductor
+10,000 (100 with such a prime p >= 5, the other 20 with p = 2). **Action:** state these as a proposition
+instead of as observations. Confidence: high, as reported.
+
+### 49. Remark rem:types: "lowers the conductor exponent" (addendum to point 22)
+
+The statement is true for the Serre conductor exponent of rhobar_{E,3}, but not for the conductor of E in
+the type II case. **Action:** say "the Serre conductor exponent of rhobar_{E,3}". Confidence: high, as
+reported.
+
+## Book-internal consistency (continued)
+
+### B13. Stale hedges on type IV at 2 and on chi_{l*} for l >= 5
+
+The Chapter 7 and Chapter 21 outlines still treat the type IV at 2 case as open (now settled, point 43).
+Point 6 and the Chapter 21 outline say "rhobar = rhobar tensor chi_{l*} can occur" for l >= 5 without noting
+that this needs l to divide N (point 47). PLAN.md's Chapter 11 entry repeats the paper's flawed finiteness
+argument for h_l (point 5). Fix when those chapters are written.
+
+### B14. Bibliography keys planned in several chapters (decision)
+
+SerreTate68 is planned in the Chapter 7, 9 and 11 bib files. main.tex reads all chapter bib files, so a key
+defined twice gives a BibTeX "Repeated entry" error. **Decision:** any reference needed by more than one
+chapter goes into refs.bib, not into a chapter bib file. Writers must check refs.bib and the other chapter
+bib files before adding a key.
+
+### B15. Possible overlap between Chapters 10 and 11 on the Tate curve
+
+Chapter 11 uses the Tate curve as a black box from Chapter 10 and proves Lemma lem:tamagawa-exp from it.
+When the Chapter 10 outline lands, check that it does not also prove lem:tamagawa-exp.
