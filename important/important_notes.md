@@ -270,3 +270,39 @@ which curve of the class is optimal. Not an error; worth one sentence.
 
 At q = 3 a general additive curve can be wildly ramified, so "tame" is wrong in general. It is right for
 the exchanges the lemma actually lists. **Action:** restrict the remark. Confidence: high, as reported.
+
+## From the Chapter 2 outline (rings, finite fields, characters, valuations)
+
+Source: `outlines/ch02_rings.md`, final section. Points 29 and 30 were also checked independently by the
+orchestrating session; points 31 and 32 are as reported by the outline agent. None changes a result.
+
+### 29. Lemma lem:twist (ii), proof: the invariants of the twist are those of the twist by q, not q*
+
+The proof says the twist has invariants q^2 c_4, q^3 c_6, q^6 Delta. A twist by d scales c_4, c_6, Delta by
+d^2, d^3, d^6, so these are the invariants of the twist by q. The twist by q* (the one the lemma is about)
+has (q*)^2 c_4, (q*)^3 c_6, (q*)^6 Delta; the two differ in the sign of c_6 when q = 3 mod 4, that is, by the
+twist by -1, which is ramified at 2. Only q-adic valuations are used, so the argument is unaffected.
+**Action:** write q* for q. Confidence: high (checked twice).
+
+### 30. Introduction: the naive adjoint L-function is not the Euler product of sum a_n^2 n^{-s}
+
+The introduction says the naive adjoint L-function is "the Euler product of sum a_n(f)^2 n^{-s}". At a good
+prime p, sum_k a(p^k)^2 X^k = (1 + pX) / ((1 - alpha^2 X)(1 - pX)(1 - beta^2 X)), so the Rankin series has an
+extra factor (1 + p^{1-s}) compared with L_p(Sym^2 f, s). Globally,
+sum a_n^2 n^{-s} = L^{nv}(Sym^2 f, s) zeta^{(N)}(s - 1) / zeta^{(N)}(2s - 2), up to the factors at the bad
+primes. **Action:** say "the Euler product of zeta^{(N)}(2s - 2) sum a_n(f)^2 n^{-s} / zeta^{(N)}(s - 1)", or
+define the naive factor directly by the local formula (as Section 1.1 already does). Confidence: high
+(checked twice). This belongs to Chapter 19's area; the Chapter 19 writer must state it correctly.
+
+### 31. Lemma lem:tamfactor, statement: "the class of u in F_q^x"
+
+u = q_E q^{-n} lies in Z_q^x; what is meant is the class of its reduction in F_q^x / (F_q^x)^{l^v}, with
+v = v_l(q - 1). Identifying that quotient with Z/l^v needs a choice of generator; v_l(c) does not depend on
+the choice, and v_l(0) must be read as v. **Action:** say "the reduction of u" and fix the reading of
+v_l(0). Expository; confidence high.
+
+### 32. Notation: chi_q (quadratic, conductor q) versus chi_l (cyclotomic)
+
+The paper uses chi_q for the quadratic character of conductor q and chi_l for the l-adic cyclotomic
+character, so chi_3 is ambiguous. It also names the same character both chi_11 and chi_{-11}.
+**Action:** use chi_{q*} or psi_q for the quadratic character. Expository; low importance.
