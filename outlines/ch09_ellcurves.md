@@ -79,7 +79,7 @@ written outlines assume):
   and the easy direction "good reduction at $p\ne\ell$ implies unramified with $\rho(\Frob_p)$ of characteristic polynomial
   $X^2-a_pX+p$".
 * **Chapter 14** supplies: modularity, $X_0(N)$, the optimal curve and its Cremona label, the modular degree, the
-  Manin constant and the formula $\degphi=4\pi^2\langle f,f\rangle/(c^2\operatorname{vol}(\Lambda_E))$. Chapter 9 defines
+  Manin constant and the formula $\degphi=4\pi^2c^2\langle f,f\rangle/\operatorname{vol}(\Lambda_E)$. Chapter 9 defines
   $\Lambda_E$ and its area and records the convention "Cremona's curve number 1 is the optimal curve" as a convention
   with the exception 990h (item 12.1).
 * **Chapter 12** supplies the fundamental domain for $\SL_2(\Z)$, modular functions, the $q$-expansion of $j$, the

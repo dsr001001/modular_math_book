@@ -533,3 +533,39 @@ class, so no conclusion changes, but Chapter 21 must name the right curves.
 
 The Euler factor det(1 - Phi p^{-s} | V_l E)^{-1} with Phi geometric is L_p(E, s + 1); L_p(E, s) comes from
 the dual H^1 or from the arithmetic Frobenius on V_l E. Fix when Chapter 21 is written.
+
+## From the Chapter 12 outline (modular forms and modular curves)
+
+Source: `outlines/ch12_modforms.md`, final section. No errors in the paper were found in this area. The
+agent installed PARI/GP 2.17 through the Python package cypari2, so PARI is now available in this
+environment for later checks.
+
+### 46. Optional strengthening: the congruences in the Example of Section 3 hold for every n
+
+The Example after the proof of Theorem thm:qual checks the congruences between 121a1 and the twist of 11a1,
+539c1 and the twist of 11a1, and 980i1 and the twist of 20a1, for primes p below 500 or 1000, excluding a few
+primes. In each case both forms lie in the same space S_2(Gamma_0(N)), so Sturm's bound (22, 112 and 336
+respectively) turns the finite check into a proof of the congruence for every n, including the excluded
+primes. **Action:** optional; say "for all n, by Sturm's bound". Confidence: high, as reported (checked
+with PARI's mfsturm).
+
+## Book-internal consistency (continued)
+
+### B10. The Manin constant was on the wrong side of the Zagier-Watkins formula (fixed)
+
+PLAN.md (Chapter 14 scope) and the Chapter 9 outline wrote deg phi_E = 4 pi^2 <f, f> / (c^2 vol(Lambda_E)).
+With phi^* omega_E = c 2 pi i f dz, integrating |phi^* omega_E|^2 over X_0(N) gives
+deg phi_E vol(Lambda_E) = c^2 4 pi^2 <f, f>, so c^2 belongs in the numerator. Check: in class 11a the degree-5
+parametrisation of 11a3 has volume ratio 25, so c = 5. Both files are now corrected. No number in the paper
+changes, since c = 1 for optimal curves of the tables. The Chapter 12 outline also verified the formula
+numerically for 11a1, 20a1, 37a1, 99a1 and 121a1 with the unnormalised Petersson product (PARI's
+mfpetersson divides by the index of Gamma_0(N)).
+
+### B11. "S_2(Gamma_0(N); Z) is a lattice" is in both the Chapter 12 and Chapter 13 scopes
+
+Resolved by the Chapter 12 outline: Chapter 12 states Shimura's integral-basis theorem and proves its
+consequences; Chapter 13 cites them and proves the perfect pairing with the Hecke algebra.
+
+### B12. Chapter 21 outline, item A3.2
+
+It contains a sentence about adjoints that corrects itself midway; clean it up when Chapter 21 is written.

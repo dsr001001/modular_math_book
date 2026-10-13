@@ -479,7 +479,7 @@ tables), the modular degree deg phi_E (definition as the degree of the morphism 
 via the composition E^vee -> J_0(N) -> E being multiplication by deg phi_E; properties: multiplicative
 under nothing in particular, computability), the Manin constant (definition, the conjecture c = 1,
 known results: Mazur: c | ... ; Abbes-Ullmo; Cremona's verification; the role of the Manin constant in
-the formulas), the formula of Zagier and Watkins: deg phi_E = 4 pi^2 <f, f> / (c^2 vol(Lambda_E)) up to the
+the formulas), the formula of Zagier and Watkins: deg phi_E = 4 pi^2 c^2 <f, f> / vol(Lambda_E), with phi^* omega_E = c 2 pi i f dz, up to the
 precise normalisation (state the exact formula with the Manin constant; Zagier 1985, Watkins 2002), the
 congruence number r_E (definition as in the paper: the largest r such that f = g mod r for some integral g
 of level N orthogonal to f; the congruence ideal in T; Lemma lem:crit of the paper proved in full here or in
