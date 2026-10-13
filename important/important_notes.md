@@ -451,3 +451,48 @@ needs it for pullbacks of divisors and cohomology. The Chapter 8 outline uses A^
 ### B5. The Chapter 3 outline lists Chapter 8 as a user of Gorenstein rings
 
 It is not; the users are Chapters 14 and 20. Fix when Chapter 3 is written.
+
+## From the Chapter 7 outline (local fields, inertia, Weil-Deligne representations)
+
+Source: `outlines/ch07_local.md`, final section. Point 42 was also checked independently by the
+orchestrating session. Point 43 is an unverified observation, recorded as an open question.
+
+### 42. Lemma lem:tamfactor, proof: the nonsplit case needs eps kappa, not kappa, in the corner
+
+The proof writes the action of G_{Q_q} on T as [[chi_l eps, kappa], [0, eps]] with kappa the Kummer class of
+the Tate parameter. For this to be a homomorphism the corner c must satisfy
+c(gh) = chi_l eps(g) c(h) + c(g) eps(h). The Kummer cocycle satisfies kappa(gh) = kappa(g) + chi_l(g) kappa(h),
+so c = kappa works only when eps is trivial, while c = eps kappa always works: the nonsplit curve is the
+Tate curve twisted by eps, and [[chi_l, kappa], [0, 1]] tensor eps = [[chi_l eps, eps kappa], [0, eps]].
+**Action:** write eps kappa. Nothing changes: eps is trivial on inertia, so the inertia computation is
+untouched, and at Frobenius c' only changes by the sign eps(Frob), which does not affect v_l(c').
+Confidence: high (checked twice).
+
+### 43. Open question: is the exception in Proposition prop:forms (type IV or IV* at 2, l = 3) provable?
+
+The proof of Lemma lem:euler uses q >= 5 only to know that the image of inertia is cyclic and tame. If for
+types IV and IV* at q = 2 the image of inertia on T_3 E is cyclic of order 3 or 6 (tame, since 3 is not 2),
+the same computation applies: the invariant line of ad V has Frobenius eigenvalue chi_{-3}(2) = -1, so
+P_2(X) = 1 + 2X and e_3(E, 2) = v_3(3/2) = 1. That is exactly what PARI gives for all 92,812 such curves in
+the working set, and it would turn the exception in Proposition prop:forms into a theorem.
+
+**Not verified:** at q = 2 the image of inertia for potentially good reduction can also be non-abelian
+(of order 8 or 24), and whether types IV and IV* at 2 force a cyclic image of order 3 or 6 has to be checked
+against Kraus90. **Action:** check Kraus's classification at 2; if confirmed, prove the case. Confidence:
+open.
+
+## Book-internal consistency (continued)
+
+### B6. PLAN.md states the Weil-Deligne relation in the geometric form
+
+PLAN.md, Chapter 7 entry, writes "Frob N Frob^{-1} = p^{-1} N", which is the relation for the geometric
+Frobenius. The book's Frob is arithmetic, for which Frob N Frob^{-1} = p N. The Chapter 7 outline states
+both forms and fixes the book's convention: Frob arithmetic, Phi = Frob^{-1} geometric, and
+L(V, s) = det(1 - Phi q^{-s} | V^I)^{-1}.
+
+### B7. Chapter 21 outline, convention C2(b) and item A2.7
+
+C2(b) still contains the slip of B1, and it gives det(1 - Phi p^{-s} | V_l E)^{-1} as the Euler factor of
+E. With the geometric Frobenius that is L_p(E, s + 1); the Euler factor L_p(E, s) comes from the dual
+V_l E^vee = H^1. Item A2.7, step (1), repeats the kappa versus eps kappa issue of point 42. Fix both when
+Chapter 21 is written.
