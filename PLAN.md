@@ -919,7 +919,7 @@ everything -> 21 paper
 ## 6. Concept-to-chapter map for the paper
 
 | Notion in the paper | Chapter(s) |
-|---|---|
+|-|-|
 | X_0(N)-optimal curve, modular parametrisation, modular degree, Manin constant | 14 |
 | newform f_E, S_2(Gamma_0(N)), q-expansions, coefficientwise congruences | 12, 13 |
 | l-adic valuations of integers and rationals | 2 |
