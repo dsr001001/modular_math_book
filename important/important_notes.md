@@ -183,7 +183,9 @@ this file at the paper items they concern (its Part C).
 
 The definition ends "Both terms are invariant under quadratic twist." That holds for t_l, not for e_l when
 the twist is ramified at q and changes the type there. Example: 11a1 is multiplicative at 11, so
-e_3(E, 11) = 0; its twist by chi_{-11} (class 121d) has type I_1^* at 11, so e_3 = v_3(11^2 - 1) = 1. The true
+e_3(E, 11) = 0 (type I_5 at 11); its twist by chi_{-11} (the curve 121d2, in class 121d) has type I_5^* at 11,
+so e_3 = v_3(11^2 - 1) = 1. (Corrected after the Chapter 9 outline: an earlier version said I_1^*, which
+is the twist of 11a3; the value of e_3 and the conclusion are the same.) The true
 adjoint factor is twist-invariant; the naive one is not, so their ratio is not.
 
 **Action:** restrict the sentence to t_l, or to twists unramified at q. Confidence: high (checked twice).
@@ -496,3 +498,38 @@ C2(b) still contains the slip of B1, and it gives det(1 - Phi p^{-s} | V_l E)^{-
 E. With the geometric Frobenius that is L_p(E, s + 1); the Euler factor L_p(E, s) comes from the dual
 V_l E^vee = H^1. Item A2.7, step (1), repeats the kappa versus eps kappa issue of point 42. Fix both when
 Chapter 21 is written.
+
+## From the Chapter 9 outline (elliptic curves over fields)
+
+Source: `outlines/ch09_ellcurves.md`, final section. Point 45 was also checked independently by the
+orchestrating session; point 44 is as reported by the outline agent. Both are expository. The Chapter 9
+outline proves point 17 in full (its item 9.8) and corrected the curve in point 15.
+
+### 44. Section sec:eis: "3Cs.1.1, the split Cartan image" is the wrong description
+
+3Cs.1.1 is the order-2 subgroup {diag(1, 1), diag(1, -1)} of the split Cartan subgroup: the image exactly
+when E[3] = Z/3 + mu_3. The full split Cartan image has the label 3Cs. **Action:** say "the subgroup of the
+split Cartan subgroup that fixes a point", or simply "E[3] = Z/3 + mu_3". Confidence: high, as reported
+(checked against ecdata's image labels).
+
+### 45. Lemma lem:twist (ii), proof: the cubic of the twisted model (addendum to point 29)
+
+For the twist y^2 = x^3 + q* a_2 x^2 + (q*)^2 a_4 x + (q*)^3 a_6, the cubic that Tate's algorithm produces
+after removing powers of q is T^3 + e a_2 T^2 + e^2 a_4 T + e^3 a_6 = T^3 + e a_2 T^2 + a_4 T + e a_6, with
+e = q*/q = plus or minus 1, not T^3 + a_2 T^2 + a_4 T + a_6. Its roots are e times those of the original
+cubic, so "distinct roots modulo q" is unaffected. **Action:** write the cubic with e, or note the sign.
+Confidence: high (checked twice).
+
+## Book-internal consistency (continued)
+
+### B8. Curve-level twists within isogeny classes
+
+Point 15 (now corrected) and parts of the Chapter 21 outline pair the wrong curves within an isogeny class.
+The twist of 11a1 by -11 is 121d2 (type I_5^*); 121d1 is the twist of 11a3 (type I_1^*). The twist of 11a1
+by -7 is 539d2, and the twist of 121a1 by -11 is 121c2. Every quantity used at l = 3 depends only on the
+class, so no conclusion changes, but Chapter 21 must name the right curves.
+
+### B9. Chapter 21 convention C2(b) (extends B1 and B7)
+
+The Euler factor det(1 - Phi p^{-s} | V_l E)^{-1} with Phi geometric is L_p(E, s + 1); L_p(E, s) comes from
+the dual H^1 or from the arithmetic Frobenius on V_l E. Fix when Chapter 21 is written.

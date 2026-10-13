@@ -952,3 +952,135 @@ Forward pointers (chapters that use this one):
 * Chapters 1, 2, 4, 5, 6 already point here for: $E[m]\simeq(\Z/m)^2$ and $T_\ell E$ (Chapter 1), $\#E(\F_q)=q+1-a_q$, Hasse and twists
   (Chapter 2), twists $\rho\otimes\chi_d$ and the Weil pairing (Chapter 4), $\det\rho_{E,\ell}=\chi_\ell$ and the roots of $\psi_3$ (Chapter 5),
   CM and $a_p=0$ (Chapter 6). All are delivered: 3.5, 5.3, 8.1, 8.2, 10.1 to 10.4, 5.2, 4.4, 4.5, 6.2, 6.5.
+
+## 6. Notes for the writer
+
+Pitfalls and conventions:
+* **Characteristic.** Short Weierstrass forms and the $\operatorname{Aut}$ computation need $\operatorname{char}K\ne2,3$; the general formulas of 1.1
+  work in all characteristics. Over $\Q$ say once that "a model" means one with the general $a_i$, because Cremona's
+  minimal models have $a_1,a_3\ne0$ in general (121a1, 726a1, 99a1).
+* **Twists of general models.** Never twist $[a_1,a_2,a_3,a_4,a_6]$ by multiplying $a_2,a_4,a_6$ directly unless $a_1=a_3=0$;
+  complete the square first (10.1). The scaling $u=2$ in the integral model multiplies $c_4,c_6,\Delta$ by $2^4,2^6,2^{12}$; the
+  minimal model of the twist must then be recomputed (Chapter 10). $E^{(d)}$ depends on $d$ mod squares; $\chi_d$ has
+  conductor $|D|$, not $|d|$.
+* **$q$ versus $q^*$ (point 29).** The paper's twist is by $\Q(\sqrt{q^*})$; its invariants are $q^{*2}c_4$, $q^{*3}c_6$, $q^{*6}\Delta$. When
+  $q\equiv3\pmod4$ the twist by $q$ is a different curve, ramified at $2$ (121a1: $-11$ gives 121c2, $+11$ gives 1936k2).
+* **Curve versus class.** A twist of a curve is a curve, a twist of a class is a class. The paper and the Chapter 21
+  outline sometimes say "the twist of 11a1 is 121d1"; the twist of 11a1 is 121d2 ($\mathrm I_5^*$ at $11$), that of 11a3 is 121d1
+  ($\mathrm I_1^*$); the twist of 121a1 is 121c2, not 121c1; the twist of 11a1 by $-7$ is 539d2. Statements about $a_p$, $L$, $V_\ell$
+  and (for $\ell$ prime to the isogeny degrees) $T_\ell$ are class-level; statements about $j$, $\Delta$, types, torsion and
+  $v_q(j)$ are curve-level (Part 8, B2).
+* **Frobenius (C5, 5.7).** $\pi$ on $\tilde E$ is the arithmetic Frobenius. $\det(1-\Frob^{\mathrm{arith}}X\mid V_\ell E)=1-a_pX+pX^2$, while
+  $\det(1-\Frob^{\mathrm{geom}}X\mid V_\ell E)=1-\frac{a_p}pX+\frac1pX^2$. Do not write "the geometric Frobenius on $V_\ell E$ has eigenvalues
+  $\alpha,\beta$" (that is the slip recorded in important_notes.md B1).
+* **Weil pairing sign (C7).** State Silverman's definition; the comparison with $e^{2\pi i/m}$ over $\C$ has a sign that
+  differs between sources: check before printing.
+* **Division polynomials.** Normalisations differ ($\psi_2=2y+a_1x+a_3$ here and in PARI; some books use $2y$ for short
+  models). PARI's `elldivpol(E,3)` is $\psi_3$ with leading coefficient $3$; "irreducible" means irreducible in $\Q[x]$. A $2+2$
+  factorisation detects the image $N_s(\F_3)$ only for $E[3]$ irreducible and non-CM; CM curves can give $2+2$ (121b1,
+  Chapter 21 outline A1.12) and reducible $E[3]$ gives a linear factor.
+* **Mazur's theorems.** Keep the torsion theorem (Mazur77), the prime-degree isogeny theorem (Mazur78) and the cyclic
+  $n$-isogeny list (Mazur and Kenku) apart, and say which $n$ occur only for CM curves; 9.8 uses only "$n=27$ forces CM".
+* **Uniformisation.** Do not prove 7.3(ii) via the surjectivity of $j$ if Chapter 12 proves that surjectivity by the
+  valence formula and cites Chapter 9: one of them must be a reference. Recommended: Chapter 9 states 7.3(ii) with
+  reference (R) and names both routes.
+* **Period lattice.** Use the Neron differential of the global minimal model (Chapter 10); `ecdata`'s `allbsd` column
+  $\Omega$ equals $\omega_1$ for 11a1 ($\Delta<0$); for $\Delta>0$ check whether the column is $\omega_1$ or $2\omega_1$ before quoting it. The area
+  $\operatorname{vol}(\Lambda_E)$ is what Chapter 14's formula uses; do not confuse it with $\Omega$.
+* **Optimality convention.** "Curve number 1 is optimal" is a property of Cremona's labelling (exception 990h), not of
+  the LMFDB's; the LMFDB class letters also differ (539c $=$ 539.d, 726a $=$ 726.b, 980i $=$ 980.b).
+* **Labels at $\ell$.** The image labels (3Ns, 3Cs.1.1, 3B.1.1, 5Cs.1.1, ...) are Chapter 11's; use them here only in
+  tables, with the intrinsic description (Chapter 1, 6.10; important_notes.md point 3).
+* **Theorem numbers.** Every AEC/ATAEC number in Part 2 marked "(verify)" was recalled, not checked against the book;
+  only AEC V.1.1 (Hasse) is quoted without that mark. Print section numbers if in doubt.
+* Bibliography to add to `bib/ch09.bib` (complete entries, checked): Velu 1971 (C. R. Acad. Sci. Paris 273), Faltings 1983
+  (Invent. Math. 73), Kenku 1982 (J. Number Theory 15), Deuring 1941 (Abh. Math. Sem. Hamburg 14), Serre-Tate 1968
+  (Ann. of Math. 88), Washington's *Elliptic Curves: Number Theory and Cryptography* (2nd ed., 2008), Cox's *Primes of
+  the form $x^2+ny^2$*, Cohen's *A course in computational algebraic number theory*, and optionally
+  Lozano-Robledo 2013. Check every entry before adding.
+
+What to leave to other chapters (and not do here):
+* Chapter 8: Riemann-Roch, existence of the Weierstrass model, the $\operatorname{Pic}^0$ bijection, unramifiedness of isogenies,
+  Jacobians.
+* Chapter 10: minimality, Tate's algorithm, Kodaira types, conductor, the formal group, the Tate curve, Lemma lem:twist (i),
+  (ii) on types (Chapter 9 only supplies the models and invariants).
+* Chapter 11: images, Neron-Ogg-Shafarevich in full, Proposition prop:ns and Lemma lem:h0 in full (with points 1, 5, 6,
+  9, 10, 33), the Ind $\psi$ over $\F_9$ issue (point 33), Serre's open image theorem.
+* Chapter 12: modular forms, the fundamental domain, $j$'s $q$-expansion; Chapter 14: modularity, $X_0(N)$, optimal curves,
+  the modular degree, the Manin constant, points 39 to 41; Chapter 19: the analytic theory of $L(E,s)$ and of the adjoint.
+
+How the relevant important_notes.md points are handled:
+* **Point 14** (CM by $\Q(\sqrt{\ell^*})$ forces $\ell\mid N$): 6.5(iv), stated (R) with the data check ($462$ CM curves below conductor
+  $10{,}000$, no exception) and a `paperlink` to Lemma lem:h0.
+* **Point 15** ($e_\ell$ not twist-invariant): 10.7, with the corrected example pairs 11a1/121d2 and 11a3/121d1.
+* **Point 17** (the rational cyclic $27$-isogeny): **decided: Chapter 9**, item 9.8, with full proof. Reason: every
+  ingredient (isogenies and duals, quotients by finite subgroups, cyclic factorisation, the Weil pairing for $\mu_3$, the
+  CM list for $X_0(27)$, Mazur's torsion theorem) is in this chapter, and the statement is about torsion and isogenies,
+  not about images. Chapter 11 restates it in the language of the label 3Cs.1.1 with a `\Cref{ch:ellcurves}`; Chapters
+  14 and 21 cite it.
+* **Point 26 and point 40** ($M_{f,\lambda}$ versus $T_\ell E$): 5.5 supplies $H^1(E,\Z_\ell)=\Hom(T_\ell E,\Z_\ell)\simeq T_\ell E(-1)$ exactly.
+* **Point 27** (optimality irrelevant at $\ell$ when $E[\ell]$ is irreducible): 9.9, proved.
+* **Point 29** ($q$ versus $q^*$): 10.2(iii), with the 121a1 example.
+* **Point 33** ($\bar\rho=\Ind\psi$ only over $\F_9$): not in this chapter's scope; 4.6 only reads lines over $\F_3$.
+* Points 5, 6 (the character in Lemma lem:h0): 6.5 states the CM facts for the quadratic character and a `warning`
+  says the cyclotomic $\chi_\ell$ is not a quadratic character; the proof of Lemma lem:h0 is Chapter 11's.
+
+## 7. Verification log (computations done for this outline)
+
+Scripts in `/tmp/ch09/scripts` (`ec.py` helper; `check1.py` to `check9.py`); data in `/tmp/ch09/data` downloaded from
+the `ecdata` GitHub repository (`allcurves`, `allisog`, `degphi`, `galrep`, `allbsd`, `alllabels`, all for conductors
+$0$ to $9{,}999$). The LMFDB API was not reachable (captcha), so LMFDB labels come from `alllabels`.
+* Symbolic (sympy, generic $a_i$): $4b_8=b_2b_6-b_4^2$; $1728\Delta=c_4^3-c_6^2$; the completed square; the short form
+  $108^2\eta^2=X^3-27c_4X-54c_6$ with $X=36x+3b_2$; every transformation formula of 1.3 (by substitution); the twist
+  scalings $d^2,d^3,d^6$; $x(2P)-x(P)=-\psi_3/\psi_2^2$; the curve with prescribed $j_0$ (1.4).
+* Division polynomials: degrees and leading coefficients for $m=2,\dots,9$ on 11a1 and 99a1 (4.2); factorisations and
+  discriminants of $\psi_3$ for the eight curves of 4.6.
+* Invariants of all curves in 1.6, 4.6, 12.2 from their $a$-invariants.
+* Group law: orders of the points in 2.4.
+* Point counts: $a_p$ of 8.7 (and at bad primes), Hasse for good $p<2000$ on seven curves, $\#E(\F_{p^2})$ for 11a1, CM
+  vanishing for 27a1, 36a1, 32a1, 121b1 ($p<500$), $a_p\equiv1+p$ for 11a1 mod $5$ and 14a1 mod $3$, the twist relations of 10.4
+  ($p<400$, also $p=2$ where allowed), the Section 3 congruences (121a1 versus $\chi_{-11}\cdot$11a1 mod 3, 539c1 versus
+  $\chi_{-7}\cdot$11a1 mod 3, $p<1000$; 980i1 versus $\chi_{-7}\cdot$20a1 mod 5, $3\le p<1000$), the $\eta$-product for 11a1 up to $q^{20}$.
+* Twist identifications of 10.2 by comparing $j$ and $c_6c_4'/(c_6'c_4)$ against all curves of the target conductors.
+* mpmath: the thirteen CM $j$-values as $1728J(\tau)$; the periods, area and reduced $\tau$ of 11a1 (AGM, Cohen 7.4.7 shape),
+  $j(\tau)=j(E)$ to $40$ digits; $\omega_1$ agrees with `allbsd`.
+* `ecdata`: torsion orders, class sizes, isogeny degrees, the 27a isogeny matrix and $j$-values, label/isogeny
+  consistency at $\ell=3,5,7$, 3Cs.1.1 versus $9$-torsion, the six curves with a point of order $9$ (all 3B.1.1), CM curves
+  and conductors, the 990h exception, modular degrees and images of the running examples, LMFDB labels.
+* Not recomputed: Kodaira types at $2$ and $3$ (taken from the Chapter 21 outline's Tate algorithm), $r_E=12$ for 99A1
+  (ARS12), anything beyond conductor $10{,}000$.
+
+## 8. Points for important_notes.md
+
+New points about the paper in this chapter's area (not already recorded; each checked as stated):
+
+* **N1. Section sec:eis: "the split Cartan image 3Cs.1.1".** Problem: 3Cs.1.1 is not the split Cartan subgroup but its
+  subgroup $\{\operatorname{diag}(1,\pm1)\}$ of order $2$ (the image when $E[3]\simeq\Z/3\oplus\mu_3$); the full split Cartan image is the label
+  3Cs (order $4$), whose curves have no rational $3$-torsion (e.g. 539a2, torsion trivial). Fix: "the image 3Cs.1.1
+  (inside a split Cartan subgroup, fixing a nonzero vector), i.e. $E[3]\simeq\Z/3\oplus\mu_3$". Confidence: high (`ecdata` below
+  $10{,}000$: all $264$ curves labelled 3Cs.1.1 have a rational point of order $3$; Chapter 1, 6.10). Expository.
+* **N2. Lemma lem:twist (ii), proof, the $\mathrm I_0\leftrightarrow\mathrm I_0^*$ sentence (addendum to point 29).** Problem: for the twisted model
+  $y^2=x^3+q^*a_2x^2+q^{*2}a_4x+q^{*3}a_6$ the cubic of Tate's algorithm is $T^3+\varepsilon a_2T^2+a_4T+\varepsilon a_6$ with $\varepsilon=q^*/q$, not
+  $T^3+a_2T^2+a_4T+a_6$ as written. Its roots are $\varepsilon$ times those of the latter, so "distinct roots mod $q$" is unaffected.
+  Fix: "whose cubic $T^3+\varepsilon a_2T^2+a_4T+\varepsilon a_6$, $\varepsilon=q^*/q$, has distinct roots modulo $q$ because $T^3+a_2T^2+a_4T+a_6$ does".
+  Confidence: high (one-line substitution $T=\varepsilon S$). Expository.
+* No other new problem was found in the paper's statements about Weierstrass data, twists, torsion, isogenies, the
+  3-division polynomial or CM; the Example of Section 3 (twists, labels, congruences, modular degrees), the
+  appendix's 121a1 model, and Section sec:eis's claims on 3Cs.1.1 and $9$-torsion were all consistent with `ecdata`
+  in the range checked.
+
+Book-internal inconsistencies found:
+* **B1 extension (Frobenius on $V_\ell E$).** The Chapter 21 outline, C2(b), says that with the geometric Frobenius
+  $L_p(V_\ell E,s)=(1-a_pp^{-s}+p^{1-2s})^{-1}$ and $\det(1-\Frob^{\mathrm{geom}}X\mid V)=(1-\alpha X)(1-\beta X)$. Both are wrong: with the geometric
+  Frobenius on $V_\ell E$ the factor is $(1-\frac{a_p}pp^{-s}+\frac1pp^{-2s})^{-1}=L_p(E,s+1)$; the stated formula holds for $V_\ell E^\vee=H^1$ (or
+  with the arithmetic Frobenius on $V_\ell E$). Nothing on $\ad V$ changes. Chapter 9 fixes the convention in C5 and 5.7.
+* **B2. Curve-level twist identifications.** important_notes.md point 15 says the twist of 11a1 by $\chi_{-11}$ has type $\mathrm I_1^*$; in
+  fact $\text{11a1}^{(-11)}=$ 121d2 has type $\mathrm I_5^*$ ($v_{11}(\Delta)=11$); $\mathrm I_1^*$ is 121d1 $=\text{11a3}^{(-11)}$. The value $e_3=v_3(120)=1$ is
+  the same, so the point stands. Likewise the Chapter 21 outline (A1.1, B4 item 6, Section 9 "11a1 twisted by $-7$ is
+  539d1", the verification line "exact twist relations 121a1/121c1, 11a1/121d1") pairs curves that are twists only up
+  to isogeny: $\text{11a1}^{(-7)}=$ 539d2, $\text{11a3}^{(-7)}=$ 539d1, $\text{121a1}^{(-11)}=$ 121c2. All quantities it uses at $\ell=3$ are
+  class-level (the isogenies have degree $5$ or $11$), so no conclusion changes; the wording should be class-level.
+* **Chapter 6 outline, 6.5 versus this chapter's 6.5.** Consistent; Chapter 6's item is the preview and should cite
+  Chapter 9 for the Galois action on endomorphisms and for (iv), as it already plans. No conflict.
+* **Chapter 5 outline, galois:ns-example.** The curve $y^2=x^3-6x-8$ is 6912d1 in Cremona's tables (conductor $6912$); its
+  data agree with this outline (4.6). Not an inconsistency; the label may be added there.
