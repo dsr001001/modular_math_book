@@ -386,7 +386,8 @@ $\operatorname{sw}(V)\ge0$ is the Swan conductor; it is independent of $\ell$ (S
 (good), $f=1$ (multiplicative), $f=2+\operatorname{sw}$ (additive), with $\operatorname{sw}=0$ for $p\ge5$. Proof of the values given Chapter 11's
 Neron-Ogg-Shafarevich criterion and the Tate curve (7.5): good means $V$ unramified; multiplicative means $V^{I}$ a line with unipotent
 (tame) action; additive means $V^{I}=0$; for $p\ge5$ every finite subgroup of $\GL_2(\Z_\ell)$ arising (orders dividing $24$) has order prime to $p$
-by 6.6, so wild inertia acts trivially. Reference: SerreTate68 Section 3 (verify), Ogg, ATAEC IV.10 (verify). Paper: Lemma lem:twist (i),
+by 6.5(iii) (it embeds in $\SL_2(\F_3)$, of order $24$), and in the potentially multiplicative case the ramified quadratic character is
+tame for $p$ odd (7.3, 7.7); so wild inertia acts trivially. Reference: SerreTate68 Section 3 (verify), Ogg, ATAEC IV.10 (verify). Paper: Lemma lem:twist (i),
 (ii) (conductor exponents), Lemma lem:IV and Remark rem:types (the conductor of $E$ versus the Serre conductor of $\bar\rho$), Theorem
 thm:qual ($q^2\,\|\,N$ at additive $q\ge5$), Section 1 ("$\Sigma$ the set of bad primes"), Remark rem:wild.
 
@@ -537,7 +538,7 @@ parameters $q_E=q^\nu u$ and $\bar u\in\F_q^\times$:
 
 | curve, prime | type | $a_q$ | $\nu$ | $\bar u\bmod q$ | remark |
 |-|-|-|-|-|-|
-| 11a1, $11$ | $\mathrm I_5$ | $1$ | $5$ | $10\equiv-1$ | $\bar u$ a 5th power in $\F_{11}^\times=\{\pm1\}\cdot(\text{5th powers})$: Lemma lem:tamfactor's extra term at $\ell=5$ |
+| 11a1, $11$ | $\mathrm I_5$ | $1$ | $5$ | $10\equiv-1$ | $(\F_{11}^\times)^5=\{\pm1\}$, so $\bar u$ is a 5th power: the extra term of Lemma lem:tamfactor at $\ell=5$ (11a1 is Eisenstein at $5$, so this illustrates the lemma, not the theorem) |
 | 11a3, $11$ | $\mathrm I_1$ | $1$ | $1$ | $8$ | |
 | 20a1, $5$ | $\mathrm I_2$ | $-1$ | $2$ | $1$ | nonsplit |
 | 77c1, $7$ | $\mathrm I_3$ | $-1$ | $3$ | $5$ | same $q_E$ as 539c1 at $7$ ($\mathrm I_3^*$) |
@@ -547,6 +548,7 @@ parameters $q_E=q^\nu u$ and $\bar u\in\F_q^\times$:
 | 726a1, $2$ | $\mathrm I_6$ | $-1$ | $6$ | $1$ | |
 | 726a1, $3$ | $\mathrm I_3$ | $-1$ | $3$ | $2$ | |
 
-Values of $t_\ell$: $t_5(\text{11a1},11)=1$; $t_3(\text{539c1},7)=t_3(\text{77c1},7)=1$; $t_5(\text{980i1},7)=1$; $t_3(\text{726a1},3)=1$, $t_3(\text{726a1},2)=1$. Paper: Definition def:terms,
+Values of $t_\ell$: $t_5(\text{11a1},11)=1$; $t_3(\text{539c1},7)=t_3(\text{77c1},7)=1$; $t_5(\text{980i1},7)=1$; $t_3(\text{726a1},2)=v_3(6)=1$; and $v_3(\nu)=1$ at $q=3$ for 726a1, which the
+appendix's `rule` counts as $t_3(E,3)$ although Definition def:terms is stated for $q\ne\ell$ (Part 8, N5). Paper: Definition def:terms,
 the Example of Section 3 ("$t_3(E,7)=v_3(3)=1$"), Lemma lem:tamfactor, Section sec:tam, Section sec:anomaly ("a prime $p\equiv-1\pmod3$ with
 $t_3(E,p)\ge1$": for 726a1 that is $p=2$).
