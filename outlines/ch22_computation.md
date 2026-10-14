@@ -156,8 +156,9 @@ $(6,-3)$); `ellisomat(E)[2]` $=$ `[1, 2; 2, 1]` (class 726a has two curves joine
 **2.4 `warn:computation:pitfalls`** (warning; P). (a) `ellinit` accepts any model; `ellglobalred` reports the change to a
 minimal model, and `ellminimalmodel` returns it; local data are always those of the minimal model. (b) Do not assign to
 `x`. (c) $q$-adic objects carry precision `O(q^k)`; results are correct only to that precision. (d) Stack overflow is an
-error, not a wrong answer: raise `parisizemax`. (e) GP is 1-indexed, Python 0-indexed: `R[4][,1]` in GP is
-`R[3][:,0]` in `cypari2`. (f) `factor` of a polynomial with integer coefficients returns the irreducible factors over
+error, not a wrong answer: raise `parisizemax`. (e) GP is 1-indexed, Python 0-indexed: `K[i][2]` in GP is `R[4][i-1][1]`
+in `cypari2`, and the entry `R[4][i, 1]` of the factorisation matrix is `R[3][i-1, 0]`; `cypari2` does not accept Python slices of a
+PARI matrix (C: `R[3][:,0]` raises a `TypeError`), so whole columns are taken in GP, `pari('(g) -> g[4][,1]~')(R)`, as S4 does. (f) `factor` of a polynomial with integer coefficients returns the irreducible factors over
 $\Q$ without the content: `factor(3*x^4 + 6)` is `Mat([x^4 + 2, 1])` (C); this is what makes `ns3` independent of the
 leading coefficient $3$ of $\psi_3$. Paper: the appendix.
 
@@ -209,8 +210,10 @@ function `tatedata(E, q, l)` (S2) returns $[n,q_E,\bar u,k]$ with $\bar u$ the r
 largest $k\le v_\ell(q-1)$ such that $\bar u$ is an $\ell^k$-th power in $\F_q^\times$ (test: $\bar u^{(q-1)/\ell^k}=1$). Outputs (C): 11a1 at
 $11$, $\ell=5$: $n=5$, $q_E=10\cdot11^5+2\cdot11^6+\cdots$, $\bar u=10$, $k=1$; 77c1 at $7$ ($a_7=-1$, nonsplit): $[3,\dots,5,0]$; 539c1 at $7$:
 the same $q_E$ as 77c1 (its twist), $\bar u=5$, $k=0$; 791a1 $=[1,0,1,-31,117]$ at $7$: $\bar u=6$, $k=1$; 1577a1 $=[0,-1,1,30,-335]$ at $19$:
-$\bar u=8$, $k=1$. These agree with Chapter 17, 5.5 and Chapter 18, 8.5. Warning (one sentence, PLAN.md): `elltatepairing` is
-the Tate pairing on torsion points and has nothing to do with the Tate parameter. Notation: the class of $\bar u$ is
+$\bar u=8$, $k=1$. These agree with Chapter 17, 5.5 and Chapter 18, 8.5. Two warnings: `elltatepairing` is the Tate pairing on
+torsion points and has nothing to do with the Tate parameter; and `ellinit(E, q)` with an integer prime $q$ (PLAN.md's
+suggestion) reduces $E$ modulo $q$: it returns `[]` at a bad prime (C: 77c1 at $7$) and the curve over $\F_q$ at a good one, never
+the curve over $\Q_q$; the $q$-adic curve needs `O(q^k)` (Part 8, B-c). Notation: the class of $\bar u$ is
 written $c(u)$, never $c_q$ (points 23, N9 of Chapter 21). Paper: Section sec:data ("the Tate parameters with `ellinit`
 over $\Q_q$"), Section sec:tam, Lemma lem:tamfactor, Remark rem:ko(1).
 
@@ -246,8 +249,8 @@ $L(\Sym f,2)$ and the Petersson norm (Chapter 14, 7.3 and 12.5; Chapter 19, 8.4)
 `_lfuninit_worker` warnings when it grows the stack (C). (iv) Cost and memory (C, 2.17.2): about $0.065$ seconds per curve on
 a random sample below $10{,}000$; the default 8 MB stack suffices for most curves (e.g. 9999m1, degree $5632$) but not for
 the largest degrees (9510e1, degree $100{,}254{,}000$; 9690m1, $68{,}217{,}600$; 7910b1, $31{,}272{,}384$), which need $16$ to $32$ MB.
-(v) Full check: `ellmoddegree` against `ecdata`'s `degphi` on all $38{,}042$ optimal curves below $10{,}000$ (Part 7, R8;
-result recorded there). Paper: Section 1 ("The modular degree is computable"), Section sec:data ("fifteen modular degrees
+(v) Full check: `ellmoddegree` agrees with `ecdata`'s `degphi` on all $38{,}042$ optimal curves below $10{,}000$ (Part 7,
+R8; no mismatch). Paper: Section 1 ("The modular degree is computable"), Section sec:data ("fifteen modular degrees
 spanning the configurations were recomputed with `ellmoddegree`"), Section sec:oot, the appendix.
 
 ### Section 4. Cremona's tables and the `ecdata` files
@@ -377,7 +380,8 @@ $=[1,1,0,-35,-51]$. Breakdown with `iii = 1`: `[[2, 10, -x + 1, 3/4, 0, 0, 1], [
 12/11, 1, 0, 0]]`; with `iii = 0` the last row has `e = 0`. So $B^{\mathrm{III}}_3=1+1=2$ ($t_3$ at $2$ from $\mathrm I_6$, at $3=\ell$
 from $\mathrm I_3$), $B^{\mathrm{nc}}_3=3$, `ns3` $=1$ ($\psi_3=(x^2-x-74)(3x^2+8x+20)$), $B^{\mathrm{rule}}_3=2$; $\degphi=144=2^43^2$. Reading: without the
 correction the bound fails by exactly one, the violation involves the prime $2\equiv-1\pmod3$ with $t_3(E,2)=1$ (as Section
-sec:anomaly says of every violation), and $3\mid N$ puts the curve outside Theorem thm:main anyway. The congruence number
+sec:anomaly says of every violation), and $3\mid N$ puts the curve outside Theorem thm:main anyway (with (eq:thm) read literally, terms at $q\ne3$ only, the bound is
+$2$ and there is no violation: Part 8, N6). The congruence number
 $r_E=1584=11\cdot144$ (Chapter 14; point 58) is not computable by `rule`. Paper: the appendix ("for 726a1 ... both return
 `[2, 2]`, the type $\mathrm{III}$ term and the correction cancelling"), Section sec:anomaly.
 
@@ -431,7 +435,7 @@ $500000$, the paper only fifteen with `ellmoddegree` inside the tables and $893$
 Section sec:data, Section sec:oot.
 
 **7.2 `ex:computation:moddeg-check`** (worked example; C). `ellmoddegree` against `degphi` on all $38{,}042$ optimal curves of
-conductor below $10{,}000$ (script S8, four processes, Part 7, R8): result as recorded in Part 7. The paper's sentence "fifteen
+conductor below $10{,}000$ (script S8, four processes, Part 7, R8): no mismatch. The paper's sentence "fifteen
 modular degrees spanning the configurations were recomputed with `ellmoddegree`, all agreeing with the tables" is thereby
 extended, in the book's range, to every curve. Paper: Section sec:data.
 
@@ -460,9 +464,10 @@ including them would inflate every rate; (b) an equality rate is a property of t
 curves": in the book's data at $\ell=3$ it is $75.1\%$ for $N<5000$ and $68.0\%$ for $5000\le N<10000$, against the paper's $57.5\%$ for
 $N\le300000$ (C, D); degrees grow with $N$, and with them the room for extra divisibility; (c) the mean excess is $0.31$ and
 $0.42$ on the two small ranges, $0.37$ on their union (C), against the paper's $0.63$ (D); under the hypothesis of Theorem
-thm:main the excess is the Selmer length plus the Tamagawa excess (eq:identity, with equality by points 39 and 56; at additive
-primes the Tamagawa factor is trivial by point 64, so the excess is the Selmer length plus the excess at multiplicative
-primes); the data measure it but do not explain it (Open question 3). Paper: Section sec:sharp ("the mean excess at
+thm:main the excess over $B^{\mathrm{rule}}$ is the Selmer length plus $\sum_q(v_\ell(\Tam_q(\ad T))-t_\ell(E,q))$ (eq:identity, an equality by
+points 39 and 56); the Tamagawa factor is trivial at the potentially good additive primes (point 64), so the second sum runs
+over the potentially multiplicative primes only and is given by Lemma lem:tamfactor (points 18, 68); the data measure the
+excess but do not explain it (Open question 3). Paper: Section sec:sharp ("the mean excess at
 $\ell=3$ is $0.63$"; "the identity says what the excess is"), Section sec:forms.
 
 **8.3 `ex:computation:base-rates`** (worked example; C). Base rates at $\ell=3$ in the base population below $10{,}000$ ($33{,}851$
@@ -507,9 +512,9 @@ each data claim, from the paper's own account (Section sec:data):
 
 | statement | formulated on | blind test | confirmation only | remark |
 |-|-|-|-|-|
-| (eq:main) | working set | hold-out (once), then extension | out-of-table | nothing adjusted after the hold-out test |
+| (eq:main) | working set | hold-out (once), then extension | | nothing adjusted after the hold-out test; the out-of-table curves are a further check whose status the paper does not state |
 | Conjecture conj:eis | working set | hold-out (once), then extension | | stated for (eq:main) only; $D\le2$ is a theorem (point 17) |
-| (eq:twist) | working set (replacing a weaker form) | hold-out and extension, "tested once" | out-of-table | blind only if fixed before the hold-out was opened for (eq:main); the text does not say (Part 8, N2) |
+| (eq:twist) | working set (replacing a weaker form) | hold-out and extension, "tested once" | | blind only if fixed before the hold-out was opened for (eq:main); the text does not say (Part 8, N2); out-of-table as for (eq:main) |
 | Conjecture conj:euler: the Euler terms | working set (minima by type, Section sec:iso) | out-of-table | hold-out, extension | the terms at $2$, $3$ "fixed afterwards by PARI's Euler factors" |
 | the weights $w_3$ | working set (minima at $q=3$) | out-of-table, only on curves with $3\mid N$ and potentially good reduction at $3$, if any | hold-out, extension | empirical by construction (Section sec:wild) |
 | the correction $h_\ell$ | from the exceptions | none: the out-of-table set has no 3Ns curve | all ranges | $h_3=1$ on 3Ns is a theorem (Lemma lem:h0, point 5); the inequality with it is not |
@@ -684,7 +689,11 @@ $80.4\%$, $91.2\%$; the rule bounds $867{,}578$ curves instead of $705{,}563$ at
 | $5000\le N<10000$ | 60 | 60 | 20 (33%) | 0 | 60 | $1$: 8, $11$: 12 | always 1 |
 | $N<10000$ | 90 | 90 | 36 (40%) | 0 | 90 | $1$: 12, $11$: 20, $q=2$: 4 | always 1 |
 
-Every violator has a prime $p\equiv-1\pmod3$ with $t_3(E,p)\ge1$ ($36$ of $36$); $12$ of the $36$ have $3\mid N$. Of the $90$ curves, $74$ have a type
+Every violator has a prime $p\equiv-1\pmod3$ with $t_3(E,p)\ge1$ ($36$ of $36$); $12$ of the $36$ have $3\mid N$. Reading of
+"violate (eq:thm)": the book uses $B^{\mathrm{nc}}$ (the rule with every term and no correction, which is what "violations when the
+correction term is dropped" in Table tab:uniform means); if (eq:thm) is read literally, with terms at $q\ne\ell$ only and no $w_3$,
+the count is $24$ instead of $36$ (726a1 then has bound $2$ and no violation), and still no non-3Ns curve violates (C). The writer
+states which reading is used (Part 8, N6). Of the $90$ curves, $74$ have a type
 $\mathrm{III}$ or $\mathrm{III}^*$ prime $q\ge5$ with $e_3\ge1$ and the other $16$ (conductors $3840$, $4864$, $6912$) get their positive $\mathrm{III}$ term at
 $q=2$ from PARI's factor (consistent with Chapter 21, A6.7 and with point 48). The paper (D): $364$, $68$, $43$, $0$ violations, $31\%$, $23\%$,
 $18\%$ of the 3Ns curves. Reading: the same phenomenon at higher rates in the small range; the falling rate with $N$ is visible
@@ -887,3 +896,485 @@ not counted); computational items appear on the card with the exact output in on
     Then do the same for a statement you choose yourself on the working set, and report honestly whether it survived.
 18. Compute the odd-part statistic of 10.6 on $N<5000$ and on $5000\le N<10000$, and explain why the paper's $1.85\%$ is so much smaller
     than the book's $17.1\%$.
+
+## 5. Dependencies and forward pointers
+
+Results and conventions from earlier chapters used here (by chapter label only; PLAN.md Section 5 lists 9, 10, 11, 14, 19,
+21 as the prerequisites):
+* Chapter 2 (`ch:rings`): valuations of rationals, $\chi_{-3}$, $\chi_{-4}$, Kronecker symbols, $\ell$-th powers in $\F_q^\times$ (3.4, 3.5); its
+  deferral "PARI's `valuation`, `kronecker`, `znprimroot`, `ffgen`, `polisirreducible` as the computational counterparts" is met
+  in 2.2 for `valuation` and `kronecker` (the other three are not used by the paper; one sentence).
+* Chapter 3 (`ch:modules`): its deferral "`matsnf`, `mathnf` (one sentence)" is met by one sentence in Section 7 (the congruence
+  module of Chapter 14 is a Smith normal form computation).
+* Chapter 9 (`ch:ellcurves`): Weierstrass data and PARI's member functions (C3 there), division polynomials, isogeny classes,
+  labels (12.1, 12.2), the 990h exception, the running-examples table.
+* Chapter 10 (`ch:reduction`): Tate's algorithm, Kodaira codes (5.5), `ellglobalred` and `elllocalred` (10.2), the Tate parameter
+  (7.3, 7.4, 7.8), Lemma lem:twist (8.1, 8.2).
+* Chapter 11 (`ch:galrep`): mod 3 images and the $\psi_3$ patterns (7.3), Sutherland's labels and the `galrep` check (7.4, 7.6), the CM
+  caveat (B7), 3Ns and $h_3$ (8.4, 8.5), types $\mathrm{IV}$, $\mathrm{IV}^*$ at $2$ (4.4).
+* Chapter 12 (`ch:modforms`): `mfinit`, `mfdim`, `mfsturm`, `mfpetersson` (its normalisation by $\mu(N)$); Sturm's bound for the
+  congruences of the Example of Section 3 (point 46). Its deferral list is met by one paragraph in Section 7 naming these
+  functions and pointing back.
+* Chapter 13 (`ch:hecke`): `mfbasis`, `mfcoefs`, `mfheckemat`, `mfatkininit`, `mffromell`, `mfbd`, `matrixqz` (one sentence each in
+  Section 7, with the pointer to Chapter 13's lattice method).
+* Chapter 14 (`ch:moddeg`): optimal curves (6.5), the Zagier-Watkins formula and Watkins's method (7.3, 12.5), `ellmoddegree`, the
+  congruence-number algorithm and its values (8.5, verification log), Watkins's conjecture and Calegari-Emerton (12.3, 12.4).
+* Chapter 15 (`ch:modgalrep`): the verification scripts of its Part 6.6 (congruences up to the Sturm bound, `elltwist`, `mfeigenbasis`
+  and reduction modulo $\lambda$): cited as further examples of the same technique in Section 7, not reprinted.
+* Chapters 17, 18 (`ch:galcoh`, `ch:blochkato`): Lemma lem:tamfactor and its examples (17's 5.5, 18's 8.5); the computation of the
+  Tate parameter (18's verification log).
+* Chapter 19 (`ch:lfunctions`): the normalisation of `lfunsympow` and `lfuneuler` (C4, C5, 11.1), the mathematics of `rule` (11.2), the
+  table of $P_q$ by shape (10.1), the examples (12.1).
+* Chapter 21 (`ch:paper`): A6 (what each data statement means and tests), A9.1 (the mathematics of `rule`, line by line), A9.2
+  (codes), B4 (the hand verifications, now run with PARI here). Chapter 22 does not repeat A6's readings; it adds the
+  computations, the statistics and the status table 9.2.
+* Appendix A (`ch:prereq`): its section on elementary probability and statistics (base rates, expectation, Markov and
+  Chebyshev, hypothesis tests, hold-out sets and pre-registration, the calibration example, the protocol `paperlink`). Chapter 22
+  cites it and never restates it.
+
+Forward pointers (chapters that use this one): none in the main text (this is the last chapter). Appendix B (`ch:notation`):
+the PARI Kodaira codes (with Chapter 10) and the names $B^{\mathrm{rule}}$, $B^{\mathrm{nc}}$, $B^{\mathrm{III}}$, $B^{\mathrm{main}}$, $B^{\mathrm{tw}}$ if the
+writer of Appendix B wants them (they are chapter-local otherwise). The cross-reference pass of PLAN.md Section 8, step 4, may
+upgrade Chapter 21's `\Cref{ch:computation}` to labels of items 5.1 to 5.4, 9.2, 10.1 to 10.3, 11.1 to 11.7.
+
+## 6. Notes for the writer
+
+### 6.1 Conventions to state (Section 1 of the chapter)
+
+* K1 (versions, data pin) and K9 (code typography) in one `convention` box at the start; every `lstlisting` with output says
+  "(PARI/GP 2.17.2)" in its caption or the sentence before it.
+* K3 to K5 (bounds, violation, equality, excess, populations) in a second box; these names are used in every table.
+* K10: one sentence sending the reader to Appendix A for base rates, hypothesis tests, hold-out sets, pre-registration,
+  linearity of expectation, Markov, Chebyshev; no definition from Appendix A is repeated.
+
+### 6.2 Pitfalls
+
+* **Do not invent table entries.** The paper's `tables/*.tex` are not available (Chapter 21, A6). Quote only the numbers in the
+  paper's text, tag them D, and put the book's own counts (C) beside them, never in their place.
+* **Do not present the book's small-range counts as tests.** The book's ranges were not blind (the statements were known);
+  they are reproductions. Say so in Section 11 and in 9.5.
+* **Optimal curve, not curve number 1.** Every script looks the optimal equation up in `degphi`; 990h3 is the exception below
+  $10{,}000$. Never run `rule` on a non-optimal model and call the output a modular degree (5.4(a)).
+* **Population filters belong to the statements.** Do not count Eisenstein or CM curves as counterexamples (6.7, 5.4(b), (c)).
+* **CM detection.** By $j$ (thirteen values), not by `galrep` labels (which are absent for CM-forced images).
+* **Irreducibility from `galrep`.** "Reducible iff a label begins with $\ell$B or $\ell$Cs"; compare the prime part exactly (a label
+  like 37B.8.1 must not be read as a $3$-adic label; the book's scripts compare the leading digits, Part 7).
+* **Units of counting.** Curves versus pairs $(E,\ell)$ versus pairs (curve, prime); rates only among positive bounds.
+* **Statistics.** No $p$-values for the calibration (10.2 says why); say "expected number under the null" and give the null; say
+  that the reference population matters by a factor of two (10.3) and does not change the conclusion; say that on the working
+  set the calibration measures strength, not validity (10.4(b)).
+* **Versions.** Do not assert that the paper's code runs unchanged in 2.15 without checking `ellmoddegree`'s return type and
+  `readstr`/`strsplit` there (the book's runs are 2.17.2).
+* **Names of files and functions.** `degphi`, not `alldegphi`; `ellweilcurve`'s output described only as far as checked (3.8(ii));
+  `elltatepairing` is not the Tate parameter.
+* **Code blocks.** No double hyphen even inside code (K9); GP comments `\\`; `lstlisting` with `language=GP`.
+* **Typography of numbers.** The paper writes $867{,}578$; in running text the writer may write 867,578. Percentages with one
+  decimal as in the paper.
+
+### 6.3 What to leave to other chapters
+
+* Chapter 10: the mathematics of Tate's algorithm, the full Kodaira code dictionary, the Tate curve. Cite 5.5, 7.3, 7.4, 7.8, 10.2.
+* Chapter 11: the classification of mod 3 images, Sutherland's labelling scheme, the $\psi_3$ patterns. Cite 7.3, 7.4.
+* Chapter 14: optimality, Manin constants, the congruence-number algorithm and its values. Cite 6.5, 8.5, 12.5.
+* Chapter 19: the normalisations of the symmetric square, the classification of $P_q$, the mathematics of `rule`. Cite C4, C5,
+  10.1, 11.1, 11.2.
+* Chapter 21: what each data statement means (A6), the line-by-line mathematics of `rule` (A9.1), the corrections table (Part C).
+* Appendix A: the definitions of elementary probability and statistics.
+
+### 6.4 How the relevant important_notes.md points are handled
+
+* **Point 25 (abstract wording: "every optimal curve", "a third of the cases").** 9.1 (optimality above $400000$ is partial), 11.3
+  (rates $31\%$, $23\%$, $18\%$ on the paper's ranges; $53\%$, $33\%$ on the book's), Exercise 15.
+* **Point 43 (types $\mathrm{IV}$, $\mathrm{IV}^*$ at $2$: a theorem).** 6.4 (980i1), Part 7 R4: all $3{,}226$ optimal curves below $10{,}000$ with type
+  $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$ have $P_2=1+2X$ (C); the paper's appeal to the $92{,}812$ curves of the working set is then a check of a
+  theorem, and 9.2 lists Proposition prop:forms among the theorems checked.
+* **Point 48 (the 3Ns observations are theorems).** 11.3 reports the observations (every 3Ns curve has a positive $\mathrm{III}$ term; all
+  violators have a prime $p\equiv-1\pmod3$ with $t_3\ge1$) as checks, with a sentence that Chapter 11 (8.4, 8.5) proves them.
+* **Point 50 (type $\mathrm{II}$ at $2$ does not give $P_2=1$ in general).** 6.6 (336f1, 1232l1 with PARI outputs).
+* **Point 52 (codes $n+4$ and $-(n+4)$ only for $n\ge1$).** K7, 3.2, 5.4(e).
+* **Point 53 ($t_\ell$ at $q=\ell$).** 5.2(g), 5.3(i), 6.2 (726a1 at $q=3$).
+* **Point 57 (Calegari-Emerton and CM curves).** One sentence in Section 7 or 11.8 with the data (C): the CM optimal curves of odd
+  modular degree below $10{,}000$ are 27a1, 32a1, 36a1, 49a1, 243b1, of which 27a1 and 243b1 have torsion $\Z/3$ and non-prime conductor;
+  the writer quotes the published hypothesis only after checking it (Chapter 14 owns the statement). Also (C, R9): the paper's
+  $2$-adic inequality of Section sec:two holds for all $25{,}086$ non-CM optimal curves below $10{,}000$ without a rational
+  $2$-isogeny, and the variant counting $\mathrm I_0^*$ with weight $2$ fails $6$ times (e.g. 99d1, 931b1, 2299d1), as the paper's $123$, $26$, $20$
+  exceptions lead one to expect.
+* **Point 58 (726a1: $r=1584$, $\deg=144$) and point 62 (539d1: $r=504$, $\deg=72$).** 7.3, 6.2.
+* **Point 64 ($\Tam_q(\ad T)$ trivial at potentially good additive primes).** 8.2(c): the excess is the Selmer length plus the
+  Tamagawa excess at potentially multiplicative primes; the mean excess is therefore an average Selmer length plus a
+  computable term.
+* **Point 68 (sec:tam can include $\mathrm I_n^*$ primes; "exactly where" overstates).** 11.5 (the book follows the paper's choice of
+  $\mathrm I_n$ only, says that $\mathrm I_n^*$ could be included, and quotes Chapter 18's count); 9.2 (the test is of the identity's Tamagawa
+  term, with the Selmer term as the remaining excess).
+* **Point 69 ($P_q$ has four shapes; 592c1 at $\ell=5$).** 6.6.
+* Further points used: 3 and 44 (labels; 4.4), 5 and 6 ($h_\ell=0$ for $\ell\ge5$, $h_3\le1$; 5.2(h), 5.3(ii)), 15 ($e_\ell$ not twist
+  invariant; 11.7 compares degrees, not $e_\ell$), 16 (strict twist inequalities in case (a); 11.7 confirms with counts), 17 ($D\le2$
+  provable; 11.6, Exercise 16), 21 (980i1 outside thm:qual; 6.4), 23 and N9 of Chapter 21 ($c(u)$, not $c_q$; 3.5), 27 (optimality
+  irrelevant at $\ell$ for irreducible $E[\ell]$; 4.3(iv)), 39 and 56 (equality in (eq:identity); 8.2(c)), 46 (Sturm; Exercise 2), 47
+  ($\ell\notin S_f$ automatic for $\ell\ge5$, $\ell\nmid N$: K5's hypothesis population), 51 (exchanges at $q=3$; 3.7), 60 ($\mathrm I_0^*$ formula
+  at $q=3$; Chapter 19 checked it, 3.4 cites), 65 (abstract's Tamagawa sentence; 11.5 states "$\ell\mid n$" and "at least one").
+* Book-internal: B7 of Chapter 11 (counts with the CM caveat; 3.6, 4.4), B14 (bibliography keys; Part 8, B-b), B16 (key `Tate75`, not
+  `TateAlgorithm`, if Tate's algorithm is cited).
+
+### 6.5 References and the reproducibility note
+
+In `refs.bib`: `PARI` (version 2.15, as the paper), `PARIusers`, `Cremona97`, `ecdata`, `LMFDB`, `Sutherland16`, `Zywina15`,
+`Watkins02`, `Zagier85`, `ARS12`, `SilvermanATAEC`. In `bib/chA.bib` (Appendix A): `Feller68`, `Wasserman04`, `RHB06`; Chapter 22 needs
+them too, so by decision B14 they must move to `refs.bib` before Chapter 22 cites them (otherwise the stand-alone build of
+Chapter 22, which reads only `refs.bib` and `bib/ch22.bib`, fails; Part 8, B-b). Proposed additions to `bib/ch22.bib`: a `misc`
+entry `PARI217` for PARI/GP 2.17.2 (the version of the book's runs; the writer checks the release year), and `cypari2` (the
+SageMath developers' Python interface, version 2.2.4; the writer checks the authorship line). If the writer cites Dokchitser's
+algorithm for `lfun`, `Dokchitser04` goes to `refs.bib` (Chapter 19's note). No theorem number from these works is cited.
+
+**Reproducibility note (for the chapter's Notes and for the writer).** Software: PARI/GP 2.17.2 (`version()` returns `[2, 17, 2]`),
+`cypari2` 2.2.4, Python 3.13, on Linux with 4 cores and 15 GB of memory; `parisize` and `parisizemax` set by
+`pari.allocatemem(10**9)` (or $2\cdot10^9$) unless stated. Data: six `ecdata` files for conductors $0$ to $9{,}999$, copied to
+`/tmp/ch09/data` by an earlier agent; the commit was not recorded. SHA-256 sums (C):
+`allbsd.00000-09999` b078b5226d276fbc64289833abfd8430e3f5969c657bc32f94db546e8f96e8fd;
+`allcurves.00000-09999` 259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968;
+`allisog.00000-09999` 9e033f1d092509f280d23e2f2666577c96af9593911568ca9e9678c2e35b1d82;
+`alllabels.00000-09999` bc06d9bd10dbba36ddb84ad2fc407d2a71c8c89f22361befae8eda08aa18a377;
+`degphi.00000-09999` 65d96cbab0de966409810b666e55b731515728c4d19904ea95b3750d48f6dd68;
+`galrep.00000-09999` 7faf8a6a92d85eba62dda9d025474a543bcd3ae61b8c489f581124f2ec34742d.
+Before the chapter is printed the writer downloads the same six files from the `ecdata` repository at the paper's commit
+`25cec5e` (or at a recorded later commit), compares the sums, reruns S4 to S8 (about $15$ seconds for S4, seconds for S5 to S7, about
+$25$ minutes on four cores for S8), and prints the commit hash and the sums in the chapter's Notes. If the sums differ, the
+counts of Section 11 must be recomputed, not edited by hand.
+
+## 7. Reproduction log
+
+Everything below was run for this outline in the session scratchpad
+(`/tmp/claude-0/-home-user-modular-math-book/404f75d6-d3ce-544f-a9b9-1e1ed5d22ed3/scratchpad/ch22/`), with PARI/GP 2.17.2 through `cypari2`
+2.2.4 (no `gp` binary is installed; every GP file was loaded with `pari('read("file.gp")')`), Python 3.13, and the six `ecdata`
+files of 4.1 in `/tmp/ch09/data` (SHA-256 sums in 6.5). Population: the $38{,}042$ optimal curves of `degphi.00000-09999`.
+
+**R0. Data files (formats as found).** Six files, conductor $0$ to $9{,}999$: `allcurves` ($64{,}687$ lines: `N class number [a1,...,a6]
+rank torsion`), `allbsd` ($64{,}687$: the same, then $\prod c_p$, $\Omega$, $L^{(r)}(1)/r!$, regulator, Sha; checked on 11a1: $5$, $1.2692\dots$,
+$0.2538\dots=\Omega/5$, $1$, $1$), `allisog` ($38{,}042$: one line per class with the curves and the isogeny matrix), `alllabels` ($64{,}687$:
+Cremona's then the LMFDB's $N$, class, number), `degphi` ($38{,}042$: `N class number degree {primes} [a1,...,a6]` of the optimal
+curve), `galrep` ($64{,}687$: label then non-surjective image labels; $20{,}930$ lines with no label). No file contains per-prime
+Kodaira symbols or Tamagawa numbers. Exactly one `degphi` equation is not curve number $1$: 990h3. There is no `gp` and no
+`elldata` package: `ellsearch(11)` and `ellidentify` fail with "error opening elldata file".
+
+**R1. The appendix code.** `euler_rule.gp` extracted verbatim from the paper (`sed` between `rule(E, l, {iii = 0}) =` and the `ns3`
+line); it contains no double hyphen. Pasting it into `pari(...)` as one string fails (syntax error); `read` works. Outputs
+`[rule(E,l), rule(E,l,1)]` and `ns3`, `ellmoddegree`, `ellglobalred` local data `[f, code, c]`:
+
+| curve | $[a_i]$ | local data | $\degphi$ | `ns3` | $\ell=3$ | $\ell=5$ | $\ell=7$ |
+|-|-|-|-|-|-|-|-|
+| 121a1 | $[1,1,1,-30,-76]$ | $11$: $[2,2,1]$ | 6 | 0 | `[1, 1]`, `[1, 1]` | `[0, 0]` | `[0, 0]` |
+| 726a1 | $[1,1,0,-35,-51]$ | $2$: $[1,10,2]$; $3$: $[1,7,1]$; $11$: $[2,3,2]$ | 144 | 1 | `[2, 2]`, `[2, 2]` | `[0, 0]` | `[0, 0]` |
+| 539c1 | $[1,0,1,170,-3237]$ | $7$: $[2,-7,4]$; $11$: $[1,6,2]$ | 288 | 0 | `[2, 2]` | `[0, 0]` | `[0, 0]` |
+| 980i1 | $[0,0,0,1568,-72716]$ | $2$: $[2,-4,1]$; $5$: $[1,5,1]$; $7$: $[2,-9,2]$ | 2880 | 0 | `[2, 2]` | `[1, 1]` | `[0, 0]` |
+| 99a1 | $[1,-1,1,-2,0]$ | $3$: $[2,3,2]$; $11$: $[1,5,1]$ | 4 | 0 | `[0, 0]` | `[0, 0]` | `[0, 0]` |
+| 336f1 | $[0,1,0,-1,2]$ | $2$: $[4,2,1]$; $3$: $[1,5,1]$; $7$: $[1,6,2]$ | 24 | 0 | `[1, 1]` | `[0, 0]` | `[0, 0]` |
+| 1232l1 | $[0,0,0,32,-16]$ | $2$: $[4,-2,1]$; $7$: $[1,6,2]$; $11$: $[1,5,1]$ | 288 | 0 | `[2, 2]` | `[0, 0]` | `[0, 0]` |
+| 592c1 | $[0,0,0,-16,-16]$ | $2$: $[4,-2,1]$; $37$: $[1,5,1]$ | 80 | 0 | `[0, 0]` | `[1, 1]` | `[0, 0]` |
+| 11a1 | $[0,-1,1,-10,-20]$ | $11$: $[1,9,5]$ | 1 | 0 | `[0, 0]` | `[0, 1]` | `[0, 0]` |
+
+(Where one pair is shown, `rule(E,l)` and `rule(E,l,1)` agree.) The paper's two claims (121a1 `[1, 1]`; 726a1 `[2, 2]` in both modes)
+are confirmed. Per-prime breakdowns (`rule_terms` of S2) as printed in 6.1 to 6.6. Non-optimal models: 11a2 and 11a3 at $\ell=5$
+give `[1, 0]` and `[-1, 0]` (`ellmoddegree` $5$ and $1/5$); 990h3 at $\ell=3$ gives `[3, 3]`, 990h1 gives `[4, 3]` (`ellmoddegree` $1728$ and $5184$,
+each within a 100 MB stack). `ellweilcurve` marks 11a1 and 990h3 with `[1, 1]`.
+
+**R2. PARI behaviour used in the text.** `factor(3*x^4+6)` $=$ `Mat([x^4 + 2, 1])` (content dropped); `factor(elldivpol(E,3))` for 726a1 $=$
+`[x^2 - x - 74, 1; 3*x^2 + 8*x + 20, 1]`; `polgalois` of that $\psi_3$ raises "not an irreducible polynomial". `lfunparams(lfunsympow(E,2))` for
+121a1 $=$ `[121, 3, [0, 0, 1]]`; `lfuneuler(S,11)` $=$ `1/(11*x + 1)`; `lfuneuler(S,2)` $=$ `1/(-8*x^3 - 2*x^2 + x + 1)`. `elltors` (726a1) $=$ `[2, [2],
+[[6, -3]]]`; `ellisomat(E)[2]` $=$ `[1, 2; 2, 1]` (726a1), `[1, 5, 5; 5, 1, 25; 5, 25, 1]` (11a1); `ellan` (121a1, 12 terms) $=$ `[1, -1, 2, -1, 1, -2,
+2, 3, 1, -1, 0, -2]`; `ellglobalred` (726a1) $=$ `[726, [1, 0, 0, 0], 4, [2, 1; 3, 1; 11, 2], [[1, 10, 0, 2], [1, 7, 0, 1], [2, 3, 0, 2]]]`;
+`elllocalred(ellinit([0,1,0,4,4]), 2)` $=$ `[2, -4, [1, 0, 0, 0], 3]`; `ellinit(ellinit([1,1,0,4,11]), 7)` $=$ `[]` and `ellinit(..., 5)` is a curve
+over $\F_5$ (so `ellinit(E, q)` is reduction, not $\Q_q$). `readstr` and `strsplit` exist in 2.17.2. Timing: `lfunsympow` plus all bad
+`lfuneuler` about $0.2$ ms per curve; S4 on all $38{,}042$ curves in $14$ s.
+
+**R3. Tate parameters (S2 `tatedata`, `ellinit(E, O(q^30)).tate[3]`).** 11a1 at $11$: $n=5$, $q_E=10\cdot11^5+2\cdot11^6+6\cdot11^7+\cdots$, $\bar u=10$,
+$k=1$ ($\ell=5$); 77c1 at $7$: $n=3$, $\bar u=5$, $k=0$; 539c1 at $7$: identical $q_E$ to 77c1, $\bar u=5$, $k=0$; 791a1 at $7$: $\bar u=6$, $k=1$; 1577a1 at
+$19$: $\bar u=8$, $k=1$. `valuation(qE, q)` $=n$ asserted for every site used in R7.
+
+**R4. Lemma lem:euler and the factor at 2 (S5).** For the $67{,}745$ pairs (optimal curve, bad $q\ge5$): PARI's $P_q(q^{-2})$ equals the
+table of Section 1 in every case ($\mathrm I_n$ $58{,}860$; $\mathrm I_n^*$ $2{,}709$; $\mathrm{II}$, $\mathrm{II}^*$, $\mathrm{IV}$, $\mathrm{IV}^*$ $3{,}588$; $\mathrm{III}$, $\mathrm{III}^*$ $1{,}676$; $\mathrm I_0^*$ $912$,
+with $a'$ from `elltwist`). All $3{,}226$ optimal curves with type $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$ have $P_2=1+2X$.
+
+**R5. The five bounds on the whole range (S4, S5; Python, and S3 in GP for $N<2000$).** Tables 11.1 to 11.4 and 11.6 above are
+the output. GP (S3) and Python agree on $N<2000$: $\ell=3$ `[4951, 2517, 0, 2046]`, $\ell=5$ `[5622, 915, 0, 845]`, $\ell=7$ `[5735, 468, 0, 446]`
+(curves, positive bounds, violations, equalities). `ns3` versus `galrep`'s 3Ns on the $37{,}853$ non-CM optimal curves: $0$
+mismatches ($90$ each); `ns3` $=1$ on $13$ CM optimal curves (121b1, 256a1, 256d1, 1089e1, 1936f1, 2304c1, 2304k1, 3025a1, 5929a1, 6400f1,
+6400r1, 7744a1, 7744s1; $j=-32768$ or $8000$). Section sec:iso cells at $\ell=5$: $\mathrm I_0^*$ $e=0,1,2$: minima $0,1,2$ ($94$, $75$, $10$ curves);
+$\mathrm{II}$ $0$: $0$ ($210$), $1$: $1$ ($12$); $\mathrm{II}^*$ $0$: $0$ ($94$), $1$: $1$ ($5$); $\mathrm{III}$, $\mathrm{III}^*$ $0$: $0$ ($152$, $150$), $1$: $1$ ($11$ each); $\mathrm{IV}$ $0$: $0$ ($95$),
+$1$: $1$ ($5$); $\mathrm{IV}^*$ $0$: $0$ ($209$), $1$: $1$ ($12$); $\mathrm I_n^*$ $0$: $0$ ($427$), $1$: $1$ ($141$). At $\ell=7$: every cell's minimum equals $e$ ($e\le1$;
+the largest cell $\mathrm I_n^*$ with $e=0$, $806$ curves). The weights $w_3$ (curves whose only possible contribution at $3$ is a
+potentially good prime $q=3$, whole range): $\mathrm{II}$ $1$ ($494$), $\mathrm{II}^*$ $2$ ($342$), $\mathrm{III}$ $0$ ($472$), $\mathrm{III}^*$ $1$ ($472$), $\mathrm{IV}$ $1$ ($342$), $\mathrm{IV}^*$
+$2$ ($494$), $\mathrm I_0^*$ $0$ ($646$): the paper's weights exactly. $3{,}239$ base-population curves at $\ell=3$ have a positive $w_3$.
+
+**R6. Calibration (S6).** As in 10.3 and 10.5. The permutation test: $200$ shuffles of $v_3$ within strata (conductor bin of width
+$2500$ times $\min(\omega(N),4)$), Python's `random.seed(0)`; mean $7{,}638$, standard deviation $49.2$, minimum $7{,}517$.
+
+**R7. Tamagawa test (S7).** As in 11.5; the first examples with a positive extra term at $\ell=3$: 791a1 ($7$), 805b1 ($7$, $\bar u=1$), 805c1,
+805d1, 874a1 ($19$, $\bar u=12$), 874b1 ($19$, $\bar u=18$); at $\ell=5$: 4136e1, 4136f1 ($11$, $\bar u=10$), 5673a1 ($61$), 6507a1, 6507b1 ($241$), 6588e1;
+at $\ell=7$: 4171a1 ($43$, $\bar u=1$).
+
+**R8. `ellmoddegree` against `degphi` (S8).** All $38{,}042$ optimal curves, four processes, `parisizemax` $3\cdot10^9$: $38{,}042$ curves checked ($9{,}511+9{,}511+9{,}510+9{,}510$), $0$ mismatches, $0$ errors, about $16$ minutes per process.
+
+**R9. Further checks.** Lemma lem:twist: $85{,}848$ pairs, $0$ mismatches; $5{,}122$ pairs at $q=3$ with the potentially good exchanges,
+$0$ mismatches; no code change at odd $p\ne q$. Twist pairs after Theorem thm:twist: as 11.7. Odd-part statistic: as 10.6
+($33{,}137$ curves, no non-integral quotient). Section sec:two at $\ell=2$: on the $25{,}086$ non-CM optimal curves without a label 2B or
+2Cs, $v_2(\degphi)\ge\sum_{q\|N}v_2(n_q)+\#\{q:\mathrm{III},\mathrm{III}^*,\mathrm I_0^*,\mathrm I_n^*\}$ holds always; with $\mathrm I_0^*$ counted twice it fails $6$ times
+(99d1, 931b1, 2299d1, ...). CM optimal curves of odd degree: 27a1, 32a1, 36a1, 49a1, 243b1. Eisenstein $D=2$ list as in 11.6 (with
+ranks $0$ and torsion orders $6,3,3,3,3,3,3,3,3,9,3,9,3,3$ in the order 14a1, 26a1, 35a1, 38a1, 77b1, 158d1, 278b1, 326c1, 485a1, 714i1,
+4385b1, 6942n1, 7094c1, 8027a1). `ellmoddegree` memory: the default 8 MB stack suffices for 9999m1 but overflows for 9510e1,
+9690m1, 7910b1, which succeed with stacks of $16$ to $32$ MB (`_lfuninit_worker` warnings); average time about $0.065$ s per curve
+on a random sample of $10$.
+
+**Not verified.** Anything above conductor $10{,}000$ (all D items); the paper's out-of-table curves (not published); the behaviour
+of PARI 2.15 (all runs are 2.17.2); the contents of the paper's repository; the meaning of every entry of `ellweilcurve`'s
+output beyond the `[1, 1]` mark; the commit of the local `ecdata` copy.
+
+### 7.1 The scripts (tested as printed here)
+
+S1 is the paper's appendix code, extracted verbatim (the chapter prints it from the paper, with line numbers):
+
+```
+rule(E, l, {iii = 0}) =
+{ my(R = ellglobalred(E), P = R[4][,1], K = R[5], S = lfunsympow(E, 2), b = 0, j = E.j);
+  for(i = 1, #P,
+    my(q = P[i], k = K[i][2], e = 0, t = 0, vj = valuation(j, q));
+    if(q != l,
+      my(F = 1/lfuneuler(S, q), r = subst(F, x, 1/q^2)); \\ P_q(q^{-2}): omitted factor
+      if(k >= 5, r /= (1 - 1/q^2));                     \\ multiplicative: naive one out
+      if(abs(k) != 3 || iii, e = valuation(r, l)),      \\ III, III* (codes 3,-3) if iii
+      if(l == 3, e = if(k == 4 || k == 2, 1,
+                     if(k == -4 || k == -2, 2, if(k == -3, 1, 0)))));   \\ w_3 at q = 3
+    if(vj < 0, t = valuation(-vj, l));                   \\ Tamagawa exponent
+    b += e + t);
+  if(iii && l == 3, b -= ns3(E));                        \\ the correction term h_3
+  [valuation(ellmoddegree(E), l), b]; }
+ns3(E) = my(F = factor(elldivpol(E, 3))); (#F[,1] == 2 && poldegree(F[1,1]) == 2);
+```
+
+S2 `sessions.gp` (worked sessions; the outputs of 6.1 to 6.8 and of 3.4, 3.5, 3.7 come from it; `eulercheck` returned `[]` on all
+$9{,}515$ optimal curves below $3{,}000$):
+
+```
+\\ sessions.gp: per-prime breakdown of the rule, Tate data, and the twist check.
+\\ rule_terms(E, l, iii): one row [q, code, P_q(x), P_q(q^-2), e, w, t] per bad prime q.
+rule_terms(E, l, {iii = 1}) =
+{ my(R = ellglobalred(E), P = R[4][,1], K = R[5], S = lfunsympow(E, 2), M = []);
+  for(i = 1, #P,
+    my(q = P[i], k = K[i][2], F = 1/lfuneuler(S, q), r = subst(F, x, 1/q^2),
+       e = 0, w = 0, t = 0, vj = valuation(E.j, q));
+    if(q != l,
+      my(rr = if(k >= 5, r / (1 - 1/q^2), r));
+      if(abs(k) != 3 || iii, e = valuation(rr, l)),
+      if(l == 3, w = if(k == 4 || k == 2, 1, if(k == -4 || k == -2, 2, if(k == -3, 1, 0)))));
+    if(vj < 0, t = valuation(-vj, l));
+    M = concat(M, [[q, k, F, r, e, w, t]]));
+  M; }
+\\ tatedata(E, q, l): [n, Tate parameter q_E, unit part mod q, largest k <= v_l(q-1) with ubar an l^k-th power]
+tatedata(E, q, l) =
+{ my(Eq = ellinit(E, O(q^30)), qE = Eq.tate[3], n = valuation(qE, q),
+     u = lift(qE / q^n + O(q)), v = valuation(q - 1, l), k = 0);
+  while(k < v && Mod(u, q)^((q - 1) / l^(k + 1)) == 1, k++);
+  [n, qE, u, k]; }
+\\ twistcheck(E): for each odd bad prime q, the Kodaira code of E and of its twist by q* at q
+twistcheck(E) =
+{ my(P = ellglobalred(E)[4][,1], V = []);
+  for(i = 1, #P, my(q = P[i]); if(q == 2, next);
+    my(qs = if(q % 4 == 1, q, -q), Et = ellinit(elltwist(E, qs)));
+    V = concat(V, [[q, elllocalred(E, q)[2], elllocalred(Et, q)[2], ellglobalred(Et)[1]]]));
+  V; }
+\\ euler_by_type(E, q): L_q(A_f,1)^(-1) from the Kodaira type, for a bad prime q >= 5 (Lemma lem:euler)
+euler_by_type(E, q) =
+{ my(k = elllocalred(E, q)[2]);
+  if(k >= 5 || k <= -5, return(1 - 1/q^2));
+  if(abs(k) == 2 || abs(k) == 4, return(1 - kronecker(-3, q)/q));
+  if(abs(k) == 3, return(1 - kronecker(-4, q)/q));
+  if(k == -1, my(a = ellap(ellinit(elltwist(E, if(q % 4 == 1, q, -q))), q));
+    return((q - 1)*((q + 1)^2 - a^2)/q^3));
+  error("not a bad prime"); }
+\\ compare with PARI's factor: returns the list of q >= 5 where they differ (expected: [])
+eulercheck(E) =
+{ my(S = lfunsympow(E, 2), P = ellglobalred(E)[4][,1], bad = []);
+  for(i = 1, #P, my(q = P[i]); if(q < 5, next);
+    if(subst(1/lfuneuler(S, q), x, 1/q^2) != euler_by_type(E, q), bad = concat(bad, q)));
+  bad; }
+```
+
+S3 `table_small.gp` (one row of Table 11.1 in pure GP; needs S1 for `ns3`; `tablerow(2000, 5, 1, dir)` returns
+`[5622, 915, 0, 845]`; each call reads the files once and takes about $0.3$ s below $2000$):
+
+```
+\\ table_small.gp: the paper's rule on Cremona's optimal curves of conductor < Nmax.
+\\ Needs euler_rule.gp (the paper's appendix) for ns3; reads ecdata files degphi.* and galrep.*.
+rulebound(E, l, iii) =
+{ my(R = ellglobalred(E), P = R[4][,1], K = R[5], S = lfunsympow(E, 2), b = 0, j = E.j);
+  for(i = 1, #P,
+    my(q = P[i], k = K[i][2], e = 0, t = 0, vj = valuation(j, q));
+    if(q != l,
+      my(r = subst(1/lfuneuler(S, q), x, 1/q^2));
+      if(k >= 5, r /= (1 - 1/q^2));
+      if(abs(k) != 3 || iii, e = valuation(r, l)),
+      if(l == 3, e = if(k == 4 || k == 2, 1, if(k == -4 || k == -2, 2, if(k == -3, 1, 0)))));
+    if(vj < 0, t = valuation(-vj, l));
+    b += e + t);
+  if(iii && l == 3, b -= ns3(E));
+  b; }
+{ CMJ = [0, 1728, -3375, 8000, -32768, 54000, 287496, -884736, -12288000, 16581375,
+       -884736000, -147197952000, -262537412640768000]; }
+\\ galrep: label -> list of non-surjective image labels
+readgal(file) =
+{ my(M = Map()); foreach(readstr(file), s, my(w = strsplit(s, " "));
+    mapput(M, w[1], w[2..#w])); M; }
+reducible(G, lab, l) =
+{ my(L); if(!mapisdefined(G, lab, &L), return(0));
+  for(i = 1, #L, my(s = L[i]);
+    if(strprefix(s, Str(l, "B")) || strprefix(s, Str(l, "Cs")), return(1)));
+  0; }
+strprefix(s, p) = #s >= #p && Vecsmall(s)[1..#p] == Vecsmall(p);
+\\ one row of the table: [curves, positive bound, violations, equalities]
+tablerow(Nmax, l, iii, dir) =
+{ my(G = readgal(Str(dir, "/galrep.00000-09999")), c = [0, 0, 0, 0]);
+  foreach(readstr(Str(dir, "/degphi.00000-09999")), s,
+    my(w = strsplit(s, " "), N = eval(w[1]));
+    if(N >= Nmax, next);
+    my(E = ellinit(eval(w[6])), deg = eval(w[4]), lab);
+    if(setsearch(Set(CMJ), E.j), next);
+    \\ the label of the optimal curve is w[1] w[2] w[3], except 990h (990h3)
+    lab = Str(w[1], w[2], if(N == 990 && w[2] == "h", 3, w[3]));
+    if(reducible(G, lab, l), next);
+    my(b = rulebound(E, l, iii), v = valuation(deg, l));
+    c[1]++; if(b > 0, c[2]++; if(v < b, c[3]++); if(v == b, c[4]++)));
+  c; }
+```
+
+S4 `compute.py`, shortened to its core (the full version also stores $a_q$, $c_q$, $P_q(x)$, rank, torsion, the number of curves
+in the class with a rational point of order $\ell$ for $\ell=3,5,7$, and the isogeny degrees; $14$ s for all $38{,}042$ curves):
+
+```
+# S4 (shortened): one JSON record per optimal curve, N < 10000 (PARI/GP 2.17.2 via cypari2)
+import cypari2, json
+from fractions import Fraction
+pari = cypari2.Pari(); pari.allocatemem(2*10**9)
+D = '/path/to/ecdata/'                      # the pinned copy (Part 6.5)
+bya = {}                                     # [a1,...,a6] -> Cremona label
+for line in open(D + 'allcurves.00000-09999'):
+    w = line.split(); bya[tuple(eval(w[3]))] = w[0] + w[1] + w[2]
+gal = {w[0]: w[1:] for w in (l.split() for l in open(D + 'galrep.00000-09999'))}
+out = open('records.jsonl', 'w')
+for line in open(D + 'degphi.00000-09999'):
+    w = line.split(); a = eval(w[5]); lab = bya[tuple(a)]   # 990h -> 990h3
+    E = pari.ellinit(a); gr = pari.ellglobalred(E); S = pari.lfunsympow(E, 2)
+    P = [int(p) for p in pari('(g) -> g[4][,1]~')(gr)]
+    primes = []
+    for i, q in enumerate(P):
+        k = int(pari('(g, i) -> g[5][i][2]')(gr, i + 1))
+        r = Fraction(str(pari.subst(1/pari.lfuneuler(S, q), 'x', pari(f'1/{q}^2'))))
+        vj = int(pari.valuation(E.j(), q)) if E.j() != 0 else 99
+        primes.append(dict(q=q, k=k, r=[r.numerator, r.denominator], vj=vj))
+    ns3 = int(pari('(E) -> my(F = factor(elldivpol(E, 3))); (#F[,1] == 2 && poldegree(F[1,1]) == 2)')(E))
+    out.write(json.dumps(dict(lab=lab, N=int(w[0]), deg=int(w[3]), j=str(E.j()), gal=gal.get(lab, []),
+                              ns3=ns3, primes=primes, ainvs=a)) + '\n')
+```
+
+S5 to S8 are not printed in full in the chapter. S5 (`analyse.py`, `tables.py` to `tables4.py`) reads `records.jsonl` and
+computes, for each curve and $\ell$, the per-prime terms exactly as `rule` does (`e` from the stored $P_q(q^{-2})$ with the division at
+codes $\ge5$; `w` at $q=\ell=3$; `t` from $v_q(j)$), the five bounds of K3, $\#\Phig_q$ and $w_\ell(E,q)$ from the codes, and the
+counts of Section 11; the population filter reads `galrep` labels, comparing the prime part of each label exactly; CM by
+the thirteen $j$-invariants. S6 (`calib2.py`) computes $\hat F$, $\hat E$, the variance, the stratified version and the
+permutation test. S7 (`tam.py`) calls `ellinit(a, O(q^30))` and `.tate[3]` at every qualifying multiplicative prime. S8
+(`moddeg_check.py`) compares `ellmoddegree` with `degphi`, line by line, in four processes with `parisizemax` $3\cdot10^9$, catching
+errors. The writer prints the core loop of S5 (about $30$ lines) and of S6 (about $25$ lines).
+
+## 8. Points for important_notes.md
+
+### 8.1 New points about the paper
+
+Checked against the paper's text and, where numerical, by the runs of Part 7. None changes a theorem.
+
+**N1. Section sec:eis, two descriptive sentences contradict the data (14a1; the points of order 9).** Location: Section sec:eis,
+"With a rational point of order $3$ and mod $3$ image of Borel type, $D\le1$; $D=2$ occurs only when $E[3]\simeq\Z/3\oplus\mu_3$ (the split
+Cartan image `3Cs.1.1` ..., seventeen curves, all of rank $0$ and torsion $\Z/3$) or when $E$ has a point of order $9$ (five curves)."
+Problem: (a) 14a1 $=[1,0,1,4,-6]$ is optimal, not CM, of conductor $14$ (so in the working set), with image 3Cs.1.1, rank $0$,
+$\degphi=1$ and types $\mathrm I_6$ at $2$, $\mathrm I_3$ at $7$, so $D=v_3(6)+v_3(3)-0=2$; its torsion is $\Z/6$, not $\Z/3$. (b) A curve with a point
+of order $9$ has Borel image (3B.1.1 for all four such optimal curves below $10{,}000$), so the first clause, read literally,
+contradicts the second: 714i1 and 6942n1 (torsion $\Z/9$, image 3B.1.1) have $D=2$. Fix: "With a rational point of order $3$, no
+point of order $9$ and Borel image, $D\le1$"; "all of rank $0$, with torsion $\Z/3$ or $\Z/6$" (the paper already says "their torsion
+is $\Z/3$ or $\Z/6$" of the $2{,}065$ curves with image 3Cs.1.1). Confidence: high for (a) and (b) as statements about the curves
+(`degphi`, `galrep`, `allcurves` and PARI's local data agree); the count "seventeen" itself could not be checked (above
+$10{,}000$).
+
+**N2. Section sec:data, the protocol paragraph: what was blind-tested needs two qualifications.** Location: "the correction
+term $h_\ell(E)$ was identified last, from the exceptions. Since the hold-out and the extension had already been used for
+(eq:main) and (eq:twist), they are a confirmation and not a blind test for Conjecture conj:euler; the out-of-table curves,
+generated before the rule was formulated, are." Problem: (a) the out-of-table set contains no curve with image 3Ns
+(Section sec:oot: "none has image $\Ns$"), so the correction term, and with it the claim that the 3Ns failures are repaired
+exactly, has had no blind test on any range; only $h_3=1$ itself is a theorem (Lemma lem:h0 with point 5); likewise the III-free
+form was chosen after the exceptions were seen. (b) "Generated before the rule was formulated" makes a blind test only if the
+modular degrees of those curves were not examined while the rule (the Euler terms, the weights $w_3$, the terms at $2$ and $3$) was
+being formulated; the paper does not say, and Section sec:oot suggests the families were built to probe the additive types. (c)
+For (eq:twist), "then tested once on the hold-out" is a blind test only if (eq:twist) was fixed before the hold-out counts for
+(eq:main) were seen; the order is not stated. Fix: one sentence: "The out-of-table curves contain no 3Ns curve, so the
+correction term has been confirmed but not blind-tested; their modular degrees were [were not] examined before the rule was
+fixed", and say when (eq:twist) was fixed relative to the hold-out test of (eq:main). Confidence: high for (a) (from the paper's
+own words); (b) and (c) are requests for information, not errors.
+
+**N3. The appendix: `rule(E, l)` must be run on the optimal model, and curve number $1$ is not always optimal.** Location: "A single
+curve can be checked against (eq:rule) in PARI/GP ... with the following functions, which return $[v_\ell(\degphi),\text{bound}]$".
+Problem: `ellmoddegree(E)` returns the degree of the given model's parametrisation divided by the square of its Manin constant,
+so on a non-optimal curve the first entry is not $v_\ell(\degphi)$: `rule` on 11a3 at $\ell=5$ returns `[-1, 0]`, on 990h1 at $\ell=3$ returns
+`[4, 3]` against `[3, 3]` for the optimal 990h3 (Cremona's curve number $1$ is optimal in every class below $10{,}000$ except 990h). Fix:
+"for the $X_0(N)$-optimal curve $E$ (Cremona's curve number $1$ except in a few classes such as 990h, where it is 990h3; `ellweilcurve`
+identifies it)". Confidence: high (PARI 2.17.2; the 2.15 manual should be checked for the same normalisation of `ellmoddegree`).
+
+**N4 (optional; Section sec:sharp, the calibration).** Location: "The zero counts are not tautological. ... would produce roughly
+$605{,}000$ violations ...; there are none." Observation: (a) on the working set the rule was fitted (the weights $w_3$ are observed
+minima, the terms at $2$ and $3$ were fixed after the minima were seen), so the working-set zero count shows that the statement is
+strong, not that it is valid; validity rests on the blind tests (N2). (b) The expected count depends on the reference
+population: below conductor $10{,}000$ the paper's recipe (bound-$0$ curves) gives $14{,}275$ expected violations at $\ell=3$, a stratified
+version $14{,}177$, and a permutation of $v_3$ over all curves within conductor strata about $7{,}600$; all against $0$ observed. The
+paper's conclusion stands under every version; a sentence saying that the bound-$0$ population is the reference, and that its
+$v_3$-distribution differs sharply from the pooled one ($59.7\%$ against $23.9\%$ with $v_3=0$ below $10{,}000$), would make the
+argument complete. Confidence: high for the numbers; importance low.
+
+**N5 (low; the appendix, memory).** "`ellmoddegree` needs `parisizemax` of a few hundred megabytes for conductors in the
+thousands": with PARI 2.17.2 the default 8 MB stack suffices for most curves below $10{,}000$ and $16$ to $32$ MB for the largest
+degrees (9510e1, $\degphi=100{,}254{,}000$); the statement may be right for 2.15. Fix: "up to a few hundred megabytes, depending on the
+version". Confidence: high for 2.17.2; not checked for 2.15.
+
+**N6 (low; Sections sec:anomaly and 6.2, Remark rem:ns: which inequality the 3Ns counts refer to).** Location: "Table
+tab:ns records what happens to the inequality (eq:thm), with all types included and no correction"; Table tab:uniform's
+"violations when the correction term is dropped". Problem: for curves with $\ell\mid N$, (eq:thm) as stated has no term at $q=\ell$,
+while (eq:rule) without $h_\ell$ has $t_\ell(E,\ell)$ and $w_3(E)$; about half of the 3Ns curves have $3\mid N$ ($44$ of $90$ below
+$10{,}000$), and the two readings give different counts ($36$ against $24$ violators below $10{,}000$; 726a1 violates the first and
+not the second). Fix: say "(eq:rule) without the correction term" in Section sec:anomaly and in Remark rem:ns, if that is what
+was counted. Confidence: high that the two readings differ; which one the paper used cannot be decided from the text.
+
+For the record (not new): the runs confirm the paper's claims on `rule` for 121a1 and 726a1, Lemma lem:euler on every optimal
+curve below $10{,}000$, Lemma lem:twist (i), (ii) and the exchanges at $q=3$ (point 51), the factor $1+2X$ at type $\mathrm{IV}$, $\mathrm{IV}^*$ at $2$
+(point 43), the 3Ns observations (point 48), strict twist inequalities in case (a) (point 16), the $w_3$ minima, the absence of any
+violation of (eq:rule), (eq:main), (eq:twist) and Conjecture conj:eis, and the Tamagawa refinement, all below conductor
+$10{,}000$. Unverified sentence: "Cremona's tables ... contain ... its Kodaira symbols, Tamagawa numbers": the six standard files
+checked contain only $\prod_pc_p$; per-prime data may be in other files of the repository (the writer checks; not reported as an
+error).
+
+### 8.2 Book-internal inconsistencies
+
+* **B-a. File name `alldegphi`.** PLAN.md (Chapter 22 scope), the Chapter 11 outline (lines 13, 957) and the Chapter 21 outline
+  (A6, 8.2) write `alldegphi`; the `ecdata` file is `degphi.00000-09999` (Part 7, R0). Writers must use `degphi`.
+* **B-b. Statistics references live in `bib/chA.bib`.** `Feller68`, `Wasserman04`, `RHB06` are defined in `bib/chA.bib`, but
+  Chapter 22 must cite them; by decision B14 they move to `refs.bib` (the stand-alone build of Chapter 22 reads only `refs.bib` and
+  `bib/ch22.bib` and would fail).
+* **B-c. PLAN.md, Chapter 22 scope, on PARI.** (1) "extract the Tate parameter ... via `ellinit(E, q)`": `ellinit(E, q)` with an integer
+  prime reduces modulo $q$ (returns `[]` at a bad prime); the $q$-adic curve is `ellinit(E, O(q^k))` and the parameter `.tate[3]`. (2)
+  "a GP script that loops over curves ... from `ellsearch`": `ellsearch` needs the optional `elldata` package, absent here; the
+  chapter reads `ecdata` files instead. PLAN.md can be annotated.
+* **B-d. Appendix A (written) and the Chapter 21 outline on blind tests.** Appendix A's paperlink `pl:prereq:protocol` and the
+  Chapter 21 outline (A6.1: "blind test for (eq:main), (eq:twist), Conjecture conj:eis") present the (eq:twist) test as blind
+  without the qualification of N2(c), and do not say that the correction term was never blind-tested (N2(a)). If N2 is accepted,
+  both should add one clause.
+* **B-e. Chapter 21 outline, A6.10.** Repeats "all rank $0$, torsion $\Z/3$" for the seventeen 3Cs.1.1 curves; adopt N1.
+* **B-f. Units of counts.** The Chapter 11 outline counts all curves below $10{,}000$ ($120$ non-CM 3Ns curves, $262$ non-CM 3Cs.1.1), the
+  Chapter 21 outline and this one count optimal curves ($90$ 3Ns, $49$ 3Cs.1.1). Both are right; every writer must say which.
+* **B-g. Chapter 14 outline, 12.5,** repeats the paper's memory claim for `ellmoddegree`; see N5.
+* No conflict found with Chapters 9, 10, 17, 18 and 19 on any number: the Tate parameters of 77c1, 539c1, 791a1, 1577a1, 11a1, the
+  outputs of `rule` for 121a1 and 726a1, the $P_q$ of 336f1, 1232l1, 592c1, the modular degrees and the Kodaira data of the running
+  examples all agree. The Chapter 18 outline's Tamagawa test ($1{,}050$ curves at $\ell=3$) includes $\mathrm I_n^*$ primes (point 68), this one
+  ($989$) follows the paper's restriction to $\mathrm I_n$: not a conflict.

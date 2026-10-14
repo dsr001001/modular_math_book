@@ -1087,3 +1087,64 @@ Expository; the paper's statement is correct as a special case.
 * Chapter 13 item 7.4 cites DFG04 Section 1.5.3 for f^Sigma; it is in Section 1.7.3.
 * PLAN.md cites "DDT Theorem 5.3"; unverified.
 * By B14, DiamondTaylor94 belongs in refs.bib; Diamond96, Lenstra95 and DFG04long go in bib/ch20.bib.
+
+## From the Chapter 22 outline (computation, data, protocol)
+
+Source: `outlines/ch22_computation.md`, Parts 7 and 8. The agent reproduced the paper's checks on all 38,042
+optimal curves with N < 10,000 with PARI 2.17.2: no violation of (eq:rule), (eq:main), (eq:twist), Conjecture
+conj:eis or the Tamagawa refinement; rule(E, l) gives the paper's values on 121a1 and 726a1; ns3 agrees with
+Cremona's 3Ns label on every non-CM curve; ellmoddegree agrees with Cremona's degphi file on all 38,042 curves.
+Point 76 was also checked independently by the orchestrating session; the rest is as reported.
+
+### 76. Section sec:eis: two factual slips about deficits D = 2
+
+* The paper says the seventeen curves with E[3] = Z/3 + mu_3 (image 3Cs.1.1) and D = 2 all have torsion Z/3.
+  14a1 has image 3Cs.1.1, torsion Z/6, types I_6 at 2 and I_3 at 7, modular degree 1, so D = 2 with torsion
+  Z/6. (Checked with PARI and Cremona's galrep file.)
+* "With a rational point of order 3 and mod 3 image of Borel type, D <= 1" is literally false: 714i1 (torsion
+  Z/9, image 3B.1.1, modular degree 1080 = 2^3 3^3 5, D = 2) and 6942n1 (torsion Z/9, image 3B.1.1, degree
+  65664 = 2^7 3^3 19, D = 2). The paper's next clause names the order-9 case as the other source of D = 2, so
+  this is a wording slip: say "without a point of order 9". (Checked with PARI.)
+
+Neither affects Conjecture conj:eis, whose bound holds on all curves checked. **Action:** correct both
+sentences. Confidence: high (checked twice).
+
+### 77. Protocol: the correction term h_l was never blind-tested
+
+The out-of-table set (the only data generated before Conjecture conj:euler was formulated) contains no 3Ns
+curve, so the correction term h_3(E) was fitted on and only confirmed by data already seen. The paper also does
+not state the blind status of the out-of-table curves for (eq:twist). **Action:** say so in Section sec:data.
+Confidence: high, as reported.
+
+### 78. rule(E, l) must be run on the optimal curve, and it is not meant for Eisenstein primes
+
+rule gives wrong-looking answers when misused: 990h1 gives [4, 3] while 990h3, the optimal curve of the class,
+gives [3, 3]; 11a1 at l = 5 (Eisenstein) gives [0, 1]; 11a3 at l = 5 gives [-1, 0]. **Action:** state in the
+appendix that E must be the optimal curve and E[l] irreducible. Low importance.
+
+### 79. Section sec:sharp: what the calibration statistic shows
+
+The agent reproduces the calibration on N < 10,000: 14,275 violations expected under independence, 0 observed
+(70.3% of the curves with a positive bound, against the paper's 69.7% on the working set); a permutation null
+gives about 7,600. The figure depends on the reference population, and it shows that the statement is strong
+(far from vacuous), not that it is valid. The odd-part statistic (the paper's 1.85%) is 17.1% on N < 10,000,
+so it is strongly range-dependent. Optional: say so.
+
+### 80. Minor computational remarks
+
+* ellmoddegree needs at most about 32 MB in PARI 2.17.2 (the paper says a few hundred MB, true for 2.15 at
+  larger conductors). Low importance.
+* The number of 3Ns violations of (eq:thm) depends on whether the q = l terms are included (36 or 24 below
+  conductor 10,000); the paper's text does not say which reading it used.
+
+## Book-internal consistency (continued)
+
+### B27. Items from the Chapter 22 outline
+
+* PLAN.md and the Chapter 11 and 21 outlines name the modular-degree file alldegphi; in the ecdata repository it
+  is degphi. Cremona's files contain no per-prime Kodaira symbols; PARI recomputes them.
+* PLAN.md's ellinit(E, q) reduces mod q; the q-adic curve needs ellinit(E, O(q^k)). ellsearch needs the elldata
+  package, not installed here.
+* Feller68, Wasserman04 and RHB06 are in bib/chA.bib but cited by Chapter 22; by B14 they move to refs.bib.
+* Appendix A and Chapter 21 item A6.1 call (eq:twist) blind-tested without the caveat of point 77; Chapter 21
+  item A6.10 repeats the slips of point 76.
