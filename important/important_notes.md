@@ -101,6 +101,16 @@ compatible system of l-power roots of q gives c' = kappa_u(Frob); in general c' 
 (n', q - 1) Z_l, which does not change min(v_l(n), v_l(q - 1), v_l(c')). **The conclusion of the lemma is
 unaffected.** Confidence: high, as reported by the outline agent.
 
+**Addendum (from the Chapter 17 outline, checked by the orchestrating session): point 7 overstated the
+problem.** Since q != l, inertia acts trivially on Z_l(1), so H^1(G/I, Z_l(1)^I) = Z_l(1)/(q - 1) = F_q^x
+tensor Z_l; and since q is a canonical uniformiser of Q_q, H^1(Q_q, Z_l(1)) = lim Q_q^x/(Q_q^x)^{l^k} splits
+canonically as Z_l kappa_q + H^1_ur. Projection onto the unramified summand along kappa_q gives the paper's
+"image of kappa in H^1(G/I, Z_l(1)^I)" a precise meaning (it is the class of the unit part u). What remains
+imprecise: c' is a cocycle value, equal to eps(Frob) times that image only for the Frobenius lift fixing a
+compatible system of l-power roots of q, and in general it is well defined only modulo (n, q - 1), not modulo
+q - 1 as the paper says. The conclusion of the lemma is unaffected. **Action (revised):** keep the paper's
+phrase, add "via the splitting given by the uniformiser q", and state the indeterminacy correctly.
+
 ### 8. Lemma lem:tamagawa-exp: notation clash and an imprecise phrase (expository only)
 
 The proof calls the Tate parameter u, while Lemma lem:tamfactor uses u for its unit part q_E q^{-n}. The
@@ -825,3 +835,25 @@ next to 99a1 (r = 12, deg 4) and 726a1 (point 58). r(121a) = r(121c) = 6. Option
 * PLAN.md's Chapter 13 scope uses k both for the weight and for the exponent in the T_{p^k} recursion.
 * Li75 and Rankin39 are needed by Chapters 13, 15 and 19 and belong in refs.bib (B14), after checking their
   bibliographic data.
+
+## From the Chapter 17 outline (Galois cohomology, Selmer structures)
+
+Source: `outlines/ch17_galcoh.md`, final section. Its first point is now an addendum to point 7 above.
+The outline also checks the identification of c' with PARI on 77c1, 791a1, 1577a1 and 11a1.
+
+### 63. Lemma lem:dfg21: the hypothesis H^0(Q, V^D) = 0 is automatic here
+
+The paragraph after the lemma shows H^0(Q_p, V^D) = 0 at every p in Sigma (the local Euler factor is
+nonzero), which already gives H^0(Q, V^D) = 0; surjectivity onto H^0(Q, W^D)^* uses exactly that fact. So
+in the paper's setting only H^1_f(Q, V^D) = 0 needs DFG04 Theorem 2.7. Observation, low importance.
+
+## Book-internal consistency (continued)
+
+### B21. Items from the Chapter 17 outline
+
+* The Chapter 3 outline (8.3(vi)) assigns the Cartier duals T^D, W^D to Chapter 18; Chapter 17 needs them
+  first (local duality). Read "Chapters 17 and 18".
+* SerreGaloisCoh (planned for bib/ch16.bib) is cited by Chapters 16 and 17 and belongs in refs.bib (B14);
+  MazurRubin04 too if Chapter 18 cites it.
+* Chapter 21 item A2.7, step (7), drops eps in "c' = kappa_u(Frob)"; its commentary "no such map" must be
+  softened per the addendum to point 7.
