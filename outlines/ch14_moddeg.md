@@ -998,3 +998,75 @@ Python 3 with PARI/GP 2.17 through `cypari2`; scripts `cong.gp`, `run.py`, `run2
   $\dim S_2(\Gamma_0(99))=4+2+3$; the interior-cohomology exact sequence in 9.6(2).
 * Not checked: the theorem numbers marked (verify); the exact statements of ARS12 Theorem 2.2, RibetStein Theorem 3.5,
   Ribet-Takahashi, Calegari-Emerton and the Manin-constant literature; DFG04's definitions (9.6).
+
+## 7. Points for important_notes.md
+
+New points in this chapter's area ($X_0(N)$ over $\Q$, $J_0(N)$, optimal curves, the modular degree, the Manin constant,
+$r_E$ and ARS, $\hat\delta_!$ and Lemma lem:hecke, multiplicity one, the Eisenstein ideal, Ribet-Takahashi, Section sec:two), not
+among points 1 to 53 and B1 to B16. Points 19, 24, 25, 26, 27, 35, 36, 39, 40, 41, B3, B10, B14 are handled in Part 6.4 and not repeated.
+
+**N1. Section sec:two: the paraphrase of Calegari-Emerton fails for two CM curves.**
+Location: Section sec:two, "in line with the theorem of Calegari and Emerton that a curve of odd modular degree has at most
+two odd bad primes and a rational $2$-torsion point or prime conductor \cite{CalegariEmerton09}".
+Problem: among the $103$ optimal curves of conductor below $10{,}000$ with odd modular degree (`ecdata`, `degphi` and `allcurves`), two
+have neither a rational point of order $2$ nor prime conductor: 27a1 $[0,0,1,0,-7]$ ($N=3^3$, $\deg\varphi_E=1$, $E(\Q)_{\mathrm{tors}}\simeq\Z/3$) and 243b1
+$[0,0,1,0,2]$ ($N=3^5$, $\deg\varphi_E=9$, torsion $\Z/3$), both with $j=0$ (CM). The other $101$ satisfy the paraphrase, and all $103$ have at most
+two odd bad primes.
+Fix: state the theorem with the hypothesis or exception of CalegariEmerton09 (presumably "$E$ without CM", or a prime-power
+conductor clause), checked against the paper; the sentence is used only as context for data on non-CM curves, so nothing else
+changes. Confidence: high for the data (two independent counts from `ecdata`; $j$ computed with PARI); medium on the exact form of
+the published theorem, which was not consulted.
+
+**N2. Lemma lem:hecke and Section 4.1 (refinement of point 39): the precise checklist for DFG04's $\eta$, and two corollaries.**
+Location: Section 4.1 ("The integral structure $M(M^\Sigma,1)_{!,\lambda}$ is $H^1(X_0(M^\Sigma),\Z_\ell)$ ...; the restriction of $\hat\delta_!$ to the rank-two
+lattice $M_{f^\Sigma,\lambda}$ takes its values in an ideal of $\Z_\ell$, which is $\eta^\Sigma_{f,\lambda}$"), Lemma lem:hecke, Remark rem:free.
+Content: (a) Point 39's "medium confidence on the normalisation" splits into five concrete checks (item 9.6): (1) whether DFG04's
+weight-$2$, trivial-character integral structure is $H^1(X_0(N),\Z_\ell)$ or the trivial-character part of the cohomology of a
+$\Gamma_1(N)$-type curve: in the latter case the pullback multiplies the cup product by $\#(\Z/N)^\times/\{\pm1\}$, which $\ell$ can divide even when
+$\ell\nmid N$ (for example $\ell=3$, $7\mid N$), and the Shimura subgroup enters the saturation, so $\eta$ could differ from $\deg\varphi_E$ by a
+non-unit; (2) interior cohomology is $H^1(X_0(N))$ for constant coefficients (true, short exact-sequence argument; group cohomology of
+$\Gamma_0(N)$ agrees because elliptic elements are torsion); (3) $[UwU]\omega=w_N^*$ with no scalar in weight $2$, and the normalisation of
+$H^2_c$ (only $2$ and, if elliptic points of order $3$ occur, possibly $3$ are at risk); (4) $M_{f,\lambda}$ is the kernel lattice, not the
+projection lattice (the latter would change the ideal of values by the congruence ideal); (5) $\eta$ is the ideal of values, not the
+Gram determinant. If (1) or (4) differ, the paper's own description of $\eta$ in Section 4.1 is wrong, independently of point 39.
+(b) Corollaries of the point-39 identity that the paper can state: the divisibility $\deg\varphi_E\mid r_E$ follows at **every** prime $\ell$
+from the identity and the inequality half of Lemma lem:ddt417 applied to all of $H^1(X_0(N),\Z_\ell)$ (item 9.4), so Lemma lem:hecke needs
+ARS12 only for $v_\ell(r_E)\le v_\ell(\deg\varphi_E)$; and the hypothesis "$\bar\rho$ irreducible" of Lemma lem:hecke is not used by the identity
+$v(\text{values of }\hat\delta\text{ on }M_{f,\ell})=v_\ell(\deg\varphi_E)$ (it matters only for $\ell\notin S_f$ later). (c) What point 39 does **not** remove: Remark rem:free is
+still needed for Remark (2) after Theorem thm:quant (the lattice there belongs to the depleted form $g^S$, which is not attached
+to an optimal quotient).
+Fix: in Section 4.1, after "is $H^1(X_0(M^\Sigma),\Z_\ell)$", cite the exact place in DFG04 where this identification is made (or add the
+pullback factor if DFG04 work on $X_1$); state Lemma lem:hecke as an equality with the four-line proof of point 39. Confidence:
+high for the mathematics of (b), (c) and of the claims in (a)(2); the checks (a)(1), (3) to (5) are open by nature (DFG04 not
+consulted).
+
+**N3 (confirmation, not an error). The remark after Theorem thm:qual: 99A1 has $r_E=12$, recomputed; 726a1 is a second example
+from the paper's own list.** Location: "Table 1 of \cite{ARS12} lists the curve 99A1, of conductor $9\cdot11$, with modular degree $4$
+and congruence number $12$". Recomputed directly (Part 6.6): $r_E=12$, $\deg\varphi_E=4$; the extra $3$ comes from the newforms 99b1 and
+99d1, congruent to 99a1 modulo $3$ at every $n$. The paper's 726a1 ($N=2\cdot3\cdot11^2$, the 3Ns example) has $\deg\varphi_E=144$ and $r_E=1584=11\cdot144$:
+the paper could cite it as a second instance. Also 121a1, 539c1, 980i1 have $r_E=\deg\varphi_E$ although $p^2\mid N$. Optional addition;
+confidence high.
+
+Book-internal inconsistencies found while preparing this outline:
+
+* **B-a. Chapter 21 outline, dependency diagram and hypothesis table** (around its lines 1369 and 1393): "[Tilouine97; RibetStein 3.5;
+  Shimura subgroup] => rem:free => equality in thm:main; thm:quant Step 4" and the row listing multiplicity one as a hypothesis
+  of the equality. After point 39 (item 9.5 here) the equality in (eq:identity) and Step 4 do not go through Remark rem:free;
+  only Remark (2) after Theorem thm:quant does. Extends B3.
+* **B-b. Chapter 9 outline, 12.2, and Chapter 21 outline (A3.7, the references table): "$r_E=12$ ... not recomputed" / "as cited".**
+  It is now recomputed (8.5 here; also by the Chapter 15 outline); both may cite Chapter 14.
+* **B-c. Duplicate proof of point 40.** The Chapter 15 outline, its 2.6(ii), proves $M_{f,\lambda}=\varphi^*H^1(E_0,\Z_\ell)\simeq T_\ell E_0(-1)$, which is this
+  chapter's 9.1 (and which PLAN.md and the Chapter 8 outline, its Part 6.3, place in Chapter 14). Proposal: Chapter 14 proves it,
+  Chapter 15 cites `\Cref{ch:moddeg}`.
+* **B-d. Bibliography keys planned in `bib/ch12.bib` that Chapter 14 also needs** (`DeligneRapoport73`, `KatzMazur85`, `Ogg73`, and
+  `Kenku` from Chapter 9): by B14 they belong in `refs.bib`. Note also that the existing `refs.bib` key `Ogg` is Ogg's 1967 paper on wild
+  ramification, so the 1973 cusp paper needs its own key.
+* **B-e. PLAN.md, Chapter 14 entry.** (i) "Mazur: c | ..." is an unfinished placeholder; 7.2 here lists what to check. (ii) "the
+  product of the c_q or n_q over q | D" (Ribet-Takahashi) leaves the choice open; 12.2 asks the writer to settle it from the source
+  (the paper says $n_q$; the Chapter 15 outline's 11.2 also says $n_q$ "as the paper's summary"). (iii) "Lemma lem:crit ... proved in
+  full here or in Chapter 20" is superseded by the decision that Chapter 15 proves it (also the Chapter 15 outline's I3).
+* **B-f. Ribet-Takahashi is stated in two chapters.** The Chapter 15 outline's 11.2 and this chapter's 12.2 both state it (R). Proposal:
+  Chapter 14 carries the full statement (PLAN.md), Chapter 15 a one-line pointer.
+* Consistency checks that passed: Chapter 8's 11.5 and 12.3(e), Chapter 12's 10.4 numerics (20a1, 37a1, 99a1, 121a1, 11a1), genus table
+  and $w_{37}$ data, Chapter 3's 11.1 to 11.5, Chapter 9's 12.1 (990h3) and running table (degrees, torsion, ranks), and Chapter 13's
+  4.3 definitions agree with the recomputations of Part 6.6.

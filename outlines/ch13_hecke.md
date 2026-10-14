@@ -296,3 +296,188 @@ under $\T$ (and $w_N$). In particular, if $f$ is an eigenform of all of $\T$ and
 $f^\perp$ is $\T$-stable. Proof: $\langle tg,v\rangle=\langle g,t^\dagger v\rangle$ with $t^\dagger=t$ or $w_Ntw_N$ (5.2, 5.3), and $t^\dagger V\subset V$. Paper: Lemma lem:crit (the
 $\T$-stability of $f^\perp$), Lemma lem:old, Theorem thm:twist ($f^\perp$ at level $N$), Chapter 12, its 10.3.
 
+### Section 6. Oldforms and newforms: Atkin-Lehner theory
+
+**6.1 `def:hecke:old-new`** (definition and proposition; P for (i), (ii); P given 6.2 for (iii)). For $M\mid N$ and $d\mid N/M$ let
+$V_d\colon S_k(M)\to S_k(N)$, $h\mapsto h(dz)=d^{-k/2}h|_k\operatorname{diag}(d,1)$ (Chapter 12, its 6.2(e)). The *old subspace* is
+$S_k^{\mathrm{old}}(N)=\sum_{p\mid N}\bigl(S_k(N/p)+V_pS_k(N/p)\bigr)$ (equivalently the span of all $V_dS_k(M)$, $M\mid N$, $M\ne N$, $d\mid N/M$) and the *new
+subspace* is its Petersson orthogonal complement $S_k^{\mathrm{new}}(N)$. (i) $T_n$ with $(n,N)=1$ commutes with every $V_d$ (2.3), so both
+subspaces are $\T^{(N)}$-stable (with 5.2). (ii) Both are stable under every $U_p$, $p\mid N$: the old one by the formulas of 7.1 applied to
+$V_dh$, the new one by 5.4, since $w_N$ maps $V_dS_k(M)$ into $V_{N/(Md)}S_k(M)$ (Chapter 12, its 12.4(b), generalised by the same matrix
+identity) and so preserves the old subspace. (iii) Both are defined over $\Q$: the new subspace is the sum of the anemic eigenspaces of
+the newforms of level $N$ (6.2(iii)), and $\operatorname{Aut}(\C)$ permutes newforms (3.3(ii)). Reference: AtkinLehner70 (Section 2, cite the
+section); DiamondShurman 5.6, 5.7 (cite the sections). Paper: Section 1 ("the newform"), Lemma lem:old ("the forms $h(dz)$, $d\mid N/M$"),
+Section 4.1.
+
+**6.2 `thm:hecke:atkin-lehner`** (theorem, Atkin-Lehner, Li; R, with a sketch S). (i) $S_k^{\mathrm{new}}(N)$ has a basis of *newforms*:
+normalised eigenforms of all of $\T_N$ (all $T_n$, the $U_p$ included); distinct newforms are orthogonal. (ii) (Multiplicity one.) If $f$ is
+a newform of level $N$ and $L$ is a multiple of $N$, the eigenspace in $S_k(L)$ of the system of eigenvalues of $f$ for $\T^{(L)}$ is
+$\operatorname{span}\{f(dz):d\mid L/N\}$, of dimension $\sigma_0(L/N)$; in $S_k^{\mathrm{new}}(N)$ it is $\C f$. (iii) (Decomposition.)
+$$S_k(N)=\bigoplus_{M\mid N}\ \bigoplus_{d\mid N/M}V_d\,S_k^{\mathrm{new}}(M),$$
+the forms $h(dz)$, $h$ a newform of level $M\mid N$, $d\mid N/M$, form a basis of $S_k(N)$, and the old subspace is the sum of the terms with
+$M\ne N$. (iv) In particular a newform $f$ of level $N$ is orthogonal to every $h(dz)$ with $h\ne f$ a newform of level $M\mid N$, so
+$f^\perp=\bigoplus_{h\ne f}\operatorname{span}\{h(dz)\}$ (with 5.2: different systems are orthogonal). Sketch (DiamondShurman's route): the Main Lemma (a
+form whose coefficients $a_n$ vanish for all $n$ prime to $N$ lies in $\sum_{p\mid N}V_pS_k(N/p)$) gives (ii) for the new subspace, since the
+difference of two new anemic eigenforms with the same system, suitably normalised, has $a_n=0$ for $(n,N)=1$; (iii) by induction on $N$.
+Reference: AtkinLehner70 (the main theorems; cite by section, the numbering to be verified); Li, *Newforms and functional
+equations*, Math. Ann. 212 (1975) (proposed key `Li75`, Part 6.5); DiamondShurman Theorem 5.8.3 and the Main Lemma 5.7.1 (verify the
+numbers); Miyake 4.6. Paper: Section 1 ("$f=f_E\in S_2(\Gamma_0(N))$ the newform"), Lemma lem:old ("span a $\T$-stable subspace $V$ of
+$S_2(\Gamma_0(N))$ orthogonal to the newform $f$ (whether $M<N$, or $M=N$ and $h\ne f$)"), Lemma lem:crit ($\T\otimes\Q=\Q\times\T'$ needs (ii)), Theorem
+thm:quant Step 1 ("the forms with the $T_p$-eigenvalues of $g$, $p\nmid N$, ... the span of the $g(dz)$, $d\mid N/N_S$").
+
+**6.3 `thm:hecke:strong-multiplicity-one`** (theorem; R for (i), S for (ii)). (i) If $f$ and $g$ are newforms of weight $k$ and levels $M$,
+$M'$, and $a_p(f)=a_p(g)$ for all but finitely many primes $p$, then $f=g$ (and $M=M'$). Equivalently: the systems of $T_p$-eigenvalues of
+two distinct newforms differ at infinitely many primes. (ii) (Weight $2$, density one.) The same conclusion holds if $a_p(f)=a_p(g)$
+for all $p$ in a set of primes of Dirichlet density one: the $\lambda$-adic Galois representations of $f$ and $g$ (Chapter 15) then have
+equal traces on a dense set of Frobenius elements (Chebotarev, Chapter 5), hence equal traces everywhere, hence isomorphic
+semisimplifications (Brauer-Nesbitt, Chapter 4), hence $a_p(f)=a_p(g)$ for all $p\nmid MM'\ell$, and (i) applies. (iii) Consequence (P): for
+a newform $f$ of level $N$, a generalised eigenform $h\in S_k(L)$, $N\mid L$, of $\T^{(L)}$ whose system differs from that of $f$ at infinitely
+many $p$ lies in the sum of the anemic eigenspaces of the newforms $h'\ne f$, and is orthogonal to $f$ and to every $f(dz)$. Reference: Miyake
+Theorem 4.6.19 (verify); DiamondShurman 5.8 (cite the section); AtkinLehner70. Paper: Theorem thm:twist ("a system of $T_p$-eigenvalues
+... differing from that of $g$ at infinitely many $p$ ... so $\iota(h)\in f^\perp$"), Theorem thm:quant Step 1 ("strong multiplicity one"),
+Lemma lem:old and Theorem thm:qual ($h\ne f$; important_notes.md point 20), PLAN.md scope ("a newform is determined by $a_p$ for $p$
+in any set of density one").
+
+**6.4 `prop:hecke:newform-local`** (proposition; P for (i), (ii); R for (iii)). Let $f$ be a newform of weight $k$, level $N$, trivial
+character. (i) For every $d\,\|\,N$, $f|_kW_d=\varepsilon_d(f)f$ with $\varepsilon_d(f)=\pm1$ (the involution $w_d$ commutes with $\T^{(N)}$ and preserves the new
+subspace, so it preserves $\C f$ by 6.2(ii)). (ii) Hence 5.4 applies: $f^\perp$ is $\T$-stable. (iii) (AtkinLehner70, Theorem 3, as cited
+by the paper; verify which parts) If $p^2\mid N$ then $a_p(f)=0$; if $p\,\|\,N$ then $a_p(f)=-p^{k/2-1}\varepsilon_p(f)$, so in weight $2$
+$a_p(f)=-\varepsilon_p(f)\in\{\pm1\}$. (iv) For $f=f_E$ (Chapter 14): $a_p=1$, $-1$, $0$ for split multiplicative, nonsplit multiplicative,
+additive reduction at $p$. Checks: $f_{11}$: $\varepsilon_{11}=-1$, $a_{11}=1$ (Chapter 12, its 9.2(iii)); $a_{11}=0$ for 121a to 121d; $a_7=0$ for 539c,
+539d; $a_7(77c)=\pm1$. Reference: AtkinLehner70 Theorem 3 (as cited); DiamondShurman 5.8 and 6.6 (cite the sections). Paper: Lemma
+lem:old (case $p^2\mid N$: "a newform on $\Gamma_0(M)$ with $p^2\mid M$ has $a_p=0$"; case $p\,\|\,N$: $a_p(h)=\pm1$), Lemma lem:crit (the $w_N$-eigenvector
+property behind the $\T$-stability of $f^\perp$), Lemma lem:euler and Theorem thm:quant Step 1 ($a_q(g)=\pm1$ at a multiplicative $q$),
+Chapter 12, its 12.4(c).
+
+**6.5 `cor:hecke:dimensions`** (corollary; P given 6.2). $\dim S_k(N)=\sum_{M\mid N}\sigma_0(N/M)\dim S_k^{\mathrm{new}}(M)$, and by Moebius inversion
+$\dim S_k^{\mathrm{new}}(N)=\sum_{M\mid N}\beta(N/M)\dim S_k(M)$ with $\beta=\mu*\mu$ multiplicative, $\beta(p)=-2$, $\beta(p^2)=1$, $\beta(p^r)=0$ for $r\ge3$.
+Table (weight $2$; verified with PARI's `mfdim` for the full and the new space and with the formula):
+
+| $N$ | 11 | 22 | 33 | 44 | 77 | 88 | 99 | 121 | 242 | 539 | 980 | 1089 |
+|-|-|-|-|-|-|-|-|-|-|-|-|-|
+| $\dim S_2(N)$ | 1 | 2 | 3 | 4 | 7 | 9 | 9 | 6 | 22 | 49 | 145 | 109 |
+| $\dim S_2^{\mathrm{new}}(N)$ | 1 | 0 | 1 | 1 | 5 | 3 | 4 | 4 | 10 | 34 | 13 | 41 |
+
+For example $S_2(121)$ is spanned by the four rational newforms 121a, 121b, 121c, 121d and the two oldforms $f_{11}(z)$, $f_{11}(11z)$ (Chapter
+12, its 9.3), and $S_2(88)$ by three newforms of level $88$, $f_{44}(z)$, $f_{44}(2z)$ and the four $f_{11}(2^jz)$, $0\le j\le3$. Reference: as 6.2.
+Paper: background (the levels of Section 3 and Section 4.1).
+
+### Section 7. $U_p$ on oldforms: stabilisation, depletion, non-semisimplicity
+
+**7.1 `prop:hecke:Up-oldspan`** (proposition; P). Let $h$ be a newform of weight $k$ and level $M$, $p$ a prime, $e\ge0$, and
+$V_{h,p,e}=\operatorname{span}\{h(p^jz):0\le j\le e\}$, of dimension $e+1$ (6.2(iii)), inside $S_k(Mp^e)$; let $U_p$ be the operator of level $Mp^e$ (assume
+$e\ge1$ or $p\mid M$). (i) $U_ph(p^jz)=h(p^{j-1}z)$ for $j\ge1$; $U_ph=a_p(h)h-p^{k-1}h(pz)$ if $p\nmid M$; $U_ph=a_p(h)h$ if $p\mid M$. (ii) $h(p^ez)$ is a
+cyclic vector, so the characteristic and minimal polynomials of $U_p$ on $V_{h,p,e}$ coincide:
+$$X^{e-1}(X^2-a_p(h)X+p^{k-1})\quad(p\nmid M,\ e\ge1),\qquad X^{e}(X-a_p(h))\quad(p\mid M).$$
+(iii) Every eigenvalue has a one-dimensional eigenspace, spanned by: for $p\nmid M$, writing $X^2-a_pX+p^{k-1}=(X-\alpha_p)(X-\beta_p)$: the
+*$p$-stabilisations* $h_{\alpha}=h-\beta_ph(pz)$ (eigenvalue $\alpha_p$) and $h_\beta=h-\alpha_ph(pz)$ (eigenvalue $\beta_p$), and, if $e\ge2$, the *$p$-depleted form*
+$h^{(p)}=h-a_ph(pz)+p^{k-1}h(p^2z)$ (eigenvalue $0$); for $p\,\|\,M$: $h$ (eigenvalue $a_p=\pm p^{k/2-1}$) and, if $e\ge1$, $h^{(p)}=h-a_ph(pz)$
+(eigenvalue $0$); for $p^2\mid M$: $h=h^{(p)}$ (eigenvalue $a_p=0$). (iv) $U_p$ is semisimple on $V_{h,p,e}$ iff its characteristic polynomial is
+squarefree: iff $e\le2$ and $\alpha_p\ne\beta_p$ ($p\nmid M$), $e\le1$ ($p\,\|\,M$), $e=0$ ($p^2\mid M$); otherwise the eigenvalue $0$ has a single Jordan
+block of size $e-1$, $e$ or $e+1$. (v) Each eigenvector of (iii) is a normalised eigenform of the full Hecke algebra of level $Mp^e$, with
+the eigenvalues of $h$ at the other operators. Verified matrices (columns: images of $f_{11}(p^jz)$): level $22$:
+$\begin{psmallmatrix}-2&1\\-2&0\end{psmallmatrix}$, $X^2+2X+2$; level $44$: $X(X^2+2X+2)$; level $88$: $X^2(X^2+2X+2)$ with a Jordan block of size $2$ at $0$; level $121$
+($p=11\,\|\,M$): $\begin{psmallmatrix}1&1\\0&0\end{psmallmatrix}$, $X(X-1)$; level $1331$: $X^2(X-1)$. Reference: Chapter 3, its 10.7(v) (the linear algebra); AtkinLehner70;
+DiamondShurman 5.6 and 5.7 exercises (cite the sections). Paper: Lemma lem:old (every formula of its proof: "$U_ph(p^jz)=h(p^{j-1}z)$",
+"The eigenvalues of $U_p$ there are therefore the roots $\alpha_p,\beta_p$ ... together with $0$ if $e_p\ge2$", "the $p$-stabilisations",
+"the depleted forms", "$U_p$ is not semisimple on this span when $0$ is a repeated eigenvalue"), Theorem thm:quant Step 1 ("on that
+span the operators $U_q$ ... have the eigenvalue $0$ with multiplicity one"; "the others have $U_q$-eigenvalue $a_q(g)=\pm1$ ... or a root
+$\alpha,\beta$"), Section 4.1 (stabilisations, Chapter 9, its 8.3).
+
+**7.2 `cor:hecke:Up-eigenvalues`** (corollary; P given 6.2(iii), 6.4(iii), 7.1). Weight $2$. Every eigenvalue of $U_p$ on $S_2(N)$, $p\mid N$, is
+$0$, or $\pm1$, or a root of $X^2-a_p(h)X+p$ for a newform $h$ of level $M\mid N$ with $p\nmid M$. In particular, for every prime $\lambda$ of $\overline\Q$
+not above $p$, every nonzero eigenvalue of $U_p$ is a $\lambda$-adic unit (the roots are algebraic integers with product $p$), so a
+generalised eigenform of $\T$ whose $U_p$-eigenvalue is $\equiv0\pmod\lambda$ has $U_p$-eigenvalue $0$. Verified characteristic
+polynomials of $U_p$ (PARI `mfheckemat`): level $88$, $U_2$: $X^7(X^2+2X+2)$; level $99$, $U_3$: $X^6(X+1)(X^2+X+3)$; level $121$, $U_{11}$: $X^5(X-1)$;
+level $539$, $U_7$: $X^{42}(X-1)^3(X+1)^2(X^2+2X+7)$; level $980$, $U_7$: $X^{126}(X-1)^8(X+1)^9(X^2-2X+7)$; level $1089$, $U_3$:
+$X^{76}(X-1)^{10}(X+1)^{11}(X^2-2X+3)^2(X^2+X+3)^4$. Paper: Theorem thm:quant Step 1 ("The generalised eigenforms of $\T$ whose eigencharacter
+is congruent to $\pi$ modulo $\mathfrak m$ have $U_q\equiv0$ at $q\in S$" and then "systems of eigenvalues with $U_q=0$": the passage from
+$\equiv0$ to $=0$ is this corollary; "which are $\ell$-adic units since $\ell\ne q$").
+
+**7.3 `rem:hecke:non-semisimple`** (remark and example; P, with (iii) R). (i) At level $88$ the minimal polynomial of $U_2$ on $S_2(88)$ is
+$X^2(X^2+2X+2)$: $U_2$ is not semisimple, and $\T_{88}\otimes\Q$ contains a nonzero nilpotent element (Chapter 3, its 10.7(iii)); so the full Hecke
+algebra need not be reduced (important_notes.md point 19). The source is $V_{f_{11},2,3}$ ($e=3$) and also $V_{f_{44},2,1}$ ($2^2\mid44$, $U_2$
+nilpotent of order $2$ there). (ii) A large multiplicity of the eigenvalue $0$ does not by itself make $U_p$ non-semisimple: at level $539$
+the eigenvalue $0$ of $U_7$ has multiplicity $42$ but the minimal polynomial $X(X-1)(X+1)(X^2+2X+7)$ is squarefree (no single $V_{h,7,e}$ has a
+repeated root). (iii) (Coleman-Edixhoven.) For a newform of weight $2$ and level prime to $p$, $\alpha_p\ne\beta_p$; so $U_p$ is semisimple on the
+$p$-old part of level $Mp$ (for rational $a_p$ this is elementary: $a_p^2\ne4p$). Reference: ColemanEdixhoven (in `refs.bib`; the
+theorem number to be verified). Paper: Lemma lem:old ("$U_p$ is not semisimple on this span when $0$ is a repeated eigenvalue, but each
+listed eigenvalue has an eigenvector"), Lemma lem:ddt417 ($\wp\cap I=0$ is not automatic, point 19).
+
+**7.4 `def:hecke:depletion`** (definition and proposition; P). Let $f$ be a newform of weight $k$ and level $M$ and $\Sigma$ a finite set of primes.
+(i) Put $\delta_p(f)=2$ if $p\nmid M$, $1$ if $p\,\|\,M$, $0$ if $p^2\mid M$; equivalently $\delta_p$ is the degree in $p^{-s}$ of the inverse Euler factor
+$L_p(f,s)^{-1}$ (10.1), the number of roots of the Hecke polynomial at $p$; for $f=f_E$, $\delta_p=2,1,0$ for good, multiplicative, additive
+reduction, which is $\dim V^{I_p}$ for $V=V_\ell E$ (Chapter 11; the paper's definition in Section 1.1). (ii) The *$\Sigma$-depleted form*
+$f^\Sigma=\sum_{(n,\Sigma)=1}a_n(f)q^n$ (C8) equals $\bigl(\prod_{p\in\Sigma}D_p\bigr)f$ with $D_p=1-a_pV_p+p^{k-1}V_p^2$ ($p\nmid M$), $1-a_pV_p$ ($p\,\|\,M$), $1$
+($p^2\mid M$), by multiplicativity and the recursion of 3.2(ii). (iii) $f^\Sigma\in S_k(M^\Sigma)$ with $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$, and $M^\Sigma$ is the
+least level containing $f^\Sigma$ (by 7.1(iii): the eigenvalue $0$ of $U_p$ occurs in $V_{f,p,e}$ only for $e\ge\delta_p$). (iv) $f^\Sigma$ is a normalised
+eigenform of the full Hecke algebra of level $M^\Sigma$, with $U_pf^\Sigma=0$ for $p\in\Sigma$ and the eigenvalues of $f$ elsewhere, and its
+generalised eigenspace in $S_k(M^\Sigma)$ is the line $\C f^\Sigma$: on $V_{f,p,\delta_p}$ the characteristic polynomial is $X(X^2-a_pX+p^{k-1})$ or $X(X-a_p)$
+with $a_p\ne0$, so $0$ is a simple root (6.2(iii) and 7.1). (v) At a level $N$ with $M^\Sigma\mid N$, $N\ne M^\Sigma$, the form $f^\Sigma$ is still a
+normalised eigenform of $\T_N$, but its generalised eigenspace can be larger (the depleted $f_{11}^{(2)}$ spans its generalised eigenspace at
+level $44$ and lies in a Jordan block of $U_2$ at level $88$). (vi) $L(f^\Sigma,s)=L(f,s)\prod_{p\in\Sigma}L_p(f,s)^{-1}$ (10.1): depletion removes the
+Euler factors at $\Sigma$, and $M^\Sigma$ raises the level by one factor $p$ per removed root. Examples (verified): $f_{11}^{\{2\}}=f_{11}+2f_{11}(2z)+2f_{11}(4z)$,
+of level $44$, has $a_n=0$ for even $n$ and $a_n=a_n(f_{11})$ for odd $n$ (checked to $n=4000$); $f_{11}^{\{11\}}=f_{11}-f_{11}(11z)$, level $121$; for 121a,
+$\Sigma=\{11\}$: $f^\Sigma=f$, level $121$; for $g=$ 77c and $\Sigma=\{7\}$: $g^\Sigma=g-a_7(g)g(7z)$, level $539$; for $g=f_{11}$, $\Sigma=\{7\}$:
+$g^\Sigma=g+2g(7z)+7g(49z)$, level $539$ ($a_7(f_{11})=-2$). Reference: DFG04 Sections 1.5.3, 1.7.3 (as cited by the paper, for the notation
+$M^\Sigma$, $f^\Sigma$; verify); DDT Section 4 (cite the section). Paper: Section 4.1 ("$M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$", "the $\Sigma$-depleted
+eigenform, of level $M^\Sigma$"), Section 1.1 ($\delta_p$), Theorem thm:dfg14 and the paragraph after it ("adding an additive prime to $\Sigma$ changes
+neither the level nor the ideal"), Theorem thm:quant ("$N_S^\Sigma=N$: the $S$-depleted form $g^S$ lives at level $N$"), Lemma lem:old (the depleted
+forms).
+
+### Section 8. The structure of $\T$, generalised eigenspaces and congruences
+
+**8.1 `thm:hecke:structure`** (theorem; P given 6.2, 6.3, 7.1). Weight $k$, level $N$. (i) $S_k(N)\otimes\overline\Q=\bigoplus_hV_h$, the sum over the newforms
+$h$ of levels $M_h\mid N$, with $V_h=\operatorname{span}\{h(dz):d\mid N/M_h\}$; $V_h$ is the eigenspace of $\T^{(N)}$ for the system of $h$, and as a module over
+$\overline\Q[U_p:p\mid N]$ it is $\bigotimes_{p\mid N}V_{h,p,e_p}$ with $e_p=v_p(N/M_h)$. (ii) $\T\otimes\overline\Q\simeq\prod_hA_h$, where $A_h$ is the image of $\T\otimes\overline\Q$ in
+$\operatorname{End}(V_h)$, and $A_h\simeq\bigotimes_{p\mid N}\overline\Q[X]/(m_{h,p}(X))$ with $m_{h,p}$ the characteristic polynomial of 7.1(ii) (equal to $X-a_p(h)$ when
+$e_p=0$); so $\operatorname{rank}\T=\sum_h\prod_p(e_p+1)=\dim S_k(N)$, consistent with 4.1, and $S_k(N)\otimes\overline\Q$ is free of rank one over $\T\otimes\overline\Q$ (each $V_h$
+is cyclic). (iii) The generalised eigenspaces of $\T\otimes\overline\Q$ are the joint generalised eigenspaces $V_h(\mu)$, $\mu=(\mu_p)$ a choice of a root of
+each $m_{h,p}$, of dimension the product of the multiplicities; $\T\otimes\Q$ is reduced iff every $m_{h,p}$ is squarefree (7.1(iv)). (iv) For a
+newform $f$ of level $N$ with rational coefficients: $V_f=\C f$, and $\T\otimes\Q=\Q\times\T'$ with $\T'$ acting faithfully on $f^\perp=\bigoplus_{h\ne f}V_h$
+(this is the paper's "$\T\otimes\Q=\Q\times\T'$"). In general this is "$\T\otimes\Q$ is a product of fields (the new part, $K_h$ for each Galois
+orbit of newforms of level $N$) times the old part", the old part possibly non-reduced. Proof: (i) is 6.2(iii) with 6.3; the
+factors of (ii) are separated by idempotents of $\T^{(N)}\otimes\overline\Q$ (distinct anemic systems, 5.2), and on $V_h$ the algebra generated by the
+$U_p$ is the tensor product of the algebras of 7.1, each acting with a cyclic vector (Chapter 3, its 10.5, 10.8). Verified at level $88$: $9=3\cdot1+2+4$ ($U_2$
+on $V_{f_{44}}$ is $X^2$, on $V_{f_{11}}$ is $X^2(X^2+2X+2)$). Reference: DDT Section 1 or 4 (cite the section); Chapter 3, its 10.1, 10.5. Paper:
+Lemma lem:crit ("Writing $\T\otimes\Q=\Q\times\T'$ with $\T'$ acting faithfully on $f^\perp$"), Lemma lem:old ("$V$ is the tensor product of these
+local spaces and $\T$ is commutative"), Theorem thm:twist ("generalised eigenform", "$g^\perp$ ... the sum of the generalised eigenspaces of
+the other systems"), Theorem thm:quant Step 1 ("the generalised eigenspace of $\pi$ ... is the line of $g^S$"), PLAN.md scope.
+
+**8.2 `prop:hecke:complements`** (proposition; P given 8.1, 5.4). Let $g$ be a normalised eigenform of $\T_N$ with eigencharacter $\pi$ whose
+generalised eigenspace is a line $\C g$ (a newform of level $N$, or $f^\Sigma$ at level $M^\Sigma$ by 7.4(iv), or $g^S$ in Theorem thm:quant). Let $g^c$
+be the $\T$-stable complement of $\C g$ (C5). (i) $S_k(N)=\C g\oplus g^c$, $\T\otimes\overline\Q=\overline\Q\times\T''$ with $\T''$ faithful on $g^c$, and if $\pi$ has values in $\Q$
+then $g^c$ is defined over $\Q$ and $g^c\cap S_2(N;\Z)$ is saturated of rank $d-1$; so the arguments of the paper's Lemma lem:crit apply to $\pi$
+and $\eta(\pi)$ (4.3) is the largest modulus of a congruence $g\equiv h$, $h\in g^c\cap S_2(N;\Z)$ (proved in Chapter 15 for newforms; the proof
+uses only (i)). (ii) If $g$ is a newform, $g^c=g^\perp$ (6.2(iv)). (iii) If $g$ is not a newform, $g^c\ne g^\perp$ in general: for $g=f_{11}^{\{2\}}$ at
+level $44$, $g^c\ni f_{11}-\beta f_{11}(2z)$ (a stabilisation), which is not orthogonal to $g$ (Gram entries of 5.3(iii)). Paper: Theorem thm:twist
+("$g^\perp$, the $\T$-stable complement of the $g$-line"; at level $N_S$ the newform $g$ makes the two notions agree), Theorem thm:quant Step 1
+("in the $\T$-stable complement of the $g^S$-line"; there it is not a Petersson complement).
+
+**8.3 `prop:hecke:local-components`** (proposition; P given Chapter 3, its 10.3, 10.5, 10.6 and 4.1). Let $\ell$ be a prime and
+$\T_\ell=\T\otimes\Z_\ell=\prod_{\mathfrak m}\T_{\mathfrak m}$ over the maximal ideals $\mathfrak m\ni\ell$ of $\T$, with idempotents $e_{\mathfrak m}$. (i) $S_2(N;\Z_\ell)=\bigoplus_{\mathfrak m}e_{\mathfrak m}S_2(N;\Z_\ell)$,
+and $e_{\mathfrak m}S_2(N;\Z_\ell)\otimes\overline\Q_\ell$ is the sum of the generalised eigenspaces of the $\varphi\colon\T\to\overline\Q_\ell$ with $\varphi^{-1}(\mathfrak m_{\overline\Z_\ell})=\mathfrak m$, that is,
+with $\varphi\equiv$ the residual character of $\mathfrak m$. (ii) A ring homomorphism $\phi\colon\T\to\mathcal O_\lambda$ factors through exactly one $\T_{\mathfrak m}$, $\mathfrak m=\mathfrak m_{\phi,\lambda}$,
+and $\phi$ kills the other factors: they lie in $\ker\phi$, not in $\operatorname{Ann}(\ker\phi)$, and $\eta(\phi)=\eta(\phi|_{\T_{\mathfrak m}})$ (important_notes.md
+point 35; Chapter 3, its 11.1(v)). (iii) The pairing of 4.1 satisfies $\langle e_{\mathfrak m}g,t\rangle=\langle g,e_{\mathfrak m}t\rangle$, so it restricts to perfect pairings
+$e_{\mathfrak m}S_2(N;\Z_\ell)\times\T_{\mathfrak m}\to\Z_\ell$ and $e_{\mathfrak m}S_2(N;\Z_\ell)\simeq\operatorname{Hom}(\T_{\mathfrak m},\Z_\ell)$ (the modular-forms analogue of point 36, which concerns the
+cohomological pairing of Chapter 14). (iv) $e_{\mathfrak m}$ preserves integrality and every $\T$-stable subspace, and fixes the $\mathfrak m$-part; so a
+congruence $g\equiv h\pmod{\ell^t}$ with $g$ in the $\mathfrak m$-part and $h\in S_2(N;\Z_\ell)\cap W$, $W$ a $\T$-stable subspace, gives $g\equiv e_{\mathfrak m}h\pmod{\ell^t}$ with
+$e_{\mathfrak m}h\in W$ in the $\mathfrak m$-part (Chapter 3, its 10.6). Paper: Lemma lem:hecke ("the congruence ideal is computed in $\T_{\mathfrak m}$, since the other local
+factors ... lie in the annihilator": the correction of point 35), Theorem thm:quant Step 1 ("$\mathfrak m$ the maximal ideal of $\T_\ell$ containing
+$\ker\pi$ and $\ell$", "projecting $h$ to the $\mathfrak m$-component (an idempotent of $\T_\ell$, so the projection stays in the complement and the
+congruence survives)"), Remark rem:free, PLAN.md scope.
+
+**8.4 `prop:hecke:congruences`** (proposition; P). Let $\mathcal O$ be the ring of integers of a number field and $\lambda$ a prime of $\mathcal O$. (i) For
+normalised eigenforms $f,g$ of $\T_N$ with coefficients in $\mathcal O$ the following are equivalent: $a_n(f)\equiv a_n(g)\pmod\lambda$ for all $n\ge1$; the
+same for all primes $n=p$ (including $p\mid N$); $\phi_f\equiv\phi_g\pmod\lambda$ on all of $\T$; $\mathfrak m_{f,\lambda}=\mathfrak m_{g,\lambda}$. (From primes to all $n$: 3.2(ii),
+since both satisfy the same multiplicativity, the same recursion with the same $p^{k-1}$ for $p\nmid N$, and $a_{p^r}=a_p^r$ for $p\mid N$; from $n$ to
+$\T$: 3.1(ii).) (ii) If $f$, $g$ are normalised eigenforms of levels $M_f$, $M_g$, $\Sigma$ contains every prime dividing $M_fM_g$, and
+$a_p(f)\equiv a_p(g)\pmod\lambda$ for all $p\notin\Sigma$, then $f^\Sigma\equiv g^\Sigma\pmod\lambda$ coefficientwise, both forms lying in $S_k(L)$,
+$L=\operatorname{lcm}(M_f^\Sigma,M_g^\Sigma)$. (iii) Without depletion the conclusion can fail at the primes of $\Sigma$, and the remedy in the paper is
+the choice of $U_p$-eigenvalues in Lemma lem:old (Chapter 15); a finite check of a congruence between two forms of the same space is
+Sturm's bound (Chapter 12, its 11.3), which is a different tool from the recursion (important_notes.md point 46). Paper: Section 1
+("$f\equiv g\pmod r$ coefficientwise"), Lemma lem:crit ("$a_n(g)\equiv a_n(f)\pmod\lambda$ for every $n\ge1$", "$\phi_g\equiv\phi_f\pmod\lambda$ on all of $\T$"), Lemma
+lem:old (its reduction "the congruence for all $n$ then follows from ..."), the Example of Section 3, PLAN.md scope ("so that congruences
+at primes propagate to all $n$").
+

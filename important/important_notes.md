@@ -724,3 +724,62 @@ states the congruence number and cites it; Chapter 20 restates it. The Chapter 1
   specialisation to rhobar_{E',l}.
 * By decision B14, Rohrlich94 and Deligne73 (planned by Chapter 7) and Livne89 (planned by Chapter 11)
   belong in refs.bib. The twist of 20a1 by -7 is 980g2 (addition to B8).
+
+## From the Chapter 14 outline (modular curves over Q, Jacobians, the modular degree)
+
+Source: `outlines/ch14_moddeg.md`, Section 9 and final section. The outline proves point 39 in full (its
+items 9.1 to 9.5). Point 57 is as reported by the outline agent (data checked; the exact published
+statement of Calegari-Emerton not checked).
+
+### 56. Refinement of point 39: what it proves, and the checklist against DFG04
+
+From the outline's Section 9:
+
+* For the optimal curve and **every** prime l, the pairing delta-hat on M_{f,l} = phi_E^* H^1(E, Z_l) has
+  ideal of values deg(phi_E) Z_l and Gram determinant deg(phi_E)^2. No irreducibility of rhobar and no
+  multiplicity one is used. Corollary: deg(phi_E) divides r_E at every prime (with Chapter 3's algebra).
+* Lemma lem:hecke is therefore an equality, the identity (eq:identity) of Theorem thm:main is an equality
+  whenever l is not in S_f, and Step 4 of Theorem thm:quant needs no freeness. Remark (2) after Theorem
+  thm:quant still needs multiplicity one, because the depleted form g^S is not attached to an optimal
+  quotient.
+* Example: at 99a1 and l = 3 (outside the paper's hypotheses since 3 divides N), deg = 4 and r = 12, so the
+  inequality of Lemma lem:ddt417 is strict and H^1(X_0(99), Z_3)_m is not free over T_m.
+
+**Checklist before changing the paper** (what DFG04 must be confirmed to say):
+1. that their integral structure is H^1(X_0(N), Z_l), and not the trivial-character part of a
+   Gamma_1(N)-type cohomology (in which case the pairing scales by #(Z/N)^x/{1, -1}, which l can divide);
+2. that their "interior" cohomology is H^1(X_0(N)) (proved in the outline);
+3. that [UwU]omega is w_N with no scalar, and how H^2_c is normalised (elliptic points of order 3 matter
+   at l = 3);
+4. that M_{f,lambda} is the kernel lattice, not the projection lattice;
+5. that eta is the ideal of values of the pairing on M_{f,lambda}.
+
+### 57. Section sec:two: the paraphrase of Calegari-Emerton fails for CM curves
+
+The paper says a curve of odd modular degree has at most two odd bad primes and a rational 2-torsion point
+or prime conductor. 27a1 and 243b1 have odd modular degree, torsion Z/3 (no 2-torsion) and non-prime
+conductor; both have CM (j = 0). So either the published theorem excludes CM curves or has extra cases, and
+the paraphrase should say so. **Action:** check the exact statement of CalegariEmerton09 and add the
+hypothesis or exceptions. Confidence: high on the data, medium on the published statement.
+
+### 58. A second example for the remark on l dividing N
+
+726a1 has congruence number r = 1584 = 11 * 144 and modular degree 144 (computed with PARI), so it is a
+second instance where r and deg differ, at l = 11 (121 divides 726). It could be added next to 99A1.
+Optional.
+
+## Book-internal consistency (continued)
+
+### B19. Items from the Chapter 14 outline
+
+* The Chapter 21 outline's dependency diagram and hypothesis table still route the equality in thm:main
+  through Remark rem:free (superseded by points 39 and 56).
+* The Chapter 9 and 21 outlines say r(99A1) was "not recomputed" or "as cited"; it is now recomputed (12),
+  and they can cite Chapter 14.
+* Chapter 15's item 2.6(ii) duplicates point 40; Chapter 14 proves it (item 9.1), Chapter 15 cites it.
+* DeligneRapoport73, KatzMazur85, Ogg73 and Kenku are needed by more than one chapter and belong in refs.bib
+  (B14); the existing key Ogg is Ogg's 1967 paper, not the 1973 paper on cusps.
+* PLAN.md's Chapter 14 entry has an unfinished "Mazur: c | ..." placeholder and still says lem:crit is
+  proved "here or in Chapter 20" (decided in B17: Chapter 15).
+* Ribet-Takahashi is stated in both Chapters 14 and 15; keep the statement in Chapter 14 and cite it.
+* Chapter 20 should cite Chapter 14's items 9.3, 9.5, 9.6 and 10.3 rather than re-derive them.
