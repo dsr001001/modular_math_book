@@ -450,7 +450,8 @@ be the $\T$-stable complement of $\C g$ (C5). (i) $S_k(N)=\C g\oplus g^c$, $\T\o
 then $g^c$ is defined over $\Q$ and $g^c\cap S_2(N;\Z)$ is saturated of rank $d-1$; so the arguments of the paper's Lemma lem:crit apply to $\pi$
 and $\eta(\pi)$ (4.3) is the largest modulus of a congruence $g\equiv h$, $h\in g^c\cap S_2(N;\Z)$ (proved in Chapter 15 for newforms; the proof
 uses only (i)). (ii) If $g$ is a newform, $g^c=g^\perp$ (6.2(iv)). (iii) If $g$ is not a newform, $g^c\ne g^\perp$ in general: for $g=f_{11}^{\{2\}}$ at
-level $44$, $g^c\ni f_{11}-\beta f_{11}(2z)$ (a stabilisation), which is not orthogonal to $g$ (Gram entries of 5.3(iii)). Paper: Theorem thm:twist
+level $44$, $g^c\ni f_{11}-\beta f_{11}(2z)$ (a stabilisation), which is not orthogonal to $g$: with the Petersson Gram matrix of $f_{11}(z),f_{11}(2z),f_{11}(4z)$ at level $44$, proportional to
+$\begin{psmallmatrix}1&-1/3&1/24\\-1/3&1/4&-1/12\\1/24&-1/12&1/16\end{psmallmatrix}$, one finds $\langle g,f_{11}-\beta f_{11}(2z)\rangle=\frac5{12}\langle f_{11},f_{11}\rangle$ (verified with PARI). Paper: Theorem thm:twist
 ("$g^\perp$, the $\T$-stable complement of the $g$-line"; at level $N_S$ the newform $g$ makes the two notions agree), Theorem thm:quant Step 1
 ("in the $\T$-stable complement of the $g^S$-line"; there it is not a Petersson complement).
 
@@ -480,4 +481,133 @@ Sturm's bound (Chapter 12, its 11.3), which is a different tool from the recursi
 ("$f\equiv g\pmod r$ coefficientwise"), Lemma lem:crit ("$a_n(g)\equiv a_n(f)\pmod\lambda$ for every $n\ge1$", "$\phi_g\equiv\phi_f\pmod\lambda$ on all of $\T$"), Lemma
 lem:old (its reduction "the congruence for all $n$ then follows from ..."), the Example of Section 3, PLAN.md scope ("so that congruences
 at primes propagate to all $n$").
+
+### Section 9. Twisting
+
+**9.1 `prop:hecke:twist-operator`** (proposition; P for (i), (iii) to (vi); S for (ii)). Let $\chi$ be a primitive Dirichlet character of
+conductor $r$, $\mathfrak g(\bar\chi)=\sum_{u\bmod r}\bar\chi(u)e^{2\pi iu/r}$ its Gauss sum (Chapter 2), and $f\in S_k(M)$. (i)
+$$f\otimes\chi=\sum_n\chi(n)a_n(f)q^n=\mathfrak g(\bar\chi)^{-1}\sum_{u\bmod r}\bar\chi(u)\,f\big|_k\begin{psmallmatrix}1&u/r\\0&1\end{psmallmatrix}$$
+(from $\sum_u\bar\chi(u)e^{2\pi inu/r}=\chi(n)\mathfrak g(\bar\chi)$ for primitive $\chi$ and all $n$, Chapter 2). (ii) $f\otimes\chi\in S_k(\Gamma_0(\operatorname{lcm}(M,r^2)),\chi^2)$; for
+quadratic $\chi$, $f\otimes\chi\in S_k(\operatorname{lcm}(M,r^2))$ (sketch: for $\gamma\in\Gamma_0(\operatorname{lcm}(M,r^2))$ and each $u$ there are $u'$ and $\gamma'\in\Gamma_0(M)$ with
+$\begin{psmallmatrix}1&u/r\\0&1\end{psmallmatrix}\gamma=\gamma'\begin{psmallmatrix}1&u'/r\\0&1\end{psmallmatrix}$, $u'\equiv d^2u\pmod r$). (iii) If $\chi$ is quadratic and $f\in S_k(M;\Z)$ then
+$f\otimes\chi\in S_k(\operatorname{lcm}(M,r^2);\Z)$ ($\chi(n)\in\{0,\pm1\}$). (iv) (Intertwining.) Let $\chi$ be quadratic and $L=\operatorname{lcm}(M,r^2)$. For a prime $p\nmid r$:
+$T_p^{(L)}(f\otimes\chi)=\chi(p)\,(T_p^{(M)}f)\otimes\chi$, where on each side $T_p$ means $U_p$ if $p$ divides the level (compare coefficients with 2.3;
+it uses $\chi(p)^2=1$); for $p\mid r$: $U_p^{(L)}(f\otimes\chi)=0$. So $f\mapsto f\otimes\chi$ maps the eigenspace of $\T^{(Mr)}$ for a system $(\lambda_p)$ into
+the eigenspace for $(\chi(p)\lambda_p)$, and a normalised eigenform of $\T_M$ to a normalised eigenform of $\T_L$. (v) (Twisting twice.)
+$(f\otimes\chi)\otimes\bar\chi=\sum_{(n,r)=1}a_n(f)q^n=f^{\{p\mid r\}}$; for a normalised eigenform $f$ this is the depleted form of 7.4. In
+particular $g\otimes\chi\otimes\chi$ is the $q$-depletion of $g$, not $g$ (important_notes.md point 20). (vi) (The paper's $\iota$.) For a finite set $S$
+of odd primes, $D$ and $\chi_S$ as in C7, $\iota=\iota_S\colon S_2(M)\to S_2(\operatorname{lcm}(M,D^2))$, $h\mapsto h\otimes\chi_S$, is $\C$-linear, maps $S_2(M;\Z)$ into
+$S_2(\operatorname{lcm}(M,D^2);\Z)$, kills every $h(dz)$ with $(d,D)>1$, satisfies $\iota(h)=\iota(h^{S})$, and maps generalised eigenspaces of $\T^{(DM)}$ for
+$(\lambda_p)$ into those for $(\chi_S(p)\lambda_p)$. Reference: Shimura71 Proposition 3.64 (verify); Miyake 4.3 (cite the section);
+AtkinLi78 Section 3 (cite the section); DiamondShurman 5.? exercises on twists (verify, else omit). Paper: Theorem thm:twist ("$\iota$ ...
+maps $S_2(\Gamma_0(N_S))$ into $S_2(\Gamma_0(\operatorname{lcm}(N_S,D^2)))$", "preserves integrality", "sends an eigenform of all $T_n$, $(n,N_S)=1$, to an
+eigenform with eigenvalues twisted by $\chi_S(n)$", "kills the coefficients at multiples of $D$"), Theorem thm:quant Step 1 ("$\iota$
+intertwines $T_p$ with $\chi_S(p)T_p$ for $p\nmid DN$"; "the level of a twist by $\chi_S$ divides $\operatorname{lcm}(N,D^2)=N$"), Theorem thm:qual (b), (c)
+($h=g\otimes\chi$).
+
+**9.2 `thm:hecke:atkin-li`** (theorem, Atkin-Li; R, with a sketch S via conductors). Let $g$ be a newform of weight $2$ on $\Gamma_0(M)$, $q$
+an odd prime and $\chi=\chi_{q^*}$. (i) If $q\nmid M$, $g\otimes\chi$ is a newform on $\Gamma_0(Mq^2)$. (ii) If $q\,\|\,M$, $g\otimes\chi$ is a newform on
+$\Gamma_0(Mq)$. In both cases the level is $\operatorname{lcm}(M,q^2)$; this is the paper's Lemma lem:twist (iii). (iii) If $q^2\mid M$, the $q$-series
+$g\otimes\chi$ need not be a newform: it is the $q$-depletion $g'^{\{q\}}$ of the newform $g'$ with $a_p(g')=\chi(p)a_p(g)$ for $p\ne q$ (6.3), whose
+level divides $M$ (9.1(ii) and 6.2(ii)) and may be smaller or equal. Examples (conductors of the twisted curves by PARI, labels
+from `ecdata`): $q\nmid M$: 11a1 by $-11$ gives 121d2, by $-7$ gives 539d2; 20a1 by $-7$ gives 980g2 (not 980i); 37a1 by $5$ gives 925e1;
+$q\,\|\,M$: 14a1 by $-7$ gives 98a3, 77c1 by $-7$ gives 539c1, 15a1 by $-3$ gives 45a4; $q^2\mid M$: 539c1 by $-7$ gives 77c1 and 539d1 by $-7$ gives 11a3
+(level drops), 121a1 by $-11$ gives 121c2, 99a1 by $-3$ gives 99c1 and 49a1 by $-7$ gives 49a3 (level kept). Sketch (via Chapter 15): the level
+of a newform is the conductor of its $\lambda$-adic Galois representation $\rho_g$ (Carayol86), and $\rho_{g\otimes\chi}=\rho_g\otimes\chi$; if $\rho_g$ is
+unramified at $q$, or unipotent on inertia ($q\,\|\,M$, Steinberg), then $\rho_g\otimes\chi$ has no inertia invariants and is tame at $q$, so its
+conductor exponent is $2$. Reference: AtkinLi78 Theorem 3.1 (as cited by the paper; verify the numbering and that the hypothesis
+$q^2\nmid M$ is the one stated there); Li75 (proposed key; Part 6.5) for the case $q\nmid M$; Shimura71 3.6 (cite the section). Paper: Lemma
+lem:twist (iii), Theorem thm:qual (b), (c) ("$h=g\otimes\chi$ is a newform on $\Gamma_0(Mq)$", "on $\Gamma_0(Mq^2)$"), Theorem thm:twist and Theorem
+thm:quant ($\iota(g)=f$ in the cases $\mathrm{I}_n^*$, $\mathrm{I}_0^*$), the Example of Section 3 ($f_{\text{11a}}\otimes\chi_{-11}$ is the form of 121d).
+
+**9.3 `prop:hecke:twist-transport`** (proposition; P given 6.2, 6.3, 9.1). Let $S$, $D$, $\chi_S$, $\iota$ be as in 9.1(vi). Let $g$ be a newform of
+weight $2$ and level $M$ and $f$ the newform whose system is $(\chi_S(p)a_p(g))_{p\nmid DM}$ (6.3), of level $N_f$, and let $L$ be a common multiple
+of $\operatorname{lcm}(M,D^2)$ and $N_f$. (i) If $h\in S_2(M)$ lies in the sum of the anemic generalised eigenspaces of systems different from that of $g$
+(that is, $h\in g^\perp$ at level $M$, 6.2(iv)), then $\iota(h)\in S_2(L)$ lies in the sum of the anemic eigenspaces of systems different from that of $f$,
+hence is orthogonal to every $f(dz)$; if $N_f=L$, $\iota(h)\in f^\perp$. (ii) If $f=\iota(g)$ (as $q$-series; this holds when $a_{n}(f)=0$ for all $n$ with
+$(n,D)>1$, for instance when $q^2\mid N_f$ for all $q\in S$), then a congruence $g\equiv h\pmod r$ with $h\in g^\perp\cap S_2(M;\Z)$ gives $f\equiv\iota(h)\pmod r$
+with $\iota(h)\in f^\perp\cap S_2(L;\Z)$. (iii) Conversely $\iota(f)=g^S$, and $\iota$ maps $f^\perp$ (at level $N_f$, with $D^2\mid N_f$) into the $\T$-stable complement
+of $\C g^S$ at level $N_f$ whenever the generalised eigenspace of $g^S$ there is a line (8.2). This is the engine of the paper's Theorem
+thm:twist and of Theorem thm:quant Step 1; the theorems themselves (with congruence numbers) are proved in Chapter 20. Paper:
+Theorem thm:twist (its whole proof), Theorem thm:quant Step 1, Part 7 point N1.
+
+### Section 10. The $L$-function of a newform; Rankin-Selberg
+
+**10.1 `prop:hecke:euler-product`** (proposition; P). Let $f$ be a normalised eigenform of $\T_N$ of weight $k$. Then
+$L(f,s)=\sum_{n\ge1}a_n(f)n^{-s}$ converges absolutely for $\operatorname{Re}s>k/2+1$ (Chapter 12, its 6.4) and
+$$L(f,s)=\prod_{p\nmid N}\bigl(1-a_pp^{-s}+p^{k-1-2s}\bigr)^{-1}\prod_{p\mid N}\bigl(1-a_pp^{-s}\bigr)^{-1}$$
+(3.2(ii) and 2.4(iv)). For a newform of weight $2$: the factor at $p\mid N$ is $(1\mp p^{-s})^{-1}$ if $p\,\|\,N$ and $1$ if $p^2\mid N$, and
+$L_p(f,s)^{-1}=(1-\alpha_pp^{-s})(1-\beta_pp^{-s})$ at $p\nmid N$; $L(f^\Sigma,s)=L(f,s)\prod_{p\in\Sigma}L_p(f,s)^{-1}$; $L(f\otimes\chi,s)$ has the factors
+$(1-\chi(p)a_pp^{-s}+\chi(p)^2p^{1-2s})^{-1}$ at $p\nmid rN$. For $f=f_E$, $L(f_E,s)=L(E,s)$ (modularity, Chapter 14). Reference: DiamondShurman 5.9
+(cite the section). Paper: Section 1 (the $L$-function), Section 1.1 ($\delta_p$ is the degree of $L_p(f,s)^{-1}$), background.
+
+**10.2 `thm:hecke:functional-equation`** (theorem; S). Let $f\in S_k(N)$ with $f|_kW_N=\varepsilon_Nf$ (Chapter 12, its 12.1). Then
+$\Lambda(f,s)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(f,s)=N^{s/2}\int_0^\infty f(iy)y^{s-1}\,dy$ extends to an entire function, bounded in vertical strips, with
+$\Lambda(f,s)=i^k\varepsilon_N\Lambda(f,k-s)$; in weight $2$ the sign is $-\varepsilon_N$. Sketch: split the Mellin integral at $y=1/\sqrt N$ and apply $W_N$ on
+$(0,1/\sqrt N)$; each piece converges for all $s$ by the exponential decay of $f$ at the cusps. Physics aside: the Mellin transform, RHB's
+integral transforms. Checks: 11a1 ($\varepsilon_{11}=-1$, sign $+1$, rank $0$), 37a1 ($\varepsilon_{37}=+1$, sign $-1$, rank $1$) (Chapter 12, its 12.4(c)).
+Reference: DiamondShurman Theorem 5.10.2 (verify); Miyake 4.3 (cite the section). Paper: background (Section 1; Chapter 19 for the
+adjoint and symmetric square $L$-functions).
+
+**10.3 `thm:hecke:rankin-selberg`** (theorem; S, with numerical checks). Let $f\in S_k(N)$ (any cusp form). (i) $D(f,s)=\sum_{n\ge1}|a_n(f)|^2n^{-s}$
+converges for $\operatorname{Re}s>k$, continues meromorphically to $\operatorname{Re}s>k-1/2$ with a simple pole at $s=k$, and
+$$\operatorname{Res}_{s=k}D(f,s)=\frac{3\,(4\pi)^k}{\pi\,\Gamma(k)\,\mu(N)}\,\langle f,f\rangle,\qquad\text{in weight }2:\quad\operatorname{Res}_{s=2}D(f,s)=\frac{48\pi}{\mu(N)}\langle f,f\rangle,$$
+with the unnormalised Petersson product of Chapter 12 (C5) and $\mu(N)=[\SL_2(\Z):\Gamma_0(N)]$. (ii) For a newform of weight $2$ with rational
+coefficients and squarefree level: $D(f,s)=\zeta^{(N)}(s-1)\,L(\Sym f,s)/\zeta^{(N)}(2s-2)$, with $L(\Sym f,s)$ in the normalisation of the paper
+and of PARI's `lfunsympow` ($L_p(\Sym f,s)=L_p(A_f,s-1)$), and so $\langle f,f\rangle=N\,L(\Sym f,2)/(8\pi^3)$. (iii) In general $D(f,s)$ is **not** the naive
+symmetric square $L$-function: at a good prime $\sum_ra_{p^r}^2X^r=(1+pX)/\bigl((1-\alpha^2X)(1-pX)(1-\beta^2X)\bigr)$, an extra factor $1+p^{1-s}$; and at the
+bad primes the correction factors are Chapter 19's (DFG04 Lemma 2.12, Shimura76). Sketch of (i): unfold $\int_{\Gamma_0(N)\backslash\mathfrak H}|f|^2y^kE(z,s)\,d\mu$
+against the Eisenstein series $E(z,s)=\sum_{\Gamma_\infty\backslash\Gamma_0(N)}\operatorname{Im}(\gamma z)^s$, whose residue at $s=1$ is $1/\operatorname{vol}(\Gamma_0(N)\backslash\mathfrak H)=3/(\pi\mu(N))$.
+Verified numerically (PARI, 30 digits): the residue formula of (i), computed from the Euler factors of `lfunsympow`, for 11a1, 37a1,
+20a1, 121a1, 99a1; the formula of (ii) for 11a1 ($\langle f,f\rangle=0.04690014787\ldots$, $L(\Sym f,2)=1.05759924459\ldots$) and 37a1. Reference:
+Shimura76; Rankin, *Contributions to the theory of Ramanujan's function $\tau(n)$ and similar arithmetical functions* I, II, Proc.
+Cambridge Philos. Soc. 35 (1939) (proposed key `Rankin39`, Part 6.5); Zagier85; DFG04 Lemma 2.12 (as cited by the paper). Paper:
+Section 1 ("$\langle f,f\rangle$ is the special value $L(\Sym f,2)$ up to the local factors at the bad primes (Rankin, Shimura; see DFG04 Lemma
+2.12)"; "the Euler product of $\sum a_n(f)^2n^{-s}$", important_notes.md point 30), Section 6 map row (Petersson norm, Rankin-Selberg).
+
+### Section 11. Worked examples from the paper's world
+
+**11.1 `ex:hecke:level-88`** (example; P as a computation). $S_2(88)$, $d=9$: newforms of level $88$ (three, with $a_2=0$), $f_{44}$ (one, old twice),
+$f_{11}$ (old four times). $U_2$ has characteristic polynomial $X^7(X^2+2X+2)$ and minimal polynomial $X^2(X^2+2X+2)$; on $V_{f_{11},2,3}$ its matrix is
+$\begin{psmallmatrix}-2&1&0&0\\-2&0&1&0\\0&0&0&1\\0&0&0&0\end{psmallmatrix}$ with a Jordan block of size $2$ at $0$, kernel spanned by $f_{11}^{(2)}=f_{11}+2f_{11}(2z)+2f_{11}(4z)$, and the
+stabilisations $f_{11}-\beta f_{11}(2z)$, $\alpha,\beta=-1\pm i$. So $\T_{88}\otimes\Q$ is not reduced, $\wp\cap I=0$ is a statement to be proved for the
+depleted form (important_notes.md point 19), and the paper's "the eigenvalue $0$ with multiplicity one" (Theorem thm:quant Step 1) is a
+statement about the minimal level $M^\Sigma$, which fails one level higher. Also $\operatorname{rank}\T_{88}=9$, pairing determinant $-1$,
+$[\T_{88}:\Z T_1+\cdots+\Z T_9]=3$, congruence number of 88a1 equal to $16$ (modular degree $8$; $2^3\mid88$).
+
+**11.2 `ex:hecke:congruence-numbers`** (example; P as a computation, by the lattice method of 4.3 and 4.2). Congruence numbers $r_f$ of
+the rational newforms at small levels, against the modular degrees of the optimal curves (Cremona's `degphi` file):
+
+| curve | 11a1 | 33a1 | 37a1 | 37b1 | 44a1 | 77a1 | 77b1 | 77c1 | 88a1 | 99a1 | 99b1 | 99c1 | 99d1 |
+|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+| $r_f$ | 1 | 3 | 2 | 2 | 2 | 4 | 20 | 6 | 16 | 12 | 12 | 12 | 6 |
+| $\deg\varphi_E$ | 1 | 3 | 2 | 2 | 2 | 4 | 20 | 6 | 8 | 4 | 12 | 12 | 6 |
+
+| curve | 121a1 | 121b1 | 121c1 | 121d1 | 539a1 | 539b1 | 539c1 | 539d1 |
+|-|-|-|-|-|-|-|-|-|
+| $r_f$ | 6 | 4 | 6 | 24 | 320 | 192 | 288 | 504 |
+| $\deg\varphi_E$ | 6 | 4 | 6 | 24 | 320 | 192 | 288 | 72 |
+
+The three differences (88a1 at $2$, 99a1 at $3$, 539d1 at $7$) are at primes $p$ with $p^2\mid N$, as the theorem of Agashe, Ribet and Stein
+allows (Chapter 14); 99A1 with degree $4$ and congruence number $12$ is the paper's example (Remark after Theorem thm:qual, from ARS12
+Table 1), and 539d1 (degree $72$, $r=504=2^3\cdot3^2\cdot7$) is a second one. Paper: Section 1, the remark after Theorem thm:qual ($99$A1).
+
+**11.3 `ex:hecke:twist-pairs`** (example; P as a computation). The paper's twisting statements on actual forms. (a) Case (c) of Theorem
+thm:twist ($N_S=N$): $r(121\text{a})=r(121\text{c})=6$ and $121\text{a}\otimes\chi_{-11}=121\text{c}$ (9.2). (b) Case $\mathrm{I}_n^*$: 539c1 has type $\mathrm{I}_3^*$ at $7$,
+$539\text{c}\otimes\chi_{-7}$ corresponds to 77c ($q^2\mid M$, level drops), and $r(77\text{c})=6\mid288=r(539\text{c})$; with $\ell=3$: $v_3(288)=2=v_3(6)+v_3(7^2-1)$,
+the equality case of Theorem thm:quant. (c) Case $\mathrm{I}_0^*$: 539d1, $539\text{d}\otimes\chi_{-7}$ corresponds to 11a, $r(11\text{a})=1\mid504$; $\ell=3$:
+$v_3(504)=2=0+v_3(6)+v_3(8^2-(-2)^2)$. (d) Theorem thm:quant Step 1 at level $539$: the Hecke congruence modules (4.3, 8.2) of the depleted
+forms $(77\text{c})^{\{7\}}=g-a_7(g)g(7z)$ and $(11\text{a})^{\{7\}}=f_{11}+2f_{11}(7z)+7f_{11}(49z)$ have orders $288$ and $504$, equal to $r(539\text{c})$ and
+$r(539\text{d})$ at every prime (Part 7, point N1); and $\iota\bigl((77\text{c})^{\{7\}}\bigr)=f_{539\text{c}}$, $\iota\bigl((11\text{a})^{\{7\}}\bigr)=f_{539\text{d}}$ (checked to $n=3000$). Paper:
+Theorem thm:twist (cases (a), (b), (c) and the data paragraph after it; important_notes.md point 16), Theorem thm:quant and its proof,
+the remark after it.
+
+**11.4 `ex:hecke:level-121`** (example; P). $S_2(121)$: four newforms 121a to 121d (all rational, $a_{11}=0$, $11^2\mid121$) and $V_{f_{11},11,1}$, on
+which $U_{11}$ has matrix $\begin{psmallmatrix}1&1\\0&0\end{psmallmatrix}$ ($f_{11}$ has $a_{11}=1$, $11\,\|\,11$), eigenvectors $f_{11}$ (eigenvalue $1$) and $f_{11}-f_{11}(11z)$
+(eigenvalue $0$, the depleted form of level $M^{\{11\}}=121$); $U_{11}$ on $S_2(121)$ has characteristic and minimal polynomials $X^5(X-1)$ and $X(X-1)$
+(semisimple). $121\text{a}\equiv121\text{d}\pmod3$ at every $n$ (Chapter 12, its 11.5) and $121\text{d}=f_{11}\otimes\chi_{-11}$ (9.2(i)); $T_1,\dots,T_6$ are linearly
+dependent although $\operatorname{rank}\T_{121}=6$, and $T_1,\dots,T_{22}$ ($B_2(121)=22$) span $\T_{121}$. Paper: the Example of Section 3 ((b): 121a1, 121c,
+121d, 11a1), Theorem thm:qual (b).
+
+________________________________________________________________________________
 
