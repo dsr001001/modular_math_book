@@ -242,7 +242,7 @@ $\operatorname{Sym}^2W\simeq\ad W\otimes\det W$ for $\dim W=2$ (Chapter 4, 7.5) 
 $L_p(\Sym f,s)=L_p(A_f,s-1)$ for every $p$ and $L(\Sym f,s)=L(\ad f,s-1)$ (C3). (ii) For every $p$, $P_p(X):=L_p(\Sym f,s)^{-1}|_{p^{-s}=X}$
 lies in $\Z[X]$, $P_p(0)=1$, $\deg P_p=\dim A_f^{I_p}\in\{0,1,3\}$ (integrality from the explicit list 6.2, 9.2, 9.3, 10.1), and
 $P_p(p^{-2})=L_p(A_f,1)^{-1}\in\Z[1/p]$. (iii) The eigenvalues of $\Phi_p$ on $\operatorname{Sym}^2V^\vee$ at a good $p$ are $\alpha^2,\alpha\beta=p,\beta^2$, so
-$P_p(X)=(1-\alpha^2X)(1-pX)(1-\beta^2X)$. Reference: elementary; DFG04 1.7.2 (as quoted by the paper; verify the wording). Paper:
+$P_p(X)=(1-\alpha^2X)(1-pX)(1-\beta^2X)$. Reference: elementary; DFG04 1.7.2 (as quoted by the paper; the citation is correct and DFG04 use the geometric Frobenius: Chapter 20 outline, Part 7; important_notes.md point 73). Paper:
 Section 1.1 ("In the normalisation of the symmetric square, $L_p(\Sym f,s)=L_p(A_f,s-1)$"), Definition def:terms ("$P_q(X)$ is the
 polynomial with $L_q(\Sym f,s)=P_q(q^{-s})^{-1}$").
 
@@ -293,7 +293,7 @@ occur, in one table (the writer checks each source's own notation before attribu
 
 | name | source | relation to $L(A_f,s)=L(\ad f,s)$ | functional equation | value the paper uses | factor at additive $p$ |
 |-|-|-|-|-|-|
-| $L(\ad f,s)$ | paper Sections 1, 1.1; DFG04 (1.7.2, $L(\ad^0M_f,s)$ at $s=1$; verify) | itself | $s\leftrightarrow1-s$ | $s=1$ | true |
+| $L(\ad f,s)$ | paper Sections 1, 1.1; DFG04 (1.7.2, $L(\ad^0M_f,s)$ at $s=1$; checked, Chapter 20 outline, Part 7; important_notes.md point 73) | itself | $s\leftrightarrow1-s$ | $s=1$ | true |
 | $L(s,\pi_f,\operatorname{Ad})$ | Gelbart-Jacquet (unitary) | $=L(A_f,s)$ (weight $k$: $L(A_f,s)=L(\Sym^2,s+k-1)$) | $s\leftrightarrow1-s$ | $s=1$ | true |
 | $L(\Sym f,s)$ | paper; PARI `lfunsympow(E,2)`; Watkins02; CoatesSchmidt87 (verify) | $L(A_f,s-1)$ | $s\leftrightarrow3-s$ | $s=2$ | true |
 | Shimura's series | Shimura75: $\zeta^{(N)}(2s-2)\sum a_{n^2}n^{-s}$ | $L^{\nv}(A_f,s-1)$ (8.2(B)) | (via 7.1) | | naive ($1$) |
@@ -342,13 +342,14 @@ the multiplicative primes contribute nothing beyond $N$. Verified (PARI, 18 digi
 `lfun(lfunsympow(E,2),2)`): 11a1, 14a1, 20a1, 27a1, 36a1, 49a1, 50a1, 64a1, 99a1, 121a1, 121c1, 121d1, 162a1, 52a1, 80a1, with correction
 factors $1,1,3/2,1,2,8/7,6/5,1,4/3,12/11,12/11,120/121,4/3,3/2,1$ (table 12.2). Reference: Rankin39; Selberg40 (proposed `bib/ch19.bib`
 key); Shimura76 (verify which statement); Zagier85; Watkins02 (the method of `ellmoddegree`; cite the section); DFG04 Lemma 2.12
-(as cited by the paper; content not re-checked: the writer must not attribute this exact formula to it without checking).
+(as cited by the paper; checked: it gives the Petersson norm with the naive $L$-value, Chapter 20 outline, Part 7; important_notes.md point 73; the writer compares its
+constant with this exact formula before attributing the formula to it).
 Paper: Section 1 ("Rankin, Shimura; see DFG04 Lemma 2.12").
 
 **8.4 `cor:lfunctions:degree-formula`** (corollary; P given 8.3 and Chapter 14, its 7.3). (i) For every modular parametrisation
 $\varphi\colon X_0(N)\to E$ with Manin constant $c_\varphi$: $\deg\varphi\cdot\operatorname{vol}(\Lambda_E)=c_\varphi^2\,N\,L^{\nv}(\ad f,1)/(2\pi)$. (ii) For the optimal curve
-($c_E=\pm1$ for the curves of the tables, Chapter 14): $\degphi=N\,L^{\nv}(\ad f,1)/(2\pi\operatorname{vol}(\Lambda_E))$. (iii) Put
-$B_E=N\,L(\ad f,1)/(2\pi\operatorname{vol}(\Lambda_E))$. Then $B_E=\degphi\prod_{q^2\mid N}P_q(q^{-2})^{-1}\in\Q^\times$ (for $c_E=\pm1$) and, for every prime $\ell\nmid N$,
+($c_E=1$ for the curves of the tables, with the sign of $\omega_E$ fixed by $c_E>0$, Chapter 14; Appendix B, B-C9): $\degphi=N\,L^{\nv}(\ad f,1)/(2\pi\operatorname{vol}(\Lambda_E))$. (iii) Put
+$B_E=N\,L(\ad f,1)/(2\pi\operatorname{vol}(\Lambda_E))$. Then $B_E=\degphi\prod_{q^2\mid N}P_q(q^{-2})^{-1}\in\Q^\times$ (for $c_E=1$) and, for every prime $\ell\nmid N$,
 $$v_\ell(\degphi)=v_\ell(B_E)+\sum_{q\mid N}e_\ell(E,q)$$
 (at a multiplicative $q$, $e_\ell=0$; at an additive $q$, $e_\ell(E,q)=v_\ell(L_q(A_f,1)^{-1})=v_\ell(P_q(q^{-2}))$, 9.1). This identity is unconditional:
 the paper's inequality (eq:thm) is equivalent to $v_\ell(B_E)\ge\sum_{q\mid N}t_\ell(E,q)$. (iv) $v_\ell(B_E)$ can be negative when the hypotheses of
@@ -721,7 +722,7 @@ Results from earlier chapters used here (by chapter label only):
   (types $\mathrm{IV}$, $\mathrm{IV}^*$ at $2$), 4.6 (wild inertia), 8.4, 8.5 (3Ns, $h_3$).
 * Chapter 12 (`ch:modforms`): the Petersson product (C5), $\mu(N)$, $W_N$.
 * Chapter 13 (`ch:hecke`): $L(f,s)$ and its functional equation (10.1, 10.2), the Rankin-Selberg residue (10.3(i)).
-* Chapter 14 (`ch:moddeg`): modularity; the Zagier-Watkins formula with $c^2$ in the numerator (7.3; B10); $c_E=\pm1$ on the tables.
+* Chapter 14 (`ch:moddeg`): modularity; the Zagier-Watkins formula with $c^2$ in the numerator (7.3; B10); $c_E=1$ on the tables.
 * Chapter 15 (`ch:modgalrep`): local-global compatibility (3.4), the local types and $\delta_p$ (3.5), the naive-factor corollary (3.7).
 * Chapters 17, 18 (`ch:galcoh`, `ch:blochkato`, being outlined in parallel): only as forward black boxes in 8.5, 8.6 and 9.6
   ($H^1_{\mathrm{ur}}$, Bloch-Kato Selmer groups, Tamagawa factors, DFG04 Theorem 0.1); never used in a proof here.
@@ -894,7 +895,7 @@ the paper's guiding sentence ("the primes at which the naive and the true adjoin
 which the modular degree acquires extra local divisibility, and the amount is the valuation of the omitted factor") an identity,
 and reduces (eq:thm) to $v_\ell(B_E)\ge\sum_qt_\ell(E,q)$. Suggested action: one displayed formula in Section 1, citing Rankin, Shimura and
 Watkins. Confidence: high for the formula (proved from the residue formula; checked to 15 digits on 15 curves with additive primes
-at $2$, $3$, $7$, $11$, and $B_E$ exactly on 19 curves); the attribution to DFG04 Lemma 2.12 not checked.
+at $2$, $3$, $7$, $11$, and $B_E$ exactly on 19 curves); the attribution to DFG04 Lemma 2.12 not checked here (DFG04 Lemma 2.12 gives the Petersson norm with the naive $L$-value: Chapter 20 outline, Part 7; important_notes.md point 73).
 
 **N3 (optional strengthening; Remark rem:wild and Section sec:wild: the factor at $q=2,3$ is not mysterious).** At every bad prime
 $q\ne\ell$, including $2$ and $3$, $P_q$ is one of: $1-X$ (potentially multiplicative); $(1-qX)(1-(a'^2-2q)X+q^2X^2)$ with $a'=a_q(E^{(d)})$ when some

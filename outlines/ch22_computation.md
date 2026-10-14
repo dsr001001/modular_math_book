@@ -212,7 +212,7 @@ $11$, $\ell=5$: $n=5$, $q_E=10\cdot11^5+2\cdot11^6+\cdots$, $\bar u=10$, $k=1$; 
 the same $q_E$ as 77c1 (its twist), $\bar u=5$, $k=0$; 791a1 $=[1,0,1,-31,117]$ at $7$: $\bar u=6$, $k=1$; 1577a1 $=[0,-1,1,30,-335]$ at $19$:
 $\bar u=8$, $k=1$. These agree with Chapter 17, 5.5 and Chapter 18, 8.5. Two warnings: `elltatepairing` is the Tate pairing on
 torsion points and has nothing to do with the Tate parameter; and `ellinit(E, q)` with an integer prime $q$ (PLAN.md's
-suggestion) reduces $E$ modulo $q$: it returns `[]` at a bad prime (C: 77c1 at $7$) and the curve over $\F_q$ at a good one, never
+former suggestion, now corrected there) reduces $E$ modulo $q$: it returns `[]` at a bad prime (C: 77c1 at $7$) and the curve over $\F_q$ at a good one, never
 the curve over $\Q_q$; the $q$-adic curve needs `O(q^k)` (Part 8, B-c). Notation: the class of $\bar u$ is
 written $c(u)$, never $c_q$ (points 23, N9 of Chapter 21). Paper: Section sec:data ("the Tate parameters with `ellinit`
 over $\Q_q$"), Section sec:tam, Lemma lem:tamfactor, Remark rem:ko(1).
@@ -278,7 +278,7 @@ $1$, no prime divisors); `726 a 1 144 {2,3} [1,1,0,-35,-51]`; `11a1 5Cs.1.1` and
 and gives the optimal curve's equation; `galrep` gives images only for $\ell$ where the image is not $\GL_2(\F_\ell)$. The
 repository has further directories (generators, $a_p$ lists, integral points, optimality and Manin constant data, and
 others); the writer names only those checked in the repository at the pinned commit (Part 6.5), and must not write
-"`alldegphi`" (PLAN.md's name; the file is `degphi`, Part 8). Paper: Section sec:data ("Cremona's tables in the form of the
+"`alldegphi`" (PLAN.md's former name, now corrected there; the file is `degphi`, Part 8). Paper: Section sec:data ("Cremona's tables in the form of the
 `ecdata` repository at commit `25cec5e`, which contain every elliptic curve over $\Q$ of conductor below $500000$ with ...").
 
 **4.2 `ex:computation:reading-ecdata`** (worked example; C). Reading the files in GP: `readstr(file)` gives the vector of
@@ -354,7 +354,7 @@ the tables, Chapter 14). Check (C): the book's independent Python implementation
 the appendix ("`rule(E,l)` leaves the type $\mathrm{III}$ terms out and `rule(E,l,1)` is (eq:rule)").
 
 **5.4 `warn:computation:rule-pitfalls`** (warning; C for each example). Where `rule` gives an answer that is not the paper's
-quantity: (a) a non-optimal model: `ellmoddegree` returns $\deg/c^2$ of that model, so `rule` on 11a3 at $\ell=5$ returns `[-1, 0]`
+quantity: (a) a non-optimal model: `ellmoddegree` returns $\deg/c_\varphi^2$ of that model ($c_\varphi$ the Manin constant of its parametrisation, Appendix B, B-C9), so `rule` on 11a3 at $\ell=5$ returns `[-1, 0]`
 (a negative "valuation of a degree") and on 990h1 at $\ell=3$ returns `[4, 3]` instead of 990h3's `[3, 3]`; (b) CM curves: `ns3`
 is $1$ on $13$ CM optimal curves below $10{,}000$, where $h_3$ has no meaning in Conjecture conj:euler (which excludes CM); (c)
 Eisenstein curves: 11a1 at $\ell=5$ returns `[0, 1]`, an apparent violation, but $E[5]$ is reducible (5Cs.1.1) and the curve is
@@ -815,7 +815,7 @@ not counted); computational items appear on the card with the exact output in on
 | `lfuncreate` / `lfunsympow` / `lfuneuler` and the conventions for the symmetric square Euler factor | 3.3, 3.4 (`lfuncreate` mentioned in 3.3 as the general constructor, not needed) |
 | `ellinit` over $\Q_q$ and the Tate parameter (not `elltatepairing`), its valuation and unit part | 3.5, 6.8 |
 | `valuation`, `factor` | 2.2, 2.4(f), 3.6 |
-| Cremona's tables and `ecdata`: allcurves, allbsd, alldegphi (= `degphi`), allgens, alllabels, allisog; Kodaira symbols and Tamagawa numbers; mod $\ell$ images with Sutherland's labels; optimality and the label "1"; LMFDB labels | 4.1 to 4.4 (`allgens` not in the local copy: 4.1 says so) |
+| Cremona's tables and `ecdata`: allcurves, allbsd, `degphi` (PLAN.md formerly wrote alldegphi), allgens, alllabels, allisog; Kodaira symbols and Tamagawa numbers; mod $\ell$ images with Sutherland's labels; optimality and the label "1"; LMFDB labels | 4.1 to 4.4 (`allgens` not in the local copy: 4.1 says so) |
 | reading a Cremona label (11a1, 121a1, 121c, 121d, 539c1, 980i1, 726a1, 99A1, capitalisation) | 4.4 (full list: Chapter 9, 12.1) |
 | the data protocol: four ranges; pre-registration; "nothing was adjusted"; blind-tested versus confirmed; the out-of-table set for Conjecture conj:euler | 9.1, 9.2, 9.3, 9.5 |
 | elementary statistics: what a violation is; the calibration argument with the numbers; what it does and does not show; equality rates and mean excess as descriptive statistics; base rates by Kodaira type; multiple comparisons; why a hold-out | 8.2, 8.3, 8.4, 9.4, 10.1 to 10.6 |
@@ -1358,14 +1358,14 @@ error).
 ### 8.2 Book-internal inconsistencies
 
 * **B-a. File name `alldegphi`.** PLAN.md (Chapter 22 scope), the Chapter 11 outline (lines 13, 957) and the Chapter 21 outline
-  (A6, 8.2) write `alldegphi`; the `ecdata` file is `degphi.00000-09999` (Part 7, R0). Writers must use `degphi`.
+  (A6, 8.2) write `alldegphi`; the `ecdata` file is `degphi.00000-09999` (Part 7, R0). Writers must use `degphi`. (Fixed in PLAN.md and in the Chapter 11 outline; the Chapter 21 outline is left to its reviser.)
 * **B-b. Statistics references live in `bib/chA.bib`.** `Feller68`, `Wasserman04`, `RHB06` are defined in `bib/chA.bib`, but
   Chapter 22 must cite them; by decision B14 they move to `refs.bib` (the stand-alone build of Chapter 22 reads only `refs.bib` and
   `bib/ch22.bib` and would fail).
 * **B-c. PLAN.md, Chapter 22 scope, on PARI.** (1) "extract the Tate parameter ... via `ellinit(E, q)`": `ellinit(E, q)` with an integer
   prime reduces modulo $q$ (returns `[]` at a bad prime); the $q$-adic curve is `ellinit(E, O(q^k))` and the parameter `.tate[3]`. (2)
   "a GP script that loops over curves ... from `ellsearch`": `ellsearch` needs the optional `elldata` package, absent here; the
-  chapter reads `ecdata` files instead. PLAN.md can be annotated.
+  chapter reads `ecdata` files instead. (Both are now corrected in PLAN.md's Chapter 22 entry.)
 * **B-d. Appendix A (written) and the Chapter 21 outline on blind tests.** Appendix A's paperlink `pl:prereq:protocol` and the
   Chapter 21 outline (A6.1: "blind test for (eq:main), (eq:twist), Conjecture conj:eis") present the (eq:twist) test as blind
   without the qualification of N2(c), and do not say that the correction term was never blind-tested (N2(a)). If N2 is accepted,
