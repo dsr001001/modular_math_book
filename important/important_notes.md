@@ -857,3 +857,73 @@ in the paper's setting only H^1_f(Q, V^D) = 0 needs DFG04 Theorem 2.7. Observati
   MazurRubin04 too if Chapter 18 cites it.
 * Chapter 21 item A2.7, step (7), drops eps in "c' = kappa_u(Frob)"; its commentary "no such map" must be
   softened per the addendum to point 7.
+
+## From the Chapter 18 outline (Bloch-Kato Selmer groups, Tamagawa factors)
+
+Source: `outlines/ch18_blochkato.md`. Point 64 was checked by the orchestrating session for l >= 5; the
+l = 3 case and points 65 to 68 are as reported by the outline agent (PARI checks on Cremona's tables below
+conductor 10,000, including 52,896 brute-force checks of the formula of Lemma lem:tamfactor and 101,336 checks
+that Tam(T) is the l-part of c_q, all without mismatch).
+
+### 64. Open question 3, first half, answered: Tam_q(ad T) is trivial at potentially good additive primes
+
+For q != l, l odd, and E with potentially good additive reduction at q, v_l(Tam_q(ad T)) = 0. Argument:
+inertia acts on M = ad T through a finite group H of order dividing 24, with kernel K. Inflation-restriction
+gives 0 -> H^1(H, M) -> H^1(I, M) -> Hom(K, M)^H, and Hom(K, M) factors through the tame pro-l quotient Z_l(1)
+of K, so it is torsion-free; H^1(H, M) is killed by #H. For l >= 5, l does not divide #H, so H^1(I, M) is
+torsion-free and the Tamagawa factor is trivial (checked by the orchestrating session). For l = 3, the agent
+shows ad T is free over Z_3[C_3] for the 3-part of H (explicit basis), so H^1(H, M) has no 3-torsion. At
+potentially multiplicative primes the formula of Lemma lem:tamfactor applies to the Tate parameter (point 18).
+Consequence: (eq:identity) becomes fully explicit, and the excess of v_l(deg) over the explicit bound is
+exactly the Selmer length (the second half of Open question 3). Data below conductor 10,000 at l = 3: the excess
+is never negative and is 0 for 8,688 of 13,203 curves. **Action:** state this as a lemma in Section 4 and
+reduce Open question 3 to the Selmer group. Confidence: high (l >= 5 checked twice; l = 3 as reported).
+
+### 65. Abstract: the Tamagawa sentence omits the condition l | n_q and says "by one"
+
+The abstract says the Tamagawa factor formula "raises the bound by one whenever a Steinberg prime q = 1 mod l
+has a Tate parameter whose unit part is an l-th power". By Lemma lem:tamfactor the extra term is
+min(v_l(n), v_l(q - 1), v_l(c)), which needs l | n_q and can exceed one. **Action:** add "with l | n_q" and
+write "by at least one". Confidence: high.
+
+### 66. Abstract: "the Bloch-Kato Selmer group of ad V_l E" should be of ad T tensor Q_l/Z_l
+
+The length is that of H^1_f(Q, ad T tensor Q_l/Z_l), as in Theorem thm:main; the Selmer group of the Q_l-vector
+space ad V_l E is zero under the hypothesis (DFG04 Theorem 2.7). Minor; confidence high.
+
+### 67. Remark rem:ns and Section 1.3 rest on H^1_f(Q, V^D) = 0 for 3Ns curves, which is not known there
+
+The corrected exact sequence of Remark rem:ns needs H^0(Q, V^D) = H^1_f(Q, V^D) = 0. The first is automatic
+(point 63); the second is DFG04 Theorem 2.7, which is proved only for l not in S_f, and 3Ns curves are exactly
+the case l = 3 in S_f. The remark is phrased conditionally ("whenever"), but Section 1.3 presents the
+correction term as what the lemma produces. **Action:** say explicitly that the vanishing of H^1_f(Q, V^D) for
+these curves is assumed, or cite a result proving it. Confidence: medium-high.
+
+### 68. Section sec:tam can include I_n^* primes, and "exactly where" overstates
+
+The Tamagawa factor formula applies at potentially multiplicative additive primes too (point 18), so the test
+of Section sec:tam can include primes of type I_n^*. "The extra divisibility is exactly where the Tamagawa
+factor exceeds l^{t_l}" overstates what the data show (the Selmer length also contributes). Optional.
+The agent's counts below conductor 10,000: at l = 3, 1,050 curves, equality rises from 56.8% to 68.0% with the
+refined bound; at l = 5, 252 curves, equality from 203 to 220; no violations once CM curves are excluded
+(CM curves carry no mod 3 image label in Cremona's galrep file, and four of them fail if not removed).
+
+### Open check Q1: does DFG04 cover l = 3 in weight 2?
+
+Whether DFG04's Theorem 3.7 covers l = 3 for weight 2, given the Fontaine-Laffaille range needed for the
+adjoint. To be checked against DFG04 together with the checklist of point 56.
+
+## Book-internal consistency (continued)
+
+### B22. Items from the Chapter 18 outline
+
+* PLAN.md's Chapter 18 entry repeats the misplaced parenthesis of point 37 and treats additive Tamagawa
+  factors as unknown (superseded by point 64).
+* PLAN.md uses V^* for the linear dual, which clashes with ^* for the Pontryagin dual (B4); the Chapter 18
+  outline uses V^vee for the linear dual. Appendix B must fix this.
+* The Chapter 21 outline (A1.3, A2.7, A4.10) and the Chapter 3 outline (line 106) should cite Chapter 18's
+  items for Tam_p, lem:fpr and lem:tamfactor.
+* The paper's wording "the torsion of H^1(Q_p, T^D)" is right and must not be simplified: H^1(Q_p, T^D) is
+  infinite at I_0^* primes and at primes with cyclic inertia where chi(p) = 1.
+* 791a1 is a clean example where the Tamagawa excess is needed for equality; rule(E, l) gives [1, 1] for 121a1
+  and [2, 2] for 726a1, as in the paper.

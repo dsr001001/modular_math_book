@@ -29,7 +29,7 @@ bookkeeping that connects them. Concretely it must deliver:
    index description $\#\bigl(H^1_f(\Q_p,M)/H^1_{\mathrm{ur}}(\Q_p,M)\bigr)=\ell^{v_\ell(\Tam_p(M))}$, and $\Tam_p(T^D)=\Tam_p(A)$ proved in every case that occurs for an
    elliptic curve (DFG04 (57) in general).
 3. **Lemma lem:tamfactor in full, every step**, assembled from Chapter 16 (the group cohomology), Chapter 7 and Chapter 17
-   (the Kummer class and the identification of $c'$, important_notes.md point 7), Chapter 11 (the Tate shape with the corner
+   (the Kummer class and the identification of $c'$, important_notes.md point 7 and its addendum), Chapter 11 (the Tate shape with the corner
    $\varepsilon\kappa$, point 42), with the arithmetic Frobenius named (point 11), the reading of $v_\ell(c)$ fixed (point 31) and the class
    renamed $c(u)$ (point 23); its extension to additive potentially multiplicative primes, including $q=2$ (point 18).
 4. **New: the Tamagawa factor of $\ad T$ at every additive prime.** It is trivial at every prime $q\ne\ell$ of potentially good
@@ -71,12 +71,16 @@ torsion of a first cohomology group, as an index of a sublattice is a volume rat
 * **Chapter 16** proves the group cohomology of the Tate shape (its model-computation, frobenius-on-h1-inertia, procyclic-compact,
   inflation-restriction, lengths-in-exact-sequences). Chapter 18 cites those items for Steps 2 and 3 of Lemma lem:tamfactor and
   adds the definition of $\Tam$, the identification of $c'$ and the conclusion.
-* **Chapter 17** (outlined in parallel) owns Galois cohomology proper: Kummer theory, Tate local duality for finite, compact and
+* **Chapter 17** (its outline `outlines/ch17_galcoh.md` is written) owns Galois cohomology proper: the Kummer duals $T^D$, $V^D$, $W^D$ in general (its 2.1), Kummer theory, Tate local duality for finite, compact and
   discrete coefficients, local Euler characteristics, $H^1_{\mathrm{ur}}$ and its annihilator, the cohomology of the real place, $G_{\Q,S}$,
   classical Selmer groups, Selmer structures and their duals, Greenberg-Wiles and Poitou-Tate, **the comparison exact sequence
   for two Selmer structures** (the abstract form of DFG04 Lemma 2.1), the sequences relating $H^1(K,T)$, $H^1(K,V)$, $H^1(K,W)$, and the
   Kummer class of the Tate parameter with $H^1(G/I,\Zl(1))=\Zl(1)/(q-1)$. Chapter 18 never reproves these; it instantiates them with the
-  Bloch-Kato conditions. Chapter 18 needs from Chapter 17 exactly the items listed in Part 5 (inputs K1 to K8).
+  Bloch-Kato conditions. Chapter 18 needs from Chapter 17 exactly the items listed in Part 5 (inputs K1 to K8, with Chapter 17's item
+  numbers): in particular the identification of $c'$ (its 5.3, 5.4), the propagation and orthogonality of local conditions (4.4, 4.5), $H^1_f(\Q_p,T^D)=H^1(\Q_p,T^D)_{\mathrm{tor}}\simeq H^0(\Q_p,W^D)$
+  for $p\in\Sigma$ (4.6), and the abstract form of DFG04 Lemma 2.1 (10.3, 10.4). Chapter 18 adds the Bloch-Kato conditions, $\Tam_p$ and Lemma lem:fpr,
+  the assembly of Lemma lem:tamfactor, Lemma lem:dfg21 in the paper's form (Chapter 17, 10.3 applied to the Bloch-Kato structure with DFG04
+  Theorem 2.7 as hypothesis), and $T^D\simeq A(1)$.
 * **Chapter 19** (outlined in parallel) owns $L$-functions: the table of omitted Euler factors, Lemma lem:euler, $e_\ell(E,q)$, $P_q$,
   the naive factor, $L(\Sym f,s)$ and the Rankin-Shimura formula. Chapter 18 uses only the values $v_\ell(L_q(A_f,1)^{-1})$ (stated with a
   `\Cref{ch:lfunctions}`) and their integrality (proved here, 3.5).
@@ -151,7 +155,7 @@ $T_\ell E^\vee\simeq T_\ell E(-1)$ (Chapter 9). Physics aside (one sentence): a 
 character of the scaling group rescales a field of given weight. Reference: Rubin 1.1; Washington. Paper: Section 4.2 ($\Zl(1)$,
 $A(1)$), Lemma lem:h0 ($\ad T(1)$), Lemma lem:fpr ($A_f(1)$).
 
-**2.3 `def:blochkato:duals`** (definition and proposition; P). Conventions C2. (i) $V^D=V^\vee(1)$, $T^D=T^\vee(1)$, $W^D=V^D/T^D$; then
+**2.3 `def:blochkato:duals`** (definition and proposition; recalled from Chapter 17, 2.1, which proves (i), (ii); P for (iii), (iv)). Conventions C2. (i) $V^D=V^\vee(1)$, $T^D=T^\vee(1)$, $W^D=V^D/T^D$; then
 $W^D\simeq\Hom_{\Zl}(T,\Qlmod(1))=\Hom(T,\mu_{\ell^\infty})$ and $T^D\simeq\Hom(W,\mu_{\ell^\infty})$, so the evaluation pairings $T\times W^D\to\Qlmod(1)$ and
 $W\times T^D\to\Qlmod(1)$ are perfect and $G_K$-equivariant (Chapter 3, 8.2, 8.3). (ii) $(T^D)^D=T$. (iii) $X^*$ (Pontryagin) of a finite
 module has the same length; the only Pontryagin duals in the paper are of finite groups (Lemma lem:dfg21). (iv) Dictionary with the literature: Bloch-Kato and FPR94 write $V^*(1)$ for $V^D$; DFG04 write $T^D$, $V^D$, $W^D$ exactly
@@ -385,7 +389,8 @@ Paper: Section 1.2 ("at a prime of good reduction it is $0$"), proof of Theorem 
 3.1(c)). Let $p\ne\ell$ and $X$ a $G_{\Q_p}$-stable lattice with $H^0(\Q_p,X\otimes\Ql)=0$. Then $H^1_f(\Q_p,X)=H^1(\Q_p,X)_{\mathrm{tor}}$ is finite and there is an
 exact sequence
 $$0\to X^{I_p}/(\Frob_p-1)X^{I_p}\to H^1(\Q_p,X)_{\mathrm{tor}}\to\bigl(H^1(I_p,X)_{\mathrm{tor}}\bigr)^{G_{\Q_p}}\to0,$$
-so $\Fitt_{\Zl}H^1_f(\Q_p,X)=\det(1-\Phi_p\mid X^{I_p})\cdot\Tam_p(X)$. For $X=T^D$ and $p\in\Sigma$ this is
+so $\Fitt_{\Zl}H^1_f(\Q_p,X)=\det(1-\Phi_p\mid X^{I_p})\cdot\Tam_p(X)$. (Cross-check: $H^1(\Q_p,X)_{\mathrm{tor}}\simeq H^0(\Q_p,X\otimes\Qlmod)$ by Chapter 17, 4.6, so
+$\#H^0(\Q_p,W^D)=\ell^{v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(T^D))}$ for $X=T^D$.) For $X=T^D$ and $p\in\Sigma$ this is
 $\Fitt H^1_f(\Q_p,T^D)=L_p(A_f,1)^{-1}\Tam_p(T^D)$ (3.3(i), 3.5). Proof: (1) inflation-restriction with $H^2(\widehat\Z,X^{I_p})=0$ (Chapter 16,
 procyclic-compact (iii)) gives $0\to H^1(G/I,X^I)\to H^1(G,X)\to H^1(I,X)^{G/I}\to0$; (2) $H^1(G/I,X^I)=X^I/(\Frob-1)X^I$ is finite of order $\ell^{v_\ell\det(1-\Phi\mid X^I)}$
 (3.1(c)); (3) taking torsion keeps exactness (a torsion class on the right lifts to a class some multiple of which lies in the finite left
@@ -432,13 +437,15 @@ $(\sigma\cdot c)(i)=\sigma c(\sigma^{-1}i\sigma)$ with $\Frob^{-1}t\Frob=t^{q^{-
 $M/(t-1)M$ as $q^{-1}\Ad\rho(\Frob)$; with $\rho(\Frob)=\begin{psmallmatrix}\varepsilon q&c'\\0&\varepsilon\end{psmallmatrix}$, $c'=\varepsilon\kappa(\Frob)$, one has $\Ad\rho(\Frob)e=qe$,
 $\Ad\rho(\Frob)h=h-2\varepsilon c'e$, so on the torsion $\bar e\mapsto\bar e$, $\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e)$ and the invariants are
 $\{x\bar e+y\bar h:(q-1)y\equiv0,\ c'y\equiv0\pmod{\ell^{v_\ell(n)}}\}\simeq\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))}$ (Chapter 16, frobenius-on-h1-inertia,
-model-computation (b), (c)). **Step 5** (the class $c'$; important_notes.md point 7) $c'=\varepsilon\kappa(\Frob)$ depends on the lift of $\Frob$ and on the cocycle;
-changing the lift by $t^a$ changes it by $\varepsilon qn'a$, changing $\kappa$ by a coboundary changes it by a multiple of $q-1$, so $c'$ is well defined
-modulo $(n',q-1)\Zl$, which leaves $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ unchanged (Chapter 16, model-computation (d)). Choose the lift that fixes a compatible
-system of $\ell$-power roots of $q$ (Chapter 7, 6.2(iv), 5.5): then $\kappa_q(\Frob)=0$ and $c'=\varepsilon\kappa_u(\Frob)$, and $\kappa_u$ is the inflation of the class
-of $\bar u$ in $H^1(G/I,\Zl(1))=\Zl(1)/(q-1)\simeq\Z/\ell^{v_\ell(q-1)}$ (8.1(e)), so $v_\ell(c')=v_\ell(c(u))$ in the sense of C6. There is **no** map
-"$H^1(G,\Zl(1))\to H^1(G/I,\Zl(1)^I)$" as the paper writes: inflation goes the other way, and $\kappa$ is not inflated since $\kappa|_I=n\,t_\ell$; the decomposition
-$\kappa=n\kappa_q+\kappa_u$ is the correct statement. **Step 6** (definition and check) by 7.1 the Fitting ideal of the invariants has valuation
+model-computation (b), (c)). **Step 5** (the class $c'$; important_notes.md point 7 with its addendum; Chapter 17, 5.3, 5.4) $c'=\varepsilon\kappa(\Frob)$ is a cocycle
+value: changing the lift by $t^a$ changes it by $\varepsilon qn'a$, changing $\kappa$ by a coboundary changes it by a multiple of $q-1$, so $c'$ is well
+defined only modulo $(n,q-1)\Zl$ (not modulo $q-1$ as the paper says), which leaves $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ unchanged (Chapter 16,
+model-computation (d)). The paper's phrase "the image of $\kappa$ in $H^1(G/I,\Zl(1)^I)$" is kept, with its precise meaning: $q$ is a canonical
+uniformiser of $\Q_q$, so $H^1(\Q_q,\Zl(1))=\Zl\kappa_q\oplus H^1_{\mathrm{ur}}(\Q_q,\Zl(1))$ canonically, and the projection $\operatorname{pr}_{\mathrm{ur}}$ along $\kappa_q$ sends $[\kappa]$ to
+$[\kappa_u]$, the class of $\bar u$ in $H^1(G/I,\Zl(1))=\Zl(1)/(q-1)\simeq\F_q^\times\otimes\Zl$ (Chapter 17, 5.3; it is a splitting, not a functorial map, since
+inflation goes the other way). For the lift $\Frob_0$ fixing a compatible system of $\ell$-power roots of $q$ (Chapter 7, 5.5), $\kappa_q(\Frob_0)=0$ and
+$c'=\varepsilon\,\kappa_u(\Frob_0)$, i.e. $\varepsilon$ times that image (Chapter 17, 5.4(iii)); so $v_\ell(c')=v_\ell(c(u))$ in the sense of C6 for $\Frob_0$, and the
+minimum is the same for every lift (Chapter 17, 5.4(v)). Chapter 18 cites Chapter 17, 5.4 for this step and does not reprove it. **Step 6** (definition and check) by 7.1 the Fitting ideal of the invariants has valuation
 $v_\ell(n)+\min(\dots)$; for $M=T$ the same steps give $H^1(I,T)_{\mathrm{tor}}=(\Z/\ell^{v_\ell(n)})\bar e_1$ with $\Frob$ acting by $\varepsilon$, invariants of length
 $v_\ell(n)$ (split) or $0$ (nonsplit), the $\ell$-part of $c_q$ (7.6; data check in Part 6.6). Paper: Lemma lem:tamfactor (all of it), Section
 1.2, Theorem thm:main ((eq:thm)), Remark rem:ko(1), Section sec:tam, important_notes.md points 7, 11, 23, 31, 42.
@@ -544,21 +551,18 @@ $\chi_\ell^2\equiv1\pmod{\ell^k}$ on $G_\Q$, which forces $\ell^k=3$, and not th
 Paper: Lemma lem:h0, Conjecture conj:euler ($h_\ell(E)$), Section 1.3, proof of Theorem thm:main ("$H^0(\Q,W^D)=0$ by Lemma lem:h0"), Remark
 rem:ns.
 
-**10.4 `lem:blochkato:dfg21`** (lemma, the paper's Lemma lem:dfg21 = DFG04 Lemma 2.1; P given Chapter 17's comparison theorem for Selmer
-structures, input K5). Suppose $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$, and let $\Sigma$ be a nonempty finite set of primes, $\ell\notin\Sigma$, containing every prime $p\ne\ell$
-at which $W$ is ramified. Then there is an exact sequence
+**10.4 `lem:blochkato:dfg21`** (lemma, the paper's Lemma lem:dfg21 = DFG04 Lemma 2.1; P given Chapter 17, 10.3, the abstract form). Suppose
+$H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$, and let $\Sigma$ be a nonempty finite set of primes, $\ell\notin\Sigma$, containing every prime $p\ne\ell$ at which $W$ is ramified. Then
+there is an exact sequence
 $$0\to H^1_f(\Q,W)\to H^1_\Sigma(\Q,W)\to\bigoplus_{p\in\Sigma\cup\{\infty\}}H^1_f(\Q_p,T^D)^*\to H^0(\Q,W^D)^*\to0,$$
-in which the term at $\infty$ is $0$ for $\ell$ odd (Chapter 16, z2-on-l-adic) and, for $p\in\Sigma$, $H^1_f(\Q_p,T^D)=H^1(\Q_p,T^D)_{\mathrm{tor}}$ is finite (5.3(v),
-3.3(i)). Proof: (1) Chapter 17's comparison sequence for the Selmer structures $\mathcal F$ (Bloch-Kato everywhere) and $\mathcal G$ (relaxed
-at $\Sigma$) with dual structures $\mathcal F^*$ (Bloch-Kato) and $\mathcal G^*$ (strict at $\Sigma$) on $T^D$:
-$0\to H^1_{\mathcal F}(\Q,W)\to H^1_{\mathcal G}(\Q,W)\to\bigoplus_{p\in\Sigma}H^1(\Q_p,W)/H^1_f(\Q_p,W)\to H^1_{\mathcal F^*}(\Q,T^D)^*\to H^1_{\mathcal G^*}(\Q,T^D)^*\to0$; (2) the local
-quotients are $H^1_f(\Q_p,T^D)^*$ by 5.4; (3) $H^1_{\mathcal F^*}(\Q,T^D)=H^1_f(\Q,T^D)\simeq H^0(\Q,W^D)$ by 10.3(i); (4) $H^1_{\mathcal G^*}(\Q,T^D)=0$: its elements are the
-images $\delta w$ of $w\in H^0(\Q,W^D)$ that vanish in $H^1(\Q_p,T^D)$ for $p\in\Sigma$, and the local connecting map $H^0(\Q_p,W^D)\to H^1(\Q_p,T^D)$ is injective
-because $H^0(\Q_p,V^D)=0$ (3.3(i)); one $p\in\Sigma$ suffices, which is where "$\Sigma$ nonempty" is used. Where each hypothesis enters:
-$H^1_f(\Q,V^D)=0$ in (3); $H^0(\Q,V^D)=0$ in (3) (injectivity of $\delta$); $\Sigma\ne\emptyset$ in (4); $\ell$ odd at $\infty$; $\Sigma$ containing the ramified primes
-so that $\mathcal G$ is the paper's $H^1_\Sigma$ (6.3). Reference: DFG04 Lemma 2.1 (as cited); Rubin, Theorem 1.7.3 (verify), or Washington's
-Galois cohomology notes, or DDT Theorem 2.19 (verify) for the comparison sequence. Paper: Lemma lem:dfg21 and the paragraph after it,
-proof of Theorem thm:main, Remark rem:ns.
+in which the term at $\infty$ is $0$ for $\ell$ odd and, for $p\in\Sigma$, $H^1_f(\Q_p,T^D)=H^1(\Q_p,T^D)_{\mathrm{tor}}\simeq H^0(\Q_p,W^D)$ is finite (5.3(v); Chapter 17,
+4.6). Proof: apply Chapter 17, 10.3 to the Bloch-Kato conditions $L_{V,v}=H^1_f(\Q_v,V)$. Its hypotheses: $L_{V,v}=H^1_{\mathrm{ur}}$ outside $S$ (5.1(i)); $L_{V,v}^\perp=L_{V^D,v}$
+for all $v$ (5.4: Chapter 17, 4.4(ii) at $p\ne\ell$, BlochKato at $\ell$); (a) $H^1_f(\Q,V^D)=0$ (here a hypothesis; for $\ell\notin S_f$ it is thm:dfg27, 10.2); (b)
+$H^0(\Q_p,V^D)=0$ for some $p\in\Sigma$, which holds for every $p\ne\ell$ (3.3(i)) as soon as $\Sigma\ne\emptyset$. Chapter 17's propagated conditions are Chapter 18's
+$H^1_f$ on $T$, $W$ (5.2; Chapter 17, 4.5), and its relaxed structure $\mathcal L^\Sigma$ is DFG04's $H^1_\Sigma$ (6.3). What each hypothesis does (to be said in
+the text): $H^1_f(\Q,V^D)=0$ makes $H^1_f(\Q,T^D)$ torsion, $\simeq H^0(\Q,W^D)$ (10.3(i)); $\Sigma\ne\emptyset$ with $H^0(\Q_p,V^D)=0$ kills the strict dual Selmer group and
+gives the surjection onto $H^0(\Q,W^D)^*$; $\ell$ odd kills $\infty$. The paper's hypothesis $H^0(\Q,V^D)=0$ is implied by (b). Reference: DFG04 Lemma 2.1 (as
+cited); Rubin, Theorem 1.7.3 (verify). Paper: Lemma lem:dfg21 and the paragraph after it, proof of Theorem thm:main, Remark rem:ns.
 
 **10.5 `cor:blochkato:length-identity`** (corollary; P given 10.4, 7.4, 7.5, 6.2, 6.4). Under the hypotheses of 10.4 and $H^1_f(\Q,A_f)=0$ (automatic by
 6.7), all terms are finite and
@@ -777,8 +781,8 @@ ________________________________________________________________________________
 5. Check the paper's claim $H^1(I_q,\ad T)_{\mathrm{tor}}\simeq(\Z/\ell^{v_\ell(n)})^2$ for 14a1 at $q=7$, $\ell=3$ ($n=3$, $\bar u\equiv-1$), compute the Frobenius invariants and
    $v_3(\Tam_7(\ad T))=2$, and explain why $\deg\varphi_{14a1}=1$ is no contradiction ($E[3]$ is reducible; Lemma lem:tamfactor needs no irreducibility).
 6. Check the paper's claim that $c'$ is "well defined modulo $q-1$": show that changing the lift of $\Frob$ by $t^a$ and the cocycle by a coboundary
-   changes $c'$ by an element of $(n',q-1)\Zl$, that $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ is unchanged, and that no map $H^1(G,\Zl(1))\to H^1(G/I,\Zl(1)^I)$ exists
-   in general (point 7).
+   changes $c'$ by an element of $(n,q-1)\Zl$ (not only of $(q-1)\Zl$), that $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ is unchanged, and that the "image of $\kappa$"
+   exists through the splitting given by the uniformiser $q$, but not through a map defined for every uniformiser (point 7 and its addendum).
 7. Check the paper's claim that "the same computation for $M=T$ gives ... the $\ell$-part of the Tamagawa number $c_q(E)$": for 11a1 at $q=11$,
    $\ell=5$ (split, $c_{11}=5$) and for 14a1 at $q=2$, $\ell=3$ (nonsplit, $n=6$, $c_2=2$).
 8. Prove $\Tam_q(A(1))=\Tam_q(A)$ at a multiplicative prime by computing the invariants of $H^1(I_q,A(1))_{\mathrm{tor}}$ as the kernel of the linear form
@@ -802,3 +806,273 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________
 
+## 5. Dependencies and forward pointers
+
+Results from earlier chapters used here (cited with `\Cref{ch:...}`, never reproved):
+* Chapter 2 (`ch:rings`): $v_\ell$ of rationals ($1-p^{-2}$, $(q+1)^2-a^2$), the $\ell^k$-th powers in $\F_q^\times$ and the index $\ell^{\min(k,v_\ell(q-1))}$ (for $c(u)$).
+* Chapter 3 (`ch:modules`): Fitting ideals and lengths over $\Zl$ (7.4 to 7.6), Pontryagin duality and $T$ versus $T\otimes\Qlmod$ (8.1 to 8.4), lengths in exact
+  sequences.
+* Chapter 4 (`ch:reps`): the trace form and $\Hom(A,\Zl(\chi))\simeq A(\chi)$ (7.6); invariance of $\ad$ (7.7); $\ad\simeq\Sym\otimes\det^{-1}$; unipotent and cyclic
+  shapes (9.1 to 9.4); the twist-length lemma (10.5).
+* Chapter 5 (`ch:galois`): $\Zl(1)$, $\chi_\ell$, Kummer cocycles (galois:l-adic-kummer), $\F_q$-Kummer theory (galois:kummer-finite-field), the determinant
+  obstruction (galois:twist (c)).
+* Chapter 6 (`ch:ant`): $\Z_3[\zeta_3]$ as a DVR and $T\simeq\Z_3[\zeta_3]$ (4.7, 4.8); the commutant (4.10).
+* Chapter 7 (`ch:local`): L3, L6, 4.3 (Frobenius dictionary), 5.2 to 5.5 (inertia, tame character, $\Frob\,t\,\Frob^{-1}=t^q$, Frobenius fixing roots), 6.2
+  (the Kummer class on inertia and $\kappa=a\kappa_\varpi+\kappa_u$), 8.1, 8.2 ($V^{I}$, $L$-factors), 9.1 to 9.4 (local shapes and adjoint $L$-factors).
+* Chapter 9 (`ch:ellcurves`): Weil pairing, Hasse bound, $c_p$ and the BSD orientation.
+* Chapter 10 (`ch:reduction`): Tate parameter $\mathsf q(j)$ and unit part (7.2, 7.4, 7.8), $c_q$ at multiplicative primes (7.6), potentially multiplicative
+  additive reduction (7.7), Kodaira types, Kraus's defect.
+* Chapter 11 (`ch:galrep`): the Tate shape with corner $\varepsilon\kappa$ (3.2), Lemma lem:tamagawa-exp (3.3), potentially multiplicative primes at every
+  $q$ (3.4), inertia images by type (Section 4), crystalline at $\ell$ (5.1), Lemma lem:h0 (8.5), $S_f$ (8.6).
+* Chapter 14 (`ch:moddeg`): 9.5 (Lemma lem:hecke as an equality: points 39, 56) and the checklist 9.6; 9.1(d) ($M_{f,\lambda}\simeq T_\ell E(-1)$); 7.3
+  (Zagier-Watkins, for 14.7).
+* Chapter 15 (`ch:modgalrep`): 4.1 (crystalline at $\ell$, Fontaine-Laffaille range for $M_f$).
+* Chapter 16 (`ch:cohomology`): continuous-cohomology, les-continuous, h0-and-torsion, inflation-restriction, res-inf-cor (d), order-kills,
+  z2-on-l-adic, conjugation-action, cohomology-through-pro-l-quotient, tame-inertia-example, procyclic-compact, cocycle-on-powers,
+  frobenius-on-h1-inertia, tate-curve-shape-matrices, model-computation, fitting-ideal-of-invariants, lengths-in-exact-sequences,
+  h1-finitely-generated, galois-cohomology-convention, unramified-h1-preview.
+* **Chapter 17** (`ch:galcoh`; its outline is now written, and the inputs below are its items, given in brackets): **K1** [3.3, 3.4] Tate local duality
+  $H^i(\Q_p,M)\times H^{2-i}(\Q_p,M^D)\to\Qlmod$ for finite $M$, and its versions for $(W,T^D)$ and $(V,V^D)$; **K2** [3.2] the local Euler characteristic formula
+  (for $p\ne\ell$: $\#H^0\#H^2/\#H^1=1$ for finite $M$; ranks for lattices); **K3** [4.1 to 4.3] $H^1_{\mathrm{ur}}(\Q_p,M)=M^{I_p}/(\Frob_p-1)M^{I_p}$ and the exact sequence
+  $0\to H^1_{\mathrm{ur}}\to H^1\to H^1(I_p,M)^{G}\to0$; **K4** [4.4, 4.5] for $p\ne\ell$, $H^1_{\mathrm{ur}}$ of $M$ and of $M^D$ are exact annihilators (finite $M$ of order prime to $p$; the
+  divisible and compact versions); **K5** [10.1 to 10.4] the comparison exact sequence for two Selmer structures $\mathcal F\subseteq\mathcal G$ (Poitou-Tate), in the five-term
+  form used in 10.4, with discrete coefficients $W$ and compact dual $T^D$; **K6** [2.2] the sequences relating $H^1(K,T)$, $H^1(K,V)$, $H^1(K,W)$ and
+  $H^1(K,T)_{\mathrm{tor}}=\delta H^0(K,W)$; **K7** [9.3, 9.5] the Greenberg-Wiles formula (finite coefficients) and, if Chapter 17 states it, its $\Ql$ version (otherwise 6.7
+  states the $\Ql$ version as R); **K8** [5.1 to 5.4] the Kummer class of the Tate parameter and the identification of $H^1(G/I,\Zl(1))=\Zl(1)/(q-1)$ with $\F_q^\times\otimes\Zl$ (the
+  cohomological half of point 7). Chapter 17 also proves $H^1_f(\Q_p,T^D)=H^1(\Q_p,T^D)_{\mathrm{tor}}\simeq H^0(\Q_p,W^D)$ for $p\in\Sigma$ (its 4.6) and the abstract length identity (its 10.4); Chapter
+  18 cites them. If any input turns out to be missing in the written Chapter 17, Chapter 18 states it as R with reference (NSW, MilneADT, Rubin) rather than proving it.
+
+Black boxes imported from later chapters (stated with a forward `\Cref`, used only in remarks, examples and `paperlink`s): the values
+$e_\ell(E,q)$ and Lemma lem:euler (Chapter 19; used in 3.2, 3.5, 11.3); $L(\Sym f,s)$, Rankin-Shimura and $L(\ad f,1)\ne0$ (Chapter 19; used in 14.1,
+14.7); thm:dfg14, thm:dfg37, Lemma lem:hecke and the assembly (Chapter 20; used in 11.2, 14.5).
+
+Forward pointers (chapters that use this one):
+* Chapter 19 (`ch:lfunctions`): 3.1 (Frobenius dictionary for $L$-factors), 3.2, 3.5 (integrality of $L_q(A_f,1)^{-1}$), 14.1 (the adjoint motive and
+  $L(\ad f,s)=L(\Sym f,s+1)$), 14.2 (the shape of the Bloch-Kato conjecture for the adjoint).
+* Chapter 20 (`ch:congruence`): 10.1 ($S_f$), 10.2 (thm:dfg27), 10.4 (lem:dfg21), 7.4, 7.5 (lem:fpr), 10.3 (lem:h0 in Selmer form), **11.1 (the
+  Selmer half of the proof of Theorem thm:main)**, 9.4 (the explicit Tamagawa terms), 12.1 (Remark rem:ns, Open question 2), 14.4 (DFG04
+  Theorem 0.1). Chapter 20 should cite 11.1 rather than repeat the Selmer bookkeeping.
+* Chapter 21 (`ch:paper`): A1.3 (cite 7.1, 7.3), A2.7 (cite 8.2 and 8.4; the step list there matches 8.2), A4.6 to A4.11 (cite 6.3, 10.1 to 10.5, 7.4,
+  7.5), the proof of Theorem thm:main (11.1, 11.2), Remark rem:ns (12.1), Section sec:tam (13.1), Open questions 2 and 3 (12.3, 9.3 to 9.5).
+* Chapter 22 (`ch:computation`): 8.5 and the script of Part 6.6 (Tate parameters via $\mathsf q(j)$ or `ellinit(E,O(q^k)).tate`; unit parts; the
+  Tamagawa terms), 13.1 (reproducing Section sec:tam), 9.5 (the excess distribution).
+
+________________________________________________________________________________
+
+## 6. Notes for the writer
+
+### 6.1 Conventions to typeset (Section 1, as `convention` environments)
+
+C1 to C8 of Part 1.3. In addition two `warning` boxes in Section 1: "**Three duals.** $M^\vee=\Hom(M,\Zl)$ (linear; Bloch-Kato's $V^*$), $M^D=\Hom(M,\Zl(1))$
+(Kummer-Cartier; the paper's ${}^D$), $X^*=\Hom(X,\Qlmod)$ (Pontryagin; the paper's ${}^*$). Tate local duality pairs $H^1(\Q_p,W)$ with $H^1(\Q_p,T^D)$, and the
+Pontryagin dual of a finite group is the only ${}^*$ in Lemma lem:dfg21." and "**Two Frobenii.** $\Frob_p$ arithmetic in group theory (Lemma
+lem:tamfactor), $\Phi_p=\Frob_p^{-1}$ in $L$-factors (Section 1.1, Lemma lem:fpr, the paragraph after Lemma lem:dfg21); the paper names neither
+(important_notes.md point 11). In cohomology the choice is invisible up to $\ell$-adic units; in $L$-factors it is not."
+
+### 6.2 Pitfalls
+
+* **Tate twists and Frobenius.** On $\Zl(1)$ the arithmetic Frobenius at $p\ne\ell$ acts by $p$ and the geometric one by $p^{-1}$. So on $(V^D)^{I_p}=A_f^{I_p}(1)$ at a
+  multiplicative prime $\Frob_p$ acts by $p\cdot p=p^2$ and $\Phi_p$ by $p^{-2}$; $\det(1-\Phi_p)=1-p^{-2}=L_p(A_f,1)^{-1}$. Never write $1-q^{1-s}$ for the
+  multiplicative adjoint factor (point 11).
+* **The dual $V^D$ is $V^\vee(1)$, not $V(1)$.** For $A_f$ they agree only through the trace form, which needs $\ell$ odd (2.4). Write the isomorphism once,
+  name it, and use $A(1)$ thereafter as the paper does.
+* **"Unramified" is not "$f$" for $W$.** $H^1_f(\Q_p,W)$ is the divisible part of $H^1_{\mathrm{ur}}(\Q_p,W)$ (5.3(iv)); the difference is exactly the Tamagawa
+  phenomenon (5.5). For $T$ the inclusion goes the other way: $H^1_{\mathrm{ur}}(\Q_p,T)\subseteq H^1_f(\Q_p,T)$ with index $\ell^{v_\ell(\Tam_p(T))}$ (7.2). DFG04's $H^1_\Sigma$ imposes
+  the unramified condition outside $\Sigma\cup\{\ell\}$, which equals the $f$ condition there only because $W$ is unramified there (6.3).
+* **$H^1(\Q_p,T^D)$ need not be finite at $p\in\Sigma$** (3.3, 3.4: type $\mathrm{III}$ with $p\equiv1\pmod4$, every $\mathrm I_0^*$ prime); the paper's
+  "$H^1_f(\Q_p,T^D)$ is the torsion of $H^1(\Q_p,T^D)$, a finite group" is right as stated; do not "simplify" it to "$H^1(\Q_p,T^D)$ is finite".
+* **The parenthesis in $\Tam_p$** (point 37): $\Fitt\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$, the Fitting ideal of the invariants.
+* **The class $c'$** (point 7 and its addendum): "the image of $\kappa$ in $H^1(G/I,\Zl(1)^I)$" is meaningful only via the canonical splitting given
+  by the uniformiser $q$ (Chapter 17, 5.3); $c'$ is a cocycle value, equal to $\varepsilon$ times that image only for the lift $\Frob_0$ fixing the $\ell$-power
+  roots of $q$, and in general well defined modulo $(n,q-1)\Zl$, not $q-1$; only the minimum matters.
+* **The corner $\varepsilon\kappa$** (point 42) and **arithmetic $\Frob$ in Lemma lem:tamfactor** (point 11): $\rho(\Frob)=\begin{psmallmatrix}\varepsilon q&\varepsilon\kappa(\Frob)\\0&\varepsilon\end{psmallmatrix}$.
+* **$v_\ell(c(u))$ when $\bar u$ is an $\ell^{v_\ell(q-1)}$-th power** (point 31): read as $v_\ell(q-1)$; when $\ell\nmid q-1$ the minimum is $0$ whatever $\bar u$ is.
+* **$c_q$ means the Tamagawa number** (point 23); the class of the unit part is $c(u)$ or $c_q(u)$.
+* **$\mathrm I_n^*$ at $q=2$** (point 18): use 8.4 (local twist over $\Q_2$), not Lemma lem:twist, and $\nu=-v_2(j)$, not the index of the symbol.
+* **$h_\ell(E)$**: the criterion is $\bar\rho\simeq\bar\rho\otimes\bar\chi_\ell$; $h_\ell=0$ for $\ell\ge5$ and $h_3\le1$ for every $E$ (points 5, 6, 14). The paper's sentence on
+  finiteness for non-CM curves is replaced by the determinant argument; do not repeat "for $E$ without complex multiplication it is finite".
+* **Hodge-Tate sign** (C4): fix it once; 4.5 depends on it; when quoting DFG04 or BlochKato check their sign.
+* **The equality in (eq:identity)** is Chapter 14's theorem (point 39) subject to the DFG04 checklist (point 56); say "with equality, by
+  `\Cref{ch:moddeg}`, provided DFG04's $\eta$ is normalised as the paper describes", never "with equality when multiplicity one holds" alone.
+* **Remark rem:ns is conditional** on $H^1_f(\Q,V^D)=0$ for the 3Ns curves (12.1); state the condition every time.
+* **Section sec:tam's population** in the paper is type $\mathrm I_n$ only; 9.4 shows that $\mathrm I_n^*$ primes carry the same Tamagawa excess; say so, do not
+  change the paper's numbers.
+* **Theorem numbers marked (verify)**: BlochKato Definition 3.7, Proposition 3.8, Corollary 3.8.4, Example 3.11, Section 5, Section 6;
+  FPR94 I.3, I.4.2.2, III; Rubin 1.3, 1.4.3, 1.5, 1.6, 1.7.3; DDT 2.19; Wiles95 Proposition 1.6; DFG04 Sections 1.1 to 1.7, 2.1 to 2.3, (31), (57),
+  Theorems 0.1, 0.2, 2.7, 2.15, 3.7, p. 708 (cite as the paper cites them); Kraus90 for the inertia groups at $2$ and $3$; Flach92's hypotheses;
+  SGA 7 Expose IX for 7.6. Cite by section unless checked.
+
+### 6.3 What to leave to Chapters 7, 11, 16, 17, 19, 20
+
+* **Chapter 7**: Frobenius conventions, Weil-Deligne representations, $L$-factors and the local shapes table; Kummer classes on inertia and the
+  field-theoretic identification of $c'$. Chapter 18 cites them (3.1, 3.2, 8.1).
+* **Chapter 11**: the Tate shape, Lemma lem:tamagawa-exp, the potentially multiplicative case, inertia images by Kodaira type, crystallinity
+  at $\ell$ (as a statement), **Lemma lem:h0 in corrected form (its 8.5)** and $S_f$ (8.6). Chapter 18 restates lem:h0 in Selmer form (10.3) and
+  does not reprove the determinant argument beyond one sentence.
+* **Chapter 16**: all group cohomology, in particular the computation $(t-1)M=n'(\Zl e\oplus\Zl h)$, $H^1=(\Zl/n')^2\oplus\Zl$, the Frobenius action and the
+  invariants (its Section 10). Chapter 18's 8.2 cites Steps 2 to 4 from there and adds Steps 1, 5, 6 and the definition.
+* **Chapter 17**: Tate local duality, local Euler characteristic, $H^1_{\mathrm{ur}}$ and its annihilator, Poitou-Tate and Greenberg-Wiles, the comparison
+  sequence for Selmer structures, the $T$, $V$, $W$ sequences, the Kummer class of the Tate parameter (inputs K1 to K8). Chapter 18 instantiates
+  them with the Bloch-Kato conditions; it does not reprove them.
+* **Chapter 19**: the table of omitted Euler factors, Lemma lem:euler, $e_\ell(E,q)$, $P_q$, the naive factor (point 30), $L(\Sym f,s)$, Rankin-Shimura.
+  Chapter 18 uses only the values and their integrality.
+* **Chapter 20**: congruence ideals, thm:dfg14, thm:dfg37 (Taylor-Wiles), Lemma lem:ddt417 (point 19 lives there), Lemma lem:hecke, the assembly of
+  Theorem thm:main, Theorem thm:quant, Remark rem:ko(2). Chapter 18 supplies 11.1 and states 14.5 only as a pointer.
+
+### 6.4 How each relevant point of important_notes.md is handled
+
+* **Point 5** ($h_\ell=0$ for $\ell\ge5$, $h_3\le1$, CM irrelevant; the paper's finiteness argument confuses $\chi_\ell$ with $\chi_{\ell^*}$): 10.3(ii), citing Chapter
+  11, 8.5; Exercise 13; pitfall in 6.2.
+* **Point 6** (the criterion for $h_\ell>0$ is $\bar\rho\simeq\bar\rho\otimes\bar\chi_\ell$): 10.3(ii), 12.2; the `paperlink` for Section 1.3 quotes the corrected wording.
+* **Point 7** (with the addendum from the Chapter 17 outline): the paper's "image of $\kappa$ in $H^1(G/I,\Zl(1)^I)$" is read via the canonical
+  splitting $H^1(\Q_q,\Zl(1))=\Zl\kappa_q\oplus H^1_{\mathrm{ur}}$ given by $q$; $c'=\varepsilon\cdot$(that image) for $\Frob_0$; indeterminacy $(n,q-1)$, not $q-1$: 8.2, Step 5,
+  citing Chapter 17, 5.3 and 5.4; Exercise 6.
+* **Point 11** (geometric Frobenius in $L$-factors, arithmetic in Lemma lem:tamfactor): C3, 3.1, 3.3, 8.2 Step 4; warning box; Exercise 1.
+* **Point 12** ($\End_{I_q}(T)=\Zl[\sigma]$, not $\End_{I_q}(V)$ a field): 9.2 works with $T\simeq\Z_3[\zeta_3]$ and says "the commutant of $\sigma$ in $\End(T)$ is $\Z_3[\sigma]$"; the
+  $V$-statement is never used.
+* **Point 19** ($\wp\cap I=0$ in Lemma lem:ddt417): not used in Chapter 18; it belongs to Chapters 3 and 20. Mentioned only in 6.3.
+* **Point 26** ($M_{f,\lambda}$ is homothetic to the dual of $T_\ell E$): 2.4(ii), citing Chapter 14, 9.1(d).
+* **Point 31** (the reduction of $u$; the reading of $v_\ell(0)$): C6, 8.2.
+* **Point 37** (the parenthesis in $\Tam_p$): 7.1, with a `paperlink` quoting the display.
+* **Point 39** (Lemma lem:hecke is always an equality, so (eq:identity) is an equality for $\ell\notin S_f$): 9.4, 11.2, citing Chapter 14, 9.5; consequence in
+  9.5 and 11.3 (the excess is the Selmer length).
+* **Point 40** ($M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)\simeq T_\ell E(-1)$ exactly): 2.4(ii).
+* **Point 42** (corner $\varepsilon\kappa$): C6, 8.1(a), 8.2 Step 4.
+* **Point 47** ($\ell\notin S_f$ iff $E[\ell]$ irreducible and $h_\ell(E)=0$, for $\ell\nmid2N$): 10.1.
+* **Point 56** (the DFG04 checklist): 11.2 and 9.4 say "subject to the checklist of Chapter 14, 9.6".
+* **B1** (on $V_\ell E$ the arithmetic Frobenius has eigenvalues $\alpha,\beta$): C3, 3.2.
+* **B6** (PLAN.md's Weil-Deligne relation is the geometric form): not needed here; C3 follows Chapter 7's L3, L4.
+* **B7** (Chapter 21's C2(b): $\det(1-\Phi p^{-s}\mid V_\ell E)^{-1}=L_p(E,s+1)$, and point 42 in its A2.7): C3, 3.1(d); 8.2 is the version Chapter 21's A2.7 should
+  cite.
+* **B14** (bibliography): checked `refs.bib` and every `bib/*.bib`. All keys this chapter needs are already in `refs.bib`: BlochKato, FPR94,
+  DFG04, Fontaine, Berger, FontaineLaffaille, Flach92, Rubin, NSW, MilneADT, TateDuality, Greenberg89, Wiles95, Washington, Deligne79,
+  Shimura76, GelbartJacquet, Kraus90, SilvermanATAEC, DDT, Hida81, Tate95, PARI, ecdata. The chapter bib files are empty except `bib/chA.bib`.
+  Proposed new keys: none required. Optional, only if the writer cites them after checking: `SerreTate68` (already proposed for refs.bib
+  by B16; needed here for the inertia groups in 9.3), `SGA7` (Grothendieck, *Modeles de Neron et monodromie*, SGA 7 I, Expose IX,
+  Lecture Notes in Math. 288, 1972; for 7.6; Chapter 10 may also want it, so refs.bib), `ColemanIovita99` (R. Coleman, A. Iovita, *The
+  Frobenius and monodromy operators for curves and abelian varieties*, Duke Math. J. 97 (1999); for the converse in 4.2; bib/ch18.bib).
+  Bibliographic details recalled, not re-verified.
+
+### 6.5 References
+
+Main sources, in the order of the chapter: Rubin (Euler Systems, Chapter 1, for local and global conditions, propagation, the comparison
+sequence; cite sections), BlochKato (Sections 3 to 6), FPR94 (I.3, I.4, III), Fontaine and Berger (for $B_{\mathrm{dR}}$, $B_{\mathrm{cris}}$), FontaineLaffaille,
+NSW and MilneADT (local duality, Poitou-Tate), Wiles95 (Greenberg-Wiles), DFG04 (Sections 1, 2, 3; (31), (57), p. 708; Theorems 0.1, 0.2, 2.7,
+2.15; Lemma 2.1), Flach92, Deligne79 (critical values), Shimura76 and GelbartJacquet (the symmetric square), Kraus90 (inertia images), the
+paper's own references for the data (Cremona97, PARI, ecdata).
+
+### 6.6 Verification log (computations done for this outline)
+
+Python 3 with PARI/GP 2.17 through `cypari2`; scripts `h1c3.py`, `tate2.py`, `tamcheck.py`, `tamcheck2.py`, `brute.py`, `rule.gp` in the session
+scratchpad (`ch18/`); Cremona's `ecdata` files (`allcurves`, `degphi`, `galrep`) for conductors below $10{,}000$ in `/tmp/ch09/data`.
+* **Tate parameters.** $\mathsf q(j)$ as `serreverse(1/ellj(x+O(x^60)))` (Chapter 10, 7.2: $j^{-1}+744j^{-2}+750420j^{-3}+\cdots$), evaluated at $1/j_E$ in $\Q_q$;
+  agrees with `ellinit(E,O(q^40)).tate[3]` for 11a1 at $11$, 14a1 at $7$ and at $2$. Unit parts as in 8.5 (11a1: $10$; 14a1 at $7$: $6$, at $2$: $1$; 539c1: $5$ at
+  $7$, $3$ at $11$, agreeing with Chapter 10, 7.8; 791a1: $6$ at $7$, $106$ at $113$; 874b1: $18$ at $19$; 1184f1: $36$ at $37$; 1748e1: $12$ at $19$).
+* **Brute force of Lemma lem:tamfactor and of 7.5** (`brute.py`): for $\ell\in\{3,5\}$, $v\in\{0,1,2\}$, all primes $q<120$, $q\ne\ell$, $\varepsilon=\pm1$, $c'\in\{0,\dots,\ell^3-1\}$, the
+  number of $\Frob$-invariants of $(\Z/\ell^v)\bar e\oplus(\Z/\ell^v)\bar h$ for the action $q^{-1}\Ad\rho(\Frob)$ (module $A$) and $\Ad\rho(\Frob)$ (module $A(1)$) equals
+  $\ell^{v+\min(v,v_\ell(q-1),v_\ell(c'))}$ in all $52{,}896$ cases.
+* **$\Tam(T)$ versus $c_q$** at multiplicative primes: for all curves of `allcurves` below conductor $3000$ and $\ell\in\{3,5,7\}$, $\ell\ne q$, $v_\ell(c_q)=v_\ell(n_q)$ if
+  $a_q=1$ and $0$ if $a_q=-1$: $101{,}336$ pairs, no mismatch.
+* **9.2** (`h1c3.py`): with $\sigma=\begin{psmallmatrix}0&-1\\1&-1\end{psmallmatrix}$ acting on $\ad T$ by conjugation (basis $e,h,f$), $\ker N=(\sigma-1)\ad T$ (Smith form of the
+  inclusion: $[1,1]$), so $H^1(C_3,\ad T)=0$; $\{e,\sigma e,\sigma^2e\}$ is a $\Z$-basis (determinant $\pm1$), so $\ad T\simeq\Z[C_3]$; by hand $H^1(C_3,T)=T/\pi T\simeq\F_3$.
+* **The refined inequality and Section sec:tam** (`tamcheck2.py`): optimal curves of `degphi` below $10{,}000$, non-CM ($j$ not among the $13$ CM
+  values; CM curves carry no mod-$3$ label in `galrep`, and the CM curves 121b1, 256a1, 256d1, 1936f1, with mod-$3$ image of split Cartan type,
+  are the only "violations" if CM curves are not removed), $\ell\in\{3,5,7\}$, $\ell\nmid N$, $E[\ell]$ irreducible (no label $\ell$B or $\ell$Cs), and for $\ell=3$ no
+  label 3Ns. $e_\ell(E,q)$ from `lfunsympow`/`lfuneuler` exactly as the paper's `rule`; Tamagawa terms by 9.4 at all potentially multiplicative
+  primes. Results as in 9.5 and 13.1; no violation. For conductor at most $2000$: at $\ell=3$, $2{,}158$ curves, population $128$, equality $87\to102$,
+  positive excess $19$ (Exercise 15).
+* **The paper's `rule`** (appendix, copied verbatim into `rule.gp`): 121a1 gives $[1,1]$, 726a1 gives $[2,2]$ with and without `iii`, as the paper
+  says; 791a1 gives $[2,1]$ (the Tamagawa excess is not in `rule`).
+* **Inertia types**: 50a1 has type $\mathrm{IV}$ at $5$ with $c_5=3$; 196b1 ($\mathrm{IV}^*$ at $7$), 225b1, 225e1 likewise (Exercise 9).
+* By hand: the matrix identities of 8.2 Step 4 ($F hF^{-1}=h-2\varepsilon c'e$, $FeF^{-1}=qe$); the change of $c'$ under $\Frob\mapsto\Frob t^a$; the local terms of 6.7
+  (complex conjugation on $A_f$: eigenvalues $1,-1,-1$); $\Sym$ of a $2\times2$ Jordan block in characteristic $3$ is a $3\times3$ Jordan block; the exactness
+  argument of 10.4 step 4; $W^{I}=(\Qlmod)e$ at a multiplicative prime with $\ell\nmid n$; $H^1_{\mathrm{ur}}(\Q_p,E[\ell^\infty])\simeq\Z/\ell^{v_\ell(n)}$ in 5.5.
+* Not checked: the theorem numbers marked (verify); DFG04's normalisations ((31), (57), Section 1.7) and its treatment of $\ell=3$ (Part 7, Q1); the
+  exact list of inertia groups at $q=2,3$ (Kraus90) beyond the facts that their orders divide $24$ and that a Sylow $3$-subgroup has order $3$.
+
+________________________________________________________________________________
+
+## 7. Points for important_notes.md
+
+New points in this chapter's area (Bloch-Kato Selmer groups, Tamagawa factors, Lemma lem:fpr, Lemma lem:tamfactor, Lemma lem:dfg21,
+Remark rem:ns, Section sec:tam, Open questions 2 and 3), not among points 1 to 62 and B1 to B20 and not among the Chapter 17 outline's
+N1, N2. Points 5, 6, 7 (with its addendum), 11, 12, 18, 19, 23, 26, 31, 37, 39, 40, 42, 47, 56, B1, B6, B7, B14 are handled in Part 6.4 and not repeated.
+
+**N1. Open question 3, first half, has an answer: $\Tam_q(\ad T)$ is trivial at every additive prime of potentially good reduction, and is
+given by Lemma lem:tamfactor (with the Tate parameter of $j_E$) at every potentially multiplicative prime.**
+Location: Open question 3 ("Compute the Tamagawa factors of $\ad T$ at the additive primes"); the proof of Theorem thm:main ("$v_\ell(\Tam_p(\ad T))\ge0$
+at an additive prime").
+Content: let $\ell$ be odd and $q\ne\ell$ additive. (a) Potentially good: inertia acts on $T$ through a finite group $\Delta$ of order dividing $24$, and
+$H^1(I_q,\ad T)_{\mathrm{tor}}=H^1(\Delta,\ad T)$ (inflation-restriction; the rest of $H^1(I_q,\ad T)$ embeds in $\ad T(-1)$, torsion-free). If $\ell\ge5$ this is $0$ ($\#\Delta$ prime to
+$\ell$). If $\ell=3$ its $3$-part injects into $H^1(P,\ad T)$ for a Sylow $3$-subgroup $P$ of order $3$ ($9\nmid24$), and $\ad T$ is a free $\Z_3[P]$-module (the
+reduction is the adjoint of a nontrivial $2\times2$ unipotent in characteristic $3$, a single $3\times3$ Jordan block, i.e. the regular module;
+Nakayama), so $H^1(P,\ad T)=0$. Hence $\Tam_q(\ad T)=\Z_\ell$ (and $\Tam_q(\ad T(1))=\Z_\ell$), even at types $\mathrm{IV}$, $\mathrm{IV}^*$ with $\ell=3$, where $\Tam_q(T)$ can be
+$3$ (for example 50a1 at $5$). (b) Potentially multiplicative: $\ad T\simeq\ad(T\otimes\chi)$ for a ramified quadratic $\chi$ of $G_{\Q_q}$ making $T\otimes\chi$ of Tate shape
+with parameter $\mathsf q(j_E)$, so $v_\ell(\Tam_q(\ad T))=t_\ell(E,q)+\min(t_\ell(E,q),v_\ell(q-1),v_\ell(c_q(u)))$, also at $q=2$ (this also settles point 18). Consequently
+(eq:identity) becomes fully explicit: $v_\ell(\deg\varphi_E)-\bigl[\sum_qe_\ell(E,q)+\sum_{v_q(j)<0}\bigl(t_\ell(E,q)+\min(t_\ell(E,q),v_\ell(q-1),v_\ell(c_q(u)))\bigr)\bigr]=\len H^1_f(\Q,W)$ (with
+equality in (eq:identity) by point 39, subject to the checklist of point 56), which also answers the second half of Open question 3 as far
+as it can be answered from $\deg\varphi_E$. Data (optimal non-CM curves, conductor below $10{,}000$, $\ell\nmid N$, $E[\ell]$ irreducible, not 3Ns): the excess is
+never negative; it is $0$ for $8{,}688$ of $13{,}203$ curves at $\ell=3$, $19{,}019$ of $23{,}361$ at $\ell=5$, $25{,}133$ of $28{,}134$ at $\ell=7$.
+Fix: replace "$v_\ell(\Tam_p(\ad T))\ge0$ at an additive prime" by the exact values, and restate Open question 3 as the computation of the Selmer
+length. Confidence: high (the group theory is elementary; the freeness was checked by computer with an explicit basis; the only
+imported fact is that potentially good inertia images over $\Q_q$, $q\ne\ell$, have order dividing $24$, Serre-Tate and Kraus90, which should be
+cited with the exact statement).
+
+**N2. Abstract: the Tamagawa sentence omits the condition $\ell\mid n_q$.**
+Location: abstract, "the data confirm the Tamagawa factor formula, which raises the bound by one whenever a Steinberg prime $q\equiv1\pmod\ell$
+has a Tate parameter whose unit part is an $\ell$-th power".
+Problem: by Lemma lem:tamfactor the excess is $\min(v_\ell(n_q),v_\ell(q-1),v_\ell(c))$, which is $0$ when $\ell\nmid n_q$, whatever the unit part; Remark rem:ko(1) and
+Section sec:tam state the condition $\ell\mid n$ correctly. Also "by one" is "by at least one" (the excess can be $2$ when $\ell^2$ divides $n_q$ and $q-1$).
+Fix: "whenever a multiplicative prime $q\equiv1\pmod\ell$ with $\ell\mid n_q$ has a Tate parameter whose unit part is an $\ell$-th power (by
+$\min(v_\ell(n_q),v_\ell(q-1),v_\ell(c))$, so by at least one)". Confidence: high.
+
+**N3. Abstract: "the length of the Bloch-Kato Selmer group of $\ad V_\ell E$".**
+Location: abstract ("the length of the Bloch-Kato (written with a double hyphen in the source) Selmer group of $\ad V_\ell E$ plus the Tamagawa factors plus the omitted Euler factors").
+Problem: the Selmer group of the $\Ql$-representation $\ad V_\ell E$ is a $\Ql$-vector space, which is $0$ under the hypothesis (DFG04 Theorem 2.7, "and the
+same for $A\otimes\Ql$"); the length meant is that of $H^1_f(\Q,\ad T\otimes\Qlmod)$, as in Theorem thm:main. Fix: "of $\ad T_\ell E\otimes\Qlmod$". Also "when
+multiplicity one holds at level $N$ equals" can become "equals" by point 39 (subject to point 56). Confidence: high; low importance.
+
+**N4. Remark rem:ns: the vanishing of $H^1_f(\Q,V^D)$ for the 3Ns curves is an unverified hypothesis, and it is the only one.**
+Location: Remark rem:ns ("the exact sequence of Lemma lem:dfg21 still does [apply] whenever $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$"), Section 1.3 ("the correction is
+the term that Lemma 2.1 of DFG04 produces"), Open question 2.
+Problem: $H^0(\Q,V^D)=0$ always holds (weights), but for image $N_s(\F_3)$ one has $3\in S_f$, so DFG04 Theorem 2.7 does not give $H^1_f(\Q,V^D)=0$; the paper
+leaves open whether the condition holds, and Section 1.3 states the conclusion without it. By the Greenberg-Wiles count with $\Ql$
+coefficients the condition is equivalent to $H^1_f(\Q,\ad V_3E)=0$. Fix: in Section 1.3 and Open question 2, say "provided $H^1_f(\Q,\ad V_3E)=0$ (not
+covered by DFG04 Theorem 2.7 in this case)", or cite a result proving it for residually dihedral representations after checking it.
+Confidence: medium-high (the logic is certain; whether later literature already proves the vanishing for these curves was not checked).
+
+**N5 (optional). Section sec:tam: the test can include the $\mathrm I_n^*$ primes, and one phrase overstates.**
+Location: Section sec:tam ("at a prime $q$ of type $\mathrm I_n$ with $\ell\mid n$ and $q\equiv1\pmod\ell$"; "the extra divisibility of the modular degree is exactly
+where the Tamagawa factor of the adjoint exceeds $\ell^{t_\ell}$").
+Content: by N1(b) a prime of type $\mathrm I_n^*$ (any $q\ne\ell$) carries the same Tamagawa excess, computed from $\mathsf q(j_E)$; including such primes, our
+recomputation below conductor $10{,}000$ ($\ell=3$: $1{,}050$ curves, equality $56.8\%\to68.0\%$; $\ell=5$: $252$ curves, $203\to220$) shows no violation. The phrase
+"exactly where" should read "is accounted for, in these cases, by"; extra divisibility also comes from the Selmer group (N1). Confidence:
+high for the data and the mathematics; optional.
+
+**Q1 (open check, not claimed as an error). DFG04 at $\ell=3$ for weight $2$.**
+The paper reads DFG04 (31) as $S_f=\{\lambda\mid2N\}\cup\{\text{not absolutely irreducible over }\Q(\sqrt{\ell^*})\}$ for $k=2$. DFG04 build integral structures and the local
+condition at $\ell$ with Fontaine-Laffaille theory; for $M_f$ (weights $0,1$) this needs $\ell\ge3$, but the adjoint has weights spanning an interval of length
+$2>\ell-2$ when $\ell=3$. Before the book asserts Theorem thm:main at $\ell=3$, the writer must check in DFG04 that $\ell=3$ is not excluded for $k=2$
+(for instance by a condition such as "$\ell>k+1$" or "$\ell\nmid(k+1)!$" in (31) or in Sections 1 and 2) and how the adjoint's local condition at $\ell$ is
+defined there. If $\ell=3$ were excluded, Theorem thm:main at $\ell=3$ would lose its Taylor-Wiles input (the data would be unaffected). Confidence:
+none either way (DFG04 not consulted); recorded as a check.
+
+Book-internal inconsistencies found while preparing this outline:
+
+* **B-a. PLAN.md, Chapter 18 entry.** (i) "$\Tam_p(T)=\Fitt_{\Zl}(H^1(I_p,T)_{\mathrm{tors}})^{G_{\Q_p}}$" repeats the misplaced parenthesis of point 37. (ii) "the Tamagawa
+  factor at an additive prime (what is known: it is at least 0; the paper does not compute it; Open question 3)" is superseded by 9.3 (N1).
+  (iii) PLAN.md writes $V^*=\Hom(V,\Ql)$ for the linear dual while the paper and Chapter 16 use ${}^*$ for the Pontryagin dual (extends B4); this
+  outline uses $V^\vee$ for the linear dual and keeps ${}^*$ for Pontryagin (C2), consistent with Chapters 14 and 16.
+* **B-b. Chapter 21 outline.** A4.10 says $\Tam_p(T^D)=\Tam_p(A)$ is checked "in the multiplicative case" only; 7.5 here proves it in every case
+  that occurs (with 9.3), and A4.10 can cite 7.5. A1.3 says nothing about additive primes; it can cite 9.3. A4.9's proof idea should cite
+  Chapter 17, 10.3 and 10.4 here. Its A2.7 should cite 8.2 (with the $\varepsilon$ factor and the modulus $(n,q-1)$, as the Chapter 17 outline's B-c says).
+* **B-c. Chapter 3 outline, line 106** ("$T^D$ ... the Cartier dual, Chapter 18"): the general definition is Chapter 17's 2.1, the adjoint-specific
+  $T^D\simeq A(1)$ is 2.4 here (same as the Chapter 17 outline's B-a).
+* **B-d. Chapter 16 outline, Exercise 10 (11a1 at $q=11$, $\ell=5$)** and 8.5 here use the same example; 8.5 cites it rather than repeating the
+  computation. No conflict.
+* **B-e. The paper's "$H^1_f(\Q_p,T^D)$ is the torsion of $H^1(\Q_p,T^D)$"** must not be simplified to "$H^1(\Q_p,T^D)$ is finite": the latter fails at
+  $\mathrm I_0^*$ primes and at cyclic primes with $\chi(p)=1$ (3.3, 3.4). The Chapter 17 outline's 4.6 states it correctly; any later chapter should
+  follow it.
+* Consistency checks that passed: Chapter 4's 7.6 (Gram determinant $-2$), Chapter 7's 6.2 and 8.2, Chapter 10's 7.4 and 7.8 (unit parts of 11a1,
+  539c1), Chapter 11's 3.2, 3.4, 8.5, 8.6, Chapter 14's 9.5, Chapter 16's model-computation, and Chapter 17's 4.4 to 4.6, 5.3, 5.4, 10.3, 10.4 agree with
+  the line-up and with the recomputations of Part 6.6.
