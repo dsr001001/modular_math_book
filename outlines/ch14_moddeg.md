@@ -823,9 +823,9 @@ Black boxes imported from later chapters (stated with a forward `\Cref`, used on
 named inputs of R items): Lemma lem:crit (Chapter 15; used in 8.2, 9.4, 9.5 as a cited result); the Galois representation
 $\bar\rho_{\mathfrak m}$ (Chapter 15; 10.1); the Rankin-Shimura formula and $L(f,1)$ (Chapter 19; 7.5, 11.4); the assembly of Theorem thm:main
 and Lemma lem:ddt417 in general (Chapter 20; 9.5(a), 9.4 proves only its case $d=2$ from Chapter 3); DFG04's definitions (Chapter 20;
-9.6). The use of Lemma lem:crit in 9.4 is a forward reference to Chapter 15; to keep linear reading, Chapter 13 states the
-identity $r_E\Z=\phi_f(\operatorname{Ann}I_f)$ if the Chapter 13 outline proves the perfect pairing (it then follows in five lines); otherwise
-Chapter 14 states it with `\Cref{ch:modgalrep}` and says so.
+9.6). Lemma lem:crit is proved in full in Chapter 15, Section 8 (orchestrator decision); Chapter 14 states the congruence
+number and the congruence ideal (8.1, recalled from Chapter 13, its 4.3), cites lem:crit with `\Cref{ch:modgalrep}` in 8.2 and
+uses only $r_E\Z_\ell=\eta_f\Z_\ell$ (in 9.4, 9.5); Chapter 20 restates it.
 
 Forward pointers (chapters that use this one):
 * Chapter 15 (`ch:modgalrep`): $J_0(N)$, $A_f$, Eichler-Shimura (5.1, 5.2) for $\rho_{f,\lambda}$; $M_{f,\ell}\simeq T_\ell E(-1)$ for the optimal curve
@@ -936,3 +936,65 @@ unnormalised Petersson product; PARI divides by $\mu(N)$".
   `bib/ch14.bib`. Checked: `refs.bib` already has DiamondIm, LingOesterle, Ribet88, Carayol86, Mazur78, AU96, Tilouine97, RibetStein,
   Shimura73, Stein, Ogg (but Ogg is the 1967 wild ramification paper, not Ogg 1973 on cusps), ecdata; no chapter bib file has any key
   yet except `bib/chA.bib`.
+
+### 6.5 References
+
+In `refs.bib` and cited here: Shimura71 (Chapters 6, 7; theorem numbers 7.9, 7.14 marked "verify"), Shimura73, DiamondShurman
+(Sections 3.8, 5.2, 6.1 to 6.6, 7.7, 7.9, 8.7; theorem numbers marked "verify"), DiamondIm (Sections 7 to 12 by section), Stein,
+Cremona97 (Chapter II), Zagier85, Watkins02, ARS12 (Theorem 2.2 as the paper cites it; Sections 2, 3; Table 1), Ribet83, AU96,
+Mazur77 (Chapter II), Mazur78, Ribet90, Ribet88, LingOesterle, RibetStein (Theorem 3.5 as cited), Tilouine97, Wiles95, TaylorWiles,
+BCDT, Carayol86, DDT (Section 4), DFG04 (Sections 1.5.3 to 1.8.2, (13), (14), Lemma 2.12, Proposition 1.4, Theorem 3.7, as the paper
+cites them), RibetTakahashi97, Takahashi01, Pasten, CalegariEmerton09, Dummigan06, Yazdani11, CaroPasten22, HatleyKundu, BKP, PARI,
+PARIusers, ecdata, LMFDB, Conrad (modular curves notes), Loeffler (modular curves notes).
+
+Proposed new keys (complete entries to be checked against the publications before they are added; none is in any bib file
+now). By decision B14, a key that another chapter also needs goes in `refs.bib`:
+* `DeligneRapoport73` (P. Deligne, M. Rapoport, *Les schemas de modules de courbes elliptiques*, Lecture Notes in Math. 349, 1973)
+  and `KatzMazur85` (N. Katz, B. Mazur, *Arithmetic Moduli of Elliptic Curves*, Annals of Math. Studies 108, 1985): needed by
+  Chapters 12 and 14, so **refs.bib**, not `bib/ch12.bib` as the Chapter 12 outline planned (Part 7, B-d).
+* `Ogg73` (A. Ogg, *Rational points on certain elliptic modular curves*, Proc. Sympos. Pure Math. 24, 1973): Chapters 12 and 14,
+  so **refs.bib**; the existing key `Ogg` is a different paper (Ogg 1967, wild ramification).
+* `Edixhoven91` (B. Edixhoven, *On the Manin constants of modular elliptic curves*, in *Arithmetic Algebraic Geometry (Texel,
+  1989)*, Progr. Math. 89, 1991): `bib/ch14.bib`.
+* `ARS06` (A. Agashe, K. Ribet, W. Stein, *The Manin constant*, Pure Appl. Math. Q. 2, 2006): `bib/ch14.bib`.
+* `Cesnavicius18` (K. Cesnavicius, *The Manin constant in the semistable case*, Compositio Math., 2018) and `CNS` (K. Cesnavicius,
+  M. Neururer, A. Saha, *The Manin constant and the modular degree*, J. Eur. Math. Soc.; year and volume to be checked):
+  `bib/ch14.bib`, cited only after checking the statements quoted in 7.2.
+* `Kenku` (M. Kenku's completion of the list of $N$ with $Y_0(N)(\Q)\ne\emptyset$; the Chapter 9 outline also needs it, so **refs.bib**;
+  exact paper to be identified).
+* `Frey` and `MaiMurty` for the abc connection (8.4): cite only through ARS12 Section 2 unless checked; then `bib/ch14.bib`.
+* Optional: `Stevens89` (G. Stevens, *Stickelberger elements and modular parametrizations of elliptic curves*, Invent. Math. 98,
+  1989) for optimal curves and the $X_1(N)$-optimal variant; `bib/ch14.bib`.
+Every bibliographic detail above was recalled, not re-verified.
+
+### 6.6 Verification log (computations done for this outline)
+
+Python 3 with PARI/GP 2.17 through `cypari2`; scripts `cong.gp`, `run.py`, `run2.py`, `zw.py` in the session scratchpad
+(`ch14/`); Cremona's `ecdata` files in `/tmp/ch09/data`.
+* **Congruence numbers** (`cong.gp`): for $N$ the conductor, take the $\Q$-basis `mfbasis(mfinit([N,2],1))`, its $q$-expansions to
+  $19(B_2(N)+20)$ terms, the integral lattice $S_2(\Gamma_0(N);\Z)$ as the saturation of the span of the truncations at $B_2(N)+20$ (via
+  `matkerint` of the left kernel; Chapter 12, its 11.4(ii) justifies saturating the truncation), the Hecke matrices of $T_p$ ($U_p$ for $p\mid N$)
+  for $p\le19$ on that lattice from the $q$-expansion formulas, the common left eigenvector $\lambda$ with eigenvalues $a_p(f)$ made primitive,
+  and $r_E=|\lambda(f)|$. Results as in 8.5: $1,1,2,6,4\to12,12,12,6,6,288,1584,2880$ for 11a1, 20a1, 37a1, 77c1, 99a1, 99b1, 99c1, 99d1, 121a1, 539c1, 726a1,
+  980i1 (the ranks $1,1,2,7,9,6,49,109,145$ of the lattices equal $\dim S_2$). `ellmoddegree` gave the degrees in the same table; all agree
+  with `ecdata`'s `degphi` file. Sanity check of the method: $r_E=\deg\varphi_E$ whenever $p^2\nmid N$ for all $p$, as ARS predicts.
+* **Level-99 congruences**: $a_n(99a1)\equiv a_n(99b1)\equiv a_n(99d1)\pmod3$ for all $n\le30$ ($B_2(99)=24$); 99c1 and the old forms from 11a1, 33a1 are not
+  congruent to 99a1 mod $3$ ($a_2\equiv1$ versus $2$).
+* **Zagier-Watkins** (`zw.py`): $\mu(N)\cdot$`mfpetersson`$(F)$ for the newform $F$ of the curve, `E.omega` for the periods, area
+  $|\operatorname{Im}(\bar\omega_1\omega_2)|$; the ratios $4\pi^2\langle f,f\rangle/\operatorname{vol}(\Lambda_E)$ equal $1,5,1/5,2,4,6$ to $30$ digits for 11a1, 11a2, 11a3, 37a1, 99a1, 121a1,
+  as in 7.4 (and Chapter 12, its 10.4, for 20a1). The level-$539$ Petersson norm exceeded a 2 GB PARI stack and was not computed.
+* **Class 11a**: `allisog` gives the isogeny matrix $\begin{psmallmatrix}1&5&5\\5&1&25\\5&25&1\end{psmallmatrix}$ for 11a1, 11a2, 11a3.
+* **Cusp counts** (by the formula $\sum_{c\mid N}\varphi(\gcd(c,N/c))$): $6$, $8$, $12$ for $N=20,99,121$, agreeing with Chapter 12, its 5.3 table.
+* **Image of the cusp $0$** (11.4): `bestappr(lfun(E,1)/E.omega[1])` $=1/5$, $1/6$, $1/6$, $1/3$, $2/3$, $1$, $0$, $0$ for 11a1, 14a1, 20a1, 19a1, 37b1,
+  121a1, 539c1 (and $0$ for 37a1, 99a1, 726a1 by analytic rank $1$); torsion orders $5,6,6,3,3,1,2$.
+* **Watkins's conjecture and Calegari-Emerton** (12.3, 12.4): for each of the $38{,}042$ lines of `degphi.00000-09999` (one optimal curve
+  per class, conductor below $10{,}000$), the rank and torsion order from `allcurves`: no curve with $2^{\mathrm{rank}}\nmid\deg$; $103$ curves of
+  odd degree; all with at most two odd bad primes; the two without rational $2$-torsion and with non-prime conductor are
+  27a1 ($[0,0,1,0,-7]$, $\deg1$) and 243b1 ($[0,0,1,0,2]$, $\deg9$), both $j=0$.
+* **Optimality and labels**: `degphi` lists 990h with the equation of 990h3 and degree $1728$; all other classes up to $10{,}000$ use
+  curve number $1$ (as recorded in Chapter 9, its 12.1).
+* By hand: $W_N\,\mathrm{diag}(1,p)\,W_N^{-1}=\mathrm{diag}(p,1)$; the transpose computation of 3.3(i); $\mathcal C_\alpha^*(f\,dz)=(f|[\Gamma\alpha\Gamma]_2)\,dz$ with the normalisation
+  of Chapter 12, C3; $T_p(0)=(p+1)(0)$; $\int_0^{i\infty}2\pi if\,d\tau=-L(f,1)$; $\varphi_E\circ w_N=\varepsilon\varphi_E+\varphi_E(0)$; the projection-formula computation of 9.3;
+  $\dim S_2(\Gamma_0(99))=4+2+3$; the interior-cohomology exact sequence in 9.6(2).
+* Not checked: the theorem numbers marked (verify); the exact statements of ARS12 Theorem 2.2, RibetStein Theorem 3.5,
+  Ribet-Takahashi, Calegari-Emerton and the Manin-constant literature; DFG04's definitions (9.6).
