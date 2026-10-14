@@ -684,3 +684,43 @@ v_l(-v_q(j_E)) makes sense there), or say so. Expository.
 * PLAN.md's "Kraus's conditions at 2 and 3" are Kraus 1989 (Acta Arith. 54), not Kraus90. PLAN.md's key
   TateAlgorithm does not exist; the algorithm is Tate75 in refs.bib.
 * Following B14, SerreTate68, DokDok15, KramerTunnell82, Lorenzini10 and Papadopoulos93 belong in refs.bib.
+
+## From the Chapter 15 outline (Galois representations of modular forms, level lowering)
+
+Source: `outlines/ch15_modgalrep.md`, final section. Point 54 was also checked independently by the
+orchestrating session with PARI; point 55 is as reported. Both are low importance. The outline adds a worked
+example for case (a) of Theorem thm:qual at q = 2 (point 43): 52a1 has type IV* at 2, its mod 3 Serre
+conductor is 26, and g = f_26b - f_26b(2z) is congruent to f_52a mod 3. On the tables, all 1,051 curves
+labelled "1" below conductor 10,000 with type IV or IV* at 2, 3 not dividing N, and mod 3 image neither
+reducible nor 3Ns have 3 dividing the modular degree.
+
+### 54. Theorem thm:qual, case (c): "f' = f tensor chi is a newform on Gamma_0(N/q)" (companion to point 20)
+
+E has type I_n^* at q, so a_q(f) = 0 and f tensor chi has a_q = 0. But E' = E^(q) is multiplicative at q,
+so its newform has a_q = plus or minus 1. Hence f tensor chi is the q-depletion of f_{E'}, not f_{E'}.
+Check: 539c1 twisted by -7 is in class 77c, and 77c1 has type I_3 at 7 with a_7 = -1 (PARI). **Action:**
+write f' = f_{E'}; the step h != f then follows by strong multiplicity one, as in point 20. Confidence: high
+(checked twice).
+
+### 55. Remark after the Example in Section 3: the obstruction at q = 3 is q = l, not wildness
+
+The remark says the data show the conclusion "at q = 3 in cases (a) and (b), where Lemma lem:IV does not
+apply because the ramification is wild". In those cases q = l = 3, so 3 divides N and the curves are outside
+Theorem thm:qual anyway. **Action:** say "where q = l". Expository.
+
+## Book-internal consistency (continued)
+
+### B17. Who proves Lemma lem:crit (decision)
+
+PLAN.md's Chapter 14 entry says Chapter 14 or 20, its Chapter 15 entry says 15, and the Chapter 21 outline
+says both 15 and 20. **Decision:** Chapter 15 proves lem:crit in full (its outline Section 8); Chapter 14
+states the congruence number and cites it; Chapter 20 restates it. The Chapter 14 agent has been told.
+
+### B18. Further items for the Chapter 21 revision pass and for refs.bib
+
+* Chapter 21 item A3.5, case (c), repeats point 54 and its h != f argument contradicts itself; item A1.10
+  still states case (a) of thm:qual for q >= 5 only (point 43).
+* Chapter 11 says Chapter 15 proves DDT Theorem 3.15; Chapter 15 states it and proves only the
+  specialisation to rhobar_{E',l}.
+* By decision B14, Rohrlich94 and Deligne73 (planned by Chapter 7) and Livne89 (planned by Chapter 11)
+  belong in refs.bib. The twist of 20a1 by -7 is 980g2 (addition to B8).
