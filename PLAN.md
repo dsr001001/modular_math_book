@@ -712,7 +712,7 @@ image of inertia (examples: the three Kodaira cases), the adjoint and the symmet
 rho = Sym^2 rho tensor det^{-1} and L(Sym^2 f, s) = L(ad f, s - 1) in the paper's normalisation, with care
 about which normalisation each reference uses: Shimura, Gelbart-Jacquet, DFG04, PARI), the naive adjoint
 L-function (the Euler product of sum a_n^2 n^{-s} after removing the zeta factor, i.e. the Rankin-Selberg
-convolution L(f x f, s)/zeta_N(2s - 2): the naive local factor L_p^{nv}(A_f, s) equals the true one when
+convolution L(f x f, s)/zeta^(N)(s - 1), where L(f x f, s) = zeta^(N)(2s - 2) sum a_n^2 n^{-s}: the naive local factor L_p^{nv}(A_f, s) equals the true one when
 delta_p > 0 and is 1 when delta_p = 0; explain why: the naive factor at p is built from a_p alone, and at an
 additive prime a_p = 0), the Rankin-Selberg method (unfolding; the theorem of Rankin and Shimura: for a
 newform f of weight 2 and level N, <f, f> = (explicit constant involving N, pi, and the local factors at

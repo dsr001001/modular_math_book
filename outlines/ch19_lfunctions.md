@@ -258,8 +258,9 @@ $v_\ell(L_p(A_f,1)^{-1})>0$ iff $p\equiv1\pmod\ell$ or $a\equiv\pm(p+1)\pmod\ell
 ### Section 7. Analytic theory, normalisations and critical values
 
 **7.1 `thm:lfunctions:sym2-analytic`** (theorem; R, with (iii) P given 8.3). Let $f$ be as in 6.1. (i) (Shimura 1975) $L(\Sym f,s)$
-extends meromorphically to $\C$ (Shimura proved this, with holomorphy, via the series $\sum a_{n^2}n^{-s}$ of 8.2(B) and a theta series of
-weight $1/2$; cite the paper, proposed key `Shimura75`, Part 6.5). (ii) (Gelbart and Jacquet 1978) there is an automorphic
+extends meromorphically to $\C$ (Shimura proved this, and holomorphy under conditions that the writer must copy from the paper,
+via the series $\sum a_{n^2}n^{-s}$ of 8.2(B), a theta series and an Eisenstein series of half-integral weight; proposed key `Shimura75`,
+Part 6.5). (ii) (Gelbart and Jacquet 1978) there is an automorphic
 representation $\operatorname{Ad}(\pi_f)$ of $\GL_3(\mathbb A_\Q)$, cuspidal unless $f$ has complex multiplication, whose standard $L$-function is
 $L(s,\pi_f,\operatorname{Ad})=L(\ad f,s)$ (unitary normalisation, centre $1/2$; agreement of the local factors at the bad primes with
 the Galois side by local-global compatibility, Chapter 15, its 3.4, R); consequently $L(\ad f,s)$ is entire (also in the CM

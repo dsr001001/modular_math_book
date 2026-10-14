@@ -927,3 +927,59 @@ adjoint. To be checked against DFG04 together with the checklist of point 56.
   infinite at I_0^* primes and at primes with cyclic inertia where chi(p) = 1.
 * 791a1 is a clean example where the Tamagawa excess is needed for equality; rule(E, l) gives [1, 1] for 121a1
   and [2, 2] for 726a1, as in the paper.
+
+## From the Chapter 19 outline (L-functions, the adjoint, Euler factors)
+
+Source: `outlines/ch19_lfunctions.md`. Point 69 (its example) was also checked independently by the
+orchestrating session with PARI; the rest is as reported, with PARI checks: Lemma lem:euler agrees with
+lfunsympow on all 117,232 pairs (curve, bad prime q >= 5) below conductor 10,000; the Petersson formula holds
+to about 1e-15 on 15 curves; rule(E, l) gives [1, 1] for 121a1 and [2, 2] for 726a1.
+
+### 69. Remark rem:wild and Section sec:wild: the shape of P_q at every prime, and the prime 2 at l = 5
+
+At every bad prime q, including 2 and 3, P_q(X) is one of four shapes: 1 - X (multiplicative), the I_0^* cubic
+(1 - X)(1 - (a^2 - 2q)X + q^2 X^2) of a quadratic twist with good reduction at q, 1 - cqX with c = plus or
+minus 1 (cyclic inertia of order 3, 4 or 6 with an invariant line), or 1. Every cubic factor below conductor
+10,000 (1,143 at q = 2, 2,283 at q = 3) is the I_0^* formula for such a twist; this also confirms point 60.
+Consequences:
+
+* 1232l1 is 77a1 twisted by chi_{-4}, and a_2(77a1) = 0, which explains e_3(E, 2) = 2 (point 50).
+* The prime 2 can contribute at l = 5: 592c1 is 37a1 twisted by chi_{-4} (type II* at 2, cubic P_2,
+  e_5(E, 2) = 1, modular degree 80 = 2^4 * 5; checked with PARI). So the paper's "for l = 5, 7 no term is
+  needed at q = l or at q = 2, 3 beyond Definition def:terms" is right (the term is in def:terms), but the
+  reader should not infer that 2 never contributes at l >= 5.
+* "Potentially good in about half of the cases" for type I_n^* at 2 is 61% below conductor 10,000.
+
+**Action:** replace the case-by-case remarks on 2 and 3 by this classification. Confidence: high.
+
+### 70. Addendum to point 30: the exact relation with the Rankin series
+
+sum a_n^2 n^{-s} = zeta^(N)(s - 1) L^nv(Sym^2 f, s) / zeta^(N)(2s - 2) exactly, with no correction at the bad
+primes; equivalently Shimura's series gives the naive function on the nose:
+L^nv(Sym^2 f, s) = zeta^(N)(2s - 2) sum a_{n^2} n^{-s}. **Action (refines point 30):** the Introduction can say
+"the naive adjoint L-function, zeta^(N)(2s - 2) sum a_{n^2} n^{-s} (Shimura)". Confidence: high.
+
+### 71. Optional: an exact degree formula makes the role of the Euler factors explicit
+
+Combining the Petersson formula <f, f> = N L^nv(Sym^2 f, 2) / (8 pi^3) (valid at every level) with
+Zagier-Watkins gives deg phi_E = N L^nv(ad f, 1) / (2 pi vol(Lambda_E)). Writing B_E for the same expression
+with the true L-value, v_l(deg phi_E) = v_l(B_E) + sum_q e_l(E, q) unconditionally, and the inequality
+(eq:thm) is equivalent to v_l(B_E) >= sum_q t_l(E, q). Checked exactly on 19 curves. The attribution of the
+Petersson formula to DFG04 Lemma 2.12 is not checked. Optional; confidence high on the formula.
+
+### 72. Section 1.1: delta_p and the formula for L_p are wrong at p = l
+
+"delta_p = 2, 1, 0 for good, multiplicative, additive reduction" and L_p = det(1 - Frob p^{-s} | A_f^{I_p})^{-1}
+are the definitions for p != l; at p = l one uses D_cris. Harmless, since the paper only uses them at p != l.
+Low importance.
+
+## Book-internal consistency (continued)
+
+### B23. Items from the Chapter 19 outline
+
+* PLAN.md's Chapter 19 entry wrote the naive function as L(f x f, s)/zeta_N(2s - 2); it is
+  L(f x f, s)/zeta^(N)(s - 1) with L(f x f, s) = zeta^(N)(2s - 2) sum a_n^2 n^{-s}. Fixed in PLAN.md. The entry
+  also repeats the false claims of points 15 (e_l twist-invariant) and 50 (type II at 2 has P_2 = 1).
+* The Chapter 2 outline's question 11.6(f) is answered: 539d1 has type I_0^* at 7 with E' = 11a3, e_3 = 2 and
+  modular degree 72.
+* By B14, Rankin39, Deligne73, Tate79, Rohrlich94, SerreTate68 and Shimura75 belong in refs.bib.
