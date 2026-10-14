@@ -783,3 +783,45 @@ Optional.
   proved "here or in Chapter 20" (decided in B17: Chapter 15).
 * Ribet-Takahashi is stated in both Chapters 14 and 15; keep the statement in Chapter 14 and cite it.
 * Chapter 20 should cite Chapter 14's items 9.3, 9.5, 9.6 and 10.3 rather than re-derive them.
+
+## From the Chapter 13 outline (Hecke operators, newforms, twists)
+
+Source: `outlines/ch13_hecke.md`, final section. No errors in the paper were found in this area. The points
+below are optional strengthenings and one expository fix, as reported by the outline agent with PARI checks.
+The agent also computed the Hecke algebra over Z at ten levels from 11 to 539 (rank d and a perfect pairing of
+determinant plus or minus 1 at every one) and recomputed r(99a1) = 12 against degree 4, as in the paper.
+
+### 59. Optional: Step 1 of the proof of Theorem thm:quant is an equality
+
+The twist map iota sends f to g^S and maps f^perp into the T-stable complement of g^S, and conversely, so
+v_l(r_E) = v_l(eta^Hecke(g^S)), not just >=. Matches the computed Hecke congruence modules at level 539 (orders
+288 and 504) at every prime. Confidence: high, as reported.
+
+### 60. Optional: the restriction q >= 5 in Theorem thm:quant is not needed
+
+The argument works for every odd q in S of type I_0^* or I_n^* (the twist lemma for I_n <-> I_n^* and I_0 <->
+I_0^* holds for every odd q). PARI's Euler factor P_3 agrees with the twist formula on all 1,100 curves
+checked, and the bound held in all 388 cases with type I_0^* at 3. **Action:** replace q >= 5 by q odd, after
+checking the Euler-factor formula at q = 3 in the proof. Confidence: high, as reported.
+
+### 61. Theorem thm:quant, Step 1: use the T-stable complement, not the Petersson complement
+
+"The proof of Lemma lem:crit carried out for g^S" must use the complement of the g^S-line that is stable under
+the full Hecke algebra (the sum of the other generalised eigenspaces). The Petersson orthogonal complement is
+not T-stable when U_p is involved (shown at level 44), so the two differ. The paper's text says "the
+T-stable complement", which is right; the book must not substitute the Petersson one. Expository.
+
+### 62. A third example where r and deg differ
+
+539d1 has congruence number r = 504 against modular degree 72 (the gap is at 7, with 7^2 dividing 539),
+next to 99a1 (r = 12, deg 4) and 726a1 (point 58). r(121a) = r(121c) = 6. Optional.
+
+## Book-internal consistency (continued)
+
+### B20. Items from the Chapter 13 outline
+
+* The twist of 20a by -7 is class 980g, not 980i: the paper's 980i1 congruence is between 980i1 and the
+  twist of 20a1, which is a different newform. The paper is right; outlines must not identify the two.
+* PLAN.md's Chapter 13 scope uses k both for the weight and for the exponent in the T_{p^k} recursion.
+* Li75 and Rankin39 are needed by Chapters 13, 15 and 19 and belong in refs.bib (B14), after checking their
+  bibliographic data.
