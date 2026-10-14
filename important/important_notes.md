@@ -958,7 +958,7 @@ Consequences:
   e_5(E, 2) = 1, modular degree 80 = 2^4 * 5; checked with PARI). So the paper's "for l = 5, 7 no term is
   needed at q = l or at q = 2, 3 beyond Definition def:terms" is right (the term is in def:terms), but the
   reader should not infer that 2 never contributes at l >= 5.
-* "Potentially good in about half of the cases" for type I_n^* at 2 is 61% below conductor 10,000.
+* "Potentially good in about half of the cases" for type I_n^* at 2 is 58% below conductor 10,000 (61% below 5,000).
 
 **Action:** replace the case-by-case remarks on 2 and 3 by this classification. Confidence: high.
 
