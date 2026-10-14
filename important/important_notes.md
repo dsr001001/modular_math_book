@@ -433,6 +433,11 @@ pairing on the image of H^1(E)). **Action:** state it as a lemma, which both sim
 the paper. Confidence: high for the mathematics (checked twice); medium on the exact normalisation of
 eta in DFG04, which should be checked against DFG04 Sections 1.6 and 1.7 before the paper is changed.
 
+**Status update (from the Chapter 20 outline): CONFIRMED against DFG04.** The agent read the published
+DFG04 (Ann. Sci. ENS 37 (2004), Numdam) and checked the five items of point 56: all hold in the form the paper
+needs. So point 39 stands with DFG04's own eta: Lemma lem:hecke is an equality, and (eq:identity) of Theorem
+thm:main is an equality whenever l is not in S_f. See point 73.
+
 ### 40. Supplement to point 26: M_{f,lambda} for the optimal curve, exactly
 
 For the optimal curve, phi^* identifies M_{f,lambda} with H^1(E, Z_l) = Hom(T_l E, Z_l), which is
@@ -1019,3 +1024,66 @@ are stable even where line numbers drift. No new points about the paper.
 * Chapters 5, 7, 11, 17, 21 use a bare numerical chi_3.
 * Open choices left to the author: the stricter chi_{q*}-everywhere rule (about 40 extra edits), and the sign
   convention c_E > 0 for the Manin constant.
+
+## From the Chapter 20 outline (congruence ideals, DFG04): the DFG04 checklist is settled
+
+Source: `outlines/ch20_congruence.md`, Parts 7 and 8. The agent downloaded and read the published DFG04 from
+Numdam. Point 74 was also checked independently by the orchestrating session; the DFG04 readings are as
+reported by the agent, with the definitions quoted by number in the outline.
+
+### 73. Point 56 and open check Q1 are settled: point 39 holds for DFG04's eta, and DFG04 covers l = 3
+
+Point 56's checklist, item by item:
+1. Integral structure: DFG04 define it as the image of the U_0(N)-invariants of the compactly supported
+   cohomology of the full-level curve, not literally as H^1(X_0(N), Z_l). It agrees with H^1(X_0(N), Z_l) at
+   non-Eisenstein maximal ideals, which is all the paper uses (the definitions are certain; that the comparison
+   cokernel is Eisenstein in general is the agent's sketch, medium-high).
+2. Interior cohomology is H^1(X_0(N)): confirmed.
+3. The operator is the Atkin-Lehner involution with no scalar (N^{k-2} = 1 in weight 2); the pairing is the cup
+   product on X_0(N) times 1/2, a unit for l odd: confirmed.
+4. M_f = M(N, psi)_![I_f], the kernel lattice for the full Hecke algebra: confirmed.
+5. eta is defined through the image of the second exterior power, i.e. the ideal of values: confirmed.
+
+Q1: S_f in DFG04 (31) excludes only the primes dividing N k! (= 2N in weight 2) and the residually induced case.
+The local condition at l is defined through extensions of short objects (DFG04 Proposition 2.2, Corollary 2.3,
+needing only l > 2), and the condition 2 <= k <= l - 1 holds at l = 3. So DFG04 Theorem 3.7 covers l = 3 in
+weight 2.
+
+All DFG04 numbers the paper cites are correct (Theorems 0.1, 0.2, 2.7, 2.15, 3.7; Proposition 1.4(c); Lemmas
+2.1, 2.12; (31), (57); p. 708; Sections 1.5.3, 1.6.1, 1.6.2, 1.7.2, 1.7.3, 1.8.2, 2.1; (13), (14)). DFG04
+Lemma 2.12 gives the Petersson norm with the naive L-value, and DFG04 use the geometric Frobenius (confirming
+point 11). **Caution:** a 2025 arXiv version of DFG04 (arXiv:2512.02348) uses different numbering; cite the
+published version.
+
+**Action for the paper:** Theorem thm:main can state (eq:identity) as an equality whenever l is not in S_f,
+with the proof of point 39 replacing the multiplicity-one argument; reword the Section 4.1 description of the
+integral structure and mention the factor 1/2. Confidence: high.
+
+### 74. Theorem thm:quant: the first inequality is an equality whenever l is not in S_f
+
+Apply the identity (eq:identity), now an equality (point 73), to E and to E_S. The twist does not change ad T,
+so the Selmer groups agree; the Tamagawa factors agree (trivial at I_0^* primes by point 64, and at I_n^*
+primes E_S is multiplicative with the same Tate parameter); and the only difference in the Euler terms is
+sum over q in S of e_l(E, q). Hence v_l(deg phi_E) = v_l(deg phi_{E_S}) + sum_{q in S} e_l(E, q), with no
+multiplicity-one hypothesis. This supersedes the second bullet of point 56 and the claims in the Chapter 14,
+15 and 21 outlines that the equality needs multiplicity one. Data: equality holds in all 25,477 (curve, l)
+pairs below conductor 10,000 (including 15,607 pairs with 3 in S and 8 with image 3Ns), and Theorem thm:twist
+case (c) holds with equality in all 14,876 pairs. **Action:** state the equality in Theorem thm:quant (under
+l not in S_f) and drop the multiplicity-one caveat in the remark after it. Confidence: high (argument checked
+twice, data agree).
+
+### 75. Lemma lem:dfg21: the paper's hypothesis is a sufficient form of DFG04's
+
+Expository; the paper's statement is correct as a special case.
+
+## Book-internal consistency (continued)
+
+### B26. Items from the Chapter 20 outline
+
+* Chapter 14 (9.5(c), 10.4(b)), Chapter 15 (10.4) and Chapter 21 (A4.16) say the equality in thm:quant still
+  needs multiplicity one; point 74 removes this.
+* Chapters 14, 18, 19 and 21 mark DFG04 facts as "not checked against DFG04"; they can now cite the Chapter 20
+  outline's Part 7.
+* Chapter 13 item 7.4 cites DFG04 Section 1.5.3 for f^Sigma; it is in Section 1.7.3.
+* PLAN.md cites "DDT Theorem 5.3"; unverified.
+* By B14, DiamondTaylor94 belongs in refs.bib; Diamond96, Lenstra95 and DFG04long go in bib/ch20.bib.

@@ -763,3 +763,127 @@ most): S1 `euler_rule.gp` (the paper's appendix, verbatim); S2 `sessions.gp` (`r
 record per optimal curve: invariants, local data, $P_q$, $P_q(q^{-2})$, $a_q$, $v_q(j)$, `ns3`, torsion counts in the class, isogeny
 degrees); S5 `analyse.py` and `tables*.py` (the five bounds and Tables 11.1 to 11.4, 11.6, 11.7, and 8.3); S6 `calib2.py`
 (10.3, 10.5, the stratified and permutation versions); S7 `tam.py` (11.5); S8 `moddeg_check.py` (7.2). Paper: the appendix.
+
+________________________________________________________________________________
+
+## 3. Section-by-section plan with target line counts
+
+Lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,200). The card lists all items of Part 2 (about 150 lines,
+not counted); computational items appear on the card with the exact output in one line (for example "`rule` on 121a1 returns
+`[1, 1]`") and the tag *(proved here)* for C, *(stated; reference)* for D.
+
+| section | title | contents | target lines |
+|-|-|-|-|
+| (starred) | Core results at a glance | the card: every item of Part 2 with its tag and `\Cref`; K3 to K5 restated in two lines; the five bounds | (excluded) |
+| (starred) | Where the paper uses this chapter | Section 1.1 (`lfunsympow`); Section 1.4 (component groups from the tables); Lemma lem:euler and Lemma lem:twist (the PARI checks); Remark rem:wild; Proposition prop:ns (`ns3`); Proposition prop:forms (the factor at 2); the Example of Section 3 and the 99A1 remark; Section sec:data and all its subsections and tables; the paragraph after Theorem thm:twist; the abstract's counts; the appendix | 45 |
+| 1 | Introduction and conventions | purpose; 1.1 to 1.3 as `convention` environments (K1 to K11 condensed); the physics aside; the debts of Chapters 2, 3, 9 to 15, 17 to 19 in one paragraph | 80 |
+| 2 | PARI/GP from zero | 2.1 to 2.4; a first session in `lstlisting`; the pitfalls `warning` | 150 |
+| 3 | Invariants of a curve in PARI | 3.1 to 3.8; the outputs of `ellglobalred`, `lfunsympow`, `lfuneuler`, `.tate`, `elldivpol`, `elltwist`, `ellmoddegree`, `ellweilcurve`; the code-idiom table; S2 printed | 230 |
+| 4 | Cremona's tables and `ecdata` | 4.1 to 4.4; the file table with sample lines; reading files in GP and Python; optimality and 990h3; labels; `paperlink` for Section sec:data | 140 |
+| 5 | The function `rule(E, l, iii)` | 5.1 (S1 printed with line numbers), 5.2 (line by line), 5.3 (proposition and proof), 5.4 (pitfalls `warning`); `paperlink` for the appendix | 170 |
+| 6 | Worked sessions | 6.1 to 6.8, each with input, exact output, breakdown and a two-line reading | 210 |
+| 7 | Modular degrees and congruence numbers | 7.1 to 7.3; pointers to Chapters 14 and 19 | 70 |
+| 8 | Populations, violations and descriptive statistics | 8.1 to 8.4; the base-rate table; Appendix A cited for the vocabulary | 110 |
+| 9 | The protocol | 9.1 to 9.5; the status table of 9.2; multiple comparisons; the toy protocol; `paperlink` for Section sec:data | 150 |
+| 10 | The calibration argument | 10.1 (with proof), 10.2 to 10.6; the reading of 10.4 as a `remark` with two lists ("shows", "does not show") | 150 |
+| 11 | Reproducing the paper's tables | 11.1 to 11.8; four `booktabs` tables and short readings; S3 printed, S4 to S7 shortened | 190 |
+| 12 | Reproducibility practice | 12.1 to 12.3; the checklist; the book's data pin | 60 |
+| 13 | Exercises | the 18 exercises of Part 4.2 | 140 |
+| 14 | Notes and references | PARI, PARIusers, Cremona97, CremonaBook, ecdata, LMFDB, Sutherland16, Zywina15, Watkins02, Zagier85, Feller68, Wasserman04 (after B-b of Part 8), RHB06; the paper's appendix; what was verified and with which versions | 45 |
+| | **total** | | **1,940** |
+
+## 4. Coverage table and exercises
+
+### 4.1 Coverage: PLAN.md scope, Section 6 map rows and paper hooks to line-up items
+
+| PLAN.md scope item, Section 6 map row, or paper hook | line-up items |
+|-|-|
+| PARI/GP for the reader who has never used it (installation) | 2.1, 2.2, 2.3, 2.4 |
+| `ellinit`, `ellglobalred` and its output (conductor, minimal model change, Kodaira symbols and Tamagawa numbers per prime, the local data structure with the Kodaira codes) | 3.1, 3.2 (codes: Chapter 10, 5.5) |
+| `ellap`, `ellan`, `elltors`, `ellisomat` | 2.3 |
+| `ellmoddegree` (and its memory needs) | 3.8, 7.1, 7.2 |
+| `elldivpol` | 3.6 |
+| `lfuncreate` / `lfunsympow` / `lfuneuler` and the conventions for the symmetric square Euler factor | 3.3, 3.4 (`lfuncreate` mentioned in 3.3 as the general constructor, not needed) |
+| `ellinit` over $\Q_q$ and the Tate parameter (not `elltatepairing`), its valuation and unit part | 3.5, 6.8 |
+| `valuation`, `factor` | 2.2, 2.4(f), 3.6 |
+| Cremona's tables and `ecdata`: allcurves, allbsd, alldegphi (= `degphi`), allgens, alllabels, allisog; Kodaira symbols and Tamagawa numbers; mod $\ell$ images with Sutherland's labels; optimality and the label "1"; LMFDB labels | 4.1 to 4.4 (`allgens` not in the local copy: 4.1 says so) |
+| reading a Cremona label (11a1, 121a1, 121c, 121d, 539c1, 980i1, 726a1, 99A1, capitalisation) | 4.4 (full list: Chapter 9, 12.1) |
+| the data protocol: four ranges; pre-registration; "nothing was adjusted"; blind-tested versus confirmed; the out-of-table set for Conjecture conj:euler | 9.1, 9.2, 9.3, 9.5 |
+| elementary statistics: what a violation is; the calibration argument with the numbers; what it does and does not show; equality rates and mean excess as descriptive statistics; base rates by Kodaira type; multiple comparisons; why a hold-out | 8.2, 8.3, 8.4, 9.4, 10.1 to 10.6 |
+| `rule(E, l, iii)` reproduced and explained line by line (`R[4]`, `R[5]`, the code `k`, $r=P_q(q^{-2})$ with the multiplicative correction, the $\mathrm{III}$ exclusion, $w_3$, $t_\ell$ from $v_q(j)$, `ns3`) | 5.1 to 5.4 |
+| worked sessions: 121a1 `[1, 1]`; 726a1 `[2, 2]` with and without `iii`; 539c1; 980i1; 99A1 (degree 4, congruence number 12 not in PARI) | 6.1 to 6.5, 7.3 |
+| computing $e_\ell(E,q)$ by hand from the type and checking against `lfunsympow` | 3.4 |
+| computing $t_\ell(E,q)$ | 3.5, 6.1 to 6.8 |
+| the mod 3 image 3Ns via `elldivpol` | 3.6, 6.2 |
+| the twist lemma check (`twist_lemma_check.gp`: how to write it) | 3.7 (S2's `twistcheck`), Exercise 14 |
+| reproducing a row of the paper's tables on a small range (a GP loop over `ecdata`) | 11.1 (S3), Exercise 7 |
+| how the modular degree is computed (Watkins, Cremona; why expensive) | 7.1 |
+| the repository named in the appendix (descriptive list) | 12.1 |
+| reproducibility practice (pinned commits, clean clone) | 12.2, 1.1 |
+| Section 6 row: PARI/GP, Cremona's tables, ecdata, LMFDB, Sutherland's labels | 2, 3, 4 |
+| Section 6 row: the statistical protocol, calibration, hold-out sets | 8, 9, 10 |
+| Section 6 row: the function `rule(E, l)` and the Kodaira codes (with Chapter 10) | 3.2, 5 |
+| Section 6 row: the worked examples 11a1, 20a1, 121a1, 539c1, 980i1, 726a1, 99A1 (with 9, 14, 15, 21) | 2.3, 3.1, 3.5, 6.1 to 6.7 |
+| hook: Section 1 ("PARI's `lfunsympow(E,2)` returns these factors at every prime, including 2 and 3") | 3.3, 6.6 |
+| hook: Remark rem:wild | 6.6 (mathematics: Chapter 19, 10.1, 10.2) |
+| hook: Lemma lem:euler ("confirmed against PARI's `lfunsympow` on every curve of the tables") | 3.4 |
+| hook: Section 1.4 (component groups; Cremona's tables and optimality) | 3.1, 3.2, 4.3, 11.2 |
+| hook: Proposition prop:ns (3-division polynomial) | 3.6, 5.3(ii) |
+| hook: Proposition prop:forms ($92{,}812$ curves, factor $1+2X$ at 2) | Part 7, R4 ($3{,}226$ optimal curves below $10{,}000$, all $1+2X$); point 43 |
+| hook: Section sec:data, protocol paragraph | 1.1, 9.1, 9.2, 9.3 |
+| hook: Section 6.2 and Table tab:uniform | 11.1 |
+| hook: Section sec:sharp | 8.2, 10.1 to 10.6 |
+| hook: Section sec:tam | 3.5, 6.8, 11.5 |
+| hook: Section sec:iso and Table tab:iso | 8.3, 11.4 |
+| hook: Section sec:forms and Table tab:counts | 11.2 |
+| hook: Section sec:anomaly and Table tab:ns | 3.6, 6.2, 11.3 |
+| hook: Section sec:wild and Table tab:isolated | 6.6, 9.5 (the $w_3$ minima) |
+| hook: Section sec:oot and Table tab:oot | 9.1, 9.2, 9.3 (no reproduction possible: the curves are not published in the paper) |
+| hook: Section sec:eis (image labels 3Cs.1.1, 3B.1.1) | 4.4, 11.6 |
+| hook: the paragraph after Theorem thm:twist ($157{,}938$ and $292{,}580$ pairs) | 11.7 |
+| hook: the Example of Section 3 (congruences "checked for $p<500$", $p<1000$) | 2.3 (`ellan`, `ellap`); Exercise 2; Sturm's bound: Chapter 12, point 46 |
+| hook: the appendix (all paragraphs) | 1.1, 5, 6, 12.1 |
+| hook: the abstract's counts ("$893$ curves", "$57\%$", "a third of the cases") | 9.1, 11.3 (point 25) |
+| also: what Chapters 2, 3, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19 deferred here | Part 5 |
+
+### 4.2 Exercises (Section 13 of the chapter), graded from easy to harder
+
+1. Run `ellglobalred` on 20a1 and 726a1, read off the conductor, the bad primes, the Kodaira codes and the $c_p$, and say which
+   entries the paper's `R[4][,1]` and `K[i][2]` are. Why does code $1$ never occur in the list?
+2. With `ellan` compute $a_n$ for 121a1 and 11a1 for $n\le500$ and check the paper's claim $a_p(\text{121a1})\equiv\chi_{-11}(p)a_p(\text{11a1})\pmod3$ for
+   $p\ne3,11$; then say why a check up to Sturm's bound (Chapter 12) proves it for all $n$.
+3. Using `lfunsympow` and `lfuneuler`, compute $P_q$ and $e_3(E,q)$ for 121a1 at $11$, 147b1 at $7$, 539d1 at $7$ and 726a1 at $11$, and check
+   them against the table of Section 1 of the paper (Lemma lem:euler) by the function `euler_by_type` of 3.4.
+4. Check the paper's claim that `rule(ellinit([1,1,1,-30,-76]), 3)` returns `[1, 1]` and that for 726a1 `rule(E,3)` and `rule(E,3,1)` both
+   return `[2, 2]`; print the breakdown with `rule_terms` and identify each term with a term of (eq:rule).
+5. Run `rule` on 11a1, 11a2, 11a3 at $\ell=5$ and on 990h1, 990h3 at $\ell=3$. Explain each output, in particular the negative entry for
+   11a3, using `ellmoddegree` and `ellweilcurve`. Which of these runs does the paper's statement concern?
+6. Show that `ns3(E)` is $1$ iff $\psi_3$ is a product of two irreducible quadratics over $\Q$, whatever the content of $\psi_3$ and whatever
+   order `factor` lists the factors in; find a CM curve with `ns3(E) = 1` and explain why Conjecture conj:euler excludes it.
+7. Using S3, reproduce the row $\ell=5$, $N<2000$ of Table 11.1 and compare it with the Python result $[5622, 915, 0, 845]$ (curves, positive
+   bounds, violations, equalities).
+8. List the 3Ns optimal curves of conductor below $2000$ that violate the uncorrected bound, and check the paper's claims that
+   the shortfall is always $1$ and that each violation involves a prime $p\equiv-1\pmod3$ with $t_3(E,p)\ge1$.
+9. Compute the Tate parameter of 791a1 at $7$ with `ellinit(E, O(7^30)).tate`, decide whether its unit part is a cube in $\F_7^\times$, and
+   check the paper's claim (Section sec:tam) that the extra Tamagawa term then raises the bound to $v_3(\degphi)$.
+10. (Calibration.) Let $X$ be a sum of independent indicators with $E[X]=\mu$. Prove $P(X=0)\le e^{-\mu}$ and, using only pairwise
+    independence, $P(X=0)\le\operatorname{Var}X/\mu^2\le1/\mu$. Apply both to the paper's $\mu\approx605{,}000$ and to the book's $\mu=14{,}275$.
+11. Show that under the null hypothesis of 10.1 the bound-$0$ distribution and the pooled distribution of $v$ estimate the same
+    thing, and explain why the book's values $59.7\%$ and $23.9\%$ for $P(v=0)$ are evidence against the null.
+12. Check the paper's claim that among bound-$0$ curves $53.2\%$ have $3\nmid\degphi$ against the book's $59.7\%$ below $10{,}000$, and
+    compute the same share on $N<5000$ and on $5000\le N<10000$. What does the trend suggest about the paper's ranges?
+13. (Multiple comparisons.) Suppose $m=200$ false candidate inequalities each survive a working-set check with probability
+    $\pi=0.05$ and a hold-out check with probability $\pi'=0.05$, independently. How many false survivors are expected after the
+    working set, and after the hold-out? What changes if the hold-out is reused for a second round of candidates?
+14. Write `twist_lemma_check.gp`: for every optimal curve below $2000$ and every odd bad prime $q$, compare the Kodaira code of the
+    twist by $q^*$ at $q$ with Lemma lem:twist (ii), and check (i) at the other odd primes. Extend to $q=3$ and test important_notes.md
+    point 51.
+15. Classify each data statement of Section 6 of the paper as blind-tested, confirmed only, or a theorem checked, quoting the
+    sentence of Section sec:data that decides it; say what a fresh hold-out would have to contain to test the correction term $h_3$.
+16. Reproduce the list of Eisenstein curves at $\ell=3$ below $10{,}000$ with deficit $D=2$ and check the paper's claim that the
+    3Cs.1.1 curves among them have "rank 0 and torsion $\Z/3$". Then prove that no non-CM curve has both $E[3]\simeq\Z/3\oplus\mu_3$ and a
+    point of order $9$ (point 17).
+17. (Toy protocol.) Read off the minima of $v_3(\degphi)$ at $q=3$ on $N<5000$ as in 9.5, freeze them, and test them on $5000\le N<10000$.
+    Then do the same for a statement you choose yourself on the working set, and report honestly whether it survived.
+18. Compute the odd-part statistic of 10.6 on $N<5000$ and on $5000\le N<10000$, and explain why the paper's $1.85\%$ is so much smaller
+    than the book's $17.1\%$.
