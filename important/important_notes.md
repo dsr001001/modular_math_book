@@ -983,3 +983,39 @@ Low importance.
 * The Chapter 2 outline's question 11.6(f) is answered: 539d1 has type I_0^* at 7 with E' = 11a3, e_3 = 2 and
   modular degree 72.
 * By B14, Rankin39, Deligne73, Tate79, Rohrlich94, SerreTate68 and Shimura75 belong in refs.bib.
+
+## From the Appendix B outline (notation and conventions)
+
+Source: `outlines/chB_notation.md`. It fixes sixteen book-wide conventions (B-C1 to B-C16) and lists every
+place where an outline disagrees with them: 48 entries (20 required, 28 cosmetic) plus 7 in PLAN.md. The
+writer of each chapter must apply the required entries for that chapter; the entry IDs in the appendix outline
+are stable even where line numbers drift. No new points about the paper.
+
+### B24. Book-wide conventions now fixed (summary; details in the Appendix B outline)
+
+* Frob arithmetic, Phi = Frob^{-1} geometric; L-factors use Phi, cohomology uses Frob; in chapters that also
+  use Neron component groups Phi_q (10, 11, 21, 22) the geometric Frobenius is written Frob_q^{-1}.
+* alpha, beta are the eigenvalues of the arithmetic Frobenius on V_l E and of the geometric one on H^1; hence
+  L_p(V, s) = L_p(E, s + 1) (resolves B1, B7, B9).
+* Duals: ^vee linear dual, ^* Pontryagin dual, ^D Kummer dual = ^vee(1), ^dagger adjoint of an operator; ^* after
+  a map is a pullback (resolves B4, B22).
+* A_f is always the adjoint; Shimura's abelian variety is J_f. Depletion is f^Sigma or f^{p}, never f^(p) (the
+  superscript (q) is for twists). phi_f is the eigencharacter, varphi a map of curves.
+* chi_l with a letter subscript is cyclotomic; a numerical subscript always means a quadratic character chi_d
+  (chi_{-3}, chi_{-11}); the cyclotomic character at 3 is chi_3^cyc. The paper's chi_q = chi_{q*} is allowed
+  only with the letter q (point 32).
+* Manin constant written c_E, with deg phi_E vol(Lambda_E) = 4 pi^2 c_E^2 <f, f> (B10); Petersson product
+  unnormalised; L(Sym^2 f, s) = L(ad f, s - 1) with a normalisation table.
+
+### B25. Disagreements that matter most (required changes)
+
+* Chapter 21 outline, convention C2(b) and its opening: still the B1/B7/B9 slip, and Frob_p used for the
+  geometric Frobenius; also kappa instead of eps kappa in the Tate matrix.
+* Chapter 4 outline names the arithmetic Frobenius Phi, inverting the book's convention.
+* Chapters 14 and 15 use A_f for the abelian variety (Chapter 15 also for the adjoint).
+* Chapter 11 uses Phi_q both for the component group and for the geometric Frobenius.
+* Chapters 3, 15, 21 write adjoints with ^*; Chapter 21 also linear duals.
+* Chapters 13 and 15 write depletion as h^(p).
+* Chapters 5, 7, 11, 17, 21 use a bare numerical chi_3.
+* Open choices left to the author: the stricter chi_{q*}-everywhere rule (about 40 extra edits), and the sign
+  convention c_E > 0 for the Manin constant.
