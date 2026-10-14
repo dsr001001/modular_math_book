@@ -537,7 +537,7 @@ Conventions to fix and keep (they must agree with Chapters 7, 17, 18):
     State Tate's $\varprojlim^1$ sequence as a theorem with reference (Tate95, Section 2; NSW, Chapter II, Section 7; Rubin, Appendix B) and use it only through its two
     corollaries. The long exact sequence for compact or mixed coefficients needs a continuous section: give the four cases.
 12. Theorem numbers: cite Weibel 1.3.1, 1.3.2, 3.4.3, 6.8.2 and Serre, Local Fields, Chapter XIII, Section 1, Proposition 1 only if the writer verifies them against the
-    books; otherwise cite chapter and section as in the entries above. Serre's Galois Cohomology is not in refs.bib: add to `bib/ch16.bib` an entry
+    books; otherwise cite chapter and section as in the entries above. Serre's Galois Cohomology is not in refs.bib: add to `refs.bib` (not `bib/ch16.bib`: Chapters 3, 16 and 17 cite it, decision B14, important_notes.md B21) an entry
     `SerreGaloisCoh` (J.-P. Serre, Galois Cohomology, Springer Monographs in Mathematics, Springer, Berlin, 1997). `Tate95` in refs.bib is Tate's 1976 paper
     "Relations between $K_2$ and Galois cohomology" (Invent. Math. 36), the standard reference for continuous cohomology and inverse limits; cite it for tate-limits.
 13. Do not duplicate: Chapter 3 proves the snake lemma, Fitting ideals, lengths, Pontryagin duality of modules (recall them in one line each). Chapter 17 proves Hilbert 90,

@@ -427,7 +427,7 @@ $\GL_n(\Zl)=\Aut_{\Zl}(\Zl^n)$ is profinite (Chapter 1, item 7.4). (iv) *Topolog
 $\Zl$-module $A$ on which $\Zl$ acts continuously and with $A/\ell A$ finite is f.g. (sketch: by Pontryagin duality 8.2, $A^*$ is
 discrete $\ell$-primary with $A^*[\ell]=(A/\ell A)^*$ finite, hence cofinitely generated, so $A=A^{**}$ is f.g.; NSW, Chapter V, Section
 2, or Rubin, Appendix B, for the duality of compact modules). Reference: NSW Chapter I and V; Serre, Galois
-Cohomology, Chapter I (not in refs.bib; Chapter 16 adds `SerreGaloisCoh`). Paper: Chapter 16 ($(t-1)M$ closed; continuous
+Cohomology, Chapter I (not yet in refs.bib; `SerreGaloisCoh` is to be added to `refs.bib`, decision B14, important_notes.md B21). Paper: Chapter 16 ($(t-1)M$ closed; continuous
 cohomology with $\Zl$-modules of finite type), Lemma lem:tamfactor ("every $\Zl$-module $M'$ of finite type").
 
 ### Section 7. Length, annihilators, Fitting ideals

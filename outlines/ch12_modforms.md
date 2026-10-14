@@ -199,7 +199,7 @@ cusps are $1/c$, $c\mid N$, $2^{\omega(N)}$ of them, of widths $N/c$. Examples (
 the orbit lengths of $T$): $N=11$: $\infty$, $0$, widths $1,11$; $N=20$: six cusps, widths $1,1,4,5,5,20$; $N=99$: eight cusps,
 widths $1,1,1,9,11,11,11,99$; $N=121$: twelve cusps $\infty$, $0$, $a/11$ ($1\le a\le10$), widths $1,121$ and ten of width $1$;
 $\nu_\infty(539)=16$, $\nu_\infty(726)=\nu_\infty(980)=48$. Reference: DiamondShurman 3.8 (cite the section); Ogg's "Rational points on
-certain elliptic modular curves" (1973; add to `bib/ch12.bib` if cited). Paper: background (the cusps of $X_0(N)$; the
+certain elliptic modular curves" (1973; key `Ogg73`, shared with Chapter 14, so `refs.bib`, decision B14, important_notes.md B19). Paper: background (the cusps of $X_0(N)$; the
 cusp $\infty$ is the base point of $\varphi_E$, Chapter 14).
 
 **4.3 `prop:modforms:elliptic-gamma0`** (proposition; P). The elliptic points of order $2$ (respectively $3$) of $\Gamma_0(N)$
@@ -272,7 +272,8 @@ smooth projective curve $X_0(N)_\Q$ over $\Q$ whose complex points are $X_0(N)$,
 $G_\Q$-equivariant on $\bar\Q$-points ($\sigma\in G_\Q$ acting on pairs over $\bar\Q$ by conjugating equations); the cusps $\infty$ and $0$ are
 $\Q$-rational and a cusp of denominator $c$ is defined over $\Q(\zeta_{\gcd(c,N/c)})$. Reference: DiamondShurman 1.5 and 7.7
 (cite the sections); Shimura71 6.7 (cite the section); Deligne-Rapoport (Lecture Notes in Math. 349, 1973) and
-Katz-Mazur (Annals of Math. Studies 108, 1985), to be added to `bib/ch12.bib`; Ogg (1973) for the fields of definition of
+Katz-Mazur (Annals of Math. Studies 108, 1985), keys `DeligneRapoport73`, `KatzMazur85`, shared with Chapter 14, so to be
+added to `refs.bib` (decision B14, important_notes.md B19); Ogg (1973) for the fields of definition of
 cusps. Paper: Section 1 ("$X_0(N)$-optimal", "$\varphi_E\colon X_0(N)\to E$"; Chapter 14 builds on (v)), Remark rem:free
 ($J_1(N)$, via (ii)).
 
@@ -890,7 +891,9 @@ PARIusers are in `refs.bib`. Not in `refs.bib`, to be added to `bib/ch12.bib` wi
 Number Theory* (GTM 41); Ligozat, *Courbes modulaires de genre 1* (Bull. Soc. Math. France Memoire 43, 1975); Ogg, *Rational points
 on certain elliptic modular curves* (Proc. Sympos. Pure Math. 24, 1973); Deligne-Rapoport, *Les schemas de modules de courbes
 elliptiques* (Lecture Notes in Math. 349, 1973); Katz-Mazur, *Arithmetic Moduli of Elliptic Curves* (Annals of Math. Studies 108,
-1985). Every bibliographic detail above was recalled, not re-verified; check before adding.
+1985). Every bibliographic detail above was recalled, not re-verified; check before adding. Exception (decision B14,
+important_notes.md B19): Ogg 1973 (`Ogg73`), Deligne-Rapoport (`DeligneRapoport73`) and Katz-Mazur (`KatzMazur85`) are needed by
+Chapter 14 too, so they go into `refs.bib`, not `bib/ch12.bib`.
 
 ### 6.6 Verification log (computations done for this outline)
 
