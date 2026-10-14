@@ -667,7 +667,8 @@ PARI, checked by the orchestrating session:
 Among optimal non-CM curves below conductor 10,000 (outline agent's count): type II at 2 has P_2 = 1 for
 1,092 curves, 1 + 2X for 371 and a cubic for 74; type II* has 514, 74 and 191. Likewise "a type I_n^* at 2
 with potentially good reduction has a cubic P_2" holds only in a minority of cases (876 with P_2 = 1, 111
-cubic, 8 with 1 + 2X). The paper's rule and tables use PARI's factor at 2, so **no theorem or count changes**;
+cubic, 8 with 1 + 2X). (Correction from the memo: these counts are for conductor below 5,000; below
+10,000 they are 2,043 with P_2 = 1, 269 cubic, 22 with 1 + 2X, and the potentially good share is 58%, not 61%.) The paper's rule and tables use PARI's factor at 2, so **no theorem or count changes**;
 only the illustrative sentences are wrong, and 1232l1 is a nice example where the bound of Theorem thm:main
 at l = 3 is attained by the prime 2 alone. **Action:** replace the two sentences by "the Kodaira type at 2
 does not determine P_2; for instance ...". Confidence: high (checked twice).
@@ -943,9 +944,13 @@ to about 1e-15 on 15 curves; rule(E, l) gives [1, 1] for 121a1 and [2, 2] for 72
 ### 69. Remark rem:wild and Section sec:wild: the shape of P_q at every prime, and the prime 2 at l = 5
 
 At every bad prime q, including 2 and 3, P_q(X) is one of four shapes: 1 - X (multiplicative), the I_0^* cubic
-(1 - X)(1 - (a^2 - 2q)X + q^2 X^2) of a quadratic twist with good reduction at q, 1 - cqX with c = plus or
+(1 - qX)(1 - (a^2 - 2q)X + q^2 X^2) of a quadratic twist with good reduction at q, 1 - cqX with c = plus or
 minus 1 (cyclic inertia of order 3, 4 or 6 with an invariant line), or 1. Every cubic factor below conductor
 10,000 (1,143 at q = 2, 2,283 at q = 3) is the I_0^* formula for such a twist; this also confirms point 60.
+(Corrected after the memo: an earlier version gave the linear factor as 1 - X. Since L(Sym^2 f, s) =
+L(ad f, s - 1), P_q(X) = (1 - alpha^2 X)(1 - qX)(1 - beta^2 X); for 592c1, q = 2, a = -2, this is
+1 - 2X + 4X^2 - 8X^3, as PARI gives.)
+
 Consequences:
 
 * 1232l1 is 77a1 twisted by chi_{-4}, and a_2(77a1) = 0, which explains e_3(E, 2) = 2 (point 50).
