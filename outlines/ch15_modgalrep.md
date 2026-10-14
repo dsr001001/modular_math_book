@@ -23,13 +23,13 @@ Section 4 reads the same mechanism quantitatively: the level-raising Euler facto
 Theorems thm:twist and thm:quant, and the identification of the lattice $M_{f,\lambda}$ of Diamond, Flach and Guo with $T_\ell E$.
 This chapter supplies all of it. Concretely it must deliver:
 
-1. **The representation $\rho_{f,\lambda}$ of a newform of weight $2$** (Eichler-Shimura construction through $A_f$; Deligne for higher
+1. **The representation $\rho_{f,\lambda}$ of a newform of weight $2$** (Eichler-Shimura construction through $J_f$; Deligne for higher
    weight as a statement): unramified outside $N\ell$, $\tr\rho(\Frob_p)=a_p$, $\det=\chi_\ell$, odd, absolutely irreducible; lattices and
    the residual representation; congruent newforms have isomorphic residual representations (absolute irreducibility,
    important_notes.md point 10); twists $\rho_{f^\chi}\simeq\rho_f\otimes\chi$ and the distinction between the *naive twist* $f\otimes\chi$ and
    the *newform twist* $f^\chi$ (the source of important_notes.md point 20 and of the new point N1, Part 7).
 2. **The comparison with $\rho_{E,\ell}$** for $f=f_E$: $T_\ell E$ is a lattice in $\rho_{f,\ell}$; for the optimal curve the lattice $M_{f,\lambda}$ of DFG04 is
-   exactly $\phi^*H^1(E,\Zl)\simeq T_\ell E(-1)$, homothetic to the dual of $T_\ell E$ in general (important_notes.md points 26 and 40, B3), so
+   exactly $\varphi_E^*H^1(E,\Zl)\simeq T_\ell E(-1)$, homothetic to the dual of $T_\ell E$ in general (important_notes.md points 26 and 40, B3), so
    $\ad M_{f,\lambda}=\ad T_\ell E$ (Section 4.2 of the paper).
 3. **Local-global compatibility and local components** (Carayol; Langlands, Deligne): the local Langlands correspondence for
    $\GL_2(\Q_p)$ as a statement; the local types of a weight-two newform with trivial character (unramified principal series,
@@ -70,7 +70,7 @@ This chapter supplies all of it. Concretely it must deliver:
   Langlands, local components $\pi_p$, Carayol's theorem) and the types of newforms; it does not redo any Weil-Deligne computation.
 * **Chapter 11** gives everything specific to $\rho_{E,\ell}$: the Tate shape and Lemma lem:tamagawa-exp (3.2, 3.3), inertia images by
   Kodaira type and Lemma lem:IV (4.1 to 4.5, with 4.4 at $q=2$), the representation at $\ell$ for $E$ (5.1 to 5.4), the Serre conductor
-  formula $a_p(\bar\rho_{E,\ell})=f_p-\dim\Phi_p[\ell]$ and its examples (6.1 to 6.3), images and Proposition prop:ns, Lemma lem:h0, the
+  formula $a_p(\bar\rho_{E,\ell})=f_p-\dim\Phig_p[\ell]$ and its examples (6.1 to 6.3), images and Proposition prop:ns, Lemma lem:h0, the
   equivalence $\ell\notin S_f\iff$ ($E[\ell]$ irreducible and not 3Ns) for $\ell\nmid 2N$ (8.6), and the *statement* of the optimal-level theorem
   for $\bar\rho_{E,\ell}$ (10.1) with its examples (10.2), leaving "the general theorem, its proof and the trivial-nebentypus argument" to
   this chapter. **Chapter 15 proves nothing about $\rho_{E,\ell}$ that Chapter 11 proves**; where an elliptic-curve fact is needed it is
@@ -84,9 +84,9 @@ This chapter supplies all of it. Concretely it must deliver:
   and its compatibility with $T_p$, the perfect pairing $S_2(\Gamma_0(N);\Z)\times\T\to\Z$, the recursion for $a_{p^k}$. **Chapter 15 cites all of
   these** and adds the Galois-theoretic content: why Atkin-Li holds (local components, item 3.8), the conductor of a twist when $q^2$
   divides the level (beyond Atkin-Li), and the reading of $\iota$ as $\rho\mapsto\rho\otimes\chi$.
-* **Chapter 14** (outlined in parallel) gives $J_0(N)$, Eichler-Shimura $T_p=\Frob_p+p\Frob_p^{-1}$, $A_f$ as a quotient, modularity, the
+* **Chapter 14** (outlined in parallel) gives $J_0(N)$, Eichler-Shimura $(T_p)_*=\pi_p+\hat\pi_p$ ($\pi_p$ the Frobenius endomorphism, $\hat\pi_p=p\pi_p^{-1}$, Appendix B, B-C2(g)), $J_f$ as a quotient, modularity, the
   optimal curve, the modular degree, the congruence number, Agashe-Ribet-Stein (with 99A1 as its example), multiplicity one and
-  Remark rem:free, and important_notes.md point 39. Chapter 15 cites the construction of $A_f$ and Eichler-Shimura for 2.1, and
+  Remark rem:free, and important_notes.md point 39. Chapter 15 cites the construction of $J_f$ and Eichler-Shimura for 2.1, and
   Agashe-Ribet-Stein for the passage $r_E\to\deg\varphi_E$; it recomputes $r(99\mathrm a1)=12$ only as data for the remark of Section 3.
 * **Chapter 19** computes $L_q(A_f,s)$, $P_q$ and $e_\ell(E,q)$ (Lemma lem:euler in full); Chapter 15 gives only the local types behind the
   phrase "local components" and the level-raising factor identity (7.2).
@@ -114,8 +114,9 @@ This chapter supplies all of it. Concretely it must deliver:
 * **C4 (twists: the decisive convention).** For a Dirichlet character $\chi$ of conductor $r$:
   - the **naive twist** $f\otimes\chi:=\sum_n\chi(n)a_n(f)q^n$ (the paper's $f\otimes\chi$, the map $\iota$ of Theorem thm:twist);
   - the **newform twist** $f^\chi$: the unique newform with $\rho_{f^\chi,\lambda}\simeq\rho_{f,\lambda}\otimes\chi$ (item 2.7);
-  - the **$q$-depletion** $h^{(q)}:=\sum_{q\nmid n}a_n(h)q^n$ and, for a set $S$, $h^{(S)}$ (Chapter 13's depleted form; the paper's $f^\Sigma$).
-  Then $f\otimes\chi=(f^\chi)^{(r)}$ (the depletion at the primes dividing $r$), and $f\otimes\chi=f^\chi$ iff $a_q(f^\chi)=0$ for every $q\mid r$.
+  - the **$q$-depletion** $h^{\{q\}}:=\sum_{q\nmid n}a_n(h)q^n$ and, for a set $S$, $h^S$ (Chapter 13's depleted form; the paper's $f^\Sigma$); never
+    $h^{(q)}$, since a parenthesised superscript is reserved for twists $E^{(q)}$ (Appendix B, B-C13(e)). $\Sigma(r)$ is the set of primes dividing $r$.
+  Then $f\otimes\chi=(f^\chi)^{\Sigma(r)}$ (the depletion at the primes dividing $r$), and $f\otimes\chi=f^\chi$ iff $a_q(f^\chi)=0$ for every $q\mid r$.
   The paper writes $f\otimes\chi$ for both; Section 9 below shows where this matters (points 20 and N1).
 * **C5 (local components).** For $p$ prime, $\pi_p$ is the local component at $p$ of the automorphic representation of $f$; the Galois
   side is $\mathrm{WD}_p(f):=\mathrm{WD}(\rho_{f,\lambda}|_{G_{\Q_p}})^{\mathrm{F\text{-}ss}}$ ($p\ne\ell$), a two-dimensional Frobenius-semisimple Weil-Deligne representation
@@ -132,8 +133,8 @@ This chapter supplies all of it. Concretely it must deliver:
 ### Section 1. Conventions and recollections
 
 **1.1 `conv:modgalrep:notation`** (convention). C1 to C6 of Part 1.3 typeset as `convention` environments, with the twist
-dictionary of C4 displayed: for $\chi$ of conductor $r$, $f\otimes\chi=(f^\chi)^{(r)}$; $f\otimes\chi=f^\chi$ iff $a_q(f^\chi)=0$ for all $q\mid r$; $(f\otimes\chi)\otimes\chi=f^{(r)}$
-for $\chi$ quadratic. Example (checked): $f_{11a}\otimes\chi_{-11}=f_{121d}$ exactly ($a_{11}(f_{121d})=0$), while $f_{539c}\otimes\chi_{-7}=(f_{77c})^{(7)}\ne f_{77c}$ since
+dictionary of C4 displayed: for $\chi$ of conductor $r$, $f\otimes\chi=(f^\chi)^{\Sigma(r)}$; $f\otimes\chi=f^\chi$ iff $a_q(f^\chi)=0$ for all $q\mid r$; $(f\otimes\chi)\otimes\chi=f^{\Sigma(r)}$
+for $\chi$ quadratic. Example (checked): $f_{11a}\otimes\chi_{-11}=f_{121d}$ exactly ($a_{11}(f_{121d})=0$), while $f_{539c}\otimes\chi_{-7}=(f_{77c})^{\{7\}}\ne f_{77c}$ since
 $a_7(f_{77c})=-1$. Paper: Section 3 (cases (b), (c)), Lemma lem:twist(iii), Theorem thm:twist ($\iota$), important_notes.md points 20, 32.
 
 **1.2 `prop:modgalrep:newforms-recap`** (proposition, a recollection; P with the proofs cited from Chapters 12, 13). For $f$ as in C1: (i) $\phi_f(T_n)=a_n(f)$;
@@ -147,12 +148,12 @@ Chapter 5 (cite the sections). Paper: Lemma lem:old, Lemma lem:crit, Section 3, 
 ### Section 2. The Galois representation of a newform
 
 **2.1 `thm:modgalrep:eichler-shimura`** (theorem, the construction of Eichler, Shimura and Deligne-Rapoport for weight $2$; S for the
-construction, R for the inputs). Let $f$ be as in C1, $I_f=\ker(\phi_f\colon\T\to\mathcal O_f)$ and $A_f=J_0(N)/I_fJ_0(N)$ (Chapter 14). Then: (i) $A_f$ is an abelian
+construction, R for the inputs). Let $f$ be as in C1, $I_f=\ker(\phi_f\colon\T\to\mathcal O_f)$ and $J_f=J_0(N)/I_fJ_0(N)$ (Chapter 14; Shimura's $A_f$, written $J_f$ because $A_f$ is the paper's adjoint $\ad V$, which this chapter also uses, Appendix B, B-C12(c)). Then: (i) $J_f$ is an abelian
 variety over $\Q$ of dimension $[K_f:\Q]$, with good reduction at every $p\nmid N$, and $\T/I_f$ (an order in $K_f$) acts on it by $\Q$-endomorphisms;
-(ii) for every prime $\ell$, $V_\ell(A_f)$ is free of rank $2$ over $K_f\otimes\Ql=\prod_{\lambda\mid\ell}K_{f,\lambda}$, and
-$V_\lambda(f):=V_\ell(A_f)\otimes_{K_f\otimes\Ql}K_{f,\lambda}$ carries a continuous representation $\rho_{f,\lambda}\colon G_\Q\to\GL_2(K_{f,\lambda})$ with: (a) $\rho_{f,\lambda}$ is unramified at every
+(ii) for every prime $\ell$, $V_\ell(J_f)$ is free of rank $2$ over $K_f\otimes\Ql=\prod_{\lambda\mid\ell}K_{f,\lambda}$, and
+$V_\lambda(f):=V_\ell(J_f)\otimes_{K_f\otimes\Ql}K_{f,\lambda}$ carries a continuous representation $\rho_{f,\lambda}\colon G_\Q\to\GL_2(K_{f,\lambda})$ with: (a) $\rho_{f,\lambda}$ is unramified at every
 $p\nmid N\ell$; (b) for such $p$, $\det(X-\rho_{f,\lambda}(\Frob_p))=X^2-a_p(f)X+p$ (the Eichler-Shimura congruence relation $T_p=\Frob_p+p\,\Frob_p^{-1}$ on
-$A_f\bmod p$, Chapter 14); (c) $\det\rho_{f,\lambda}=\chi_\ell$ (Weil pairing and the Rosati-stable polarisation; or Chebotarev from (b)); (d) $\rho_{f,\lambda}$ is
+$J_f\bmod p$, Chapter 14); (c) $\det\rho_{f,\lambda}=\chi_\ell$ (Weil pairing and the Rosati-stable polarisation; or Chebotarev from (b)); (d) $\rho_{f,\lambda}$ is
 odd: $\det\rho_{f,\lambda}(c)=-1$ for complex conjugation $c$; (e) $\rho_{f,\lambda}$ is absolutely irreducible (2.2). (iii) The dual $\rho_{f,\lambda}^\vee\simeq\rho_{f,\lambda}(-1)$ is
 realised on the rank-two $K_{f,\lambda}$-space $H^1_{\mathrm{et}}(X_0(N)_{\Qbar},\Ql)\otimes_{\T\otimes\Ql}K_{f,\lambda}$ (the $\phi_f$-eigenspace of the etale cohomology), on which the
 geometric Frobenius at $p\nmid N\ell$ has trace $a_p(f)$ (Chapter 8, 11.8; Chapter 14). Proof sketch to give: (b) from Eichler-Shimura on $J_0(N)$
@@ -163,7 +164,7 @@ Chapter 7 (Theorem 7.14 and the construction in 7.5; verify the numbers); Diamon
 Section 4.2 ($M_{f,\lambda}$), Lemma lem:old ($\bar\rho_h$), the optimal-level paragraph ("arises from a newform").
 
 **2.2 `prop:modgalrep:irreducible`** (proposition; S). For $f$ as in C1 and every $\lambda$, $\rho_{f,\lambda}$ is absolutely irreducible. Sketch to give (weight $2$):
-if $\rho_{f,\lambda}\otimes\overline{K}_{f,\lambda}$ had a stable line, its character $\psi_1$ and the quotient $\psi_2$ would be Hodge-Tate (sub-quotients of $V_\ell(A_f)$, Faltings,
+if $\rho_{f,\lambda}\otimes\overline{K}_{f,\lambda}$ had a stable line, its character $\psi_1$ and the quotient $\psi_2$ would be Hodge-Tate (sub-quotients of $V_\ell(J_f)$, Faltings,
 Tate; stated), hence of the form $\varepsilon_i\chi_\ell^{k_i}$ with $\varepsilon_i$ of finite order and $\{k_1,k_2\}=\{0,1\}$ (Serre's theorem on abelian Hodge-Tate
 characters, stated); then $a_p=\varepsilon_1(p)+\varepsilon_2(p)p$ up to order for a density-one set of $p$, so $|a_p|\ge p-1>2\sqrt p$ for $p\ge7$, contradicting the
 Ramanujan-Petersson bound (Chapter 12, 6.5; Weil). Reference: Ribet77 (the general case, add to `bib/ch15.bib`, Part 6.5). Paper:
@@ -193,19 +194,20 @@ Lemma lem:old (case $p\nmid\ell N$: "$\bar\rho_h\simeq\bar\rho$ by Chebotarev an
 important_notes.md point 10), Section 3 ("$\bar\rho_g\simeq\bar\rho$, that is, $a_p(g)\equiv a_p(f)\pmod\lambda$ for all $p\nmid3N$").
 
 **2.6 `thm:modgalrep:comparison-E`** (theorem; P given Chapters 8, 11, 14 and modularity). Let $E/\Q$ have conductor $N$, $f=f_E$ (modularity,
-Chapter 14), $E_0$ the $X_0(N)$-optimal curve of the class, $\phi=\varphi_{E_0}\colon X_0(N)\to E_0$, $\ell$ any prime. (i) $A_f=E_0$ (the quotient of
+Chapter 14), $E_0$ the $X_0(N)$-optimal curve of the class, $\varphi_{E_0}\colon X_0(N)\to E_0$ the modular parametrisation (curly $\varphi$: the upright $\phi$ is the eigencharacter $\phi_f$, Appendix B, B-C13(b)), $\ell$ any prime. (i) $J_f=E_0$ (the quotient of
 $J_0(N)$ by $I_fJ_0(N)$ is the optimal quotient; Chapter 14), so $T_\ell E_0$ is a $G_\Q$-stable lattice in $V_\lambda(f)$ with $\lambda=\ell$, and
-$\rho_{E_0,\ell}=\rho_{f,\ell}$ on it; for every $E$ in the class, $V_\ell E\simeq V_\ell E_0$ through an isogeny. (ii) **(important_notes.md point 40.)** The lattice
-$M_{f,\lambda}:=H^1(X_0(N),\Zl)[\ker\phi_f]$ of DFG04 (Section 4.1 of the paper, Chapter 20) equals $\phi^*H^1(E_0,\Zl)$, and $\phi^*$ gives a
-$G_\Q$-isomorphism $H^1(E_0,\Zl)=\Hom_{\Zl}(T_\ell E_0,\Zl)\simeq T_\ell E_0(-1)$ onto it; no irreducibility is needed. Proof: the kernel of
-$J_0(N)\to E_0$ is connected, so $\phi_*\colon H_1(X_0(N),\Z)\to H_1(E_0,\Z)$ is surjective and $\phi^*$ is injective with torsion-free cokernel (Chapter 3,
+$\rho_{E_0,\ell}=\rho_{f,\ell}$ on it; for every $E$ in the class, $V_\ell E\simeq V_\ell E_0$ through an isogeny. (ii) **(important_notes.md point 40; R here: proved in Chapter 14, its item 9.1, and cited, important_notes.md B19.)** The lattice
+$M_{f,\lambda}:=H^1(X_0(N),\Zl)[\ker\phi_f]$ of DFG04 (Section 4.1 of the paper, Chapter 20) equals $\varphi_{E_0}^*H^1(E_0,\Zl)$, and $\varphi_{E_0}^*$ gives a
+$G_\Q$-isomorphism $H^1(E_0,\Zl)=\Hom_{\Zl}(T_\ell E_0,\Zl)\simeq T_\ell E_0(-1)$ onto it; no irreducibility is needed. Proof (Chapter 14, 9.1; recalled in outline only): the kernel of
+$J_0(N)\to E_0$ is connected, so $\varphi_{E_0*}\colon H_1(X_0(N),\Z)\to H_1(E_0,\Z)$ is surjective and $\varphi_{E_0}^*$ is injective with torsion-free cokernel (Chapter 3,
 saturation); $\T$ acts on the image through $\phi_f$; both sides have rank $2$ (multiplicity one of $\phi_f$ in $H^1(X_0(N),\Q)$); a saturated
 sublattice of full rank in a saturated sublattice is equal to it; Galois-equivariance by the etale comparison (Chapter 8, 11.8(c)). (iii)
 **(important_notes.md point 26.)** If $\bar\rho_{E,\ell}$ is irreducible, every $G_\Q$-stable lattice in $V_\ell(E)^\vee$, in particular $M_{f,\lambda}$ and $(T_\ell E)^\vee$ for
 any $E$ in the class, is homothetic to $(T_\ell E)^\vee\simeq T_\ell E(-1)$ (2.4(iii)); the paper's "$M_{f,\lambda}$ and $T_\ell E$ are homothetic" must be read
 with the dual. (iv) Consequently $\ad M_{f,\lambda}=\ad T_\ell E$ inside $\End(V_\ell E)$ under $x\mapsto-x^t$ and the twist-invariance of $\ad$ (Chapter 4,
 7.7; Chapter 9, 5.5), which is all the paper uses ("so their adjoints coincide"). Reference: Chapters 8, 9, 14; DFG04 Sections 1.6.2,
-1.7.3 (the normalisation of $M_{f,\lambda}$ as the paper describes it; verify against DFG04 before printing the identification). Paper:
+1.7.3 (the normalisation of $M_{f,\lambda}$ as the paper describes it: checked against the published DFG04 in the Chapter 20 outline, its
+Part 7, important_notes.md point 73; $M_f$ is the kernel lattice for the full Hecke algebra). Paper:
 Section 4.2 (the parenthesis on $M_{f,\lambda}$ and $T_\ell E$), Lemma lem:hecke ($L[\wp]=M_{f,\lambda}$), Theorem thm:main ($A=\ad T$), important_notes.md
 points 26, 39, 40 and B3.
 
@@ -213,10 +215,10 @@ points 26, 39, 40 and B3.
 weight $2$, trivial character, level $M$, and $\chi$ a primitive Dirichlet character of conductor $r$. (i) $\rho_{g,\lambda}\otimes\chi$ is unramified outside
 $Mr\ell$ and has $\tr(\rho_{g,\lambda}\otimes\chi)(\Frob_p)=\chi(p)a_p(g)$ for $p\nmid Mr\ell$. (ii) $g\otimes\chi\in S_2(\Gamma_0(\operatorname{lcm}(M,r^2)),\chi^2)$ (Chapter 13; AtkinLi78
 for the level $\operatorname{lcm}(M,r^2)$; Shimura71, Proposition 3.64, gives the weaker level $Mr^2$; verify both numbers), and there is a unique newform $g^\chi$, of character $\chi^2$ and level dividing $\operatorname{lcm}(M,r^2)$,
-with $\rho_{g^\chi,\lambda}\simeq\rho_{g,\lambda}\otimes\chi$; it satisfies $a_n(g^\chi)=\chi(n)a_n(g)$ for $(n,r)=1$, and $g\otimes\chi=(g^\chi)^{(r)}$ (C4). (iii) For $\chi$ quadratic,
+with $\rho_{g^\chi,\lambda}\simeq\rho_{g,\lambda}\otimes\chi$; it satisfies $a_n(g^\chi)=\chi(n)a_n(g)$ for $(n,r)=1$, and $g\otimes\chi=(g^\chi)^{\Sigma(r)}$ (C4). (iii) For $\chi$ quadratic,
 $(g^\chi)^\chi=g$, and the level of $g^\chi$ is $M\prod_{q\mid r}q^{a(\pi_q\otimes\chi_q)-a(\pi_q)}$, computed type by type in 3.8. (iv) For $E/\Q$ and $d$ a
 fundamental discriminant, $f_{E^{(d)}}=(f_E)^{\chi_d}$ (Chapter 9, 10.3, 10.4 and strong multiplicity one). Examples (checked): $f_{11a}^{\chi_{-11}}=f_{121d}$
-$=f_{11a}\otimes\chi_{-11}$; $f_{121a}^{\chi_{-11}}=f_{121c}=f_{121a}\otimes\chi_{-11}$; $f_{539c}^{\chi_{-7}}=f_{77c}$, while $f_{539c}\otimes\chi_{-7}=f_{77c}^{(7)}$; $f_{11a}^{\chi_{-7}}=f_{539d}=f_{11a}\otimes\chi_{-7}$;
+$=f_{11a}\otimes\chi_{-11}$; $f_{121a}^{\chi_{-11}}=f_{121c}=f_{121a}\otimes\chi_{-11}$; $f_{539c}^{\chi_{-7}}=f_{77c}$, while $f_{539c}\otimes\chi_{-7}=f_{77c}^{\{7\}}$; $f_{11a}^{\chi_{-7}}=f_{539d}=f_{11a}\otimes\chi_{-7}$;
 $f_{20a}^{\chi_{-7}}=f_{980g}$; $f_{980i}^{\chi_{-7}}=f_{140b}$. Paper: Lemma lem:twist(iii), Theorem thm:qual (b), (c), Theorem thm:twist, Theorem thm:quant,
 the Example of Section 3.
 
@@ -335,8 +337,8 @@ thm:twist (levels $N_S=N/D$, $N/D^2$, $N$), Theorem thm:quant ("$N_S^\Sigma=N$")
 
 ### Section 4. The representation at $\ell$ when $\ell\nmid N$
 
-**4.1 `thm:modgalrep:crystalline`** (theorem; R, with (i) S). Let $f$ be as in C1, $\lambda\mid\ell$, $\ell\nmid N$. (i) $A_f$ has good reduction at $\ell$, and for every $k$ the
-$G_{\Q_\ell}$-module $A_f[\ell^k]$ is the generic fibre of a finite flat group scheme over $\Zl$ (the $\ell^k$-torsion of the Neron model, an abelian
+**4.1 `thm:modgalrep:crystalline`** (theorem; R, with (i) S). Let $f$ be as in C1, $\lambda\mid\ell$, $\ell\nmid N$. (i) $J_f$ has good reduction at $\ell$, and for every $k$ the
+$G_{\Q_\ell}$-module $J_f[\ell^k]$ is the generic fibre of a finite flat group scheme over $\Zl$ (the $\ell^k$-torsion of the Neron model, an abelian
 scheme); hence $\bar\rho_{f,\lambda}|_{D_\ell}$ is *finite* ("good" in the sense of DDT Theorem 3.15), as are all its reductions $\rho_{f,\lambda}\bmod\lambda^k$. (ii)
 $\rho_{f,\lambda}|_{G_{\Q_\ell}}$ is crystalline with Hodge-Tate weights $\{0,1\}$, and the crystalline Frobenius on $D_{\mathrm{cris}}$ has characteristic polynomial
 $X^2-a_\ell(f)X+\ell$ (Fontaine; Faltings; stated); for $\ell\ge3$ the weights lie in the Fontaine-Laffaille range, so stable lattices correspond to
@@ -450,7 +452,7 @@ of weight $2$ on $\Gamma_0(N)$, $\lambda\mid\ell$ with $\ell$ odd and $\bar\rho=
 weight $2$ on $\Gamma_0(M)$ with $M\mid Nq$ and $q\mid M$ (i.e. new at $q$) **iff** $a_q(f)^2\equiv(q+1)^2\pmod\lambda$; and then $a_q(f)\equiv(q+1)a_q(g)\pmod{\lambda'}$ with $a_q(g)=\pm1$.
 Necessity (P): $g$ is of type (St) at $q$ (3.5), so $\bar\rho_g(\Frob_q)$ has eigenvalues $a_q(g)q$ and $a_q(g)$ (3.5, (St)); $\bar\rho\simeq\bar\rho_g$ is unramified at $q$ with
 trace $a_q(f)$, so $a_q(f)\equiv a_q(g)(q+1)$ and $a_q(f)^2\equiv(q+1)^2$. Sufficiency (R): Ribet84 (the theorem announced at the 1983 ICM; check the
-hypotheses on $\ell$ there), DiamondTaylor94 for the general form and for raising the level by $q^2$ (add to `bib/ch15.bib`); the proof uses
+hypotheses on $\ell$ there), DiamondTaylor94 for the general form and for raising the level by $q^2$ (add to `refs.bib`, shared with Chapter 20, B26); the proof uses
 Ihara's lemma (7.4) and multiplicity one. Paper: Section 4.1 and Theorem thm:dfg14 ("Wiles's level-raising factor"), the remark after
 Theorem thm:quant ("the level is raised ... the price is the level-raising Euler factor"); Lemma lem:old, case $p\,\|\,N$ unramified (the same
 congruence read backwards: $X^2-a_p(h)X+p\equiv(X-a_p(f)p)(X-a_p(f))$).
@@ -492,7 +494,7 @@ $11\mathrm a\equiv77\mathrm c\pmod3$ underlies 539c1, whose twist is 77c1).
 **8.1 `def:modgalrep:congruence-number`** (definition and recollection; P for the remarks, R for Agashe-Ribet-Stein). For a newform
 $f$ of weight $2$ on $\Gamma_0(N)$ with rational coefficients (so $f=f_E$): $f^\perp\subset S_2(\Gamma_0(N))$ is the orthogonal complement of $\C f$ for the Petersson
 product; it is $\T$-stable and equals the sum of the generalised eigenspaces of $\T\otimes\C$ for the systems of eigenvalues other than $\phi_f$
-(Chapter 13: $f$ is an eigenvector of the adjoints $T_n^*$, since $T_n^*=T_n$ for $(n,N)=1$ and $U_p^*=w_NU_pw_N$ with $w_Nf=\pm f$); the **congruence number**
+(Chapter 13: $f$ is an eigenvector of the adjoints $T_n^\dagger$, since $T_n^\dagger=T_n$ for $(n,N)=1$ and $U_p^\dagger=w_NU_pw_N$ with $w_Nf=\pm f$; adjoints are $^\dagger$, Appendix B, B-C4(d)); the **congruence number**
 $r=r_E$ is the largest integer $r$ such that $f\equiv g\pmod r$ coefficientwise for some $g\in S_2(\Gamma_0(N);\Z)\cap f^\perp$ (ARS12, Section 2; the paper's
 definition in Sections 1 and 3). Agashe-Ribet-Stein (ARS12, Theorem 2.2, as cited; Chapter 14): $\deg\varphi_{E_0}\mid r$ and $v_p(\deg\varphi_{E_0})=v_p(r)$ for
 every $p$ with $p^2\nmid N$. Example (computed here, Part 6.6): for 99a1 (= ARS12's 99A1, $N=3^2\cdot11$), $\deg\varphi=4$ and $r=12$, so $v_3$ differs, as
@@ -592,15 +594,15 @@ $\ell\nmid N$, $v_\ell(\deg\varphi_{E_0})=v_\ell(r)$ (8.1), so it suffices to fi
   hypotheses of 6.5 (irreducibility and the condition at $\Q(\sqrt{-3})$ are twist-invariant; Chapter 11, 1.3). Lemma lem:IV for $E'$: $M=N(\bar\rho\otimes\chi)$
   has $v_q(M)=1$, $M\mid N/q$. 6.5 gives $g$ on $\Gamma_0(M)$ with $a_p(g)\equiv\chi(p)a_p(f)\pmod\lambda$ for $p\nmid3N$. As $q\,\|\,M$, $h:=g\otimes\chi=g^\chi$ is a newform on
   $\Gamma_0(Mq)$ (3.8(a), Atkin-Li), $Mq\mid N$, and $a_p(h)=\chi(p)a_p(g)\equiv a_p(f)$ for $p\nmid3N$. **$h\ne f$** (important_notes.md point 20): if $h=f$ then
-  $f\otimes\chi=h\otimes\chi=g^{(q)}$ (C4: $(g\otimes\chi)\otimes\chi=g^{(q)}$), so $f_{E'}=f\otimes\chi$ and $g$ have the same $a_p$ for all $p\ne q$, hence $f_{E'}=g$ by strong multiplicity one;
+  $f\otimes\chi=h\otimes\chi=g^{\{q\}}$ (C4: $(g\otimes\chi)\otimes\chi=g^{\{q\}}$), so $f_{E'}=f\otimes\chi$ and $g$ have the same $a_p$ for all $p\ne q$, hence $f_{E'}=g$ by strong multiplicity one;
   but their levels are $N$ and $M<N$. (The paper's "$g=h\otimes\chi=f\otimes\chi$" is literally false: $h\otimes\chi$ is the $q$-depletion of $g$.) Hypothesis of Lemma
   lem:old: if $p\,\|\,N$ and $\bar\rho$ is unramified at $p$, then $p\ne q$, $\bar\rho\otimes\chi$ is unramified at $p$, so $p\nmid M$ and $p\nmid Mq$. Lemma lem:old gives $3\mid r$.
 * **Case (c).** $v_q(N)=2$, $\chi=\chi_q$, $E'=E^{(q)}$ of type $\mathrm I_n$ at $q$ and conductor $N/q$ (Lemma lem:twist (ii)). Here $f=(f_{E'})^\chi=f_{E'}\otimes\chi$ (Atkin-Li,
-  3.8(a), as $q\,\|\,N/q$), while **$f\otimes\chi=f_{E'}^{(q)}$ is not a newform on $\Gamma_0(N/q)$** ($a_q(f_{E'})=\pm1$; new point N1, Part 7.1); the paper's "$f'=f\otimes\chi$ is a
+  3.8(a), as $q\,\|\,N/q$), while **$f\otimes\chi=f_{E'}^{\{q\}}$ is not a newform on $\Gamma_0(N/q)$** ($a_q(f_{E'})=\pm1$; new point N1, Part 7.1); the paper's "$f'=f\otimes\chi$ is a
   newform of weight $2$ on $\Gamma_0(N/q)$" must be read as "$f'=f_{E'}=f^\chi$". By Lemma lem:tamagawa-exp for $E'$ (Chapter 11, 3.3), $\bar\rho\otimes\chi=\bar\rho_{E',\ell}$ is
   unramified at $q$ ($\ell\mid n$), so $M=N(\bar\rho\otimes\chi)$ is prime to $q$ and $M\mid N/q^2$. 6.5 (here the step at $q$ is Ribet's theorem 6.2: $q$ exactly divides
   $N/q$ and $\bar\rho\otimes\chi$ is unramified at $q$) gives $g$ on $\Gamma_0(M)$ with $a_p(g)\equiv\chi(p)a_p(f)$ for $p\nmid\ell N$. As $q\nmid M$, $h:=g\otimes\chi=g^\chi$ is a newform on
-  $\Gamma_0(Mq^2)$ (3.8(a)), $Mq^2\mid N$, congruent to $f$ at all $p\nmid\ell N$. **$h\ne f$**: if $h=f$ then $g^{(q)}=h\otimes\chi=f\otimes\chi=f_{E'}^{(q)}$, so $g=f_{E'}$ by strong multiplicity
+  $\Gamma_0(Mq^2)$ (3.8(a)), $Mq^2\mid N$, congruent to $f$ at all $p\nmid\ell N$. **$h\ne f$**: if $h=f$ then $g^{\{q\}}=h\otimes\chi=f\otimes\chi=f_{E'}^{\{q\}}$, so $g=f_{E'}$ by strong multiplicity
   one, of levels $M$ and $N/q\ne M$. The hypothesis of Lemma lem:old holds as in (b). So $\ell\mid r$.
 * **Conclusion.** $\ell\mid r$ and $v_\ell(\deg\varphi_{E_0})=v_\ell(r)$. $\square$
 Paper: Section sec:proof (all of it).
@@ -612,7 +614,7 @@ sec:anomaly). (ii) Type $\mathrm I_0^*$: the twist $E'$ has good reduction at $q
 then $h=g^\chi=f$: no new congruence; the $\mathrm I_0^*$ term is reached through level raising instead (Theorem thm:quant; the factor $(q+1)^2-a_q(E')^2$
 of 7.2; example 539d1 in 10.4). (iii) Type $\mathrm I_n^*$ with $\ell\nmid n$: $\bar\rho\otimes\chi$ is ramified at $q$ with exponent $1$, $M$ has $q^1$, $h=g^\chi$ has $q^2$, and
 6.5 can return $g=f_{E'}$, giving $h=f$; again Theorem thm:quant handles it. (iv) Types $\mathrm{II}$, $\mathrm{IV}$ at $\ell\ge5$: $\bar\rho_{E,\ell}$ has Serre exponent $2$ (no
-$\ell$-torsion in $\Phi_q$), nothing to lower. Paper: Section 1.5 ("For $\ell\ge5$ Theorem thm:qual needs only ..."), the remark after Theorem
+$\ell$-torsion in $\Phig_q$), nothing to lower. Paper: Section 1.5 ("For $\ell\ge5$ Theorem thm:qual needs only ..."), the remark after Theorem
 thm:quant ((1): "neither is in Theorem thm:qual").
 
 **9.4 `ex:modgalrep:paper-example`** (worked example; P, all data checked; the paper's Example after case (c)). Table to typeset:
@@ -650,8 +652,8 @@ group, so neither Kraus's defect nor Lemma lem:IV makes sense, and Theorem thm:q
 and $\iota=\iota_S\colon h\mapsto h\otimes\chi_S=\sum\chi_S(n)a_n(h)q^n$. From Chapter 13 (cited, not reproved): $\iota$ maps $S_2(\Gamma_0(M))$ into $S_2(\Gamma_0(\operatorname{lcm}(M,D^2)))$ ($\chi_S^2=1$),
 preserves integrality, and $\iota\circ T_p=\chi_S(p)\,T_p\circ\iota$ for $p\nmid DM$. Added here: (i) $\iota$ sends a generalised eigenform for $(T_p)_{p\nmid DM}$ with system
 $(a_p)$ to one with system $(\chi_S(p)a_p)$, hence maps the sum of the generalised eigenspaces of systems different from that of $g$ (the
-$\T$-stable complement $g^\perp$) into the sum of those different from $\chi_S\cdot g$; (ii) on newforms, $\iota(g)=(g^{\chi_S})^{(S)}$ (C4), so $\iota(g)=g^{\chi_S}$ iff $a_q(g^{\chi_S})=0$
-for all $q\in S$, and $\iota$ does not distinguish $g$ from its $S$-depletion: $\iota(g)=\iota(g^{(S)})$; (iii) Galois meaning: $\rho\mapsto\rho\otimes\chi_S$, so $\ad$ and the true
+$\T$-stable complement $g^\perp$) into the sum of those different from $\chi_S\cdot g$; (ii) on newforms, $\iota(g)=(g^{\chi_S})^S$ (C4), so $\iota(g)=g^{\chi_S}$ iff $a_q(g^{\chi_S})=0$
+for all $q\in S$, and $\iota$ does not distinguish $g$ from its $S$-depletion: $\iota(g)=\iota(g^S)$; (iii) Galois meaning: $\rho\mapsto\rho\otimes\chi_S$, so $\ad$ and the true
 local adjoint factors are unchanged (3.7). Paper: Theorem thm:twist (the map $\iota$ and "$\iota$ maps $g^\perp$ into $f^\perp$"), Theorem thm:quant (proof,
 "$\iota(g^S)=f$", "which kills the coefficients at multiples of $D$").
 
@@ -660,8 +662,8 @@ with $q^2\mid N$, $E_S=E\otimes\chi_S$ of conductor $N_S$, $f=f_E$, $g=f_{E_S}$.
 $q\in S$: $N_S=N/D^2$; types $\mathrm{II},\mathrm{III},\mathrm{IV}$ or a dual at every $q\in S$ with $q\ge5$: $N_S=N$ (3.8 rows (RSt), (RPS), last row; Chapter 10, 8.2). In each
 case $\operatorname{lcm}(N_S,D^2)\mid N$, the hypothesis of Theorem thm:twist; in the third case also $\operatorname{lcm}(N,D^2)\mid N_S$. (ii) $\iota(g)=f$ exactly, for all $n$
 ($a_n(f)=\chi_S(n)a_n(g)$ for $(n,D)=1$ by 2.7, and $a_{q^k}(f)=0$ for $q\in S$ by 3.5). (iii) For $q\in S$ the local type of $g$ at $q$ is (St) in the
-$\mathrm I_n^*$ case and (U) in the $\mathrm I_0^*$ case, so $\delta_q(g)=1$, resp. $2$, and $N_S^{S}=N_S\prod_{q\in S}q^{\delta_q(g)}=N$: **the $S$-depleted form $g^{(S)}$ has
-level exactly $N$**, and $\iota(g^{(S)})=f$. Paper: Theorem thm:twist and the sentence after its proof ("The hypotheses hold when (a) ... (b) ...
+$\mathrm I_n^*$ case and (U) in the $\mathrm I_0^*$ case, so $\delta_q(g)=1$, resp. $2$, and $N_S^{S}=N_S\prod_{q\in S}q^{\delta_q(g)}=N$: **the $S$-depleted form $g^S$ has
+level exactly $N$**, and $\iota(g^S)=f$. Paper: Theorem thm:twist and the sentence after its proof ("The hypotheses hold when (a) ... (b) ...
 (c) ..."), Theorem thm:quant (first paragraph of the proof: "$N_S^\Sigma=N$: the $S$-depleted form $g^S$ lives at level $N$").
 
 **10.3 `thm:modgalrep:twist-monotonicity`** (theorem; R here, proved in full in Chapter 20). The paper's Theorem thm:twist: with
@@ -682,9 +684,11 @@ over the $\mathrm I_n^*$ primes and $\prod\frac{q-1}q\cdot\frac{(q+1)^2-a_q(E')^
 then $\iota$ transports the congruences to $f$ (10.1). Examples (checked): 539d1 ($\mathrm I_0^*$ at $7$, twist 11a, $\ell=3$): $e_3(E,7)=v_3(6)+v_3(64-4)=2$, $v_3(r_{11a})=0$,
 $\deg\varphi_{539d1}=72$, $v_3=2$: equality; 539c1 ($\mathrm I_3^*$ at $7$, twist 77c1): $e_3=v_3(48)=1$, $v_3(r_{77c})=v_3(6)=1$, $v_3(288)=2$: equality; 121d1 ($\mathrm I_1^*$ at
 $11$): $e_3=v_3(120)=1$, $v_3(r_{11a})=0$, $v_3(24)=1$. Remarks (the paper's remark after the theorem, with the book's corrections): (2) under the
-hypothesis of Theorem thm:main the first inequality is an equality when multiplicity one holds at level $N$; by important_notes.md point 39
-(Chapter 14) Lemma lem:hecke is an equality for every optimal curve, which removes the freeness hypothesis from Step 4 and partly answers
-point 24; (3) for the potentially good types $\mathrm{II}$, $\mathrm{III}$, $\mathrm{IV}$ and duals, $N_S=N$ (10.2(i)), $f$ is its own depletion, Theorem thm:dfg14 gives no
+hypothesis of Theorem thm:main ($\ell\notin S_f$) the first inequality is an **equality**, with no multiplicity-one hypothesis: by
+important_notes.md point 39 (Chapter 14) Lemma lem:hecke is an equality for every optimal curve, so (eq:identity) is an equality (point 73),
+and applying it to $E$ and to $E_S$ (same $\ad T$, same Selmer groups and Tamagawa factors, Euler terms differing by $\sum_{q\in S}e_\ell(E,q)$)
+gives $v_\ell(\deg\varphi_E)=v_\ell(\deg\varphi_{E_S})+\sum_{q\in S}e_\ell(E,q)$ (point 74; this supersedes the paper's "when multiplicity one holds at
+level $N$", important_notes.md B26); this also removes the freeness hypothesis from Step 4 and partly answers point 24; (3) for the potentially good types $\mathrm{II}$, $\mathrm{III}$, $\mathrm{IV}$ and duals, $N_S=N$ (10.2(i)), $f$ is its own depletion, Theorem thm:dfg14 gives no
 factor, and the omitted factor is reached only through Theorem thm:dfg37 (Chapter 20). The abstract's word "elementary" applies only to
 Step 1 (important_notes.md point 24). Paper: Theorem thm:quant, the remark after it, Section 1.5 ("The quantitative version of case (c),
 and of the type $\mathrm I_0^*$"), the abstract.
@@ -696,7 +700,8 @@ exponent** $t_q=t_q(\rho_{f,\lambda})$ is the largest $t\ge0$ such that $\rho_{f
 verify). For $f=f_E$ and $q$ multiplicative, $t_q=v_\ell(n_q)=t_\ell(E,q)$, split or not (Lemma lem:tamagawa-exp; Chapter 11, 3.3(i)). Paper: Section 1.5,
 Remark rem:ko(2), Definition def:terms.
 
-**11.2 `thm:modgalrep:ribet-takahashi`** (theorem; R). (Ribet-Takahashi; Takahashi.) For $E$ optimal of conductor $N=N^+N^-$ with $N^-$ a
+**11.2 `thm:modgalrep:ribet-takahashi`** (theorem; R; stated in full in Chapter 14, which this item cites with `\Cref{ch:moddeg}`;
+here only the one-sentence summary the paper's Section 1.5 needs, important_notes.md B19). (Ribet-Takahashi; Takahashi.) For $E$ optimal of conductor $N=N^+N^-$ with $N^-$ a
 product of an even number of distinct primes, the degree of the modular parametrisation by $X_0(N)$ and that of the parametrisation by
 the Shimura curve of discriminant $N^-$ have ratio $\prod_{q\mid N^-}n_q$ up to primes $\ell$ at which $E[\ell]$ is reducible (the paper's summary; the writer
 quotes the exact form, with its hypotheses and the precise local factor, from the sources), and Pasten controls the error term. Reference: RibetTakahashi97, Takahashi01, Pasten; Chapter 14 (where PLAN.md places the full statement).
@@ -752,7 +757,7 @@ Lines of LaTeX, card excluded (PLAN.md 7.3: up to 2,800 for this chapter). Items
 
 | PLAN.md scope item, Section 6 row, or paper hook | line-up items |
 |-|-|
-| $\rho_{f,\lambda}\colon G_\Q\to\GL_2(\mathcal O_\lambda)$ for a newform of weight $2$; Eichler-Shimura construction via $T_\ell A_f$ | 2.1, 2.4 |
+| $\rho_{f,\lambda}\colon G_\Q\to\GL_2(\mathcal O_\lambda)$ for a newform of weight $2$; Eichler-Shimura construction via $T_\ell J_f$ | 2.1, 2.4 |
 | Deligne for higher weight (statement) | 2.3 |
 | unramified outside $N\ell$, $\tr\rho(\Frob_p)=a_p$, $\det=\chi_\ell$, odd, irreducible | 2.1, 2.2 |
 | residual representation and semisimplification | 2.4, 2.5 |
@@ -809,7 +814,7 @@ Lines of LaTeX, card excluded (PLAN.md 7.3: up to 2,800 for this chapter). Items
 
 1. Let $\ell$ be odd. Show that $\bar\rho_{f,\lambda}$ is irreducible over $k_\lambda$ iff it is absolutely irreducible. Give the step of Lemma lem:old that needs
    this, and say what goes wrong for $\ell=2$.
-2. Show $(g\otimes\chi)\otimes\chi=g^{(r)}$ for $\chi$ quadratic of conductor $r$ and $g\otimes\chi=(g^\chi)^{(r)}$. Check the paper's claim (Example of Section 3) that
+2. Show $(g\otimes\chi)\otimes\chi=g^{\Sigma(r)}$ for $\chi$ quadratic of conductor $r$ and $g\otimes\chi=(g^\chi)^{\Sigma(r)}$. Check the paper's claim (Example of Section 3) that
    $f_{11a}\otimes\chi_{-11}$ is the form of 121d, and show that $f_{539c}\otimes\chi_{-7}$ is **not** the form of 77c.
 3. (B8.) Twist 11a1, 11a3, 121a1, 20a1 by the appropriate $-q$, compute minimal models and Kodaira types, and identify the curves in
    Cremona's tables (121d2, 121d1, 121c2, 980g2). Why does every quantity at $\ell=3$ in the paper depend only on the class?
@@ -870,7 +875,7 @@ Results from earlier chapters used here (by chapter label only, `\Cref{ch:...}`;
 * Chapter 13 (`ch:hecke`, outlined in parallel): Hecke operators, $U_p$ on oldforms, stabilisations and depleted forms, the decomposition of
   $S_2$ into spans of $h(dz)$, strong multiplicity one, Atkin-Lehner Theorem 3, Atkin-Li, the twist map $\iota$ and its Hecke compatibility,
   the perfect pairing with $\T$, the recursion for $a_{p^k}$. **Used in 1.2, 8.2, 8.3, 10.1 as black boxes.**
-* Chapter 14 (`ch:moddeg`, outlined in parallel): $J_0(N)$, $A_f$, Eichler-Shimura, modularity, the optimal curve and connected kernel, the
+* Chapter 14 (`ch:moddeg`, outlined in parallel): $J_0(N)$, $J_f$, Eichler-Shimura, modularity, the optimal curve and connected kernel, the
   modular degree and congruence number, Agashe-Ribet-Stein, multiplicity one, point 39. **Used in 2.1, 2.6, 8.1, 9.2, 10.4.**
 
 Forward pointers (chapters that use this one):
@@ -890,7 +895,7 @@ Forward pointers (chapters that use this one):
 
 ### 6.1 Conventions to typeset (Section 1, as `convention` environments)
 * C1 to C6 of Part 1.3. The twist dictionary C4 is the single most important convention: write $f\otimes\chi$ only for the naive twist and $f^\chi$
-  for the newform twist, and display $f\otimes\chi=(f^\chi)^{(r)}$ once. Every place the paper writes $f\otimes\chi$ or $g\otimes\chi$ gets a `paperlink` saying which is meant.
+  for the newform twist, and display $f\otimes\chi=(f^\chi)^{\Sigma(r)}$ once. Every place the paper writes $f\otimes\chi$ or $g\otimes\chi$ gets a `paperlink` saying which is meant.
 * Frobenius: as Chapters 7 and 11; $\rho_{f,\lambda}$ normalised by the arithmetic Frobenius trace $a_p$; the cohomological lattice $M_{f,\lambda}$ is a lattice in
   the dual. $L_p(f,s)=L(V_\lambda(f)|_{G_{\Q_p}},s-1)$ with the geometric Frobenius (3.4(iii)); check the formula on 11a1 at $11$ ($a_{11}=1$) and at $2$.
 * Local Langlands normalisation (3.2): fix one (the book's is the arithmetic one with the $|\det|^{-1/2}$ twist), state it once, and phrase every
@@ -932,7 +937,7 @@ Forward pointers (chapters that use this one):
 * **Chapter 13:** the $q$-expansion side of Hecke operators, $U_p$ on oldforms (the formulas and eigenvectors, which 8.3 tabulates by citation),
   stabilisations and depletions, Atkin-Lehner Theorem 3, Atkin-Li's statement, the twist map $\iota$ and its Hecke compatibility, the perfect
   pairing with $\T$. Here: the Galois reading (3.5, 3.8, 10.1) and the uses.
-* **Chapter 14:** $J_0(N)$, $A_f$, Eichler-Shimura, modularity, modular degree, congruence number, Agashe-Ribet-Stein, multiplicity one, point 39.
+* **Chapter 14:** $J_0(N)$, $J_f$, Eichler-Shimura, modularity, modular degree, congruence number, Agashe-Ribet-Stein, multiplicity one, point 39.
   Here: cited; $r(99\mathrm a1)=12$ recomputed only as data.
 * **Chapter 20:** congruence ideals over $\T_{\mathfrak m}$, Lemmas lem:ddt417, lem:hecke, Theorem thm:dfg14 with its proof idea, DFG04 Theorems 2.7, 3.7, Taylor-Wiles
   in detail, **the proofs of Theorems thm:twist and thm:quant**. Here: statements (10.3, 10.4), the level and twist facts, the level-raising reading.
@@ -945,7 +950,7 @@ Forward pointers (chapters that use this one):
 * **Point 21** (980i1 outside the hypotheses): 9.4(iii), 6.5 remark ($\delta=1$), Pitfalls.
 * **Point 24** ("elementary" in the abstract): 10.4 remark; with point 39 the middle term needs no freeness.
 * **Point 26** ($M_{f,\lambda}$ homothetic to the dual): 2.6(iii), (iv), C2.
-* **Point 40** ($M_{f,\lambda}=\phi^*H^1(E_0,\Zl)\simeq T_\ell E_0(-1)$ exactly for the optimal curve): 2.6(ii), with the saturation proof.
+* **Point 40** ($M_{f,\lambda}=\varphi_{E_0}^*H^1(E_0,\Zl)\simeq T_\ell E_0(-1)$ exactly for the optimal curve): 2.6(ii), citing Chapter 14, 9.1, which proves it (B19).
 * **Point 43** (case (a) of Theorem thm:qual extends to $q=2$; settled): 9.1 (statement with $q=2$), 9.2 case (a) (citing Chapter 11, 4.4), the new
   worked example 52a1 (6.6, 8.4(b), 9.4) and the check on all $1{,}051$ table curves; Exercise 13.
 * **Point 46** (the Example's congruences hold for all $n$ by Sturm): 9.4(i), citing Chapter 12, 11.5; the Lemma lem:old reading ($g=h$).
@@ -971,8 +976,9 @@ In `refs.bib` already: `DDT`, `Ribet90`, `Ribet91`, `Ribet84`, `Carayol86`, `Car
   and $\ell$-adic representations", in *Modular functions of one variable II*, Lecture Notes in Math. 349, Springer, 1973, 361-500),
   `BushnellHenniart06` (C. J. Bushnell and G. Henniart, *The local Langlands conjecture for GL(2)*, Grundlehren 335, Springer, 2006),
   `Casselman73` (W. Casselman, "On some results of Atkin and Lehner", Math. Ann. 201 (1973), 301-314), `LoefflerWeinstein12` (D. Loeffler
-  and J. Weinstein, "On the computation of local components of a newform", Math. Comp. 81 (2012), 1179-1200), `DiamondTaylor94` (F. Diamond
-  and R. Taylor, "Non-optimal levels of mod $\ell$ modular representations", Invent. Math. 115 (1994), 435-462). Page ranges to be checked.
+  and J. Weinstein, "On the computation of local components of a newform", Math. Comp. 81 (2012), 1179-1200). Page ranges to be checked.
+  Exception: `DiamondTaylor94` (F. Diamond and R. Taylor, "Non-optimal levels of mod $\ell$ modular representations", Invent. Math. 115
+  (1994), 435-462) is also needed by Chapter 20, so it goes into `refs.bib` (decision B14; important_notes.md B26).
   If Chapter 13 or 19 also cites any of these, move it to `refs.bib` (B14).
 
 ### 6.6 Verification log (computations done for this outline)
@@ -1012,11 +1018,11 @@ sec:proof, case (c), second sentence ("By Lemma lem:twist, $E'$ has multiplicati
 $f'=f\otimes\chi$ is a newform of weight $2$ on $\Gamma_0(N/q)$ with $q\,\|\,N/q$"), and its reuse at the end of the case ("$g=h\otimes\chi$ would otherwise equal
 $f'$, of level $N/q\ne M$"). Problem: with the paper's own definition of $\otimes\chi$ (Lemma lem:twist(iii): $a_n(g\otimes\chi)=\chi(n)a_n(g)$), $f\otimes\chi$ has
 $a_q=0$, whereas the newform $f_{E'}$ of the multiplicative curve $E'$ has $a_q(f_{E'})=\pm1$; in fact $f=f_{E'}\otimes\chi$ (Atkin-Li, as $q\,\|\,N/q$) and
-$f\otimes\chi=f_{E'}^{(q)}$, the $q$-depletion of $f_{E'}$, which lives at level $N$, not $N/q$. Example: for 539c1 ($q=7$), $f_{539c}\otimes\chi_{-7}$ has $a_7=0$ while
+$f\otimes\chi=f_{E'}^{\{q\}}$, the $q$-depletion of $f_{E'}$, which lives at level $N$, not $N/q$. Example: for 539c1 ($q=7$), $f_{539c}\otimes\chi_{-7}$ has $a_7=0$ while
 $f_{77c}$ has $a_7=-1$. (In case (b) the analogous sentence is correct, because there $a_q(f_{E'})=0$; but the justification is not Atkin-Li, which
 needs $q^2\nmid M$, and should be "both have $a_n=0$ for $q\mid n$".) Fix: in case (c) write "$f'=f_{E'}$, a newform on $\Gamma_0(N/q)$ with $q\,\|\,N/q$ and
 $f=f'\otimes\chi$ (Lemma lem:twist(iii)), so that $a_p(f')=\chi(p)a_p(f)$ for $p\ne q$", and prove $h\ne f$ as in important_notes.md point 20: if $h=f$, then
-$g^{(q)}=h\otimes\chi=f\otimes\chi=f'^{(q)}$, so $g=f'$ by strong multiplicity one, but their levels are $M$ and $N/q\ne M$. Effect: none on the theorem.
+$g^{\{q\}}=h\otimes\chi=f\otimes\chi=f'^{\{q\}}$, so $g=f'$ by strong multiplicity one, but their levels are $M$ and $N/q\ne M$. Effect: none on the theorem.
 Confidence: high (definition check; numerical example). Importance: low (expository; companion to point 20).
 
 **N2. The remark after the Example of Section 3: the reason given for $q=3$ in cases (a) and (b) is not the operative one.** Location:

@@ -99,7 +99,7 @@ Mellin transform of $f(iy)$ (10.2), RHB's integral transforms.
 * **C5 (eigenforms).** An *eigenform* is a nonzero simultaneous eigenvector of all of $\T$ (all $T_n$ including the $U_p$); an
   *anemic eigenform* is one for $\T^{(N)}$ only; *normalised* means $a_1=1$; a *newform* is a normalised eigenform in the new
   subspace (6.1, 6.2). A *system of eigenvalues* is a ring homomorphism $\T\to\overline\Q$ (or $\T^{(N)}\to\overline\Q$); its *generalised
-  eigenspace* $V(\varphi)$ is as in Chapter 3, its 10.5. The *$\T$-stable complement* of a generalised eigenspace is the sum of the
+  eigenspace* $V(\phi)$, for a system of eigenvalues $\phi$ (upright: $\varphi$ is reserved for maps of curves, Appendix B, B-C13(b)), is as in Chapter 3, its 10.5. The *$\T$-stable complement* of a generalised eigenspace is the sum of the
   other generalised eigenspaces.
 * **C6 (Petersson product and adjoints).** The Petersson product is Chapter 12's C5 (unnormalised, linear in the first variable;
   PARI's `mfpetersson` divides it by $\mu(N)$). Adjoints are written $t^\dagger$ (book-internal note B4: $*$ is reserved for
@@ -109,7 +109,7 @@ Mellin transform of $f(iy)$ (10.2), RHB's integral transforms.
   paper's $\chi_q$; the chapter writes $\chi_{q^*}$, as Chapter 2 decided, to avoid the clash with the cyclotomic $\chi_\ell$,
   important_notes.md point 32). For a finite set $S$ of odd primes, $D=\prod_{q\in S}q$ and $\chi_S=\prod_{q\in S}\chi_{q^*}$, of conductor $D$.
 * **C8 (depletion).** For a finite set $\Sigma$ of primes and a $q$-series $h=\sum a_nq^n$, $h^\Sigma=\sum_{(n,\Sigma)=1}a_nq^n$, where $(n,\Sigma)=1$
-  means that no prime of $\Sigma$ divides $n$ (the paper's notation). For a single prime, $h^{(p)}=h^{\{p\}}$.
+  means that no prime of $\Sigma$ divides $n$ (the paper's notation). For a single prime, $h^{\{p\}}$; never $h^{(p)}$, since a parenthesised superscript is reserved for twists $E^{(q)}$ and for removed Euler factors $\zeta^{(N)}$, $\T^{(N)}$ (Appendix B, B-C13(e)).
 * **C9 (congruences).** "$f\equiv g\pmod{\mathfrak a}$" means coefficientwise at **all** $n\ge1$ (Chapter 12, C6); a congruence only at the
   primes outside a set is always written out as such. $\lambda$ is a prime of the ring of integers $\mathcal O$ of a number field, above
   $\ell$.
@@ -371,8 +371,8 @@ cyclic vector, so the characteristic and minimal polynomials of $U_p$ on $V_{h,p
 $$X^{e-1}(X^2-a_p(h)X+p^{k-1})\quad(p\nmid M,\ e\ge1),\qquad X^{e}(X-a_p(h))\quad(p\mid M).$$
 (iii) Every eigenvalue has a one-dimensional eigenspace, spanned by: for $p\nmid M$, writing $X^2-a_pX+p^{k-1}=(X-\alpha_p)(X-\beta_p)$: the
 *$p$-stabilisations* $h_{\alpha}=h-\beta_ph(pz)$ (eigenvalue $\alpha_p$) and $h_\beta=h-\alpha_ph(pz)$ (eigenvalue $\beta_p$), and, if $e\ge2$, the *$p$-depleted form*
-$h^{(p)}=h-a_ph(pz)+p^{k-1}h(p^2z)$ (eigenvalue $0$); for $p\,\|\,M$: $h$ (eigenvalue $a_p=\pm p^{k/2-1}$) and, if $e\ge1$, $h^{(p)}=h-a_ph(pz)$
-(eigenvalue $0$); for $p^2\mid M$: $h=h^{(p)}$ (eigenvalue $a_p=0$). (iv) $U_p$ is semisimple on $V_{h,p,e}$ iff its characteristic polynomial is
+$h^{\{p\}}=h-a_ph(pz)+p^{k-1}h(p^2z)$ (eigenvalue $0$); for $p\,\|\,M$: $h$ (eigenvalue $a_p=\pm p^{k/2-1}$) and, if $e\ge1$, $h^{\{p\}}=h-a_ph(pz)$
+(eigenvalue $0$); for $p^2\mid M$: $h=h^{\{p\}}$ (eigenvalue $a_p=0$). (iv) $U_p$ is semisimple on $V_{h,p,e}$ iff its characteristic polynomial is
 squarefree: iff $e\le2$ and $\alpha_p\ne\beta_p$ ($p\nmid M$), $e\le1$ ($p\,\|\,M$), $e=0$ ($p^2\mid M$); otherwise the eigenvalue $0$ has a single Jordan
 block of size $e-1$, $e$ or $e+1$. (v) Each eigenvector of (iii) is a normalised eigenform of the full Hecke algebra of level $Mp^e$, with
 the eigenvalues of $h$ at the other operators. Verified matrices (columns: images of $f_{11}(p^jz)$): level $22$:
@@ -419,8 +419,8 @@ level $44$ and lies in a Jordan block of $U_2$ at level $88$). (vi) $L(f^\Sigma,
 Euler factors at $\Sigma$, and $M^\Sigma$ raises the level by one factor $p$ per removed root. Examples (verified): $f_{11}^{\{2\}}=f_{11}+2f_{11}(2z)+2f_{11}(4z)$,
 of level $44$, has $a_n=0$ for even $n$ and $a_n=a_n(f_{11})$ for odd $n$ (checked to $n=4000$); $f_{11}^{\{11\}}=f_{11}-f_{11}(11z)$, level $121$; for 121a,
 $\Sigma=\{11\}$: $f^\Sigma=f$, level $121$; for $g=$ 77c and $\Sigma=\{7\}$: $g^\Sigma=g-a_7(g)g(7z)$, level $539$; for $g=f_{11}$, $\Sigma=\{7\}$:
-$g^\Sigma=g+2g(7z)+7g(49z)$, level $539$ ($a_7(f_{11})=-2$). Reference: DFG04 Sections 1.5.3, 1.7.3 (as cited by the paper, for the notation
-$M^\Sigma$, $f^\Sigma$; verify); DDT Section 4 (cite the section). Paper: Section 4.1 ("$M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$", "the $\Sigma$-depleted
+$g^\Sigma=g+2g(7z)+7g(49z)$, level $539$ ($a_7(f_{11})=-2$). Reference: DFG04 Section 1.7.3 (for the notation
+$M^\Sigma$, $f^\Sigma$; not Section 1.5.3, important_notes.md B26, checked against the published DFG04 by the Chapter 20 outline); DDT Section 4 (cite the section). Paper: Section 4.1 ("$M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$", "the $\Sigma$-depleted
 eigenform, of level $M^\Sigma$"), Section 1.1 ($\delta_p$), Theorem thm:dfg14 and the paragraph after it ("adding an additive prime to $\Sigma$ changes
 neither the level nor the ideal"), Theorem thm:quant ("$N_S^\Sigma=N$: the $S$-depleted form $g^S$ lives at level $N$"), Lemma lem:old (the depleted
 forms).
@@ -457,8 +457,8 @@ $\begin{psmallmatrix}1&-1/3&1/24\\-1/3&1/4&-1/12\\1/24&-1/12&1/16\end{psmallmatr
 
 **8.3 `prop:hecke:local-components`** (proposition; P given Chapter 3, its 10.3, 10.5, 10.6 and 4.1). Let $\ell$ be a prime and
 $\T_\ell=\T\otimes\Z_\ell=\prod_{\mathfrak m}\T_{\mathfrak m}$ over the maximal ideals $\mathfrak m\ni\ell$ of $\T$, with idempotents $e_{\mathfrak m}$. (i) $S_2(N;\Z_\ell)=\bigoplus_{\mathfrak m}e_{\mathfrak m}S_2(N;\Z_\ell)$,
-and $e_{\mathfrak m}S_2(N;\Z_\ell)\otimes\overline\Q_\ell$ is the sum of the generalised eigenspaces of the $\varphi\colon\T\to\overline\Q_\ell$ with $\varphi^{-1}(\mathfrak m_{\overline\Z_\ell})=\mathfrak m$, that is,
-with $\varphi\equiv$ the residual character of $\mathfrak m$. (ii) A ring homomorphism $\phi\colon\T\to\mathcal O_\lambda$ factors through exactly one $\T_{\mathfrak m}$, $\mathfrak m=\mathfrak m_{\phi,\lambda}$,
+and $e_{\mathfrak m}S_2(N;\Z_\ell)\otimes\overline\Q_\ell$ is the sum of the generalised eigenspaces of the $\phi\colon\T\to\overline\Q_\ell$ with $\phi^{-1}(\mathfrak m_{\overline\Z_\ell})=\mathfrak m$, that is,
+with $\phi\equiv$ the residual character of $\mathfrak m$. (ii) A ring homomorphism $\phi\colon\T\to\mathcal O_\lambda$ factors through exactly one $\T_{\mathfrak m}$, $\mathfrak m=\mathfrak m_{\phi,\lambda}$,
 and $\phi$ kills the other factors: they lie in $\ker\phi$, not in $\operatorname{Ann}(\ker\phi)$, and $\eta(\phi)=\eta(\phi|_{\T_{\mathfrak m}})$ (important_notes.md
 point 35; Chapter 3, its 11.1(v)). (iii) The pairing of 4.1 satisfies $\langle e_{\mathfrak m}g,t\rangle=\langle g,e_{\mathfrak m}t\rangle$, so it restricts to perfect pairings
 $e_{\mathfrak m}S_2(N;\Z_\ell)\times\T_{\mathfrak m}\to\Z_\ell$ and $e_{\mathfrak m}S_2(N;\Z_\ell)\simeq\operatorname{Hom}(\T_{\mathfrak m},\Z_\ell)$ (the modular-forms analogue of point 36, which concerns the

@@ -21,12 +21,12 @@ The paper uses this chapter in six places, and the chapter is built around them.
    isogeny class of $E$ there is a distinguished one, the $X_0(N)$-optimal curve, for which the modular parametrisation
    $\varphi_E\colon X_0(N)\to E$ has minimal degree"; Section 6: "Optimality is determined in the tables for every class of
    conductor at most $400000$"). The chapter supplies $X_0(N)$ over $\Q$, $J_0(N)$, the Eichler-Shimura construction of the
-   quotient $A_f$, modularity, the factorisation of every modular parametrisation of every curve of the class through the
+   quotient $J_f$, modularity, the factorisation of every modular parametrisation of every curve of the class through the
    optimal one, the equivalence of "minimal degree", "connected kernel" and "saturated pullback on $H^1$", and the Cremona
    labelling convention with its one exception.
 2. **The Petersson norm and the Manin constant** (Section 1: "Up to explicit factors $\deg\varphi_E$ is $\langle f,f\rangle$ divided
    by the area of the period lattice of $E$ (Zagier, Watkins)"). The chapter states and proves the exact formula
-   $\deg\varphi\cdot\operatorname{vol}(\Lambda_E)=4\pi^2c^2\langle f,f\rangle$ with $\varphi^*\omega_E=c\cdot2\pi i\,f(z)\,dz$ (important_notes.md B10), defines the
+   $\deg\varphi\cdot\operatorname{vol}(\Lambda_E)=4\pi^2c_\varphi^2\langle f,f\rangle$ with $\varphi^*\omega_E=c_\varphi\cdot2\pi i\,f(z)\,dz$ (important_notes.md B10), defines the
    Manin constant and states what is known about it.
 3. **The congruence number and the theorem of Agashe, Ribet and Stein** (Section 1; Section 3 preamble; Lemma lem:crit;
    Lemma lem:hecke; the remark after Theorem thm:qual on 99A1). The chapter defines $r_E$ and the Hecke congruence ideal,
@@ -37,12 +37,13 @@ The paper uses this chapter in six places, and the chapter is built around them.
    Hecke operators, $U_p$ included, are self-adjoint for it, because $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the
    cup product"). The chapter supplies the Hecke correspondences on $X_0(N)$ over $\Q$, their compatibility with the
    Hecke operators of Chapter 13, the identity $C^t=w_NCw_N$ for every Hecke correspondence (proved by a matrix
-   computation), and, with Chapter 8, its 12.3, the pairing $\hat\delta(x,y)=\langle x,w_N^*y\rangle$.
+   computation), and, with Chapter 8, its 12.3, the pairing $\hat\delta_!(x,y)=\langle x,w_N^*y\rangle$.
 5. **Lemma lem:hecke and important_notes.md point 39** (Section 4.1, Lemma lem:hecke, Remark rem:free, Theorem thm:main,
    Theorem thm:quant Step 4). The chapter proves that for the optimal curve the lattice $M_{f,\lambda}$ is exactly
-   $\varphi_E^*H^1(E,\Z_\ell)$, that $\hat\delta$ has ideal of values $\deg\varphi_E\cdot\Z_\ell$ on it, and hence that
-   $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\deg\varphi_E)$ with no multiplicity-one hypothesis, provided DFG04's $\eta$ is normalised as the paper
-   describes it; it lists exactly what remains to be checked against DFG04.
+   $\varphi_E^*H^1(E,\Z_\ell)$, that $\hat\delta_!$ has ideal of values $\deg\varphi_E\cdot\Z_\ell$ on it, and hence that
+   $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\deg\varphi_E)$ with no multiplicity-one hypothesis, DFG04's $\eta$ being normalised as the paper
+   describes it (the five checks of 9.6 hold: confirmed against the published DFG04 in the Chapter 20 outline, its Part 7;
+   important_notes.md point 73).
 6. **Multiplicity one, Gorenstein, the Eisenstein ideal, Shimura curves, the prime 2** (Remark rem:free; Conjecture
    conj:eis, Section sec:eis and Open question 4; Section 1.5; Section sec:two and Open question 5). The chapter states
    the multiplicity one theorem and deduces freeness and the Gorenstein property from Chapter 3's criterion; defines
@@ -74,7 +75,7 @@ $\langle\varphi^*x,\varphi^*y\rangle=\deg\varphi\,\langle x,y\rangle$ is the sam
   constant $c_\varphi$ is defined by $\varphi^*\omega_E=c_\varphi\cdot2\pi i\,f(z)\,dz=c_\varphi f(q)\,dq/q$ (7.1). PARI's `mfpetersson` divides by
   $\mu(N)=[\SL_2(\Z):\Gamma_0(N)]$.
 * **C5 (Frobenius).** As in Chapter 8, C7: the arithmetic Frobenius acts on $T_\ell J$ as the $p$-power Frobenius endomorphism
-  $F$; $V=pF^{-1}$ is the Verschiebung; on $H^1=(T_\ell J)^\vee$ the geometric Frobenius has the same eigenvalues.
+  $\pi_p$; $\hat\pi_p=p\pi_p^{-1}$ is the Verschiebung (Appendix B, B-C2(g); not $F$, $V$, since $V$ is $V_\ell E$ in the paper); on $H^1=(T_\ell J)^\vee$ the geometric Frobenius has the same eigenvalues.
 * **C6 (optimal; labels).** "Optimal" always means $X_0(N)$-optimal (6.2). Cremona labels as in Chapter 9, its 12.1; ARS12 and
   Cremona97 print 99A1 for 99a1. $\lambda=\ell$ and $\mathcal O=\Z_\ell$ throughout, since the newform of an elliptic curve has rational
   coefficients.
@@ -178,10 +179,10 @@ is for)"); Chapter 8, its 12.4(d), points here.
 
 **3.4 `cor:moddeg:delta-hat`** (corollary; P given 3.3 and Chapter 8, its 12.3 and 12.3(e)). Let $R$ be $\Z$, $\Z_\ell$ or $\Q_\ell$ and
 $\langle\ ,\ \rangle$ the cup product on $H^1(X_0(N),R)$ (Chapter 8, its 10.3). (i) $(t^*)^\dagger=w_N^*t^*w_N^*$ for every $t\in\T$. (ii) The pairing
-$$\hat\delta(x,y)=\langle x,w_N^*y\rangle$$
+$$\hat\delta_!(x,y)=\langle x,w_N^*y\rangle$$
 is perfect and alternating on $H^1(X_0(N),R)$, and every $t^*$, $t\in\T$ (the $U_p^*$ included), is self-adjoint for it. (iii) Every
-idempotent of $\T\otimes\Z_\ell$ is self-adjoint, $H^1(X_0(N),\Z_\ell)=\bigoplus_{\mathfrak m}H^1(X_0(N),\Z_\ell)_{\mathfrak m}$ is an orthogonal decomposition and $\hat\delta$ is
-perfect on each summand (important_notes.md point 36). (iv) For weight $2$ and trivial character, $\hat\delta$ is the pairing
+idempotent of $\T\otimes\Z_\ell$ is self-adjoint, $H^1(X_0(N),\Z_\ell)=\bigoplus_{\mathfrak m}H^1(X_0(N),\Z_\ell)_{\mathfrak m}$ is an orthogonal decomposition and $\hat\delta_!$ is
+perfect on each summand (important_notes.md point 36). (iv) For weight $2$ and trivial character, $\hat\delta_!$ is the pairing
 $\hat\delta_!$ of DFG04 (13), (14) **as the paper reads it** in Section 4.1 (the operator $[UwU]\omega$ being $w_N$, with no scalar,
 Chapter 12, C3, C4); the comparison of normalisations is item 9.6. Paper: Section 4.1, Lemma lem:hecke ("with the pairing
 $\hat\delta_!$ of Section sec:dfg, perfect and alternating with $\T$ self-adjoint"), Theorem thm:quant Step 2, Lemma lem:ddt417 as
@@ -208,7 +209,7 @@ Remark rem:free ("$J_0(N)[\mathfrak m]$"), Conjecture conj:eis and Open question
 homomorphism $\T\to\End_\Q(J_0(N))$; on $J_0(N)(\C)=S_2^\vee/H_1$ it is the transpose of $t^*$ on $S_2$ and $t_*$ on $H_1$. (ii) On
 $T_\ell J_0(N)=H_1(X_0(N),\Z_\ell)$ (Chapter 8, its 11.7) the action is $t_*$, commuting with $G_\Q$ (the correspondences are defined over $\Q$).
 (iii) The involution $t\mapsto t^t=w_Ntw_N$ of $\T$ (3.3) fixes $\phi_f$ for every newform $f$ (since $f$ is a $w_N$-eigenvector, $\phi_f(U_p^t)=\phi_f(U_p)$),
-so $I_f$ is stable under it; hence the quotient $J_0(N)/I_fJ_0(N)$ and the lattice $M_{f,\ell}$ of 4.4 are the same whether one uses
+so $I_f$ is stable under it; hence the quotient $J_0(N)/I_fJ_0(N)$ and the lattice $M_{f,\lambda}$ of 4.4 are the same whether one uses
 the Albanese action $t_*$ or the Picard action $(t^t)_*$ (pitfall in Part 6.2). Reference: DiamondShurman 6.3, 6.6 (cite the
 sections). Paper: Remark rem:free ("the localised Hecke algebra", "the Tate module"), Section 4.1.
 
@@ -226,10 +227,10 @@ rank two"), Section 4.2 (point 26).
 $N$ with rational coefficients. (i) $H^1(X_0(N),\Q)\otimes\C=S_2\oplus\overline{S_2}$, and the subspace killed by $I_f\otimes\C$ is $\C\,\omega_f\oplus\C\,\overline{\omega_f}$, of
 dimension $2$ (the eigensystem $\phi_f$ occurs once in $S_2$, Chapter 13, and its complex conjugate system, equal to $\phi_f$, once in
 $\overline{S_2}$). So $V_f:=H^1(X_0(N),\Q)[I_f]$ is a $2$-dimensional $\Q$-space with $V_f\otimes\R$ spanned by $\operatorname{Re}\omega_f$, $\operatorname{Im}\omega_f$. (ii) Define
-$$M_{f,\ell}:=H^1(X_0(N),\Z_\ell)[I_f]=\{x:tx=\phi_f(t)x\ \forall t\in\T\}=H^1(X_0(N),\Z_\ell)\cap(V_f\otimes\Q_\ell),$$
+$$M_{f,\lambda}:=H^1(X_0(N),\Z_\ell)[I_f]=\{x:tx=\phi_f(t)x\ \forall t\in\T\}=H^1(X_0(N),\Z_\ell)\cap(V_f\otimes\Q_\ell),$$
 a saturated $\Z_\ell$-sublattice of rank $2$ (saturated as a kernel, Chapter 3). This is the paper's $M_{f,\lambda}$ "the kernel on it of the
-kernel of the eigencharacter" (Section 4.1 with $\Sigma=\emptyset$). (iii) $w_N^*$ preserves $V_f$ and $M_{f,\ell}$ and acts on both by
-$\varepsilon_N(f)$ (Chapter 12, its 12.2(iii); integrality because $w_N^*$ preserves $H^1(X_0(N),\Z_\ell)$). (iv) $M_{f,\ell}$ is $G_\Q$-stable (the
+kernel of the eigencharacter" (Section 4.1 with $\Sigma=\emptyset$). (iii) $w_N^*$ preserves $V_f$ and $M_{f,\lambda}$ and acts on both by
+$\varepsilon_N(f)$ (Chapter 12, its 12.2(iii); integrality because $w_N^*$ preserves $H^1(X_0(N),\Z_\ell)$). (iv) $M_{f,\lambda}$ is $G_\Q$-stable (the
 Hecke and Galois actions commute) and is a lattice in the Galois representation of $f$ (Chapter 15). Paper: Section 4.1, Lemma
 lem:hecke ("$L[\wp]=M_{f,\lambda}$ has rank $2$"), Section 4.2 (point 26).
 
@@ -237,20 +238,20 @@ lem:hecke ("$L[\wp]=M_{f,\lambda}$ has rank $2$"), Section 4.2 (point 26).
 
 **5.1 `thm:moddeg:shimura-quotient`** (theorem; S for (i), (ii); R for (iii)). Let $f$ be a newform of level $N$ with coefficient
 field $K_f$ and $I_f=\ker(\T\to K_f)$. (i) $I_fJ_0(N)$ (the subgroup generated by the images $t_*J_0(N)$, $t\in I_f$) is an abelian
-subvariety over $\Q$ (an image of the abelian variety $J_0(N)^r$ under a homomorphism, hence connected), and $A_f:=J_0(N)/I_fJ_0(N)$
+subvariety over $\Q$ (an image of the abelian variety $J_0(N)^r$ under a homomorphism, hence connected), and $J_f:=J_0(N)/I_fJ_0(N)$ (Shimura's $A_f$; the book writes $J_f$ because $A_f$ is the paper's adjoint $\ad V$, Appendix B, B-C12(c))
 is an abelian variety over $\Q$ of dimension $[K_f:\Q]$, on which $\T$ acts through $\T/I_f\hookrightarrow\mathcal O_{K_f}$; the quotient map
-$\pi_f\colon J_0(N)\to A_f$ has connected kernel by construction. (ii) For $f$ with rational coefficients, $A_f=:E_f$ is an elliptic
+$\pi_f\colon J_0(N)\to J_f$ has connected kernel by construction. (ii) For $f$ with rational coefficients, $J_f=:E_f$ is an elliptic
 curve over $\Q$ with $\T$ acting through $\phi_f$; $\pi_f^*\colon H^1(E_f,\Q)\to H^1(J_0(N),\Q)=H^1(X_0(N),\Q)$ has image $V_f$ (4.4). (iii)
-(Shimura) $L(A_f,s)=\prod_{\sigma\colon K_f\to\C}L(f^\sigma,s)$, in particular $L(E_f,s)=L(f,s)$. Reference: Shimura71 Theorem 7.14 (verify the
+(Shimura) $L(J_f,s)=\prod_{\sigma\colon K_f\to\C}L(f^\sigma,s)$, in particular $L(E_f,s)=L(f,s)$. Reference: Shimura71 Theorem 7.14 (verify the
 number), Shimura73; DiamondShurman 6.6 and Theorem 6.6.6 (verify the number). Paper: Section 1 (the optimal curve is $E_f$,
 6.2), Lemma lem:hecke (via 9.1), Section 4.2.
 
 **5.2 `thm:moddeg:eichler-shimura`** (theorem; R for (i), P for (ii) given (i) and Chapter 8, its 11.8(d)). (i) (Eichler-Shimura
-congruence relation.) For $p\nmid N$, in $\End((J_0(N))_{\F_p})$: $(T_p)_*=F+V$, where $F$ is the Frobenius endomorphism and $V=pF^{-1}$
+congruence relation.) For $p\nmid N$, in $\End((J_0(N))_{\F_p})$: $(T_p)_*=\pi_p+\hat\pi_p$, where $\pi_p$ is the Frobenius endomorphism and $\hat\pi_p=p\pi_p^{-1}$
 the Verschiebung (Kronecker's congruence: modulo $p$ the correspondence $T_p$ is the graph of the Frobenius morphism plus its
 transpose; proof idea from the moduli description 3.1(ii): for an ordinary curve in characteristic $p$, the quotient by the
-connected subgroup of order $p$ is the Frobenius image, and the quotients by the $p$ etale subgroups are the Frobenius preimages). (ii) Consequences: on $T_\ell A_f$
-($\ell\ne p$) the arithmetic Frobenius satisfies $F^2-T_pF+p=0$; for $f$ rational, $\det(X-\Frob_p\mid T_\ell E_f)=X^2-a_p(f)X+p$, so
+connected subgroup of order $p$ is the Frobenius image, and the quotients by the $p$ etale subgroups are the Frobenius preimages). (ii) Consequences: on $T_\ell J_f$
+($\ell\ne p$) the arithmetic Frobenius satisfies $\pi_p^2-T_p\pi_p+p=0$; for $f$ rational, $\det(X-\Frob_p\mid T_\ell E_f)=X^2-a_p(f)X+p$, so
 $a_p(E_f)=p+1-\#E_f(\F_p)=a_p(f)$ for every $p\nmid N$ (with Chapter 9, its 8.x, and Chapter 8, its 11.8(d)); on $H^1$ the
 geometric Frobenius has the same characteristic polynomial (C5). (iii) This is how the Galois representation of a weight-two
 newform is constructed (Chapter 15). Reference: Shimura71 Section 7.4 (verify the theorem number), DiamondShurman 8.7
@@ -354,22 +355,22 @@ $\varphi^*\omega_E$ is a nonzero holomorphic differential lying in $V_f\otimes\C
 multiple of $\omega_f=f(z)\,dz$: $\varphi^*\omega_E=c_\varphi\cdot2\pi i\,f(z)\,dz=c_\varphi\,f(q)\,\frac{dq}q$. (ii) $c_\varphi\in\Q^\times$: $\varphi$ and $\omega_E$ are defined over $\Q$ and
 the cusp $\infty$ is rational, so the expansion of $\varphi^*\omega_E$ in the local parameter $q$ at $\infty$ has rational coefficients, and
 $a_1(f)=1$. (iii) For $\varphi=\psi\circ\varphi_E$ (6.2(ii)), $c_\varphi=c_{\varphi_E}\cdot u_\psi$ where $\psi^*\omega_{E'}=u_\psi\,\omega_E$, $u_\psi\in\Z\setminus\{0\}$. The *Manin
-constant* of $E$ is $c_E:=c_{\varphi_E}$ for the optimal curve, well defined up to sign (the sign of $\omega_E$). Paper: background (the
+constant* of $E$ is $c_E:=c_{\varphi_E}$ for the optimal curve; the sign of $\omega_E$ is chosen so that $c_E>0$ (Appendix B, B-C9; only $c_E^2$ enters any formula). Paper: background (the
 "explicit factors" of Section 1).
 
 **7.2 `thm:moddeg:manin-known`** (theorem; R; every item to be checked against the source before printing). (i) (Edixhoven)
 $c_E\in\Z$, by the $q$-expansion principle on the Neron model; more generally $c_\varphi\in\Z$ for every modular parametrisation. (ii)
-(Manin's conjecture) $c_E=\pm1$ for the optimal curve. (iii) Known results: if a prime $p$ divides $c_E$ then $p=2$ or $p^2\mid N$
-(Mazur78 for $p\nmid2N$; AU96 for $p^2\nmid N$); $c_E=\pm1$ for every optimal curve of conductor below a large bound (Cremona's
+(Manin's conjecture) $c_E=1$ for the optimal curve (the literature writes $c_E=\pm1$ when $\omega_E$ is not normalised). (iii) Known results: if a prime $p$ divides $c_E$ then $p=2$ or $p^2\mid N$
+(Mazur78 for $p\nmid2N$; AU96 for $p^2\nmid N$); $c_E=1$ for every optimal curve of conductor below a large bound (Cremona's
 computations; ARS's paper on the Manin constant) and for semistable optimal curves (Cesnavicius); the recent bound $c_E\mid\deg\varphi_E$
 and related results (Cesnavicius, Neururer, Saha). The writer cites only what is checked; proposed keys in Part 6.5. (iv) For
-non-optimal curves $c_\varphi\ne\pm1$ is possible: 7.4. Paper: background; the paper's tables assume $c_E=1$ implicitly only through the
+non-optimal curves $c_\varphi\ne1$ is possible: 7.4. Paper: background; the paper's tables assume $c_E=1$ implicitly only through the
 Zagier-Watkins heuristic of Section 1, not in any proof.
 
 **7.3 `thm:moddeg:zagier-watkins`** (theorem; P given Chapter 8, its 9.4(b), 11.5(i), and Chapter 12, its 10.1(iv)). For every
 modular parametrisation $\varphi$ of $E$,
 $$\deg\varphi\cdot\operatorname{vol}(\Lambda_E)=4\pi^2c_\varphi^2\,\langle f,f\rangle,$$
-with the unnormalised Petersson product (C4). In particular, for the optimal curve with $c_E=\pm1$,
+with the unnormalised Petersson product (C4). In particular, for the optimal curve with $c_E=1$,
 $\deg\varphi_E=4\pi^2\langle f,f\rangle/\operatorname{vol}(\Lambda_E)$. Proof (three lines): $\frac i2\int_{X_0(N)}\varphi^*\omega_E\wedge\overline{\varphi^*\omega_E}=\deg\varphi\cdot\frac i2\int_E\omega_E\wedge\bar\omega_E$ (a
 $\deg\varphi$-sheeted orientation-preserving cover away from finitely many points), the right side is $\deg\varphi\cdot\operatorname{vol}(\Lambda_E)$, and
 the left is $c_\varphi^2\cdot4\pi^2\cdot\frac i2\int\omega_f\wedge\bar\omega_f=4\pi^2c_\varphi^2\langle f,f\rangle$. **The Manin constant stands in the numerator**
@@ -391,7 +392,7 @@ $E$ (Zagier, Watkins)").
 | 121a1 | $0.42823936001195717858$ | $2.81770204819580190671$ | $6$ | $6$ | $1$ |
 
 (The 20a1 value $1$ is in Chapter 12, its 10.4.) Reading: in the class 11a the parametrisations of 11a2 and 11a3 both have degree
-$5$ (6.2(ii)), and the formula forces $c=1$ for 11a2 and $c=5$ for 11a3 (the $5$-isogeny 11a1 $\to$ 11a3 pulls $\omega_{\text{11a3}}$ back to
+$5$ (6.2(ii)), and the formula forces $c_\varphi=1$ for 11a2 and $c_\varphi=5$ for 11a3 (the $5$-isogeny 11a1 $\to$ 11a3 pulls $\omega_{\text{11a3}}$ back to
 $5\,\omega_{\text{11a1}}$). Paper: Section 1; the Chapter 22 computations.
 
 **7.5 `rem:moddeg:rankin-and-computation`** (remark; R, pointers). (a) Rankin and Shimura express $\langle f,f\rangle$ through $L(\operatorname{Sym}^2f,2)$
@@ -463,32 +464,32 @@ lem:hecke ("as $\ell^2\nmid N$").
 ### Section 9. The modular degree as a congruence ideal (important_notes.md point 39)
 
 The section opens with one paragraph: the paper proves $v_\ell(\deg\varphi_E)\ge v_\lambda(\eta^\emptyset_{f,\lambda})$ (Lemma lem:hecke) and needs multiplicity
-one (Remark rem:free) for equality; for the optimal curve the lattice $M_{f,\ell}$ is the pullback of $H^1(E)$, the projection formula
+one (Remark rem:free) for equality; for the optimal curve the lattice $M_{f,\lambda}$ is the pullback of $H^1(E)$, the projection formula
 computes the pairing on it, and the equality holds unconditionally. Everything in 9.1 to 9.5 is proved; 9.6 lists what
 must still be compared with DFG04.
 
 **9.1 `prop:moddeg:mf-is-pullback`** (proposition; P given 4.4, 5.1, 6.2 and Chapter 8, its 11.5, 11.7, 11.8, 12.2(a); the Chapter 15 outline's
 2.6(ii) states the same result and should cite this item, Part 7, B-c). Let $E$ be optimal with newform $f$ and let $\ell$ be any prime. (a) **Hecke equivariance.** $\varphi_{E*}=\pi_{f*}\circ\iota_*\colon H_1(X_0(N),\Z)\to H_1(E,\Z)$ satisfies
 $\varphi_{E*}\circ t_*=\phi_f(t)\,\varphi_{E*}$ for $t\in\T$ ($\T$ acts on $E=J_0(N)/I_fJ_0(N)$ through $\phi_f$); transposing (C2), $t^*\varphi_E^*x=\phi_f(t)\varphi_E^*x$ for $x\in H^1(E,\Z_\ell)$,
-so $\varphi_E^*H^1(E,\Z_\ell)\subseteq M_{f,\ell}$. (b) **Ranks.** Both are free of rank $2$ ($\varphi_E^*$ is injective, since $\varphi_{E*}\varphi_E^*=\deg\varphi_E\ne0$; $M_{f,\ell}$ by
+so $\varphi_E^*H^1(E,\Z_\ell)\subseteq M_{f,\lambda}$. (b) **Ranks.** Both are free of rank $2$ ($\varphi_E^*$ is injective, since $\varphi_{E*}\varphi_E^*=\deg\varphi_E\ne0$; $M_{f,\lambda}$ by
 4.4). (c) **Saturation.** $E$ is optimal, so $\varphi_{E*}$ is surjective on $H_1$ and $\varphi_E^*H^1(E,\Z)$ is saturated (6.2(iii)); saturation is kept by
-$\otimes\Z_\ell$. A saturated sublattice of full rank in the saturated lattice $M_{f,\ell}$ equals it. Hence
-$$M_{f,\ell}=\varphi_E^*H^1(E,\Z_\ell).$$
+$\otimes\Z_\ell$. A saturated sublattice of full rank in the saturated lattice $M_{f,\lambda}$ equals it. Hence
+$$M_{f,\lambda}=\varphi_E^*H^1(E,\Z_\ell).$$
 (d) **Galois structure** (important_notes.md points 26, 40). $\varphi_E$ is defined over $\Q$, so in etale cohomology $\varphi_E^*$ is
-$G_\Q$-equivariant and $M_{f,\ell}\simeq H^1_{\mathrm{et}}(E_{\bar\Q},\Z_\ell)\simeq\Hom_{\Z_\ell}(T_\ell E,\Z_\ell)\simeq T_\ell E(-1)$ (Weil pairing): an equality of lattices up to this
-canonical isomorphism, with no irreducibility hypothesis; and $\ad M_{f,\ell}\simeq\ad T_\ell E$ ($\ad$ is insensitive to duals and twists,
+$G_\Q$-equivariant and $M_{f,\lambda}\simeq H^1_{\mathrm{et}}(E_{\bar\Q},\Z_\ell)\simeq\Hom_{\Z_\ell}(T_\ell E,\Z_\ell)\simeq T_\ell E(-1)$ (Weil pairing): an equality of lattices up to this
+canonical isomorphism, with no irreducibility hypothesis; and $\ad M_{f,\lambda}\simeq\ad T_\ell E$ ($\ad$ is insensitive to duals and twists,
 Chapter 4). Paper: Section 4.1 ($M_{f,\lambda}$), Section 4.2 ("the lattice $M_{f,\lambda}$ of DFG04 and $T_\ell E$ are homothetic when $\bar\rho$ is
 irreducible": correct up to the dual, and exact for the optimal curve), Lemma lem:hecke ("$L[\wp]=M_{f,\lambda}$ has rank $2$").
 
-**9.2 `lem:moddeg:wn-on-mf`** (lemma; P given 4.4(iii)). $w_N^*$ acts on $M_{f,\ell}=\varphi_E^*H^1(E,\Z_\ell)$ by $\varepsilon_N(f)=\pm1$; so $\hat\delta(x,y)=\varepsilon_N(f)\langle x,y\rangle$ on
-$M_{f,\ell}$. (Equivalently: $w_N$ preserves $I_fJ_0(N)$ by 4.2(iii), descends to the automorphism $[\varepsilon_N(f)]$ of $E$, and
+**9.2 `lem:moddeg:wn-on-mf`** (lemma; P given 4.4(iii)). $w_N^*$ acts on $M_{f,\lambda}=\varphi_E^*H^1(E,\Z_\ell)$ by $\varepsilon_N(f)=\pm1$; so $\hat\delta_!(x,y)=\varepsilon_N(f)\langle x,y\rangle$ on
+$M_{f,\lambda}$. (Equivalently: $w_N$ preserves $I_fJ_0(N)$ by 4.2(iii), descends to the automorphism $[\varepsilon_N(f)]$ of $E$, and
 $\varphi_E\circ w_N=\varepsilon_N(f)\,\varphi_E+\varphi_E(0)$ (evaluate at $\infty$ to check the constant); Exercise 13.) Paper:
 Section 4.1 ("composed with ... $w_{M^\Sigma}$").
 
-**9.3 `thm:moddeg:degree-is-eta`** (theorem; P). Let $E$ be optimal and $\ell$ any prime. On $M_{f,\ell}$ the pairing $\hat\delta$ of 3.4 has
-$$\hat\delta(\varphi_E^*a,\varphi_E^*b)=\varepsilon_N(f)\,\deg\varphi_E\,\langle a,b\rangle_E\qquad(a,b\in H^1(E,\Z_\ell)),$$
-with $\langle\ ,\ \rangle_E$ unimodular (Chapter 8, its 10.3). Hence the ideal of values of $\hat\delta$ on $M_{f,\ell}\times M_{f,\ell}$ is $\deg\varphi_E\cdot\Z_\ell$, and the
-Gram determinant of $\hat\delta$ on a basis of $M_{f,\ell}$ is $(\deg\varphi_E)^2$ up to a unit (a rank-two alternating form, Chapter 3, its 9.4).
+**9.3 `thm:moddeg:degree-is-eta`** (theorem; P). Let $E$ be optimal and $\ell$ any prime. On $M_{f,\lambda}$ the pairing $\hat\delta_!$ of 3.4 has
+$$\hat\delta_!(\varphi_E^*a,\varphi_E^*b)=\varepsilon_N(f)\,\deg\varphi_E\,\langle a,b\rangle_E\qquad(a,b\in H^1(E,\Z_\ell)),$$
+with $\langle\ ,\ \rangle_E$ unimodular (Chapter 8, its 10.3). Hence the ideal of values of $\hat\delta_!$ on $M_{f,\lambda}\times M_{f,\lambda}$ is $\deg\varphi_E\cdot\Z_\ell$, and the
+Gram determinant of $\hat\delta_!$ on a basis of $M_{f,\lambda}$ is $(\deg\varphi_E)^2$ up to a unit (a rank-two alternating form, Chapter 3, its 9.4).
 **Consequently, if DFG04's ideal $\eta^\emptyset_{f,\lambda}$ is the ideal of values of $\hat\delta_!$ on $M_{f,\lambda}$, as the paper's Section 4.1 describes it,
 then $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\deg\varphi_E)$ for every prime $\ell\nmid2N$, with no multiplicity-one, irreducibility or Gorenstein
 hypothesis.** Proof: 9.1, 9.2, 6.3(iv). Physics aside: the projection formula is the statement that a loop on $E$ lifts to
@@ -498,26 +499,30 @@ $\deg\varphi$ loops whose intersection numbers add up. Paper: Lemma lem:hecke, R
 **9.4 `cor:moddeg:ars-divisibility`** (corollary; P given 9.3, 8.2 and Chapter 3, its 9.3, 11.1, 11.3). For $E$ optimal and every
 prime $\ell$: $v_\ell(r_E)\ge v_\ell(\deg\varphi_E)$; that is, $\deg\varphi_E\mid r_E$ (the divisibility half of 8.3). Proof (the assembly of Chapter 3, its
 11.3, in the case at hand; Chapter 20 proves the general statement as Lemma lem:ddt417): take $\mathcal O=\Z_\ell$, the algebra $\T_\ell=\T\otimes\Z_\ell$
-acting by $t^*$ on $L=H^1(X_0(N),\Z_\ell)$ with the pairing $\hat\delta$ (perfect, $\T_\ell$ self-adjoint, 3.4), $\pi=\phi_f$, $\wp=I_f\T_\ell$, $I=\operatorname{Ann}(\wp)$, so
-that $\pi(I)=r_E\Z_\ell$ by 8.2 and $\wp\cap I=0$ by 8.1(iii). Then $L[\wp]=M_{f,\ell}$, $Q=L/(L[\wp]\oplus L[I])$ is killed by $r_E$ and generated by $2$
-elements, and $Q\simeq\coker(M_{f,\ell}\to\Hom(M_{f,\ell},\Z_\ell))$ has order $\#\Z_\ell/(\deg\varphi_E)^2$ by 9.3; so $2v_\ell(\deg\varphi_E)\le2v_\ell(r_E)$. Equality holds
+acting by $t^*$ on $L=H^1(X_0(N),\Z_\ell)$ with the pairing $\hat\delta_!$ (perfect, $\T_\ell$ self-adjoint, 3.4), $\pi=\phi_f$, $\wp=I_f\T_\ell$, $I=\operatorname{Ann}(\wp)$, so
+that $\pi(I)=r_E\Z_\ell$ by 8.2 and $\wp\cap I=0$ by 8.1(iii). Then $L[\wp]=M_{f,\lambda}$, $Q=L/(L[\wp]\oplus L[I])$ is killed by $r_E$ and generated by $2$
+elements, and $Q\simeq\coker(M_{f,\lambda}\to\Hom(M_{f,\lambda},\Z_\ell))$ has order $\#\Z_\ell/(\deg\varphi_E)^2$ by 9.3; so $2v_\ell(\deg\varphi_E)\le2v_\ell(r_E)$. Equality holds
 when $L_{\mathfrak m}$ is free over $\T_{\mathfrak m}$ (Chapter 3, its 11.3(v)), for instance in the situation of 10.3. Paper: Section 1 ("By a theorem
 of Agashe, Ribet and Stein, $\deg\varphi_E$ divides the congruence number"), Lemma lem:hecke.
 
 **9.5 `thm:moddeg:lem-hecke`** (theorem, the paper's Lemma lem:hecke in the strengthened form; P given 8.3 (R) and 9.3). Let $E$
 be optimal and $\ell$ an odd prime with $\ell\nmid N$. Then
-$$v_\ell(\deg\varphi_E)=v_\ell(r_E)=v_\ell\bigl(\text{ideal of values of }\hat\delta\text{ on }M_{f,\ell}\bigr),$$
-the first equality by ARS12 Theorem 2.2 ($\ell^2\nmid N$), the second by 9.3; and, with DFG04's normalisation as the paper reads
-it, both equal $v_\lambda(\eta^\emptyset_{f,\lambda})$. The hypotheses "$\bar\rho$ irreducible" and "free over $\T_{\mathfrak m}$" of the paper's Lemma lem:hecke are
+$$v_\ell(\deg\varphi_E)=v_\ell(r_E)=v_\ell\bigl(\text{ideal of values of }\hat\delta_!\text{ on }M_{f,\lambda}\bigr),$$
+the first equality by ARS12 Theorem 2.2 ($\ell^2\nmid N$), the second by 9.3; and, with DFG04's normalisation (as the paper reads
+it; confirmed in the Chapter 20 outline, Part 7, important_notes.md point 73), both equal $v_\lambda(\eta^\emptyset_{f,\lambda})$. The hypotheses "$\bar\rho$ irreducible" and "free over $\T_{\mathfrak m}$" of the paper's Lemma lem:hecke are
 not needed for this. Consequences (stated, proved in Chapter 20 where the assembly lives): (a) the identity (eq:identity) of
 Theorem thm:main holds **with equality** whenever $\ell\notin S_f$; (b) Step 4 of the proof of Theorem thm:quant needs no
 freeness at level $N_S$ (apply 9.3 to the optimal curve in the class of $E_S$, then ARS at $N_S$), which partly answers
-important_notes.md point 24; (c) Remark (2) after Theorem thm:quant still needs multiplicity one at level $N$, because there the
-lattice belongs to the depleted form $g^S$, which is not the pullback of an elliptic curve under an optimal map (10.4). Paper:
+important_notes.md point 24; (c) the first inequality of Theorem thm:quant is an **equality** whenever $\ell\notin S_f$, with no multiplicity-one
+hypothesis: apply (a) to $E$ and to $E_S$; the twist does not change $\ad T$, so the Selmer groups agree, the Tamagawa factors agree, and
+the Euler terms differ by $\sum_{q\in S}e_\ell(E,q)$, so $v_\ell(\deg\varphi_E)=v_\ell(\deg\varphi_{E_S})+\sum_{q\in S}e_\ell(E,q)$ (important_notes.md point 74, which
+supersedes the earlier reading that Remark (2) after Theorem thm:quant needs multiplicity one at level $N$; important_notes.md B26). Paper:
 Lemma lem:hecke, Remark rem:free, Theorem thm:main, Theorem thm:quant.
 
-**9.6 `rem:moddeg:dfg-normalisation`** (remark; R: what remains to be checked against DFG04 before the paper or the book
-asserts 9.5 for DFG04's $\eta$). 9.3 is a theorem about the ideal of values of $\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Z_\ell)[I_f]$. That this is
+**9.6 `rem:moddeg:dfg-normalisation`** (remark; R: the five checks against DFG04 needed before the paper or the book
+asserts 9.5 for DFG04's $\eta$. **Settled:** the Chapter 20 outline, its Part 7, read the published DFG04 and confirmed all five, item (1)
+in the form "agrees with $H^1(X_0(N),\Z_\ell)$ at non-Eisenstein maximal ideals", which is all the paper uses; important_notes.md
+point 73; the writer cites the Chapter 20 outline's Part 7 for the DFG04 numbers). 9.3 is a theorem about the ideal of values of $\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Z_\ell)[I_f]$. That this is
 DFG04's $\eta^\emptyset_{f,\lambda}$ needs five checks in DFG04 Sections 1.5.3, 1.6.1, 1.6.2, 1.7.3 and (13), (14):
 (1) **Which curve.** That DFG04's integral structure $M(N,1)_{!,\lambda}$ for weight $2$ and trivial character is $H^1(X_0(N),\Z_\ell)$ (as the
 paper says), and not the trivial-character part of the cohomology of a $\Gamma_1(N)$-type curve: if it were
@@ -538,7 +543,7 @@ own description of $\eta$ in Section 4.1 needs correcting, independently of poin
 medium for the identification. Paper: Section 4.1, Lemma lem:hecke, Theorem thm:dfg14, Theorem thm:dfg37.
 
 **9.7 `ex:moddeg:99-at-3`** (worked example; P given 8.5, 9.3, 9.4 and Chapter 3, its 11.5). For 99a1 and $\ell=3$ (where $3^2\mid99$ and
-the paper's theorems do not apply): the ideal of values of $\hat\delta$ on $M_{f,3}$ is $4\Z_3=\Z_3$ (9.3), while $v_3(r_E)=1$ (8.5). So the inequality
+the paper's theorems do not apply): the ideal of values of $\hat\delta_!$ on $M_{f,3}$ is $4\Z_3=\Z_3$ (9.3), while $v_3(r_E)=1$ (8.5). So the inequality
 of 9.4 is strict, $L_{\mathfrak m}=H^1(X_0(99),\Z_3)_{\mathfrak m}$ is **not** free over $\T_{\mathfrak m}$ at the maximal ideal $\mathfrak m$ of 99a1 mod $3$, and by Chapter 3, its
 11.5 (hypothesis (b) holds, rank $L_{\mathfrak m}=2\,\rank\T_{\mathfrak m}$), $\dim_{\T/\mathfrak m}L/\mathfrak mL>2$: multiplicity one fails for $J_0(99)$ at $\mathfrak m$, although
 $\bar\rho_{\text{99a1},3}$ is irreducible (the class 99a has only a $2$-isogeny). This is why Remark rem:free needs $\ell\nmid N$. Paper: the remark
@@ -563,7 +568,7 @@ Shimura subgroup (11.3), on which $\T$ acts through Eisenstein ideals. Paper: Re
 
 **10.3 `thm:moddeg:gorenstein`** (theorem; P given 10.2, 4.3 and Chapter 3, its 11.4, 11.5). In the situation of 10.2: $\T_{\mathfrak m}$ is
 Gorenstein, and $H^1(X_0(N),\Z_\ell)_{\mathfrak m}\simeq\T_{\mathfrak m}^2\simeq T_\ell J_0(N)_{\mathfrak m}$ as $\T_{\mathfrak m}$-modules (Tilouine97; Wiles95 Chapter 2; DDT Section 4, cite
-the sections). Proof: $L=H^1(X_0(N),\Z_\ell)_{\mathfrak m}$ with $\hat\delta$ (perfect on the summand, 3.4(iii)) satisfies (a) $\dim L/\mathfrak mL=\dim J_0(N)[\mathfrak m]=2$
+the sections). Proof: $L=H^1(X_0(N),\Z_\ell)_{\mathfrak m}$ with $\hat\delta_!$ (perfect on the summand, 3.4(iii)) satisfies (a) $\dim L/\mathfrak mL=\dim J_0(N)[\mathfrak m]=2$
 (the pairing identifies $L/\mathfrak mL$ with the dual of $(L/\ell L)[\mathfrak m]$, and $L/\ell L$ with $J_0(N)[\ell]_{\mathfrak m}$ up to the Hecke-equivariant
 identification 4.3(ii)) and (b) $\rank_{\Z_\ell}L=2\rank_{\Z_\ell}\T_{\mathfrak m}$ (4.4(i) for every eigensystem, localised); Chapter 3, its 11.5, applies.
 Consequence: equality in 9.4 at such $\ell$, that is $v_\ell(r_E)=v_\ell(\deg\varphi_E)$ for $\ell\nmid2N$ with $E[\ell]$ irreducible, an independent proof of
@@ -571,10 +576,10 @@ this case of 8.3. Paper: Remark rem:free ("the localised Hecke algebra is then G
 rank two \cite{Tilouine97}"), Lemma lem:hecke (equality clause).
 
 **10.4 `rem:moddeg:rem-free-after-39`** (remark; P given 9.5). What Remark rem:free is still needed for, once 9.5 is known: (a)
-not for the equality in Lemma lem:hecke or in (eq:identity) (9.5); (b) yes for the equality between the Hecke congruence ideal
-and the cohomological one for forms that are not attached to an optimal quotient, in particular the depleted form $g^S$ of
-Theorem thm:quant (Step 2 is an inequality without it, and Remark (2) after Theorem thm:quant uses multiplicity one at level
-$N$); (c) as the conceptual reason for the equality in ARS12 at $\ell\nmid2N$ (10.3). It fails for $\ell\mid N$ in general (9.7: $N=99$,
+not for the equality in Lemma lem:hecke or in (eq:identity) (9.5); (b) not for the equality in Theorem thm:quant either (9.5(c),
+important_notes.md point 74); it is still the natural tool for comparing the Hecke congruence ideal and the cohomological one directly
+for forms not attached to an optimal quotient, such as the depleted form $g^S$ (Step 2 of the paper's proof is an inequality without
+it), but the equality of Theorem thm:quant no longer goes through that comparison; (c) as the conceptual reason for the equality in ARS12 at $\ell\nmid2N$ (10.3). It fails for $\ell\mid N$ in general (9.7: $N=99$,
 $\ell=3$). Paper: Remark rem:free, Theorem thm:quant and the remark after it, important_notes.md points 24, 39.
 
 ### Section 11. The Eisenstein ideal, the cuspidal subgroup and the Shimura subgroup
@@ -593,7 +598,7 @@ Paper: Conjecture conj:eis, Section sec:eis, Open question 4 ("presumably throug
 **11.2 `thm:moddeg:mazur-prime-level`** (theorem; R, with the example P). (Mazur77.) Let $N$ be prime and $n=\operatorname{num}\frac{N-1}{12}$. (i) The
 class of $(0)-(\infty)$ has order $n$ and generates $C_N$. (ii) $J_0(N)(\Q)_{\mathrm{tors}}=C_N\simeq\Z/n$. (iii) The *Eisenstein ideal*
 $I_{\mathrm{Eis}}\subseteq\T$ generated by $T_\ell-1-\ell$ ($\ell\ne N$) and $1+w_N$ satisfies $\T/I_{\mathrm{Eis}}\simeq\Z/n$; it annihilates $C_N$ and the Shimura
-subgroup $\Sigma_N$ (11.3), which is $\mu$-type of order $n$ and Cartier dual to $C_N$. (iv) For $\ell$ odd, a maximal ideal $\mathfrak m\ni\ell$ is
+subgroup $\mathcal S_N$ (11.3), which is $\mu$-type of order $n$ and Cartier dual to $C_N$. (iv) For $\ell$ odd, a maximal ideal $\mathfrak m\ni\ell$ is
 Eisenstein in the sense of C7 iff $\mathfrak m\supseteq I_{\mathrm{Eis}}$, and such $\mathfrak m$ exist iff $\ell\mid n$ (Mazur77, Chapter II; verify the exact statement
 and the cases $\ell=2$, $\ell=N$). Example (P, checked): $N=11$, $n=5$, $J_0(11)(\Q)=$ 11a1$(\Q)\simeq\Z/5$, $\ell=5$ is
 Eisenstein, and $f_{11}\equiv$ the Eisenstein series $-\frac1{24}E_2^{(11)}\pmod5$ (Chapter 12, its 8.4); $N=37$, $n=3$, and 37b1 has
@@ -601,10 +606,10 @@ torsion $\Z/3$. Reference: Mazur77 (Chapter II; cite the sections; "Theorem 1" o
 Conjecture conj:eis, Section sec:eis, Open question 4, Section 6 table of counts (the Eisenstein column).
 
 **11.3 `def:moddeg:shimura-subgroup`** (definition and proposition; R for (ii), (iii), P for (i)). (i) The *Shimura subgroup*
-$\Sigma_N=\ker(\pi^*\colon J_0(N)\to J_1(N))$, $\pi\colon X_1(N)\to X_0(N)$ the forgetful map; by Chapter 8, its 11.5(iii) (with $(d)\Leftrightarrow(a)$), $\Sigma_N=0$ iff
-$\pi^*H^1(X_0(N),\Z)$ is saturated in $H^1(X_1(N),\Z)$. (ii) $\Sigma_N$ is finite, of multiplicative type (Cartier dual to a constant
+$\mathcal S_N=\ker(\pi^*\colon J_0(N)\to J_1(N))$, $\pi\colon X_1(N)\to X_0(N)$ the forgetful map; by Chapter 8, its 11.5(iii) (with $(d)\Leftrightarrow(a)$), $\mathcal S_N=0$ iff
+$\pi^*H^1(X_0(N),\Z)$ is saturated in $H^1(X_1(N),\Z)$. (ii) $\mathcal S_N$ is finite, of multiplicative type (Cartier dual to a constant
 group), and $T_\ell$ acts on it by $1+\ell$ for $\ell\nmid N$: it is Eisenstein (Mazur77 for prime $N$; Ling-Oesterle and Ribet88 in
-general, cite the sections). (iii) So $\Sigma_N[\mathfrak m]=0$ for non-Eisenstein $\mathfrak m$, which is the injectivity used in 10.2. (iv) For the
+general, cite the sections). (iii) So $\mathcal S_N[\mathfrak m]=0$ for non-Eisenstein $\mathfrak m$, which is the injectivity used in 10.2. (iv) For the
 optimal curve, $\bar\rho_{E,\ell}$ reducible (a rational $\ell$-isogeny, Chapter 11, its 9.1) iff $\mathfrak m_{f,\ell}$ is Eisenstein; then 10.2, 10.3,
 DFG04 and Lemma lem:hecke's hypothesis fail, and the modular degree can lose local divisibility (the deficit $D$ of
 Conjecture conj:eis; Chapter 11, its 9.3). Paper: Remark rem:free ("the Shimura subgroup, is Eisenstein"), Conjecture
@@ -615,7 +620,7 @@ is rational, 2.2, and $\varphi_{E*}$ maps the torsion class $[(0)-(\infty)]$ of 
 $$\varphi_E(0)\equiv\pm c_E\,L(E,1)\pmod{\Lambda_E},$$
 because $\varphi_E(z)=\int_{i\infty}^zc_E\cdot2\pi i f(\tau)\,d\tau$ and $\int_0^{i\infty}2\pi if(\tau)\,d\tau=-2\pi\int_0^\infty f(iy)\,dy=-L(f,1)$ (Chapter 19; the sign depends on the
 orientation conventions, state one). Since $\Lambda_E\cap\R=\Z\Omega_E$ with $\Omega_E$ the least positive real period, the order of $\varphi_E(0)$ is
-the denominator of $L(E,1)/\Omega_E$ when $c_E=\pm1$. Checks (P, PARI): $L/\Omega=1/5$ (11a1, torsion $\Z/5$), $1/6$ (14a1, $\Z/6$), $1/6$ (20a1, $\Z/6$),
+the denominator of $L(E,1)/\Omega_E$ when $c_E=1$. Checks (P, PARI): $L/\Omega=1/5$ (11a1, torsion $\Z/5$), $1/6$ (14a1, $\Z/6$), $1/6$ (20a1, $\Z/6$),
 $1/3$ (19a1, $\Z/3$), $2/3$ (37b1, $\Z/3$), $1$ (121a1, trivial torsion), $0$ for the rank-one curves 37a1, 99a1, 539c1, 726a1 (so $\varphi_E(0)=O$).
 Paper: Conjecture conj:eis and Open question 4 (a heuristic link between rational torsion, the cuspidal subgroup and the
 Eisenstein deficit; the book says it is a heuristic, not an argument).
@@ -685,7 +690,7 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
 | 4 | The Jacobian, its homology, the $f$-lattice | 4.1 to 4.4; the dimension table; a `warning` box "Albanese versus Picard, $H_1$ versus $H^1$, $\operatorname{PD}$ versus $w_N\circ\operatorname{PD}$" (points 26, 41) | 160 |
 | 5 | Eichler-Shimura and modularity | 5.1 to 5.5; the class 11a in full; one page of history of modularity; `paperlink`: Section 1 ("the newform attached to it") | 150 |
 | 6 | Optimal curves and the modular degree | 6.1 to 6.6; the proof of 6.2(ii) to (iv) in full, (i) sketched; the running table; `paperlink`: Section 1 ("minimal degree"), Section 6 (optimality, point 25), point 27 | 190 |
-| 7 | The Manin constant and the Zagier-Watkins formula | 7.1 to 7.5; the three-line proof of 7.3; the numerical table; `warning`: where $c^2$ stands (B10) and which Petersson normalisation | 120 |
+| 7 | The Manin constant and the Zagier-Watkins formula | 7.1 to 7.5; the three-line proof of 7.3; the numerical table; `warning`: where $c_\varphi^2$ stands (B10) and which Petersson normalisation | 120 |
 | 8 | The congruence number and Agashe-Ribet-Stein | 8.1 to 8.5; the computation of $r_E$ explained as an algorithm; the table; `paperlink`: the remark after Theorem thm:qual (99A1) | 140 |
 | 9 | The modular degree as a congruence ideal | 9.1 to 9.7; all proofs in full; a `paperlink` quoting Lemma lem:hecke and stating the strengthened form; the checklist 9.6 as a `remark` with the five items numbered; the 99 at 3 example | 200 |
 | 10 | Multiplicity one and the Gorenstein property | 10.1 to 10.4; `paperlink`: Remark rem:free, line by line, with what point 39 changes | 130 |
@@ -714,12 +719,12 @@ ________________________________________________________________________________
 | adjoint of $T_n$ under the cup product is $w_NT_nw_N$; $\langle x,w_Ny\rangle$ perfect, alternating, all $T_n$, $U_p$ self-adjoint; $=\hat\delta_!$ of DFG04 | 3.3, 3.4, 9.6 |
 | $T_\ell J_0(N)=H_1\otimes\Z_\ell$ and $H^1(X_0(N),\Z_\ell)$ dual; etale cohomology (statement) | 4.3 |
 | the modularity theorem (statement, history) | 5.3, 5.4 |
-| the abelian variety $A_f=J_0(N)/I_fJ_0(N)$; for rational $f$ the elliptic curve quotient | 5.1, 5.5 |
+| the abelian variety $J_f=J_0(N)/I_fJ_0(N)$; for rational $f$ the elliptic curve quotient | 5.1, 5.5 |
 | the modular parametrisation $\varphi_E$ ($\infty\mapsto O$) | 6.1 |
 | the $X_0(N)$-optimal curve: unique, connected kernel, strong Weil curve; Cremona label 1, checked to $400000$ | 6.2, 6.5 |
 | the modular degree: degree of the morphism; $E^\vee\to J_0(N)\to E$ is $[\deg\varphi_E]$; computability | 6.3, 6.6, 12.5 |
-| the Manin constant: definition, the conjecture $c=1$, known results, role in the formulas | 7.1, 7.2, 7.4 |
-| the Zagier-Watkins formula $\deg\varphi_E=4\pi^2c^2\langle f,f\rangle/\operatorname{vol}(\Lambda_E)$ with $\varphi^*\omega_E=c\,2\pi if\,dz$ | 7.3, 7.4, 7.5 |
+| the Manin constant: definition, the conjecture $c_E=1$, known results, role in the formulas | 7.1, 7.2, 7.4 |
+| the Zagier-Watkins formula $\deg\varphi_E=4\pi^2c_E^2\langle f,f\rangle/\operatorname{vol}(\Lambda_E)$ with $\varphi_E^*\omega_E=c_E\,2\pi if\,dz$ | 7.3, 7.4, 7.5 |
 | the congruence number $r_E$ and the congruence ideal; Lemma lem:crit (proved in Chapter 15) | 8.1, 8.2 |
 | Agashe-Ribet-Stein: $\deg\varphi_E\mid r_E$, equality for $p^2\nmid N$; 99A1 with $\deg=4$, $r=12$; proof idea | 8.3, 8.5, 9.4, 10.3 |
 | multiplicity one, $\mathfrak m$, $J_0(N)[\mathfrak m]$ two-dimensional (Mazur, Ribet-Stein 3.5, Shimura subgroup) | 10.1, 10.2, 11.3 |
@@ -761,7 +766,7 @@ ________________________________________________________________________________
 2. Compute $W_N\,\mathrm{diag}(1,p)\,W_N^{-1}$ and deduce $U_p^t=w_NU_pw_N$ (3.3). On the span of $f_{11}(z)$, $f_{11}(2z)$ in $S_2(\Gamma_0(22))$ write the
    matrix of $U_2$ (from $a_2(f_{11})=-2$) and of $w_{22}$ (Chapter 12, its 12.4(b)); check that $U_2$ is not self-adjoint for the Petersson
    product but that $w_{22}U_2w_{22}$ is its adjoint.
-3. Prove 3.4(ii), (iii) in detail: $\hat\delta$ is alternating, every $t^*$ is self-adjoint, idempotents are self-adjoint and the
+3. Prove 3.4(ii), (iii) in detail: $\hat\delta_!$ is alternating, every $t^*$ is self-adjoint, idempotents are self-adjoint and the
    $\mathfrak m$-decomposition is orthogonal (important_notes.md point 36).
 4. Using Eichler-Shimura (5.2) and $X_0(11)=$ 11a1, prove $\#\text{11a1}(\F_p)=p+1-a_p(f_{11})$ for $p\ne11$, and check it for $p=2,3,5,7,13$ from the
    $\eta$-product (Chapter 12, its 9.2).
@@ -770,8 +775,8 @@ ________________________________________________________________________________
 6. Check the paper's claim that the optimal curve is the curve of minimal modular degree in its class on the class 11a: using
    6.2(ii) and the isogeny degrees $5,5,25$, list the minimal degrees of the parametrisations of 11a1, 11a2, 11a3, and confirm them
    with the volumes of 7.4.
-7. (Manin constant.) From $\operatorname{vol}(\Lambda_{\text{11a3}})=5\operatorname{vol}(\Lambda_{\text{11a1}})$ and 7.3 show that the parametrisation of 11a3 has $c=5$, and that
-   $c\in\Z$ in this case directly from the $5$-isogeny 11a1 $\to$ 11a3 ($\psi^*\omega=5\omega$).
+7. (Manin constant.) From $\operatorname{vol}(\Lambda_{\text{11a3}})=5\operatorname{vol}(\Lambda_{\text{11a1}})$ and 7.3 show that the parametrisation $\varphi$ of 11a3 has $c_\varphi=5$, and that
+   $c_\varphi\in\Z$ in this case directly from the $5$-isogeny 11a1 $\to$ 11a3 ($\psi^*\omega=5\omega$).
 8. Check the paper's claim that $\deg\varphi_{\text{121a1}}=6$ with the numbers of 7.4 (or recompute $\langle f,f\rangle$ with PARI's `mfpetersson`,
    remembering the factor $\mu(121)=132$).
 9. Check the paper's claim (the remark after Theorem thm:qual, quoting ARS12 Table 1) that 99A1 has modular degree $4$ and
@@ -790,7 +795,7 @@ ________________________________________________________________________________
 15. Check the paper's claim (Section sec:two) that Watkins's conjecture holds for 37a1, 99a1, 539c1 and 726a1, and find in
     `ecdata` the optimal curves of odd modular degree below conductor $100$; test the paper's paraphrase of Calegari-Emerton on
     27a1 and decide which hypothesis of CalegariEmerton09 excludes it (12.4).
-16. Prove 9.1 and 9.3 for $N=11$ directly ($\varphi_E=\mathrm{id}$, $M_{f,\ell}=H^1(X_0(11),\Z_\ell)$, $w_{11}^*=-1$), and then for 37a1 using 2.4(c): the
+16. Prove 9.1 and 9.3 for $N=11$ directly ($\varphi_E=\mathrm{id}$, $M_{f,\lambda}=H^1(X_0(11),\Z_\ell)$, $w_{11}^*=-1$), and then for 37a1 using 2.4(c): the
     pullback of $H^1$ of $X_0(37)/w_{37}$ has cup-product values $2\Z$.
 17. (Harder.) Let $\pi\colon X_1(N)\to X_0(N)$ be the forgetful map. Show $\langle\pi^*x,\pi^*y\rangle=\deg\pi\,\langle x,y\rangle$ and that $\pi^*H^1(X_0(N),\Z)$ is saturated iff
     the Shimura subgroup vanishes (11.3). Explain why this is the first item of the checklist 9.6.
@@ -828,7 +833,7 @@ number and the congruence ideal (8.1, recalled from Chapter 13, its 4.3), cites 
 uses only $r_E\Z_\ell=\eta_f\Z_\ell$ (in 9.4, 9.5); Chapter 20 restates it.
 
 Forward pointers (chapters that use this one):
-* Chapter 15 (`ch:modgalrep`): $J_0(N)$, $A_f$, Eichler-Shimura (5.1, 5.2) for $\rho_{f,\lambda}$; $M_{f,\ell}\simeq T_\ell E(-1)$ for the optimal curve
+* Chapter 15 (`ch:modgalrep`): $J_0(N)$, $J_f$, Eichler-Shimura (5.1, 5.2) for $\rho_{f,\lambda}$; $M_{f,\lambda}\simeq T_\ell E(-1)$ for the optimal curve
   (9.1(d)) for Section 4.2 of the paper; the congruence number and ARS (8.1 to 8.3) for Theorem thm:qual ("it suffices to prove
   $\ell\mid r$"); 12.2 for Section 1.5 and Remark rem:ko.
 * Chapter 19 (`ch:lfunctions`): 7.3 (the Petersson norm and the modular degree) for the Bloch-Kato heuristic; 11.4 ($L(E,1)$).
@@ -848,16 +853,16 @@ ________________________________________________________________________________
 
 C1 to C8 of Part 1.2. In addition a `warning` box in Section 4: "Four identifications that are easy to confuse: (1) $T_\ell J_0(N)=H_1\otimes\Z_\ell$
 (covariant, action $t_*$); (2) $H^1(X_0(N),\Z_\ell)=\Hom(T_\ell J_0(N),\Z_\ell)$ (contravariant, action $t^*$, Galois-equivariantly $T_\ell J_0(N)(-1)$); (3) $\operatorname{PD}$
-intertwines $t^*$ with $(t^t)_*$; (4) $w_{N*}\circ\operatorname{PD}$ intertwines $t^*$ with $t_*$." And a `warning` box in Section 7: "$c^2$ in the numerator;
+intertwines $t^*$ with $(t^t)_*$; (4) $w_{N*}\circ\operatorname{PD}$ intertwines $t^*$ with $t_*$." And a `warning` box in Section 7: "$c_\varphi^2$ in the numerator;
 unnormalised Petersson product; PARI divides by $\mu(N)$".
 
 ### 6.2 Pitfalls
 
 * **Albanese versus Picard.** $\T$ acts on $J_0(N)$ by $t_*$ (C2); some books use the Picard action $t\mapsto(t^t)_*=(w_Ntw_N)_*$. For $T_n$ with
-  $(n,N)=1$ the two agree; for $U_p$ they differ by conjugation by $w_N$. Everything in this chapter (the quotient $A_f$, the lattice
-  $M_{f,\ell}$, the congruence ideal) is invariant because $\phi_f$ is (4.2(iii)), but a writer who mixes the two in one computation
+  $(n,N)=1$ the two agree; for $U_p$ they differ by conjugation by $w_N$. Everything in this chapter (the quotient $J_f$, the lattice
+  $M_{f,\lambda}$, the congruence ideal) is invariant because $\phi_f$ is (4.2(iii)), but a writer who mixes the two in one computation
   will get wrong matrices. State the action every time.
-* **"$\hat\delta$ is DFG04's $\hat\delta_!$" is the paper's reading, not a theorem of this chapter.** Say "the pairing of DFG04 as the paper
+* **"$\hat\delta_!$ is DFG04's $\hat\delta_!$" is the paper's reading, not a theorem of this chapter.** Say "the pairing of DFG04 as the paper
   describes it" and point to 9.6.
 * **Point 39 is about the optimal curve.** 9.1 fails for a non-optimal curve (Chapter 8, its 11.5(v): the pullback has index $\deg\psi$ in
   its saturation), and for depleted forms there is no elliptic curve at all (10.4(b)). Do not write "$v(\eta)=v(\deg)$" for $g^S$.
@@ -868,7 +873,7 @@ unnormalised Petersson product; PARI divides by $\mu(N)$".
   Eisenstein case is ARS's, stated (R).
 * **Equality of $\deg\varphi_E$ and $r_E$ at $p$ with $p^2\mid N$ is possible** (121a1, 539c1, 980i1, 99b1, 99d1 in 8.5); only the guarantee is lost.
   Do not write "differ at $p^2\mid N$".
-* **The Manin constant.** $c_E=\pm1$ is a conjecture in general; the paper never needs it in a proof, only in the Section 1
+* **The Manin constant.** $c_E=1$ (with the sign of $\omega_E$ fixed by $c_E>0$, B-C9) is a conjecture in general; the paper never needs it in a proof, only in the Section 1
   heuristic. Results about $c_E$ (7.2(iii)) must be checked against the sources; cite nothing from memory with a theorem
   number.
 * **Optimality versus Cremona label $1$**: 990h is the exception (990h3); optimality is proved in the tables only up to $400000$ and
@@ -909,8 +914,8 @@ unnormalised Petersson product; PARI divides by $\mu(N)$".
 
 * **Point 39** (Lemma lem:hecke is always an equality). Proved in full in 9.1 to 9.5: saturation of $\varphi_E^*H^1(E)$ from the
   connectedness of $\ker(J_0(N)\to E)$ (6.2(iii), Chapter 8, its 11.5), Hecke equivariance (9.1(a)), $w_N$ by the Atkin-Lehner sign (9.2), the
-  projection formula (6.3(iv)); conclusion $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\deg\varphi_E)$ for every $\ell\nmid2N$, unconditionally, **provided DFG04's $\eta$ is the
-  ideal of values of $\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Z_\ell)[I_f]$**. What remains to be checked against DFG04 is the five-item list 9.6: the
+  projection formula (6.3(iv)); conclusion $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\deg\varphi_E)$ for every $\ell\nmid2N$, unconditionally, **DFG04's $\eta$ being the
+  ideal of values of $\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Z_\ell)[I_f]$** (confirmed: Chapter 20 outline, Part 7; important_notes.md point 73). The five-item list 9.6, now checked against DFG04, is: the
   curve ($X_0(N)$ versus a $\Gamma_1(N)$-type curve with trivial-character part), interior cohomology, the operator $[UwU]\omega$ without
   scalar and the normalisation of $H^2_c$ (including elliptic points at $\ell=3$), kernel lattice versus projection lattice, ideal of
   values versus Gram determinant. 9.5(a) to (c) state the consequences for Theorem thm:main and Theorem thm:quant.
@@ -1032,13 +1037,14 @@ Gram determinant. If (1) or (4) differ, the paper's own description of $\eta$ in
 (b) Corollaries of the point-39 identity that the paper can state: the divisibility $\deg\varphi_E\mid r_E$ follows at **every** prime $\ell$
 from the identity and the inequality half of Lemma lem:ddt417 applied to all of $H^1(X_0(N),\Z_\ell)$ (item 9.4), so Lemma lem:hecke needs
 ARS12 only for $v_\ell(r_E)\le v_\ell(\deg\varphi_E)$; and the hypothesis "$\bar\rho$ irreducible" of Lemma lem:hecke is not used by the identity
-$v(\text{values of }\hat\delta\text{ on }M_{f,\ell})=v_\ell(\deg\varphi_E)$ (it matters only for $\ell\notin S_f$ later). (c) What point 39 does **not** remove: Remark rem:free is
+$v(\text{values of }\hat\delta_!\text{ on }M_{f,\lambda})=v_\ell(\deg\varphi_E)$ (it matters only for $\ell\notin S_f$ later). (c) What point 39 does **not** remove: Remark rem:free is
 still needed for Remark (2) after Theorem thm:quant (the lattice there belongs to the depleted form $g^S$, which is not attached
-to an optimal quotient).
+to an optimal quotient). **Superseded** by important_notes.md point 74: the first inequality of Theorem thm:quant is an equality whenever
+$\ell\notin S_f$ with no multiplicity-one hypothesis (9.5(c)); B26.
 Fix: in Section 4.1, after "is $H^1(X_0(M^\Sigma),\Z_\ell)$", cite the exact place in DFG04 where this identification is made (or add the
 pullback factor if DFG04 work on $X_1$); state Lemma lem:hecke as an equality with the four-line proof of point 39. Confidence:
-high for the mathematics of (b), (c) and of the claims in (a)(2); the checks (a)(1), (3) to (5) are open by nature (DFG04 not
-consulted).
+high for the mathematics of (b), (c) and of the claims in (a)(2); the checks (a)(1), (3) to (5) were open here (DFG04 not
+consulted) and are now settled: all five hold (Chapter 20 outline, Part 7; important_notes.md point 73).
 
 **N3 (confirmation, not an error). The remark after Theorem thm:qual: 99A1 has $r_E=12$, recomputed; 726a1 is a second example
 from the paper's own list.** Location: "Table 1 of \cite{ARS12} lists the curve 99A1, of conductor $9\cdot11$, with modular degree $4$

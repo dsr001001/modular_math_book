@@ -87,7 +87,7 @@ Split with the neighbouring chapters (decided here, consistent with what their o
   the paper's $\chi_q$ only inside `paperlink` environments, and write $\omega_\ell\colon a\mapsto a\bmod\ell\in\F_\ell^\times$ for
   the Dirichlet character that corresponds to $\bar\chi_\ell$ (Chapters 5, 6 make the correspondence).
   These conventions agree with Chapter 5 (C3, C4) and Chapter 6 (4.2, 5.8).
-* **C6 (roots of unity).** $\mu_n(K)=\{x\in K:x^n=1\}$; $\zeta_n=e^{2\pi i/n}\in\C$; $\omega=\zeta_3=(-1+\sqrt{-3})/2$ with
+* **C6 (roots of unity).** $\mu_n(K)=\{x\in K:x^n=1\}$; $\zeta_n=e^{2\pi i/n}\in\C$; $\zeta_3=(-1+\sqrt{-3})/2$ (never written $\omega$, which the book reserves for differentials and fundamental characters: Appendix B, B-C15(b)) with
   $\sqrt{-3}:=1+2\zeta_3=i\sqrt3$ (the sign fixed as in Chapter 6). Do not use $\pi$ for $1-\zeta_3$ in this chapter (that
   is Chapter 6's notation); $\pi$ is $3.14159\ldots$ here.
 * **C7 (typography).** PLAN.md Section 7.2: no dash ligatures, ASCII source, labels `...:rings:...`.
@@ -169,7 +169,7 @@ Lemma lem:crit, last step ("and $\ell$ divides $\#\T/(I+J)=r$"); Lemma lem:old (
 **2.3 `thm:rings:fractions`** (definition and theorem; P). For a domain $R$ the field of fractions $\operatorname{Frac}(R)$
 (pairs $a/b$, $b\ne0$, modulo $ad=bc$) is a field containing $R$, with the universal property: every injective
 homomorphism $R\to K$ into a field extends uniquely to $\operatorname{Frac}(R)\to K$. Examples: $\operatorname{Frac}(\Z)=\Q$,
-$\operatorname{Frac}(F[x])=F(x)$, $\operatorname{Frac}(\Z[i])=\Q(i)$, $\operatorname{Frac}(\Z[\omega])=\Q(\omega)=\Q(\sqrt{-3})$. Reference: DF 7.5.
+$\operatorname{Frac}(F[x])=F(x)$, $\operatorname{Frac}(\Z[i])=\Q(i)$, $\operatorname{Frac}(\Z[\zeta_3])=\Q(\zeta_3)=\Q(\sqrt{-3})$. Reference: DF 7.5.
 Paper: background ($\Q$; number fields in Chapter 6).
 
 **2.4 `prop:rings:zp-local`** (definition and proposition; P). For a prime $p$ let
@@ -204,25 +204,25 @@ fundamental theorem of arithmetic $n=\pm\prod_pp^{v_p(n)}$, and $\gcd(m,n)=\prod
 $\operatorname{lcm}(m,n)=\prod p^{\max(v_p(m),v_p(n))}$; the $p$-part of $n\ne0$ is $p^{v_p(n)}$. Reference: DF 8.1, 8.3. Paper:
 background ($v_\ell(\deg\varphi_E)$, "the $\ell$-part of $r$", Agashe-Ribet-Stein's $v_p(\deg\varphi_E)=v_p(r_E)$).
 
-**3.4 `thm:rings:gauss-eisenstein-integers`** (theorem; P). Let $\omega=\zeta_3$. In $\Z[i]=\{a+bi\}$ and
-$\Z[\omega]=\{a+b\omega\}$ (subrings of $\C$; $\omega^2=-1-\omega$) put $N(z)=z\bar z=|z|^2$, so $N(a+bi)=a^2+b^2$ and
-$N(a+b\omega)=a^2-ab+b^2$, nonnegative integers, multiplicative. (i) Both rings are Euclidean for $N$: for $\alpha$, $\beta\ne0$
-there is $\kappa$ with $N(\alpha-\kappa\beta)\le\frac12N(\beta)$ in $\Z[i]$ and $\le\frac13N(\beta)$ in $\Z[\omega]$ (round $\alpha/\beta\in\Q(i)$, resp.
-$\Q(\omega)$, to a nearest lattice point; the worst cases are the centre of a square of side $1$, resp. the centroid of an
+**3.4 `thm:rings:gauss-eisenstein-integers`** (theorem; P). In $\Z[i]=\{a+bi\}$ and
+$\Z[\zeta_3]=\{a+b\zeta_3\}$ (subrings of $\C$; $\zeta_3^2=-1-\zeta_3$) put $N(z)=z\bar z=|z|^2$, so $N(a+bi)=a^2+b^2$ and
+$N(a+b\zeta_3)=a^2-ab+b^2$, nonnegative integers, multiplicative. (i) Both rings are Euclidean for $N$: for $\alpha$, $\beta\ne0$
+there is $\kappa$ with $N(\alpha-\kappa\beta)\le\frac12N(\beta)$ in $\Z[i]$ and $\le\frac13N(\beta)$ in $\Z[\zeta_3]$ (round $\alpha/\beta\in\Q(i)$, resp.
+$\Q(\zeta_3)$, to a nearest lattice point; the worst cases are the centre of a square of side $1$, resp. the centroid of an
 equilateral triangle of side $1$). Hence both are PIDs and UFDs. (ii) $z$ is a unit iff $N(z)=1$; $\Z[i]^\times=\{\pm1,\pm i\}=\mu_4$
-and $\Z[\omega]^\times=\{\pm1,\pm\omega,\pm\omega^2\}=\mu_6$. (iii) An element of prime norm is irreducible, hence prime.
-(iv) Examples: $2=-i(1+i)^2$, $5=(2+i)(2-i)$, $7=(3+\omega)(3+\omega^2)$, $13=(4+\omega)(4+\omega^2)$, $3=-\omega^2(1-\omega)^2$, and a worked
+and $\Z[\zeta_3]^\times=\{\pm1,\pm\zeta_3,\pm\zeta_3^2\}=\mu_6$. (iii) An element of prime norm is irreducible, hence prime.
+(iv) Examples: $2=-i(1+i)^2$, $5=(2+i)(2-i)$, $7=(3+\zeta_3)(3+\zeta_3^2)$, $13=(4+\zeta_3)(4+\zeta_3^2)$, $3=-\zeta_3^2(1-\zeta_3)^2$, and a worked
 Euclidean algorithm in $\Z[i]$: $11+3i=(1-i)(1+8i)+(2-4i)$, $1+8i=(-2+i)(2-4i)+(1-2i)$, $2-4i=2(1-2i)$, so
 $\gcd(11+3i,1+8i)=1-2i$, of norm $5$ (checked). The split: the
-list of all primes of $\Z[i]$ and $\Z[\omega]$ ($p$ splits iff $p\equiv1\pmod4$, resp. $\pmod3$), the ramified prime $1-\omega$, the
+list of all primes of $\Z[i]$ and $\Z[\zeta_3]$ ($p$ splits iff $p\equiv1\pmod4$, resp. $\pmod3$), the ramified prime $1-\zeta_3$, the
 DVR $\Z_3[\zeta_3]$ and $\Z_\ell[\zeta_3]$ are Chapter 6 (items 4.5 to 4.9), which cites (i) and (ii) from here. Reference: DF 8.1
 ($\Z[i]$); Ireland-Rosen, Chapters 1 and 9. Paper: background for Lemma lem:IV ($\Z_3[\zeta_3]$), Lemma lem:euler ($\Z_\ell[\zeta_3]$,
-$\Z_\ell[i]$), and the table of Section 1 ($\chi_{-3}$, $\chi_{-4}$ are the characters of $\Q(\omega)$, $\Q(i)$).
+$\Z_\ell[i]$), and the table of Section 1 ($\chi_{-3}$, $\chi_{-4}$ are the characters of $\Q(\zeta_3)$, $\Q(i)$).
 
 **3.5 `ex:rings:non-ufd`** (example; P). In $\Z[\sqrt{-5}]$, $6=2\cdot3=(1+\sqrt{-5})(1-\sqrt{-5})$ are two factorisations into
 irreducibles (norms $4$, $9$, $6$, $6$; there is no element of norm $2$ or $3$), none of the four factors associate; so
 $\Z[\sqrt{-5}]$ is neither a UFD nor a PID ($(2,1+\sqrt{-5})$ is not principal). The ideal-theoretic repair is Chapter 6
-(items 2.2, 2.6). Similarly $4=2\cdot2=(1+\sqrt{-3})(1-\sqrt{-3})$ in $\Z[\sqrt{-3}]\subsetneq\Z[\omega]$ (Chapter 6, Exercise 2). Paper:
+(items 2.2, 2.6). Similarly $4=2\cdot2=(1+\sqrt{-3})(1-\sqrt{-3})$ in $\Z[\sqrt{-3}]\subsetneq\Z[\zeta_3]$ (Chapter 6, Exercise 2). Paper:
 background (why the rings $\mathcal O$ of Lemmas lem:crit and lem:old are handled through ideals).
 
 ### Section 4. Polynomial rings and irreducibility
@@ -337,12 +337,12 @@ fixed algebraic closure the subfield with $q$ elements is unique (Chapter 5). Re
 Serre, Course in Arithmetic, I.1. Paper: background ($\F_9=\F_3[i]$ in Proposition prop:ns; $\F_{q^2}$ of Chapter 1, item 5.8;
 residue fields in Chapters 6 and 7).
 
-**6.3 `prop:rings:frobenius`** (proposition; P). Let $q=p^r$. (i) $\phi\colon x\mapsto x^p$ is a field automorphism of $\F_q$ (1.6),
-its fixed points are exactly $\F_p$ (the $p$ roots of $x^p-x$), and $\phi$ has order exactly $r$ (if $\phi^s=1$ with $s<r$, all $q$
+**6.3 `prop:rings:frobenius`** (proposition; P). Let $q=p^r$. (i) $\Frob_p\colon x\mapsto x^p$ is a field automorphism of $\F_q$ (1.6),
+its fixed points are exactly $\F_p$ (the $p$ roots of $x^p-x$), and $\Frob_p$ has order exactly $r$ (if $\Frob_p^s=1$ with $s<r$, all $q$
 elements would be roots of $x^{p^s}-x$). (ii) For $d\mid r$, $\{x\in\F_q:x^{p^d}=x\}$ is a subfield with $p^d$ elements and the only one;
 $\F_q$ contains a subfield with $p^d$ elements iff $d\mid r$ ($\F_{p^d}^\times\subseteq\F_q^\times$ forces $p^d-1\mid p^r-1$, i.e. $d\mid r$).
-(iii) The fixed field of $\phi^s$ is $\F_{p^{\gcd(s,r)}}$. (iv) (Remark with forward pointer, not a numbered result.) Every
-automorphism of $\F_q$ is a power of $\phi$, and $\Gal(\F_{q^n}/\F_q)$ is cyclic of order $n$ generated by $x\mapsto x^q$: Chapter 5,
+(iii) The fixed field of $\Frob_p^s$ is $\F_{p^{\gcd(s,r)}}$. (iv) (Remark with forward pointer, not a numbered result.) Every
+automorphism of $\F_q$ is a power of $\Frob_p$, and $\Gal(\F_{q^n}/\F_q)$ is cyclic of order $n$ generated by $x\mapsto x^q$: Chapter 5,
 item galois:finite-field-galois. Reference: DF 14.3; Lang, Algebra V.5. Paper: background (the arithmetic Frobenius of
 Chapters 5 and 6 induces $x\mapsto x^q$ on residue fields; the "$\Frob$" of Lemmas lem:euler and lem:tamfactor).
 
@@ -356,8 +356,8 @@ Proof uses 6.1, 6.3(ii) and 4.2. Reference: Ireland-Rosen, Chapter 7; Lang, Alge
 elements iff $n\mid q-1$. (ii) If $p\nmid n$, the least $f\ge1$ with $\mu_n\subset\F_{q^f}$ (i.e. with $n$ distinct $n$-th roots of unity) is the
 order of $q$ in $(\Z/n)^\times$. (iii) In characteristic $p$, $x^{p^km}-1=(x^m-1)^{p^k}$: there are no nontrivial $p$-power roots of
 unity. (iv) For $q$ odd: $-1$ is a square in $\F_q$ iff $q\equiv1\pmod4$; if moreover $p\ne3$, $-3$ is a square in $\F_q$ iff
-$\mu_3\subset\F_q$ iff $q\equiv1\pmod3$ (because $(1+2\omega)^2=-3$ for a primitive cube root of unity $\omega$, and conversely
-$\omega=(-1+s)/2$ if $s^2=-3$). (v) Let $K$ be any field with $\operatorname{char}K\ne3$ containing $\mu_3$, and $m$ an integer prime to $3$; then
+$\mu_3\subset\F_q$ iff $q\equiv1\pmod3$ (because $(1+2\zeta_3)^2=-3$ for a primitive cube root of unity $\zeta_3$, and conversely
+$\zeta_3=(-1+s)/2$ if $s^2=-3$). (v) Let $K$ be any field with $\operatorname{char}K\ne3$ containing $\mu_3$, and $m$ an integer prime to $3$; then
 $\zeta\mapsto\zeta^m$ is the identity of $\mu_3$ if $m\equiv1\pmod3$ and inversion if $m\equiv2\pmod3$; likewise on $\mu_4$
 ($\operatorname{char}K\ne2$, $m$ odd) with $m\bmod4$. By 10.5 this says $\zeta^m=\zeta^{\chi_{-3}(m)}$ on $\mu_3$ and
 $\zeta^m=\zeta^{\chi_{-4}(m)}$ on $\mu_4$. Reference: DF 14.3; Ireland-Rosen, Chapter 7. Paper: Lemma lem:euler ("Frobenius
@@ -405,7 +405,7 @@ the fifth powers are $\{\pm1\}$. Paper: Lemma lem:tamfactor, Section sec:tam.
 unity is an element of order exactly $n$. (i) $\mu_n(K)$ is cyclic of order dividing $n$ (Chapter 1, item 4.2), of order $n$
 iff $K$ contains a primitive $n$-th root of unity, which requires $\operatorname{char}K\nmid n$ (4.2). (ii) $\mu_n(\C)=\langle\zeta_n\rangle$;
 its primitive elements are the $\zeta_n^a$, $\gcd(a,n)=1$, $\varphi(n)$ in number. (iii) $\mu(\Q)=\mu(\R)=\{\pm1\}$, $\mu(\Q(i))=\mu_4$,
-$\mu(\Q(\omega))=\mu_6$ (3.4(ii)). Reference: DF 13.6. Paper: background ($\zeta_3$, $i$, $\mu_{\ell^k}$, $\mu_3$ and $\mu_4$ in Lemma
+$\mu(\Q(\zeta_3))=\mu_6$ (3.4(ii)). Reference: DF 13.6. Paper: background ($\zeta_3$, $i$, $\mu_{\ell^k}$, $\mu_3$ and $\mu_4$ in Lemma
 lem:euler).
 
 **8.2 `thm:rings:cyclotomic`** (theorem; P). Let $\Phi_n(x)=\prod_{1\le a\le n,\ \gcd(a,n)=1}(x-\zeta_n^a)\in\C[x]$. (i)
@@ -519,7 +519,7 @@ Washington, Chapter 3. Paper: background (Chapter 19, Dirichlet $L$-functions; p
 mod $d$* (induced from a character $\chi'$ mod $d$) if $\chi(a)=\chi'(a)$ for all $a$ with $\gcd(a,n)=1$; equivalently $\chi(a)=1$ for all $a$
 with $\gcd(a,n)=1$ and $a\equiv1\pmod d$. (i) If $\chi$ is defined mod $d_1$ and mod $d_2$ then it is defined mod $\gcd(d_1,d_2)$. (ii) Hence
 there is a least such $d$, the *conductor* $f_\chi$; it divides every $d$ modulo which $\chi$ is defined; $\chi$ is induced by a unique
-character $\chi^*$ mod $f_\chi$, which is *primitive* (its own conductor is $f_\chi$); $\chi$ is primitive iff $f_\chi=n$. (iii) $\chi$ and $\chi^*$
+character $\chi^{\mathrm{prim}}$ mod $f_\chi$, which is *primitive* (its own conductor is $f_\chi$); $\chi$ is primitive iff $f_\chi=n$. (iii) $\chi$ and $\chi^{\mathrm{prim}}$
 agree on integers prime to $n$, but may differ at $a$ with $\gcd(a,n)>1=\gcd(a,f_\chi)$: $\chi_{-3}$ regarded mod $6$ vanishes at $2$, while
 $\chi_{-3}(2)=-1$. (iv) Writing $\chi=\prod_p\chi_p$ with $\chi_p$ a character mod $p^{v_p(n)}$ (5.2), $f_\chi=\prod_pf_{\chi_p}$; a product of primitive
 characters with pairwise coprime conductors is primitive, with conductor the product. (v) Examples: the trivial character
@@ -534,8 +534,8 @@ Lemma lem:twist(iii) (Atkin-Li: the level of $g\otimes\chi$ involves the conduct
 $\tau(\chi,b)=\sum_{a\bmod n}\chi(a)\zeta_n^{ab}$ and $\tau(\chi)=\tau(\chi,1)$. (i) If $\gcd(b,n)=1$, $\tau(\chi,b)=\bar\chi(b)\tau(\chi)$. (ii) If $\chi$ is
 primitive, $\tau(\chi,b)=\bar\chi(b)\tau(\chi)$ for **all** $b$ (both sides vanish when $\gcd(b,n)>1$), $|\tau(\chi)|^2=n$,
 $\tau(\chi)\tau(\bar\chi)=\chi(-1)n$ and $\overline{\tau(\chi)}=\chi(-1)\tau(\bar\chi)$. (iii) $\tau\bigl(\bigl(\frac\cdot q\bigr)\bigr)^2=q^*$ (9.2);
-$\tau(\chi_{-4})=i-(-i)=2i$; $\tau(\chi_{-3})=\zeta_3-\zeta_3^2=1+2\zeta_3=\sqrt{-3}$ (C6). (iv) For $\chi$ mod $n$ induced from primitive $\chi^*$ mod
-$f$ with $\gcd(n/f,f)=1$: $\tau(\chi)=\mu(n/f)\chi^*(n/f)\tau(\chi^*)$; e.g. $\chi_{-3}$ mod $6$ has $\tau=(-1)(-1)\sqrt{-3}=\sqrt{-3}$; $\tau(\chi_0)=\mu(n)$ (a
+$\tau(\chi_{-4})=i-(-i)=2i$; $\tau(\chi_{-3})=\zeta_3-\zeta_3^2=1+2\zeta_3=\sqrt{-3}$ (C6). (iv) For $\chi$ mod $n$ induced from primitive $\chi^{\mathrm{prim}}$ mod
+$f$ with $\gcd(n/f,f)=1$: $\tau(\chi)=\mu(n/f)\chi^{\mathrm{prim}}(n/f)\tau(\chi^{\mathrm{prim}})$; e.g. $\chi_{-3}$ mod $6$ has $\tau=(-1)(-1)\sqrt{-3}=\sqrt{-3}$; $\tau(\chi_0)=\mu(n)$ (a
 Ramanujan sum). Checked numerically: (i), (ii) for all $278$ primitive characters of modulus $3\le n<40$; (iii), (iv) as
 stated. Reference: Washington, Chapter 4; Ireland-Rosen, Chapter 8. Paper: background (Chapter 5, galois:sqrt-lstar;
 Chapter 19, root numbers and functional equations of twisted $L$-functions).
@@ -623,9 +623,10 @@ $\mathrm{II}$ at $11$: $\chi_{-3}(11)=-1$, $e_3=v_3(11+1)=v_3(12)=1$, and $\deg\
 Example; also Appendix: `rule(...)` returns `[1, 1]`). (b) 539c1, type $\mathrm I_3^*$ at $7$: $e_3=v_3(7^2-1)=v_3(48)=1$, $t_3=v_3(3)=1$,
 $\deg\varphi=2^5\cdot3^2$, $v_3=2=e_3+t_3$. (c) 980i1, type $\mathrm I_5^*$ at $7$, $\ell=5$: $e_5=v_5(48)=0$, $t_5=v_5(5)=1$, $\deg\varphi=2^6\cdot3^2\cdot5$.
 (d) 726a1, type $\mathrm{III}$ at $11$: $\chi_{-4}(11)=-1$, $e_3=v_3(12)=1$. (e) Type $\mathrm{IV}$ at $2$ with PARI's $P_2(X)=1+2X$: $e_3=v_3(3/2)=1$; type
-$\mathrm{II}$ at $2$ with $P_2=1$: $e_3=0$ (Remark rem:wild, Proposition prop:forms). (f) Type $\mathrm I_0^*$ at $7$ with $a_7(E')=-2$ (for instance
-$E'=$11a1, whose $a_7=-2$ was recomputed by point counting): $e_3=v_3(6)+v_3(64-4)=1+1=2$ (Chapter 21's outline identifies the curve as
-539d1; check the label before quoting it). (g) A curve of type $\mathrm I_n$ at $11$ has $e_3=0$ there, while its twist by $\chi_{11}=\chi_{-11}$ has
+$\mathrm{II}$ at $2$ with $P_2=1$: $e_3=0$ (Remark rem:wild, Proposition prop:forms); but type $\mathrm{II}$ at $2$ does not force $P_2=1$
+(336f1 has $P_2=1+2X$ and $e_3=1$; important_notes.md point 50). (f) Type $\mathrm I_0^*$ at $7$ with $a_7(E')=-2$ (for instance
+$E'=$11a3, in the class 11a, whose $a_7=-2$ was recomputed by point counting): $e_3=v_3(6)+v_3(64-4)=1+1=2$. The curve is 539d1: type
+$\mathrm I_0^*$ at $7$ with $E'=$11a3, $e_3=2$ and modular degree $72$ (important_notes.md B23). (g) A curve of type $\mathrm I_n$ at $11$ has $e_3=0$ there, while its twist by $\chi_{-11}$ (the paper's $\chi_{11}$) has
 type $\mathrm I_n^*$ and $e_3=v_3(120)=1$: $e_\ell$ is not invariant under a twist ramified at $q$ (important_notes.md point 15).
 Paper: Section 3 Example, Remark rem:wild, the Appendix, Definition def:terms; Exercise 4.
 
@@ -707,8 +708,8 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
    of $R\to R/I\times R/J$ is $\Z/r$ (1.3, 1.4). Interpret $r$ as a congruence between two "eigenforms".
 2. Show that a ring homomorphism $\Z/r\Z\to k$, $k$ a field of characteristic $\ell$, exists iff $\ell\mid r$, and deduce the last step of
    Lemma lem:crit: if $I+J$ lies in a maximal ideal of residue characteristic $\ell$, then $\ell$ divides $\#\T/(I+J)$ (2.2).
-3. In $\Z[\omega]$ show $N(\alpha-\kappa\beta)\le\frac13N(\beta)$ can always be achieved; factor $5+\omega=(2-\omega)(2+\omega)$ and $7=(3+\omega)(2-\omega)$
-   (note $3+\omega^2=2-\omega$), and compute $\gcd(7,5+\omega)$ by the Euclidean algorithm. List the units and check $\Z[\omega]^\times=\mu_6$.
+3. In $\Z[\zeta_3]$ show $N(\alpha-\kappa\beta)\le\frac13N(\beta)$ can always be achieved; factor $5+\zeta_3=(2-\zeta_3)(2+\zeta_3)$ and $7=(3+\zeta_3)(2-\zeta_3)$
+   (note $3+\zeta_3^2=2-\zeta_3$), and compute $\gcd(7,5+\zeta_3)$ by the Euclidean algorithm. List the units and check $\Z[\zeta_3]^\times=\mu_6$.
 4. Check the paper's values in the Example of Section 3: $e_3(\text{121a1},11)=v_3(12)=1$, $e_3(\text{539c1},7)=v_3(48)=1$ and
    $t_3(\text{539c1},7)=1$, $e_5(\text{980i1},7)=0$ and $t_5(\text{980i1},7)=1$; compare with $v_3(6)$, $v_3(2^5\cdot3^2)$, $v_5(2^6\cdot3^2\cdot5)$.
 5. Check the paper's claim (proof of Proposition prop:forms) that $q\equiv\chi_{-3}(q)\pmod3$ for every prime $q\ne3$, so that $e_3(E,q)\ge1$
@@ -812,10 +813,10 @@ Conventions to fix (Section 1 of the chapter, as `convention` environments): C1 
   4.3(iii)), the primitivity of $\chi_D$ for fundamental $D$ (sketch via prime discriminants, 9.5(iv)), the sign of the quadratic
   Gauss sum (stated, 9.2(iii)), the formula 10.4(iv) (sketch), Ostrowski (stated). Never present these as proofs.
 * Keep the RHB remarks to one sentence each: characters of $(\Z/n)^\times$ as the character table of a finite abelian group (10.2);
-  Gauss sums as finite Fourier transforms (10.4); lattices $\Z[i]$, $\Z[\omega]$ in $\C$ (3.4).
+  Gauss sums as finite Fourier transforms (10.4); lattices $\Z[i]$, $\Z[\zeta_3]$ in $\C$ (3.4).
 
 Pitfalls:
-* Do not prove $\Aut(\F_q)=\langle\phi\rangle$ or $\Gal(\F_{q^n}/\F_q)$ cyclic as a numbered result: it is Chapter 5's item
+* Do not prove $\Aut(\F_q)=\langle\Frob_p\rangle$ or $\Gal(\F_{q^n}/\F_q)$ cyclic as a numbered result: it is Chapter 5's item
   galois:finite-field-galois. A one-line remark with a forward pointer is enough (6.3(iv)).
 * Do not prove the irreducibility of every $\Phi_n$ (Chapter 5); only $\Phi_{p^k}$ via Eisenstein.
 * Do not classify the primes of $\Z[i]$ and $\Z[\zeta_3]$, nor introduce $1-\zeta_3$ as a uniformiser or $\Z_3[\zeta_3]$ (Chapter 6, items 4.5
@@ -869,7 +870,7 @@ Python 3 with sympy 1.14, scripts `check1.py` to `check10.py` in `/tmp/ch02`.
 * Lifting the exponent (i) for $\ell\in\{3,5,7\}$, $a,b<60$, $n<40$; (ii) for odd $a<200$, even $n<40$; 5.4(iv) for $\ell\le13$, $q<300$, $f<30$.
 * Irreducible counts $N_r$ over $\F_2$ ($2,1,2,3,6,9,18,30$) and $\F_3$ ($3,3,8,18,48$), and $p^r=\sum_{d\mid r}dN_d$.
 * Euclidean constants: the maximum over a fundamental domain of the squared distance to the nearest lattice point is $1/2$ for
-  $\Z[i]$ and $1/3$ for $\Z[\omega]$ (grid search). Factorisations $5+\omega=(2-\omega)(2+\omega)$, $3+\omega^2=2-\omega$; the gcd example in $\Z[i]$.
+  $\Z[i]$ and $1/3$ for $\Z[\zeta_3]$ (grid search). Factorisations $5+\zeta_3=(2-\zeta_3)(2+\zeta_3)$, $3+\zeta_3^2=2-\zeta_3$; the gcd example in $\Z[i]$.
 * Local terms: $\min_q v_3(q-\chi_{-3}(q))=1$ and $\min_q v_3(q^2-1)=1$ over primes $5\le q<10^5$; type III: $v_3(q-\chi_{-4}(q))>0$ iff
   $q\equiv\pm1\pmod{12}$ ($q<10^5$); $v_\ell(q^2-1)>0$ iff $q\equiv\pm1\pmod\ell$ for $\ell=5,7,11,13$, $q<2\cdot10^4$; least $q$ with
   $v_3(q-\chi_{-3}(q))\ge3$ is $53$, with $\ge4$ is $163$. Values: $11-\chi_{-3}(11)=12$, $v_3(48)=1$, $v_5(48)=0$, $11-\chi_{-4}(11)=12$,

@@ -67,7 +67,8 @@ torsion of a first cohomology group, as an index of a sublattice is a volume rat
   stated), and **Lemma lem:h0 in corrected form** (8.5) with the description of $S_f$ (8.6). Chapter 18 restates lem:h0 in Selmer
   language and does not reprove it.
 * **Chapter 14** proves important_notes.md point 39 (its 9.1 to 9.5: $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\deg\varphi_E)$ for the optimal curve) and
-  lists the DFG04 checklist (9.6, point 56). Chapter 18 cites it for "equality in (eq:identity)".
+  lists the DFG04 checklist (9.6, point 56), now settled against the published DFG04 (Chapter 20 outline, Part 7; important_notes.md point 73). Chapter 18 cites it
+  for "equality in (eq:identity)".
 * **Chapter 16** proves the group cohomology of the Tate shape (its model-computation, frobenius-on-h1-inertia, procyclic-compact,
   inflation-restriction, lengths-in-exact-sequences). Chapter 18 cites those items for Steps 2 and 3 of Lemma lem:tamfactor and
   adds the definition of $\Tam$, the identification of $c'$ and the conclusion.
@@ -192,7 +193,7 @@ Theorem thm:dfg27 ("$H^0(\Q,V^D)=0$").
 "$L_p(A_f,1)^{-1}=L_p(A_f(1),0)^{-1}$" forces $\Phi_p$; point 11); (b) $(\Frob-1)X=(\Phi-1)X$ for any $\Frob$-stable $X$; (c) for a lattice $X$ with
 $\det(1-\Phi\mid X)\ne0$, $\#X/(\Frob-1)X=\ell^{v_\ell(\det(1-\Phi\mid X))}$ (the Smith form of $\Frob-1$, and $\det\Frob\in\Zl^\times$); (d) on $V_\ell E$ the
 geometric Frobenius gives $L_p(E,s+1)$ and the dual gives $L_p(E,s)$ (Chapter 7, 8.2(v); important_notes.md B7, B9). Reference: Chapter 7, L3,
-L6, 8.2; DFG04 Section 1.7.2 (verify). Paper: Section 1.1 ($L_p(A_f,s)$), the paragraph after Lemma lem:dfg21, Lemma lem:fpr,
+L6, 8.2; DFG04 Section 1.7.2 (checked: DFG04 use the geometric Frobenius; Chapter 20 outline, Part 7; important_notes.md point 73). Paper: Section 1.1 ($L_p(A_f,s)$), the paragraph after Lemma lem:dfg21, Lemma lem:fpr,
 Lemma lem:tamfactor (arithmetic $\Frob$).
 
 **3.2 `prop:blochkato:local-adjoint`** (proposition and table; P given Chapter 7, 9.4 and Chapter 11, 3.2, 3.4, Section 4). Let $p\ne\ell$. The
@@ -264,9 +265,10 @@ filtered Dieudonne modules over $\Zl$ with weights in an interval of length at m
 representations with Hodge-Tate weights in that interval; it is exact and compatible with subquotients. For $V_\ell E$ ($\ell\nmid N$,
 weights $\{0,1\}$) this applies for $\ell\ge3$, and it identifies $T_\ell E$ with the lattice of the finite flat group schemes $\mathcal E[\ell^k]$ (Chapter
 11, 5.1(i)). DFG04 (Sections 1 and 2) use this theory to define integral structures and the local condition at $\ell$ for the
-adjoint. **Writer's check (not a claim):** the adjoint has weights spanning an interval of length $2$, which exceeds $\ell-2$ when $\ell=3$; the
-writer must check in DFG04 how $\ell=3$ (weight $k=2$) is handled, i.e. that the paper's reading of $S_f$ ("$\lambda\mid2N$", the case $k=2$ of DFG04
-(31)) is the complete list of excluded primes (Part 7, Q1). Reference: FontaineLaffaille; DFG04 Sections 1.1 to 1.3 and 2.1 (verify the
+adjoint. **Settled (Part 7, Q1; Chapter 20 outline, Part 7; important_notes.md point 73):** although the adjoint has weights spanning an interval of length $2$, which exceeds
+$\ell-2$ when $\ell=3$, DFG04 (31) excludes only the primes dividing $Nk!$ ($=2N$ in weight $2$) and the residually induced case, and the local
+condition at $\ell$ is defined through extensions of short objects (DFG04 Proposition 2.2, Corollary 2.3, needing only $\ell>2$); so DFG04
+Theorem 3.7 covers $\ell=3$ in weight $2$ and the paper's reading of $S_f$ is the complete list of excluded primes. Reference: FontaineLaffaille; DFG04 Sections 1.1 to 1.3 and 2.1 (verify the
 section numbers); BlochKato Section 4. Paper: background (DFG04's hypotheses), the optimal-level paragraph ("good" at $\ell$).
 
 **4.5 `prop:blochkato:dimension-formula`** (proposition; R). For $V$ de Rham, with convention C4:
@@ -514,14 +516,14 @@ potentially multiplicative), Section 1.2.
 $$\sum_{q\mid N}v_\ell(\Tam_q(\ad T))=\sum_{q:\,v_q(j_E)<0}\Bigl(t_\ell(E,q)+\min\bigl(t_\ell(E,q),\,v_\ell(q-1),\,v_\ell(c_q(u))\bigr)\Bigr).$$
 Hence, under the hypothesis of Theorem thm:main, (eq:identity) reads
 $$v_\ell(\deg\varphi_E)\ \ge\ \len H^1_f(\Q,W)+\sum_{q\mid N}e_\ell(E,q)+\sum_{q:\,v_q(j)<0}\bigl(t_\ell(E,q)+\min(t_\ell(E,q),v_\ell(q-1),v_\ell(c_q(u)))\bigr),$$
-with equality by Chapter 14, 9.5 (important_notes.md points 39, 56; subject to the DFG04 checklist there). So the excess of $v_\ell(\deg\varphi_E)$ over the
+with equality by Chapter 14, 9.5 (important_notes.md points 39, 56; the DFG04 checklist there is settled, Chapter 20 outline, Part 7; important_notes.md point 73). So the excess of $v_\ell(\deg\varphi_E)$ over the
 explicit local bound is the length of the adjoint Bloch-Kato Selmer group. Paper: Theorem thm:main, Remark rem:ko(1), Section sec:tam,
 Open question 3.
 
 **9.5 `rem:blochkato:open-question-3`** (remark; P for the data). What remains of Open question 3 is the Selmer length, which 9.4 computes
-from $\deg\varphi_E$ (given the checklist). On the optimal non-CM curves of conductor below $10{,}000$ with $\ell\nmid N$, $E[\ell]$ irreducible and (for $\ell=3$) image
+from $\deg\varphi_E$ (the DFG04 checklist being settled: Chapter 20 outline, Part 7; important_notes.md point 73). On the optimal non-CM curves of conductor below $10{,}000$ with $\ell\nmid N$, $E[\ell]$ irreducible and (for $\ell=3$) image
 not 3Ns, the excess $v_\ell(\deg\varphi_E)-(\text{explicit bound})$ is $0,1,2,3,\ge4$ for $8688,3288,942,248,37$ of $13{,}203$ curves at $\ell=3$; $19019,3993,328,19,2$ of
-$23{,}361$ at $\ell=5$; $25133,2888,111,2,0$ of $28{,}134$ at $\ell=7$, and is never negative. Reading: under the checklist, $H^1_f(\Q,W)=0$ for about two
+$23{,}361$ at $\ell=5$; $25133,2888,111,2,0$ of $28{,}134$ at $\ell=7$, and is never negative. Reading: $H^1_f(\Q,W)=0$ for about two
 thirds of the curves at $\ell=3$ and $81\%$, $89\%$ at $\ell=5,7$. The Tamagawa factor at $q=\ell$ is not defined by 7.1 (it needs $p$-adic Hodge
 theory) and belongs to Open question 1 (Chapter 20). Paper: Open questions 1 and 3, Section sec:sharp (the mean excess).
 
@@ -580,14 +582,14 @@ $$\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{q\mid N}v_\ell\bigl(L_q(A_f,1)^{-
 thm:dfg27 the hypotheses of Lemma lem:dfg21 hold" to "each local term is ..."), Theorem thm:main.
 
 **11.2 `rem:blochkato:assembly`** (remark; forward pointer, nothing proved). The assembly lives in Chapter 20: $v_\ell(\deg\varphi_E)=v_\lambda(\eta^\emptyset_{f,\lambda})$
-(Chapter 14, 9.5: an equality for the optimal curve, important_notes.md points 39, 56, subject to the DFG04 checklist of Chapter 14, 9.6),
+(Chapter 14, 9.5: an equality for the optimal curve, important_notes.md points 39, 56; the DFG04 checklist of Chapter 14, 9.6 is settled, Chapter 20 outline, Part 7; important_notes.md point 73),
 $v_\lambda(\eta^\Sigma)=v_\lambda(\eta^\emptyset)+\sum_{p\in\Sigma}v_\ell(L_p^{\nv}(A_f,1)^{-1})$ (thm:dfg14, Chapter 20), $v_\lambda(\eta^\Sigma)=\len H^1_\Sigma(\Q,W)$ (thm:dfg37, Chapter 20), and 11.1. The naive factor
 equals the true one at multiplicative primes ($\delta_p=1$) and is $1$ at additive ones ($\delta_p=0$), so the Euler terms that survive are
 $\sum_qe_\ell(E,q)$ (Definition def:terms). Result: (eq:identity) **with equality** for $\ell\notin S_f$ (no freeness hypothesis; Chapter 14, 9.5), and (eq:thm) from
 $\len H^1_f\ge0$ and 8.3, 8.4 (including $\mathrm I_n^*$ primes at $q=2$, point 18). The chapter gives this as a one-paragraph `remark` and a
 `paperlink`; it must not reprove Chapter 20's steps. Paper: Theorem thm:main and its proof.
 
-**11.3 `ex:blochkato:selmer-examples`** (worked examples; P computed, conditional only on the DFG04 checklist). At $\ell=3$: 121a1 (type $\mathrm{II}$
+**11.3 `ex:blochkato:selmer-examples`** (worked examples; P computed; the DFG04 checklist they depended on is settled, Chapter 20 outline, Part 7; important_notes.md point 73). At $\ell=3$: 121a1 (type $\mathrm{II}$
 at $11$, $e_3=v_3(12)=1$, no potentially multiplicative prime, $\deg\varphi_E=6$): excess $0$, so $H^1_f(\Q,\ad T_3\otimes\Q_3/\Z_3)=0$. 791a1 (8.5): bound (eq:thm) $1$,
 explicit bound $2$, $v_3(144)=2$: excess $0$, the Tamagawa excess is needed for equality. 1184f1: explicit bound $2$, $v_3(1728)=3$: Selmer length $1$.
 1748e1: explicit bound $3$, $v_3(3240)=4$: Selmer length $1$. (Each curve: $3\nmid N$, $E[3]$ irreducible, image not 3Ns, non-CM.) Paper: Theorem
@@ -673,7 +675,7 @@ and is annihilated by an explicit integer related to $\deg\varphi_E$ (verify). T
 symmetric-square Selmer group. Reference: Flach92. Paper: Section 1 ("Flach's finiteness theorem for the symmetric square ... is the first
 place where the modular degree meets the Selmer group of $\Sym f$").
 
-**14.7 `rem:blochkato:degree-as-l-value`** (remark; heuristic, clearly labelled). The chain: $\deg\varphi_E\cdot\operatorname{vol}(\Lambda_E)=4\pi^2c^2\langle f,f\rangle$ (Chapter 14,
+**14.7 `rem:blochkato:degree-as-l-value`** (remark; heuristic, clearly labelled). The chain: $\deg\varphi_E\cdot\operatorname{vol}(\Lambda_E)=4\pi^2c_E^2\langle f,f\rangle$ (Chapter 14,
 7.3); $\langle f,f\rangle$ is $L(\Sym f,2)=L(\ad f,1)$ times explicit factors and local factors at the bad primes (Chapter 19); 14.4 expresses $L(\ad f,1)$ over a period
 by Selmer and Tamagawa terms; the ratio of naive to true local factors produces $\sum e_\ell(E,q)$. Theorem thm:main is the theorem behind this
 heuristic, proved through congruence ideals instead of $L$-values. One paragraph; details Chapters 19 and 20. Paper: Section 1 (the
@@ -892,8 +894,8 @@ lem:tamfactor), $\Phi_p=\Frob_p^{-1}$ in $L$-factors (Section 1.1, Lemma lem:fpr
 * **$h_\ell(E)$**: the criterion is $\bar\rho\simeq\bar\rho\otimes\bar\chi_\ell$; $h_\ell=0$ for $\ell\ge5$ and $h_3\le1$ for every $E$ (points 5, 6, 14). The paper's sentence on
   finiteness for non-CM curves is replaced by the determinant argument; do not repeat "for $E$ without complex multiplication it is finite".
 * **Hodge-Tate sign** (C4): fix it once; 4.5 depends on it; when quoting DFG04 or BlochKato check their sign.
-* **The equality in (eq:identity)** is Chapter 14's theorem (point 39) subject to the DFG04 checklist (point 56); say "with equality, by
-  `\Cref{ch:moddeg}`, provided DFG04's $\eta$ is normalised as the paper describes", never "with equality when multiplicity one holds" alone.
+* **The equality in (eq:identity)** is Chapter 14's theorem (point 39); the DFG04 checklist (point 56) is settled (Chapter 20 outline, Part 7; important_notes.md point 73): say "with
+  equality whenever $\ell\notin S_f$, by `\Cref{ch:moddeg}` and `\Cref{ch:congruence}`", never "with equality when multiplicity one holds".
 * **Remark rem:ns is conditional** on $H^1_f(\Q,V^D)=0$ for the 3Ns curves (12.1); state the condition every time.
 * **Section sec:tam's population** in the paper is type $\mathrm I_n$ only; 9.4 shows that $\mathrm I_n^*$ primes carry the same Tamagawa excess; say so, do not
   change the paper's numbers.
@@ -939,7 +941,7 @@ lem:tamfactor), $\Phi_p=\Frob_p^{-1}$ in $L$-factors (Section 1.1, Lemma lem:fpr
 * **Point 40** ($M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)\simeq T_\ell E(-1)$ exactly): 2.4(ii).
 * **Point 42** (corner $\varepsilon\kappa$): C6, 8.1(a), 8.2 Step 4.
 * **Point 47** ($\ell\notin S_f$ iff $E[\ell]$ irreducible and $h_\ell(E)=0$, for $\ell\nmid2N$): 10.1.
-* **Point 56** (the DFG04 checklist): 11.2 and 9.4 say "subject to the checklist of Chapter 14, 9.6".
+* **Point 56** (the DFG04 checklist): settled by point 73 (Chapter 20 outline, Part 7); 11.2 and 9.4 cite Chapter 14, 9.6 and the Chapter 20 outline's Part 7.
 * **B1** (on $V_\ell E$ the arithmetic Frobenius has eigenvalues $\alpha,\beta$): C3, 3.2.
 * **B6** (PLAN.md's Weil-Deligne relation is the geometric form): not needed here; C3 follows Chapter 7's L3, L4.
 * **B7** (Chapter 21's C2(b): $\det(1-\Phi p^{-s}\mid V_\ell E)^{-1}=L_p(E,s+1)$, and point 42 in its A2.7): C3, 3.1(d); 8.2 is the version Chapter 21's A2.7 should
@@ -1010,7 +1012,7 @@ Nakayama), so $H^1(P,\ad T)=0$. Hence $\Tam_q(\ad T)=\Z_\ell$ (and $\Tam_q(\ad T
 $3$ (for example 50a1 at $5$). (b) Potentially multiplicative: $\ad T\simeq\ad(T\otimes\chi)$ for a ramified quadratic $\chi$ of $G_{\Q_q}$ making $T\otimes\chi$ of Tate shape
 with parameter $\mathsf q(j_E)$, so $v_\ell(\Tam_q(\ad T))=t_\ell(E,q)+\min(t_\ell(E,q),v_\ell(q-1),v_\ell(c_q(u)))$, also at $q=2$ (this also settles point 18). Consequently
 (eq:identity) becomes fully explicit: $v_\ell(\deg\varphi_E)-\bigl[\sum_qe_\ell(E,q)+\sum_{v_q(j)<0}\bigl(t_\ell(E,q)+\min(t_\ell(E,q),v_\ell(q-1),v_\ell(c_q(u)))\bigr)\bigr]=\len H^1_f(\Q,W)$ (with
-equality in (eq:identity) by point 39, subject to the checklist of point 56), which also answers the second half of Open question 3 as far
+equality in (eq:identity) by point 39; the checklist of point 56 is settled by point 73), which also answers the second half of Open question 3 as far
 as it can be answered from $\deg\varphi_E$. Data (optimal non-CM curves, conductor below $10{,}000$, $\ell\nmid N$, $E[\ell]$ irreducible, not 3Ns): the excess is
 never negative; it is $0$ for $8{,}688$ of $13{,}203$ curves at $\ell=3$, $19{,}019$ of $23{,}361$ at $\ell=5$, $25{,}133$ of $28{,}134$ at $\ell=7$.
 Fix: replace "$v_\ell(\Tam_p(\ad T))\ge0$ at an additive prime" by the exact values, and restate Open question 3 as the computation of the Selmer
@@ -1049,13 +1051,13 @@ recomputation below conductor $10{,}000$ ($\ell=3$: $1{,}050$ curves, equality $
 "exactly where" should read "is accounted for, in these cases, by"; extra divisibility also comes from the Selmer group (N1). Confidence:
 high for the data and the mathematics; optional.
 
-**Q1 (open check, not claimed as an error). DFG04 at $\ell=3$ for weight $2$.**
+**Q1 (open check, not claimed as an error; now SETTLED: DFG04 covers $\ell=3$ in weight $2$, Chapter 20 outline, Part 7; important_notes.md point 73). DFG04 at $\ell=3$ for weight $2$.**
 The paper reads DFG04 (31) as $S_f=\{\lambda\mid2N\}\cup\{\text{not absolutely irreducible over }\Q(\sqrt{\ell^*})\}$ for $k=2$. DFG04 build integral structures and the local
 condition at $\ell$ with Fontaine-Laffaille theory; for $M_f$ (weights $0,1$) this needs $\ell\ge3$, but the adjoint has weights spanning an interval of length
 $2>\ell-2$ when $\ell=3$. Before the book asserts Theorem thm:main at $\ell=3$, the writer must check in DFG04 that $\ell=3$ is not excluded for $k=2$
 (for instance by a condition such as "$\ell>k+1$" or "$\ell\nmid(k+1)!$" in (31) or in Sections 1 and 2) and how the adjoint's local condition at $\ell$ is
 defined there. If $\ell=3$ were excluded, Theorem thm:main at $\ell=3$ would lose its Taylor-Wiles input (the data would be unaffected). Confidence:
-none either way (DFG04 not consulted); recorded as a check.
+none either way here (DFG04 not consulted); settled since by the Chapter 20 outline (Part 7): DFG04 covers $\ell=3$ (point 73).
 
 Book-internal inconsistencies found while preparing this outline:
 

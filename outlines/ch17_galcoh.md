@@ -674,7 +674,7 @@ $H^1_{\mathcal L}(\Q,W)=\Hom(G_\Q,\Q_\ell/\Z_\ell)^{\mathrm{ur}}=0$; for $\Sigma
 $\simeq\Z/\ell^{v_\ell(p-1)}$; $\mathcal L^*_p=\iota^{-1}(0)=H^1(\Q_p,\Z_\ell(1))_{\mathrm{tors}}=\Z_p^\times\otimes\Z_\ell\simeq\Z/\ell^{v_\ell(p-1)}$ (2.5); $H^0(\Q,\mu_{\ell^\infty})=0$. The sequence of
 10.3 reads $0\to0\to\Z/\ell^{v_\ell(p-1)}\xrightarrow{\sim}(\Z/\ell^{v_\ell(p-1)})^*\to0\to0$: the $\ell$-part of $(\Z/p)^\times$ classifies the cyclic extensions of $\ell$-power
 degree and conductor $p$. (Variant with $H^0(\Q,W^D)\ne0$, the toy model of $h_3(E)=1$: $\ell=3$, $T=\Z_3(\chi_{-3})$, $W^D=\mu_{3^\infty}\otimes\chi_{-3}$, for which
-$H^0(\Q,W^D)=\Z/3$ because $\bar\chi_3=\chi_{-3}$ while $\chi_3\chi_{-3}\not\equiv1\pmod9$; Exercise 13.) Paper: background for Lemma lem:dfg21 and
+$H^0(\Q,W^D)=\Z/3$ because $\bar\chi_3=\chi_{-3}$ while $\chi_3^{\mathrm{cyc}}\chi_{-3}\not\equiv1\pmod9$; Exercise 13.) Paper: background for Lemma lem:dfg21 and
 Remark rem:ns.
 
 ### 10.6 `rem:galcoh:handover-ch18` (remark) P (bookkeeping)
@@ -784,7 +784,7 @@ lines, not counted). Each section opens with one paragraph saying what it is for
     number of cyclic extensions of $\Q$ of degree $\ell$ and conductor $p$.
 12. Do 10.5 in full: verify the hypotheses of 10.3 for $T=\Z_\ell$, $\Sigma=\{p\}$, and identify every term of the exact sequence.
 13. (The toy model of $h_3(E)$.) Let $T=\Z_3(\chi_{-3})$. Show $H^0(\Q,W^D)=H^0(\Q,\mu_{3^\infty}\otimes\chi_{-3})\simeq\Z/3$, using $\bar\chi_3=\chi_{-3}$ and an element $\sigma$
-    with $\chi_3(\sigma)=4$. Show that for $\ell\ge5$ and any character $\psi$ of order $2$, $H^0(\Q,\mu_{\ell^\infty}\otimes\psi)=0$. Relate this to the paper's claim in
+    with $\chi_3^{\mathrm{cyc}}(\sigma)=4$. Show that for $\ell\ge5$ and any character $\psi$ of order $2$, $H^0(\Q,\mu_{\ell^\infty}\otimes\psi)=0$. Relate this to the paper's claim in
     Lemma lem:h0 that $H^0(\Q,W^D)$ is finite and vanishes for $\ell\ge5$, and to the correct bound $h_3(E)\le1$ (point 5).
 14. Over $\Q_p$, $p$ odd, compute $\#H^i(\Q_p,\mu_p)$ and check the Euler characteristic $p^{-1}$; show that $H^1_{\mathrm{ur}}(\Q_p,\Z/p)$ and $H^1_{\mathrm{ur}}(\Q_p,\mu_p)$ are
     not exact annihilators (the warning in 4.4).
@@ -905,7 +905,7 @@ Forward pointers (chapters that use this one):
 
 ### 14.4 How each relevant point of important_notes.md is handled
 * **Point 5 (Lemma lem:h0: $h_\ell(E)=0$ for $\ell\ge5$, $h_3(E)\le1$, CM irrelevant).** 10.4 quotes the corrected statement (proved in Chapter 11) when
-  it names $\len H^0(\Q,W^D)=h_\ell(E)$; Exercise 13 gives the determinant mechanism in a one-dimensional toy model ($\chi_3\chi_{-3}\not\equiv1\pmod9$, and
+  it names $\len H^0(\Q,W^D)=h_\ell(E)$; Exercise 13 gives the determinant mechanism in a one-dimensional toy model ($\chi_3^{\mathrm{cyc}}\chi_{-3}\not\equiv1\pmod9$, and
   $\bar\chi_\ell$ of order $\ge4$ for $\ell\ge5$). Do not repeat the paper's "finite for $E$ without complex multiplication".
 * **Point 7 (Lemma lem:tamfactor, "$c'$ is the image of $\kappa$ in $H^1(G/I,\Z_\ell(1)^I)$").** Section 5 in full: 5.1, 5.2 (the unramified classes
   are the unit classes; their value at $\Frob$ is the class of $\bar u$), 5.3 (the canonical retraction attached to the uniformiser $q$, which
@@ -960,7 +960,7 @@ Python with cypari2 (PARI/GP 2.17.2) and Cremona's ecdata files in `/tmp/ch09/da
 * Orders of local cohomology (3.5(a)) by hand from the Kummer description: e.g. $(p,\ell,k)=(19,3,2)$ gives $3^2,3^4,3^2$ for both $\Z/9$ and $\mu_9$; $(5,3,2)$
   ($v_3(4)=0$, $m=0$): $\#H^i(\Q_5,\Z/9)=9,9,1$ and $\#H^i(\Q_5,\mu_9)=1,9,9$. Euler characteristic $1$ in each case.
 * $\Q_p$, $\mu_p$ ($p$ odd): $\#\Q_p^\times/(\Q_p^\times)^p=p^2$ (valuation and $(1+p\Z_p)/(1+p\Z_p)^p\simeq\Z/p$); $H^2=\Z/p$; characteristic $p^{-1}$.
-* Toy example 10.5 and 9.4 by hand (class field theory of $\Q$). Toy model of $h_3$: $\chi_3(\sigma)=4$ forces $\chi_{-3}(\sigma)=1$ and $4\not\equiv1\pmod9$.
+* Toy example 10.5 and 9.4 by hand (class field theory of $\Q$). Toy model of $h_3$: $\chi_3^{\mathrm{cyc}}(\sigma)=4$ forces $\chi_{-3}(\sigma)=1$ and $4\not\equiv1\pmod9$.
 * Not verified (recalled): every theorem number marked "(check)" in Parts 1 to 10.
 
 ## 16. Points for important_notes.md

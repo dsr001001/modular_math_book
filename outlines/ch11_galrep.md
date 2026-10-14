@@ -10,7 +10,7 @@ numbers marked "(verify)" must be checked before they are printed); the paper's 
 "background". Every computation quoted below (3-division polynomials, image labels, inertia images per Kodaira type,
 Euler factors at 2, congruences, Serre conductors, the structure of the 3Ns curves, the Eisenstein data) was checked
 with PARI/GP 2.15 through `cypari2` in `/tmp/ch11` against Cremona's `ecdata` files `allcurves`, `galrep`,
-`alldegphi` for conductors below 10,000 (verification log, Part 6.6).
+`degphi` for conductors below 10,000 (verification log, Part 6.6).
 
 ## 0. What this chapter is for
 
@@ -84,15 +84,16 @@ chapter must deliver:
   $\psi_3$ (4.4 to 4.6), CM (6.5), rational isogenies, $\Z/\ell\oplus\mu_\ell$ and the no-$27$-isogeny argument (9.5 to 9.9),
   twists $\rho\otimes\chi_d$ (10.3), and the easy half of Neron-Ogg-Shafarevich (8.6).
 * **Chapter 10** (outlined in parallel) proves minimal models, reduction types, $E_0$, $E_1$ and the formal group,
-  $E(K)/E_0(K)\simeq\Phi(k)$, Kodaira types and Tate's algorithm, the component groups $\Phi_q(\bar\F_q)$ by type,
+  $E(K)/E_0(K)\simeq\Phi_p(k)$, Kodaira types and Tate's algorithm, the component groups $\Phi_q(\bar\F_q)$ by type,
   conductor exponents and Ogg's formula, the semistable reduction theorem, the Tate curve with its Galois module
-  $E_q[\ell^t]$ (statement), Kraus's semistability defect $12/\gcd(v_q(\Delta),12)$ for $q\ge5$, Lemma lem:twist (i), (ii)
+  $E_{\mathsf q}[\ell^t]$ (statement), Kraus's semistability defect $12/\gcd(v_q(\Delta),12)$ for $q\ge5$, Lemma lem:twist (i), (ii)
   and Remark rem:wild. **Chapter 11 uses all of these as black boxes with `\Cref{ch:reduction}` and proves the
   representation-theoretic consequences.** If the Chapter 10 outline proves the Galois-theoretic consequences of the
   Tate curve itself (the matrix shape, Lemma lem:tamagawa-exp), Chapter 11 keeps them anyway, because PLAN.md puts
   Lemma lem:tamagawa-exp here; the Chapter 10 writer should then only state them.
-* **Chapter 15** proves Galois representations of newforms, local-global compatibility, the optimal-level theorem in
-  general (DDT Theorem 3.15) with the trivial-nebentypus argument, Ribet's level lowering, Lemma lem:old and Theorem
+* **Chapter 15** proves Galois representations of newforms, local-global compatibility, states the optimal-level theorem in
+  general (DDT Theorem 3.15) and proves only its specialisation to $\bar\rho_{E',\ell}$, with the trivial-nebentypus argument
+  (important_notes.md B18), Ribet's level lowering, Lemma lem:old and Theorem
   thm:qual. Chapter 11 supplies the elliptic-curve inputs (local structure at $p\mid N$ and at $\ell$, Serre conductor,
   finite flatness, Serre weight) and states Serre's conjecture for $\bar\rho_{E,\ell}$; the Deligne-Fontaine description
   is proved (sketched) here for $E$ and quoted for newforms in Chapter 15.
@@ -112,15 +113,17 @@ chapter must deliver:
 * **C2 (local data).** For a prime $q$: $D_q\simeq G_{\Q_q}$ and $I_q$ via a fixed embedding $\Qbar\to\Qbar_q$ (Chapter 6, 3.10);
   $f_q=f_q(E)$ the conductor exponent; $n_q=v_q(\Delta_{\min})$ at a multiplicative prime; $q_E\in\Q_q^\times$ the Tate parameter,
   $v_q(q_E)=-v_q(j)$, and $u=q_Eq^{-v_q(q_E)}$ its unit part (important_notes.md point 8: the Tate parameter is never called $u$);
-  $\Phi_q=\Phi_q(\bar\F_q)$ the geometric component group of the Neron model (the paper's $\Phig_q$), $c_q=\#\Phi_q(\F_q)$.
+  $\Phig_q=\Phi_q(\bar\F_q)$ the geometric component group of the Neron model (the paper's macro `\Phig`), $c_q=\#\Phi_q(\F_q)$, which
+  divides $\#\Phig_q$; the group scheme $\Phi_q$ is always written with an argument, never as a bare $\Phi_q$ (Appendix B, B-C11(b)).
   Kodaira symbols as in PLAN.md 7.1.
-* **C3 (Frobenius).** As in Chapter 7 (L3) and Chapter 9 (C5): $\Frob_p$ is an **arithmetic** Frobenius; $\Phi_p=\Frob_p^{-1}$ is
-  the geometric one; group-theoretic statements (conjugation, the Tate matrices) use $\Frob_p$; $L$-factors use $\Phi_p$
+* **C3 (Frobenius).** As in Chapter 7 (L3) and Chapter 9 (C5): $\Frob_p$ is an **arithmetic** Frobenius; $\Frob_p^{-1}$ is
+  the geometric one, written $\Frob_p^{-1}$ and never $\Phi_p$ in this chapter, where $\Phi_q(\cdot)$ is the component group (Appendix B,
+  B-C2(b)); group-theoretic statements (conjugation, the Tate matrices) use $\Frob_p$; $L$-factors use $\Frob_p^{-1}$
   and are Chapter 19's. On $V_\ell E$ at a good prime the arithmetic Frobenius has characteristic polynomial $X^2-a_pX+p$,
   roots $\alpha,\beta$; the geometric one has $\alpha^{-1},\beta^{-1}$; on $\ad V$ both give $\alpha/\beta,1,\beta/\alpha$
-  (important_notes.md B1). The relation on tame inertia is $\Frob\,t\,\Frob^{-1}=t^{q}$. Do not use $\Phi$ for both the geometric
-  Frobenius and the component group in one display: write $\Phi_q$ for the component group only with the subscript and
-  $\Frob^{-1}$ for the geometric Frobenius where a clash is possible.
+  (important_notes.md B1). The relation on tame inertia is $\Frob\,t\,\Frob^{-1}=t^{q}$. The letter $\Phi$ is used in this chapter
+  only for the component group, always with an argument ($\Phi_q(\F_q)$, $\Phi_q(\bar\F_q)$) or as $\Phig_q$; the geometric Frobenius is
+  always $\Frob^{-1}$ or $\Frob_q^{-1}$.
 * **C4 (characters).** $\chi_\ell$ is the $\ell$-adic cyclotomic character, $\bar\chi_\ell$ its reduction; $\chi_d$ the quadratic
   character of $\Q(\sqrt d)$; $q^*=(-1)^{(q-1)/2}q$ and, as in the paper, $\chi_q:=\chi_{q^*}$; $\ell^*$ likewise. Where $\chi_3$ could
   mean either, write $\chi_3^{\mathrm{cyc}}$ or $\chi_{-3}$ (important_notes.md point 32); $\bar\chi_3=\chi_{-3}$. $\omega=\bar\chi_\ell|_{I_\ell}$ and
@@ -192,26 +195,27 @@ potentially multiplicative reduction ($v_K(j)<0$) iff $\rho_{E,\ell}(I_K)$ is in
 element $\ne1$ (3.2, 3.4). For $E/\Q$: $\rho_{E,\ell}$ is unramified at $p\ne\ell$ iff $p\nmid N$. Proof: (a)$\Rightarrow$(c) is Chapter 9, 8.6
 (reduction is injective on prime-to-$p$ torsion); (d)$\Rightarrow$(a): over $K^{\mathrm{ur}}$ (through finite unramified $K'$), if $E$ had
 bad reduction then $E(K')\supset E_0(K')\supset E_1(K')$ with $E_1$ pro-$p$, $E_0/E_1\simeq\tilde E_{\mathrm{ns}}(k')$ equal to $k'^+$ or a
-one-dimensional torus, and $E/E_0\simeq\Phi(k')$ of bounded order (Chapter 10); then $\#E(K^{\mathrm{ur}})[m]\le m\cdot\#\Phi$ for $m$ prime to
+one-dimensional torus, and $E/E_0\simeq\Phi_p(k')$ of bounded order (Chapter 10); then $\#E(K^{\mathrm{ur}})[m]\le m\cdot\#\Phi_p(\bar k)$ for $m$ prime to
 $p$, contradicting $E[m]\subset E(K^{\mathrm{ur}})$ of order $m^2$ for large $m$. (e), (f): semistable reduction theorem (Chapter 10)
 plus (a) to (d) over a finite extension, and the Tate shape 3.2. Reference: Serre-Tate 1968, Section 1, Theorem 1 and
-Section 2 (add `SerreTate68` to `bib/ch11.bib`, see Part 6.5); SilvermanAEC VII.7 (Theorem 7.1, verify). Paper: Section 1.1
+Section 2 (`SerreTate68`, in `refs.bib` by decision B14, see Part 6.5); SilvermanAEC VII.7 (Theorem 7.1, verify). Paper: Section 1.1
 ($\delta_p$), Lemma lem:tamagawa-exp, Lemma lem:IV ("potentially good", "finite image"), Lemma lem:old ("$\bar\rho_h$ unramified"),
 the optimal-level paragraph ("$N(\bar\sigma)$ is prime to every prime at which $\bar\sigma$ is unramified").
 
-**2.2 `lem:galrep:component-invariants`** (lemma; P given Chapter 10). Let $q\ne\ell$ be primes, $E/\Q_q$ with bad reduction,
-$\Phi_q=\Phi_q(\bar\F_q)$, $k\ge1$. (i) If the reduction is additive, there is a $\Gal(\bar\F_q/\F_q)$-equivariant isomorphism
-$$E[\ell^k]^{I_q}\ \simeq\ \Phi_q[\ell^k];$$
+**2.2 `lem:galrep:component-invariants`** (lemma; R: proved in Chapter 10, its item 4.5 `prop:reduction:component-invariants`, which this
+item restates and cites with `\Cref{ch:reduction}` instead of proving again: important_notes.md B16). Let $q\ne\ell$ be primes, $E/\Q_q$ with bad reduction,
+$\Phig_q=\Phi_q(\bar\F_q)$, $k\ge1$. (i) If the reduction is additive, there is a $\Gal(\bar\F_q/\F_q)$-equivariant isomorphism
+$$E[\ell^k]^{I_q}\ \simeq\ \Phig_q[\ell^k];$$
 in particular $E(\Q_q)[\ell^\infty]\simeq\Phi_q(\F_q)[\ell^\infty]$. (ii) If the reduction is multiplicative, there is an exact sequence of
-$\Gal(\bar\F_q/\F_q)$-modules $0\to\mu_{\ell^k}\otimes\varepsilon\to E[\ell^k]^{I_q}\to\Phi_q[\ell^k]\to0$, with $\Phi_q\simeq\Z/n_q$ and $\varepsilon$ the
+$\Gal(\bar\F_q/\F_q)$-modules $0\to\mu_{\ell^k}\otimes\varepsilon\to E[\ell^k]^{I_q}\to\Phig_q[\ell^k]\to0$, with $\Phig_q\simeq\Z/n_q$ and $\varepsilon$ the
 unramified character of 3.2 (trivial for split reduction). (iii) Consequently, for $\ell$ odd,
 $\dim_{\F_\ell}E[\ell]^{I_q}$ is: $1+[\ell\mid n_q]$ for $\mathrm I_{n}$, $n\ge1$; $1$ for $\mathrm{IV}$, $\mathrm{IV}^*$ if $\ell=3$; $0$ for every other additive
-type (the orders of $\Phi_q$ for additive types are $1,2,3,4$: Chapter 10). Proof: for each finite unramified $K'/\Q_q$ with
+type (the orders of $\Phig_q$ for additive types are $1,2,3,4$: Chapter 10). Proof (in Chapter 10, 4.5; recalled here in one paragraph only): for each finite unramified $K'/\Q_q$ with
 residue field $k'$: $E(K')/E_0(K')\simeq\Phi_q(k')$ (Neron model and Hensel, Chapter 10), $E_1(K')$ is a $\Z_q$-module, hence uniquely
 $\ell$-divisible, and $E_0(K')/E_1(K')\simeq\tilde E_{\mathrm{ns}}(k')$, which is $k'^+$ (additive: uniquely $\ell$-divisible) or $k'^\times$ (split over
 large enough $k'$); the snake lemma for multiplication by $\ell^k$, and the union over $K'$, since $E[\ell^k]^{I_q}=E[\ell^k](\Q_q^{\mathrm{ur}})$.
 Reference: the argument is the one in Serre-Tate 1968, Section 1; SilvermanAEC VII.6 and VII.7 (verify); ATAEC IV.9 for
-$E/E_0\simeq\Phi$. Paper: Lemma lem:IV (second proof, 4.3), Remark rem:types ("$E[3]^{I_q}=0$", 4.5), Lemma lem:tamagawa-exp
+$E(K)/E_0(K)\simeq\Phi_q(k)$. Paper: Lemma lem:IV (second proof, 4.3), Remark rem:types ("$E[3]^{I_q}=0$", 4.5), Lemma lem:tamagawa-exp
 (second proof, 3.3), Remark rem:wild and Proposition prop:forms (type $\mathrm{IV}$ at $2$, 4.4), the final check in the proof of
 Lemma lem:tamfactor (the $\ell$-part of $c_q$; Chapter 18), the Serre conductor formula 6.2. Verified: at $q=2$ and $q\ge5$, for
 Kodaira types sampled from every class (Part 6.6), $E[3]^{I_q}\ne0$ exactly for $\mathrm I_n$ and $\mathrm{IV}$, $\mathrm{IV}^*$.
@@ -264,7 +268,7 @@ unramified and $\bar\rho(\Frob_q)$ has eigenvalues $a_q(E)q$ and $a_q(E)$ modulo
 point 8): over the unramified quadratic extension (or $\Q_q$ if split) $E\simeq E_{q_E}$, which does not change $I_q$; $E[\ell^t]$ is
 generated by $\mu_{\ell^t}$ and an $\ell^t$-th root of $q_E$ in $\Qbar_q^\times/q_E^{\Z}$; $I_q$ fixes $\mu_{\ell^t}$, and by Kummer theory over
 $\Q_q^{\mathrm{ur}}$ (which contains $\mu_{\ell^t}$, $q\ne\ell$) it fixes $q_E^{1/\ell^t}$ iff $q_E$ is an $\ell^t$-th power in $\Q_q^{\mathrm{ur}}$; units of its valuation
-ring are $\ell^t$-th powers (Hensel), so this holds iff $\ell^t\mid v_q(q_E)=n_q$ (Chapter 7, 6.2(v)). Proof 2: 2.2(ii) with $\Phi_q\simeq\Z/n_q$
+ring are $\ell^t$-th powers (Hensel), so this holds iff $\ell^t\mid v_q(q_E)=n_q$ (Chapter 7, 6.2(v)). Proof 2: 2.2(ii) with $\Phig_q\simeq\Z/n_q$
 gives (ii), and $E[\ell^t]^{I_q}=E[\ell^t]$ iff $\min(t,v_\ell(n_q))=t$. Reference: SilvermanATAEC V; Chapter 7, 6.2. Paper: Lemma
 lem:tamagawa-exp, Section 1.5 ("$t_q=v_\ell(n_q)=t_\ell(E,q)$ whether or not the reduction is split"), Remark rem:ko(2), Theorem thm:qual
 (c), Lemma lem:old (the two cases $p\,\|\,N$), the optimal-level paragraph ($N(\bar\rho)$ prime to $q$ iff $\ell\mid n_q$).
@@ -322,8 +326,8 @@ $3$-division field and the existence of an inertia-fixed $3$-torsion point agree
 **4.2 `rem:galrep:kraus-from-components`** (remark; P given 2.2 and 2.3, as an exercise). At $q\ge5$ the dictionary "type $\mapsto$
 order of $\rho(I_q)$" of 4.1 also follows from the component groups alone: for $g$ of order $m\in\{2,3,4,6\}$ in $\SL_2(\Zl)$, the fixed
 spaces of $\bar g$ on $E[2]$ and $E[3]$ are: $m=2$: $E[2]$ and $0$; $m=3$: $0$ and a line; $m=4$: a line and $0$; $m=6$: $0$ and $0$ (reduce $g$
-modulo $2$ and $3$; $\tau\not\equiv1\pmod2$ because $(1+2X)^2=-1$ has no solution in $M_2(\Z_2)$). Comparing with $\Phi_q[2]$, $\Phi_q[3]$ via 2.2 and
-the independence of $\ell$ in 2.3(i) gives $\mathrm I_0^*\mapsto2$ ($\Phi[2]=(\Z/2)^2$), $\mathrm{IV},\mathrm{IV}^*\mapsto3$, $\mathrm{III},\mathrm{III}^*\mapsto4$, $\mathrm{II},\mathrm{II}^*\mapsto6$.
+modulo $2$ and $3$; $\tau\not\equiv1\pmod2$ because $(1+2X)^2=-1$ has no solution in $M_2(\Z_2)$). Comparing with $\Phig_q[2]$, $\Phig_q[3]$ via 2.2 and
+the independence of $\ell$ in 2.3(i) gives $\mathrm I_0^*\mapsto2$ ($\Phig_q[2]=(\Z/2)^2$), $\mathrm{IV},\mathrm{IV}^*\mapsto3$, $\mathrm{III},\mathrm{III}^*\mapsto4$, $\mathrm{II},\mathrm{II}^*\mapsto6$.
 This is a second route to Kraus's table that uses only the component groups; present it as Exercise 7, not as the proof.
 Paper: background for Lemma lem:IV and Remark rem:types.
 
@@ -331,12 +335,12 @@ Paper: background for Lemma lem:IV and Remark rem:types.
 $\mathrm{IV}^*$. Then the image of $I_q$ in $\Aut(T_3E)$ is cyclic of order $3$, its image in $\Aut(E[3])$ is a nontrivial unipotent
 subgroup, $E[3]^{I_q}$ is a line, $\bar\rho_{E,3}$ is tamely ramified at $q$, and the Serre conductor of $\bar\rho_{E,3}$ has exponent $1$ at $q$.
 Proof A (the paper's, every step expanded): Kraus gives order $3$ (2.3(iv)); tame as $3\ne q$, hence cyclic, generated by $\sigma$ with
-$\det\sigma=\chi_3(\sigma)=1$ ($I_q$ fixes $\mu_3$), so by Cayley-Hamilton $\sigma^2+\sigma+1=0$ on $T$; $T$ is a module over
+$\det\sigma=\chi_3^{\mathrm{cyc}}(\sigma)=1$ ($I_q$ fixes $\mu_3$), so by Cayley-Hamilton $\sigma^2+\sigma+1=0$ on $T$; $T$ is a module over
 $\Z_3[X]/(X^2+X+1)\simeq\Z_3[\zeta_3]$ with $X$ acting as $\sigma$ (important_notes.md point 13), a DVR with uniformiser $\pi=1-\zeta_3$, residue
 field $\F_3$ (Chapter 6, 4.7); torsion-free of $\Z_3$-rank $2$, hence free of rank one (Chapter 6, 4.8); $E[3]=T/3T\simeq\Z_3[\zeta_3]/(\pi^2)$
 with $\sigma-1$ acting as $-\pi$, nonzero with square zero: a nontrivial unipotent with fixed line $\pi\Z_3[\zeta_3]/(\pi^2)$; Serre
-exponent $\dim E[3]-\dim E[3]^{I_q}+\operatorname{sw}=2-1+0=1$. Proof B (component groups; works for every prime $q\ne3$): $E[3]^{I_q}\simeq\Phi_q[3]=\Z/3$
-(2.2(i)) is a line; $I_q$ acts nontrivially on $E[3]$ (otherwise $\Phi_q[3]\supseteq(\Z/3)^2$); the elements of $\SL_2(\F_3)$ fixing a
+exponent $\dim E[3]-\dim E[3]^{I_q}+\operatorname{sw}=2-1+0=1$. Proof B (component groups; works for every prime $q\ne3$): $E[3]^{I_q}\simeq\Phig_q[3]=\Z/3$
+(2.2(i)) is a line; $I_q$ acts nontrivially on $E[3]$ (otherwise $\Phig_q[3]\supseteq(\Z/3)^2$); the elements of $\SL_2(\F_3)$ fixing a
 nonzero vector form a group $\mathrm U$ of order $3$ (Chapter 1, 5.6), so $\bar\rho(I_q)=\mathrm U$; $\rho(I_q)$ is finite (potentially good: types
 $\mathrm{IV}$, $\mathrm{IV}^*$ have $v_q(j)\ge0$, Chapter 10) and injects into $\GL_2(\F_3)$ (2.3(ii)), so $\rho(I_q)$ is cyclic of order $3$, tame. Reference:
 Kraus90; Chapter 6, 4.7, 4.8; Chapter 4, 9.4. Paper: Lemma lem:IV; Theorem thm:qual (a), (b) ("By Lemma lem:IV the Serre
@@ -390,7 +394,7 @@ thm:qual (why only (a), (b), (c)), Lemma lem:IV, the optimal-level paragraph.
 **4.6 `rem:galrep:wild-inertia`** (remark; R/S). At $q=2,3$ the type does not determine $\rho(I_q)$ (2.3(iii)): at $q=2$ the image can be
 $Q_8$ or $\SL_2(\F_3)$ (wild, absolutely irreducible, so $(\ad V)^{I_2}=0$ and the factor is $1$), cyclic of order $4$ or $6$ with a wild
 part, or cyclic of order $3$ (only for types $\mathrm{IV}$, $\mathrm{IV}^*$, by 4.4; the converse need not hold); at $q=3$ an image of order $3$
-is wild. What survives at every $q\ne\ell$: 2.2 ($E[\ell]^{I_q}\simeq\Phi_q[\ell]$ for additive reduction) and 6.2. Observed at $q=2$ (conductor
+is wild. What survives at every $q\ne\ell$: 2.2 ($E[\ell]^{I_q}\simeq\Phig_q[\ell]$ for additive reduction) and 6.2. Observed at $q=2$ (conductor
 below $10{,}000$, samples of $40$ per type, surjective mod $3$ image): for $\mathrm{II}$, $\mathrm{II}^*$, $\mathrm{III}$, $\mathrm{III}^*$, $\mathrm I_0^*$ and
 potentially good $\mathrm I_m^*$ the least common multiple of the ramification indices of $2$ in the fields of definition of the
 $3$-torsion points is $2$, $4$, $6$ or $8$ (image of order $2$, $4$, $6$, or $8$ or $24$); always $E[3]^{I_2}=0$. The Euler factors at $2$ and $3$ are PARI's (Chapter 19, 22); Remark rem:wild itself is Chapter 10's.
@@ -455,7 +459,7 @@ $p$; $0$ or $1$ at multiplicative $p$ according as $\ell\mid n_p$ or not; at add
 or $\mathrm{IV}^*$, and $f_p$ otherwise; in particular $\bar\rho_{E,\ell}$ ($\ell$ odd) is ramified at every additive prime $p\ne\ell$. Proof: the wild
 inertia $P_p$ acts on $T$ through a finite $p$-group (Chapter 7, 5.7), of order prime to $\ell$, so the fixed spaces of its ramification
 subgroups commute with reduction (Chapter 4, 3.2(ii)) and $\operatorname{sw}_p(\bar\rho)=\operatorname{sw}_p(V)$; then $f_p=2-\delta_p+\operatorname{sw}_p(V)$ (3.5) and
-$\dim E[\ell]^{I_p}=\delta_p+\dim\Phi_p[\ell]$ (2.2, 3.3). Reference: Carayol89 (divisibility, for modular forms); Livne 1989, "On the
+$\dim E[\ell]^{I_p}=\delta_p+\dim\Phig_p[\ell]$ (2.2, 3.3). Reference: Carayol89 (divisibility, for modular forms); Livne 1989, "On the
 conductors of mod $\ell$ Galois representations coming from modular forms", J. Number Theory 31 (add to `bib/ch11.bib` after
 checking); Serre87, Section 4 (examples for elliptic curves; verify). Paper: the optimal-level paragraph ("$N(\bar\rho_{E',\ell})$ divides
 the conductor of $E'$ [Carayol89]"), Theorem thm:qual (a), (b), (c) (the level $M$), Lemma lem:IV, Remark rem:types, Lemma
@@ -677,7 +681,8 @@ and $E'/\Q$ with $\ell\nmid N(E')$ and $\bar\rho=\bar\rho_{E',\ell}$ irreducible
 weight $2$ on $\Gamma_0(N(\bar\rho))$ and a prime $\lambda\mid\ell$ of its coefficient field with $\bar\rho_{g,\lambda}\simeq\bar\rho\otimes\bar\F_\ell$, i.e. $a_p(g)\equiv a_p(E')\pmod\lambda$
 for all $p\nmid\ell N(E')$. Elliptic-curve inputs proved here: $\bar\rho$ is modular of level $N(E')$ (modularity, Chapter 14), odd (1.1(iii)),
 good at $\ell$ (5.1(i), so $\delta(\bar\rho)=0$), of weight $2$ (5.1(iii)), with $\det\bar\rho=\bar\chi_\ell$ (1.1(ii)) and $N(\bar\rho)$ given by 6.2. That the
-nebentypus is trivial, and the proof (Ribet's level lowering, Carayol, Diamond), are Chapter 15's. Reference: DDT Theorem 3.15
+nebentypus is trivial is proved in Chapter 15; the theorem itself (Ribet's level lowering, Carayol, Diamond) is stated there, not
+proved (Chapter 15 proves only the specialisation to $\bar\rho_{E',\ell}$; important_notes.md B18). Reference: DDT Theorem 3.15
 (as cited by the paper; verify); Ribet90; Carayol89; Diamond95; Serre87; KhareWintenberger. Paper: the optimal-level paragraph
 of Section 3, Theorem thm:qual cases (a), (b), (c).
 
@@ -685,7 +690,7 @@ of Section 3, Theorem thm:qual cases (a), (b), (c).
 4.5 and 6.2: 121c1 (type $\mathrm{IV}$ at $11$, $\deg\varphi=6$): $N(\bar\rho_{121c1,3})=11$, $g=f_{11a}$; 121a1 (type $\mathrm{II}$, $\deg\varphi=6$): twist by $\chi_{-11}$ into class 121c,
 then 11a, $a_p(121\mathrm a1)\equiv\chi_{-11}(p)a_p(11\mathrm a1)\pmod3$; 77c1 ($\mathrm I_3$ at $7$, $\deg\varphi=6$): $N(\bar\rho_3)=11$, $77\mathrm c1\equiv11\mathrm a1\pmod3$; 539c1 ($\mathrm I_3^*$ at $7$,
 $\deg\varphi=288=2^5\cdot3^2$): twist by $\chi_{-7}$ is class 77c, then 11a; 980i1 ($\mathrm I_5^*$ at $7$, $\deg\varphi=2880$) at $\ell=5$: twist 140b1, then
-20a1, with $5\mid N$ (illustration only). All congruences checked for $p<2000$ ($p<1224$ for $\ell=5$); modular degrees from `alldegphi`.
+20a1, with $5\mid N$ (illustration only). All congruences checked for $p<2000$ ($p<1224$ for $\ell=5$); modular degrees from `degphi`.
 Paper: Section 3, Example; Theorem thm:qual.
 
 ## 3. Section plan with target line counts
@@ -702,7 +707,7 @@ Lines of LaTeX, card excluded (PLAN.md 7.3: up to 2,800 for this chapter). Items
 | 3 | Good and multiplicative reduction | 3.1 to 3.5; the Tate matrices in display; both proofs of lem:tamagawa-exp; `paperlink` for lem:tamagawa-exp (point 8), lem:tamfactor (point 42), thm:main's $\mathrm I_n^*$ step (point 18) | 300 |
 | 4 | Additive potentially good reduction | 4.1 to 4.6; the shapes table and the mod $3$ table (`booktabs`); both proofs of lem:IV; 4.4 with its consequences for prop:forms; `paperlink` for lem:IV (point 13), rem:types (point 22), lem:euler (points 12, 34), rem:wild (point 43) | 380 |
 | 5 | The representation at $\ell$ | 5.1 to 5.4; fundamental characters; the ordinary and supersingular cases; `paperlink` for lem:old ($p=\ell$) | 190 |
-| 6 | Conductors of mod $\ell$ representations | 6.1 to 6.3; the formula $a_p=f_p-\dim\Phi_p[\ell]$ with proof; the examples table | 200 |
+| 6 | Conductors of mod $\ell$ representations | 6.1 to 6.3; the formula $a_p=f_p-\dim\Phig_p[\ell]$ with proof; the examples table | 200 |
 | 7 | The images of $\bar\rho_{E,\ell}$ | 7.1 to 7.6; the mod $3$ image table (may be split in two: group data and arithmetic data); labels at $\ell=5,7,11,13$ as a small table; `paperlink` for sec:anomaly, sec:eis (point 44), sec:data | 320 |
 | 8 | Absolute irreducibility over $\Q(\sqrt{\ell^*})$; prop:ns; lem:h0 | 8.1 to 8.6; the full proofs of prop:ns (points 1, 9, 33) and lem:h0 (points 5, 6, 10, 14); 8.2 and 8.4 with their data | 400 |
 | 9 | The Eisenstein case | 9.1 to 9.3; `paperlink` for conj:eis and sec:eis (points 17, 44) | 160 |
@@ -802,7 +807,7 @@ Lines of LaTeX, card excluded (PLAN.md 7.3: up to 2,800 for this chapter). Items
     rational point of order $\ell$. Check on 14a1 and 26a1 at $\ell=3$.
 15. Check the paper's claim (Section sec:eis) that 3Cs.1.1 is "the split Cartan image": identify the images of 14a1 and of 539a2 and show the
     claim is a misdescription.
-16. Compute $N(\bar\rho_{E,3})$ from the formula $a_p=f_p-\dim\Phi_p[3]$ for 539c1, 77c1, 726a1 and 6912d1, and $N(\bar\rho_{E,5})$ for 980i1 and 140b1;
+16. Compute $N(\bar\rho_{E,3})$ from the formula $a_p=f_p-\dim\Phig_p[3]$ for 539c1, 77c1, 726a1 and 6912d1, and $N(\bar\rho_{E,5})$ for 980i1 and 140b1;
     say which of the Section 3 congruences of the paper these explain.
 
 ## 5. Dependencies and forward pointers
@@ -826,16 +831,16 @@ Results from earlier chapters used here (by chapter label only, `\Cref{ch:...}`)
 * Chapter 9 (`ch:ellcurves`): Weierstrass data (1.1 to 1.6), $\psi_3$ (4.4 to 4.6), Weil pairing, $T_\ell E$, $\rho$, $\det$, complex conjugation (5.1
   to 5.7), CM (6.3 to 6.5), curves over $\F_q$ (8.3, 8.6), torsion, isogenies, $\Z/\ell\oplus\mu_\ell$, no cyclic $27$-isogeny, prime-to-$\ell$
   isogenies (9.3 to 9.10), twists (10.1 to 10.6), labels (12.1).
-* Chapter 10 (`ch:reduction`, outlined in parallel): minimal models, reduction types, $E_0$, $E_1$, formal groups, $E/E_0\simeq\Phi$ (Neron
+* Chapter 10 (`ch:reduction`, outlined in parallel): minimal models, reduction types, $E_0$, $E_1$, formal groups, $E(K)/E_0(K)\simeq\Phi_p(k)$ (Neron
   model, Hensel), Kodaira types and component groups, Tate's algorithm, conductor exponents and Ogg's formula, the semistable
-  reduction theorem, the Tate curve and $E_q[\ell^t]$, Kraus's theorem, Lemma lem:twist (i), (ii), Remark rem:wild. Items 2.1 to 2.3, 3.2 to
+  reduction theorem, the Tate curve and $E_{\mathsf q}[\ell^t]$, Kraus's theorem, Lemma lem:twist (i), (ii), Remark rem:wild. Items 2.1 to 2.3, 3.2 to
   3.5, 4.1 to 4.6, 6.2 depend on these; they are black boxes here, cited with `\Cref{ch:reduction}`.
 
 Black boxes imported from later chapters (stated with a forward `\Cref`, never used in the proof of a numbered result of
 this chapter except where said): modularity and the Hecke algebra (Chapters 13, 14; only in 10.1 and 9.3); the Galois
 representations of newforms and the optimal-level theorem in general (Chapter 15; only in 1.4(iii), 5.3(iii), 10.1); crystalline
 representations and Bloch-Kato conditions (Chapter 18; only in 5.1(ii)); $L$-factors in the symmetric-square normalisation and
-$e_\ell(E,q)$ (Chapter 19; only in 4.4(iv) and 8.4(iv), which use the definition $L_q(A_f,s)=\det(1-\Phi_q q^{-s}\mid(\ad V)^{I_q})^{-1}$ and
+$e_\ell(E,q)$ (Chapter 19; only in 4.4(iv) and 8.4(iv), which use the definition $L_q(A_f,s)=\det(1-\Frob_q^{-1}q^{-s}\mid(\ad V)^{I_q})^{-1}$, with the geometric Frobenius $\Frob_q^{-1}$ (never $\Phi_q$ here, B-C2(b)) and
 $L_q(\Sym f,s)=L_q(A_f,s-1)$ as conventions).
 
 Forward pointers (chapters that use this one):
@@ -863,7 +868,7 @@ Forward pointers (chapters that use this one):
   and the conjugation actions use $\Frob_q$; the "action on $(\ad V)^{I_q}$" in 4.1 is the same for both, except at multiplicative
   primes (3.2(v): $q$ versus $q^{-1}$), which is exactly important_notes.md point 11.
 * Macros: `\ad` is $\operatorname{ad}^0$, `\Sym` is $\operatorname{Sym}^2$, `\Ns` prints 3Ns, `\Phig` is the geometric component group (the paper's
-  notation); use `\Phig_q` for $\Phi_q(\bar\F_q)$ in statements quoted from the paper. There is no `\O` macro: write `\mathcal{O}`.
+  notation); use `\Phig_q` for $\Phi_q(\bar\F_q)$ throughout (C2; Appendix B, B-C11(b)). There is no `\O` macro: write `\mathcal{O}`.
 * Labels: `def:galrep:...`, `thm:galrep:...`, `lem:galrep:...`, `prop:galrep:...`, `ex:galrep:...`, `rem:galrep:...`, `conv:galrep:...`,
   `cor:galrep:...`; the paper's lemmas proved here get the paper's name in the optional argument, e.g.
   `\begin{lemma}[the paper's Lemma lem:IV]\label{lem:galrep:IV}`.
@@ -893,7 +898,7 @@ Forward pointers (chapters that use this one):
   3B.1.2 depends on a convention, fixed here by the data (rational point of order $3$ for 3B.1.1). `ecdata`'s `galrep` files omit the
   label when the image is the one forced by CM (Part 6.6): say so wherever counts are quoted.
 * **$N_s(\F_3)$ is not maximal** (point 2); do not import the large-$\ell$ picture of maximal subgroups.
-* **Serre conductor versus conductor.** $a_p(\bar\rho)\le f_p$ with the defect $\dim\Phi_p[\ell]$ (6.2); a twist can lower one and not the other (4.5(b)).
+* **Serre conductor versus conductor.** $a_p(\bar\rho)\le f_p$ with the defect $\dim\Phig_p[\ell]$ (6.2); a twist can lower one and not the other (4.5(b)).
 * **Supersingular at $\ell$.** For $\ell\ge5$, $\ell\mid a_\ell$ means $a_\ell=0$ (Hasse); for $\ell=3$, $a_3\in\{0,\pm3\}$. The inertia description in 5.3(ii) is
   over $\F_{\ell^2}$.
 * **Theorem numbers.** Only cite numbers marked as sure: none in this outline is fully sure except those the paper itself
@@ -943,10 +948,11 @@ Forward pointers (chapters that use this one):
 
 ### 6.5 References and bibliography
 `SilvermanAEC`, `SilvermanATAEC`, `SerreAbelian`, `Serre72`, `Serre87`, `Kraus90`, `Zywina15`, `Sutherland16`, `Edixhoven92`, `Carayol89`,
-`Ribet90`, `Diamond95`, `DDT`, `KhareWintenberger`, `Mazur77`, `Mazur78`, `Berger`, `ecdata`, `PARI` are in `refs.bib`. Add to `bib/ch11.bib`
-(complete entries, checked against the sources): `SerreTate68` (J.-P. Serre and J. Tate, "Good reduction of abelian varieties", Ann. of
+`Ribet90`, `Diamond95`, `DDT`, `KhareWintenberger`, `Mazur77`, `Mazur78`, `Berger`, `ecdata`, `PARI` are in `refs.bib`. Add to `refs.bib`, not
+`bib/ch11.bib`, since both are needed by more than one chapter (decision B14; important_notes.md B16, B18; complete entries, checked
+against the sources): `SerreTate68` (J.-P. Serre and J. Tate, "Good reduction of abelian varieties", Ann. of
 Math. 88 (1968), 492-517) and `Livne89` (R. Livne, "On the conductors of mod $\ell$ Galois representations coming from modular forms",
-J. Number Theory 31 (1989), 133-141; check the pages). **Coordinate `SerreTate68`:** the Chapter 7 outline adds the same key to
+J. Number Theory 31 (1989), 133-141; check the pages). **Coordinate `SerreTate68` (settled by decision B14: it goes into `refs.bib`):** the Chapter 7 outline adds the same key to
 `bib/ch07.bib` and the Chapter 9 outline plans the same work for `bib/ch09.bib`; `main.tex` reads every chapter bib, so a duplicated key
 gives a BibTeX "Repeated entry" error in the full build, while `tools/build_chapter.sh 11` reads only `refs.bib` and `bib/ch11.bib`
 (Part 7, B2).
@@ -954,7 +960,7 @@ gives a BibTeX "Repeated entry" error in the full build, while `tools/build_chap
 ### 6.6 Verification log (computations done for this outline)
 
 Scripts `/tmp/ch11/scripts/` (`ec.py`, `inert.py`, `t1.py` to `t10.py`), PARI/GP 2.15 through `cypari2`; data `allcurves`, `galrep`,
-`alldegphi` for conductors $0$ to $9{,}999$ ($64{,}687$ curves) from the `ecdata` GitHub repository.
+`degphi` for conductors $0$ to $9{,}999$ ($64{,}687$ curves) from the `ecdata` GitHub repository.
 * Mod $3$ images (7.3, 7.6): for every curve, the factorisation pattern of `elldivpol(E,3)`, `polgalois` of irreducible $\psi_3$, and
   $3\mid\#E(\Q)_{\mathrm{tors}}$, against the `galrep` label. Exact agreement with the table of 7.3; the only unlabelled non-surjective cases are
   the $462$ CM curves ($j\in\{0,1728,-3375,8000,-32768,54000,287496,-884736,-12288000,16581375,-884736000,-147197952000\}$), classified
@@ -990,7 +996,7 @@ important_notes.md point 43).** Location: Proposition prop:forms ("except possib
 at $2$, where they hold as soon as $e_3(E,2)\ge1$ ... PARI's factor at $2$ is $1+2X$ for every one of them"), Remark rem:wild, Section
 sec:wild. Problem: the paper leaves as an exception, verified only numerically, a case that has a short proof. Fix: for additive
 reduction at $q\ne\ell$, $E[\ell]^{I_q}\simeq\Phi_q(\bar\F_q)[\ell]$ (the prime-to-$q$ torsion of $E_0(\Q_q^{\mathrm{ur}})$ is trivial and $E_0$ is $\ell$-divisible);
-types $\mathrm{IV}$, $\mathrm{IV}^*$ have $\Phi\simeq\Z/3$ and potentially good reduction, so $E[3]^{I_2}$ is a line, $\bar\rho_{E,3}(I_2)$ is the unipotent group of
+types $\mathrm{IV}$, $\mathrm{IV}^*$ have $\Phig_2\simeq\Z/3$ and potentially good reduction, so $E[3]^{I_2}$ is a line, $\bar\rho_{E,3}(I_2)$ is the unipotent group of
 order $3$, and $\rho_{E,\ell}(I_2)$ is cyclic of order $3$ for every odd $\ell$ (finite subgroups of $\GL_2(\Z_3)$ inject mod $3$; independence of $\ell$,
 Serre-Tate). The image is tame, Frobenius at $2$ inverts it ($2\equiv-1\bmod3$), and the proof of Lemma lem:euler for types
 $\mathrm{IV}$, $\mathrm{IV}^*$ applies verbatim: $L_2(A_f,s)^{-1}=1+2^{-s}$, $P_2(X)=1+2X$, $e_3(E,2)=v_3(3/2)=1$ (and $e_\ell(E,2)=0$ for $\ell\ge5$). So

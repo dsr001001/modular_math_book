@@ -79,7 +79,7 @@ written outlines assume):
   and the easy direction "good reduction at $p\ne\ell$ implies unramified with $\rho(\Frob_p)$ of characteristic polynomial
   $X^2-a_pX+p$".
 * **Chapter 14** supplies: modularity, $X_0(N)$, the optimal curve and its Cremona label, the modular degree, the
-  Manin constant and the formula $\degphi=4\pi^2c^2\langle f,f\rangle/\operatorname{vol}(\Lambda_E)$. Chapter 9 defines
+  Manin constant $c_E$ and the formula $\degphi=4\pi^2c_E^2\langle f,f\rangle/\operatorname{vol}(\Lambda_E)$. Chapter 9 defines
   $\Lambda_E$ and its area and records the convention "Cremona's curve number 1 is the optimal curve" as a convention
   with the exception 990h (item 12.1).
 * **Chapter 12** supplies the fundamental domain for $\SL_2(\Z)$, modular functions, the $q$-expansion of $j$, the
@@ -117,12 +117,13 @@ written outlines assume):
   $\chi_\ell$ only where no quadratic character of conductor $\ell$ is in sight, and $\bar\chi_\ell$ is its reduction; the
   `paperlink` environments use the paper's notation and say so.
 * **C5 (Frobenius).** For $E$ over a finite field $\F_{\mathfrak q}$ the Frobenius endomorphism $\pi\colon(x,y)\mapsto(x^{\mathfrak q},y^{\mathfrak q})$ acts on
-  $E(\bar\F_p)$ exactly as the arithmetic Frobenius $\phi_{\mathfrak q}\in G_{\F_{\mathfrak q}}$ ($t\mapsto t^{\mathfrak q}$). For $E/\Q$ with good reduction at
+  $E(\bar\F_p)$ exactly as the arithmetic Frobenius $\Frob_{\mathfrak q}\in G_{\F_{\mathfrak q}}$ ($t\mapsto t^{\mathfrak q}$). For $E/\Q$ with good reduction at
   $p\ne\ell$, $\Frob_p$ in a group-theoretic statement is an **arithmetic** Frobenius (Chapter 6, 3.7; Chapter 21, C2(a));
   $\rho_{E,\ell}(\Frob_p)$ has characteristic polynomial $X^2-a_pX+p$. The Euler factor of $E$ is
   $\det(1-\Frob_p\,p^{-s}\mid V_\ell E)^{-1}$ with the arithmetic Frobenius on $V_\ell E$, equivalently with the geometric
   Frobenius on the dual $V_\ell E^\vee=H^1$; with the geometric Frobenius on $V_\ell E$ itself one gets $L_p(E,s+1)$, because
-  $V_\ell E\simeq V_\ell E^\vee(1)$ (item 5.5). The chapter states this in a `convention` and Chapter 19 and Chapter 21 must
+  $V_\ell E\simeq V_\ell E^\vee(1)$ (item 5.5). In the book's notation (Appendix B, B-C2, B-C3), with $\Phi_p=\Frob_p^{-1}$ the geometric
+  Frobenius: $L_p(E,s)=L_p(V_\ell E^\vee,s)=\det(1-\Phi_p\,p^{-s}\mid V_\ell E^\vee)^{-1}$ and $L_p(V_\ell E,s)=L_p(E,s+1)$. The chapter states this in a `convention` and Chapter 19 and Chapter 21 must
   match it (see Part 8, B3).
 * **C6 (labels).** Cremona labels are written as the paper writes them (11a1, 121c, 99A1); "class 121c" means the
   isogeny class, "121c1" the curve. The capital letters of Cremona's book and of ARS12 (99A1) denote the same
@@ -381,8 +382,8 @@ uses it for "irreducible implies absolutely irreducible" (important_notes.md poi
 
 **5.7 `conv:ellcurves:frobenius`** (convention and warning). C5 of Part 1 typeset as a `convention`: arithmetic
 Frobenius in group-theoretic statements, $\rho_{E,\ell}(\Frob_p)$ with characteristic polynomial $X^2-a_pX+p$; the Euler factor
-of $E$ is $\det(1-\Frob_p^{\mathrm{arith}}p^{-s}\mid V_\ell E)^{-1}=\det(1-\Frob_p^{\mathrm{geom}}p^{-s}\mid V_\ell E^\vee)^{-1}$, while
-$\det(1-\Frob_p^{\mathrm{geom}}p^{-s}\mid V_\ell E)^{-1}=L_p(E,s+1)$ (by 5.5). On $\ad V$ the two conventions differ only where an
+of $E$ is $\det(1-\Frob_pp^{-s}\mid V_\ell E)^{-1}=\det(1-\Phi_pp^{-s}\mid V_\ell E^\vee)^{-1}$, while
+$\det(1-\Phi_pp^{-s}\mid V_\ell E)^{-1}=L_p(E,s+1)$ (by 5.5). On $\ad V$ the two conventions differ only where an
 eigenvalue $q^{\pm1}$ occurs (important_notes.md point 11; the $L$-factors of the adjoint are Chapters 18, 19).
 
 ### Section 6. Endomorphisms and complex multiplication
@@ -499,7 +500,7 @@ background for Section 1 and Chapter 14 (11a1 has $\degphi=1$).
 
 **8.1 `def:ellcurves:frobendo`** (definition and proposition; S). Let $E/\F_{\mathfrak q}$, $\mathfrak q=p^r$. The $\mathfrak q$-th power map
 $\pi\colon(x,y)\mapsto(x^{\mathfrak q},y^{\mathfrak q})$ is an endomorphism of $E$ of degree $\mathfrak q$, purely inseparable, and acts on $E(\bar\F_p)$ as the
-arithmetic Frobenius $\phi_{\mathfrak q}$ (C5). $E(\F_{\mathfrak q^n})=\ker(1-\pi^n)$. $1-\pi$ is separable ($(1-\pi)^*\omega=\omega\ne0$; AEC III.5.5 and
+arithmetic Frobenius $\Frob_{\mathfrak q}$ (C5); $\pi$ is written $\pi_{\mathfrak q}$ when the field must be shown (Appendix B, B-C2(g)). $E(\F_{\mathfrak q^n})=\ker(1-\pi^n)$. $1-\pi$ is separable ($(1-\pi)^*\omega=\omega\ne0$; AEC III.5.5 and
 II.4.2(c), verify), so $\#E(\F_{\mathfrak q})=\deg(1-\pi)$. Put $a_{\mathfrak q}=\mathfrak q+1-\#E(\F_{\mathfrak q})$. Reference: AEC II.2, III.5, V.1. Paper:
 the table of Section 1 ($a_q(E')$), Lemma lem:old ($X^2-a_p(h)X+p$), Definition def:terms ($a_q(E)$).
 
@@ -727,7 +728,7 @@ Section 1.4.
 included), so $a_p\in\{1,-1,0\}$ for $p\mid N$ according as the reduction is split multiplicative, nonsplit multiplicative or
 additive. (i) $L(E,s)=\prod_{p\nmid N}(1-a_pp^{-s}+p^{1-2s})^{-1}\prod_{p\mid N}(1-a_pp^{-s})^{-1}=\sum_{n\ge1}a_nn^{-s}$ converges absolutely for
 $\operatorname{Re}s>3/2$ (Hasse, 8.2: $|a_n|\le d(n)\sqrt n$). (ii) $a_{mn}=a_ma_n$ for coprime $m,n$; $a_{p^{k+1}}=a_pa_{p^k}-pa_{p^{k-1}}$ for $p\nmid N$;
-$a_{p^k}=a_p^k$ for $p\mid N$. (iii) For $p\ne\ell$ the local factor is $\det(1-\Frob_p^{\mathrm{arith}}p^{-s}\mid V_\ell E^{I_p})^{-1}$ (C5): at good $p$ by
+$a_{p^k}=a_p^k$ for $p\mid N$. (iii) For $p\ne\ell$ the local factor is $\det(1-\Frob_pp^{-s}\mid V_\ell E^{I_p})^{-1}$ (C5): at good $p$ by
 8.6; at bad $p$ the statement is Chapter 11 (dimension of $V^{I_p}$ is $1$ or $0$, the paper's $\delta_p$). Isogenous curves have
 the same $L$-function (9.4); $L(E^{(d)},s)$ has the same local factors as the twist $\sum\chi_d(n)a_nn^{-s}$ at the primes
 $p\nmid ND$ (10.4). (iv) (Modularity, Chapter 14; Chapter 19) $L(E,s)=L(f_E,s)$ for the newform $f_E$ of level $N$, it has an
@@ -771,8 +772,8 @@ Section sec:data).
 Supporting curves: 77c1 ($N=77$, $\degphi=6$, $=\text{539c1}^{(-7)}$), 140b1 ($N=140$, $\degphi=60$, $=\text{980i1}^{(-7)}$), 539d1 ($\mathrm I_0^*$ at
 $7$, $\degphi=72$, $=\text{11a3}^{(-7)}$), 14a1 ($E[3]\simeq\Z/3\oplus\mu_3$), 338d1 and 6912d1 (3Ns), 27a1, 32a1, 36a1, 121b1 (CM).
 Note that 539c1, 726a1 and 99a1 have rank $1$. Reference: Cremona97 and `ecdata` (`allcurves`, `allisog`, `degphi`,
-`galrep`, `alllabels`). Paper: the Example of Section 3, the remark on 99A1 (ARS12 Table 1: $r_E=12$, not recomputed
-here), the appendix (121a1, 726a1), Section sec:anomaly (726a1), Section sec:eis.
+`galrep`, `alllabels`). Paper: the Example of Section 3, the remark on 99A1 (ARS12 Table 1: $r_E=12$; recomputed by
+the Chapter 14 outline, its 8.5 and 9.4, which the writer cites; important_notes.md B19), the appendix (121a1, 726a1), Section sec:anomaly (726a1), Section sec:eis.
 
 ## 3. Section-by-section plan with target line counts
 
@@ -935,7 +936,7 @@ degree, Manin constant (Chapter 14); analytic continuation of $L(E,s)$ (Chapter 
 Forward pointers (chapters that use this one):
 * Chapter 10 (`ch:reduction`): Weierstrass data and coordinate changes (1.1 to 1.3) for minimal models and Tate's
   algorithm; twists and their invariants (10.1, 10.2) for Lemma lem:twist (i), (ii); $\#\tilde E(\F_p)$ and $a_p$ at bad primes
-  (8.7, 11.1); the Tate curve's $E_q[\ell^t]$ uses $E[\ell^t]$ (3.5, 5.3); 9.9(iii).
+  (8.7, 11.1); the Tate curve's $E_{\mathsf q}[\ell^t]$ uses $E[\ell^t]$ (3.5, 5.3); 9.9(iii).
 * Chapter 11 (`ch:galrep`): $\rho$, $\bar\rho$, $\det=\chi_\ell$, complex conjugation (5.2 to 5.6); the division polynomial (4.5, 4.6) for
   Proposition prop:ns; CM (6.5) and twists (10.3) for Lemma lem:h0; rational isogenies and $\Z/\ell\oplus\mu_\ell$ (9.5 to 9.8) for the
   Eisenstein case and the labels 3B.1.1, 3Cs.1.1; 8.6 (easy half of Neron-Ogg-Shafarevich).
@@ -970,8 +971,8 @@ Pitfalls and conventions:
   ($\mathrm I_1^*$); the twist of 121a1 is 121c2, not 121c1; the twist of 11a1 by $-7$ is 539d2. Statements about $a_p$, $L$, $V_\ell$
   and (for $\ell$ prime to the isogeny degrees) $T_\ell$ are class-level; statements about $j$, $\Delta$, types, torsion and
   $v_q(j)$ are curve-level (Part 8, B2).
-* **Frobenius (C5, 5.7).** $\pi$ on $\tilde E$ is the arithmetic Frobenius. $\det(1-\Frob^{\mathrm{arith}}X\mid V_\ell E)=1-a_pX+pX^2$, while
-  $\det(1-\Frob^{\mathrm{geom}}X\mid V_\ell E)=1-\frac{a_p}pX+\frac1pX^2$. Do not write "the geometric Frobenius on $V_\ell E$ has eigenvalues
+* **Frobenius (C5, 5.7).** $\pi$ on $\tilde E$ is the arithmetic Frobenius. $\det(1-\FrobX\mid V_\ell E)=1-a_pX+pX^2$, while
+  $\det(1-\PhiX\mid V_\ell E)=1-\frac{a_p}pX+\frac1pX^2$. Do not write "the geometric Frobenius on $V_\ell E$ has eigenvalues
   $\alpha,\beta$" (that is the slip recorded in important_notes.md B1).
 * **Weil pairing sign (C7).** State Silverman's definition; the comparison with $e^{2\pi i/m}$ over $\C$ has a sign that
   differs between sources: check before printing.
@@ -997,7 +998,8 @@ Pitfalls and conventions:
   (Invent. Math. 73), Kenku 1982 (J. Number Theory 15), Deuring 1941 (Abh. Math. Sem. Hamburg 14), Serre-Tate 1968
   (Ann. of Math. 88), Washington's *Elliptic Curves: Number Theory and Cryptography* (2nd ed., 2008), Cox's *Primes of
   the form $x^2+ny^2$*, Cohen's *A course in computational algebraic number theory*, and optionally
-  Lozano-Robledo 2013. Check every entry before adding.
+  Lozano-Robledo 2013. Check every entry before adding. Exception (decision B14, important_notes.md B16, B19): Serre-Tate 1968
+  (`SerreTate68`) and Kenku (`Kenku`) are needed by more than one chapter and go into `refs.bib`, not `bib/ch09.bib`.
 
 What to leave to other chapters (and not do here):
 * Chapter 8: Riemann-Roch, existence of the Weierstrass model, the $\operatorname{Pic}^0$ bijection, unramifiedness of isogenies,
@@ -1047,8 +1049,8 @@ $0$ to $9{,}999$). The LMFDB API was not reachable (captcha), so LMFDB labels co
 * `ecdata`: torsion orders, class sizes, isogeny degrees, the 27a isogeny matrix and $j$-values, label/isogeny
   consistency at $\ell=3,5,7$, 3Cs.1.1 versus $9$-torsion, the six curves with a point of order $9$ (all 3B.1.1), CM curves
   and conductors, the 990h exception, modular degrees and images of the running examples, LMFDB labels.
-* Not recomputed: Kodaira types at $2$ and $3$ (taken from the Chapter 21 outline's Tate algorithm), $r_E=12$ for 99A1
-  (ARS12), anything beyond conductor $10{,}000$.
+* Not recomputed here: Kodaira types at $2$ and $3$ (taken from the Chapter 21 outline's Tate algorithm), anything beyond
+  conductor $10{,}000$. ($r_E=12$ for 99A1 is recomputed in the Chapter 14 outline, 8.5, and in the Chapter 13 outline; cite Chapter 14.)
 
 ## 8. Points for important_notes.md
 
@@ -1071,7 +1073,7 @@ New points about the paper in this chapter's area (not already recorded; each ch
 
 Book-internal inconsistencies found:
 * **B1 extension (Frobenius on $V_\ell E$).** The Chapter 21 outline, C2(b), says that with the geometric Frobenius
-  $L_p(V_\ell E,s)=(1-a_pp^{-s}+p^{1-2s})^{-1}$ and $\det(1-\Frob^{\mathrm{geom}}X\mid V)=(1-\alpha X)(1-\beta X)$. Both are wrong: with the geometric
+  $L_p(V_\ell E,s)=(1-a_pp^{-s}+p^{1-2s})^{-1}$ and $\det(1-\PhiX\mid V)=(1-\alpha X)(1-\beta X)$. Both are wrong: with the geometric
   Frobenius on $V_\ell E$ the factor is $(1-\frac{a_p}pp^{-s}+\frac1pp^{-2s})^{-1}=L_p(E,s+1)$; the stated formula holds for $V_\ell E^\vee=H^1$ (or
   with the arithmetic Frobenius on $V_\ell E$). Nothing on $\ad V$ changes. Chapter 9 fixes the convention in C5 and 5.7.
 * **B2. Curve-level twist identifications.** important_notes.md point 15 says the twist of 11a1 by $\chi_{-11}$ has type $\mathrm I_1^*$; in

@@ -57,9 +57,9 @@ Split with the neighbouring chapters (decided here; each decision is repeated in
   Nakayama, DVRs and $\Zl$, finitely generated modules over a DVR (torsion-free implies free; cyclic iff the
   $\lambda$-torsion has length at most one), saturation, perfect pairings and Gram determinants, Pontryagin
   duality, generalised eigenspaces of a single operator. Chapter 4 uses these for $\mathcal{O}[G]$-lattices and does not
-  redo them. **Jordan-Holder** is in PLAN.md's Chapter 4 scope and is proved here (item 3.4) for modules of finite
-  length over an arbitrary ring; if Chapter 3 needs well-defined lengths before Chapter 4, it should use the
-  structure theorem over a DVR (length of $\bigoplus\mathcal{O}/\lambda^{a_i}$ is $\sum a_i$) or cite this chapter forward.
+  redo them. **Jordan-Holder** is proved in Chapter 3 (for modules of finite length over any ring, where it is first
+  needed for lengths over a local ring) and is cited here (item 3.4), which adds only the reading for $k[G]$- and
+  $\mathcal{O}[G]$-modules (composition factors of representations): decision B2 of important_notes.md, PLAN.md 7.5.
 * **Chapter 5** proves the profinite and Galois forms: continuity, existence of stable lattices for compact
   images (its galois:continuous-reps (c)), Chebotarev plus Brauer-Nesbitt (its galois:chebotarev-brauer-nesbitt,
   galois:congruent-ap), the cyclotomic determinant argument (its galois:twist (c)), complex conjugation (its
@@ -118,8 +118,8 @@ Split with the neighbouring chapters (decided here; each decision is repeated in
   $n$, Chapter 3). Two lattices $L,L'$ are homothetic if $L'=cL$ for some $c\in K^\times$ (equivalently $L'=\lambda^mL$,
   $m\in\Z$).
 * **C8 (no Frobenius here).** The chapter never uses Frobenius elements. Where the paper's Frobenius appears (9.1
-  (iv), 9.3) it is an abstract $\Phi\in\GL(V)$ with $\Phi g\Phi^{-1}=g^q$ (the arithmetic convention of Chapter 5, C2,
-  and Chapter 7); the geometric Frobenius $\Phi^{-1}$ gives the inverse eigenvalues (important_notes.md point 11).
+  (iv), 9.3) it is an abstract $F\in\GL(V)$ with $FgF^{-1}=g^q$ (the arithmetic convention of Chapter 5, C2,
+  and Chapter 7); the geometric Frobenius $F^{-1}$ gives the inverse eigenvalues (important_notes.md point 11).
 * **C9 (typography).** PLAN.md Section 7.2: no dash ligatures, ASCII source, labels `...:reps:...`; "Jordan-Holder",
   "Brauer-Nesbitt", "Frobenius reciprocity" with plain hyphens; tables with `booktabs`.
 
@@ -254,12 +254,12 @@ tame inertia at a multiplicative prime). (d) $\mathrm B(\F_3)$ on $\F_3^2$ is in
 example (a)), Lemma lem:tamfactor and Lemma lem:euler type $\mathrm I_n$ (example (c)), Conjecture conj:eis (Borel
 images).
 
-**3.4 `thm:reps:jordan-holder`** (theorem, Jordan-Holder; P). Let $A$ be any ring (here $k[G]$ or $\mathcal{O}[G]$) and $M$ an
+**3.4 `thm:reps:jordan-holder`** (theorem, Jordan-Holder; R: proved in Chapter 3, cited with `\Cref{ch:modules}`, decision B2). Let $A$ be any ring (here $k[G]$ or $\mathcal{O}[G]$) and $M$ an
 $A$-module of finite length (for instance a finite-dimensional representation, or a finite $\mathcal{O}[G]$-module). Then $M$
 has a composition series $0=M_0\subset M_1\subset\dots\subset M_r=M$ with simple quotients, and the multiset of
 isomorphism classes of the quotients $M_i/M_{i-1}$ (the composition factors, with multiplicity) and the length $r$
-are independent of the series. Proof by induction on the minimal length of a composition series (compare two series
-through $M_{r-1}\cap M'_{s-1}$). Reference: Lang, Chapter III (composition series); Dummit-Foote Section 3.4 (for
+are independent of the series. Not proved here: Chapter 3 proves it (by induction on the minimal length of a composition
+series, comparing two series through $M_{r-1}\cap M'_{s-1}$); this item only restates it for $k[G]$- and $\mathcal{O}[G]$-modules. Reference: Lang, Chapter III (composition series); Dummit-Foote Section 3.4 (for
 groups; the module case is identical). Paper: background (semisimplification in Lemma lem:old; lengths of finite
 $\Zl$-modules in Theorem thm:main, through Chapter 3).
 
@@ -495,9 +495,9 @@ step (2) observes with $\mu_{\ell^k}(\Q)=0$), Proposition prop:ns ("$H^0(\Q,\ad\
 
 **7.5 `prop:reps:sym2`** (proposition; P). Let $\dim V=2$ with basis $e_1,e_2$, $\omega(x,y)=\det[x\,|\,y]$, and $\Sym V$ the
 symmetric square (quotient of $V\otimes V$ by $x\otimes y-y\otimes x$), with basis $e_1^2,e_1e_2,e_2^2$; if $\rho(g)$ has eigenvalues
-$\lambda,\mu$, then $\Sym\rho(g)$ has $\lambda^2,\lambda\mu,\mu^2$. (i) The map $\Phi\colon\Sym V\to\ad V$, $\Phi(xy)(v)=\omega(v,x)y+\omega(v,y)x$, is
-well defined, lands in trace zero, and satisfies $\Phi(g\cdot m)=\det(g)\,\rho(g)\Phi(m)\rho(g)^{-1}$, so it is a $G$-map
-$\Sym V\otimes\det^{-1}\to\ad V$. In coordinates $\Phi(e_1^2)=-2e$, $\Phi(e_1e_2)=h$, $\Phi(e_2^2)=2f$; so $\Phi$ is an isomorphism iff
+$\lambda,\mu$, then $\Sym\rho(g)$ has $\lambda^2,\lambda\mu,\mu^2$. (i) The map $\Xi\colon\Sym V\to\ad V$, $\Xi(xy)(v)=\omega(v,x)y+\omega(v,y)x$, is
+well defined, lands in trace zero, and satisfies $\Xi(g\cdot m)=\det(g)\,\rho(g)\Xi(m)\rho(g)^{-1}$, so it is a $G$-map
+$\Sym V\otimes\det^{-1}\to\ad V$. In coordinates $\Xi(e_1^2)=-2e$, $\Xi(e_1e_2)=h$, $\Xi(e_2^2)=2f$; so $\Xi$ is an isomorphism iff
 $2$ is invertible (over $\Z$ its image has index $4$; over $\Zl$ it is an isomorphism of lattices iff $\ell$ is odd). (ii)
 Hence $\ad\rho\simeq\Sym\rho\otimes\det^{-1}$ and $\Sym\rho\simeq\ad\rho\otimes\det$; and, for $\operatorname{char}k\ne2$, $V\otimes V\simeq\Sym V\oplus\det$
 and $V\otimes V^\vee\simeq\ad V\oplus\mathbf1$. (iii) (Normalisations; Galois input from Chapters 9, 18, 19.) With $V=V_\ell E$,
@@ -599,9 +599,9 @@ hypothesis of Theorem thm:main at $\ell=3$, Section sec:anomaly; Chapter 11 asse
 line; if $\varepsilon\ne1$, $V^{\varepsilon u}=0$ (in particular for "minus a unipotent", $\varepsilon=-1$, $\operatorname{char}k\ne2$). (ii) If
 $\operatorname{char}k\ne2$: $(\ad V)^u=(\ad V)^{\varepsilon u}=k\,(u-1)=k\,e$, a line (by the formulas of 7.3(iii): $(t-1)h=-2n'e$,
 $(t-1)f=n'h-n'^2e$); in characteristic $2$ it is the plane $ke+kh$. The same holds for the group generated by $u$ (or by
-$\varepsilon u$), and for a group acting through $\langle\varepsilon\rangle\times\langle u\rangle$ with $\varepsilon$ scalar. (iii) If $\Phi\in\GL_2(k)$
-satisfies $\Phi u\Phi^{-1}=u^q$ ($q\in\Z$; or $q\in\Zl$ when $u$ lies in a pro-$\ell$ group, Chapter 7), then $\Phi$ preserves
-$(\ad V)^u$ and acts on it by $q$: $\Phi(u-1)\Phi^{-1}=u^q-1=q(u-1)$ since $(u-1)^2=0$. Then $\Phi^{-1}$ acts by $q^{-1}$. Reference:
+$\varepsilon u$), and for a group acting through $\langle\varepsilon\rangle\times\langle u\rangle$ with $\varepsilon$ scalar. (iii) If $F\in\GL_2(k)$
+satisfies $FuF^{-1}=u^q$ ($q\in\Z$; or $q\in\Zl$ when $u$ lies in a pro-$\ell$ group, Chapter 7), then $F$ preserves
+$(\ad V)^u$ and acts on it by $q$: $F(u-1)F^{-1}=u^q-1=q(u-1)$ since $(u-1)^2=0$. Then $F^{-1}$ acts by $q^{-1}$. Reference:
 elementary; Chapter 1, 5.6 for the group facts. Paper: Lemma lem:IV ("its image in $\Aut(E[3])$ is a nontrivial unipotent
 subgroup ... $E[3]^{I_q}$ is a line"), Remark rem:types ("minus a unipotent", "a ramified quadratic character times a
 unipotent": $E[3]^{I_q}=0$), Lemma lem:euler type $\mathrm I_n$ ("$(\ad V)^{I_q}$ is a line with eigenvalue $q^{-1}$": by (iii), the
@@ -626,7 +626,7 @@ of unity, and characteristic polynomial $\Phi_m$: $X^2+X+1$, $X^2+1$, $X^2-X+1$ 
 of order $3$. (Proof: $g^m=1$ with $X^m-1$ separable, so $g$ is diagonalisable over $\bar K$; $\det g=1$ pairs the eigenvalues;
 $g\ne\pm1$ for $m\ge3$.) Fixed spaces, with 9.1 and 9.2 (checked over $\Q$ and over $\F_3$, Part 7):
 
-| shape of the image of inertia | Kodaira types at $q\ge5$ (Ch. 10, 11) | $\dim V^I$ | $\dim(\ad V)^I$ | generator of $(\ad V)^I$ | action of $\Phi$ ($\Phi g\Phi^{-1}=g^q$) on it | mod $3$: $\dim(T/3T)^I$ |
+| shape of the image of inertia | Kodaira types at $q\ge5$ (Ch. 10, 11) | $\dim V^I$ | $\dim(\ad V)^I$ | generator of $(\ad V)^I$ | action of $F$ ($FgF^{-1}=g^q$) on it | mod $3$: $\dim(T/3T)^I$ |
 |-|-|-|-|-|-|-|
 | trivial | $\mathrm I_0$ | 2 | 3 | all of $\ad V$ | eigenvalues $\alpha/\beta,1,\beta/\alpha$ (7.3(ii)) | 2 |
 | $\{\pm1\}$ | $\mathrm I_0^*$ | 0 | 3 | all of $\ad V$ | as for the twist $E'$ (7.1(iii)) | 0 |
@@ -840,7 +840,7 @@ ________________________________________________________________________________
 9. Let $H\le G$ have index $2$ and $V$ be absolutely irreducible of dimension $2$, $\operatorname{char}k\ne2$. Prove directly that
    $V\simeq V\otimes\chi_H$ iff $\tr\rho(g)=0$ for all $g\notin H$, and deduce that the standard representation of $\GL_2(\F_3)$ is not
    isomorphic to its twist by $\det$.
-10. Prove $\ad V\simeq\Sym V\otimes\det^{-1}$ for $\dim V=2$ by the explicit map $\Phi$ of 7.5, and show that over $\Z$ the image of
+10. Prove $\ad V\simeq\Sym V\otimes\det^{-1}$ for $\dim V=2$ by the explicit map $\Xi$ of 7.5, and show that over $\Z$ the image of
     $\Sym\Z^2$ has index $4$ in $\ad\Z^2$. Deduce the eigenvalues $\alpha/\beta$, $1$, $\beta/\alpha$ from $\alpha^2,\alpha\beta,\beta^2$.
 11. Compute the Gram matrix of the trace form on $\ad\Zl^2$ in the basis $e,h,f$, and check the paper's identification
     $T^D=\Hom(A,\Zl(1))\simeq A(1)$ (Section 4.2) for $\ell$ odd. What goes wrong for $\ell=2$?
@@ -848,7 +848,7 @@ ________________________________________________________________________________
     $F=\begin{pmatrix}\varepsilon q&c'\\0&\varepsilon\end{pmatrix}$ with $\varepsilon=\pm1$, $FeF^{-1}=qe$, $FhF^{-1}=h-2c'\varepsilon e$.
 13. For each of $g=-1$, $g$ of order $3$, $4$, $6$ in $\SL_2(\Z)$, $g=u$ and $g=-u$, compute $\dim V^g$ and $\dim(\ad V)^g$ over $\Q$ and
     over $\F_3$, and check the paper's claims in Lemma lem:IV and Remark rem:types about $E[3]^{I_q}$.
-14. Let $\Phi u\Phi^{-1}=u^q$ with $u\ne1$ unipotent. Show that $\Phi$ acts on $(\ad V)^u$ by $q$, and explain why the paper's
+14. Let $FuF^{-1}=u^q$ with $u\ne1$ unipotent. Show that $F$ acts on $(\ad V)^u$ by $q$, and explain why the paper's
     factor $1-q^{-1-s}$ at a multiplicative prime requires the geometric Frobenius (important_notes.md point 11).
 15. Show that for a finite group of order prime to $\ell$ invariants commute with reduction modulo $\ell$, and that this
     fails for $g\in\SL_2(\Z_3)$ of order $3$ (Lemma lem:IV), although it holds for the invariants of $\ad$.
@@ -882,7 +882,7 @@ Black boxes imported from later chapters (stated with a forward `\Cref`, never u
 of this chapter): Galois representations, continuity, complex conjugation, $\det\bar\rho_{E,\ell}=\bar\chi_\ell$ (Chapters 5, 9,
 11), the assignment of inertia shapes to Kodaira types (Kraus; Chapters 10, 11), the Frobenius action $\chi_{-3}(q)$,
 $\chi_{-4}(q)$ on the invariant lines and the $\Zl[\zeta_3]$-module structure (Chapter 6), Tate twists and $L$-factors
-(Chapters 18, 19). They appear only in `paperlink` environments, in the "Kodaira types" and "action of $\Phi$" columns
+(Chapters 18, 19). They appear only in `paperlink` environments, in the "Kodaira types" and "action of $F$" columns
 of the table of 9.3, in 9.4(v), 7.5(iii) and 11.1.
 
 Forward pointers (chapters that use this one):
@@ -959,7 +959,7 @@ Pitfalls:
   $V_\ell E$ it is the arithmetic Frobenius that has eigenvalues $\alpha,\beta$, and the geometric one has $\alpha^{-1},\beta^{-1}$; the
   statement is right for $V_\ell E^\vee=H^1$. This does not affect any number in the paper.)
 * **Frobenius conventions** (important_notes.md point 11). This chapter never uses Frobenius; 9.1(iii) and 9.3 state the
-  eigenvalue for an abstract $\Phi$ with $\Phi g\Phi^{-1}=g^q$ (arithmetic) and note that $\Phi^{-1}$ (geometric) gives the inverse.
+  eigenvalue for an abstract $F$ with $FgF^{-1}=g^q$ (arithmetic) and note that $F^{-1}$ (geometric) gives the inverse.
 * **Name of 10.3.** PLAN.md calls the homothety statement "Ribet's lemma"; in the literature Ribet's lemma usually means
   the converse construction 10.4(ii). Call 10.3 "the homothety lemma" and mention both names once.
 * **Dual lattices** (important_notes.md point 26). $M_{f,\lambda}$ of DFG04 sits in $H^1$, dual to the Tate module; 10.3 gives
@@ -1015,14 +1015,14 @@ All scripts were short Python/sympy programs in `/tmp/ch04` (`gl23.py`, `sym.py`
   $N_s(\F_3)$ all have trace $0$, those of $N_{ns}(\F_3)$ and $\GL_2(\F_3)$ have traces $0,\pm1$, the nonzero ones exactly the
   elements of order $8$. $N_{ns}(\F_3)\simeq N_{ns}\otimes\chi_{ns}$ for the character with kernel $C_{ns}$ (invertible intertwiner
   found).
-* Symbolic (sympy): $\Ad(g)\Phi=\Phi\,\Sym(g)\det(g)^{-1}$ for general $g$ with $\Phi(e_1^2)=-2e$, $\Phi(e_1e_2)=h$, $\Phi(e_2^2)=2f$; the Gram
+* Symbolic (sympy): $\Ad(g)\Xi=\Xi\,\Sym(g)\det(g)^{-1}$ for general $g$ with $\Xi(e_1^2)=-2e$, $\Xi(e_1e_2)=h$, $\Xi(e_2^2)=2f$; the Gram
   matrix of $\tr(xy)$ on $e,h,f$ and its determinant $-2$; $(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$ for $t=\begin{pmatrix}1&n'\\0&1\end{pmatrix}$;
   $\Ad\begin{pmatrix}\varepsilon q&c'\\0&\varepsilon\end{pmatrix}$ on $e,h,f$ (7.3(iii)); $\Ad\operatorname{diag}(x,y)=\operatorname{diag}(x/y,1,y/x)$.
 * For $g\in\{-1,\begin{pmatrix}0&-1\\1&-1\end{pmatrix},J,\begin{pmatrix}1&-1\\1&0\end{pmatrix},u,-u\}$: orders $2,3,4,6,\infty,\infty$, characteristic polynomials
   $(X+1)^2$, $X^2+X+1$, $X^2+1$, $X^2-X+1$, $(X-1)^2$, $(X+1)^2$; $\dim V^g=0,0,0,0,1,0$ and $\dim(\ad V)^g=3,1,1,1,1,1$ over $\Q$, with
   generators $2\sigma+1$ (orders $3$ and $6$, up to a factor $2$), $J$ (order $4$), $e$ ($\pm u$); over $\F_3$: $\dim V^g=0,1,0,0,1,0$ and
   $\dim(\ad V)^g=3,1,1,1,1,1$ (the table of 9.3 and 9.4).
-* By hand: the Brauer-Nesbitt example 4.5; $\Phi(e_1^2)$, $\Phi(e_1e_2)$, $\Phi(e_2^2)$ from the formula of 7.5; the matrix of $\Ind\psi$ in 6.1;
+* By hand: the Brauer-Nesbitt example 4.5; $\Xi(e_1^2)$, $\Xi(e_1e_2)$, $\Xi(e_2^2)$ from the formula of 7.5; the matrix of $\Ind\psi$ in 6.1;
   the intertwiners $J$, $\sigma$, $w$ of 8.2 (via $J\sigma=-\sigma J$, $wJ=-Jw$, $w\sigma=-\sigma w$); $\theta(a)=1+i$, $\theta(a)^3=1-i$ (8.3); the
   determinant obstruction $x^2\equiv1\pmod{\ell^m}$ for all units only for $\ell^m=3$ ($\ell$ odd).
 
@@ -1050,7 +1050,7 @@ conclusion $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$ over $\F_3$ is correct).
 element".** Location: Section 2, proof of Lemma lem:euler. Problem: for $\ell\equiv3\pmod4$ the generator $\tau$ of the image of
 inertia (eigenvalues $\pm i$) has no eigenvectors over $\Ql$, so there is no "diagonal element" in $\ad V$ over $\Ql$; the
 invariant line of $\ad V$ is $\Ql\tau$ (9.2), which is diagonal, equal to $i\operatorname{diag}(1,-1)$, only in an eigenbasis over
-$\Ql(i)$. The Frobenius eigenvalue on the line is $\chi_{-4}(q)$ either way ($\Phi\tau\Phi^{-1}=\tau^q=\chi_{-4}(q)\tau$), so nothing changes.
+$\Ql(i)$. The Frobenius eigenvalue on the line is $\chi_{-4}(q)$ either way ($F\tau F^{-1}=\tau^q=\chi_{-4}(q)\tau$), so nothing changes.
 This is the order-$4$ companion of important_notes.md point 12. Fix: "the invariant line of $\ad V$ is spanned by $\tau$
 itself (diagonal in an eigenbasis over $\Ql(i)$), on which Frobenius acts by $\chi_{-4}(q)$, since $\tau^q=\chi_{-4}(q)\tau$".
 Confidence: high. Importance: low.

@@ -759,10 +759,11 @@ $\dim A^{I_q}$ and the generator of $A^{I_q}$; here cite it for those columns an
 $\operatorname{sw}(V)$ possibly positive; this is why the paper's Lemmas lem:IV and lem:euler assume $q\ge5$ and why the Kodaira type does not
 determine the factor at $q=2,3$ (Remark rem:wild). (ii) At $q=2$ an inertia image of order $3$ is tame ($2\nmid3$) and 9.2 applies
 verbatim: $\chi_{-3}(2)=-1$, so $L(A,s)^{-1}=1+2^{-s}$, i.e. $L(\Sym f,s)^{-1}=L(A,s-1)^{-1}=1+2\cdot2^{-s}$, $P_2(X)=1+2X$, and $e_3(E,2)=v_3(1+2\cdot2^{-2})=v_3(3/2)=1$;
-this agrees with the paper's Remark rem:wild ("a type $\mathrm{IV}$ at $2$ has $P_2(X)=1+2X$ and $e_3=1$") on the assumption, from Chapters 10, 11
-(not proved here), that the image of inertia at $2$ for that type is cyclic of order $3$. (iii) At $q=2$ a non-abelian inertia image
+this agrees with the paper's Remark rem:wild ("a type $\mathrm{IV}$ at $2$ has $P_2(X)=1+2X$ and $e_3=1$"), since the image of inertia at $2$ for
+types $\mathrm{IV}$, $\mathrm{IV}^*$ is cyclic of order exactly $3$ (a theorem proved in Chapters 10 and 11, not here; important_notes.md point 43). (iii) At $q=2$ a non-abelian inertia image
 acting absolutely irreducibly (e.g. $Q_8$, $\SL_2(\F_3)$) has $A^{I_2}=\End_{I_2}(V)_{\tr=0}=0$ (Schur), so $L(A,s)=1$: consistent with "a type $\mathrm{II}$
-at $2$ has $P_2=1$" when the image is of that kind (again a black box from Chapters 10, 11). (iv) For $\mathrm{sp}(2)\otimes\mu\chi$ at $q=2$ with
+at $2$ has $P_2=1$" when the image is of that kind (again a black box from Chapters 10, 11); the paper's sentence is false in general, since
+the Kodaira type at $2$ does not determine the image (336f1 has type $\mathrm{II}$ at $2$ and $P_2=1+2X$; important_notes.md point 50). (iv) For $\mathrm{sp}(2)\otimes\mu\chi$ at $q=2$ with
 $\chi$ wild, $a=4$ or $6$ (9.3(ii)); and a potentially good $\rho$ at $q=2$ of Kodaira type $\mathrm{I}_n^*$ is possible (Definition def:terms:
 "$t_\ell=0$" then), because at $q=2$ the Kodaira type does not determine the Weil-Deligne shape. Reference: Serre-Tate68, Section 2;
 Kraus90; Rohrlich94. Paper: Remark rem:wild, Section sec:wild, Definition def:terms (the $\mathrm{I}_n^*$ at $2$ remark), Proposition prop:forms
@@ -864,7 +865,7 @@ not counted).
 9. Check the paper's claim that "the restriction of $\kappa$ to $I$ is $n$ times the tame character" (Lemma lem:tamfactor), with
    $\kappa$ the Kummer cocycle of $q_E$, $v_q(q_E)=n$. Show that $c'=\kappa(\Frob)$ changes by $qn\,t_\ell(\sigma)$ when $\Frob$ is replaced by $\Frob\sigma$
    ($\sigma\in I$) and by $(q-1)z$ when the roots are changed, and that $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ is independent of all choices.
-10. For 11a1 ($j=-2^{12}31^3/11^5$) and $q_E=j^{-1}+744j^{-2}+356652j^{-3}+\dots$ show $v_{11}(q_E)=5$ and $q_E11^{-5}\equiv-1\pmod{11}$; deduce that $q_E$ is a
+10. For 11a1 ($j=-2^{12}31^3/11^5$) and $q_E=j^{-1}+744j^{-2}+750420j^{-3}+\dots$ show $v_{11}(q_E)=5$ and $q_E11^{-5}\equiv-1\pmod{11}$; deduce that $q_E$ is a
     fifth power in $\Q_{11}$ and that $v_5(c)=1=v_5(11-1)$ (the data entering Chapter 16, Exercise 10).
 11. Show that $I_K=I_{\Q_p}$ for $K/\Q_p$ finite unramified and that this fails for $K=\Q_p(\sqrt p)$ (index $2$). Check the paper's claim
     "the unramified quadratic extension of $\Q_q$ ... does not change the inertia group".
@@ -971,7 +972,7 @@ Forward pointers (chapters that use this one):
 * Grothendieck's theorem gives $N$ only on an open subgroup of $I$; $\rho(I)$ itself can be $\{\pm1\}\times(\text{unipotent})$ (the $\mathrm{I}_n^*$ shape),
   and $V^{I}$ must be computed as $(\ker N)^{r(I)}$ (8.1), not as $\ker N$.
 * The Artin conductor of a twist: $a(\mathrm{sp}(2)\otimes\chi)=2a(\chi)$, not $a(\chi)+1$; and $a(V\otimes\chi)\ne a(V)$ in general for ramified $\chi$.
-  Lemma lem:twist (ii) at $q=3$: twisting a good or multiplicative curve by the tame $\chi_3=\chi_{-3}$ gives exponent $2$, but a general
+  Lemma lem:twist (ii) at $q=3$: twisting a good or multiplicative curve by the tame $\chi_{-3}$ gives exponent $2$, but a general
   additive curve at $3$ can have exponent up to $5$ (point 28).
 * Local class field theory normalisations: say "uniformiser to arithmetic Frobenius" and give the sign $u\mapsto u^{-1}$ on $\mu_{p^\infty}$
   (6.5(ii)); avoid using LCFT in any proof the paper needs (only 6.5(iii) for characters, as a statement).
@@ -990,7 +991,7 @@ Forward pointers (chapters that use this one):
   translation theorem, finite fields. Chapter 7 adds the local field input (Hensel, inertia, valuations).
 * Chapter 6: global $e,f,g$, Dedekind-Kummer, global decomposition groups, the finite-level 3.11, 3.12, $\Z_3[\zeta_3]$ as a DVR.
 * Chapters 9, 10, 11: everything about elliptic curves: minimal models, reduction types, Tate's algorithm, the Tate curve itself,
-  $E_q[\ell^t]$, Kraus's theorem, Neron-Ogg-Shafarevich, the proofs of Lemmas lem:tamagawa-exp and lem:IV and of Remark rem:types,
+  $E_{\mathsf q}[\ell^t]$, Kraus's theorem, Neron-Ogg-Shafarevich, the proofs of Lemmas lem:tamagawa-exp and lem:IV and of Remark rem:types,
   the Serre conductor of $\bar\rho_{E,\ell}$. Chapter 7 provides the local field statements they quote.
 * Chapter 15: local Langlands, local components $\pi_p$ of newforms, Carayol's theorem; Chapter 7 gives only the Galois side.
 * Chapters 16, 17: group cohomology, $H^1(I,M)=M/(t-1)M$, inflation-restriction, Hilbert 90 in cohomological form, the identification of
@@ -1022,8 +1023,9 @@ Forward pointers (chapters that use this one):
 
 ### 13.5 References and bibliography
 `SerreLocalFields`, `SerreCourse`, `SerreAbelian`, `SerreLinearReps`, `Neukirch`, `Koblitz`, `CasselsFrohlich`, `MilneCFT`, `NSW`,
-`SilvermanATAEC`, `Kraus90`, `Washington`, `DFG04` are in `refs.bib`. Add to `bib/ch07.bib` (complete entries; check against the
-sources): `Deligne73` (P. Deligne, "Les constantes des equations fonctionnelles des fonctions L", Modular functions of one variable
+`SilvermanATAEC`, `Kraus90`, `Washington`, `DFG04` are in `refs.bib`. Add to `refs.bib`, not to `bib/ch07.bib`, since each is needed by
+more than one chapter (decision B14; important_notes.md B16, B18, B23), after checking that no other chapter has added it (complete
+entries; check against the sources): `Deligne73` (P. Deligne, "Les constantes des equations fonctionnelles des fonctions L", Modular functions of one variable
 II, Lecture Notes in Math. 349, Springer, 1973, 501-597), `Tate79` (J. Tate, "Number theoretic background", Automorphic forms,
 representations and L-functions, Proc. Sympos. Pure Math. 33, Part 2, AMS, 1979, 3-26), `SerreTate68` (J.-P. Serre and J. Tate, "Good
 reduction of abelian varieties", Ann. of Math. 88 (1968), 492-517), `Rohrlich94` (D. E. Rohrlich, "Elliptic curves and the Weil-Deligne
@@ -1040,7 +1042,7 @@ Python scripts `/tmp/ch07/check1.py`, `/tmp/ch07/check2.py` and hand computation
 * Unit indices: for $p\in\{7,13,19,31\}$, $\ell\in\{3,5\}$, $k\in\{1,2\}$, the index of $\ell^k$-th powers in $(\Z/p^3)^\times$ equals $\ell^{\min(k,v_\ell(p-1))}$
   (consistent with 2.7(ii), (iv)); $\ell^k\cdot\ell^{\min(k,v_\ell(p-1))}=\ell^k\gcd(\ell^k,p-1)$ for $p\le37$, $k\le3$ (2.7(iv), Euler characteristic
   form).
-* 11a1: $j=-2^{12}31^3/11^5$; with $q_E=j^{-1}+744j^{-2}+356652j^{-3}$, $v_{11}(q_E)=5$ and $q_E11^{-5}\equiv10\equiv-1\pmod{11}$ (by hand:
+* 11a1: $j=-2^{12}31^3/11^5$; with $q_E=j^{-1}+744j^{-2}+750420j^{-3}$, $v_{11}(q_E)=5$ and $q_E11^{-5}\equiv10\equiv-1\pmod{11}$ (by hand:
   $2^{12}\equiv4$, $31^3\equiv3$, product $\equiv1$). The fifth powers in $\F_{11}^\times$ are $\{\pm1\}$.
 * Cubes mod $7$: $\{1,6\}$.
 * Tame relation in the affine model of $\Gal(\Q_q(\mu_{\ell^k},q^{1/\ell^k})/\Q_q)$: $\Frob\,t\,\Frob^{-1}=t^q$ and $\Frob^{-1}t\,\Frob=t^{q'}$, $qq'\equiv1$, for
@@ -1072,17 +1074,15 @@ On $I_q$, $\varepsilon=1$, so $n'$ is unchanged; $v_\ell(c')$ is unchanged by th
 item cocycle-in-the-corner already reads the paper's matrix this way: "the cocycle is $\varepsilon\kappa$".) Confidence: high (two-line
 computation; also in Part 14).
 
-**N2 (observation, not an error; to be entered only if Kraus90 confirms the inertia claim). Lemma lem:euler and Remark rem:wild:
-the $q\ge5$ hypothesis is used only for the shape of the inertia image; the type IV value at $2$ is the same formula.** A remark for
-Chapters 19 and 21. The proof for the types $\mathrm{II},\mathrm{II}^*,\mathrm{IV},
-\mathrm{IV}^*$, $\mathrm{III},\mathrm{III}^*$ uses only that $\rho(I_q)$ is cyclic of order $m$ with $q\nmid m$ (item 9.2). At $q=2$ with inertia image cyclic of
-order $3$ (tame at $2$), or of order $6$ generated by $-\sigma$ (the sign is wild but disappears on $\ad V$, and Frobenius still acts on
-$\langle\sigma\rangle$ by the $2$-nd power), it predicts $P_2(X)=1+2X$ and $e_3(E,2)=v_3(2-\chi_{-3}(2))=1$, which is what Remark rem:wild reports from PARI for type $\mathrm{IV}$ at $2$
-and what Proposition prop:forms needs ("$e_3(E,2)\ge1$ for all $92{,}812$ curves of type $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$"). If Chapters 10 and 11
-confirm that types $\mathrm{IV}$, $\mathrm{IV}^*$ at $2$ always have cyclic inertia image of order $3$ or $6$ (I believe this is in Kraus90, but did not verify
-it), the exception in Proposition prop:forms disappears and the "PARI's factor at $2$ is $1+2X$ for every one of them" becomes a
-theorem. Fix (optional): add to Remark rem:wild "for type $\mathrm{IV}$, $\mathrm{IV}^*$ at $2$ the image of inertia is cyclic of order $3$ or $6$, and the proof of Lemma lem:euler applies verbatim". Confidence: high for the computation; low (unverified) for the claim
-about the inertia image at $2$, which must be checked against Kraus90 before anything is written in the paper.
+**N2 (settled: important_notes.md point 43). Lemma lem:euler and Remark rem:wild: the $q\ge5$ hypothesis is used only for the
+shape of the inertia image; the type IV value at $2$ is the same formula.** A remark for Chapters 19 and 21. The proof for the types
+$\mathrm{II},\mathrm{II}^*,\mathrm{IV},\mathrm{IV}^*$, $\mathrm{III},\mathrm{III}^*$ uses only that $\rho(I_q)$ is cyclic of order $m$ with $q\nmid m$ (item 9.2). For types
+$\mathrm{IV}$, $\mathrm{IV}^*$ at $q=2$ the image of inertia is cyclic of order exactly $3$ (never $6$), hence tame: this is now a theorem (Chapter 11
+proves it from $E[3]^{I_2}\simeq\Phig_2[3]=\Z/3$; Chapter 10 gives a second proof via the conductor exponent $2$; important_notes.md point 43).
+So 9.2 applies verbatim and gives $P_2(X)=1+2X$ and $e_3(E,2)=v_3(2-\chi_{-3}(2))=1$, which is what Remark rem:wild reports from PARI for
+type $\mathrm{IV}$ at $2$ and what Proposition prop:forms needs ("$e_3(E,2)\ge1$ for all $92{,}812$ curves of type $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$"). The
+exception in Proposition prop:forms disappears and "PARI's factor at $2$ is $1+2X$ for every one of them" is a theorem. Fix (for the
+paper, recorded in point 43): replace the exception and the appeal to the $92{,}812$ curves by this argument.
 
 No other new problem was found in the paper in this chapter's area. The local statements of Lemmas lem:tamagawa-exp, lem:IV,
 lem:twist (iii), lem:euler, lem:tamfactor and Remark rem:wild were rechecked here; the known issues are points 7, 8, 11, 12, 13, 22,

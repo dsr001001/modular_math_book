@@ -86,7 +86,7 @@ Split with the neighbouring chapters (decided here, consistent with what their o
   Hecke-equivariance of the cup product and of $w_N$, multiplicity one and the Gorenstein property of $\T_{\mathfrak m}$
   (Mazur, Tilouine, Ribet-Stein). Chapter 3 supplies the abstract algebra those statements are about: 9.6 (an algebra
   paired perfectly with a module), 9.5 (adjoints, twisted pairings), 11.4 (Gorenstein), 11.5 (Mazur's freeness criterion).
-* **Chapter 18** defines $\Tam_p$ and proves Lemma lem:fpr; **Chapter 20** proves Lemma lem:ddt417, Lemma lem:hecke and the
+* **Chapter 18** defines $\Tam_p$ (its item 7.1) and proves Lemma lem:fpr (its items 7.4, 7.5) and Lemma lem:tamfactor (its item 8.2); **Chapter 20** proves Lemma lem:ddt417, Lemma lem:hecke and the
   assembly. Chapter 3 gives the Fitting ideal and every ingredient of Lemma lem:ddt417 (11.1, 11.3, 9.3, 9.4) and
   checks the statement on toy algebras (11.6), but does not prove the lemma.
 
@@ -103,7 +103,7 @@ Split with the neighbouring chapters (decided here, consistent with what their o
   paper's $L[\wp]$, $L[I]$); $M[x]=M[xR]$; $M[\ell^k]$, $M[\ell^\infty]=\bigcup_kM[\ell^k]$; $M_{\tors}$ the torsion submodule over a
   domain. **Three duals, never confused:** $M^\vee=\Hom_R(M,R)$ (the linear dual; the paper's $\Hom(L[\wp],\mathcal O)$);
   $M^*=\Hom(M,\Q/\Z)$, or $\Hom_{\Zl}(M,\Qlmod)$ for $\ell$-primary or $\Zl$-modules (the Pontryagin dual; the paper's
-  ${}^*$ in Lemma lem:dfg21); $T^D=\Hom(T,\Zl(1))$ (the Cartier dual, Chapter 18; not used here).
+  ${}^*$ in Lemma lem:dfg21); $T^D=\Hom(T,\Zl(1))$ (the Cartier dual, Chapters 17 and 18; not used here).
 * **C4 (lattices).** Over a PID $R$ with fraction field $K$: a *lattice* is a finitely generated free $R$-module; a lattice in a
   finite-dimensional $K$-vector space $V$ is a finitely generated $R$-submodule spanning $V$ (free of rank $\dim V$).
   $L'\subset L$ is *saturated* if $L/L'$ is torsion-free (5.5). $G$-stable lattices and homothety are Chapter 4.
@@ -530,7 +530,7 @@ reduction. (iii) $T\simeq\varprojlim_kW[\ell^k]$ (transition maps multiplication
 $W^*=\Hom(T\otimes\Qlmod,\Qlmod)\simeq\Hom_{\Zl}(T,\End(\Qlmod))=\Hom_{\Zl}(T,\Zl)=T^\vee$, and $T^*\simeq T^\vee\otimes\Qlmod$. (v) Everything is functorial in
 $T$: a group acting $\Zl$-linearly on $T$ acts on $V$, $W$, $W[\ell^k]=T/\ell^kT$, and on the duals by $(g\varphi)(x)=\varphi(g^{-1}x)$. (vi) The same
 holds over any complete DVR $\mathcal O$ with $K/\mathcal O$ in place of $\Qlmod$. Twists by $\Zl(1)$, the Cartier dual $T^D=\Hom(T,\Zl(1))$ and
-$W^D=V^D/T^D$ are Chapter 18; the Galois action is Chapters 16, 17. Reference: NSW Chapter I; Rubin, Section 1.1 (check).
+$W^D=V^D/T^D$ are Chapters 17 and 18 (Chapter 17 needs them first, for local duality); the Galois action is Chapters 16, 17. Reference: NSW Chapter I; Rubin, Section 1.1 (check).
 Paper: Theorem thm:main ($W=\ad T\otimes\Qlmod$), Lemma lem:h0 ("its $\ell$-torsion"; "the description of the length follows from
 the $\ell^k$-torsion": $W^D[\ell^k]=T^D/\ell^k$), Lemma lem:dfg21 ($W$, $T^D$, $W^D$), PLAN.md scope ("the duality between $T$ and
 $T\otimes\Ql/\Zl$").
@@ -590,13 +590,13 @@ values), Lemma lem:hecke ($d=2$, Gram determinant $(\eta^\emptyset_{f,\lambda})^
 determinant is a square").
 
 **9.5 `prop:modules:adjoint`** (proposition; P). Let $\langle\ ,\ \rangle$ be a perfect pairing on a lattice $L$ over $R$. (i) Every $A\in\End_R(L)$
-has a unique adjoint $A^*$ with $\langle Ax,y\rangle=\langle x,A^*y\rangle$; in matrices $A^*=G^{-1}A^{\mathsf T}G$ (C5, C8: write the convention once);
-$(AB)^*=B^*A^*$, $(A^*)^*=A$ for symmetric or antisymmetric pairings. (ii) Let $\T\subset\End_R(L)$ be a commutative subring of
+has a unique adjoint $A^\dagger$ with $\langle Ax,y\rangle=\langle x,A^\dagger y\rangle$; in matrices $A^\dagger=G^{-1}A^{\mathsf T}G$ (C5, C8: write the convention once);
+$(AB)^\dagger=B^\dagger A^\dagger$, $(A^\dagger)^\dagger=A$ for symmetric or antisymmetric pairings. (ii) Let $\T\subset\End_R(L)$ be a commutative subring of
 self-adjoint endomorphisms. For every ideal $\mathfrak a\subset\T$: $(\mathfrak aL)^\perp=L[\mathfrak a]$ (since $\langle ax,y\rangle=\langle x,ay\rangle$ and the pairing is perfect). (iii)
 Idempotents of $\T$ (or of $\T\otimes S$ for an $R$-algebra $S$) are self-adjoint; for an idempotent $e$, $L=eL\oplus(1-e)L$ is an
 orthogonal decomposition, and the restriction of the pairing to $eL$ is perfect. (iv) Twisted pairings: let $w\in\Aut_R(L)$ with
-$A^*=wAw^{-1}$ for all $A\in\T$, and put $[x,y]=\langle x,wy\rangle$. Then $[\ ,\ ]$ is perfect and every $A\in\T$ is self-adjoint for it. If $\langle\ ,\ \rangle$ is
-antisymmetric and $w^*=w$ (for instance $w$ an involution preserving the pairing, so $w^*=w^{-1}=w$), then $[\ ,\ ]$ is antisymmetric,
+$A^\dagger=wAw^{-1}$ for all $A\in\T$, and put $[x,y]=\langle x,wy\rangle$. Then $[\ ,\ ]$ is perfect and every $A\in\T$ is self-adjoint for it. If $\langle\ ,\ \rangle$ is
+antisymmetric and $w^\dagger=w$ (for instance $w$ an involution preserving the pairing, so $w^\dagger=w^{-1}=w$), then $[\ ,\ ]$ is antisymmetric,
 hence alternating when $2$ is a nonzerodivisor. Reference: Lang XV.1 (check). Paper: Section 4.1 ("the Hecke operators,
 $U_p$ included, are self-adjoint for it, because $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup product (this is what the
 composition with $w$ is for)": the geometric inputs are Chapters 8 and 14), Lemma lem:ddt417 ("for which $\T$ is self-adjoint"),
@@ -941,15 +941,16 @@ Results from other chapters used here:
 
 Forward pointers (chapters that use this one):
 * Chapter 4 (`ch:reps`): Jordan-Holder (7.1(i)) for composition factors of representations; modules over $\Zl$ and $\Fl$, lattices,
-  saturation (5.5) and free modules over a DVR (6.3) for $G$-stable lattices; $\Hom$ and $\otimes$ (3.1, 3.2) for $\Hom_G(V,W)=(V^*\otimes W)^G$ and
+  saturation (5.5) and free modules over a DVR (6.3) for $G$-stable lattices; $\Hom$ and $\otimes$ (3.1, 3.2) for $\Hom_G(V,W)=(V^\vee\otimes W)^G$ and
   $\ad$; Nakayama (4.3) for reduction mod $\ell$ of lattices.
 * Chapter 6 (`ch:ant`): the DVR criterion (6.1, used at its 2.1, 4.7, 4.9), torsion-free modules over a DVR are free and the rank
   count (5.4(iii), 6.3, used at its 4.8), localisation (4.5, its 2.1), Noetherian rings (4.1), $\Zl$ (6.4), $R\otimes\Zl=\prod R_{\mathfrak m}$ (10.4,
   its 7.3(iv)), f.g. modules over a PID (5.3, its 1.4, 3.1).
 * Chapter 7 (`ch:local`): $\Zl$ and $\Ql$ as algebraic objects (6.4), complete DVRs and idempotent lifting (6.1, 10.3), $\Qlmod$ (6.5).
 * Chapters 8, 14 (`ch:curves`, `ch:moddeg`): perfect and alternating pairings, adjoints and twisted pairings (9.1, 9.4, 9.5) for the cup
-  product on $H^1(X_0(N),\Z)$ and $\langle x,w_Ny\rangle$; Gorenstein and the freeness criterion (11.4, 11.5) for Remark rem:free; the
-  idempotent decomposition $H^1\otimes\Zl=\bigoplus H^1_{\mathfrak m}$ orthogonal for the pairing (9.5(iii), 10.3).
+  product on $H^1(X_0(N),\Z)$ and $\langle x,w_Ny\rangle$; the idempotent decomposition $H^1\otimes\Zl=\bigoplus H^1_{\mathfrak m}$ orthogonal for the
+  pairing (9.5(iii), 10.3). Chapter 14 only (not Chapter 8, which does not use Gorenstein rings; the users are Chapters 14 and 20,
+  important_notes.md B5): Gorenstein and the freeness criterion (11.4, 11.5) for Remark rem:free.
 * Chapter 13 (`ch:hecke`): the Hecke algebra as a finite free $\Z$-algebra (10.2, 10.4), the algebra-module duality (9.6), generalised
   eigenspaces (10.5), the shift operator and non-semisimplicity of $U_p$ (10.7(v)), common eigenvectors (10.8).
 * Chapter 15 (`ch:modgalrep`): Lemma lem:crit and Lemma lem:old (5.7, 5.8, 9.6, 10.1, 10.8, 11.1).
@@ -958,8 +959,9 @@ Forward pointers (chapters that use this one):
   $\Zl$-modules and of direct sums (7.5, 7.6), Pontryagin duality, exactness, $A^{**}=A$, lengths preserved (8.1, 8.2), $W[\ell^k]=T/\ell^kT$
   (8.3), $\Qlmod$ injective (6.5(iv)), cyclic $\ell$-primary modules (8.4).
 * Chapter 17 (`ch:galcoh`): $0\to T\to V\to W\to0$ and its torsion (8.3), Pontryagin duality (8.2), lengths (7.1).
-* Chapter 18 (`ch:blochkato`): Fitting ideals over $\Zl$ (7.6) in the definition of $\Tam_p$ and in Lemma lem:fpr; $T$, $V$, $W$ and their
-  duals (8.3); lengths of Selmer groups (7.2, 8.2).
+* Chapter 18 (`ch:blochkato`): Fitting ideals over $\Zl$ (7.6) in the definition of $\Tam_p$ (Chapter 18, item 7.1) and in Lemma lem:fpr
+  (Chapter 18, items 7.4, 7.5) and Lemma lem:tamfactor (Chapter 18, item 8.2); $T$, $V$, $W$ and their duals (8.3); lengths of Selmer groups
+  (7.2, 8.2).
 * Chapter 20 (`ch:congruence`): everything in Sections 9 to 11: congruence ideals (11.1, 11.2), the ingredients of Lemma lem:ddt417
   (11.3, 9.3, 9.4), the computation of the congruence ideal in $\T_{\mathfrak m}$ (11.1(v)), Gorenstein and freeness (11.4, 11.5), the congruence
   module of a decomposition (5.8), idempotents and generalised eigenspaces for Theorem thm:quant (10.3, 10.5, 10.6).
@@ -970,8 +972,8 @@ Forward pointers (chapters that use this one):
 
 Conventions to fix (Section 1 of the chapter, as `convention` environments): C1 to C10 of Part 1. In addition:
 * **Three duals.** Use $M^\vee$ for $\Hom_R(M,R)$, $M^*$ for the Pontryagin dual and never use ${}^*$ for the linear dual; the paper's
-  $\Hom(L[\wp],\mathcal O)$ is $L[\wp]^\vee$, its $H^1_f(\Q_p,T^D)^*$ is Pontryagin. The adjoint of an operator is $A^*$ (9.5); say once that this
-  is unrelated to the Pontryagin star.
+  $\Hom(L[\wp],\mathcal O)$ is $L[\wp]^\vee$, its $H^1_f(\Q_p,T^D)^*$ is Pontryagin. The adjoint of an operator is $A^\dagger$ (9.5; $^*$ is the
+  Pontryagin dual only, and a pullback when written after a map: Appendix B, B-C4).
 * **Orthogonals of non-symmetric pairings.** The paper's pairings are alternating, so left and right orthogonals agree; state 9.2,
   9.3 for general perfect pairings with right orthogonals and say this once.
 * **"Order $\#\mathcal O/\Delta$".** The paper's Lemma lem:ddt417 is stated for a general DVR but counts orders; write lengths

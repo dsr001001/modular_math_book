@@ -133,7 +133,7 @@ theorem; elementary divisors), torsion and torsion-free, the lattice/saturation 
 free module M is saturated if M/L is torsion-free), Nakayama's lemma, localisation at a prime and at a
 maximal ideal, local rings, discrete valuation rings (definition, uniformiser, valuation, ideals are
 powers of the maximal ideal), completions and the rings Z_l, Q_l, Q_l/Z_l, the length of a module over a
-DVR and over a local ring, Fitting ideals (definition via presentations, the case of a finitely generated
+DVR and over a local ring (with the Jordan-Holder theorem, proved here: decision B2), Fitting ideals (definition via presentations, the case of a finitely generated
 module over a DVR: Fitt = l^{length}, Fitting ideal of a direct sum, of a quotient), the annihilator,
 Pontryagin duality for finite abelian groups and for the pair (Z_l-modules of finite type, discrete torsion
 Z_l-modules) via Hom(-, Q_l/Z_l), the duality between T and T tensor Q_l/Z_l, perfect bilinear pairings
@@ -155,7 +155,8 @@ Scope: representations of a finite group over a field (any characteristic), subr
 irreducibility, absolute irreducibility (irreducible after extending scalars to the algebraic closure),
 Schur's lemma in both forms, characters and the character table in characteristic zero (brief, with the
 RHB connection), Maschke's theorem and its failure in characteristic dividing the group order, semisimple
-versus non-semisimple modules, the Jordan-Holder theorem and composition factors, the Brauer-Nesbitt
+versus non-semisimple modules, the Jordan-Holder theorem (proved in Chapter 3, cited here: decision B2) and
+composition factors, the Brauer-Nesbitt
 theorem (two semisimple representations with the same characteristic polynomials of all elements are
 isomorphic; in characteristic l, the char polys not just traces), restriction and induction, Frobenius
 reciprocity, Mackey's criterion for irreducibility of induced representations, Clifford theory for a
@@ -164,7 +165,7 @@ characters; rho is isomorphic to rho tensor the sign character iff rho is induce
 subgroup), twisting by one-dimensional characters, the trace of an isomorphism rho -> rho tensor chi is
 zero when chi is nontrivial, the adjoint representation ad(rho) = End(V) with trace-zero part ad^0, the
 symmetric square and the identity ad^0 rho = Sym^2 rho tensor det^{-1} for two-dimensional rho, Hom_G(V, W)
-= (V^* tensor W)^G, H^0 of ad^0 rho tensor chi as Hom(rho, rho tensor chi) with trace zero, representations
+= (V^vee tensor W)^G, H^0 of ad^0 rho tensor chi as Hom(rho, rho tensor chi) with trace zero, representations
 of GL_2(F_3) and its subgroups on F_3^2 and on F_9^2 (the determinant-one subgroup C_4 of N_s(F_3) acts
 reducibly over F_9 as psi + psi^{-1} with psi of order 4, so N_s(F_3) acts as Ind psi), unipotent and
 "minus unipotent" elements and their fixed spaces, the representation theory needed for images of inertia
@@ -177,7 +178,7 @@ Paper hooks: Proposition prop:ns (induced representations, psi of order 4, Frobe
 rho bar = rho bar tensor chi_{-3}), Lemma lem:h0 (trace-zero isomorphisms, ad rho bar tensor chi), Lemma
 lem:IV and Lemma lem:euler (eigenvalues of inertia, Z_3[zeta_3]-module structure, invariants on the
 adjoint), Lemma lem:old (Brauer-Nesbitt plus Chebotarev gives rho bar_h = rho bar), Section 4.2 (homothetic
-lattices M_{f,lambda} and T_l E), the adjoint A_f = ad V and the trace form A_f(1) = Hom(A_f, Z_l(1)).
+lattices: M_{f,lambda} and the dual of T_l E, important_notes.md point 26), the adjoint A_f = ad V and the trace form A_f(1) = Hom(A_f, Z_l(1)).
 
 ### Part II. Number fields and local fields
 
@@ -217,8 +218,9 @@ the coefficient field of a newform, the reduction mod lambda, the density of pri
 theorem in its number field form (Frobenius classes equidistribute), primes inert in Q(sqrt(l*)) and
 complex multiplication by that field (a_p = 0 at inert primes).
 Paper hooks: Lemma lem:IV (Z_3[zeta_3] as DVR), Lemma lem:euler (Frobenius centralises or inverts sigma
-according to q mod 3; Z_l[zeta_3] = End_{I_q}(V)), Lemma lem:h0 (a_p = 0 at primes inert in Q(sqrt(l*))
-forces CM), Lemma lem:crit and Lemma lem:old (rings of integers O of number fields, primes lambda | l),
+according to q mod 3; Z_l[zeta_3] = End_{I_q}(V)), Lemma lem:h0 (the paper's argument: a_p = 0 at primes
+inert in Q(sqrt(l*)) forces CM; this argument is flawed and the book's proof of lem:h0 in Chapter 11 does not use
+it, important_notes.md point 5), Lemma lem:crit and Lemma lem:old (rings of integers O of number fields, primes lambda | l),
 the twist by Q(sqrt(q*)) (Section 1.4), the characters chi_{-3}, chi_{-4} of Q(sqrt(-3)) and Q(i).
 
 **Chapter 7. Local fields** (`ch:local`, `ch07_local.tex`)
@@ -237,13 +239,15 @@ filtration, Kummer theory over Q_p: H^1(G_{Q_p}, mu_{l^k}) = Q_p^x/(Q_p^x)^{l^k}
 u in Q_p^x to I_p is v_p(u) times the tame character), the unramified quadratic extension of Q_p, the ramified
 quadratic extensions Q_p(sqrt(p*)) and their characters, the local behaviour of quadratic characters of
 G_Q (chi_q is unramified at p not q, ramified at q), the Weil group W_{Q_p} and Weil-Deligne
-representations (definition: (r, N) with r a representation of the Weil group and N nilpotent, Frob N
-Frob^{-1} = p^{-1} N), the inertia invariants and the local L-factor and conductor of a Weil-Deligne
+representations (definition: (r, N) with r a representation of the Weil group and N nilpotent,
+Phi N Phi^{-1} = p^{-1} N for the geometric Frobenius Phi = Frob^{-1}, equivalently Frob N Frob^{-1} = p N for the
+arithmetic Frobenius Frob, which is the book's Frob: Appendix B, B-C2(f)), the inertia invariants and the local L-factor and conductor of a Weil-Deligne
 representation (definitions; the Artin conductor a(r) = codim V^{I} + Swan), special cases: unramified,
 tamely ramified through a finite cyclic quotient, the special (Steinberg) representation sp(2) and its
 unramified twists (conductor exponent 1), the twist of sp(2) by a ramified quadratic character (conductor
 exponent 2), representations with finite image of inertia of order 2, 3, 4, 6 (conductor exponent 2 for
-q >= 5).
+q >= 5; also for types IV and IV^* at q = 2, where the image of inertia is cyclic of order exactly 3 and tame:
+this case is settled, not open, see important_notes.md point 43).
 Paper hooks: Lemma lem:tamagawa-exp (Tate curve over the unramified quadratic extension, l^t-th roots of u),
 Lemma lem:tamfactor (tame character, Frob^{-1} t Frob = t^{q^{-1}}, Kummer class kappa, its restriction to
 I being n times the tame character, Z_l(1)/(q-1)), Lemma lem:IV and Remark rem:types (tame inertia is
@@ -305,7 +309,8 @@ Z/3 + mu_3), Section 1.1 (V, T, rho, rho bar).
 **Chapter 10. Elliptic curves over local fields: reduction, Kodaira types, Tate curves** (`ch:reduction`,
 `ch10_reduction.tex`)
 Scope: minimal Weierstrass models over Z_p (existence, uniqueness up to change of coordinates, criterion
-v_p(Delta) < 12 or v_p(c_4) < 4 for p >= 5; Kraus's conditions at 2 and 3 as a remark), reduction mod p,
+v_p(Delta) < 12 or v_p(c_4) < 4 for p >= 5; Kraus's conditions at 2 and 3 as a remark, citing
+Kraus 1989, Acta Arith. 54, not Kraus90), reduction mod p,
 good, multiplicative (split and nonsplit) and additive reduction, the criterion via v_p(Delta) and
 v_p(c_4), the reduction map on points and E_0(Q_p), E_1(Q_p), the formal group (statement of what is
 needed: E_1 has no prime-to-p torsion), potentially good and potentially multiplicative reduction (criterion
@@ -334,8 +339,8 @@ proved in full: unramified twists change nothing; the twist by Q(sqrt(q*)) at an
 I_n^*, I_0 and I_0^*, and for q >= 5 exchanges II and IV^*, III and III^*, IV and II^*; v_q(Delta) goes up
 by 6 modulo 12), the wild primes 2 and 3 (what changes: the Kodaira type no longer determines the inertia
 action; a type I_n^* at 2 may have potentially good reduction; the paper's Remark rem:wild), Cremona's
-tables: what is tabulated (Kodaira symbols, c_p, Delta, conductor), PARI's Kodaira codes (n + 4 for I_n,
--(n + 4) for I_n^*, +-2, +-3, +-4 for II/II^*, III/III^*, IV/IV^*, -1 for I_0^*).
+tables: what is tabulated (Kodaira symbols, c_p, Delta, conductor), PARI's Kodaira codes (1 for I_0; n + 4 for I_n
+and -(n + 4) for I_n^*, for n >= 1 only; -1 for I_0^*; +-2, +-3, +-4 for II/II^*, III/III^*, IV/IV^*).
 Paper hooks: Definition def:terms (t_l(E,q), v_q(j_E), potentially multiplicative primes), the table of
 Section 1, Section 1.4 (component groups, the exchange of types, the weight w_l), Lemma lem:twist, Lemma
 lem:tamagawa-exp (Tate curve over the unramified quadratic extension), Lemma lem:tamfactor (Tate parameter,
@@ -349,8 +354,8 @@ cuts out Q(sqrt(-3)), complex conjugation has determinant -1 and trace 0, the cr
 Shafarevich (rho_{E,l} unramified at p not l iff good reduction at p; potentially good iff the image of
 inertia is finite), the local representation at a prime of good reduction (unramified, Frobenius char poly
 X^2 - a_p X + p), at a prime of multiplicative reduction (the Tate curve: rho|_{G_{Q_p}} is an extension of
-an unramified character eps of order <= 2 by eps chi_l, the matrix form with the Kummer class kappa of the
-Tate parameter in the corner, non-split; the paper's Lemma lem:tamagawa-exp proved in full: rho mod l^t
+an unramified character eps of order <= 2 by eps chi_l, the matrix form with eps kappa in the corner, kappa
+the Kummer class of the Tate parameter (not kappa alone: important_notes.md point 42), non-split; the paper's Lemma lem:tamagawa-exp proved in full: rho mod l^t
 unramified at p iff l^t | n_p, split or nonsplit; DDT Theorem 3.1(e)), at a prime of additive potentially
 good reduction with p >= 5 (image of inertia cyclic of order 2, 3, 4 or 6 by Kraus; eigenvalues roots of
 unity of that order; the paper's Lemma lem:IV in full: for types IV and IV^* the image of I_q in Aut(T_3 E)
@@ -377,8 +382,11 @@ paper's Proposition prop:ns proved in full (for l = 3: the image is N_s(F_3) iff
 Q(sqrt(-3)) iff rho bar = rho bar tensor chi_{-3} iff the 3-division polynomial factors as two irreducible
 quadratics), the paper's Lemma lem:h0 proved in full (H^0(Q, ad rho bar tensor chi_l bar) nonzero iff
 rho bar = rho bar tensor chi_l bar, which forces l = 3; the length h_l(E) of H^0(Q, ad T(1) tensor
-Q_l/Z_l) as the largest k with rho mod l^k = (rho tensor chi_l) mod l^k; finiteness for non-CM curves
-via a_p = 0 at inert primes), the semisimplification and Brauer-Nesbitt applied to rho bar_{E,l} (the
+Q_l/Z_l) as the largest k with rho mod l^k = (rho tensor chi_l) mod l^k; the bound by the determinant
+argument: such an isomorphism gives chi_l^2 = 1 mod l^k on G_Q, which forces l = 3 and k = 1, so h_l(E) = 0 for
+l >= 5 and h_3(E) <= 1, with equality iff rho bar_{E,3} = rho bar_{E,3} tensor chi_{-3}, for every E with rho bar
+irreducible, CM or not; the paper's finiteness argument via a_p = 0 at inert primes confuses chi_l with chi_{l*}
+and is not used, important_notes.md point 5), the semisimplification and Brauer-Nesbitt applied to rho bar_{E,l} (the
 isomorphism class of an irreducible rho bar_{E,l} is determined by the a_p mod l for p in a density-one
 set), Serre's conjecture for rho bar_{E,l} (statement: it comes from a newform of weight 2 and level
 N(rho bar) when E has good reduction at l; this is the optimal-level theorem used in the paper; the general
@@ -417,7 +425,7 @@ Zagier, Watkins), the Atkin-Lehner involution w_N (Section 4.1, the pairing delt
 Scope: the Hecke operators T_n on M_k(Gamma_0(N)) via double cosets and via the explicit formula on
 q-expansions (a_n(T_p f) = a_{pn}(f) + p^{k-1} a_{n/p}(f) for p not dividing N; U_p for p | N:
 a_n(U_p f) = a_{pn}(f)), commutativity, multiplicativity (T_{mn} = T_m T_n for coprime m, n;
-T_{p^{k+1}} = T_p T_{p^k} - p^{k-1} T_{p^{k-1}}), the Hecke algebra T = Z[T_n : n >= 1] inside End(S_2)
+T_{p^{j+1}} = T_p T_{p^j} - p^{k-1} T_{p^{j-1}}, with k the weight), the Hecke algebra T = Z[T_n : n >= 1] inside End(S_2)
 (finite free over Z; of rank dim S_2 when acting faithfully, including the U_p), self-adjointness of T_n
 for p not dividing N with respect to the Petersson product and the non-self-adjointness of U_p, eigenforms
 and normalised eigenforms (a_1 = 1, then T_n f = a_n f), the eigencharacter phi_f: T -> Z or O, the
@@ -459,10 +467,11 @@ delta_p), Section 1 (congruence number r_E, Petersson norm).
 
 **Chapter 14. Modular curves over Q, Jacobians and the modular degree** (`ch:moddeg`, `ch14_moddeg.tex`)
 Scope: X_0(N) as a smooth projective curve over Q (statement; its cusps; its points over Q), the Jacobian
-J_0(N) (abelian variety over Q of dimension g; J_0(N)(C) = S_2(Gamma_0(N))^*/H_1(X_0(N), Z)), the Hecke
+J_0(N) (abelian variety over Q of dimension g; J_0(N)(C) = S_2(Gamma_0(N))^vee/H_1(X_0(N), Z)), the Hecke
 action on J_0(N) by correspondences (T_p as the correspondence (E, C) -> sum (E/D, (C + D)/D)), the
-Eichler-Shimura relation T_p = Frob_p + Frob_p^* on J_0(N) mod p for p not dividing N (statement, with the
-consequence a_p(f) = trace of Frobenius), the Hecke action on H^1(X_0(N), Z) and on H_1, the cup product
+Eichler-Shimura relation (T_p)_* = pi_p + hat pi_p on J_0(N) mod p for p not dividing N, with pi_p the
+p-power Frobenius endomorphism and hat pi_p = p pi_p^{-1} its dual, the Verschiebung (statement, with the
+consequence a_p(f) = trace of Frobenius; notation of Appendix B, B-C2(g)), the Hecke action on H^1(X_0(N), Z) and on H_1, the cup product
 pairing on H^1(X_0(N), Z) (perfect, alternating), adjoints: the adjoint of T_n under the cup product is
 w_N T_n w_N (equivalently T_n is self-adjoint for the pairing <x, w_N y>; proof or precise reference), so
 the modified pairing <x, w_N y> is perfect, alternating, and all T_n and U_p are self-adjoint for it (this
@@ -470,20 +479,23 @@ is the pairing delta hat_! of DFG04 in weight 2 and trivial character), the Tate
 H_1(X_0(N), Z) tensor Z_l and H^1(X_0(N), Z_l) (dual; etale cohomology as a statement), the modularity
 theorem (statement: every elliptic curve E/Q of conductor N has a newform f_E of weight 2 on Gamma_0(N) with
 a_p(f_E) = a_p(E) for all p; history: Wiles, Taylor-Wiles, Breuil-Conrad-Diamond-Taylor), the abelian
-variety A_f attached to a newform (quotient of J_0(N) by I_f J_0(N)), for rational f the elliptic curve
+variety J_f attached to a newform (quotient of J_0(N) by I_f J_0(N); Shimura's A_f, written J_f in the book
+because A_f is the paper's adjoint, Appendix B, B-C12(c)), for rational f the elliptic curve
 quotient, the modular parametrisation phi_E: X_0(N) -> E (sending the cusp infinity to O), the
 X_0(N)-optimal curve (unique in its isogeny class; equivalently the kernel of J_0(N) -> E is connected;
 also called the strong Weil curve; its relation to the Cremona label "1" is a convention that was checked
 only up to conductor 400000 and for some classes beyond; the paper's statement about optimality in the
 tables), the modular degree deg phi_E (definition as the degree of the morphism of curves; equivalently
 via the composition E^vee -> J_0(N) -> E being multiplication by deg phi_E; properties: multiplicative
-under nothing in particular, computability), the Manin constant (definition, the conjecture c = 1,
-known results: Mazur: c | ... ; Abbes-Ullmo; Cremona's verification; the role of the Manin constant in
-the formulas), the formula of Zagier and Watkins: deg phi_E = 4 pi^2 c^2 <f, f> / vol(Lambda_E), with phi^* omega_E = c 2 pi i f dz, up to the
-precise normalisation (state the exact formula with the Manin constant; Zagier 1985, Watkins 2002), the
+under nothing in particular, computability), the Manin constant c_E (definition, with the sign of omega_E chosen so that c_E > 0; Manin's
+conjecture c_E = 1; known results, each to be checked against the source: c_E is an integer (Edixhoven); if a
+prime p divides c_E then p = 2 or p^2 | N (Mazur78 for p not dividing 2N, Abbes-Ullmo for p^2 not dividing N);
+Cremona's verification; the role of the Manin constant in the formulas), the formula of Zagier and Watkins:
+deg phi_E = 4 pi^2 c_E^2 <f, f> / vol(Lambda_E), with phi_E^* omega_E = c_E 2 pi i f dz (for a general
+parametrisation phi, deg phi vol(Lambda_E) = 4 pi^2 c_phi^2 <f, f>), up to the precise normalisation (state the exact formula with the Manin constant; Zagier 1985, Watkins 2002), the
 congruence number r_E (definition as in the paper: the largest r such that f = g mod r for some integral g
-of level N orthogonal to f; the congruence ideal in T; Lemma lem:crit of the paper proved in full here or in
-Chapter 20, see below), the theorem of Agashe, Ribet and Stein (deg phi_E | r_E, and v_p(deg phi_E) = v_p(r_E)
+of level N orthogonal to f; the congruence ideal in T; Lemma lem:crit of the paper stated here and cited: it is
+proved in full in Chapter 15, decision B17 of Section 7.5, and restated in Chapter 20), the theorem of Agashe, Ribet and Stein (deg phi_E | r_E, and v_p(deg phi_E) = v_p(r_E)
 for p^2 not dividing N; the example 99A1 with deg = 4, r = 12; statement with proof idea: the modular degree
 is the congruence number computed in the Hecke algebra of the Jacobian's quotient, and the two differ by a
 factor controlled by the primes p with p^2 | N), multiplicity one and the Gorenstein property (the maximal
@@ -491,7 +503,9 @@ ideal m of T tensor Z_l attached to (f, l); J_0(N)[m] is two-dimensional when l 
 rho bar is irreducible: Mazur for prime level, Ribet-Stein Theorem 3.5 for J_1(N) with the exception of
 Serre weight l, the pull-back J_0(N)[m] -> J_1(N)[m'] with kernel in the Shimura subgroup which is
 Eisenstein; consequence (Tilouine): T_m is Gorenstein and T_l J_0(N)_m = H^1(X_0(N), Z_l)_m is free of
-rank two over T_m; the paper's Remark rem:free), the Eisenstein ideal, the cuspidal subgroup and the Shimura
+rank two over T_m; the paper's Remark rem:free; multiplicity one is not needed for the equality in Lemma
+lem:hecke and in (eq:identity) of Theorem thm:main, nor for the first inequality of Theorem thm:quant to be an
+equality, when l is not in S_f: important_notes.md points 39, 56, 73, 74), the Eisenstein ideal, the cuspidal subgroup and the Shimura
 subgroup (definitions; Mazur's theorem for prime level; what "Eisenstein" means for a maximal ideal; why
 reducible rho bar is the Eisenstein case), the parametrisations by Shimura curves and the theorem of Ribet
 and Takahashi (statement: the ratio of the degrees of the parametrisations by X_0(N) and by the Shimura
@@ -511,11 +525,13 @@ Open question 4.
 **Chapter 15. Galois representations of modular forms, level lowering and congruences** (`ch:modgalrep`,
 `ch15_modgalrep.tex`)
 Scope: the Galois representation rho_{f, lambda}: G_Q -> GL_2(O_lambda) attached to a newform f of weight
-2 (Eichler-Shimura construction via the Tate module of A_f; Deligne for higher weight as a statement),
+2 (Eichler-Shimura construction via the Tate module of J_f, Shimura's abelian variety, Appendix B, B-C12(c); Deligne for higher weight as a statement),
 its properties: unramified outside N l, trace of Frob_p = a_p(f), det = chi_l, odd, irreducible; the
 residual representation rho bar_{f, lambda} and its semisimplification; the comparison with rho_{E, l}
-when f = f_E (they are isomorphic; the lattices T_l E and M_{f, lambda} are homothetic when rho bar is
-irreducible, by Ribet's lemma on lattices), local-global compatibility (Carayol; Langlands-Deligne): the
+when f = f_E (they are isomorphic; the lattice M_{f, lambda} is homothetic to the dual of T_l E, which is
+T_l E(-1), when rho bar is irreducible, by Ribet's lemma on lattices, and equals H^1(E, Z_l) for the optimal
+curve with no hypothesis, as proved in Chapter 14: important_notes.md points 26, 40; ad is insensitive to the
+dual and the twist), local-global compatibility (Carayol; Langlands-Deligne): the
 restriction of rho_f to G_{Q_p} corresponds to the local component pi_p of f under the local Langlands
 correspondence; the local components of a weight 2 newform of trivial character: unramified principal
 series at p not dividing N (Frobenius eigenvalues alpha_p, beta_p), unramified twist of Steinberg at
@@ -559,7 +575,7 @@ theorems (one-page outline: deformation rings, the numerical criterion, patching
 DFG04 Theorem 3.7 needs; details in Chapter 20).
 Paper hooks: Sections 3 (all of it: Lemma lem:crit, Lemma lem:old, the optimal-level theorem, cases (a),
 (b), (c), the example, the remark), Section 1.5 (history, Theorem thm:qual, Remark rem:ko), Section 4.2
-(M_{f,lambda} homothetic to T_l E), Lemma lem:euler (local components: Steinberg and its twists), Lemma
+(M_{f,lambda} homothetic to the dual of T_l E), Lemma lem:euler (local components: Steinberg and its twists), Lemma
 lem:twist(iii), Theorem thm:twist and Theorem thm:quant (twist map, eigenforms, levels), Theorem thm:dfg14
 (the level-raising factor), Remark after Theorem thm:quant.
 
@@ -631,20 +647,22 @@ being the class of the unit part of the Tate parameter in F_p^x tensor Z_l (prov
 of the paper's Lemma lem:tamfactor).
 Paper hooks: Lemma lem:tamagawa-exp and Lemma lem:tamfactor (Kummer theory, the class c' of the unit part,
 H^1(G/I, Z_l(1)^I)), Lemma lem:dfg21 and the paragraph after it (H^1_f(Q_p, V^D) = H^1_ur = (V^D)^{I_p}/
-(Frob_p - 1) vanishes because det(1 - Frob_p | (V^D)^{I_p}) = L_p(A_f, 1)^{-1} is nonzero; the torsion of
+(Frob_p - 1) vanishes because det(1 - Phi_p | (V^D)^{I_p}) = L_p(A_f, 1)^{-1} is nonzero, with Phi_p the geometric
+Frobenius (the paper writes Frob_p there; Appendix B, B-C2(d)); the torsion of
 H^1(Q_p, T^D); H^1(R, T^D) killed by 2), Remark rem:ns (the exact sequence with H^0(Q, W^D) nonzero),
 the Selmer groups of Theorem thm:main.
 
 **Chapter 18. Bloch-Kato Selmer groups, Tamagawa factors and the adjoint motive** (`ch:blochkato`,
 `ch18_blochkato.tex`)
 Scope: l-adic representations of G_Q (continuous, on finite-dimensional Q_l-vector spaces), lattices T,
-the divisible module W = V/T, Tate twists V(n) = V tensor Q_l(1)^{tensor n}, duals V^* = Hom(V, Q_l) and
-the Cartier/Kummer dual V^D = V^*(1) = Hom(V, Q_l(1)), T^D = Hom(T, Z_l(1)), W^D = V^D/T^D, the trace form
-on ad^0 V and the self-duality (ad^0 V)^* = ad^0 V, so A(1) = Hom(A, Z_l(1)) = T^D for A = ad^0 T when l is
+the divisible module W = V/T, Tate twists V(n) = V tensor Q_l(1)^{tensor n}, linear duals V^vee = Hom(V, Q_l) and
+the Cartier/Kummer dual V^D = V^vee(1) = Hom(V, Q_l(1)), T^D = Hom(T, Z_l(1)), W^D = V^D/T^D (linear dual ^vee,
+Pontryagin dual ^*, Kummer dual ^D: Appendix B, B-C4), the trace form
+on ad^0 V and the self-duality (ad^0 V)^vee = ad^0 V, so A(1) = Hom(A, Z_l(1)) = T^D for A = ad^0 T when l is
 odd (2 invertible), geometric representations and their local behaviour: at p not l, the Weil-Deligne
-representation, the inertia invariants and the local L-factor L_p(V, s) = det(1 - Frob_p p^{-s} | V^{I_p})^{-1}
-(definition; the Frobenius here is geometric or arithmetic: fix the convention and state the paper's
-convention that a good prime has eigenvalues alpha/beta, 1, beta/alpha on ad V, hence L_p(A_f, s) with
+representation, the inertia invariants and the local L-factor L_p(V, s) = det(1 - Phi_p p^{-s} | V^{I_p})^{-1}
+with Phi_p = Frob_p^{-1} the geometric Frobenius (definition; convention fixed in Appendix B, B-C2(d); state the
+paper's convention that a good prime has eigenvalues alpha/beta, 1, beta/alpha on ad V, hence L_p(A_f, s) with
 s = 1 giving (1 - alpha/(beta p))(1 - 1/p)(1 - beta/(alpha p))), at l: de Rham, crystalline, semistable
 representations (Fontaine's rings B_dR, B_cris, B_st as black boxes; definitions of D_cris and the crystalline
 condition; the Tate module of an elliptic curve with good reduction at l is crystalline; the adjoint of a
@@ -658,7 +676,8 @@ H^1_f(Q, W), their relations, the Sigma-imprimitive Selmer group H^1_Sigma(Q, W)
 condition at p in Sigma, the Bloch-Kato condition at l, unramified elsewhere), the duality between the
 Bloch-Kato conditions for V and V^D under Tate local duality (H^1_f(Q_p, V)^perp = H^1_f(Q_p, V^D) for p not l;
 at l the same by Bloch-Kato; statements), the Fontaine-Perrin-Riou Tamagawa factor at p not l:
-Tam_p(T) = Fitt_{Z_l}(H^1(I_p, T)_{tors})^{G_{Q_p}} ... state the definition precisely as the paper does
+Tam_p(T) = Fitt_{Z_l}((H^1(I_p, T)_{tors})^{G_{Q_p}}), the invariants inside the Fitting ideal
+(important_notes.md point 37) ... state the definition precisely as the paper does
 (the Fitting ideal of the G_{Q_p}-invariants of the torsion of H^1(I_p, T); FPR94 I.4.2.2; DFG04 p. 708),
 the alternative description as [H^1_f(Q_p, T) : H^1_ur(Q_p, T)] type index or as the order of
 H^1_f(Q_p, T)/(something) and the equivalence (Lemma lem:fpr of the paper: Fitt H^1_f(Q_p, T^D) =
@@ -669,10 +688,14 @@ Tamagawa factor; give the full argument for p not l, following FPR94 I.4 and the
 2.15), the Tamagawa factor of an elliptic curve (Tam_p(T_l E) is the l-part of the Tamagawa number c_p =
 #Phi_p(F_p), as a sanity check: this is the classical fact and the paper's final remark in the proof of
 Lemma lem:tamfactor), the full computation of the paper's Lemma lem:tamfactor (Tam_q(ad T) at a prime of
-multiplicative reduction: v_l = v_l(n) + min(v_l(n), v_l(q - 1), v_l(c)), proved in full, every step, using
+multiplicative reduction: v_l = v_l(n) + min(v_l(n), v_l(q - 1), v_l(c(u))), with c(u) the class of the reduction
+of the unit part u (the paper's c; Appendix B, B-C14), proved in full, every step, using
 Chapters 16 and 17; the consequence v_l(Tam_q(ad T)) >= t_l(E, q) with equality unless q = 1 mod l, l | n
-and the unit part of the Tate parameter is an l-th power), the Tamagawa factor at an additive prime (what is
-known: it is at least 0; the paper does not compute it; Open question 3), the Tamagawa factor at a prime
+and the unit part of the Tate parameter is an l-th power), the Tamagawa factor at an additive prime (for q not l and l odd,
+v_l(Tam_q(ad T)) = 0 at every potentially good additive prime, by inflation-restriction through the finite
+image of inertia, important_notes.md point 64; at a potentially multiplicative additive prime the formula of
+Lemma lem:tamfactor applies to the Tate parameter, point 18; this answers the first half of the paper's Open
+question 3), the Tamagawa factor at a prime
 of good reduction is trivial, the Tamagawa number conjecture of Bloch and Kato (statement for a motive in
 outline: the l-part of the special value of the L-function equals the product of the order of the Selmer
 group, the Tamagawa factors, the periods and the orders of H^0 terms; the shape for the adjoint motive
@@ -704,7 +727,8 @@ field and its factorisation for abelian fields (statement), the L-function of an
 factors: (1 - a_p p^{-s} + p^{1 - 2s})^{-1} at good p, (1 - a_p p^{-s})^{-1} at multiplicative p with
 a_p = +-1, 1 at additive p; the conductor; the completed L-function Lambda(E, s) and the functional
 equation with root number, as a consequence of modularity; L(E, s) = L(f_E, s)), L-functions of l-adic
-Galois representations (the local factor L_p(V, s) = det(1 - Frob_p p^{-s} | V^{I_p})^{-1} for p not l;
+Galois representations (the local factor L_p(V, s) = det(1 - Phi_p p^{-s} | V^{I_p})^{-1} for p not l, with Phi_p = Frob_p^{-1}
+the geometric Frobenius, Appendix B, B-C2(d);
 at p = l via D_cris; the Weil-Deligne definition so that the factor is independent of l; the conjecture and
 theorem (for modular forms) that these are compatible), the L-function of a representation with finite
 image of inertia (examples: the three Kodaira cases), the adjoint and the symmetric square L-functions
@@ -720,18 +744,25 @@ bad primes) times L(Sym^2 f, 2); state the exact formula as in DFG04 Lemma 2.12 
 correction factors at the bad primes, since the paper's Section 1 says the Petersson norm is the special
 value up to the local factors at bad primes), the true local factors at bad primes (the paper's table in
 Section 1 derived in full: this is Lemma lem:euler; the computation of (ad V)^{I_q} and the Frobenius
-eigenvalues for each Kodaira type at q >= 5: I_n (line with eigenvalue q^{-1}, factor 1 - q^{-1-s}), I_n^*
+eigenvalues for each Kodaira type at q >= 5: I_n (line on which the geometric Frobenius has eigenvalue q^{-1}, factor 1 - q^{-1-s}), I_n^*
 (same, but the naive factor is 1, so e_l = v_l(q^2 - 1)), II/II^*/IV/IV^* (image of inertia of order 3 or
-6, invariant line spanned by sqrt(-3) in Z_l[zeta_3] = End_{I_q}(V), Frobenius acts by chi_{-3}(q),
+6, invariant line spanned by sqrt(-3) in Z_l[zeta_3] = End_{I_q}(T) (for V, read
+Q_l tensor Q(zeta_3) = End_{I_q}(V): important_notes.md point 12), Frobenius acts by chi_{-3}(q),
 factor 1 - chi_{-3}(q) q^{-s}, e_l = v_l(q - chi_{-3}(q))), III/III^* (order 4, eigenvalues +-i, invariant
-line spanned by the diagonal element, Frobenius acts by chi_{-4}(q), e_l = v_l(q - chi_{-4}(q))), I_0^*
+line spanned by the generator tau of the inertia image itself (not "the diagonal element", which need not exist
+over Q_l when l = 3 mod 4: important_notes.md point 34), Frobenius acts by chi_{-4}(q), e_l = v_l(q - chi_{-4}(q))), I_0^*
 (V = V' tensor chi_q with V' unramified, ad V unramified with eigenvalues alpha/beta, 1, beta/alpha,
 L_q(A_f, 1)^{-1} = ((q - 1)/q)((q + 1)^2 - a_q(E')^2)/q^2, e_l = v_l(q - 1) + v_l((q + 1)^2 - a_q(E')^2))),
-the wild primes 2 and 3 (the Kodaira type does not determine the factor; examples from the paper's Remark
-rem:wild: type IV at 2 has P_2(X) = 1 + 2X; type II at 2 has P_2 = 1; a type I_n^* at 2 with potentially good
-reduction has a cubic P_2), how PARI computes these (lfunsympow(E, 2), lfuneuler; the polynomial P_q(X)
+the wild primes 2 and 3 (the Kodaira type does not determine the factor; examples: type IV or IV^* at 2 has P_2(X) = 1 + 2X
+(a theorem, important_notes.md point 43); the paper's Remark rem:wild claims that type II at 2 has P_2 = 1 and that
+a type I_n^* at 2 with potentially good reduction has a cubic P_2, and both claims are false in general (336f1 has
+type II at 2 and P_2 = 1 + 2X; 1232l1 has type II^* at 2 and a cubic P_2; point 50); at every bad prime P_q is one
+of four shapes, 1 - X, the I_0^* cubic, 1 - cqX with c = +-1, or 1 (point 69)), how PARI computes these (lfunsympow(E, 2), lfuneuler; the polynomial P_q(X)
 with L_q(Sym f, s) = P_q(q^{-s})^{-1}, and e_l = v_l(P_q(q^{-2})/(1 - a_q^2 q^{-2}))), the definition of
-e_l(E, q) (the paper's Definition def:terms) and its invariance under quadratic twist, Flach's theorem on the
+e_l(E, q) (the paper's Definition def:terms) and the failure of its invariance under quadratic twist (t_l(E, q)
+is twist-invariant, e_l(E, q) is not when the twist is ramified at q and changes the type there: 11a1 has
+e_3(E, 11) = 0, its twist 121d2 by chi_{-11} has type I_5^* at 11 and e_3 = 1; the paper's sentence "both terms
+are invariant under quadratic twist" is false for e_l, important_notes.md point 15), Flach's theorem on the
 finiteness of the Selmer group of Sym^2 (statement), special values and the Bloch-Kato conjecture for the
 adjoint (one page; the shape "L-value / period = Selmer times Tamagawa", the connection to the modular
 degree via Petersson norm), Deligne's conjecture on critical values in one paragraph, the functional
@@ -753,21 +784,24 @@ the m-component of S_2(Gamma_0(N); Z_l) via idempotents; which newforms belong t
 eigencharacter congruent to phi_f mod m, i.e. with rho bar_g = rho bar_f), congruence modules and
 congruence ideals (for a surjection pi: T -> O with kernel wp and I = Ann(wp): the congruence ideal eta =
 pi(I); the congruence module O/eta = T/(wp + I); Hida's definition and the equality with the "largest
-modulus of a congruence f = g with g in f^perp" (the paper's Lemma lem:crit; prove it in full here, in the
-integral and the Z_l form; cross-reference the proof in Chapter 15 and avoid contradiction: Chapter 15
-proves it, Chapter 20 restates it as a theorem of the theory of congruence modules and adds the
+modulus of a congruence f = g with g in f^perp" (the paper's Lemma lem:crit, in the
+integral and the Z_l form; Chapter 15 proves it in full (decision B17, Section 7.5), Chapter 20 restates it as a theorem of the theory of congruence modules and adds the
 commutative algebra viewpoint), the theorem of Hida on congruence modules and the adjoint L-value (statement:
 for weight 2 and level N, the congruence module of f is related to L(ad f, 1) / period up to primes dividing
 2 N and the Euler factors; the precise statement in Hida 1981 and its refinement in DFG04), Wiles's numerical
-criterion (DDT Theorem 5.3 / Lemma 4.17 in full: let O be a DVR, T a finite free O-algebra, pi: T -> O
+criterion (DDT Theorem 5.3 / Lemma 4.17; the number 5.3 is not verified, important_notes.md B26; in full: let O be a DVR, T a finite free O-algebra, pi: T -> O
 surjective, wp = ker pi, eta = pi(Ann wp); then T is a complete intersection iff ... ; the paper only needs
 the inequality half with a module L: the paper's Lemma lem:ddt417 stated and proved in full, in the
 paper's generality (L free of finite rank with a perfect O-bilinear pairing for which T is self-adjoint,
 L[wp] free of rank d with Gram determinant Delta: eta^d is contained in Delta O, with equality if L is free
 over T), with every ingredient from Chapter 3 (saturation, L[wp]^perp = L[I], the cokernel of L[wp] ->
 Hom(L[wp], O) has order #O/Delta)), the application to the modular degree (the paper's Lemma lem:hecke:
-v_l(deg phi_E) = v_l(r_E) >= v_lambda(eta^empty_{f, lambda}) with equality if H^1(X_0(N), Z_l)_m is free over
-T_m; proof in full; the paper's Remark rem:free on when freeness holds), the lattices and ideals of
+as the paper states it, v_l(deg phi_E) = v_l(r_E) >= v_lambda(eta^empty_{f, lambda}) with equality if
+H^1(X_0(N), Z_l)_m is free over T_m; in fact v_l(deg phi_E) = v_lambda(eta^empty_{f, lambda}) for every l not
+dividing 2N with no freeness or multiplicity-one hypothesis, because the pairing on M_{f,lambda} =
+phi_E^* H^1(E, Z_l) has Gram determinant (deg phi_E)^2 (important_notes.md points 39, 56, 73, confirmed against
+DFG04; proved in Chapter 14), so (eq:identity) of Theorem thm:main is an equality whenever l is not in S_f;
+proof in full; the paper's Remark rem:free on when freeness holds, which the equality no longer needs), the lattices and ideals of
 Diamond, Flach and Guo (DFG04 Sections 1.5.3, 1.6.2, 1.7.3 as read for weight 2 and trivial character:
 the integral structure M(M^Sigma, 1)_{!, lambda} = H^1(X_0(M^Sigma), Z_l) with its Hecke action; the
 lattice M_{f^Sigma, lambda} = kernel of the kernel of the eigencharacter of f^Sigma (that is, the
@@ -795,7 +829,9 @@ Theorem thm:dfg27 plus Lemma lem:dfg21 plus Lemma lem:h0, Lemma lem:fpr, Definit
 lem:tamfactor; the cancellation of the naive factors at multiplicative primes; the twist argument for I_n^*
 primes), the twist monotonicity theorem (the paper's Theorem thm:twist proved in full) and the proof of the
 paper's Theorem thm:quant in full (Steps 1 to 4, with the Hecke congruence ideal eta^Hecke(g^S) and its
-comparison with the cohomological one), the remarks after Theorem thm:quant (why the argument fails for
+comparison with the cohomological one; the first inequality of thm:quant is an equality whenever l is not in S_f,
+with no multiplicity-one hypothesis, by applying the equality form of (eq:identity) to E and to E_S,
+important_notes.md point 74), the remarks after Theorem thm:quant (why the argument fails for
 potentially good types II, III, IV), the Kim-Ota formula and the Tamagawa exponent (statement, Remark
 rem:ko(2)), Open questions 1 and 2.
 Paper hooks: Section 4 in full (Sections 4.1, 4.2, 4.3, 4.4: Theorem thm:dfg14, Lemma lem:ddt417, Lemma
@@ -825,7 +861,8 @@ and w_3; out-of-table curves; the Eisenstein case); Section 7 (the prime 2 and W
 open questions; the appendix (the PARI function rule(E, l) explained line by line, with the Kodaira codes).
 Also: a dependency diagram of the paper's results (which lemma feeds which theorem), a table "hypothesis ->
 where it is used -> what fails without it" (l odd; l not dividing 2N; absolute irreducibility over
-Q(sqrt(l*)); X_0(N)-optimality; multiplicity one), a list of the exact statements imported from the
+Q(sqrt(l*)); X_0(N)-optimality; multiplicity one, which the paper uses for the equality in thm:main and
+thm:quant but which is not needed there when l is not in S_f, important_notes.md points 39, 73, 74), a list of the exact statements imported from the
 literature with their numbering (DFG04 Theorem 0.1, 0.2, 2.7, 3.7, Proposition 1.4, Lemma 2.1, Theorem
 2.15, (31), (57), p. 708; DDT Theorem 3.1(e), 3.15, Lemma 4.17; FPR94 I.4.2.2; ARS12 Theorem 2.2; Atkin-Li
 Theorem 3.1; Atkin-Lehner Theorem 3; Ribet83 Theorem 2.2; AU96 Lemma 2.1; Ribet-Stein Theorem 3.5; Kim-Ota
@@ -840,9 +877,11 @@ Scope: PARI/GP for the reader who has never used it (installation, ellinit, ellg
 structure with the Kodaira codes), ellap, ellan, elltors, ellisomat, ellmoddegree (and its memory needs),
 elldivpol, lfuncreate / lfunsympow / lfuneuler and the conventions for the symmetric square Euler factor,
 ellinit over Q_q and the Tate parameter (elltatepairing is not it: explain how to extract the Tate
-parameter / its valuation from v_q(j) and the unit part via the Tate curve algorithm or via ellinit(E, q)),
+parameter / its valuation from v_q(j) and the unit part via the Tate curve algorithm or via the q-adic curve
+ellinit(E, O(q^k)); note that ellinit(E, q) reduces E modulo q and is not the q-adic curve),
 valuation, factor), Cremona's tables and the ecdata repository (what the files contain: allcurves, allbsd,
-alldegphi, allgens, alllabels, allisog, the Kodaira symbols and Tamagawa numbers, the mod l images with
+degphi (the modular degrees; not "alldegphi"), allgens, alllabels, allisog, the Tamagawa data as tabulated there; the files
+contain no per-prime Kodaira symbols, which PARI recomputes; the mod l images with
 Sutherland's labels (2Cs, 3B.1.1, 3Cs.1.1, 3Ns, 3Nn, 5B, ...), optimality and the Cremona label "1"; the
 LMFDB and its labels versus Cremona's), reading a Cremona label (11a1, 121a1, 121c, 121d, 539c1, 980i1,
 726a1, 99A1 and the capitalisation convention), the paper's data protocol (working set N <= 300000, hold-out
@@ -856,15 +895,15 @@ give about 605,000 violations, there are none; what this does and does not show;
 mean excess as descriptive statistics; the base rates by Kodaira type; a short, honest discussion of
 multiple comparisons and of why a conjecture found on the working set must be tested on held-out data; the
 reader's statistics background is enough for this), the PARI function rule(E, l, iii) of the paper's
-appendix reproduced and explained line by line (ellglobalred's R[4] and R[5], the Kodaira code k, the
-omitted factor r = P_q(q^{-2}) with the multiplicative correction, the exclusion of type III/III^* unless
+appendix reproduced and explained line by line (ellglobalred's R[4] and R[5], the Kodaira code k
+(n + 4 for I_n and -(n + 4) for I_n^* for n >= 1 only; I_0^* is -1), the omitted factor r = P_q(q^{-2}) with the multiplicative correction, the exclusion of type III/III^* unless
 iii = 1, the weights w_3 at q = 3, the Tamagawa exponent from v_q(j), the correction ns3(E) via the
 factorisation of the 3-division polynomial), worked sessions: 121a1 returns [1, 1]; 726a1 returns [2, 2]
 with and without iii; 539c1; 980i1; 99A1 (where ellmoddegree gives 4 and the congruence number 12 is not
 given by PARI directly), computing e_l(E, q) by hand from the Kodaira type for q >= 5 and checking against
 lfunsympow, computing t_l(E, q), computing the mod 3 image class 3Ns via elldivpol, the twist lemma check
 (twist_lemma_check.gp: how to write it), reproducing a row of the paper's tables on a small range (a GP
-script that loops over curves of conductor up to 1000 from ellsearch or from a downloaded ecdata file and
+script that loops over curves of conductor up to 1000 from ellsearch (which needs PARI's elldata package) or from a downloaded ecdata file and
 counts violations and equalities), how the modular degree is computed (Watkins's algorithm in outline;
 Cremona's; why it is expensive), the repository named in the paper's appendix and what each script does
 (descriptive list only), a note on reproducibility practice (pinned data commits, re-running from a clean
@@ -885,7 +924,7 @@ item with a pointer to where in the book it is first used.
 
 **Appendix B. Notation, conventions and index of symbols** (`ch:notation`, `chB_notation.tex`)
 A table of every symbol used in the paper and the book, in the paper's notation (V, T, rho, rho bar, A_f,
-ad, Sym, delta_p, L_p, L_p^nv, P_q, e_l(E, q), t_l(E, q), n_q, q_E, u, c, Tam_p, Fitt, H^1_f, H^1_Sigma,
+ad, Sym, delta_p, L_p, L_p^nv, P_q, e_l(E, q), t_l(E, q), n_q, q_E, u, c(u) (the paper's c in lem:tamfactor), c', c_E (the Manin constant; never a bare c), Tam_p, Fitt, H^1_f, H^1_Sigma,
 W, T^D, V^D, W^D, S_f, eta^Sigma_{f, lambda}, M_{f, lambda}, delta hat_!, phi_f, I, J, r_E, deg phi_E,
 Phi_q, Phig_q, c_q, w_l(E, q), w_3(E), h_l(E), chi_{-3}, chi_{-4}, chi_q, q*, l*, E^(q), E_S, N_s, N_ns,
 3Ns, Kodaira symbols and PARI codes, ...) with the chapter where it is defined. Conventions: arithmetic
@@ -932,7 +971,7 @@ everything -> 21 paper
 | Tate parameter, unit part, l-th powers in F_q^x, t_l(E, q), potentially multiplicative reduction | 2, 7, 10 |
 | Sigma-imprimitive Selmer group, Bloch-Kato Selmer group, H^1_f, H^1_Sigma | 17, 18 |
 | congruence ideal, congruence number r_E, eta^Sigma, M_{f, lambda}, the pairing delta hat_! | 13, 14, 20 |
-| Fontaine-Perrin-Riou Tamagawa factor Tam_p(M) = Fitt(H^1(I_p, M)_tors)^G | 3, 16, 18 |
+| Fontaine-Perrin-Riou Tamagawa factor Tam_p(M) = Fitt((H^1(I_p, M)_tors)^G) | 3, 16, 18 |
 | the computation of Tam_q(ad T) at a multiplicative prime | 16, 17, 18 |
 | Agashe-Ribet-Stein: deg phi_E divides r_E, equality away from p^2 \| N | 14 |
 | multiplicity one, freeness of H^1(X_0(N), Z_l)_m over T_m, Gorenstein, J_0(N)[m] | 3, 14, 20 |
@@ -1000,10 +1039,11 @@ everything -> 21 paper
   SerreCourse, Neukirch, NSW, MilneCFT, MilneEC, MilneANT, CasselsFrohlich, Washington, AtiyahMacdonald,
   Eisenbud, Weibel, Brown, Rubin, Berger, HidaMFG, HidaBook, CremonaBook, LMFDB, PARIusers, Lang, DummitFoote,
   Fulton, Hartshorne, Miranda, BLR, Conrad, Shimura71, Shimura76, GelbartJacquet, Miyake, Koblitz, Knapp,
-  Husemoller, Tate75, TateAlgorithm, Kodaira, NeronModels, Ogg, BlochKato, Fontaine, Deligne, Wiles95,
+  Husemoller, Tate75 (Tate's algorithm; there is no key TateAlgorithm), Kodaira, NeronModels, Ogg, BlochKato, Fontaine, Deligne, Wiles95,
   TaylorWiles, BCDT, KhareWintenberger, Khare, Ribet76, Ribet91, Mazur78, MazurRibet, Zagier85, Cremona97,
   Stein, Loeffler, Sutherland16, Zywina15, Serre72`. If a chapter needs a reference not in `refs.bib`, add a
-  complete entry to `bib/chNN.bib` (the chapter's own bib file, which main.tex includes), never to `refs.bib`.
+  complete entry to `bib/chNN.bib` (the chapter's own bib file, which main.tex includes), unless the reference is
+  needed by more than one chapter: such shared references go into `refs.bib` (decision B14, Section 7.5).
 * Environments (defined in `preamble.tex`, all numbered `chapter.counter` in one sequence): `theorem`,
   `proposition`, `lemma`, `corollary`, `conjecture`, `definition`, `example`, `exercise`, `construction`,
   `convention`, `remark`, `warning`, `paperlink` (a remark-style environment titled "In the paper", used to
@@ -1050,6 +1090,26 @@ everything -> 21 paper
 * `tools/lint.py chapters/chNN_slug.tex` rejects dashes, forbidden commands, unprefixed labels, Unicode
   mathematics and stray `\input`. It must pass clean.
 * `tools/build.sh` builds the whole book (`main.pdf`).
+
+### 7.5 Decisions recorded after the outlines (binding)
+
+These decisions are recorded in `important/important_notes.md` under the number given; they override anything
+above that disagrees with them.
+
+* **B14 (bibliography).** main.tex reads all chapter bib files, so a key defined in two of them is a BibTeX
+  error. Any reference needed by more than one chapter goes into `refs.bib`, not into a chapter bib file. Before
+  adding a key, check `refs.bib` and the other chapters' bib files.
+* **B17 (Lemma lem:crit).** Chapter 15 proves the paper's Lemma lem:crit in full. Chapter 14 states the
+  congruence number and cites Chapter 15; Chapter 20 restates the lemma in the language of congruence modules
+  and cites Chapter 15 for the proof.
+* **B2 (Jordan-Holder).** The Jordan-Holder theorem is proved in Chapter 3 (for modules, over any ring);
+  Chapter 4 cites it for the composition factors of representations and does not prove it again.
+* **B24 (conventions).** The book-wide conventions B-C1 to B-C16 of Appendix B are binding on every chapter.
+  Their specification, the index of symbols and the list of places where an outline disagrees with them are in
+  `outlines/chB_notation.md` (Parts 1 to 3). In brief: Frob is the arithmetic Frobenius and Phi = Frob^{-1} the
+  geometric one, L-factors use Phi; ^vee is the linear dual, ^* the Pontryagin dual (and a pullback when written
+  after a map), ^D the Kummer dual, ^dagger the adjoint of an operator; A_f is the paper's adjoint and Shimura's
+  abelian variety is J_f; depletion is f^Sigma or f^{p}, never f^(p); the Manin constant is c_E.
 
 ## 8. Production process
 

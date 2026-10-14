@@ -85,7 +85,7 @@ geometry and algebraic topology at once. The chapter therefore follows three rul
   (of functions, divisors, divisor classes, differentials, $H^1$ classes) and $\varphi_*$ is pushforward (of divisors, divisor
   classes, $H_1$ classes) and, on $H^1$, the transpose of the transfer (12.2). A correspondence is written $\mathcal C=(C,\alpha,\beta)$
   and its transpose $\mathcal C^t=(C,\beta,\alpha)$. **The adjoint of an endomorphism $A$ for a pairing is written $A^\dagger$ in this
-  chapter**, because $^*$ is taken by pullbacks; Chapter 3 writes $A^*$ for the adjoint and the paper and Chapter 4 write $^*$
+  chapter**, because $^*$ is taken by pullbacks; this is the book-wide convention of Appendix B (B-C4), and the paper and Chapter 4 write $^*$
   for Pontryagin duals (Part 7, book-internal point B3).
 * **C5 (duals).** $M^\vee=\Hom(M,\Z)$ or $\Hom_{\Z_\ell}(M,\Z_\ell)$ for lattices; $V^\vee$ for linear duals and contragredient
   representations, as in Chapter 4, C2. Pontryagin duals ($^*$ in the paper) do not occur in this chapter.
@@ -345,9 +345,9 @@ $E=\operatorname{Pic}^0(E)$ (5.7).
 **6.5 `prop:curves:separability-frobenius`** (proposition; P for (c) identities, S for (c) degree, R for (b)). (a) In
 characteristic $0$ every nonconstant morphism of curves is separable (Chapter 5: characteristic-$0$ fields are perfect).
 (b) In characteristic $p$, $\varphi$ is separable iff $\varphi^*\omega\ne0$ for one (equivalently every) nonzero differential $\omega$ on $C_2$; and
-every nonconstant $\varphi$ factors as $C_1\xrightarrow{\phi_q}C_1^{(q)}\xrightarrow{\lambda}C_2$ with $q=\deg_i\varphi$ and $\lambda$ separable. (c) For
-$k=\F_q$ and $C\subseteq\mathbb P^n$ defined over $\F_q$, the $q$-power Frobenius morphism $\phi_q\colon[x_0:\dots:x_n]\mapsto[x_0^q:\dots:x_n^q]$ maps $C$
-to itself; $\phi_q^*\bar k(C)=\bar k(C)^q$, so $\phi_q$ is purely inseparable of degree $q$ (S) and $e_{\phi_q}(P)=q$ at every point; its fixed
+every nonconstant $\varphi$ factors as $C_1\xrightarrow{\pi_q}C_1^{(q)}\xrightarrow{\lambda}C_2$ with $q=\deg_i\varphi$ and $\lambda$ separable. (c) For
+$k=\F_q$ and $C\subseteq\mathbb P^n$ defined over $\F_q$, the $q$-power Frobenius morphism $\pi_q\colon[x_0:\dots:x_n]\mapsto[x_0^q:\dots:x_n^q]$ maps $C$
+to itself; $\pi_q^*\bar k(C)=\bar k(C)^q$, so $\pi_q$ is purely inseparable of degree $q$ (S) and $e_{\pi_q}(P)=q$ at every point; its fixed
 points are $C(\F_q)$; on $C(\bar\F_q)$ it coincides with the action of the arithmetic Frobenius of $G_{\F_q}$ (C7). Reference:
 SilvermanAEC II.2 (Proposition 2.11, Corollary 2.12) and II.4 (Proposition 4.2). Paper: background (Chapter 9: the Frobenius
 endomorphism and $a_p=p+1-\#E(\F_p)$; Chapter 14: Eichler-Shimura).
@@ -601,7 +601,7 @@ and Abelian varieties (Sections 16 and 19, cite the sections); Mumford, Abelian 
 section); Milne, Etale cohomology (lecture notes; not in refs.bib), the comparison theorem; SilvermanAEC III.8 and V.2 for
 $g=1$. Paper: Section 4.2 and important_notes.md point 26 ($M_{f,\lambda}\subset H^1$ is homothetic to the dual of $T_\ell E$, that is to
 $T_\ell E(-1)$, not to $T_\ell E$; the adjoints agree), Section 1.1 ($V=V_\ell E$), Chapter 6 C2/3.7 and important_notes.md point 11 and B1
-(which Frobenius has which eigenvalues), Chapter 14 (Eichler-Shimura), Chapter 15 ($\rho_{f,\lambda}$ via $T_\ell$ of $A_f$ or via $H^1$).
+(which Frobenius has which eigenvalues), Chapter 14 (Eichler-Shimura), Chapter 15 ($\rho_{f,\lambda}$ via $T_\ell$ of $J_f$, Shimura's abelian variety, or via $H^1$; $A_f$ is the paper's adjoint, Appendix B, B-C12(c)).
 
 ### Section 12. Correspondences, their actions, and adjoints
 
@@ -610,7 +610,7 @@ curves over $k$, or compact Riemann surfaces) is a triple $(C,\alpha,\beta)$ wit
 curves and $\alpha\colon C\to X$, $\beta\colon C\to Y$ morphisms nonconstant on every component; its *transpose* is $\mathcal C^t=(C,\beta,\alpha)$, from $Y$ to $X$;
 sums are disjoint unions. Examples: (a) the graph $\Gamma_\varphi=(X,\mathrm{id},\varphi)$ of a nonconstant $\varphi\colon X\to Y$, and its transpose
 $\Gamma_\varphi^t=(X,\varphi,\mathrm{id})$; (b) an automorphism $w$ of $X$ gives $\Gamma_w$, with $\Gamma_w^t$ acting as $\Gamma_{w^{-1}}$ (12.2); (c) (forward
-pointer, Chapter 14) the Hecke correspondence $T_p=(X_0(Np),\pi_1,\pi_p)$ on $X_0(N)$ for a prime $p\nmid N$, with $\pi_1(z)=z$, $\pi_p(z)=pz$ on
+pointer, Chapter 14) the Hecke correspondence $T_p=(X_0(Np),\alpha_1,\alpha_p)$ on $X_0(N)$ for a prime $p\nmid N$, with $\alpha_1(z)=z$, $\alpha_p(z)=pz$ on
 $\mathbb H$, and $U_p$ similarly for $p\mid N$. Remark (R): the image of $(\alpha,\beta)$ is a divisor on $X\times Y$; correspondences up to the
 obvious equivalence form a ring under composition (fibre products); this chapter does not need the composition, only the
 actions below, because the Hecke algebra is defined as the ring of operators they generate (Chapter 13). Reference: Shimura71,
@@ -784,8 +784,8 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
     $\varphi^*H^1(E,\Z)$; deduce that if $\varphi^*H^1(E,\Z)$ is saturated then $(\psi\circ\varphi)^*H^1(E',\Z)$ is not (for $n>1$), and relate this to "minimal
     degree" in the paper's definition of the optimal curve (Section 1; Chapter 14 shows that every parametrisation of a curve
     isogenous to $E$ factors through the optimal one).
-17. (Frobenius.) For $C$ over $\F_p$, show that $\phi_p$ is a morphism with $\phi_p^*\bar\F_p(C)=\bar\F_p(C)^p$, that $d(\phi_p^*f)=0$, that its fixed points are
-    $C(\F_p)$, and that $e_{\phi_p}(P)=p$ everywhere. Explain why Riemann-Hurwitz does not apply to $\phi_p$.
+17. (Frobenius.) For $C$ over $\F_p$, show that $\pi_p$ is a morphism with $\pi_p^*\bar\F_p(C)=\bar\F_p(C)^p$, that $d(\pi_p^*f)=0$, that its fixed points are
+    $C(\F_p)$, and that $e_{\pi_p}(P)=p$ everywhere. Explain why Riemann-Hurwitz does not apply to $\pi_p$.
 18. (Residues.) Prove $\sum_P\operatorname{res}_P\omega=0$ on a compact Riemann surface and deduce $\deg\operatorname{div}f=0$. On $\mathbb P^1$ verify it for
     $\omega=dz/(z^2-1)$.
 
@@ -1014,7 +1014,7 @@ Book-internal inconsistencies found while preparing this outline:
   Chapter 21 writer must use the corrected wording. (A4.4 does already contain the point 36 sentence.)
 * **B2. Chapter 21 outline, A4.6** says $M_{f,\lambda}$ "is homothetic to $T_\ell E$ for $\bar\rho$ irreducible", while its own A4.1 Commentary and
   important_notes.md point 26 say "homothetic to the dual of $T_\ell E$". A4.6 should be brought in line (and can use point 2 above).
-* **B3. Notation for adjoints.** Chapter 3, 9.5 writes the adjoint of $A$ as $A^*$; Chapter 4, C2 reserves $^*$ for Pontryagin duals (as the
+* **B3. Notation for adjoints (settled as in Appendix B, B-C4: $A^\dagger$ for adjoints, $^\vee$ linear, $^*$ Pontryagin and pullback; Chapter 3 now writes $A^\dagger$).** Chapter 3, 9.5 wrote the adjoint of $A$ as $A^*$; Chapter 4, C2 reserves $^*$ for Pontryagin duals (as the
   paper does); Chapters 8 and 14 need $^*$ for pullbacks ($\varphi^*$, $T^*$, $\mathcal C^*$). This outline writes $A^\dagger$ for adjoints (C4). Appendix B
   should fix one book-wide convention (suggestion: $A^\dagger$ for adjoints, $^\vee$ for linear duals, $^*$ for pullbacks and for the
   paper's Pontryagin duals, which never meet pullbacks in the same formula).
