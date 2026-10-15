@@ -1158,8 +1158,9 @@ above that disagrees with them.
 | Outlines (22 chapters, Appendix B), bibliography, memo, revised paper | done (see CONTINUE.md) |
 | D3 applied to the outlines; Chapter 18 hedge settled by point 73 | done |
 | Appendix A | written, 994 lines, compiles |
+| **Chapter 1** | **written**: 1,844 lines, 43 pages, compiles, lint clean; lean pipeline (write, combined review with 13 findings, fix, check clean, no second fix); cost: see human |
 | **Chapter 10 (pilot)** | **written**: 2,344 lines, 48 pages, compiles, lint clean; full pipeline, three review rounds |
-| Chapters 1 to 9, 11 to 22, Appendix B, preface update | not yet written |
+| Chapters 2 to 9, 11 to 22, Appendix B, preface update | not yet written |
 
 **What the pilot taught.**
 * Length: 2,344 lines against a plan average of about 2,200 per chapter; the outline is a good predictor.
@@ -1181,6 +1182,12 @@ fixes, with a second fix only if the check finds a blocking or major problem. Ex
 per chapter (an estimate; measure the first lean chapter). At that rate USD 100 writes about 5 to 7 chapters;
 the remaining 21 chapters and Appendix B need about USD 250 to 400 in lean mode, or about USD 700 to 800 with
 the full pipeline.
+
+**One-shot runs (claude -p), lesson from Chapter 1.** The Workflow runs in the background; if the orchestrating
+run ends its turn while waiting, the process exits and the writer is interrupted (this happened once; the partial
+draft was committed and the run resumed with `partial: true` in the chapter args, which tells the writer to continue
+the draft). The orchestrator must stay in its turn and poll the run's journal until the workflow completes.
+Chapter 1 in lean mode: about 31 minutes of agent time for the resumed run, 4 agents, about 0.58M sub-agent tokens.
 
 **Priorities under a fixed budget.** (1) Part I (Chapters 1 to 4, the easiest and shortest) in lean mode,
 measuring the first chapter; (2) the chapters the paper leans on most (14, 15, 20, 21); (3) the rest. Chapters 21

@@ -1,4 +1,5 @@
 \chapter{Groups, group actions and matrix groups over finite fields}\label{ch:groups}
+\chaptermark{Groups and matrix groups over finite fields}
 
 The paper uses group theory in two ways. Most of the time it is the background language: Galois groups
 are profinite groups, inertia groups are stabilisers, Tamagawa numbers and component groups are finite
@@ -118,7 +119,7 @@ is abelian, and a finite subgroup of $\GL_2(K)$ whose commutator subgroup is not
 $\det g$ is the sign of the permutation of the lines. \emph{(proved here)} $\PGL_2(\F_5)\simeq S_5$, $\PSL_2(\F_5)\simeq A_5$. \emph{(proof
 sketched here)} $\PSL_2(\F_q)$ is simple for $q\ge4$, and $\PSL_2(\F_7)\simeq\GL_3(\F_2)$. \emph{(stated; reference)}
 \Cref{thm:groups:smallpgl}.
-\item \textbf{Cartan subgroups} (definition, $q$ odd, $\varepsilon$ a non-square: $C_s=\{\mathrm{diag}(a,d)\}$; $C_{ns}=\{\sm a{\varepsilon b}ba\ne0\}\simeq\F_q[\sqrt\varepsilon]^\times$).
+\item \textbf{Cartan subgroups} (definition, $q$ odd, $\varepsilon$ a non-square: $C_s=\{\mathrm{diag}(a,d)\}$; $C_{ns}=\{\sm a{\varepsilon b}ba:(a,b)\ne(0,0)\}\simeq\F_q[\sqrt\varepsilon]^\times$).
 \Cref{def:groups:cartan}. $N(C_s)=C_s\cup wC_s$ is the stabiliser of $\{[e_1],[e_2]\}$; $N(C_{ns})=C_{ns}\cup C_{ns}\sigma$ with $\sigma=\mathrm{diag}(1,-1)$ and
 $\sigma c\sigma^{-1}=c^q$; $C_{ns}$ is cyclic of order $q^2-1$; all split, respectively all nonsplit, Cartan subgroups are conjugate.
 \emph{(proved here)} \Cref{prop:groups:cartan}.
@@ -128,8 +129,8 @@ $q-1$, $2(q-1)$, $q+1$, $2(q+1)$; orbits on $\PP^1(\F_q)$: $C_s$: $1,1,q-1$; $N_
 \emph{(proved here)} \Cref{prop:groups:cartanfacts}.
 \item \textbf{Dickson.} For $\ell$ odd and $G\le\GL_2(\F_\ell)$ with image $\bar G$ in $\PGL_2(\F_\ell)$: if $\ell\mid\#G$, then $G\supseteq\SL_2(\F_\ell)$ or $G$ lies in a Borel
 subgroup; if $\ell\nmid\#G$, then $\bar G$ is cyclic and $G$ lies in a Cartan subgroup, or $\bar G$ is dihedral and $G$ lies in the normaliser
-of a Cartan subgroup but not in the Cartan subgroup, or $\bar G\simeq A_4,S_4,A_5$. \emph{(stated; reference; the case $\ell=3$ is
-proved in \Cref{prop:groups:gl23subgroups})} \Cref{thm:groups:dickson}.
+of a Cartan subgroup but not in the Cartan subgroup, or $\bar G\simeq A_4,S_4,A_5$. \emph{(stated; reference; part (a) for $\ell=3$ is
+proved in \Cref{prop:groups:gl23subgroups}, and the case needed by the paper in \Cref{thm:groups:threeimages})} \Cref{thm:groups:dickson}.
 \item \textbf{Conjugacy classes of $\GL_2(\F_3)$.} Order $48$, centre $\{\pm I\}$, commutator subgroup $\SL_2(\F_3)$, eight classes, of sizes
 $1,1,12,8,6,8,6,6$ with representatives $I,-I,\sigma,u,J,-u,\sm1{-1}11,\sm0111$ of orders $1,2,2,3,4,6,8,8$. \emph{(proved here)}
 \Cref{prop:groups:gl23classes}.
@@ -171,7 +172,7 @@ subgroups of finite index; continuous maps to finite groups factor through some 
 normal subgroups are profinite; continuous images in Hausdorff groups are closed; a continuous homomorphism from a pro-$p$ group
 to a finite group of order prime to $p$ is trivial. \emph{(proved here)} Profinite iff compact, Hausdorff and totally disconnected.
 \emph{(stated; reference)} \Cref{prop:groups:profinite}.
-\item \textbf{$\GL_2(\Z_\ell)$.} $\GL_2(\Z_\ell)=\varprojlim\GL_2(\Z/\ell^n)$; the reductions are surjective with kernels $\simeq(M_2(\F_\ell),+)$, so
+\item \textbf{$\GL_2(\Z_\ell)$.} $\GL_2(\Z_\ell)=\varprojlim\GL_2(\Z/\ell^n)$; the reduction maps are surjective, with kernels isomorphic to $(M_2(\F_\ell),+)$, so
 $\#\GL_2(\Z/\ell^n)=\ell^{4(n-1)}(\ell^2-1)(\ell^2-\ell)$; the kernel $\Gamma(\ell)=\ker(\GL_2(\Z_\ell)\to\GL_2(\F_\ell))$ is pro-$\ell$, and torsion-free if $\ell$ is odd, so a
 finite subgroup of $\GL_2(\Z_\ell)$ maps isomorphically into $\GL_2(\F_\ell)$ for $\ell$ odd. \emph{(proved here)} \Cref{prop:groups:gl2zl}.
 \end{enumerate}
@@ -188,8 +189,8 @@ the $3$-division polynomial, \Cref{cor:groups:orbitdichotomy}, \Cref{prop:groups
 \Cref{prop:groups:unipotent}; the kernel of $\GL_2(\Z_3)\to\GL_2(\F_3)$ is torsion-free, \Cref{prop:groups:gl2zl}.
 \item \textbf{Remark rem:types} (the other additive types at $q\ge5$): fixed vectors of $-I$, of $J$, of ``minus a unipotent'',
 \Cref{prop:groups:unipotent}, \Cref{prop:groups:gl23classes}.
-\item \textbf{Lemma lem:h0} (the correction term $h_\ell(E)$): $\F_\ell^\times$ is cyclic of order $\ell-1$ and a character onto it with square $1$
-forces $\ell=3$, \Cref{thm:groups:cyclic}(iv), \Cref{cor:groups:cyclic}; $\bar\rho\bmod\ell^k$ factors through a finite quotient,
+\item \textbf{Lemma lem:h0} (the correction term $h_\ell(E)$): $\F_\ell^\times$ is cyclic of order $\ell-1$ and, for an odd prime $\ell$, a character onto it with square $1$
+forces $\ell=3$, \Cref{thm:groups:cyclic}(iv), \Cref{cor:groups:cyclic}; $\rho\bmod\ell^k$ factors through a finite quotient,
 \Cref{prop:groups:profinite}; the coefficients $\Z_\ell$ and $\Qlmod$, \Cref{ex:groups:zp}.
 \item \textbf{Section sec:anomaly and Remark rem:ns} (image $\Ns$): \Cref{prop:groups:ns3}, \Cref{cor:groups:orbitdichotomy}, \Cref{ex:groups:sutherland3}.
 \item \textbf{Section sec:eis and Conjecture conj:eis} (the Eisenstein case): a rational isogeny means image in a Borel subgroup,
@@ -198,13 +199,17 @@ forces $\ell=3$, \Cref{thm:groups:cyclic}(iv), \Cref{cor:groups:cyclic}; $\bar\r
 Tamagawa number, the count of Frobenius-fixed points in $(\Z/\ell^{v_\ell(n)})^2$): \Cref{prop:groups:lprimary},
 \Cref{thm:groups:finiteabelian}, \Cref{prop:groups:torsioncount}, \Cref{thm:groups:cyclic}(ii); for Lemma lem:crit ($\T/(I+J)$ cyclic):
 \Cref{thm:groups:cyclic}; for Lemma lem:tamagawa-exp ($\rho\bmod\ell^t$): \Cref{prop:groups:gl2zl}.
+\item \textbf{Proposition prop:shapes} (the shapes of the image of inertia at an additive prime): ``for $q\ge5$ the image is tame, hence cyclic'',
+\Cref{ex:groups:galoisprofinite}, \Cref{prop:groups:profinite}(vi).
+\item \textbf{Theorem thm:main} at $\ell=3$ (the hypothesis on the mod $3$ image, through Proposition prop:ns): \Cref{cor:groups:orbitdichotomy}.
+\item \textbf{Section sec:data} (the test \texttt{ns3}, a factorisation of the $3$-division polynomial as two quadratics): \Cref{cor:groups:orbitdichotomy}.
 \end{itemize}
 
 \section{Groups, subgroups, cosets, quotients and cyclic groups}\label{sec:groups:basics}
 
 This section fixes the conventions of the chapter and proves the basic facts about cosets, quotients
 and cyclic groups. In the paper they appear in three places: the image of the absolute Galois group of
-$\Q(\sqrt{-3})$ is a determinant-one subgroup (Proposition prop:ns, through \Cref{lem:groups:index2}); a character
+$\Q(\sqrt{-3})$ is a determinant-one subgroup (Proposition prop:ns, through \Cref{lem:groups:index2}); for an odd prime $\ell$, a character
 of $G_\Q$ onto the cyclic group $\F_\ell^\times$ with square $1$ forces $\ell=3$ (Lemma lem:h0, through
 \Cref{thm:groups:cyclic}); and the ``$\ell$-part'' of a finite abelian group (Definition def:terms, Lemma lem:tamfactor,
 through \Cref{prop:groups:lprimary}).
@@ -326,7 +331,8 @@ Normality is preserved in both directions since $\pi(gKg^{-1})=\pi(g)\pi(K)\pi(g
 \begin{enumerate}[label=(\roman*)]
 \item A subgroup $H$ of index $2$ in $G$ is normal, and is the kernel of a surjection $G\to C_2$.
 \item Let $\rho\colon G\to\Gamma$ and $\delta\colon\Gamma\to A$ be homomorphisms and $G_0=\ker(\delta\circ\rho)$. Then $\rho(G_0)=\rho(G)\cap\ker\delta$. In
-particular, if $\rho\colon G\to\GL_2(F)$ and $G_0=\ker(\det\circ\rho)$, then $\rho(G_0)=\rho(G)\cap\SL_2(F)$ is the determinant-one subgroup of the
+particular, if $\rho\colon G\to\GL_2(F)$ and $G_0=\ker(\det\circ\rho)$, then (with $\SL_2(F)$ the group of matrices of determinant $1$,
+\Cref{def:groups:gl2}) $\rho(G_0)=\rho(G)\cap\SL_2(F)$ is the determinant-one subgroup of the
 image.
 \end{enumerate}
 \end{lemma}
@@ -364,7 +370,8 @@ Let $A$ be a finite abelian group, written additively, and $\ell$ a prime.
 \item (Cauchy for abelian groups) If $\ell\mid\#A$, then $A$ has an element of order $\ell$.
 \item If $\#A=mn$ with $\gcd(m,n)=1$, then $A=A[m]\oplus A[n]$, where $A[m]=\{a:ma=0\}$, and $\#A[m]=m$, $\#A[n]=n$.
 \item The $\ell$-primary part $A[\ell^\infty]=\{a:\ell^ka=0\text{ for some }k\}$ equals $A[\ell^{v_\ell(\#A)}]$, has order $\ell^{v_\ell(\#A)}$, and is the unique
-Sylow $\ell$-subgroup of $A$ (the unique subgroup of order $\ell^{v_\ell(\#A)}$); every $\ell$-power-order subgroup lies in it.
+Sylow $\ell$-subgroup of $A$ (the unique subgroup of order $\ell^{v_\ell(\#A)}$; Sylow subgroups of arbitrary finite groups are
+treated in \Cref{thm:groups:sylow}); every $\ell$-power-order subgroup lies in it.
 \item $A=\bigoplus_{\ell\mid\#A}A[\ell^\infty]$, and the projection onto $A[\ell^\infty]$ is multiplication by an integer $e_\ell$ with $e_\ell\equiv1\pmod{\ell^{v_\ell(\#A)}}$
 and $e_\ell\equiv0$ modulo $\#A/\ell^{v_\ell(\#A)}$.
 \item The exponent of $A$ (the least $e\ge1$ with $eA=0$) divides $\#A$ and has the same prime divisors.
@@ -642,7 +649,7 @@ determinant-one subgroup of $N_{ns}(\F_3)$ is $Q_8$ by \Cref{prop:groups:quatern
 \Cref{prop:groups:semidihedral}(iv). \Cref{thm:groups:order8} is context; nothing in the paper depends on it.
 \end{paperlink}
 
-\section{Group actions, orbit-stabiliser, \texorpdfstring{$p$}{p}-groups and the Sylow theorems}\label{sec:groups:actions}
+\section[Group actions, orbit-stabiliser, \texorpdfstring{$p$}{p}-groups, Sylow theorems]{Group actions, orbit-stabiliser, \texorpdfstring{$p$}{p}-groups and the Sylow theorems}\label{sec:groups:actions}
 
 Groups enter the paper through their actions: the Galois group acts on the torsion points of $E$, the decomposition and inertia groups are
 stabilisers (\Cref{ch:ant}, \Cref{ch:local}), and the four roots of the $3$-division polynomial correspond to the four lines of
@@ -827,7 +834,7 @@ field $\F_q[\sqrt\varepsilon]$ of \Cref{def:groups:cartan} is cyclic of order $q
 \end{corollary}
 
 \begin{proof}
-(i) If $A\simeq\Z/n$, then $\#A[d]=\gcd(d,n)\le d$ by \Cref{thm:groups:cyclic}(i). The third condition implies the second. If $\#A[\ell]\le\ell$ for all $\ell$, then
+(i) If $A\simeq\Z/n$, then $\#A[d]=\gcd(d,n)\le d$ by \Cref{thm:groups:cyclic}(ii). The third condition implies the second. If $\#A[\ell]\le\ell$ for all $\ell$, then
 in the decomposition of \Cref{thm:groups:finiteabelian} each $A[\ell^\infty]\simeq\bigoplus_i\Z/\ell^{e_i}$ has $\#A[\ell]=\ell^{\#\{i\}}$, so it has at most one
 summand; hence $A\simeq\bigoplus_\ell\Z/\ell^{e_\ell}$, which is cyclic by \Cref{prop:groups:crtgroups}. (ii) Let $A\le K^\times$ be finite. The elements of $A$ with
 $x^d=1$ are roots of the polynomial $X^d-1$, which has at most $d$ roots in the field $K$; so $\#A[d]\le d$ for all $d$, and $A$ is cyclic by (i).
@@ -1043,8 +1050,10 @@ order $3$ of unipotent elements; so $\bar\rho_{E,3}(I_q)$ is that group''. The i
 $q\ne3$) and fixes a nonzero vector (since $E[3]^{I_q}$ is a line), so it lies in the stabiliser $\mathrm U_{[v]}$ of that vector, of order $3$; it is nontrivial, so it
 equals $\mathrm U_{[v]}$, and $E[3]^{I_q}$ is exactly the line $[v]$ by \Cref{prop:groups:unipotent}(i). Remark rem:types speaks of ``minus a unipotent, of order $6$''
 (types $\kod{II}$, $\kod{II}^*$): by \Cref{prop:groups:unipotent}(iv) such an element fixes no nonzero vector of $\F_3^2$, which is the statement $E[3]^{I_q}=0$ for these
-types. The other images listed there, $\{\pm I\}$ and a cyclic group of order $4$ (conjugate to $\langle J\rangle$), also fix no nonzero vector: $-I$ and $J$ have no
-eigenvalue $1$ (\Cref{prop:groups:gl23classes}). The identification of the images of inertia with the Kodaira types is \Cref{ch:galrep}.
+types. The other images listed there, $\{\pm I\}$ and a cyclic group of order $4$ (conjugate to $\langle J\rangle$, $J=\sm0{-1}10$), also fix no nonzero vector: $-I$ and $J$ have no
+eigenvalue $1$ (\Cref{prop:groups:gl23classes}). For type $\kod{I}_n^*$ the image of inertia consists of a ramified quadratic character times
+unipotents; an element on which the character is $-1$ maps to $-I$ or to minus a nontrivial unipotent, which fixes no nonzero vector by
+\Cref{prop:groups:unipotent}(iv), so again $E[3]^{I_q}=0$. The identification of the images of inertia with the Kodaira types is \Cref{ch:galrep}.
 \end{paperlink}
 
 \begin{lemma}[Commutators in a Borel subgroup]\label{lem:groups:borelcommutator}
@@ -1090,11 +1099,12 @@ acts by $x\mapsto-x$, fixing $0$ and $\infty$ and swapping $1$ and $-1$, a trans
 and two homomorphisms onto $\{\pm1\}$ with the same kernel are equal.
 \end{proof}
 
-\begin{proof}[Sketch of proof of (iii) and (iv)]
-For (iv) we do not give a proof; see \cite[Chapter XIII, Section 8]{Lang} for the simplicity of $\PSL_2(F)$ for every field with more than three elements
+We do not prove (iv); see \cite[Chapter XIII, Section 8]{Lang} for the simplicity of $\PSL_2(F)$ for every field with more than three elements
 (the proof uses the $2$-transitivity of \Cref{prop:groups:projline}(v), the generation by the conjugates of $\mathrm U$ of \Cref{prop:groups:gl2}(iii), and Iwasawa's
-criterion), and \cite[Section 6.2]{DummitFoote} for the uniqueness of the simple group of order $168$, which identifies $\PSL_2(\F_7)$ with $\GL_3(\F_2)$. For (iii),
-granting the simplicity of $\PSL_2(\F_5)$ (order $60$): the subgroup of $\GL_2(\F_5)$ generated by $N_s(\F_5)$ (\Cref{def:groups:cartan}) and $\sm111{-1}$ has order
+criterion), and \cite[Section 6.2]{DummitFoote} for the uniqueness of the simple group of order $168$, which identifies $\PSL_2(\F_7)$ with $\GL_3(\F_2)$.
+
+\begin{proof}[Sketch of proof of (iii)]
+Granting the simplicity of $\PSL_2(\F_5)$ (order $60$): the subgroup of $\GL_2(\F_5)$ generated by $N_s(\F_5)$ (\Cref{def:groups:cartan}) and $\sm111{-1}$ has order
 $96$ and contains the scalars (this is a finite check, done by machine; note $\sm111{-1}^2=2I$), so its image $K$ in $\PGL_2(\F_5)$ has order $24$ and index $5$. The
 action of $\PGL_2(\F_5)$ on the five cosets of $K$ gives a homomorphism to $S_5$ whose kernel $M$ is normal and contained in $K$. Then $M\cap\PSL_2(\F_5)$ is normal in
 the simple group $\PSL_2(\F_5)$ and has order at most $24<60$, so it is trivial, and $\#M\le2$; a normal subgroup of order $2$ would be central, but the centre of
@@ -1234,8 +1244,9 @@ three images $\GL_2(\F_3)$, $N_{ns}(\F_3)$, $N_s(\F_3)$ (\Cref{thm:groups:threei
 roots of the $3$-division polynomial correspond to lines, and the list of images that occur) is in \Cref{ch:galois}, \Cref{ch:ellcurves} and
 \Cref{ch:galrep}.
 
-\emph{Notation for this section.} $J=\sm0{-1}10$ (so $J^2=-I$), $\sigma=\mathrm{diag}(1,-1)$, $w=\sm0110=J\sigma$, $u=\sm1101$. The paper's generator
-$\sm01{-1}0$ of the cyclic group of order $4$ in Proposition prop:ns is $J^{-1}=-J$, which generates the same group $\langle J\rangle$. The four lines of $\F_3^2$ are
+\emph{Notation for this section.} $J=\sm0{-1}10$ (so $J^2=-I$), $\sigma=\mathrm{diag}(1,-1)$, $w=\sm0110=J\sigma$, $u=\sm1101$. The paper
+(Proposition prop:ns and Section sec:anomaly) writes $J$ for $\sm01{-1}0$, which is our $J^{-1}=-J$; both generate the same cyclic group $\langle J\rangle$ of order
+$4$, and every statement about the group is unaffected, but a reader comparing formulas line by line should keep the two symbols apart. The four lines of $\F_3^2$ are
 $\infty=[1:0]$, $0=[0:1]$, $1=[1:1]$ and $-1=[-1:1]$ (convention (C1)).
 
 \begin{proposition}[Conjugacy classes of $\GL_2(\F_3)$]\label{prop:groups:gl23classes}
@@ -1296,6 +1307,7 @@ image, not the group.
 $\GL_2(\F_3)$ has $55$ subgroups, in $16$ conjugacy classes:
 \begin{center}
 \small
+\setlength{\tabcolsep}{4.5pt}
 \begin{tabular}{cccccccl}
 \toprule
 order & type & conjugates & stable lines & orbits on $\PP^1(\F_3)$ & $\det$ onto & $\det -1$, $\tr 0$ & name\\
@@ -1399,7 +1411,7 @@ order $16$ and is a Sylow $2$-subgroup by \Cref{prop:groups:nns3}(iii).
 
 \begin{proposition}[The normaliser of the nonsplit Cartan subgroup]\label{prop:groups:nns3}
 \begin{enumerate}[label=(\roman*)]
-\item $C_{ns}(\F_3)\simeq C_8$, generated by $a=\sm1{-1}11=m_{1+i}$; $a^2=-J$ and $a^4=-I$.
+\item The group $C_{ns}(\F_3)$ is cyclic of order $8$, generated by $a=\sm1{-1}11=m_{1+i}$; $a^2=-J$ and $a^4=-I$.
 \item $N_{ns}(\F_3)=\langle a,\sigma\rangle$ has order $16$, $\sigma a\sigma^{-1}=a^3$ (conjugation by $\sigma$ is the Frobenius $c\mapsto c^3$ of $\F_9$), and
 $N_{ns}(\F_3)\simeq SD_{16}$; it has $1,5,6,4$ elements of orders $1,2,4,8$.
 \item It is a Sylow $2$-subgroup of $\GL_2(\F_3)$, with $3$ conjugates.
@@ -1638,7 +1650,7 @@ $\Z/p^n$, and the inverses $x_n^{-1}$ are compatible (inverses are unique), givi
 in $\Z/p^k$, and the $y_k$ are compatible, so $x=p^ny$. The converse is clear.
 \item $\Zp$ is torsion-free. If $mx=0$ with $m\ge1$ and $v=v_p(m)$, then $mx_{n+v}=0$ in $\Z/p^{n+v}$, so $p^n\mid x_{n+v}$ (as $m/p^v$ is invertible), and $x_n=x_{n+v}\bmod p^n=0$
 for every $n$.
-\item The open subgroups of $\Zp$ are the $p^n\Zp$, $n\ge0$. By \Cref{prop:groups:profinite}(i),(ii) an open subgroup $V$ contains some $p^n\Zp$ and corresponds to a subgroup of
+\item The open subgroups of $\Zp$ are the $p^n\Zp$, $n\ge0$. By \Cref{prop:groups:profinite}(i),(ii) (proved below) an open subgroup $V$ contains some $p^n\Zp$ and corresponds to a subgroup of
 $\Zp/p^n\Zp\simeq\Z/p^n$, which is $p^k\Z/p^n$ for some $k\le n$ (\Cref{thm:groups:cyclic}(i)); so $V=p^k\Zp$.
 \item Let $\widehat\Z=\varprojlim_n\Z/n!$; every $\Z/m$ is a quotient of $\widehat\Z$ (as $m\mid n!$ for $n\ge m$). By \Cref{prop:groups:crtgroups} (in its ring form, \Cref{ch:rings})
 $\Z/n!\simeq\prod_p\Z/p^{v_p(n!)}$, compatibly in $n$, and taking limits gives $\widehat\Z\simeq\prod_p\Zp$.
@@ -1730,8 +1742,8 @@ The following statements are proved in \Cref{ch:galois} and \Cref{ch:local}; we 
 quotient of $\widehat\Z$.
 \item For a prime $p$, the inertia group $I_p\le G_{\Q_p}$ has a normal pro-$p$ subgroup, the wild inertia group, with quotient the tame inertia group
 $\prod_{\ell\ne p}\Z_\ell(1)$, which is procyclic. So a finite image of inertia of order prime to $p$ is a quotient of the tame inertia group, hence cyclic (by
-\Cref{prop:groups:profinite}(vi) the wild inertia group maps trivially). This is the step ``the image is tame since $q\ne3$, hence cyclic'' in the paper's treatment of
-inertia at an additive prime (Lemma lem:IV and Proposition prop:shapes).
+\Cref{prop:groups:profinite}(vi) the wild inertia group maps trivially). This is the step ``For $q\ge5$ the image is tame, hence cyclic'' in the proof of Proposition prop:shapes, and the step ``The order $3$ is
+prime to $q$, so the image is a quotient of the tame inertia group'' in the proof of Lemma lem:IV.
 \end{enumerate}
 \end{example}
 
@@ -1802,7 +1814,7 @@ isomorphic to $S_4$. (Show that $N_s(\F_5)$ and $\sm111{-1}$ generate a subgroup
 
 \begin{exercise}\label{ex:groups:ex13}
 Show that $I+3M_2(\Z_3)$ is torsion-free, and that $I+2M_2(\Z_2)$ contains elements of order $2$ (for instance $-I$ and $\mathrm{diag}(1,-1)$) but no element of order $4$.
-(Hint: if $g=I+2A$ and $g^2=-I$, then $4(A+A^2)=-2I$.)
+(Hint: an element $g$ of order $4$ of $\GL_2(\Z_2)$ has eigenvalues $\pm\sqrt{-1}$, so its characteristic polynomial is $X^2+1$ and $g^2=-I$; if $g=I+2A$ and $g^2=-I$, then $4(A+A^2)=-2I$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:groups:ex14}

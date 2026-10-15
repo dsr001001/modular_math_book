@@ -1184,3 +1184,22 @@ class 990h, whose optimal curve is 990h3; 990h is multiplicative at 2 and does n
   variables.
 * Kraus89 moved from bib/ch10.bib to refs.bib (B14: the paper's Open question 6 and Chapters 21, 22 cite it).
 * The Lorenzini10 reference for Theorem 7.7 at p = 2 is unverified (taken from Praveen26); the chapter says so.
+
+### B29. Items from writing Chapter 1
+
+* Matrix J: the paper (prop:ns, sec:anomaly; note_v2.tex near line 538) writes J for [[0,1],[-1,0]]; Chapter 1
+  writes J = [[0,-1],[1,0]], so the paper's J is our J^{-1} = -J. Both generate the same subgroup; Chapter 1
+  warns the reader. Later chapters that quote the paper's J should say which one they mean.
+* Dickson's theorem (thm:groups:dickson) is stated for odd l only, since Chapter 1 defines Cartan subgroups only
+  for odd q; part (a) for l = 3 is proved (prop:groups:gl23subgroups). The groups of order 8 are proved in full
+  (outline had a sketch), by a new normal-form lemma lem:groups:normalform.
+* Chapter 1 credits lem:tamfactor to ch:blochkato and lem:h0 to ch:galrep, following PLAN.md.
+* The writer flagged citation locations taken from memory and not checked against the books (for the final
+  bibliography pass): Serre72 Section 2, Props 15 and 16 (Dickson); Lang Ch. XIII Sec. 8 (simplicity of PSL_2);
+  Dummit-Foote Sec. 6.2 (simple group of order 168) and the Dummit-Foote section numbers in the Notes; Huppert67
+  Ch. II Sec. 8; Munkres00 Thm 37.3 (Tychonoff). Sutherland's labels (3Cs.1.1, 3B.1.1, 3B.1.2, ...) and the
+  standard models were not re-checked against Sutherland16's own tables.
+* New single-chapter bib keys in bib/ch01.bib: Huppert67, Munkres00 (with Dickson1901). If a later chapter cites
+  any of them, move it to refs.bib (B14).
+* PGL_2(F_5) = S_5 is sketched by the action on the cosets of a subgroup of order 24 (machine-checked), not by the
+  outline's route; the 16-row subgroup table of GL_2(F_3) is from a computer enumeration, rechecked by the writer.
