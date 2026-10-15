@@ -1073,8 +1073,10 @@ everything -> 21 paper
 
 ### 7.3 Length and depth
 
-* Target 1,000 to 2,200 lines of LaTeX per chapter (roughly 25 to 45 printed pages), the card excluded.
-  Chapters 11, 15, 18, 20 and 21 may run to 2,800 lines. Appendices 400 to 800 lines.
+* Guideline 1,000 to 2,200 lines of LaTeX per chapter, the card excluded (Chapters 11, 15, 18, 20 and 21 up
+  to 2,800). This is a guideline, not a cap (decision D2 in Section 7.5): the book is meant to be read online
+  and used as a reference, so a chapter may run longer wherever the extra length makes an explanation
+  clearer or a proof complete. Length must never come from padding or repetition. Appendices 400 to 800 lines.
 * Depth: full proofs for everything elementary; for the deep theorems, the exact statement, the
   hypotheses, the idea of proof in a paragraph or a page, and the reference.
 * The paper's own lemmas are proved in full in the book, with every compressed step expanded (the paper's
@@ -1110,6 +1112,24 @@ above that disagrees with them.
   geometric one, L-factors use Phi; ^vee is the linear dual, ^* the Pontryagin dual (and a pullback when written
   after a map), ^D the Kummer dual, ^dagger the adjoint of an operator; A_f is the paper's adjoint and Shimura's
   abelian variety is J_f; depletion is f^Sigma or f^{p}, never f^(p); the Manin constant is c_E.
+
+* **D1 (strengthened results; author's decision, 15 October 2026).** Where the book proves more than the
+  paper states, the book states its own stronger version as the theorem, and a Commentary gives the paper's
+  statement and the difference. This covers: equality in (eq:identity) of Theorem thm:main and in the first
+  inequality of Theorem thm:quant without multiplicity one (points 39, 73, 74); Theorem thm:qual (a) at q = 2
+  (point 43); Theorem thm:quant for every odd q (point 60); Proposition prop:forms with no exception (point 43);
+  and the other strengthenings of `important/paper_memo.md`, Section A. The author intends to revise the paper
+  accordingly.
+* **D2 (length; author's decision).** No hard cap on chapter length; see Section 7.3. The medium is online
+  (PDF and possibly HTML), not print.
+* **D3 (quadratic characters; author's decision: "keep what is generally better").** The book writes the
+  quadratic character of Q(sqrt(d)) as chi_d with d the discriminant, so the character of conductor q (q odd)
+  is chi_{q*}, never chi_q; chi_l with a letter subscript is reserved for the l-adic cyclotomic character, and
+  chi_3^cyc where a number is needed. This replaces the allowance for the paper's chi_q in Appendix B,
+  convention B-C11; the remaining chi_q occurrences in the outlines are to be converted (about 40). The paper
+  is to be rewritten with the same convention (memo, point 32).
+* **D4 (Manin constant).** The sign convention c_E > 0 (so Manin's conjecture reads c_E = 1) is adopted, as
+  already applied in the outlines.
 
 ## 8. Production process
 
