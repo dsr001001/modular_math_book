@@ -17,6 +17,7 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Preface | written (needs a final update) | `frontmatter/preface.tex` |
 | Appendix A (prerequisites) | written (994 lines, compiles) | `chapters/chA_prereq.tex` |
 | Chapter 10 (pilot) | written, three review rounds, 2,344 lines, 48 pages | `chapters/ch10_reduction.tex` |
+| Chapter 1 (groups) | Work in progress: Workflow run wf_b06051c4-f4c (lean), started 15 October 2026 | `chapters/ch01_groups.tex` |
 | Other chapters, Appendix B | **not yet written** (waiting on the author's verdict on the pilot) | `chapters/` |
 
 The original paper is `note_Oct10_7pm.tex`. Labels in the revised paper are the same.
