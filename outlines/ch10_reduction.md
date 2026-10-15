@@ -112,7 +112,7 @@ book's level, states the rest precisely, and checks all of it on the paper's cur
   writes $G_{\mathrm{ss}}$.
 * **R7 (Frobenius).** As in Chapter 7 (L3): $\Frob$ is arithmetic in group-theoretic statements. Chapter 10 needs Frobenius
   only in item 2.2 (split versus nonsplit) and in the `paperlink` of item 6.8.
-* **R8 (characters).** $q^*=(-1)^{(q-1)/2}q$ and $\chi_q=\chi_{q^*}$, the quadratic character of conductor $q$ (Chapter 2, C5; Chapter 9, C4). The
+* **R8 (characters).** $q^*=(-1)^{(q-1)/2}q$ and $\chi_{q^*}$, the quadratic character of conductor $q$ (Chapter 2, C5; Chapter 9, C4; the paper's $\chi_q$, never written in the book, decision D3). The
   paper's $E^{(q)}$ is the twist by $q^*$, not by $q$ (point 29).
 * **R9 (typography).** PLAN.md Section 7.2: no dash ligatures (write "Kodaira-Neron", "Neron-Ogg-Shafarevich",
   "Ogg-Saito", "Dokchitser-Dokchitser", ranges "1 to 11"); ASCII source; labels `...:reduction:...`. `preamble.tex`
@@ -570,14 +570,14 @@ $t_3(E,p)\ge1$": for 726a1 that is $p=2$).
 ### Section 8. Quadratic twists and reduction (Lemma lem:twist (i), (ii))
 
 **8.1 `lem:reduction:twist-unramified`** (lemma; P given 4.3; the paper's Lemma lem:twist (i)). Let $\chi$ be a quadratic character of $G_\Q$
-unramified at $p$ (e.g. $\chi=\chi_q$ with $q\ne p$ odd, Chapter 6: $\Q(\sqrt{q^*})$ is unramified outside $q$, also at $2$ since $q^*\equiv1\pmod4$). Then $E$ and
+unramified at $p$ (e.g. $\chi=\chi_{q^*}$ with $q\ne p$ odd, Chapter 6: $\Q(\sqrt{q^*})$ is unramified outside $q$, also at $2$ since $q^*\equiv1\pmod4$). Then $E$ and
 $E\otimes\chi$ are isomorphic over the unramified extension $\Q_p(\sqrt d)$ (or over $\Q_p$), so they have the same Kodaira type, the same $\Phig_p$,
 the same $v_p(\Delta_{\min})$ and the same $f_p$ (4.3); $c_p$ may differ (split versus nonsplit, 2.2(iii); e.g. 11a1 has $c_{11}=5$, while its twist by
 a character inert at $11$ has $c_{11}=1$). Also $v_p(j)$ and the Tate parameter are equal. Paper: Lemma lem:twist (i), Section 1.4 ("it has the
 same reduction type as $E$ at every prime other than $q$"), Theorem thm:twist, Theorem thm:quant.
 
 **8.2 `lem:reduction:twist-ramified`** (lemma; P; the paper's Lemma lem:twist (ii) with points 28, 29, 45 built in). Let $q$ be an odd prime
-and $E^{(q)}=E\otimes\chi_q$ the twist by $\Q(\sqrt{q^*})$. (a) $\mathrm I_n\leftrightarrow\mathrm I_n^*$ with the same $n\ge1$ (every odd $q$). (b) $\mathrm I_0\leftrightarrow\mathrm I_0^*$ (every odd
+and $E^{(q)}=E\otimes\chi_{q^*}$ the twist by $\Q(\sqrt{q^*})$. (a) $\mathrm I_n\leftrightarrow\mathrm I_n^*$ with the same $n\ge1$ (every odd $q$). (b) $\mathrm I_0\leftrightarrow\mathrm I_0^*$ (every odd
 $q$). (c) For $q\ge5$: $\mathrm{II}\leftrightarrow\mathrm{IV}^*$, $\mathrm{III}\leftrightarrow\mathrm{III}^*$, $\mathrm{IV}\leftrightarrow\mathrm{II}^*$, and $v_q(\Delta_{\min})$ changes by $+6$ modulo $12$. (d) $f_q(E^{(q)})=2$ when $E^{(q)}$ is
 additive, $1$ when it is $\mathrm I_n$ with $n\ge1$, $0$ when good. Proof: model $y^2=x^3+a_2x^2+a_4x+a_6$ ($q$ odd: complete the square, Chapter 9,
 10.1); the twist $y^2=x^3+q^*a_2x^2+q^{*2}a_4x+q^{*3}a_6$ has invariants $q^{*2}c_4$, $q^{*3}c_6$, $q^{*6}\Delta$ and the same $j$ (Chapter 9, 10.2(iii): $q^*$, not $q$; point 29).
@@ -591,7 +591,7 @@ $f=2$ for the additive side (6.1). The paper's phrase "the conductor exponents a
 these exchanges and wrong for general additive reduction at $q=3$ (point 28; 8.3 below). Data check: all $90{,}970$ pairs (curve number 1, odd
 bad prime) below conductor $10{,}000$ behave as stated, with the same $n$ in (a) in all $78{,}351$ cases, $v_q(\Delta)$ shifted by $6$ mod $12$ in all
 $67{,}745$ cases with $q\ge5$, and the types at the other primes unchanged. Paper: Lemma lem:twist (ii), Section 1.4 (the list of exchanges),
-Lemma lem:euler ("$V=V'\otimes\chi_q$ with $V'$ Steinberg at $q$"), Theorem thm:qual (b), (c), Theorem thm:twist ((a), (b), (c) of the paragraph
+Lemma lem:euler ("$V=V'\otimes\chi_{q^*}$ with $V'$ Steinberg at $q$"), Theorem thm:qual (b), (c), Theorem thm:twist ((a), (b), (c) of the paragraph
 after it), Theorem thm:quant, the proof of Theorem thm:main ("$E_{\{p\}}$").
 
 **8.3 `rem:reduction:twist-at-3`** (remark; S, with data; not claimed by the paper). At $q=3$ the exchanges of (c) also hold, with equal (now
@@ -806,7 +806,7 @@ Lines of LaTeX, card excluded (PLAN.md 7.3: 1,000 to 2,200). The card lists all 
 Results from other chapters used here (by chapter label only):
 * Chapter 1 (`ch:groups`): finite abelian groups ($\Z/n$, $(\Z/2)^2$, $\Z/4$ as component groups), $\SL_2(\F_3)$, $Q_8$ and cyclic subgroups of $\GL_2(\F_3)$
   (for 6.5, 6.6, 9.2).
-* Chapter 2 (`ch:rings`): $v_p$ on $\Q$, Legendre symbols (2.2), $\ell$-th powers in $\F_q^\times$ and the class $c(u)$ (7.4), $q^*$, $\chi_q$.
+* Chapter 2 (`ch:rings`): $v_p$ on $\Q$, Legendre symbols (2.2), $\ell$-th powers in $\F_q^\times$ and the class $c(u)$ (7.4), $q^*$, $\chi_{q^*}$.
 * Chapter 3 (`ch:modules`): DVRs, $\Z_\ell$-modules, uniquely divisible groups and the snake lemma (4.5).
 * Chapter 5 (`ch:galois`): the Kummer cocycle of an element and its $\ell$-adic version (7.5), quadratic characters.
 * Chapter 6 (`ch:ant`): $\Q(\sqrt{q^*})$ unramified outside $q$ (8.1), decomposition and inertia groups.

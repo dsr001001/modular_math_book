@@ -1032,7 +1032,7 @@ $\min(v_\ell(n_q),v_\ell(q-1),v_\ell(c))$, so by at least one)". Confidence: hig
 Location: abstract ("the length of the Bloch-Kato (written with a double hyphen in the source) Selmer group of $\ad V_\ell E$ plus the Tamagawa factors plus the omitted Euler factors").
 Problem: the Selmer group of the $\Ql$-representation $\ad V_\ell E$ is a $\Ql$-vector space, which is $0$ under the hypothesis (DFG04 Theorem 2.7, "and the
 same for $A\otimes\Ql$"); the length meant is that of $H^1_f(\Q,\ad T\otimes\Qlmod)$, as in Theorem thm:main. Fix: "of $\ad T_\ell E\otimes\Qlmod$". Also "when
-multiplicity one holds at level $N$ equals" can become "equals" by point 39 (subject to point 56). Confidence: high; low importance.
+multiplicity one holds at level $N$ equals" can become "equals" by point 39 (the DFG04 checklist of point 56 being settled by point 73). Confidence: high; low importance.
 
 **N4. Remark rem:ns: the vanishing of $H^1_f(\Q,V^D)$ for the 3Ns curves is an unverified hypothesis, and it is the only one.**
 Location: Remark rem:ns ("the exact sequence of Lemma lem:dfg21 still does [apply] whenever $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$"), Section 1.3 ("the correction is

@@ -64,10 +64,10 @@ is the full one: the subring of `End S_2(Gamma_0(N))` generated over `Z` by all 
 `c_q = #Phi_q(F_q)` is the Tamagawa number; the class of the unit part of the Tate parameter is `c(u)` (B-C14); a bare `c` is
 not used in the book's own text. Characters (B-C6): `chi_l` with a letter subscript is the `l`-adic cyclotomic character and `chi bar_l` its
 reduction; a numerical subscript always means the quadratic character `chi_d` of `Q(sqrt(d))` (`chi_{-3}`, `chi_{-4}`, `chi_{-7}`, `chi_{-11}`); the
-cyclotomic character at `3` is `chi_3^cyc`; the paper's `chi_q := chi_{q*}` (conductor `q`) is kept with the letter `q` only, never for `q = l`.
+cyclotomic character at `3` is `chi_3^cyc`; the quadratic character of conductor `q` is `chi_{q*}`, never `chi_q` (PLAN.md 7.5, decision D3).
 **Commentary (important_notes.md point 32).** The paper uses `chi_q` for the quadratic character of conductor `q` and `chi_l` for the
 cyclotomic character, so `chi_3` is ambiguous, and it names one character both `chi_11` and `chi_{-11}`. Notation only; the book follows
-the rule just stated and writes `chi_{-11}`.
+the rule just stated and writes `chi_{q*}` and `chi_{-11}`.
 
 **C2 `conv-frobenius`** (convention; *stated*; reference: Appendix B, B-C2, B-C3, B-C7; DFG04 1.1.1 and 1.7.2 (verified,
 Chapter 20 outline 7.3); Serre, Abelian l-adic representations, I.2; `\Cref{ch:local}` 4.3 and 5.4, `\Cref{ch:ant}` 3.7,
@@ -308,7 +308,7 @@ states the extended theorem and marks the extension as the book's.
 **A1.11 `thm-quant`** (theorem; *proved here* in Section 21.13, with `q` odd in place of `q >= 5` and with the equality clause;
 reference: paper Theorem thm:quant; `\Cref{ch:congruence}` 12.1 to 12.6; paper use: Theorem thm:quant, Section sec:twisting).
 Statement as in the paper. Let `l` be an odd prime with `l` not dividing `2N` and `E[l]` irreducible, `S` the set of primes `q >= 5`
-at which `E` has type `I_0^*` or `I_n^*`, `E_S` the twist of `E` by `chi_S = prod_{q in S} chi_q`. Then `v_l(deg varphi_E) >= v_l(r_{E_S}) +
+at which `E` has type `I_0^*` or `I_n^*`, `E_S` the twist of `E` by `chi_S = prod_{q in S} chi_{q*}`. Then `v_l(deg varphi_E) >= v_l(r_{E_S}) +
 sum_{q in S} e_l(E, q) >= sum_{q in S} e_l(E, q)`.
 Statement as the book gives it. (i) The same with `S` the set of ODD primes of type `I_0^*` or `I_n^*` (important_notes.md point
 60: the twist lemma for `I_n <-> I_n^*` and `I_0 <-> I_0^*` holds at every odd `q`, `l != 3` is automatic when `3 in S` since `3` then
@@ -403,7 +403,7 @@ Theorem thm:qual (why only (a), (b), (c))).
 Statement (book's form, `q >= 5`, `l = 3`): (a) `E[3]^{I_q} = 0` and the Serre conductor exponent of `rho bar_{E,3}` at `q` is `2 = f_q(E)` for
 EVERY additive type other than `IV, IV^*`: the generator of inertia acts mod `3` as `-1` (`I_0^*`, and `I_n^*` with `3 | n`), as `tau` with
 `tau^2 = -1` (`III, III^*`), or as `-u` with `u` a nontrivial unipotent (`II, II^*`, and `I_n^*` with `3` not dividing `n`); none fixes a
-vector. (b) The twist by `chi_q` lowers the Serre exponent of `rho bar_{E,3}` exactly for `II, II^*` (to `1`), `I_n^*` (to `1`, or `0` if `3 |
+vector. (b) The twist by `chi_{q*}` lowers the Serre exponent of `rho bar_{E,3}` exactly for `II, II^*` (to `1`), `I_n^*` (to `1`, or `0` if `3 |
 n`) and `I_0^*` (to `0`); it lowers the conductor exponent of `E` itself exactly for `I_n^*` and `I_0^*` (`II <-> IV^*` keeps `f_q = 2`).
 **Commentary (important_notes.md points 22 and 49).** The paper states (a) only "in the last two cases" (`II, II^*, I_n^*`) and
 omits `I_0^*` from (b) (point 22); and its phrase "these are the types whose twist by `chi_q` lowers the conductor exponent" is right
@@ -414,7 +414,7 @@ depends on this. The book states the complete version above and explains separat
 `\Cref{ch:reduction}` 8.1, 8.2, 8.3, 5.4, `\Cref{ch:hecke}` 9.2, `\Cref{ch:modgalrep}` 3.8, `\Cref{ch:local}` 9.3; paper use: Lemma
 lem:twist, Section 1.4, Lemma lem:euler, Theorem thm:qual (b), (c), Theorem thm:main (`I_n^*` primes), Theorem thm:twist, Theorem
 thm:quant).
-Statement. Let `q` be odd, `chi = chi_q = chi_{q*}` (B-C6(c)), `E^{(q)}` the twist of `E` by `chi`.
+Statement. Let `q` be odd, `chi = chi_{q*}` (the paper's `chi_q`; B-C6(c)), `E^{(q)}` the twist of `E` by `chi`.
 (i) At every `p != q`, `E` and `E^{(q)}` have the same Kodaira type, the same `Phig_p` and the same conductor exponent.
 (ii) If `E` has type `I_n` at `q` (`n >= 0`) then `E^{(q)}` has type `I_n^*` at `q` and conversely, with the same `n`. If `q >= 5` and `E`
 has type `II, III, IV` at `q` then `E^{(q)}` has type `IV^*, III^*, II^*` respectively, and conversely. The conductor exponent of
@@ -461,7 +461,7 @@ representation `sp(2)` twisted by an unramified character, `\Cref{ch:local}` 9.3
 and computes with the arithmetic one in Lemma lem:tamfactor. The eigenvalue is `q` for the arithmetic and `q^{-1}` for the
 geometric Frobenius; the table is right with the geometric one, which is DFG04's convention (verified). The book says
 "geometric" here and "arithmetic" in A2.7.
-`I_n^*`: `V = V' tensor chi_q`, `V'` Steinberg, `ad V = ad V'`, same true factor, but `a_q = 0` so the naive factor is `1` and `e_l = v_l(1 -
+`I_n^*`: `V = V' tensor chi_{q*}`, `V'` Steinberg, `ad V = ad V'`, same true factor, but `a_q = 0` so the naive factor is `1` and `e_l = v_l(1 -
 q^{-2}) = v_l(q^2 - 1)`. `II, II^*, IV, IV^*`: image of `I_q` cyclic of order `3` or `6` generated by `sigma` or `-sigma`, eigenvalues
 `zeta_3^{+-1}`; on `ad V` the sign disappears; `End_{I_q}(T) = Z_l[sigma] = Z_l tensor Z[zeta_3]` and `End_{I_q}(V) = Q_l tensor Q(zeta_3)` (a
 field if `l = 2 mod 3`, `Q_l x Q_l` if `l = 1 mod 3`; `\Cref{ch:ant}` 4.9); `(ad V)^{I_q}` is its trace-zero part, the line spanned by `2
@@ -477,7 +477,7 @@ element `2 sigma + 1` and the action of Frobenius through `Gal(Q(zeta_3)/Q)`, so
 **Commentary (important_notes.md point 34).** For types `III, III^*` the paper speaks of "the diagonal element"; when `l = 3 mod 4`, `i`
 is not in `Q_l`, `tau` is not diagonalisable over `Q_l`, and there is no diagonal element. The invariant line is spanned by `tau`, on
 which Frobenius acts by `chi_{-4}(q)` as the paper says. The book writes `tau`.
-`I_0^*`: `V = V' tensor chi_q`, `V'` unramified with arithmetic Frobenius eigenvalues `alpha, beta` (those of `E'`, `alpha + beta = a_q(E')`,
+`I_0^*`: `V = V' tensor chi_{q*}`, `V'` unramified with arithmetic Frobenius eigenvalues `alpha, beta` (those of `E'`, `alpha + beta = a_q(E')`,
 `alpha beta = q`); `ad V = ad V'` unramified with eigenvalues `alpha/beta, 1, beta/alpha`; `L_q(A_f, 1)^{-1} = (1 - alpha/(beta q))(1 -
 1/q)(1 - beta/(alpha q)) = ((q - 1)/q) ((q + 1)^2 - a^2)/q^2` with `a = a_q(E')` (`\Cref{ch:rings}` 11.4); `e_l = v_l(q - 1) + v_l((q + 1)^2 - a^2)`.
 Pitfalls for the writer: `alpha/beta` lies in `Q_l(alpha)`, the product is rational; `chi_{-3}(q) = (q/3) = (-3/q)`.
@@ -640,7 +640,7 @@ Common start: `r = r_{E_0}`; as `l` does not divide `N`, `v_l(deg varphi_{E_0}) 
 Case (a): `q^2 || N`, `l = 3`, `q >= 5` or `q = 2`; Lemma lem:IV (A2.2; at `q = 2` A1.8) gives `v_q(N(rho bar)) = 1`, so `M = N(rho bar) | N/q`;
 the optimal-level theorem gives `g` on `Gamma_0(M)` with `rho bar_g = rho bar`; take `h = g` (`h != f` by levels); `p` does not divide `M`
 whenever `rho bar` is unramified at `p`; Lemma lem:old gives `3 | r`.
-Case (b): `q^2 || N`, `l = 3`, type `II/II^*` at `q >= 5`; `chi = chi_q`, `E' = E^{(q)}` of type `IV^*/IV` at `q`, the same types elsewhere,
+Case (b): `q^2 || N`, `l = 3`, type `II/II^*` at `q >= 5`; `chi = chi_{q*}`, `E' = E^{(q)}` of type `IV^*/IV` at `q`, the same types elsewhere,
 conductor `N`; its newform is `f_{E'} = f^chi`, and here `f^chi = f tensor chi` because `a_q(f^chi) = 0` (`q^2 | N`); this is NOT Atkin-Li,
 which needs `q^2` not dividing the level. `rho bar tensor chi` satisfies the hypotheses (irreducibility and the condition over `Q(sqrt(-3))`
 are twist-invariant). Lemma lem:IV for `E'`: `M = N(rho bar tensor chi)` has `v_q(M) = 1`, `M | N/q`; the optimal-level theorem gives `g` on
@@ -952,7 +952,7 @@ with the condition `l | n`, and the raise can exceed one (only if `l^2 | n` and 
 **A4.14 `thm-twist`** (theorem (the paper's Theorem thm:twist); *proved here* (full proof `\Cref{ch:congruence}` 11.2); reference:
 Atkin-Li, Shimura71 by section (level of a twist); `\Cref{ch:hecke}` 6.3, 8.2, 9.1, 9.3, `\Cref{ch:modgalrep}` 10.1, 10.2,
 `\Cref{ch:ellcurves}` 10.4, 10.6; paper use: Theorem thm:twist, Section sec:twisting, Theorem thm:quant Step 1).
-Statement. Let `E/Q` have conductor `N`, `S` a set of odd primes, `D = prod_{q in S} q`, `chi_S = prod_{q in S} chi_q`, `E_S = E tensor chi_S` of
+Statement. Let `E/Q` have conductor `N`, `S` a set of odd primes, `D = prod_{q in S} q`, `chi_S = prod_{q in S} chi_{q*}`, `E_S = E tensor chi_S` of
 conductor `N_S`. If `q^2 | N` for every `q in S` and `lcm(N_S, D^2) | N`, then `r_{E_S} | r_E`; if moreover `lcm(N, D^2) | N_S`, then `r_{E_S} = r_E`.
 Expanded proof (the twist map is written `iota_S` in this chapter, B-C15(c), L6). (1) `iota_S : h -> h tensor chi_S` maps `S_2(Gamma_0(N_S))`
 into `S_2(Gamma_0(lcm(N_S, D^2))) subset S_2(Gamma_0(N))`, preserves integrality, intertwines `T_p` with `chi_S(p) T_p` for `p` not dividing
@@ -1539,7 +1539,7 @@ data, C = confirmation (no change). Every point is in its final state: addenda, 
 | 29 | lem:twist (ii), invariants by `q` | write `q*` | X | A2.4 |
 | 30 | intro, naive `L` as Rankin series | Rankin series differs; use Shimura's series | E | A1.0 |
 | 31 | lem:tamfactor, class of `u` | of the reduction of `u`; `v_l(0) = v_l(q - 1)` | X | A2.7 |
-| 32 | `chi_q` versus `chi_l` | `chi_q := chi_{q*}` with letter `q`; numerical `chi_d`; `chi_3^cyc` | X | C1, A2.2 (B-C6) |
+| 32 | `chi_q` versus `chi_l` (paper) | `chi_{q*}`, never `chi_q` (D3); numerical `chi_d`; `chi_3^cyc` | X | C1, A2.2 (B-C6) |
 | 33 | prop:ns, lem:h0, "Ind psi" | over `F_9`; descends to `F_3` | X | A5.1, A1.12 |
 | 34 | lem:euler, "diagonal element" | the invariant line is spanned by `tau` | X | A2.5 |
 | 35 | lem:hecke, "annihilator" | the other factors lie in the kernel | E | A4.4 |
@@ -1808,7 +1808,7 @@ cite that version, and add a sentence in the Notes that arXiv:2512.02348 numbers
 Kim-Ota Theorem 1.1 and Definition 2.12 (and whether their `eta_f(N)` is the Hecke congruence ideal), Ribet-Stein Theorem 3.5, FPR94
 I.4.2.2, Edixhoven92 Section 2, Atkin-Li Theorem 3.1, Atkin-Lehner Theorem 3, DDT 3.1(e), 3.15, 4.17, CalegariEmerton09 (point 57),
 Sutherland16 (point 3). Bibliography keys follow decision B14 (a key needed by more than one chapter goes in `refs.bib`).
-W8. Pitfalls. (a) `chi_q := chi_{q*}` with the letter `q` only; numerical subscripts are quadratic characters `chi_d` (`chi_{-7}(2) = +1`, `chi_{-11}(2)
+W8. Pitfalls. (a) `chi_{q*}`, never `chi_q`, for the quadratic character of conductor `q` (D3); numerical subscripts are quadratic characters `chi_d` (`chi_{-7}(2) = +1`, `chi_{-11}(2)
 = -1`); the cyclotomic character at `3` is `chi_3^cyc` (B-C6). (b) `t_l` at `q = 2` uses `-v_2(j)`, not the index of the symbol `I_n^*`. (c) Theorem
 thm:qual needs `l` not dividing `N`; 980i1 is outside it at `l = 5`. (d) In Theorem thm:quant the book allows every odd `q in S`; say that the
 paper has `q >= 5`. (e) Lemma lem:twist(ii)'s conductor statement at `q = 3` holds for the listed exchanges only. (f) Do not call `N_s(F_3)`

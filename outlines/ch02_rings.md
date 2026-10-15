@@ -20,7 +20,7 @@ The paper uses this chapter in seven places, and the chapter is built around the
    a rational whose denominator is a power of $q\ne\ell$ is $\ell$-integral (Lemma lem:fpr: "a nonzero rational number
    which is an $\ell$-adic integer"), the algebraic identity behind the $\mathrm{I}_0^*$ row, and the arithmetic of
    every entry (when it is positive, for $\ell=3$ and for $\ell\ge5$).
-2. **The characters $\chi_{-3}$, $\chi_{-4}$, $\chi_q$, $\chi_S$ as Dirichlet characters** (table of Section 1, Lemma
+2. **The characters $\chi_{-3}$, $\chi_{-4}$, $\chi_{q^*}$, $\chi_S$ as Dirichlet characters** (table of Section 1, Lemma
    lem:euler, Proposition prop:forms, Lemma lem:twist, Theorems thm:twist, thm:quant, thm:qual and its Example):
    Kronecker symbols, conductors $3$, $4$, $q$, $\prod_{q\in S}q$, values at primes, the congruences
    $q\equiv\chi_{-3}(q)\pmod 3$ and $q\equiv\chi_{-4}(q)\pmod 4$, and the sign in $q^*=(-1)^{(q-1)/2}q$.
@@ -80,11 +80,13 @@ Split with the neighbouring chapters (decided here, consistent with what their o
 * **C5 (Dirichlet characters and their names).** A Dirichlet character mod $n$ is a function $\chi\colon\Z\to\C$ coming
   from a homomorphism $(\Z/n)^\times\to\C^\times$, with $\chi(a)=0$ when $\gcd(a,n)>1$. Quadratic characters are named by
   a discriminant: $\chi_D(a)=\bigl(\frac Da\bigr)$ for $D\equiv0,1\pmod4$. So $\chi_{-3}=\bigl(\frac{-3}\cdot\bigr)$, $\chi_{-4}=\bigl(\frac{-4}\cdot\bigr)$. For
-  an odd prime $q$, $q^*=(-1)^{(q-1)/2}q$ and, **as in the paper**, $\chi_q:=\chi_{q^*}$, "the quadratic character of
-  conductor $q$" (so $\chi_3=\chi_{-3}$, $\chi_7=\chi_{-7}$, $\chi_{11}=\chi_{-11}$, $\chi_5=\chi_5$, $\chi_{13}=\chi_{13}$). **Warning:** the
+  an odd prime $q$, $q^*=(-1)^{(q-1)/2}q$ and $\chi_{q^*}$ is "the quadratic character of conductor $q$"; the paper writes
+  $\chi_q$ for it, the book never does (PLAN.md 7.5, decision D3), so the paper's $\chi_3$, $\chi_7$, $\chi_{11}$ are the book's $\chi_{-3}$, $\chi_{-7}$,
+  $\chi_{-11}$, while $\chi_5$, $\chi_{13}$ coincide. **Warning:** the
   paper also writes $\chi_\ell$ for the $\ell$-adic cyclotomic character (Section 4, Lemmas lem:tamfactor, lem:old,
-  lem:h0) and $\bar\chi_\ell$ for its reduction. In the chapter's own text write $\chi_{q^*}$ or $\bigl(\frac\cdot q\bigr)$; use
-  the paper's $\chi_q$ only inside `paperlink` environments, and write $\omega_\ell\colon a\mapsto a\bmod\ell\in\F_\ell^\times$ for
+  lem:h0) and $\bar\chi_\ell$ for its reduction. The book writes $\chi_{q^*}$ (or $\bigl(\frac\cdot q\bigr)$), never $\chi_q$; the
+  paper's $\chi_q$ appears only when quoting the paper (inside `paperlink` environments), $\chi_\ell$ with a letter subscript is the cyclotomic
+  character, and $\chi_3^{\mathrm{cyc}}$ is written where a number is needed (D3); and write $\omega_\ell\colon a\mapsto a\bmod\ell\in\F_\ell^\times$ for
   the Dirichlet character that corresponds to $\bar\chi_\ell$ (Chapters 5, 6 make the correspondence).
   These conventions agree with Chapter 5 (C3, C4) and Chapter 6 (4.2, 5.8).
 * **C6 (roots of unity).** $\mu_n(K)=\{x\in K:x^n=1\}$; $\zeta_n=e^{2\pi i/n}\in\C$; $\zeta_3=(-1+\sqrt{-3})/2$ (never written $\omega$, which the book reserves for differentials and fundamental characters: Appendix B, B-C15(b)) with
@@ -480,7 +482,7 @@ $\chi_{DD'}=\chi_D\chi_{D'}$ on integers prime to $DD'$, and $\chi_{Df^2}(n)=\ch
 discriminant gives an imprimitive character). Checked: periodicity mod $|D|$ and the sign rule for all discriminants $|D|\le200$, $n<400$. Reference:
 Washington, Chapter 3; Cohen, A Course in Computational Algebraic Number Theory, Section 1.4 (add to `bib/ch02.bib` if
 cited). Paper: the table of Section 1 ($\chi_{-3}$, $\chi_{-4}$), Section 3 Example ($\chi_{-11}$, $\chi_{-7}$), Lemma lem:twist, Theorem
-thm:twist ($\chi_S$); PLAN.md Section 6 row "$\chi_{-3},\chi_{-4},\chi_q,q^*,\ell^*$, Kronecker symbols".
+thm:twist ($\chi_S$); PLAN.md Section 6 row "$\chi_{-3},\chi_{-4},\chi_{q^*},q^*,\ell^*$, Kronecker symbols".
 
 **9.6 `prop:rings:qstar`** (proposition; P). Let $q$ be an odd prime and $q^*=(-1)^{(q-1)/2}q$. (i) $q^*\equiv1\pmod4$; $q^*$ is the
 prime discriminant attached to $q$. (ii) For **every** integer $n$, $\bigl(\frac{q^*}n\bigr)=\bigl(\frac nq\bigr)$ (Legendre symbol of $n\bmod q$): at odd
@@ -547,8 +549,8 @@ characters:
 |-|-|-|-|-|
 | $\chi_{-4}$ | $\bigl(\frac{-4}\cdot\bigr)$ | $4$ | $-1$ | $0$ at $p=2$; $(-1)^{(p-1)/2}$, i.e. $1$ iff $p\equiv1\bmod4$ |
 | $\chi_{-3}$ | $\bigl(\frac{-3}\cdot\bigr)=\bigl(\frac\cdot3\bigr)$ | $3$ | $-1$ | $0$ at $3$; $1$ iff $p\equiv1\bmod3$ (so $\chi_{-3}(2)=-1$) |
-| $\chi_q$, $q$ odd prime | $\bigl(\frac{q^*}\cdot\bigr)=\bigl(\frac\cdot q\bigr)$ | $q$ | $(-1)^{(q-1)/2}$ | $\bigl(\frac pq\bigr)$ ($0$ at $q$; at $p=2$ also $\bigl(\frac2q\bigr)$) |
-| $\chi_S=\prod_{q\in S}\chi_q$ | $\bigl(\frac{\prod_{q\in S}q^*}\cdot\bigr)$ | $\prod_{q\in S}q$ | $\prod(-1)^{(q-1)/2}$ | $\prod_{q\in S}\bigl(\frac pq\bigr)$ |
+| $\chi_{q^*}$, $q$ odd prime | $\bigl(\frac{q^*}\cdot\bigr)=\bigl(\frac\cdot q\bigr)$ | $q$ | $(-1)^{(q-1)/2}$ | $\bigl(\frac pq\bigr)$ ($0$ at $q$; at $p=2$ also $\bigl(\frac2q\bigr)$) |
+| $\chi_S=\prod_{q\in S}\chi_{q^*}$ | $\bigl(\frac{\prod_{q\in S}q^*}\cdot\bigr)$ | $\prod_{q\in S}q$ | $\prod(-1)^{(q-1)/2}$ | $\prod_{q\in S}\bigl(\frac pq\bigr)$ |
 | $\chi_{\ell^*}$ | $\bigl(\frac{\ell^*}\cdot\bigr)=\bigl(\frac\cdot\ell\bigr)$ | $\ell$ | $(-1)^{(\ell-1)/2}$ | $\bigl(\frac p\ell\bigr)$ |
 | $\omega_\ell$ ($\F_\ell^\times$-valued) | none | $\ell$ | $-1$ | $p\bmod\ell$ |
 
@@ -647,7 +649,7 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
 | 7 | Powers in $\F_q^\times$ | 7.1 to 7.3; `paperlink` for lem:tamfactor and sec:tam, with the reading of $c$ and $v_\ell(c)$ (C3) | 110 |
 | 8 | Roots of unity and cyclotomic polynomials | 8.1 to 8.3; a table of $\Phi_n$ for $n\le12$ | 110 |
 | 9 | Quadratic residues and reciprocity | 9.1 to 9.6; `paperlink` for lem:twist ($q^*$) | 230 |
-| 10 | Dirichlet characters | 10.1 to 10.5; the table of 10.5 (`booktabs`); `paperlink` for the table of Section 1, prop:forms, thm:twist; `warning` on $\chi_\ell$ (cyclotomic) versus $\chi_q$ (quadratic) and on $\omega_\ell$ versus $\bigl(\frac\cdot\ell\bigr)$ | 200 |
+| 10 | Dirichlet characters | 10.1 to 10.5; the table of 10.5 (`booktabs`); `paperlink` for the table of Section 1, prop:forms, thm:twist; `warning` on $\chi_\ell$ (cyclotomic) versus $\chi_{q^*}$ (quadratic; never $\chi_q$, which appears only when quoting the paper, decision D3) and on $\omega_\ell$ versus $\bigl(\frac\cdot\ell\bigr)$ | 200 |
 | 11 | Valuations and the paper's local terms | 11.1 to 11.6; `paperlink` for def:terms, lem:euler, rem:wild, the Section 3 Example | 170 |
 | 12 | Exercises | the 17 exercises of Part 4 | 120 |
 | 13 | Notes and references | Dummit-Foote, Ireland-Rosen, Serre (Course in Arithmetic), Lang, Washington, Koblitz, Atiyah-Macdonald, Miyake; which section numbers were cited; the alternative proofs of reciprocity | 40 |
@@ -676,7 +678,7 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
 | $\ell$-th powers in $\F_q^\times$; $[\F_q^\times:(\F_q^\times)^{\ell^k}]=\ell^{\min(k,v_\ell(q-1))}$ | 7.1, 7.2, 7.3 |
 | quadratic residues; Legendre, Jacobi and Kronecker symbols | 9.1, 9.4, 9.5 |
 | quadratic reciprocity with proof (Gauss sums) | 9.2, 9.3 (Eisenstein's lemma: Exercise 13) |
-| $\chi_{-3}$, $\chi_{-4}$, $\chi_q=(q^*/\cdot)$, $q^*=(-1)^{(q-1)/2}q$; conductors; values at primes | 9.6, 10.3(v), 10.5 |
+| $\chi_{-3}$, $\chi_{-4}$, $\chi_{q^*}=(q^*/\cdot)$, $q^*=(-1)^{(q-1)/2}q$; conductors; values at primes | 9.6, 10.3(v), 10.5 |
 | Dirichlet characters, conductors, primitive characters, orthogonality | 10.1, 10.2, 10.3 |
 | Gauss sums (basic properties) | 9.2, 10.4 |
 | $\Z[\zeta_3]$ and $\Z[i]$ as Euclidean domains | 3.4 (primes, $1-\zeta_3$, $\Z_3[\zeta_3]$: Chapter 6, items 4.5 to 4.9) |
@@ -685,13 +687,13 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
 | $\ell$-adic valuations of integers and of rationals $(q-1)/q$, $(q+1)^2-a^2$, $1-q^{-2}$ | 5.4, 11.3, 11.4 |
 | the valuations $e_\ell(E,q)$ of the paper's table | 11.5, 11.6 |
 | Section 6 row: $\ell$-adic valuations of integers and rationals | 11.1, 11.3, 11.5 |
-| Section 6 row: $\chi_{-3},\chi_{-4},\chi_q,q^*,\ell^*$, Kronecker symbols (with Chapter 6) | 9.5, 9.6, 10.3, 10.5 |
+| Section 6 row: $\chi_{-3},\chi_{-4},\chi_{q^*},q^*,\ell^*$, Kronecker symbols (with Chapter 6) | 9.5, 9.6, 10.3, 10.5 |
 | Section 6 row: Tate parameter, unit part, $\ell$-th powers in $\F_q^\times$, $t_\ell(E,q)$ (with Chapters 7, 10) | 2.4(iii), 7.1, 7.2, 7.3, 11.5(v) |
 | hook: Definition def:terms (valuations of rationals) | 11.1, 11.3, 11.5, 11.6 |
 | hook: the table of Section 1 ($\chi_{-3}$, $\chi_{-4}$) | 10.5, 11.3, 11.4, 11.5 |
 | hook: Lemma lem:euler | 6.5(v), 10.5(i), (ii), 11.3, 11.4 |
 | hook: Lemma lem:tamfactor ($\ell$-th powers in $\F_q^\times$, the class $c$ of the unit part) | 2.4(iii), 7.1, 7.2, 7.3, 11.5(v) |
-| hook: Lemma lem:twist ($q^*$ and $\chi_q$) | 9.3, 9.6, 10.3, 10.5 |
+| hook: Lemma lem:twist ($q^*$ and $\chi_{q^*}$) | 9.3, 9.6, 10.3, 10.5 |
 | hook: Lemma lem:crit (cyclic groups $\Z/r$) | 1.2, 1.3, 1.4, 1.5, 2.1, 2.2 |
 | hook: Proposition prop:forms ($q\equiv\chi_{-3}(q)\pmod3$) | 9.1(iv), 10.5(i), 11.5(i) |
 | also: Lemma lem:fpr ($\ell$-integrality), Remark rem:wild ($P_2(1/4)=3/2$) | 2.4, 11.3, 11.6(e) |
@@ -918,7 +920,7 @@ result of the paper.
    (the identification depending on a generator; $v_\ell(c):=\min(v_\ell(\tilde c),v)$ for a lift $\tilde c$ does not)". Effect: none. Confidence:
    high. (The proof's identification of $c'$ is important_notes.md point 7, a different issue.)
 
-4. **Notation: $\chi_q$ (quadratic, conductor $q$) versus $\chi_\ell$ (cyclotomic), and prime-indexed versus discriminant-indexed
+4. **Notation: the paper's $\chi_q$ (quadratic, conductor $q$; the book's $\chi_{q^*}$, decision D3) versus $\chi_\ell$ (cyclotomic), and prime-indexed versus discriminant-indexed
    names.** Locations: Lemma lem:twist ("$\chi=\chi_q$ the quadratic character of conductor $q$", for every odd prime $q$, so $q=3$ is
    allowed); the proofs of Lemmas lem:tamfactor ("$\chi_\ell\varepsilon$"), lem:old ("$\varepsilon\chi_\ell$"), lem:h0 and Section 1.3 ($\bar\chi_\ell$,
    the cyclotomic character); Section 3 Example ($\chi_{-11}$, $\chi_{-7}$, which Lemma lem:twist would call $\chi_{11}$, $\chi_7$); the

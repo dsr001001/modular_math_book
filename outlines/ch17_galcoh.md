@@ -852,8 +852,8 @@ Forward pointers (chapters that use this one):
 * **Duals.** C3: $^*$ = Pontryagin dual (the paper's), $^\vee$ = linear dual, $M^*(1)$ = Kummer dual of a finite or discrete module, $T^D=T^\vee(1)$,
   $W^D=V^D/T^D$. Chapter 3's 8.3(vi) says the Cartier dual is Chapter 18's; it is needed here first, for Tate duality. Define it here in
   general (2.1) and let Chapter 18 add the adjoint-specific identification $T^D\simeq A(1)$ (Part 16, B-a).
-* **Twists.** $M(1)=M\otimes\Z_\ell(1)$; $\Frob$ acts on $\Z_\ell(1)$ by $p$ ($p\ne\ell$), $\Phi$ by $p^{-1}$. $\chi_\ell$ is the cyclotomic character; $\chi_q$ (paper) is
-  the quadratic character of conductor $q$ (important_notes.md point 32): write $\chi_{q^*}$ or say so in words whenever both appear.
+* **Twists.** $M(1)=M\otimes\Z_\ell(1)$; $\Frob$ acts on $\Z_\ell(1)$ by $p$ ($p\ne\ell$), $\Phi$ by $p^{-1}$. $\chi_\ell$ is the cyclotomic character; the quadratic character of conductor $q$
+  is $\chi_{q^*}$, never $\chi_q$ (the paper's notation, kept only in quotations; important_notes.md point 32, decision D3).
 * **Signs.** The Kummer connecting map has no sign (C6). The Tate local pairing is compatible with connecting maps only up to $(-1)^i$
   (3.3); no sign matters for any order or length in the chapter, so say this once and never track signs.
 * **Kummer cocycle versus class.** Write $\kappa$ for a cocycle and $[\kappa]$ for its class whenever a value $\kappa(\Frob)$ is taken. The paper
@@ -918,7 +918,7 @@ Forward pointers (chapters that use this one):
 * **Point 31 (the class of $u$ means the class of its reduction; $v_\ell(0)$).** 1.6, 5.2, 5.4(v), Exercise 5.
 * **Point 37 ($\Tam_p$ is the Fitting ideal of the invariants).** 4.3, forward remark, written as $\Fitt_{\Z_\ell}\bigl((H^1(I,M)_{\mathrm{tors}})^{G/I}\bigr)$.
 * **Point 42 (the corner is $\varepsilon\kappa$).** 5.4 setup and (iii); Exercise 7.
-* **Point 32 (notation $\chi_q$ versus $\chi_\ell$).** 14.1, Twists.
+* **Point 32 (notation: the paper's $\chi_q$, the book's $\chi_{q^*}$, versus $\chi_\ell$).** 14.1, Twists.
 * **Points 39, 56 (multiplicity one not needed).** Not in this chapter's area; nothing here depends on freeness.
 * **B4 (the symbol $*$).** C3 fixes $^*$ as Pontryagin dual in this chapter, consistently with the paper and Chapter 16; Appendix B must
   record it.

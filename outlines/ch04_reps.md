@@ -918,7 +918,7 @@ Conventions to fix (Section 1 of the chapter, as `convention` environments): C1 
 * Use the paper's basis $e,h,f$ of $\ad V$ (C3) and the matrices of C6; keep the paper's $\sigma$ for the order-$3$ element of
   Section 9 and rename Chapter 1's $\operatorname{diag}(1,-1)$ there (C6).
 * Characters: $\chi$, $\psi$, $\theta$ for one-dimensional representations; $\tr_V$ for trace functions. The paper's
-  $\chi_\ell$ (cyclotomic) and $\chi_q$ (quadratic) appear only in `paperlink`s (Chapter 2, C5, and important_notes.md
+  $\chi_\ell$ (cyclotomic) and $\chi_q$ (quadratic; the book's $\chi_{q^*}$, decision D3) appear only in `paperlink`s (Chapter 2, C5, and important_notes.md
   point 32).
 * Rigour tags on the card exactly as in Part 2. Theorem numbers are cited only where marked as sure: Serre, Linear
   representations, Theorem 1 (Maschke), Proposition 4 (Schur), Theorem 13 (Frobenius reciprocity) were recalled from

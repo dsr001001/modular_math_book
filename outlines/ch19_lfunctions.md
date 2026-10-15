@@ -642,7 +642,7 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
 | the Rankin-Selberg method (unfolding) and the theorem of Rankin and Shimura with the exact factors at bad primes | 8.3 (unfolding: Chapter 13, 10.3) |
 | the true local factors at bad primes: the paper's table derived in full (Lemma lem:euler), each Kodaira type at $q\ge5$ | 9.2, 9.3, 9.4 |
 | the invariant line spanned by $\sqrt{-3}$ in $\Z_\ell[\zeta_3]$ (corrected, point 12), by $\tau$ for $\mathrm{III}$ (point 34) | 9.3 |
-| $\mathrm I_0^*$: $V=V'\otimes\chi_q$, $L_q(A_f,1)^{-1}=\frac{q-1}q\frac{(q+1)^2-a_q(E')^2}{q^2}$ | 6.2, 9.3 |
+| $\mathrm I_0^*$: $V=V'\otimes\chi_{q^*}$, $L_q(A_f,1)^{-1}=\frac{q-1}q\frac{(q+1)^2-a_q(E')^2}{q^2}$ | 6.2, 9.3 |
 | the wild primes $2$ and $3$ (type does not determine the factor; the examples of Remark rem:wild) | 10.1, 10.2 |
 | how PARI computes these (`lfunsympow(E,2)`, `lfuneuler`, $P_q$, $e_\ell=v_\ell(P_q(q^{-2})/(1-a_q^2q^{-2}))$) | 11.1, 11.2 |
 | the definition of $e_\ell(E,q)$ (Definition def:terms) "and its invariance under quadratic twist" (false for $e_\ell$: point 15) | 9.1, 9.5 |

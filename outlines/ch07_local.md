@@ -517,22 +517,22 @@ exponent $a\le1$ (8.4). (iii) $p=2$: $\Q_2$ has seven quadratic extensions, $\Q_
 $\Q_2(\sqrt5)=\Q_2(\sqrt{-3})$ ($-15\equiv1\bmod8$); $\Q_2(\sqrt{-1})$, $\Q_2(\sqrt{-5})=\Q_2(\sqrt3)$ are wildly ramified with conductor exponent $2$;
 $\Q_2(\sqrt{\pm2})$, $\Q_2(\sqrt{\pm10})$ with conductor exponent $3$ (5.1(v) and 8.3). Reference: Serre, Course in Arithmetic, Ch. II,
 Section 3; Serre, Local Fields, Ch. IV. Paper: Lemma lem:twist (the twist by $\Q(\sqrt{q^*})$ is ramified only at $q$, tamely for
-$q$ odd), Lemma lem:euler (types $\mathrm{I}_0^*$, $\mathrm{I}_n^*$: $V=V'\otimes\chi_q$), Remark rem:types (a ramified quadratic character times a
+$q$ odd), Lemma lem:euler (types $\mathrm{I}_0^*$, $\mathrm{I}_n^*$: $V=V'\otimes\chi_{q^*}$), Remark rem:types (a ramified quadratic character times a
 unipotent), Theorem thm:qual (b), (c).
 
 ### 6.4 `prop:local:global-quadratic-local` (proposition) P
 Let $d$ be a nonsquare integer, $D$ the discriminant of $\Q(\sqrt d)$ and $\chi_d$ its character (Chapter 5, C3). Via 3.5, $\chi_d|_{G_{\Q_p}}$
 is the character of $\Q_p(\sqrt d)$. (i) It is unramified iff $p\nmid D$, and then $\chi_d(\Frob_p)=\bigl(\frac Dp\bigr)$ (Chapter 6, 4.2). (ii) For an
-odd prime $q$ and $\chi_q:=\chi_{q^*}$: at $p\ne q$, including $p=2$, $\chi_q$ is unramified with $\chi_q(\Frob_p)=\bigl(\frac pq\bigr)$
-($q^*\equiv1\pmod4$, so $\Q_2(\sqrt{q^*})$ is unramified); at $p=q$ it is ramified, tame, $\chi_q|_{I_q}=\theta_2$, and its local conductor exponent
+odd prime $q$ and $\chi_{q^*}$ (the paper's $\chi_q$): at $p\ne q$, including $p=2$, $\chi_{q^*}$ is unramified with $\chi_{q^*}(\Frob_p)=\bigl(\frac pq\bigr)$
+($q^*\equiv1\pmod4$, so $\Q_2(\sqrt{q^*})$ is unramified); at $p=q$ it is ramified, tame, $\chi_{q^*}|_{I_q}=\theta_2$, and its local conductor exponent
 is $1$. (iii) $\chi_{-3}$ at $3$: tame, exponent $1$; $\chi_{-4}$ at $2$: wild, exponent $2$; $\chi_{\pm2}$ at $2$: exponent $3$; in each case
 the product of $p^{a_p(\chi)}$ is the conductor of the Dirichlet character (Chapter 2, 10.3; the general statement is 6.5(iii)).
-(iv) For a finite set $S$ of odd primes, $\chi_S=\prod_{q\in S}\chi_q$ is unramified outside $S$ and at each $q\in S$ restricts to $\theta_2$ on
-$I_q$. (v) Consequently, for any representation $\rho$ of $G_\Q$: $(\rho\otimes\chi_q)|_{I_p}=\rho|_{I_p}$ for $p\ne q$, and $(\rho\otimes\chi_q)|_{I_q}=
-\rho|_{I_q}\otimes\theta_2$; so twisting by $\chi_q$ changes nothing at $p\ne q$ (inertia, $V^{I_p}$, conductor exponent; Frobenius
-changes by the sign $\chi_q(\Frob_p)$), and at $q$ multiplies the inertia action by $\pm1$. Reference: as 6.3; Chapter 6, 4.2, 4.3.
+(iv) For a finite set $S$ of odd primes, $\chi_S=\prod_{q\in S}\chi_{q^*}$ is unramified outside $S$ and at each $q\in S$ restricts to $\theta_2$ on
+$I_q$. (v) Consequently, for any representation $\rho$ of $G_\Q$: $(\rho\otimes\chi_{q^*})|_{I_p}=\rho|_{I_p}$ for $p\ne q$, and $(\rho\otimes\chi_{q^*})|_{I_q}=
+\rho|_{I_q}\otimes\theta_2$; so twisting by $\chi_{q^*}$ changes nothing at $p\ne q$ (inertia, $V^{I_p}$, conductor exponent; Frobenius
+changes by the sign $\chi_{q^*}(\Frob_p)$), and at $q$ multiplies the inertia action by $\pm1$. Reference: as 6.3; Chapter 6, 4.2, 4.3.
 Paper: Lemma lem:twist (i) ("$\chi$ is unramified at $p$, so $E$ and $E^{(q)}$ become isomorphic over an unramified extension of
-$\Q_p$") and (ii) at $q$, Theorem thm:twist ($\chi_S$), Theorem thm:quant, Lemma lem:euler ($V=V'\otimes\chi_q$), Theorem thm:qual (b), (c).
+$\Q_p$") and (ii) at $q$, Theorem thm:twist ($\chi_S$), Theorem thm:quant, Lemma lem:euler ($V=V'\otimes\chi_{q^*}$), Theorem thm:qual (b), (c).
 
 ### 6.5 `thm:local:lcft` (theorem; local class field theory for $\Q_p$, explicit form) R
 (i) (Local Kronecker-Weber.) $\Q_p^{\mathrm{ab}}=\Q_p^{\mathrm{ur}}\cdot\Q_p(\mu_{p^\infty})$. (ii) There is a unique continuous homomorphism
@@ -699,7 +699,7 @@ dictionary to Kodaira types is a black box from Chapters 10 and 11 and is quoted
 If $V$ is unramified with arithmetic Frobenius eigenvalues $\alpha,\beta$: $\mathrm{WD}(V)=(r,0)$, $a(V)=0$, $L(V,s)=(1-\alpha^{-1}q^{-s})^{-1}(1-\beta^{-1}q^{-s})^{-1}$,
 $A$ is unramified with eigenvalues $\alpha/\beta,1,\beta/\alpha$ for both Frobenii (inversion-stable set), and
 $$L(A,s)^{-1}=\Bigl(1-\frac\alpha\beta q^{-s}\Bigr)(1-q^{-s})\Bigl(1-\frac\beta\alpha q^{-s}\Bigr),\qquad L(A,1)^{-1}=\frac{q-1}q\cdot\frac{(q+1)^2-a^2}{q^2}\ \text{ if }\alpha+\beta=a,\ \alpha\beta=q$$
-(the algebraic identity is Chapter 2, 11.4). Paper: the $\mathrm{I}_0^*$ row of the table ($V=V'\otimes\chi_q$, $A=\ad V'$ unramified), Theorem
+(the algebraic identity is Chapter 2, 11.4). Paper: the $\mathrm{I}_0^*$ row of the table ($V=V'\otimes\chi_{q^*}$, $A=\ad V'$ unramified), Theorem
 thm:dfg14 (Wiles's level-raising factor at a good prime), Lemma lem:euler.
 
 ### 9.2 `prop:local:tame-cyclic-shape` (proposition) P
@@ -730,7 +730,7 @@ $$L(\ad V,s)=(1-q^{-1-s})^{-1}\qquad\text{for }V=\mathrm{sp}(2)\otimes\mu\text{ 
 With the arithmetic Frobenius one would get $(1-q^{1-s})^{-1}$; the paper's table has $1-q^{-1-s}$ (important_notes.md point 11). (iv) The line
 $\Omega N$ is the line $\Z_\ell e$, $e=e_1\otimes e_2^\vee$, of Lemma lem:tamfactor (in the paper's basis, 7.6). Reference: Tate79, Section 4.1;
 Rohrlich94, Sections 9 to 11; elementary (verified symbolically). Paper: Lemma lem:twist (iii), Lemma lem:euler (types $\mathrm{I}_n$
-and $\mathrm{I}_n^*$: "$(\ad V)^{I_q}$ is a line with eigenvalue $q^{-1}$", "$V=V'\otimes\chi_q$ with $V'$ Steinberg ... $\ad V=\ad V'$"), Definition def:terms
+and $\mathrm{I}_n^*$: "$(\ad V)^{I_q}$ is a line with eigenvalue $q^{-1}$", "$V=V'\otimes\chi_{q^*}$ with $V'$ Steinberg ... $\ad V=\ad V'$"), Definition def:terms
 ($e_\ell=0$ at multiplicative primes: naive and true factors agree), Lemma lem:fpr ($L_p(A_f,1)^{-1}=1-p^{-2}$ at a multiplicative $p$),
 Theorem thm:dfg14 (the factor $1-p^{-2}$), Lemma lem:tamfactor.
 
@@ -817,7 +817,7 @@ not counted).
 | Kummer theory over $\Q_p$: $H^1(G_{\Q_p},\mu_{\ell^k})=\Q_p^\times/(\Q_p^\times)^{\ell^k}$ (foreshadowing Chapter 17) | 6.1 |
 | restriction of the Kummer class of $u\in\Q_p^\times$ to $I_p$ is $v_p(u)$ times the tame character | 6.2(ii) |
 | unramified quadratic extension; ramified $\Q_p(\sqrt{p^*})$ and their characters | 6.3 |
-| local behaviour of quadratic characters of $G_\Q$ ($\chi_q$ unramified at $p\ne q$, ramified at $q$) | 6.4 |
+| local behaviour of quadratic characters of $G_\Q$ ($\chi_{q^*}$ unramified at $p\ne q$, ramified at $q$) | 6.4 |
 | Weil group $W_{\Q_p}$ | 7.1, 6.5(ii) |
 | Weil-Deligne representations, $(r,N)$, the relation (explicit convention) | 7.2, 7.3, 7.4, convention L4 |
 | inertia invariants | 8.1 |
@@ -955,7 +955,7 @@ Forward pointers (chapters that use this one):
 * **The choice of $\zeta$** (generator of $\Z_\ell(1)$) enters $t_\zeta$ and $N$; $N$ is defined up to $\Z_\ell^\times$; none of $V^I$, $a$, $L$ depends on it.
 * **Uniformiser-dependence:** $t_\ell$ on $I_K$ is independent of $\varpi$; the cocycle $\kappa_\varpi$ on $G_K$ is not (it changes by $\kappa_u$); the
   Frobenius lift of 5.5 depends on $\varpi$ and on the roots.
-* **Notation clash:** $q$ is both $\#k_K$ and the paper's prime; $\chi_q$ is the quadratic character of conductor $q$ (Chapter 5, C3) and $\chi_\ell$
+* **Notation clash:** $q$ is both $\#k_K$ and the paper's prime; the quadratic character of conductor $q$ is $\chi_{q^*}$ (Chapter 5, C3; the paper's $\chi_q$, never written in the book, decision D3) and $\chi_\ell$
   the cyclotomic character (important_notes.md point 32); write $\theta_2$ for the order-two character of inertia and $\eta_{\mathrm{ur}}$ for the
   unramified quadratic character; $\varepsilon$ is reserved for the unramified character of the Tate shape (paper's notation); $\epsilon$ for
   $\epsilon$-factors; $e$ is both a ramification index and the basis vector $e=e_1\otimes e_2^\vee$ (paper): say so.

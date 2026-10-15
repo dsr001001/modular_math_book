@@ -5,7 +5,7 @@ Stage 1 output (core results in teaching order). Target length 1,820 lines of La
 Frobenius is *arithmetic* throughout (Convention 3.7 below, the same as Chapter 5's convention C2):
 $\Frob_P(x)\equiv x^{N\mathfrak p}\pmod P$; the *geometric* Frobenius is its inverse, and local
 $L$-factors are written with the geometric Frobenius (3.7). Chapter 5's conventions C1 (one $\Qbar\subset\C$),
-C3 (quadratic characters $\chi_d$, $\chi_q:=\chi_{q^*}$) and C4 ($\chi_\ell$, $\bar\chi_\ell$, $\chi_{\ell^*}=
+C3 (quadratic characters $\chi_d$, $\chi_{q^*}$, never $\chi_q$: decision D3) and C4 ($\chi_\ell$, $\bar\chi_\ell$, $\chi_{\ell^*}=
 \bar\chi_\ell^{(\ell-1)/2}$) are inherited without change.
 
 Item format: number, label-ready name, kind, rigour tag; the precise statement; reference (book and theorem
@@ -40,7 +40,7 @@ lem:old (rings of integers $\mathcal O$, primes $\lambda\mid\ell$, "after enlarg
 "a prime above $\lambda$ in $\mathcal O[\alpha_p]$", "a maximal ideal of residue characteristic $\ell$":
 7.1-7.4); the twist by $\Q(\sqrt{q^*})$ of Section 1.4, Lemma lem:twist and the character $\chi_S$ of
 Theorems thm:twist and thm:quant (4.3, 5.7, 5.8); $\chi_{-3}$, $\chi_{-4}$ of $\Q(\sqrt{-3})$ and $\Q(i)$ (4.2,
-5.8). Section 6 map rows pointing at Chapter 6: "$\chi_{-3},\chi_{-4},\chi_q,q^*,\ell^*$, Kronecker symbols"
+5.8). Section 6 map rows pointing at Chapter 6: "$\chi_{-3},\chi_{-4},\chi_{q^*},q^*,\ell^*$, Kronecker symbols"
 (4.1-4.3, 5.3, 5.7, 5.8); "image of inertia on $T_\ell E$ at additive primes, unipotent elements,
 $\Z_3[\zeta_3]$" (3.11, 3.12, 4.6-4.10).
 
@@ -415,14 +415,14 @@ the primitive real Dirichlet character $\chi_D=\bigl(\frac D\cdot\bigr)$ of cond
 $\chi_d$ is unramified exactly at the primes $p\nmid D$ ($\chi_d(I_p)=\{\pm1\}$ for $p\mid D$). (iii) The
 characters the paper uses: $\chi_{-4}(\Frob_p)=(-1)^{(p-1)/2}$ ($p$ odd; conductor $4$); $\chi_{-3}(\Frob_p)=
 \bigl(\frac p3\bigr)$, which is $1$ iff $p\equiv1\pmod3$ ($p\ne3$, including $\chi_{-3}(\Frob_2)=-1$; conductor
-$3$); for an odd prime $q$, $\chi_q=\chi_{q^*}$ has $\chi_q(\Frob_p)=\bigl(\frac{q^*}p\bigr)=\bigl(\frac pq\bigr)$
+$3$); for an odd prime $q$, $\chi_{q^*}$ (the paper's $\chi_q$) has $\chi_{q^*}(\Frob_p)=\bigl(\frac{q^*}p\bigr)=\bigl(\frac pq\bigr)$
 for all $p\ne q$ including $p=2$ (quadratic reciprocity with its supplement, Chapter 2, or 5.4; conductor $q$);
 $\chi_{\pm2}$ (discriminants $8,-8$) have conductor $8$. Proof of (i): $\Frob_p$ fixes $\sqrt d$ iff
 $D_{\mathfrak P}=1$ iff $p$ splits (3.8(iii)) iff $\bigl(\frac Dp\bigr)=1$ (4.1). (ii) is 3.4 with 3.5(iv). (iii)
 is (i) for $D=-4,-3,q^*,\pm8$. All congruence conditions checked for $p<3000$ (Part 12). Reference: Neukirch
 I.8 and VI.1 (cite chapters); Washington Ch. 3 (quadratic characters as Dirichlet characters). Paper: the
 table of Section 1 and Lemma lem:euler ($\chi_{-3}(q)$, $\chi_{-4}(q)$), Definition def:terms, Proposition
-prop:forms ("$q\equiv\chi_{-3}(q)\pmod3$"), Lemma lem:twist ($\chi_q$), Proposition prop:ns ($\chi_{-3}$);
+prop:forms ("$q\equiv\chi_{-3}(q)\pmod3$"), Lemma lem:twist ($\chi_{q^*}$), Proposition prop:ns ($\chi_{-3}$);
 supplies Chapter 5's galois:quadratic-characters (c), (d).
 
 ### 4.3 `prop:ant:ramonlyat` (proposition) P
@@ -431,9 +431,9 @@ only; its discriminant is $q^*$ (because $q^*\equiv1\pmod4$). (ii) More generall
 unramified outside a finite set $S$ of primes iff its discriminant is $D=D_0\prod_{q\in T}q^*$ with $T$ a set of
 odd primes in $S$ and $D_0\in\{1,-4,8,-8\}$, $D_0=1$ unless $2\in S$ (and $D\ne1$). Every fundamental
 discriminant factors uniquely in this way ("prime discriminants"). (iii) For a finite set $S$ of odd primes,
-$\chi_S:=\prod_{q\in S}\chi_q$ is the character of $\Q(\sqrt{\prod_{q\in S}q^*})$, of discriminant
+$\chi_S:=\prod_{q\in S}\chi_{q^*}$ is the character of $\Q(\sqrt{\prod_{q\in S}q^*})$, of discriminant
 $\prod_{q\in S}q^*$, conductor $D_S=\prod_{q\in S}q$, ramified exactly at the primes of $S$. (iv) Hence a
-quadratic twist by $\chi_q$ (or $\chi_S$) is unramified at every $p\notin S$: the Galois representation does not
+quadratic twist by $\chi_{q^*}$ (or $\chi_S$) is unramified at every $p\notin S$: the Galois representation does not
 change on $I_p$ for $p\notin S$, which is the arithmetic input of Lemma lem:twist (i). Proof: 3.4 and 4.1;
 a fundamental discriminant that is odd is $\equiv1\pmod4$, which fixes the sign $(-1)^{(q-1)/2}$. Reference:
 Washington Ch. 3; Cox, Primes of the form $x^2+ny^2$, Section 5 (cite the section). Paper: Section 1.4
@@ -598,7 +598,7 @@ For distinct odd primes $p,q$: $\bigl(\frac{q^*}p\bigr)=\bigl(\frac pq\bigr)$, i
 $\Q(i)=\Q(\zeta_4)$ and $\Q(\sqrt2)\subset\Q(\zeta_8)$. Proof: compute $\chi_{q^*}(\Frob_p)$ by 4.2(i) and by 5.3(ii).
 (Chapter 2 proves reciprocity by Gauss sums; this proof shows why the character of $\Q(\sqrt{q^*})$ is the
 Legendre symbol mod $q$, and may be given as a remark.) Reference: Neukirch I.10 (Exercise) or Washington
-Ch. 2 (cite chapter). Paper: Lemma lem:twist ($\chi_q$ "of conductor $q$" is the character of $\Q(\sqrt{q^*})$).
+Ch. 2 (cite chapter). Paper: Lemma lem:twist ($\chi_{q^*}$ "of conductor $q$" is the character of $\Q(\sqrt{q^*})$).
 
 ### 5.5 `thm:ant:kroneckerweber` (theorem, Kronecker-Weber) R
 Every finite abelian extension $K/\Q$ is contained in $\Q(\zeta_n)$ for some $n$; the least such $n$ (taken
@@ -639,7 +639,7 @@ e.g. $\chi_\ell$ is the projection $\hat\Z^\times\to\Z_\ell^\times$. (iv) One-di
 thus "the same as" primitive Dirichlet characters; under this dictionary, twisting a newform's coefficients,
 $a_n\mapsto\chi(n)a_n$, corresponds to tensoring its Galois representation by $\psi_\chi$ (Chapters 13, 15).
 Proof: (i) and (ii) from 5.2 (inertia groups in $\Q(\zeta_n)$) and 5.5. Reference: Washington Ch. 3; Neukirch
-VII.2 (cite chapter). Paper: the characters $\chi_{-3}$, $\chi_{-4}$, $\chi_q$, $\chi_S$ used both as Galois
+VII.2 (cite chapter). Paper: the characters $\chi_{-3}$, $\chi_{-4}$, $\chi_{q^*}$, $\chi_S$ used both as Galois
 characters ($\rho\otimes\chi$, Lemma lem:h0, Proposition prop:ns) and as Dirichlet characters ($a_n(g\otimes\chi)=
 \chi(n)a_n(g)$, Lemma lem:twist (iii), Theorem thm:twist, Theorem thm:qual (b), (c)).
 
@@ -648,8 +648,8 @@ characters ($\rho\otimes\chi$, Lemma lem:h0, Proposition prop:ns) and as Dirichl
 |-|-|-|-|-|
 | $\chi_{-4}$ | $\Q(i)=\Q(\zeta_4)$ | the nontrivial character mod $4$ | $4$ | $(-1)^{(p-1)/2}$ |
 | $\chi_{-3}=\bar\chi_3$ | $\Q(\sqrt{-3})=\Q(\zeta_3)$ | $\bigl(\frac\cdot3\bigr)$ | $3$ | $1$ iff $p\equiv1\bmod3$ |
-| $\chi_q=\chi_{q^*}$, $q$ odd | $\Q(\sqrt{q^*})\subset\Q(\zeta_q)$ | $\bigl(\frac\cdot q\bigr)$ | $q$ | $\bigl(\frac pq\bigr)$ |
-| $\chi_S=\prod_{q\in S}\chi_q$ | $\Q(\sqrt{\prod_{q\in S}q^*})$ | $\prod_{q\in S}\bigl(\frac\cdot q\bigr)$ | $\prod_{q\in S}q$ | $\prod_{q\in S}\bigl(\frac pq\bigr)$ |
+| $\chi_{q^*}$, $q$ odd | $\Q(\sqrt{q^*})\subset\Q(\zeta_q)$ | $\bigl(\frac\cdot q\bigr)$ | $q$ | $\bigl(\frac pq\bigr)$ |
+| $\chi_S=\prod_{q\in S}\chi_{q^*}$ | $\Q(\sqrt{\prod_{q\in S}q^*})$ | $\prod_{q\in S}\bigl(\frac\cdot q\bigr)$ | $\prod_{q\in S}q$ | $\prod_{q\in S}\bigl(\frac pq\bigr)$ |
 | $\chi_{\ell^*}=\bar\chi_\ell^{(\ell-1)/2}$ | $\Q(\sqrt{\ell^*})$ | $\bigl(\frac\cdot\ell\bigr)$ | $\ell$ | $\bigl(\frac p\ell\bigr)$ |
 | $\bar\chi_\ell$ (values in $\F_\ell^\times$) | $\Q(\zeta_\ell)$ | $a\mapsto a\bmod\ell\in\F_\ell^\times$ | $\ell$ | $p\bmod\ell$ |
 
@@ -823,7 +823,7 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
 | 2 | Dedekind domains, ideals, norms and class groups | 2.1 to 2.6 | 230 |
 | 3 | Splitting of primes, ramification and Frobenius | 3.1 to 3.12; Convention 3.7 (arithmetic versus geometric) as a `convention` environment; `paperlink` for lem:euler (3.12) | 330 |
 | 4 | Quadratic fields, $\Z[i]$, $\Z[\zeta_3]$ and $\Z_\ell[\zeta_3]$ | 4.1 to 4.10; a table of splitting in $\Q(i)$, $\Q(\sqrt{-3})$, $\Q(\sqrt{-7})$, $\Q(\sqrt{-11})$, $\Q(\sqrt5)$; `paperlink` for lem:IV (4.7, 4.8) and lem:euler (4.10) | 300 |
-| 5 | Cyclotomic fields and class field theory over $\Q$ | 5.1 to 5.8; the table of 5.8; `paperlink` for lem:twist, thm:twist ($\chi_q$, $\chi_S$) | 230 |
+| 5 | Cyclotomic fields and class field theory over $\Q$ | 5.1 to 5.8; the table of 5.8; `paperlink` for lem:twist, thm:twist ($\chi_{q^*}$, $\chi_S$) | 230 |
 | 6 | Densities, Chebotarev, complex multiplication | 6.1 to 6.5; `paperlink` for lem:h0 with a `warning` on the $\chi_\ell$ versus $\chi_{\ell^*}$ confusion | 160 |
 | 7 | Coefficient fields and primes above $\ell$ | 7.1 to 7.5; `paperlink` for lem:crit and lem:old | 140 |
 | 8 | Exercises | 18 exercises (Part 10) | 120 |
@@ -863,16 +863,16 @@ newforms (Chapters 12, 13: 7.1, 7.5); Faltings's semisimplicity and Serre's open
 Forward pointers (chapters that use this one):
 * Chapter 7 (`ch:local`): completions $\mathcal O_{K,\lambda}$, $K_\lambda$, $\mathcal O\otimes\Z_\ell=\prod\mathcal O_\lambda$ (7.4); $D_p\simeq G_{\Q_p}$
   (3.10(v)); $\Z_3[\zeta_3]$ as the ring of integers of $\Q_3(\sqrt{-3})$ (4.7); ramified quadratic extensions
-  $\Q_p(\sqrt{p^*})$ and the local behaviour of $\chi_q$ (4.2(ii), 4.3); tame inertia and $\Frob\,t\,\Frob^{-1}=t^q$ (3.11);
+  $\Q_p(\sqrt{p^*})$ and the local behaviour of $\chi_{q^*}$ (4.2(ii), 4.3); tame inertia and $\Frob\,t\,\Frob^{-1}=t^q$ (3.11);
   geometric Frobenius in local $L$-factors (3.7); Artin conductors of characters (5.7(ii)).
 * Chapter 9 (`ch:ellcurves`): CM curves, $a_p=0$ at inert primes (6.5), quadratic twists by $\chi_d$ with
   $a_p(E^{(d)})=\chi_d(p)a_p(E)$ (4.2, 5.7), Frobenius characteristic polynomial $X^2-a_pX+p$ (3.7).
-* Chapter 10 (`ch:reduction`): the twist by $\Q(\sqrt{q^*})$ is unramified outside $q$ (4.3), $\chi_q$ at $q$.
+* Chapter 10 (`ch:reduction`): the twist by $\Q(\sqrt{q^*})$ is unramified outside $q$ (4.3), $\chi_{q^*}$ at $q$.
 * Chapter 11 (`ch:galrep`): Lemma lem:IV in full (4.6 to 4.8), Remark rem:types, Lemma lem:euler's inertia
   analysis (3.12, 4.10), Proposition prop:ns ($\chi_{-3}$, 6.4(a)), Lemma lem:h0 (5.3, 6.4, 6.5), unramified
   representations and $\rho(\Frob_p)$ (3.10).
 * Chapters 12, 13 (`ch:modforms`, `ch:hecke`): coefficient fields, orders, primes $\lambda$ (7.1, 7.2), twisting
-  newforms by Dirichlet characters (5.7(iv)), Atkin-Li (conductor $q$ of $\chi_q$, 5.8).
+  newforms by Dirichlet characters (5.7(iv)), Atkin-Li (conductor $q$ of $\chi_{q^*}$, 5.8).
 * Chapter 15 (`ch:modgalrep`): $\lambda$-adic representations of newforms over $\mathcal O_\lambda$ (7.4), Lemma lem:old
   (7.2(v), 7.3), Chebotarev (6.2).
 * Chapter 19 (`ch:lfunctions`): Euler factors with geometric Frobenius (3.7), the values $\chi_{-3}(q)$,
@@ -918,7 +918,7 @@ Forward pointers (chapters that use this one):
 | hook: Lemma lem:old (enlarging $\mathcal O$ and $\lambda$; a prime above $\lambda$ in $\mathcal O[\alpha_p]$) | 7.2, 7.3, 6.2 |
 | hook: the twist by $\Q(\sqrt{q^*})$ (Section 1.4, Lemma lem:twist, Theorems thm:twist, thm:quant) | 4.3, 4.4, 5.7, 5.8 |
 | hook: $\chi_{-3}$, $\chi_{-4}$ of $\Q(\sqrt{-3})$ and $\Q(i)$ (table of Section 1, Proposition prop:forms) | 4.2, 5.8, 4.10 |
-| Section 6 row: $\chi_{-3},\chi_{-4},\chi_q,q^*,\ell^*$, Kronecker symbols (Chapters 2, 6) | 4.1, 4.2, 4.3, 5.3, 5.7, 5.8 |
+| Section 6 row: $\chi_{-3},\chi_{-4},\chi_{q^*},q^*,\ell^*$, Kronecker symbols (Chapters 2, 6) | 4.1, 4.2, 4.3, 5.3, 5.7, 5.8 |
 | Section 6 row: image of inertia on $T_\ell E$ at additive primes, unipotent elements, $\Z_3[\zeta_3]$ (Chapters 4, 6, 7, 11) | 3.11, 3.12, 4.6, 4.7, 4.8, 4.10 |
 | also: Section 1.1 ($I_p$, $\Frob_p$, $V^{I_p}$, $L_p$), Lemma lem:fpr ($L_p(A_f,1)=L_p(A_f(1),0)$) | 3.7, 3.10 |
 | also: Chapter 5's black boxes (Frobenius, Dedekind's theorem, $\chi_d(\Frob_p)$, Kronecker-Weber, Chebotarev) | 3.8, 3.9, 3.10, 4.2, 5.5, 6.2 |
@@ -972,7 +972,7 @@ Conventions to fix (Section 1 and Section 3 of the chapter, as `convention` envi
 * Frobenius (3.7): $\Frob_{\mathfrak P}$, $\Frob_p$ are *arithmetic*; $\Frob_p^{-1}$ is geometric; $L$-factors are
   $\det(1-\Frob_p^{-1}p^{-s}\mid V^{I_p})^{-1}$. State the dictionary once, with the multiplicative example, and use the
   same words as Chapter 5 (C2). Appendix B (`ch:notation`) must record the same convention.
-* $\chi_d$, $\chi_q=\chi_{q^*}$, $\chi_{-3}$, $\chi_{-4}$, $\chi_S$, $\chi_{\ell^*}$ exactly as in Chapter 5 (C3, C4); the Dirichlet
+* $\chi_d$, $\chi_{q^*}$ (never $\chi_q$, decision D3), $\chi_{-3}$, $\chi_{-4}$, $\chi_S$, $\chi_{\ell^*}$ exactly as in Chapter 5 (C3, C4); the Dirichlet
   character attached to $\chi_d$ is $\bigl(\frac D\cdot\bigr)$ with $D$ the *discriminant*, not $d$ (e.g. $\chi_{-1}=\chi_{-4}$ has
   conductor $4$; $\chi_2$ has conductor $8$).
 * $\Z_\ell[\zeta_3]$ means $\Z_\ell[X]/(X^2+X+1)=\Z_\ell\otimes\Z[\zeta_3]$, not a subring of $\Qbar_\ell$ (for $\ell\equiv1\pmod3$ it

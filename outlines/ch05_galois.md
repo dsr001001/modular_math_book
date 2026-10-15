@@ -46,8 +46,8 @@ these five points, plus what Chapters 6, 7, 11, 15, 17 need from Galois theory.
   convention (proof of Lemma lem:tamfactor: "the arithmetic Frobenius acts ... as $q^{-1}\rho(\Frob)$").
 * **C3 (quadratic characters).** For $d\in\Q^\times\setminus(\Q^\times)^2$, $\chi_d\colon G_\Q\to\{\pm1\}$ is
   $\sigma\mapsto\sigma(\sqrt d)/\sqrt d$; it depends only on $d$ modulo squares and has kernel $G_{\Q(\sqrt d)}$.
-  For an odd prime $q$ put $q^*=(-1)^{(q-1)/2}q$ and, **as in the paper**, $\chi_q:=\chi_{q^*}$ (the character
-  of $\Q(\sqrt{q^*})$, "the quadratic character of conductor $q$"); $\chi_{-3}$ and $\chi_{-4}$ are the
+  For an odd prime $q$ put $q^*=(-1)^{(q-1)/2}q$; $\chi_{q^*}$ is the character
+  of $\Q(\sqrt{q^*})$, "the quadratic character of conductor $q$", which the paper writes $\chi_q$ (the book never does: PLAN.md 7.5, decision D3); $\chi_{-3}$ and $\chi_{-4}$ are the
   characters of $\Q(\sqrt{-3})$ and $\Q(i)$. Chapter 2 defines the same symbols as Dirichlet characters
   (Kronecker symbols); the two agree through $\chi_d(\Frob_p)=\bigl(\tfrac{D}{p}\bigr)$ (Kronecker symbol) for every prime
   $p\nmid D$, $D$ the discriminant of $\Q(\sqrt d)$, proved in Chapter 6.
@@ -209,7 +209,7 @@ quadratic fields are the $\Q(\sqrt d)$, $d\ne0,1$ a squarefree integer, pairwise
 independent in $F^\times/F^{\times2}$, then $F(\sqrt a,\sqrt b)/F$ is Galois with group $\simeq V_4$ and exactly three
 quadratic subfields $F(\sqrt a)$, $F(\sqrt b)$, $F(\sqrt{ab})$. *Proved here.* Dummit-Foote 13.2 and 14.2 (examples).
 Background; convention C3; Lemma lem:twist and Theorem thm:twist (the fields $\Q(\sqrt{q^*})$ and
-$\Q(\sqrt{\prod_{q\in S}q^*})$ of the characters $\chi_q$, $\chi_S$).
+$\Q(\sqrt{\prod_{q\in S}q^*})$ of the characters $\chi_{q^*}$, $\chi_S$).
 
 **galois:cyclotomic** (theorem). Let $n\ge1$, $\zeta_n=e^{2\pi i/n}\in\Qbar$, $\mu_n=\langle\zeta_n\rangle$.
 (a) $\Phi_n=\prod_{(a,n)=1,\,1\le a\le n}(x-\zeta_n^a)$ lies in $\Z[x]$, and $x^n-1=\prod_{d\mid n}\Phi_d$ (Chapter 2).
@@ -530,16 +530,16 @@ Lemma lem:old, Lemma lem:tamagawa-exp ($\rho\bmod\ell^t$), Section 4.2 (lattices
 $\Q^\times/\Q^{\times2}\simeq\Hom_{\mathrm{cont}}(G_\Q,\{\pm1\})$, with $\ker\chi_d=G_{\Q(\sqrt d)}$ (Kummer theory with
 $n=2$); the nontrivial continuous quadratic characters of $G_\Q$ correspond to the quadratic fields. (b)
 $\chi_{dd'}=\chi_d\chi_{d'}$; for example $\chi_{-15}=\chi_{-3}\chi_5$ (no numerical $\chi_3$: in the book a numerical subscript is always a quadratic $\chi_d$ with its sign, Appendix B, B-C6(b)), and for a set $S$ of odd primes
-$\chi_S=\prod_{q\in S}\chi_q$ is the character of $\Q(\sqrt{\prod_{q\in S}q^*})$. (c) (Values at Frobenius; proved in
+$\chi_S=\prod_{q\in S}\chi_{q^*}$ is the character of $\Q(\sqrt{\prod_{q\in S}q^*})$. (c) (Values at Frobenius; proved in
 Chapter 6, used here as a black box, item galois:frobenius-preview.) For $p\nmid D$: $\chi_d(\Frob_p)=\bigl(\tfrac
 Dp\bigr)$, which is $1$ iff $p$ splits in $\Q(\sqrt d)$; $\chi_{-3}(\Frob_p)=1$ iff $p\equiv1\pmod3$;
 $\chi_{-4}(\Frob_p)=1$ iff $p\equiv1\pmod4$; $\chi_{\ell^*}(\Frob_p)=\bigl(\tfrac p\ell\bigr)$ for $p\ne\ell$, directly
 from $\chi_{\ell^*}=\bigl(\tfrac{\bar\chi_\ell}{\ell}\bigr)$ and $\bar\chi_\ell(\Frob_p)=p\bmod\ell$. (Comparing with
 $\chi_{\ell^*}(\Frob_p)=\bigl(\tfrac{\ell^*}{p}\bigr)$ is quadratic reciprocity: a remark, with the proof left to
-Chapter 2.) (d) As Dirichlet characters (Chapters 2 and 6) $\chi_d$ has conductor $|D|$: $\chi_q$ has conductor $q$,
+Chapter 2.) (d) As Dirichlet characters (Chapters 2 and 6) $\chi_d$ has conductor $|D|$: $\chi_{q^*}$ has conductor $q$,
 $\chi_{-3}$ conductor $3$, $\chi_{-4}$ conductor $4$. *(a), (b) proved here; (c), (d) stated with Chapter 6
 reference; the congruence conditions in (c) were checked numerically for $p<2000$ and $\ell\le13$.* Paper use: the
-table of Section 1 and Lemma lem:euler ($\chi_{-3}(q)$, $\chi_{-4}(q)$), Lemma lem:twist ($\chi_q$, $\Q(\sqrt{q^*})$),
+table of Section 1 and Lemma lem:euler ($\chi_{-3}(q)$, $\chi_{-4}(q)$), Lemma lem:twist ($\chi_{q^*}$, $\Q(\sqrt{q^*})$),
 Theorem thm:twist ($\chi_S$), Lemma lem:h0, Proposition prop:ns ($\chi_{-3}$).
 
 **galois:twist** (proposition). Let $\rho\colon G\to\GL_n(k)$ and $\chi\colon G\to k^\times$ be continuous. (a) $\rho\otimes\chi$
@@ -741,7 +741,7 @@ with 20a1).
 | Section 6 row: 3-division polynomial, its factorisation pattern | galois:quartic-on-lines, galois:frobenius-on-lines |
 | Section 6 row: Chebotarev, Brauer-Nesbitt | galois:chebotarev-brauer-nesbitt, galois:congruent-ap |
 | Section 6 row: Kummer theory, Kummer classes | galois:kummer-classification, galois:l-adic-kummer |
-| also used: $\chi_{-3}$, $\chi_{-4}$, $\chi_q$, $\chi_S$ (table of Section 1, Lemma lem:euler, Lemma lem:twist, Theorem thm:twist) | galois:quadratic-characters, galois:twist |
+| also used: $\chi_{-3}$, $\chi_{-4}$, $\chi_{q^*}$, $\chi_S$ (table of Section 1, Lemma lem:euler, Lemma lem:twist, Theorem thm:twist) | galois:quadratic-characters, galois:twist |
 
 ## 4. Section-by-section plan with target line counts
 
@@ -750,7 +750,7 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
 | section | title | contents | target lines |
 |-|-|-|-|
 | (starred) | Core results at a glance | the card: every item of Part 2, stated as above, with tag and `\Cref` | (excluded) |
-| (starred) | Where the paper uses this chapter | thm:main hypothesis and $S_f$; prop:ns; lem:h0; lem:old; lem:tamagawa-exp; lem:tamfactor; $\chi_{-3},\chi_{-4},\chi_q,\chi_S$ in Section 1, lem:euler, lem:twist, thm:twist | 40 |
+| (starred) | Where the paper uses this chapter | thm:main hypothesis and $S_f$; prop:ns; lem:h0; lem:old; lem:tamagawa-exp; lem:tamfactor; $\chi_{-3},\chi_{-4},\chi_{q^*},\chi_S$ in Section 1, lem:euler, lem:twist, thm:twist | 40 |
 | 1 | Field extensions and algebraic elements | conventions C1 to C7 as `convention` environments; galois:field-extension-degree to galois:algebraic-closure | 150 |
 | 2 | Splitting fields, normality, separability | galois:splitting-field to galois:separable-closure | 190 |
 | 3 | Galois extensions and the fundamental theorem | galois:dedekind-independence to galois:translation-theorem; one picture-free subgroup/subfield diagram in `tabular` | 200 |
@@ -839,7 +839,7 @@ Forward pointers (chapters that use this one):
 Conventions to fix (Section 1, as `convention` environments): C1 to C7 of Part 1. In addition:
 * Composition of automorphisms is $(\sigma\tau)(x)=\sigma(\tau(x))$; groups act on the left; $\sigma(\zeta)=\zeta^{\chi(\sigma)}$.
 * $\Zl(1)$ is written multiplicatively as $\varprojlim\mu_{\ell^k}$ and additively when it carries cocycles; say once which.
-* $\chi_q$ always means $\chi_{q^*}$ (the paper's convention), never "the Legendre symbol mod $q$ as a character of
+* The quadratic character of conductor $q$ is always $\chi_{q^*}$, never $\chi_q$ (the paper's $\chi_q$ appears only when quoting the paper; decision D3), and never "the Legendre symbol mod $q$ as a character of
   $\Z$" without the identification through Frobenius; $\chi_{\ell^*}=\bar\chi_\ell^{(\ell-1)/2}$ is not $\bar\chi_\ell$ unless
   $\ell=3$. The paper itself slips on this once (Section 8 below, point 2).
 * "Density" means Dirichlet density unless stated; "almost all" means all but finitely many.

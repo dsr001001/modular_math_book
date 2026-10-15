@@ -109,8 +109,8 @@ This chapter supplies all of it. Concretely it must deliver:
   $\rho_{f_E,\ell}\simeq\rho_{E,\ell}$ (Chapter 11). The cohomological realisation $H^1(X_0(N),\cdot)$ gives the **dual** $\rho_{f,\lambda}^\vee\simeq\rho_{f,\lambda}(-1)$, on
   which the geometric Frobenius has trace $a_p$ (important_notes.md B1, points 26, 40).
 * **C3 (characters).** A Dirichlet character $\chi$ is also the Galois character with $\chi(\Frob_p)=\chi(p)$ for $p\nmid\operatorname{cond}(\chi)$; $\chi_\ell$ is
-  the $\ell$-adic cyclotomic character; $\chi_q:=\chi_{q^*}$, $q^*=(-1)^{(q-1)/2}q$, the quadratic character of conductor $q$ ($q$ odd), as in the
-  paper and Chapter 11 (C4); write $\chi_{-3}$, never $\chi_3$, for the quadratic character of conductor $3$ (important_notes.md point 32).
+  the $\ell$-adic cyclotomic character; $\chi_{q^*}$, $q^*=(-1)^{(q-1)/2}q$, is the quadratic character of conductor $q$ ($q$ odd), as in
+  Chapter 11 (C4) (the paper's $\chi_q$, never written in the book, decision D3); write $\chi_{-3}$, never $\chi_3$, for the quadratic character of conductor $3$ (important_notes.md point 32).
 * **C4 (twists: the decisive convention).** For a Dirichlet character $\chi$ of conductor $r$:
   - the **naive twist** $f\otimes\chi:=\sum_n\chi(n)a_n(f)q^n$ (the paper's $f\otimes\chi$, the map $\iota$ of Theorem thm:twist);
   - the **newform twist** $f^\chi$: the unique newform with $\rho_{f^\chi,\lambda}\simeq\rho_{f,\lambda}\otimes\chi$ (item 2.7);
@@ -216,7 +216,7 @@ weight $2$, trivial character, level $M$, and $\chi$ a primitive Dirichlet chara
 $Mr\ell$ and has $\tr(\rho_{g,\lambda}\otimes\chi)(\Frob_p)=\chi(p)a_p(g)$ for $p\nmid Mr\ell$. (ii) $g\otimes\chi\in S_2(\Gamma_0(\operatorname{lcm}(M,r^2)),\chi^2)$ (Chapter 13; AtkinLi78
 for the level $\operatorname{lcm}(M,r^2)$; Shimura71, Proposition 3.64, gives the weaker level $Mr^2$; verify both numbers), and there is a unique newform $g^\chi$, of character $\chi^2$ and level dividing $\operatorname{lcm}(M,r^2)$,
 with $\rho_{g^\chi,\lambda}\simeq\rho_{g,\lambda}\otimes\chi$; it satisfies $a_n(g^\chi)=\chi(n)a_n(g)$ for $(n,r)=1$, and $g\otimes\chi=(g^\chi)^{\Sigma(r)}$ (C4). (iii) For $\chi$ quadratic,
-$(g^\chi)^\chi=g$, and the level of $g^\chi$ is $M\prod_{q\mid r}q^{a(\pi_q\otimes\chi_q)-a(\pi_q)}$, computed type by type in 3.8. (iv) For $E/\Q$ and $d$ a
+$(g^\chi)^\chi=g$, and the level of $g^\chi$ is $M\prod_{q\mid r}q^{a(\pi_q\otimes\chi_{q^*})-a(\pi_q)}$, computed type by type in 3.8. (iv) For $E/\Q$ and $d$ a
 fundamental discriminant, $f_{E^{(d)}}=(f_E)^{\chi_d}$ (Chapter 9, 10.3, 10.4 and strong multiplicity one). Examples (checked): $f_{11a}^{\chi_{-11}}=f_{121d}$
 $=f_{11a}\otimes\chi_{-11}$; $f_{121a}^{\chi_{-11}}=f_{121c}=f_{121a}\otimes\chi_{-11}$; $f_{539c}^{\chi_{-7}}=f_{77c}$, while $f_{539c}\otimes\chi_{-7}=f_{77c}^{\{7\}}$; $f_{11a}^{\chi_{-7}}=f_{539d}=f_{11a}\otimes\chi_{-7}$;
 $f_{20a}^{\chi_{-7}}=f_{980g}$; $f_{980i}^{\chi_{-7}}=f_{140b}$. Paper: Lemma lem:twist(iii), Theorem thm:qual (b), (c), Theorem thm:twist, Theorem thm:quant,
@@ -293,18 +293,18 @@ names; Rohrlich94). Let $f=f_E$, $q\ge5$ a bad prime, $q\ne\ell$. The local type
 | Kodaira type at $q$ | $\rho_{E,\ell}(I_q)$ | type of $\pi_q$ |
 |-|-|-|
 | $\mathrm I_n$, $n\ge1$ | unipotent, infinite | (St) |
-| $\mathrm I_n^*$, $n\ge1$ | $\pm$unipotent | (RSt) with $\chi=\chi_q$ |
-| $\mathrm I_0^*$ | $\{\pm1\}$ | (RPS) with $\mu_1=\chi_q\nu_{\alpha'}$, $\mu_2=\chi_q\nu_{\beta'}$ ($\nu_x$ unramified, $\Frob_q\mapsto x$; $\alpha',\beta'$ the Frobenius eigenvalues of $E^{(q)}$) |
+| $\mathrm I_n^*$, $n\ge1$ | $\pm$unipotent | (RSt) with $\chi=\chi_{q^*}$ |
+| $\mathrm I_0^*$ | $\{\pm1\}$ | (RPS) with $\mu_1=\chi_{q^*}\nu_{\alpha'}$, $\mu_2=\chi_{q^*}\nu_{\beta'}$ ($\nu_x$ unramified, $\Frob_q\mapsto x$; $\alpha',\beta'$ the Frobenius eigenvalues of $E^{(q)}$) |
 | $\mathrm{II},\mathrm{II}^*,\mathrm{IV},\mathrm{IV}^*$ | cyclic of order $6$, $3$ | (RPS) if $q\equiv1\pmod3$, (SC) if $q\equiv2\pmod3$ |
 | $\mathrm{III},\mathrm{III}^*$ | cyclic of order $4$ | (RPS) if $q\equiv1\pmod4$, (SC) if $q\equiv3\pmod4$ |
 
-(On the Galois side the $\mathrm I_0^*$ row reads $V\simeq V'\otimes\chi_q$ with $V'=V_\ell E^{(q)}$ unramified; the automorphic labels are stated in the
+(On the Galois side the $\mathrm I_0^*$ row reads $V\simeq V'\otimes\chi_{q^*}$ with $V'=V_\ell E^{(q)}$ unramified; the automorphic labels are stated in the
 normalisation of 3.2(iv) and are not used in any proof.) Proof of the last two rows: $\rho(I_q)=\langle g\rangle$ cyclic of order $m$ with $\Frob_q g\Frob_q^{-1}=g^q$
 (Chapter 11, 4.1); if $q\equiv1\pmod{m'}$ ($m'=3$ or $4$) $\Frob_q$ preserves the two eigenlines of $g$ and $V\otimes\overline{K}$ is a sum of two characters
 (ramified principal series); if $q\equiv-1\pmod{m'}$ it swaps them and $V\otimes\overline K$ is induced from the unramified quadratic extension,
 irreducible (supercuspidal, "unramified dihedral") (Chapter 7, 9.2(ii)). Examples (checked): 11a1 at $11$ (St); 121d2 at $11$ ($\mathrm I_5^*$, RSt); 539d1
 at $7$ ($\mathrm I_0^*$, RPS); 121c1 at $11$ ($\mathrm{IV}$, $11\equiv2\pmod3$: SC); 121a1 at $11$ ($\mathrm{II}$: SC); 726a1 at $11$ ($\mathrm{III}$, $11\equiv3\pmod4$: SC). Paper: Lemma
-lem:euler (the phrases "local component of $f$ is an unramified twist of the Steinberg representation" and "$V=V'\otimes\chi_q$ with $V'$
+lem:euler (the phrases "local component of $f$ is an unramified twist of the Steinberg representation" and "$V=V'\otimes\chi_{q^*}$ with $V'$
 Steinberg"), Lemma lem:twist(iii), Remark rem:types (background).
 
 **3.7 `cor:modgalrep:delta-naive`** (corollary; P). With $\delta_p$ as in 3.5: $a_p(f)\in\{\pm1\}$ iff $\delta_p=1$, $a_p(f)=0$ iff $\delta_p=0$ (for $p\mid N$); hence the
@@ -315,7 +315,7 @@ Section 1.1 (definition of $L^{\nv}_p$), Section 4.1 ($M^\Sigma=M\prod p^{\delta
 **3.8 `prop:modgalrep:twist-conductor`** (proposition and table; P given 3.4, 3.5 and Chapter 7, 8.4). Let $q$ be an odd prime, $\chi$ a
 ramified quadratic character of $G_{\Q_q}$ (tame, $a(\chi)=1$), and $f$ as in C1. Then $a(\mathrm{WD}_q(f)\otimes\chi)$ is given by:
 
-| type of $f$ at $q$ (3.5) | $a(\mathrm{WD}_q(f))$ | $a(\mathrm{WD}_q(f)\otimes\chi)$ | change of level under $f\mapsto f^{\chi_q}$ |
+| type of $f$ at $q$ (3.5) | $a(\mathrm{WD}_q(f))$ | $a(\mathrm{WD}_q(f)\otimes\chi)$ | change of level under $f\mapsto f^{\chi_{q^*}}$ |
 |-|-|-|-|
 | (U) | $0$ | $2$ | $\times q^2$ |
 | (St) | $1$ | $2$ | $\times q$ |
@@ -325,11 +325,11 @@ ramified quadratic character of $G_{\Q_q}$ (tame, $a(\chi)=1$), and $f$ as in C1
 
 Proof: $a(\mathrm{sp}(2)\otimes\nu)=2a(\nu)$ for ramified $\nu$ and $1$ for unramified $\nu$ (Chapter 7, 9.3); for a sum of characters add the conductors;
 for tame characters $\psi$ of $I_q$ of order $3$, $4$, $6$, $\psi\chi$ has order $6$, $4$, $3$ (so it stays ramified, conductor $1$); for (SC) of the tame dihedral
-kind, $\mathrm{WD}\otimes\chi$ is again tame with $V^{I}=0$, conductor $2$. Corollaries: (a) **Lemma lem:twist(iii) (Atkin-Li)**: if $q^2\nmid M$, then $g^{\chi_q}=g\otimes\chi_q$
-is a newform of level $\operatorname{lcm}(M,q^2)$ (rows (U), (St); $a_q(g^{\chi_q})=0$ because its type at $q$ is (RSt) or (RPS), so the naive and the newform twist
+kind, $\mathrm{WD}\otimes\chi$ is again tame with $V^{I}=0$, conductor $2$. Corollaries: (a) **Lemma lem:twist(iii) (Atkin-Li)**: if $q^2\nmid M$, then $g^{\chi_{q^*}}=g\otimes\chi_{q^*}$
+is a newform of level $\operatorname{lcm}(M,q^2)$ (rows (U), (St); $a_q(g^{\chi_{q^*}})=0$ because its type at $q$ is (RSt) or (RPS), so the naive and the newform twist
 agree, C4); (b) the conductor of $E^{(q)}$ versus $E$ at $q$ by Kodaira type agrees with Lemma lem:twist(ii) (Chapter 10, 8.2): $\mathrm I_n\leftrightarrow\mathrm I_n^*$
 changes $q^1\leftrightarrow q^2$, $\mathrm I_0\leftrightarrow\mathrm I_0^*$ changes $q^0\leftrightarrow q^2$, and $\mathrm{II}\leftrightarrow\mathrm{IV}^*$, $\mathrm{III}\leftrightarrow\mathrm{III}^*$, $\mathrm{IV}\leftrightarrow\mathrm{II}^*$ keep $q^2$; (c) at
-$p\ne q$ nothing changes ($\chi_q$ is unramified at $p$). Examples (checked by twisting and identifying in `allcurves`): 11a1 (St at $11$) to
+$p\ne q$ nothing changes ($\chi_{q^*}$ is unramified at $p$). Examples (checked by twisting and identifying in `allcurves`): 11a1 (St at $11$) to
 121d2; 11a3 to 121d1; 11a1 (U at $7$) to 539d2; 121a1 (SC) to 121c2; 539c1 (RSt at $7$) to 77c1; 539d1 (RPS at $7$) to 11a (level $\div49$);
 20a1 (U at $7$) to 980g2; 980i1 (RSt at $7$) to 140b1. Paper: Lemma lem:twist(iii) and its proof ("whose twist by a ramified quadratic
 character has conductor exponent $2$"), Theorem thm:qual (b) ("$h=g\otimes\chi$ is a newform on $\Gamma_0(Mq)$"), (c) ("on $\Gamma_0(Mq^2)$"), Theorem
@@ -588,7 +588,7 @@ $\ell\nmid N$, $v_\ell(\deg\varphi_{E_0})=v_\ell(r)$ (8.1), so it suffices to fi
 * **Case (a).** $v_q(N)=2$ (type $\mathrm{IV}$, $\mathrm{IV}^*$ are additive and tame: Chapter 11, 4.3 for $q\ge5$, 4.4 for $q=2$). By Lemma lem:IV (Chapter 11, 4.3; 4.4 at
   $q=2$) the Serre conductor $M=N(\bar\rho)$ has $v_q(M)=1$, and $M\mid N$ (5.2), so $M\mid N/q$ and $M<N$. By 6.5 there is a newform $g$ on $\Gamma_0(M)$ with
   $\bar\rho_g\simeq\bar\rho$. Put $h=g$: $h\ne f$ (levels), $M\mid N$, and $p\nmid M$ for every $p$ at which $\bar\rho$ is unramified (5.1). Lemma lem:old gives $3\mid r$.
-* **Case (b).** $v_q(N)=2$, $\chi=\chi_q$, $E'=E^{(q)}$. By Lemma lem:twist (i), (ii) (Chapter 10, 8.1, 8.2), $E'$ has type $\mathrm{IV}^*$ or $\mathrm{IV}$ at $q$, the
+* **Case (b).** $v_q(N)=2$, $\chi=\chi_{q^*}$, $E'=E^{(q)}$. By Lemma lem:twist (i), (ii) (Chapter 10, 8.1, 8.2), $E'$ has type $\mathrm{IV}^*$ or $\mathrm{IV}$ at $q$, the
   same types as $E$ elsewhere, conductor $N$. Its newform is $f_{E'}=f^\chi$ (2.7(iv)), and here $f^\chi=f\otimes\chi$ **because** $a_q(f^\chi)=0$ ($q^2\mid N$, 3.5; C4) (the
   paper's "$f'=f\otimes\chi$, a newform on $\Gamma_0(N)$" is right in this case, but not by Atkin-Li, which needs $q^2\nmid M$). $\bar\rho_{E',3}=\bar\rho\otimes\chi$ satisfies the
   hypotheses of 6.5 (irreducibility and the condition at $\Q(\sqrt{-3})$ are twist-invariant; Chapter 11, 1.3). Lemma lem:IV for $E'$: $M=N(\bar\rho\otimes\chi)$
@@ -597,7 +597,7 @@ $\ell\nmid N$, $v_\ell(\deg\varphi_{E_0})=v_\ell(r)$ (8.1), so it suffices to fi
   $f\otimes\chi=h\otimes\chi=g^{\{q\}}$ (C4: $(g\otimes\chi)\otimes\chi=g^{\{q\}}$), so $f_{E'}=f\otimes\chi$ and $g$ have the same $a_p$ for all $p\ne q$, hence $f_{E'}=g$ by strong multiplicity one;
   but their levels are $N$ and $M<N$. (The paper's "$g=h\otimes\chi=f\otimes\chi$" is literally false: $h\otimes\chi$ is the $q$-depletion of $g$.) Hypothesis of Lemma
   lem:old: if $p\,\|\,N$ and $\bar\rho$ is unramified at $p$, then $p\ne q$, $\bar\rho\otimes\chi$ is unramified at $p$, so $p\nmid M$ and $p\nmid Mq$. Lemma lem:old gives $3\mid r$.
-* **Case (c).** $v_q(N)=2$, $\chi=\chi_q$, $E'=E^{(q)}$ of type $\mathrm I_n$ at $q$ and conductor $N/q$ (Lemma lem:twist (ii)). Here $f=(f_{E'})^\chi=f_{E'}\otimes\chi$ (Atkin-Li,
+* **Case (c).** $v_q(N)=2$, $\chi=\chi_{q^*}$, $E'=E^{(q)}$ of type $\mathrm I_n$ at $q$ and conductor $N/q$ (Lemma lem:twist (ii)). Here $f=(f_{E'})^\chi=f_{E'}\otimes\chi$ (Atkin-Li,
   3.8(a), as $q\,\|\,N/q$), while **$f\otimes\chi=f_{E'}^{\{q\}}$ is not a newform on $\Gamma_0(N/q)$** ($a_q(f_{E'})=\pm1$; new point N1, Part 7.1); the paper's "$f'=f\otimes\chi$ is a
   newform of weight $2$ on $\Gamma_0(N/q)$" must be read as "$f'=f_{E'}=f^\chi$". By Lemma lem:tamagawa-exp for $E'$ (Chapter 11, 3.3), $\bar\rho\otimes\chi=\bar\rho_{E',\ell}$ is
   unramified at $q$ ($\ell\mid n$), so $M=N(\bar\rho\otimes\chi)$ is prime to $q$ and $M\mid N/q^2$. 6.5 (here the step at $q$ is Ribet's theorem 6.2: $q$ exactly divides
@@ -608,8 +608,8 @@ $\ell\nmid N$, $v_\ell(\deg\varphi_{E_0})=v_\ell(r)$ (8.1), so it suffices to fi
 Paper: Section sec:proof (all of it).
 
 **9.3 `rem:modgalrep:why-these-types`** (remark; P). Why exactly these types (Chapter 11, 4.5, table): Theorem thm:qual needs a type whose
-twist by $\chi_q$ (or itself) has Serre exponent smaller than $v_q(N)$, so that the level can be lowered and raised back to a *different*
-newform. (i) Types $\mathrm{III}$, $\mathrm{III}^*$: Serre exponent $2$ for $\bar\rho$ and for $\bar\rho\otimes\chi_q$; no lowering (these are the 3Ns-relevant types, Section
+twist by $\chi_{q^*}$ (or itself) has Serre exponent smaller than $v_q(N)$, so that the level can be lowered and raised back to a *different*
+newform. (i) Types $\mathrm{III}$, $\mathrm{III}^*$: Serre exponent $2$ for $\bar\rho$ and for $\bar\rho\otimes\chi_{q^*}$; no lowering (these are the 3Ns-relevant types, Section
 sec:anomaly). (ii) Type $\mathrm I_0^*$: the twist $E'$ has good reduction at $q$, $M\mid N/q^2$, but 6.5 may return $g=f_{E'}$ itself (when $N(\bar\rho\otimes\chi)=N/q^2$), and
 then $h=g^\chi=f$: no new congruence; the $\mathrm I_0^*$ term is reached through level raising instead (Theorem thm:quant; the factor $(q+1)^2-a_q(E')^2$
 of 7.2; example 539d1 in 10.4). (iii) Type $\mathrm I_n^*$ with $\ell\nmid n$: $\bar\rho\otimes\chi$ is ramified at $q$ with exponent $1$, $M$ has $q^1$, $h=g^\chi$ has $q^2$, and
@@ -619,7 +619,7 @@ thm:quant ((1): "neither is in Theorem thm:qual").
 
 **9.4 `ex:modgalrep:paper-example`** (worked example; P, all data checked; the paper's Example after case (c)). Table to typeset:
 
-| $E$ | case, $\ell$ | type at $q$ | twist $E^{(q)}$ (curve) | $N(\bar\rho\otimes\chi_q)$, $g$ | $h=g^{\chi_q}$ | $f_E\equiv h$ | $\deg\varphi$ | bound |
+| $E$ | case, $\ell$ | type at $q$ | twist $E^{(q)}$ (curve) | $N(\bar\rho\otimes\chi_{q^*})$, $g$ | $h=g^{\chi_{q^*}}$ | $f_E\equiv h$ | $\deg\varphi$ | bound |
 |-|-|-|-|-|-|-|-|-|
 | 121a1 | (b), $3$ | $\mathrm{II}$ at $11$ | 121c2 ($\mathrm{IV}^*$) | $11$, $f_{11a}$ | $f_{121d}=f_{11a}\otimes\chi_{-11}$ | mod $3$, all $n$ (Sturm $22$) | $6$ | $e_3=v_3(12)=1$ |
 | 539c1 | (c), $3$ | $\mathrm I_3^*$ at $7$ | 77c1 ($\mathrm I_3$) | $11$, $f_{11a}$ | $f_{539d}=f_{11a}\otimes\chi_{-7}$ | mod $3$, all $n$ (Sturm $112$) | $2^5\cdot3^2$ | $e_3+t_3=1+1$ |
@@ -648,7 +648,7 @@ group, so neither Kraus's defect nor Lemma lem:IV makes sense, and Theorem thm:q
 
 ### Section 10. Twisting and the levels in Theorems thm:twist and thm:quant
 
-**10.1 `prop:modgalrep:twist-map`** (proposition; P given Chapter 13 and 2.7). Let $S$ be a finite set of odd primes, $D=\prod_{q\in S}q$, $\chi_S=\prod_{q\in S}\chi_q$,
+**10.1 `prop:modgalrep:twist-map`** (proposition; P given Chapter 13 and 2.7). Let $S$ be a finite set of odd primes, $D=\prod_{q\in S}q$, $\chi_S=\prod_{q\in S}\chi_{q^*}$,
 and $\iota=\iota_S\colon h\mapsto h\otimes\chi_S=\sum\chi_S(n)a_n(h)q^n$. From Chapter 13 (cited, not reproved): $\iota$ maps $S_2(\Gamma_0(M))$ into $S_2(\Gamma_0(\operatorname{lcm}(M,D^2)))$ ($\chi_S^2=1$),
 preserves integrality, and $\iota\circ T_p=\chi_S(p)\,T_p\circ\iota$ for $p\nmid DM$. Added here: (i) $\iota$ sends a generalised eigenform for $(T_p)_{p\nmid DM}$ with system
 $(a_p)$ to one with system $(\chi_S(p)a_p)$, hence maps the sum of the generalised eigenspaces of systems different from that of $g$ (the

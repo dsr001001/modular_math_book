@@ -15,7 +15,7 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Memo for the paper's author | done | `important/paper_memo.md` (final, reconciled) |
 | Revised paper with the stronger results | done (32 pages), needs the author's review | `paper/note_v2.tex`, `docs/note_v2.pdf`, change log `paper/CHANGES_v2.md` |
 | Preface | written (needs a final update) | `frontmatter/preface.tex` |
-| Appendix A (prerequisites) | partly written (complex analysis, group theory and statistics sections missing) | `chapters/chA_prereq.tex` |
+| Appendix A (prerequisites) | written (994 lines, compiles) | `chapters/chA_prereq.tex` |
 | Chapters 1 to 22, Appendix B | **not yet written** | `chapters/` |
 
 The original paper is `note_Oct10_7pm.tex`. Labels in the revised paper are the same.
@@ -46,6 +46,8 @@ Paste this as the first message:
 (Replace Chapter 10 by another chapter if preferred; see Section 5.)
 
 ## 4. Small tasks to do first (before or with the pilot)
+
+All three are done (16 October 2026 session): the outlines use chi_{q*} throughout (chi_q only in quotations of the paper), Appendix B states D3, Chapter 18 cites point 73, and Appendix A has all its sections.
 
 1. **Character notation (decision D3).** Convert the remaining `chi_q` (quadratic character of conductor q)
    in the outlines to `chi_{q*}`; keep `chi_l` only for the cyclotomic character. About 40 occurrences. Update

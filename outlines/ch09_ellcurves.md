@@ -28,7 +28,7 @@ following, and it is organised around them.
 3. **Lemma lem:twist (ii) and Section 1.4** (models and invariants of twists): $E^{(d)}$ for a general Weierstrass
    model, $c_4,c_6,\Delta$ scaled by $d^2,d^3,d^6$, the same $j$, the difference between the twist by $q$ and by
    $q^*$ (important_notes.md point 29), $\rho_{E^{(d)},\ell}=\rho_{E,\ell}\otimes\chi_d$, $a_p(E^{(d)})=\chi_d(p)a_p(E)$, composite twists
-   $E_S$ (Theorems thm:twist, thm:quant), and $V=V'\otimes\chi_q$ in Lemma lem:euler. (The effect on Kodaira types,
+   $E_S$ (Theorems thm:twist, thm:quant), and $V=V'\otimes\chi_{q^*}$ in Lemma lem:euler. (The effect on Kodaira types,
    Lemma lem:twist (i), (ii), is proved in Chapter 10.)
 4. **Lemma lem:h0** (the CM facts): endomorphism rings, the thirteen CM $j$-invariants, $\rho\simeq\rho\otimes\chi_K$ and
    $a_p=0$ at good primes inert in the CM field $K$, the fact that a prime ramified in $K$ divides $N$ (so CM by
@@ -111,8 +111,8 @@ written outlines assume):
   returns them in this order (Chapter 22).
 * **C4 (twists and characters).** For $d\in K^\times$ (char $K\ne2$), $\chi_d\colon G_K\to\{\pm1\}$ is the character of
   $K(\sqrt d)/K$, $\sigma(\sqrt d)=\chi_d(\sigma)\sqrt d$. For $K=\Q$, $\chi_d(\Frob_p)=\bigl(\frac Dp\bigr)$ (Kronecker symbol) for $p\nmid D$, with
-  $D$ the discriminant of $\Q(\sqrt d)$ (Chapters 2 and 6). For an odd prime $q$, $q^*=(-1)^{(q-1)/2}q$ and, **as in the
-  paper**, $\chi_q:=\chi_{q^*}$ is the quadratic character of conductor $q$ (Chapter 2, C5). The paper also writes $\chi_\ell$
+  $D$ the discriminant of $\Q(\sqrt d)$ (Chapters 2 and 6). For an odd prime $q$, $q^*=(-1)^{(q-1)/2}q$ and
+  $\chi_{q^*}$ is the quadratic character of conductor $q$ (Chapter 2, C5); the paper writes $\chi_q$, the book never does (decision D3). The paper also writes $\chi_\ell$
   for the cyclotomic character; in Chapter 9's own text the cyclotomic character is $\chi_\ell^{\mathrm{cyc}}$ or simply
   $\chi_\ell$ only where no quadratic character of conductor $\ell$ is in sight, and $\bar\chi_\ell$ is its reduction; the
   `paperlink` environments use the paper's notation and say so.
@@ -685,7 +685,7 @@ are invariant under quadratic twist", see 10.7).
 **10.3 `thm:ellcurves:twistgal`** (theorem; P). For $E/K$, $d\in K^\times$ and $\ell\ne\operatorname{char}K$: $\rho_{E^{(d)},\ell}\simeq\rho_{E,\ell}\otimes\chi_d$, via
 $\psi_\ell\colon T_\ell E^{(d)}\to T_\ell E$ ($\psi(\sigma P)=\chi_d(\sigma)\sigma(\psi(P))$ from $\psi^\sigma=[\chi_d(\sigma)]\circ\psi$). Consequences: $\bar\rho_{E^{(d)},\ell}=\bar\rho_{E,\ell}\otimes\chi_d$,
 $E^{(d)}[2]\simeq E[2]$, $\ad\rho$ unchanged (Chapter 4, 7.1(iii)), $\det$ unchanged; $E[\ell]$ is irreducible iff $E^{(d)}[\ell]$ is. Paper:
-Lemma lem:euler ("$V=V'\otimes\chi_q$", "$\ad V=\ad V'$"), proof of Theorem thm:main ("$\ad T$ is unchanged by the twist"),
+Lemma lem:euler ("$V=V'\otimes\chi_{q^*}$", "$\ad V=\ad V'$"), proof of Theorem thm:main ("$\ad T$ is unchanged by the twist"),
 Theorem thm:qual (b), (c) ("$\bar\rho_{E',3}=\bar\rho\otimes\chi$"), Theorem thm:quant ("$\bar\rho\otimes\chi_S$ is irreducible"), Remark after
 thm:quant ("adjoint lattices ... coincide").
 
@@ -700,7 +700,7 @@ versus 11a3, 121d1 versus 11a3. Reference: AEC X.2; elementary. Paper: Lemma lem
 
 **10.5 `prop:ellcurves:twistgood`** (proposition; P given 10.4). Let $q$ be an odd prime at which $E/\Q$ has type $\mathrm I_0^*$, so
 that $E'=E^{(q^*)}$ has good reduction at $q$ (Chapter 10; this is the paper's "twist of good reduction"). (i)
-$V_\ell E\simeq V_\ell E'\otimes\chi_q$ with $V_\ell E'$ unramified at $q$ (10.3, 8.6). (ii) Any other twist $E^{(q^*d)}$ with $q\nmid D$ has good reduction
+$V_\ell E\simeq V_\ell E'\otimes\chi_{q^*}$ with $V_\ell E'$ unramified at $q$ (10.3, 8.6). (ii) Any other twist $E^{(q^*d)}$ with $q\nmid D$ has good reduction
 at $q$ and $a_q(E^{(q^*d)})=\chi_d(q)a_q(E')=\pm a_q(E')$; so $a_q(E')^2$, the pair $\{\alpha/\beta,\beta/\alpha\}$ and $(q+1)^2-a_q(E')^2$ depend only on
 $E$ and $q$, not on the choice of the twist; this is why the table may say "the twist of good reduction". (iii)
 Example: 539d1 has type $\mathrm I_0^*$ at $7$ and $E'=\text{539d1}^{(-7)}\simeq$ 11a3, $a_7(\text{11a})=-2$, $(7+1)^2-4=60$, so
@@ -708,7 +708,7 @@ $e_3(\text{539d1},7)=v_3(6)+v_3(60)=2=v_3(\degphi)$ ($\degphi=72$). Paper: the t
 Lemma lem:euler, Theorem thm:quant ($S$ contains the $\mathrm I_0^*$ primes; $E_S$ good at them).
 
 **10.6 `def:ellcurves:compositetwist`** (definition and proposition; P). For a finite set $S$ of odd primes,
-$\chi_S=\prod_{q\in S}\chi_q$ is the character of $\Q(\sqrt{d_S})$ with $d_S=\prod_{q\in S}q^*$ (a fundamental discriminant, $\equiv1\pmod4$), of
+$\chi_S=\prod_{q\in S}\chi_{q^*}$ is the character of $\Q(\sqrt{d_S})$ with $d_S=\prod_{q\in S}q^*$ (a fundamental discriminant, $\equiv1\pmod4$), of
 conductor $\prod_{q\in S}q$, unramified outside $S$ (Chapters 2, 6); $E_S:=E^{(d_S)}=E\otimes\chi_S$ is obtained by successive twists in any
 order. $a_p(E_S)=\chi_S(p)a_p(E)$ for $p\notin S$ good. Paper: Theorem thm:twist and Theorem thm:quant ($E_S$, $\chi_S$, $D=\prod q$),
 the remark after thm:twist.
@@ -782,7 +782,7 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
 | section | title | contents | target lines |
 |-|-|-|-|
 | (starred) | Core results at a glance | the card: every item of Part 2, stated as above, with tag and `\Cref` | (excluded) |
-| (starred) | Where the paper uses this chapter | Section 1.1 ($V,T,\rho,\bar\rho$); def:terms ($j$, $v_q(j)$, $a_q$, twist invariance); the table ($E'$, $a_q(E')$, $\alpha,\beta$); Section 1.4 and lem:twist (ii); lem:euler ($V=V'\otimes\chi_q$); thm:twist, thm:quant ($E_S$); thm:qual and the Section 3 Example (twists, labels, $a_p$); lem:h0 (CM); prop:ns ($\psi_3$, $\det$, complex conjugation); conj:eis and sec:eis (torsion, isogenies, $\Z/3\oplus\mu_3$, item 9.8); Section 1 (isogeny class, period lattice); sec:oot (trivial class); the appendix (`ellinit`, `elldivpol`) | 40 |
+| (starred) | Where the paper uses this chapter | Section 1.1 ($V,T,\rho,\bar\rho$); def:terms ($j$, $v_q(j)$, $a_q$, twist invariance); the table ($E'$, $a_q(E')$, $\alpha,\beta$); Section 1.4 and lem:twist (ii); lem:euler ($V=V'\otimes\chi_{q^*}$); thm:twist, thm:quant ($E_S$); thm:qual and the Section 3 Example (twists, labels, $a_p$); lem:h0 (CM); prop:ns ($\psi_3$, $\det$, complex conjugation); conj:eis and sec:eis (torsion, isogenies, $\Z/3\oplus\mu_3$, item 9.8); Section 1 (isogeny class, period lattice); sec:oot (trivial class); the appendix (`ellinit`, `elldivpol`) | 40 |
 | 1 | Weierstrass equations and their invariants | conventions C1 to C8 as `convention` environments; 1.1 to 1.6; the invariants table; `paperlink` for def:terms ($v_q(j)$) and lem:twist (ii) | 190 |
 | 2 | The group law | 2.1 to 2.4; a figure in words (chord and tangent); `paperlink` for torsion in sec:eis | 150 |
 | 3 | Isogenies | 3.1 to 3.6; `warning` that "isogenous" means over $\Q$ unless stated | 180 |
@@ -848,7 +848,7 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
 | hook: the twist $E'$ of good reduction and $a_q(E')$ in the table of Section 1 | 8.3, 8.5, 10.5 |
 | hook: Conjecture conj:eis (torsion, isogeny class, $\Z/3+\mu_3$) | 9.3, 9.4, 9.7, 9.8 |
 | hook: Section 1.1 ($V,T,\rho,\bar\rho$) | 5.3, 5.4 |
-| also: Lemma lem:euler ($V=V'\otimes\chi_q$, $\alpha\beta=q$) | 8.3, 10.3, 10.5 |
+| also: Lemma lem:euler ($V=V'\otimes\chi_{q^*}$, $\alpha\beta=q$) | 8.3, 10.3, 10.5 |
 | also: Theorems thm:twist, thm:quant ($E_S$, $\chi_S$) | 10.4, 10.6 |
 | also: Theorem thm:qual and the Section 3 Example (twists by $-11$, $-7$; labels; $a_p$) | 8.7, 10.2, 10.4, 12.2 |
 | also: Lemma lem:old ($X^2-a_pX+p$, multiplicativity of $a_n$) | 8.3, 8.6, 11.1 |
@@ -907,7 +907,7 @@ Results from other chapters used here (by chapter label only):
 * Chapter 1 (`ch:groups`): finite abelian groups (structure; $\#E[d]=d^2$ for all $d\mid m$ forces $(\Z/m)^2$), $\GL_2(\Z/m)$,
   $\GL_2(\Z_\ell)$ and inverse limits (its 7.4), the four lines of $\F_3^2$ (5.3), $\det=$ sign on lines (5.4(ii)), Borel subgroups (5.5),
   the orbit table and Sutherland labels (6.8, 6.10), complex-conjugation elements (6.9).
-* Chapter 2 (`ch:rings`): finite fields, the quadratic character $\eta$ of $\F_{\mathfrak q}^\times$, Kronecker symbols, $q^*$ and $\chi_q$ (C5), $v_p$.
+* Chapter 2 (`ch:rings`): finite fields, the quadratic character $\eta$ of $\F_{\mathfrak q}^\times$, Kronecker symbols, $q^*$ and $\chi_{q^*}$ (C5), $v_p$.
 * Chapter 3 (`ch:modules`): $\Z_\ell$, free modules of finite rank, inverse limits of $\Z/\ell^n$-modules, Pontryagin duality
   ($E[\ell^\infty]$ versus $T_\ell E$).
 * Chapter 4 (`ch:reps`): twisting by characters, $\ad(V\otimes\chi)=\ad V$, $V^\vee\simeq V\otimes\det^{-1}$ in dimension two,

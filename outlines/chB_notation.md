@@ -180,7 +180,7 @@ Reason: ch:galois C6, ch:galcoh C3, ch:blochkato C2, C4, ch:curves 11.8, ch:ellc
 bound: 5, 7, 8, 9, 11, 12, 14, 15, 16, 17, 18, 19, 21. Changes: none in the outlines (all comply); the writers of
 Chapters 18 and 20 must check DFG04's and Bloch-Kato's sign of the Hodge-Tate weight before quoting a dimension formula.
 
-### B-C6. Characters: $\chi_\ell$, $\chi_d$, $\chi_q$, $\chi_{q^*}$
+### B-C6. Characters: $\chi_\ell$, $\chi_d$, $\chi_{q^*}$
 
 > **Convention B-C6 (characters).**
 > (a) $\chi_\ell\colon G_\Q\to\Z_\ell^\times$ is the $\ell$-adic **cyclotomic** character, $\sigma(\zeta)=\zeta^{\chi_\ell(\sigma)}$ on $\mu_{\ell^\infty}$;
@@ -192,9 +192,11 @@ Chapters 18 and 20 must check DFG04's and Bloch-Kato's sign of the Hodge-Tate we
 > Dirichlet character it is the Kronecker symbol $\bigl(\frac D\cdot\bigr)$, $D$ the discriminant of $\Q(\sqrt d)$, of conductor $|D|$.
 > A **numerical** subscript always means $\chi_d$ with $d$ written with its sign: $\chi_{-3}$, $\chi_{-4}$, $\chi_{-7}$, $\chi_{-11}$,
 > $\chi_5$, $\chi_{13}$. The paper's $\chi_{11}$ is written $\chi_{-11}$; the symbols $\chi_3$, $\chi_7$, $\chi_{11}$ are not used.
-> (c) For an odd prime $q$, the quadratic character of conductor $q$ is $\chi_{q^*}$, the character of $\Q(\sqrt{q^*})$. The paper's
-> abbreviation $\chi_q:=\chi_{q^*}$ (with the **letter** $q$) is allowed in the book, with this definition stated in each
-> chapter that uses it; new displays prefer $\chi_{q^*}$. Never write $\chi_q$ when $q=\ell$, and never $\chi_\ell$ for a quadratic
+> (c) For an odd prime $q$, the quadratic character of conductor $q$ is $\chi_{q^*}$, the character of $\Q(\sqrt{q^*})$
+> ($\chi_d$ with $d=q^*$ the discriminant), **never** $\chi_q$. The paper's $\chi_q$ appears only when the paper is quoted
+> (B.5 and Part 4, item 4), followed by the book's $\chi_{q^*}$. A letter subscript $\chi_\ell$ is reserved for the $\ell$-adic
+> cyclotomic character, and $\chi_3^{\mathrm{cyc}}$ is written where a number is needed (PLAN.md 7.5, decision D3, which replaces
+> the earlier allowance for the paper's $\chi_q$). Never write $\chi_\ell$ for a quadratic
 > character: $\chi_{\ell^*}=\bar\chi_\ell^{(\ell-1)/2}$ is the quadratic character of $\Q(\sqrt{\ell^*})$, and $\chi_{\ell^*}=\bar\chi_\ell$ iff
 > $\ell=3$, where $\bar\chi_3=\chi_{-3}$ (important_notes.md points 5, 6, 32).
 > (d) $\chi_S=\prod_{q\in S}\chi_{q^*}$ for a finite set $S$ of odd primes, of conductor $D=\prod_{q\in S}q$. $\varepsilon$ is an
@@ -204,9 +206,9 @@ Chapters 18 and 20 must check DFG04's and Bloch-Kato's sign of the Hodge-Tate we
 > (arithmetic Frobenius; ch:ant 5.7, ch:modgalrep C3).
 
 Reason: the paper names one character $\chi_{11}$ and $\chi_{-11}$ and uses $\chi_3$ both ways (point 32). Rule (b) and (c)
-together cost almost nothing: Chapters 2, 13, 18, 19 already write $\chi_{q^*}$; Chapters 5, 7, 9, 10, 11, 15, 21 write the
-paper's $\chi_q$ with the letter $q$, which (c) allows. Only seven lines use a numerical $\chi_3$ in the
-book's own text. Chapters bound: 2, 4, 5, 6, 7, 9, 10, 11, 13, 15, 17, 18, 19, 21, 22. Changes: Part 3, X1 to X5.
+together name every quadratic character by its discriminant (decision D3, PLAN.md 7.5): Chapters 2, 13, 18, 19 already wrote
+$\chi_{q^*}$, and the paper's $\chi_q$ in Chapters 5, 7, 9, 10, 11, 15, 21 (and elsewhere) has been converted to $\chi_{q^*}$. Only
+seven lines use a numerical $\chi_3$ in the book's own text. Chapters bound: 2, 4, 5, 6, 7, 9, 10, 11, 13, 15, 17, 18, 19, 21, 22. Changes: Part 3, X1 to X5.
 
 ### B-C7. Normalisations of the adjoint and symmetric square $L$-functions
 
@@ -495,12 +497,12 @@ appendix the rows are grouped exactly as here, alphabetically inside each group 
 | $\Frob_p$, $\Frob$ | arithmetic Frobenius | ch:ant 3.7, 3.8; ch:local L3, 4.3; B-C2 | $\Frob^{\mathrm{geom}}$ not used |
 | $\Phi_p$, $\Phi$ | geometric Frobenius $\Frob_p^{-1}$ | ch:local L3, 4.3; B-C2(b) | **clash**: component group $\Phi_q(\cdot)$, cyclotomic $\Phi_n$, ch:reps's arithmetic $\Phi$ (F3) |
 | $\pi_q$, $\hat\pi_q$ | $q$-power Frobenius endomorphism, Verschiebung | B-C2(g); ch:ellcurves 8.1 | ch:curves $\phi_q$, ch:moddeg $F$, $V$ (F6, F7) |
-| $\chi_\ell$, $\bar\chi_\ell$ | $\ell$-adic cyclotomic character, its reduction | ch:galois galois:cyclotomic-character, C4; B-C6(a) | the paper's $\chi_q$ (B-C6(c)) |
+| $\chi_\ell$, $\bar\chi_\ell$ | $\ell$-adic cyclotomic character, its reduction | ch:galois galois:cyclotomic-character, C4; B-C6(a) | the paper's $\chi_q$, the book's $\chi_{q^*}$ (B-C6(c), D3) |
 | $\chi_3^{\mathrm{cyc}}$ | cyclotomic character at a numerical prime | B-C6(a); ch:galrep C4 | - |
 | $\omega_\ell$ | Dirichlet character $a\mapsto a\bmod\ell$ | ch:rings C5, 10.5 | fundamental character $\omega$ (B-C15(b)) |
 | $\chi_d$ | quadratic character of $\Q(\sqrt d)$ | ch:galois C3, galois:quadratic-characters; ch:rings 9.5 | numerical subscripts always $\chi_d$ (B-C6(b)) |
 | $\chi_{-3}$, $\chi_{-4}$ | characters of $\Q(\sqrt{-3})$, $\Q(i)$ | ch:rings 10.5; ch:ant 5.8 | $\chi_{-3}=\bar\chi_3$ |
-| $\chi_{q^*}$, $\chi_q$ | quadratic character of conductor $q$; the paper's $\chi_q:=\chi_{q^*}$ | ch:rings C5; ch:galois C3; B-C6(c) | **clash** with $\chi_\ell$ when $q=\ell$ (point 32) |
+| $\chi_{q^*}$ | quadratic character of conductor $q$ (the paper writes $\chi_q$; never in the book, D3) | ch:rings C5; ch:galois C3; B-C6(c) | the paper's $\chi_q$ **clashes** with $\chi_\ell$ when $q=\ell$ (point 32) |
 | $\chi_{\ell^*}$ | character of $\Q(\sqrt{\ell^*})$, $=\bar\chi_\ell^{(\ell-1)/2}$ | ch:galois C4 | $=\bar\chi_\ell$ iff $\ell=3$ |
 | $\chi_S$, $D$ | $\prod_{q\in S}\chi_{q^*}$, its conductor $\prod_{q\in S}q$ | ch:hecke C7; ch:ellcurves 10.6 | $D$ (B-C15(d)) |
 | $\varepsilon$ | unramified character of order $\le2$ of $G_{\Q_q}$ | ch:local 7.6; ch:galrep 3.2; B-C14 | $\varepsilon_N(f)$, Chapter 1's non-square |
@@ -806,11 +808,11 @@ normalisation, the Tate twist, $v_\ell$, "length" and the tame relation likewise
   $\chi_{-3}=\chi_{-4}\chi_{12}$.
 * X2 (required). Exercise 14 (in the section plan), line 789: "$(\rho\otimes\chi_3)\bmod9$" with the cyclotomic character. Write
   $\chi_3^{\mathrm{cyc}}$ (B-C6(a)).
-* Lines 212, 539, 542, 753 use the paper's $\chi_q$ with the letter $q$: allowed by B-C6(c) because C3 defines it. No change.
+* Lines 212, 539, 542, 753 used the paper's $\chi_q$ with the letter $q$: converted to $\chi_{q^*}$ under B-C6(c) (decision D3), as is C3.
 
 **ch07_local.md** (`ch:local`)
 * X3 (cosmetic). 13.2 (pitfalls), line 974: "the tame $\chi_3=\chi_{-3}$". Write $\chi_{-3}$.
-* Lines 359 ("$\chi_p(I_p)=\Z_p^\times$", cyclotomic at $p$ with a letter subscript) and 520 to 535 (the paper's $\chi_q$) comply.
+* Lines 359 ("$\chi_p(I_p)=\Z_p^\times$", cyclotomic at $p$ with a letter subscript) and 520 to 535 (now $\chi_{q^*}$, decision D3) comply.
 * L4 states the Weil-Deligne relation in both forms; it is the reference for B-C2(f). No change.
 
 **ch08_curves.md** (`ch:curves`)
@@ -987,7 +989,7 @@ references" section. Labels: `\label{ch:notation}` on the chapter, `sec:notation
 | B.2 Letters, primes, valuations, lengths | `convention` boxes B-C1, B-C10; a five-line table of the meanings of $q$ | B-C1, B-C10 | 35 |
 | B.3 Frobenius | B-C2 and B-C3 as two `convention` boxes; one `warning` box "Where the paper uses which Frobenius" (Section 1.1, table, lem:euler, lem:fpr, after lem:dfg21: geometric; lem:tamfactor: arithmetic); the dictionary table (arithmetic eigenvalue $\lambda$ = geometric $\lambda^{-1}$; $V_\ell E$, $V_\ell E^\vee$, $\ad V$, $\Z_\ell(1)$, the Steinberg line) | B-C2, B-C3 | 80 |
 | B.4 Duals, adjoints, pullbacks, twists | B-C4 and B-C5 as `convention` boxes; a table "symbol / meaning / example in the paper" for $^\vee$, $^*$, $^D$, $^\dagger$, $\varphi^*$, $(n)$; the list of fixed exceptions to the star rule | B-C4, B-C5 | 60 |
-| B.5 Characters | B-C6 as a box, with the table of the paper's characters ($\chi_{-3}$, $\chi_{-4}$, $\chi_{q^*}=\chi_q$, $\chi_{\ell^*}$, $\chi_\ell$, $\bar\chi_\ell$, $\omega_\ell$, $\chi_S$, $\varepsilon$, $\psi$: field cut out, conductor, value at $p$) | B-C6; ch:rings 10.5; ch:ant 5.8 | 40 |
+| B.5 Characters | B-C6 as a box, with the table of the paper's characters ($\chi_{-3}$, $\chi_{-4}$, $\chi_{q^*}$ (the paper's $\chi_q$), $\chi_{\ell^*}$, $\chi_\ell$, $\bar\chi_\ell$, $\omega_\ell$, $\chi_S$, $\varepsilon$, $\psi$: field cut out, conductor, value at $p$) | B-C6; ch:rings 10.5; ch:ant 5.8 | 40 |
 | B.6 $L$-functions, Petersson product, Manin constant | B-C7 (with its table of normalisations), B-C8, B-C9; a `warning` on the Rankin series and on PARI's `mfpetersson` | B-C7 to B-C9 | 60 |
 | B.7 Local data at a bad prime | B-C11 (Kodaira symbols, $\Phi_q$, $\Phig_q$, $c_q$, PARI codes as a ten-row table), B-C14 (Tate data and the Tate matrix with corner $\varepsilon\kappa$) | B-C11, B-C14 | 50 |
 | B.8 Adjoint, Hecke algebras, twists, depletion | B-C12, B-C13; the dictionary of the two uses of $I$ (lem:crit, lem:ddt417) as a three-line table | B-C12, B-C13 | 45 |
@@ -1012,7 +1014,7 @@ differ only in decoration (as $\Gamma_0(N)$, $\Gamma_1(N)$, $\Gamma(N)$ already 
 3. **Chapters 20 and 22.** Their outlines are being written in parallel. When they land, check that they use $\pi$, $\wp$,
    $I=\Ann\wp$, $\eta^\Sigma_{f,\lambda}$, $\hat\delta_!$, $M_{f,\lambda}$, $J_f$ (not $A_f$), `rule(E, l, iii)`, the Kodaira codes with $n\ge1$,
    $c(u)$ and $\Phi_p$ as here, and add their item numbers to Part 2.
-4. **Paper quotations.** Inside `paperlink` environments and verbatim quotations the paper's own symbols stand ($\chi_q$, $c$,
+4. **Paper quotations.** Inside `paperlink` environments and verbatim quotations the paper's own symbols stand ($\chi_q$ for the book's $\chi_{q^*}$, decision D3; $c$,
    $c_q$ in sec:tam, $\chi_{11}$, $E_{\{p\}}$, "$\Frob_p$" in Section 1.1), followed by the book's reading in brackets.
 5. **Do not "fix" the paper's numbers.** No number in the paper changes under any convention of Part 1 (points 11, B1, B10).
    The appendix says so once, in B.3.
@@ -1034,9 +1036,9 @@ ________________________________________________________________________________
 3. **Fundamental characters $\omega,\omega_2$ versus periods $\omega_1,\omega_2$.** Kept both (B-C15(b)) because they never meet in one
    chapter as the outlines stand; if Chapter 11 or 15 ends up mentioning periods, rename the fundamental characters
    $\theta_{\ell-1}$, $\theta_{\ell^2-1}$ (Serre's notation, which is Chapter 7's $\theta_m$).
-4. **The paper's $\chi_q$.** B-C6(c) allows it (letter $q$ only) to spare seven outlines; a stricter rule ($\chi_{q^*}$ everywhere,
-   as Chapters 2, 13, 18, 19 already do) would cost about forty edits in Chapters 5, 7, 9, 10, 11, 15, 21. The orchestrator may
-   prefer the stricter rule for the final text; nothing else in this file depends on the choice.
+4. **The paper's $\chi_q$.** Resolved by decision D3 (PLAN.md 7.5): the stricter rule is adopted, $\chi_{q^*}$ everywhere in the
+   book's own text (as Chapters 2, 13, 18, 19 already did), and the outlines of Chapters 5, 6, 7, 9, 10, 11, 15, 17, 21 have been
+   converted. The paper's $\chi_q$ survives only inside quotations of the paper (Part 4, item 4).
 5. **Two uses of $I$ and of $\iota$ in the paper.** B-C13(c) and B-C15(c) keep the paper's letters locally rather than renaming
    them, because Chapter 21 must quote the paper verbatim. If the paper itself is revised, the cleanest fix is $J$ for
    $\Ann_\T(\wp)$ in lem:ddt417 and $\iota_S$ for the twist map.
