@@ -1153,3 +1153,34 @@ so it is strongly range-dependent. Optional: say so.
 * Feller68, Wasserman04 and RHB06 are in bib/chA.bib but cited by Chapter 22; by B14 they move to refs.bib.
 * Appendix A and Chapter 21 item A6.1 call (eq:twist) blind-tested without the caveat of point 77; Chapter 21
   item A6.10 repeats the slips of point 76.
+
+## Findings from writing Chapter 10 (pilot, 16 October 2026)
+
+### 81. Open question 6 of the revised paper is settled (twists at q = 3)
+The exchanges II<->IV*, III<->III*, IV<->II* under the twist by Q(sqrt(-3)) hold at q = 3 with the conductor exponent
+unchanged, given only the Ogg-Saito formula: chi_{-3} is tame, so the Swan conductor and f_3 are unchanged; v_3(Delta_min)
+shifts by 6 mod 12; for potentially good types 1 <= m <= 9, so v_3(Delta_min) lies in [f, f+8] on both sides, forcing
+m -> m +/- 6; I_n^* (n >= 1) at odd p is potentially multiplicative and excluded. Hence the max formula for w_l(E,q) in
+Section 1.4 also holds at q = 3. Proved as Proposition prop:reduction:twist-at-3; checked on all 5,122 pairs below
+conductor 10,000. Confidence: high (given Ogg-Saito). Importance: medium (removes an open question).
+
+### 82. PARI's Tate parameter at q = 2 when v_2(j) = -1
+PARI/GP 2.17.2: ellinit(E, O(2^k)).tate[3] returns q_E^5 instead of q_E for every curve with v_2(j) = -1 (1,262 of 1,262
+pairs below conductor 3,000; e.g. 208a1, 832c1, 14a6, 26a3); it agrees with the q(j) series for nu >= 2 at 2 and at all
+odd primes. No count in the paper changes (its rule uses valuation(j,q), and the extra Tamagawa term at 2 vanishes since
+v_l(q-1) = 0), but Sections sec:tam / sec:data ("We computed the Tate parameters with PARI") should say how q = 2 was
+handled. Chapter 10 carries warn:reduction:pari-tate; Chapter 22 must carry the same warning.
+
+### 83. The 58% in Remark rem:wild names no population
+Below conductor 10,000, 2,340 of 4,037 pairs (58%) among curves numbered 1 are potentially good at 2; over all curves
+it is 5,935 of 9,667 (61%). Memo E9 attributes 61% to conductor < 5,000; on the full table below 10,000 61% is the
+all-curves figure. The paper should name the population. (Curves numbered 1 are the optimal curves below 10,000 except
+class 990h, whose optimal curve is 990h3; 990h is multiplicative at 2 and does not enter the count.)
+
+### B28. Items from writing Chapter 10
+* Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
+  the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
+* In PARI 2.17.2, ellglobalred(E)[5] gives [f,k,0,c], not [f,k,[u,r,s,t],c]; only elllocalred returns the change of
+  variables.
+* Kraus89 moved from bib/ch10.bib to refs.bib (B14: the paper's Open question 6 and Chapters 21, 22 cite it).
+* The Lorenzini10 reference for Theorem 7.7 at p = 2 is unverified (taken from Praveen26); the chapter says so.

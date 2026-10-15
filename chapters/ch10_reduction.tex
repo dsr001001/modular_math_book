@@ -1,4 +1,5 @@
-\chapter[Elliptic curves over local fields]{Elliptic curves over local fields: reduction, Kodaira types, Tate curves}\label{ch:reduction}
+\chapter{Elliptic curves over local fields: reduction, Kodaira types, Tate curves}\label{ch:reduction}
+\chaptermark{Elliptic curves over local fields}
 
 The paper works one bad prime at a time. At each bad prime $q$ of the optimal curve $E$ it reads off a handful of local
 invariants: the Kodaira symbol, the geometric component group $\Phig_q$ and the Tamagawa number $c_q$, the valuations
@@ -52,6 +53,10 @@ then it is multiplicative over every extension where it is semistable. Multiplic
 \emph{(proof sketched here)} \Cref{def:reduction:potential}, \Cref{thm:reduction:potential-criterion}.
 \item \textbf{Semistable reduction.} $E$ becomes semistable over a finite extension, for instance $K(E[m])$ with $m\ge3$ prime to $p$.
 \emph{(proof sketched here)} \Cref{thm:reduction:semistable}.
+\item \textbf{The four classes.} The Kodaira symbols fall into: good reduction, $\kod{I}_0$; multiplicative, $\kod{I}_n$ ($n\ge1$,
+$n=v(\Delta_{\min})=-v(j)$); additive potentially multiplicative, $\kod{I}_n^*$ ($n\ge1$); additive potentially good, $\kod{II}$, $\kod{III}$,
+$\kod{IV}$, $\kod{I}_0^*$, $\kod{IV}^*$, $\kod{III}^*$, $\kod{II}^*$, and at $p=2$ only also some $\kod{I}_m^*$ ($m\ge1$). \emph{(proved here, given the
+classification)} \Cref{rem:reduction:types-of-the-four-cases}.
 \item \textbf{N\'eron models.} The N\'eron model $\mathcal E$ (smooth separated group scheme of finite type over $\mathcal O$, generic fibre $E$,
 N\'eron mapping property) exists and is unique; it is the smooth locus of the minimal regular model. \emph{(stated; reference)}
 \Cref{def:reduction:neron}, \Cref{thm:reduction:neron-existence}.
@@ -90,7 +95,8 @@ $p$ has such a model. The twist by $q^*$ of a model with good reduction at odd $
 $\epsilon=q^*/q$, hence type $\kod{I}_0^*$. \emph{(proved here)} \Cref{prop:reduction:I0star-cubic}.
 \item \textbf{PARI's Kodaira codes.} $1$: $\kod{I}_0$; $n+4$: $\kod{I}_n$ and $-(n+4)$: $\kod{I}_n^*$ \emph{for $n\ge1$ only}; $-1$: $\kod{I}_0^*$;
 $\pm2,\pm3,\pm4$: $\kod{II}/\kod{II}^*$, $\kod{III}/\kod{III}^*$, $\kod{IV}/\kod{IV}^*$. \texttt{elllocalred} returns $[f,k,[u,r,s,t],c]$.
-\emph{(proved here, as a dictionary)} \Cref{conv:reduction:pari-codes}.
+A session on \curve{726a1}, \curve{20a1}, \curve{539c1}, \curve{11a1} shows the output. \emph{(proved here, as a dictionary)}
+\Cref{conv:reduction:pari-codes}, \Cref{ex:reduction:pari-session}.
 \item \textbf{Conductor exponent.} $f=a(V_\ell E)=\dim V-\dim V^{I}+\operatorname{sw}(V)$, independent of $\ell$ \emph{(stated; reference)}; it is $0$
 (good), $1$ (multiplicative, $V^I$ a line), $2+\operatorname{sw}\ge2$ (additive, $V^I=0$), and $\operatorname{sw}=0$ for $p\ge5$, and for $p$ odd at an
 additive potentially multiplicative prime \emph{(proved here, given the criterion of N\'eron, Ogg and Shafarevich)}.
@@ -134,13 +140,13 @@ $\sm{\chi_\ell\varepsilon}{\varepsilon\kappa}{0}{\varepsilon}$, with corner $\va
 \Cref{prop:reduction:tate-torsion}.
 \item \textbf{Types at additive potentially multiplicative primes.} For $p$ odd the type is $\kod{I}_\nu^*$, $\nu=-v(j)$, with $f=2$,
 $v(\Delta_{\min})=\nu+6$, and conversely $\kod{I}_n^*$ ($n\ge1$) at odd $p$ forces $v(j)=-n$ \emph{(proof sketched here, given Ogg's formula)}.
-At $p=2$ the type is $\kod{I}_m^*$ with $m=\nu+2f_2-4\in\{\nu+4,\nu+8\}$ \emph{(stated; reference)}. \Cref{thm:reduction:potmult-additive}.
+For $K=\Q_2$ the type is $\kod{I}_m^*$ with $m=\nu+2f_2-4\in\{\nu+4,\nu+8\}$ \emph{(stated; reference)}. \Cref{thm:reduction:potmult-additive}.
 \item \textbf{Unramified twists (the paper's Lemma lem:twist (i)).} A twist by a quadratic character unramified at $p$ preserves at $p$ the type,
 $\Phig_p$, $v_p(\Delta_{\min})$, $f_p$ and $q_E$; $c_p$ may change. \emph{(proved here)} \Cref{lem:reduction:twist-unramified}.
 \item \textbf{Ramified twists (the paper's Lemma lem:twist (ii)).} For odd $q$ the twist by $q^*$ exchanges $\kod{I}_n\leftrightarrow\kod{I}_n^*$ (same
 $n\ge1$) and $\kod{I}_0\leftrightarrow\kod{I}_0^*$; for $q\ge5$ also $\kod{II}\leftrightarrow\kod{IV}^*$, $\kod{III}\leftrightarrow\kod{III}^*$,
-$\kod{IV}\leftrightarrow\kod{II}^*$ with $v_q(\Delta_{\min})$ shifted by $6$ mod $12$; the conductor exponent of the twist is $0$, $1$, or $2$ on the
-additive side. \emph{(proved here; the equality of the indices in $\kod{I}_n\leftrightarrow\kod{I}_n^*$ uses Ogg's formula)}
+$\kod{IV}\leftrightarrow\kod{II}^*$ with $v_q(\Delta_{\min})$ shifted by $6$ mod $12$; the conductor exponent of the twist at $q$ is $0$ (good), $1$
+($\kod{I}_n$) or $2$ (additive). \emph{(proved here; the equality of the indices in $\kod{I}_n\leftrightarrow\kod{I}_n^*$ uses Ogg's formula)}
 \Cref{lem:reduction:twist-ramified}.
 \item \textbf{The exchanges at $3$.} The twist by $-3$ exchanges $\kod{II}\leftrightarrow\kod{IV}^*$, $\kod{III}\leftrightarrow\kod{III}^*$,
 $\kod{IV}\leftrightarrow\kod{II}^*$ at $3$ and preserves $f_3$. \emph{(proved here, given Ogg's formula)} \Cref{prop:reduction:twist-at-3}.
@@ -148,6 +154,11 @@ $\kod{IV}\leftrightarrow\kod{II}^*$ at $3$ and preserves $f_3$. \emph{(proved he
 \[
 w_\ell(E,q)=\max\bigl(v_\ell\#\Phig_q(E),\,v_\ell\#\Phig_q(E^{(q)})\bigr),\qquad w_\ell(E,2)=v_\ell\#\Phig_2(E).
 \] \emph{(proved here)} \Cref{prop:reduction:twist-weight}.
+\item \textbf{What changes at $2$ and $3$.} For $p\in\{2,3\}$: the type determines neither $v(\Delta_{\min})$ nor $f$ (only
+$f=v(\Delta_{\min})+1-m$); $f\le8$ at $2$, $f\le5$ at $3$; $G_{\mathrm{ss}}$ can be non-abelian, of order divisible by $p$; the type determines
+$G_{\mathrm{ss}}$ only for $\kod{IV},\kod{IV}^*$ at $2$ ($\Z/3$) and $\kod{III},\kod{III}^*,\kod{I}_0^*$ at $3$ ($\Z/4,\Z/4,\Z/2$); at $2$ a symbol
+$\kod{I}_m^*$ may be potentially good, and if not, $m\ne-v_2(j)$. So the adjoint Euler factor is not a function of the type at $2$, $3$.
+\emph{(summary of results proved or stated elsewhere in the chapter)} \Cref{rem:reduction:wild-overview}.
 \item \textbf{Inertia at $2$.} For additive potentially good reduction over $\Q_2$, the ramification pattern of the roots of $\psi_3$ is $(1,1,1,1)$,
 $(1,3,3,3)$, $(2,2,2,2)$, $(4,4,4,4)$ according as $G_{\mathrm{ss}}$ is $\Z/2$ (a ramified twist of good reduction), cyclic of order $3$ or $6$,
 $\Z/4$, or $Q_8$ or $\SL_2(\F_3)$; order $3$ occurs exactly for $\kod{IV}$, $\kod{IV}^*$. \emph{(proved here, given Kraus's list of groups
@@ -159,8 +170,10 @@ $\kod{II},\kod{II}^*,\kod{IV},\kod{IV}^*$ are wild with $3\mid e$ and $f_3\in\{3
 multiplicative, $t_\ell(E,2)=v_\ell(\nu)$ with $\nu=m-4$ or $m-8$, not $v_\ell(m)$. \emph{(proved here, with data)}
 \Cref{rem:reduction:Instar-at-2}.
 \item \textbf{Worked data.} Tate's algorithm by hand on \curve{121a1}, \curve{121c2}, \curve{539c1}, \curve{539d1}, \curve{726a1}, \curve{20a1},
-\curve{99a1}, \curve{980i1}; semistability defects; Tate parameters; twist pairs; local data of the running examples. \Cref{ex:reduction:tate-running},
-\Cref{ex:reduction:defects}, \Cref{ex:reduction:tate-parameters}, \Cref{ex:reduction:twist-pairs}, \Cref{ex:reduction:running-table}.
+\curve{99a1}, \curve{980i1}; minimal models of twists; semistability defects; Tate parameters; twist pairs; local data of the running examples;
+what Cremona's tables contain. \Cref{ex:reduction:minimal-examples}, \Cref{ex:reduction:tate-running},
+\Cref{ex:reduction:defects}, \Cref{ex:reduction:tate-parameters}, \Cref{ex:reduction:twist-pairs}, \Cref{ex:reduction:running-table},
+\Cref{rem:reduction:cremona-tables}.
 \end{enumerate}
 
 \section*{Where the paper uses this chapter}
@@ -217,7 +230,7 @@ inertia group (\Cref{ch:local}). When the paper's bad prime is meant we write $K
 $q$ is also used for the Tate parameter in the literature; in this chapter the variable of the Tate curve is
 written $\mathsf q$ and the Tate curve $E_{\mathsf q}$, and the Tate parameter of a given curve $E$ is always
 $q_E$ (\Cref{sec:reduction:tate}). The arithmetic Frobenius is $\Frob$; the geometric Frobenius at a named
-prime is written $\Frob_q^{-1}$, because $\Phi_q$ denotes a component group in this chapter (Appendix B,
+prime is written $\Frob_q^{-1}$, because $\Phi_q(\cdot)$ denotes a component group in this chapter (Appendix B,
 \Cref{ch:notation}, conventions B-C2 and B-C11).
 \end{convention}
 
@@ -672,8 +685,9 @@ Until \Cref{sec:reduction:kodaira} the symbols are used only as names for these 
 \end{remark}
 
 \begin{warning}\label{warn:reduction:potmult}
-``Potentially multiplicative'' does not mean ``multiplicative'': a curve of type $\kod{I}_n^*$ has additive
-reduction ($f_p\ge2$, $a_p=0$, $\delta_p=0$), but $v(j)<0$. The paper's $n_q=v_q(\Delta_E)$ is defined at
+``Potentially multiplicative'' does not mean ``multiplicative'': a curve of type $\kod{I}_n^*$ ($n\ge1$) at an
+odd prime has additive reduction ($f_p\ge2$, $a_p=0$, $\delta_p=0$), but $v(j)<0$; at $p=2$ a symbol $\kod{I}_m^*$ may also be
+potentially good (\Cref{rem:reduction:Instar-at-2}). The paper's $n_q=v_q(\Delta_E)$ is defined at
 multiplicative primes; at an additive potentially multiplicative prime the relevant integer is $\nu=-v_q(j_E)$,
 which for odd $q$ is the index $n$ of the symbol $\kod{I}_n^*$ (\Cref{thm:reduction:potmult-additive}) but for
 $q=2$ is not.
@@ -859,9 +873,12 @@ it is a line.
 The paragraph before Lemma lem:IV in the revised paper states (i) with the proof above (``the snake lemma for
 multiplication by $\ell^k$ gives the isomorphism'', citing \cite[Section 1]{SerreTate68}). Lemma lem:IV: ``$E[3]^{I_q}$
 is a line'' is (iii) for $\kod{IV}$, $\kod{IV}^*$. Remark rem:types: ``$E[3]^{I_q}=0$'' for the other additive types is
-(iii). Lemma lem:tamfactor, the final check with $M=T$: the invariants $(\Z/\ell^{v_\ell(n)})\bar e_1$ with Frobenius
-acting by $\varepsilon$ are $(\mu_{\ell^t}\otimes\varepsilon)^{\Gal}$ in (ii), whose order is the $\ell$-part of $c_q(E)$
-(\Cref{rem:reduction:tamagawa-mult}). Chapter 11 (\Cref{ch:galrep}, its item 2.2) cites this proposition instead of
+(iii). Lemma lem:tamfactor, the final check with $M=T$: the paper's module $(\Z/\ell^{v_\ell(n)})\bar e_1$ (the torsion of
+$H^1(I,T)$, generated by the class of $e_1$), with Frobenius acting by $\varepsilon$, is isomorphic as a Galois module to
+$\Phig[\ell^\infty]$, the quotient in (ii) generated by the image of $e_2$ (Frobenius acts on $\Phig\simeq\Z/n$ by $\varepsilon$,
+\Cref{prop:reduction:tate-tamagawa}); so its Frobenius invariants have the order of $\Phi_E(k)[\ell^\infty]$, the $\ell$-part of
+$c_q(E)$ (\Cref{rem:reduction:tamagawa-mult}). They are not the invariants of the sub $\mu_{\ell^t}\otimes\varepsilon$, on which
+Frobenius acts by $q\varepsilon$. Chapter 11 (\Cref{ch:galrep}, its item 2.2) cites this proposition instead of
 proving it again.
 \end{paperlink}
 
@@ -946,7 +963,8 @@ We do not prove \Cref{thm:reduction:kodaira-neron}; see Kodaira \cite{Kodaira}, 
 \cite{Tate75} and \cite[IV.8, IV.9 and Table 4.1]{SilvermanATAEC}. The orders $\#\Phig$ are the ones quoted in Section
 1.4 of the paper ($n$; $1$; $2$; $3$; $4$ for $\kod{I}_n$; $\kod{II},\kod{II}^*$; $\kod{III},\kod{III}^*$;
 $\kod{IV},\kod{IV}^*$; $\kod{I}_0^*,\kod{I}_n^*$). In the language of Lie theory (a physics reader's aside): $\Phig$
-is the centre of the simply connected compact Lie group of type $A_{n-1},D_{n+4},E_6,E_7,E_8$, which is the dual
+is the centre of the simply connected compact Lie group of type $A_{n-1},D_{n+4},E_6,E_7,E_8$ for $\kod{I}_n,\kod{I}_n^*,\kod{IV}^*,\kod{III}^*,\kod{II}^*$
+($\kod{III}$ and $\kod{IV}$ correspond to $A_1$ and $A_2$; $\kod{I}_0$, $\kod{I}_1$ and $\kod{II}$ have trivial $\Phig$), which is the dual
 of the root lattice modulo the root lattice; the same diagrams classify the finite subgroups of $\mathrm{SU}(2)$, and
 the binary tetrahedral group $\SL_2(\F_3)$ met in \Cref{thm:reduction:kraus} is one of them.
 
@@ -974,13 +992,13 @@ $P(T)=T^3+a_{2,1}T^2+a_{4,2}T+a_{6,3}$. If $\tilde P$ has distinct roots: type $
 $f=v(\Delta)-4$, $c=1+\#\{\text{roots of }\tilde P\text{ in }k\}$.
 \item If $\tilde P$ has one simple and one double root: type $\kod{I}_n^*$ for some $n\ge1$, $m=n+5$,
 $f=v(\Delta)-4-n$. To find $n$, translate the double root to $0$ (a change $(1,\varpi r_0,0,0)$); then
-$\varpi\,\|\,a_2$, $\varpi^3\mid a_4$, $\varpi^4\mid a_6$. For $j=1,2,\dots$ alternately consider the quadratics
+$\varpi\,\|\,a_2$, $\varpi^3\mid a_4$, $\varpi^4\mid a_6$. For $s=1,2,\dots$ alternately consider the quadratics
 \[
-Y^2+a_{3,(j+3)/2}Y-a_{6,j+3}\ (j\text{ odd}),\qquad a_{2,1}X^2+a_{4,(j+4)/2}X+a_{6,j+3}\ (j\text{ even});
+Y^2+a_{3,(s+3)/2}Y-a_{6,s+3}\ (s\text{ odd}),\qquad a_{2,1}X^2+a_{4,(s+4)/2}X+a_{6,s+3}\ (s\text{ even});
 \]
-if the current one has distinct roots in $\bar k$, stop with $n=j$, and $c=4$ if its roots lie in $k$, else $c=2$;
-if it has a double root, translate it to $0$ (by $t$ for $j$ odd, by $r$ for $j$ even, with the appropriate power
-of $\varpi$) and continue with $j+1$.
+if the current one has distinct roots in $\bar k$, stop with $n=s$, and $c=4$ if its roots lie in $k$, else $c=2$;
+if it has a double root, translate it to $0$ (by $t$ for $s$ odd, by $r$ for $s$ even, with the appropriate power
+of $\varpi$) and continue with $s+1$.
 \item If $\tilde P$ has a triple root, translate it to $0$; then $\varpi^2\mid a_2$, $\varpi^3\mid a_4$, $\varpi^4\mid a_6$. If
 $Y^2+a_{3,2}Y-a_{6,4}$ has distinct roots: type $\kod{IV}^*$, $m=7$, $f=v(\Delta)-6$, $c=3$ if the roots are in $k$,
 else $c=1$.
@@ -1126,15 +1144,14 @@ model has good reduction at $q$ ($\Delta=16\operatorname{disc}(g)$ and $q$ is od
 \begin{warning}\label{warn:reduction:sign}
 The sign $\epsilon=q^*/q$ matters when $q\equiv3\pmod4$: the cubic of the twist is $T^3+\epsilon a_2T^2+a_4T+\epsilon a_6$, not
 the cubic of $E$. Its roots are $\epsilon$ times the old ones, so the conclusion ``distinct roots'' is unaffected, and so is the
-number of roots in $k$, which gives $c$. The twist by
-$q$ instead of $q^*$ is a different curve when $q\equiv3\pmod4$: it differs by the twist by $-1$, which is ramified
-at $2$ (\Cref{ch:ellcurves}; \Cref{exer:reduction:twist121}).
+number of roots in $k$, which gives $c$. The twist must be by $q^*$, not by $q$; see
+\Cref{warn:reduction:q-versus-qstar}.
 \end{warning}
 
 \begin{convention}[PARI's Kodaira codes]\label{conv:reduction:pari-codes}
-PARI's \texttt{elllocalred(E,p)} returns $[f_p,k_p,[u,r,s,t],c_p]$: the conductor exponent, the Kodaira code, the
-change of coordinates to a minimal model at $p$, and the Tamagawa number. \texttt{ellglobalred(E)} returns
-$[N,[u,r,s,t],\prod_pc_p,F,L]$ with $F$ the factorisation matrix of $N$ and $L$ the list of local data at the bad
+For a curve \texttt{E} and a prime \texttt{p}, PARI's function \texttt{elllocalred(E,p)} returns the vector $[f_p,k_p,[u,r,s,t],c_p]$: the
+conductor exponent, the Kodaira code, the change of coordinates to a minimal model at $p$, and the Tamagawa number. The function
+\texttt{ellglobalred(E)} returns $[N,[u,r,s,t],\prod_pc_p,F,L]$ with $F$ the factorisation matrix of $N$ and $L$ the list of local data at the bad
 primes, in the order of $F$; in PARI 2.17.2 the entries of $L$ are $[f_p,k_p,0,c_p]$. So the paper's \texttt{R[4]} is the
 factorised conductor and \texttt{R[4][,1]} its column of primes; with \texttt{K = R[5]}, the entry \texttt{K[i][2]} is the
 Kodaira code at the $i$-th bad prime. The codes are given in \Cref{tab:reduction:codes}.
@@ -1194,7 +1211,7 @@ root; Step 8: $Y^2+a_{3,2}Y-a_{6,4}=Y^2+Y$ has the distinct roots $0,1\in\F_2$. 
 $v(b_8)=2<3$: type $\kod{III}$, $c=2$, $f=v(\Delta)-1=2$.
 \item \curve{980i1} $=[0,0,0,1568,-72716]$: at $2$, type $\kod{IV}^*$ with $c=1$; at $5$, $\kod{I}_1$; at $7$, the model
 already satisfies the conditions of Step 6 ($v(a_4)=2$, $v(a_6)=3$), with $P(T)=T^3+32T-212\equiv(T-2)(T+1)^2\pmod7$; the
-subprocedure of Step 7 passes four double roots and stops at $j=5$ with the quadratic $Y^2+1$, irreducible over $\F_7$:
+subprocedure of Step 7 passes four double roots and stops at $s=5$ with the quadratic $Y^2+1$, irreducible over $\F_7$:
 type $\kod{I}_5^*$, $c=2$, $v_7(\Delta)=11=5+6$.
 \end{enumerate}
 \end{example}
@@ -1254,8 +1271,9 @@ and potentially multiplicative, also $\operatorname{sw}(V)=0$ and $f=2$.
 (i) is \Cref{cor:reduction:torsion-injects}(ii). (ii) By \Cref{prop:reduction:tate-torsion}(iii), in a suitable basis
 $G_K$ acts on $T_\ell E$ by $\sm{\chi_\ell\varepsilon}{\varepsilon\kappa}{0}{\varepsilon}$ with $\varepsilon$ unramified. On $I_K$ the
 cyclotomic character $\chi_\ell$ is trivial ($\mu_{\ell^\infty}\subset K^{\ur}$), $\varepsilon$ is trivial, and $\kappa$
-restricts to $\nu$ times the tame character $t_\ell$, with $\nu=v(q_E)\ge1$ (\Cref{ch:local}). So $I_K$ acts by
-$\sm{1}{\nu t_\ell}{0}{1}$: unipotent, nontrivial, trivial on $P_K$, with invariants the line spanned by $e_1$; so
+restricts to $\nu$ times the tame character $t_\ell\colon I_K\to\Z_\ell(1)$, with $\nu=v(q_E)\ge1$ (\Cref{ch:local}); as in
+Appendix B, the tame character always carries its domain or an argument, and $t_\ell(E,q)$ always its two arguments. So
+$\sigma\in I_K$ acts by $\sm{1}{\nu t_\ell(\sigma)}{0}{1}$: unipotent, nontrivial, trivial on $P_K$, with invariants the line spanned by $e_1$; so
 $f=2-1+0=1$.
 
 (iii) Suppose first that the reduction is potentially good. By \Cref{thm:reduction:serre-tate} the image $\rho(I_K)$ is
@@ -1270,7 +1288,7 @@ $-1$ and fixes no nonzero vector. In both cases $V^{I_K}=0$ and $f=2+\operatorna
 (iv) If the reduction is potentially good, $\rho(I_K)\simeq G_{\mathrm{ss}}$ has order dividing $24$
 (\Cref{thm:reduction:serre-tate}(iii)); for $p\ge5$ this is prime to $p$, so the pro-$p$ group $P_K$ acts trivially and
 $\operatorname{sw}(V)=0$. If it is potentially multiplicative and $p$ is odd, the quadratic character $\chi$ is trivial on the
-pro-$p$ group $P_K$, and so is $t_\ell$; so $P_K$ acts trivially again.
+pro-$p$ group $P_K$, and so is $t_\ell\colon I_K\to\Z_\ell(1)$; so $P_K$ acts trivially again.
 \end{proof}
 
 \begin{theorem}[Ogg's formula]\label{thm:reduction:ogg}
@@ -1314,9 +1332,8 @@ isomorphism $V_\ell E\simeq V_\ell E'$ (\Cref{ch:ellcurves}), and $f_p$ depends 
 any $\ell\ne p$.
 \end{proof}
 
-The conductors of the paper's curves (all checked with PARI): \curve{11a1}: $11$; \curve{20a1}: $2^2\cdot5$;
-\curve{99a1}: $3^2\cdot11$; \curve{121a1}, \curve{121c2}, \curve{121d1}: $11^2$; \curve{539c1}: $7^2\cdot11$; \curve{726a1}:
-$2\cdot3\cdot11^2$; \curve{980i1}: $2^2\cdot5\cdot7^2$.
+The conductors of the paper's curves, all checked with PARI, are in the column $N$ of
+\Cref{ex:reduction:running-table}.
 
 \begin{theorem}[Serre and Tate]\label{thm:reduction:serre-tate}
 Let $E/K$ have potentially good reduction, $K/\Q_p$ finite.
@@ -1398,8 +1415,8 @@ Let $K/\Q_p$ be finite and let $E/K$ have additive, potentially good reduction. 
 We do not prove this; see Dokchitser and Dokchitser \cite[Theorem 3.1]{DokDok15}, who deduce it from Kramer and Tunnell
 \cite[Proposition 8.20]{KramerTunnell82} at $p=2$ and from Kraus \cite{Kraus90} at $p=3$. The direction ``type $\kod{IV}$ or
 $\kod{IV}^*$ at $2$ implies tame'' is proved independently in \Cref{cor:reduction:IV-at-2}. The data agree: below conductor
-$10{,}000$, $f_2=2$ occurs for exactly the $4{,}750$ pairs of type $\kod{IV}$ ($2{,}094$) or $\kod{IV}^*$ ($2{,}656$) at $2$ and for no
-other additive type, and at $3$ the types $\kod{III}$, $\kod{III}^*$, $\kod{I}_0^*$ always have $f_3=2$ while $\kod{II}$, $\kod{II}^*$,
+$10{,}000$, $f_2=2$ occurs exactly for the pairs of type $\kod{IV}$ or $\kod{IV}^*$ at $2$ and for no other additive type
+(\Cref{tab:reduction:inertia2}), and at $3$ the types $\kod{III}$, $\kod{III}^*$, $\kod{I}_0^*$ always have $f_3=2$ while $\kod{II}$, $\kod{II}^*$,
 $\kod{IV}$, $\kod{IV}^*$ always have $f_3\in\{3,4,5\}$.
 
 \begin{corollary}[types $\kod{IV}$ and $\kod{IV}^*$ at $2$]\label{cor:reduction:IV-at-2}
@@ -1420,8 +1437,8 @@ is a line.
 
 (i) Suppose $v_2(j)<0$. By \Cref{thm:reduction:tate-uniformisation}, $E$ is the twist of the Tate curve $E_{q_E}$ by a
 quadratic character $\chi$, ramified since the reduction is additive, and by \Cref{prop:reduction:tate-torsion} an element
-$\sigma\in I_2$ acts on $T_3E$ by $\chi(\sigma)\sm{1}{\kappa(\sigma)}{0}{1}$, where $\kappa|_{I_2}=\nu t_3$ is $\nu$ times the $3$-adic tame
-character (\Cref{ch:local}). The set $H=\{\sigma\in I_2:\kappa(\sigma)\equiv0\pmod3\}$ is a subgroup of index $1$ or $3$, and
+$\sigma\in I_2$ acts on $T_3E$ by $\chi(\sigma)\sm{1}{\kappa(\sigma)}{0}{1}$, where $\kappa(\sigma)=\nu\,t_3(\sigma)$ is $\nu$ times the $3$-adic tame
+character $t_3\colon I_2\to\Z_3(1)$ (\Cref{ch:local}; not the term $t_3(E,2)$). The set $H=\{\sigma\in I_2:\kappa(\sigma)\equiv0\pmod3\}$ is a subgroup of index $1$ or $3$, and
 $\ker\chi|_{I_2}$ has index $2$; so $H\not\subseteq\ker\chi$, and some $\sigma\in H$ acts on $E[3]$ by $-1$, which fixes no
 line. This contradicts $E[3]^{I_2}\ne0$. So $v_2(j)\ge0$.
 
@@ -1442,14 +1459,16 @@ $V^{I_2}=0$ (\Cref{prop:reduction:conductor-values}(iii)), $f_2=2$.
 it. The tame relation $\Frob\,t\,\Frob^{-1}=t^2$ (\Cref{ch:local}) gives $\rho(\Frob)\sigma\rho(\Frob)^{-1}=\sigma^2=\sigma^{-1}$.
 \end{proof}
 
-We checked the conclusions on all $4{,}750$ pairs of type $\kod{IV}$ or $\kod{IV}^*$ at $2$ below conductor $10{,}000$: all have
+We checked the conclusions on all pairs of type $\kod{IV}$ or $\kod{IV}^*$ at $2$ below conductor $10{,}000$ (the first two rows of
+\Cref{tab:reduction:inertia2}): all have
 $v_2(j)\ge0$ and $f_2=2$, and the four roots of the $3$-division polynomial generate over $\Q_2$ fields of ramification
 indices $1,3,3,3$, as (ii) predicts (\Cref{prop:reduction:inertia-at-2}).
 
 \begin{paperlink}
 Lemma lem:IV of the revised paper is stated for every $q\ne3$; its proof is the argument above (component group, then
-injectivity of reduction on finite subgroups of $\GL_2(\Z_3)$). For $q\ge5$, Kraus's formula gives the order $3$ directly
-(``for $v_q(\Delta_E)\in\{4,8\}$ this is $3$''). The Galois-representation consequences, including the Serre conductor
+injectivity of reduction on finite subgroups of $\GL_2(\Z_3)$). For $q\ge5$, Kraus's formula gives the order $3$ directly: the revised
+paper notes after the lemma that ``for $q\ge5$ the order $3$ is also the semistability defect $12/\gcd(v_q(\Delta_E),12)$ of
+Kraus'' (the original version wrote ``for $v_q(\Delta_E)\in\{4,8\}$ this is $3$''). The Galois-representation consequences, including the Serre conductor
 exponent $1$ of $\bar\rho_{E,3}$ at $q$, are proved in \Cref{ch:galrep}. With (ii) and (iv), the computation of Lemma lem:euler
 for $\kod{II},\kod{II}^*,\kod{IV},\kod{IV}^*$ applies verbatim at $q=2$: the trace-zero endomorphisms commuting with $\sigma$ form
 the line spanned by $2\sigma+1$, Frobenius inverts $\sigma$ and so acts on that line by $-1=\chi_{-3}(2)$, so
@@ -1516,7 +1535,7 @@ $E_{\mathsf q}(L)\simeq L^\times/\mathsf q^{\Z}$ for every algebraic extension $
 
 \begin{proof}[Sketch of proof]
 (i) $s_k(\mathsf q)=\sum_{n\ge1}\sigma_k(n)\mathsf q^n$ with $\sigma_k(n)=\sum_{d\mid n}d^k$, so $s_k\in\mathsf q\Z[[\mathsf q]]$. For $a_6$ it suffices that
-$5d^3+7d^5\equiv0\pmod{12}$ for every integer $d$: modulo $3$, $d^3(5+7d^2)\equiv d^3\cdot12\equiv0$ if $3\nmid d$; modulo $4$, if $d$ is
+$5d^3+7d^5\equiv0\pmod{12}$ for every integer $d$: modulo $3$, $d^3(5+7d^2)\equiv d^3\cdot12\equiv0$ if $3\nmid d$, and trivially $d^3\equiv0$ if $3\mid d$; modulo $4$, if $d$ is
 odd then $d^2\equiv1$ and $5+7=12$, and if $d$ is even then $8\mid d^3$. Power series with integer coefficients converge
 at $\mathsf q$ with $v(\mathsf q)>0$. For the model, $b_2=1$, $b_4=2a_4$, $b_6=4a_6$, so $c_4=1-48a_4=1+240s_3$ and
 $c_6=-1+72a_4-864a_6=-1+504s_5$. These are $E_4$ and $-E_6$, the normalised Eisenstein series of weights $4$ and $6$ in the
@@ -1653,8 +1672,11 @@ $c(gh)=\chi_\ell\varepsilon(g)c(h)+c(g)\varepsilon(h)$ for these matrices; $\kap
 
 \begin{warning}\label{warn:reduction:epskappa}
 In the nonsplit and the additive potentially multiplicative cases the corner of the matrix is $\varepsilon\kappa$, not $\kappa$. The
-proof of Lemma lem:tamfactor in the original version of the paper wrote $\kappa$; the revised version writes $\varepsilon\kappa$. Nothing
-in the conclusion changes, as $\varepsilon$ is trivial on inertia and only changes the Frobenius entry by a sign.
+proof of Lemma lem:tamfactor in the original version of the paper wrote $\kappa$; the revised version writes $\varepsilon\kappa$. In the nonsplit
+multiplicative case (the setting of Lemma lem:tamfactor) $\varepsilon$ is unramified, so nothing in the conclusion changes: $\varepsilon$ is
+trivial on inertia and only changes the Frobenius entry by a sign. In the additive potentially multiplicative case $\varepsilon$ is the
+ramified character of \Cref{thm:reduction:tate-uniformisation}(iii), so it is not trivial on inertia; there the paper does not
+use the matrix of $T$ but applies the lemma to $E_{q_E}$, since $\ad T$ is unchanged by a quadratic twist (\Cref{ch:blochkato}).
 \end{warning}
 
 \begin{paperlink}
@@ -1750,7 +1772,8 @@ curve, prime & type & $a_q$ & $\nu$ & $\bar u\bmod q$ & remark\\
 \curve{77c1}, $7$ & $\kod{I}_3$ & $-1$ & $3$ & $5$ & same $q_E$ as \curve{539c1} at $7$ ($\kod{I}_3^*$)\\
 \curve{77c1} and \curve{539c1}, $11$ & $\kod{I}_2$ & $1$ & $2$ & $3$ & \\
 \curve{140b1}, $7$ & $\kod{I}_5$ & $-1$ & $5$ & $1$ & same $q_E$ as \curve{980i1} at $7$ ($\kod{I}_5^*$)\\
-\curve{140b1} and \curve{980i1}, $5$ & $\kod{I}_1$ & $-1$ & $1$ & $2$ & \\
+\curve{140b1}, $5$ & $\kod{I}_1$ & $-1$ & $1$ & $2$ & nonsplit\\
+\curve{980i1}, $5$ & $\kod{I}_1$ & $1$ & $1$ & $2$ & split: the twist by $-7$, $\chi_{-7}(5)=-1$\\
 \curve{726a1}, $2$ & $\kod{I}_6$ & $-1$ & $6$ & $1$ & \\
 \curve{726a1}, $3$ & $\kod{I}_3$ & $-1$ & $3$ & $2$ & \\
 \curve{121d1}, $11$ & $\kod{I}_1^*$ & $0$ & $1$ & $8$ & same $q_E$ as \curve{11a3}\\
@@ -1765,7 +1788,7 @@ bad $q$, including $q=\ell$.
 \end{example}
 
 \begin{warning}[PARI's Tate parameter at $2$]\label{warn:reduction:pari-tate}
-In PARI/GP 2.17.2, \texttt{ellinit(E, O(2\^{}k)).tate[3]} does not return the Tate parameter when $v_2(j)=-1$: in all $1{,}262$ such pairs
+In PARI/GP 2.17.2, the value \texttt{ellinit(E, O(2\^{}k)).tate[3]} does not return the Tate parameter when $v_2(j)=-1$: in all $1{,}262$ such pairs
 among the curves of conductor below $3{,}000$ it returned $q_E^5$ (for instance $2^5+2^6+\cdots$ for \curve{208a1}, whose Tate parameter
 is $2+2^2+2^4+\cdots$), while for every other pair with $v_p(j)<0$ in that range ($\nu\ge2$ at $2$, and all odd $p$) it agreed with the
 series of \Cref{prop:reduction:j-inverse}. Before using PARI's value, check that $j(\mathsf q)=j_E$, or compute $q_E$ from the series.
@@ -1780,12 +1803,13 @@ definition of the twist-symmetrised weight $w_\ell(E,q)$ of its Section 1.4. Thi
 lem:twist (i) and (ii), which say what twisting does to Kodaira types, component groups and conductor exponents; part
 (iii) of that lemma (Atkin and Li) is about newforms and is proved in \Cref{ch:hecke}. Recall (\Cref{ch:ellcurves}) that
 for $d\in\Q^\times$ the twist $E^{(d)}$ of a model $y^2=x^3+a_2x^2+a_4x+a_6$ is $y^2=x^3+da_2x^2+d^2a_4x+d^3a_6$, with invariants
-$d^2c_4$, $d^3c_6$, $d^6\Delta$ and the same $j$, and that $\rho_{E^{(d)},\ell}\simeq\rho_{E,\ell}\otimes\chi_d$. For an odd prime $q$, the
+$d^2c_4$, $d^3c_6$, $d^6\Delta$ and the same $j$, and that $\rho_{E^{(d)},\ell}\simeq\rho_{E,\ell}\otimes\chi$, where $\chi$ is the quadratic character of $\Q(\sqrt d)$; following
+decision D3 it is written $\chi_D$, indexed by the discriminant $D$ of $\Q(\sqrt d)$ (for $d=11$, $D=44$ and $\chi=\chi_{-4}\chi_{-11}$). For an odd prime $q$, the
 paper's $E^{(q)}$ is the twist by $q^*=(-1)^{(q-1)/2}q$, that is, by $\chi_{q^*}$ and the field $\Q(\sqrt{q^*})$, which is unramified
 outside $q$ (\Cref{ch:ant}).
 
 \begin{lemma}[unramified twists; the paper's Lemma lem:twist (i)]\label{lem:reduction:twist-unramified}
-Let $E/\Q$, $p$ a prime and $\chi=\chi_d$ a quadratic character unramified at $p$ (for instance $\chi_{q^*}$ with $q\ne p$ an odd
+Let $E/\Q$, $p$ a prime and $d\in\Q^\times$ such that $\chi=\chi_D$, the quadratic character of $\Q(\sqrt d)$ ($D$ its discriminant), is unramified at $p$ (for instance $\chi_{q^*}$ with $q\ne p$ an odd
 prime; at $p=2$ this uses $q^*\equiv1\pmod4$). Then $E$ and $E^{(d)}$ have at $p$ the same reduction type, the same Kodaira
 symbol, the same geometric component group $\Phig_p$, the same $v_p(\Delta_{\min})$, the same conductor exponent $f_p$, the same
 $v_p(j)$ and the same Tate parameter. The Tamagawa number $c_p$ can change.
@@ -2084,7 +2108,10 @@ $q=\ell$, and the ramification at $3$ of the types $\kod{II}$, $\kod{IV}$ is als
 
 \begin{remark}[symbols $\kod{I}_m^*$ at $2$]\label{rem:reduction:Instar-at-2}
 At $2$ a symbol $\kod{I}_m^*$ is potentially good in $5{,}935$ of the $9{,}667$ pairs below conductor $10{,}000$ ($61\%$; among curves
-numbered $1$ in their class, $2{,}340$ of $4{,}037$, that is $58\%$, the figure quoted in the revised Remark rem:wild). When it is
+numbered $1$ in their class, which below conductor $10{,}000$ are the optimal curves except in class \curve{990h} (whose optimal
+curve is \curve{990h3}; it is multiplicative at $2$, as $2\parallel990$, and so does not enter this count), $2{,}340$ of $4{,}037$, that is $58\%$, the
+figure quoted in the revised Remark rem:wild; the six curves with complex multiplication among them are all potentially good, so the
+optimal non-CM curves give $2{,}334$ of $4{,}031$, again $58\%$). When it is
 potentially multiplicative, $t_\ell(E,2)=v_\ell(\nu)$ with $\nu=-v_2(j)=m-4$ or $m-8$ (\Cref{thm:reduction:potmult-additive}(ii)), so
 $v_\ell(m)$ is the wrong invariant: \curve{304b1} has type $\kod{I}_7^*$ and $\nu=3$, so $t_3(E,2)=1$ although $v_3(7)=0$; \curve{832c1} has
 type $\kod{I}_9^*$ and $\nu=1$, so $t_3(E,2)=0$ although $v_3(9)=2$.
@@ -2108,10 +2135,14 @@ data of the running examples in one table. File formats and the practical use of
 Cremona's tables \cite{Cremona97,ecdata} list, for every elliptic curve over $\Q$ up to their conductor bound, the global minimal model
 in the normalisation of \Cref{thm:reduction:global-minimal}, the conductor, the isogeny class, rank and torsion. The file
 \texttt{allbsd} adds the product $\prod_pc_p$ of the Tamagawa numbers, the real period and the other quantities of the conjecture of Birch
-and Swinnerton-Dyer; other files give the isogeny matrices, the modular degrees (\texttt{degphi}) and the mod $\ell$ images. The files
-used in this book (conductor below $10{,}000$) do not list the Kodaira symbols or the Tamagawa numbers prime by prime: these are
-recomputed with Tate's algorithm, as the paper does (``recomputed with PARI ... from the $a$-invariants''). The minimal discriminant and
-$j$ follow from the model.
+and Swinnerton-Dyer; other files give the isogeny matrices, the modular degrees (\texttt{degphi}) and the mod $\ell$ images. Section
+sec:data of the paper describes the \texttt{ecdata} repository as containing every curve ``with its Kodaira symbols, Tamagawa
+numbers, modular degree, isogeny class, torsion'' and mod $\ell$ images, and adds that ``the Kodaira types and discriminant exponents
+at the bad primes were recomputed with PARI/GP 2.15 from the $a$-invariants'' (its appendix calls \texttt{ellglobalred}). The files
+used in this book (\texttt{allcurves}, \texttt{allbsd}, \texttt{allisog}, \texttt{alllabels}, \texttt{degphi}, \texttt{galrep},
+conductor below $10{,}000$) are a subset of that repository and, unlike the paper's description of the full repository, do not list
+the Kodaira symbols or the Tamagawa numbers prime by prime: here these are recomputed with Tate's algorithm (\texttt{ellglobalred}),
+as in the paper's own check. File formats are in \Cref{ch:computation}. The minimal discriminant and $j$ follow from the model.
 \end{remark}
 
 \begin{example}[a PARI session]\label{ex:reduction:pari-session}
@@ -2186,8 +2217,10 @@ $y^2=x^3+x^2$, and check directly that three collinear points are sent to elemen
 \end{exercise}
 
 \begin{exercise}\label{exer:reduction:torsion}
-Using \Cref{cor:reduction:torsion-injects}, show that the torsion subgroup of \curve{11a1}$(\Q)$ injects into $\tilde E(\F_3)$ and into
-$\tilde E(\F_7)$. Count these groups and deduce that $E(\Q)_{\mathrm{tors}}\simeq\Z/5$.
+Let $E=\curve{11a1}$, which has good reduction at $3$ and $7$. Using \Cref{cor:reduction:torsion-injects}, show that the prime-to-$3$
+part of $E(\Q)_{\mathrm{tors}}$ injects into $\tilde E(\F_3)$ and the prime-to-$7$ part into $\tilde E(\F_7)$. Count these groups (orders $5$
+and $10$), deduce that $E(\Q)_{\mathrm{tors}}$ has order dividing $5$, and conclude that $E(\Q)_{\mathrm{tors}}\simeq\Z/5$ by exhibiting a point
+of order $5$ (for instance $(5,5)$ on $y^2+y=x^3-x^2-10x-20$).
 \end{exercise}
 
 \begin{exercise}\label{exer:reduction:tate-hand}
@@ -2249,8 +2282,12 @@ applies and Theorem thm:main does not).
 \end{exercise}
 
 \begin{exercise}\label{exer:reduction:tamagawa-mult}
-Prove \Cref{prop:reduction:tate-tamagawa}(ii) directly from \Cref{prop:reduction:Ens}(iii) for $n=1$ and $n=2$, and check $c_2=2$ and $c_3=1$
-for \curve{726a1}.
+Let $E/K$ have multiplicative reduction of type $\kod{I}_n$, with $k$ finite, and let $K'/K$ be the unramified quadratic extension, with
+$\Gal(K'/K)=\langle\sigma\rangle$. Using \Cref{thm:reduction:tate-uniformisation}, $E(K)\simeq K^\times/q_E^{\Z}$ in the split case, and
+$E(K)\simeq\{w\in K'^\times/q_E^{\Z}:\sigma(w)=w^{-1}\}$ in the nonsplit case (the Frobenius action twisted by $w\mapsto w^{-1}$). Identify
+$E_0(K)$ with the classes represented by units, and compute $E(K)/E_0(K)$ in both cases for general $n$: it is $\Z/n$ (split), and
+$\Z/2$ or $0$ according as $n$ is even or odd (nonsplit). This reproves \Cref{prop:reduction:tate-tamagawa}(ii). Check $c_2=2$ and $c_3=1$ for
+\curve{726a1}, which is nonsplit of type $\kod{I}_6$ at $2$ and $\kod{I}_3$ at $3$.
 \end{exercise}
 
 \begin{exercise}\label{exer:reduction:Instar2}
