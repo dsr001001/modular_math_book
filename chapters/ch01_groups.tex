@@ -1,0 +1,395 @@
+\chapter{Groups, group actions and matrix groups over finite fields}\label{ch:groups}
+
+The paper uses group theory in two ways. Most of the time it is the background language: Galois groups
+are profinite groups, inertia groups are stabilisers, Tamagawa numbers and component groups are finite
+abelian groups whose $\ell$-parts are taken, and the tame Galois group of $\Q_p$ is a semidirect product.
+At a few precise places, however, the paper's arguments are statements about specific finite groups: the
+proof of Proposition prop:ns is a classification of certain subgroups of the group $\GL_2(\F_3)$ of order
+$48$, of their subgroups of determinant one and of their orbits on the four lines of $\F_3^2$; Lemma lem:IV
+and Remark rem:types are statements about unipotent elements of $\GL_2(\F_3)$; and Lemma lem:h0 uses that
+$\F_\ell^\times$ is cyclic of order $\ell-1$. This chapter develops the elementary theory from the
+definitions and then treats $\GL_2(\F_3)$ completely, so that every group-theoretic sentence of the paper
+can be checked line by line. It relies on no earlier chapter, only on linear algebra over a field and on
+the first notions of group theory as in Riley-Hobson-Bence.
+
+\section*{Core results at a glance}
+
+Throughout, $F$ is a field, $\F_q$ a finite field with $q$ elements ($q$ odd when Cartan subgroups appear;
+the reader may take $q=p$ prime), and the standard models of \Cref{conv:groups:models} are used for the
+subgroups of $\GL_2(\F_3)$.
+
+\begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
+\item \textbf{Conventions.} Matrices act on column vectors on the left; $\PP^1(F)$ is the set of lines $[v]=Fv$ of $F^2$,
+with $\infty=[1:0]=[e_1]$ and $x=[x:1]$, so that $\sm abcd$ acts by $x\mapsto(ax+b)/(cx+d)$; $D_n$ has order $2n$; $q$ is a
+field size in this chapter and a bad prime in the paper; ``the image is $X$'' means ``conjugate to the standard model
+$X$''. \Cref{conv:groups:conventions}.
+\item \textbf{Lagrange.} For $H\le G$ finite, the left cosets of $H$ partition $G$ into $[G:H]$ sets of $\#H$ elements, so
+$\#G=[G:H]\,\#H$; the order of every element divides $\#G$. \emph{(proved here)} \Cref{prop:groups:lagrange}.
+\item \textbf{Cyclic groups.} Let $C=\langle t\rangle$ have order $n$. (i) For each $d\mid n$, $C$ has exactly one subgroup of order $d$,
+$C[d]=\{x:x^d=1\}=\langle t^{n/d}\rangle$, and every subgroup is of this form. (ii) $x\mapsto x^m$ has kernel $C[\gcd(m,n)]$ and
+image $C^m=C^{\gcd(m,n)}$ of index $\gcd(m,n)$; so $[C:C^{\ell^k}]=\ell^{\min(k,v_\ell(n))}$ for a prime $\ell$. (iii) The generators
+are the $\varphi(n)$ elements of order $n$, and $\Aut(C)\simeq(\Z/n)^\times$ via $t\mapsto t^a$. (iv) A surjection $\chi\colon G\to C$
+satisfies $\chi(g)^2=1$ for all $g$ iff $n\mid 2$. \emph{(proved here)} \Cref{thm:groups:cyclic}.
+\item \textbf{Normal subgroups and quotients} (definition: normal subgroup, quotient, kernel, centre $Z(G)$, centraliser $C_G(S)$,
+normaliser $N_G(S)$, commutator subgroup $[G,G]$). \Cref{def:groups:normal}.
+\item \textbf{Isomorphism theorems.} $G/\ker f\simeq f(G)$; $HN/N\simeq H/(H\cap N)$ for $N\trianglelefteq G$; $(G/N)/(M/N)\simeq G/M$ for
+$N\le M$ normal; subgroups of $G/N$ correspond to subgroups of $G$ containing $N$, normal to normal. \emph{(proved here)}
+\Cref{thm:groups:isothms}.
+\item \textbf{Index two; image of a kernel.} A subgroup of index $2$ is normal. If $\rho\colon G\to\Gamma$ and $\delta\colon\Gamma\to A$ are
+homomorphisms, then $\rho(\ker(\delta\circ\rho))=\rho(G)\cap\ker\delta$; in particular the image of $\ker(\det\circ\rho)$ is the
+determinant-one subgroup of $\rho(G)$. \emph{(proved here)} \Cref{lem:groups:index2}.
+\item \textbf{Conjugacy classes.} The class of $g$ has $[G:C_G(g)]$ elements; $H$ has $[G:N_G(H)]$ conjugates; a subgroup is normal
+iff it is a union of classes. \emph{(proved here)} \Cref{prop:groups:conjclasses}.
+\item \textbf{$\ell$-primary parts.} For a finite abelian group $A$ and a prime $\ell$, $A[\ell^\infty]=\{a:\ell^ka=0\text{ for some }k\}$ has order
+$\ell^{v_\ell(\#A)}$, is the unique Sylow $\ell$-subgroup, and $A=\bigoplus_{\ell\mid\#A}A[\ell^\infty]$; Cauchy's theorem holds for $A$.
+\emph{(proved here)} \Cref{prop:groups:lprimary}.
+\item \textbf{Direct products.} If $H,K\trianglelefteq G$, $H\cap K=1$, $HK=G$, then $H\times K\simeq G$ by $(h,k)\mapsto hk$. \emph{(proved here)}
+\Cref{prop:groups:directproduct}.
+\item \textbf{Chinese remainder theorem for groups.} $C_m\times C_n\simeq C_{mn}$ iff $\gcd(m,n)=1$; $\Z/n\simeq\prod_{p\mid n}\Z/p^{v_p(n)}$.
+\emph{(proved here)} \Cref{prop:groups:crtgroups}.
+\item \textbf{Semidirect products} (definition: $N\rtimes_\theta H$, with $(n,h)(n',h')=(n\,\theta(h)(n'),hh')$ and $hnh^{-1}=\theta(h)(n)$).
+\Cref{def:groups:semidirect}. \textbf{Recognition:} if $N\trianglelefteq G$, $H\le G$, $N\cap H=1$, $NH=G$, then $G\simeq N\rtimes_\theta H$ with $\theta$
+conjugation; a short exact sequence $1\to N\to G\to Q\to1$ splits iff $G\simeq N\rtimes Q$. \emph{(proved here)}
+\Cref{prop:groups:semidirect}.
+\item \textbf{Dihedral groups.} $D_n=\langle r,s\mid r^n=s^2=1,\ srs^{-1}=r^{-1}\rangle\simeq C_n\rtimes C_2$ has order $2n$; all elements outside
+$\langle r\rangle$ have order $2$; a group of order $2n$ generated by $r$ of order $n$ and $s$ of order $2$ with $srs^{-1}=r^{-1}$ is $\simeq D_n$;
+$D_3\simeq S_3$, $D_6\simeq C_2\times S_3$; $D_4$ has five involutions. \emph{(proved here)} \Cref{def:groups:dihedral},
+\Cref{prop:groups:dihedral}.
+\item \textbf{The quaternion group.} $Q_8=\{\pm1,\pm i,\pm j,\pm k\}$, $i^2=j^2=k^2=ijk=-1$: $-1$ is the only involution, $Z(Q_8)=[Q_8,Q_8]=\{\pm1\}$,
+every subgroup is normal, $Q_8\not\simeq D_4$; a non-abelian group of order $8$ with a unique involution is $\simeq Q_8$. \emph{(proved
+here)} \Cref{def:groups:quaternion}, \Cref{prop:groups:quaternion}.
+\item \textbf{The semidihedral group.} $SD_{16}=\langle a,x\mid a^8=x^2=1,\ xax^{-1}=a^3\rangle$ has order $16$; $(a^ix)^2=a^{4i}$; it has $1,5,6,4$
+elements of orders $1,2,4,8$; its index-$2$ subgroups are $\langle a\rangle\simeq C_8$, $\langle a^2,x\rangle\simeq D_4$, $\langle a^2,ax\rangle\simeq Q_8$; a group of
+order $16$ generated by $a$ of order $8$ and $x$ of order $2$ with $xax^{-1}=a^3$ is $\simeq SD_{16}$. \emph{(proved here)}
+\Cref{def:groups:semidihedral}, \Cref{prop:groups:semidihedral}.
+\item \textbf{Groups of order 8.} Every group of order $8$ is isomorphic to exactly one of $C_8$, $C_4\times C_2$, $C_2^3$, $D_4$, $Q_8$.
+\emph{(proof sketched here)} \Cref{thm:groups:order8}.
+\item \textbf{Group actions} (definition: action, orbit $Gx$, stabiliser $G_x$, fixed set $X^G$, transitive, faithful).
+\Cref{def:groups:action}.
+\item \textbf{Orbit-stabiliser.} $gG_x\mapsto gx$ is a bijection $G/G_x\to Gx$; $G_{gx}=gG_xg^{-1}$; $\#X=\sum_i[G:G_{x_i}]$ over orbit
+representatives. \emph{(proved here)} \Cref{thm:groups:orbitstab}.
+\item \textbf{Orbits of a subgroup.} If $G$ is transitive on $X$ and $H\le G$, then $H$ is transitive iff $G=HG_x$; if $H\trianglelefteq G$, the $H$-orbits are
+permuted transitively by $G$ and have equal size; if $[G:H]=2$, either $H$ is transitive or $X$ is the union of two $H$-orbits of
+size $\#X/2$, interchanged by $G\setminus H$. \emph{(proved here)} \Cref{prop:groups:suborbits}.
+\item \textbf{Orbit counting.} The number of orbits of a finite group on a finite set is $\frac1{\#G}\sum_g\#X^g$. \emph{(proved here)}
+\Cref{lem:groups:burnside}.
+\item \textbf{Class equation and $p$-groups.} $\#G=\#Z(G)+\sum[G:C_G(g_i)]$; if a $p$-group acts on $X$, $\#X\equiv\#X^P\pmod p$; nontrivial
+$p$-groups have nontrivial centre; groups of order $p^2$ are abelian; a group of order $p^n$ has normal subgroups of every order
+$p^k$, and subgroups of index $p$ in a $p$-group are normal. \emph{(proved here)} \Cref{thm:groups:classeq}.
+\item \textbf{Cauchy.} If a prime $p$ divides $\#G$, $G$ has an element of order $p$. \emph{(proved here)} \Cref{thm:groups:cauchy}.
+\item \textbf{Sylow.} Let $\#G=p^am$, $p\nmid m$. Sylow $p$-subgroups (order $p^a$) exist; every $p$-subgroup lies in one; they are all
+conjugate; their number $n_p=[G:N_G(P)]$ divides $m$ and is $\equiv1\pmod p$; $P\trianglelefteq G$ iff $n_p=1$. \emph{(proved here)}
+\Cref{thm:groups:sylow}.
+\item \textbf{Finite abelian groups.} $A\simeq\bigoplus_i\Z/\ell_i^{e_i}$ with the multiset $\{\ell_i^{e_i}\}$ unique; equivalently $A\simeq\bigoplus\Z/d_i$
+with $1<d_1\mid\dots\mid d_r$ unique; the numbers $\#A[\ell^k]$ determine $A[\ell^\infty]$. \emph{(proved here)} \Cref{thm:groups:finiteabelian}.
+\item \textbf{Cyclicity criteria.} A finite abelian group is cyclic iff $\#A[\ell]\le\ell$ for all primes $\ell$; every finite subgroup of
+$K^\times$, $K$ a field, is cyclic; so $\F_q^\times$ and $\mu_n(K)$ are cyclic. \emph{(proved here)} \Cref{cor:groups:cyclic}.
+\item \textbf{Counting torsion.} $\#A[n]=\#A/nA$; for $A\simeq\bigoplus_i\Z/\ell^{e_i}$, $\#A[\ell^k]=\ell^{\sum_i\min(k,e_i)}$. \emph{(proved here)}
+\Cref{prop:groups:torsioncount}.
+\item \textbf{Linear groups} (definition: $\GL_2(F)$, $\SL_2(F)$, $\PGL_2(F)=\GL_2(F)/F^\times I$, $\PSL_2(F)=\SL_2(F)/\{\pm I\}$).
+\Cref{def:groups:gl2}. $Z(\GL_2(F))=F^\times I$, $Z(\SL_2(F))=\{\pm I\}$; $\GL_2(F)\simeq\SL_2(F)\rtimes F^\times$; $\SL_2(F)$ is generated by
+elementary matrices; for $\operatorname{char}F\ne2$, $-I$ is the only involution of $\SL_2(F)$; $[\PGL_2(F):\PSL_2(F)]=[F^\times:(F^\times)^2]$.
+\emph{(proved here)} \Cref{prop:groups:gl2}.
+\item \textbf{Companion form.} Two non-scalar matrices in $\GL_2(F)$ are conjugate iff they have the same characteristic polynomial;
+the centraliser of a non-scalar $g$ is $F[g]^\times$. \emph{(proved here)} \Cref{lem:groups:companion}.
+\item \textbf{Orders.} $\#\GL_2(\F_q)=q(q-1)^2(q+1)$, $\#\SL_2(\F_q)=\#\PGL_2(\F_q)=q(q^2-1)$, $\#\PSL_2(\F_q)=q(q^2-1)/\gcd(2,q-1)$
+($48,24,24,12$ for $q=3$). \emph{(proved here)} \Cref{prop:groups:orders}.
+\item \textbf{The projective line.} $\GL_2(F)$ acts on $\PP^1(F)$ with kernel $F^\times I$; $\PGL_2(F)$ is sharply $3$-transitive; the stabiliser of
+$\infty$ is the upper triangular group $\mathrm B(F)$; $\SL_2(F)$ is $2$-transitive; $\#\PP^1(\F_q)=q+1$. \emph{(proved here)}
+\Cref{prop:groups:projline}.
+\item \textbf{Borel subgroups} (definition: the stabiliser $\mathrm B_L$ of a line $L$; $\mathrm U$ the upper unitriangular group, $\mathrm T$ the
+diagonal group). \Cref{def:groups:borel}. $\mathrm B=\mathrm U\rtimes\mathrm T$, $\#\mathrm B(\F_q)=q(q-1)^2$, Borel subgroups are conjugate and self-normalising,
+and a subgroup stabilises a line iff it lies in a Borel subgroup; $\mathrm B(\F_3)\simeq C_2\times S_3\simeq D_6$. \emph{(proved here)}
+\Cref{prop:groups:borel}.
+\item \textbf{Unipotent elements} (definition: $(u-1)^2=0$). \Cref{def:groups:unipotent}. A unipotent $u\ne1$ is conjugate to $\sm1101$ and
+fixes exactly one line, pointwise; in characteristic $p$ the unipotents $\ne1$ are exactly the elements of $p$-power order $\ne1$,
+and have order $p$; $-u$ fixes no nonzero vector ($\operatorname{char}F\ne2$), stabilises one line and has order $2p$; the stabiliser of a
+nonzero vector $v$ in $\SL_2(F)$ is the group $\mathrm U_{[v]}\simeq(F,+)$; in $\GL_2(\F_3)$ the $8$ elements of order $3$ are the
+nontrivial unipotents, form one class, lie in the four Sylow $3$-subgroups $\mathrm U_L$, and generate $\SL_2(\F_3)$; the $8$
+elements of order $6$ are the $-u$. \emph{(proved here)} \Cref{prop:groups:unipotent}.
+\item \textbf{Commutators in a Borel subgroup.} For $H\le\mathrm B(K)$, $[H,H]\le\mathrm U(K)$. If $\operatorname{char}K=p$: a subgroup of $\mathrm B(K)$ of order prime to $p$
+is abelian, and a finite subgroup of $\GL_2(K)$ whose commutator subgroup is not a $p$-group stabilises no line of $K^2$.
+\emph{(proved here)} \Cref{lem:groups:borelcommutator}.
+\item \textbf{$\PGL_2$ in small characteristic.} $\PGL_2(\F_3)\simeq S_4$ and $\PSL_2(\F_3)\simeq A_4$ through the four lines; for $g\in\GL_2(\F_3)$,
+$\det g$ is the sign of the permutation of the lines. \emph{(proved here)} $\PGL_2(\F_5)\simeq S_5$, $\PSL_2(\F_5)\simeq A_5$. \emph{(proof
+sketched here)} $\PSL_2(\F_q)$ is simple for $q\ge4$, and $\PSL_2(\F_7)\simeq\GL_3(\F_2)$. \emph{(stated; reference)}
+\Cref{thm:groups:smallpgl}.
+\item \textbf{Cartan subgroups} (definition, $q$ odd, $\varepsilon$ a non-square: $C_s=\{\mathrm{diag}(a,d)\}$; $C_{ns}=\{\sm a{\varepsilon b}ba\ne0\}\simeq\F_q[\sqrt\varepsilon]^\times$).
+\Cref{def:groups:cartan}. $N(C_s)=C_s\cup wC_s$ is the stabiliser of $\{[e_1],[e_2]\}$; $N(C_{ns})=C_{ns}\cup C_{ns}\sigma$ with $\sigma=\mathrm{diag}(1,-1)$ and
+$\sigma c\sigma^{-1}=c^q$; $C_{ns}$ is cyclic of order $q^2-1$; all split, respectively all nonsplit, Cartan subgroups are conjugate.
+\emph{(proved here)} \Cref{prop:groups:cartan}.
+\item \textbf{Cartan facts.} $\#C_s=(q-1)^2$, $\#N_s=2(q-1)^2$, $\#C_{ns}=q^2-1$, $\#N_{ns}=2(q^2-1)$; elements of $N_s\setminus C_s$ and of
+$N_{ns}\setminus C_{ns}$ have trace $0$, with $(c\sigma)^2=\det(c)I$; $\det(C_{ns})=\F_q^\times$; the determinant-one subgroups have orders
+$q-1$, $2(q-1)$, $q+1$, $2(q+1)$; orbits on $\PP^1(\F_q)$: $C_s$: $1,1,q-1$; $N_s$: $2,q-1$; $\mathrm B$: $1,q$; $C_{ns}$ and $N_{ns}$ transitive.
+\emph{(proved here)} \Cref{prop:groups:cartanfacts}.
+\item \textbf{Dickson.} For $G\le\GL_2(\F_\ell)$ with image $\bar G$ in $\PGL_2(\F_\ell)$: if $\ell\mid\#G$, then $G\supseteq\SL_2(\F_\ell)$ or $G$ lies in a Borel
+subgroup; if $\ell\nmid\#G$, then $\bar G$ is cyclic and $G$ lies in a Cartan subgroup, or $\bar G$ is dihedral and $G$ lies in the normaliser
+of a Cartan subgroup but not in the Cartan subgroup, or $\bar G\simeq A_4,S_4,A_5$. \emph{(stated; reference; the case $\ell=3$ is
+proved in \Cref{prop:groups:gl23subgroups})} \Cref{thm:groups:dickson}.
+\item \textbf{Conjugacy classes of $\GL_2(\F_3)$.} Order $48$, centre $\{\pm I\}$, commutator subgroup $\SL_2(\F_3)$, eight classes, of sizes
+$1,1,12,8,6,8,6,6$ with representatives $I,-I,\sigma,u,J,-u,\sm1{-1}11,\sm0111$ of orders $1,2,2,3,4,6,8,8$. \emph{(proved here)}
+\Cref{prop:groups:gl23classes}.
+\item \textbf{Standard models.} $J=\sm0{-1}10$, $\sigma=\mathrm{diag}(1,-1)$, $w=\sm0110$, $u=\sm1101$; $C_s(\F_3)=\{\mathrm{diag}(\pm1,\pm1)\}$,
+$N_s(\F_3)=\langle J,\sigma\rangle$, $C_{ns}(\F_3)=\{\sm a{-b}ba\}$, $N_{ns}(\F_3)=C_{ns}(\F_3)\cup C_{ns}(\F_3)\sigma$, $Q_8=\{\pm I,\pm J,\pm\sm111{-1},\pm\sm1{-1}{-1}{-1}\}$,
+$C_4=\langle J\rangle$. \Cref{conv:groups:models}.
+\item \textbf{Subgroups of $\GL_2(\F_3)$.} There are $55$ subgroups in $16$ conjugacy classes (table); $9$ classes have surjective
+determinant, and all of these except $C_{ns}(\F_3)$ contain an element of determinant $-1$ and trace $0$; a subgroup of order divisible
+by $3$ contains $\SL_2(\F_3)$ or stabilises a line. \emph{(proved here for the rows used; the table checked by computer)}
+\Cref{prop:groups:gl23subgroups}.
+\item \textbf{$\SL_2(\F_3)$.} Order $24$; $-I$ its only involution; its elements of order dividing $4$ form its unique Sylow $2$-subgroup
+$Q_8$, normal in $\GL_2(\F_3)$; $\SL_2(\F_3)=Q_8\rtimes\langle u\rangle$ with $u$ permuting $i,j,k$ cyclically; $[\SL_2(\F_3),\SL_2(\F_3)]=Q_8$; no
+subgroup of order $12$; $\GL_2(\F_3)/Q_8\simeq S_3$; $Q_8$ is transitive on the four lines. \emph{(proved here)} \Cref{prop:groups:sl23}.
+\item \textbf{$N_s(\F_3)$.} $N_s(\F_3)=\langle J,\sigma\rangle\simeq D_4$; its elements of determinant $-1$ are $\pm\sigma,\pm w$, of trace $0$; it has $3$
+conjugates; $N_s(\F_3)\cap\SL_2(\F_3)=\langle J\rangle\simeq C_4$; its orbits on the four lines are $\{\infty,0\}$ and $\{1,-1\}$, and $\langle J\rangle$ has
+the same orbits; it stabilises no line of $\Fbar_3^2$, while $\langle J\rangle$ stabilises the two lines of $\F_9^2$ spanned by $(\pm i,1)$;
+$N_s(\F_3)$ has index $2$ in $N_{ns}(\F_3)$. \emph{(proved here)} \Cref{prop:groups:ns3}.
+\item \textbf{$N_{ns}(\F_3)$.} $C_{ns}(\F_3)=\langle a\rangle\simeq C_8$ with $a=\sm1{-1}11$; $N_{ns}(\F_3)=\langle a,\sigma\rangle\simeq SD_{16}$, $\sigma a\sigma^{-1}=a^3$; it is a Sylow
+$2$-subgroup of $\GL_2(\F_3)$; $N_{ns}(\F_3)\cap\SL_2(\F_3)=Q_8$; its elements of determinant $-1$ and trace $0$ are $\pm\sigma,\pm w$, and
+$C_{ns}(\F_3)$ has none; $C_{ns}(\F_3)$, $N_{ns}(\F_3)$ and $Q_8$ are transitive on the four lines. \emph{(proved here)} \Cref{prop:groups:nns3}.
+\item \textbf{The three images.} If $H\le\GL_2(\F_3)$ has $\det(H)=\F_3^\times$, stabilises no line of $\F_3^2$, and contains an element of
+determinant $-1$ and trace $0$, then $H$ is conjugate to exactly one of $\GL_2(\F_3)$, $N_{ns}(\F_3)$, $N_s(\F_3)$; the determinant-one
+subgroups are $\SL_2(\F_3)$, $Q_8$, $\langle J\rangle$; the first two stabilise no line of $\Fbar_3^2$, the third is abelian. \emph{(proved here)}
+\Cref{thm:groups:threeimages}.
+\item \textbf{Orbit dichotomy.} For such $H$: $H$ is conjugate to $N_s(\F_3)$ iff it has two orbits of size $2$ on the four lines, iff it
+is not transitive, iff $H\cap\SL_2(\F_3)$ is abelian, iff $H\cap\SL_2(\F_3)$ stabilises a line of $\Fbar_3^2$. \emph{(proved here)}
+\Cref{cor:groups:orbitdichotomy}.
+\item \textbf{Determinant $-1$, trace $0$.} For $q$ odd, $g\in\GL_2(\F_q)$ has $\det g=-1$ and $\tr g=0$ iff it is conjugate to $\sigma$; these $q(q+1)$
+elements have order $2$ and fix exactly two lines; in $\GL_2(\F_3)$, $\mathrm B$, $N_s$, $N_{ns}$, $C_s$, $C_{ns}$, $\SL_2$ there are $12,6,4,4,2,0,0$ of them.
+\emph{(proved here)} \Cref{prop:groups:cc}.
+\item \textbf{Images in $S_4$.} Under $\PGL_2(\F_3)\simeq S_4$: $\GL_2,\SL_2,N_{ns},Q_8,N_s,C_{ns},C_s,\langle J\rangle,\mathrm B,\mathrm U$ map onto $S_4$, $A_4$, $D_4$,
+the normal $V_4$, a non-normal $V_4$, $C_4$, $\langle$transposition$\rangle$, $\langle$double transposition$\rangle$, $S_3$, $A_3$. \emph{(proved here)}
+\Cref{prop:groups:imagesS4}.
+\item \textbf{Inverse limits} (definition: $\varprojlim G_n=\{(g_n):\pi_n(g_{n+1})=g_n\}$, profinite group). \Cref{def:groups:inverselimit}. The inverse
+limit is a closed subgroup of $\prod G_n$, compact and Hausdorff, with the universal property. \emph{(proved here, except Tychonoff's
+theorem: stated; reference)} \Cref{prop:groups:inverselimit}.
+\item \textbf{Profinite groups.} With $U_n=\ker(G\to G_n)$: the $U_n$ are a basis of neighbourhoods of $1$; open subgroups are the closed
+subgroups of finite index; continuous maps to finite groups factor through some $G/U_n$; closed subgroups and quotients by closed
+normal subgroups are profinite; continuous images in Hausdorff groups are closed; a continuous homomorphism from a pro-$p$ group
+to a finite group of order prime to $p$ is trivial. \emph{(proved here)} Profinite iff compact, Hausdorff and totally disconnected.
+\emph{(stated; reference)} \Cref{prop:groups:profinite}.
+\item \textbf{$\GL_2(\Z_\ell)$.} $\GL_2(\Z_\ell)=\varprojlim\GL_2(\Z/\ell^n)$; the reductions are surjective with kernels $\simeq(M_2(\F_\ell),+)$, so
+$\#\GL_2(\Z/\ell^n)=\ell^{4(n-1)}(\ell^2-1)(\ell^2-\ell)$; $\Gamma(\ell)=\ker(\GL_2(\Z_\ell)\to\GL_2(\F_\ell))$ is pro-$\ell$, and torsion-free if $\ell$ is odd, so a
+finite subgroup of $\GL_2(\Z_\ell)$ maps isomorphically into $\GL_2(\F_\ell)$ for $\ell$ odd. \emph{(proved here)} \Cref{prop:groups:gl2zl}.
+\end{enumerate}
+
+\section*{Where the paper uses this chapter}
+
+\begin{itemize}
+\item \textbf{Proposition prop:ns} (the mod $3$ image when the hypothesis on $\Q(\sqrt{-3})$ fails), and its proof:
+the determinant-one subgroup as the image of $\Gal(\Qbar/\Q(\sqrt{-3}))$, \Cref{lem:groups:index2}; the list of three images,
+\Cref{thm:groups:threeimages}, built on \Cref{prop:groups:sl23}, \Cref{prop:groups:ns3}, \Cref{prop:groups:nns3}, \Cref{prop:groups:cc};
+``the first two act absolutely irreducibly'', \Cref{lem:groups:borelcommutator}; the orbits on the four lines and the factorisation of
+the $3$-division polynomial, \Cref{cor:groups:orbitdichotomy}, \Cref{prop:groups:suborbits}, \Cref{thm:groups:smallpgl}(ii).
+\item \textbf{Lemma lem:IV} (types $\kod{IV}$, $\kod{IV}^*$): the stabiliser of a vector in $\SL_2(\F_3)$ is a group of order $3$ of unipotents,
+\Cref{prop:groups:unipotent}; the kernel of $\GL_2(\Z_3)\to\GL_2(\F_3)$ is torsion-free, \Cref{prop:groups:gl2zl}.
+\item \textbf{Remark rem:types} (the other additive types at $q\ge5$): fixed vectors of $-I$, of $J$, of ``minus a unipotent'',
+\Cref{prop:groups:unipotent}, \Cref{prop:groups:gl23classes}.
+\item \textbf{Lemma lem:h0} (the correction term $h_\ell(E)$): $\F_\ell^\times$ is cyclic of order $\ell-1$ and a character onto it with square $1$
+forces $\ell=3$, \Cref{thm:groups:cyclic}(iv), \Cref{cor:groups:cyclic}; $\bar\rho\bmod\ell^k$ factors through a finite quotient,
+\Cref{prop:groups:profinite}; the coefficients $\Z_\ell$ and $\Qlmod$, \Cref{ex:groups:zp}.
+\item \textbf{Section sec:anomaly and Remark rem:ns} (image $\Ns$): \Cref{prop:groups:ns3}, \Cref{cor:groups:orbitdichotomy}, \Cref{ex:groups:sutherland3}.
+\item \textbf{Section sec:eis and Conjecture conj:eis} (the Eisenstein case): a rational isogeny means image in a Borel subgroup,
+\Cref{prop:groups:borel}; the labels $3\mathrm{Cs}.1.1$, $3\mathrm B.1.1$, $3\mathrm B$, \Cref{ex:groups:sutherland3}.
+\item \textbf{Background} for Definition def:terms, Section 1.4 and Lemma lem:tamfactor (the $\ell$-part of a component group or a
+Tamagawa number, the count of Frobenius-fixed points in $(\Z/\ell^{v_\ell(n)})^2$): \Cref{prop:groups:lprimary},
+\Cref{thm:groups:finiteabelian}, \Cref{prop:groups:torsioncount}, \Cref{thm:groups:cyclic}(ii); for Lemma lem:crit ($\T/(I+J)$ cyclic):
+\Cref{thm:groups:cyclic}; for Lemma lem:tamagawa-exp ($\rho\bmod\ell^t$): \Cref{prop:groups:gl2zl}.
+\end{itemize}
+
+\section{Groups, subgroups, cosets, quotients and cyclic groups}\label{sec:groups:basics}
+
+This section fixes the conventions of the chapter and proves the basic facts about cosets, quotients
+and cyclic groups. In the paper they appear in three places: the image of the absolute Galois group of
+$\Q(\sqrt{-3})$ is a determinant-one subgroup (Proposition prop:ns, through \Cref{lem:groups:index2}); a character
+of $G_\Q$ onto the cyclic group $\F_\ell^\times$ with square $1$ forces $\ell=3$ (Lemma lem:h0, through
+\Cref{thm:groups:cyclic}); and the ``$\ell$-part'' of a finite abelian group (Definition def:terms, Lemma lem:tamfactor,
+through \Cref{prop:groups:lprimary}).
+
+\begin{convention}\label{conv:groups:conventions}
+The following conventions hold in this chapter and are inherited by the book.
+\begin{enumerate}[label=(C\arabic*)]
+\item Matrices act on column vectors on the left. For $v\in F^2\setminus\{0\}$ the line through $v$ is $[v]=Fv$, and $\PP^1(F)$ is the set of
+lines of $F^2$, with coordinates $[x:y]$. We write $\infty=[1:0]=[e_1]$ and identify $[x:1]$ with $x\in F$. Then
+$g=\sm abcd$ acts by the M\"obius formula $g\cdot x=(ax+b)/(cx+d)$, because $g\binom x1=\binom{ax+b}{cx+d}$.
+\item Conjugation is $g\cdot h=ghg^{-1}$. In a semidirect product $N\rtimes H$ the group $H$ acts on $N$, and $hnh^{-1}=\theta(h)(n)$.
+\item $C_n$, or $\Z/n$ when written additively, is the cyclic group of order $n$; $D_n$ is the dihedral group of order $2n$ (so $D_4$
+has order $8$; Dummit and Foote write $D_8$); $V_4=C_2\times C_2$; $Q_8$ is the quaternion group; $SD_{16}$ is the semidihedral group
+of order $16$; $S_n$ and $A_n$ are the symmetric and alternating groups.
+\item $\F_p=\Z/p\Z$ is a field: an integer prime to $p$ is invertible modulo $p$ by Bezout's identity. $\F_q$ is a finite field with
+$q$ elements, of characteristic $p$ with $q$ a power of $p$ (\Cref{ch:rings} constructs it); the reader may take $q=p$
+throughout. Whenever Cartan subgroups are discussed $q$ is odd. In this chapter $q$ is a field size; in the paper $q$ is a bad prime
+of $E$ (convention B-C1). The two meet only in $\GL_2(\F_3)$, where the field size is $\ell=3$.
+\item ``The image is $N_s(\F_3)$'' always means ``the image is conjugate in $\GL_2(\F_3)$ to $N_s(\F_3)$''; the standard models of
+\Cref{conv:groups:models} are fixed once and for all, and similarly for $N_{ns}(\F_3)$, $C_s$, $C_{ns}$, $\mathrm B$, $\mathrm U$.
+\end{enumerate}
+\end{convention}
+
+\begin{definition}\label{def:groups:group}
+A \emph{group} is a set $G$ with an associative composition $G\times G\to G$, $(g,h)\mapsto gh$, an identity element $1$ and inverses.
+It is \emph{abelian} if $gh=hg$ for all $g,h$; abelian groups are often written additively, with $0$ and $-a$. A \emph{subgroup} $H\le G$
+is a nonempty subset closed under products and inverses. The subgroup $\langle S\rangle$ generated by a subset $S$ is the intersection of
+all subgroups containing $S$, that is, the set of finite products of elements of $S$ and their inverses. The \emph{order} of $G$ is
+its cardinality $\#G$; the order of $g\in G$ is the least $n\ge1$ with $g^n=1$ (or $\infty$), which is $\#\langle g\rangle$. A group is \emph{cyclic}
+if $G=\langle g\rangle$ for some $g$. Examples: $(\Z,+)$; $\Z/n$; the symmetric group $S_n$; the group $\GL_2(F)$ of invertible $2\times2$
+matrices over a field $F$; the multiplicative group $F^\times$.
+\end{definition}
+
+\begin{proposition}[Lagrange]\label{prop:groups:lagrange}
+Let $H\le G$ with $G$ finite. The left cosets $gH$ partition $G$, each has $\#H$ elements, and $\#G=[G:H]\cdot\#H$, where $[G:H]$ is the
+number of cosets. Consequently the order of every element of $G$ divides $\#G$, and $g^{\#G}=1$ for every $g\in G$.
+\end{proposition}
+
+\begin{proof}
+Every $g$ lies in $gH$. If $x\in gH\cap g'H$, say $x=gh=g'h'$, then $g'=gh h'^{-1}\in gH$, so $g'H\subseteq gH$, and symmetrically; so two cosets
+are equal or disjoint. The map $H\to gH$, $h\mapsto gh$, is bijective (its inverse is multiplication by $g^{-1}$). Counting gives
+$\#G=[G:H]\,\#H$. Applied to $H=\langle g\rangle$, the order of $g$ divides $\#G$, and then $g^{\#G}=1$.
+\end{proof}
+
+\begin{theorem}\label{thm:groups:cyclic}
+Let $C=\langle t\rangle$ be cyclic of order $n$.
+\begin{enumerate}[label=(\roman*)]
+\item Every subgroup of $C$ is cyclic. For each $d\mid n$ there is exactly one subgroup of order $d$, namely
+$C[d]=\{x\in C:x^d=1\}=\langle t^{n/d}\rangle=C^{n/d}$, the set of $(n/d)$-th powers.
+\item For $m\ge1$ the map $x\mapsto x^m$ is an endomorphism of $C$ with kernel $C[\gcd(m,n)]$, of order $\gcd(m,n)$, and image
+$C^m=C^{\gcd(m,n)}$, of index $\gcd(m,n)$. In particular, for a prime $\ell$ and $k\ge0$, $[C:C^{\ell^k}]=\ell^{\min(k,v_\ell(n))}$; and for
+$k\le v_\ell(n)$, an element $x\in C$ is an $\ell^k$-th power iff its image in $C/C^{\ell^{v_\ell(n)}}\simeq\Z/\ell^{v_\ell(n)}$ is divisible by $\ell^k$.
+\item The generators of $C$ are the $\varphi(n)$ elements $t^a$ with $\gcd(a,n)=1$, which are its elements of order $n$. The map
+$(\Z/n)^\times\to\Aut(C)$, $a\mapsto(t\mapsto t^a)$, is an isomorphism. $\Aut(\Z)=\{\pm1\}$.
+\item Let $\chi\colon G\to C$ be a surjective homomorphism from any group. Then $\chi(g)^2=1$ for all $g\in G$ if and only if $n\mid2$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The map $\Z\to C$, $a\mapsto t^a$, is a surjective homomorphism with kernel $n\Z$ (if $t^a=1$, write $a=bn+r$ with $0\le r<n$; then
+$t^r=1$ and $r=0$ by minimality of $n$). So $t^a=t^b$ iff $a\equiv b\pmod n$, and the order of $t^a$ is $n/\gcd(a,n)$: indeed $(t^a)^k=1$ iff
+$n\mid ak$ iff $\frac n{\gcd(a,n)}\mid k$.
+
+(i) Let $H\le C$, $H\ne1$, and let $a$ be the least positive integer with $t^a\in H$. For $t^b\in H$ write $b=ca+r$, $0\le r<a$; then
+$t^r=t^b(t^a)^{-c}\in H$, so $r=0$. Hence $H=\langle t^a\rangle$, and $a\mid n$ (take $b=n$). So $H=\langle t^a\rangle$ has order $n/a$: the subgroups are the
+$\langle t^{n/d}\rangle$ for $d\mid n$, one for each order $d$. The subgroup $\langle t^{n/d}\rangle$ consists of $(n/d)$-th powers and has order $d$, so its elements
+satisfy $x^d=1$; conversely $x=t^b$ with $x^d=1$ means $n\mid bd$, that is $\frac nd\mid b$. So $C[d]=\langle t^{n/d}\rangle=C^{n/d}$.
+
+(ii) The map is a homomorphism because $C$ is abelian. Let $g=\gcd(m,n)$. Its kernel is $C[m]$; and $x^m=1$ iff $x^g=1$ (write
+$g=am+bn$, so $x^g=(x^m)^a(x^n)^b$), so the kernel is $C[g]$, of order $g$ by (i). By the first isomorphism theorem
+(\Cref{thm:groups:isothms}, whose proof does not use this one) the image has order $n/g$; it is contained in $C^g$ (as $g\mid m$), which
+has order $n/g$ by (i) applied to $d=n/g$; so $C^m=C^g$, of index $g$. For $m=\ell^k$, $g=\ell^{\min(k,v_\ell(n))}$. For the last statement put
+$e=v_\ell(n)$ and $k\le e$: $C^{\ell^k}$ contains $C^{\ell^e}$, and under $C\to C/C^{\ell^e}$, a cyclic group of order $\ell^e$ generated by the image of
+$t$, the subgroup $C^{\ell^k}$ maps onto the $\ell^k$-th powers, the subgroup of index $\ell^k$, which is the set of multiples of $\ell^k$
+when $C/C^{\ell^e}$ is identified with $\Z/\ell^e$ through $t\mapsto1$. Since $C^{\ell^k}$ contains the kernel $C^{\ell^e}$, $x\in C^{\ell^k}$ iff its image is
+divisible by $\ell^k$.
+
+(iii) $t^a$ generates iff its order $n/\gcd(a,n)$ is $n$. An automorphism $\alpha$ is determined by $\alpha(t)$, which must be a generator
+$t^a$; conversely $x\mapsto x^a$ with $\gcd(a,n)=1$ is a bijective endomorphism by (ii). Composition corresponds to multiplication of
+exponents. For $\Z$, an automorphism sends the generator $1$ to a generator, $\pm1$.
+
+(iv) If $n\mid2$, every element of $C$ satisfies $x^2=1$. Conversely, if $\chi(g)^2=1$ for all $g$, then, $\chi$ being surjective, every
+$x\in C$ satisfies $x^2=1$; in particular $t^2=1$ and $n\mid2$.
+\end{proof}
+
+\begin{definition}\label{def:groups:normal}
+A subgroup $N\le G$ is \emph{normal}, $N\trianglelefteq G$, if $gNg^{-1}=N$ for all $g\in G$. Then the cosets $gN$ form a group $G/N$, the
+\emph{quotient}, with $(gN)(g'N)=gg'N$, and $G\to G/N$ is the \emph{canonical projection}. A \emph{homomorphism} $f\colon G\to H$ satisfies
+$f(gg')=f(g)f(g')$; its \emph{kernel} $\ker f=f^{-1}(1)$ is normal and its image $f(G)$ is a subgroup. A group is \emph{simple} if it is
+nontrivial and has no normal subgroups other than $1$ and itself. The \emph{centre} is $Z(G)=\{z:zg=gz\ \forall g\}$; for $S\subseteq G$, the
+\emph{centraliser} is $C_G(S)=\{g:gs=sg\ \forall s\in S\}$ and the \emph{normaliser} is $N_G(S)=\{g:gSg^{-1}=S\}$. The \emph{conjugacy class} of $g$ is
+$\{hgh^{-1}:h\in G\}$. The \emph{commutator subgroup} $[G,G]$ is generated by the commutators $[g,h]=ghg^{-1}h^{-1}$; it is normal, $G/[G,G]$
+is abelian (the \emph{abelianisation}), and $[G,G]\le N$ for a normal $N$ iff $G/N$ is abelian.
+\end{definition}
+
+The multiplication on $G/N$ is well defined because $gNg'N=gg'(g'^{-1}Ng')N=gg'N$. The last statement of the definition holds
+because $G/N$ is abelian iff $ghg^{-1}h^{-1}\in N$ for all $g,h$.
+
+\begin{theorem}[Isomorphism theorems]\label{thm:groups:isothms}
+\begin{enumerate}[label=(\roman*)]
+\item A homomorphism $f\colon G\to H$ induces an isomorphism $G/\ker f\simeq f(G)$, $g\ker f\mapsto f(g)$.
+\item If $H\le G$ and $N\trianglelefteq G$, then $HN$ is a subgroup, $H\cap N\trianglelefteq H$, and $HN/N\simeq H/(H\cap N)$.
+\item If $N\le M$ are normal subgroups of $G$, then $M/N\trianglelefteq G/N$ and $(G/N)/(M/N)\simeq G/M$.
+\item (Correspondence) For $N\trianglelefteq G$, $K\mapsto K/N$ is an inclusion-preserving bijection from the subgroups of $G$ containing $N$ to
+the subgroups of $G/N$, under which normal subgroups correspond to normal subgroups.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) $f(g)=f(g')$ iff $g^{-1}g'\in\ker f$ iff $g\ker f=g'\ker f$; so the map is well defined and injective; it is a surjective
+homomorphism onto $f(G)$. (ii) $hnh'n'=hh'(h'^{-1}nh')n'\in HN$ and $(hn)^{-1}=h^{-1}(hn^{-1}h^{-1})\in HN$, so $HN$ is a subgroup. The
+homomorphism $H\to HN/N$, $h\mapsto hN$, is surjective (as $hnN=hN$) with kernel $H\cap N$; apply (i). (iii) The map $G/N\to G/M$,
+$gN\mapsto gM$, is a well-defined surjective homomorphism with kernel $M/N$; apply (i). (iv) The inverse bijection sends $\bar K\le G/N$ to
+its preimage under the projection $\pi$; $\pi(\pi^{-1}(\bar K))=\bar K$ as $\pi$ is surjective, and $\pi^{-1}(\pi(K))=KN=K$ when $N\le K$.
+Normality is preserved in both directions since $\pi(gKg^{-1})=\pi(g)\pi(K)\pi(g)^{-1}$.
+\end{proof}
+
+\begin{lemma}\label{lem:groups:index2}
+\begin{enumerate}[label=(\roman*)]
+\item A subgroup $H$ of index $2$ in $G$ is normal, and is the kernel of a surjection $G\to C_2$.
+\item Let $\rho\colon G\to\Gamma$ and $\delta\colon\Gamma\to A$ be homomorphisms and $G_0=\ker(\delta\circ\rho)$. Then $\rho(G_0)=\rho(G)\cap\ker\delta$. In
+particular, if $\rho\colon G\to\GL_2(F)$ and $G_0=\ker(\det\circ\rho)$, then $\rho(G_0)=\rho(G)\cap\SL_2(F)$ is the determinant-one subgroup of the
+image.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) The left cosets are $H$ and $G\setminus H$, and so are the right cosets. So $gH=Hg$ for every $g$, that is, $H\trianglelefteq G$; and $G/H$ has
+order $2$. (ii) If $g\in G_0$, then $\rho(g)\in\rho(G)$ and $\delta(\rho(g))=1$. Conversely, if $\gamma\in\rho(G)\cap\ker\delta$, write $\gamma=\rho(g)$; then
+$\delta(\rho(g))=1$, so $g\in G_0$ and $\gamma\in\rho(G_0)$.
+\end{proof}
+
+\begin{paperlink}
+The proof of Proposition prop:ns begins: ``Since $\det\bar\rho_{E,3}=\chi_{-3}$ cuts out $\Q(\sqrt{-3})$, the image of
+$\Gal(\Qbar/\Q(\sqrt{-3}))$ is the subgroup of determinant $1$ of the image $H$ of $\bar\rho_{E,3}$.'' This is \Cref{lem:groups:index2}(ii)
+with $G=G_\Q$, $\rho=\bar\rho_{E,3}$, $\delta=\det$: the kernel of $\det\circ\bar\rho_{E,3}=\chi_{-3}$ is $\Gal(\Qbar/\Q(\sqrt{-3}))$ by Galois theory
+(\Cref{ch:galois}), and the identity $\det\bar\rho_{E,3}=\bar\chi_3$, $\bar\chi_3=\chi_{-3}$, is \Cref{ch:ellcurves} and \Cref{ch:galrep}.
+Since $\F_3^\times=\{\pm1\}$, the determinant-one subgroup has index $1$ or $2$ in $H$, and index $2$ when $\det(H)=\F_3^\times$.
+\end{paperlink}
+
+\begin{proposition}\label{prop:groups:conjclasses}
+Conjugacy is an equivalence relation on $G$. For $G$ finite, the class of $g$ has $[G:C_G(g)]$ elements, and a subgroup $H$ has
+exactly $[G:N_G(H)]$ conjugates $gHg^{-1}$. A subgroup is normal iff it is a union of conjugacy classes.
+\end{proposition}
+
+\begin{proof}
+Reflexivity, symmetry and transitivity follow from $g=1g1^{-1}$, $h=x^{-1}(xhx^{-1})x$ and $y(xgx^{-1})y^{-1}=(yx)g(yx)^{-1}$. The map
+$G\to\{xgx^{-1}\}$, $x\mapsto xgx^{-1}$, satisfies $xgx^{-1}=ygy^{-1}$ iff $y^{-1}x\in C_G(g)$ iff $xC_G(g)=yC_G(g)$; so the class is in bijection
+with $G/C_G(g)$. The same argument with $x\mapsto xHx^{-1}$ and $N_G(H)$ counts the conjugates of $H$. A subgroup $N$ satisfies
+$gNg^{-1}\subseteq N$ for all $g$ iff it contains the class of each of its elements; and $gNg^{-1}\subseteq N$ for all $g$ implies equality (apply it to
+$g^{-1}$). (This is the special case of \Cref{thm:groups:orbitstab} for the conjugation action.)
+\end{proof}
+
+\begin{proposition}\label{prop:groups:lprimary}
+Let $A$ be a finite abelian group, written additively, and $\ell$ a prime.
+\begin{enumerate}[label=(\roman*)]
+\item (Cauchy for abelian groups) If $\ell\mid\#A$, then $A$ has an element of order $\ell$.
+\item If $\#A=mn$ with $\gcd(m,n)=1$, then $A=A[m]\oplus A[n]$, where $A[m]=\{a:ma=0\}$, and $\#A[m]=m$, $\#A[n]=n$.
+\item The $\ell$-primary part $A[\ell^\infty]=\{a:\ell^ka=0\text{ for some }k\}$ equals $A[\ell^{v_\ell(\#A)}]$, has order $\ell^{v_\ell(\#A)}$, and is the unique
+Sylow $\ell$-subgroup of $A$ (the unique subgroup of order $\ell^{v_\ell(\#A)}$); every $\ell$-power-order subgroup lies in it.
+\item $A=\bigoplus_{\ell\mid\#A}A[\ell^\infty]$, and the projection onto $A[\ell^\infty]$ is multiplication by an integer $e_\ell$ with $e_\ell\equiv1\pmod{\ell^{v_\ell(\#A)}}$
+and $e_\ell\equiv0$ modulo $\#A/\ell^{v_\ell(\#A)}$.
+\item The exponent of $A$ (the least $e\ge1$ with $eA=0$) divides $\#A$ and has the same prime divisors.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Induction on $\#A$. Pick $a\ne0$ of order $k$. If $\ell\mid k$, then $(k/\ell)a$ has order $\ell$. Otherwise $\ell$ divides
+$\#(A/\langle a\rangle)=\#A/k<\#A$, and by induction there is $b\in A$ whose class $\bar b$ has order $\ell$. If $b$ has order $k'$, then
+$k'\bar b=0$, so $\ell\mid k'$, and $(k'/\ell)b$ has order $\ell$.
+
+(ii) Write $1=xm+yn$ with $x,y\in\Z$. For $a\in A$, $a=xma+yna$, and $n(xma)=x(mn)a=0$ by Lagrange, so $xma\in A[n]$; similarly $yna\in A[m]$.
+If $a\in A[m]\cap A[n]$, then $a=xma+yna=0$. So $A=A[m]\oplus A[n]$ and $\#A[m]\cdot\#A[n]=mn$. By (i), no prime dividing $n$ divides
+$\#A[m]$ (an element of prime order $p\mid n$ in $A[m]$ would lie in $A[m]\cap A[n]$, as $p\mid n$), and conversely; so $\#A[m]=m$.
+
+(iii) Let $e=v_\ell(\#A)$ and $\#A=\ell^em$. If $\ell^ka=0$, then also $\#A\cdot a=0$, so $\gcd(\ell^k,\#A)a=0$ and $\ell^ea=0$; so $A[\ell^\infty]=A[\ell^e]$, of
+order $\ell^e$ by (ii). A subgroup of $\ell$-power order consists of elements killed by a power of $\ell$, so lies in $A[\ell^\infty]$; a
+subgroup of order $\ell^e$ therefore equals it.
+
+(iv) Apply (ii) repeatedly to the factorisation of $\#A$ into prime powers. For the projector, take $e_\ell=y n$ in (ii) with
+$m=\ell^{v_\ell(\#A)}$: the proof shows $a\mapsto yna$ is the projection onto $A[m]$, and $yn\equiv1\pmod m$, $yn\equiv0\pmod n$.
+
+(v) $\#A\cdot A=0$ by Lagrange, so the exponent divides $\#A$ (write $\#A=ce+r$); every prime dividing $\#A$ is the order of some element
+by (i), hence divides the exponent.
+\end{proof}
+
+\begin{paperlink}
+Definition def:terms and Section 1.4 of the paper speak of ``the $\ell$-part of the Tamagawa number'' and use $v_\ell(\#\Phig_q)$; by
+\Cref{prop:groups:lprimary}(iii) the $\ell$-part of a finite abelian group $\Phi$ is $\Phi[\ell^\infty]$, of order $\ell^{v_\ell(\#\Phi)}$. The proof
+of Lemma lem:tamfactor computes a finite abelian $\ell$-group $H^1(I_q,M)_{\mathrm{tor}}$ and then ``the $\ell$-part of $c_q(E)$''; the
+dictionary between the two is the same statement, with \Cref{prop:groups:torsioncount} for the count of fixed points.
+\end{paperlink}
