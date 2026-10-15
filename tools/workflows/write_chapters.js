@@ -134,7 +134,8 @@ const FIX_SCHEMA = {
 const writePrompt = (ch) => `${CONTEXT(ch)}
 
 YOUR TASK: WRITE THE CHAPTER, in full, to ${REPO}/chapters/ch${ch.num}_${ch.slug}.tex.
-
+${ch.partial ? `\nRESUMING: an earlier writer was interrupted. The file already holds a partial draft (committed as work in
+progress). Read it, keep what is good (check it as you go), and continue from where it stops; do not start over.\n` : ''}
 Structure (PLAN.md 7.1): \\chapter{${ch.title}}\\label{ch:${ch.slug}}; then \\section*{Core results at a glance}
 (an enumerate with label=\\textbf{\\thechapter.\\arabic*}: one item per core result with its precise statement,
 its rigour tag in italics and a \\Cref to the numbered environment); \\section*{Where the paper uses this chapter};
