@@ -13,7 +13,7 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Bibliography | done, verified, 203 entries, no duplicates | `refs.bib` (shared), `bib/chNN.bib` (single-chapter) |
 | Findings about the paper | 80 points plus book-internal notes | `important/important_notes.md` (full record) |
 | Memo for the paper's author | done | `important/paper_memo.md` (final, reconciled) |
-| Revised paper with the stronger results | see `paper/CHANGES_v2.md` | `paper/note_v2.tex`, `docs/note_v2.pdf` |
+| Revised paper with the stronger results | done (32 pages), needs the author's review | `paper/note_v2.tex`, `docs/note_v2.pdf`, change log `paper/CHANGES_v2.md` |
 | Preface | written (needs a final update) | `frontmatter/preface.tex` |
 | Appendix A (prerequisites) | partly written (complex analysis, group theory and statistics sections missing) | `chapters/chA_prereq.tex` |
 | Chapters 1 to 22, Appendix B | **not yet written** | `chapters/` |
@@ -117,3 +117,13 @@ From `important/paper_memo.md` Section E: the comparison of DFG04's integral str
 H^1(X_0(N), Z_l) at non-Eisenstein ideals (medium-high confidence); the published theorem number in
 Calegari-Emerton; Sutherland's image labels against Sutherland16; Zywina's theorem numbers; the twist
 exchanges at q = 3 (need a reference); and every new proof in the revised paper, which the author must review.
+
+For the revised paper (`paper/CHANGES_v2.md` ends with the full list), check most carefully:
+* Proposition prop:pullback, which relies on DFG04's integral structure agreeing with H^1(X_0(N), Z_l) at
+  non-Eisenstein maximal ideals (only sketched; memo item E1);
+* the new proofs of Lemma lem:tamadd, Proposition prop:Sf, Lemma lem:IV at q = 2, Proposition prop:shapes,
+  the equality step in Theorem thm:quant, and Proposition prop:ns-structure (ii) when 3 | N (a new argument of
+  the revising agent, not in the memo);
+* the citation for the cyclic 27-isogeny in Proposition prop:no9 (Ligozat, Kenku, without theorem numbers);
+* the six tables in `paper/tables/`, which are placeholders and must be replaced by the real tables;
+* the new sentences in the statement on the use of an AI system.
