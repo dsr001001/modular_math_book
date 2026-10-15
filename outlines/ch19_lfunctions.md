@@ -91,7 +91,7 @@ non-interacting "primons", one bosonic mode per prime (one sentence in Section 2
   $L_p(M,s)=\det(1-\Phi_p\,p^{-s}\mid M^{I_p})^{-1}$ (Chapter 7, 8.2). Consequences used throughout: $L_p(M(n),s)=L_p(M,s+n)$,
   $L_p(\Q_\ell(1),s)=(1-p^{-1-s})^{-1}$, $L_p(V_\ell E^\vee,s)=L_p(E,s)$, $L_p(V_\ell E,s)=L_p(E,s+1)$.
 * **C4 (the four normalisations; display as one table, item 7.4).** $L(\ad f,s)=L(A_f,s)=\prod_pL_p(A_f,s)$: the paper's and
-  DFG04's adjoint, value used at $s=1$, functional equation $s\leftrightarrow1-s$. $L(\Sym f,s)=\prod_pL_p(\Sym^2V^\vee,s)=L(A_f,s-1)$: the
+  DFG04's adjoint, value used at $s=1$, functional equation $s\leftrightarrow1-s$. $L(\Sym f,s)=\prod_pL_p(\Sym V^\vee,s)=L(A_f,s-1)$: the
   paper's symmetric square and PARI's `lfunsympow(E,2)`, value used at $s=2$, functional equation $s\leftrightarrow3-s$. $L^{\nv}$: the naive
   versions (C6). $D(f,s)=\sum a_n(f)^2n^{-s}$: the Rankin series. Never write "$L(\Sym f,s)$" for the Rankin series.
 * **C5 ($P_q$).** For every prime $q$ (good or bad), $P_q(X)\in\Z[X]$ is the polynomial with $L_q(\Sym f,s)=P_q(q^{-s})^{-1}$; so
@@ -197,7 +197,7 @@ representations of $G_\Q$ on $\Q_\ell$-spaces (or over completions of a number f
 for $p\notin S\cup\{\ell\}$ the characteristic polynomial of $\Phi_p$ on $M_\ell$ has rational coefficients independent of $\ell$. Its
 $L$-function is $L(M,s)=\prod_pL_p(M_{\ell(p)},s)$ with $\ell(p)\ne p$, which is well defined when the (Frobenius-semisimplified)
 Weil-Deligne representation at each bad $p$ is independent of $\ell\ne p$. Known in the cases needed: $V_\ell E$, $V_\ell E^\vee$ and
-all tensor constructions of them ($\Sym^2$, $\ad$), by the Tate curve, Grothendieck's monodromy theorem and the Neron-Ogg-Shafarevich
+all tensor constructions of them ($\Sym$, $\ad$), by the Tate curve, Grothendieck's monodromy theorem and the Neron-Ogg-Shafarevich
 criterion (Chapters 7, 10, 11; SerreTate68, R); $V_\lambda(f)$ for newforms (Carayol86; Chapter 15, its 3.4, R). In general it is a
 conjecture. Paper: Section 1.1 ("the true local factor"; "PARI's `lfunsympow(E,2)` returns these factors at every prime").
 
@@ -293,8 +293,8 @@ occur, in one table (the writer checks each source's own notation before attribu
 
 | name | source | relation to $L(A_f,s)=L(\ad f,s)$ | functional equation | value the paper uses | factor at additive $p$ |
 |-|-|-|-|-|-|
-| $L(\ad f,s)$ | paper Sections 1, 1.1; DFG04 (1.7.2, $L(\ad^0M_f,s)$ at $s=1$; checked, Chapter 20 outline, Part 7; important_notes.md point 73) | itself | $s\leftrightarrow1-s$ | $s=1$ | true |
-| $L(s,\pi_f,\operatorname{Ad})$ | Gelbart-Jacquet (unitary) | $=L(A_f,s)$ (weight $k$: $L(A_f,s)=L(\Sym^2,s+k-1)$) | $s\leftrightarrow1-s$ | $s=1$ | true |
+| $L(\ad f,s)$ | paper Sections 1, 1.1; DFG04 (1.7.2, $L(\ad M_f,s)$ at $s=1$; checked, Chapter 20 outline, Part 7; important_notes.md point 73) | itself | $s\leftrightarrow1-s$ | $s=1$ | true |
+| $L(s,\pi_f,\operatorname{Ad})$ | Gelbart-Jacquet (unitary) | $=L(A_f,s)$ (weight $k$: $L(A_f,s)=L(\Sym,s+k-1)$) | $s\leftrightarrow1-s$ | $s=1$ | true |
 | $L(\Sym f,s)$ | paper; PARI `lfunsympow(E,2)`; Watkins02; CoatesSchmidt87 (verify) | $L(A_f,s-1)$ | $s\leftrightarrow3-s$ | $s=2$ | true |
 | Shimura's series | Shimura75: $\zeta^{(N)}(2s-2)\sum a_{n^2}n^{-s}$ | $L^{\nv}(A_f,s-1)$ (8.2(B)) | (via 7.1) | | naive ($1$) |
 | $L^{\nv}(\ad f,s)$ | paper Section 1.1; DFG04 (the naive factors of Proposition 1.4) | $L(A_f,s)\prod_{p^2\mid N}L_p(A_f,s)^{-1}$ | none | $s=1$ | naive ($1$) |
@@ -646,7 +646,7 @@ Line counts are lines of LaTeX, card excluded (PLAN.md Section 7.3: 1,000 to 2,2
 | the wild primes $2$ and $3$ (type does not determine the factor; the examples of Remark rem:wild) | 10.1, 10.2 |
 | how PARI computes these (`lfunsympow(E,2)`, `lfuneuler`, $P_q$, $e_\ell=v_\ell(P_q(q^{-2})/(1-a_q^2q^{-2}))$) | 11.1, 11.2 |
 | the definition of $e_\ell(E,q)$ (Definition def:terms) "and its invariance under quadratic twist" (false for $e_\ell$: point 15) | 9.1, 9.5 |
-| Flach's theorem on the finiteness of the Selmer group of $\Sym^2$ | 8.6 |
+| Flach's theorem on the finiteness of the Selmer group of $\Sym$ | 8.6 |
 | special values and the Bloch-Kato conjecture for the adjoint (one page); connection to the modular degree via the Petersson norm | 8.4, 8.5 (precise statements: Chapter 18) |
 | Deligne's conjecture on critical values (one paragraph) | 7.3 |
 | functional equation and analytic continuation of $L(\Sym f,s)$ (Shimura; Gelbart-Jacquet) | 7.1, 7.2 |

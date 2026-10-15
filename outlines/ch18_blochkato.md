@@ -634,7 +634,7 @@ Selmer group. Paper: Section sec:tam.
 
 ### Section 14. The Tamagawa number conjecture and the adjoint motive
 
-**14.1 `def:blochkato:adjoint-motive`** (definition and proposition; S). The adjoint motive $\ad^0M_f$ of a weight-$2$ newform: its $\ell$-adic
+**14.1 `def:blochkato:adjoint-motive`** (definition and proposition; S). The adjoint motive $\ad M_f$ of a weight-$2$ newform: its $\ell$-adic
 realisations $A_f$ (with $A_f\simeq\Sym V\otimes\det^{-1}$, Chapter 4), Betti and de Rham realisations; pure of weight $0$ with Hodge numbers
 $h^{1,-1}=h^{0,0}=h^{-1,1}=1$; $L(\ad f,s)=\prod_pL_p(A_f,s)$ (true Euler factors; at $p=\ell$ via $D_{\mathrm{cris}}$, independent of $\ell$), and
 $L(\ad f,s)=L(\Sym f,s+1)$ in the paper's normalisation $L_p(\Sym f,s)=L_p(A_f,s-1)$ (Chapter 19). The point $s=1$ is critical (Deligne79; DFG04
@@ -657,7 +657,7 @@ $\#\text{Sha}\cdot\prod_pc_p/\#E(\Q)_{\mathrm{tors}}^2$ (rank $0$); the local te
 and the $H^0$ terms are the torsion. Orientation only. Reference: BlochKato Section 6 (verify); Chapter 9. Paper: background.
 
 **14.4 `thm:blochkato:dfg-01`** (theorem, DFG04 Theorem 0.1; R). For a newform $f$ of weight $k\ge2$ and $\lambda\notin S_f$, the $\lambda$-part of the
-Bloch-Kato conjecture holds for $L(\ad^0M_f,1)$ (and $L(\ad^0M_f,0)$). For $f=f_E$ the identity reads, up to the exact normalisation of the
+Bloch-Kato conjecture holds for $L(\ad M_f,1)$ (and $L(\ad M_f,0)$). For $f=f_E$ the identity reads, up to the exact normalisation of the
 period in DFG04 Section 1.7 (verify): $v_\ell$ of the period-normalised $L(\ad f,1)$ (equivalently, by Hida's theorem and the Rankin-Shimura
 method, of the congruence ideal $\eta^\emptyset_{f,\lambda}$ up to the factors at $\Sigma$) equals $\len H^1_f(\Q,W)+\sum_{p\mid N}v_\ell(\Tam_p(A))$ plus the Euler-factor
 terms. The book quotes the statement with the reference and explains that (eq:identity) is its reading through the modular degree

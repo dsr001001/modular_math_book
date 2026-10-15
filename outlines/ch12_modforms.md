@@ -357,11 +357,11 @@ uses $v_q(j_E)$, which is Chapter 9's algebraic $j$, equal to this $j$ at the la
 
 **7.3 `thm:modforms:valence-level-one`** (theorem, the valence formula; P). Let $f\ne0$ be meromorphic on $\mathfrak H$, with $f|_k\gamma=f$ for
 $\gamma\in\SL_2(\Z)$, and meromorphic at $\infty$ ($f=\sum_{n\ge n_0}a_nq^n$). Then
-$$v_\infty(f)+\tfrac12v_i(f)+\tfrac13v_\zeta_3(f)+\sum_{p\in\SL_2(\Z)\backslash\mathfrak H,\ p\ne i,\zeta_3}v_p(f)=\frac k{12},$$
+$$v_\infty(f)+\tfrac12v_i(f)+\tfrac13v_{\zeta_3}(f)+\sum_{p\in\SL_2(\Z)\backslash\mathfrak H,\ p\ne i,\zeta_3}v_p(f)=\frac k{12},$$
 where $v_p$ is the order at any representative and $v_\infty$ the order in $q$. Proof: integrate $\frac1{2\pi i}f'/f$ around the boundary of
 $\mathcal F$ truncated at height $Y$ and indented by small arcs at $i$, $\zeta_3$, $-\bar\zeta_3$ (assume no other zeros on the boundary, else
 indent there too): the top segment gives $-v_\infty$; the vertical sides cancel ($T$); the two halves of the arc are related by
-$S$, and $\frac{f'}{f}(Sz)\,d(Sz)=\frac{f'}{f}(z)\,dz+k\frac{dz}z$ gives $\frac k{12}$; the indentations give $-\frac12v_i$ and $-\frac13v_\zeta_3$ (angles $\pi$ and
+$S$, and $\frac{f'}{f}(Sz)\,d(Sz)=\frac{f'}{f}(z)\,dz+k\frac{dz}z$ gives $\frac k{12}$; the indentations give $-\frac12v_i$ and $-\frac13v_{\zeta_3}$ (angles $\pi$ and
 $\pi/3+\pi/3$). Physics aside: the argument principle counts the "charge" inside a contour (RHB, residue theorem), and the
 symmetries cancel the sides. Reference: SerreCourse VII.3 (Theorem 3; verify); DiamondShurman 3.1 (exercises). Paper:
 background (7.4, 7.5; the Sturm bound 11.3).

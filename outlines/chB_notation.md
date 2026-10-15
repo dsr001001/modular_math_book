@@ -220,7 +220,7 @@ book's own text. Chapters bound: 2, 4, 5, 6, 7, 9, 10, 11, 13, 15, 17, 18, 19, 2
 >
 > | object | source | equals | functional equation | point used |
 > |-|-|-|-|-|
-> | $L(\ad f,s)$, $L(\ad^0M_f,s)$ | the paper; DFG04 1.7.2 | $L(A_f,s)$ | $s\leftrightarrow1-s$ | $s=1$ |
+> | $L(\ad f,s)$, $L(\ad M_f,s)$ | the paper; DFG04 1.7.2 | $L(A_f,s)$ | $s\leftrightarrow1-s$ | $s=1$ |
 > | $L(s,\pi_f,\operatorname{Ad})$ | Gelbart-Jacquet (unitary) | $L(A_f,s)$ (weight $k$: $L(\operatorname{Sym}^2,s+k-1)$) | $s\leftrightarrow1-s$ | $s=1$ |
 > | $L(\Sym f,s)$ | the paper; PARI `lfunsympow(E,2)`; Watkins02 | $L(A_f,s-1)$ | $s\leftrightarrow3-s$ | $s=2$ |
 > | Shimura's series $\zeta^{(N)}(2s-2)\sum a_{n^2}n^{-s}$ | Shimura75 | $L^{\nv}(A_f,s-1)$ | via the above | |
@@ -301,7 +301,7 @@ Changes: Part 3, K1 (Chapter 11), K2 (Chapter 15), P4 (PLAN.md, the codes).
 > **Convention B-C12.**
 > (a) For a representation $V$ (or lattice $T$), $\End(V)=V\otimes V^\vee$ with $g\cdot x=\rho(g)x\rho(g)^{-1}$ is written $\End(V)$ or
 > $\operatorname{Ad}V$; the **trace-zero adjoint** is $\ad V$ (the paper's macro `\ad`, which already contains the superscript $0$:
-> never `\ad^0`); $\Sym V$ (macro `\Sym`, exponent included) is the symmetric square. For $\dim V=2$ the basis of $\ad V$ is
+> never `\ad`); $\Sym V$ (macro `\Sym`, exponent included) is the symmetric square. For $\dim V=2$ the basis of $\ad V$ is
 > $e=e_1\otimes e_2^\vee$, $h=e_1\otimes e_1^\vee-e_2\otimes e_2^\vee$, $f=e_2\otimes e_1^\vee$ (ch:reps C3; the paper's Lemma lem:tamfactor).
 > $\ad V\simeq\Sym V\otimes\det^{-1}$ and, for $\ell$ odd, the trace form makes $\ad T$ self-dual, $\ad T\simeq(\ad T)^\vee$.
 > (b) The paper's objects: $V=V_\ell E$, $T=T_\ell E$, $\rho=\rho_{E,\ell}$, $\bar\rho$; $A=\ad T$, $A_f=\ad V=A\otimes\Q_\ell$, $W=A\otimes\Q_\ell/\Z_\ell$,
@@ -476,7 +476,7 @@ appendix the rows are grouped exactly as here, alphabetically inside each group 
 | $\Ind_H^G$, $\Res$ | induction, restriction | ch:reps 6.1; ch:galois galois:restriction | $\Res$ also cohomological restriction |
 | $\psi$ | character of order $4$ of $C_4$ with values in $\F_9^\times$, $\psi(J)=i$ | ch:reps C6, 8.2 | division polynomials $\psi_m$; isogeny $\psi$ (B-C15(m)) |
 | $\End V$, $\operatorname{Ad}V$ | full adjoint | ch:reps C3, 7.3 | - |
-| $\ad V$, $\ad T$ | trace-zero adjoint (macro `\ad`) | ch:reps 7.3; B-C12 | never `\ad^0` |
+| $\ad V$, $\ad T$ | trace-zero adjoint (macro `\ad`) | ch:reps 7.3; B-C12 | never `\ad` |
 | $\Sym V$ | symmetric square (macro `\Sym`) | ch:reps 7.5 | ch:reps names the map $\Phi\colon\Sym V\to\ad V$ (F3) |
 | $e$, $h$, $f$ | basis $e_1\otimes e_2^\vee$, $e_1\otimes e_1^\vee-e_2\otimes e_2^\vee$, $e_2\otimes e_1^\vee$ of $\ad$ | ch:reps C3; ch:cohomology model-setting | $e$ idempotent, $e_\ell$; $h$ newform; $f$ newform (local to lem:tamfactor) |
 | trace form | $(x,y)\mapsto\tr(xy)$ on $\ad T$ | ch:reps 7.6 | perfect for $\ell$ odd |
@@ -672,7 +672,7 @@ appendix the rows are grouped exactly as here, alphabetically inside each group 
 | $\Sigma$ | the paper's finite set of primes (in thm:main, the primes dividing $N$) | ch:galcoh C5; ch:blochkato C1 | $\mathcal S_N$; in thm:quant $\Sigma=S$ |
 | $G_\R$, $H^1(\R,M)$ | the real place | ch:galcoh C1, 6.4 | killed by $2$ |
 | $X^*$ | Pontryagin dual | ch:modules 8.1, 8.2; B-C4(b) | pullback stars on maps |
-| $\ad^0M_f$ | the adjoint motive | ch:blochkato 14.1 | - |
+| $\ad M_f$ | the adjoint motive | ch:blochkato 14.1 | - |
 
 ### 2.9 $L$-functions and the paper's local terms
 
@@ -1025,7 +1025,7 @@ ________________________________________________________________________________
 
 ## Part 5. What could not be settled here
 
-1. **DFG04's own conventions.** B-C2(d) and B-C7 assume DFG04 1.7.2 uses the geometric Frobenius and $L(\ad^0M_f,s)$ with the
+1. **DFG04's own conventions.** B-C2(d) and B-C7 assume DFG04 1.7.2 uses the geometric Frobenius and $L(\ad M_f,s)$ with the
    value at $s=1$, as the Chapter 7, 19 and 21 outlines report; nobody has checked the text (Chapter 19 marks its table row
    "verify"). Likewise the Hodge-Tate sign of DFG04 and Bloch-Kato (B-C5(c)) and the checklist of important_notes.md point 56.
 2. **The sign of the Manin constant.** B-C9 fixes $c_E>0$ by choosing the sign of $\omega_E$. This is a book decision, harmless

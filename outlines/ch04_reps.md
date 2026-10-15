@@ -95,7 +95,7 @@ Split with the neighbouring chapters (decided here; each decision is repeated in
   paper's Lemma lem:dfg21) and is not used for linear duals; PLAN.md's "$V^*\otimes W$" is written $V^\vee\otimes W$.
 * **C3 (adjoints).** $\End_k(V)=V\otimes V^\vee$ with $g\cdot x=\rho(g)x\rho(g)^{-1}$. The full adjoint is written
   $\End(V)$ (or $\Ad V$, macro `\Ad`); the trace-zero adjoint is the paper's $\ad V$ (macro `\ad`, which already
-  contains the superscript $0$: never write `\ad^0`). $\Sym V$ (macro `\Sym`, which already contains the exponent
+  contains the superscript $0$: never write `\ad`). $\Sym V$ (macro `\Sym`, which already contains the exponent
   $2$) is the symmetric square. Matrix units $E_{ij}=e_i\otimes e_j^\vee$; for $\dim V=2$ the basis of $\ad V$ is the
   paper's $e=E_{12}=e_1\otimes e_2^\vee$, $h=E_{11}-E_{22}$, $f=E_{21}=e_2\otimes e_1^\vee$ (as in Chapter 16).
 * **C4 (characters and twists).** A *character* of $G$ with values in $R$ is a homomorphism $\chi\colon G\to R^\times$;

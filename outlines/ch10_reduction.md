@@ -898,7 +898,7 @@ Pineda-Martin, arXiv:2609.01485 (Proposition 3 restates Kraus at $2$).
 
 ### 6.5 RHB and physics asides (one sentence each)
 The Tate curve $\C^\times/\mathsf q^{\Z}$ as the exponential picture of a torus (7.1); the Kodaira fibres $\tilde E_6,\tilde E_7,\tilde E_8$ as extended Dynkin diagrams, the
-same diagrams that classify simple Lie algebras and finite subgroups of $\SU(2)$ (5.1; the binary tetrahedral group $\SL_2(\F_3)$ of 6.6 is one of them).
+same diagrams that classify simple Lie algebras and finite subgroups of $\mathrm{SU}(2)$ (5.1; the binary tetrahedral group $\SL_2(\F_3)$ of 6.6 is one of them).
 
 ### 6.6 Verification log
 Scripts in `/tmp/ch10/scripts` (PARI/GP 2.17.2 through `cypari2`, Python 3), data in `/tmp/ch10/data` (`ecdata` `allcurves` files for conductors

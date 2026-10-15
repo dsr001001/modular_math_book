@@ -971,8 +971,8 @@ Pitfalls and conventions:
   ($\mathrm I_1^*$); the twist of 121a1 is 121c2, not 121c1; the twist of 11a1 by $-7$ is 539d2. Statements about $a_p$, $L$, $V_\ell$
   and (for $\ell$ prime to the isogeny degrees) $T_\ell$ are class-level; statements about $j$, $\Delta$, types, torsion and
   $v_q(j)$ are curve-level (Part 8, B2).
-* **Frobenius (C5, 5.7).** $\pi$ on $\tilde E$ is the arithmetic Frobenius. $\det(1-\FrobX\mid V_\ell E)=1-a_pX+pX^2$, while
-  $\det(1-\PhiX\mid V_\ell E)=1-\frac{a_p}pX+\frac1pX^2$. Do not write "the geometric Frobenius on $V_\ell E$ has eigenvalues
+* **Frobenius (C5, 5.7).** $\pi$ on $\tilde E$ is the arithmetic Frobenius. $\det(1-\Frob X\mid V_\ell E)=1-a_pX+pX^2$, while
+  $\det(1-\Phi X\mid V_\ell E)=1-\frac{a_p}pX+\frac1pX^2$. Do not write "the geometric Frobenius on $V_\ell E$ has eigenvalues
   $\alpha,\beta$" (that is the slip recorded in important_notes.md B1).
 * **Weil pairing sign (C7).** State Silverman's definition; the comparison with $e^{2\pi i/m}$ over $\C$ has a sign that
   differs between sources: check before printing.
@@ -1073,7 +1073,7 @@ New points about the paper in this chapter's area (not already recorded; each ch
 
 Book-internal inconsistencies found:
 * **B1 extension (Frobenius on $V_\ell E$).** The Chapter 21 outline, C2(b), says that with the geometric Frobenius
-  $L_p(V_\ell E,s)=(1-a_pp^{-s}+p^{1-2s})^{-1}$ and $\det(1-\PhiX\mid V)=(1-\alpha X)(1-\beta X)$. Both are wrong: with the geometric
+  $L_p(V_\ell E,s)=(1-a_pp^{-s}+p^{1-2s})^{-1}$ and $\det(1-\Phi X\mid V)=(1-\alpha X)(1-\beta X)$. Both are wrong: with the geometric
   Frobenius on $V_\ell E$ the factor is $(1-\frac{a_p}pp^{-s}+\frac1pp^{-2s})^{-1}=L_p(E,s+1)$; the stated formula holds for $V_\ell E^\vee=H^1$ (or
   with the arithmetic Frobenius on $V_\ell E$). Nothing on $\ad V$ changes. Chapter 9 fixes the convention in C5 and 5.7.
 * **B2. Curve-level twist identifications.** important_notes.md point 15 says the twist of 11a1 by $\chi_{-11}$ has type $\mathrm I_1^*$; in
