@@ -3,7 +3,6 @@
 This file is the first message of a new Claude Code session. It is self-contained: read it in full before
 doing anything, then follow it. Written 16 October 2026 at the end of the previous session.
 
----
 
 ## 0. For the human (do this before starting Claude Code)
 
@@ -20,7 +19,6 @@ doing anything, then follow it. Written 16 October 2026 at the end of the previo
    `gh auth login`, or an HTTPS personal access token, or an SSH key). Without push access, the work stays local.
 4. Upload or paste this file as the first message. Type `/cost` after each chapter to see what it cost.
 
----
 
 ## 1. The repository and the branch (use exactly these; never create another branch)
 
@@ -51,7 +49,6 @@ with waits of 2, 4, 8 and 16 seconds.
 Commit messages end with the line:
 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`
 
----
 
 ## 2. What the project is
 
@@ -76,7 +73,6 @@ Key files:
 | `tools/build_chapter.sh NN`, `tools/lint.py`, `tools/build.sh` | build one chapter, lint, build the book |
 | `chapters/` | written: `chA_prereq.tex` (Appendix A), `ch10_reduction.tex` (Chapter 10, the pilot) |
 
----
 
 ## 3. Where things stand
 
@@ -94,7 +90,6 @@ found real errors in every round; the full pipeline cost about USD 31 to 35 per 
 of it context re-read on every tool call, so budget mode (`args.lean: true`) was added, expected USD 12 to 18 per
 chapter (not yet measured).
 
----
 
 ## 4. Your task
 
@@ -116,7 +111,6 @@ Chapter numbers, slugs and titles are in `PLAN.md` Section 4 (the outline file n
 paper points, and ask them to type `/cost`. Continue only when they say so. After that, keep going chapter by
 chapter, reporting briefly after each, unless the human asks you to stop.
 
----
 
 ## 5. How to write a chapter (the same way as the previous sessions)
 
@@ -156,7 +150,6 @@ never run git; you commit.
    pages, review history, cost if the human reported it).
 5. Commit and push (Section 1). Never leave work uncommitted at the end of a turn.
 
----
 
 ## 6. Rules every chapter must follow (from PLAN.md Section 7; binding)
 
@@ -183,7 +176,6 @@ never run git; you commit.
   symbols (recompute with `elllocalred`); data available locally is conductor below 10,000 only, so print every
   count with that range.
 
----
 
 ## 7. Budget
 
@@ -193,7 +185,6 @@ large files in full when a grep will do; delegate reading to the agents; keep yo
 first chapter costs more than about USD 20, say so and propose cuts before continuing (for example skipping the
 check stage for the easiest chapters of Part I).
 
----
 
 ## 8. Open items that need a human (do not try to settle these)
 
