@@ -1150,3 +1150,38 @@ above that disagrees with them.
    the paper not covered; a cross-reference pass upgrades chapter-level references in Chapters 21 and 22 to
    precise theorem labels where they exist; the whole book is built; the bibliography is verified.
 5. Everything is committed on the branch `claude/textbook-paper-prerequisites-clhh5a`.
+
+## 9. Progress and measured cost (updated 16 October 2026)
+
+| Item | State |
+|-|-|
+| Outlines (22 chapters, Appendix B), bibliography, memo, revised paper | done (see CONTINUE.md) |
+| D3 applied to the outlines; Chapter 18 hedge settled by point 73 | done |
+| Appendix A | written, 994 lines, compiles |
+| **Chapter 10 (pilot)** | **written**: 2,344 lines, 48 pages, compiles, lint clean; full pipeline, three review rounds |
+| Chapters 1 to 9, 11 to 22, Appendix B, preface update | not yet written |
+
+**What the pilot taught.**
+* Length: 2,344 lines against a plan average of about 2,200 per chapter; the outline is a good predictor.
+* Quality: the writer covered every outline item and strengthened several proofs; the reviewers found real
+  errors in every round (mathematical findings per round: 5, 7, 7), so a review is worth its cost, but the
+  number of findings did not fall with more rounds. The third round's fixes were applied without a check.
+* New results and paper findings: important_notes.md points 81 to 83, memo Section F.
+* **Cost: about USD 31 to 35 for the chapter on Opus 5.5** (95M cache-read tokens, 2.3M cache-write tokens,
+  a small output). Almost all of it is context re-read on every tool call: each agent was told to read PLAN.md,
+  both versions of the paper, the notation outline and the memo in full (about 170k tokens), then made 100 to
+  200 tool calls. The writer alone was about a third of the cost. Output tokens are a small part.
+* Time: about 70 minutes of agent time per chapter (the agents run one after another).
+
+**Budget mode (`args.lean: true` in tools/workflows/write_chapters.js).** For a fixed budget (for example
+USD 100 of Console API credit), the workflow has a lean mode: each agent reads only PLAN.md 7.1 to 7.5, its
+outline, Part 1 of Appendix B, memo Sections B and C, and the paper only at its hooks, and is told to work in few,
+large steps; and the review is one combined (mathematical and editorial) review, one fix, and one check of the
+fixes, with a second fix only if the check finds a blocking or major problem. Expected cost about USD 12 to 18
+per chapter (an estimate; measure the first lean chapter). At that rate USD 100 writes about 5 to 7 chapters;
+the remaining 21 chapters and Appendix B need about USD 250 to 400 in lean mode, or about USD 700 to 800 with
+the full pipeline.
+
+**Priorities under a fixed budget.** (1) Part I (Chapters 1 to 4, the easiest and shortest) in lean mode,
+measuring the first chapter; (2) the chapters the paper leans on most (14, 15, 20, 21); (3) the rest. Chapters 21
+and 22 still come last, since they cite every other chapter.

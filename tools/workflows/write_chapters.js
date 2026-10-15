@@ -15,8 +15,11 @@ export const meta = {
 
 const REPO = args.repo || '/home/user/modular_math_book'
 const chapters = args.chapters
+// args.lean: true selects the budget pipeline (PLAN.md Section 9): a smaller reading list, one combined
+// review, one fix and one check of the fixes; about half the cost of the full pipeline.
+const LEAN = !!args.lean
 
-const CONTEXT = (ch) => `
+const CONTEXT_FULL = (ch) => `
 You are one of the agents writing a graduate-level mathematics textbook in LaTeX, in the git repository ${REPO}.
 Never run any git command (the orchestrator commits). Edit only the files named for your task. Never edit
 preamble.tex, main.tex, PLAN.md, refs.bib, the outlines or the files in important/.
@@ -54,6 +57,26 @@ Read before doing anything else, in this order:
 6. The outlines of the neighbouring chapters, to cite them correctly: cite other chapters only by
    \\Cref{ch:slug} and, in prose, by their outline item numbers ("Chapter 14, item 9.3") where useful.
 `
+
+const CONTEXT_LEAN = (ch) => CONTEXT_FULL(ch).split('Read before doing anything else')[0] + `Read before doing anything else, in this order (budget mode: read only what is listed, in large pieces):
+1. ${REPO}/PLAN.md Sections 7.1 to 7.5 only (find them with grep -n '^##' PLAN.md) and your chapter's entry in
+   Section 4: the writing conventions (structure, labels, citations, environments, the strict typography rules:
+   no em dash or en dash in any form, never "---" or "--", ASCII-only source) and the binding decisions B14, B17,
+   B2, B24, D1 (state the book's stronger version as the theorem, with a Commentary giving the paper's
+   statement), D2 (length is a guideline, not a cap; never padding), D3 (chi_d by discriminant, chi_{q*}, never
+   chi_q; chi_l is the cyclotomic character), D4 (Manin constant c_E > 0).
+2. Your chapter's outline ${REPO}/outlines/ch${ch.num}_${ch.slug}.md in full: the specification.
+3. ${REPO}/outlines/chB_notation.md, Part 1 only (conventions B-C1 to B-C16); use the symbol index by grep.
+4. ${REPO}/important/paper_memo.md Sections B and C: never repeat a listed error of the paper.
+5. The paper ${REPO}/paper/note_v2.tex only at the labels your outline's paper hooks name (grep for them); do
+   not read it in full. ${REPO}/preamble.tex: the only macros available.
+6. Other outlines only by grep, for the items you cite.
+
+Work economically: every tool call re-sends your whole context, and that is what the work costs. Do not re-read
+a file you have read; read in large pieces; write in few large steps (one append per section); run the build
+and the linter at the end, and again only after fixing errors.
+`
+const CONTEXT = (ch) => (LEAN ? CONTEXT_LEAN(ch) : CONTEXT_FULL(ch))
 
 const WRITE_SCHEMA = {
   type: 'object',
@@ -181,10 +204,43 @@ the card still matches. Return the structured output.`
 
 const sev = (fs, levels) => (fs || []).filter(f => levels.includes(f.severity))
 
+const combinedReviewPrompt = (ch) => mathReviewPrompt(ch, 1).replace('Do NOT edit\nany file. Return the structured output.', '') +
+  `\nIn the same pass, also report editorial problems: build and lint errors (run both), structure per PLAN.md 7.1
+(card complete and precise, paper section, paperlinks, exercises, notes), coverage of every outline item, terms
+used before they are defined, Appendix B conventions, typography. Do NOT edit any file. Return the structured output.`
+
+const checkPrompt = (ch, findings, fix) => `${CONTEXT(ch)}
+
+YOUR TASK: CHECK THE FIXES in ${REPO}/chapters/ch${ch.num}_${ch.slug}.tex. A reviewer reported the findings below and
+a fixer reports what it applied. Read only the affected passages (grep for them) and whatever they depend on.
+For each finding, decide whether the fix is correct and complete, and whether the new text introduced a new
+error; report only remaining or new problems, with the same severities as the review (blocking, major, minor).
+Run tools/build_chapter.sh ${ch.num} and the linter once. Do NOT edit any file. Return the structured output.
+
+Findings:
+${JSON.stringify(findings, null, 1)}
+
+Fixer's report:
+${JSON.stringify(fix, null, 1)}`
+
+const leanReview = async (written, ch) => {
+  const none = { findings: [], summary: 'not run' }
+  const review = (await agent(combinedReviewPrompt(ch), { label: `review:ch${ch.num}`, phase: 'Review', schema: REVIEW_SCHEMA })) || none
+  const history = [{ round: 1, review: review.findings.length }]
+  if (review.findings.length === 0) return { chapter: ch.num, slug: ch.slug, written, review_history: history, last_fix: null, remaining_findings: [] }
+  let fix = await agent(fixPrompt(ch, review, none, 1), { label: `fix:ch${ch.num}:r1`, phase: 'Fix', schema: FIX_SCHEMA })
+  const check = (await agent(checkPrompt(ch, review.findings, fix), { label: `check:ch${ch.num}`, phase: 'Fix', schema: REVIEW_SCHEMA })) || none
+  history.push({ round: 2, check: check.findings.length })
+  if (sev(check.findings, ['blocking', 'major']).length > 0) {
+    fix = await agent(fixPrompt(ch, check, none, 2), { label: `fix:ch${ch.num}:r2`, phase: 'Fix', schema: FIX_SCHEMA })
+  }
+  return { chapter: ch.num, slug: ch.slug, written, review_history: history, last_fix: fix, remaining_findings: check.findings }
+}
+
 const results = await pipeline(
   chapters,
   ch => agent(writePrompt(ch), { label: `write:ch${ch.num}`, phase: 'Write', schema: WRITE_SCHEMA }),
-  async (written, ch) => {
+  LEAN ? leanReview : async (written, ch) => {
     const history = []
     let round = 1
     let [math, edit] = await parallel([

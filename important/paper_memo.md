@@ -448,6 +448,18 @@ Counts: **A: 12** strengthenings, **B: 10** errors, **C: 14** gaps, **D: 17** ex
 - The equality rates after `thm:twist` (B2).
 - The 3Ns violation count under a stated reading (C11).
 
+## F. Additions from writing the chapters
+
+* **F1 (Chapter 10; strengthening; important_notes point 81).** Open question 6 of the revised paper is settled:
+  under the twist by Q(sqrt(-3)) the types exchange II<->IV*, III<->III*, IV<->II* at q = 3 with f_3 unchanged,
+  given only the Ogg-Saito formula; so the max formula for w_l(E,q) of Section 1.4 holds at q = 3. Proved in
+  Chapter 10 (prop:reduction:twist-at-3); checked on all 5,122 pairs below conductor 10,000. This replaces the
+  "need a reference" of item E for the twist exchanges at q = 3.
+* **F2 (Chapter 10; data protocol; point 82).** PARI 2.17.2 returns q_E^5 for ellinit(E, O(2^k)).tate[3] when
+  v_2(j) = -1. No count changes, but Sections sec:tam and sec:data should say how q = 2 was handled.
+* **F3 (Chapter 10; expository; point 83).** Remark rem:wild's 58% is the share among curves numbered 1; over all
+  curves it is 61%. Name the population.
+
 ## Re-verification log
 
 | curve | what was checked | result |

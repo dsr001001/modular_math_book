@@ -40,11 +40,11 @@ use `data/ecdata/`.
 Paste this as the first message:
 
 > Continue the textbook in this repository, on branch `claude/textbook-paper-prerequisites-clhh5a`. Read
-> `CONTINUE.md`, then `PLAN.md`. Run `tools/setup_env.sh`. Then do the pilot: write Chapter 10 with the
-> workflow in `tools/workflows/write_chapters.js`, commit and push, and stop to show me the result, its
-> length and what it cost before writing more chapters.
+> `CONTINUE.md`, then `PLAN.md` Sections 7.5 and 9. Run `tools/setup_env.sh`. Then write Chapter 1 with the
+> workflow in `tools/workflows/write_chapters.js` in lean mode (`args.lean: true`), commit and push, and stop to
+> show me its length and what it cost (`/cost`) before writing more chapters.
 
-(Replace Chapter 10 by another chapter if preferred; see Section 5.)
+The pilot (Chapter 10) is done; see PLAN.md Section 9 for what it taught and what it cost.
 
 ## 4. Small tasks to do first (before or with the pilot)
 
@@ -110,16 +110,16 @@ All are in `PLAN.md` Section 7; the essentials:
 
 ## 7. Cost and size
 
-The book is planned at about 49,000 lines of LaTeX (roughly 1,100 to 1,400 pages). Each outline was produced
-by one agent in about 25 minutes; writing a chapter with two reviews and up to three fix rounds will take
-several agents per chapter. Measure the pilot before committing to the rest.
+The book is planned at about 49,000 lines of LaTeX (roughly 1,100 to 1,400 pages). The pilot (Chapter 10,
+2,344 lines) cost about USD 31 to 35 on Opus 5.5 with the full pipeline, almost all of it context re-read on
+every tool call. Budget mode (`args.lean: true`) is expected to cost about USD 12 to 18 per chapter. Details
+and priorities under a fixed budget: PLAN.md Section 9.
 
 ## 8. Open items that need a human or a source check
 
 From `important/paper_memo.md` Section E: the comparison of DFG04's integral structure with
 H^1(X_0(N), Z_l) at non-Eisenstein ideals (medium-high confidence); the published theorem number in
-Calegari-Emerton; Sutherland's image labels against Sutherland16; Zywina's theorem numbers; the twist
-exchanges at q = 3 (need a reference); and every new proof in the revised paper, which the author must review.
+Calegari-Emerton; Sutherland's image labels against Sutherland16; Zywina's theorem numbers; and every new proof in the revised paper, which the author must review.
 
 For the revised paper (`paper/CHANGES_v2.md` ends with the full list), check most carefully:
 * Proposition prop:pullback, which relies on DFG04's integral structure agreeing with H^1(X_0(N), Z_l) at
@@ -130,3 +130,21 @@ For the revised paper (`paper/CHANGES_v2.md` ends with the full list), check mos
 * the citation for the cyclic 27-isogeny in Proposition prop:no9 (Ligozat, Kenku, without theorem numbers);
 * the six tables in `paper/tables/`, which are placeholders and must be replaced by the real tables;
 * the new sentences in the statement on the use of an AI system.
+
+## 9. Running on Claude Console API credit
+
+The work so far ran in Claude Code on the web (claude.ai). To run it on Console API credit instead:
+
+1. On a Linux machine (or WSL on Windows; `tools/setup_env.sh` uses apt, so on a Mac install MacTeX, pandoc,
+   poppler and `pip install cypari2` by hand), install Claude Code and sign in with the Console account
+   (`claude`, then choose the Anthropic Console login), or export `ANTHROPIC_API_KEY` with a key from the Console.
+2. In the Console, set a spend limit on the workspace the key belongs to (for example USD 100), so a run cannot
+   overspend.
+3. `git clone` the repository, `git checkout claude/textbook-paper-prerequisites-clhh5a`, run
+   `tools/setup_env.sh`, start `claude` in the repository and paste the prompt of Section 3.
+4. Use budget mode (`args.lean: true`), one chapter at a time at first. Type `/cost` after each chapter and
+   record the figure in PLAN.md Section 9. If the Workflow tool is not available, ask Claude to run the same
+   stages with sub-agents, using the prompts in `tools/workflows/write_chapters.js` (lean variant).
+5. Commit and push after every chapter, so nothing is lost if the session ends.
+
+With USD 100, expect about 5 to 7 chapters in budget mode; start with Part I (Chapters 1 to 4).
