@@ -16,9 +16,9 @@ fraction field $K$ and valuation $v$; $M^\vee=\Hom(M,R)$ is the linear dual and 
 of $\T\otimes\Zl$.
 
 \begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
-\item \textbf{Conventions.} Rings and modules; $\mathcal O$, $\varpi$, $k$, $K$, $v$ with $v(\varpi)=1$; $M[\mf a]$; three duals $M^\vee$, $M^*$, $T^D$; adjoints $A^\dagger$;
-lattices and saturation; pairings, left and right orthogonals; lengths and the order $\#\mathcal O/\Delta=(\#k)^{v(\Delta)}$ for finite $k$ only; $\T_{\mf m}=e_{\mf m}(\T\otimes\Zl)$,
-never the algebraic localisation $\T_{(\mf m)}$; relations are rows. \Cref{conv:modules:rings,conv:modules:dvr,conv:modules:duals,conv:modules:lattices,conv:modules:pairings,conv:modules:lengths,conv:modules:tm,conv:modules:matrices}.
+\item \textbf{Conventions.} Appendix B (B-C4, B-C10, B-C13, B-C15); rings commutative; $\mathcal O$, $\varpi$, $k$, $K$, $v$ with $v(\varpi)=1$; $M[\mf a]$; lattices;
+pairings, left and right orthogonals, self-adjointness; lengths in place of the order $\#\mathcal O/\Delta$; relations are rows; the letters $I$, $J$ of
+Lemma lem:crit; $\T_{\mf m}=e_{\mf m}(\T\otimes\Zl)$, never the algebraic localisation $\T_{(\mf m)}$. \Cref{conv:modules:rings,conv:modules:tm}.
 \item \textbf{Modules} (definition: module, submodule, quotient, finitely generated, cyclic, homomorphism, kernel, image, cokernel, $\Hom_R$, $\End_R$;
 action of an algebra, faithful action). \Cref{def:modules:module,def:modules:algebra-modules}.
 \item \textbf{Basic facts.} The set $\Hom_R(M,N)$ is an $R$-module, the ring $\End_R(M)$ is an $R$-algebra, and $Rm\simeq R/\Ann_R(m)$ for $m\in M$. \emph{(proved here)} \Cref{prop:modules:module-basics}.
@@ -86,12 +86,13 @@ $[L^\vee:M^\vee]=[M:L]$. \emph{(proved here)} \Cref{prop:modules:dual-inclusion}
 primitive, the quotient is cyclic $\simeq R/(r)$, $rh=f+g_0$ with $p_1(h)=f/r$, $g_0\in L_2$, and $f\equiv g\pmod{r'M}$ for some $g\in L_2$ iff $r'\mid r$. \emph{(proved here)}
 \Cref{prop:modules:congruence-decomposition}.
 \item \textbf{Discrete valuation rings.} For a Noetherian local domain $\mathcal O$, not a field: $\mf m$ principal iff $\mathcal O$ is a principal ideal domain iff the nonzero ideals
-are the $\mf m^k$ iff $\mathcal O$ is the ring of a discrete valuation iff $\mathcal O$ is integrally closed of dimension one; then $x=u\varpi^{v(x)}$ uniquely. \emph{(proved here,
+are the $\mf m^k$ iff $\mathcal O$ is the ring of a discrete valuation iff $\mathcal O$ is integrally closed of dimension one; then $x=u\varpi^{v(x)}$ uniquely.
+$\mathcal O$ is \emph{complete} if $\mathcal O\to\varprojlim\mathcal O/\varpi^n$ is bijective. \emph{(proved here,
 except the equivalence with integral closure: stated; reference)} \Cref{thm:modules:dvr}.
 \item \textbf{Modules over a discrete valuation ring.} $M\simeq\mathcal O^r\oplus\bigoplus_{i\le s}\mathcal O/\varpi^{a_i}$ uniquely; torsion-free implies free; $\dim_kM/\varpi M=r+s$, $\dim_kM[\varpi]=s$;
 formulas for $M[\varpi^k]$, $M/\varpi^kM$; cyclic iff $r+s\le1$; $L$ saturated iff $L\cap\varpi M=\varpi L$. \emph{(proved here)} \Cref{prop:modules:dvr-modules}.
 \item \textbf{The ring $\Zl$.} $\Zl=\varprojlim\Z/\ell^n$ is a discrete valuation ring with uniformiser $\ell$ and residue field $\Fl$; $\Zl/\ell^n=\Z/\ell^n$; integers prime to $\ell$ are units,
-so a $\Zl$-module killed by such an integer is $0$; $\Ql=\Zl[1/\ell]$; $\Zl$ is flat over $\Z$ and $A\otimes\Zl=\Zl^r\oplus A_{\tors}[\ell^\infty]$; finitely generated $\Zl$-modules
+so a $\Zl$-module killed by such an integer is $0$; $\Ql=\Zl[1/\ell]$ and $\Q\cap\Zl=\Z_{(\ell)}$; $\Zl$ is flat over $\Z$ and $A\otimes\Zl=\Zl^r\oplus A_{\tors}[\ell^\infty]$; finitely generated $\Zl$-modules
 are complete; completions of Noetherian rings are flat. \emph{(proved here, except the statement on completions: stated; reference)} \Cref{thm:modules:zl}.
 \item \textbf{Baer's criterion.} Over a principal ideal domain divisible modules are injective, and $\Hom(-,D)$ is exact. \emph{(proved here)} \Cref{lem:modules:baer}.
 \item \textbf{The module $\Qlmod$.} $\Qlmod=\Z[1/\ell]/\Z=(\Q/\Z)[\ell^\infty]=\varinjlim\Z/\ell^k$; divisible, with $(\Qlmod)[\ell^k]\simeq\Z/\ell^k$ its only proper submodules;
@@ -112,7 +113,7 @@ change; $\Ann(\bigoplus\mathcal O/\varpi^{a_i})=\varpi^{\max a_i}$. \emph{(prove
 minors of a presentation matrix; it does not depend on the choices). \emph{(proved here)} \Cref{def:modules:fitting}, \Cref{lem:modules:fitting-well-defined}.
 \item \textbf{Properties of Fitting ideals.} $\Fitt(R/\mf a)=\mf a$ and $\Fitt(R^n)=0$; the Fitting ideal of a direct sum is the product, $\Fitt(M\oplus N)=\Fitt(M)\Fitt(N)$; $\Fitt$ grows along surjections; for $M$ with $n$
 generators, $\Ann(M)^n\subseteq\Fitt(M)\subseteq\Ann(M)$;
-$\Fitt$ commutes with every base change; for a short exact sequence, $\Fitt(M')\Fitt(M'')\subseteq\Fitt(M)$, with strict inclusion for the module $\Z[x]/(4,x)$; over a domain,
+$\Fitt$ commutes with every base change; for a short exact sequence with $M'$ finitely generated, $\Fitt(M')\Fitt(M'')\subseteq\Fitt(M)$, with strict inclusion for the module $\Z[x]/(4,x)$; over a domain,
 $\Fitt(M)\ne0$ if and only if $M$ is torsion.
 \emph{(proved here)} \Cref{prop:modules:fitting-properties}.
 \item \textbf{Fitting equals $\varpi^{\mathrm{length}}$.} Over a principal ideal domain $\Fitt(\bigoplus R/(d_i))=(\prod d_i)$ (and $0$ with a free summand); over $\mathcal O$,
@@ -121,13 +122,13 @@ $\Ann=\ell^{\max(v,m)}\Zl$. \emph{(proved here)} \Cref{thm:modules:fitting-dvr},
 \item \textbf{Pontryagin duality for finite groups.} $A^*=\Hom(A,\Q/\Z)\simeq A$; $A\simeq A^{**}$; duality is exact; $B^\perp\simeq(A/B)^*$, $B^*\simeq A^*/B^\perp$; for $\ell$-primary $A$,
 $A^*=\Hom(A,\Qlmod)$ and $\len A^*=\len A$. \emph{(proved here)} \Cref{thm:modules:pontryagin-finite}.
 \item \textbf{Pontryagin duality for $\Zl$-modules.} $X^*=\Hom(X,\Qlmod)$ is an exact duality between finitely generated $\Zl$-modules and cofinitely generated $\ell$-primary
-modules, with $\Zl^*=\Qlmod$, $(\Qlmod)^*=\Zl$, $X\simeq X^{**}$; every cofinitely generated $W$ is $(\Qlmod)^r\oplus F$ with $F$ finite and $r=\rank W^*$; lengths are preserved.
+modules, with $\Zl^*=\Qlmod$, $(\Qlmod)^*=\Zl$, $X\simeq X^{**}$, and $W^*=\varprojlim W[\ell^k]^*$ profinite; every cofinitely generated $W$ is $(\Qlmod)^r\oplus F$ with $F$ finite and $r=\rank W^*$; lengths are preserved.
 \emph{(proved here; the extension to all compact and discrete modules: stated; reference)} \Cref{thm:modules:pontryagin-zl}.
 \item \textbf{$T$ and $W=T\otimes\Qlmod$.} For $T$ free of rank $r$: $0\to T\to V\to W\to0$ is exact; $W\simeq(\Qlmod)^r$; $W[\ell^k]\simeq T/\ell^kT$; $T=\varprojlim W[\ell^k]$; $W^*\simeq T^\vee$;
 all functorially; the same over any complete $\mathcal O$. \emph{(proved here)} \Cref{prop:modules:t-and-w}.
 \item \textbf{Cyclic $\ell$-primary modules.} An $\ell$-primary torsion module with $\#A[\ell]\le\ell$ is $0$, $\Z/\ell^h$ or $\Qlmod$; if finite its length is the largest $k$ with
 an element of exact order $\ell^k$. \emph{(proved here)} \Cref{cor:modules:cyclic-l-primary}.
-\item \textbf{Perfect pairings and Gram determinants.} A pairing between lattices of rank $n$ is perfect iff its Gram determinant is a unit; $\det(P^{\mathsf T}GQ)=\det P\det Q\det G$,
+\item \textbf{Perfect pairings and Gram determinants.} A pairing between free modules of rank $n$ over any ring is perfect iff its Gram determinant is a unit (over a domain, nondegenerate iff it is nonzero); $\det(P^{\mathsf T}GQ)=\det P\det Q\det G$,
 so $\Delta R$, and over $\mathcal O$ the valuation $v(\Delta)$, are basis independent; perfectness survives base change. \emph{(proved here)} \Cref{def:modules:pairing},
 \Cref{prop:modules:gram}.
 \item \textbf{Orthogonals.} For a perfect pairing on a lattice of rank $n$, orthogonals are saturated, $N^\perp$ has rank $n-\rank N$, and ${}^\perp(N^\perp)=\operatorname{sat}(N)$.
@@ -142,7 +143,7 @@ identity: stated; reference; and the normal form: proof sketched here)} \Cref{pr
 $\T\otimes S$) give orthogonal decompositions on whose summands the pairing stays perfect; if $A^\dagger=wAw^{-1}$ on $\T$ then $\langle x,wy\rangle$ is perfect with $\T$ self-adjoint,
 and alternating if $\langle\ ,\ \rangle$ is antisymmetric and $w^\dagger=w$. \emph{(proved here)} \Cref{prop:modules:adjoint}.
 \item \textbf{An algebra paired with a module.} If $S\times\T\to R$ is perfect with $\langle ts,u\rangle=\langle s,tu\rangle$, then $S\simeq\T^\vee$ as $\T$-modules, $S[\mf a]\simeq\Hom(\T/\mf a,R)$
-is saturated, $\T$ acts faithfully, and for $I\cap J=0$ with $\T/I$, $\T/J$ torsion-free and complementary ranks, $S/(S[I]\oplus S[J])\simeq(\T/(I+J))^*$ over $\Z$ or $\Zl$.
+is saturated, $\T$ acts faithfully, and for $\mf a\cap\mf b=0$ with $\T/\mf a$, $\T/\mf b$ torsion-free and complementary ranks, $S/(S[\mf a]\oplus S[\mf b])\simeq(\T/(\mf a+\mf b))^*$ over $\Z$ or $\Zl$.
 \emph{(proved here)} \Cref{prop:modules:algebra-duality}.
 \item \textbf{Finite-dimensional commutative algebras.} Finitely many maximal ideals, all primes maximal, nilpotent Jacobson radical; $A\simeq\prod A_{\mf m_i}$ via idempotents;
 reduced iff a product of fields; $V=\bigoplus e_iV$ with $e_iV=V_{\mf m_i}$. \emph{(proved here)} \Cref{thm:modules:artinian-algebras}.
@@ -169,7 +170,7 @@ every commutative algebra containing them; for operators acting on the factors o
 \Cref{lem:modules:common-eigenvector}.
 \item \textbf{Congruence ideal} (definition: for $\pi\colon\T\onto\mathcal O$, $\wp=\ker\pi$, $I=\Ann_\T(\wp)$, $\eta=\pi(I)$; congruence module $\T/(\wp+I)\simeq\mathcal O/\eta$).
 \Cref{def:modules:congruence-ideal}.
-\item \textbf{Congruence ideals.} $I\ne0$; $\eta\ne0$ iff $\wp\cap I=0$ iff the factor of $\pi$ in $\T_K$ is $K$ (proof: $\pi(t)x=tx+(\pi(t)-t)x=0$, no reducedness needed); then
+\item \textbf{Congruence ideals.} $I\ne0$; $\eta\ne0$ iff $\wp\cap I=0$ iff the factor of $\pi$ in $\T_K$ is $K$ (proof: $\pi(t)x=tx+(\pi(t)-t)x=0$); then
 $I\simeq\eta$, $\Ann_\T(I)=\wp$, $\eta$ is the denominator of $e_\pi$; over complete $\mathcal O$, $\Ann_\T(\wp)=\Ann_{\T_{\mf m}}(\wp_{\mf m})\times0$, so $\eta$ is computed in $\T_{\mf m}$ (the other
 factors lie in $\wp$); $\eta$ commutes with flat base change. \emph{(proved here)} \Cref{prop:modules:congruence-ideal}, \Cref{ex:modules:toy-congruence}.
 \item \textbf{Ingredients of Lemma lem:ddt417.} For $L$ free over $\mathcal O$ with a perfect pairing making $\T$ self-adjoint and $\eta\ne0$: $L[\wp]$, $L[I]$ are saturated, $L[\wp]\cap L[I]=0$,
@@ -190,15 +191,16 @@ $\rank L=d\rank\T$, then $L\simeq\T^d$ and $\T$ is Gorenstein. \emph{(proved her
 \item \textbf{Lemma lem:tamfactor} (the Tamagawa factor at a multiplicative prime): the structure $H^1(I,M)=(\Zl/n')^2\oplus\Zl$ and its torsion
 (\Cref{thm:modules:structure-pid}); the Fitting ideal of $\Z/\ell^v\oplus\Z/\ell^m$ (\Cref{thm:modules:fitting-dvr}, \Cref{pl:modules:tamagawa}).
 \item \textbf{Lemma lem:fpr} ($\Fitt_{\Zl}H^1_f(\Q_p,T^D)=L_p(A_f,1)^{-1}\Tam_p(T^D)$): Fitting ideals as lengths (\Cref{thm:modules:fitting-dvr}); $\Q\cap\Zl=\Z_{(\ell)}$
-(\Cref{thm:modules:zl}).
-\item \textbf{Theorem thm:main, Theorem thm:dfg37, Remark rem:ns} (lengths of Selmer groups): additivity of length (\Cref{thm:modules:jordan-holder}), length over $\Zl$
+(\Cref{thm:modules:zl}(iv)).
+\item \textbf{Theorem thm:main, Theorem thm:dfg37, Remark rem:ns, Conjecture conj:euler} (lengths of Selmer groups and of $H^0(\Q,W^D)$): additivity of length (\Cref{thm:modules:jordan-holder}), length over $\Zl$
 (\Cref{prop:modules:length-dvr}), Pontryagin duality preserves length (\Cref{thm:modules:pontryagin-zl}, \Cref{pl:modules:dfg21}).
 \item \textbf{Lemma lem:dfg21} (the four-term sequence with Pontryagin duals) and the paragraph after it ($H^1(\R,T^D)$ killed by $2$): \Cref{thm:modules:pontryagin-finite,thm:modules:pontryagin-zl},
 \Cref{thm:modules:zl}(iii).
 \item \textbf{Lemma lem:h0} ($W^D$, its $\ell^k$-torsion, cyclicity, Nakayama): \Cref{prop:modules:t-and-w,cor:modules:cyclic-l-primary}, \Cref{thm:modules:nakayama}.
 \item \textbf{Lemma lem:crit} (congruence criterion): $\T/(I+J)\simeq\Z/\phi_f(J)$ (\Cref{thm:modules:isomorphism}); $\T\into\T/I\times\T/J$ (\Cref{prop:modules:two-submodules}); dualising
 it (\Cref{prop:modules:dual-inclusion,prop:modules:algebra-duality}); the congruence module of $S_2=\Z f+L$ (\Cref{prop:modules:congruence-decomposition}); $\T\otimes\Q=\Q\times\T'$ and
-$I\cap J=0$ (\Cref{thm:modules:artinian-algebras}, \Cref{prop:modules:congruence-ideal}); ``the same over $\Zl$'' (\Cref{prop:modules:flat}).
+$I\cap J=0$ (\Cref{thm:modules:artinian-algebras}, \Cref{prop:modules:congruence-ideal}); ``the same over $\Zl$'' (\Cref{prop:modules:flat}). The lemma
+itself is proved in full in \Cref{ch:modgalrep}.
 \item \textbf{Lemma lem:old} (oldforms): the non-semisimple $U_p$ and its eigenvectors (\Cref{ex:modules:shift}); common eigenforms in a tensor product
 (\Cref{lem:modules:common-eigenvector}).
 \item \textbf{Lemma lem:IV} and Lemma lem:tamadd ($T_3E$ free of rank one over $\Z_3[\zeta_3]$): \Cref{prop:modules:torsion}(iii).
@@ -219,60 +221,38 @@ eigenspaces, projecting a congruence, the $\Zl$-version of Lemma lem:crit, Lemma
 This section fixes the language. Every object of the paper's commutative algebra is a module over a commutative
 ring: the space $S_2(\Gamma_0(N);\Z)$ of integral cusp forms and the cohomology $H^1(X_0(N),\Zl)$ are modules over the
 Hecke algebra $\T$; the Tate module $T=\Tl E$ is a module over $\Zl$, and in Lemma lem:IV over $\Z_3[\zeta_3]$; the
-lattice $L$ of Lemma lem:ddt417 is a module over an $\mathcal O$-algebra $\T$. We first record the conventions of the
-chapter, which are those of Appendix B (conventions B-C4, B-C10, B-C13, B-C15) specialised to commutative algebra.
+lattice $L$ of Lemma lem:ddt417 is a module over an $\mathcal O$-algebra $\T$. We first record the conventions of the chapter.
 
-\begin{convention}[rings and modules]\label{conv:modules:rings}
-Rings are commutative with $1$, ring homomorphisms preserve $1$, and modules are unital ($1\cdot m=m$), as in
-\Cref{ch:rings}. The only exception is the Jordan-Holder theorem (\Cref{thm:modules:jordan-holder}), stated for
-left modules over an arbitrary ring with $1$. $R$ is a ring and $M$, $N$ are $R$-modules. An $R$-algebra is a ring $A$
-together with a ring homomorphism $R\to A$. The endomorphism ring $\End_R(M)$ is not commutative in general, but the
-algebras $\T$ acting on modules in this chapter, like the paper's Hecke algebra, are commutative subrings of it.
-\end{convention}
-
-\begin{convention}[discrete valuation rings]\label{conv:modules:dvr}
-$\mathcal O$ is a discrete valuation ring (\Cref{thm:modules:dvr}) with uniformiser $\varpi$, residue field
-$k=\mathcal O/\varpi\mathcal O$, fraction field $K$, and valuation $v\colon K\to\Z\cup\{+\infty\}$ normalised by $v(\varpi)=1$ and
-$v(0)=+\infty$. For a nonzero ideal $\mf a=a\mathcal O$ we put $v(\mf a)=v(a)$. For $\mathcal O=\Zl$: $\varpi=\ell$, $k=\Fl$ and $v=v_\ell$.
-The paper writes $\mathcal O$, $\lambda$ and $v_\lambda$; for rational newforms $\mathcal O=\Zl$ and $\lambda=\ell$. The letter $\pi$ is kept
-for the paper's homomorphism $\pi\colon\T\to\mathcal O$ of Lemma lem:ddt417, never for a uniformiser.
-\end{convention}
-
-\begin{convention}[torsion and the three duals]\label{conv:modules:duals}
-For an ideal $\mf a\subseteq R$ put $M[\mf a]=\{m\in M:\ am=0\text{ for all }a\in\mf a\}$, and $M[x]=M[xR]$; so
-$M[\ell^k]$ is the $\ell^k$-torsion and $M[\ell^\infty]=\bigcup_kM[\ell^k]$. These are the paper's $L[\wp]$ and $L[I]$.
-Three duals occur, and they are never confused:
+\begin{convention}[notation of the chapter]\label{conv:modules:rings}
+The book-wide conventions of \Cref{ch:notation} apply, in particular B-C4 (one symbol for each dual: the linear dual
+$M^\vee=\Hom_R(M,R)$, the Pontryagin dual $M^*$, the Kummer dual $T^D$, which is not used here, and the adjoint $A^\dagger$ of an
+operator, never $A^*$; a star after the name of a map is a pullback), B-C10 (``length'' without subscript is $\len_{\Zl}$, and
+$\#X=\ell^{\len X}$ for finite $\Zl$-modules), B-C13(a), (c) (the paper's $\T_{\mf m}$ and its two uses of the letter $I$) and
+B-C15(a), (h) (uniformisers are $\varpi$; the paper's $\pi\colon\T\to\mathcal O$ and Gram determinant $\Delta$ keep their names). In addition:
 \begin{enumerate}[label=(\alph*)]
-\item the \emph{linear dual} $M^\vee=\Hom_R(M,R)$ (the paper's $\Hom(L[\wp],\mathcal O)$);
-\item the \emph{Pontryagin dual}, which is $M^*=\Hom(M,\Q/\Z)$ for a finite abelian group, and $M^*=\Hom_{\Zl}(M,\Qlmod)$ for
-a $\Zl$-module that is finitely generated or $\ell$-primary torsion (the paper's ${}^*$ in Lemma lem:dfg21);
-\item the \emph{Kummer dual} $T^D=\Hom(T,\Zl(1))$, which belongs to \Cref{ch:galcoh,ch:blochkato} and is not used here.
+\item Rings are commutative with $1$, ring homomorphisms preserve $1$ and modules are unital, as in \Cref{ch:rings}, except in the
+Jordan-Holder theorem (\Cref{thm:modules:jordan-holder}). An $R$-algebra is a ring $A$ with a ring homomorphism $R\to A$. The
+algebras $\T$ acting on modules, like the Hecke algebra, are commutative subrings of the (noncommutative) ring $\End_R(M)$.
+\item $\mathcal O$ is a discrete valuation ring (\Cref{thm:modules:dvr}) with uniformiser $\varpi$, residue field $k=\mathcal O/\varpi\mathcal O$,
+fraction field $K$ and valuation $v\colon K\to\Z\cup\{+\infty\}$, $v(\varpi)=1$; $v(a\mathcal O)=v(a)$ for a nonzero ideal. For $\mathcal O=\Zl$:
+$\varpi=\ell$, $k=\Fl$, $v=v_\ell$. The paper writes $\lambda$ and $v_\lambda$.
+\item $M[\mf a]=\{m\in M:am=0\text{ for all }a\in\mf a\}$, $M[x]=M[xR]$ and $M[\ell^\infty]=\bigcup_kM[\ell^k]$; these are the paper's $L[\wp]$ and
+$L[I]$. The Pontryagin dual is $M^*=\Hom(M,\Q/\Z)$ for a finite abelian group and $M^*=\Hom_{\Zl}(M,\Qlmod)$ for a $\Zl$-module that is
+finitely generated or $\ell$-primary torsion (the paper's ${}^*$ in Lemma lem:dfg21).
+\item Over a principal ideal domain $R$ with fraction field $K$, a \emph{lattice} is a finitely generated free $R$-module, and a lattice
+in a finite-dimensional $K$-vector space $V$ is a finitely generated $R$-submodule spanning $V$ (free of rank $\dim V$ by
+\Cref{thm:modules:submodule-free}).
+\item A \emph{pairing} is an $R$-bilinear map $\langle\ ,\ \rangle\colon L\times M\to R$; its Gram matrix in bases $(e_i)$, $(f_j)$ is
+$G=(\langle e_i,f_j\rangle)_{i,j}$. For $S'\subseteq L$ and $S\subseteq M$, $S'^{\perp}=\{y\in M:\langle S',y\rangle=0\}$ is the \emph{right} and
+${}^\perp S=\{x\in L:\langle x,S\rangle=0\}$ the \emph{left} orthogonal; for a symmetric or antisymmetric pairing on $L=M$ they agree and we
+write $S^\perp$. An endomorphism $t$ of $L$ is \emph{self-adjoint} if $\langle tx,y\rangle=\langle x,ty\rangle$ for all $x,y$.
+\item The paper's order $\#\mathcal O/\Delta$ is $(\#k)^{v(\Delta)}$ and makes sense only for finite $k$; the book writes the length
+$\len_{\mathcal O}(\mathcal O/\Delta\mathcal O)=v(\Delta)$.
+\item Relations are rows: a presentation $R^m\xrightarrow{A}R^n\to M\to0$ means $M=R^n/(\text{row space of }A)$. The letter $\varepsilon$
+is not used (dual numbers are $k[x]/(x^2)$), and no Frobenius element occurs.
+\item Where the text quotes Lemma lem:crit (in the list above and in paperlinks), $I=\ker\phi_f$ and $J=\Ann_\T(I)$ are that lemma's
+letters; everywhere else $I=\Ann_\T(\wp)$, as in Lemma lem:ddt417.
 \end{enumerate}
-The adjoint of an operator $A$ with respect to a pairing is $A^\dagger$ (\Cref{prop:modules:adjoint}), never $A^*$; a
-star after the name of a map is a pullback (Appendix B, convention B-C4).
-\end{convention}
-
-\begin{convention}[lattices]\label{conv:modules:lattices}
-Over a principal ideal domain $R$ with fraction field $K$, a \emph{lattice} is a finitely generated free $R$-module, and a
-lattice in a finite-dimensional $K$-vector space $V$ is a finitely generated $R$-submodule that spans $V$ (it is free of
-rank $\dim V$ by \Cref{thm:modules:submodule-free}). A submodule $L'$ of a lattice $L$ is \emph{saturated} if $L/L'$ is
-torsion-free (\Cref{def:modules:saturated}). Lattices stable under a group, and homothety, are \Cref{ch:reps}.
-\end{convention}
-
-\begin{convention}[pairings]\label{conv:modules:pairings}
-A \emph{pairing} is an $R$-bilinear map $\langle\ ,\ \rangle\colon L\times M\to R$. Its Gram matrix in bases $(e_i)$ of $L$ and
-$(f_j)$ of $M$ is $G=(\langle e_i,f_j\rangle)_{i,j}$. For $S\subseteq M$ and $S'\subseteq L$ we write
-$S'^{\perp}=\{y\in M:\langle S',y\rangle=0\}$ (the \emph{right} orthogonal) and ${}^\perp S=\{x\in L:\langle x,S\rangle=0\}$ (the
-\emph{left} orthogonal). When $L=M$ and the pairing is symmetric or antisymmetric the two agree and we write $S^\perp$; the
-paper's pairings are alternating, so the distinction never matters there. An endomorphism $t$ of $L$ is
-\emph{self-adjoint} if $\langle tx,y\rangle=\langle x,ty\rangle$ for all $x,y$.
-\end{convention}
-
-\begin{convention}[lengths and orders]\label{conv:modules:lengths}
-$\len_R(M)$ is the length of $M$ (\Cref{def:modules:composition}). As in Appendix B (convention B-C10), ``length''
-without subscript means $\len_{\Zl}$, and for finite $\Zl$-modules $\#X=\ell^{\len X}$. The paper's ``$\#\mathcal O/\Delta$'' is
-$(\#k)^{v(\Delta)}$ and makes sense only when $k$ is finite; for a general discrete valuation ring the book writes
-$\len_{\mathcal O}(\mathcal O/\Delta\mathcal O)=v(\Delta)$ instead.
 \end{convention}
 
 \begin{convention}[the paper's $\T_{\mf m}$]\label{conv:modules:tm}
@@ -282,13 +262,6 @@ $\T_{\mf m}$ \emph{always} means $(\T\otimes\Zl)_{\mf m}$, the direct factor $e_
 $e_{\mf m}$ (\Cref{thm:modules:idempotent-lifting}); likewise $L_{\mf m}=e_{\mf m}(L\otimes\Zl)$ for a $\T$-module $L$. The algebraic
 localisation of $\T$ itself at a maximal ideal is written $\T_{(\mf m)}$; it is not complete and is not a direct factor of
 anything. This is the paper's usage in Lemma lem:hecke, Remark rem:free and Theorem thm:quant.
-\end{convention}
-
-\begin{convention}[matrices and letters]\label{conv:modules:matrices}
-Relations are rows: a presentation $R^m\xrightarrow{A}R^n\to M\to0$ means $M=R^n/(\text{row space of }A)$, with
-$A\in\Mat_{m\times n}(R)$ acting on row vectors from the right. $A^{\mathsf T}$ is the transpose. The letters $p$, $q$,
-$\ell$ are primes. The letter $\varepsilon$ is not used in this chapter (it is the unramified character of Appendix B,
-convention B-C14); dual numbers are written $k[x]/(x^2)$. This chapter contains no Frobenius element.
 \end{convention}
 
 \begin{definition}[modules]\label{def:modules:module}
@@ -718,7 +691,7 @@ Theorem thm:quant, which works over $\Zl$ from the start.
 \section[Noetherian rings, Nakayama, localisation]{Noetherian rings, Nakayama's lemma, local rings and localisation}\label{sec:modules:local}
 
 Every ring in the paper is Noetherian: $\Z$, $\Zl$, the Hecke algebra $\T$ (a finitely generated $\Z$-module) and its
-completions $\T_{\mf m}$. Nakayama's lemma is used twice in the paper, in disguise: in Remark rem:free, where ``$J_0(N)[\mf m]$ is
+completions $\T_{\mf m}$. Nakayama's lemma is used twice in the paper: in Remark rem:free, where ``$J_0(N)[\mf m]$ is
 two-dimensional'' becomes ``the Tate module is generated by two elements over $\T_{\mf m}$'' (\Cref{thm:modules:mazur-freeness}),
 and in Lemma lem:h0, where a homomorphism $T/\ell^k\to(T/\ell^k)(1)$ that is nonzero modulo $\ell$ is an isomorphism. Local rings
 and localisation give the meaning of $\T_{\mf m}$.
@@ -885,8 +858,8 @@ product, $(1,0)\notin\mf p$ becomes a unit in $R_{\mf p}$ and $(1,0)(0,1)=0$, so
 \begin{remark}\label{rem:modules:localisation-factor}
 The last example of (vii) is the reason why, for a finite algebra over a \emph{complete} discrete valuation ring, the
 localisation at a maximal ideal is a direct factor (\Cref{thm:modules:idempotent-lifting}): completeness produces the
-decomposition into a product, and localisation then picks out one factor. For the Hecke algebra over $\Z$ itself there is no
-such decomposition, which is why the paper always works with $\T\otimes\Zl$ (\Cref{conv:modules:tm}).
+decomposition into a product, and localisation then picks out one factor. Without completeness there is in general no
+such decomposition (\Cref{thm:modules:idempotent-lifting}(v)), which is why the paper always works with $\T\otimes\Zl$ (\Cref{conv:modules:tm}).
 \end{remark}
 
 \section[Modules over a principal ideal domain]{Finitely generated modules over a principal ideal domain; lattices and saturation}\label{sec:modules:pid}
@@ -1137,8 +1110,7 @@ The coefficient rings of the paper are discrete valuation rings: $\Zl$ everywher
 $\Z_3[\zeta_3]$ in Lemma lem:IV. Over such a ring finitely generated modules are classified by a rank and a list of exponents, which is
 what makes lengths and Fitting ideals computable (\Cref{sec:modules:length}). The module $\Qlmod$ carries the discrete coefficients
 $W=\ad T\otimes\Qlmod$ of the paper's Selmer groups, and its injectivity makes Pontryagin duality exact (\Cref{sec:modules:pontryagin}).
-The analytic description of $\Q_p$ (absolute values, Cauchy sequences, Hensel's lemma, the units $\Z_p^\times$) is \Cref{ch:local}; here $\Zl$
-is built algebraically.
+Here $\Zl$ is built algebraically; the analytic theory is \Cref{ch:local} (\Cref{warn:modules:analytic}).
 
 \begin{theorem}[discrete valuation rings]\label{thm:modules:dvr}
 Let $\mathcal O$ be a Noetherian local domain that is not a field, with maximal ideal $\mf m$ and fraction field $K$. The following are equivalent:
@@ -1168,6 +1140,11 @@ $v(x)=0$ then $v(x^{-1})=0$ and $x^{-1}\in\mathcal O$), so $x/\varpi\in\mathcal 
 edition) or \cite[Chapter I, Section 2]{SerreLocalFields}. It is used only in \Cref{ch:ant}.
 The last statements were proved along the way.
 \end{proof}
+
+A discrete valuation ring $\mathcal O$ is \emph{complete} if the map $\mathcal O\to\varprojlim_n\mathcal O/\varpi^n\mathcal O$ is an isomorphism. Then every
+finitely generated $\mathcal O$-module $M$, in particular every free one of finite rank, is complete: $M\to\varprojlim_nM/\varpi^nM$ is an
+isomorphism, by the proof of \Cref{thm:modules:zl}(vi), which uses only completeness of the ring. $\Zl$ is complete (\Cref{thm:modules:zl}(vi));
+$\Z_{(\ell)}$ is not, since $\varprojlim\Z_{(\ell)}/\ell^n=\varprojlim\Z/\ell^n=\Zl$ is uncountable.
 
 \begin{example}\label{ex:modules:dvr-examples}
 Discrete valuation rings: $\Z_{(p)}$ (\Cref{ch:rings}); $F[[x]]$ for a field $F$ (every nonzero series is $x^ku$ with $u$ a unit, since a
@@ -1207,7 +1184,7 @@ componentwise operations (as a profinite group it is constructed in \Cref{ch:gro
 residue field $\Fl$ (via $x\mapsto x_1$) and ideals $\ell^k\Zl$, and its valuation extends $v_\ell$ on $\Z$.
 \item $\Z\to\Zl$, $n\mapsto(n\bmod\ell^k)_k$, is injective; $\Z_{(\ell)}\subseteq\Zl$; and $x\mapsto x_n$ induces $\Zl/\ell^n\Zl\simeq\Z/\ell^n$. An integer prime to
 $\ell$ is a unit of $\Zl$, so a $\Zl$-module killed by an integer prime to $\ell$ is $0$.
-\item $\Ql:=\Frac(\Zl)=\Zl[1/\ell]$.
+\item $\Ql:=\Frac(\Zl)=\Zl[1/\ell]$, and $\Q\cap\Zl=\Z_{(\ell)}$ inside $\Ql$.
 \item $\Zl$ is flat over $\Z$. For a finitely generated abelian group $A\simeq\Z^r\oplus A_{\tors}$, $A\otimes_\Z\Zl\simeq\Zl^r\oplus A_{\tors}[\ell^\infty]$; for finite
 $A$, $\#(A\otimes\Zl)=\ell^{v_\ell(\#A)}$, the $\ell$-part of $\#A$.
 \item Every finitely generated $\Zl$-module $M$ is complete: $M\to\varprojlim_nM/\ell^nM$ is an isomorphism.
@@ -1220,14 +1197,15 @@ flat over $R$, and $\hat M=\varprojlim M/I^nM\simeq M\otimes_R\hat R$ for finite
 (i) If $x_1\ne0$, then $\ell\nmid x_n$ for all $n$, so each $x_n$ is a unit of $\Z/\ell^n$, and the inverses are compatible (inverses are unique);
 conversely $x_1$ is the image of $x$ in the field $\Fl$.
 (ii) Let $x\ne0$ and let $k$ be the largest index with $x_k=0$ (with $x_0=0$ by convention); it exists because $x_n=0$ forces $x_j=0$ for
-$j\le n$. For $n\ge k$, $x_{n+k}\equiv x_k=0\pmod{\ell^k}$, so $x_{n+k}=\ell^ky_n$ with $y_n\in\Z/\ell^n$ well defined; the $y_n$ are compatible, $y_1\ne0$ because
+$j\le n$. For $n\ge1$, $x_{n+k}\equiv x_k=0\pmod{\ell^k}$, so $x_{n+k}=\ell^ky_n$ with $y_n\in\Z/\ell^n$ well defined; the $y_n$ are compatible, $y_1\ne0$ because
 $x_{k+1}\ne0$, so $u=(y_n)$ is a unit with $x=\ell^ku$. Then $k=v(x)$ is determined by $x$. Since $\ell^k\ne0$ (its component at $k+1$ is
 nonzero), the product $\ell^{a+b}uu'$ of two nonzero elements is nonzero: $\Zl$ is a domain. A nonzero ideal is $\ell^k\Zl$ for its least
 valuation $k$, so $\Zl$ is a principal ideal domain, local with maximal ideal $\ell\Zl$ (the non-units, by (i)): a discrete valuation ring by
 \Cref{thm:modules:dvr}. The kernel of $x\mapsto x_1$ is $\{v\ge1\}=\ell\Zl$.
 (iii) $n\ne0$ has nonzero image in $\Z/\ell^k$ for $\ell^k>\abs n$. By (ii), $x_n=0$ iff $v(x)\ge n$, so the kernel of $x\mapsto x_n$ is $\ell^n\Zl$; it is
 onto because $\Z$ maps onto $\Z/\ell^n$. Integers prime to $\ell$ are units by (i), which gives $\Z_{(\ell)}\subseteq\Zl$.
-(iv) $x/y=x\ell^{-v(y)}u^{-1}$ for $y=\ell^{v(y)}u$.
+(iv) $x/y=x\ell^{-v(y)}u^{-1}$ for $y=\ell^{v(y)}u$. By (iii), $\Q\subseteq\Ql$ and $\Z_{(\ell)}\subseteq\Zl$. Conversely, if $a/b$ is in lowest terms
+with $\ell\mid b$, then $\ell\nmid a$ and $v(a/b)=-v_\ell(b)<0$ by (ii), so $a/b\notin\Zl$.
 (v) $\Zl$ is torsion-free over $\Z$, hence flat (\Cref{prop:modules:flat}(ii)). $\Z/n\otimes\Zl=\Zl/n\Zl=\Zl/\ell^{v_\ell(n)}\Zl\simeq\Z/\ell^{v_\ell(n)}$ by
 (ii), (iii); sum over the cyclic summands of $A$.
 (vi) For $M=\Zl$ the map $\Zl\to\varprojlim\Zl/\ell^n\Zl=\varprojlim\Z/\ell^n=\Zl$ is the identity; for $M=\Z/\ell^a$ the system is eventually constant;
@@ -1310,7 +1288,7 @@ the completion of $\Q$, Hensel's lemma and the structure of $\Z_p^\times$ and $\
 After Lemma lem:dfg21 the paper says: ``At $\infty$, $H^1(\R,T^D)$ is killed by $2$, so $H^1_f(\R,T^D)=0$ for $\ell$ odd''. The group
 $H^1(\R,T^D)$ is a $\Zl$-module (\Cref{ch:cohomology}) killed by the integer $2$, which is a unit of $\Zl$ for $\ell$ odd
 (\Cref{thm:modules:zl}(iii)); so it is $0$, and so is its submodule $H^1_f(\R,T^D)$. In Lemma lem:fpr, ``a nonzero rational number which is an
-$\ell$-adic integer'' means an element of $\Q\cap\Zl=\Z_{(\ell)}$.
+$\ell$-adic integer'' means an element of $\Q\cap\Zl=\Z_{(\ell)}$ (\Cref{thm:modules:zl}(iv)).
 \end{paperlink}
 
 \section{Length, annihilators and Fitting ideals}\label{sec:modules:length}
@@ -1425,7 +1403,7 @@ $\Ann_\T(\mf b)$ is the annihilator of $\mf b$ viewed as a $\T$-module. ``$M$ is
 \begin{definition}[Fitting ideals]\label{def:modules:fitting}
 Let $M$ be a finitely generated $R$-module with generators $x=(x_1,\dots,x_n)$, and let $\operatorname{Rel}(x)=\{r\in R^n:\sum r_ix_i=0\}$ be the module of
 relations (row vectors). The (zeroth) \emph{Fitting ideal} $\Fitt_R(M)$ is the ideal generated by the determinants $\det(r^{(1)},\dots,r^{(n)})$ of all
-$n$-tuples of relations (the $n\times n$ matrices with these rows). If $R^m\xrightarrow{A}R^n\to M\to0$ is a presentation (\Cref{conv:modules:matrices}),
+$n$-tuples of relations (the $n\times n$ matrices with these rows). If $R^m\xrightarrow{A}R^n\to M\to0$ is a presentation (\Cref{conv:modules:rings}(g)),
 $\Fitt_R(M)$ is the ideal generated by the $n\times n$ minors of $A$ (and is $0$ if $m<n$); see \Cref{lem:modules:fitting-well-defined}. More generally
 $\Fitt_i(M)$ is generated by the $(n-i)\times(n-i)$ minors; we use only $\Fitt=\Fitt_0$.
 \end{definition}
@@ -1460,7 +1438,8 @@ Let $M$, $N$ be finitely generated.
 \item If $M\onto N$ then $\Fitt(M)\subseteq\Fitt(N)$.
 \item $\Fitt(M)\subseteq\Ann(M)$, and $\Ann(M)^n\subseteq\Fitt(M)$ if $M$ is generated by $n$ elements.
 \item $\Fitt_S(S\otimes_RM)=\Fitt_R(M)S$ for every ring homomorphism $R\to S$ (no flatness is needed).
-\item For an exact sequence $0\to M'\to M\to M''\to0$, $\Fitt(M')\Fitt(M'')\subseteq\Fitt(M)$. Equality can fail: over $R=\Z[x]$, with $M=R/(4,x)\simeq\Z/4$,
+\item For an exact sequence $0\to M'\to M\to M''\to0$ with $M'$ finitely generated (automatic if $R$ is Noetherian,
+\Cref{prop:modules:noetherian}(ii)), $\Fitt(M')\Fitt(M'')\subseteq\Fitt(M)$. Equality can fail: over $R=\Z[x]$, with $M=R/(4,x)\simeq\Z/4$,
 $M'=2M\simeq R/(2,x)$ and $M''=M/2M\simeq R/(2,x)$, one has $\Fitt(M)=(4,x)$ but $\Fitt(M')\Fitt(M'')=(2,x)^2=(4,2x,x^2)$.
 \item Over a domain, $\Fitt(M)\ne0$ if and only if $M$ is torsion.
 \end{enumerate}
@@ -1505,13 +1484,12 @@ and quotients have smaller length. (iv) By (ii) and \Cref{prop:modules:annihilat
 
 \begin{warning}\label{warn:modules:fitt-ann}
 Over $\Zl$ the Fitting ideal of a finite module sees its whole order, while the annihilator sees only its exponent. The Tamagawa factor is a
-Fitting ideal; reading it as an annihilator would replace $v_\ell(n)+\min(\dots)$ in Lemma lem:tamfactor by $\max(v_\ell(n),\min(\dots))=v_\ell(n)$
-(Exercise \ref{ex:modules:ex-tamfactor}). Over a general ring the Fitting ideal is not determined by lengths either
+Fitting ideal; reading it as an annihilator would replace $v_\ell(n)+\min(\dots)$ in Lemma lem:tamfactor by $\max(v_\ell(n),\min(\dots))=v_\ell(n)$. Over a general ring the Fitting ideal is not determined by lengths either
 (\Cref{prop:modules:fitting-properties}(vi)).
 \end{warning}
 
 \begin{example}\label{ex:modules:fitting-examples}
-Over $\Z$ (relations as rows), and then over $\Z_2$, $\Z_3$, $\Zl$; all entries were computed by hand and the Smith forms checked with PARI
+Over $\Z$ (relations as rows), and then over $\Z_3$ and $\Zl$; all entries were computed by hand and the Smith forms checked with PARI
 (\Cref{ex:modules:smith}).
 \begin{center}\small
 \begin{tabular}{llll}
@@ -1538,7 +1516,7 @@ smaller than the annihilator, as \Cref{prop:modules:fitting-properties}(iv) allo
 
 \begin{paperlink}\label{pl:modules:tamagawa}
 Section 1.2 defines $\Tam_p(M)=\Fitt_{\Zl}\bigl((H^1(I_p,M)_{\tors})^{G_{\Q_p}}\bigr)$, the Fitting ideal \emph{of the invariants} (Appendix B, convention
-B-C10; the version of 10 October 2026 placed the superscript outside the parentheses). This is a finite $\Zl$-module, so by
+B-C10). This is a finite $\Zl$-module, so by
 \Cref{thm:modules:fitting-dvr}(ii) $v_\ell(\Tam_p(M))$ is its length. In Lemma lem:tamfactor the invariants are the $x\bar e+y\bar h$ in
 $(\Z/\ell^{v_\ell(n)})\bar e\oplus(\Z/\ell^{v_\ell(n)})\bar h$ with $(q-1)y\equiv0$ and $c'y\equiv0$, a module isomorphic to $\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))}$, of
 length $v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$: this is the paper's formula, and the Fitting ideal of $\Z/\ell^v\oplus\Z/\ell^m$ is
@@ -1589,7 +1567,9 @@ $\Zl$-linear because $\Zl$ acts on a module killed by $\ell^k$ through $\Z/\ell^
 Let $\mathcal C$ be the category of finitely generated $\Zl$-modules and $\mathcal D$ that of $\ell$-primary torsion $\Zl$-modules $W$ with $W[\ell]$ finite
 (\emph{cofinitely generated} modules), with the discrete topology. For $X$ in either, put $X^*=\Hom_{\Zl}(X,\Qlmod)$. (For $M\in\mathcal C$ every such
 homomorphism is continuous for the $\ell$-adic topology, since its image is a finitely generated, hence finite, submodule of $\Qlmod$, killed by
-some $\ell^k$; so the homomorphism kills the open submodule $\ell^kM$.)
+some $\ell^k$; so the homomorphism kills the open submodule $\ell^kM$.) For $W\in\mathcal D$, $W^*=\varprojlim_k(W[\ell^k])^*$ along the restriction
+maps, and we give it this inverse-limit topology, which is profinite; by (ii) below $W^*$ is finitely generated, and the topology is its
+$\ell$-adic one, because $\ell^kW^*$ kills $W[\ell^k]$ and a continuous bijection from a compact space onto a Hausdorff space is a homeomorphism.
 \begin{enumerate}[label=(\roman*)]
 \item $\Zl^*=\Qlmod$, $(\Qlmod)^*=\Zl$, and $(\Z/\ell^a)^*\simeq\Z/\ell^a$.
 \item $X\mapsto X^*$ is exact, maps $\mathcal C$ to $\mathcal D$ and $\mathcal D$ to $\mathcal C$, and the evaluation maps $M\to M^{**}$, $W\to W^{**}$ are isomorphisms.
@@ -1684,32 +1664,33 @@ identifies $L/L[\wp]^\perp$ with $\Hom(L[\wp],\mathcal O)$, because $L[\wp]$ is 
 order $\#\mathcal O/\Delta$''. Section 4.1 of the paper adds that the pairing $\hat\delta_!$ is perfect and alternating, that the Hecke operators are
 self-adjoint for it, and that on the rank-two lattice $M_{f^\Sigma,\lambda}$ ``the Gram determinant is $(\eta^\Sigma_{f,\lambda})^2$ up to a unit''. Lemma lem:crit
 uses the pairing $S_2(\Gamma_0(N);\Z)\times\T\to\Z$. This section proves each of these statements in the abstract. Throughout, $R$ is a principal
-ideal domain (in practice $\Z$, $\Zl$ or $\mathcal O$) with fraction field $K$, and pairings follow \Cref{conv:modules:pairings}. To a reader of Riley,
+ideal domain (in practice $\Z$, $\Zl$ or $\mathcal O$) with fraction field $K$, and pairings follow \Cref{conv:modules:rings}(e). To a reader of Riley,
 Hobson and Bence a Gram matrix is a metric tensor $g_{ij}=\langle e_i,e_j\rangle$; the novelty is that over $\Z$ or $\Zl$ the determinant is meaningful
 only up to units, and its valuation is what is measured.
 
 \begin{definition}[perfect pairings]\label{def:modules:pairing}
 For a pairing $\langle\ ,\ \rangle\colon L\times M\to R$ let $\alpha\colon L\to M^\vee$, $x\mapsto\langle x,-\rangle$, and $\beta\colon M\to L^\vee$, $y\mapsto\langle-,y\rangle$. The pairing is
-\emph{perfect} if $\alpha$ and $\beta$ are isomorphisms and \emph{nondegenerate} if they are injective. For lattices $L$, $M$ of the same rank with
-bases $(e_i)$, $(f_j)$, the \emph{Gram determinant} is $\Delta=\det(\langle e_i,f_j\rangle)$.
+\emph{perfect} if $\alpha$ and $\beta$ are isomorphisms and \emph{nondegenerate} if they are injective. For free modules $L$, $M$ of the same finite rank
+with bases $(e_i)$, $(f_j)$, the \emph{Gram determinant} is $\Delta=\det(\langle e_i,f_j\rangle)$.
 \end{definition}
 
 \begin{proposition}\label{prop:modules:gram}
-Let $L$, $M$ be lattices of rank $n$ and $G$ the Gram matrix.
+Let $R$ be any commutative ring, $L$, $M$ free $R$-modules of rank $n$ and $G$ the Gram matrix of a pairing $L\times M\to R$.
 \begin{enumerate}[label=(\roman*)]
-\item The pairing is perfect iff $\det G\in R^\times$, iff one of $\alpha$, $\beta$ is an isomorphism; it is nondegenerate iff $\det G\ne0$. For example,
+\item The pairing is perfect iff $\det G\in R^\times$, iff one of $\alpha$, $\beta$ is an isomorphism. If $R$ is a domain, it is nondegenerate iff
+$\det G\ne0$. For example,
 $\langle x,y\rangle=2xy$ on $\Z$ is nondegenerate and not perfect; over $\Zl$ with $\ell$ odd it is perfect.
 \item If the bases are changed by $e'=eP$, $f'=fQ$ (that is, $e'_j=\sum_iP_{ij}e_i$), then $G'=P^{\mathsf T}GQ$ and $\det G'=\det P\det Q\det G$; for $L=M$ with the
 same change of basis on both sides, $\det G'=(\det P)^2\det G$. So the ideal $\Delta R$ does not depend on the bases; over a discrete valuation ring
 $v(\Delta)$ is a basis-independent invariant.
-\item Perfectness is preserved by base change: if $R\to S$ is a homomorphism to a principal ideal domain, the $S$-bilinear extension to
+\item Perfectness is preserved by base change: if $R\to S$ is a ring homomorphism, the $S$-bilinear extension to
 $(L\otimes S)\times(M\otimes S)$ has Gram matrix the image of $G$, so it is perfect if the original is.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
 (i) In the dual basis $(f_j^\vee)$, $\alpha(e_i)=\sum_j\langle e_i,f_j\rangle f_j^\vee$, so $\alpha$ has matrix $G$ and $\beta$ has matrix $G^{\mathsf T}$, both of determinant $\det G$.
-\Cref{prop:modules:free}(iii) gives the first claim; over the domain $R$, a square matrix is injective iff its determinant is nonzero (compute over
+\Cref{prop:modules:free}(iii), valid over any commutative ring, gives the first claim; over a domain $R$ with fraction field $K$, a square matrix is injective iff its determinant is nonzero (compute over
 $K$). (ii) $\langle e'_i,f'_j\rangle=\sum_{a,b}P_{ai}\langle e_a,f_b\rangle Q_{bj}$, and $\det P$, $\det Q$ are units. (iii) Clear.
 \end{proof}
 
@@ -1777,7 +1758,7 @@ In Lemma lem:ddt417, ``the pairing identifies $L/L[\wp]^\perp$ with $\Hom(L[\wp]
 \Cref{thm:modules:gram-cokernel}(i) with $L'=L[\wp]$, saturated by \Cref{prop:modules:saturated}(iii); ``$Q$ is the cokernel of $L[\wp]\to\Hom(L[\wp],\mathcal O)$,
 of order $\#\mathcal O/\Delta$'' is part (ii), once $L[\wp]^\perp=L[I]$ is known (\Cref{prop:modules:ddt-ingredients}). Part (iv) shows that the word
 ``saturated'' cannot be dropped. For a residue field that is not finite the order must be read as the length $v(\Delta)$
-(\Cref{conv:modules:lengths}); the revised paper assumes $k$ finite.
+(\Cref{conv:modules:rings}(f)); the revised paper assumes $k$ finite.
 \end{paperlink}
 
 \begin{proposition}[alternating pairings]\label{prop:modules:alternating}
@@ -1852,7 +1833,8 @@ $[y,x]=\langle y,wx\rangle=-\langle wx,y\rangle=-\langle x,w^\dagger y\rangle=-[
 \begin{paperlink}\label{pl:modules:adjoint}
 Section 4.1: the cup product on $H^1(X_0(M^\Sigma),\Zl)$ is perfect and alternating, the Atkin-Lehner involution $w=w_{M^\Sigma}$ preserves it, and
 $wT_nw^{-1}$ is the adjoint of $T_n$ for the cup product (\Cref{ch:curves,ch:moddeg}). By \Cref{prop:modules:adjoint}(iv) the pairing
-$\hat\delta_!$, essentially $\langle x,wy\rangle$, is perfect, alternating (as $\ell$ is odd) and makes every Hecke operator, $U_p$ included, self-adjoint: ``this is what the
+$\hat\delta_!$, which is $\frac12\langle x,wy\rangle$ on classes from $X_0(M^\Sigma)$, is perfect (the factor $\frac12$ being a unit as $\ell$ is odd),
+alternating (antisymmetric over the domain $\Zl$ of characteristic $0$, \Cref{prop:modules:alternating}) and makes every Hecke operator, $U_p$ included, self-adjoint: ``this is what the
 composition with $w$ is for''. In the paragraph after Lemma lem:hecke (and in Step 2 of the proof of Theorem thm:quant) the paper uses
 \Cref{prop:modules:adjoint}(iii): ``the idempotent $e_{\mf m}$ is self-adjoint for $\hat\delta_!$, so $H^1(X_0(N),\Zl)$ splits orthogonally into its local
 components and the pairing is perfect on each''. The idempotent $e_{\mf m}$ lies in $\T\otimes\Zl$, not in $\T$, which is why (iii) allows $\T\otimes S$.
@@ -1865,9 +1847,9 @@ $\langle\ ,\ \rangle\colon S\times\T\to R$ a perfect $R$-bilinear pairing with $
 \item $s\mapsto\langle s,-\rangle$ is an isomorphism of $\T$-modules $S\simeq\T^\vee=\Hom_R(\T,R)$, where $(t\varphi)(u)=\varphi(tu)$.
 \item For every ideal $\mf a\subseteq\T$, $S[\mf a]$ corresponds to $\Hom_R(\T/\mf a,R)$, the functionals vanishing on $\mf a$; it is saturated in $S$, of rank
 $\rank_R(\T/\mf a)$.
-\item Let $I,J\subseteq\T$ be ideals with $I\cap J=0$, $\T/I$ and $\T/J$ torsion-free, and $\rank\T/I+\rank\T/J=\rank\T$. Then $\T\into\T/I\times\T/J$ has torsion
-cokernel $\T/(I+J)$ (\Cref{prop:modules:two-submodules}), $S[I]\oplus S[J]\subseteq S$, and
-$S/(S[I]\oplus S[J])\simeq\Hom_R(\T/(I+J),K/R)$; for $R=\Z$ or $\Zl$ this is $(\T/(I+J))^*$, of the same order as $\T/(I+J)$.
+\item Let $\mf a,\mf b\subseteq\T$ be ideals with $\mf a\cap\mf b=0$, $\T/\mf a$ and $\T/\mf b$ torsion-free, and $\rank\T/\mf a+\rank\T/\mf b=\rank\T$. Then
+$\T\into\T/\mf a\times\T/\mf b$ has torsion cokernel $\T/(\mf a+\mf b)$ (\Cref{prop:modules:two-submodules}), $S[\mf a]\oplus S[\mf b]\subseteq S$, and
+$S/(S[\mf a]\oplus S[\mf b])\simeq\Hom_R(\T/(\mf a+\mf b),K/R)$; for $R=\Z$ or $\Zl$ this is $(\T/(\mf a+\mf b))^*$, of the same order as $\T/(\mf a+\mf b)$.
 \item $\T$ acts faithfully on $S$.
 \end{enumerate}
 \end{proposition}
@@ -1876,19 +1858,20 @@ $S/(S[I]\oplus S[J])\simeq\Hom_R(\T/(I+J),K/R)$; for $R=\Z$ or $\Zl$ this is $(\
 (i) It is an $R$-isomorphism because the pairing is perfect, and $\T$-linear: $\langle ts,u\rangle=\langle s,tu\rangle=(t\langle s,-\rangle)(u)$.
 (ii) $s\in S[\mf a]$ iff $\langle as,u\rangle=\langle s,au\rangle=0$ for all $a\in\mf a$, $u\in\T$, iff $\langle s,-\rangle$ vanishes on the ideal $\mf a$. Such functionals are
 $\Hom_R(\T/\mf a,R)=\Hom_R((\T/\mf a)/\tors,R)$, of rank $\rank(\T/\mf a)$; saturation is \Cref{prop:modules:saturated}(iii).
-(iii) The cokernel of $\T\to\T/I\times\T/J$ is $\T/(I+J)$, and the two lattices have the same rank by hypothesis, so it is torsion. Apply
-\Cref{prop:modules:dual-inclusion} to this injection of lattices: $(\T/I\times\T/J)^\vee\into\T^\vee$, with cokernel $\Hom(\T/(I+J),K/R)$. Under (i) and (ii)
-the image of $(\T/I)^\vee\oplus(\T/J)^\vee$ in $\T^\vee$ is $S[I]+S[J]$; this sum is direct because the source is a direct sum and the map is injective.
+(iii) The cokernel of $\T\to\T/\mf a\times\T/\mf b$ is $\T/(\mf a+\mf b)$, and the two lattices have the same rank by hypothesis, so it is torsion. Apply
+\Cref{prop:modules:dual-inclusion} to this injection of lattices: $(\T/\mf a\times\T/\mf b)^\vee\into\T^\vee$, with cokernel $\Hom(\T/(\mf a+\mf b),K/R)$. Under (i)
+and (ii) the image of $(\T/\mf a)^\vee\oplus(\T/\mf b)^\vee$ in $\T^\vee$ is $S[\mf a]+S[\mf b]$; this sum is direct because the source is a direct sum and the map is injective.
 (iv) If $tS=0$ then $\langle s,tu\rangle=\langle ts,u\rangle=0$ for all $s,u$, so $tu=0$ for all $u$ (perfectness); with $u=1$, $t=0$.
 \end{proof}
 
 \begin{paperlink}\label{pl:modules:algebra-duality}
 In Lemma lem:crit, $R=\Z$, $\T$ is the Hecke algebra, $S=S_2(\Gamma_0(N);\Z)$ and $\langle g,t\rangle=a_1(tg)$ is perfect (\Cref{ch:hecke}); it satisfies
-$\langle tg,u\rangle=a_1(utg)=\langle g,tu\rangle$. With $I=\ker\phi_f$ and $J=\Ann_\T(I)$: $S[I]=\Z f$ (rank $\rank\T/I=1$, and $f$ is the primitive form killed by $I$), and
-$S[J]=L$ is the orthogonal complement lattice. The rank hypothesis of (iii) holds because $\T\otimes\Q=\Q\times\T'$ with $I\otimes\Q=0\times\T'$ and $J\otimes\Q=\Q\times0$
-(\Cref{prop:modules:congruence-ideal}(iii)). So ``dualising the inclusion $\T\subset\T/I\times\T/J$, whose cokernel is $\T/(I+J)$, shows that $\Z f\oplus L$ has
-index $r'$ in $S_2(\Gamma_0(N);\Z)$'' is \Cref{prop:modules:algebra-duality}(iii). The hypothesis on ranks is not stated in the paper; it is automatic
-there, but $I\cap J=0$ alone would not suffice ($I=J=0$ is an example).
+$\langle tg,u\rangle=a_1(utg)=\langle g,tu\rangle$. Take $\mf a=\ker\phi_f$ and $\mf b=\Ann_\T(\mf a)$, the paper's $I$ and $J$. Then $S[\mf a]=\Z f$ ($f$ is the primitive form killed by $\mf a$), and
+$S[\mf b]=L$ is the orthogonal complement lattice. By \Cref{prop:modules:congruence-ideal}(iii), $\mf a=\T\cap(0\times\T')$ and $\mf b=\T\cap(\Q\times0)$, so
+$\T/\mf a$ and $\T/\mf b$ are torsion-free (\Cref{prop:modules:saturated}(iii)), and $\mf b$ is a lattice in $\Q\times0$, so $\rank\T/\mf b=\rank\T-1$ and the
+ranks are complementary. So the paper's dualising step (\Cref{pl:modules:crit-second}) is \Cref{prop:modules:algebra-duality}(iii). The paper does not state these hypotheses, but its assertion that
+$\T/(I+J)\simeq\Z/\phi_f(J)$ is cyclic \emph{of order} $r'$ presupposes them: as $I\cap J=0$, the quotient is finite iff $\phi_f(J)\ne0$, iff $J\ne0$, which is
+the rank condition.
 \end{paperlink}
 
 \section[Finite free algebras and generalised eigenspaces]{Finite free algebras over a discrete valuation ring; idempotents; generalised eigenspaces}\label{sec:modules:algebras}
@@ -2069,7 +2052,8 @@ image lies in $F$, and $\T/\mf m_i=F$. This gives a system of eigenvalues $\phi_
 $\phi$ correspond to the $\mf m_i$. Put $V_i=e_iV$; then $V=\bigoplus V_i$, and $V_i\ne0$ because $e_i\ne0$ in $\T\subseteq\End V$. On $V_i$, $t-\phi_i(t)$ acts through
 the nilpotent maximal ideal of $\T_i$, so it is a nilpotent operator and $(t-\phi_i(t))^{\dim V}=0$ there: $V_i\subseteq V(\phi_i)$. Conversely, if $v\in V(\phi_i)$ and
 $j\ne i$, take $t=e_j$: $\phi_i(e_j)=0$, so $e_j^{\dim V}v=e_jv=0$; hence $v=e_iv\in V_i$. So $V(\phi_i)=V_i$ and $e_{\phi_i}=e_i$. A common eigenvector: let $\mf n$ be the
-maximal ideal of $\T_i$, $\mf n^{c+1}=0$ with $c\ge0$ least such that $\mf n^cV_i\ne0$ (with $\mf n^0=\T_i$); a nonzero $v\in\mf n^cV_i$ is killed by $\mf n$, so
+maximal ideal of $\T_i$ and $c\ge0$ the largest integer with $\mf n^cV_i\ne0$ (with $\mf n^0=\T_i$; it exists as $V_i\ne0$ and $\mf n$ is nilpotent); then
+$\mf n^{c+1}V_i=0$, so a nonzero $v\in\mf n^cV_i$ is killed by $\mf n$, and
 $tv=\phi_i(t)v$. Finally $e_iW\subseteq W\cap V_i$ for $W$ stable, and $w=\sum e_iw$.
 (ii) $\T$ is a finitely generated $\mathcal O$-submodule of $\End_{\mathcal O}(L)\simeq\mathcal O^{n^2}$, hence finite free, and complete $\mathcal O$ makes
 \Cref{thm:modules:idempotent-lifting} available. For $\phi$ a system of eigenvalues on $V$, $\phi(t)$ is an eigenvalue of $t$ (by (i) over $K$), hence a root of the
@@ -2154,8 +2138,7 @@ $a=a_2(f_{11})=-2$ and $e=3$, the characteristic polynomial is $X^2(X^2+2X+2)$ a
 \begin{paperlink}\label{pl:modules:old}
 Lemma lem:old: ``The operator $U_p$ is not semisimple on this span when $0$ is a repeated eigenvalue, but each listed eigenvalue has an eigenvector'' is
 \Cref{ex:modules:shift}, with the eigenvectors the $p$-stabilisations $h-\beta_ph(pz)$, $h-\alpha_ph(pz)$ and the depleted forms. The same example shows
-that the full Hecke algebra need not be reduced, so the paper's $\wp\cap I=0$ in Lemma lem:ddt417 cannot be justified by reducedness; the correct
-argument is \Cref{prop:modules:congruence-ideal}(ii).
+that the full Hecke algebra need not be reduced, which matters in Lemma lem:ddt417 (\Cref{prop:modules:congruence-ideal}(iv)).
 \end{paperlink}
 
 \begin{lemma}[common eigenvectors]\label{lem:modules:common-eigenvector}
@@ -2240,8 +2223,7 @@ Lemma lem:crit: ``$I=\T\cap(0\times\T')$ and $J=\T\cap(\Q\times0)$, so $I\cap J=
 $J$); Appendix B, convention B-C13(c), explains the clash of letters between Lemmas lem:crit and lem:ddt417. In Lemma lem:ddt417 the paper now proves $\wp\cap I=0$ by
 the argument of (ii), and remarks that reducedness would not do. The paragraph after Lemma lem:hecke, and Step 1 of the proof of Theorem thm:quant, say that
 ``the congruence ideal is computed in $\T_{\mf m}$: the other local factors of $\T\otimes\Zl$ lie in the kernel $\wp$, $\phi_f$ factors through $\T_{\mf m}$, and $\Ann(\wp)$
-decomposes along the idempotents'': this is (v). (The version of 10 October 2026 said that the other factors ``lie in the annihilator'', which is false: by (v) their
-annihilator component is $0$.)
+decomposes along the idempotents'': this is (v).
 \end{paperlink}
 
 \begin{example}[toy congruences]\label{ex:modules:toy-congruence}
@@ -2386,12 +2368,13 @@ $\T_r$ self-adjoint), $L[\wp]=I^2$ has basis $(u,0)$, $(0,u)$ with $u=(\varpi^r,
 proof of Theorem thm:quant. Finally, when $\eta=0$ the inequality is empty, and if moreover $L\simeq\T^r$, then $I\subseteq\wp$ gives $I\cdot I=0$, so the pairing vanishes on
 $L[\wp]=I^r$ ($\langle\sum a_ie_i,\sum b_je_j\rangle=\sum\langle b_ja_ie_i,e_j\rangle=0$) and $\Delta=0$: the hypothesis $\Delta\ne0$ excludes this case.
 
-\emph{Commentary (decision D1).} The paper states the lemma for a discrete valuation ring with finite residue field and counts orders: ``of order $\#\mathcal O/\Delta$'',
-``$\#\mathcal O/\Delta\le\#(\mathcal O/\eta)^d$''. The book states it with lengths, which is the same statement when $k$ is finite (\Cref{prop:modules:length-dvr}(ii)) and is valid for
-every discrete valuation ring. In the paper's proof, the converse inclusion ``if $y\perp L[\wp]$ then $ty=0$ \dots so $ty=0$'' shows only that the single element $t$ kills
-$y$; this suffices because $I=\mathcal Ot$ (\Cref{prop:modules:congruence-ideal}(iii)), which the paper does not say. The book's argument
-(\Cref{prop:modules:ddt-ingredients}(iii)) uses every $s\in I$ and avoids the point. Likewise ``since $L$ is torsion-free and $\wp\cap I=0$, the sum $L[\wp]+L[I]$ is direct''
-should read ``since $L$ is torsion-free and $\pi(t)\in\wp+I$''.
+\emph{The paper's proof.} The Commentary on this lemma required by decision D1 (the paper counts orders over a finite residue field, the
+book states lengths over any discrete valuation ring) is given with its proof in \Cref{ch:congruence}. Two remarks concern steps proved here.
+The converse inclusion ``if $y\perp L[\wp]$ then \dots\ $ty=0$'' shows only that the single element $t$ kills $y$; this suffices because $I=\mathcal Ot$
+(\Cref{prop:modules:congruence-ideal}(iii)), which the paper does not say, and \Cref{prop:modules:ddt-ingredients}(iii) uses every $s\in I$ instead. In
+``since $L$ is torsion-free and $\wp\cap I=0$, the sum $L[\wp]+L[I]$ is direct'' the operative reason is $\pi(t)\in\wp+I$
+(\Cref{prop:modules:ddt-ingredients}(ii)); $\wp\cap I=0$ gives it only after an unstated rank argument ($I\ne0$ embeds in $\T/\wp\simeq\mathcal O$, so
+$\wp+I$ has finite index in $\T$ and contains a nonzero scalar).
 \end{remark}
 
 \section{Exercises}\label{sec:modules:exercises}
@@ -2403,28 +2386,11 @@ Compute $\Z/m\otimes\Z/n$, $\Q\otimes\Z/n$, $\Zl\otimes\Z/n$, $\Qlmod\otimes\Z/n
 and $-\otimes\Z/2$ is not left exact on $0\to\Z\xrightarrow2\Z\to\Z/2\to0$. (Answers: $\Z/\gcd(m,n)$, $0$, $\Z/\ell^{v_\ell(n)}$, $0$, $\Z/\gcd(m,n)$, $0$.)
 \end{exercise}
 
-\begin{exercise}\label{ex:modules:ex-snake}
-Prove \Cref{cor:modules:snake}(a) in detail. Apply it to $0\to T\to V\to W\to0$ with $n=\ell^k$ to get $W[\ell^k]\simeq T/\ell^kT$, and identify the isomorphism with the one of
-\Cref{prop:modules:t-and-w}(ii).
-\end{exercise}
-
-\begin{exercise}\label{ex:modules:ex-smith}
-Find the Smith normal form, the invariant factors, the elementary divisors, the Fitting ideal and the annihilator of the abelian group with relation rows
-$(2,4,4)$, $(-6,6,12)$, $(10,-4,-16)$; then of its tensor product with $\Z_2$ and with $\Z_3$. (Answers: $\Z/2\oplus\Z/6\oplus\Z/12$, $\Fitt=(144)$, $\Ann=(12)$; over $\Z_2$:
-$\Z/2\oplus\Z/2\oplus\Z/4$, $\Fitt=16\Z_2$; over $\Z_3$: $\Z/3\oplus\Z/3$, $\Fitt=9\Z_3$.)
-\end{exercise}
-
 \begin{exercise}[check the paper: Lemma lem:IV]\label{ex:modules:ex-IV}
 Let $T$ be free of rank $2$ over $\Z_3$ with an automorphism $\sigma$ such that $\sigma^2+\sigma+1=0$. Using that $\Z_3[\zeta_3]$ is a discrete valuation ring with uniformiser
 $1-\zeta_3$ (\Cref{ch:ant}), show that $T$ is free of rank one over $\Z_3[X]/(X^2+X+1)\simeq\Z_3[\zeta_3]$ (\Cref{prop:modules:torsion}(iii)), that
 $T/3T\simeq\Z_3[\zeta_3]/(1-\zeta_3)^2$ (note $(1-\zeta_3)^2=-3\zeta_3$), and that the vectors of $T/3T$ fixed by $\sigma$ form a line. Deduce that in a suitable basis
 $\sigma=\Mtwo0{-1}1{-1}$.
-\end{exercise}
-
-\begin{exercise}[check the paper: Lemma lem:tamfactor]\label{ex:modules:ex-tamfactor}
-Show that $\Fitt_{\Zl}(\Z/\ell^v\oplus\Z/\ell^m)=\ell^{v+m}\Zl$ while its annihilator is $\ell^{\max(v,m)}\Zl$. In the proof of Lemma lem:tamfactor, the invariants are the $x\bar e+y\bar h$
-in $(\Z/\ell^{v_\ell(n)})^2$ with $(q-1)y\equiv0$ and $c'y\equiv0$; show that this module is $\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))}$, and deduce the formula
-$v_\ell(\Tam_q(\ad T))=v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ from \Cref{thm:modules:fitting-dvr}. What would the formula become with $\Ann$ in place of $\Fitt$?
 \end{exercise}
 
 \begin{exercise}\label{ex:modules:ex-fitting}
@@ -2434,43 +2400,73 @@ $0\to k\to R\to k\to0$ and $0\to k\to k\oplus k\to k\to0$ both satisfy $\Fitt(M)
 square.
 \end{exercise}
 
-\begin{exercise}[saturation is necessary]\label{ex:modules:ex-saturation}
-On $\Z^2$ with Gram matrix $\Mtwo9110$ compute $L'^\perp$ for $L'=\Z e_1$ and the index of $L'\oplus L'^\perp$. Then show that for the standard pairing and $L'=\Z\cdot3e_1$ the index
-is $3$ while the Gram determinant is $9$. Check the paper's claim in Lemma lem:ddt417 that the cokernel of $L[\wp]\to\Hom(L[\wp],\mathcal O)$ ``has order $\#\mathcal O/\Delta$'', and say
-exactly where saturation enters.
+\begin{exercise}[higher Fitting ideals]\label{ex:modules:ex-fitting-i}
+For $M$ with $n$ generators and a relation matrix $A$, let $\Fitt_i(M)$ be the ideal generated by the $(n-i)\times(n-i)$ minors of $A$, with $\Fitt_i(M)=R$
+for $i\ge n$ (\Cref{def:modules:fitting}).
+(a) Show that $\Fitt_i(M)$ does not depend on the presentation, and that $\Fitt_0(M)\subseteq\Fitt_1(M)\subseteq\cdots$. (Hint: the proof of
+\Cref{lem:modules:fitting-well-defined} works for minors of size $n-i$; for an added generator, column operations turn the new relation matrix into
+$\operatorname{diag}(A,1)$, and Laplace expansion puts its minors of size $n+1-i$ in the ideal of minors of size $n-i$ of $A$.)
+(b) Over a discrete valuation ring let $M=\bigoplus_{j=1}^s\mathcal O/\varpi^{a_j}$ with $1\le a_1\le\cdots\le a_s$. Show that $\Fitt_i(M)=\varpi^{a_1+\cdots+a_{s-i}}\mathcal O$
+for $i<s$ and $\Fitt_i(M)=\mathcal O$ for $i\ge s$. Deduce that the $\Fitt_i$ determine a torsion $M$ up to isomorphism, that $\dim_kM[\varpi]$ is the least
+$i$ with $\Fitt_i(M)=\mathcal O$, and that $M$ is cyclic iff $\Fitt_1(M)=\mathcal O$.
+(c) Over $\Zl$, compute $\Fitt_0$ and $\Fitt_1$ of $\Z/\ell^2$ and of $(\Z/\ell)^2$. (Answers: $\Fitt_0=\ell^2\Zl$ for both; $\Fitt_1=\Zl$ and $\ell\Zl$. So $\Fitt_1$
+separates the two modules that \Cref{thm:modules:fitting-dvr}(iv) shows $\Fitt_0$ cannot.)
 \end{exercise}
 
-\begin{exercise}[check the paper: Section 4.1]\label{ex:modules:ex-alternating}
-Show that an alternating pairing on a free module of rank $2$ has Gram determinant $a^2$, with $a\mathcal O$ the ideal of values, and that no perfect alternating pairing
-exists in odd rank. Verify $\det G=(g_{12}g_{34}-g_{13}g_{24}+g_{14}g_{23})^2$ for an alternating $4\times4$ matrix $G$.
+\begin{exercise}[cofinitely generated modules]\label{ex:modules:ex-cofinite}
+(a) Show that a quotient of a divisible module is divisible. Let $W$ be cofinitely generated of corank $r$ and $F\subseteq W$ a finite submodule;
+show that $W/F$ is cofinitely generated of corank $r$, and that $W/F\simeq(\Qlmod)^r$ if $W$ is divisible. (Hint: dualising, $(W/F)^*$ is the kernel of
+$W^*\to F^*$, a submodule of finite index of $W^*$; use \Cref{thm:modules:pontryagin-zl}.)
+(b) Show that multiplication by $\ell$ identifies $\Qlmod/(\Qlmod)[\ell]$ with $\Qlmod$, and that under this identification the dual of the quotient map
+$\Qlmod\to\Qlmod/(\Qlmod)[\ell]$ is the inclusion $\ell\Zl\subseteq\Zl$.
+(c) For $W=\Qlmod\oplus\Z/\ell$ compute $W[\ell]$, the divisible part $\bigcap_k\ell^kW$, the corank and $W^*$. (Answers: $(\Z/\ell)^2$; $\Qlmod\oplus0$; $1$;
+$\Zl\oplus\Z/\ell$.)
 \end{exercise}
 
-\begin{exercise}[the toy congruence]\label{ex:modules:ex-toy}
-For $\T_r=\{(a,b)\in\Zl^2:a\equiv b\bmod\ell^r\}$ and $\pi(a,b)=a$, compute $\wp$, $I$, $\eta$, $\T_r/(\wp+I)$ and the denominator of the idempotent $(1,0)$. Verify the inequality
-of Lemma lem:ddt417 for $L=\T_r$ with the pairing $\lambda(st)$ (equality), for $L=\Zl^2$ with the diagonal action (strict), and for $L=\T_r^2$ with the alternating pairing of
-\Cref{rem:modules:ddt417-preview} ($\Delta=\eta^2$).
+\begin{exercise}[the Gram determinant of a sublattice of finite index; the prime $2$]\label{ex:modules:ex-gram-index}
+(a) Let $L'\subseteq L$ be lattices of the same rank over $\mathcal O$, $B$ the matrix whose rows are the coordinates of a basis of $L'$ in a basis of $L$, and $G$
+the Gram matrix of a pairing on $L$. Show that the Gram matrix of $L'$ is $BGB^{\mathsf T}$, so that $v(\Delta_{L'})=v(\Delta_L)+2\len(L/L')$
+(\Cref{thm:modules:stacked-bases}).
+(b) On $L=\Z_2^2$ with the perfect alternating pairing $\langle x,y\rangle=x_1y_2-x_2y_1$, let $L'=\Z_2e_1\oplus\Z_2\cdot2e_2$, of index $2$. Compute the Gram
+determinant and the ideal of values of $L'$, and check (a) and \Cref{prop:modules:alternating}(ii). (Answer: $\Delta=4$, values $2\Z_2$.)
+(c) Show that $\frac12\langle\ ,\ \rangle$ is perfect on $L'$ but not $\Z_2$-valued on $L$, while for $\ell$ odd $\frac12\langle\ ,\ \rangle$ is perfect on $\Zl^2$. Deduce
+that passing between $\hat\delta_!$ and the cup product, which differ by the factor $\frac12$ (\Cref{pl:modules:adjoint}), preserves perfectness and Gram
+determinants up to units only for $\ell$ odd: over $\Z_2$ the factor $\frac12$ changes the ideal of values by $2$ and
+the Gram determinant of a rank-two lattice by $4$.
 \end{exercise}
 
-\begin{exercise}[check the paper: $\wp\cap I=0$ in Lemma lem:ddt417]\label{ex:modules:ex-wp-cap-I}
-Show that $\wp\cap I=0$ iff $\eta\ne0$ (\Cref{prop:modules:congruence-ideal}(ii)), with the example $\mathcal O[x]/(x^2)$. Show that when $\eta=0$ the inequality of the lemma is empty and
-that a free $L$ then has $\Delta=0$. Find a finite free $\Z$-algebra in which $\wp\cap I=0$ although $\T\otimes\Q$ is not reduced. (Hint: $\Z[x]/(x^2(x-1))$ with $\pi(x)=1$.)
+\begin{exercise}[the saturation of $\wp L$; reduction modulo $\varpi$]\label{ex:modules:ex-saturation}
+In the setting of \Cref{prop:modules:ddt-ingredients}:
+(a) Show that $\operatorname{sat}(\wp L)=L[I]$ and $\operatorname{sat}(IL)=L[\wp]$. (Hint: \Cref{prop:modules:adjoint}(ii), \Cref{prop:modules:orthogonal}(ii)
+and \Cref{prop:modules:ddt-ingredients}(iii).)
+(b) Let $\T_r$ ($r\ge1$, \Cref{ex:modules:toy-congruence}) act on $L=\mathcal O^2$ coordinatewise, with the standard pairing and $\pi(a,b)=a$. Show that
+$\wp L=0\oplus\varpi^r\mathcal O$ is not saturated, that $L[I]=0\oplus\mathcal O$, and that the map $L[\wp]/\varpi L[\wp]\to(L/\varpi L)[\wp]$, injective for
+every $L$ because $L[\wp]$ is saturated (\Cref{prop:modules:saturated}(i)(d)), is not surjective here: the reduction of $L[\wp]$ is a line, while $\wp$
+kills all of $L/\varpi L=k^2$.
 \end{exercise}
 
 \begin{exercise}[check the paper: Lemma lem:crit]\label{ex:modules:ex-crit}
-Let $\T$ act on $S$ with a perfect pairing $S\times\T\to\Z$ as in \Cref{prop:modules:algebra-duality}, and let $I$, $J$ be ideals as in its part (iii). Show that $S/(S[I]\oplus S[J])$ has the
-same order as $\T/(I+J)$. Work it out for $\T=\Z[x]/(x^2-4)$ acting on $S=\T^\vee$, $I=(x-2)$, $J=(x+2)$ (answer: $4$), and interpret the result as a congruence modulo $4$
-between two ``eigenforms'', the elements of $S[I]$ and $S[J]$. Show that the rank hypothesis in (iii) cannot be dropped.
+Let $\T$ act on $S$ with a perfect pairing $S\times\T\to\Z$ as in \Cref{prop:modules:algebra-duality}, and let $\mf a$, $\mf b$ be ideals as in its part (iii). Show that
+$S/(S[\mf a]\oplus S[\mf b])$ has the same order as $\T/(\mf a+\mf b)$. Work it out for $\T=\Z[x]/(x^2-4)$ acting on $S=\T^\vee$, $\mf a=(x-2)$, $\mf b=(x+2)$ (answer:
+$4$), and interpret the result as a congruence modulo $4$ between two ``eigenforms'', the elements of $S[\mf a]$ and $S[\mf b]$. Show that the rank hypothesis
+in (iii) cannot be dropped. (Hint: $\mf a=\mf b=0$.)
+\end{exercise}
+
+\begin{exercise}[three eigenvalues]\label{ex:modules:ex-three}
+Let $\T=\Z[x]/(x(x-2)(x-6))$, which embeds in $\Z^3$ by $x\mapsto(0,2,6)$, and $\pi(x)=0$.
+(a) Show that $\wp=(x)$, $I=\Ann_\T(\wp)=\Z\,(x-2)(x-6)$ and $\eta=12\Z$, and that $12$ is the denominator of the idempotent $e_\pi=(x-2)(x-6)/12$
+(\Cref{prop:modules:congruence-ideal}(iii)).
+(b) Show that $\T\otimes\Z_2$ is local and that $\T\otimes\Z_3=\T_{\mf m}\times\T_{\mf m'}$ with $\mf m=(3,x)$ and $\mf m'=(3,x-2)$, with idempotent
+$e_{\mf m'}=x(x-6)/(-8)$. Compute the congruence ideal in $\T_{\mf m}$ and in $\T\otimes\Z_2$, and compare with \Cref{prop:modules:congruence-ideal}(v).
+(Answers: $3\Z_3$ and $4\Z_2$.)
+(c) $2$-adically, the eigenvalue $0$ is congruent to $2$ and to $6$ only modulo $2$, yet $v_2(\eta)=2$. Explain this: $\eta$ is generated by $\pi((x-2)(x-6))=(0-2)(0-6)$, and
+it measures the congruence of $\pi$ with the whole complementary factor $\Q\times\Q$ of $\T\otimes\Q$, not with each other eigenvalue separately
+(\Cref{prop:modules:congruence-decomposition}).
 \end{exercise}
 
 \begin{exercise}[check the paper: the congruence ideal is computed in $\T_{\mf m}$]\label{ex:modules:ex-tm}
 For $\T\otimes\Zl=\prod_{\mf m'}\T_{\mf m'}$ and $\pi$ factoring through $\T_{\mf m}$, show that $\Ann(\ker\pi)=\Ann_{\T_{\mf m}}(\wp_{\mf m})\times0$. Do the other local factors lie in the
 annihilator or in the kernel? Compute both for $\T=\Z[x]/(x^2-4)$, $\ell=3$ and $\pi(x)=2$.
-\end{exercise}
-
-\begin{exercise}[idempotents]\label{ex:modules:ex-idempotents}
-For $\T=\Z[x]/(x^2+x-1)$ show that $\T\otimes\Z_{11}\simeq\Z_{11}\times\Z_{11}$, and compute the idempotent modulo $11^3$ by the iteration $e\mapsto3e^2-2e^3$ started at $(x-3)/4$
-(answer: $784x+1058$). Show that $\T\otimes\Z_5$, $\T\otimes\Z_2$ and $\T\otimes\Z_3$ are local, and that $\Z_{(11)}[x]/(x^2+x-1)$ has no nontrivial idempotent although it has two
-maximal ideals above $11$.
 \end{exercise}
 
 \begin{exercise}[check the paper: non-semisimple $U_p$ in Lemma lem:old]\label{ex:modules:ex-shift}
@@ -2479,20 +2475,17 @@ deduce that for $e\ge3$ the algebra generated by $U$ is not reduced. With \Cref{
 $f_{11}(z)$, $f_{11}(2z)$, $f_{11}(4z)$, $f_{11}(8z)$, where $a_2(f_{11})=-2$, and check with PARI that $U_2$ has characteristic polynomial $X^7(X^2+2X+2)$ on all of $S_2(\Gamma_0(88))$.
 \end{exercise}
 
-\begin{exercise}[Gorenstein]\label{ex:modules:ex-gorenstein}
-Show that $\mathcal O[x]/(f)$ ($f$ monic) and $\T_r$ are Gorenstein and that $\{(a,b,c)\in\Zl^3:a\equiv b\equiv c\bmod\ell\}$ is not, by computing the socles of the reductions modulo
-$\ell$. Which of these algebras admit a module $L$, free over $\Zl$, with a perfect pairing for which they are self-adjoint and with $\dim L/\mf mL=1$? (Use
-\Cref{thm:modules:mazur-freeness}: such an $L$ is free of rank one and forces the Gorenstein property.)
-\end{exercise}
-
-\begin{exercise}[check the paper: Lemma lem:dfg21 and Theorem thm:main]\label{ex:modules:ex-lengths}
-For an exact sequence $0\to A\to B\to\bigoplus_iC_i^*\to D^*\to0$ of finite $\Zl$-modules show that $\len B=\len A+\sum_i\len C_i-\len D$. Deduce the length identity in the proof
-of Theorem thm:main when $H^0(\Q,W^D)=0$, and the corrected identity of Remark rem:ns when $H^0(\Q,W^D)$ has length $h_\ell(E)$.
-\end{exercise}
-
-\begin{exercise}\label{ex:modules:ex-qlzl}
-Show directly that $\Qlmod$ is an injective $\Zl$-module, that $\End_{\Zl}(\Qlmod)=\Zl$, that $(T\otimes\Qlmod)^*\simeq\Hom(T,\Zl)$ for $T$ free of finite rank, and that a $\Zl$-module
-killed by $2$ is zero when $\ell$ is odd (the paper: ``$H^1(\R,T^D)$ is killed by $2$, so $H^1_f(\R,T^D)=0$ for $\ell$ odd'').
+\begin{exercise}[Gorenstein algebras and faithful modules]\label{ex:modules:ex-gorenstein}
+(a) Show that $\T_r$ ($r\ge1$) and $\Zl[x]/(x^2)$ are local and Gorenstein, and that $\T^\flat_3=\{(a,b,c)\in\Zl^3:a\equiv b\equiv c\bmod\ell\}$ is local and not, by
+computing the socles of their reductions modulo $\ell$. For which monic $f$ is $\Zl[x]/(f)$ local? (Answer: when $f\bmod\ell$ is a power of one irreducible
+polynomial.)
+(b) Let $\T$ be a local finite free $\Zl$-algebra. Show that there is a \emph{faithful} $\T$-module $L$, free of finite rank over $\Zl$, with a perfect pairing
+for which $\T$ is self-adjoint and with $\dim_{k_\T}L/\mf mL=1$, if and only if $\T$ is Gorenstein. (Hint: by Nakayama $L$ is cyclic, so
+$L\simeq\T/\Ann_\T(L)=\T$, and \Cref{thm:modules:mazur-freeness} applies with $d=1$; conversely take $L=\T$ with the pairing of
+\Cref{prop:modules:gorenstein}(i).)
+(c) Show that faithfulness cannot be dropped in (b): $\T^\flat_3$ acting on $L=\Zl$ through $\pi(a,b,c)=a$, with the pairing $xy$, has $\dim L/\mf mL=1$. Show that
+$\T^\flat_3$ acts faithfully on $L=\Zl^3$ coordinatewise, self-adjointly for the standard pairing, with $\dim_{\Fl}L/\mf mL=3$, so that hypothesis (b) of
+\Cref{thm:modules:mazur-freeness} fails ($\rank L=3\ne3\rank\T^\flat_3$).
 \end{exercise}
 
 \section{Notes and references}\label{sec:modules:notes}
@@ -2502,10 +2495,8 @@ The material of Sections 1 to 4 is standard and follows Atiyah and Macdonald \ci
 greater generality. Our proof of right exactness of the tensor product through the adjunction is the one in Atiyah and Macdonald; the snake and five lemmas
 are in Weibel \cite[Section 1.3]{Weibel}, whose numbering \Cref{ch:cohomology} uses. Hilbert's basis theorem, the equivalence of finite length with
 ``Noetherian and Artinian'', and the characterisation of discrete valuation rings as integrally closed one-dimensional Noetherian local domains are
-cited, not proved; the numbers \cite[Theorem 7.5, Proposition 6.8, Proposition 9.2]{AtiyahMacdonald} are pointers we recall but have not verified against the
-printed edition, and the reader should treat them as such. The same applies to every chapter, section or theorem number of a book quoted in this chapter
-(Dummit and Foote, Lang, Eisenbud, Weibel, Jacobson, Matsumura, Serre, Neukirch-Schmidt-Wingberg, Rubin, Mazur, Darmon-Diamond-Taylor): they are pointers, not
-verified citations.
+cited, not proved. Every chapter, section or theorem number quoted from a book in this chapter (Atiyah-Macdonald, Dummit-Foote, Lang,
+Eisenbud, Weibel, Jacobson, Matsumura, Serre, Neukirch-Schmidt-Wingberg, Rubin, Mazur, Darmon-Diamond-Taylor) is a pointer, not a verified citation.
 
 The Smith normal form over a principal ideal domain (\Cref{thm:modules:smith}) is proved here by induction on the number of prime factors, which avoids
 the Euclidean hypothesis; Jacobson \cite[Section 3.7]{Jacobson85} gives the same argument. The structure theorem and stacked bases are in Dummit and Foote
