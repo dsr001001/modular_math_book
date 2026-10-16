@@ -382,7 +382,8 @@ important_notes.md points 7, 8, 23, 31, 42. Chapters bound: 2, 7, 10, 11, 16, 17
 > (local statements); $N_s,N_{ns}$ are normalisers of Cartan subgroups; $\operatorname{Norm}$ is a norm map.
 > (g) $\mu_n$ roots of unity; $\mu(N)=[\SL_2(\Z):\Gamma_0(N)]$; $\mu$ an unramified character (Chapter 7) and the $U_p$-eigenvalue choice
 > $\mu_p$ of Lemma lem:old are local names.
-> (h) $\eta^\Sigma_{f,\lambda}$, $\eta$ congruence ideals; $\eta(z)$ the Dedekind eta function (Chapter 12 only). $\Delta$ the discriminant,
+> (h) $\eta^\Sigma_{f,\lambda}$, $\eta$ congruence ideals; $\eta(z)$ the Dedekind eta function (Chapter 12 only); $\eta_1,\eta_2$ the two
+> characters of an extension in Ribet's lemma and in ch:reps 3.3, 8.4 (local, with subscripts; added 16 October 2026, note B32). $\Delta$ the discriminant,
 > $\Delta(z)$ the cusp form of level one, $\Delta$ the Gram determinant of Lemma lem:ddt417 (local). $\Lambda_E$ period lattice,
 > $\Lambda(\cdot,s)$ completed $L$-functions.
 > (i) $t_\ell(E,q)$ (the paper's term) always carries its arguments; the tame character $t_\ell\colon I\to\Z_\ell(1)$ of Chapter 7 is

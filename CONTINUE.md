@@ -11,7 +11,7 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Outlines of all 22 chapters and Appendix B | done, reviewed for consistency | `outlines/chNN_slug.md`, `outlines/chB_notation.md` |
 | Plan and outlines as one PDF | done (649 pages) | `docs/book_plan.pdf`, rebuilt by `tools/build_plan_pdf.sh` |
 | Bibliography | done, verified, 203 entries, no duplicates | `refs.bib` (shared), `bib/chNN.bib` (single-chapter) |
-| Findings about the paper | 84 points plus book-internal notes (B1 to B30) | `important/important_notes.md` (full record) |
+| Findings about the paper | 86 points plus book-internal notes (B1 to B32) | `important/important_notes.md` (full record) |
 | Memo for the paper's author | done | `important/paper_memo.md` (final, reconciled) |
 | Revised paper with the stronger results | done (32 pages), needs the author's review | `paper/note_v2.tex`, `docs/note_v2.pdf`, change log `paper/CHANGES_v2.md` |
 | Preface | written (needs a final update) | `frontmatter/preface.tex` |
@@ -19,7 +19,9 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Chapter 10 (pilot) | written, three review rounds, 2,344 lines, 48 pages | `chapters/ch10_reduction.tex` |
 | Chapter 1 (groups) | done: lean pipeline (run wf_b06051c4-f4c), one review (1 major, 12 minor, all fixed), check clean, 1,844 lines, 43 pages; cost see human | `chapters/ch01_groups.tex` |
 | Chapter 2 (rings) | done: lean pipeline by hand (interactive session), one review (3 major, 14 minor, all fixed), check (1 major, 6 minor), second fix; 2,170 lines, 47 pages | `chapters/ch02_rings.tex` |
-| Other chapters, Appendix B | **not yet written**; next is Chapter 3 (modules); the matrix J follows decision D5 | `chapters/` |
+| Chapter 3 (modules) | done: lean pipeline by hand, review (1 blocking, 18 minor, all fixed), check (6 minor; 4 fixed, 2 in B31); 2,529 lines, 58 pages | `chapters/ch03_modules.tex` |
+| Chapter 4 (reps) | done: lean pipeline by hand, review (1 blocking, 2 major, 11 minor, all fixed), check (3 minor, in B32); 2,053 lines, 45 pages | `chapters/ch04_reps.tex` |
+| Other chapters, Appendix B | **not yet written**; next is Chapter 5 (Part II); the matrix J follows decision D5 | `chapters/` |
 
 The original paper is `note_Oct10_7pm.tex`. Labels in the revised paper are the same.
 

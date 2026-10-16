@@ -1182,6 +1182,23 @@ After the table in Section 1 the revised paper says "The rows I_n, I_n^* and I_0
 lem:euler gives the I_n row at every q != l, including q = 2. Suggested wording: "the row I_n at every q != l, the
 rows I_n^* and I_0^* at every odd q != l". Low importance (found while writing Chapter 2).
 
+### 85. Lemma lem:h0: "is cyclic" before finiteness (expository)
+In the proof of lem:h0 (v2), "H^0(Q,W^D), a submodule of (Q_l/Z_l)^3 with l-torsion of rank at most one, is cyclic" is
+said before finiteness is known. Such a module is finite cyclic or isomorphic to Q_l/Z_l, which is not cyclic; the
+determinant step that follows shows every element has order at most l, so the proof is complete. Suggested wording:
+"is finite cyclic or isomorphic to Q_l/Z_l; the determinant argument below shows it is finite". Found writing
+Chapter 4, confirmed by its reviewer.
+
+### 86. Lemma lem:ddt417: two steps of the proof (expository)
+(a) "Since L is torsion-free and wp cap I = 0, the sum L[wp] + L[I] is direct": this follows from wp cap I = 0 only
+after an unstated rank argument (I != 0 and wp has corank one, so wp + I has finite index and contains a nonzero
+scalar). The operative reason is that pi(t) = t + (pi(t) - t) lies in wp + I and is nonzero, so an element killed by
+wp and by I is killed by pi(t). (b) The converse inclusion shows only t y = 0 for one t in I; concluding y in L[I]
+needs I = O t, which holds because pi restricted to I is injective (wp cap I = 0) with image eta, or the argument run
+with every s in I. Left and right orthogonals are mixed (harmless: both equal L[I]). Found writing Chapter 3,
+confirmed by its reviewer. (A third proposed point, that lem:crit needs the rank of T/(I+J) stated, was judged not a
+gap: the paper's "cyclic, of order r'" already asserts finiteness, which is equivalent to phi_f(J) != 0.)
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
@@ -1227,3 +1244,39 @@ rows I_n^* and I_0^* at every odd q != l". Low importance (found while writing C
 * Book section numbers in the Notes (Dummit-Foote, Ireland-Rosen, Cohen 1.4 and 5.1, Lang, Neukirch, Serre) are
   pointers not verified against printed editions; the chapter says so.
 * The lem:crit paperlink takes T tensor Q = Q x T' as given and points to ch:hecke; Chapter 13 must prove it.
+
+### B31. Items from writing Chapter 3
+
+* Jordan-Holder is proved for modules of finite length over any ring (B2); Nakayama, the cyclicity criterion
+  (prop:modules:dvr-modules(v)) and the Gram criterion (prop:modules:gram, now over any commutative ring) are there for
+  Chapter 4 and later chapters.
+* Outline errors corrected: 7.5(vi) Fitting counterexample (k[x]/(x^2) with M = R has Fitt(R) = 0, equality holds;
+  replaced by R = Z[x], M = R/(4,x)); 9.6(iii) needs rank T/a + rank T/b = rank T (a = b = 0 is a counterexample
+  without it), automatic in lem:crit. Dual numbers written k[x]/(x^2) (B-C15(k) reserves epsilon).
+* lem:ddt417 is stated in length form in rem:modules:ddt417-preview and proved in ch:congruence, which carries the D1
+  Commentary; Chapter 3 points to it.
+* In Chapter 3, lem:crit's letters appear only in quotations (I = ker phi_f, J = Ann_T(f^perp) = Ann_T(I)); the generic
+  ideals of prop:modules:algebra-duality are a, b; elsewhere I = Ann_T(wp) (B-C13(c)).
+* Book theorem and section numbers in the Notes are unverified pointers, and the chapter says so.
+* Remaining minor points from the check, left for a later pass: ex-cofinite(b) wording of the dual map; ex-gram-index(c)
+  should mention the automorphism w as well as the factor 1/2.
+* Length 2,529 lines (about 2,357 without the card), above the 2,200 guideline after cutting 9 restating exercises (D2).
+
+### B32. Items from writing Chapter 4
+
+* rem:reps:mod-l-galois(ii): the Clifford equivalence (hypothesis of thm:main fails iff rhobar = rhobar tensor chi_{l*}
+  iff rhobar is induced from H) needs rhobar irreducible; for rhobar reducible the hypothesis fails trivially, and
+  1 + chibar_l (l >= 5) shows the equivalence is false without irreducibility. Later chapters (11, 21) must keep it.
+* At l = 3, invariants fail to commute with reduction only for elements of order 3 acting on T; for order 6, and on
+  ad T, they commute.
+* prop:reps:twist-length(iii) is proved without completeness of O and without a finite residue field.
+* Outline corrections: with D5, the eigenvector of J for psi(J) = i is (1,i)^t; the density theorem is proved, so
+  Brauer-Nesbitt holds over any field and 2.3(iv) over every field; 5.3(i) needs no char != 2; a genuine counterexample
+  over F_9 to 5.3(ii) replaces the outline's C_4 example; 9.3 is proved for every q prime to m; 9.4(v) proved.
+* Notation: the characters of an extension in Ribet's lemma and prop:reps:nonsplit-line are eta_1, eta_2 (recorded in
+  Appendix B, B-C15(h)); uniformiser varpi; Section 9 writes h = diag(1,-1), gamma for kernel elements, nu = u - 1.
+* Remaining minor points from the check, left for a later pass: prop:reps:twist-length(iii) should state that X^G is
+  isomorphic to K/O when h is infinite (the paperlink uses it; proof: varpi M_{m+1} = M_m); lambda_0..lambda_3 in the
+  D_4/Q_8 character table clash with eigenvalues lambda_i elsewhere in the chapter (cosmetic).
+* Chapter 4 relies on Chapter 6 (ch:ant) for T free of rank one over Z_l[g] and T/3T = Z_3[zeta_3]/(pi^2), and on
+  ch:local for roots of unity in Q_l and tameness at q >= 5.
