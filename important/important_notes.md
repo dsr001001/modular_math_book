@@ -1177,6 +1177,11 @@ it is 5,935 of 9,667 (61%). Memo E9 attributes 61% to conductor < 5,000; on the 
 all-curves figure. The paper should name the population. (Curves numbered 1 are the optimal curves below 10,000 except
 class 990h, whose optimal curve is 990h3; 990h is multiplicative at 2 and does not enter the count.)
 
+### 84. Section 1: which rows of the table hold at q = 2 (expository)
+After the table in Section 1 the revised paper says "The rows I_n, I_n^* and I_0^* hold at every odd q != l". Lemma
+lem:euler gives the I_n row at every q != l, including q = 2. Suggested wording: "the row I_n at every q != l, the
+rows I_n^* and I_0^* at every odd q != l". Low importance (found while writing Chapter 2).
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
@@ -1205,3 +1210,20 @@ class 990h, whose optimal curve is 990h3; 990h is multiplicative at 2 and does n
   any of them, move it to refs.bib (B14).
 * PGL_2(F_5) = S_5 is sketched by the action on the cosets of a subgroup of order 24 (machine-checked), not by the
   outline's route; the 16-row subgroup table of GL_2(F_3) is from a computer enumeration, rechecked by the writer.
+
+### B30. Items from writing Chapter 2
+
+* chi_D is used only for fundamental discriminants D, as in B-C6(b); for any other discriminant the Kronecker symbol
+  (D/.) is written out (so (-12/.) is chi_{-3} made imprimitive modulo 12, and the symbol chi_{-12} is not used).
+  Components of a Dirichlet character are written chi^{(p)}, chi^{(i)} (B-C6(a) reserves chi_p for the cyclotomic
+  character); chi_0 is the principal character. Later chapters should follow the same rules.
+* Outline 9.6(iii) and Exercise 14 were wrong: for q = 3 mod 4, n -> (q/n) is not a Dirichlet character on all of Z;
+  it agrees with chi_{4q} = chi_{-4} chi_{q*} on odd n only, and (q/(4q+2)) = -(q/2). The chapter proves this.
+* refs.bib key Koblitz is the elliptic curves and modular forms book, not Koblitz's p-adic book; valuations, the
+  product formula and Ostrowski are cited to SerreCourse Ch. II and Neukirch Ch. II.3 instead.
+* Rigour raised above the outline in several places (Zorn for maximal ideals, R[x] a UFD, primitivity of chi_D for
+  fundamental D, the imprimitive Gauss sum); 6.5(v) is stated for an element of order 3 (or dividing 4) in any group,
+  which is what lem:IV and lem:euler use.
+* Book section numbers in the Notes (Dummit-Foote, Ireland-Rosen, Cohen 1.4 and 5.1, Lang, Neukirch, Serre) are
+  pointers not verified against printed editions; the chapter says so.
+* The lem:crit paperlink takes T tensor Q = Q x T' as given and points to ch:hecke; Chapter 13 must prove it.

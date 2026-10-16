@@ -181,7 +181,7 @@ $\Q$ is not complete for $\abs\cdot_p$. \emph{(proved here)} \Cref{prop:rings:pa
 \item \textbf{Ostrowski's theorem.} Every nontrivial absolute value on $\Q$ is equivalent to $\abs\cdot_\infty$ or to exactly one
 $\abs\cdot_p$. \emph{(stated; reference)} \Cref{thm:rings:ostrowski}.
 \item \textbf{$\ell$-integrality.} For primes $q\ne\ell$, $q$ is an $\ell$-adic unit, $P(q^{-k})\in\Z_{(\ell)}$ for $P\in\Z[X]$, and
-$v_\ell(\frac{q-1}q)=v_\ell(q-1)$, $v_\ell(1-\varepsilon q^{-1})=v_\ell(q-\varepsilon)$, $v_\ell(1-q^{-2})=v_\ell(q-1)+v_\ell(q+1)$. \emph{(proved here)}
+$v_\ell(\frac{q-1}q)=v_\ell(q-1)$, for $\varepsilon=\pm1$ $v_\ell(1-\varepsilon q^{-1})=v_\ell(q-\varepsilon)$, $v_\ell(1-q^{-2})=v_\ell(q-1)+v_\ell(q+1)$. \emph{(proved here)}
 \Cref{lem:rings:ell-integral}.
 \item \textbf{The $\kod{I}_0^*$ identity.} If $\alpha\beta=q$, $\alpha+\beta=a$, then
 $(1-\frac\alpha{\beta q})(1-\frac1q)(1-\frac\beta{\alpha q})=\frac{q-1}q\cdot\frac{(q+1)^2-a^2}{q^2}$, and $(q+1)^2-a^2\ge(q-1)^2$ if $a^2\le4q$.
@@ -275,11 +275,12 @@ $\chi(a)=0$ when $\gcd(a,n)>1$ (\Cref{def:rings:dirichlet}). Quadratic character
 $\abs D$ (\Cref{cor:rings:fundamental-primitive}); so $\chi_{-3}=\bigl(\frac{-3}\cdot\bigr)$ and $\chi_{-4}=\bigl(\frac{-4}\cdot\bigr)$. For a discriminant $D$ that is not
 fundamental the Kronecker symbol $\bigl(\frac D\cdot\bigr)$ is always written out and never called $\chi_D$: for instance $\bigl(\frac{-12}\cdot\bigr)$ is an imprimitive
 character modulo $12$ that agrees with $\chi_{-3}$ at odd integers, whereas under B-C6(b) the symbol $\chi_{-12}$ would mean $\chi_{-3}$ itself, of conductor
-$3$; the chapter does not use it. The letter $D$ denotes a discriminant; as in the paper, $D=\prod_{q\in S}q$ is also the conductor of $\chi_S$
+$3$; the chapter does not use the symbol $\chi_{-12}$. The letter $D$ denotes a discriminant; as in the paper, $D=\prod_{q\in S}q$ is also the conductor of $\chi_S$
 (the absolute value of the fundamental discriminant $\prod_{q\in S}q^*$). For an odd prime $q$
 put $q^*=(-1)^{(q-1)/2}q$; the quadratic character of conductor $q$ is $\chi_{q^*}$, never $\chi_q$ (decision D3 of the plan of
 this book). Thus $\chi_{-7}$, $\chi_{-11}$ are the characters of conductor $7$, $11$, while $\chi_5$, $\chi_{13}$ have conductor $5$, $13$.
-A letter subscript is reserved for the cyclotomic character: $\chi_\ell$ is the $\ell$-adic cyclotomic character of
+A prime-letter subscript ($\chi_\ell$, $\chi_p$) is reserved for the cyclotomic character ($\chi_D$, $\chi_S$, $\chi_{q^*}$ name quadratic
+characters): $\chi_\ell$ is the $\ell$-adic cyclotomic character of
 \Cref{ch:galois}, $\bar\chi_\ell$ its reduction, written $\chi_3^{\mathrm{cyc}}$, $\bar\chi_3^{\mathrm{cyc}}$ at the prime $3$; and
 $\omega_\ell\colon a\mapsto a\bmod\ell\in\F_\ell^\times$ is the Dirichlet character that corresponds to $\bar\chi_\ell$ (\Cref{ch:galois,ch:ant}
 make the correspondence). Two further names are not of this kind: $\chi_0$ is the principal character modulo $n$, the standard
@@ -625,8 +626,8 @@ reduction of $u$ in $\F_q^\times$" is the image of the unit $u=q_Eq^{-n}\in\Z_q^
 This section proves unique factorisation where the book needs it: in $\Z$ (the $\ell$-part of an integer, used in every
 statement of the paper about $v_\ell(\degphi)$), in $F[x]$ (minimal polynomials, finite fields), and in the rings $\Z[i]$ and
 $\Z[\zeta_3]$ of Gaussian and Eisenstein integers, whose characters $\chi_{-4}$ and $\chi_{-3}$ appear in the table of Section 1 and
-whose $\ell$-adic versions $\Z_\ell\otimes\Z[\zeta_3]$ (a product of two copies of $\Z_\ell$ when $\ell\equiv1\pmod3$, so not a
-field) and $\Z_3[\zeta_3]$ appear in the proofs of Lemmas lem:euler and lem:IV. The primes of $\Z[i]$ and
+whose $\ell$-adic versions $\Z_\ell\otimes\Z[\zeta_3]$ (a product of two copies of $\Z_\ell$, so not a domain, when
+$\ell\equiv1\pmod3$) and $\Z_3[\zeta_3]$ appear in the proofs of Lemmas lem:euler and lem:IV. The primes of $\Z[i]$ and
 $\Z[\zeta_3]$, the element $1-\zeta_3$ as a uniformiser and the ring $\Z_3[\zeta_3]$ are treated in \Cref{ch:ant}.
 
 \begin{definition}\label{def:rings:factorisation}
@@ -954,7 +955,7 @@ multiplication by $-i$ sends $1\mapsto-i$ and $i\mapsto1$, so its matrix is the 
 the standard models of \Cref{ch:groups}. Its characteristic polynomial $X^2+1$ is irreducible over $\F_3$, so $J$ has no eigenvalue in
 $\F_3$ and the eigenvalues $\pm i$ in $\F_9$. This is why the character $\psi$ of order $4$ in Proposition prop:ns takes values in $\F_9^\times$ and
 why the paper writes $\bar\rho_{E,3}\otimes\F_9\simeq\Ind\psi$ (over $\F_3$ itself $\bar\rho_{E,3}$ is irreducible). More generally
-$\F_q[x]/(x^2-\varepsilon)$, $\varepsilon$ a non-square, is the field $\F_q[\sqrt\varepsilon]$ with $q^2$ elements used in \Cref{ch:groups}.
+$\F_q[x]/(x^2-c)$, $c$ a non-square, is the field $\F_q[\sqrt c]$ with $q^2$ elements used in \Cref{ch:groups}.
 \end{example}
 
 \section[The ring \texorpdfstring{$\Z/n\Z$}{Z/nZ}, units and primitive roots]{The ring \texorpdfstring{$\Z/n\Z$}{Z/nZ}, the Chinese remainder theorem, units and primitive roots}\label{sec:rings:zn}
@@ -1585,11 +1586,11 @@ factor vanishes iff $p_i\mid D$, or $e\ge1$ and $D$ is even; that is, iff a prim
 then $\abs D\equiv3\pmod4$ and $(-1)^{\frac{m-1}2}=\bigl(\frac{-1}m\bigr)$ cancels $\bigl(\frac sm\bigr)$. So $\bigl(\frac Dm\bigr)=\bigl(\frac m{\abs D}\bigr)$. For the factor $2$:
 $\bigl(\frac D2\bigr)=1$ iff $D\equiv1\pmod8$ iff $\abs D\equiv\pm1\pmod8$ (as $D\equiv1\pmod4$), iff $\bigl(\frac2{\abs D}\bigr)=1$ (\Cref{prop:rings:jacobi}(ii)). Multiply.
 (iii) For $D=1$ the symbol $\bigl(\frac1n\bigr)$ is $1$ for every $n$ (each factor is), and everything is trivial; let $D\ne1$, so that $\abs D\ge3$
-and $n=\abs D-1$ is positive. If $D\equiv1\pmod4$, (ii) shows that $\bigl(\frac Dn\bigr)$ depends only on $n\bmod\abs D$ for $n>0$, and $\bigl(\frac D{\abs D-1}\bigr)=\bigl(\frac{-1}{\abs D}\bigr)=(-1)^{(\abs D-1)/2}=\sgn D$. If $D=2^sD'$ with $D'$
-odd and $s\ge2$: for even $n$ both $\bigl(\frac Dn\bigr)$ and $\bigl(\frac D{n'}\bigr)$ vanish ($n'\equiv n\pmod4$ is even). For odd $n>0$, as in (ii),
-$\bigl(\frac Dn\bigr)=\bigl(\frac2n\bigr)^s\bigl(\frac{\sgn D'}n\bigr)(-1)^{\frac{n-1}2\frac{\abs{D'}-1}2}\bigl(\frac n{\abs{D'}}\bigr)$. Here $\bigl(\frac2n\bigr)$ depends on $n\bmod8$, the next two factors on $n\bmod4$, and the last on
-$n\bmod\abs{D'}$; if $s\ge3$ the period $8\abs{D'}$ divides $\abs D$, and if $s=2$ the factor $\bigl(\frac2n\bigr)^2=1$ disappears and the period $4\abs{D'}=\abs D$. Evaluating at
-$n=\abs D-1$ (so $n\equiv-1$ modulo $4$, modulo $\abs{D'}$, and modulo $8$ if $s\ge3$): $\bigl(\frac2n\bigr)^s=1$; $\bigl(\frac n{\abs{D'}}\bigr)=(-1)^{(\abs{D'}-1)/2}$ cancels the sign
+and $n=\abs D-1$ is positive. If $D\equiv1\pmod4$, (ii) shows that $\bigl(\frac Dn\bigr)$ depends only on $n\bmod\abs D$ for $n>0$, and $\bigl(\frac D{\abs D-1}\bigr)=\bigl(\frac{-1}{\abs D}\bigr)=(-1)^{(\abs D-1)/2}=\sgn D$. If $D=2^tD'$ with $D'$
+odd and $t\ge2$: for even $n$ both $\bigl(\frac Dn\bigr)$ and $\bigl(\frac D{n'}\bigr)$ vanish ($n'\equiv n\pmod4$ is even). For odd $n>0$, as in (ii),
+$\bigl(\frac Dn\bigr)=\bigl(\frac2n\bigr)^t\bigl(\frac{\sgn D'}n\bigr)(-1)^{\frac{n-1}2\frac{\abs{D'}-1}2}\bigl(\frac n{\abs{D'}}\bigr)$. Here $\bigl(\frac2n\bigr)$ depends on $n\bmod8$, the next two factors on $n\bmod4$, and the last on
+$n\bmod\abs{D'}$; if $t\ge3$ the period $8\abs{D'}$ divides $\abs D$, and if $t=2$ the factor $\bigl(\frac2n\bigr)^2=1$ disappears and the period $4\abs{D'}=\abs D$. Evaluating at
+$n=\abs D-1$ (so $n\equiv-1$ modulo $4$, modulo $\abs{D'}$, and modulo $8$ if $t\ge3$): $\bigl(\frac2n\bigr)^t=1$; $\bigl(\frac n{\abs{D'}}\bigr)=(-1)^{(\abs{D'}-1)/2}$ cancels the sign
 $(-1)^{\frac{n-1}2\frac{\abs{D'}-1}2}=(-1)^{(\abs{D'}-1)/2}$; and $\bigl(\frac{\sgn D'}n\bigr)=\sgn D'$. So in all cases $\bigl(\frac D{\abs D-1}\bigr)=\sgn D$. Now $\bigl(\frac D{-n}\bigr)=\bigl(\frac D{-1}\bigr)\bigl(\frac Dn\bigr)=\sgn(D)\bigl(\frac Dn\bigr)$
 by (i). Hence for $n>0$, $\bigl(\frac D{-n}\bigr)=\bigl(\frac D{\abs D-1}\bigr)\bigl(\frac Dn\bigr)=\bigl(\frac D{(\abs D-1)n}\bigr)$, and $(\abs D-1)n\equiv-n\pmod{\abs D}$: the symbol is periodic modulo $\abs D$
 on $\Z\setminus\{0\}$; at multiples of $\abs D$ (including $0$) it vanishes, as $\abs D>1$. It is completely multiplicative and vanishes exactly off
@@ -1606,7 +1607,8 @@ Let $q$ be an odd prime and $q^*=(-1)^{(q-1)/2}q$.
 \item For every $n\in\Z$, $\bigl(\frac{q^*}n\bigr)=\bigl(\frac nq\bigr)$ (the Legendre symbol of $n\bmod q$). So $\chi_{q^*}=\bigl(\frac\cdot q\bigr)$ as functions on $\Z$.
 \item $\chi_{q^*}$ is the unique Dirichlet character of order $2$ and conductor $q$; this is why the paper calls it "the quadratic character of
 conductor $q$". By contrast, for $q\equiv3\pmod4$ the function $n\mapsto\bigl(\frac qn\bigr)$ agrees on odd $n$ with the character $\chi_{4q}=\chi_{-4}\chi_{q^*}$, of
-conductor $4q$, and on all of $\Z$ it is not periodic modulo $12$: $\bigl(\frac32\bigr)=-1$ but $\bigl(\frac3{14}\bigr)=1$.
+conductor $4q$, but on all of $\Z$ it is not periodic modulo $4q$: $\bigl(\frac q{4q+2}\bigr)=-\bigl(\frac q2\bigr)\ne0$. For $q=3$:
+$\bigl(\frac32\bigr)=-1$ but $\bigl(\frac3{14}\bigr)=1$.
 \item The same holds for the coefficient prime $\ell$: $\ell^*\equiv1\pmod4$, and for primes $p\ne\ell$, $\ell^*$ is a square modulo $p$ (for odd $p$), resp.
 $\ell^*\equiv1\pmod8$ (for $p=2$), iff $p$ is a square modulo $\ell$.
 \item $3^*=-3$, $5^*=5$, $7^*=-7$, $11^*=-11$, $13^*=13$; so the characters of conductor $3$, $5$, $7$, $11$, $13$ are $\chi_{-3}$, $\chi_5$, $\chi_{-7}$, $\chi_{-11}$,
@@ -1623,8 +1625,11 @@ both sides vanish. (Checked numerically for all $q<200$ and $0<\abs n\le300$.)
 (iii) By (ii), $\chi_{q^*}$ is a nontrivial character modulo the prime $q$, so its conductor is $q$ (the only other divisor, $1$, belongs to the
 trivial character). The characters modulo $q$ form a group isomorphic to the cyclic group $(\Z/q)^\times$ (\Cref{prop:rings:dirichlet}), which has
 a unique element of order $2$. For $q\equiv3\pmod4$, $q=(-1)\cdot q^*$, so for odd $n>0$, $\bigl(\frac qn\bigr)=\bigl(\frac{-1}n\bigr)\bigl(\frac{q^*}n\bigr)=\chi_{-4}(n)\chi_{q^*}(n)$ (for odd $n>0$,
-$\bigl(\frac{-1}n\bigr)=(-1)^{(n-1)/2}=\bigl(\frac{-4}n\bigr)$), and $\chi_{-4}\chi_{q^*}=\chi_{4q}$ is primitive of conductor $4q$ by \Cref{cor:rings:fundamental-primitive}. The values at $2$ and $14$:
-$3\equiv3\pmod8$, and $\bigl(\frac37\bigr)=-\bigl(\frac73\bigr)=-1$.
+$\bigl(\frac{-1}n\bigr)=(-1)^{(n-1)/2}=\bigl(\frac{-4}n\bigr)$), and $\chi_{-4}\chi_{q^*}=\chi_{4q}$ is primitive of conductor $4q$ by \Cref{cor:rings:fundamental-primitive}. For odd $n<0$ both sides equal their
+values at $-n$: $\bigl(\frac q{-1}\bigr)=\sgn q=1$, and $\chi_{4q}(-1)=\chi_{-4}(-1)\chi_{q^*}(-1)=(-1)(-1)=1$ since $q^*<0$. Non-periodicity: $2q+1$ is odd, positive,
+prime to $q$ and $\equiv3\pmod4$, so by \Cref{prop:rings:jacobi}(ii) $\bigl(\frac q{2q+1}\bigr)=-\bigl(\frac{2q+1}q\bigr)=-\bigl(\frac1q\bigr)=-1$, and
+$\bigl(\frac q{4q+2}\bigr)=\bigl(\frac q2\bigr)\bigl(\frac q{2q+1}\bigr)=-\bigl(\frac q2\bigr)$, which is nonzero and differs from $\bigl(\frac q2\bigr)$. For $q=3$: $3\equiv3\pmod8$ gives
+$\bigl(\frac32\bigr)=-1$, and $\bigl(\frac37\bigr)=-\bigl(\frac73\bigr)=-1$ gives $\bigl(\frac3{14}\bigr)=1$.
 (iv) is (ii) with $q=\ell$, read at $n=p$. (v) is arithmetic.
 \end{proof}
 
@@ -1843,8 +1848,9 @@ $q\equiv2\pmod3$, i.e. $q\equiv11\pmod{12}$.
 would collide: the quadratic $\chi_{-3}$ and the cyclotomic $\chi_3^{\mathrm{cyc}}$, which agree only modulo $3$ ($\bar\chi_3^{\mathrm{cyc}}=\chi_{-3}$, the Galois form of
 (iii) above). The book therefore never writes $\chi_3$, $\chi_7$ or $\chi_{11}$. (b) $\omega_\ell$ and $\bigl(\frac\cdot\ell\bigr)=\chi_{\ell^*}$ are different characters for
 $\ell\ge5$: the first has order $\ell-1$, the second order $2$. This is the point of the correction to Lemma lem:h0 and to the paper's
-Section 1.3: the relevant condition is $\bar\rho\simeq\bar\rho\otimes\bar\chi_\ell$, not $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$. (c) A quadratic field $\Q(\sqrt d)$ has character
-$\chi_D$ with $D$ its discriminant, not $d$: $\chi_{-1}$ means $\chi_{-4}$ and $\chi_2$ means $\chi_8$ (\Cref{ch:ant}). (d) Do not confuse the Kronecker
+Section 1.3: the relevant condition is $\bar\rho\simeq\bar\rho\otimes\bar\chi_\ell$, not $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$. (c) The character of a quadratic field $\Q(\sqrt d)$ is
+$\chi_D$ with $D$ the discriminant of the field: the character of $\Q(i)$ is $\chi_{-4}$ and that of $\Q(\sqrt2)$ is $\chi_8$ (Appendix B, B-C6(b), also writes
+them with the radicand as index; this chapter does not) (\Cref{ch:ant}). (d) Do not confuse the Kronecker
 symbol $\bigl(\frac D2\bigr)$ (lower entry $2$) with the Jacobi symbol $\bigl(\frac2D\bigr)$: $\chi_{-3}(2)=\bigl(\frac{-3}2\bigr)=-1$ because $-3\equiv5\pmod8$, consistent with $2\equiv-1\pmod3$.
 \end{warning}
 

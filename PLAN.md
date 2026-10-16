@@ -1164,7 +1164,8 @@ above that disagrees with them.
 | Appendix A | written, 994 lines, compiles |
 | **Chapter 1** | **written**: 1,844 lines, 43 pages, compiles, lint clean; lean pipeline (write, combined review with 13 findings, fix, check clean, no second fix); cost: see human |
 | **Chapter 10 (pilot)** | **written**: 2,344 lines, 48 pages, compiles, lint clean; full pipeline, three review rounds |
-| Chapters 2 to 9, 11 to 22, Appendix B, preface update | not yet written |
+| **Chapter 2** | **written**: 2,170 lines, 47 pages, compiles (0 overfull boxes), lint clean; lean pipeline run by hand in an interactive session on the author's plan (write, combined review with 17 findings: 0 blocking, 3 major, 14 minor; fix; check found 1 major and 6 minor; second fix) |
+| Chapters 3 to 9, 11 to 22, Appendix B, preface update | not yet written |
 
 **What the pilot taught.**
 * Length: 2,344 lines against a plan average of about 2,200 per chapter; the outline is a good predictor.
