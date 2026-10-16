@@ -128,7 +128,7 @@ chapter must deliver:
   character of $\Q(\sqrt d)$; $q^*=(-1)^{(q-1)/2}q$ and $\chi_{q^*}$, the quadratic character of conductor $q$ (the paper writes $\chi_q$; the book never does, decision D3); $\ell^*$ likewise. Where $\chi_3$ could
   mean either, write $\chi_3^{\mathrm{cyc}}$ or $\chi_{-3}$ (important_notes.md point 32); $\bar\chi_3=\chi_{-3}$. $\omega=\bar\chi_\ell|_{I_\ell}$ and
   $\omega_2$ are the fundamental characters (5.2).
-* **C5 (standard matrices).** As Chapter 1, 6.2 and Chapter 4, C6: $J=\begin{psmallmatrix}0&-1\\1&0\end{psmallmatrix}$,
+* **C5 (standard matrices).** As Chapter 1, 6.2 and Chapter 4, C6: $J=\begin{psmallmatrix}0&1\\-1&0\end{psmallmatrix}$ (the paper's $J$; decision D5),
   $w=\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}$, $u=\begin{psmallmatrix}1&1\\0&1\end{psmallmatrix}$, the subgroups
   $C_s,N_s,C_{ns},N_{ns},\mathrm B,\mathrm U,Q_8,C_4=\langle J\rangle$ of $\GL_2(\F_3)$. The paper's $\sigma$ is an element of order $3$ in the
   image of inertia (Lemmas lem:IV, lem:euler); the matrix $\operatorname{diag}(1,-1)$ is written $h$ here, as in Chapter 4.
@@ -579,7 +579,7 @@ $\bar\rho_{E,3}\otimes\F_9\simeq\Ind\psi$ for a character $\psi$ of $G_{\Q(\sqrt
 not absolutely irreducible over $\F_3$: important_notes.md point 33), $\bar\rho_{E,3}\simeq\bar\rho_{E,3}\otimes\chi_{-3}$ over $\F_3$, $H^0(\Q,\ad\bar\rho_{E,3}(1))$ is a
 line, and $h_3(E)=1$ (8.5). The $3$-division polynomial is a product of two irreducible quadratics in $\Q[x]$ in the $N_s$ case and irreducible
 in the other two. Proof (the paper's, every step expanded): (1) $\bar\rho(G_{\Q(\sqrt{-3})})=H\cap\SL_2(\F_3)$
-(1.1(ii)); (2) the list (7.3 with $E[3]$ irreducible); (3) determinant-one subgroups $\SL_2(\F_3)$, $Q_8$, $C_4=\langle J^{-1}\rangle$ (Chapter 1, 6.7);
+(1.1(ii)); (2) the list (7.3 with $E[3]$ irreducible); (3) determinant-one subgroups $\SL_2(\F_3)$, $Q_8$, $C_4=\langle J\rangle$ (Chapter 1, 6.7);
 (4) $\SL_2(\F_3)$ and $Q_8$ act absolutely irreducibly: "non-abelian and faithful" is not enough (a Borel subgroup is both), the
 missing step is Chapter 1, 5.7 (commutator subgroups) or Chapter 4, 3.7 (Maschke for $Q_8$): important_notes.md point 1;
 (5) $C_4$ is abelian, $X^2+1$ irreducible over $\F_3$, eigenvalues $\pm i\in\F_9$, so $\bar\rho|_{G_{\Q(\sqrt{-3})}}\otimes\F_9=\psi\oplus\psi^{-1}$ (Chapter 4, 2.5, 8.2);

@@ -1130,6 +1130,10 @@ above that disagrees with them.
   is to be rewritten with the same convention (memo, point 32).
 * **D4 (Manin constant).** The sign convention c_E > 0 (so Manin's conjecture reads c_E = 1) is adopted, as
   already applied in the outlines.
+* **D5 (the matrix J; author's decision, 16 October 2026).** The book uses the paper's J = [[0,1],[-1,0]]
+  (Proposition prop:ns) everywhere, so J = m_{-i} in F_9 = F_3[i], w = sigma J, a^2 = J for a = [[1,-1],[1,1]], and
+  in Q_8 one takes i = J, j = [[1,-1],[-1,-1]], k = ij, with u i u^{-1} = k. Chapter 1 was converted (it had
+  used [[0,-1],[1,0]]); the outlines of Chapters 1, 4 and 11 follow it (note B29).
 
 ## 8. Production process
 

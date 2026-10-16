@@ -1187,9 +1187,11 @@ class 990h, whose optimal curve is 990h3; 990h is multiplicative at 2 and does n
 
 ### B29. Items from writing Chapter 1
 
-* Matrix J: the paper (prop:ns, sec:anomaly; note_v2.tex near line 538) writes J for [[0,1],[-1,0]]; Chapter 1
-  writes J = [[0,-1],[1,0]], so the paper's J is our J^{-1} = -J. Both generate the same subgroup; Chapter 1
-  warns the reader. Later chapters that quote the paper's J should say which one they mean.
+* Matrix J: the paper (prop:ns, sec:anomaly; note_v2.tex near line 538) writes J for [[0,1],[-1,0]]; the first
+  draft of Chapter 1 used [[0,-1],[1,0]]. Settled by decision D5 (PLAN.md 7.5, 16 October 2026): the book uses the
+  paper's J. Chapter 1 has been converted (w = sigma J, J = m_{-i}, a^2 = J, the eigenvalue of J on the line of
+  (i,1) is -i, and the Q_8 basis is i = J, j = [[1,-1],[-1,-1]], k = ij with u i u^{-1} = k, all checked in PARI);
+  the outlines of Chapters 1, 4 (C6, 8.2: eigenvector v = (1,i)^t for psi(J) = i) and 11 (C5) follow it.
 * Dickson's theorem (thm:groups:dickson) is stated for odd l only, since Chapter 1 defines Cartan subgroups only
   for odd q; part (a) for l = 3 is proved (prop:groups:gl23subgroups). The groups of order 8 are proved in full
   (outline had a sketch), by a new normal-form lemma lem:groups:normalform.

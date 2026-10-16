@@ -104,10 +104,10 @@ Split with the neighbouring chapters (decided here; each decision is repeated in
   $\chi_{-3}$, $\chi_\ell$). Galois Tate twists $M(1)=M(\chi_\ell)$ are Chapter 5's and 18's notation.
 * **C5 (fields).** $\bar k$ is an algebraic closure; $V_K=K\otimes_kV$. $\F_9=\F_3[i]$ with $i^2=-1$ (Chapter 2).
   "Absolutely irreducible" means $V_{\bar k}$ irreducible (2.3).
-* **C6 (standard models).** $J=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$, $\sigma=\operatorname{diag}(1,-1)$,
+* **C6 (standard models).** $J=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$ (the paper's $J$; decision D5), $\sigma=\operatorname{diag}(1,-1)$,
   $w=\begin{pmatrix}0&1\\1&0\end{pmatrix}$, $u=\begin{pmatrix}1&1\\0&1\end{pmatrix}$, $a=\begin{pmatrix}1&-1\\1&1\end{pmatrix}$ and the
   subgroups $C_s,N_s,C_{ns},N_{ns},Q_8,C_4=\langle J\rangle,\mathrm B,\mathrm U$ of $\GL_2(\F_3)$ are those of Chapter 1, 6.2. The
-  paper's generator $\begin{pmatrix}0&1\\-1&0\end{pmatrix}$ is $J^{-1}$. $\psi\colon C_4\to\F_9^\times$ is $\psi(J)=i$.
+  paper uses the same $J$. $\psi\colon C_4\to\F_9^\times$ is $\psi(J)=i$.
   **Clash:** the matrix $\sigma=\operatorname{diag}(1,-1)$ of Chapter 1 and the generator $\sigma$ of inertia of order
   $3$ in the paper (Lemmas lem:IV, lem:euler). In Sections 8 the matrix keeps Chapter 1's name; in Section 9 the
   order-$3$ element is written $\sigma$ as in the paper, and the matrix $\operatorname{diag}(1,-1)$ is written $h$ (it is
@@ -550,7 +550,7 @@ $\mathrm B$ is reducible (3.3(d)); the trace-zero intertwiner for $\mathrm B$ is
 
 **8.2 `prop:reps:ns3-induced`** (proposition; P). Let $\rho$ be the standard representation of $N_s(\F_3)=\langle J,\sigma\rangle$
 (Chapter 1, 6.5) and $C_4=\langle J\rangle=N_s(\F_3)\cap\SL_2(\F_3)$. (i) $\rho$ is absolutely irreducible (3.7(iv)), but
-$\Res_{C_4}\rho\otimes\F_9\simeq\psi\oplus\psi^{-1}$, $\psi(J)=i$, with eigenvectors $v=(1,-i)^t$ and $\sigma v=(1,i)^t$ (2.5); $\psi^\sigma=\psi^{-1}\ne\psi$
+$\Res_{C_4}\rho\otimes\F_9\simeq\psi\oplus\psi^{-1}$, $\psi(J)=i$, with eigenvectors $v=(1,i)^t$ and $\sigma v=(1,-i)^t$ (2.5); $\psi^\sigma=\psi^{-1}\ne\psi$
 since $\sigma J\sigma^{-1}=J^{-1}$. (ii) In the basis $(v,\sigma v)$ of $\F_9^2$, $\rho(J)=\operatorname{diag}(i,-i)$ and $\rho(\sigma)=w$, which is the matrix
 form of $\Ind_{C_4}^{N_s}\psi$ of 6.1 (with $s=\sigma$, $\sigma^2=1$); so $\rho\otimes\F_9\simeq\Ind_{C_4}^{N_s}\psi$, as Frobenius reciprocity
 6.2 also shows. Over $\F_3$, $\rho$ is *not* induced from a character of $C_4$ ($\Res_{C_4}\rho$ is irreducible over $\F_3$).
