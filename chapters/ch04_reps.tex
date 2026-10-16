@@ -1,0 +1,2027 @@
+\chapter{Representations of finite groups and the mod \texorpdfstring{$\ell$}{l} world}\label{ch:reps}
+\chaptermark{Representations and the mod $\ell$ world}
+
+The objects of the paper are representations: $V=V_\ell E$, $T=T_\ell E$, $\rho=\rho_{E,\ell}$ and its reduction $\rhobar$ are
+representations of the absolute Galois group $G_\Q$, and the adjoint $A_f=\ad V$ is built from them by linear algebra. Most of
+what the paper needs about them is not Galois theory at all but the representation theory of a group, often a finite one, over a
+field of characteristic $0$ or $\ell$, or over $\Zl$. This chapter supplies that theory: irreducibility and absolute
+irreducibility, Schur's lemma, Maschke's theorem and its failure in characteristic $\ell$, the theorem of Brauer and Nesbitt,
+induced representations and Clifford theory for a subgroup of index $2$, twisting, the adjoint representation and its trace form,
+the representations of $\GL_2(\F_3)$ and of its subgroups on $\F_3^2$ and $\F_9^2$, the action of finite cyclic groups and of
+unipotent elements on rank-two spaces and lattices, and lattices over a discrete valuation ring. Every statement is proved for an
+abstract group; the Galois input (continuity, Chebotarev, complex conjugation, the cyclotomic character) is added in
+\Cref{ch:galois} and \Cref{ch:galrep}, which cite the results proved here. The chapter uses \Cref{ch:groups} for the group theory
+of $\GL_2(\F_3)$, \Cref{ch:rings} for finite fields, and \Cref{ch:modules} for modules over a discrete valuation ring and the
+Jordan-H\"older theorem.
+
+\section*{Core results at a glance}
+
+Throughout, $G$ is a group, $k$ a field, $\bar k$ an algebraic closure, $R$ a commutative ring, and representations are
+finite-dimensional (\Cref{conv:reps:conventions}). $\mathcal{O}$ is a discrete valuation ring with uniformiser $\varpi$, fraction field
+$K$ and residue field $\mathcal{O}/\varpi$. The matrices $J=\sm01{-1}0$, $\sigma=\mathrm{diag}(1,-1)$, $w=\sm0110$, $u=\sm1101$,
+$a=\sm1{-1}11$ and the subgroups of $\GL_2(\F_3)$ are the standard models of \Cref{ch:groups}; $\F_9=\F_3[i]$.
+
+\begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
+\item \textbf{Conventions.} Matrices act on column vectors on the left; $V^\vee=\Hom_k(V,k)$ with $(g\lambda)(v)=\lambda(g^{-1}v)$ (the
+symbol ${}^*$ is reserved for Pontryagin duals); $\End(V)=V\otimes V^\vee$ with $g\cdot x=\rho(g)x\rho(g)^{-1}$, $\ad V$ its trace-zero
+part, with basis $e=e_1\otimes e_2^\vee$, $h=e_1\otimes e_1^\vee-e_2\otimes e_2^\vee$, $f=e_2\otimes e_1^\vee$ when $\dim V=2$; a character is a
+homomorphism $\chi\colon G\to R^\times$, $M(\chi)=M\otimes_RR(\chi)$; $\tr_V$ is the trace function. \Cref{conv:reps:conventions}.
+\item \textbf{Representations} (definition): a homomorphism $\rho\colon G\to\GL(V)$, $V$ a finite-dimensional $k$-vector space, equivalently
+a $k[G]$-module of finite dimension; matrix representations are isomorphic iff conjugate by one $P\in\GL_n(k)$; examples: characters,
+permutation and regular representations, the standard representation of $H\le\GL_2(k)$, inflation. \Cref{def:reps:representation}.
+\item \textbf{Constructions} (definition): subrepresentations, quotients, $V\oplus W$, $V\otimes W$, $V^\vee$, $\Hom_k(V,W)$ with
+$(g\phi)(v)=g\phi(g^{-1}v)$, invariants $V^G$, $\det\rho$. \Cref{def:reps:constructions}.
+\item \textbf{Basic facts.} $\tr(g\mid V^\vee)=\tr(g^{-1}\mid V)$, $\tr(g\mid V\otimes W)=\tr(g\mid V)\tr(g\mid W)$, $\det(V\otimes\chi)=\chi^n\det V$;
+$V^{\vee\vee}\simeq V$, $(V\otimes W)^\vee\simeq V^\vee\otimes W^\vee$; if $\dim V=2$ (or $V$ free of rank $2$ over $R$), $v\mapsto\det[v\,|\,{-}]$ is a
+$G$-isomorphism $V\simeq V^\vee\otimes\det$, so $V^\vee\simeq V\otimes\det^{-1}$. \emph{(proved here)} \Cref{prop:reps:basic-facts}.
+\item \textbf{$\Hom_G$ as invariants.} $V^\vee\otimes W\to\Hom(V,W)$, $\lambda\otimes w\mapsto\lambda(\cdot)w$, is a $G$-isomorphism (also for free
+modules of finite rank over $R$), and $\Hom_G(V,W)=\Hom(V,W)^G=(V^\vee\otimes W)^G$; for a character $\chi$,
+$(\End(V)\otimes\chi)^G=\Hom_G(V,V\otimes\chi)$. \emph{(proved here)} \Cref{prop:reps:homG}.
+\item \textbf{Extension of scalars.} For a field extension $K/k$: (i) $\Hom_{K[G]}(V_K,W_K)=K\otimes_k\Hom_{k[G]}(V,W)$ and
+$(V_K)^G=K\otimes_kV^G$; (ii) if $V,W$ are irreducible and $V_K\simeq W_K$ then $V\simeq W$; (iii) if $V_K$ is irreducible and $W_K\simeq V_K$
+then $W\simeq V$; (iv) (Noether-Deuring) $V_K\simeq W_K$ implies $V\simeq W$ for all $V,W$. \emph{(proved here for (i) to (iii); (iv)
+stated; reference)} \Cref{prop:reps:scalars}.
+\item \textbf{Irreducible, indecomposable} (definition): $V\ne0$ with no subrepresentations but $0$, $V$; not a direct sum of two nonzero
+subrepresentations; for $\dim V=2$, irreducible iff no line is stable. \Cref{def:reps:irreducible}.
+\item \textbf{Schur's lemma.} For irreducible $V,W$ over any field: (i) a $G$-map $V\to W$ is $0$ or an isomorphism, and $\End_G(V)$ is a
+division algebra; (ii) if $k=\bar k$, $\End_G(V)=k$ and $\dim\Hom_G(V,W)\in\{0,1\}$, with $1$ iff $V\simeq W$; (iii) the same over any $k$
+for absolutely irreducible $V,W$; (iv) the centre acts on an absolutely irreducible $V$ by scalars, absolutely irreducible
+representations of abelian groups are one-dimensional, and $\End_G(V)$ is a field for $V$ irreducible and $G$ abelian.
+\emph{(proved here)} \Cref{thm:reps:schur}.
+\item \textbf{Absolutely irreducible} (definition): $V_{\bar k}$ is irreducible. \Cref{def:reps:absirr}.
+\item \textbf{Criteria for absolute irreducibility.} (i) $V$ is absolutely irreducible iff $k[G]\to\End_k(V)$ is surjective, and then $V_K$
+is irreducible for every extension $K/k$; (ii) absolutely irreducible implies irreducible with $\End_G(V)=k$; (iii) for $\dim V=2$:
+iff no line of $\bar k^2$ is stable; (iv) over any field, an irreducible $V$ is absolutely irreducible iff $\End_G(V)=k$.
+\emph{(proved here)} \Cref{prop:reps:absirr}.
+\item \textbf{Distinct eigenvalues.} If some $g\in G$ acts on $V$ with $\dim V$ distinct eigenvalues in $k$, every $G$-stable subspace of
+$V_{\bar k}$ is defined over $k$; so $V$ is irreducible iff it is absolutely irreducible. In particular this holds for $\dim V=2$,
+$\operatorname{char}k\ne2$, if some $c\in G$ has $\rho(c)^2=1$, $\det\rho(c)=-1$. \emph{(proved here)} \Cref{prop:reps:distinct-eigenvalues}.
+\item \textbf{$C_4$ on $\F_3^2$.} $C_4=\langle J\rangle$ acts irreducibly but not absolutely irreducibly on $\F_3^2$, with $\End_{C_4}(\F_3^2)=\F_3[J]\simeq\F_9$;
+over $\F_9$, $\F_9^2=\F_9v\oplus\F_9\bar v$ with $v=(1,i)^t$, $\bar v=(1,-i)^t$, $Jv=iv$, $J\bar v=-i\bar v$: the sum $\psi\oplus\psi^{-1}$, $\psi(J)=i$ of order
+$4$. \emph{(proved here)} \Cref{ex:reps:c4}.
+\item \textbf{Semisimple} (definition): a sum of irreducible subrepresentations. \Cref{def:reps:semisimple}.
+\item \textbf{Semisimple modules.} For finite-dimensional $V$ and any $G$: $V$ is a sum of irreducibles iff a direct sum of irreducibles
+iff every subrepresentation has a stable complement; subrepresentations and quotients of semisimple representations are
+semisimple; $V=\bigoplus_SV_S$ with $V_S\simeq S^{m_S}$, and $m_S=\dim\Hom_G(S,V)$ if $S$ is absolutely irreducible. \emph{(proved here)}
+\Cref{prop:reps:semisimple}.
+\item \textbf{Maschke.} (i) If $G$ is finite and $\operatorname{char}k\nmid\#G$, every representation of $G$ over $k$ is semisimple.
+(ii) If $\#G\in R^\times$ and $M$ is an $R[G]$-module, $e_G=\frac1{\#G}\sum_gg$ is an idempotent with $e_GM=M^G$, $M=M^G\oplus(1-e_G)M$,
+and $(M/IM)^G=M^G/IM^G$ for every ideal $I$: invariants commute with reduction. \emph{(proved here)} \Cref{thm:reps:maschke}.
+\item \textbf{Failures of semisimplicity.} $\mathrm U=\langle u\rangle$ on $\F_3^2$ is indecomposable and not semisimple; $\F_p[C_p]$ is
+uniserial; $\Z$ acting on $\Ql^2$ through $\sm1{n'}01$, $n'\ne0$, is not semisimple; $\mathrm B(\F_3)$ on $\F_3^2$ has $\End_{\mathrm B}=\F_3$ but is
+reducible. \emph{(proved here)} \Cref{ex:reps:maschke-fails}.
+\item \textbf{Jordan-H\"older.} A module of finite length over any ring (here $k[G]$ or $\mathcal{O}[G]$) has a composition series, and the
+composition factors with multiplicity, and the length, do not depend on the series. \emph{(stated; reference: proved in
+\Cref{ch:modules})} \Cref{thm:reps:jordan-holder}.
+\item \textbf{Semisimplification} (definition): $V^{ss}=\bigoplus_iM_i/M_{i-1}$ for a composition series $(M_i)$.
+\Cref{def:reps:semisimplification}.
+\item \textbf{Properties of $V^{ss}$.} (i) $V^{ss}$ is well defined, $V^{ss}\simeq V$ iff $V$ is semisimple, and $(\cdot)^{ss}$ is additive in
+short exact sequences; (ii) $\det(X-g\mid V)=\det(X-g\mid V^{ss})$; (iii) over a perfect $k$, $(V^{ss})_K\simeq(V_K)^{ss}$ for algebraic $K/k$.
+\emph{(proved here for (i), (ii); (iii) stated; reference)} \Cref{prop:reps:semisimplification}.
+\item \textbf{Extensions of two characters.} Let $\dim V=2$ with a stable line $L$ on which $G$ acts by $\chi_1$, and $\chi_2$ on $V/L$,
+$\rho=\sm{\chi_1}b0{\chi_2}$. (i) $V$ is semisimple iff $V\simeq\chi_1\oplus\chi_2$ iff $V$ has a second stable line iff $b(g)=c(\chi_2(g)-\chi_1(g))$
+for some $c\in k$; (ii) if $V$ is not semisimple, $L$ is its only stable line, and an isomorphism of two such extensions matches
+the sub-characters and the quotient characters; (iii) if $\chi_1\ne\chi_2$ and $V$ is semisimple, $V$ has exactly two stable lines.
+\emph{(proved here)} \Cref{prop:reps:nonsplit-line}.
+\item \textbf{Absolute irreducibility in dimension $2$.} (i) If $\rho(G)$ is abelian, $\rho$ is absolutely reducible; (ii) if $\rho(G)$ is finite of
+order prime to $\operatorname{char}k$ and $\rho$ is absolutely reducible, then $\rho(G)$ is abelian; so a finite non-abelian subgroup of $\GL_2(k)$
+of order prime to $\operatorname{char}k$ acts absolutely irreducibly; (iii) if $\Res_H\rho$ is absolutely irreducible, so is $\rho$; (iv) $Q_8$,
+$\SL_2(\F_3)$, $N_{ns}(\F_3)$, $\GL_2(\F_3)$ and $N_s(\F_3)$ act absolutely irreducibly on $\F_3^2$; $C_4$, $C_{ns}(\F_3)$, $\mathrm B(\F_3)$ do not.
+\emph{(proved here)} \Cref{prop:reps:dim2-absirr}.
+\item \textbf{Trace function} (definition): $\tr_V(g)=\tr\rho(g)$, a class function (the ``character'' of Riley-Hobson-Bence).
+\Cref{def:reps:trace-character}.
+\item \textbf{Orthogonality.} $G$ finite, $k=\C$, $\langle\phi,\psi\rangle=\frac1{\#G}\sum_g\phi(g)\overline{\psi(g)}$: (i) for irreducible $V,W$,
+$\langle\tr_V,\tr_W\rangle$ is $1$ if $V\simeq W$ and $0$ otherwise; (ii) $\dim\Hom_G(V,W)=\langle\tr_W,\tr_V\rangle$, $V$ is irreducible iff
+$\langle\tr_V,\tr_V\rangle=1$, and the trace function determines $V$; (iii) the irreducible trace functions are an orthonormal basis of the
+class functions, their number is the number of conjugacy classes, and $\sum_i(\dim V_i)^2=\#G$; (iv) $\dim V_i$ divides $\#G$.
+\emph{(proved here for (i) to (iii); (iv) stated; reference)} \Cref{thm:reps:orthogonality}.
+\item \textbf{Traces in characteristic $0$.} If $\operatorname{char}k=0$, two semisimple representations of any group with the same trace
+function are isomorphic. \emph{(proved here)} \Cref{cor:reps:traces-char0}.
+\item \textbf{$D_4$ and $Q_8$.} They have the same character table and are not isomorphic; the two-dimensional representation of $D_4$ is
+defined over $\Q$ and reduces modulo $3$ to the standard representation of $N_s(\F_3)$. \emph{(proved here)} \Cref{ex:reps:tables}.
+\item \textbf{Traces fail in characteristic $p$.} Over $\F_3$, $\mathbf 1^{\oplus3}$ and $\sgn^{\oplus3}$ of $C_2$ have the same traces and are not
+isomorphic; traces suffice in dimension $<p$. \emph{(proved here)} \Cref{ex:reps:traces-fail}.
+\item \textbf{Density theorem (Jacobson, Burnside).} For pairwise non-isomorphic irreducible $S_1,\dots,S_r$ with $D_i=\End_G(S_i)$:
+(a) the image of $k[G]\to\prod_i\End_k(S_i)$ is $\prod_i\End_{D_i}(S_i)$; (b) if $k=\bar k$, it is $\prod_i\End_k(S_i)$.
+\emph{(proved here)} \Cref{thm:reps:burnside}.
+\item \textbf{Brauer-Nesbitt.} If $\det(X-\rho_1(g))=\det(X-\rho_2(g))$ in $k[X]$ for all $g\in G$ (any group, any field), then
+$V_1^{ss}\simeq V_2^{ss}$. Equal traces suffice if $\operatorname{char}k=0$ or $\dim V_1,\dim V_2<\operatorname{char}k$. \emph{(proved here)}
+\Cref{thm:reps:brauer-nesbitt}.
+\item \textbf{Consequences.} (i) In dimension $2$, equal traces and equal determinants give $V_1^{ss}\simeq V_2^{ss}$; (ii) if $V_1$ is over
+$k$, $V_2$ over $k'\supseteq k$, they have the same characteristic polynomials, and $V_1\otimes_kk'$ is irreducible, then
+$V_2\simeq V_1\otimes_kk'$; this fails when $V_1$ is only irreducible over $k$. \emph{(proved here)} \Cref{cor:reps:bn-consequences}.
+\item \textbf{Induction} (definition): $\Ind_H^GW=k[G]\otimes_{k[H]}W$, $\Res_H^GV$. \Cref{def:reps:induction}.
+\item \textbf{Induced representations.} For $G=\bigsqcup_is_iH$ of finite index $m$: $\Ind W=\bigoplus_is_i\otimes W$, $\dim\Ind W=m\dim W$,
+$\tr(g\mid\Ind W)=\sum_{s_i^{-1}gs_i\in H}\tr(s_i^{-1}gs_i\mid W)$; for $[G:H]=2$, $s\notin H$ and a character $\psi$ of $H$:
+$h\mapsto\mathrm{diag}(\psi(h),\psi^s(h))$, $s\mapsto\sm0{\psi(s^2)}10$, with $\psi^s(h)=\psi(s^{-1}hs)$. \emph{(proved here)} \Cref{prop:reps:induction}.
+\item \textbf{Frobenius reciprocity.} $\Hom_G(\Ind_H^GW,V)\simeq\Hom_H(W,\Res_HV)$, and for finite index $\Hom_G(V,\Ind_H^GW)\simeq\Hom_H(\Res_HV,W)$,
+over a field or a commutative ring. \emph{(proved here)} \Cref{thm:reps:frobenius-reciprocity}.
+\item \textbf{Projection formula.} $\Ind(W\otimes\Res U)\simeq\Ind W\otimes U$; so $\Ind W\otimes\chi\simeq\Ind W$ if $\chi|_H=1$; $\Ind_H^G\mathbf1=k[G/H]$,
+$\simeq\mathbf1\oplus\chi_H$ for index $2$ and $\operatorname{char}k\ne2$; transitivity, additivity, extension of scalars. \emph{(proved here)}
+\Cref{prop:reps:projection-formula}.
+\item \textbf{Mackey.} (a) $\Res_K\Ind_H^GW\simeq\bigoplus_{s\in K\backslash G/H}\Ind^K_{K\cap sHs^{-1}}W^s$; (b) in characteristic $0$, $G$ finite,
+$\Ind W$ is irreducible iff $W$ is irreducible and $W^s$, $W$ have no common constituent on $sHs^{-1}\cap H$ for $s\notin H$; (c) for
+$[G:H]=2$, any characteristic, $W$ absolutely irreducible: $\Res_H\Ind W\simeq W\oplus W^s$, and $\Ind W$ is absolutely irreducible iff
+$W_{\bar k}\not\simeq W^s_{\bar k}$. \emph{(stated; reference for (a); proof sketched here for (b); proved here for (c))} \Cref{thm:reps:mackey}.
+\item \textbf{Clifford.} For $N\trianglelefteq G$ of finite index and $V$ irreducible over any field, $\Res_NV$ is semisimple, its constituents
+form one $G$-orbit and have equal multiplicities. \emph{(proved here)} \Cref{thm:reps:clifford}.
+\item \textbf{Clifford theory for index $2$.} $[G:H]=2$, $\chi_H$ the character with kernel $H$, $\operatorname{char}k\ne2$, $V$ absolutely
+irreducible of dimension $n$. Either (A) $\Res_HV$ is absolutely irreducible and $V\not\simeq V\otimes\chi_H$; or (B) $n=2d$,
+$\Res_HV_{\bar k}\simeq W\oplus W^s$ with $W\not\simeq W^s$ absolutely irreducible, $V_{\bar k}\simeq\Ind_H^GW$, and $V\simeq V\otimes\chi_H$ over $k$, with
+$\Hom_G(V,V\otimes\chi_H)$ a line spanned by an isomorphism of trace $0$ with eigenspaces $W$, $W^s$. For $n=2$: (B) iff
+$V_{\bar k}\simeq\Ind\psi$ with $\psi^s\ne\psi$. \emph{(proved here)} \Cref{thm:reps:clifford-index-two}.
+\item \textbf{Dihedral representations.} For $\rho\colon G\to\GL_2(k)$ absolutely irreducible, $\operatorname{char}k\ne2$, with finite projective image
+$P$: $P$ is not cyclic; $P$ is dihedral (including $V_4$) iff $\rho\simeq\rho\otimes\chi$ for a character of order $2$ iff $\rho_{\bar k}$ is induced
+from an index-two subgroup; the characters $\chi\ne1$ with $\rho\simeq\rho\otimes\chi$ correspond to the cyclic subgroups of index $2$ of $P$
+(one if $\#P\ge6$, three if $P\simeq V_4$). \emph{(proved here)} \Cref{prop:reps:dihedral}.
+\item \textbf{Twisting.} $\tr(\rho\otimes\chi)=\chi\tr\rho$, $\det(\rho\otimes\chi)=\chi^n\det\rho$; (absolute) irreducibility and $\Hom_G$ are
+unchanged; $\End(V\otimes\chi)=\End(V)$ and $\ad(V\otimes\chi)=\ad V$; $V\simeq V\otimes\chi$ forces $\chi^n=1$. \emph{(proved here)}
+\Cref{prop:reps:twist}.
+\item \textbf{Trace-zero lemma.} If $\phi\colon V\to V\otimes\chi$ is a $G$-map then $(1-\chi(g))\tr\phi=0$ for all $g$; so $\tr\phi=0$ if $\chi\ne1$ (over
+a field) or if $1-\chi(g)\in R^\times$ for some $g$. \emph{(proved here)} \Cref{lem:reps:trace-zero}.
+\item \textbf{Adjoint} (definition): $\End(V)$ with $g\cdot x=\rho(g)x\rho(g)^{-1}$, and $\ad V=\ker\tr$. \Cref{def:reps:adjoint}.
+\item \textbf{The adjoint.} (i) $\End(V)=k\oplus\ad V$ if $n\in k^\times$; (ii) $\Ad\rho(g)$ has eigenvalues $\lambda_i/\lambda_j$, and on $\ad V$ for $n=2$:
+$\lambda_1/\lambda_2,1,\lambda_2/\lambda_1$; (iii) in the basis $e,h,f$: $\Ad\mathrm{diag}(x,y)=\mathrm{diag}(x/y,1,y/x)$; for $t=\sm1{n'}01$, $(t-1)e=0$,
+$(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$; for $F=\sm{\varepsilon q}{c'}0\varepsilon$, $FeF^{-1}=qe$, $FhF^{-1}=h-2c'\varepsilon^{-1}e$,
+$FfF^{-1}=q^{-1}f+c'\varepsilon^{-1}q^{-1}h-c'^2\varepsilon^{-2}q^{-1}e$. \emph{(proved here)} \Cref{prop:reps:adjoint}.
+\item \textbf{Invariants of twisted adjoints.} (i) $(\End V\otimes\chi)^G=\Hom_G(V,V\otimes\chi)$; (ii) if $n\in R^\times$, $(\ad V\otimes\chi)^G$ is its
+trace-zero part; (iii) if $\chi$ (over a local $R$: its reduction) is nontrivial, every such map has trace $0$; (iv) for $V$
+absolutely irreducible, $(\ad V)^G=0$, and for $\chi\ne1$, $(\ad V\otimes\chi)^G\ne0$ iff $V\simeq V\otimes\chi$, and then it is a line.
+\emph{(proved here)} \Cref{prop:reps:H0-twisted-adjoint}.
+\item \textbf{Symmetric square.} For $\dim V=2$, $\Xi(xy)(v)=\omega(v,x)y+\omega(v,y)x$ is a $G$-map $\Sym V\otimes\det^{-1}\to\ad V$ with
+$\Xi(e_1^2)=-2e$, $\Xi(e_1e_2)=h$, $\Xi(e_2^2)=2f$, an isomorphism iff $2$ is invertible (index $4$ over $\Z$); so $\ad V\simeq\Sym V\otimes\det^{-1}$;
+for $V=V_\ell E$, $\Sym(V^\vee)\simeq\ad V(-1)$ and $L_p(\Sym f,s)=L_p(A_f,s-1)$. \emph{(proved here)} \Cref{prop:reps:sym2}.
+\item \textbf{Trace form.} $B(x,y)=\tr(xy)$ on $\End_R(T)$ is $G$-invariant and perfect; on $\ad T$ ($n=2$) its Gram matrix in $e,h,f$ has
+determinant $-2$, so for $\ell$ odd $\ad T\simeq(\ad T)^\vee$ and $\Hom_{\Zl}(\ad T,\Zl(\chi))\simeq\ad T(\chi)$; for $\ell=2$ the index is $2$.
+\emph{(proved here)} \Cref{prop:reps:trace-form}.
+\item \textbf{The adjoint ignores twists, duals and homotheties.} $\ad(V\otimes\chi)=\ad V$; $x\mapsto-x^t$ is a $G$-isomorphism
+$\ad V\simeq\ad(V^\vee)$; for lattices, $\ad(cL)=\ad L$ and $\ad(L^\vee)$ corresponds to $\ad L$. \emph{(proved here)}
+\Cref{prop:reps:adjoint-invariance}.
+\item \textbf{The subgroups of $\GL_2(\F_3)$ on $\F_3^2$.} The table of irreducibility, absolute irreducibility, $\dim\End_H$, $\dim(\ad\rho)^H$,
+$\dim\Hom_H(\rho,\rho\otimes\det)$, the twist $\rho\simeq\rho\otimes\det$, and projective images, for $\GL_2,\SL_2,N_{ns},Q_8,N_s,C_{ns},C_4,C_s,\mathrm B,\mathrm U$.
+\emph{(proved here; checked by computer)} \Cref{prop:reps:gl23-table}.
+\item \textbf{$N_s(\F_3)$ is induced over $\F_9$.} The standard representation $\rho$ of $N_s(\F_3)$ is absolutely irreducible; in the basis
+$v=(1,i)^t$, $\sigma v=(1,-i)^t$ of $\F_9^2$, $\rho(J)=\mathrm{diag}(i,-i)$ and $\rho(\sigma)=w$, so $\rho\otimes\F_9\simeq\Ind_{C_4}^{N_s}\psi$, $\psi(J)=i$; over $\F_3$, $\rho$
+is not induced from $C_4$; $\rho\simeq\rho\otimes\chi$ for the three characters with kernels $C_4$, $C_s$, $\{\pm1,\pm w\}$, with intertwiners
+$J$, $\sigma$, $w$; $(\ad\rho\otimes\det)^{N_s}=\F_3J$. \emph{(proved here)} \Cref{prop:reps:ns3-induced}.
+\item \textbf{$N_{ns}(\F_3)$.} Its standard representation and its restriction to $Q_8$ are absolutely irreducible; $\rho\not\simeq\rho\otimes\det$ and
+$(\ad\rho\otimes\det)^{N_{ns}}=0$; $\rho\otimes\F_9\simeq\Ind_{C_{ns}}^{N_{ns}}\theta$, $\theta(a)=1+i$, and $\rho\simeq\rho\otimes\chi$ only for the character with
+kernel $C_{ns}(\F_3)$. \emph{(proved here)} \Cref{prop:reps:nns3}.
+\item \textbf{$\SL_2(\F_3)$ and $\GL_2(\F_3)$.} Their standard representations are absolutely irreducible; for $\GL_2(\F_3)$, $\rho\not\simeq\rho\otimes\det$
+and $(\ad\rho\otimes\det)^{\GL_2(\F_3)}=0$; projective images $A_4$, $S_4$. \emph{(proved here)} \Cref{prop:reps:gl23-sl23}.
+\item \textbf{The three images.} For $H$ conjugate to $\GL_2(\F_3)$, $N_{ns}(\F_3)$ or $N_s(\F_3)$ and $H_1=H\cap\SL_2(\F_3)$, equivalent: (a) $H$ is
+conjugate to $N_s(\F_3)$; (b) $\Res_{H_1}\rho$ is not absolutely irreducible; (c) $\rho\simeq\rho\otimes\det$; (d) $(\ad\rho\otimes\det)^H\ne0$;
+(e) $\rho\otimes\F_9\simeq\Ind_{H_1}^H\psi$ with $\psi$ of order $4$; (f) $H_1$ is abelian. Then $(\ad\rho\otimes\det)^H$ is a line spanned by a
+trace-zero isomorphism; otherwise it is $0$. \emph{(proved here)} \Cref{thm:reps:three-images}.
+\item \textbf{The letter $\sigma$.} In \Cref{sec:reps:cyclic} $\sigma$ is the paper's element of order $3$ and $\mathrm{diag}(1,-1)$ is $h$.
+\Cref{conv:reps:sigma}.
+\item \textbf{Unipotent elements.} For $u\ne1$ unipotent in $\GL_2(k)$ and $\xi\in k^\times\setminus\{1\}$: $V^u$ is a line, $V^{\xi u}=0$; if
+$\operatorname{char}k\ne2$, $(\ad V)^u=(\ad V)^{\xi u}=k(u-1)$, a line; if $FuF^{-1}=u^q$ then $F$ acts on it by $q$ (and $F^{-1}$ by $q^{-1}$).
+\emph{(proved here)} \Cref{prop:reps:unipotent-invariants}.
+\item \textbf{Commutant lemma.} If $x\in\End_k(V)$ has $\dim V$ distinct eigenvalues in $\bar k$, or $\dim V=2$ and $x$ is not scalar, its
+commutant is $k[x]\simeq k[X]/(\det(X-x))$; for $\dim V=2$ and $\operatorname{char}k\ne2$ its trace-zero part is the line $k(2x-\tr x)$; it is a
+field iff $\det(X-x)$ is irreducible. \emph{(proved here)} \Cref{lem:reps:commutant}.
+\item \textbf{Cyclic groups of order $2,3,4,6$.} An element $g\in\SL_2(K)$ of order $m\in\{3,4,6\}$, $\operatorname{char}K\nmid m$, has characteristic
+polynomial $\Phi_m$; order $2$ means $g=-1$. Fixed spaces on $V$ and $\ad V$ (table), the invariant line of $\ad V$ spanned by $g-g^{-1}$,
+and an $F$ with $FgF^{-1}=g^r$ acts on it by $\pm1$ according as $r\equiv\pm1\pmod m$. \emph{(proved here)} \Cref{prop:reps:cyclic-shapes}.
+\item \textbf{Reduction of finite cyclic subgroups of $\SL_2(\Zl)$.} For $g$ of order $m\in\{2,3,4,6\}$: if $\ell\nmid m$, invariants on $T$ and
+$\ad T$ commute with reduction; if $\ell=3$, $m=3$, then $\bar g$ is a nontrivial unipotent, $(T/3T)^g$ is a line while $T^g=0$, and
+$(\ad T)^g=\Z_3(2g+1)$ reduces onto $(\ad T/3)^g$; for $m=6,4,2$ and $\ell=3$, $(T/3T)^g=0$; the integral commutant is $\Zl[g]\simeq\Zl[X]/(\Phi_m)$.
+\emph{(proved here; the freeness of $T$ over $\Zl[g]$ stated; reference)} \Cref{prop:reps:reduction-cyclic}.
+\item \textbf{Lattices} (definition): finitely generated $\mathcal{O}$-submodules spanning $V$; homothety $L'=cL$. \Cref{def:reps:lattice}.
+\item \textbf{Stable lattices.} Any two lattices satisfy $\varpi^aL\subseteq L'\subseteq\varpi^{-b}L$; for finite $G$, $\sum_g\rho(g)L_0$ is stable; $\varpi^mL$,
+$L^\vee$, $L\otimes\mathcal{O}(\chi)$, $\End_\mathcal{O}(L)$, $\ad L$ are stable, and $\ad L/\varpi^m=\ad(L/\varpi^mL)$. \emph{(proved here)} \Cref{prop:reps:lattice}.
+\item \textbf{Reduction.} $\det(X-\rhobar_L(g))$ is the reduction of $\det(X-\rho(g))$; $\rhobar_L^{ss}$ does not depend on $L$; if $\rhobar_L$ is
+irreducible for one $L$, $\rhobar_{L'}\simeq\rhobar_L$ for all $L'$. \emph{(proved here)} \Cref{prop:reps:reduction-ss}.
+\item \textbf{Homothety lemma.} If $\rhobar_L$ is irreducible, every $G$-stable lattice is $\varpi^mL$ for a unique $m\in\Z$. \emph{(proved here)}
+\Cref{thm:reps:homothety}.
+\item \textbf{Non-homothetic lattices.} For the upper triangular group, $\Zl e_1\oplus\Zl e_2$ and $\Zl e_1\oplus\ell\Zl e_2$ are stable, not homothetic,
+with non-isomorphic reductions of equal semisimplification. \emph{(proved here)} \Cref{ex:reps:nonhomothetic}.
+\item \textbf{Ribet's lemma.} If $V$ is irreducible of dimension $2$ and $\rhobar^{ss}\simeq\chi_1\oplus\chi_2$, some stable lattice reduces to a
+non-split extension with sub-character $\chi_1$. \emph{(stated; reference)} \Cref{thm:reps:ribet}.
+\item \textbf{Twisted self-isomorphisms modulo $\varpi^m$.} If $T/\varpi T$ is absolutely irreducible, the module of $G$-maps
+$T/\varpi^m\to(T/\varpi^m)(\chi)$ is cyclic, its elements of exact order $\varpi^m$ are isomorphisms, and the length of the invariants of $X=\End_\mathcal{O}(T)(\chi)\otimes K/\mathcal{O}$ is the
+largest $h$ with $T/\varpi^h\simeq(T/\varpi^h)(\chi)$; the same for $\ad T(\chi)$ if $n\in\mathcal{O}^\times$, $\bar\chi\ne1$; $\chi^n\equiv1\pmod{\varpi^h}$; for $n=2$, $\ell$ odd,
+$\chi(G)=\Zl^\times$: $h=0$ if $\ell\ge5$, $h\le1$ if $\ell=3$. \emph{(proved here)} \Cref{prop:reps:twist-length}.
+\item \textbf{The mod $\ell$ dictionary.} For $\rhobar\colon G_\Q\to\GL_2(\F_\ell)$, $\ell$ odd: irreducible equals absolutely irreducible; the hypothesis of
+Theorem thm:main fails iff $\rhobar\simeq\rhobar\otimes\chi_{\ell^*}$; Lemma lem:h0 concerns $\rhobar\simeq\rhobar\otimes\bar\chi_\ell$, possible only for
+$\ell=3$. \Cref{rem:reps:mod-l-galois}.
+\item \textbf{Dickson.} For $\ell$ odd and $G\le\GL_2(\F_\ell)$: if $\ell\mid\#G$, $G\supseteq\SL_2(\F_\ell)$ or $G$ lies in a Borel subgroup; if $\ell\nmid\#G$, the
+image in $\PGL_2(\F_\ell)$ is cyclic, dihedral, or $A_4$, $S_4$, $A_5$. \emph{(stated; reference)} \Cref{thm:reps:dickson}.
+\end{enumerate}
+
+\section*{Where the paper uses this chapter}
+
+\begin{itemize}
+\item \textbf{Proposition prop:ns} (the image $N_s(\F_3)$): the three images and their determinant-one subgroups, \Cref{thm:reps:three-images};
+absolute irreducibility of $Q_8$ and $\SL_2(\F_3)$, \Cref{prop:reps:dim2-absirr}; $\psi$ of order $4$ and $\rhobar\otimes\F_9\simeq\Ind\psi$,
+\Cref{ex:reps:c4}, \Cref{prop:reps:ns3-induced}, \Cref{thm:reps:frobenius-reciprocity}; $\rhobar\simeq\rhobar\otimes\chi_{-3}$, \Cref{prop:reps:projection-formula},
+\Cref{thm:reps:clifford-index-two}, descended to $\F_3$ by \Cref{prop:reps:scalars}; $H^0(\Q,\ad\rhobar(1))\ne0$, \Cref{prop:reps:H0-twisted-adjoint}.
+\item \textbf{Lemma lem:h0} (the term $h_\ell(E)$): $H^0$ of a twisted adjoint as trace-zero $G$-maps, \Cref{prop:reps:homG},
+\Cref{prop:reps:H0-twisted-adjoint}; the trace-zero lemma, \Cref{lem:reps:trace-zero}; Schur, \Cref{thm:reps:schur}; cyclicity, isomorphisms modulo
+$\ell^k$ and the determinant bound, \Cref{prop:reps:twist-length}; Clifford theory for $\Q(\sqrt{-3})$, \Cref{thm:reps:clifford-index-two}.
+\item \textbf{Lemma lem:IV, Remark rem:types, Lemma lem:euler, Proposition prop:ns-structure}: unipotent and minus-unipotent elements,
+\Cref{prop:reps:unipotent-invariants}; the commutant and its trace-zero line, \Cref{lem:reps:commutant}; elements of order $2,3,4,6$ and the
+action of Frobenius on the invariant line, \Cref{prop:reps:cyclic-shapes}; reduction modulo $3$, \Cref{prop:reps:reduction-cyclic};
+Maschke over $\Zl$, \Cref{thm:reps:maschke}.
+\item \textbf{Lemma lem:old} (oldforms): Brauer-Nesbitt over a common finite field, \Cref{thm:reps:brauer-nesbitt}, \Cref{cor:reps:bn-consequences};
+absolute irreducibility from complex conjugation, \Cref{prop:reps:distinct-eigenvalues}; the unique stable line of a non-split extension,
+\Cref{prop:reps:nonsplit-line}.
+\item \textbf{Section 4.2} (the theorem of Diamond, Flach and Guo) \textbf{and Lemma lem:fpr}: $A=\ad T$, $T^D=\Hom(A,\Zl(1))\simeq A(1)$ by the trace
+form, \Cref{prop:reps:trace-form}; the adjoint of $M_{f,\lambda}\simeq T_\ell E(-1)$ is $\ad T$, \Cref{prop:reps:adjoint-invariance}; the homothety lemma
+as an alternative route, \Cref{thm:reps:homothety}.
+\item \textbf{Lemma lem:tamfactor} (the Tamagawa factor at a multiplicative prime): the basis $e,h,f$ and the action of $t$ and of the Frobenius
+matrix, \Cref{prop:reps:adjoint}; the invariants of a unipotent, \Cref{prop:reps:unipotent-invariants}; the shape $\sm{\chi_\ell\varepsilon}{\varepsilon\kappa}0\varepsilon$,
+\Cref{prop:reps:nonsplit-line}.
+\item \textbf{Section 1.1 and the Introduction}: $A_f=\ad V$, the eigenvalues $\alpha/\beta,1,\beta/\alpha$, \Cref{prop:reps:adjoint}; $\ad\simeq\Sym\otimes\det^{-1}$
+and $L_p(\Sym f,s)=L_p(A_f,s-1)$, \Cref{prop:reps:sym2}.
+\item \textbf{Proofs of Theorems thm:main and thm:quant, Lemma lem:euler (types $\kod{I}_n^*$, $\kod{I}_0^*$)}: $\ad T$ is unchanged by twists,
+\Cref{prop:reps:twist}, \Cref{prop:reps:adjoint-invariance}.
+\item \textbf{The hypothesis of Theorem thm:main, Proposition prop:Sf, DDT Theorem 3.15}: absolute irreducibility on $G_{\Q(\sqrt{\ell^*})}$,
+\Cref{def:reps:absirr}, \Cref{thm:reps:clifford-index-two}, \Cref{prop:reps:dihedral}, \Cref{rem:reps:mod-l-galois}.
+\item \textbf{Conjecture conj:euler, Remark rem:ns, Section sec:anomaly} (the image $\Ns$ and $h_3(E)=1$): \Cref{prop:reps:ns3-induced},
+\Cref{thm:reps:three-images}, \Cref{prop:reps:twist-length}.
+\end{itemize}
+
+\section{Representations over a field}\label{sec:reps:field}
+
+This section fixes the language: representations, the linear constructions on them, and the behaviour of spaces of
+$G$-maps under extension of the field of scalars. In the paper these are used silently everywhere. Three uses are explicit:
+the identification of $H^0$ of a twisted adjoint with a space of $G$-maps in Lemma lem:h0 (\Cref{prop:reps:homG}), the
+descent from $\F_9$ to $\F_3$ of the isomorphism $\rhobar\simeq\rhobar\otimes\chi_{-3}$ in Proposition prop:ns, and the phrase ``over a
+common finite extension of $\F_\ell$'' in Lemma lem:old (\Cref{prop:reps:scalars}).
+
+\begin{convention}\label{conv:reps:conventions}
+The following conventions hold in this chapter.
+\begin{enumerate}[label=(C\arabic*)]
+\item \emph{Representations.} $G$ is a group (finite only where this is said), $k$ a field and $R$ a commutative ring. A
+representation of $G$ over $k$ is a homomorphism $\rho\colon G\to\GL(V)$ with $V$ a \emph{finite-dimensional} $k$-vector space;
+over $R$, $V$ is a free $R$-module of finite rank. Matrices act on column vectors on the left (as in \Cref{ch:groups}). A
+\emph{$G$-map} (intertwiner) is a $k[G]$-linear map; $\Hom_G(V,W)$ is the space of $G$-maps and $V\simeq W$ means isomorphic as
+representations. We often write $gv$ for $\rho(g)v$.
+\item \emph{Duals.} The linear dual is $V^\vee=\Hom_k(V,k)$ with $(g\lambda)(v)=\lambda(g^{-1}v)$; in the dual basis $(e_i^\vee)$, $g$ acts by the
+matrix $\rho(g^{-1})^t$. The symbol ${}^*$ is reserved for Pontryagin duals (convention B-C4 of \Cref{ch:notation}).
+\item \emph{Adjoints.} $\End(V)=\End_k(V)$ is a representation by $g\cdot x=\rho(g)x\rho(g)^{-1}$; written $\Ad V$ when the action is to be
+stressed. $\ad V$ is its subspace of trace zero (the paper's notation; the superscript $0$ is part of the symbol). $\Sym V$ is the
+symmetric square. The matrix units are $E_{ij}=e_i\otimes e_j^\vee$, and for $\dim V=2$ the basis of $\ad V$ is the paper's
+\begin{gather*}
+e=E_{12}=e_1\otimes e_2^\vee,\qquad h=E_{11}-E_{22},\qquad f=E_{21}=e_2\otimes e_1^\vee,\\
+e=\Mtwo0100,\qquad h=\Mtwo100{-1},\qquad f=\Mtwo0010.
+\end{gather*}
+\item \emph{Characters and twists.} A character of $G$ with values in $R$ is a homomorphism $\chi\colon G\to R^\times$. $R(\chi)$ is $R$ with
+$G$ acting through $\chi$, and $M(\chi)=M\otimes_RR(\chi)$, also written $M\otimes\chi$ or $\rho\otimes\chi$. The trace function of $V$ is written
+$\tr_V$, never $\chi_V$, so that the letter $\chi$ is free for characters such as $\chi_{-3}$ and the cyclotomic $\chi_\ell$.
+\item \emph{Fields.} $\bar k$ is an algebraic closure of $k$, and $V_K=K\otimes_kV$ for an extension $K/k$. $\F_9=\F_3[i]$ with $i^2=-1$
+(\Cref{ch:rings}).
+\item \emph{Standard models.} $J=\sm01{-1}0$, $\sigma=\mathrm{diag}(1,-1)$, $w=\sm0110$, $u=\sm1101$, $a=\sm1{-1}11$, and the subgroups $C_s$, $N_s$,
+$C_{ns}$, $N_{ns}$, $Q_8$, $C_4=\langle J\rangle$, $\mathrm B$, $\mathrm U=\langle u\rangle$ of $\GL_2(\F_3)$ are the standard models of \Cref{ch:groups}. Thus
+$J=m_{-i}$ is multiplication by $-i$ on $\F_9=\F_3\oplus\F_3i$, $a=m_{1+i}$, $a^2=J$, $w=\sigma J$, $N_s(\F_3)=\langle J,\sigma\rangle$, $N_{ns}(\F_3)=\langle a,\sigma\rangle$, and
+$\psi\colon C_4\to\F_9^\times$ is the character $\psi(J)=i$.
+\item \emph{Lattices.} $\mathcal{O}$ is a discrete valuation ring with uniformiser $\varpi$, fraction field $K$ and residue field $\mathcal{O}/\varpi$; in the paper
+$\mathcal{O}=\Zl$ and $\varpi=\ell$. A lattice in a $K$-vector space of dimension $n$ is a finitely generated $\mathcal{O}$-submodule that spans it; it is free of
+rank $n$ (\Cref{ch:modules}).
+\item \emph{No Galois groups.} This chapter never uses Frobenius elements. Where the paper's Frobenius appears it is an abstract element
+$F$ with $FgF^{-1}=g^q$ for $g$ in an inertia image, which is the relation satisfied by the \emph{arithmetic} Frobenius (convention B-C2);
+the geometric Frobenius $F^{-1}$ has the inverse eigenvalues. The letter $q$ is then the paper's bad prime.
+\item \emph{Typography.} Double names take plain hyphens: Brauer-Nesbitt, Jordan-H\"older.
+\end{enumerate}
+\end{convention}
+
+\begin{definition}[Representations]\label{def:reps:representation}
+A \emph{representation} of $G$ over $k$ is a homomorphism $\rho\colon G\to\GL(V)$, $V$ a finite-dimensional $k$-vector space; equivalently, a
+left $k[G]$-module structure on $V$, where $k[G]$ is the group algebra (finite sums $\sum_ga_gg$). Its \emph{degree} is $n=\dim V$; it is
+\emph{faithful} if $\ker\rho=1$. A basis of $V$ turns $\rho$ into a homomorphism $G\to\GL_n(k)$, and two such matrix representations $\rho_1$,
+$\rho_2$ are isomorphic iff there is one $P\in\GL_n(k)$ with $\rho_2(g)=P\rho_1(g)P^{-1}$ for all $g$ (the matrix of an isomorphism).
+Examples:
+\begin{enumerate}[label=(\alph*)]
+\item the trivial representation $\mathbf 1$ ($V=k$, $g\mapsto1$);
+\item one-dimensional representations, which are the characters $\chi\colon G\to k^\times$; they factor through the abelianisation $G^{\mathrm{ab}}$;
+\item the permutation representation $k[X]$ of a $G$-set $X$ (basis $X$, $g$ permuting it), and the regular representation $k[G]$;
+\item the \emph{standard representation} of a subgroup $H\le\GL_2(k)$ on $k^2$ (the inclusion);
+\item inflation: if $\pi\colon G\to G'$ is a homomorphism and $\rho'$ a representation of $G'$, then $\rho'\circ\pi$ is one of $G$. A representation
+of a finite quotient of a profinite group is thus one of the group (\Cref{ch:galois}).
+\end{enumerate}
+The representations of Riley-Hobson-Bence \cite{RHB06} are the case $k=\C$, $G$ finite.
+\end{definition}
+
+\begin{definition}[Constructions]\label{def:reps:constructions}
+Let $V,W$ be representations of $G$ over $k$.
+A \emph{subrepresentation} is a $G$-stable subspace $U\subseteq V$, and $V/U$ is the quotient representation. $G$ acts on $V\oplus W$
+componentwise and on $V\otimes W$ by $g(v\otimes w)=gv\otimes gw$; on $V^\vee$ as in (C2); on $\Hom_k(V,W)$ by $(g\phi)(v)=g\,\phi(g^{-1}v)$.
+The \emph{invariants} are $V^G=\{v:gv=v\text{ for all }g\}$, and $\det\rho\colon G\to k^\times$ is the character $g\mapsto\det\rho(g)$, the
+representation on $\wedge^nV$. The same definitions apply to free modules of finite rank over $R$.
+\end{definition}
+
+\begin{proposition}\label{prop:reps:basic-facts}
+Let $V,W$ be representations of $G$ over $k$, $n=\dim V$, $\chi$ a character.
+\begin{enumerate}[label=(\roman*)]
+\item $\tr(g\mid V\oplus W)=\tr(g\mid V)+\tr(g\mid W)$, $\tr(g\mid V\otimes W)=\tr(g\mid V)\tr(g\mid W)$, $\tr(g\mid V^\vee)=\tr(g^{-1}\mid V)$ and
+$\det(V\otimes\chi)=\chi^n\det V$.
+\item The canonical maps $V\to V^{\vee\vee}$ and $V^\vee\otimes W^\vee\to(V\otimes W)^\vee$, $\lambda\otimes\mu\mapsto(v\otimes w\mapsto\lambda(v)\mu(w))$, are
+$G$-isomorphisms.
+\item If $n=2$ (or $V$ is free of rank $2$ over $R$), let $\omega(x,y)=\det[x\,|\,y]$. Then $\omega(gx,gy)=\det(g)\omega(x,y)$, and
+$v\mapsto\omega(v,{-})$ is a $G$-isomorphism $V\to V^\vee\otimes\det$. Hence $V^\vee\simeq V\otimes\det^{-1}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) The first is clear in a basis adapted to $V\oplus W$; the second holds because the matrix of $g$ on $V\otimes W$ in the basis
+$e_i\otimes f_j$ is the Kronecker product of the two matrices, whose trace is the product of the traces; the third because $g$ acts on
+$V^\vee$ by $\rho(g^{-1})^t$; the fourth because $\det(\chi(g)\rho(g))=\chi(g)^n\det\rho(g)$.
+(ii) Both maps are isomorphisms of vector spaces (compare bases). For the first, $v\mapsto(\lambda\mapsto\lambda(v))$, and
+$(g\cdot\mathrm{ev}_v)(\lambda)=\mathrm{ev}_v(g^{-1}\lambda)=(g^{-1}\lambda)(v)=\lambda(gv)$, so $g\cdot\mathrm{ev}_v=\mathrm{ev}_{gv}$. For the second,
+$(g\lambda\otimes g\mu)(v\otimes w)=\lambda(g^{-1}v)\mu(g^{-1}w)$, which is the value of $g$ applied to the form $\lambda\otimes\mu$ on $V\otimes W$.
+(iii) $\omega(gx,gy)=\det(\rho(g)[x\,|\,y])=\det(g)\omega(x,y)$. Put $\Psi(v)=\omega(v,{-})$. As $\omega$ is a perfect pairing ($\omega(e_1,e_2)=1$),
+$\Psi$ is an isomorphism of vector spaces (or of free $R$-modules). For $y\in V$,
+\[
+(g\cdot\Psi(v))(y)=\Psi(v)(g^{-1}y)=\omega(v,g^{-1}y)=\det(g)^{-1}\omega(gv,y),
+\]
+so $\Psi(gv)=\det(g)\,(g\cdot\Psi(v))$, which says that $\Psi$ is $G$-equivariant from $V$ to $V^\vee\otimes\det$.
+\end{proof}
+
+\begin{proposition}[$G$-maps as invariants]\label{prop:reps:homG}
+For representations $V,W$ over $k$ (or free $R$-modules of finite rank with a $G$-action), the map
+\[
+\Theta\colon V^\vee\otimes W\to\Hom(V,W),\qquad \lambda\otimes w\mapsto\bigl(v\mapsto\lambda(v)w\bigr)
+\]
+is a $G$-isomorphism, and $\Hom_G(V,W)=\Hom(V,W)^G=(V^\vee\otimes W)^G$. In particular $\End(V)^G=\End_G(V)$, and for a character $\chi$,
+$(\End(V)\otimes\chi)^G=\Hom_G(V,V\otimes\chi)$, the space of $\phi\in\End(V)$ with $\phi\rho(g)=\chi(g)\rho(g)\phi$ for all $g$.
+\end{proposition}
+
+\begin{proof}
+$\Theta$ sends $e_i^\vee\otimes f_j$ to the matrix unit mapping $e_i$ to $f_j$, so it is bijective. It is equivariant:
+$\Theta(g\lambda\otimes gw)(v)=\lambda(g^{-1}v)\,gw=g\bigl(\Theta(\lambda\otimes w)(g^{-1}v)\bigr)=(g\cdot\Theta(\lambda\otimes w))(v)$. A linear map $\phi$ is
+fixed by $G$ iff $g\phi g^{-1}=\phi$ for all $g$, that is, iff $\phi$ is a $G$-map. For the last statement, $\Hom(V,V\otimes\chi)$ is $\End(V)$ with
+$g$ acting by $\phi\mapsto\chi(g)\rho(g)\phi\rho(g)^{-1}$, that is, $\End(V)\otimes\chi$; it is fixed iff $\phi\rho(g)=\chi(g)\rho(g)\phi$.
+\end{proof}
+
+\begin{paperlink}
+In the proof of Lemma lem:h0, the sentence ``the $\ell^k$-torsion of $H^0(\Q,W^D)$ is $H^0(\Q,\ad(T/\ell^k)(1))$, the group of
+trace-zero $G_\Q$-maps $T/\ell^k\to(T/\ell^k)(1)$'' is \Cref{prop:reps:homG} for the free $\Z/\ell^k$-module $T/\ell^k$ and $\chi=\chi_\ell\bmod\ell^k$, together with
+\Cref{prop:reps:lattice}(iii) for $W^D[\ell^k]=\ad(T/\ell^k)(1)$. In Lemma lem:tamfactor the basis $e=e_1\otimes e_2^\vee$ of $\ad T$ is the image
+under $\Theta$ of a vector of $V^\vee\otimes V$, as in (C3).
+\end{paperlink}
+
+\begin{proposition}[Extension of scalars]\label{prop:reps:scalars}
+Let $K/k$ be a field extension and $V,W$ representations of $G$ over $k$.
+\begin{enumerate}[label=(\roman*)]
+\item $\Hom_{K[G]}(V_K,W_K)=K\otimes_k\Hom_{k[G]}(V,W)$ inside $\Hom_K(V_K,W_K)=K\otimes_k\Hom_k(V,W)$. In particular the two spaces of $G$-maps
+have the same dimension, and $(V_K)^G=K\otimes_kV^G$.
+\item If $V$ and $W$ are irreducible (\Cref{def:reps:irreducible}) and $V_K\simeq W_K$, then $V\simeq W$.
+\item If $V_K$ is irreducible (for instance if $V$ is absolutely irreducible, \Cref{prop:reps:absirr}) and $W_K\simeq V_K$, then $W\simeq V$.
+\item (Noether-Deuring) If $V_K\simeq W_K$, then $V\simeq W$, for arbitrary $V,W$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) For $g\in G$ let $\delta_g\colon\Hom_k(V,W)\to\Hom_k(V,W)$ be $\phi\mapsto\rho_W(g)\phi-\phi\rho_V(g)$; then $\Hom_{k[G]}(V,W)=\bigcap_g\ker\delta_g$. As
+$\Hom_k(V,W)$ is finite-dimensional, the descending chain of finite intersections stabilises, so there are $g_1,\dots,g_r$ with
+$\bigcap_g\ker\delta_g=\ker\delta$ for the single linear map $\delta=(\delta_{g_1},\dots,\delta_{g_r})$. A linear map defined over $k$ has the same rank
+over $K$ (rank is the size of a nonvanishing minor of its matrix), so $\ker(\delta\otimes K)=K\otimes\ker\delta$. Hence
+\[
+\textstyle\bigcap_g\ker(\delta_g\otimes K)\subseteq\ker(\delta\otimes K)=K\otimes\bigcap_g\ker\delta_g\subseteq\bigcap_g\ker(\delta_g\otimes K),
+\]
+and the left side is $\Hom_{K[G]}(V_K,W_K)$. The statement on invariants is the case $V=\mathbf1$.
+(ii) By (i), $\Hom_{k[G]}(V,W)\ne0$; a nonzero $G$-map between irreducible representations is an isomorphism (\Cref{thm:reps:schur}(i)).
+(iii) If $U\subseteq W$ is a subrepresentation, $U_K$ is a subrepresentation of $W_K\simeq V_K$, so $U_K\in\{0,W_K\}$ and $U\in\{0,W\}$; thus $W$
+is irreducible (it is nonzero), and (ii) applies.
+(iv) We do not prove this; see \cite[Section 29]{CurtisReiner}. It is not needed in the paper: wherever an isomorphism is descended,
+(ii) or (iii) applies.
+\end{proof}
+
+\begin{paperlink}
+Proposition prop:ns: $\rhobar_{E,3}\otimes\F_9\simeq\Ind\psi\simeq(\rhobar_{E,3}\otimes\chi_{-3})\otimes\F_9$, and both $\rhobar_{E,3}$ and $\rhobar_{E,3}\otimes\chi_{-3}$ are irreducible
+over $\F_3$; so (ii) gives $\rhobar_{E,3}\simeq\rhobar_{E,3}\otimes\chi_{-3}$ over $\F_3$ (``the isomorphism descending to $\F_3$''; the same sentence ends the
+proof of Lemma lem:h0, where it is (i)). Lemma lem:old: the residual representations of $f$ and of $h$ are compared over a common finite
+extension $k'$ of $\F_\ell$; by (iii), an isomorphism there between $\rhobar\otimes k'$ and $\rhobar_h$ is all that is needed.
+\end{paperlink}
+
+\section{Irreducibility, Schur's lemma, absolute irreducibility}\label{sec:reps:irreducible}
+
+This section introduces irreducible and absolutely irreducible representations and proves Schur's lemma, the tool behind
+every ``a nonzero such map is an isomorphism'' of the paper. Absolute irreducibility is the hypothesis of Theorem thm:main (on
+$\Gal(\Qbar/\Q(\sqrt{\ell^*}))$) and of DDT Theorem 3.15; where the paper says ``irreducible'' and then uses Schur in the form $\End=k$
+(Lemmas lem:h0 and lem:old), absolute irreducibility is what is needed, and for $\rhobar_{E,\ell}$ with $\ell$ odd it is automatic by the
+distinct-eigenvalue criterion (\Cref{prop:reps:distinct-eigenvalues}) applied to complex conjugation.
+
+\begin{definition}\label{def:reps:irreducible}
+A representation $V\ne0$ is \emph{irreducible} (or simple) if its only subrepresentations are $0$ and $V$, and \emph{reducible}
+otherwise; it is \emph{indecomposable} if it is not the direct sum of two nonzero subrepresentations. Irreducible implies
+indecomposable, not conversely (\Cref{ex:reps:maschke-fails}). If $\dim V=2$, $V$ is irreducible iff no line of $V$ is $G$-stable, iff $\rho(G)$
+lies in no Borel subgroup of $\GL(V)$ (the stabiliser of a line, \Cref{ch:groups}).
+Examples: every one-dimensional representation is irreducible. The standard representations of $\GL_2(\F_3)$ and of $N_s(\F_3)$ on $\F_3^2$
+are irreducible (they stabilise no line, \Cref{ch:groups}), and so is that of $C_4=\langle J\rangle$: a stable line would be spanned by an
+eigenvector of $J$, but the characteristic polynomial $X^2+1$ of $J$ has no root in $\F_3$. The standard representations of
+$\mathrm U=\langle u\rangle$ and of $\mathrm B(\F_3)$ are reducible: they stabilise $\F_3e_1$.
+\end{definition}
+
+\begin{theorem}[Schur's lemma]\label{thm:reps:schur}
+Let $V,W$ be irreducible representations of a group $G$ over a field $k$.
+\begin{enumerate}[label=(\roman*)]
+\item Every $G$-map $V\to W$ is $0$ or an isomorphism. Hence $D=\End_G(V)$ is a division algebra, of finite dimension over $k$.
+\item If $k$ is algebraically closed, then $\End_G(V)=k$ (the scalars), and $\dim_k\Hom_G(V,W)$ is $1$ if $V\simeq W$ and $0$ otherwise.
+\item The conclusions of (ii) hold over any $k$ if $V$ and $W$ are absolutely irreducible (\Cref{def:reps:absirr}).
+\item If $V$ is absolutely irreducible, every central element of $G$ acts on $V$ by a scalar; every absolutely irreducible
+representation of an abelian group is one-dimensional; and if $G$ is abelian and $V$ irreducible, $\End_G(V)$ is a field, equal
+to the image of $k[G]$ in $\End_k(V)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) If $\phi\colon V\to W$ is a $G$-map, $\ker\phi$ and $\im\phi$ are subrepresentations. If $\phi\ne0$, then $\ker\phi\ne V$, so $\ker\phi=0$, and
+$\im\phi\ne0$, so $\im\phi=W$. A nonzero element of $\End_G(V)$ is therefore invertible, and its inverse is again a $G$-map.
+(ii) Let $\phi\in\End_G(V)$. As $V\ne0$ is finite-dimensional and $k$ algebraically closed, $\phi$ has an eigenvalue $c$; then $\phi-c$ is a
+$G$-map that is not injective, so $\phi-c=0$ by (i). If $V\simeq W$ via $\alpha$, then $\Hom_G(V,W)=\alpha\End_G(V)=k\alpha$; if not, $\Hom_G(V,W)=0$
+by (i).
+(iii) By \Cref{prop:reps:scalars}(i), $\dim_k\End_G(V)=\dim_{\bar k}\End_G(V_{\bar k})=1$ and $\dim_k\Hom_G(V,W)=\dim_{\bar k}\Hom_G(V_{\bar k},W_{\bar k})$; apply (ii)
+over $\bar k$, using \Cref{prop:reps:scalars}(ii) to compare $V\simeq W$ with $V_{\bar k}\simeq W_{\bar k}$.
+(iv) A central $z$ gives $\rho(z)\in\End_G(V)=k$. If $G$ is abelian, every $\rho(g)$ is central in the image, so it is a scalar, every
+line is stable, and $\dim V=1$. For the last statement let $A\subseteq\End_k(V)$ be the image of $k[G]$; it is a commutative subalgebra, and
+$\End_G(V)$ is the commutant of $A$, which contains $A$. For $0\ne x\in A$, $\ker x$ is $A$-stable ($A$ is commutative), hence $G$-stable
+and different from $V$, so $\ker x=0$: $A$ has no zero divisors, and a finite-dimensional commutative $k$-algebra without zero
+divisors is a field. Then $V$ is an $A$-vector space whose $A$-subspaces are $G$-stable, so $\dim_AV=1$, $V\simeq A$, and the commutant
+of $A$ acting on itself by multiplication is $A$.
+\end{proof}
+
+\begin{definition}\label{def:reps:absirr}
+A representation $V$ of $G$ over $k$ is \emph{absolutely irreducible} if $V_{\bar k}$ is irreducible. It is \emph{absolutely reducible}
+otherwise.
+\end{definition}
+
+\begin{proposition}\label{prop:reps:absirr}
+Let $V$ be a representation of $G$ over $k$, $n=\dim V$.
+\begin{enumerate}[label=(\roman*)]
+\item $V$ is absolutely irreducible iff the map $k[G]\to\End_k(V)$ is surjective. If so, $V_K$ is irreducible for every extension $K/k$.
+\item An absolutely irreducible $V$ is irreducible and $\End_G(V)=k$.
+\item If $n=2$, $V$ is absolutely irreducible iff $\rho(G)$ stabilises no line of $\bar k^2$, iff $\rho(G)$ is not conjugate in $\GL_2(\bar k)$ into
+the upper triangular group.
+\item If $V$ is irreducible, $V$ is absolutely irreducible iff $\End_G(V)=k$. This holds over every field $k$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Let $A\subseteq\End_k(V)$ be the image of $k[G]$. The image of $\bar k[G]$ in $\End_{\bar k}(V_{\bar k})=\bar k\otimes_k\End_k(V)$ is $\bar k\otimes_kA$, of
+$\bar k$-dimension $\dim_kA$. If $V_{\bar k}$ is irreducible, the density theorem (\Cref{thm:reps:burnside}(b), whose proof does not use this
+proposition) says that $\bar k\otimes_kA=\End(V_{\bar k})$, so $\dim_kA=n^2$ and $A=\End_k(V)$. Conversely, if $A=\End_k(V)$, then for every
+extension $K/k$ the image of $K[G]$ is $\End_K(V_K)$, and a subspace stable under all of $\End_K(V_K)$ is $0$ or $V_K$.
+(ii) If $U\subseteq V$ is a subrepresentation, $U_{\bar k}$ is one of $V_{\bar k}$; so $V$ is irreducible. $\End_G(V)=k$ is \Cref{thm:reps:schur}(iii).
+(iii) A nonzero proper subrepresentation of the two-dimensional $V_{\bar k}$ is a stable line; and $\rho(G)$ stabilises the line $\bar ke_1'$ iff it is
+upper triangular in a basis $e_1',e_2'$.
+(iv) One direction is (ii). Conversely let $V$ be irreducible with $\End_G(V)=k$. The density theorem (\Cref{thm:reps:burnside}(a), with
+$r=1$) says that the image of $k[G]$ is $\End_{\End_G(V)}(V)=\End_k(V)$, and (i) applies.
+\end{proof}
+
+\begin{proposition}[Distinct eigenvalues]\label{prop:reps:distinct-eigenvalues}
+Let $V$ be a representation of any group $G$ over $k$, $n=\dim V$, and suppose that some $g\in G$ (or some element of the image of
+$k[G]$) acts on $V$ with $n$ distinct eigenvalues $\lambda_1,\dots,\lambda_n\in k$. Then every $G$-stable subspace $U$ of $V_{\bar k}$ is a sum of
+eigenlines of $g$, and $U=(U\cap V)_{\bar k}$ with $U\cap V$ a subrepresentation of $V$. In particular $V$ is irreducible iff it is absolutely
+irreducible. This applies when $n=2$, $\operatorname{char}k\ne2$ and some $c\in G$ has $\rho(c)^2=1$, $\det\rho(c)=-1$: the eigenvalues of $\rho(c)$ are
+then $1$ and $-1$, which are distinct.
+\end{proposition}
+
+\begin{proof}
+Let $v_1,\dots,v_n\in V$ be eigenvectors of $g$ for $\lambda_1,\dots,\lambda_n$ (they exist over $k$ because the $\lambda_i$ lie in $k$); they form a basis of $V$
+and of $V_{\bar k}$. Let $u=\sum_ic_iv_i\in U$. Applying $\prod_{j\ne i}(g-\lambda_j)$, which preserves $U$, gives $c_i\prod_{j\ne i}(\lambda_i-\lambda_j)v_i\in U$, and
+the product is nonzero; so $c_iv_i\in U$ for every $i$. Hence $U$ is spanned by the $v_i$ it contains, $U=(U')_{\bar k}$ for the $k$-span $U'$
+of these $v_i$, and $U'=U\cap V$ is $G$-stable. If $V$ is irreducible, $U\cap V\in\{0,V\}$, so $U\in\{0,V_{\bar k}\}$. The case $n=2$: $\rho(c)^2=1$
+gives eigenvalues in $\{\pm1\}$, with product $-1$.
+\end{proof}
+
+\begin{example}[$C_4$ on $\F_3^2$]\label{ex:reps:c4}
+Let $C_4=\langle J\rangle$, $J=\sm01{-1}0$, act on $\F_3^2$. It is irreducible (\Cref{def:reps:irreducible}) but not absolutely irreducible: over
+$\F_9=\F_3[i]$,
+\[
+J\binom1i=\binom{i}{-1}=i\binom1i,\qquad J\binom1{-i}=\binom{-i}{-1}=-i\binom1{-i},
+\]
+so with $v=(1,i)^t$ and $\bar v=(1,-i)^t$ we get $\F_9^2=\F_9v\oplus\F_9\bar v\simeq\psi\oplus\psi^{-1}$, where $\psi(J)=i$ is a character of order $4$ with values
+in $\F_9^\times$ (these are the two lines spanned by $(\mp i,1)^t$ of \Cref{ch:groups}). The vector $\bar v$ is obtained from $v$ by the Frobenius
+$x\mapsto x^3$ of $\F_9$ on coordinates, and $\psi^{-1}=\psi^3$ is the Frobenius conjugate of $\psi$. The commutant is $\End_{C_4}(\F_3^2)=\F_3[J]\simeq\F_3[X]/(X^2+1)\simeq\F_9$
+(\Cref{lem:reps:commutant}), a field of dimension $2$ over $\F_3$, as \Cref{prop:reps:absirr}(iv) and \Cref{thm:reps:schur}(iv) predict.
+In contrast, $C_{ns}(\F_3)=\langle a\rangle\simeq\F_9^\times$ also acts irreducibly and not absolutely irreducibly, with commutant $\F_3[a]=\F_9$; and $\mathrm U$
+fixes exactly one line of $\F_3^2$ and is not a direct sum of two lines (\Cref{ex:reps:maschke-fails}).
+\end{example}
+
+\begin{paperlink}
+The hypothesis of Theorem thm:main is that $\rhobar_{E,\ell}$ is absolutely irreducible on $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$; in DFG04 this is $\ell\notin S_f$.
+\Cref{ex:reps:c4} is the reason why ``absolutely'' cannot be dropped: in the $N_s(\F_3)$ case the restriction to $\Gal(\Qbar/\Q(\sqrt{-3}))$ has
+image $C_4$, which is irreducible over $\F_3$ and splits as $\psi\oplus\psi^{-1}$ over $\F_9$ (Proposition prop:ns). In Lemmas lem:h0 and lem:old and in
+Proposition prop:Sf the paper deduces absolute irreducibility from irreducibility because complex conjugation has the distinct
+eigenvalues $\pm1$: this is the case $n=2$ of \Cref{prop:reps:distinct-eigenvalues}, with $c$ complex conjugation and $\det\rhobar(c)=\bar\chi_\ell(c)=-1$
+(\Cref{ch:galois}).
+\end{paperlink}
+
+\section{Semisimplicity, Maschke's theorem, Jordan-H\"older}\label{sec:reps:semisimple}
+
+This section explains when a representation is a direct sum of irreducibles. Over a finite group of order prime to the
+characteristic it always is (Maschke); in characteristic dividing the order it need not be, and this failure is exactly what the
+paper's Lemma lem:IV records: an element of order $3$ in $\SL_2(\Z_3)$ fixes no vector of $T$ but a line of $T/3T$. The section also
+proves the facts about extensions of two characters used in Lemma lem:old (a non-split extension has a unique stable line) and
+gives a second proof that $Q_8$ acts absolutely irreducibly on $\F_3^2$, a step of Proposition prop:ns.
+
+\begin{definition}\label{def:reps:semisimple}
+A representation is \emph{semisimple} if it is a sum of irreducible subrepresentations. The zero representation is semisimple.
+\end{definition}
+
+\begin{proposition}\label{prop:reps:semisimple}
+Let $V$ be a finite-dimensional representation of any group $G$ over $k$.
+\begin{enumerate}[label=(\roman*)]
+\item The following are equivalent: (a) $V$ is a sum of irreducible subrepresentations; (b) $V$ is a direct sum of irreducible
+subrepresentations; (c) every subrepresentation of $V$ has a $G$-stable complement.
+\item Subrepresentations and quotients of a semisimple representation are semisimple.
+\item (Isotypic decomposition.) For an irreducible $S$ let $V_S$ be the sum of the subrepresentations of $V$ isomorphic to $S$. If $V$
+is semisimple, $V=\bigoplus_SV_S$ over the isomorphism classes of irreducible $S$, and $V_S\simeq S^{m_S}$, where $m_S\dim_k\End_G(S)=\dim_k\Hom_G(S,V)$.
+In particular $m_S=\dim\Hom_G(S,V)$ if $S$ is absolutely irreducible.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Suppose (a), $V=\sum_{i\in I}S_i$, and let $U$ be a subrepresentation. Choose $J\subseteq I$ maximal such that the sum $U+\sum_{j\in J}S_j$ is
+direct. For every $i$, $S_i\cap(U\oplus\bigoplus_JS_j)$ is a subrepresentation of the irreducible $S_i$; if it were $0$, $J\cup\{i\}$ would
+contradict maximality; so $S_i\subseteq U\oplus\bigoplus_JS_j$. Hence $V=U\oplus\bigoplus_JS_j$, which gives (c), and (b) for $U=0$. (b) implies (a)
+trivially. Suppose (c), and let $V'$ be the sum of all irreducible subrepresentations. If $V'\ne V$, a complement $C\ne0$ exists; $C$
+contains a nonzero subrepresentation of minimal dimension, which is irreducible and lies in $V'\cap C=0$, a contradiction.
+(ii) By the proof of (i), $V=U\oplus\bigoplus_JS_j$, so $V/U\simeq\bigoplus_JS_j$ is semisimple. Applying this to a complement $C$ of $U$, with
+$V=C\oplus U$, shows that $U\simeq V/C$ is semisimple.
+(iii) Write $V=\bigoplus_iS_i$ by (b), and let $W_S$ be the sum of the $S_i$ isomorphic to $S$. If $T\subseteq V$ is irreducible and $T\simeq S$, its
+projection to any $S_i\not\simeq S$ is $0$ by \Cref{thm:reps:schur}(i); so $T\subseteq W_S$. Hence $V_S=W_S$, $V=\bigoplus_SV_S$, and $V_S\simeq S^{m_S}$ with $m_S$
+the number of $i$ with $S_i\simeq S$. Then $\Hom_G(S,V)=\bigoplus_i\Hom_G(S,S_i)$ has dimension $m_S\dim\End_G(S)$; the number $m_S$ does not
+depend on the decomposition.
+\end{proof}
+
+\begin{theorem}[Maschke]\label{thm:reps:maschke}
+\begin{enumerate}[label=(\roman*)]
+\item Let $G$ be finite and $\operatorname{char}k\nmid\#G$. Every finite-dimensional representation of $G$ over $k$ is semisimple.
+\item Let $G$ be finite, $R$ a commutative ring with $\#G\in R^\times$, and $M$ an $R[G]$-module. Then $e_G=\frac1{\#G}\sum_{g\in G}g$ is a central idempotent of
+$R[G]$ with $e_GM=M^G$, $M=M^G\oplus(1-e_G)M$ as $R[G]$-modules, and $(M/IM)^G=M^G/IM^G$ for every ideal $I$ of $R$. In particular, for $R=\Zl$
+with $\ell\nmid\#G$ and a $\Zl[G]$-lattice $T$, $(T/\ell^mT)^G=T^G/\ell^mT^G$: invariants commute with reduction.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) Let $U\subseteq V$ be a subrepresentation and $\pi\colon V\to U$ any $k$-linear projection ($\pi|_U=\id$). Put $\pi'=\frac1{\#G}\sum_gg\pi g^{-1}$. Then
+$\pi'(V)\subseteq U$, $\pi'|_U=\id$ (as $g\pi g^{-1}u=u$ for $u\in U$), and $h\pi'h^{-1}=\pi'$ for all $h$. So $\pi'$ is a $G$-equivariant projection
+onto $U$, and $\ker\pi'$ is a stable complement; apply \Cref{prop:reps:semisimple}(i).
+(ii) $he_G=e_G=e_Gh$ for $h\in G$, so $e_G$ is central and $e_G^2=\frac1{\#G}\sum_gge_G=e_G$. If $m\in M^G$, $e_Gm=m$; and $he_Gm=e_Gm$, so
+$e_GM=M^G$. Since $e_G$ is a central idempotent, $M=e_GM\oplus(1-e_G)M$ as $R[G]$-modules. Finally $M/IM$ is an $R[G]$-module, so
+$(M/IM)^G=e_G(M/IM)$, the image of $e_GM=M^G$; the kernel of $M^G\to M/IM$ is $M^G\cap IM$, and if $x=\sum r_im_i\in M^G$ with $r_i\in I$, then
+$x=e_Gx=\sum r_ie_Gm_i\in IM^G$.
+\end{proof}
+
+\begin{paperlink}
+In Lemma lem:euler and Remark rem:types, for $\ell\ge5$ the finite images of inertia (of order $2,3,4,6$) have order prime to $\ell$, so by (ii)
+their invariants on $T$ and on $\ad T$ commute with reduction modulo $\ell^m$. At $\ell=3$ this fails for the elements of order $3$ and $6$
+(\Cref{prop:reps:reduction-cyclic}); that failure is the content of Lemma lem:IV. In Proposition prop:ns the groups $Q_8$ and $C_4$ have order
+prime to $3$, which is used in \Cref{prop:reps:dim2-absirr}.
+\end{paperlink}
+
+\begin{example}[Failures of semisimplicity]\label{ex:reps:maschke-fails}
+\begin{enumerate}[label=(\alph*)]
+\item $\mathrm U=\langle u\rangle\simeq C_3$ acting on $\F_3^2$. The line $\F_3e_1$ is stable. A stable line is spanned by an eigenvector of $u$, and
+$\ker(u-1)=\F_3e_1$ is the only eigenspace; so $\F_3e_1$ has no stable complement, $\F_3^2$ is indecomposable and not semisimple, and its
+composition factors (\Cref{thm:reps:jordan-holder}) are $\mathbf1,\mathbf1$. Maschke does not apply: $3\mid\#\mathrm U$.
+\item The regular representation $\F_p[C_p]\simeq\F_p[x]/(x^p-1)=\F_p[x]/((x-1)^p)$ ($x$ a generator of $C_p$). Its subrepresentations are the ideals,
+which are the $((x-1)^j)$, $0\le j\le p$, a chain: the representation is uniserial, with the single composition factor $\mathbf1$ of
+multiplicity $p$.
+\item For an infinite group Maschke fails even in characteristic $0$: $\Z$ acting on $\Ql^2$ by $m\mapsto\sm1{mn'}01$ with $n'\ne0$ stabilises
+only the line $\Ql e_1$ (as in (a)), so it is not semisimple. This is the shape of tame inertia at a multiplicative prime
+(Lemma lem:tamfactor).
+\item $\mathrm B(\F_3)$ on $\F_3^2$: it contains $u$, so $\F_3e_1$ is its only stable line, and the representation is indecomposable and reducible.
+Its commutant is $\F_3$: a matrix commuting with $\sigma=\mathrm{diag}(1,-1)$ is diagonal, and $\mathrm{diag}(x,y)$ commutes with $u$ iff $x=y$. So
+``$\End_G(V)=k$'' does not imply irreducibility without semisimplicity.
+\end{enumerate}
+\end{example}
+
+\begin{theorem}[Jordan-H\"older]\label{thm:reps:jordan-holder}
+Let $A$ be a ring (here $k[G]$ or $\mathcal{O}[G]$) and $M$ an $A$-module of finite length, for example a finite-dimensional representation or a
+finite $\mathcal{O}[G]$-module. Then $M$ has a composition series $0=M_0\subset M_1\subset\dots\subset M_r=M$ with simple quotients $M_i/M_{i-1}$, and the
+length $r$ and the multiset of isomorphism classes of the quotients (the \emph{composition factors}, with multiplicity) do not depend
+on the series.
+\end{theorem}
+
+\begin{proof}
+This is proved in \Cref{ch:modules} for modules of finite length over any ring; we do not prove it again (decision B2). A
+finite-dimensional representation has finite length because a strictly increasing chain of subspaces has at most $\dim V+1$ terms.
+\end{proof}
+
+\begin{definition}\label{def:reps:semisimplification}
+The \emph{semisimplification} of a finite-dimensional representation $V$ is $V^{ss}=\bigoplus_{i=1}^rM_i/M_{i-1}$ for a composition series
+$(M_i)$ of $V$.
+\end{definition}
+
+\begin{proposition}\label{prop:reps:semisimplification}
+\begin{enumerate}[label=(\roman*)]
+\item $V^{ss}$ is well defined up to isomorphism; $V^{ss}\simeq V$ iff $V$ is semisimple; and if $0\to U\to V\to Q\to0$ is exact, $V^{ss}\simeq U^{ss}\oplus Q^{ss}$.
+\item $\det(X-g\mid V)=\det(X-g\mid V^{ss})$ and $\tr(g\mid V)=\tr(g\mid V^{ss})$ for all $g\in G$.
+\item If $k$ is perfect and $K/k$ algebraic, $(V^{ss})_K\simeq(V_K)^{ss}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Well defined by \Cref{thm:reps:jordan-holder}. If $V=\bigoplus_iS_i$ with $S_i$ irreducible, $0\subset S_1\subset S_1\oplus S_2\subset\cdots$ is a
+composition series with quotients $S_i$, so $V^{ss}\simeq V$; conversely $V^{ss}$ is semisimple by definition. For the exact sequence, a
+composition series of $U$ followed by the preimages of one of $Q$ is a composition series of $V$.
+(ii) In a basis adapted to a composition series the matrix of $g$ is block upper triangular with the matrices of $g$ on the
+$M_i/M_{i-1}$ on the diagonal.
+(iii) We do not prove this; see \cite[Section 29]{CurtisReiner} (over a perfect field an irreducible representation stays semisimple
+after an algebraic extension of scalars). It is not used below: \Cref{thm:reps:brauer-nesbitt} is proved over an arbitrary field
+without it.
+\end{proof}
+
+\begin{proposition}[Extensions of two characters]\label{prop:reps:nonsplit-line}
+Let $V$ be a two-dimensional representation of any group $G$ over $k$ with a stable line $L$, on which $G$ acts by $\chi_1$, and let $G$
+act on $V/L$ by $\chi_2$. In a basis $e_1\in L$, $e_2$,
+\[
+\rho(g)=\Mtwo{\chi_1(g)}{b(g)}0{\chi_2(g)},\qquad b(gh)=\chi_1(g)b(h)+b(g)\chi_2(h).
+\]
+\begin{enumerate}[label=(\roman*)]
+\item The following are equivalent: $V$ is semisimple; $V\simeq\chi_1\oplus\chi_2$; $V$ has a stable line other than $L$; there is $c\in k$ with
+$b(g)=c\,(\chi_2(g)-\chi_1(g))$ for all $g$ (then $k(ce_1+e_2)$ is stable).
+\item If $V$ is not semisimple (a \emph{non-split extension}), $L$ is its only stable line. Hence if $V'$ is another non-split extension,
+with sub-character $\chi_1'$ and quotient character $\chi_2'$, every isomorphism $V\simeq V'$ maps $L$ onto $L'$, and $\chi_1=\chi_1'$, $\chi_2=\chi_2'$.
+\item If $\chi_1\ne\chi_2$ and $V$ is semisimple, $V$ has exactly two stable lines.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The cocycle identity is the upper right entry of $\rho(gh)=\rho(g)\rho(h)$.
+(i) If $V$ is semisimple, $L$ has a stable complement $L'$, a second stable line, and $L'\simeq V/L$, so $V=L\oplus L'\simeq\chi_1\oplus\chi_2$; if
+$V\simeq\chi_1\oplus\chi_2$ it is semisimple. A line other than $L$ is $k(ce_1+e_2)$ for a unique $c$, and
+$g(ce_1+e_2)=(c\chi_1(g)+b(g))e_1+\chi_2(g)e_2$ lies in $k(ce_1+e_2)$ iff $c\chi_1(g)+b(g)=c\chi_2(g)$. A second stable line is a complement of $L$.
+(ii) A second stable line would make $V$ semisimple by (i). An isomorphism maps stable lines to stable lines, so $L$ to $L'$, and
+induces isomorphisms $L\simeq L'$ and $V/L\simeq V'/L'$ of one-dimensional representations, which are equalities of characters.
+(iii) In a basis $v_1,v_2$ of stable lines, $V=kv_1\oplus kv_2$ with characters $\chi_1\ne\chi_2$, a vector $xv_1+yv_2$ with $xy\ne0$ spans a stable line only if
+$\chi_1(g)=\chi_2(g)$ for all $g$.
+\end{proof}
+
+\begin{paperlink}
+Lemma lem:old, case $p\,\|\,N$ with $\rhobar$ ramified at $p$: ``a non-split extension of two characters has a unique stable line, so the
+isomorphism $\rhobar|_{D_p}\simeq\rhobar_h|_{D_p}$ matches the sublines and hence the quotients'' is (ii), applied over a common finite extension
+of $\F_\ell$. Lemmas lem:tamagawa-exp and lem:tamfactor use the shape $\sm{\chi_\ell\varepsilon}{\varepsilon\kappa}0\varepsilon$ of the Tate representation: the corner
+$\varepsilon\kappa$ satisfies the cocycle identity above with $\chi_1=\chi_\ell\varepsilon$, $\chi_2=\varepsilon$ (convention B-C14; the cohomological reading is in
+\Cref{ch:cohomology}).
+\end{paperlink}
+
+\begin{proposition}[Absolute irreducibility in dimension $2$]\label{prop:reps:dim2-absirr}
+Let $\rho\colon G\to\GL_2(k)$ be a representation.
+\begin{enumerate}[label=(\roman*)]
+\item If $\rho(G)$ is abelian, $\rho$ is absolutely reducible.
+\item If $\rho(G)$ is finite of order prime to $\operatorname{char}k$ and $\rho$ is absolutely reducible, then $\rho_{\bar k}\simeq\chi_1\oplus\chi_2$ and $\rho(G)$
+is abelian. Hence a finite non-abelian subgroup of $\GL_2(k)$ of order prime to $\operatorname{char}k$ acts absolutely irreducibly on $k^2$.
+\item If $H\le G$ and $\Res_H\rho$ is absolutely irreducible, so is $\rho$.
+\item On $\F_3^2$: $Q_8$ acts absolutely irreducibly, and hence so do $\SL_2(\F_3)$, $N_{ns}(\F_3)$ and $\GL_2(\F_3)$, which contain it; $N_s(\F_3)\simeq D_4$
+acts absolutely irreducibly; $C_4$ and $C_{ns}(\F_3)$ do not. The Borel subgroup $\mathrm B(\F_3)$ is non-abelian and acts faithfully but
+reducibly: its order $12$ is divisible by $3$, and (ii) does not apply.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Commuting operators on $\bar k^2$ have a common eigenvector: if all $\rho(g)$ are scalars any line is stable; otherwise take $g_0$
+with $\rho(g_0)$ not scalar and an eigenvalue $c$ of it; its eigenspace $\ker(\rho(g_0)-c)$ is a line (it is not everything), stable under
+every $\rho(g)$, which commutes with $\rho(g_0)$.
+(ii) $\rho_{\bar k}$ has a stable line, and by Maschke (\Cref{thm:reps:maschke}(i), applied to the finite group $\rho(G)$) a stable
+complement; in the basis of the two lines $\rho(G)$ is diagonal, hence abelian.
+(iii) A stable line of $\bar k^2$ for $G$ is one for $H$.
+(iv) $Q_8$ is non-abelian of order $8$, prime to $3$, and acts faithfully; apply (ii) and then (iii) to the groups containing $Q_8$
+(\Cref{ch:groups}). $N_s(\F_3)$ is non-abelian of order $8$. $C_4$ and $C_{ns}(\F_3)$ are cyclic; apply (i). $\mathrm B(\F_3)$ stabilises $\F_3e_1$.
+\end{proof}
+
+\begin{paperlink}
+Proposition prop:ns: ``The first two act absolutely irreducibly on $\F_3^2$''. The paper's argument is the commutator one of
+\Cref{ch:groups}: a subgroup of $\GL_2(\Fbar_3)$ fixing a line lies in a Borel subgroup, whose commutator subgroup is unipotent, so abelian
+of exponent $3$, while the commutator subgroups $\{\pm1\}$ of $Q_8$ and $Q_8$ of $\SL_2(\F_3)$ are not. \Cref{prop:reps:dim2-absirr}(ii), (iii) give
+a second proof: $Q_8$ is non-abelian of order prime to $3$, and $\SL_2(\F_3)$ contains $Q_8$. The phrase ``non-abelian and faithful'' of
+the original version of the paper is not enough, by the example of $\mathrm B(\F_3)$, which is why the revised version argues with commutators. ``The third is abelian,
+hence absolutely reducible'' is (i).
+\end{paperlink}
+
+\section{Characters in characteristic zero}\label{sec:reps:characters}
+
+This short section connects the chapter with the character theory of Riley-Hobson-Bence: over $\C$ a representation of a finite
+group is determined by its trace function, and the trace functions of the irreducible representations are orthonormal. The paper
+uses none of this directly; it is here for two reasons. It shows the reader where the familiar theory stops: in characteristic $\ell$
+traces no longer determine semisimple representations (\Cref{ex:reps:traces-fail}), which is why Brauer-Nesbitt in Lemma lem:old is
+applied with characteristic polynomials. And the two groups of order $8$ of Proposition prop:ns, $N_s(\F_3)\simeq D_4$ and $Q_8$, are a classical pair
+with the same character table.
+
+\begin{definition}\label{def:reps:trace-character}
+The \emph{trace function} of a representation $V$ is $\tr_V\colon G\to k$, $\tr_V(g)=\tr\rho(g)$. It is a class function ($\tr_V(xgx^{-1})=\tr_V(g)$),
+$\tr_V(1)=\dim V$ (in $k$), and by \Cref{prop:reps:basic-facts} $\tr_{V\oplus W}=\tr_V+\tr_W$, $\tr_{V\otimes W}=\tr_V\tr_W$, $\tr_{V^\vee}(g)=\tr_V(g^{-1})$. For
+$k=\C$ and $G$ finite, $\rho(g)$ has finite order, its eigenvalues are roots of unity, and $\tr_V(g^{-1})=\overline{\tr_V(g)}$. In
+Riley-Hobson-Bence, and in most books on finite groups, $\tr_V$ is called the \emph{character} of $V$; we avoid the word for trace
+functions because the paper's characters $\chi_{-3}$, $\chi_\ell$, $\psi$ are homomorphisms to $k^\times$ (one-dimensional representations, whose trace
+function is the character itself).
+\end{definition}
+
+\begin{theorem}[Orthogonality]\label{thm:reps:orthogonality}
+Let $G$ be finite, $k=\C$, and $\langle\phi,\psi\rangle=\frac1{\#G}\sum_{g\in G}\phi(g)\overline{\psi(g)}$ on class functions.
+\begin{enumerate}[label=(\roman*)]
+\item For irreducible $V,W$: $\langle\tr_V,\tr_W\rangle=1$ if $V\simeq W$ and $0$ otherwise.
+\item For all $V,W$: $\dim\Hom_G(V,W)=\langle\tr_W,\tr_V\rangle$. A representation $V$ is irreducible iff $\langle\tr_V,\tr_V\rangle=1$, and two
+representations with the same trace function are isomorphic.
+\item The trace functions $\tr_{V_1},\dots,\tr_{V_r}$ of the irreducible representations (up to isomorphism) form an orthonormal basis of
+the space of class functions; so $r$ is the number of conjugacy classes; and $\sum_i(\dim V_i)^2=\#G$.
+\item Each $\dim V_i$ divides $\#G$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(ii) By \Cref{prop:reps:homG}, $\Hom_G(V,W)=(V^\vee\otimes W)^G$, the image of the idempotent $e_G$ of \Cref{thm:reps:maschke}(ii). The trace of an
+idempotent is its rank, so
+\begin{align*}
+\dim\Hom_G(V,W)&=\tr(e_G\mid V^\vee\otimes W)=\frac1{\#G}\sum_g\tr_{V^\vee}(g)\tr_W(g)\\
+&=\frac1{\#G}\sum_g\tr_W(g)\overline{\tr_V(g)}=\langle\tr_W,\tr_V\rangle.
+\end{align*}
+(i) follows from (ii) and \Cref{thm:reps:schur}(ii); the value is real, so the order of the arguments does not matter. By Maschke,
+$V\simeq\bigoplus_iV_i^{m_i}$, and by (i) $\langle\tr_V,\tr_V\rangle=\sum_im_i^2$, which is $1$ iff $V$ is irreducible; and $m_i=\langle\tr_V,\tr_{V_i}\rangle$ is determined
+by $\tr_V$.
+(iii) Orthonormality is (i). The regular representation $\C[G]$ has $\tr(1)=\#G$ and $\tr(g)=0$ for $g\ne1$ (a nontrivial $g$ moves every
+basis vector), so $\langle\tr_{\C[G]},\tr_{V_i}\rangle=\dim V_i$, $\C[G]\simeq\bigoplus_iV_i^{\dim V_i}$, and $\#G=\sum_i(\dim V_i)^2$. Let $\phi$ be a class function
+orthogonal to every $\tr_{V_i}$. For each irreducible $V$, the operator $\Phi_V=\sum_g\overline{\phi(g)}\rho_V(g)$ commutes with $G$ ($\phi$ is a class
+function), so it is a scalar $c$ by Schur, and $c\dim V=\tr\Phi_V=\#G\,\langle\tr_V,\phi\rangle=0$. So $\Phi$ vanishes on every irreducible, hence on $\C[G]$,
+and applied to $1\in\C[G]$ it gives $\sum_g\overline{\phi(g)}g=0$, so $\phi=0$. Hence the $\tr_{V_i}$ span the class functions, whose dimension is the
+number of conjugacy classes.
+(iv) We do not prove this; see \cite[Section 6.5]{SerreLinearReps}.
+\end{proof}
+
+\begin{corollary}\label{cor:reps:traces-char0}
+If $\operatorname{char}k=0$, two semisimple finite-dimensional representations of any group $G$ with the same trace function are
+isomorphic.
+\end{corollary}
+
+\begin{proof}
+This is the last statement of \Cref{thm:reps:brauer-nesbitt} (traces suffice in characteristic $0$), together with
+\Cref{prop:reps:semisimplification}(i); the proof of that theorem does not use this corollary.
+\end{proof}
+
+\begin{example}[The character tables of $D_4$ and $Q_8$]\label{ex:reps:tables}
+Take $D_4=N_s(\F_3)=\langle J,\sigma\rangle$ (rotation $J$, reflection $\sigma$; \Cref{ch:groups}) and $Q_8=\{\pm1,\pm J,\pm j,\pm k\}$ with $j=\sm1{-1}{-1}{-1}$, $k=Jj$.
+Both have five conjugacy classes, and their irreducible trace functions over $\C$ are:
+\begin{center}
+\begin{tabular}{lccccc}
+\toprule
+$D_4$ & $1$ & $-1$ & $\pm J$ & $\pm\sigma$ & $\pm w$\\
+$Q_8$ & $1$ & $-1$ & $\pm J$ & $\pm j$ & $\pm k$\\
+\midrule
+$\chi_0$ & $1$ & $1$ & $1$ & $1$ & $1$\\
+$\chi_1$ & $1$ & $1$ & $1$ & $-1$ & $-1$\\
+$\chi_2$ & $1$ & $1$ & $-1$ & $1$ & $-1$\\
+$\chi_3$ & $1$ & $1$ & $-1$ & $-1$ & $1$\\
+$\tr_2$ & $2$ & $-2$ & $0$ & $0$ & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The four characters factor through the quotient by $\{\pm1\}$, which is $V_4$ for both groups; for $D_4$, $\chi_1=\det$ (kernel $C_4$), $\chi_2$ has kernel
+$C_s(\F_3)=\{\pm1,\pm\sigma\}$ and $\chi_3$ kernel $\{\pm1,\pm w\}$. The orthogonality relations and $4\cdot1^2+2^2=8$ show the table is complete. Yet
+$D_4\not\simeq Q_8$ ($D_4$ has five involutions, $Q_8$ one). The two-dimensional representation of $D_4$ is given by the integral matrices $J$, $\sigma$,
+so it is defined over $\Q$, and its reduction modulo $3$ is the standard representation of $N_s(\F_3)$. That of $Q_8$ is not defined over
+$\R$: its Frobenius-Schur indicator $\frac18\sum_g\tr_2(g^2)$ is $\frac18(2\cdot2+6\cdot(-2))=-1$, which for an irreducible representation means that it
+is not realisable over $\R$ (we do not prove this; see \cite[Section 13.2]{SerreLinearReps}). Over $\F_3$, however, it is realised by the
+standard representation of $Q_8\subset\SL_2(\F_3)$, whose trace function is the reduction of $\tr_2$.
+\end{example}
+
+\begin{example}[Traces do not suffice in characteristic $p$]\label{ex:reps:traces-fail}
+Let $G=C_2=\{1,s\}$ and $k=\F_3$. The semisimple representations $\mathbf1^{\oplus3}$ and $\sgn^{\oplus3}$ ($s\mapsto-1$) have trace functions $(3,3)$ and
+$(3,-3)$, both $(0,0)$ in $\F_3$, but they are not isomorphic: $\det(X-s)$ is $(X-1)^3$, respectively $(X+1)^3$. In general, if $n<p$ (or
+$p=0$), the traces of $g,g^2,\dots,g^n$ determine the characteristic polynomial of $g$ on an $n$-dimensional space by Newton's identities,
+$je_j=\sum_{i=1}^{j}(-1)^{i-1}e_{j-i}p_i$ for the elementary symmetric functions $e_j$ and power sums $p_i=\tr(g^i)$ of the eigenvalues, which
+can be solved for the $e_j$ because $1,\dots,n$ are invertible. For $n=2$ the characteristic polynomial $X^2-\tr(g)X+\det(g)$ is determined
+by the trace and the determinant in every characteristic.
+\end{example}
+
+\begin{warning}
+In characteristic $\ell$ the right invariant of a representation is the family of characteristic polynomials, not the trace function.
+The paper's representations have dimension $2$ and determinant $\bar\chi_\ell$, so for them traces do suffice
+(\Cref{cor:reps:bn-consequences}(i)): ``$a_p(h)\equiv a_p(f)\pmod\lambda$ for all $p\nmid\ell N$'' is a statement about traces of Frobenius
+elements, and it determines the semisimplification.
+\end{warning}
+
+\section{The theorem of Brauer and Nesbitt}\label{sec:reps:brauer-nesbitt}
+
+This section proves that a semisimple representation over any field is determined by the characteristic polynomials of the
+elements of the group (Brauer and Nesbitt). With the Chebotarev density theorem (\Cref{ch:galois}) it is the reason why a congruence
+$a_p(h)\equiv a_p(f)\pmod\lambda$ for almost all $p$ gives $\rhobar_h\simeq\rhobar$, which is the first step of the paper's Lemma lem:old. The proof needs the
+density theorem of Jacobson and Burnside, proved first.
+
+\begin{theorem}[Density theorem of Jacobson and Burnside]\label{thm:reps:burnside}
+Let $G$ be any group, $S_1,\dots,S_r$ pairwise non-isomorphic irreducible finite-dimensional representations over $k$, and
+$D_i=\End_G(S_i)$.
+\begin{enumerate}[label=(\alph*)]
+\item The image of $k[G]\to\prod_i\End_k(S_i)$ is $\prod_i\End_{D_i}(S_i)$.
+\item If $k$ is algebraically closed, the image is $\prod_i\End_k(S_i)$. In particular, for each $i$ there is $x\in k[G]$ acting on $S_i$ as a
+projector of rank one and on every $S_j$, $j\ne i$, as $0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) Let $A$ be the image. Each element of $k[G]$ commutes with $D_i$ on $S_i$, so $A\subseteq\prod_i\End_{D_i}(S_i)$. By \Cref{thm:reps:schur}(i), $D_i$ is a
+division algebra and $S_i$ is a finite-dimensional (left) $D_i$-vector space; let $x_{i1},\dots,x_{in_i}$ be a $D_i$-basis. Put
+$M=\bigoplus_iS_i^{n_i}$, a semisimple representation, and $x=(x_{ij})_{i,j}\in M$. The submodule $k[G]x=Ax$ has a $G$-stable complement
+(\Cref{prop:reps:semisimple}), so there is a $G$-equivariant projection $\pi\in\End_G(M)$ with image $Ax$. Since $\Hom_G(S_i,S_j)=0$ for $i\ne j$
+(Schur), $\End_G(M)=\prod_i\mathrm M_{n_i}(D_i)$, the matrices with entries in $D_i$ acting on $S_i^{n_i}$. Now let $\phi=(\phi_i)\in\prod_i\End_{D_i}(S_i)$ and let $\Phi$ act on
+$M$ by $\phi_i$ on each copy of $S_i$. As $\phi_i$ commutes with $D_i$, $\Phi$ commutes with every matrix in $\prod_i\mathrm M_{n_i}(D_i)$, in particular with
+$\pi$. Hence $\Phi(x)=\Phi(\pi x)=\pi\Phi(x)\in Ax$: there is $\alpha\in A$ with $\alpha x_{ij}=\phi_i(x_{ij})$ for all $i,j$. On $S_i$, both $\alpha$ and $\phi_i$ are
+$D_i$-linear and agree on a $D_i$-basis, so they are equal. Thus $\phi=\alpha\in A$.
+(b) If $k=\bar k$ then $D_i=k$ by \Cref{thm:reps:schur}(ii), so $\End_{D_i}(S_i)=\End_k(S_i)$; take the element of $A$ that is a rank-one projector
+on $S_i$ and $0$ on the other factors.
+\end{proof}
+
+\begin{theorem}[Brauer-Nesbitt]\label{thm:reps:brauer-nesbitt}
+Let $G$ be any group, $k$ any field, and $V_1,V_2$ finite-dimensional representations of $G$ over $k$ with
+\[
+\det(X-\rho_1(g))=\det(X-\rho_2(g))\quad\text{in }k[X]\text{ for every }g\in G.
+\]
+Then $V_1$ and $V_2$ have the same composition factors with multiplicities, that is, $V_1^{ss}\simeq V_2^{ss}$. If $\operatorname{char}k=0$, or if
+$\dim V_1<\operatorname{char}k$ and $\dim V_2<\operatorname{char}k$, the equality $\tr\rho_1(g)=\tr\rho_2(g)$ for all $g$ suffices.
+\end{theorem}
+
+\begin{proof}
+We prove both statements together; ``the hypothesis'' means equal characteristic polynomials, or, in the two special cases, equal
+traces.
+
+\emph{Step 0.} By \Cref{prop:reps:semisimplification}(ii) we may replace $V_1,V_2$ by $V_1^{ss},V_2^{ss}$.
+
+\emph{Step 1: reduction to $k=\bar k$.} Let $S,S'$ be non-isomorphic irreducible representations over $k$. By \Cref{thm:reps:burnside}(a) with
+$r=2$ there is $x\in k[G]$ acting as $1$ on $S$ and as $0$ on $S'$. Then $x$ acts as $1$ on every composition factor of $S_{\bar k}$ and as $0$
+on every composition factor of $S'_{\bar k}$, so $S_{\bar k}$ and $S'_{\bar k}$ have no common composition factor. If $V$ has composition factors $S$ with
+multiplicities $m_S(V)$, a composition series of $V$ gives a filtration of $V_{\bar k}$ with quotients $S_{\bar k}$, so the multiset of composition
+factors of $V_{\bar k}$ is $\sum_Sm_S(V)\,c(S_{\bar k})$, where the multisets $c(S_{\bar k})$ of composition factors of the $S_{\bar k}$ are nonempty with pairwise
+disjoint supports. Hence the composition factors of $V_{1,\bar k}$ and $V_{2,\bar k}$ agree iff $m_S(V_1)=m_S(V_2)$ for all $S$. As the hypothesis is
+unchanged by extending scalars, we may assume $k=\bar k$, and (Step 0) that $V_1,V_2$ are semisimple.
+
+\emph{Step 2: cancellation.} Write $V_1\simeq C\oplus B_1$ and $V_2\simeq C\oplus B_2$ where $C=\bigoplus_SS^{\min(m_S(V_1),m_S(V_2))}$; then $B_1$ and $B_2$ are
+semisimple without a common irreducible constituent. We show $B_1=B_2=0$. The hypothesis passes to $B_1,B_2$: traces by subtraction,
+and characteristic polynomials because $\det(X-g\mid V_i)=\det(X-g\mid C)\det(X-g\mid B_i)$ and $k[X]$ is a domain. We argue by induction on
+$\dim B_1+\dim B_2$; if it is $0$ there is nothing to prove.
+
+\emph{Step 3: multiplicities modulo $p$.} The traces of $B_1$ and $B_2$ agree on $G$ (they are coefficients of the characteristic
+polynomials), hence on all of $k[G]$ by linearity. Let $S$ be an irreducible constituent of $B_1$, of multiplicity $m\ge1$. By
+\Cref{thm:reps:burnside}(b) applied to the distinct irreducible constituents of $B_1\oplus B_2$, there is $x\in k[G]$ acting on $S$ as a projector of
+rank one and as $0$ on all the other constituents; $S$ does not occur in $B_2$, so $m\cdot1=\tr(x\mid B_1)=\tr(x\mid B_2)=0$ in $k$. If
+$\operatorname{char}k=0$ this is impossible, so $B_1=0$, and symmetrically $B_2=0$. If $p=\operatorname{char}k>0$, then $p\mid m$; if moreover
+$\dim V_1<p$, then $m\le\dim V_1<p$ is impossible, and again $B_1=B_2=0$. This proves the statements about traces.
+
+\emph{Step 4: dividing by $p$.} In the remaining case ($p>0$, characteristic polynomials) every multiplicity in $B_1$ and in $B_2$ is divisible
+by $p$, so $B_i\simeq B_i'^{\oplus p}$ with $B_i'$ semisimple, and $\det(X-g\mid B_i)=\det(X-g\mid B_i')^p$. The map $f\mapsto f^p$ is an injective ring
+endomorphism of $k[X]$ (it is additive in characteristic $p$, and $k[X]$ is a domain), so $\det(X-g\mid B_1')=\det(X-g\mid B_2')$ for all $g$. The
+representations $B_1',B_2'$ have no common constituent and $\dim B_1'+\dim B_2'<\dim B_1+\dim B_2$ unless both are $0$; by induction $B_1'=B_2'=0$,
+so $B_1=B_2=0$.
+\end{proof}
+
+\begin{corollary}\label{cor:reps:bn-consequences}
+\begin{enumerate}[label=(\roman*)]
+\item If $\dim V_1=\dim V_2=2$, $\det\rho_1=\det\rho_2$ and $\tr\rho_1=\tr\rho_2$ on $G$, then $V_1^{ss}\simeq V_2^{ss}$ (in every characteristic).
+\item Let $k\subseteq k'$ be fields, $V_1$ a representation over $k$ and $V_2$ one over $k'$, with $\det(X-\rho_1(g))=\det(X-\rho_2(g))$ for all $g$. If
+$V_1\otimes_kk'$ is irreducible (for instance if $V_1$ is absolutely irreducible), then $V_2\simeq V_1\otimes_kk'$; no semisimplicity of $V_2$ is
+assumed.
+\item The irreducibility of $V_1\otimes_kk'$ cannot be weakened to that of $V_1$. For $C_4$ acting on $V_1=\F_3^2$ and $V_2=\psi\oplus\psi^{-1}$ over $\F_9$
+(\Cref{ex:reps:c4}), $V_1$ is irreducible and $V_2$ is not. For the group $G=\bigl\{\sm x y0{x^3}:x\in\F_9^\times,y\in\F_9\bigr\}$, its standard
+representation $V_2$ on $\F_9^2$ and the representation $V_1$ on $\F_9=\F_3^2$ by multiplication by $x$ have the same characteristic
+polynomials $(X-x)(X-x^3)$ and $V_1$ is irreducible over $\F_3$, but $V_2$ is not semisimple while $V_1\otimes\F_9$ is, so $V_2\not\simeq V_1\otimes\F_9$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(i) The characteristic polynomial of a $2\times2$ matrix is $X^2-\tr(g)X+\det(g)$; apply \Cref{thm:reps:brauer-nesbitt}.
+(ii) Apply \Cref{thm:reps:brauer-nesbitt} over $k'$ to $V_1\otimes_kk'$ and $V_2$: $V_2^{ss}\simeq V_1\otimes_kk'$ is irreducible, so $V_2$ has a single composition
+factor, is irreducible, and equals $V_2^{ss}$.
+(iii) In the second example, an element $x\in\F_9^\times$ of order $8$ acts on $\F_9$ by multiplication with eigenvalues $x,x^3$ over $\F_9$; the
+$\F_3$-subspaces of $\F_9$ stable under multiplication by $\F_9^\times$ are $0$ and $\F_9$, so $V_1$ is irreducible, and $V_1\otimes\F_9$ is the sum of
+the two characters $g\mapsto x$, $g\mapsto x^3$. In $V_2$ the line $\F_9e_1$ is stable and is the only stable line, because $G$ contains $\sm1101$;
+so $V_2$ is not semisimple (\Cref{prop:reps:nonsplit-line}).
+\end{proof}
+
+\begin{paperlink}
+Lemma lem:old: ``$\rhobar_h\simeq\rhobar$ over a common finite extension of $\F_\ell$, by Chebotarev and Brauer-Nesbitt, $\rhobar$ being irreducible, hence
+absolutely irreducible''. The residual representation $\rhobar_h$ of the newform $h$ lives over the residue field $k'$ of the coefficient
+ring of $h$, and $\rhobar$ over $\F_\ell$. For $p\nmid\ell N$ both have characteristic polynomial $X^2-a_pX+p$ at $\Frob_p$, with
+$a_p(h)\equiv a_p(f)$; by Chebotarev these elements are dense, so the characteristic polynomials agree on all of $G_\Q$ (\Cref{ch:galois}).
+Then \Cref{cor:reps:bn-consequences}(ii), with $\rhobar$ absolutely irreducible (\Cref{prop:reps:distinct-eigenvalues}), gives
+$\rhobar_h\simeq\rhobar\otimes k'$; with only $\rhobar$ irreducible over $\F_\ell$ one would get $\rhobar_h^{ss}\simeq(\rhobar\otimes k')^{ss}$ and nothing more, by (iii).
+\end{paperlink}
+
+\section[Restriction, induction, Mackey and Clifford]{Restriction, induction, Frobenius reciprocity, Mackey and Clifford}\label{sec:reps:induction}
+
+This section develops induced representations and their behaviour under restriction to a subgroup of index $2$. In the paper,
+the image $N_s(\F_3)$ of Proposition prop:ns gives a representation induced, over $\F_9$, from a character of order $4$ of
+$\Gal(\Qbar/\Q(\sqrt{-3}))$, and the condition ``absolutely irreducible on $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$'' of Theorem thm:main is, by Clifford
+theory (\Cref{thm:reps:clifford-index-two}), the condition ``not induced from $\Q(\sqrt{\ell^*})$'', equivalently $\rhobar\not\simeq\rhobar\otimes\chi_{\ell^*}$
+(Lemma lem:h0 for $\ell=3$, Proposition prop:Sf).
+
+\begin{definition}\label{def:reps:induction}
+Let $H\le G$ and let $W$ be a representation of $H$ over $k$ (or an $R[H]$-module). The \emph{induced representation} is
+$\Ind_H^GW=k[G]\otimes_{k[H]}W$, with $G$ acting on the left factor. For a representation $V$ of $G$, $\Res^G_HV$ (or $\Res_HV$) is $V$ viewed as a
+representation of $H$. For $s\in G$ and a representation $W$ of a subgroup $H$, $W^s$ is the representation of $sHs^{-1}$ on the space $W$
+given by $x\mapsto\rho_W(s^{-1}xs)$. If $H$ is normal, $W^s$ is again a representation of $H$; for a character $\psi$ of $H$, $\psi^s(x)=\psi(s^{-1}xs)$.
+\end{definition}
+
+\begin{proposition}\label{prop:reps:induction}
+Let $H\le G$ have finite index $m$ and choose $G=\bigsqcup_{i=1}^ms_iH$ with $s_1=1$.
+\begin{enumerate}[label=(\roman*)]
+\item $\Ind_H^GW=\bigoplus_is_i\otimes W$, $\dim\Ind_H^GW=m\dim W$, and if $gs_i=s_jx$ with $x\in H$, then $g(s_i\otimes w)=s_j\otimes xw$. The subspace
+$s_i\otimes W$ is $s_iHs_i^{-1}$-stable and isomorphic to $W^{s_i}$.
+\item $\tr(g\mid\Ind_H^GW)=\sum_{i:\,s_i^{-1}gs_i\in H}\tr(s_i^{-1}gs_i\mid W)$.
+\item Let $[G:H]=2$, $s\notin H$. Then $\tr(x\mid\Ind W)=\tr(x\mid W)+\tr(s^{-1}xs\mid W)$ for $x\in H$ and $\tr(g\mid\Ind W)=0$ for $g\notin H$. For a
+character $\psi$ of $H$, in the basis $1\otimes1$, $s\otimes1$ of $\Ind_H^G\psi$,
+\[
+x\mapsto\Mtwo{\psi(x)}00{\psi^s(x)}\ (x\in H),\qquad s\mapsto\Mtwo0{\psi(s^2)}10.
+\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $k[G]$ is a free right $k[H]$-module with basis $s_1,\dots,s_m$, so $k[G]\otimes_{k[H]}W=\bigoplus_is_i\otimes W$, and
+$g(s_i\otimes w)=s_jx\otimes w=s_j\otimes xw$. For $y=s_ixs_i^{-1}$, $y(s_i\otimes w)=s_ix\otimes w=s_i\otimes xw$, so $w\mapsto s_i\otimes w$ is an isomorphism
+$W^{s_i}\to s_i\otimes W$.
+(ii) By (i), $g$ maps the block $s_i\otimes W$ into $s_j\otimes W$; the diagonal blocks are those with $j=i$, that is, $s_i^{-1}gs_i=x\in H$, where $g$ acts
+as $x$ on $W$.
+(iii) With $s_1=1$, $s_2=s$: for $x\in H$ both blocks are diagonal ($s^{-1}xs\in H$ as $H$ is normal), and for $g\notin H$ neither is. For $\psi$:
+$x(1\otimes1)=1\otimes\psi(x)$, $x(s\otimes1)=s(s^{-1}xs)\otimes1=\psi^s(x)\,s\otimes1$, $s(1\otimes1)=s\otimes1$ and $s(s\otimes1)=s^2\otimes1=\psi(s^2)\,1\otimes1$.
+\end{proof}
+
+\begin{theorem}[Frobenius reciprocity]\label{thm:reps:frobenius-reciprocity}
+Let $H\le G$, $W$ a representation of $H$ and $V$ one of $G$, over a field or a commutative ring.
+\begin{enumerate}[label=(\roman*)]
+\item The map $\phi\mapsto\phi(1\otimes{-})$ is an isomorphism $\Hom_G(\Ind_H^GW,V)\simeq\Hom_H(W,\Res_HV)$.
+\item If $[G:H]$ is finite, with $\pi\colon\Ind_H^GW\to W$ the projection onto $1\otimes W$ along $\bigoplus_{i\ge2}s_i\otimes W$, the map $\phi\mapsto\pi\circ\phi$ is an
+isomorphism $\Hom_G(V,\Ind_H^GW)\simeq\Hom_H(\Res_HV,W)$.
+\end{enumerate}
+In characteristic $0$ with $G$ finite, (i) and \Cref{thm:reps:orthogonality}(ii) give $\langle\tr_{\Ind W},\tr_V\rangle_G=\langle\tr_W,\tr_{\Res V}\rangle_H$.
+\end{theorem}
+
+\begin{proof}
+(i) $w\mapsto\phi(1\otimes w)$ is $H$-linear because $\phi(1\otimes xw)=\phi(x\otimes w)=x\phi(1\otimes w)$. The inverse sends $\psi\in\Hom_H(W,V)$ to
+$y\otimes w\mapsto y\psi(w)$, which is well defined on $k[G]\otimes_{k[H]}W$ ($yx\otimes w$ and $y\otimes xw$ have the same image, $\psi$ being $H$-linear) and
+$G$-linear.
+(ii) $\pi$ is $H$-linear: $H$ preserves $1\otimes W$, and permutes the blocks $s_i\otimes W$, $i\ge2$ (if $xs_i\in s_1H=H$ then $s_i\in H$). Given $\psi\in
+\Hom_H(V,W)$ put $\Psi(v)=\sum_is_i\otimes\psi(s_i^{-1}v)$. This does not depend on the representatives, since $s_ix\otimes\psi(x^{-1}s_i^{-1}v)=s_i\otimes\psi(s_i^{-1}v)$.
+It is $G$-linear: $g\Psi(v)=\sum_igs_i\otimes\psi(s_i^{-1}v)$, and $t_i=gs_i$ is another system of representatives with $t_i^{-1}gv=s_i^{-1}v$, so
+$g\Psi(v)=\sum_it_i\otimes\psi(t_i^{-1}gv)=\Psi(gv)$. Then $\pi\Psi=\psi$ (the term $i=1$). Conversely, for a $G$-map $\phi$ write $\phi(v)=\sum_is_i\otimes w_i$;
+then $\pi(\phi(s_i^{-1}v))=\pi(s_i^{-1}\phi(v))=w_i$, because $s_i^{-1}s_j\in H$ only for $j=i$; so the map $\Psi$ built from $\psi=\pi\phi$ is $\phi$.
+\end{proof}
+
+\begin{proposition}[Projection formula]\label{prop:reps:projection-formula}
+Let $H\le G$ have finite index.
+\begin{enumerate}[label=(\roman*)]
+\item For a representation $W$ of $H$ and $U$ of $G$, $y\otimes(w\otimes u)\mapsto(y\otimes w)\otimes yu$ is a $G$-isomorphism
+$\Ind_H^G(W\otimes\Res_HU)\simeq\Ind_H^GW\otimes U$. In particular, if $\chi$ is a character of $G$ trivial on $H$, then $\Ind_H^GW\otimes\chi\simeq\Ind_H^GW$.
+\item $\Ind_H^G\mathbf1=k[G/H]$, the permutation representation on the cosets. If $[G:H]=2$ and $\operatorname{char}k\ne2$, then $\Ind_H^G\mathbf1\simeq\mathbf1\oplus\chi_H$,
+where $\chi_H\colon G\to\{\pm1\}$ is the character with kernel $H$.
+\item $\Ind_K^G\Ind_H^K\simeq\Ind_H^G$ for $H\le K\le G$; $\Ind(W\oplus W')\simeq\Ind W\oplus\Ind W'$; and $(\Ind_H^GW)_K\simeq\Ind_H^G(W_K)$ for a field extension
+$K/k$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) The formula is compatible with $yx\otimes(w\otimes u)=y\otimes(xw\otimes xu)$ ($x\in H$), since both go to $(yx\otimes w)\otimes yxu$; it is $G$-linear.
+On the block $s_i\otimes(W\otimes U)$ it is $w\otimes u\mapsto(s_i\otimes w)\otimes s_iu$, a bijection onto $(s_i\otimes W)\otimes U$; so it is bijective. If
+$\chi|_H=1$, then $\Res_H\chi=\mathbf1$ and $W\otimes\mathbf1=W$.
+(ii) $k[G]\otimes_{k[H]}k$ has basis $s_i\otimes1$, permuted by $G$ as the cosets $s_iH$. For index $2$ the vectors $1\otimes1\pm s\otimes1$ are fixed,
+respectively multiplied by $\chi_H$, and they form a basis when $2\ne0$.
+(iii) Associativity of the tensor product, $k[G]\otimes_{k[K]}(k[K]\otimes_{k[H]}W)=k[G]\otimes_{k[H]}W$; additivity of $\otimes$; and $K\otimes_k(k[G]\otimes_{k[H]}W)=
+K[G]\otimes_{K[H]}W_K$.
+\end{proof}
+
+\begin{theorem}[Mackey]\label{thm:reps:mackey}
+Let $H\le G$ have finite index and $W$ a representation of $H$.
+\begin{enumerate}[label=(\alph*)]
+\item For $K\le G$, $\Res_K\Ind_H^GW\simeq\bigoplus_{s\in K\backslash G/H}\Ind^K_{K\cap sHs^{-1}}\Res_{K\cap sHs^{-1}}W^s$, the sum over a set of representatives of the
+double cosets.
+\item (Mackey's irreducibility criterion.) Let $G$ be finite and $\operatorname{char}k=0$, $k=\C$. Then $\Ind_H^GW$ is irreducible iff $W$ is
+irreducible and, for every $s\in G\setminus H$, the representations $W^s$ and $W$ of $H_s=sHs^{-1}\cap H$ have no common irreducible
+constituent.
+\item (Index two, any characteristic.) Let $[G:H]=2$, $s\in G\setminus H$, and $W$ absolutely irreducible. Then $\Res_H\Ind_H^GW\simeq W\oplus W^s$, and
+$\Ind_H^GW$ is absolutely irreducible iff $W_{\bar k}\not\simeq W^s_{\bar k}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) We do not prove this; see \cite[Section 7.3]{SerreLinearReps}. (The summand for the double coset $KsH$ is the sum of the blocks
+$t\otimes W$ with $t$ running over representatives of the cosets $tH\subseteq KsH$.)
+(c) The restriction is \Cref{prop:reps:induction}(i) with $s_1=1$, $s_2=s$ ($H$ is normal). Work over $\bar k$, which is allowed by
+\Cref{prop:reps:projection-formula}(iii); $W$ and $W^s$ are irreducible. Suppose $W\not\simeq W^s$. The $H$-representation $W\oplus W^s$ is semisimple
+with non-isomorphic summands, so by \Cref{prop:reps:semisimple}(iii) its subrepresentations are $0$, $W=1\otimes W$, $W^s=s\otimes W$ and the whole
+space. A nonzero $G$-stable subspace is $H$-stable and $s$-stable, and $s$ exchanges $1\otimes W$ and $s\otimes W$; so it is everything, and $\Ind W$
+is irreducible over $\bar k$. Suppose $W\simeq W^s$. By \Cref{thm:reps:frobenius-reciprocity}(i) and Schur over $\bar k$,
+$\End_G(\Ind W)=\Hom_H(W,W\oplus W^s)$ has dimension $2$; an irreducible representation over $\bar k$ has endomorphism ring $\bar k$
+(\Cref{thm:reps:schur}(ii)), so $\Ind W$ is reducible.
+\end{proof}
+
+\begin{proof}[Sketch of proof of (b)]
+By (i) of \Cref{thm:reps:frobenius-reciprocity} and (a) with $K=H$,
+\[
+\End_G(\Ind W)\simeq\Hom_H(W,\Res_H\Ind W)=\bigoplus_{s\in H\backslash G/H}\Hom_H(W,\Ind^H_{H_s}W^s),
+\]
+and by Frobenius reciprocity again the summand for $s$ is $\Hom_{H_s}(\Res_{H_s}W,W^s)$. The summand for $s=1$ is $\End_H(W)$. In characteristic $0$ all
+representations are semisimple, so $\Ind W$ is irreducible iff $\dim\End_G(\Ind W)=1$, iff $\End_H(W)=\C$ (that is, $W$ irreducible) and the
+other summands vanish. See \cite[Section 7.4]{SerreLinearReps}. In characteristic $p$ the criterion fails as stated, because
+$\End_G(V)=k$ does not force irreducibility without semisimplicity (\Cref{ex:reps:maschke-fails}(d)); only (c) is needed here.
+\end{proof}
+
+\begin{theorem}[Clifford]\label{thm:reps:clifford}
+Let $N\trianglelefteq G$ have finite index and $V$ an irreducible representation of $G$ over any field. Then $\Res_NV$ is semisimple, its
+irreducible constituents are the conjugates $W^g$ ($g\in G$) of any one of them, and they all occur with the same multiplicity.
+\end{theorem}
+
+\begin{proof}
+Let $W\subseteq V$ be an irreducible $N$-subrepresentation (one of minimal positive dimension). For $g\in G$, $gW$ is $N$-stable, since
+$n\,gW=g(g^{-1}ng)W=gW$, and $w\mapsto gw$ is an isomorphism $W^g\to gW$ of representations of $N$; so $gW$ is irreducible. The sum $\sum_ggW$ is
+$G$-stable and nonzero, hence equal to $V$. So $\Res_NV$ is a sum of irreducibles of the form $W^g$, semisimple by \Cref{prop:reps:semisimple}, and
+every irreducible constituent is isomorphic to some $W^g$ (\Cref{thm:reps:jordan-holder}). For an irreducible $S$ of $N$, the element $g$ maps the
+isotypic component $V_S$ bijectively onto $V_{S^g}$, so $\dim V_S=\dim V_{S^g}$, and the multiplicities agree.
+\end{proof}
+
+\begin{theorem}[Clifford theory for a subgroup of index $2$]\label{thm:reps:clifford-index-two}
+Let $G$ be any group, $H\le G$ of index $2$, $s\in G\setminus H$, $\chi_H\colon G\to\{\pm1\}$ the character with kernel $H$, $k$ a field with
+$\operatorname{char}k\ne2$, and $V$ an absolutely irreducible representation of $G$ over $k$ of dimension $n$. Exactly one of the following holds.
+\begin{enumerate}[label=(\Alph*)]
+\item $\Res_HV$ is absolutely irreducible. Then $V\not\simeq V\otimes\chi_H$, and $\Ind_H^G\Res_HV\simeq V\oplus(V\otimes\chi_H)$.
+\item $\Res_HV$ is not absolutely irreducible. Then $n=2d$, there is an absolutely irreducible representation $W$ of $H$ over $\bar k$ of
+dimension $d$ with $W\not\simeq W^s$, $\Res_HV_{\bar k}\simeq W\oplus W^s$ and $V_{\bar k}\simeq\Ind_H^GW$, and $V\simeq V\otimes\chi_H$ over $k$.
+\end{enumerate}
+Hence $V\simeq V\otimes\chi_H$ iff (B) holds. In that case $\Hom_G(V,V\otimes\chi_H)$ is a line over $k$, spanned by an isomorphism $\phi$ with
+$\phi^2\in k^\times$ and $\tr\phi=0$, whose two eigenspaces over $\bar k$ are $W$ and $W^s$. For $n=2$, (B) holds iff $V_{\bar k}\simeq\Ind_H^G\psi$ for a
+character $\psi$ of $H$ with $\psi^s\ne\psi$.
+\end{theorem}
+
+\begin{proof}
+(A) An isomorphism $\phi\colon V\to V\otimes\chi_H$ commutes with $\rho(H)$, so it is a scalar $c$ (\Cref{thm:reps:schur}(iii) for $\Res_HV$). Then
+$c\rho(s)=\chi_H(s)\rho(s)c=-c\rho(s)$, so $2c=0$ and $c=0$, a contradiction. The induced statement is
+$\Ind_H^G\Res_HV\simeq V\otimes\Ind_H^G\mathbf1\simeq V\otimes(\mathbf1\oplus\chi_H)$ (\Cref{prop:reps:projection-formula}(i), (ii)).
+
+(B) $V_{\bar k}$ is irreducible and $\Res_HV_{\bar k}$ is reducible. By \Cref{thm:reps:clifford}, $\Res_HV_{\bar k}$ is semisimple and its constituents are
+$W$ and $W^s$ for an irreducible $W$ (absolutely irreducible, as $\bar k$ is algebraically closed), each of dimension $d$; being reducible, it
+has at least two constituents, so $n\ge2d$. By \Cref{thm:reps:frobenius-reciprocity}(i) the inclusion $W\subseteq\Res_HV_{\bar k}$ gives a nonzero $G$-map
+$\Ind_H^GW\to V_{\bar k}$, surjective as $V_{\bar k}$ is irreducible; so $n\le2d$. Hence $n=2d$ and the map is an isomorphism $\Ind_H^GW\simeq V_{\bar k}$. As
+$\Ind W$ is irreducible, $W\not\simeq W^s$ by \Cref{thm:reps:mackey}(c), which also gives $\Res_HV_{\bar k}\simeq W\oplus W^s$. By
+\Cref{prop:reps:projection-formula}(i), $V_{\bar k}\otimes\chi_H\simeq\Ind_H^G(W\otimes\Res_H\chi_H)=\Ind_H^GW\simeq V_{\bar k}$, and since $V_{\bar k}$ is irreducible,
+\Cref{prop:reps:scalars}(iii) gives $V\simeq V\otimes\chi_H$ over $k$.
+
+The two cases are exclusive and exhaustive, so $V\simeq V\otimes\chi_H$ iff (B). In case (B), $V\otimes\chi_H$ is absolutely irreducible
+(\Cref{prop:reps:twist}(ii)), so $\Hom_G(V,V\otimes\chi_H)$ is a line (\Cref{thm:reps:schur}(iii)) spanned by an isomorphism $\phi$. The composite
+$\phi\circ\phi$ is a $G$-isomorphism $V\to V\otimes\chi_H^2=V$, hence a nonzero scalar. By \Cref{lem:reps:trace-zero}, $\tr\phi=0$ ($\chi_H(s)=-1\ne1$). Over
+$\bar k$, $\phi$ commutes with $H$, so it preserves the isotypic components $W$ and $W^s$ of $\Res_HV_{\bar k}$ (\Cref{prop:reps:semisimple}(iii)) and acts on
+each by a scalar (Schur); the two scalars differ, since otherwise $\phi$ would be a scalar and (A) would hold. For $n=2$, $d=1$ and $W=\psi$ is a
+character; conversely if $V_{\bar k}\simeq\Ind\psi$ then $\Res_HV_{\bar k}\simeq\psi\oplus\psi^s$ is reducible.
+\end{proof}
+
+\begin{paperlink}
+Proposition prop:ns: ``by Frobenius reciprocity $\rhobar\otimes\F_9\simeq\Ind\psi$, so $\rhobar\simeq\rhobar\otimes\chi_{-3}$''. In the language above: $G=G_\Q$, $H=G_{\Q(\sqrt{-3})}$,
+$\chi_H=\chi_{-3}$; the eigenline of $\rhobar(H)=C_4$ with character $\psi$ (\Cref{ex:reps:c4}) is a nonzero $H$-map $\psi\to\Res_H(\rhobar\otimes\F_9)$, which
+by \Cref{thm:reps:frobenius-reciprocity}(i) gives a nonzero $G$-map $\Ind_H^G\psi\to\rhobar\otimes\F_9$, surjective because $\rhobar\otimes\F_9$ is irreducible, hence
+an isomorphism (both have dimension $2$). Then $\Ind\psi\otimes\chi_{-3}\simeq\Ind\psi$ (\Cref{prop:reps:projection-formula}(i)), and the isomorphism
+descends to $\F_3$ (\Cref{prop:reps:scalars}(ii)). The last equivalence of Lemma lem:h0 ($\rhobar\simeq\rhobar\otimes\chi_{-3}$ iff $\rhobar$ is not absolutely
+irreducible on $\Gal(\Qbar/\Q(\sqrt{-3}))$) and the first sentence of the proof of Proposition prop:Sf (the same with $\chi_{\ell^*}$) are
+\Cref{thm:reps:clifford-index-two}; it needs $\rhobar$ absolutely irreducible, which complex conjugation provides
+(\Cref{prop:reps:distinct-eigenvalues}). The representation $\rhobar$ is induced from $H$ only after extending scalars: over $\F_3$, $\Res_H\rhobar$ is
+irreducible (\Cref{prop:reps:ns3-induced}).
+\end{paperlink}
+
+\begin{proposition}[Dihedral representations]\label{prop:reps:dihedral}
+Let $\operatorname{char}k\ne2$ and $\rho\colon G\to\GL_2(k)$ absolutely irreducible, with finite projective image $P$, the image of $G$ in $\PGL_2(\bar k)$.
+\begin{enumerate}[label=(\roman*)]
+\item $P$ is not cyclic.
+\item The following are equivalent: (a) $P$ is dihedral of order $2m$ for some $m\ge2$ (for $m=2$, $P\simeq V_4$); (b) $\rho\simeq\rho\otimes\chi$ for a
+character $\chi$ of order $2$; (c) $\rho_{\bar k}\simeq\Ind_H^G\psi$ for a subgroup $H$ of index $2$ and a character $\psi$ of $H$.
+\item The characters $\chi\ne1$ with $\rho\simeq\rho\otimes\chi$ correspond bijectively, by $\chi\mapsto$ the image of $\ker\chi$ in $P$, to the cyclic
+subgroups of index $2$ of $P$: there is exactly one if $P$ is dihedral of order at least $6$, and there are three if $P\simeq V_4$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Let $Z=\rho^{-1}(\bar k^\times)$ be the preimage of the scalars, so $P=G/Z$. (i) If $P$ is generated by the image of $g_0$, then $\rho(G)\subseteq\bar k^\times\langle\rho(g_0)\rangle$
+is abelian, and $\rho$ is absolutely reducible by \Cref{prop:reps:dim2-absirr}(i).
+First a claim: \emph{for $H\le G$ of index $2$, $\Res_H\rho$ is absolutely reducible iff the image of $H$ in $P$ is cyclic.} If the image is cyclic,
+$\rho(H)$ is abelian as in (i) and \Cref{prop:reps:dim2-absirr}(i) applies. If $\Res_H\rho_{\bar k}$ has a stable line, then by
+\Cref{thm:reps:clifford-index-two}(B) it is $\psi\oplus\psi^s$, so $\rho(H)$ is diagonal in a suitable basis, and its image in $\PGL_2(\bar k)$ is a finite
+subgroup of the group of classes of $\mathrm{diag}(x,1)$, which is isomorphic to $\bar k^\times$; finite subgroups of $\bar k^\times$ are cyclic.
+(ii) (b)$\Leftrightarrow$(c): a character of order $2$ is $\chi_H$ for $H=\ker\chi$ of index $2$, and \Cref{thm:reps:clifford-index-two} says that
+$\rho\simeq\rho\otimes\chi_H$ iff (B) holds for $H$, iff $\rho_{\bar k}$ is induced from a character of $H$. (c)$\Rightarrow$(a): in the basis of
+\Cref{prop:reps:induction}(iii), $\rho(H)$ is diagonal and $\rho(G\setminus H)$ antidiagonal. The image $C$ of $H$ in $P$ is cyclic by the claim, of index
+$1$ or $2$ in $P$; by (i), $P\ne C$. An antidiagonal matrix $\sm0ab0$ squares to the scalar $ab$, and conjugating $\mathrm{diag}(x,y)$ by it gives
+$\mathrm{diag}(y,x)$, which is the inverse of $\mathrm{diag}(x,y)$ modulo scalars. So $P=C\rtimes C_2$ with the involution inverting $C$, and $\#C=m\ge2$ by
+(i): $P$ is dihedral of order $2m$ (for $m=2$, $V_4$). (a)$\Rightarrow$(c): a dihedral group of order $2m$ has a cyclic subgroup of index $2$
+(for $V_4$, any subgroup of order $2$); its preimage $H$ in $G$ has index $2$ and cyclic image, so $\Res_H\rho$ is absolutely reducible by the
+claim, and \Cref{thm:reps:clifford-index-two}(B) gives (c).
+(iii) If $\rho\simeq\rho\otimes\chi$ with $\chi\ne1$, then $\chi^2=1$ (\Cref{prop:reps:twist}(iv)), so $\chi=\chi_H$ with $H=\ker\chi$ of index $2$. For $z\in Z$,
+$\tr\rho(z)=\chi(z)\tr\rho(z)$ and $\tr\rho(z)=2c\ne0$ for the scalar $c=\rho(z)$; so $\chi(z)=1$ and $Z\subseteq H$. Hence such $H$ correspond to the
+subgroups of index $2$ of $P$, and by the claim and \Cref{thm:reps:clifford-index-two} exactly those with cyclic image occur. In a dihedral
+group of order $2m$, $m\ge3$, the only cyclic subgroup of index $2$ is the rotation subgroup (the others, which exist for $m$ even, are
+dihedral of order $m\ge4$, hence not cyclic); $V_4$ has three subgroups of index $2$, all cyclic.
+\end{proof}
+
+\begin{paperlink}
+The hypothesis of Theorem thm:main excludes exactly the representations induced from $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$, not all dihedral ones. At
+$\ell=3$, the image $N_s(\F_3)$ has projective image $V_4$ and is induced in three ways, one of them from the determinant-one subgroup
+(\Cref{prop:reps:ns3-induced}); the image $N_{ns}(\F_3)$ has projective image $D_4$ and is induced only from $C_{ns}(\F_3)$, whose fixed field is not
+$\Q(\sqrt{-3})$ (\Cref{prop:reps:nns3}), so it satisfies the hypothesis.
+\end{paperlink}
+
+\section[Twisting, the adjoint and the trace form]{Twisting, the adjoint, the symmetric square and the trace form}\label{sec:reps:adjoint}
+
+This section treats the operations the paper performs on $\rho$: twisting by a character, passing to the adjoint $\End(V)$ and to its
+trace-zero part $\ad V$, and the identification of $\ad V$ with a twist of the symmetric square and with its own dual. In the paper,
+$A_f=\ad V$ (Section 1.1), $A=\ad T$ and $T^D=\Hom(A,\Zl(1))\simeq A(1)$ (Section 4.2), $H^0(\Q,W^D)$ is a space of trace-zero $G$-maps
+$\rhobar\to\rhobar\otimes\bar\chi_\ell$ (Lemma lem:h0), and the proof of Lemma lem:tamfactor computes the adjoint action of two triangular
+matrices in the basis $e,h,f$.
+
+\begin{proposition}[Twisting]\label{prop:reps:twist}
+Let $V$ be a representation of $G$ over $k$ (or a free $R$-module) of rank $n$ and $\chi\colon G\to k^\times$ (or $R^\times$) a character.
+\begin{enumerate}[label=(\roman*)]
+\item $\tr(\rho\otimes\chi)(g)=\chi(g)\tr\rho(g)$, $\det(X-(\rho\otimes\chi)(g))=\det(X-\chi(g)\rho(g))$ and $\det(\rho\otimes\chi)=\chi^n\det\rho$.
+\item $V$ is irreducible (absolutely irreducible) iff $V\otimes\chi$ is; $\Hom_G(V\otimes\chi,W\otimes\chi)=\Hom_G(V,W)$; $(V\otimes\chi)^\vee=V^\vee\otimes\chi^{-1}$; and
+$\Res_{\ker\chi}(V\otimes\chi)=\Res_{\ker\chi}V$.
+\item $\End(V\otimes\chi)=\End(V)$ as representations (the same space with the same action), hence $\ad(V\otimes\chi)=\ad V$.
+\item If $V\simeq V\otimes\chi$, then $\chi^n=1$ on $G$; for $n=2$, $\chi^2=1$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+On the space $V$ the twist acts by $\chi(g)\rho(g)$; this gives (i) and the last statement of (ii). The $G$-stable subspaces of $V$ and of
+$V\otimes\chi$ coincide (a scalar preserves every subspace), also after extending scalars. A linear map $\phi$ satisfies
+$\phi\,\chi(g)\rho_V(g)=\chi(g)\rho_W(g)\phi$ iff $\phi\rho_V(g)=\rho_W(g)\phi$. The dual of $\chi(g)\rho(g)$ is $\chi(g)^{-1}\rho(g^{-1})^t$. (iii)
+$(\chi(g)\rho(g))x(\chi(g)\rho(g))^{-1}=\rho(g)x\rho(g)^{-1}$. (iv) Take determinants in $\rho(g)\simeq\chi(g)\rho(g)$: $\det\rho(g)=\chi(g)^n\det\rho(g)$.
+\end{proof}
+
+\begin{lemma}[The trace-zero lemma]\label{lem:reps:trace-zero}
+Let $\phi\colon V\to V\otimes\chi$ be a $G$-map, that is, $\phi\rho(g)=\chi(g)\rho(g)\phi$ for all $g\in G$. Then $(1-\chi(g))\tr\phi=0$ for every $g\in G$. Hence
+$\tr\phi=0$ if $\chi\ne1$ (over a field), or, over a ring $R$, if $1-\chi(g)\in R^\times$ for some $g$. If moreover $V$ is absolutely irreducible,
+$\Hom_G(V,V\otimes\chi)$ has dimension at most $1$, and its nonzero elements are isomorphisms.
+\end{lemma}
+
+\begin{proof}
+$\tr\phi=\tr(\rho(g)^{-1}\phi\rho(g))=\tr(\rho(g)^{-1}\chi(g)\rho(g)\phi)=\chi(g)\tr\phi$. The last statement is \Cref{thm:reps:schur}(iii) for the absolutely
+irreducible representations $V$ and $V\otimes\chi$ (\Cref{prop:reps:twist}(ii)).
+\end{proof}
+
+\begin{paperlink}
+Lemma lem:h0: ``every such map has trace $0$ automatically, since $\tr\phi=\chi_\ell(g)\tr\phi$ for every $g$ and $1-\chi_\ell(c)=2$ is a unit for
+complex conjugation $c$'' is \Cref{lem:reps:trace-zero} over $R=\Z/\ell^k$, $\ell$ odd. ``Taking determinants'' (the step $\chi_\ell^2\equiv1$) is
+\Cref{prop:reps:twist}(iv) modulo $\ell^k$ (see \Cref{prop:reps:twist-length}(v)). ``$\ad T$ is unchanged by the twist'' (proofs of Theorems thm:main
+and thm:quant, Lemma lem:tamfactor at an additive potentially multiplicative prime, Lemma lem:euler for $\kod{I}_n^*$, $\kod{I}_0^*$) is (iii).
+\end{paperlink}
+
+\begin{definition}\label{def:reps:adjoint}
+The \emph{adjoint representation} of $V$ is $\End(V)=V\otimes V^\vee$ with $g\cdot x=\rho(g)x\rho(g)^{-1}$, also written $\Ad V$ or $\Ad\rho$; the \emph{trace-zero
+adjoint} is $\ad V=\{x\in\End(V):\tr x=0\}$, a subrepresentation since the trace is conjugation invariant. The paper writes $A_f=\ad V$ for
+$V=V_\ell E$ and $A=\ad T$ for $T=T_\ell E$.
+\end{definition}
+
+\begin{proposition}\label{prop:reps:adjoint}
+Let $V$ be a representation of $G$ over $k$ (or a free $R$-module) of rank $n$.
+\begin{enumerate}[label=(\roman*)]
+\item If $n$ is invertible in $k$ (or $R$), $\End(V)=k\cdot1\oplus\ad V$ as representations, $x=\frac{\tr x}n\cdot1+\bigl(x-\frac{\tr x}n\cdot1\bigr)$. For $n=2$ this needs
+$\operatorname{char}k\ne2$, that is, $\ell$ odd.
+\item If $\rho(g)$ has eigenvalues $\lambda_1,\dots,\lambda_n$ in $\bar k$ (with multiplicity), then $\Ad\rho(g)$ has the eigenvalues $\lambda_i/\lambda_j$ on $\End(V)$. For
+$n=2$ it has the eigenvalues $\lambda_1/\lambda_2$, $1$, $\lambda_2/\lambda_1$ on $\ad V$, in every characteristic, and
+$\det(X-\Ad\rho(g)\mid\ad V)=(X-1)\bigl(X^2-(\tr(g)^2/\det(g)-2)X+1\bigr)$.
+\item In the basis $e,h,f$ of $\ad V$ (convention (C3)):
+\begin{align*}
+&\Ad\mathrm{diag}(x,y):\quad e\mapsto\tfrac xy\,e,\quad h\mapsto h,\quad f\mapsto\tfrac yx\,f;\\
+&t=\Mtwo1{n'}01:\quad (t-1)e=0,\quad (t-1)h=-2n'e,\quad (t-1)f=n'h-n'^2e;\\
+&F=\Mtwo{\varepsilon q}{c'}0\varepsilon:\quad FeF^{-1}=qe,\quad FhF^{-1}=h-2c'\varepsilon^{-1}e,\\
+&\phantom{F=\Mtwo{\varepsilon q}{c'}0\varepsilon:\quad}FfF^{-1}=q^{-1}f+c'\varepsilon^{-1}q^{-1}h-c'^2\varepsilon^{-2}q^{-1}e,
+\end{align*}
+for $x,y,\varepsilon\in R^\times$, $q\in R^\times$, $n',c'\in R$. In the paper $\varepsilon=\pm1$ is the value at Frobenius of the unramified character of the Tate data
+(convention B-C14), so $\varepsilon^{-1}=\varepsilon$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Scalars are fixed by conjugation, and the decomposition is preserved by conjugation since it is defined by the trace.
+(ii) Over $\bar k$, conjugate $\rho(g)$ to an upper triangular matrix with diagonal $\lambda_1,\dots,\lambda_n$. On $V^\vee$, $g$ acts by $\rho(g^{-1})^t$, with eigenvalues
+$\lambda_j^{-1}$, and the eigenvalues on $V\otimes V^\vee$ are the products (triangularise both factors). For $n=2$ and $g=\sm{\lambda_1}b0{\lambda_2}$, the matrix of
+$\Ad g$ in the ordered basis $e,h,f$ is upper triangular with diagonal $\lambda_1/\lambda_2,1,\lambda_2/\lambda_1$: $geg^{-1}=\frac{\lambda_1}{\lambda_2}e$, $ghg^{-1}\in h+ke$ and
+$gfg^{-1}\in\frac{\lambda_2}{\lambda_1}f+kh+ke$, as the formulas of (iii) for $F$ show (with $\varepsilon q=\lambda_1$, $\varepsilon=\lambda_2$). The factor $X^2-(\tr(g)^2/\det(g)-2)X+1$
+has roots $\lambda_1/\lambda_2$, $\lambda_2/\lambda_1$, since their sum is $(\lambda_1^2+\lambda_2^2)/\lambda_1\lambda_2$.
+(iii) Direct multiplication. For instance $th=\sm1{-n'}0{-1}$, so $tht^{-1}=\sm1{-n'}0{-1}\sm1{-n'}01=\sm1{-2n'}0{-1}=h-2n'e$; and
+$tf=\sm{n'}010$, $tft^{-1}=\sm{n'}{-n'^2}1{-n'}=f+n'h-n'^2e$. With $F^{-1}=\frac1{\varepsilon^2q}\sm\varepsilon{-c'}0{\varepsilon q}$: $Fe=\sm0{\varepsilon q}00$ and $FeF^{-1}=qe$;
+$Fh=\sm{\varepsilon q}{-c'}0{-\varepsilon}$ and $FhF^{-1}=\frac1{\varepsilon^2q}\sm{\varepsilon^2q}{-2\varepsilon qc'}0{-\varepsilon^2q}=h-2c'\varepsilon^{-1}e$; $Ff=\sm{c'}0\varepsilon0$ and
+$FfF^{-1}=\frac1{\varepsilon^2q}\sm{\varepsilon c'}{-c'^2}{\varepsilon^2}{-\varepsilon c'}$, which is the stated combination. These identities were also checked symbolically.
+\end{proof}
+
+\begin{paperlink}
+Section 1.1: $A_f=\ad V$, and at a good prime the Frobenius has the eigenvalues $\alpha/\beta,1,\beta/\alpha$ on $\ad V$ by (ii), for either Frobenius
+(the set is stable under inversion; convention B-C3), which gives the good factor of $L(A_f,s)$ (\Cref{ch:lfunctions}). Lemma lem:tamfactor:
+``$(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$, and as $2$ is a unit, $(t-1)M=n'(\Zl e\oplus\Zl h)$'', and ``the adjoint action sends $e$ to $qe$
+and $h$ to $h-2c'\varepsilon e$'', are (iii) with $\varepsilon^{-1}=\varepsilon$; $F=\rho(\Frob)$ there is the arithmetic Frobenius (convention B-C2(c)). The
+cohomology built on these formulas is in \Cref{ch:cohomology}.
+\end{paperlink}
+
+\begin{proposition}[Invariants of twisted adjoints]\label{prop:reps:H0-twisted-adjoint}
+Let $V$ be a representation over $k$, or a free module of rank $n$ over a local ring $R$, and $\chi$ a character.
+\begin{enumerate}[label=(\roman*)]
+\item $(\End(V)\otimes\chi)^G=\Hom_G(V,V\otimes\chi)$.
+\item If $n$ is invertible, $(\End(V)\otimes\chi)^G=(\ad V\otimes\chi)^G\oplus R(\chi)^G$, and $(\ad V\otimes\chi)^G=\{\phi\in\Hom_G(V,V\otimes\chi):\tr\phi=0\}$.
+\item If $\chi\ne1$ (over a local ring $R$: if the reduction $\bar\chi$ of $\chi$ modulo the maximal ideal is nontrivial), then $R(\chi)^G=0$, every
+$G$-map $V\to V\otimes\chi$ has trace $0$, and $(\ad V\otimes\chi)^G=\Hom_G(V,V\otimes\chi)$.
+\item If $V$ is absolutely irreducible over $k$ and $n\in k^\times$, then $(\ad V)^G=0$; and for $\chi\ne1$, $(\ad V\otimes\chi)^G\ne0$ iff $V\simeq V\otimes\chi$, in
+which case it is a line spanned by an isomorphism.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) is \Cref{prop:reps:homG}. (ii) Twist the decomposition of \Cref{prop:reps:adjoint}(i) by $\chi$ and take invariants. (iii) If $\bar\chi(g)\ne1$ then
+$\chi(g)-1$ is a unit, and $\chi(g)x=x$ forces $x=0$; the rest is \Cref{lem:reps:trace-zero} and (ii). (iv) $\End_G(V)=k$, and a scalar $c$ has
+trace $nc$, which vanishes only for $c=0$. For $\chi\ne1$, by (iii) $(\ad V\otimes\chi)^G=\Hom_G(V,V\otimes\chi)$, which is described by
+\Cref{lem:reps:trace-zero}.
+\end{proof}
+
+\begin{paperlink}
+Lemma lem:h0, case $k=1$ of the sentence quoted after \Cref{prop:reps:homG}: the $\ell$-torsion of $H^0(\Q,W^D)$ is $H^0(\Q,\ad\rhobar\otimes\bar\chi_\ell)$, the
+space of trace-zero $G_\Q$-maps $\rhobar\to\rhobar\otimes\bar\chi_\ell$; by (iii) the trace condition is automatic because $\bar\chi_\ell\ne1$ for $\ell$ odd. Proposition prop:ns: ``$H^0(\Q,\ad\rhobar_{E,3}(1))\ne0$'' is (iv) with $\chi=\bar\chi_3=\chi_{-3}$
+and the isomorphism $\rhobar\simeq\rhobar\otimes\chi_{-3}$.
+\end{paperlink}
+
+\begin{proposition}[Adjoint and symmetric square]\label{prop:reps:sym2}
+Let $V$ be free of rank $2$ over $R$ with basis $e_1,e_2$, $\omega(x,y)=\det[x\,|\,y]$, and let $\Sym V$ be the quotient of $V\otimes V$ by the span of the
+$x\otimes y-y\otimes x$, with basis $e_1^2,e_1e_2,e_2^2$. If $\rho(g)$ has eigenvalues $\lambda,\mu$, then $\Sym\rho(g)$ has eigenvalues $\lambda^2,\lambda\mu,\mu^2$.
+\begin{enumerate}[label=(\roman*)]
+\item The map $\Xi\colon\Sym V\to\End(V)$, $\Xi(xy)(v)=\omega(v,x)y+\omega(v,y)x$, is well defined, takes values in $\ad V$, and satisfies
+$\Xi(g\cdot m)=\det(g)\,\rho(g)\Xi(m)\rho(g)^{-1}$. So $\Xi$ is a $G$-map $\Sym V\otimes\det^{-1}\to\ad V$. In coordinates
+\[
+\Xi(e_1^2)=-2e,\qquad\Xi(e_1e_2)=h,\qquad\Xi(e_2^2)=2f,
+\]
+so $\Xi$ is an isomorphism iff $2\in R^\times$; over $\Z$ its image has index $4$ in $\ad\Z^2$, and over $\Zl$ it is an isomorphism of lattices iff
+$\ell$ is odd.
+\item Hence, if $2\in R^\times$, $\ad\rho\simeq\Sym\rho\otimes\det^{-1}$ and $\Sym\rho\simeq\ad\rho\otimes\det$; moreover $V\otimes V\simeq\Sym V\oplus\det$ and
+$V\otimes V^\vee\simeq\ad V\oplus\mathbf1$.
+\item (Normalisations.) Let $V=V_\ell E$, with $\det=\chi_\ell$ (\Cref{ch:ellcurves}). Then $\Sym V\simeq\ad V(1)$ and $\Sym(V^\vee)\simeq\ad V(-1)$. The
+classical symmetric square $L$-function is that of $\Sym(V^\vee)=\Sym H^1$, so with the convention $L_p(M(n),s)=L_p(M,s+n)$ (B-C2(d)),
+$L_p(\Sym f,s)=L_p(A_f,s-1)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The eigenvalue statement follows by triangularising $\rho(g)$: in the basis $e_1^2,e_1e_2,e_2^2$ the matrix of $\Sym\rho(g)$ is then triangular with
+diagonal $\lambda^2,\lambda\mu,\mu^2$.
+(i) The expression is bilinear and symmetric in $(x,y)$, so it factors through $\Sym V$. The trace of $v\mapsto\lambda(v)y$ is $\lambda(y)$, so
+$\tr\Xi(xy)=\omega(y,x)+\omega(x,y)=0$. Using $\omega(v,gx)=\det(g)\omega(g^{-1}v,x)$ (\Cref{prop:reps:basic-facts}(iii)),
+\[
+\Xi(gx\,gy)(v)=\det(g)\bigl(\omega(g^{-1}v,x)gy+\omega(g^{-1}v,y)gx\bigr)=\det(g)\,\rho(g)\Xi(xy)\rho(g)^{-1}(v).
+\]
+In coordinates, $\omega(v,e_1)=-v_2$ and $\omega(v,e_2)=v_1$ for $v=v_1e_1+v_2e_2$, so $\Xi(e_1^2)(v)=-2v_2e_1$, $\Xi(e_1e_2)(v)=v_1e_1-v_2e_2$ and
+$\Xi(e_2^2)(v)=2v_1e_2$, which are $-2e$, $h$, $2f$. The matrix of $\Xi$ in these bases is $\mathrm{diag}(-2,1,2)$, of determinant $-4$.
+(ii) The first two statements are (i). For the others, $x\otimes y\mapsto(xy,\,\omega(x,y))$ is a $G$-map $V\otimes V\to\Sym V\oplus\det$, bijective when
+$2\in R^\times$ (inverse $(xy,c)\mapsto\frac12(x\otimes y+y\otimes x)+\frac c2(e_1\otimes e_2-e_2\otimes e_1)$); and $V\otimes V^\vee=\End(V)=\ad V\oplus\mathbf1$ by
+\Cref{prop:reps:adjoint}(i).
+(iii) $\Sym V\simeq\ad V\otimes\det=\ad V(1)$ by (ii). By \Cref{prop:reps:basic-facts}(iii), $V^\vee\simeq V\otimes\chi_\ell^{-1}=V(-1)$, so
+$\Sym(V^\vee)\simeq\Sym V(-2)\simeq\ad V(-1)$. Then $L_p(\Sym(V^\vee),s)=L_p(\ad V(-1),s)=L_p(\ad V,s-1)$; the definitions of the local factors are in
+\Cref{ch:lfunctions} (convention B-C7).
+\end{proof}
+
+\begin{paperlink}
+Section 1.1: ``In the normalisation of the symmetric square, $L_p(\Sym f,s)=L_p(A_f,s-1)$'' is (iii); the Introduction's comparison of
+Flach's theorem on $\Sym f$ with the adjoint uses (ii). Over $\Z_2$ the map $\Xi$ is not an isomorphism, one of the places where $\ell$
+odd is needed for lattice-level statements.
+\end{paperlink}
+
+\begin{proposition}[The trace form]\label{prop:reps:trace-form}
+Let $T$ be free of rank $n$ over a commutative ring $R$, with an action of $G$.
+\begin{enumerate}[label=(\roman*)]
+\item $B(x,y)=\tr(xy)$ on $\End_R(T)$ is $G$-invariant, $B(gxg^{-1},gyg^{-1})=B(x,y)$, and perfect: $B(E_{ij},E_{kl})=\delta_{jk}\delta_{il}$, a permutation Gram
+matrix, of determinant $\pm1$.
+\item For $n=2$ the Gram matrix of $B$ on $\ad T$ in the basis $e,h,f$ is $\begin{psmallmatrix}0&0&1\\0&2&0\\1&0&0\end{psmallmatrix}$, of determinant $-2$, so $B$ is
+perfect on $\ad T$ iff $2\in R^\times$.
+\item Let $R=\Zl$ with $\ell$ odd and $A=\ad T$. Then $x\mapsto B(x,{-})$ is a $G$-isomorphism $A\simeq A^\vee=\Hom_{\Zl}(A,\Zl)$, and for every character
+$\chi\colon G\to\Zl^\times$, $\Hom_{\Zl}(A,\Zl(\chi))\simeq A(\chi)$; the same holds with $\Ql$ or $\Ql/\Zl$ in place of $\Zl$. For $\ell=2$ the image of
+$A$ in $A^\vee$ has index $2$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $\tr(gxg^{-1}gyg^{-1})=\tr(gxyg^{-1})=\tr(xy)$; and $E_{ij}E_{kl}=\delta_{jk}E_{il}$ has trace $\delta_{jk}\delta_{il}$. (ii) $e^2=f^2=0$, $eh=-e$, $he=e$,
+$hf=-f$, so $\tr(e^2)=\tr(f^2)=\tr(eh)=\tr(hf)=0$, while $\tr(ef)=\tr(E_{11})=1$ and $\tr(h^2)=2$. A bilinear form on a free module of finite rank is
+perfect iff its Gram determinant is a unit (\Cref{ch:modules}). (iii) By (ii) the map is an isomorphism; it is equivariant because
+$B(gx,y)=B(x,g^{-1}y)$ for the conjugation action, which says $B(gx,{-})=g\cdot B(x,{-})$ in $A^\vee$. Twisting by $\chi$ gives
+$\Hom(A,\Zl(\chi))=A^\vee(\chi)\simeq A(\chi)$; tensor with $\Ql$ or $\Ql/\Zl$ for the other coefficients. For $\ell=2$ the cokernel of the Gram matrix
+has order $\abs{\det}_2^{-1}=2$.
+\end{proof}
+
+\begin{paperlink}
+Section 4.2: ``$T^D=\Hom(A,\Zl(1))\simeq A(1)$ (via the trace form)'' is (iii) with $\chi=\chi_\ell$; it is one of the places where $\ell$ odd is used.
+Then $V^D=A(1)\otimes\Ql$ and $W^D=\ad T(1)\otimes\Ql/\Zl$, the module of Lemma lem:h0 and Lemma lem:dfg21 (\Cref{ch:blochkato}).
+\end{paperlink}
+
+\begin{proposition}[Invariance of the adjoint]\label{prop:reps:adjoint-invariance}
+Let $V$ be a representation of $G$ over a field and $\chi$ a character of $G$.
+\begin{enumerate}[label=(\roman*)]
+\item Twisting does not change the adjoint: $\End(V\otimes\chi)$ is $\End(V)$, and $\ad(V\otimes\chi)$ is $\ad V$, by
+\Cref{prop:reps:twist}(iii).
+\item The transpose $x\mapsto x^t$, where $x^t(\lambda)=\lambda\circ x$, is a $G$-isomorphism $\End(V)\to\End(V^\vee)$ preserving traces, so it restricts to a
+$G$-isomorphism $\ad V\simeq\ad(V^\vee)$; the map $x\mapsto-x^t$ has the same properties and also respects commutators.
+\item Let $L\subseteq V$ be an $\mathcal{O}$-lattice in a $K$-vector space, and put $\ad L=\End_\mathcal{O}(L)\cap\ad V$. For $c\in K^\times$, $\End_\mathcal{O}(cL)=\End_\mathcal{O}(L)$ and
+$\ad(cL)=\ad L$ inside $\End_K(V)$. For $L^\vee=\Hom_\mathcal{O}(L,\mathcal{O})\subseteq V^\vee$, the transpose maps $\End_\mathcal{O}(L)$ onto $\End_\mathcal{O}(L^\vee)$ and $\ad L$ onto
+$\ad(L^\vee)$.
+\item Consequently, if $L'$ is a stable lattice homothetic to $L$, to $L^\vee$, or to a twist $L\otimes\mathcal{O}(\chi)$, then $\ad L'$ is canonically isomorphic to
+$\ad L$ as a representation.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(ii) On $V^\vee$, $g$ acts by $\rho^\vee(g)=\rho(g^{-1})^t$. Then
+\[
+(\rho(g)x\rho(g)^{-1})^t=\rho(g)^{-t}x^t\rho(g)^t=\rho^\vee(g)x^t\rho^\vee(g)^{-1},
+\]
+and $\tr(x^t)=\tr x$.
+Also $[x,y]^t=-[x^t,y^t]$, so $-x^t$ respects commutators. (iii) $x(cL)\subseteq cL$ iff $xL\subseteq L$. A $K$-linear $x$ preserves $L$ iff $x^t$ preserves
+$L^\vee$, because $L=(L^\vee)^\vee$ (both are free and dual bases correspond). (iv) Combine (i) to (iii); a twist does not change the
+underlying module.
+\end{proof}
+
+\begin{paperlink}
+Section 4.2: the lattice $M_{f,\lambda}$ of DFG04 is identified by $\varphi_E^*$ with $H^1(E,\Zl)=\Hom(T_\ell E,\Zl)\simeq T_\ell E(-1)$ (Proposition prop:pullback;
+convention B-C5(b)), ``so its adjoint is $\ad T$'': this is (ii) and (i), with no irreducibility needed. The original version of the paper
+said instead that $M_{f,\lambda}$ and $T_\ell E$ are homothetic when $\rhobar$ is irreducible; the correct form of that argument is that
+$M_{f,\lambda}$ is homothetic to the dual $T_\ell E^\vee$ (\Cref{thm:reps:homothety}), and then (iv) identifies the adjoints. Theorem thm:quant,
+Step 3 (``$A_g=A_f$'' for a twist) is (i).
+\end{paperlink}
+
+\section{\texorpdfstring{$\GL_2(\F_3)$ and its subgroups on $\F_3^2$ and $\F_9^2$}{GL2(F3) and its subgroups over F3 and F9}}\label{sec:reps:gl23}
+
+This section applies the theory to the standard representations of the subgroups of $\GL_2(\F_3)$ that occur as mod $3$ images. It is the
+representation-theoretic core of the paper's Proposition prop:ns: for the three possible images $\GL_2(\F_3)$, $N_{ns}(\F_3)$, $N_s(\F_3)$ of
+an irreducible $\rhobar_{E,3}$, the restriction to the determinant-one subgroup (the image of $\Gal(\Qbar/\Q(\sqrt{-3}))$) is absolutely
+irreducible except for $N_s(\F_3)$, where it is $\psi\oplus\psi^{-1}$ over $\F_9$ and the representation is isomorphic to its twist by $\det$
+(\Cref{thm:reps:three-images}). The group theory (subgroups, orders, orbits on lines, the three images) is \Cref{ch:groups}'s; only
+the representation-theoretic reading is added here. Throughout, $\rho$ is the standard representation (the inclusion $H\subseteq\GL_2(\F_3)$),
+and since $\det$ takes values in $\{\pm1\}$, $\rho\otimes\det$ is the twist by the character $\det|_H$.
+
+\begin{proposition}[The standard representations of the subgroups of $\GL_2(\F_3)$]\label{prop:reps:gl23-table}
+For the standard models, the standard representation $\rho$ of $H$ on $\F_3^2$ has the following properties. In the first table,
+``irr.'' means irreducible over $\F_3$, ``abs.'' absolutely irreducible, and the last column is the image of $H$ in $\PGL_2(\F_3)\simeq S_4$.
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+$H$ & order & $\det$ onto $\F_3^\times$ & irr. & abs. & $\#$ of $H/(H\cap\{\pm1\})$ & projective image\\
+\midrule
+$\GL_2(\F_3)$ & $48$ & yes & yes & yes & $24$ & $S_4$\\
+$\SL_2(\F_3)$ & $24$ & no & yes & yes & $12$ & $A_4$\\
+$N_{ns}(\F_3)$ & $16$ & yes & yes & yes & $8$ & $D_4$\\
+$Q_8$ & $8$ & no & yes & yes & $4$ & $V_4$ (normal in $S_4$)\\
+$N_s(\F_3)$ & $8$ & yes & yes & yes & $4$ & $V_4$ (not normal)\\
+$C_{ns}(\F_3)$ & $8$ & yes & yes & no & $4$ & $C_4$\\
+$C_4=\langle J\rangle$ & $4$ & no & yes & no & $2$ & $C_2$\\
+$C_s(\F_3)$ & $4$ & yes & no & no & $2$ & $C_2$\\
+$\mathrm B(\F_3)$ & $12$ & yes & no & no & $6$ & $S_3$\\
+$\mathrm U$ & $3$ & no & no & no & $3$ & $C_3$\\
+\bottomrule
+\end{tabular}
+\end{center}
+In the second table, $\mathrm{Hom}$ is $\Hom_H(\rho,\rho\otimes\det)$, with the dimension of its trace-zero part in parentheses, and the last
+column says whether $\rho\simeq\rho\otimes\det$ (``triv.'' when $\det|_H=1$, so that the question is empty).
+\begin{center}
+\begin{tabular}{lccccl}
+\toprule
+$H$ & $\dim\End_H(\rho)$ & $\dim(\ad\rho)^H$ & $\dim\mathrm{Hom}$ & $\rho\simeq\rho\otimes\det$ & trace-zero part\\
+\midrule
+$\GL_2(\F_3)$ & $1$ & $0$ & $0\ (0)$ & no & \\
+$\SL_2(\F_3)$ & $1$ & $0$ & $1\ (0)$ & triv. & \\
+$N_{ns}(\F_3)$ & $1$ & $0$ & $0\ (0)$ & no & \\
+$Q_8$ & $1$ & $0$ & $1\ (0)$ & triv. & \\
+$N_s(\F_3)$ & $1$ & $0$ & $1\ (1)$ & \textbf{yes} & $J$\\
+$C_{ns}(\F_3)$ & $2$ & $1$ & $0\ (0)$ & no & \\
+$C_4$ & $2$ & $1$ & $2\ (1)$ & triv. & $J$\\
+$C_s(\F_3)$ & $2$ & $1$ & $2\ (2)$ & yes & $w$, $J=\sigma w$\\
+$\mathrm B(\F_3)$ & $1$ & $0$ & $1\ (1)$ & no & $e$ (not invertible)\\
+$\mathrm U$ & $2$ & $1$ & $2\ (1)$ & triv. & $e=u-1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{proposition}
+
+\begin{proof}
+Orders, surjectivity of $\det$ and the stable lines over $\F_3$ (hence the column ``irr.'') are in \Cref{ch:groups}. Absolute irreducibility is
+\Cref{prop:reps:dim2-absirr}(iv). The order of $H/(H\cap\{\pm1\})$ is $\#H/2$ when $-1\in H$, which is the case for all rows but $\mathrm U$; the
+identifications $\PGL_2(\F_3)\simeq S_4$, $\PSL_2(\F_3)\simeq A_4$ and of the smaller images are in \Cref{ch:groups} (a non-abelian group of order $6$ is $S_3$; $N_{ns}(\F_3)/\{\pm1\}$ is
+non-abelian of order $8$ with a cyclic subgroup $C_{ns}/\{\pm1\}$ of order $4$ and the involution $\sigma$ outside it, so it is $D_4$).
+For the second table: in the absolutely irreducible rows $\End_H=\F_3$ (\Cref{thm:reps:schur}(iii)); for the cyclic groups $C_{ns}=\langle a\rangle$,
+$C_4=\langle J\rangle$, $\mathrm U=\langle u\rangle$ the commutant of the non-scalar generator is $2$-dimensional (\Cref{lem:reps:commutant}); for $C_s$ it is the
+diagonal matrices (the commutant of $\sigma$); for $\mathrm B$ it is $\F_3$ (\Cref{ex:reps:maschke-fails}(d)). As $2\in\F_3^\times$,
+$\dim(\ad\rho)^H=\dim\End_H-1$ (\Cref{prop:reps:adjoint}(i)). When $\det|_H=1$, $\mathrm{Hom}=\End_H$ and its trace-zero part is $(\ad\rho)^H$. When $\det|_H\ne1$,
+every element of $\mathrm{Hom}$ has trace $0$ (\Cref{lem:reps:trace-zero}). For $\GL_2(\F_3)$ and $N_{ns}(\F_3)$, $\mathrm{Hom}=0$ by \Cref{prop:reps:gl23-sl23}
+and \Cref{prop:reps:nns3}; for $N_s(\F_3)$ it is $\F_3J$ by \Cref{prop:reps:ns3-induced}. For $C_{ns}$: if $\phi a=-a\phi$ with $\phi\ne0$, then $\ker\phi$ is
+$a$-stable, hence $0$ ($C_{ns}$ is irreducible), so $a$ and $-a$ are conjugate; but their eigenvalues are $\{1+i,1-i\}$ and $\{-1-i,-1+i\}$.
+For $C_s$ and $\mathrm B$: $\phi$ must anticommute with $\sigma=\mathrm{diag}(1,-1)$ (of determinant $-1$), so $\phi=\sm0xy0$, and the other generator
+$\mathrm{diag}(-1,1)$ of $C_s$ imposes nothing new; in $\mathrm B$, commuting with $u$ forces $y=0$. Finally $\rho\simeq\rho\otimes\det$ iff $\mathrm{Hom}$ contains an
+invertible element. Every entry was also checked by enumerating $\GL_2(\F_3)$, for instance with the following PARI/GP script, which prints,
+for each group, its order, $\dim\End_H$, $\dim(\ad\rho)^H$, $\dim\mathrm{Hom}$ and the dimension of its trace-zero part.
+\end{proof}
+
+\begin{lstlisting}[language=GP]
+red(M) = lift(Mod(M, 3));
+gen(L) = my(S = Set([matid(2)]), T);\
+  while(1, T = S; foreach(T, x, foreach(L, g, S = setunion(S, [red(x*g)])));\
+    if(#S == #T, return(S)));
+mats = concat(vector(81, k, my(d = digits(k-1+81, 3)); [[d[2],d[3];d[4],d[5]]]));
+sols(H, tw, t0) = #select(X -> (!t0 || trace(X)%3 == 0) &&\
+  #select(g -> red(X*g - matdet(g)^tw*g*X) != 0, H) == 0, mats);
+row(H) = [#H, logint(sols(H,0,0),3), logint(sols(H,0,1),3),\
+  logint(sols(H,1,0),3), logint(sols(H,1,1),3)];
+J = [0,1;-1,0]; s = [1,0;0,-1]; a = [1,-1;1,1]; u = [1,1;0,1];
+{
+  G = [["Ns",[J,s]], ["Nns",[a,s]], ["Q8",[J,[1,-1;-1,-1]]], ["C4",[J]],
+       ["Cns",[a]], ["U",[u]], ["B",[u,s,-matid(2)]]];
+  foreach(G, x, print(x[1], ": ", row(gen(x[2]))));
+}
+\\ Ns: [8, 1, 0, 1, 1]    Nns: [16, 1, 0, 0, 0]   Q8: [8, 1, 0, 1, 0]
+\\ C4: [4, 2, 1, 2, 1]    Cns: [8, 2, 1, 0, 0]    U: [3, 2, 1, 2, 1]
+\\ B: [12, 1, 0, 1, 1]
+\end{lstlisting}
+
+\begin{proposition}[$N_s(\F_3)$: induced over $\F_9$, not over $\F_3$]\label{prop:reps:ns3-induced}
+Let $\rho$ be the standard representation of $N_s(\F_3)=\langle J,\sigma\rangle$ and $C_4=\langle J\rangle=N_s(\F_3)\cap\SL_2(\F_3)$, the kernel of $\det$.
+\begin{enumerate}[label=(\roman*)]
+\item $\rho$ is absolutely irreducible, but $\Res_{C_4}\rho\otimes\F_9\simeq\psi\oplus\psi^{-1}$ with $\psi(J)=i$, the eigenvectors being $v=(1,i)^t$ and $\sigma v=(1,-i)^t$. Since
+$\sigma J\sigma^{-1}=J^{-1}$, $\psi^\sigma=\psi^{-1}\ne\psi$.
+\item In the basis $(v,\sigma v)$ of $\F_9^2$, $\rho(J)=\mathrm{diag}(i,-i)$ and $\rho(\sigma)=w$. This is the matrix form of $\Ind_{C_4}^{N_s}\psi$ of
+\Cref{prop:reps:induction}(iii) (with $s=\sigma$, $\sigma^2=1$), so $\rho\otimes\F_9\simeq\Ind_{C_4}^{N_s}\psi$. Over $\F_3$, $\rho$ is not induced from a character of
+$C_4$: $\Res_{C_4}\rho$ is irreducible over $\F_3$.
+\item $\rho\simeq\rho\otimes\det$ over $\F_3$, with intertwiner $J$: $J\rho(g)=\det(g)\rho(g)J$ for all $g$. Moreover $\tr J=0$, $J^2=-1$, and the eigenlines of $J$
+over $\F_9$ are the two summands of (i), as \Cref{thm:reps:clifford-index-two}(B) predicts.
+\item The projective image is $V_4$, and $\rho\simeq\rho\otimes\chi$ for each of the three nontrivial characters $\chi$ of $N_s(\F_3)/\{\pm1\}$: their kernels are $C_4$
+($\chi=\det$, intertwiner $J$), $C_s(\F_3)=\{\pm1,\pm\sigma\}$ (intertwiner $\sigma$) and $\{\pm1,\pm w\}$ (intertwiner $w$). So $\rho\otimes\F_9$ is induced from
+each of these three subgroups.
+\item $(\ad\rho\otimes\det)^{N_s}=\F_3J$, a line, and $(\ad\rho)^{N_s}=0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Absolute irreducibility is \Cref{prop:reps:dim2-absirr}(iv), and the decomposition over $\F_9$ is \Cref{ex:reps:c4}; $\sigma v=(1,-i)^t$ is
+the $(-i)$-eigenvector. $\sigma J\sigma^{-1}=\sm0{-1}10=J^{-1}$, so $\psi^\sigma(J)=\psi(J^{-1})=-i$.
+(ii) $Jv=iv$ and $J(\sigma v)=-i\,\sigma v$; $\sigma(v)=\sigma v$ and $\sigma(\sigma v)=v$. The matrix of \Cref{prop:reps:induction}(iii) for $\psi$ and $s=\sigma$ is
+$J\mapsto\mathrm{diag}(\psi(J),\psi^\sigma(J))=\mathrm{diag}(i,-i)$ and $\sigma\mapsto\sm0{\psi(1)}10=w$. Over $\F_3$, $\Res_{C_4}\rho$ is irreducible (\Cref{ex:reps:c4}), whereas
+the restriction of a representation induced from a character of $C_4$ would contain that character as a line.
+(iii) It suffices to check the generators: $\det J=1$ and $J$ commutes with $J$; $\det\sigma=-1$ and $J\sigma=\sm0{-1}{-1}0=-\sigma J$. And $\tr J=0$, $J^2=-1$, with
+eigenlines $\F_9v$, $\F_9\sigma v$.
+(iv) $N_s(\F_3)/\{\pm1\}$ has order $4$ and its three involutions $\bar J,\bar\sigma,\bar w$ commute, so it is $V_4$. The relations $wJ=-Jw$, $\sigma J=-J\sigma$,
+$w\sigma=-\sigma w$ show that $x\in\{J,\sigma,w\}$ commutes with $\pm1$ and $\pm x$ and anticommutes with the other four elements, so $x\rho(g)=\chi(g)\rho(g)x$ for the
+character $\chi$ with kernel $\{\pm1,\pm x\}$. Induction from each kernel is \Cref{thm:reps:clifford-index-two} (or \Cref{prop:reps:dihedral}(iii)).
+(v) is \Cref{prop:reps:H0-twisted-adjoint}(iii), (iv) with $\chi=\det\ne1$ and (iii).
+\end{proof}
+
+\begin{proposition}[$N_{ns}(\F_3)$]\label{prop:reps:nns3}
+Let $\rho$ be the standard representation of $N_{ns}(\F_3)=\langle a,\sigma\rangle$, with $Q_8=N_{ns}(\F_3)\cap\SL_2(\F_3)$ the kernel of $\det$.
+\begin{enumerate}[label=(\roman*)]
+\item $\rho$ and $\Res_{Q_8}\rho$ are absolutely irreducible.
+\item $\rho\not\simeq\rho\otimes\det$, and $(\ad\rho\otimes\det)^{N_{ns}}=0$.
+\item Over $\F_9$, $C_{ns}(\F_3)=\langle a\rangle$ acts on the lines spanned by $(1,-i)^t$ and $(1,i)^t$ by the characters $\theta$ and $\theta^3$, where $\theta(a)=1+i$ has order
+$8$; $\theta^\sigma=\theta^3\ne\theta$, and $\rho\otimes\F_9\simeq\Ind_{C_{ns}}^{N_{ns}}\theta$. The projective image is $D_4$, and $\rho\simeq\rho\otimes\chi$ for exactly one
+nontrivial character $\chi$, the character $\chi_{ns}$ with kernel $C_{ns}(\F_3)$, with intertwiner $J$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) is \Cref{prop:reps:dim2-absirr}(iv). (ii) If $\phi$ were an isomorphism, $\phi\rho(g)\phi^{-1}=\det(g)\rho(g)$ would give $\tr\rho(g)=\det(g)\tr\rho(g)$, so
+$\tr\rho(g)=0$ whenever $\det g=-1$ (as $2\ne0$). But $\det a=2=-1$ and $\tr a=2\ne0$. The invariants vanish by \Cref{prop:reps:H0-twisted-adjoint}(iv).
+(iii) $a\binom1{-i}=\binom{1+i}{1-i}=(1+i)\binom1{-i}$, since $(1+i)(-i)=1-i$; and $a\binom1i=(1-i)\binom1i$, with $1-i=(1+i)^3$. The element $1+i$ has order $8$ in
+$\F_9^\times$ ($(1+i)^2=2i=-i$). From $\sigma a\sigma^{-1}=a^3$ (\Cref{ch:groups}), $\theta^\sigma(a)=\theta(a^3)=\theta(a)^3$, and $\theta^3\ne\theta$. So $\Res_{C_{ns}}\rho\otimes\F_9\simeq\theta\oplus\theta^3$ is
+reducible, case (B) of \Cref{thm:reps:clifford-index-two} for $H=C_{ns}$, and $\rho\otimes\F_9\simeq\Ind\theta$, $\rho\simeq\rho\otimes\chi_{ns}$. Directly, $J=a^2$ commutes with
+$a$ and anticommutes with $\sigma$, so it is an intertwiner $\rho\to\rho\otimes\chi_{ns}$. The projective image $N_{ns}(\F_3)/\{\pm1\}$ is $D_4$ (\Cref{prop:reps:gl23-table}),
+of order $8$, so by \Cref{prop:reps:dihedral}(iii) there is exactly one such character.
+\end{proof}
+
+\begin{proposition}[$\SL_2(\F_3)$ and $\GL_2(\F_3)$]\label{prop:reps:gl23-sl23}
+The standard representations of $\SL_2(\F_3)$ and $\GL_2(\F_3)$ are absolutely irreducible. For $\GL_2(\F_3)$, $\rho\not\simeq\rho\otimes\det$ and
+$(\ad\rho\otimes\det)^{\GL_2(\F_3)}=0$. The projective images are $A_4$ and $S_4$, exceptional in Dickson's list (\Cref{thm:reps:dickson}), so neither
+representation is induced from a subgroup of index $2$.
+\end{proposition}
+
+\begin{proof}
+Absolute irreducibility: both contain $Q_8$ (\Cref{prop:reps:dim2-absirr}(iii), (iv)). For $\GL_2(\F_3)$ argue as in \Cref{prop:reps:nns3}(ii) with
+$a\in\GL_2(\F_3)$ (or with $\sm0111$, of determinant $-1$ and trace $1$). Neither $A_4$ nor $S_4$ is dihedral, so \Cref{prop:reps:dihedral}(ii)
+applies.
+\end{proof}
+
+\begin{theorem}[The three images]\label{thm:reps:three-images}
+Let $H\le\GL_2(\F_3)$ be conjugate to $\GL_2(\F_3)$, $N_{ns}(\F_3)$ or $N_s(\F_3)$ (by \Cref{ch:groups} these are exactly the subgroups with
+surjective determinant, no stable line in $\F_3^2$, and an element of determinant $-1$ and trace $0$). Let $H_1=H\cap\SL_2(\F_3)$, the kernel of
+$\det|_H$, of index $2$, and $\rho$ the standard representation. The following are equivalent:
+\begin{enumerate}[label=(\alph*)]
+\item $H$ is conjugate to $N_s(\F_3)$;
+\item $\Res_{H_1}\rho$ is not absolutely irreducible;
+\item $\rho\simeq\rho\otimes\det$;
+\item $(\ad\rho\otimes\det)^H\ne0$;
+\item $\rho\otimes\F_9\simeq\Ind_{H_1}^H\psi$ for a character $\psi$ of $H_1$ of order $4$;
+\item $H_1$ is abelian.
+\end{enumerate}
+When they hold, $(\ad\rho\otimes\det)^H$ is the line spanned by a trace-zero isomorphism $\rho\to\rho\otimes\det$; when they fail, $(\ad\rho\otimes\det)^H=0$.
+\end{theorem}
+
+\begin{proof}
+All statements are invariant under conjugation, so let $H$ be one of the three models; then $H_1$ is $\SL_2(\F_3)$, $Q_8$ or $C_4$ (\Cref{ch:groups}).
+(a)$\Leftrightarrow$(f): of these three only $C_4$ is abelian. (a)$\Leftrightarrow$(b): $\SL_2(\F_3)$ and $Q_8$ act absolutely irreducibly and $C_4$ does
+not (\Cref{prop:reps:dim2-absirr}(iv)). (b)$\Leftrightarrow$(c): \Cref{thm:reps:clifford-index-two} with $\chi_H=\det|_H$ (its kernel is $H_1$, of index $2$
+because $\det$ is onto $\{\pm1\}$), $\operatorname{char}\F_3\ne2$ and $\rho$ absolutely irreducible. (c)$\Leftrightarrow$(d) and the description of the
+invariants: \Cref{prop:reps:H0-twisted-adjoint}(iii), (iv). (a)$\Rightarrow$(e): \Cref{prop:reps:ns3-induced}(ii), $\psi(J)=i$ of order $4$.
+(e)$\Rightarrow$(b): $\Res_{H_1}\Ind_{H_1}^H\psi\simeq\psi\oplus\psi^s$ is reducible over $\F_9$.
+\end{proof}
+
+\begin{paperlink}
+Proposition prop:ns and its proof. As $\det\rhobar_{E,3}=\bar\chi_3=\chi_{-3}$ cuts out $\Q(\sqrt{-3})$ (\Cref{ch:galois}), the image of $\Gal(\Qbar/\Q(\sqrt{-3}))$ is $H_1$,
+and \Cref{thm:reps:three-images} gives at once: $\rhobar_{E,3}$ is absolutely irreducible on $\Gal(\Qbar/\Q(\sqrt{-3}))$ unless the image is $N_s(\F_3)$; in that
+case $\rhobar\otimes\F_9$ is induced from a character of order $4$, $\rhobar\simeq\rhobar\otimes\chi_{-3}$ and $H^0(\Q,\ad\rhobar(1))\ne0$. The value $h_3(E)=1$ then comes from
+Lemma lem:h0 (\Cref{prop:reps:twist-length}). This is also the reading of the hypothesis of Theorem thm:main at $\ell=3$ (Proposition prop:Sf),
+and of Remark rem:ns and Section sec:anomaly, which concern exactly the image $\Ns$. That $N_s(\F_3)$ is the only one of the three images
+whose determinant-one subgroup is abelian is the orbit dichotomy of \Cref{ch:groups} in another form.
+\end{paperlink}
+
+\section{Unipotent elements and cyclic groups of order 2, 3, 4, 6}\label{sec:reps:cyclic}
+
+This section computes the fixed vectors of the groups that occur as images of inertia at a bad prime $q\ne\ell$: unipotent groups and
+``minus unipotent'' ones (potentially multiplicative reduction), and cyclic groups of order $2$, $3$, $4$, $6$ in $\SL_2$ (potentially good
+reduction), on $V$, on $\ad V$, and modulo $3$. In the paper these computations are Lemma lem:IV, Remark rem:types, Lemma lem:euler, the
+table of Section 1 and Proposition prop:ns-structure. Which shape occurs for which Kodaira type is a theorem about elliptic curves
+(Serre-Tate, Kraus) proved in \Cref{ch:reduction} and \Cref{ch:galrep}; here it is only recorded in the table of \Cref{prop:reps:cyclic-shapes}.
+
+\begin{convention}\label{conv:reps:sigma}
+In this section $\sigma$ denotes an element of order $3$ of $\SL_2$, as in the paper's Lemmas lem:IV and lem:euler, and $\tau$ an element of
+order $4$; the matrix $\mathrm{diag}(1,-1)$, called $\sigma$ in \Cref{ch:groups} and in \Cref{sec:reps:gl23}, is written $h$ here (it is the basis vector $h$ of $\ad V$
+viewed as a matrix). A Frobenius element is an abstract $F$ satisfying $FgF^{-1}=g^q$ on the inertia image (convention (C8)).
+\end{convention}
+
+\begin{proposition}[Unipotent elements]\label{prop:reps:unipotent-invariants}
+Let $k$ be a field, $V=k^2$, $u\in\GL_2(k)$ unipotent (characteristic polynomial $(X-1)^2$) with $u\ne1$, $N=u-1$, and $\xi\in k^\times$, $\xi\ne1$.
+\begin{enumerate}[label=(\roman*)]
+\item $N\ne0$ and $N^2=0$; in a basis $e_1\in\ker N$, $e_2\notin\ker N$ one has $u=\sm1{n'}01$ with $n'\ne0$. $V^u=\ker N=\im N$ is a line, and $V^{\xi u}=0$. In
+particular ``minus a unipotent'' ($\xi=-1$, $\operatorname{char}k\ne2$) fixes no nonzero vector.
+\item If $\operatorname{char}k\ne2$, then $(\ad V)^u=(\ad V)^{\xi u}=kN=k\,e$, a line. If $\operatorname{char}k=2$, $(\ad V)^u=ke+kh$. The same holds for any group $H$ acting
+through matrices $\xi'u^m$ ($\xi'$ scalar, $m\in\Z$) one of which has $u^m\ne1$.
+\item If $F\in\GL_2(k)$ satisfies $FuF^{-1}=u^q$ with $q\in\Z$, then $F$ preserves $(\ad V)^u$ and acts on it by $q$: $FNF^{-1}=u^q-1=qN$. Hence $F^{-1}$ acts by
+$q^{-1}$ when $q\in k^\times$. The same holds for $q\in\Zl$ when $k\supseteq\Ql$ and $u^q$ is defined by continuity, $u^q=1+qN$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) By Cayley-Hamilton $N^2=0$, and $N\ne0$ as $u\ne1$. Then $\im N\subseteq\ker N$, both are lines, so they are equal. For $e_2\notin\ker N$,
+$Ne_2\in\ker N\setminus\{0\}$, say $Ne_2=n'e_1$. A vector fixed by $\xi u$ would be an eigenvector of $u$ with eigenvalue $\xi^{-1}\ne1$, but $1$ is the only
+eigenvalue of $u$.
+(ii) Scalars act trivially on $\ad V$, so $(\ad V)^{\xi u}=(\ad V)^u$. By \Cref{prop:reps:adjoint}(iii) with $t=u$, for $x=\alpha e+\beta h+\gamma f$,
+$(u-1)x=(-2n'\beta-n'^2\gamma)e+n'\gamma h$, which vanishes iff $\gamma=0$ and $2\beta=0$. For $H$: $u^m=1+mN$, and if $u^m\ne1$ it is again a nontrivial
+unipotent with $(\ad V)^{u^m}=ke$; every element of $H$ fixes $e$.
+(iii) $FNF^{-1}=FuF^{-1}-1=u^q-1$, and $u^q=(1+N)^q=1+qN$ for every $q\in\Z$ (binomial theorem with $N^2=0$, and $(1+N)^{-1}=1-N$). By continuity the
+same holds for $q\in\Zl$.
+\end{proof}
+
+\begin{lemma}[The commutant of one matrix]\label{lem:reps:commutant}
+Let $x\in\End_k(V)$, $n=\dim V$.
+\begin{enumerate}[label=(\roman*)]
+\item If the characteristic polynomial of $x$ has $n$ distinct roots in $\bar k$, the commutant $\{y:xy=yx\}$ is $k[x]\simeq k[X]/(\det(X-x))$, of
+dimension $n$.
+\item If $n=2$ and $x$ is not a scalar, the commutant is $k\cdot1\oplus k\cdot x=k[x]$; if moreover $\operatorname{char}k\ne2$, its trace-zero part is the line
+spanned by $2x-\tr x$.
+\item In (i) and (ii) the commutant is a field iff $\det(X-x)$ is irreducible over $k$.
+\end{enumerate}
+Examples: if $\sigma^2+\sigma+1=0$ ($\sigma$ of order $3$ in $\SL_2$), the trace-zero line is spanned by $2\sigma+1=\sigma-\sigma^{-1}$, and $(2\sigma+1)^2=-3$; if $\tau^2=-1$, it is $k\tau$.
+For $k=\Ql$ and $\sigma$ of order $3$ in $\SL_2(\Ql)$ the commutant $\Ql[\sigma]\simeq\Ql[X]/(X^2+X+1)$ is a field iff $\ell\not\equiv1\pmod3$, and for $\tau$ of order $4$,
+$\Ql[\tau]$ is a field iff $\ell\not\equiv1\pmod4$ (the roots of unity of $\Ql$, \Cref{ch:local}).
+\end{lemma}
+
+\begin{proof}
+(i) The minimal polynomial of $x$ vanishes at all $n$ eigenvalues, so it has degree $n$ and equals $\det(X-x)$; hence $k[x]\simeq k[X]/(\det(X-x))$ has
+dimension $n$, and $k[x]$ lies in the commutant. Over $\bar k$, $x$ is diagonal with distinct entries in a suitable basis, and the matrices
+commuting with it are the diagonal ones, of dimension $n$. The commutant is the solution space of a linear system with coefficients
+in $k$, so its dimension over $k$ is also $n$ (as in \Cref{prop:reps:scalars}(i)); it therefore equals $k[x]$.
+(ii) Choose $v$ that is not an eigenvector of $x$ (the eigenvectors lie in at most two lines, or in one line if $x$ has a single eigenvalue
+and is not scalar). Then $v,xv$ is a basis. If $y$ commutes with $x$, write $yv=\alpha v+\beta xv$; then $y$ and $\alpha+\beta x$ agree on $v$ and on $xv$
+($y\,xv=x\,yv=(\alpha+\beta x)xv$), so $y=\alpha+\beta x$. The trace of $\alpha+\beta x$ is $2\alpha+\beta\tr x$, which vanishes iff $\alpha+\beta x=\frac\beta2(2x-\tr x)$.
+(iii) $k[X]/(P)$ is a field iff $P$ is irreducible. For the examples: $\tr\sigma=-1$, so $2\sigma-\tr\sigma=2\sigma+1$, $\sigma^{-1}=\sigma^2=-1-\sigma$, and
+$(2\sigma+1)^2=4(\sigma^2+\sigma)+1=-3$; $\tr\tau=0$.
+\end{proof}
+
+\begin{proposition}[Cyclic groups of order $2,3,4,6$]\label{prop:reps:cyclic-shapes}
+Let $K$ be a field, $V=K^2$, and $g\in\SL_2(K)$ of finite order $m\in\{2,3,4,6\}$ with $\operatorname{char}K\nmid m$.
+\begin{enumerate}[label=(\roman*)]
+\item If $m=2$ then $g=-1$. If $m\ge3$, $g$ has the distinct eigenvalues $\zeta,\zeta^{-1}$ with $\zeta$ a primitive $m$-th root of unity, and characteristic
+polynomial $\Phi_m$: $X^2+X+1$, $X^2+1$, $X^2-X+1$ for $m=3,4,6$. For $m=6$, $\sigma=-g$ has order $3$.
+\item $V^g=0$. If $m=2$, $(\ad V)^g=\ad V$. If $m\ge3$, $(\ad V)^g$ is the line spanned by $g-g^{-1}$, which is $2g+1$ for $m=3$, $2g$ for $m=4$, and
+$2g-1=-(2\sigma+1)$ for $m=6$.
+\item Let $F\in\GL_2(K)$ with $FgF^{-1}=g^r$, $r\in\Z$ prime to $m$. If $m\ge3$, then $F$ preserves $(\ad V)^g$ and acts on it by $+1$ if $r\equiv1\pmod m$ and by
+$-1$ if $r\equiv-1\pmod m$, and every $r$ prime to $m$ is $\equiv\pm1\pmod m$. For $r=q$ a prime not dividing $m$ the sign is $\chi_{-3}(q)$ if
+$m\in\{3,6\}$ and $\chi_{-4}(q)$ if $m=4$; it is the same for $F^{-1}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $X^m-1$ is separable since $\operatorname{char}K\nmid m$, so $g$ is diagonalisable over $\bar K$ with eigenvalues $m$-th roots of unity of product
+$\det g=1$. If the two eigenvalues are equal, to $\zeta$ say, then $\zeta^2=1$ and $g=\zeta=\pm1$, of order at most $2$; this is the case $m=2$, $g=-1$. Otherwise
+they are $\zeta\ne\zeta^{-1}$, the order of $g$ is that of $\zeta$, so $\zeta$ is a primitive $m$-th root, and $(X-\zeta)(X-\zeta^{-1})=\Phi_m$ because $\Phi_m$ has degree $2$
+for these $m$. For $m=6$, $g^3$ has the eigenvalues $\zeta^{\pm3}=-1$, so $g^3=-1$ and $(-g)^3=1$, with $-g\ne1$.
+(ii) $1$ is not an eigenvalue. Conjugation by $-1$ is trivial. For $m\ge3$, \Cref{lem:reps:commutant}(ii) gives the line $K(2g-\tr g)$; and $g-g^{-1}$
+has trace $0$ and lies in $K[g]$, and is nonzero since $g^2\ne1$. The three expressions follow from $g^{-1}=-1-g$, $-g$, $1-g$ respectively.
+(iii) $F$ normalises $\langle g\rangle$, so it preserves the invariants, and $F(g-g^{-1})F^{-1}=g^r-g^{-r}$. The units modulo $3$, $4$, $6$ are $\pm1$, and
+$g^{\pm1}-g^{\mp1}=\pm(g-g^{-1})$. Finally $q\equiv\chi_{-3}(q)\pmod3$ for a prime $q\ne3$ (including $q=2$, where both sides are $-1$ modulo $3$) and $q\equiv\chi_{-4}(q)\pmod4$ for an odd
+prime $q$ (\Cref{ch:rings}); and for $m=6$ a prime $q\ge5$ is $\equiv\pm1\pmod6$ with the sign of $q\bmod3$. $F^{-1}$ acts by the inverse sign, which is the same.
+\end{proof}
+
+The following table collects the fixed spaces for the shapes of the image of inertia $I=I_q$ at a prime $q\ne\ell$, $q\ge5$, on $V=V_\ell E$
+(dimension $2$ over $\Ql$). The first column is \Cref{ch:reduction} and \Cref{ch:galrep}'s (Serre-Tate, Kraus), the other columns are
+\Cref{prop:reps:unipotent-invariants}, \Cref{prop:reps:cyclic-shapes} and \Cref{prop:reps:reduction-cyclic}. In the unipotent rows the image of $I$ is
+infinite, topologically generated, up to the finite part, by $t=\sm1{n'}01$; $\xi$ is a ramified quadratic character. The column ``$F$''
+gives the action of an arithmetic Frobenius $F$ ($FgF^{-1}=g^q$) on $(\ad V)^I$; the geometric Frobenius $F^{-1}$ gives the inverse, which matters
+only in the unipotent rows ($q$ against $q^{-1}$; convention B-C3(d)). The last column is $\dim(T/3T)^I$ for $T=T_3E$.
+\begin{center}
+\small
+\begin{tabular}{llccccc}
+\toprule
+image of $I$ & types & $\dim V^I$ & $\dim(\ad V)^I$ & generator & $F$ on $(\ad V)^I$ & $\dim(T/3T)^I$\\
+\midrule
+trivial & $\kod{I}_0$ & $2$ & $3$ & $\ad V$ & $\alpha/\beta,1,\beta/\alpha$ & $2$\\
+$\{\pm1\}$ & $\kod{I}_0^*$ & $0$ & $3$ & $\ad V$ & as for the twist & $0$\\
+unipotent, $t\ne1$ & $\kod{I}_n$ & $1$ & $1$ & $e$ & $q$ & $1$ or $2$\\
+$\xi\cdot$unipotent & $\kod{I}_n^*$ & $0$ & $1$ & $e$ & $q$ & $0$\\
+order $3$ & $\kod{IV}$, $\kod{IV}^*$ & $0$ & $1$ & $2\sigma+1$ & $\chi_{-3}(q)$ & $1$\\
+order $4$ & $\kod{III}$, $\kod{III}^*$ & $0$ & $1$ & $\tau$ & $\chi_{-4}(q)$ & $0$\\
+order $6$, $-\sigma$ & $\kod{II}$, $\kod{II}^*$ & $0$ & $1$ & $2\sigma+1$ & $\chi_{-3}(q)$ & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+In the row $\kod{I}_n$, $\dim(T/3T)^I$ is $1$ if $3\nmid n'$ and $2$ if $3\mid n'$; for the Tate curve $v_3(n')=v_3(n)$ (\Cref{ch:reduction}). In the row $\kod{I}_0^*$ the
+eigenvalues of $F$ on $\ad V$ are those of the unramified twist $V'$ (\Cref{prop:reps:twist}(iii)). The degree of $L_q(A_f,s)^{-1}$ is $\dim(\ad V)^I$, that is,
+$3,3,1,1,1,1,1$, and $\delta_q=\dim V^I$ is $2,0,1,0,0,0,0$ (Definition def:terms). The row $\kod{I}_n$ holds at every $q\ne\ell$, the rows $\kod{I}_0^*$, $\kod{I}_n^*$ at every
+odd $q\ne\ell$; for the finite images the tame relation $FgF^{-1}=g^q$ needs the image to be tame, which holds for $q\ge5$ (\Cref{ch:local}).
+
+\begin{proposition}[Reduction of finite cyclic subgroups of $\SL_2(\Zl)$]\label{prop:reps:reduction-cyclic}
+Let $\ell$ be a prime, $T=\Zl^2$, $g\in\SL_2(\Zl)$ of finite order $m\in\{2,3,4,6\}$, and $\bar g$ its reduction modulo $\ell$.
+\begin{enumerate}[label=(\roman*)]
+\item If $\ell\nmid m$, then $\bar g$ has order $m$, and the invariants of $\langle g\rangle$ on $T$ and on $\ad T$ commute with reduction:
+$(T/\ell^jT)^g=T^g/\ell^jT^g$ and $(\ad T/\ell^j)^g=(\ad T)^g/\ell^j$. In particular $(T/\ell T)^g=0$.
+\item Let $\ell=3$, $m=3$. Then $\bar g$ is a nontrivial unipotent element of $\SL_2(\F_3)$, so $(T/3T)^g$ is a line while $T^g=0$: invariants do not
+commute with reduction. On the adjoint they do: $(\ad T)^g=\Z_3(2g+1)$ and $2g+1\not\equiv0\pmod 3$ spans $(\ad T/3)^g$.
+\item Let $\ell=3$, $m=6$. Then $\bar g=-\bar u$ with $\bar u$ a nontrivial unipotent, and $(T/3T)^g=0$.
+\item Let $\ell=3$, $m\in\{2,4\}$. Then $(T/3T)^g=0$; for $m=4$, $\bar g$ has the irreducible characteristic polynomial $X^2+1$ over $\F_3$ and eigenvalues
+$\pm i\in\F_9$.
+\item Let $\ell$ be odd and $m\ge3$. Then $\bar g$ is not a scalar, and the commutant of $g$ in $\End_{\Zl}(T)$ is $\Zl[g]=\Zl\oplus\Zl g\simeq\Zl[X]/(\Phi_m)$. Moreover $T$
+is free of rank one over $\Zl[g]$; for $\ell=3$, $m=3$, this gives $T/3T\simeq\Z_3[\zeta_3]/(\pi^2)$, $\pi=1-\zeta_3$, with $(T/3T)^g=\pi T/3T$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+First, the kernel $1+\ell\mathrm M_2(\Zl)$ of reduction contains no element $h\ne1$ of finite order prime to $\ell$, and for $\ell$ odd no element of order $\ell$.
+Write $h=1+\ell^ay$ with $a\ge1$ and $y\not\equiv0\pmod\ell$. For $r$ prime to $\ell$, $h^r\equiv1+r\ell^ay\pmod{\ell^{a+1}}$, so $h^r\ne1$. For $\ell$ odd,
+$h^\ell=1+\ell^{a+1}y+\binom\ell2\ell^{2a}y^2+\dots\equiv1+\ell^{a+1}y\pmod{\ell^{a+2}}$, because $\ell\mid\binom\ell j$ for $0<j<\ell$, $2a+1\ge a+2$ and $\ell a\ge a+2$ (using
+$\ell\ge3$); so $h^\ell\ne1$ (this is also in \Cref{ch:groups}). A nontrivial finite group contains an element of prime order, so the finite
+subgroups of the kernel are trivial when $\ell$ is odd, and the finite subgroups of order prime to $\ell$ are trivial for every $\ell$. Hence
+reduction modulo $\ell$ is injective on $\langle g\rangle$ if $\ell$ is odd or $\ell\nmid m$.
+(i) $\bar g$ has order $m$ by the above, and $\#\langle g\rangle=m\in\Zl^\times$; apply \Cref{thm:reps:maschke}(ii) to the lattices $T$ and $\ad T$. $T^g=0$ by
+\Cref{prop:reps:cyclic-shapes}(ii).
+(ii) $\bar g\ne1$ by injectivity, and its characteristic polynomial is $X^2+X+1\equiv(X-1)^2\pmod3$; so $\bar g$ is a nontrivial unipotent and
+$(T/3T)^g$ is a line (\Cref{prop:reps:unipotent-invariants}(i)), while $T^g=0$. On the adjoint, $(\ad T)^g=\ad T\cap\Q_3(2g+1)$ by
+\Cref{prop:reps:cyclic-shapes}(ii). If $2g+1\equiv0\pmod3$ then $g\equiv-2^{-1}\cdot1=1\pmod 3$, which is false; so $2g+1$ is not divisible by $3$ in $\End(T)$, and
+$\ad T\cap\Q_3(2g+1)=\Z_3(2g+1)$. Its reduction $2\bar g+1=-(\bar g-1)$ spans $(\ad T/3)^g=\F_3(\bar g-1)$ (\Cref{prop:reps:unipotent-invariants}(ii)).
+(iii) $g=-\sigma$ with $\sigma=-g$ of order $3$; by (ii) $\bar\sigma$ is a nontrivial unipotent, and $-\bar\sigma$ fixes no nonzero vector
+(\Cref{prop:reps:unipotent-invariants}(i)).
+(iv) is (i), as $3\nmid m$; for $m=4$ the characteristic polynomial is $\Phi_4=X^2+1$, without roots in $\F_3$.
+(v) $\bar g$ is not a scalar: if $\ell\nmid m$, $\bar g$ has order $m\ge3$ while a scalar of determinant $1$ is $\pm1$; if $\ell=3$, $\bar g$ is $\pm$ a nontrivial
+unipotent. So $1$ and $g$ are linearly independent modulo $\ell$, $\Zl\oplus\Zl g$ is a direct summand of $\End_{\Zl}(T)$, and the commutant
+$\End_{\Zl}(T)\cap(\Ql\oplus\Ql g)$ (\Cref{lem:reps:commutant}(ii) over $\Ql$) is $\Zl\oplus\Zl g$. The freeness of $T$ over $\Zl[g]$ and the description of
+$T/3T$ are proved in \Cref{ch:ant}; we do not prove them here. (The fixed space $\pi T/3T$ is the kernel of $g-1$, which acts as multiplication by $\zeta_3-1=-\pi$.)
+\end{proof}
+
+\begin{paperlink}
+Lemma lem:IV (types $\kod{IV}$, $\kod{IV}^*$ at $q\ne3$): ``its image in $\Aut(E[3])$ is a nontrivial unipotent subgroup. Consequently $E[3]^{I_q}$ is a
+line'' is \Cref{prop:reps:reduction-cyclic}(ii), and ``reduction modulo $3$ is injective on it, the kernel of $\GL_2(\Z_3)\to\GL_2(\F_3)$ being
+torsion-free'' is the first paragraph of its proof; the route through $T_3E\simeq\Z_3[X]/(X^2+X+1)$ of the remark that follows the lemma in the paper is (v). ``The trace-zero
+endomorphisms commuting with $\sigma$ form the line spanned by $\sigma-\sigma^{-1}=2\sigma+1$'' is \Cref{lem:reps:commutant}, and ``$\Frob_q$, and therefore also
+$\Frob_q^{-1}$, acts on the line by $\chi_{-3}(q)$'' is \Cref{prop:reps:cyclic-shapes}(iii). In the exclusion of potentially multiplicative reduction,
+``$\rhobar_{E,3}(I_q)$ would contain $-1$, which fixes no line'' is \Cref{prop:reps:unipotent-invariants}(i) with $\xi=-1$. Remark rem:types (``$E[3]^{I_q}=0$''
+for $\kod{I}_0^*$, $\kod{III}$, $\kod{III}^*$, $\kod{II}$, $\kod{II}^*$, $\kod{I}_n^*$) is (iii), (iv) and \Cref{prop:reps:unipotent-invariants}(i). Lemma lem:euler is the
+table above: types $\kod{II}$, $\kod{IV}$ and their duals use $2\sigma+1$ inside $\End_{I_q}(T)=\Zl[\sigma]$, which is not a field for $\ell\equiv1\pmod3$ ((v) and
+\Cref{lem:reps:commutant}); types $\kod{III}$, $\kod{III}^*$ use the line $\Ql\tau$, with no need to diagonalise $\tau$ over $\Ql$; type $\kod{I}_n$ uses
+\Cref{prop:reps:unipotent-invariants}(iii) with the geometric Frobenius, eigenvalue $q^{-1}$. Proposition prop:ns-structure (ii): ``the trace-zero
+endomorphisms commuting with $\tau$ form the line spanned by $\tau$'' and ``the sign can be read modulo $3$'' are \Cref{lem:reps:commutant} and the
+injectivity of reduction on $\langle\tau\rangle$ (order $4$, prime to $3$).
+\end{paperlink}
+
+\section{Representations over \texorpdfstring{$\Zl$}{Zl}: lattices, reduction, homothety}\label{sec:reps:lattices}
+
+This section passes from representations over $\Ql$ to representations over $\Zl$ and modulo $\ell^m$. In the paper $T=T_\ell E$ is a
+$G_\Q$-stable lattice in $V=V_\ell E$, $\rhobar$ is its reduction, $\rho\bmod\ell^k$ its reduction modulo $\ell^k$, $A=\ad T$ is a lattice in $A_f$, and the
+term $h_\ell(E)$ of Lemma lem:h0 is ``the largest $k$ such that $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$''. Everything is proved for an abstract
+group and a discrete valuation ring $\mathcal{O}$ (convention (C7)).
+
+\begin{definition}\label{def:reps:lattice}
+Let $V$ be a representation of $G$ over $K=\Frac\mathcal{O}$. A \emph{lattice} in $V$ is a finitely generated $\mathcal{O}$-submodule $L$ spanning $V$; it is
+\emph{$G$-stable} if $\rho(g)L=L$ for all $g$. Then $\rho_L\colon G\to\GL(L)\simeq\GL_n(\mathcal{O})$, conjugate in $\GL_n(K)$ to $\rho$, and $\rhobar_L$ is the representation of
+$G$ on $L/\varpi L$ over the residue field; $\rho_L\bmod\varpi^m$ is the representation on $L/\varpi^mL$. Two lattices are \emph{homothetic} if $L'=cL$ for some
+$c\in K^\times$, equivalently $L'=\varpi^mL$ for some $m\in\Z$.
+\end{definition}
+
+\begin{proposition}[Stable lattices]\label{prop:reps:lattice}
+\begin{enumerate}[label=(\roman*)]
+\item For any two lattices $L,L'$ there are $a,b\ge0$ with $\varpi^aL\subseteq L'\subseteq\varpi^{-b}L$.
+\item If $G$ is finite, or more generally if the stabiliser of a lattice $L_0$ has finite index in $G$, then $L=\sum_g\rho(g)L_0$ (a finite sum over coset
+representatives) is a $G$-stable lattice.
+\item If $L$ is stable, so are $\varpi^mL$, $L^\vee=\Hom_\mathcal{O}(L,\mathcal{O})\subseteq V^\vee$, $L\otimes\mathcal{O}(\chi)$ for a character $\chi\colon G\to\mathcal{O}^\times$, $\End_\mathcal{O}(L)\subseteq\End_K(V)$,
+and $\ad L=\End_\mathcal{O}(L)\cap\ad V$. Moreover $\End_\mathcal{O}(L)=\ad L\oplus\mathcal{O}E_{11}$ as $\mathcal{O}$-modules, so $\ad L/\varpi^m\ad L=\ad(L/\varpi^mL)$, the trace-zero endomorphisms
+of $L/\varpi^mL$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Each of the finitely many generators of $L'$ is a $K$-combination of a basis of $L$, so lies in $\varpi^{-b}L$ for $b$ large; exchange the roles for
+$a$. (ii) A finite sum of lattices is finitely generated and spans $V$, and it is permuted by $G$. (iii) $(g\lambda)(L)=\lambda(g^{-1}L)=\lambda(L)\subseteq\mathcal{O}$;
+$\chi(g)$ is a unit; $\rho(g)x\rho(g)^{-1}$ preserves $L$ if $x$ does; the trace is invariant. The trace $\End_\mathcal{O}(L)\to\mathcal{O}$ is onto ($\tr E_{11}=1$) and split by
+$c\mapsto cE_{11}$, so its kernel $\ad L$ is a direct summand, and the split exact sequence $0\to\ad L\to\End_\mathcal{O}(L)\to\mathcal{O}\to0$ stays exact modulo $\varpi^m$, with
+$\End_\mathcal{O}(L)/\varpi^m=\End(L/\varpi^mL)$ since $L$ is free.
+\end{proof}
+
+\begin{proposition}[Reduction and semisimplification]\label{prop:reps:reduction-ss}
+Let $L$ be a $G$-stable lattice in $V$.
+\begin{enumerate}[label=(\roman*)]
+\item $\det(X-\rhobar_L(g))$ is the reduction of $\det(X-\rho(g))\in\mathcal{O}[X]$; it does not depend on $L$.
+\item Hence (Brauer-Nesbitt, \Cref{thm:reps:brauer-nesbitt}) $\rhobar_L^{ss}$ does not depend on $L$; it is written $\rhobar^{ss}$.
+\item If $\rhobar_L$ is irreducible for one $L$, then $\rhobar_{L'}\simeq\rhobar_L$ for every stable lattice $L'$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) The characteristic polynomial of $\rho_L(g)\in\GL_n(\mathcal{O})$ is that of the conjugate $\rho(g)$, with coefficients in $\mathcal{O}$, and reduction commutes with
+taking characteristic polynomials. (ii) is immediate. (iii) $\rhobar_{L'}^{ss}\simeq\rhobar_L$ is irreducible of full dimension, so $\rhobar_{L'}$ has one composition factor
+and $\rhobar_{L'}\simeq\rhobar_L$ (\Cref{cor:reps:bn-consequences}(ii) with $k'=k$).
+\end{proof}
+
+\begin{theorem}[The homothety lemma]\label{thm:reps:homothety}
+If $\rhobar_L$ is irreducible, every $G$-stable lattice $L'\subseteq V$ is homothetic to $L$: $L'=\varpi^mL$ for a unique $m\in\Z$.
+\end{theorem}
+
+\begin{proof}
+By \Cref{prop:reps:lattice}(i) the set of $m\in\Z$ with $L'\subseteq\varpi^mL$ is nonempty and bounded above (as $L'\ne0$ and $\bigcap_m\varpi^mL=0$); let $m$ be its
+maximum and replace $L'$ by $\varpi^{-m}L'$. Then $L'\subseteq L$ and $L'\not\subseteq\varpi L$, so the image of $L'$ in $L/\varpi L$ is a nonzero $G$-stable subspace,
+hence all of $L/\varpi L$ since $\rhobar_L$ is irreducible. Thus $L'+\varpi L=L$, and $L'=L$ by Nakayama's lemma (\Cref{ch:modules}). Uniqueness: $\varpi^mL=L$
+with $m\ne0$ would give $L=\varpi L$, hence $L=0$ by Nakayama.
+\end{proof}
+
+\begin{paperlink}
+Section 4.2. The original version of the paper argued that ``the lattice $M_{f,\lambda}$ of DFG04 and $T_\ell E$ are homothetic when $\rhobar$ is
+irreducible, so their adjoints coincide''. As $M_{f,\lambda}\subseteq H^1$ is a lattice in the dual $V_\ell E^\vee$, the correct application of
+\Cref{thm:reps:homothety} is to $M_{f,\lambda}$ and $T_\ell E^\vee$ inside $V_\ell E^\vee$ (both stable, and $T_\ell E^\vee/\ell\simeq\rhobar^\vee$ is irreducible), after which
+\Cref{prop:reps:adjoint-invariance}(iv) identifies $\ad M_{f,\lambda}$ with $\ad T$. The revised paper avoids the homothety lemma altogether: Proposition
+prop:pullback identifies $M_{f,\lambda}$ with $H^1(E,\Zl)$ itself. The homothety lemma is still the reason why, when $E[\ell]$ is irreducible, every curve
+in the isogeny class has the same $T_\ell$ up to homothety, hence the same $\ad T$ (Section 1, ``at such an $\ell$ the choice of the optimal curve does
+not matter''; \Cref{ch:ellcurves}).
+\end{paperlink}
+
+\begin{example}[Non-homothetic lattices]\label{ex:reps:nonhomothetic}
+Let $G\subseteq\GL_2(\Zl)$ consist of upper triangular matrices and contain $t=\sm1101$. Then $L=\Zl e_1\oplus\Zl e_2$ and $L'=\Zl e_1\oplus\ell\Zl e_2$ are $G$-stable and
+not homothetic ($L'$ has index $\ell$ in $L$, while $\varpi^mL$ has index $\ell^{2m}$). In the basis $e_1,\ell e_2$ of $L'$ the matrix of $g=\sm ab0d$ is $\sm a{\ell b}0d$, so
+$\rhobar_{L'}$ is the direct sum of the two characters $g\mapsto\bar a$, $g\mapsto\bar d$, while $\rhobar_L$ is the non-split extension of the same two characters
+(\Cref{prop:reps:nonsplit-line}: $\bar t$ is a nontrivial unipotent, so $\F_\ell e_1$ is the only stable line). Same semisimplification
+(\Cref{prop:reps:reduction-ss}), non-isomorphic reductions. For elliptic curves, the Tate modules of two $\ell$-isogenous curves give such a pair
+(\Cref{ch:ellcurves}, \Cref{ch:galrep}); this is why the Eisenstein case of the paper (Section sec:eis, Conjecture conj:eis) behaves
+differently.
+\end{example}
+
+\begin{theorem}[Ribet's lemma]\label{thm:reps:ribet}
+Let $K$ be a finite extension of $\Ql$ with ring of integers $\mathcal{O}$, $G$ a compact group and $\rho\colon G\to\GL_2(K)$ a continuous irreducible
+representation such that $\rhobar^{ss}\simeq\chi_1\oplus\chi_2$ for characters $\chi_1,\chi_2$. Then there is a $G$-stable lattice $L$ whose reduction $\rhobar_L$ is a non-split
+extension with sub-character $\chi_1$ (and one with sub-character $\chi_2$).
+\end{theorem}
+
+\begin{proof}
+We do not prove this; see \cite[Section 2]{Ribet76}. (The idea: among the stable lattices, which up to homothety form a bounded segment in
+the tree of $\PGL_2(K)$ because $\rho$ is irreducible, an extremal one has a reduction with the required non-split shape.) In the literature
+``Ribet's lemma'' usually means this statement; the name is sometimes also attached to \Cref{thm:reps:homothety}, which concerns the opposite
+situation of an irreducible reduction.
+\end{proof}
+
+\begin{proposition}[Twisted self-isomorphisms modulo $\varpi^m$]\label{prop:reps:twist-length}
+Let $G$ be any group, $T$ free of rank $n$ over $\mathcal{O}$ with a $G$-action such that $\bar T=T/\varpi T$ is absolutely irreducible, and $\chi\colon G\to\mathcal{O}^\times$ a
+character, with reduction $\bar\chi$. For $m\ge1$ put $M_m=\Hom_G\bigl(T/\varpi^m,(T/\varpi^m)(\chi)\bigr)$.
+\begin{enumerate}[label=(\roman*)]
+\item For $\phi\in\End(T/\varpi^m)$, $\varpi^{m-1}\phi\ne0$ iff $\phi(T/\varpi^m)\not\subseteq\varpi(T/\varpi^m)$. The $\varpi$-torsion of $M_m$ is isomorphic to $\Hom_G(\bar T,\bar T(\bar\chi))$, of
+dimension at most $1$, so $M_m\simeq\mathcal{O}/\varpi^j$ for some $j\le m$.
+\item An element $\phi\in M_m$ with $\varpi^{m-1}\phi\ne0$ is an isomorphism $T/\varpi^m\simeq(T/\varpi^m)(\chi)$. Conversely an isomorphism has $\varpi^{m-1}\phi\ne0$, so it
+generates $M_m\simeq\mathcal{O}/\varpi^m$.
+\item Let $h=\sup\{m\ge0:T/\varpi^m\simeq(T/\varpi^m)(\chi)\}\in\{0,1,\dots,\infty\}$ and $X=\End_\mathcal{O}(T)(\chi)\otimes_\mathcal{O}K/\mathcal{O}$. Then $X[\varpi^m]=\End(T/\varpi^m)(\chi)$,
+$X^G[\varpi^m]=M_m\simeq\mathcal{O}/\varpi^{\min(m,h)}$, and $X^G$ has length $h$; if $h<\infty$, $X^G\simeq\mathcal{O}/\varpi^h$. If $h=\infty$ and the residue field is finite, then
+$T\simeq T(\chi)$.
+\item If $n\in\mathcal{O}^\times$ and $\bar\chi\ne1$, the same holds for $\ad T(\chi)\otimes K/\mathcal{O}$: $(\ad T(\chi)\otimes K/\mathcal{O})^G=X^G$.
+\item If $T/\varpi^m\simeq(T/\varpi^m)(\chi)$ then $\chi^n\equiv1\pmod{\varpi^m}$ on $G$. In particular, if $n=2$, $\mathcal{O}=\Zl$ with $\ell$ odd and $\chi(G)=\Zl^\times$, then $h=0$
+for $\ell\ge5$ and $h\le1$ for $\ell=3$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $T/\varpi^m$ is free over $\mathcal{O}/\varpi^m$, so its $\varpi^{m-1}$-torsion is $\varpi(T/\varpi^m)$; this gives the first statement. If $\varpi\phi=0$, then $\phi$ kills
+$\varpi(T/\varpi^m)$ and takes values in the $\varpi$-torsion $\varpi^{m-1}T/\varpi^mT$, which multiplication by $\varpi^{m-1}$ identifies with $\bar T$ (with the twist by $\bar\chi$
+for the target); so $M_m[\varpi]\simeq\Hom_G(\bar T,\bar T(\bar\chi))$, of dimension at most one by \Cref{lem:reps:trace-zero} ($\bar T(\bar\chi)$ is absolutely irreducible).
+$M_m$ is a finitely generated $\mathcal{O}/\varpi^m$-module whose $\varpi$-torsion has length at most one, hence cyclic (\Cref{ch:modules}).
+(ii) By (i), $\phi\bmod\varpi$ is a nonzero $G$-map $\bar T\to\bar T(\bar\chi)$, an isomorphism by Schur. So $\phi$ is surjective modulo $\varpi$, hence surjective by
+Nakayama, hence bijective, the two modules having the same finite length. Conversely, an isomorphism is nonzero modulo $\varpi$.
+(iii) $X[\varpi^m]=\End(T)(\chi)\otimes\varpi^{-m}\mathcal{O}/\mathcal{O}\simeq\End(T/\varpi^m)(\chi)$, and taking invariants gives $M_m$. Let $M_m\simeq\mathcal{O}/\varpi^j$ with generator $\phi$. If
+$j=m$, $\phi$ is an isomorphism by (ii), so $m\le h$. In general $\varpi^j\phi=0$ means that $\phi$ takes values in $\varpi^{m-j}(T/\varpi^m)$, so $\phi=\varpi^{m-j}\phi'$ for a
+$G$-map $\phi'\colon T/\varpi^j\to(T/\varpi^j)(\chi)$ (defined by dividing the values by $\varpi^{m-j}$, well defined modulo $\varpi^j$), with $\varpi^{j-1}\phi'\ne0$ because
+$\varpi^{j-1}\phi\ne0$. By (ii) $\phi'$ is an isomorphism, so $j\le h$. Conversely, for $m\le h$ the reduction of an isomorphism at a level $\ge m$ is an
+isomorphism at level $m$, which generates $M_m\simeq\mathcal{O}/\varpi^m$ by (ii); and for $m>h$ with $h$ finite, if $\psi$ is an isomorphism at level $h$ and $\tilde\psi\in\End_\mathcal{O}(T)$
+lifts it, then $x\mapsto\varpi^{m-h}\tilde\psi(x)\bmod\varpi^m$ is an element of $M_m$ (it is $G$-equivariant because $\tilde\psi g-\chi(g)g\tilde\psi$ has values in
+$\varpi^hT$) of exact order $\varpi^h$. Hence $j=\min(m,h)$, and $X^G=\bigcup_mX^G[\varpi^m]$ has length $h$, and equals $X^G[\varpi^h]\simeq\mathcal{O}/\varpi^h$ when $h$ is finite. If $h=\infty$
+and the residue field is finite, the sets of isomorphisms $T/\varpi^m\to(T/\varpi^m)(\chi)$ are finite, nonempty, and form an inverse system under
+reduction, so their inverse limit is nonempty (\Cref{ch:groups}); an element is an isomorphism $T\simeq T(\chi)$.
+(iv) $\End(T)=\ad T\oplus\mathcal{O}$ (\Cref{prop:reps:adjoint}(i)), and $(K/\mathcal{O}(\chi))^G=0$ because $\chi(g)-1$ is a unit for some $g$; so the $\mathcal{O}$-summand contributes
+nothing.
+(v) Determinants (\Cref{prop:reps:twist}(iv) modulo $\varpi^m$). For the last statement, $\chi^2\equiv1\pmod{\ell^m}$ on $G$ means $x^2\equiv1\pmod{\ell^m}$ for every
+$x\in\Zl^\times$; with $x=2$, $\ell^m\mid3$, so $m=0$ for $\ell\ge5$ and $m\le1$ for $\ell=3$ (\Cref{ch:rings}).
+\end{proof}
+
+\begin{paperlink}
+Lemma lem:h0 with $G=G_\Q$, $\mathcal{O}=\Zl$, $T=T_\ell E$, $\chi=\chi_\ell$: $W^D=\ad T(1)\otimes\Ql/\Zl$, and by (iv) and (iii), $H^0(\Q,W^D)$ is finite and cyclic of length
+$h_\ell(E)$, ``the largest $k$ such that $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$''. Absolute irreducibility of $\rhobar$ comes from complex conjugation
+(\Cref{prop:reps:distinct-eigenvalues}), $\bar\chi_\ell\ne1$ for $\ell$ odd, and $\chi_\ell(G_\Q)=\Zl^\times$ (\Cref{ch:galois}); so (v) gives $h_\ell(E)=0$ for $\ell\ge5$ and
+$h_3(E)\le1$, with equality iff $\rhobar\simeq\rhobar\otimes\bar\chi_3=\rhobar\otimes\chi_{-3}$, for every $E$ with $\rhobar$ irreducible, with or without complex multiplication.
+In Lemma lem:h0 the phrase ``a submodule of $(\Ql/\Zl)^3$ with $\ell$-torsion of rank at most one, is cyclic'' should be read as in (iii): such a
+module is finite cyclic or isomorphic to $\Ql/\Zl$, and the determinant bound (v) excludes the second case. Remark rem:ns and Section
+sec:anomaly use $h_3(E)=1$ for the image $\Ns$ (\Cref{thm:reps:three-images}).
+\end{paperlink}
+
+\section{The mod \texorpdfstring{$\ell$}{l} world: a foretaste, and Dickson's list}\label{sec:reps:modl}
+
+This last section reads the chapter's results in the setting of the paper: a continuous representation
+$\rhobar\colon G_\Q\to\GL_2(\F_\ell)$ has finite image, so everything above applies to it, and the Galois input needed is collected in
+\Cref{ch:galois} and \Cref{ch:galrep}. It also records Dickson's classification, which organises the possible images.
+
+\begin{remark}[The mod $\ell$ dictionary]\label{rem:reps:mod-l-galois}
+Let $\rhobar\colon G_\Q\to\GL_2(\F_\ell)$ be continuous, $\ell$ odd, with $\det\rhobar=\bar\chi_\ell$ (as for $\rhobar_{E,\ell}$, \Cref{ch:ellcurves}).
+\begin{enumerate}[label=(\roman*)]
+\item Complex conjugation $c$ has $\rhobar(c)^2=1$ and $\det\rhobar(c)=\bar\chi_\ell(c)=-1$, so $\rhobar$ is irreducible iff it is absolutely irreducible
+(\Cref{prop:reps:distinct-eigenvalues}).
+\item The hypothesis of Theorem thm:main concerns $\Res_H\rhobar$ for the subgroup $H=G_{\Q(\sqrt{\ell^*})}$ of index $2$, with $\chi_H=\chi_{\ell^*}=\bar\chi_\ell^{(\ell-1)/2}$. By
+\Cref{thm:reps:clifford-index-two} it fails iff $\rhobar\simeq\rhobar\otimes\chi_{\ell^*}$, iff $\rhobar\otimes\Fbar_\ell$ is induced from a character of $H$.
+\item Lemma lem:h0 concerns $\rhobar\simeq\rhobar\otimes\bar\chi_\ell$, which forces $\bar\chi_\ell^2=1$ (\Cref{prop:reps:twist}(iv)), that is $\ell=3$; there $\bar\chi_3=\chi_{-3}=\det\rhobar$
+and \Cref{thm:reps:three-images} applies. For $\ell\ge5$ the two conditions differ: for $\rhobar=\rhobar_{E,\ell}$, $\rhobar\simeq\rhobar\otimes\chi_{\ell^*}$ can occur (only when $\ell\mid N$, by
+Proposition prop:Sf), while $\rhobar\simeq\rhobar\otimes\bar\chi_\ell$ never does.
+\item The objects of the paper and where they are built:
+\end{enumerate}
+\begin{center}
+\small
+\begin{tabular}{p{0.3\textwidth}p{0.33\textwidth}p{0.29\textwidth}}
+\toprule
+object & meaning & here\\
+\midrule
+$V=V_\ell E$, $\rho$ & two-dimensional $\Ql$-representation of $G_\Q$ & \Cref{def:reps:representation}\\
+$T=T_\ell E$ & a $G_\Q$-stable lattice in $V$ & \Cref{def:reps:lattice}\\
+$\rhobar$, $\rho\bmod\ell^k$ & $T/\ell T$, $T/\ell^kT$ & \Cref{prop:reps:reduction-ss}, \Cref{prop:reps:twist-length}\\
+$A_f=\ad V$ & trace-zero adjoint & \Cref{def:reps:adjoint}, \Cref{prop:reps:adjoint}\\
+$A=\ad T$ & adjoint lattice, a direct summand of $\End(T)$ & \Cref{prop:reps:lattice}(iii)\\
+$T^D=\Hom(A,\Zl(1))\simeq A(1)$ & Kummer dual, via the trace form & \Cref{prop:reps:trace-form}\\
+$W=A\otimes\Ql/\Zl$, $W^D=A(1)\otimes\Ql/\Zl$ & discrete coefficients & \Cref{prop:reps:twist-length}(iii), (iv)\\
+$H^0(\Q,W^D)$, $h_\ell(E)$ & twisted self-isomorphisms of $\rho\bmod\ell^k$ & \Cref{prop:reps:twist-length}\\
+$\ad M_{f,\lambda}=\ad T$ & adjoint of a dual, twisted lattice & \Cref{prop:reps:adjoint-invariance}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{remark}
+
+\begin{theorem}[Dickson]\label{thm:reps:dickson}
+Let $\ell$ be an odd prime and $G\le\GL_2(\F_\ell)$, with image $P$ in $\PGL_2(\F_\ell)$. If $\ell\mid\#G$, then $G\supseteq\SL_2(\F_\ell)$ or $G$ lies in a Borel
+subgroup. If $\ell\nmid\#G$, then $P$ is cyclic (and $G$ lies in a Cartan subgroup), or dihedral (and $G$ lies in the normaliser of a Cartan
+subgroup, not in the Cartan subgroup), or $P$ is isomorphic to $A_4$, $S_4$ or $A_5$.
+\end{theorem}
+
+\begin{proof}
+We do not prove this; see \cite[Section 2]{Serre72} and \Cref{ch:groups}, where the statement is the same and the case $\ell=3$ is checked
+by enumeration.
+\end{proof}
+
+For an absolutely irreducible $\rhobar$ with projective image $P$, \Cref{prop:reps:dihedral} reads Dickson's list as follows: $P$ is never cyclic;
+$P$ is dihedral iff $\rhobar\otimes\Fbar_\ell$ is induced from a subgroup of index $2$; the exceptional images $A_4$, $S_4$, $A_5$ and the large images
+($P\supseteq\PSL_2(\F_\ell)$) are not induced (for $\ell\ge5$, $\PSL_2(\F_\ell)$ is simple and non-abelian, so it is not contained in a dihedral group, whose
+subgroups are cyclic or dihedral). At $\ell=3$: $\GL_2(\F_3)\mapsto S_4$, $N_{ns}(\F_3)\mapsto D_4$, $N_s(\F_3)\mapsto V_4$ (\Cref{prop:reps:gl23-table}). The subgroup
+$N_s(\F_3)$ is not a maximal subgroup of $\GL_2(\F_3)$: it has index $2$ in $N_{ns}(\F_3)$ (\Cref{ch:groups}).
+
+\section{Exercises}\label{sec:reps:exercises}
+
+\begin{exercise}\label{ex:reps:ex1}
+Show that $C_4=\langle J\rangle$ acting on $\F_3^2$ is irreducible but not absolutely irreducible, that its commutant $\F_3[J]$ is a field with $9$ elements,
+and decompose $\F_9^2$ into eigenlines of $J$. Which eigenline is spanned by a vector with coordinates in $\F_3$?
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex2}
+Prove directly (without \Cref{thm:reps:schur}) that every absolutely irreducible representation of a finite abelian group is one-dimensional.
+Show that $C_{ns}(\F_3)=\langle a\rangle\simeq C_8$ gives an irreducible two-dimensional representation of $C_8$ over $\F_3$, and determine all irreducible
+representations of $C_8$ over $\F_3$ (their degrees and their number).
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex3}
+Show that the standard representation of $\mathrm U=\langle u\rangle$ on $\F_3^2$ is indecomposable but not irreducible, and that $\F_p[C_p]$ is uniserial.
+Why does this not contradict Maschke's theorem? Show that every representation of $C_p$ over $\F_p$ is a direct sum of the quotients
+$\F_p[x]/(x-1)^j$, $1\le j\le p$.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex4}
+Give two non-isomorphic semisimple representations of $C_2$ over $\F_3$ with the same trace function. Show that two two-dimensional
+representations with the same determinant and the same trace function have isomorphic semisimplifications, in every characteristic.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex5}
+Check the claim of Proposition prop:ns that the determinant-one subgroup $C_4$ of $N_s(\F_3)$ acts on $\F_9^2$ as $\psi\oplus\psi^{-1}$ with $\psi$ of order $4$, and
+that the standard representation of $N_s(\F_3)$ over $\F_9$ is isomorphic to $\Ind_{C_4}^{N_s}\psi$: compute the matrices of $J$ and $\sigma$ in the basis
+$v=(1,i)^t$, $\sigma v$. Show that over $\F_3$ it is not induced from a character of $C_4$, and that it is nevertheless isomorphic over $\F_3$ to its twist by $\det$.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex6}
+Check the claim of Proposition prop:ns that $Q_8$ and $\SL_2(\F_3)$ act absolutely irreducibly on $\F_3^2$ in two ways: by Maschke's theorem
+(\Cref{prop:reps:dim2-absirr}) and by the commutator argument (a subgroup of a Borel subgroup of $\GL_2(\Fbar_3)$ has abelian commutator subgroup of
+exponent dividing $3$). Explain why ``non-abelian and faithful'' does not suffice, using $\mathrm B(\F_3)$.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex7}
+Show that the standard representation of $N_s(\F_3)$ is isomorphic to its twist by each of the three nontrivial characters of $N_s(\F_3)/\{\pm1\}$, with
+intertwiners $J$, $\sigma$, $w$, and that these intertwiners have trace $0$. Show that the standard representation of $N_{ns}(\F_3)$ is induced, over $\F_9$,
+from $C_{ns}(\F_3)$, but is not isomorphic to its twist by $\det$. Which of the two satisfies the hypothesis ``absolutely irreducible on the
+determinant-one subgroup''?
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex8}
+Check the claim of Lemma lem:h0 that an isomorphism $\phi\colon\rhobar\to\rhobar\otimes\chi_{-3}$ has trace $0$. More generally, show that
+$(\ad V\otimes\chi)^G=\Hom_G(V,V\otimes\chi)$ for every nontrivial character $\chi$ when $\dim V$ is invertible in $k$, and give an example with $\chi=1$ where the
+two spaces differ.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex9}
+Let $H\le G$ have index $2$, $\operatorname{char}k\ne2$, and $V$ absolutely irreducible of dimension $2$. Prove that $V\simeq V\otimes\chi_H$ iff $\tr\rho(g)=0$ for all
+$g\notin H$. (For ``if'', compare traces and determinants of $V$ and $V\otimes\chi_H$ and use \Cref{cor:reps:bn-consequences}.) Deduce again that the
+standard representation of $\GL_2(\F_3)$ is not isomorphic to its twist by $\det$, and that that of $N_s(\F_3)$ is.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex10}
+Prove $\ad V\simeq\Sym V\otimes\det^{-1}$ for $\dim V=2$ by the explicit map $\Xi$ of \Cref{prop:reps:sym2}, and show that over $\Z$ the image of $\Sym\Z^2$ has index
+$4$ in $\ad\Z^2$. Deduce the eigenvalues $\alpha/\beta$, $1$, $\beta/\alpha$ of $\Ad g$ on $\ad V$ from the eigenvalues $\alpha^2,\alpha\beta,\beta^2$ of $\Sym g$.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex11}
+Compute the Gram matrix of the trace form on $\ad\Zl^2$ in the basis $e,h,f$, and check the identification $T^D=\Hom(A,\Zl(1))\simeq A(1)$ of the paper's
+Section 4.2 for $\ell$ odd. What goes wrong for $\ell=2$? Is the trace form on all of $\End(\Z_2^2)$ perfect?
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex12}
+Check the formulas in the proof of Lemma lem:tamfactor: for $t=1+n'e$, $(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$; and for
+$F=\sm{\varepsilon q}{c'}0\varepsilon$ with $\varepsilon=\pm1$, $FeF^{-1}=qe$ and $FhF^{-1}=h-2c'\varepsilon e$. Deduce that for $\ell$ odd $(t-1)\ad T=n'(\Zl e\oplus\Zl h)$.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex13}
+For $g=-1$, $g=\sm0{-1}1{-1}$ (order $3$), $g=J$ (order $4$), $g=\sm1{-1}10$ (order $6$), $g=u$ and $g=-u$ in $\SL_2(\Z)$, compute $\dim V^g$ and $\dim(\ad V)^g$ for
+$V=\Q^2$ and for $V=\F_3^2$, and a generator of $(\ad V)^g$. Check the claims of Lemma lem:IV and Remark rem:types about $E[3]^{I_q}$.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex14}
+Let $u\ne1$ be unipotent and $FuF^{-1}=u^q$. Show that $F$ acts on $(\ad V)^u$ by $q$. Explain why the factor $1-q^{-1-s}$ of $L_q(A_f,s)^{-1}$ at a
+multiplicative prime requires the geometric Frobenius $F^{-1}$, and why at the primes of types $\kod{II}$, $\kod{III}$, $\kod{IV}$ and their duals the choice of
+Frobenius does not matter.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex15}
+Show that for a finite group of order prime to $\ell$ acting on a $\Zl$-lattice $T$, invariants commute with reduction modulo $\ell^m$. Show that this
+fails for $g\in\SL_2(\Z_3)$ of order $3$ acting on $T=\Z_3^2$ (Lemma lem:IV), although it holds for the invariants of $g$ on $\ad T$. Does it hold for
+$g$ of order $6$ on $T$? On $\ad T$?
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex16}
+Let $G\subseteq\GL_2(\Zl)$ be the closed subgroup generated by $t=\sm1101$. Show that the lattices $L_k=\Zl e_1\oplus\ell^k\Zl e_2$, $k\ge0$, are $G$-stable and pairwise
+non-homothetic, that their reductions have the same semisimplification, and that the reduction of $L_k$ is split iff $k\ge1$. Explain why this
+does not contradict \Cref{thm:reps:homothety}, and prove that theorem again in your own words.
+\end{exercise}
+
+\begin{exercise}\label{ex:reps:ex17}
+Let $T$ be free of rank $2$ over $\Zl$, $\ell$ odd, with an action of a group $G$ such that $T/\ell T$ is absolutely irreducible, and let $\chi\colon G\to\Zl^\times$ be
+surjective. Show that $\Hom_G(T/\ell^m,(T/\ell^m)(\chi))$ is cyclic for every $m$, that $H^0(G,\ad T(\chi)\otimes\Ql/\Zl)$ is finite of length at most $1$, and that
+it is $0$ unless $\ell=3$ (the corrected Lemma lem:h0). For $\ell=3$, show that the length is $1$ iff $T/3T\simeq(T/3T)(\bar\chi)$.
+\end{exercise}
+
+\section{Notes and references}\label{sec:reps:notes}
+
+The representation theory of finite groups over $\C$ in \Cref{sec:reps:field} to \Cref{sec:reps:characters} follows \cite{SerreLinearReps}: Maschke's
+theorem is in its Section 1.3, Schur's lemma in Section 2.2, the orthogonality relations in Sections 2.3 to 2.5, the divisibility of
+degrees in Section 6.5, induction, Frobenius reciprocity and Mackey's criterion in Sections 7.1 to 7.4, Clifford's theorem in Section 8.1,
+and the Frobenius-Schur indicator in Section 13.2. These section numbers are recalled, not checked against a printed copy, and should be
+read as pointers; no theorem number of \cite{SerreLinearReps} is relied upon. The proofs of Schur's lemma, Maschke's theorem and
+Frobenius reciprocity given here are characteristic-free, as is the averaging proof of $\dim\Hom_G(V,W)=\langle\tr_W,\tr_V\rangle$. The treatment of
+representations over arbitrary fields (absolute irreducibility, extension of scalars, the density theorem, the theorem of Brauer and
+Nesbitt, the Noether-Deuring theorem) is classical and can be found in \cite{CurtisReiner}, Sections 27 to 30 and 29 for Noether-Deuring,
+and in \cite[Chapter XVII]{Lang}, where semisimple modules and the density theorem are treated; again these are unverified pointers.
+The proof of Brauer-Nesbitt in \Cref{sec:reps:brauer-nesbitt} is the standard one by reduction to an algebraically closed field, cancellation, and
+the Frobenius $f\mapsto f^p$; the reduction step uses only the density theorem, so no perfectness of $k$ is needed. The criterion
+\Cref{prop:reps:absirr}(iv), that an irreducible representation with commutant $k$ is absolutely irreducible over every field, is a
+consequence of the same density theorem. Riley-Hobson-Bence \cite{RHB06} treats character tables over $\C$ in its chapter on representation
+theory (Chapter 29 of the third edition, if memory serves; unverified); \cite[Chapter 18]{DummitFoote} is an algebraic introduction at the
+same level.
+
+Clifford theory for a subgroup of index $2$ (\Cref{thm:reps:clifford-index-two}) and the characterisation of dihedral representations
+(\Cref{prop:reps:dihedral}) are standard; for the Galois representations of elliptic curves they go back to \cite[Section 2]{Serre72}, which
+also contains the classification of subgroups of $\GL_2(\F_\ell)$ stated as \Cref{thm:reps:dickson} (Propositions 15 and 16 there, as in
+\Cref{ch:groups}). Lattices in $\ell$-adic representations, their reductions and the independence of $\rhobar^{ss}$ from the lattice are in
+\cite[Chapter I]{SerreAbelian}; the homothety lemma \Cref{thm:reps:homothety} is the elementary half of that circle of ideas, and the converse
+construction is Ribet's lemma \cite[Section 2]{Ribet76}, where it appears as a proposition about reducible residual representations (we recall
+it as Proposition 2.1 but have not checked the number). The use of Brauer-Nesbitt together with Chebotarev for Galois representations,
+as in Lemma lem:old, is standard; see \cite{DDT} and \Cref{ch:galois}.
+
+The table of \Cref{prop:reps:gl23-table} and the facts of \Cref{prop:reps:ns3-induced} and \Cref{prop:reps:nns3} were computed by hand and checked by
+enumerating $\GL_2(\F_3)$ with the script of \Cref{sec:reps:gl23} and with an independent Python enumeration (stable lines over $\F_3$ and $\F_9$,
+commutants, intertwiners, projective images). The formulas of \Cref{prop:reps:adjoint}(iii), the map $\Xi$ of \Cref{prop:reps:sym2} and the Gram
+matrix of \Cref{prop:reps:trace-form} were checked symbolically in PARI/GP \cite{PARI}, and the fixed spaces of \Cref{sec:reps:cyclic} on the six
+integral matrices of \Cref{ex:reps:ex13} over $\Q$ and over $\F_3$.
+
+Two corrections to the paper in this chapter's area were made in the revised version and are only recalled here: the isomorphism
+$\rhobar\simeq\Ind\psi$ of Proposition prop:ns holds after extending scalars to $\F_9$ (\Cref{prop:reps:ns3-induced}), and in Lemma lem:euler the invariant
+line for the types $\kod{III}$, $\kod{III}^*$ is spanned by $\tau$ itself, since $\tau$ need not be diagonalisable over $\Ql$ (\Cref{lem:reps:commutant}). The step
+``non-abelian and faithful'' of the original proof of Proposition prop:ns, which does not suffice by the example of $\mathrm B(\F_3)$, is replaced in
+the revised version by the commutator argument; \Cref{prop:reps:dim2-absirr} gives a second proof.
