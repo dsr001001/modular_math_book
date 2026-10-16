@@ -18,13 +18,15 @@ group theory it needs (cyclic groups, finite abelian groups, finite subgroups of
 Rings are commutative with $1$. The letters $p$, $q$, $\ell$ denote primes, except in
 \Cref{sec:rings:finite-fields,sec:rings:powers}, where $q=p^r$ is the size of a finite field; in the paper
 $q$ is a prime, so $\F_q=\Z/q\Z$ there. Quadratic characters are named by their discriminant:
-$\chi_D=\bigl(\frac D\cdot\bigr)$, so $\chi_{q^*}$ (never $\chi_q$) is the character of conductor $q$, and
+$\chi_D=\bigl(\frac D\cdot\bigr)$ for a fundamental discriminant $D$ (for other discriminants the Kronecker symbol
+$\bigl(\frac D\cdot\bigr)$ is written out), so $\chi_{q^*}$ (never $\chi_q$) is the character of conductor $q$, and
 $\chi_\ell$ is the $\ell$-adic cyclotomic character.
 
 \begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
 \item \textbf{Conventions.} Rings, homomorphisms and subrings are unital; $p,q,\ell$ are primes ($q$ a prime power in
 Sections 6 and 7); $v_p(0)=+\infty$, $\abs{x}_p=p^{-v_p(x)}$, and for $c\in\Z/\ell^m$, $v_\ell(c)=\min(v_\ell(\tilde c),m)$; the Kronecker
-symbol at $2$ and at $-1$; Dirichlet characters and the names $\chi_D$, $\chi_{q^*}$, $\omega_\ell$; $\zeta_n=e^{2\pi i/n}$ and
+symbol at $2$ and at $-1$; Dirichlet characters and the names $\chi_D$ ($D$ fundamental), $\chi_{q^*}$, $\omega_\ell$, $\chi_0$, $\chi^{(p)}$;
+$\zeta_n=e^{2\pi i/n}$ and
 $\sqrt{-3}=1+2\zeta_3$. \Cref{conv:rings:rings,conv:rings:primes,conv:rings:valuations,conv:rings:symbols,conv:rings:characters,conv:rings:roots}.
 \item \textbf{Rings} (definition: ring, unit group $R^\times$, zero divisor, nilpotent, field, integral domain, subring,
 homomorphism, kernel, image). \Cref{def:rings:ring}.
@@ -98,7 +100,7 @@ $n$, $v_2(a^n-1)=v_2(a-1)+v_2(a+1)+v_2(n)-1$; $1+\ell$ has order $\ell^{k-1}$ mo
 $v_\ell(q^2-1)=v_\ell(q-1)+v_\ell(q+1)$. \emph{(proved here)} \Cref{lem:rings:lte}.
 \item \textbf{Primitive roots.} $(\Z/p^k)^\times$ is cyclic for odd $p$; $(\Z/2^k)^\times=\{\pm1\}\times\langle5\rangle$ for $k\ge3$;
 $(\Z/n)^\times$ is cyclic iff $n\in\{1,2,4,p^k,2p^k\}$, $p$ odd. \emph{(proved here)} \Cref{thm:rings:primitive-roots}.
-\item \textbf{Squares congruent to one.} For odd $\ell$, $a^2\equiv1\pmod{\ell^k}$ iff $a\equiv\pm1$; every unit squares to $1$ modulo $\ell^k$
+\item \textbf{Squares congruent to one.} For odd $\ell$ and $k\ge1$, $a^2\equiv1\pmod{\ell^k}$ iff $a\equiv\pm1$; every unit squares to $1$ modulo $\ell^k$
 iff $\ell^k=3$; a homomorphism onto $(\Z/\ell^k)^\times$ (or one whose image contains $2$) with $\chi^2\equiv1$ forces
 $\ell^k=3$. \emph{(proved here)} \Cref{cor:rings:squares-one}.
 \item \textbf{Finite fields.} A finite field has prime characteristic $p$ and $p^r$ elements; $F^\times$ is cyclic;
@@ -142,10 +144,11 @@ $\bigl(\frac{q^*}p\bigr)=\bigl(\frac pq\bigr)$; $\bigl(\frac{-1}p\bigr)=(-1)^{(p
 \item \textbf{Jacobi reciprocity.} The Jacobi symbol is multiplicative in both entries, periodic in the top one, and satisfies
 reciprocity and both supplements; $\bigl(\frac an\bigr)=1$ does not make $a$ a square modulo $n$. \emph{(proved here)} \Cref{prop:rings:jacobi}.
 \item \textbf{Kronecker symbol, discriminants} (definition: the Kronecker symbol $\bigl(\frac an\bigr)$ for all $a,n\in\Z$; discriminant;
-fundamental and prime discriminants; $\chi_D$). \Cref{def:rings:kronecker}.
+fundamental and prime discriminants; $\chi_D=\bigl(\frac D\cdot\bigr)$ for fundamental $D$). \Cref{def:rings:kronecker}.
 \item \textbf{Kronecker characters.} For a discriminant $D$, $n\mapsto\bigl(\frac Dn\bigr)$ is completely multiplicative, vanishes iff
-$\gcd(D,n)>1$, is periodic modulo $\abs D$, and $\chi_D$ is a real Dirichlet character modulo $\abs D$ with $\chi_D(-1)=\sgn D$; values
-at primes; $\chi_{DD'}=\chi_D\chi_{D'}$ and $\chi_{Df^2}=\chi_D$ away from $DD'f$. \emph{(proved here)} \Cref{prop:rings:kronecker}.
+$\gcd(D,n)>1$, and is a real Dirichlet character modulo $\abs D$ with value $\sgn D$ at $-1$; values at primes;
+$\bigl(\frac{DD'}\cdot\bigr)=\bigl(\frac D\cdot\bigr)\bigl(\frac{D'}\cdot\bigr)$ for discriminants $D,D'$, and $\bigl(\frac{Df^2}n\bigr)=\bigl(\frac Dn\bigr)$ for $\gcd(n,f)=1$.
+\emph{(proved here)} \Cref{prop:rings:kronecker}.
 \item \textbf{The character $\chi_{q^*}$.} $q^*\equiv1\pmod4$, and $\bigl(\frac{q^*}n\bigr)=\bigl(\frac nq\bigr)$ for every $n\in\Z$; $\chi_{q^*}$ is the unique
 character of order $2$ and conductor $q$; the same for $\ell^*$; $3^*=-3$, $5^*=5$, $7^*=-7$, $11^*=-11$, $13^*=13$. \emph{(proved here)}
 \Cref{prop:rings:qstar}.
@@ -157,7 +160,7 @@ $X(n)\simeq(\Z/n)^\times$ non-canonically. \emph{(proved here)} \Cref{prop:rings
 of the functions on $(\Z/n)^\times$. \emph{(proved here)} \Cref{thm:rings:orthogonality}.
 \item \textbf{Conductor} (definition: $\chi$ defined modulo $d$, conductor $f_\chi$, primitive character). \Cref{def:rings:conductor}.
 \item \textbf{Conductors.} If $\chi$ is defined modulo $d_1$ and $d_2$, it is defined modulo $\gcd(d_1,d_2)$; the conductor divides every
-such modulus and $\chi$ is induced by a unique primitive $\chi^{\mathrm{prim}}$; $f_\chi=\prod_pf_{\chi_p}$; products of primitive characters
+such modulus and $\chi$ is induced by a unique primitive $\chi^{\mathrm{prim}}$; $f_\chi=\prod_pf_{\chi^{(p)}}$ for the $p$-components $\chi^{(p)}$; products of primitive characters
 of coprime conductors are primitive; $\chi_{-4}$, $\chi_{\pm8}$ have conductor $4$, $8$, and $\chi_S$ has conductor $\prod_{q\in S}q$.
 \emph{(proved here)} \Cref{prop:rings:conductor}.
 \item \textbf{Fundamental discriminants.} A fundamental discriminant $D\ne1$ is uniquely a product of coprime prime discriminants
@@ -183,9 +186,11 @@ $v_\ell(\frac{q-1}q)=v_\ell(q-1)$, $v_\ell(1-\varepsilon q^{-1})=v_\ell(q-\varep
 \item \textbf{The $\kod{I}_0^*$ identity.} If $\alpha\beta=q$, $\alpha+\beta=a$, then
 $(1-\frac\alpha{\beta q})(1-\frac1q)(1-\frac\beta{\alpha q})=\frac{q-1}q\cdot\frac{(q+1)^2-a^2}{q^2}$, and $(q+1)^2-a^2\ge(q-1)^2$ if $a^2\le4q$.
 \emph{(proved here)} \Cref{prop:rings:i0star-identity}.
-\item \textbf{The paper's local terms.} For primes $q\ge5$, odd $\ell\ne q$: $v_\ell(q-\chi_{-3}(q))\ge1$ always at $\ell=3$ and iff $q\equiv\chi_{-3}(q)\pmod\ell$
-otherwise; $v_3(q-\chi_{-4}(q))\ge1$ iff $q\equiv\pm1\pmod{12}$; $v_\ell(q^2-1)\ge1$ always at $\ell=3$, iff $q\equiv\pm1\pmod\ell$ otherwise;
-$v_\ell(q-1)+v_\ell((q+1)^2-a^2)\ge1$ iff $q\equiv1\pmod\ell$ or $a\equiv\pm(q+1)\pmod\ell$. \emph{(proved here)} \Cref{prop:rings:local-terms}.
+\item \textbf{The paper's local terms.} For primes $q\ge5$, odd $\ell\ne q$ and $a\in\Z$ with $a^2\le4q$: (i) $v_\ell(q-\chi_{-3}(q))\ge1$ always at $\ell=3$ and
+iff $q\equiv\chi_{-3}(q)\pmod\ell$ otherwise; (ii) $v_\ell(q-\chi_{-4}(q))\ge1$ iff $q\equiv\pm1\pmod{12}$ at $\ell=3$, iff $q\equiv\chi_{-4}(q)\pmod\ell$ otherwise;
+(iii) $v_\ell(q^2-1)\ge1$ always at $\ell=3$, iff $q\equiv\pm1\pmod\ell$ otherwise; (iv) $v_\ell(q-1)+v_\ell((q+1)^2-a^2)\ge1$ iff $q\equiv1\pmod\ell$ or
+$a\equiv\pm(q+1)\pmod\ell$; (v) for $n\ge1$ and $\bar u\in\F_q^\times$, $v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c(\bar u)))>v_\ell(n)$ iff $\ell\mid n$, $q\equiv1\pmod\ell$
+and $\bar u\in(\F_q^\times)^\ell$. \emph{(proved here)} \Cref{prop:rings:local-terms}.
 \end{enumerate}
 
 \section*{Where the paper uses this chapter}
@@ -214,7 +219,7 @@ $\T\otimes\Q=\Q\times\T'$, and "$\ell$ divides $\#\T/(I+J)=r$": \Cref{thm:rings:
 \item \textbf{Remark rem:wild.} $P_2(X)=1+2X$ gives $e_3=v_3(\frac32)=1$; the cubic factors at $2$: \Cref{ex:rings:paper-values}(e).
 \item \textbf{Section sec:anomaly.} The type $\mathrm{III}$ primes with $e_3>0$ are those with $q\equiv\pm1\pmod{12}$:
 \Cref{prop:rings:paper-characters}(iv).
-\item \textbf{Lemma lem:h0 and Proposition prop:ns.} $\chi_\ell^2\equiv1\pmod{\ell^k}$ on a group mapping onto $\Z_\ell^\times$ forces $\ell^k=3$:
+\item \textbf{Lemma lem:h0 and Proposition prop:ns.} $\chi_\ell^2\equiv1\pmod{\ell^k}$ on a group mapping onto $\Z_\ell^\times$ forces $k=0$ or $\ell^k=3$:
 \Cref{cor:rings:squares-one}; $\bar\chi_3^{\mathrm{cyc}}=\chi_{-3}$ on the Dirichlet side: \Cref{prop:rings:paper-characters}(iii); $\F_9=\F_3[i]$:
 \Cref{thm:rings:adjoin-root}; the $3$-division polynomial test: \Cref{prop:rings:reduction-mod-p} and \Cref{ex:rings:psi3}.
 \end{itemize}
@@ -238,8 +243,9 @@ non-commutative.
 The letters $p$, $q$, $\ell$ denote primes unless stated otherwise. In \Cref{sec:rings:finite-fields,sec:rings:powers},
 and wherever $\F_q$ is written with $q$ not declared prime, $q=p^r$ is a prime power and $\F_q$ is a field with $q$
 elements. In the paper $q$ is always a prime (a bad prime of $E$), so $\F_q=\Z/q\Z$ there and primitive roots modulo
-$q$ exist. The coefficient prime $\ell$ is odd in every use of the paper. The two meanings of $q$ (size of a finite
-field, bad prime) never occur in one display.
+$q$ exist. The coefficient prime $\ell$ is odd in every use of the paper. In one place, \Cref{pl:rings:characters}, $q$ is also
+the variable $q=e^{2\pi iz}$ of $q$-expansions (Appendix B, B-C1), and this is said there. No two of these three meanings of $q$
+occur in one display.
 \end{convention}
 
 \begin{convention}[valuations]\label{conv:rings:valuations}
@@ -264,14 +270,23 @@ $a\equiv\pm3\pmod8$; $\bigl(\frac a{-1}\bigr)=1$ for $a\ge0$ and $-1$ for $a<0$;
 
 \begin{convention}[characters and their names]\label{conv:rings:characters}
 A Dirichlet character modulo $n$ is a function $\chi\colon\Z\to\C$ coming from a homomorphism $(\Z/n)^\times\to\C^\times$, with
-$\chi(a)=0$ when $\gcd(a,n)>1$ (\Cref{def:rings:dirichlet}). Quadratic characters are named by a discriminant:
-$\chi_D(a)=\bigl(\frac Da\bigr)$ for $D\equiv0,1\pmod4$, so $\chi_{-3}=\bigl(\frac{-3}\cdot\bigr)$ and $\chi_{-4}=\bigl(\frac{-4}\cdot\bigr)$. For an odd prime $q$
+$\chi(a)=0$ when $\gcd(a,n)>1$ (\Cref{def:rings:dirichlet}). Quadratic characters are named by a fundamental discriminant
+(\Cref{def:rings:kronecker}): for such $D$, $\chi_D(a)=\bigl(\frac Da\bigr)$ is (for $D\ne1$) the character of $\Q(\sqrt D)$ (Appendix B, B-C6(b)), primitive of conductor
+$\abs D$ (\Cref{cor:rings:fundamental-primitive}); so $\chi_{-3}=\bigl(\frac{-3}\cdot\bigr)$ and $\chi_{-4}=\bigl(\frac{-4}\cdot\bigr)$. For a discriminant $D$ that is not
+fundamental the Kronecker symbol $\bigl(\frac D\cdot\bigr)$ is always written out and never called $\chi_D$: for instance $\bigl(\frac{-12}\cdot\bigr)$ is an imprimitive
+character modulo $12$ that agrees with $\chi_{-3}$ at odd integers, whereas under B-C6(b) the symbol $\chi_{-12}$ would mean $\chi_{-3}$ itself, of conductor
+$3$; the chapter does not use it. The letter $D$ denotes a discriminant; as in the paper, $D=\prod_{q\in S}q$ is also the conductor of $\chi_S$
+(the absolute value of the fundamental discriminant $\prod_{q\in S}q^*$). For an odd prime $q$
 put $q^*=(-1)^{(q-1)/2}q$; the quadratic character of conductor $q$ is $\chi_{q^*}$, never $\chi_q$ (decision D3 of the plan of
 this book). Thus $\chi_{-7}$, $\chi_{-11}$ are the characters of conductor $7$, $11$, while $\chi_5$, $\chi_{13}$ have conductor $5$, $13$.
 A letter subscript is reserved for the cyclotomic character: $\chi_\ell$ is the $\ell$-adic cyclotomic character of
 \Cref{ch:galois}, $\bar\chi_\ell$ its reduction, written $\chi_3^{\mathrm{cyc}}$, $\bar\chi_3^{\mathrm{cyc}}$ at the prime $3$; and
 $\omega_\ell\colon a\mapsto a\bmod\ell\in\F_\ell^\times$ is the Dirichlet character that corresponds to $\bar\chi_\ell$ (\Cref{ch:galois,ch:ant}
-make the correspondence). The paper (revised version) follows the same rules.
+make the correspondence). Two further names are not of this kind: $\chi_0$ is the principal character modulo $n$, the standard
+name (the numeral $0$ is not a discriminant, so it does not collide with B-C6(b)); and the $p$-component of a character $\chi$, a character
+modulo a power of $p$, is written $\chi^{(p)}$ with a superscript (\Cref{prop:rings:conductor}(v)), never $\chi_p$, and members of a family of characters are
+written $\chi^{(i)}$ in the same way. The paper (revised version)
+follows the same rules.
 \end{convention}
 
 \begin{convention}[roots of unity]\label{conv:rings:roots}
@@ -391,8 +406,8 @@ is exact. Consequently:
 \begin{enumerate}[label=(\roman*)]
 \item if $I\cap J=0$, then $R\to R/I\times R/J$ is injective, and its cokernel is isomorphic to $R/(I+J)$;
 \item (Chinese remainder theorem for two ideals) if $I+J=R$, then $I\cap J=IJ$ and $R/IJ\to R/I\times R/J$ is a ring isomorphism;
-\item (general Chinese remainder theorem) if $I_1,\dots,I_k$ are pairwise comaximal, then $R/(I_1\cdots I_k)\to\prod_iR/I_i$ is a ring
-isomorphism.
+\item (general Chinese remainder theorem) if $I_1,\dots,I_k$ are pairwise comaximal, then the natural map
+$R/(I_1\cdots I_k)\to\prod_iR/I_i$ is a ring isomorphism.
 \end{enumerate}
 \end{proposition}
 
@@ -435,7 +450,9 @@ $(ae,b(1-e))$ is the image of $ae+b(1-e)$ (use $e(1-e)=0$).
 $(a,0)=(1,0)(a,b)\in I$ and $(0,b)\in I$; so $I=I_1\times I_2$. The quotient $(R_1\times R_2)/(I_1\times I_2)\simeq R_1/I_1\times R_2/I_2$ is a domain
 (resp. a field) iff one factor is zero and the other a domain (resp. a field), because $(1,0)(0,1)=0$; by
 \Cref{thm:rings:prime-maximal}(i) this gives the prime and maximal ideals.
-(iv) In the PID $K[x]$ (\Cref{prop:rings:poly-division}) coprime $f_i$, $f_j$ satisfy $(f_i)+(f_j)=(\gcd(f_i,f_j))=K[x]$, and
+(iv) This part uses two results proved later: $K[x]$ is a principal ideal domain (PID, \Cref{def:rings:factorisation}), by
+\Cref{prop:rings:poly-division}(ii), and in a PID $(a)+(b)=(\gcd(a,b))$ (\Cref{thm:rings:euclid-pid-ufd}(ii)); neither proof uses this
+proposition. So coprime $f_i$, $f_j$ satisfy $(f_i)+(f_j)=(\gcd(f_i,f_j))=K[x]$, and
 $(f_1)\cdots(f_k)=(f)$; apply \Cref{prop:rings:two-ideals}(iii). For $x^2-x=x(x-1)$, the map is $g\mapsto(g(0),g(1))$, and the class of $x$
 is the idempotent $(0,1)$.
 \end{proof}
@@ -471,7 +488,8 @@ bijective if $R$ is a finite domain, that is (\Cref{prop:rings:characteristic}(i
 
 \begin{proof}
 (i) $\binom pi=\frac{p!}{i!(p-i)!}$ is an integer; $p$ divides the numerator and not the denominator when $0<i<p$ (a prime
-dividing a product of integers smaller than $p$ would divide one of them, \Cref{prop:rings:integers}(ii)). So the middle terms
+dividing a product of integers smaller than $p$ would divide one of them: Euclid's lemma, \Cref{prop:rings:integers}(ii) below, whose
+proof does not use this proposition). So the middle terms
 of the binomial expansion vanish in $R$. The case $p^k$ follows by induction, applying the case $p$ to $x^{p^{k-1}}$ and $y^{p^{k-1}}$.
 (ii) $F$ is additive by (i) and multiplicative by commutativity, and $F(1)=1$. In a domain $x^p=0$ forces $x=0$; an injective
 map of a finite set to itself is bijective.
@@ -508,7 +526,7 @@ The zero ideal of a field is prime, so $\ker\phi$ is prime. By (i) of \Cref{thm:
 field, hence a domain; if it is all of $K$ or finite, it is a field (\Cref{prop:rings:characteristic}(iii)), and $\ker\phi$ is maximal by (i).
 (iii) $R/P$ is a finite ring; it is a domain iff it is a field (\Cref{prop:rings:characteristic}(iii)).
 (iv) A nonzero ideal of $\Z$ is $n\Z$ with $n\ge1$ (\Cref{prop:rings:ideals}); $\Z/n$ is a domain iff $n$ is prime
-(\Cref{prop:rings:zn}(i)), and is then finite, hence a field. $\Z/0=\Z$ is a domain and not a field.
+(\Cref{prop:rings:zn}(i) below, proved from Bezout's identity and independent of this theorem), and is then finite, hence a field. $\Z/0=\Z$ is a domain and not a field.
 (v) Let $a$ be a non-unit (for instance $a=0$ in a nonzero ring). The set $\Sigma$ of ideals $I\ne R$ containing $a$ is nonempty, as
 $(a)\ne R$, and is partially ordered by inclusion. The union of a chain in $\Sigma$ is an ideal containing $a$, and it does not
 contain $1$ because no member does; so it lies in $\Sigma$. By Zorn's lemma $\Sigma$ has a maximal element, which is a maximal ideal
@@ -607,7 +625,8 @@ reduction of $u$ in $\F_q^\times$" is the image of the unit $u=q_Eq^{-n}\in\Z_q^
 This section proves unique factorisation where the book needs it: in $\Z$ (the $\ell$-part of an integer, used in every
 statement of the paper about $v_\ell(\degphi)$), in $F[x]$ (minimal polynomials, finite fields), and in the rings $\Z[i]$ and
 $\Z[\zeta_3]$ of Gaussian and Eisenstein integers, whose characters $\chi_{-4}$ and $\chi_{-3}$ appear in the table of Section 1 and
-whose completions $\Z_\ell[i]$, $\Z_\ell[\zeta_3]$ appear in the proofs of Lemmas lem:euler and lem:IV. The primes of $\Z[i]$ and
+whose $\ell$-adic versions $\Z_\ell\otimes\Z[\zeta_3]$ (a product of two copies of $\Z_\ell$ when $\ell\equiv1\pmod3$, so not a
+field) and $\Z_3[\zeta_3]$ appear in the proofs of Lemmas lem:euler and lem:IV. The primes of $\Z[i]$ and
 $\Z[\zeta_3]$, the element $1-\zeta_3$ as a uniformiser and the ring $\Z_3[\zeta_3]$ are treated in \Cref{ch:ant}.
 
 \begin{definition}\label{def:rings:factorisation}
@@ -899,7 +918,8 @@ polisirreducible(f)                  \\ 1
 
 \begin{paperlink}\label{pl:rings:ns-divpol}
 Proposition prop:ns ends: "The $3$-division polynomial of $E$ then factors as a product of two irreducible quadratics,
-and otherwise it is irreducible", and Section sec:anomaly checks the factorisation for every curve with image $\Ns$.
+and otherwise it is irreducible", and Section sec:anomaly checks that the $3$-division polynomial of every violating curve (all of
+image $\Ns$) factors as two quadratics.
 \Cref{prop:rings:reduction-mod-p} is how such a statement is tested for a given curve: one prime $p$ with $\bar\psi_3$ irreducible proves
 irreducibility, as for 11a1, whose mod $3$ image is $\GL_2(\F_3)$. The converse direction (that a factorisation over $\Q$ is
 detected) needs the factorisation over $\Q$ itself, which PARI computes; the Galois-theoretic meaning of the pattern is
@@ -939,10 +959,10 @@ $\F_q[x]/(x^2-\varepsilon)$, $\varepsilon$ a non-square, is the field $\F_q[\sqr
 
 \section[The ring \texorpdfstring{$\Z/n\Z$}{Z/nZ}, units and primitive roots]{The ring \texorpdfstring{$\Z/n\Z$}{Z/nZ}, the Chinese remainder theorem, units and primitive roots}\label{sec:rings:zn}
 
-The groups $(\Z/n\Z)^\times$ are where Dirichlet characters live (\Cref{sec:rings:dirichlet}), and the groups $(\Z/\ell^k\Z)^\times$ are the
-finite quotients of $\Z_\ell^\times$, the image of the cyclotomic character. The paper uses one fact about them in an essential way:
+The groups $(\Z/n\Z)^\times$ are where Dirichlet characters live (\Cref{sec:rings:dirichlet}), and the groups
+$(\Z/\ell^k\Z)^\times=\Z_\ell^\times/(1+\ell^k\Z_\ell)$ ($k\ge1$) are the finite levels of $\Z_\ell^\times$, the image of the cyclotomic character. The paper uses one fact about them in an essential way:
 in Lemma lem:h0, an isomorphism $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$ forces $\chi_\ell^2\equiv1\pmod{\ell^k}$, and this is possible
-only for $\ell^k=3$ (\Cref{cor:rings:squares-one}). The lifting-the-exponent lemma computes valuations such as $v_\ell(q^2-1)$ in the
+for $k\ge1$ only when $\ell^k=3$ (\Cref{cor:rings:squares-one}). The lifting-the-exponent lemma computes valuations such as $v_\ell(q^2-1)$ in the
 table of Section 1.
 
 \begin{proposition}\label{prop:rings:zn}
@@ -1421,7 +1441,7 @@ The paper's quadratic characters are Kronecker symbols: $\chi_{-3}=\bigl(\frac{-
 character of $\Q(\sqrt{q^*})$ by which Lemma lem:twist twists. That $\chi_{q^*}$ is "the quadratic character of conductor $q$", i.e. that
 $\bigl(\frac{q^*}n\bigr)=\bigl(\frac nq\bigr)$ for all $n$, is quadratic reciprocity (\Cref{prop:rings:qstar}). We prove reciprocity by Gauss sums in
 characteristic $p$, extend it to Jacobi and Kronecker symbols, and show that $\bigl(\frac D\cdot\bigr)$ is a Dirichlet character modulo $\abs D$ for every
-discriminant $D$. \Cref{ch:ant} gives a second proof and the meaning of $\chi_D(p)$ as a splitting law.
+discriminant $D$. \Cref{ch:ant} gives a second proof and the meaning of $\chi_D(p)$ ($D$ fundamental) as a splitting law.
 
 \begin{definition}\label{def:rings:legendre}
 For an odd prime $p$ and $a\in\Z$ the \emph{Legendre symbol} is $\bigl(\frac ap\bigr)=0$ if $p\mid a$, $1$ if $a$ is a nonzero square modulo $p$ (a
@@ -1469,7 +1489,7 @@ which is $q^*$ by \Cref{prop:rings:legendre}(iii). It is nonzero because $\opera
 
 \begin{remark}[the sign of the Gauss sum]\label{rem:rings:gauss-sign}
 Over $\C$ with $\zeta=\zeta_q$, Gauss proved $g=\sqrt q$ if $q\equiv1\pmod4$ and $g=i\sqrt q$ if $q\equiv3\pmod4$. We do not prove this and do not use it;
-see \cite[Chapter 6]{IrelandRosen} or \cite[Chapter 4]{Washington}. (Checked numerically for all $q<60$.)
+see \cite[Chapter 6, Section 6.4]{IrelandRosen}. (Checked numerically for all $q<60$.)
 \end{remark}
 
 \begin{theorem}[quadratic reciprocity]\label{thm:rings:qr}
@@ -1507,7 +1527,8 @@ For an odd integer $n=\prod_ip_i^{e_i}>0$ and $a\in\Z$, the \emph{Jacobi symbol}
 Let $m,n>0$ be odd.
 \begin{enumerate}[label=(\roman*)]
 \item $\bigl(\frac an\bigr)$ is multiplicative in $a$ and in $n$, depends only on $a\bmod n$, and vanishes iff $\gcd(a,n)>1$.
-\item If $\gcd(m,n)=1$: $\bigl(\frac mn\bigr)\bigl(\frac nm\bigr)=(-1)^{\frac{m-1}2\cdot\frac{n-1}2}$. Also $\bigl(\frac{-1}n\bigr)=(-1)^{(n-1)/2}$ and $\bigl(\frac2n\bigr)=(-1)^{(n^2-1)/8}$.
+\item (Reciprocity and supplements.) If $\gcd(m,n)=1$, then $\bigl(\frac mn\bigr)\bigl(\frac nm\bigr)=(-1)^{\frac{m-1}2\cdot\frac{n-1}2}$. Moreover
+$\bigl(\frac{-1}n\bigr)=(-1)^{(n-1)/2}$ and $\bigl(\frac2n\bigr)=(-1)^{(n^2-1)/8}$.
 \item $\bigl(\frac an\bigr)=1$ does not imply that $a$ is a square modulo $n$: $\bigl(\frac2{15}\bigr)=\bigl(\frac23\bigr)\bigl(\frac25\bigr)=(-1)(-1)=1$, but $2$ is not a square modulo $3$, hence
 not modulo $15$. (If $\bigl(\frac an\bigr)=-1$, then $a$ is not a square modulo $n$.)
 \item Reciprocity computes $\bigl(\frac an\bigr)$ without factoring $n$: reduce $a$ modulo $n$, remove the factors $-1$ and $2$ with (ii), and invert
@@ -1518,24 +1539,26 @@ so $713$ is a square modulo $1009$ (PARI's \texttt{kronecker(713,1009)} returns 
 \end{proposition}
 
 \begin{proof}
-(i) is inherited from the Legendre symbol factor by factor. (ii) Let $\varepsilon(n)=\frac{n-1}2$ and $\omega(n)=\frac{n^2-1}8$ modulo $2$, for odd $n$. Both are additive:
+(i) is inherited from the Legendre symbol factor by factor. (ii) Let $e(n)=\frac{n-1}2$ and $w(n)=\frac{n^2-1}8$ modulo $2$, for odd $n$. Both are additive:
 $mn-1=(m-1)(n-1)+(m-1)+(n-1)$ with $4\mid(m-1)(n-1)$, and $m^2n^2-1=(m^2-1)(n^2-1)+(m^2-1)+(n^2-1)$ with $64\mid(m^2-1)(n^2-1)$. Write $m=\prod p_i$, $n=\prod q_j$
 (with repetitions). By \Cref{thm:rings:qr},
-$\bigl(\frac mn\bigr)\bigl(\frac nm\bigr)=\prod_{i,j}\bigl(\frac{p_i}{q_j}\bigr)\bigl(\frac{q_j}{p_i}\bigr)=(-1)^{\sum_{i,j}\varepsilon(p_i)\varepsilon(q_j)}=(-1)^{\varepsilon(m)\varepsilon(n)}$, and likewise
-$\bigl(\frac{-1}n\bigr)=(-1)^{\sum_j\varepsilon(q_j)}=(-1)^{\varepsilon(n)}$, $\bigl(\frac2n\bigr)=(-1)^{\sum_j\omega(q_j)}=(-1)^{\omega(n)}$. (iii) A square modulo $15$ is a square modulo $3$. If $\bigl(\frac an\bigr)=-1$,
+$\bigl(\frac mn\bigr)\bigl(\frac nm\bigr)=\prod_{i,j}\bigl(\frac{p_i}{q_j}\bigr)\bigl(\frac{q_j}{p_i}\bigr)=(-1)^{\sum_{i,j}e(p_i)e(q_j)}=(-1)^{e(m)e(n)}$, and likewise
+$\bigl(\frac{-1}n\bigr)=(-1)^{\sum_je(q_j)}=(-1)^{e(n)}$, $\bigl(\frac2n\bigr)=(-1)^{\sum_jw(q_j)}=(-1)^{w(n)}$. (iii) A square modulo $15$ is a square modulo $3$. If $\bigl(\frac an\bigr)=-1$,
 some $\bigl(\frac a{p_i}\bigr)=-1$. (iv) In the example $713\equiv1\pmod8$, $37\equiv5\pmod8$, and $713\equiv1$, $37\equiv1\pmod4$, so no signs arise from (ii) in
 the inversions.
 \end{proof}
 
 \begin{definition}\label{def:rings:kronecker}
-The \emph{Kronecker symbol} $\bigl(\frac an\bigr)$, for $a,n\in\Z$, extends the Jacobi symbol using \Cref{conv:rings:symbols}: for $n=\varepsilon2^e\prod_ip_i^{e_i}\ne0$
-with $\varepsilon=\pm1$ and odd primes $p_i$,
+The \emph{Kronecker symbol} $\bigl(\frac an\bigr)$, for $a,n\in\Z$, extends the Jacobi symbol using \Cref{conv:rings:symbols}: for $n=s2^e\prod_ip_i^{e_i}\ne0$
+with a sign $s=\pm1$ and odd primes $p_i$,
 \[
-\Bigl(\frac an\Bigr)=\Bigl(\frac a\varepsilon\Bigr)\Bigl(\frac a2\Bigr)^e\prod_i\Bigl(\frac a{p_i}\Bigr)^{e_i},
+\Bigl(\frac an\Bigr)=\Bigl(\frac as\Bigr)\Bigl(\frac a2\Bigr)^e\prod_i\Bigl(\frac a{p_i}\Bigr)^{e_i},
 \]
-and $\bigl(\frac a0\bigr)=1$ if $a=\pm1$, $0$ otherwise. A \emph{discriminant} is an integer $D\ne0$ with $D\equiv0$ or $1\pmod4$. For a discriminant $D$, $\chi_D(a):=\bigl(\frac Da\bigr)$
-for all $a\in\Z$. A \emph{fundamental discriminant} is a discriminant $D$ with either $D\equiv1\pmod4$ squarefree, or $D=4m$ with $m\equiv2,3\pmod4$
-squarefree. The \emph{prime discriminants} are $-4$, $8$, $-8$ and $q^*=(-1)^{(q-1)/2}q$ for odd primes $q$.
+and $\bigl(\frac a0\bigr)=1$ if $a=\pm1$, $0$ otherwise. A \emph{discriminant} is an integer $D\ne0$ with $D\equiv0$ or $1\pmod4$. A \emph{fundamental
+discriminant} is a discriminant $D$ with either $D\equiv1\pmod4$ squarefree, or $D=4m$ with $m\equiv2,3\pmod4$ squarefree. The \emph{prime
+discriminants} are $-4$, $8$, $-8$ and $q^*=(-1)^{(q-1)/2}q$ for odd primes $q$. For a fundamental discriminant $D$ put $\chi_D(a):=\bigl(\frac Da\bigr)$ for all
+$a\in\Z$; for a discriminant that is not fundamental no name $\chi_D$ is introduced, and the function $\bigl(\frac D\cdot\bigr)$ is written as a Kronecker
+symbol (\Cref{conv:rings:characters}).
 \end{definition}
 
 \begin{proposition}\label{prop:rings:kronecker}
@@ -1543,11 +1566,13 @@ Let $D$ be a discriminant.
 \begin{enumerate}[label=(\roman*)]
 \item $n\mapsto\bigl(\frac Dn\bigr)$ is completely multiplicative on $\Z\setminus\{0\}$ and vanishes exactly when $\gcd(D,n)>1$. For nonzero $a,b$, $\bigl(\frac{ab}n\bigr)=\bigl(\frac an\bigr)\bigl(\frac bn\bigr)$.
 \item If $D\equiv1\pmod4$, then $\bigl(\frac Dn\bigr)=\bigl(\frac n{\abs D}\bigr)$ (Jacobi symbol) for every $n>0$.
-\item For $n,n'>0$ with $n\equiv n'\pmod{\abs D}$, $\bigl(\frac Dn\bigr)=\bigl(\frac D{n'}\bigr)$; and $\bigl(\frac D{-n}\bigr)=\sgn(D)\bigl(\frac Dn\bigr)$. Hence $\chi_D$ is a Dirichlet character modulo
-$\abs D$ (\Cref{def:rings:dirichlet}), real (with values in $\{0,\pm1\}$), with $\chi_D(-1)=\sgn D$.
-\item Values at primes: $\chi_D(p)=\bigl(\frac Dp\bigr)$ (Legendre) for odd $p$; $\chi_D(2)=0$ if $4\mid D$, $1$ if $D\equiv1\pmod8$, $-1$ if $D\equiv5\pmod8$.
-\item $\chi_{DD'}=\chi_D\chi_{D'}$ for discriminants $D,D'$; and $\chi_{Df^2}(n)=\chi_D(n)$ for $\gcd(n,f)=1$. So a non-fundamental discriminant $Df^2$ gives the
-character $\chi_D$ made imprimitive at the primes dividing $f$ (\Cref{prop:rings:conductor}).
+\item For $n,n'>0$ with $n\equiv n'\pmod{\abs D}$, $\bigl(\frac Dn\bigr)=\bigl(\frac D{n'}\bigr)$; and $\bigl(\frac D{-n}\bigr)=\sgn(D)\bigl(\frac Dn\bigr)$. Hence $\bigl(\frac D\cdot\bigr)$ is a
+Dirichlet character modulo $\abs D$ (\Cref{def:rings:dirichlet}), real (with values in $\{0,\pm1\}$), with value $\sgn D$ at $-1$. For fundamental $D$
+this character is $\chi_D$.
+\item Values at primes: $\bigl(\frac Dp\bigr)$ is the Legendre symbol for odd $p$; $\bigl(\frac D2\bigr)=0$ if $4\mid D$, $1$ if $D\equiv1\pmod8$, $-1$ if $D\equiv5\pmod8$.
+\item For discriminants $D,D'$, $\bigl(\frac{DD'}n\bigr)=\bigl(\frac Dn\bigr)\bigl(\frac{D'}n\bigr)$ for all $n\in\Z$; and for $f\ne0$, $\bigl(\frac{Df^2}n\bigr)=\bigl(\frac Dn\bigr)$ for $\gcd(n,f)=1$.
+So for fundamental $D$ the character $\bigl(\frac{Df^2}\cdot\bigr)$ modulo $\abs{D}f^2$ is $\chi_D$ made imprimitive at the primes dividing $f$
+(\Cref{prop:rings:conductor}), and in particular $\chi_{DD'}=\chi_D\chi_{D'}$ when $D$, $D'$ and $DD'$ are fundamental.
 \end{enumerate}
 \end{proposition}
 
@@ -1559,16 +1584,19 @@ factor vanishes iff $p_i\mid D$, or $e\ge1$ and $D$ is even; that is, iff a prim
 \Cref{prop:rings:jacobi}(ii), $\bigl(\frac Dm\bigr)=\bigl(\frac sm\bigr)\bigl(\frac{\abs D}m\bigr)=\bigl(\frac sm\bigr)(-1)^{\frac{m-1}2\frac{\abs D-1}2}\bigl(\frac m{\abs D}\bigr)$. If $s=1$ then $\abs D\equiv1\pmod4$ and the sign is $1$. If $s=-1$
 then $\abs D\equiv3\pmod4$ and $(-1)^{\frac{m-1}2}=\bigl(\frac{-1}m\bigr)$ cancels $\bigl(\frac sm\bigr)$. So $\bigl(\frac Dm\bigr)=\bigl(\frac m{\abs D}\bigr)$. For the factor $2$:
 $\bigl(\frac D2\bigr)=1$ iff $D\equiv1\pmod8$ iff $\abs D\equiv\pm1\pmod8$ (as $D\equiv1\pmod4$), iff $\bigl(\frac2{\abs D}\bigr)=1$ (\Cref{prop:rings:jacobi}(ii)). Multiply.
-(iii) If $D\equiv1\pmod4$, (ii) shows that $\bigl(\frac Dn\bigr)$ depends only on $n\bmod\abs D$ for $n>0$, and $\bigl(\frac D{\abs D-1}\bigr)=\bigl(\frac{-1}{\abs D}\bigr)=(-1)^{(\abs D-1)/2}=\sgn D$. If $D=2^sD'$ with $D'$
+(iii) For $D=1$ the symbol $\bigl(\frac1n\bigr)$ is $1$ for every $n$ (each factor is), and everything is trivial; let $D\ne1$, so that $\abs D\ge3$
+and $n=\abs D-1$ is positive. If $D\equiv1\pmod4$, (ii) shows that $\bigl(\frac Dn\bigr)$ depends only on $n\bmod\abs D$ for $n>0$, and $\bigl(\frac D{\abs D-1}\bigr)=\bigl(\frac{-1}{\abs D}\bigr)=(-1)^{(\abs D-1)/2}=\sgn D$. If $D=2^sD'$ with $D'$
 odd and $s\ge2$: for even $n$ both $\bigl(\frac Dn\bigr)$ and $\bigl(\frac D{n'}\bigr)$ vanish ($n'\equiv n\pmod4$ is even). For odd $n>0$, as in (ii),
 $\bigl(\frac Dn\bigr)=\bigl(\frac2n\bigr)^s\bigl(\frac{\sgn D'}n\bigr)(-1)^{\frac{n-1}2\frac{\abs{D'}-1}2}\bigl(\frac n{\abs{D'}}\bigr)$. Here $\bigl(\frac2n\bigr)$ depends on $n\bmod8$, the next two factors on $n\bmod4$, and the last on
 $n\bmod\abs{D'}$; if $s\ge3$ the period $8\abs{D'}$ divides $\abs D$, and if $s=2$ the factor $\bigl(\frac2n\bigr)^2=1$ disappears and the period $4\abs{D'}=\abs D$. Evaluating at
 $n=\abs D-1$ (so $n\equiv-1$ modulo $4$, modulo $\abs{D'}$, and modulo $8$ if $s\ge3$): $\bigl(\frac2n\bigr)^s=1$; $\bigl(\frac n{\abs{D'}}\bigr)=(-1)^{(\abs{D'}-1)/2}$ cancels the sign
-$(-1)^{\frac{n-1}2\frac{\abs{D'}-1}2}=(-1)^{(\abs{D'}-1)/2}$; and $\bigl(\frac{\sgn D'}n\bigr)=\sgn D'$. So in all cases $\chi_D(\abs D-1)=\sgn D$. Now $\bigl(\frac D{-n}\bigr)=\bigl(\frac D{-1}\bigr)\bigl(\frac Dn\bigr)=\sgn(D)\bigl(\frac Dn\bigr)$
-by (i). Hence for $n>0$, $\chi_D(-n)=\chi_D(\abs D-1)\chi_D(n)=\chi_D((\abs D-1)n)$, and $(\abs D-1)n\equiv-n\pmod{\abs D}$: $\chi_D$ is periodic modulo $\abs D$ on $\Z\setminus\{0\}$; at
-multiples of $\abs D$ (including $0$) it vanishes when $\abs D>1$, and $\chi_1=1$. It is completely multiplicative and vanishes exactly off
+$(-1)^{\frac{n-1}2\frac{\abs{D'}-1}2}=(-1)^{(\abs{D'}-1)/2}$; and $\bigl(\frac{\sgn D'}n\bigr)=\sgn D'$. So in all cases $\bigl(\frac D{\abs D-1}\bigr)=\sgn D$. Now $\bigl(\frac D{-n}\bigr)=\bigl(\frac D{-1}\bigr)\bigl(\frac Dn\bigr)=\sgn(D)\bigl(\frac Dn\bigr)$
+by (i). Hence for $n>0$, $\bigl(\frac D{-n}\bigr)=\bigl(\frac D{\abs D-1}\bigr)\bigl(\frac Dn\bigr)=\bigl(\frac D{(\abs D-1)n}\bigr)$, and $(\abs D-1)n\equiv-n\pmod{\abs D}$: the symbol is periodic modulo $\abs D$
+on $\Z\setminus\{0\}$; at multiples of $\abs D$ (including $0$) it vanishes, as $\abs D>1$. It is completely multiplicative and vanishes exactly off
 $(\Z/\abs D)^\times$, so it comes from the homomorphism $(\Z/\abs D)^\times\to\{\pm1\}$ it induces.
-(iv) is the definition. (v) By (i) for $n\ne0$; at $n=0$ both sides vanish unless $D=D'=1$. And $\bigl(\frac{f^2}n\bigr)=\bigl(\frac fn\bigr)^2=1$ when $\gcd(f,n)=1$.
+(iv) is the definition. (v) By (i) for $n\ne0$; at $n=0$ both sides vanish unless $D=D'=1$. And $\bigl(\frac{Df^2}n\bigr)=\bigl(\frac Dn\bigr)\bigl(\frac fn\bigr)^2=\bigl(\frac Dn\bigr)$ when
+$\gcd(f,n)=1$ and $n\ne0$; for $n=0$ the condition forces $f=\pm1$. The conductor statement is \Cref{prop:rings:conductor}(i) and (iii), the two characters
+agreeing at the integers prime to $Df$.
 \end{proof}
 
 \begin{proposition}\label{prop:rings:qstar}
@@ -1578,7 +1606,7 @@ Let $q$ be an odd prime and $q^*=(-1)^{(q-1)/2}q$.
 \item For every $n\in\Z$, $\bigl(\frac{q^*}n\bigr)=\bigl(\frac nq\bigr)$ (the Legendre symbol of $n\bmod q$). So $\chi_{q^*}=\bigl(\frac\cdot q\bigr)$ as functions on $\Z$.
 \item $\chi_{q^*}$ is the unique Dirichlet character of order $2$ and conductor $q$; this is why the paper calls it "the quadratic character of
 conductor $q$". By contrast, for $q\equiv3\pmod4$ the function $n\mapsto\bigl(\frac qn\bigr)$ agrees on odd $n$ with the character $\chi_{4q}=\chi_{-4}\chi_{q^*}$, of
-conductor $4q$, and it is not periodic on all of $\Z$: $\bigl(\frac32\bigr)=-1$ but $\bigl(\frac3{14}\bigr)=1$.
+conductor $4q$, and on all of $\Z$ it is not periodic modulo $12$: $\bigl(\frac32\bigr)=-1$ but $\bigl(\frac3{14}\bigr)=1$.
 \item The same holds for the coefficient prime $\ell$: $\ell^*\equiv1\pmod4$, and for primes $p\ne\ell$, $\ell^*$ is a square modulo $p$ (for odd $p$), resp.
 $\ell^*\equiv1\pmod8$ (for $p=2$), iff $p$ is a square modulo $\ell$.
 \item $3^*=-3$, $5^*=5$, $7^*=-7$, $11^*=-11$, $13^*=13$; so the characters of conductor $3$, $5$, $7$, $11$, $13$ are $\chi_{-3}$, $\chi_5$, $\chi_{-7}$, $\chi_{-11}$,
@@ -1681,7 +1709,8 @@ $a\equiv1\pmod d$; the inducing $\chi'$ is then unique.
 \item $f_\chi$ divides every $d$ modulo which $\chi$ is defined. $\chi$ is induced by a unique character $\chi^{\mathrm{prim}}$ modulo $f_\chi$, and $\chi^{\mathrm{prim}}$ is primitive.
 \item $\chi$ and $\chi^{\mathrm{prim}}$ agree at integers prime to $n$ but may differ at $a$ with $\gcd(a,n)>1=\gcd(a,f_\chi)$: $\chi_{-3}$ regarded modulo $6$ vanishes at $2$,
 while $\chi_{-3}(2)=-1$.
-\item Write $n=\prod_pp^{k_p}$. Then $\chi=\prod_p\chi_p$ with unique characters $\chi_p$ modulo $p^{k_p}$, and $f_\chi=\prod_pf_{\chi_p}$. A product of primitive
+\item Write $n=\prod_pp^{k_p}$. Then $\chi=\prod_p\chi^{(p)}$ with unique characters $\chi^{(p)}$ modulo $p^{k_p}$ (the \emph{$p$-components} of $\chi$), and
+$f_\chi=\prod_pf_{\chi^{(p)}}$. A product of primitive
 characters with pairwise coprime conductors is primitive, of conductor the product.
 \item The principal character has conductor $1$; the nontrivial character modulo $4$, $\chi_{-4}$, has conductor $4$ (not $2$); $\bigl(\frac\cdot q\bigr)$ has conductor
 $q$; $\chi_8$ ($=1$ iff $n\equiv\pm1\pmod8$) and $\chi_{-8}$ ($=1$ iff $n\equiv1,3\pmod8$) have conductor $8$; for a finite set $S$ of odd primes,
@@ -1701,11 +1730,12 @@ $b\equiv1\pmod{d_1}$, and $\chi(ab^{-1})=1$ as $ab^{-1}\equiv1\pmod{d_2}$ ($b^{-
 (iii) If $\chi$ is defined modulo $d$, it is defined modulo $\gcd(d,f_\chi)\le f_\chi$, which must equal $f_\chi$, so $f_\chi\mid d$. $\chi^{\mathrm{prim}}$ is the $\chi'$ of (i)
 for $d=f_\chi$. If $\chi^{\mathrm{prim}}$ were defined modulo $d'\mid f_\chi$, $d'<f_\chi$, so would be $\chi$ (integers prime to $n$ are prime to $f_\chi$).
 (iv) By definition, and $2\mid6$ while $\chi_{-3}(2)=\bigl(\frac{-3}2\bigr)=-1$ as $-3\equiv5\pmod8$.
-(v) By the Chinese remainder theorem $(\Z/n)^\times=\prod_p(\Z/p^{k_p})^\times$, and $\tilde\chi$ is the product of its restrictions $\tilde\chi_p$ to the factors.
-Under this identification $\{a\equiv1\pmod d\}$ corresponds to $\prod_p\{a_p\equiv1\pmod{p^{v_p(d)}}\}$, and $\chi$ is trivial on it iff each $\chi_p$ is trivial
-on its factor. So $\chi$ is defined modulo $d$ iff each $\chi_p$ is defined modulo $p^{v_p(d)}$, and the least such $d$ is $\prod_pf_{\chi_p}$. If
-$\chi=\prod\chi_i$ with $\chi_i$ primitive of pairwise coprime conductors $f_i$, regard it modulo $\prod f_i$; its $p$-component for $p\mid f_i$ is
-$(\chi_i)_p$, so $f_\chi=\prod_i\prod_{p\mid f_i}f_{(\chi_i)_p}=\prod_if_{\chi_i}=\prod_if_i$.
+(v) By the Chinese remainder theorem $(\Z/n)^\times=\prod_p(\Z/p^{k_p})^\times$, and $\tilde\chi$ is the product of its restrictions $\tilde\chi^{(p)}$ to the factors.
+Under this identification $\{a\equiv1\pmod d\}$ corresponds to $\prod_p\{a_p\equiv1\pmod{p^{v_p(d)}}\}$, and $\chi$ is trivial on it iff each $\chi^{(p)}$ is trivial
+on its factor. So $\chi$ is defined modulo $d$ iff each $\chi^{(p)}$ is defined modulo $p^{v_p(d)}$, and the least such $d$ is $\prod_pf_{\chi^{(p)}}$. If
+$\chi=\prod_i\chi^{(i)}$ with $\chi^{(i)}$ primitive of pairwise coprime conductors $f_i$, regard it modulo $\prod f_i$; its $p$-component for $p\mid f_i$ is
+the $p$-component $(\chi^{(i)})^{(p)}$ of $\chi^{(i)}$, so $f_\chi=\prod_i\prod_{p\mid f_i}f_{(\chi^{(i)})^{(p)}}=\prod_if_{\chi^{(i)}}=\prod_if_i$ (the second equality is the
+first statement of (v) applied to $\chi^{(i)}$).
 (vi) The trivial character is defined modulo $1$. $(\Z/2)^\times$ is trivial, so a nontrivial character modulo $4$ is not defined modulo $2$.
 $\bigl(\frac\cdot q\bigr)$ is nontrivial modulo the prime $q$. $\chi_8(5)=\bigl(\frac85\bigr)=\bigl(\frac35\bigr)=-1$ and $\chi_{-8}(5)=\bigl(\frac{-8}5\bigr)=\bigl(\frac25\bigr)=-1$ although $5\equiv1\pmod4$, so neither is
 defined modulo $4$; their values at odd $n>0$ are $\bigl(\frac2n\bigr)^3=\bigl(\frac2n\bigr)$ and $\bigl(\frac{-1}n\bigr)\bigl(\frac2n\bigr)$, read off from \Cref{prop:rings:jacobi}(ii). For $\chi_S$ apply (v) to the primitive
@@ -1728,7 +1758,10 @@ fundamental discriminants with $\abs D\le60$ the conductor was also found by bru
 \end{proof}
 
 \begin{theorem}[Gauss sums]\label{thm:rings:gauss-sums}
-For a character $\chi$ modulo $n$ and $b\in\Z$ put $\tau(\chi,b)=\sum_{a\bmod n}\chi(a)\zeta_n^{ab}$ and $\tau(\chi)=\tau(\chi,1)$.
+For a character $\chi$ modulo $n$ and $b\in\Z$ put
+\[
+\tau(\chi,b)=\sum_{a\bmod n}\chi(a)\zeta_n^{ab},\qquad\tau(\chi)=\tau(\chi,1).
+\]
 \begin{enumerate}[label=(\roman*)]
 \item If $\gcd(b,n)=1$, $\tau(\chi,b)=\bar\chi(b)\tau(\chi)$. Always $\overline{\tau(\chi)}=\chi(-1)\tau(\bar\chi)$.
 \item If $\chi$ is primitive, $\tau(\chi,b)=\bar\chi(b)\tau(\chi)$ for all $b$ (both sides vanish when $\gcd(b,n)>1$), $\abs{\tau(\chi)}^2=n$, and $\tau(\chi)\tau(\bar\chi)=\chi(-1)n$.
@@ -1775,7 +1808,7 @@ name & Kronecker symbol & conductor & $\chi(-1)$ & value at a prime $p$\\
 $\chi_{-4}$ & $\bigl(\frac{-4}\cdot\bigr)$ & $4$ & $-1$ & $0$ at $p=2$; $(-1)^{(p-1)/2}$, i.e. $1$ iff $p\equiv1\pmod4$\\
 $\chi_{-3}$ & $\bigl(\frac{-3}\cdot\bigr)=\bigl(\frac\cdot3\bigr)$ & $3$ & $-1$ & $0$ at $p=3$; $1$ iff $p\equiv1\pmod3$ (so $\chi_{-3}(2)=-1$)\\
 $\chi_{q^*}$ & $\bigl(\frac{q^*}\cdot\bigr)=\bigl(\frac\cdot q\bigr)$ & $q$ & $(-1)^{(q-1)/2}$ & $\bigl(\frac pq\bigr)$ ($0$ at $p=q$; at $p=2$ also $\bigl(\frac2q\bigr)$)\\
-$\chi_S=\prod_{q\in S}\chi_{q^*}$ & $\bigl(\frac{\prod_{q\in S}q^*}\cdot\bigr)$ & $\prod_{q\in S}q$ & $\prod_{q\in S}(-1)^{(q-1)/2}$ & $\prod_{q\in S}\bigl(\frac pq\bigr)$\\
+$\chi_S=\prod_{q\in S}\chi_{q^*}$ & $\bigl(\frac{\prod_{q\in S}q^*}\cdot\bigr)$ & $\prod_{q\in S}q$ & $\sgn\prod_{q\in S}q^*$ & $\prod_{q\in S}\bigl(\frac pq\bigr)$\\
 $\chi_{\ell^*}$ & $\bigl(\frac{\ell^*}\cdot\bigr)=\bigl(\frac\cdot\ell\bigr)$ & $\ell$ & $(-1)^{(\ell-1)/2}$ & $\bigl(\frac p\ell\bigr)$\\
 $\omega_\ell$ ($\F_\ell^\times$-valued) & none & $\ell$ & $-1$ & $p\bmod\ell$\\
 \bottomrule
@@ -1991,7 +2024,11 @@ $e_\ell(E,q)$ is not invariant under a quadratic twist ramified at $q$, as Defin
 \end{example}
 
 \begin{paperlink}\label{pl:rings:terms}
-Definition def:terms: "$e_\ell(E,q)=v_\ell\bigl(L_q(A_f,1)^{-1}/L_q^{\nv}(A_f,1)^{-1}\bigr)=v_\ell\bigl(P_q(q^{-2})/(1-a_q(E)^2q^{-2})\bigr)$". By \Cref{lem:rings:ell-integral}(ii)
+Definition def:terms:
+\[
+\text{"}e_\ell(E,q)=v_\ell\bigl(L_q(A_f,1)^{-1}/L_q^{\nv}(A_f,1)^{-1}\bigr)=v_\ell\bigl(P_q(q^{-2})/(1-a_q(E)^2q^{-2})\bigr)\text{".}
+\]
+By \Cref{lem:rings:ell-integral}(ii)
 both numerator and denominator lie in $\Z_{(\ell)}$, and the valuation of the quotient is the difference of their valuations. At a multiplicative prime
 $a_q^2=1$ and $P_q(X)=1-X$, so the quotient is $1$ and $e_\ell=0$; at an additive prime $a_q=0$ and the denominator is $1$. The proof of Lemma
 lem:euler then reads "$e_\ell=v_\ell(1-q^{-2})=v_\ell(q^2-1)$" (type $\kod{I}_n^*$) and "$e_\ell=v_\ell(1-\chi_{-3}(q)q^{-1})=v_\ell(q-\chi_{-3}(q))$" (types $\kod{II}$ to
@@ -2037,7 +2074,7 @@ $\kod{III}$ primes with $e_5>0$ are those with $q\equiv\pm1\pmod{20}$.
 \end{exercise}
 
 \begin{exercise}\label{ex:rings:i0star}
-Prove \Cref{prop:rings:i0star-identity} by expanding the product. Check Remark rem:afterquant(1): every prime $q\ge5$ of type $\kod{I}_n^*$ has $e_3\ge1$, and a prime of
+Prove \Cref{prop:rings:i0star-identity} by expanding the product. Then check part (1) of Remark rem:afterquant: every prime $q\ge5$ of type $\kod{I}_n^*$ has $e_3\ge1$, and a prime of
 type $\kod{I}_0^*$ has $e_3\ge1$ iff $q\equiv1\pmod3$ or $3\mid a_q(E')$. Compute $e_3$ for type $\kod{I}_0^*$ at $q=7$ with $a_7(E')=-2$, and at $q=5$ and at $q=11$ with $a_q(E')=0$
 (answers: $2$, $2$, $2$).
 \end{exercise}
@@ -2098,15 +2135,15 @@ Show that if $p\nmid n$ and $p\mid\Phi_n(a)$, then $p\equiv1\pmod n$, and deduce
 
 \section{Notes and references}\label{sec:rings:notes}
 
-Sections 1 to 4 follow Dummit and Foote \cite{DummitFoote}: Sections 7.1 to 7.6 (rings, ideals, quotients, fractions, the Chinese
+Sections 1 to 4, 6 and 8 follow Dummit and Foote \cite{DummitFoote}: Sections 7.1 to 7.6 (rings, ideals, quotients, fractions, the Chinese
 remainder theorem), 8.1 to 8.3 (Euclidean domains, PIDs, UFDs), 9.1 to 9.5 (polynomial rings, Gauss's lemma, Eisenstein's criterion),
 13.1, 13.4 to 13.6 (field extensions, splitting fields, separability, cyclotomic polynomials) and 14.3 (finite fields); Lang
 \cite[Chapter IV, Section 2, and Chapter V, Section 5]{Lang} gives Gauss's lemma and finite fields in greater generality, and Atiyah and
 Macdonald \cite[Chapter 1]{AtiyahMacdonald} the existence of maximal ideals and the ideal theory of products. The Gaussian and
 Eisenstein integers are treated in Ireland and Rosen \cite[Chapter 1]{IrelandRosen}, together with unique factorisation in $\Z$.
 
-Sections 5 to 9 are classical elementary number theory: Ireland and Rosen \cite{IrelandRosen}, Chapter 4 for $(\Z/n)^\times$ and primitive
-roots, Chapter 5 for quadratic reciprocity and the Jacobi symbol, Chapter 6 for the quadratic Gauss sum (including Gauss's
+Sections 5 to 10 are classical elementary number theory: Ireland and Rosen \cite{IrelandRosen}, Chapter 4 for $(\Z/n)^\times$ and primitive
+roots, Chapter 5 for quadratic reciprocity and the Jacobi symbol, Chapter 6 for the quadratic Gauss sum (Section 6.4 for Gauss's
 determination of its sign, \Cref{rem:rings:gauss-sign}), Chapter 7 for finite fields, Chapter 8 for Gauss sums of general characters;
 Serre \cite[Chapter I]{SerreCourse} proves reciprocity by the same computation in characteristic $p$ as \Cref{thm:rings:qr} and the second
 supplement with an eighth root of unity. Among the many other proofs of reciprocity, Eisenstein's lattice-point proof is
@@ -2114,7 +2151,7 @@ supplement with an eighth root of unity. Among the many other proofs of reciproc
 lemma is folklore; the form used here, with its proof by the binomial theorem, is the standard one in the proof that $(\Z/p^k)^\times$
 is cyclic.
 
-The Kronecker symbol and fundamental discriminants follow Cohen \cite[Section 1.4]{Cohen93}; Dirichlet characters, conductors and
+The Kronecker symbol follows Cohen \cite[Section 1.4]{Cohen93}, and fundamental discriminants Cohen \cite[Section 5.1]{Cohen93}; Dirichlet characters, conductors and
 primitivity follow Washington \cite[Chapter 3]{Washington}, and orthogonality is Serre \cite[Chapter VI, Section 1]{SerreCourse}. The formula
 for the Gauss sum of an imprimitive character (\Cref{thm:rings:gauss-sums}(iv)) is proved here by the Chinese remainder theorem and the
 Ramanujan sum $\sum_{(y,m)=1}\zeta_m^y=\mu(m)$. Dirichlet characters as characters of $G_\Q$ are \Cref{ch:ant}, twisting of modular forms by them
@@ -2129,6 +2166,5 @@ with PARI/GP \cite{PARI} and Cremona's tables \cite{Cremona97}.
 Compared with the outline of this chapter, the following were proved in full rather than sketched or stated: the existence of
 maximal ideals (from Zorn's lemma), the unique factorisation of $R[x]$ over a UFD, the primitivity of $\chi_D$ for fundamental $D$
 (\Cref{cor:rings:fundamental-primitive}) and the Gauss sum of an imprimitive character. Only Ostrowski's theorem and the sign of the
-quadratic Gauss sum are stated without proof, and neither is used. No theorem numbers of the sources are cited; the section and
-chapter numbers above were checked against the editions in the bibliography as far as possible, and the reader should treat them
-as pointers to the relevant part of each book.
+quadratic Gauss sum are stated without proof, and neither is used. No theorem numbers of the sources are cited. The chapter and section numbers above are given as pointers to the relevant part of
+each book; they were not verified against the printed editions.
