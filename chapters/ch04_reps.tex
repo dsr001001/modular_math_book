@@ -78,10 +78,10 @@ composition factors with multiplicity, and the length, do not depend on the seri
 \item \textbf{Properties of $V^{ss}$.} (i) $V^{ss}$ is well defined, $V^{ss}\simeq V$ iff $V$ is semisimple, and $(\cdot)^{ss}$ is additive in
 short exact sequences; (ii) $\det(X-g\mid V)=\det(X-g\mid V^{ss})$; (iii) over a perfect $k$, $(V^{ss})_K\simeq(V_K)^{ss}$ for algebraic $K/k$.
 \emph{(proved here for (i), (ii); (iii) stated; reference)} \Cref{prop:reps:semisimplification}.
-\item \textbf{Extensions of two characters.} Let $\dim V=2$ with a stable line $L$ on which $G$ acts by $\chi_1$, and $\chi_2$ on $V/L$,
-$\rho=\sm{\chi_1}b0{\chi_2}$. (i) $V$ is semisimple iff $V\simeq\chi_1\oplus\chi_2$ iff $V$ has a second stable line iff $b(g)=c(\chi_2(g)-\chi_1(g))$
+\item \textbf{Extensions of two characters.} Let $\dim V=2$ with a stable line $L$ on which $G$ acts by $\eta_1$, and $\eta_2$ on $V/L$,
+$\rho=\sm{\eta_1}b0{\eta_2}$. (i) $V$ is semisimple iff $V\simeq\eta_1\oplus\eta_2$ iff $V$ has a second stable line iff $b(g)=c(\eta_2(g)-\eta_1(g))$
 for some $c\in k$; (ii) if $V$ is not semisimple, $L$ is its only stable line, and an isomorphism of two such extensions matches
-the sub-characters and the quotient characters; (iii) if $\chi_1\ne\chi_2$ and $V$ is semisimple, $V$ has exactly two stable lines.
+the sub-characters and the quotient characters; (iii) if $\eta_1\ne\eta_2$ and $V$ is semisimple, $V$ has exactly two stable lines.
 \emph{(proved here)} \Cref{prop:reps:nonsplit-line}.
 \item \textbf{Absolute irreducibility in dimension $2$.} (i) If $\rho(G)$ is abelian, $\rho$ is absolutely reducible; (ii) if $\rho(G)$ is finite of
 order prime to $\operatorname{char}k$ and $\rho$ is absolutely reducible, then $\rho(G)$ is abelian; so a finite non-abelian subgroup of $\GL_2(k)$
@@ -197,15 +197,17 @@ irreducible for one $L$, $\rhobar_{L'}\simeq\rhobar_L$ for all $L'$. \emph{(prov
 \Cref{thm:reps:homothety}.
 \item \textbf{Non-homothetic lattices.} For the upper triangular group, $\Zl e_1\oplus\Zl e_2$ and $\Zl e_1\oplus\ell\Zl e_2$ are stable, not homothetic,
 with non-isomorphic reductions of equal semisimplification. \emph{(proved here)} \Cref{ex:reps:nonhomothetic}.
-\item \textbf{Ribet's lemma.} If $V$ is irreducible of dimension $2$ and $\rhobar^{ss}\simeq\chi_1\oplus\chi_2$, some stable lattice reduces to a
-non-split extension with sub-character $\chi_1$. \emph{(stated; reference)} \Cref{thm:reps:ribet}.
+\item \textbf{Ribet's lemma.} Let $K$ be finite over $\Ql$ with ring of integers $\mathcal{O}$, $G$ compact, and $\rho\colon G\to\GL_2(K)$ continuous and
+irreducible. If $\rhobar^{ss}\simeq\eta_1\oplus\eta_2$, some stable lattice reduces to a
+non-split extension with sub-character $\eta_1$ (and one with sub-character $\eta_2$). \emph{(stated; reference)} \Cref{thm:reps:ribet}.
 \item \textbf{Twisted self-isomorphisms modulo $\varpi^m$.} If $T/\varpi T$ is absolutely irreducible, the module of $G$-maps
 $T/\varpi^m\to(T/\varpi^m)(\chi)$ is cyclic, its elements of exact order $\varpi^m$ are isomorphisms, and the length of the invariants of $X=\End_\mathcal{O}(T)(\chi)\otimes K/\mathcal{O}$ is the
 largest $h$ with $T/\varpi^h\simeq(T/\varpi^h)(\chi)$; the same for $\ad T(\chi)$ if $n\in\mathcal{O}^\times$, $\bar\chi\ne1$; $\chi^n\equiv1\pmod{\varpi^h}$; for $n=2$, $\ell$ odd,
 $\chi(G)=\Zl^\times$: $h=0$ if $\ell\ge5$, $h\le1$ if $\ell=3$. \emph{(proved here)} \Cref{prop:reps:twist-length}.
-\item \textbf{The mod $\ell$ dictionary.} For $\rhobar\colon G_\Q\to\GL_2(\F_\ell)$, $\ell$ odd: irreducible equals absolutely irreducible; the hypothesis of
-Theorem thm:main fails iff $\rhobar\simeq\rhobar\otimes\chi_{\ell^*}$; Lemma lem:h0 concerns $\rhobar\simeq\rhobar\otimes\bar\chi_\ell$, possible only for
-$\ell=3$. \Cref{rem:reps:mod-l-galois}.
+\item \textbf{The mod $\ell$ dictionary.} For $\rhobar\colon G_\Q\to\GL_2(\F_\ell)$ continuous, $\ell$ odd, $\det\rhobar=\bar\chi_\ell$: irreducible equals
+absolutely irreducible; for $\rhobar$ irreducible, the hypothesis of Theorem thm:main fails iff $\rhobar\simeq\rhobar\otimes\chi_{\ell^*}$, iff $\rhobar\otimes\Fbar_\ell$
+is induced from $G_{\Q(\sqrt{\ell^*})}$ (for $\rhobar$ reducible it always fails); Lemma lem:h0 concerns $\rhobar\simeq\rhobar\otimes\bar\chi_\ell$, possible only
+for $\ell=3$. \emph{(proved here from the cited Galois input)} \Cref{rem:reps:mod-l-galois}.
 \item \textbf{Dickson.} For $\ell$ odd and $G\le\GL_2(\F_\ell)$: if $\ell\mid\#G$, $G\supseteq\SL_2(\F_\ell)$ or $G$ lies in a Borel subgroup; if $\ell\nmid\#G$, the
 image in $\PGL_2(\F_\ell)$ is cyclic, dihedral, or $A_4$, $S_4$, $A_5$. \emph{(stated; reference)} \Cref{thm:reps:dickson}.
 \end{enumerate}
@@ -249,7 +251,9 @@ This section fixes the language: representations, the linear constructions on th
 $G$-maps under extension of the field of scalars. In the paper these are used silently everywhere. Three uses are explicit:
 the identification of $H^0$ of a twisted adjoint with a space of $G$-maps in Lemma lem:h0 (\Cref{prop:reps:homG}), the
 descent from $\F_9$ to $\F_3$ of the isomorphism $\rhobar\simeq\rhobar\otimes\chi_{-3}$ in Proposition prop:ns, and the phrase ``over a
-common finite extension of $\F_\ell$'' in Lemma lem:old (\Cref{prop:reps:scalars}).
+common finite extension of $\F_\ell$'' in Lemma lem:old (\Cref{prop:reps:scalars}). The words ``irreducible'' and ``absolutely irreducible'' and
+Schur's lemma, defined and proved in \Cref{sec:reps:irreducible}, are used here by forward reference; there is no circularity, since
+\Cref{prop:reps:scalars}(ii) uses only \Cref{thm:reps:schur}(i), whose proof uses nothing from this section.
 
 \begin{convention}\label{conv:reps:conventions}
 The following conventions hold in this chapter.
@@ -384,7 +388,7 @@ over $K$ (rank is the size of a nonvanishing minor of its matrix), so $\ker(\del
 and the left side is $\Hom_{K[G]}(V_K,W_K)$. The statement on invariants is the case $V=\mathbf1$.
 (ii) By (i), $\Hom_{k[G]}(V,W)\ne0$; a nonzero $G$-map between irreducible representations is an isomorphism (\Cref{thm:reps:schur}(i)).
 (iii) If $U\subseteq W$ is a subrepresentation, $U_K$ is a subrepresentation of $W_K\simeq V_K$, so $U_K\in\{0,W_K\}$ and $U\in\{0,W\}$; thus $W$
-is irreducible (it is nonzero), and (ii) applies.
+is irreducible (it is nonzero). The same argument applied to $V$ shows that $V$ is irreducible, since $V_K$ is. So (ii) applies.
 (iv) We do not prove this; see \cite[Section 29]{CurtisReiner}. It is not needed in the paper: wherever an isomorphism is descended,
 (ii) or (iii) applies.
 \end{proof}
@@ -569,8 +573,10 @@ $x=e_Gx=\sum r_ie_Gm_i\in IM^G$.
 
 \begin{paperlink}
 In Lemma lem:euler and Remark rem:types, for $\ell\ge5$ the finite images of inertia (of order $2,3,4,6$) have order prime to $\ell$, so by (ii)
-their invariants on $T$ and on $\ad T$ commute with reduction modulo $\ell^m$. At $\ell=3$ this fails for the elements of order $3$ and $6$
-(\Cref{prop:reps:reduction-cyclic}); that failure is the content of Lemma lem:IV. In Proposition prop:ns the groups $Q_8$ and $C_4$ have order
+their invariants on $T$ and on $\ad T$ commute with reduction modulo $\ell^m$. At $\ell=3$ this fails only for the elements of order $3$ acting on $T$:
+$T^g=0$ while $(T/3T)^g$ is a line (\Cref{prop:reps:reduction-cyclic}(ii)); that failure is the content of Lemma lem:IV. For an element of
+order $6$, $T^g=0=(T/3T)^g$ (\Cref{prop:reps:reduction-cyclic}(iii)), and on $\ad T$ it acts as $-g$, of order $3$, whose invariant line
+$\Z_3(1-2g)$ reduces onto $(\ad T/3)^g$ (\Cref{prop:reps:reduction-cyclic}(ii)): there the invariants still commute with reduction. In Proposition prop:ns the groups $Q_8$ and $C_4$ have order
 prime to $3$, which is used in \Cref{prop:reps:dim2-absirr}.
 \end{paperlink}
 
@@ -628,36 +634,36 @@ without it.
 \end{proof}
 
 \begin{proposition}[Extensions of two characters]\label{prop:reps:nonsplit-line}
-Let $V$ be a two-dimensional representation of any group $G$ over $k$ with a stable line $L$, on which $G$ acts by $\chi_1$, and let $G$
-act on $V/L$ by $\chi_2$. In a basis $e_1\in L$, $e_2$,
+Let $V$ be a two-dimensional representation of any group $G$ over $k$ with a stable line $L$, on which $G$ acts by $\eta_1$, and let $G$
+act on $V/L$ by $\eta_2$. In a basis $e_1\in L$, $e_2$,
 \[
-\rho(g)=\Mtwo{\chi_1(g)}{b(g)}0{\chi_2(g)},\qquad b(gh)=\chi_1(g)b(h)+b(g)\chi_2(h).
+\rho(g)=\Mtwo{\eta_1(g)}{b(g)}0{\eta_2(g)},\qquad b(gh)=\eta_1(g)b(h)+b(g)\eta_2(h).
 \]
 \begin{enumerate}[label=(\roman*)]
-\item The following are equivalent: $V$ is semisimple; $V\simeq\chi_1\oplus\chi_2$; $V$ has a stable line other than $L$; there is $c\in k$ with
-$b(g)=c\,(\chi_2(g)-\chi_1(g))$ for all $g$ (then $k(ce_1+e_2)$ is stable).
+\item The following are equivalent: $V$ is semisimple; $V\simeq\eta_1\oplus\eta_2$; $V$ has a stable line other than $L$; there is $c\in k$ with
+$b(g)=c\,(\eta_2(g)-\eta_1(g))$ for all $g$ (then $k(ce_1+e_2)$ is stable).
 \item If $V$ is not semisimple (a \emph{non-split extension}), $L$ is its only stable line. Hence if $V'$ is another non-split extension,
-with sub-character $\chi_1'$ and quotient character $\chi_2'$, every isomorphism $V\simeq V'$ maps $L$ onto $L'$, and $\chi_1=\chi_1'$, $\chi_2=\chi_2'$.
-\item If $\chi_1\ne\chi_2$ and $V$ is semisimple, $V$ has exactly two stable lines.
+with sub-character $\eta_1'$ and quotient character $\eta_2'$, every isomorphism $V\simeq V'$ maps $L$ onto $L'$, and $\eta_1=\eta_1'$, $\eta_2=\eta_2'$.
+\item If $\eta_1\ne\eta_2$ and $V$ is semisimple, $V$ has exactly two stable lines.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
 The cocycle identity is the upper right entry of $\rho(gh)=\rho(g)\rho(h)$.
-(i) If $V$ is semisimple, $L$ has a stable complement $L'$, a second stable line, and $L'\simeq V/L$, so $V=L\oplus L'\simeq\chi_1\oplus\chi_2$; if
-$V\simeq\chi_1\oplus\chi_2$ it is semisimple. A line other than $L$ is $k(ce_1+e_2)$ for a unique $c$, and
-$g(ce_1+e_2)=(c\chi_1(g)+b(g))e_1+\chi_2(g)e_2$ lies in $k(ce_1+e_2)$ iff $c\chi_1(g)+b(g)=c\chi_2(g)$. A second stable line is a complement of $L$.
+(i) If $V$ is semisimple, $L$ has a stable complement $L'$, a second stable line, and $L'\simeq V/L$, so $V=L\oplus L'\simeq\eta_1\oplus\eta_2$; if
+$V\simeq\eta_1\oplus\eta_2$ it is semisimple. A line other than $L$ is $k(ce_1+e_2)$ for a unique $c$, and
+$g(ce_1+e_2)=(c\eta_1(g)+b(g))e_1+\eta_2(g)e_2$ lies in $k(ce_1+e_2)$ iff $c\eta_1(g)+b(g)=c\eta_2(g)$. A second stable line is a complement of $L$.
 (ii) A second stable line would make $V$ semisimple by (i). An isomorphism maps stable lines to stable lines, so $L$ to $L'$, and
 induces isomorphisms $L\simeq L'$ and $V/L\simeq V'/L'$ of one-dimensional representations, which are equalities of characters.
-(iii) In a basis $v_1,v_2$ of stable lines, $V=kv_1\oplus kv_2$ with characters $\chi_1\ne\chi_2$, a vector $xv_1+yv_2$ with $xy\ne0$ spans a stable line only if
-$\chi_1(g)=\chi_2(g)$ for all $g$.
+(iii) In a basis $v_1,v_2$ of stable lines, $V=kv_1\oplus kv_2$ with characters $\eta_1\ne\eta_2$, a vector $xv_1+yv_2$ with $xy\ne0$ spans a stable line only if
+$\eta_1(g)=\eta_2(g)$ for all $g$.
 \end{proof}
 
 \begin{paperlink}
 Lemma lem:old, case $p\,\|\,N$ with $\rhobar$ ramified at $p$: ``a non-split extension of two characters has a unique stable line, so the
 isomorphism $\rhobar|_{D_p}\simeq\rhobar_h|_{D_p}$ matches the sublines and hence the quotients'' is (ii), applied over a common finite extension
-of $\F_\ell$. Lemmas lem:tamagawa-exp and lem:tamfactor use the shape $\sm{\chi_\ell\varepsilon}{\varepsilon\kappa}0\varepsilon$ of the Tate representation: the corner
-$\varepsilon\kappa$ satisfies the cocycle identity above with $\chi_1=\chi_\ell\varepsilon$, $\chi_2=\varepsilon$ (convention B-C14; the cohomological reading is in
+of $\F_\ell$. Lemma lem:tamfactor uses the shape $\sm{\chi_\ell\varepsilon}{\varepsilon\kappa}0\varepsilon$ of the Tate representation: the corner
+$\varepsilon\kappa$ satisfies the cocycle identity above with $\eta_1=\chi_\ell\varepsilon$, $\eta_2=\varepsilon$ (convention B-C14; the cohomological reading is in
 \Cref{ch:cohomology}).
 \end{paperlink}
 
@@ -665,7 +671,7 @@ $\varepsilon\kappa$ satisfies the cocycle identity above with $\chi_1=\chi_\ell\
 Let $\rho\colon G\to\GL_2(k)$ be a representation.
 \begin{enumerate}[label=(\roman*)]
 \item If $\rho(G)$ is abelian, $\rho$ is absolutely reducible.
-\item If $\rho(G)$ is finite of order prime to $\operatorname{char}k$ and $\rho$ is absolutely reducible, then $\rho_{\bar k}\simeq\chi_1\oplus\chi_2$ and $\rho(G)$
+\item If $\rho(G)$ is finite of order prime to $\operatorname{char}k$ and $\rho$ is absolutely reducible, then $\rho_{\bar k}\simeq\eta_1\oplus\eta_2$ and $\rho(G)$
 is abelian. Hence a finite non-abelian subgroup of $\GL_2(k)$ of order prime to $\operatorname{char}k$ acts absolutely irreducibly on $k^2$.
 \item If $H\le G$ and $\Res_H\rho$ is absolutely irreducible, so is $\rho$.
 \item On $\F_3^2$: $Q_8$ acts absolutely irreducibly, and hence so do $\SL_2(\F_3)$, $N_{ns}(\F_3)$ and $\GL_2(\F_3)$, which contain it; $N_s(\F_3)\simeq D_4$
@@ -762,16 +768,16 @@ Both have five conjugacy classes, and their irreducible trace functions over $\C
 $D_4$ & $1$ & $-1$ & $\pm J$ & $\pm\sigma$ & $\pm w$\\
 $Q_8$ & $1$ & $-1$ & $\pm J$ & $\pm j$ & $\pm k$\\
 \midrule
-$\chi_0$ & $1$ & $1$ & $1$ & $1$ & $1$\\
-$\chi_1$ & $1$ & $1$ & $1$ & $-1$ & $-1$\\
-$\chi_2$ & $1$ & $1$ & $-1$ & $1$ & $-1$\\
-$\chi_3$ & $1$ & $1$ & $-1$ & $-1$ & $1$\\
+$\lambda_0$ & $1$ & $1$ & $1$ & $1$ & $1$\\
+$\lambda_1$ & $1$ & $1$ & $1$ & $-1$ & $-1$\\
+$\lambda_2$ & $1$ & $1$ & $-1$ & $1$ & $-1$\\
+$\lambda_3$ & $1$ & $1$ & $-1$ & $-1$ & $1$\\
 $\tr_2$ & $2$ & $-2$ & $0$ & $0$ & $0$\\
 \bottomrule
 \end{tabular}
 \end{center}
-The four characters factor through the quotient by $\{\pm1\}$, which is $V_4$ for both groups; for $D_4$, $\chi_1=\det$ (kernel $C_4$), $\chi_2$ has kernel
-$C_s(\F_3)=\{\pm1,\pm\sigma\}$ and $\chi_3$ kernel $\{\pm1,\pm w\}$. The orthogonality relations and $4\cdot1^2+2^2=8$ show the table is complete. Yet
+The four characters factor through the quotient by $\{\pm1\}$, which is $V_4$ for both groups; for $D_4$, $\lambda_1=\det$ (kernel $C_4$), $\lambda_2$ has kernel
+$C_s(\F_3)=\{\pm1,\pm\sigma\}$ and $\lambda_3$ kernel $\{\pm1,\pm w\}$. The orthogonality relations and $4\cdot1^2+2^2=8$ show the table is complete. Yet
 $D_4\not\simeq Q_8$ ($D_4$ has five involutions, $Q_8$ one). The two-dimensional representation of $D_4$ is given by the integral matrices $J$, $\sigma$,
 so it is defined over $\Q$, and its reduction modulo $3$ is the standard representation of $N_s(\F_3)$. That of $Q_8$ is not defined over
 $\R$: its Frobenius-Schur indicator $\frac18\sum_g\tr_2(g^2)$ is $\frac18(2\cdot2+6\cdot(-2))=-1$, which for an irreducible representation means that it
@@ -873,8 +879,10 @@ so $B_1=B_2=0$.
 \item Let $k\subseteq k'$ be fields, $V_1$ a representation over $k$ and $V_2$ one over $k'$, with $\det(X-\rho_1(g))=\det(X-\rho_2(g))$ for all $g$. If
 $V_1\otimes_kk'$ is irreducible (for instance if $V_1$ is absolutely irreducible), then $V_2\simeq V_1\otimes_kk'$; no semisimplicity of $V_2$ is
 assumed.
-\item The irreducibility of $V_1\otimes_kk'$ cannot be weakened to that of $V_1$. For $C_4$ acting on $V_1=\F_3^2$ and $V_2=\psi\oplus\psi^{-1}$ over $\F_9$
-(\Cref{ex:reps:c4}), $V_1$ is irreducible and $V_2$ is not. For the group $G=\bigl\{\sm x y0{x^3}:x\in\F_9^\times,y\in\F_9\bigr\}$, its standard
+\item The irreducibility of $V_1\otimes_kk'$ cannot be weakened to that of $V_1$. First, the irreducibility of $V_1$ does not make $V_2$
+irreducible: for $C_4$ acting on $V_1=\F_3^2$ and $V_2=\psi\oplus\psi^{-1}$ over $\F_9$ (\Cref{ex:reps:c4}), $V_1$ is irreducible and $V_2$ is not. This
+example does not contradict the conclusion of (ii), since here $V_2\simeq V_1\otimes\F_9$. A genuine counterexample to the conclusion is the
+following. For the group $G=\bigl\{\sm x y0{x^3}:x\in\F_9^\times,y\in\F_9\bigr\}$, its standard
 representation $V_2$ on $\F_9^2$ and the representation $V_1$ on $\F_9=\F_3^2$ by multiplication by $x$ have the same characteristic
 polynomials $(X-x)(X-x^3)$ and $V_1$ is irreducible over $\F_3$, but $V_2$ is not semisimple while $V_1\otimes\F_9$ is, so $V_2\not\simeq V_1\otimes\F_9$.
 \end{enumerate}
@@ -903,8 +911,8 @@ $\rhobar_h\simeq\rhobar\otimes k'$; with only $\rhobar$ irreducible over $\F_\el
 
 This section develops induced representations and their behaviour under restriction to a subgroup of index $2$. In the paper,
 the image $N_s(\F_3)$ of Proposition prop:ns gives a representation induced, over $\F_9$, from a character of order $4$ of
-$\Gal(\Qbar/\Q(\sqrt{-3}))$, and the condition ``absolutely irreducible on $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$'' of Theorem thm:main is, by Clifford
-theory (\Cref{thm:reps:clifford-index-two}), the condition ``not induced from $\Q(\sqrt{\ell^*})$'', equivalently $\rhobar\not\simeq\rhobar\otimes\chi_{\ell^*}$
+$\Gal(\Qbar/\Q(\sqrt{-3}))$, and for $\rhobar$ irreducible the condition ``absolutely irreducible on $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$'' of Theorem thm:main
+is, by Clifford theory (\Cref{thm:reps:clifford-index-two}), the condition ``not induced from $\Q(\sqrt{\ell^*})$'', equivalently $\rhobar\not\simeq\rhobar\otimes\chi_{\ell^*}$
 (Lemma lem:h0 for $\ell=3$, Proposition prop:Sf).
 
 \begin{definition}\label{def:reps:induction}
@@ -986,7 +994,7 @@ Let $H\le G$ have finite index and $W$ a representation of $H$.
 \begin{enumerate}[label=(\alph*)]
 \item For $K\le G$, $\Res_K\Ind_H^GW\simeq\bigoplus_{s\in K\backslash G/H}\Ind^K_{K\cap sHs^{-1}}\Res_{K\cap sHs^{-1}}W^s$, the sum over a set of representatives of the
 double cosets.
-\item (Mackey's irreducibility criterion.) Let $G$ be finite and $\operatorname{char}k=0$, $k=\C$. Then $\Ind_H^GW$ is irreducible iff $W$ is
+\item (Mackey's irreducibility criterion.) Let $G$ be finite and $k=\C$. Then $\Ind_H^GW$ is irreducible iff $W$ is
 irreducible and, for every $s\in G\setminus H$, the representations $W^s$ and $W$ of $H_s=sHs^{-1}\cap H$ have no common irreducible
 constituent.
 \item (Index two, any characteristic.) Let $[G:H]=2$, $s\in G\setminus H$, and $W$ absolutely irreducible. Then $\Res_H\Ind_H^GW\simeq W\oplus W^s$, and
@@ -1110,7 +1118,8 @@ dihedral of order $m\ge4$, hence not cyclic); $V_4$ has three subgroups of index
 \end{proof}
 
 \begin{paperlink}
-The hypothesis of Theorem thm:main excludes exactly the representations induced from $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$, not all dihedral ones. At
+Among irreducible $\rhobar$ (a reducible one fails it trivially), the hypothesis of Theorem thm:main excludes exactly the representations
+induced from $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$, not all dihedral ones (\Cref{rem:reps:mod-l-galois}(ii)). At
 $\ell=3$, the image $N_s(\F_3)$ has projective image $V_4$ and is induced in three ways, one of them from the determinant-one subgroup
 (\Cref{prop:reps:ns3-induced}); the image $N_{ns}(\F_3)$ has projective image $D_4$ and is induced only from $C_{ns}(\F_3)$, whose fixed field is not
 $\Q(\sqrt{-3})$ (\Cref{prop:reps:nns3}), so it satisfies the hypothesis.
@@ -1540,25 +1549,25 @@ viewed as a matrix). A Frobenius element is an abstract $F$ satisfying $FgF^{-1}
 \end{convention}
 
 \begin{proposition}[Unipotent elements]\label{prop:reps:unipotent-invariants}
-Let $k$ be a field, $V=k^2$, $u\in\GL_2(k)$ unipotent (characteristic polynomial $(X-1)^2$) with $u\ne1$, $N=u-1$, and $\xi\in k^\times$, $\xi\ne1$.
+Let $k$ be a field, $V=k^2$, $u\in\GL_2(k)$ unipotent (characteristic polynomial $(X-1)^2$) with $u\ne1$, $\nu=u-1$, and $\xi\in k^\times$, $\xi\ne1$.
 \begin{enumerate}[label=(\roman*)]
-\item $N\ne0$ and $N^2=0$; in a basis $e_1\in\ker N$, $e_2\notin\ker N$ one has $u=\sm1{n'}01$ with $n'\ne0$. $V^u=\ker N=\im N$ is a line, and $V^{\xi u}=0$. In
+\item $\nu\ne0$ and $\nu^2=0$; in a basis $e_1\in\ker\nu$, $e_2\notin\ker\nu$ one has $u=\sm1{n'}01$ with $n'\ne0$. $V^u=\ker\nu=\im\nu$ is a line, and $V^{\xi u}=0$. In
 particular ``minus a unipotent'' ($\xi=-1$, $\operatorname{char}k\ne2$) fixes no nonzero vector.
-\item If $\operatorname{char}k\ne2$, then $(\ad V)^u=(\ad V)^{\xi u}=kN=k\,e$, a line. If $\operatorname{char}k=2$, $(\ad V)^u=ke+kh$. The same holds for any group $H$ acting
+\item If $\operatorname{char}k\ne2$, then $(\ad V)^u=(\ad V)^{\xi u}=k\nu=k\,e$, a line. If $\operatorname{char}k=2$, $(\ad V)^u=ke+kh$. The same holds for any group $H$ acting
 through matrices $\xi'u^m$ ($\xi'$ scalar, $m\in\Z$) one of which has $u^m\ne1$.
-\item If $F\in\GL_2(k)$ satisfies $FuF^{-1}=u^q$ with $q\in\Z$, then $F$ preserves $(\ad V)^u$ and acts on it by $q$: $FNF^{-1}=u^q-1=qN$. Hence $F^{-1}$ acts by
-$q^{-1}$ when $q\in k^\times$. The same holds for $q\in\Zl$ when $k\supseteq\Ql$ and $u^q$ is defined by continuity, $u^q=1+qN$.
+\item If $F\in\GL_2(k)$ satisfies $FuF^{-1}=u^q$ with $q\in\Z$, then $F$ preserves $(\ad V)^u$ and acts on it by $q$: $F\nu F^{-1}=u^q-1=q\nu$. Hence $F^{-1}$ acts by
+$q^{-1}$ when $q\in k^\times$. The same holds for $q\in\Zl$ when $k\supseteq\Ql$ and $u^q$ is defined by continuity, $u^q=1+q\nu$.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-(i) By Cayley-Hamilton $N^2=0$, and $N\ne0$ as $u\ne1$. Then $\im N\subseteq\ker N$, both are lines, so they are equal. For $e_2\notin\ker N$,
-$Ne_2\in\ker N\setminus\{0\}$, say $Ne_2=n'e_1$. A vector fixed by $\xi u$ would be an eigenvector of $u$ with eigenvalue $\xi^{-1}\ne1$, but $1$ is the only
+(i) By Cayley-Hamilton $\nu^2=0$, and $\nu\ne0$ as $u\ne1$. Then $\im\nu\subseteq\ker\nu$, both are lines, so they are equal. For $e_2\notin\ker\nu$,
+$\nu e_2\in\ker\nu\setminus\{0\}$, say $\nu e_2=n'e_1$. A vector fixed by $\xi u$ would be an eigenvector of $u$ with eigenvalue $\xi^{-1}\ne1$, but $1$ is the only
 eigenvalue of $u$.
 (ii) Scalars act trivially on $\ad V$, so $(\ad V)^{\xi u}=(\ad V)^u$. By \Cref{prop:reps:adjoint}(iii) with $t=u$, for $x=\alpha e+\beta h+\gamma f$,
-$(u-1)x=(-2n'\beta-n'^2\gamma)e+n'\gamma h$, which vanishes iff $\gamma=0$ and $2\beta=0$. For $H$: $u^m=1+mN$, and if $u^m\ne1$ it is again a nontrivial
+$(u-1)x=(-2n'\beta-n'^2\gamma)e+n'\gamma h$, which vanishes iff $\gamma=0$ and $2\beta=0$. For $H$: $u^m=1+m\nu$, and if $u^m\ne1$ it is again a nontrivial
 unipotent with $(\ad V)^{u^m}=ke$; every element of $H$ fixes $e$.
-(iii) $FNF^{-1}=FuF^{-1}-1=u^q-1$, and $u^q=(1+N)^q=1+qN$ for every $q\in\Z$ (binomial theorem with $N^2=0$, and $(1+N)^{-1}=1-N$). By continuity the
+(iii) $F\nu F^{-1}=FuF^{-1}-1=u^q-1$, and $u^q=(1+\nu)^q=1+q\nu$ for every $q\in\Z$ (binomial theorem with $\nu^2=0$, and $(1+\nu)^{-1}=1-\nu$). By continuity the
 same holds for $q\in\Zl$.
 \end{proof}
 
@@ -1656,10 +1665,10 @@ is free of rank one over $\Zl[g]$; for $\ell=3$, $m=3$, this gives $T/3T\simeq\Z
 \end{proposition}
 
 \begin{proof}
-First, the kernel $1+\ell\mathrm M_2(\Zl)$ of reduction contains no element $h\ne1$ of finite order prime to $\ell$, and for $\ell$ odd no element of order $\ell$.
-Write $h=1+\ell^ay$ with $a\ge1$ and $y\not\equiv0\pmod\ell$. For $r$ prime to $\ell$, $h^r\equiv1+r\ell^ay\pmod{\ell^{a+1}}$, so $h^r\ne1$. For $\ell$ odd,
-$h^\ell=1+\ell^{a+1}y+\binom\ell2\ell^{2a}y^2+\dots\equiv1+\ell^{a+1}y\pmod{\ell^{a+2}}$, because $\ell\mid\binom\ell j$ for $0<j<\ell$, $2a+1\ge a+2$ and $\ell a\ge a+2$ (using
-$\ell\ge3$); so $h^\ell\ne1$ (this is also in \Cref{ch:groups}). A nontrivial finite group contains an element of prime order, so the finite
+First, the kernel $1+\ell\mathrm M_2(\Zl)$ of reduction contains no element $\gamma\ne1$ of finite order prime to $\ell$, and for $\ell$ odd no element of order $\ell$.
+Write $\gamma=1+\ell^ay$ with $a\ge1$ and $y\not\equiv0\pmod\ell$. For $r$ prime to $\ell$, $\gamma^r\equiv1+r\ell^ay\pmod{\ell^{a+1}}$, so $\gamma^r\ne1$. For $\ell$ odd,
+$\gamma^\ell=1+\ell^{a+1}y+\binom\ell2\ell^{2a}y^2+\dots\equiv1+\ell^{a+1}y\pmod{\ell^{a+2}}$, because $\ell\mid\binom\ell j$ for $0<j<\ell$, $2a+1\ge a+2$ and $\ell a\ge a+2$ (using
+$\ell\ge3$); so $\gamma^\ell\ne1$ (this is also in \Cref{ch:groups}). A nontrivial finite group contains an element of prime order, so the finite
 subgroups of the kernel are trivial when $\ell$ is odd, and the finite subgroups of order prime to $\ell$ are trivial for every $\ell$. Hence
 reduction modulo $\ell$ is injective on $\langle g\rangle$ if $\ell$ is odd or $\ell\nmid m$.
 (i) $\bar g$ has order $m$ by the above, and $\#\langle g\rangle=m\in\Zl^\times$; apply \Cref{thm:reps:maschke}(ii) to the lattices $T$ and $\ad T$. $T^g=0$ by
@@ -1680,10 +1689,10 @@ $T/3T$ are proved in \Cref{ch:ant}; we do not prove them here. (The fixed space 
 \begin{paperlink}
 Lemma lem:IV (types $\kod{IV}$, $\kod{IV}^*$ at $q\ne3$): ``its image in $\Aut(E[3])$ is a nontrivial unipotent subgroup. Consequently $E[3]^{I_q}$ is a
 line'' is \Cref{prop:reps:reduction-cyclic}(ii), and ``reduction modulo $3$ is injective on it, the kernel of $\GL_2(\Z_3)\to\GL_2(\F_3)$ being
-torsion-free'' is the first paragraph of its proof; the route through $T_3E\simeq\Z_3[X]/(X^2+X+1)$ of the remark that follows the lemma in the paper is (v). ``The trace-zero
+torsion-free'' is the first paragraph of its proof; the route through $T_3E$ free of rank one over $\Z_3[X]/(X^2+X+1)$, in the unnumbered paragraph after the lemma in the paper, is (v). ``The trace-zero
 endomorphisms commuting with $\sigma$ form the line spanned by $\sigma-\sigma^{-1}=2\sigma+1$'' is \Cref{lem:reps:commutant}, and ``$\Frob_q$, and therefore also
 $\Frob_q^{-1}$, acts on the line by $\chi_{-3}(q)$'' is \Cref{prop:reps:cyclic-shapes}(iii). In the exclusion of potentially multiplicative reduction,
-``$\rhobar_{E,3}(I_q)$ would contain $-1$, which fixes no line'' is \Cref{prop:reps:unipotent-invariants}(i) with $\xi=-1$. Remark rem:types (``$E[3]^{I_q}=0$''
+``$\rhobar_{E,3}(I_q)$ would contain $-1$, which fixes no line'' is trivial: the scalar $-1$ fixes no nonzero vector of $E[3]$, so $E[3]^{I_q}$ would be $0$. Remark rem:types (``$E[3]^{I_q}=0$''
 for $\kod{I}_0^*$, $\kod{III}$, $\kod{III}^*$, $\kod{II}$, $\kod{II}^*$, $\kod{I}_n^*$) is (iii), (iv) and \Cref{prop:reps:unipotent-invariants}(i). Lemma lem:euler is the
 table above: types $\kod{II}$, $\kod{IV}$ and their duals use $2\sigma+1$ inside $\End_{I_q}(T)=\Zl[\sigma]$, which is not a field for $\ell\equiv1\pmod3$ ((v) and
 \Cref{lem:reps:commutant}); types $\kod{III}$, $\kod{III}^*$ use the line $\Ql\tau$, with no need to diagonalise $\tau$ over $\Ql$; type $\kod{I}_n$ uses
@@ -1773,12 +1782,12 @@ differently.
 
 \begin{theorem}[Ribet's lemma]\label{thm:reps:ribet}
 Let $K$ be a finite extension of $\Ql$ with ring of integers $\mathcal{O}$, $G$ a compact group and $\rho\colon G\to\GL_2(K)$ a continuous irreducible
-representation such that $\rhobar^{ss}\simeq\chi_1\oplus\chi_2$ for characters $\chi_1,\chi_2$. Then there is a $G$-stable lattice $L$ whose reduction $\rhobar_L$ is a non-split
-extension with sub-character $\chi_1$ (and one with sub-character $\chi_2$).
+representation such that $\rhobar^{ss}\simeq\eta_1\oplus\eta_2$ for characters $\eta_1,\eta_2$. Then there is a $G$-stable lattice $L$ whose reduction $\rhobar_L$ is a non-split
+extension with sub-character $\eta_1$ (and one with sub-character $\eta_2$).
 \end{theorem}
 
 \begin{proof}
-We do not prove this; see \cite[Section 2]{Ribet76}. (The idea: among the stable lattices, which up to homothety form a bounded segment in
+We do not prove this; see \cite[Section 2]{Ribet76}. (The idea: among the stable lattices, which up to homothety form a bounded convex subset (a finite subtree) of
 the tree of $\PGL_2(K)$ because $\rho$ is irreducible, an extremal one has a reduction with the required non-split shape.) In the literature
 ``Ribet's lemma'' usually means this statement; the name is sometimes also attached to \Cref{thm:reps:homothety}, which concerns the opposite
 situation of an irreducible reduction.
@@ -1793,8 +1802,8 @@ dimension at most $1$, so $M_m\simeq\mathcal{O}/\varpi^j$ for some $j\le m$.
 \item An element $\phi\in M_m$ with $\varpi^{m-1}\phi\ne0$ is an isomorphism $T/\varpi^m\simeq(T/\varpi^m)(\chi)$. Conversely an isomorphism has $\varpi^{m-1}\phi\ne0$, so it
 generates $M_m\simeq\mathcal{O}/\varpi^m$.
 \item Let $h=\sup\{m\ge0:T/\varpi^m\simeq(T/\varpi^m)(\chi)\}\in\{0,1,\dots,\infty\}$ and $X=\End_\mathcal{O}(T)(\chi)\otimes_\mathcal{O}K/\mathcal{O}$. Then $X[\varpi^m]=\End(T/\varpi^m)(\chi)$,
-$X^G[\varpi^m]=M_m\simeq\mathcal{O}/\varpi^{\min(m,h)}$, and $X^G$ has length $h$; if $h<\infty$, $X^G\simeq\mathcal{O}/\varpi^h$. If $h=\infty$ and the residue field is finite, then
-$T\simeq T(\chi)$.
+$X^G[\varpi^m]=M_m\simeq\mathcal{O}/\varpi^{\min(m,h)}$, and $X^G$ has length $h$; if $h<\infty$, $X^G\simeq\mathcal{O}/\varpi^h$. If $h=\infty$, then $T\simeq T(\chi)$ (no
+completeness of $\mathcal{O}$ is needed).
 \item If $n\in\mathcal{O}^\times$ and $\bar\chi\ne1$, the same holds for $\ad T(\chi)\otimes K/\mathcal{O}$: $(\ad T(\chi)\otimes K/\mathcal{O})^G=X^G$.
 \item If $T/\varpi^m\simeq(T/\varpi^m)(\chi)$ then $\chi^n\equiv1\pmod{\varpi^m}$ on $G$. In particular, if $n=2$, $\mathcal{O}=\Zl$ with $\ell$ odd and $\chi(G)=\Zl^\times$, then $h=0$
 for $\ell\ge5$ and $h\le1$ for $\ell=3$.
@@ -1814,9 +1823,21 @@ $G$-map $\phi'\colon T/\varpi^j\to(T/\varpi^j)(\chi)$ (defined by dividing the v
 $\varpi^{j-1}\phi\ne0$. By (ii) $\phi'$ is an isomorphism, so $j\le h$. Conversely, for $m\le h$ the reduction of an isomorphism at a level $\ge m$ is an
 isomorphism at level $m$, which generates $M_m\simeq\mathcal{O}/\varpi^m$ by (ii); and for $m>h$ with $h$ finite, if $\psi$ is an isomorphism at level $h$ and $\tilde\psi\in\End_\mathcal{O}(T)$
 lifts it, then $x\mapsto\varpi^{m-h}\tilde\psi(x)\bmod\varpi^m$ is an element of $M_m$ (it is $G$-equivariant because $\tilde\psi g-\chi(g)g\tilde\psi$ has values in
-$\varpi^hT$) of exact order $\varpi^h$. Hence $j=\min(m,h)$, and $X^G=\bigcup_mX^G[\varpi^m]$ has length $h$, and equals $X^G[\varpi^h]\simeq\mathcal{O}/\varpi^h$ when $h$ is finite. If $h=\infty$
-and the residue field is finite, the sets of isomorphisms $T/\varpi^m\to(T/\varpi^m)(\chi)$ are finite, nonempty, and form an inverse system under
-reduction, so their inverse limit is nonempty (\Cref{ch:groups}); an element is an isomorphism $T\simeq T(\chi)$.
+$\varpi^hT$) of exact order $\varpi^h$. Hence $j=\min(m,h)$, and $X^G=\bigcup_mX^G[\varpi^m]$ has length $h$, and equals $X^G[\varpi^h]\simeq\mathcal{O}/\varpi^h$ when $h$ is finite.
+
+Now let $h=\infty$. \emph{Compatible isomorphisms.} The reduction map $M_{m+1}\to M_m$ is surjective: $M_{m+1}$ contains an isomorphism, whose
+reduction is an isomorphism at level $m$ and so generates $M_m$ by (ii). Choose an isomorphism $\phi_1\in M_1$ and, inductively, $\phi_{m+1}\in M_{m+1}$
+reducing to $\phi_m$. Each $\phi_m$ reduces modulo $\varpi$ to $\phi_1\ne0$, so $\varpi^{m-1}\phi_m\ne0$ by (i), and $\phi_m$ is an isomorphism by (ii).
+\emph{Passage to the completion.} Let $\widehat{\mathcal{O}}=\varprojlim\mathcal{O}/\varpi^m$ be the $\varpi$-adic completion, a discrete valuation ring with
+uniformiser $\varpi$ and $\widehat{\mathcal{O}}/\varpi^m=\mathcal{O}/\varpi^m$, containing $\mathcal{O}$, with fraction field $\widehat K\supseteq K$ (for $\mathcal{O}=\Zl$ nothing
+changes). In a basis of $T$, the matrices of the $\phi_m$ are compatible, so they define a matrix $\hat\phi\in\mathrm M_n(\widehat{\mathcal{O}})$ with
+$\hat\phi\equiv\phi_m\pmod{\varpi^m}$ for all $m$. For $g\in G$, every entry of $\hat\phi\rho(g)-\chi(g)\rho(g)\hat\phi$ lies in $\varpi^m\widehat{\mathcal{O}}$ for all $m$, hence is $0$;
+and $\hat\phi\ne0$ since $\hat\phi\equiv\phi_1\pmod\varpi$. So $\Hom_{\widehat K[G]}(V_{\widehat K},V_{\widehat K}(\chi))\ne0$, where $V=T\otimes_{\mathcal{O}}K$.
+\emph{Descent.} By \Cref{prop:reps:scalars}(i) for the field extension $\widehat K/K$, $\Hom_{K[G]}(V,V(\chi))\ne0$. Let $x$ be a nonzero element. Multiplying
+$x$ by a power of $\varpi$, we may assume that $x(T)\subseteq T$ and $x(T)\not\subseteq\varpi T$ (the entries of its matrix lie in $\mathcal{O}$, not all in
+$\varpi\mathcal{O}$). Then $\bar x=x\bmod\varpi$ is a nonzero $G$-map $\bar T\to\bar T(\bar\chi)$ between irreducible representations, an isomorphism by
+\Cref{thm:reps:schur}(i). So $\det x\in\mathcal{O}$ has nonzero reduction, $\det x\in\mathcal{O}^\times$, and $x$ is an isomorphism $T\simeq T(\chi)$ of
+$\mathcal{O}[G]$-modules.
 (iv) $\End(T)=\ad T\oplus\mathcal{O}$ (\Cref{prop:reps:adjoint}(i)), and $(K/\mathcal{O}(\chi))^G=0$ because $\chi(g)-1$ is a unit for some $g$; so the $\mathcal{O}$-summand contributes
 nothing.
 (v) Determinants (\Cref{prop:reps:twist}(iv) modulo $\varpi^m$). For the last statement, $\chi^2\equiv1\pmod{\ell^m}$ on $G$ means $x^2\equiv1\pmod{\ell^m}$ for every
@@ -1824,10 +1845,10 @@ $x\in\Zl^\times$; with $x=2$, $\ell^m\mid3$, so $m=0$ for $\ell\ge5$ and $m\le1$
 \end{proof}
 
 \begin{paperlink}
-Lemma lem:h0 with $G=G_\Q$, $\mathcal{O}=\Zl$, $T=T_\ell E$, $\chi=\chi_\ell$: $W^D=\ad T(1)\otimes\Ql/\Zl$, and by (iv) and (iii), $H^0(\Q,W^D)$ is finite and cyclic of length
-$h_\ell(E)$, ``the largest $k$ such that $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$''. Absolute irreducibility of $\rhobar$ comes from complex conjugation
+Lemma lem:h0 with $G=G_\Q$, $\mathcal{O}=\Zl$, $T=T_\ell E$, $\chi=\chi_\ell$: $W^D=\ad T(1)\otimes\Ql/\Zl$, and by (iv) and (iii), $H^0(\Q,W^D)$ has length
+$h_\ell(E)$, ``the largest $k$ such that $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$'', and is cyclic when this is finite. Absolute irreducibility of $\rhobar$ comes from complex conjugation
 (\Cref{prop:reps:distinct-eigenvalues}), $\bar\chi_\ell\ne1$ for $\ell$ odd, and $\chi_\ell(G_\Q)=\Zl^\times$ (\Cref{ch:galois}); so (v) gives $h_\ell(E)=0$ for $\ell\ge5$ and
-$h_3(E)\le1$, with equality iff $\rhobar\simeq\rhobar\otimes\bar\chi_3=\rhobar\otimes\chi_{-3}$, for every $E$ with $\rhobar$ irreducible, with or without complex multiplication.
+$h_3(E)\le1$ (in particular $H^0(\Q,W^D)$ is finite and cyclic), with equality iff $\rhobar\simeq\rhobar\otimes\bar\chi_3=\rhobar\otimes\chi_{-3}$, for every $E$ with $\rhobar$ irreducible, with or without complex multiplication.
 In Lemma lem:h0 the phrase ``a submodule of $(\Ql/\Zl)^3$ with $\ell$-torsion of rank at most one, is cyclic'' should be read as in (iii): such a
 module is finite cyclic or isomorphic to $\Ql/\Zl$, and the determinant bound (v) excludes the second case. Remark rem:ns and Section
 sec:anomaly use $h_3(E)=1$ for the image $\Ns$ (\Cref{thm:reps:three-images}).
@@ -1844,8 +1865,13 @@ Let $\rhobar\colon G_\Q\to\GL_2(\F_\ell)$ be continuous, $\ell$ odd, with $\det\
 \begin{enumerate}[label=(\roman*)]
 \item Complex conjugation $c$ has $\rhobar(c)^2=1$ and $\det\rhobar(c)=\bar\chi_\ell(c)=-1$, so $\rhobar$ is irreducible iff it is absolutely irreducible
 (\Cref{prop:reps:distinct-eigenvalues}).
-\item The hypothesis of Theorem thm:main concerns $\Res_H\rhobar$ for the subgroup $H=G_{\Q(\sqrt{\ell^*})}$ of index $2$, with $\chi_H=\chi_{\ell^*}=\bar\chi_\ell^{(\ell-1)/2}$. By
-\Cref{thm:reps:clifford-index-two} it fails iff $\rhobar\simeq\rhobar\otimes\chi_{\ell^*}$, iff $\rhobar\otimes\Fbar_\ell$ is induced from a character of $H$.
+\item The hypothesis of Theorem thm:main concerns $\Res_H\rhobar$ for the subgroup $H=G_{\Q(\sqrt{\ell^*})}$ of index $2$, with $\chi_H=\chi_{\ell^*}=\bar\chi_\ell^{(\ell-1)/2}$. If
+$\rhobar$ is reducible, so is $\Res_H\rhobar$, and the hypothesis fails. If $\rhobar$ is irreducible, it is absolutely irreducible by (i), and
+\Cref{thm:reps:clifford-index-two} applies: the hypothesis fails iff $\rhobar\simeq\rhobar\otimes\chi_{\ell^*}$, iff $\rhobar\otimes\Fbar_\ell$ is induced from a character of
+$H$. Irreducibility cannot be dropped here: for $\ell\ge5$, $\rhobar=\mathbf1\oplus\bar\chi_\ell$ has reducible restriction to $H$, but
+$\rhobar\otimes\chi_{\ell^*}=\chi_{\ell^*}\oplus\bar\chi_\ell^{(\ell+1)/2}\not\simeq\rhobar$ (its constituents are not $\mathbf1$, as $\chi_{\ell^*}\ne1$ and $\bar\chi_\ell^{(\ell+1)/2}\ne1$ for
+$\ell\ge5$), and $\rhobar\otimes\Fbar_\ell$ is not induced from $H$ (\Cref{prop:reps:projection-formula}: an induced representation is
+isomorphic to its twist by $\chi_H$).
 \item Lemma lem:h0 concerns $\rhobar\simeq\rhobar\otimes\bar\chi_\ell$, which forces $\bar\chi_\ell^2=1$ (\Cref{prop:reps:twist}(iv)), that is $\ell=3$; there $\bar\chi_3=\chi_{-3}=\det\rhobar$
 and \Cref{thm:reps:three-images} applies. For $\ell\ge5$ the two conditions differ: for $\rhobar=\rhobar_{E,\ell}$, $\rhobar\simeq\rhobar\otimes\chi_{\ell^*}$ can occur (only when $\ell\mid N$, by
 Proposition prop:Sf), while $\rhobar\simeq\rhobar\otimes\bar\chi_\ell$ never does.
