@@ -32,15 +32,15 @@ $\operatorname{char}K\ne2$, $\#E[2]=4$. \emph{(proved here)} \Cref{con:ellcurves
 \item \textbf{The group law.} $E(\bar K)$ is an abelian group, $E(L)$ a subgroup for $K\subseteq L\subseteq\bar K$, $G_K$ acts by automorphisms, addition and translations are morphisms. \emph{(proved here;
 the morphism property at the excluded points by reference)} \Cref{thm:ellcurves:grouplaw}.
 \item \textbf{Principal divisors.} $\sum n_P(P)$ is principal iff $\sum n_P=0$ and $\sum[n_P]P=O$. \emph{(proved here)} \Cref{cor:ellcurves:principal}.
-\item \textbf{The invariant differential.} $\operatorname{div}\omega=0$, $\tau_Q^*\omega=\omega$, $(\varphi+\psi)^*\omega=\varphi^*\omega+\psi^*\omega$, $[m]^*\omega=m\omega$. \emph{(proof sketched here; complete in characteristic $0$
-by \Cref{rem:ellcurves:invdiff-C})} \Cref{prop:ellcurves:invdiff}.
+\item \textbf{The invariant differential.} $\operatorname{div}\omega=0$, $\tau_Q^*\omega=\omega$, $(\varphi+\psi)^*\omega=\varphi^*\omega+\psi^*\omega$, $[m]^*\omega=m\omega$. \emph{(proved here, in every characteristic; one polynomial identity checked by
+machine; a second proof in characteristic $0$ in \Cref{rem:ellcurves:invdiff-C})} \Cref{prop:ellcurves:invdiff}.
 \item \textbf{Isogenies} (definition): morphisms with $\varphi(O)=O$; degree $[\bar K(E_1):\varphi^*\bar K(E_2)]$; isogenous over $K$. \Cref{def:ellcurves:isogeny}.
 \item \textbf{First properties.} Isogenies are $0$ or surjective; $\Hom$ is a group, $\deg$ is multiplicative; $[m]\ne0$ for $m\ne0$, so $\Hom$ is torsion-free. \emph{(proved here; characteristic $2$ by reference)}
 \Cref{prop:ellcurves:isogeny-basic}.
 \item \textbf{Kernels.} Isogenies are homomorphisms; $\#\ker\varphi=\deg_s\varphi$; a separable isogeny is unramified, with $\#\ker\varphi=\deg\varphi$ and Galois function field extension with group
 $\ker\varphi$. \emph{(proof sketched here)} \Cref{thm:ellcurves:isog-hom}.
-\item \textbf{Quotients.} For a finite subgroup $\Phi$ there is a separable $E\to E/\Phi$ with kernel $\Phi$, over $K$ if $\Phi$ is $G_K$-stable (V\'elu); an isogeny factors through a separable one whose kernel
-its kernel contains. \emph{(stated; reference)} \Cref{thm:ellcurves:quotient}.
+\item \textbf{Quotients.} For a finite subgroup $H$ there is a separable $E\to E/H$ with kernel $H$, over $K$ if $H$ is $G_K$-stable (V\'elu); an isogeny factors through any separable isogeny
+whose kernel is contained in its kernel. \emph{(stated; reference)} \Cref{thm:ellcurves:quotient}.
 \item \textbf{The dual isogeny.} $\hat\varphi\circ\varphi=[\deg\varphi]$, $\varphi\circ\hat\varphi=[\deg\varphi]$, $\widehat{\varphi+\psi}=\hat\varphi+\hat\psi$, $\widehat{[m]}=[m]$, $\deg\hat\varphi=\deg\varphi$; $\deg$ is a positive definite
 quadratic form on $\Hom$. \emph{(proof sketched here)} \Cref{thm:ellcurves:dual}.
 \item \textbf{Torsion.} $\deg[m]=m^2$; if $\operatorname{char}K\nmid m$, $[m]$ is separable and $E[m]\simeq(\Z/m)^2$; in characteristic $p$, $E[p^e]$ is $0$ or $\Z/p^e$. \emph{(proved here, given
@@ -61,7 +61,7 @@ sketched here)} \Cref{thm:ellcurves:weil}.
 \item \textbf{The determinant.} $G_K$ acts on $E[m]$ with determinant $\chi_m^{\mathrm{cyc}}$; $E[m]\subseteq E(K)$ forces $\mu_m\subseteq K$; for a stable line $L\subset E[\ell]$, $E[\ell]/L\simeq\Hom(L,\mu_\ell)$, so a
 rational point of order $\ell$ gives $0\to\Z/\ell\to E[\ell]\to\mu_\ell\to0$. \emph{(proved here)} \Cref{cor:ellcurves:det}.
 \item \textbf{Tate modules} (definition and structure): $T_\ell E=\varprojlim E[\ell^n]$ is free of rank $2$ over $\Z_\ell$, $T_\ell E/\ell^n=E[\ell^n]$, $V_\ell E/T_\ell E=E[\ell^\infty]$; the Weil pairings give a perfect
-alternating $G_K$-equivariant $e\colon T_\ell E\times T_\ell E\to\Z_\ell(1)$. \emph{(proved here)} \Cref{def:ellcurves:tate}, \Cref{prop:ellcurves:tate}.
+alternating $G_K$-equivariant $e\colon T_\ell E\times T_\ell E\to\Z_\ell(1)$; in characteristic $p$, $T_pE$ is $0$ or $\Z_p$. \emph{(proved here; the last statement stated, reference)} \Cref{def:ellcurves:tate}, \Cref{prop:ellcurves:tate}.
 \item \textbf{The Galois representations} (definition and properties): $\rho_{E,\ell}\colon G_K\to\GL_2(\Z_\ell)$, $\bar\rho_{E,\ell}$ on $E[\ell]$, $\rho\bmod\ell^k$ on $E[\ell^k]$; continuous, $\det\rho_{E,\ell}=\chi_\ell$; an
 isogeny over $K$ gives $T_\ell E\hookrightarrow T_\ell E'$ with cokernel $(\ker\varphi)[\ell^\infty]$, so $V_\ell E\simeq V_\ell E'$, and $T_\ell E\simeq T_\ell E'$ if $\ell\nmid\deg\varphi$. \emph{(proved here)}
 \Cref{def:ellcurves:rho}, \Cref{prop:ellcurves:rho}.
@@ -89,9 +89,9 @@ unique $\Lambda$ with $g_2=-4A$, $g_3=-4B$. \emph{(proved here, given the Abel-J
 \item \textbf{Maps of tori.} Holomorphic maps $\C/\Lambda_1\to\C/\Lambda_2$ fixing $0$ are $z\mapsto\alpha z$, $\alpha\Lambda_1\subseteq\Lambda_2$, of degree $[\Lambda_2:\alpha\Lambda_1]$; $E[m]=\frac1m\Lambda/\Lambda$; $\End(\C/\Lambda)$ is $\Z$ or an
 imaginary quadratic order, the latter iff $\tau$ is imaginary quadratic; $e_m=\zeta^{\det}$ on $\frac1m\Lambda/\Lambda$. \emph{(proved here; the sign of $\zeta$ by reference)} \Cref{prop:ellcurves:cplxisog}.
 \item \textbf{Moduli over $\C$.} Lattices up to homothety $=$ curves over $\C$ up to isomorphism $=\SL_2(\Z)\backslash\HH$; $j(\tau)$ is holomorphic and invariant, $j(i)=1728$, $j(\zeta_3)=0$; $j$ is a bijection
-$\SL_2(\Z)\backslash\HH\to\C$. \emph{(proved here; the bijectivity and $\mathsf q$-expansion in \Cref{ch:modforms})} \Cref{thm:ellcurves:moduli}.
+$\SL_2(\Z)\backslash\HH\to\C$. \emph{(proved here; the bijectivity and the $q$-expansion in \Cref{ch:modforms})} \Cref{thm:ellcurves:moduli}.
 \item \textbf{The period lattice} (definition and properties): $\Lambda_E$ of the N\'eron differential of the global minimal model; conjugation-stable, rectangular iff $\Delta>0$; $\vol(\Lambda_E)=\frac i2\int\omega\wedge\bar\omega$;
-commensurable for isogenous curves. \emph{(proof sketched here)} \Cref{def:ellcurves:periodlattice}, \Cref{prop:ellcurves:periods}.
+computed by the AGM; commensurable for isogenous curves. \emph{(proof sketched here)} \Cref{def:ellcurves:periodlattice}, \Cref{prop:ellcurves:periods}.
 \item \textbf{Frobenius endomorphism} (definition and properties): $\pi(x,y)=(x^{\mathfrak q},y^{\mathfrak q})$, purely inseparable of degree $\mathfrak q$, acting as $\Frob_{\mathfrak q}$; $E(\F_{\mathfrak q^n})=\ker(1-\pi^n)$; $1-\pi$
 separable, $\#E(\F_{\mathfrak q})=\deg(1-\pi)$; $a_{\mathfrak q}=\mathfrak q+1-\#E(\F_{\mathfrak q})$. \emph{(proved here, given \Cref{ch:curves})} \Cref{def:ellcurves:frobendo}, \Cref{prop:ellcurves:frobendo}.
 \item \textbf{Hasse.} $\abs{a_{\mathfrak q}}\le2\sqrt{\mathfrak q}$. \emph{(proved here)} \Cref{thm:ellcurves:hasse}.
@@ -147,6 +147,8 @@ and the recursion $a_{p^{k+1}}=a_pa_{p^k}-pa_{p^{k-1}}$; continuation and functi
 \Cref{thm:ellcurves:charpoly}, \Cref{prop:ellcurves:twistFq}, \Cref{thm:ellcurves:twistgal}, \Cref{prop:ellcurves:twistgood}, \Cref{pl:ellcurves:table}, \Cref{pl:ellcurves:twist}.
 \item \textbf{Lemma lem:twist (ii)} (the model and the invariants $(q^*)^2c_4$, $(q^*)^3c_6$, $(q^*)^6\Delta$ of the twist; $v_q(\Delta)$ modulo $12$): \Cref{def:ellcurves:twist}, \Cref{prop:ellcurves:twistinv},
 \Cref{prop:ellcurves:coordchange}(iii), \Cref{warn:ellcurves:twists}.
+\item \textbf{Section 1.4} (the twist-symmetrised weight $w_\ell(E,q)$, which compares $E$ with its twist by $\chi_{q^*}$; the paper writes this twist $E^{(q)}$, the book
+$E^{(q^*)}$): \Cref{def:ellcurves:twist}(c), \Cref{prop:ellcurves:twistinv}(iii), \Cref{warn:ellcurves:twists}(a).
 \item \textbf{Theorems thm:twist and thm:quant} ($E_S$, $\chi_S$, $a_p(f)=\chi_S(p)a_p(g)$, irreducibility of $\bar\rho\otimes\chi_S$): \Cref{def:ellcurves:compositetwist}, \Cref{thm:ellcurves:twistgal},
 \Cref{cor:ellcurves:twistap}.
 \item \textbf{Theorem thm:qual and the Example of Section 3} (ex:qual: twists of \curve{121a1}, \curve{539c1}, \curve{980i1}; labels; $a_p$): \Cref{cor:ellcurves:twistap}, \Cref{warn:ellcurves:twists},
@@ -383,7 +385,7 @@ $(x,y)\mapsto(u^2x,u^3y)$ with $u^4A=A$, $u^6B=B$; and $[-1](x,y)=(x,-y-a_1x-a_3
 By \Cref{prop:ellcurves:coordchange}(ii) an automorphism of the short model is a substitution $(u,r,s,t)$ preserving the shape: $a_1'=0$
 forces $s=0$, then $a_2'=0$ forces $r=0$, and then $a_3'=0$ forces $t=0$. So it is $(u,0,0,0)$ with $A=u^4A$, $B=u^6B$ (here $x=u^2x'$, so the map
 $(x',y')\mapsto(x,y)$ is $(u^2x',u^3y')$). If $AB\ne0$ ($j\ne0,1728$) this means $u^2=1$; if $B=0$ ($j=1728$), $u^4=1$; if $A=0$ ($j=0$),
-$u^6=1$. Distinct $u$ give distinct maps. The formula for $[-1]$ is the substitution $(1,0,-a_1,-a_3)$, which sends $(x,y)$ to the other point
+$u^6=1$. Distinct $u$ give distinct maps. The formula for $[-1]$ is the substitution $(u,r,s,t)=(-1,0,-a_1,-a_3)$, which sends $(x,y)$ to the other point
 with the same $x$.
 \end{proof}
 
