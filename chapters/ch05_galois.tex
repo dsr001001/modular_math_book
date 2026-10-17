@@ -30,7 +30,8 @@ $\alpha$ is algebraic iff $[F(\alpha):F]<\infty$. \emph{(proved here)} \Cref{def
 $\prod\deg m_{\alpha_i,F}$; algebraic elements form a subfield; algebraic over algebraic is algebraic. \emph{(proved here)} \Cref{prop:galois:algebraic-extensions}.
 \item \textbf{Algebraic closure.} (a) Every field has an algebraic closure, unique up to (non-unique) isomorphism. (b) An embedding $F\to\Omega$,
 $\Omega$ algebraically closed, extends to any algebraic $L/F$. (c) $\Qbar=\{z\in\C:z\text{ algebraic over }\Q\}$ is an algebraic closure of $\Q$,
-countable. \emph{((a) and (b) for infinite $L$ proof sketched here; (b) for finite $L$ and (c) proved here)} \Cref{thm:galois:algebraic-closure}.
+countable. (d) Every $F$-embedding $\Fbar\to\Fbar$ is an automorphism, so every $F$-embedding $K\to\Fbar$ of a subextension $K\subseteq\Fbar$ extends to an element of
+$\Aut(\Fbar/F)$. \emph{((a) and (b) for infinite $L$ proof sketched here; (b) for finite $L$, (c) and (d) given (b) proved here)} \Cref{thm:galois:algebraic-closure}.
 \item \textbf{Splitting fields.} A splitting field of $f\in F[x]$ exists, of degree at most $n!$; an isomorphism $F\to F'$ extends to an isomorphism
 of splitting fields of $f$ and $\phi(f)$, in at most $[L:F]$ ways, exactly $[L:F]$ if $f$ is separable. \emph{(proved here; families of polynomials
 sketched)} \Cref{thm:galois:splitting-field}.
@@ -330,6 +331,8 @@ factors). An \emph{algebraic closure} of $F$ is an algebraic extension of $F$ th
 \item Let $L/F$ be algebraic, $\Omega$ algebraically closed and $\sigma\colon F\to\Omega$ a field embedding. Then $\sigma$ extends to an embedding
 $L\to\Omega$. If $L=F(\alpha)$, the extensions correspond bijectively to the distinct roots of $\sigma(m_{\alpha,F})$ in $\Omega$, through $\tau\mapsto\tau(\alpha)$.
 \item $\Qbar=\{z\in\C:z\text{ is algebraic over }\Q\}$ is an algebraic closure of $\Q$. It is countable; hence $\C$ is not algebraic over $\Q$.
+\item Every $F$-embedding $\Fbar\to\Fbar$ is an automorphism. Hence, for every subextension $K/F$ of $\Fbar/F$, every $F$-embedding $K\to\Fbar$ extends to an
+element of $\Aut(\Fbar/F)$.
 \end{enumerate}
 \end{theorem}
 
@@ -353,6 +356,12 @@ algebraically closed field containing $F$ (Artin's construction: adjoin a root o
 maximal ideal, and repeat countably many times, or once with an extra argument), and takes the algebraic elements in it; uniqueness follows from (b), an
 $F$-embedding $\Fbar\to\Fbar'$ having algebraically closed image over which $\Fbar'$ is algebraic, hence being surjective. We do not give the details; see
 \cite[Chapter V, Section 2]{Lang} or \cite[Section 13.4]{DummitFoote}.
+\end{proof}
+
+\begin{proof}[Proof of (d), given (b)]
+Let $\sigma\colon\Fbar\to\Fbar$ be an $F$-embedding and $x\in\Fbar$. The set $R$ of roots of $m_{x,F}$ in $\Fbar$ is finite, and $\sigma$ maps $R$ injectively into $R$
+(as $\sigma(m_{x,F})=m_{x,F}$); so $\sigma(R)=R$ and $x\in\sigma(\Fbar)$. Thus $\sigma$ is surjective. If $K\subseteq\Fbar$ and $\tau\colon K\to\Fbar$ is an $F$-embedding, then
+$\Fbar/K$ is algebraic, so by (b) $\tau$ extends to an embedding $\Fbar\to\Fbar$, which is an automorphism by what we have shown.
 \end{proof}
 
 \begin{remark}\label{rem:galois:nonunique}
@@ -829,7 +838,7 @@ $S_3$ & $\Q$ & $1$\\
 \bottomrule
 \end{tabular}
 \end{center}
-The three cubic fields are conjugate (\Cref{thm:galois:fundamental}(c)) and not normal; $\Q(\sqrt{-3})$ is the only proper normal subfield, cut out by the sign of
+The three cubic fields are conjugate (\Cref{thm:galois:fundamental}(c)) and not normal; $\Q(\sqrt{-3})$ is the only normal subfield other than $\Q$ and $L$, cut out by the sign of
 the permutation of the roots, and $\disc(x^3-2)=-108=-3\cdot6^2$ (\Cref{prop:galois:discriminant}). This is the pattern of Proposition prop:ns in miniature: a
 group of permutations of roots, and the quadratic subfield cut out by the sign, which there is $\det\bar\rho_{E,3}=\chi_{-3}$. The group is also the affine group
 $\Z/3\rtimes(\Z/3)^\times$ of \Cref{prop:galois:kummer-affine}.
@@ -867,7 +876,7 @@ of $K$ (sending $a$ to the $d$ distinct roots $a_1,\dots,a_d$ of $m_{a,F}$) has 
 $\prod_i\sigma_i(a)=(\prod_ka_k)^m$ and $\sum_i\sigma_i(a)=m\sum_ka_k$, which are the determinant and the trace of the block matrix.
 (b) Multiplicativity and linearity are clear from the definition (or from (a)). If $L/F$ is Galois, the embeddings are the elements of $\Gal(L/F)$.
 (c) Every $F$-embedding of $L$ is obtained, exactly once, by choosing an $F$-embedding $\tau$ of $K$, extending it to an automorphism $\tilde\tau$ of $\Fbar$
-(\Cref{thm:galois:algebraic-closure}(b)), and composing with one of the $K$-embeddings $\rho_1,\dots,\rho_m$ of $L$; so $\Nm_{L/F}(a)=\prod_\tau\prod_j\tilde\tau
+(\Cref{thm:galois:algebraic-closure}(d)), and composing with one of the $K$-embeddings $\rho_1,\dots,\rho_m$ of $L$; so $\Nm_{L/F}(a)=\prod_\tau\prod_j\tilde\tau
 \rho_j(a)=\prod_\tau\tau\bigl(\Nm_{L/K}(a)\bigr)$, and similarly for the trace.
 (d) $\Tr_{L/F}=\sum_i\sigma_i$ is a nontrivial combination of distinct embeddings, nonzero by \Cref{thm:galois:dedekind}.
 \end{proof}
