@@ -167,7 +167,7 @@ over $X\setminus S$ are dense in $\Gal(L/\Q)$. \emph{(proved here, from Chebotar
 same Frobenius characteristic polynomials on a set of density one, are isomorphic. \emph{(proved here)} \Cref{cor:galois:chebotarev-bn}.
 \item \textbf{Congruent traces.} If $\rho_1,\rho_2\colon G_\Q\to\GL_2(\mathcal{O})$ have congruent traces and determinants of Frobenius modulo $\lambda$ on a
 set of density one, then $\bar\rho_1^{ss}\simeq\bar\rho_2^{ss}$, and $\bar\rho_2\simeq\bar\rho_1$ if $\bar\rho_1$ is absolutely irreducible; (d) for a newform $h$
-of weight $2$ and $\ell$ odd, $a_p(h)\equiv a_p(E)\pmod\lambda$ on a set of density one gives $\bar\rho_h\simeq\bar\rho_{E,\ell}\otimes k$ when $\bar\rho_{E,\ell}$ is irreducible.
+of weight $2$ on $\Gamma_0(M)$ and $\ell$ odd, $a_p(h)\equiv a_p(E)\pmod\lambda$ on a set of density one gives $\bar\rho_h\simeq\bar\rho_{E,\ell}\otimes k$ when $\bar\rho_{E,\ell}$ is irreducible.
 \emph{((a) to (c) proved here; the newform statement (d) proved here, given the representations of newforms of \Cref{ch:modgalrep})}
 \Cref{cor:galois:congruent-ap}.
 \end{enumerate}
@@ -1359,7 +1359,7 @@ $i_s$, $j_s$, and choose $x_i\in X_i$ arbitrarily for the other $i$. Then $f_{i_
 sets. Hence $\bigcap_{i\le j}C_{ij}\ne\emptyset$.
 \end{proof}
 
-Both hypotheses matter: an inverse limit of nonempty \emph{infinite} sets can be empty (take $X_n=\{n,n+1,n+2,\dots\}$, $n\in\N$, with the inclusions as maps).
+Finiteness matters: an inverse limit of nonempty \emph{infinite} sets can be empty (take $X_n=\{n,n+1,n+2,\dots\}$, $n\in\N$, with the inclusions as maps).
 
 \begin{proposition}[Infinite Galois extensions]\label{prop:galois:infinite}
 Let $L/F$ be a Galois extension of arbitrary degree and $\mathcal{K}$ the set of finite Galois subextensions $K/F$ of $L$.
@@ -1928,7 +1928,7 @@ $\det\rho_1(\Frob_p)\equiv\det\rho_2(\Frob_p)\pmod\lambda$ for all $p$ in a set 
 \item If $\bar\rho_1$ is absolutely irreducible, then $\bar\rho_2\simeq\bar\rho_1$.
 \item Conversely, if $\bar\rho_1^{ss}\simeq\bar\rho_2^{ss}$, the congruences hold for every $p\notin S$.
 \item (Newforms; given the representations attached to newforms, \Cref{ch:modgalrep}.) Let $\ell$ be odd, $E/\Q$ an elliptic curve of conductor $N$ with
-$\bar\rho_{E,\ell}$ irreducible, and $h$ a newform of weight $2$ and level $M$ whose coefficients lie in $\mathcal{O}$ (for a chosen embedding of its coefficient field).
+$\bar\rho_{E,\ell}$ irreducible, and $h$ a newform of weight $2$ on $\Gamma_0(M)$ (trivial character) whose coefficients lie in $\mathcal{O}$ (for a chosen embedding of its coefficient field).
 If $a_p(h)\equiv a_p(E)\pmod\lambda$ for all $p\nmid\ell MN$ in a set of density one, then $\bar\rho_h\simeq\bar\rho_{E,\ell}\otimes_{\F_\ell}k$, for every choice of the stable
 lattice defining $\bar\rho_h$.
 \end{enumerate}
@@ -1955,8 +1955,9 @@ Lemma lem:old, case $p\nmid\ell N$: ``$\bar\rho_h\simeq\bar\rho$ over a common f
 hence absolutely irreducible''. This is \Cref{cor:galois:congruent-ap}(d), after enlarging $\mathcal{O}$ so that it contains the coefficients of the newform $h$ of the
 lemma; it rests on the black box of \Cref{ch:modgalrep} (the representation $\rho_{h,\lambda}$ with $\tr\rho_{h,\lambda}(\Frob_p)=a_p(h)$). The two residual representations
 a priori live over different finite fields ($k$ and $\F_\ell$), so they are compared over $k$, as $\bar\rho_{E,\ell}\otimes_{\F_\ell}k$; and ``irreducible, hence absolutely
-irreducible'' is \Cref{prop:galois:complex-conjugation}(d). The same argument gives the congruences in the proof of Theorem thm:qual
-(Section sec:proof: ``$\bar\rho_g\simeq\bar\rho$, that is, $a_p(g)\equiv a_p(f)\pmod\lambda$ for all $p\nmid 3N$'') and in the Example of that section.
+irreducible'' is \Cref{prop:galois:complex-conjugation}(d). The equivalence quoted in the proof of Theorem thm:qual
+(Section sec:proof: ``$\bar\rho_g\simeq\bar\rho$, that is, $a_p(g)\equiv a_p(f)\pmod\lambda$ for all $p\nmid 3N$''), and in the Example of that section, is (c) in one
+direction and (d) in the other.
 \end{paperlink}
 
 \section{Exercises}\label{sec:galois:exercises}
