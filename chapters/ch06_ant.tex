@@ -1,0 +1,1824 @@
+\chapter{Algebraic number theory}\label{ch:ant}
+
+The paper lives over $\Q$, but its arguments constantly leave $\Q$: the coefficients of a congruent eigenform lie in a ring of integers $\mathcal O$ with a prime
+$\lambda\mid\ell$; the Galois group acts through decomposition and inertia groups and Frobenius elements; the quadratic fields $\Q(i)$, $\Q(\sqrt{-3})$,
+$\Q(\sqrt{q^*})$ and $\Q(\sqrt{\ell^*})$ supply the characters $\chi_{-4}$, $\chi_{-3}$, $\chi_{q^*}$ and $\chi_{\ell^*}$; and the rings $\Z_3[\zeta_3]$ and
+$\Z_\ell\otimes\Z[\zeta_3]$ carry the action of inertia at the additive primes of types $\kod{IV}$ and $\kod{II}$. This chapter supplies that algebraic number
+theory, from rings of integers and unique factorisation of ideals to the splitting of primes, the Frobenius element, cyclotomic fields, the dictionary
+between Dirichlet characters and characters of $G_\Q$, the Chebotarev density theorem and complex multiplication. It uses \Cref{ch:groups} for group actions
+and profinite groups, \Cref{ch:rings} for rings, finite fields, Kronecker symbols, quadratic reciprocity and Dirichlet characters, \Cref{ch:modules} for modules
+over principal ideal domains and discrete valuation rings, \Cref{ch:reps} for representations, and \Cref{ch:galois} for Galois theory; local fields are in
+\Cref{ch:local}.
+
+\section*{Core results at a glance}
+
+Throughout, $K$, $L$ are number fields, $\mathcal O_K$ the ring of integers, $\mathfrak p$, $\mathfrak P$, $\lambda$ nonzero primes, $N\mathfrak p=\#\mathcal O_K/\mathfrak p$,
+$D$ the discriminant of a quadratic field and $\chi_D$ its character; $\pi=1-\zeta_3$; $\Frob$ is the arithmetic Frobenius and $\Frob^{-1}$ the geometric one.
+
+\begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
+\item \textbf{Conventions.} $\Qbar\subset\C$, $\bar\Z$ the algebraic integers, $\zeta_n=e^{2\pi i/n}$; $D$ is a quadratic discriminant and $D_{\mathfrak P}$ a decomposition
+group; $\chi_D$ is indexed by the fundamental discriminant ($\chi_{-4}$, $\chi_{-3}$, $\chi_8$, $\chi_{q^*}$); $\chi_\ell$ is cyclotomic; the geometric Frobenius is written
+$\Frob_p^{-1}$. \Cref{conv:ant:conventions}.
+\item \textbf{Number fields} (definition): $[K:\Q]=n<\infty$, $K=\Q(\theta)$, $n$ embeddings into $\C$, $n=r_1+2r_2$. \Cref{def:ant:numberfield}.
+\item \textbf{Algebraic integers.} $\alpha$ is integral iff its minimal polynomial is in $\Z[X]$ iff $\Z[\alpha]$ is a finitely generated $\Z$-module iff $\alpha$ lies in
+a subring finitely generated as a $\Z$-module; $\mathcal O_K$ is a ring, $\mathcal O_K\cap\Q=\Z$, $\Frac\mathcal O_K=K$, and $\mathcal O_K$ is integrally closed.
+\emph{(proved here)} \Cref{prop:ant:integral}.
+\item \textbf{Trace and norm} (definition): trace and determinant of $x\mapsto\alpha x$. \Cref{def:ant:tracenorm}.
+\item \textbf{Properties of trace and norm.} $\Tr(\alpha)=\sum\sigma_i(\alpha)$, $N(\alpha)=\prod\sigma_i(\alpha)$; integers on $\mathcal O_K$; $\alpha\in\mathcal O_K^\times$ iff
+$N(\alpha)=\pm1$; transitivity in towers. \emph{(proved here)} \Cref{prop:ant:tracenorm}.
+\item \textbf{Integral bases and the discriminant.} The trace form is nondegenerate; $\mathcal O_K\simeq\Z^n$; $d_K=\det(\Tr(\omega_i\omega_j))=\det(\sigma_k\omega_j)^2$ is
+independent of the basis; $\disc(\alpha_1,\dots,\alpha_n)=[\mathcal O_K:\sum\Z\alpha_i]^2d_K$; $\disc(1,\theta,\dots,\theta^{n-1})=\disc(g)=(-1)^{n(n-1)/2}N(g'(\theta))$.
+\emph{(proved here)} \Cref{thm:ant:integralbasis}.
+\item \textbf{Quadratic fields.} For $d$ squarefree, $\mathcal O=\Z[\sqrt d]$, $d_K=4d$ if $d\equiv2,3\pmod4$, and $\mathcal O=\Z[\frac{1+\sqrt d}2]$, $d_K=d$ if
+$d\equiv1\pmod4$; quadratic fields correspond to fundamental discriminants; $\Z[i]$ ($D=-4$), $\Z[\zeta_3]$ ($D=-3$). \emph{(proved here)}
+\Cref{prop:ant:quadraticintegers}.
+\item \textbf{Units.} (i) $\mathcal O_K^\times\simeq\mu(K)\times\Z^{r_1+r_2-1}$ \emph{(stated; reference)}; (ii) for $K$ imaginary quadratic $\mathcal O_K^\times=\mu(K)$, which is
+$\{\pm1\}$ except $\mu_4$ for $\Q(i)$ and $\mu_6$ for $\Q(\sqrt{-3})$; (iii) $\Z[\sqrt2]^\times=\pm(1+\sqrt2)^\Z$ \emph{((ii), (iii) proved here)}. \Cref{thm:ant:units}.
+\item \textbf{Dedekind domains} (definition): Noetherian, integrally closed, not a field, nonzero primes maximal. \Cref{def:ant:dedekind}.
+\item \textbf{$\mathcal O_K$ is a Dedekind domain}; $\mathfrak p\cap\Z=p\Z$ and $\mathcal O_K/\mathfrak p$ is a finite field; PIDs (not fields) are Dedekind; a Noetherian domain
+(not a field) is Dedekind iff all its localisations at nonzero primes are discrete valuation rings. \emph{(proved here)} \Cref{thm:ant:dedekind}.
+\item \textbf{Inverse of a prime.} Every nonzero ideal contains a product of primes; $\mathfrak p^{-1}=\{x:x\mathfrak p\subseteq R\}$ satisfies $\mathfrak a\mathfrak p^{-1}\ne\mathfrak a$
+and $\mathfrak p\mathfrak p^{-1}=R$. \emph{(proved here)} \Cref{lem:ant:primeproducts}.
+\item \textbf{Unique factorisation of ideals.} In a Dedekind domain every nonzero proper ideal is uniquely a product of primes; fractional ideals form a group,
+free on the primes; to divide is to contain; $v_{\mathfrak p}$ is a discrete valuation. \emph{(proved here)} \Cref{thm:ant:idealfactorisation}.
+\item \textbf{Norm of an ideal.} $N\mathfrak a=\#\mathcal O_K/\mathfrak a$ is multiplicative, $N(\alpha)=\abs{N_{K/\Q}\alpha}$, $N\mathfrak p=p^f$ with $\mathcal O_K/\mathfrak p\simeq\F_{p^f}$,
+$\mathfrak p^k/\mathfrak p^{k+1}\simeq\mathcal O_K/\mathfrak p$; ideals of prime norm are prime; $\disc$ of a basis of $\mathfrak a$ is $(N\mathfrak a)^2d_K$. \emph{(proved here)}
+\Cref{prop:ant:idealnorm}.
+\item \textbf{Chinese remainder theorem, two generators, localisation.} $R/\mathfrak a\simeq\prod R/\mathfrak p_i^{a_i}$; every ideal is $(\alpha,\beta)$ with $\alpha$
+arbitrary; finitely many primes implies PID; UFD iff PID; $R_{\mathfrak p}$ is a discrete valuation ring with residue field $R/\mathfrak p$ and valuation $v_{\mathfrak p}$.
+\emph{(proved here)} \Cref{prop:ant:crt}.
+\item \textbf{Class group.} $\Cl(K)=J_K/P_K$; $h_K=1$ iff PID iff UFD \emph{(proved here)}; Minkowski: $\Cl(K)$ is finite, each class contains an ideal of norm
+$\le(4/\pi)^{r_2}(n!/n^n)\abs{d_K}^{1/2}$, and $\abs{d_K}>1$ for $K\ne\Q$ \emph{(stated; reference)}. Examples: $h=1$ for $D=-3,-4,-7,5,8,-11$, $h=2$ for $D=-20$.
+\Cref{thm:ant:classgroup}.
+\item \textbf{$\sum e_if_i=n$.} $\mathfrak p\mathcal O_L=\prod\mathfrak P_i^{e_i}$ with residue degrees $f_i$ satisfies $\sum e_if_i=[L:K]$; ramified, inert, split; $e$ and $f$
+are multiplicative in towers. \emph{(proved here)} \Cref{thm:ant:efg}.
+\item \textbf{Dedekind-Kummer.} If $p\nmid[\mathcal O_K:\Z[\theta]]$ and $g\equiv\prod\bar g_i^{e_i}\pmod p$, then $p\mathcal O_K=\prod(p,g_i(\theta))^{e_i}$ with
+$f_i=\deg\bar g_i$ \emph{(proved here)}; relative version \emph{(stated; reference)}. \Cref{thm:ant:dedekindkummer}.
+\item \textbf{Dedekind's discriminant theorem.} $p$ ramifies in $K$ iff $p\mid d_K$ \emph{(proved here)}; relative version \emph{(stated; reference)}.
+\Cref{thm:ant:discram}.
+\item \textbf{Decomposition and inertia groups.} For $L/K$ Galois, $G$ is transitive on the primes above $\mathfrak p$; $efg=n$; $D_{\mathfrak P}$ is the stabiliser,
+$\#D_{\mathfrak P}=ef$, $I_{\mathfrak P}\trianglelefteq D_{\mathfrak P}$, both conjugate along the orbit. \emph{(proved here)} \Cref{prop:ant:galoissplitting}.
+\item \textbf{Residue field extension.} $D_{\mathfrak P}\to\Gal(\kappa(\mathfrak P)/\kappa(\mathfrak p))$ is surjective with kernel $I_{\mathfrak P}$, so $\#I_{\mathfrak P}=e$ and
+$D/I$ is cyclic of order $f$; behaviour in towers; split completely iff $D=1$, unramified iff $I=1$. \emph{(proved here)} \Cref{thm:ant:residuegalois}.
+\item \textbf{Arithmetic and geometric Frobenius} (convention): $\Frob_p$ is arithmetic, $\chi_\ell(\Frob_p)=p$; $L_p(V,s)=\det(1-\Frob_p^{-1}p^{-s}\mid V^{I_p})^{-1}$; the two
+conventions agree when the eigenvalues are inversion-stable, and differ at a multiplicative prime, where only the geometric one gives $1-q^{-1-s}$.
+\Cref{conv:ant:frobenius}, \Cref{ex:ant:multiplicative}.
+\item \textbf{The Frobenius element.} For $\mathfrak p$ unramified there is a unique $\Frob_{\mathfrak P}$ with $\Frob_{\mathfrak P}(x)\equiv x^{N\mathfrak p}\pmod{\mathfrak P}$; it
+generates $D_{\mathfrak P}$; its conjugacy class is $\Frob_{\mathfrak p}$; it is $1$ iff $\mathfrak p$ splits completely; functoriality; at ramified primes only a coset of
+inertia. \emph{(proved here)} \Cref{prop:ant:frobenius}.
+\item \textbf{Frobenius and subfields.} For $M=L^H$, the primes of $M$ above $p$ correspond to the $\langle\Frob_{\mathfrak P}\rangle$-orbits on $G/H$, with residue degrees
+the orbit lengths. \emph{(proved here)} \Cref{prop:ant:frobsubfield}.
+\item \textbf{Dedekind's theorem on cycle types.} If $p\nmid a\disc(f)$, $p$ is unramified in the splitting field of $f$ and $\Frob_{\mathfrak P}$ permutes the roots with
+cycle type the degrees of the irreducible factors of $f\bmod p$. \emph{(proved here)} \Cref{cor:ant:cycletype}.
+\item \textbf{Frobenius elements in $G_\Q$.} Primes of $\bar\Z$ above $p$; $D_p$, $I_p$ closed, conjugate, with $1\to I_p\to D_p\to\Gal(\Fbar_p/\F_p)\to1$ exact and surjective
+projections to finite levels; $\Frob_p$ defined up to $I_p$ and conjugation; unramified representations and $\rho(\Frob_p)$ \emph{(proved here)}; $D_p\simeq G_{\Q_p}$
+\emph{(stated; \Cref{ch:local})}. \Cref{prop:ant:frobGQ}.
+\item \textbf{Tame inertia.} If $\#I_{\mathfrak P}$ is prime to $p$, $I_{\mathfrak P}$ is cyclic and $F\tau F^{-1}=\tau^{N\mathfrak p}$ for every Frobenius $F$ and
+$\tau\in I_{\mathfrak P}$. \emph{(proof sketched here; proved in \Cref{ch:local})} \Cref{prop:ant:tameconj}.
+\item \textbf{Frobenius on a tame image of inertia.} For $\rho\colon G_\Q\to\GL_2(\Z_\ell)$, $\ell$ odd, $\ell\ne q$, with $\rho(I_q)$ finite of order prime to $q$:
+$\rho(I_q)$ is cyclic and $\rho(F)\rho(\tau)\rho(F)^{-1}=\rho(\tau)^q$; so Frobenius centralises or inverts an element of order $3$ according as $q\equiv1$ or $2\pmod3$,
+and one of order $4$ according as $q\equiv1$ or $3\pmod4$. \emph{(proved here, given \Cref{prop:ant:tameconj})} \Cref{cor:ant:frobsigma}.
+\item \textbf{Splitting in quadratic fields.} $p$ ramifies, splits or is inert in $\Q(\sqrt d)$ according as $\bigl(\frac Dp\bigr)=0,1,-1$, with explicit primes,
+including $p=2$. \emph{(proved here)} \Cref{thm:ant:quadsplit}.
+\item \textbf{The character of a quadratic field.} $\chi_D(\Frob_p)=\bigl(\frac Dp\bigr)$ for $p\nmid D$; $\chi_D$ is ramified exactly at $p\mid D$; $\chi_{-4}(\Frob_p)=(-1)^{(p-1)/2}$,
+$\chi_{-3}(\Frob_p)=1$ iff $p\equiv1\pmod3$, $\chi_{q^*}(\Frob_p)=\bigl(\frac pq\bigr)$ for $p\ne q$ including $p=2$. \emph{(proved here)} \Cref{prop:ant:quadchar}.
+\item \textbf{Ramified only at $q$.} $\Q(\sqrt{q^*})$ is the unique quadratic field ramified only at the odd prime $q$; fundamental discriminants are products of
+prime discriminants; $\chi_S=\prod_{q\in S}\chi_{q^*}$ is the character of $\Q(\sqrt{\prod q^*})$, of conductor $\prod q$, ramified exactly at $S$. \emph{(proved here)}
+\Cref{prop:ant:ramonlyat}.
+\item \textbf{Gaussian and Eisenstein primes.} $\Z[i]$, $\Z[\zeta_3]$ are PIDs; their primes are $1+i$, $a\pm bi$ ($p=a^2+b^2\equiv1\bmod 4$), $p\equiv3\pmod4$; resp.
+$1-\zeta_3$, $a+b\zeta_3^{\pm1}$ ($p=a^2-ab+b^2\equiv1\bmod 3$), $p\equiv2\pmod3$. \emph{(proved here)} \Cref{prop:ant:gausseisenstein}.
+\item \textbf{The prime above $3$.} $\sqrt{-3}=1+2\zeta_3=\zeta_3\pi$, $\pi^2=-3\zeta_3$, $3=-\zeta_3^2\pi^2$; $\Z[\zeta_3]/(\pi)=\F_3$; on $\Z[\zeta_3]/(\pi^2)$ multiplication by
+$\zeta_3=1-\pi$ is a nontrivial unipotent with fixed line $(\pi)/(\pi^2)$; at $2$ in $\Z[i]$, $(2)=(1+i)^2$ and $i$ acts unipotently on $\Z[i]/(2)$. \emph{(proved here)}
+\Cref{prop:ant:above3}.
+\item \textbf{Quadratic algebras over $\Z_\ell$.} $\Z_\ell[X]/(g)$ is an unramified discrete valuation ring if $\bar g$ is irreducible, a ramified one with uniformiser
+$x-c$ if $g(X+c)$ is Eisenstein, and $\Z_\ell\times\Z_\ell$ if $\bar g$ has distinct roots; lattices $T$ with $T\otimes\Q_\ell\simeq R\otimes\Q_\ell$ are free of rank one.
+\emph{(proved here)} \Cref{lem:ant:quadraticZl}.
+\item \textbf{$\Z_3[\zeta_3]$.} $\Z_3[X]/(X^2+X+1)$ is a discrete valuation ring with uniformiser $\pi=1-\zeta_3$ and residue field $\F_3$, $3=\pi^2\cdot$unit, and it is
+$\Z_3\otimes\Z[\zeta_3]$ \emph{(proved here)}; it is the ring of integers of $\Q_3(\sqrt{-3})$ \emph{(stated; \Cref{ch:local})}. \Cref{thm:ant:z3zeta3dvr}.
+\item \textbf{The lattice of Lemma lem:IV.} If $\sigma\in\Aut_{\Z_3}(\Z_3^2)$ satisfies $\sigma^2+\sigma+1=0$, then $T=\Z_3^2$ is free of rank one over $\Z_3[\sigma]\simeq\Z_3[\zeta_3]$,
+$T/3T\simeq\Z_3[\zeta_3]/(\pi^2)$ with $\sigma$ a nontrivial unipotent fixing the line $\pi T/3T$, and $T^\sigma=0$. \emph{(proved here)} \Cref{cor:ant:z3zeta3modules}.
+\item \textbf{$\Z_\ell[\zeta_3]$ and $\Z_\ell[i]$.} $\Z_\ell[\zeta_3]:=\Z_\ell[X]/(X^2+X+1)$ is ramified for $\ell=3$, $\simeq\Z_\ell\times\Z_\ell$ (not a domain) for $\ell\equiv1\pmod3$,
+an unramified discrete valuation ring for $\ell\equiv2\pmod3$; likewise $\Z_\ell[i]$ according to $\ell\bmod4$; $\zeta_3\mapsto\zeta_3^2$ negates $\sqrt{-3}$, a unit iff
+$\ell\ne3$. \emph{(proved here)} \Cref{prop:ant:zlzeta3}.
+\item \textbf{Lattices with an automorphism of order $3$, $4$, $6$.} For $\ell$ odd and $g\in\Aut(\Z_\ell^2)$ with characteristic polynomial $\Phi_m$, $m\in\{3,4,6\}$
+(e.g. $g\in\SL_2(\Z_\ell)$ of order $m$): $\Z_\ell[g]\simeq\Z_\ell[X]/(\Phi_m)$, the lattice is free of rank one over it, and the commutant of $g$ is $\Z_\ell[g]$.
+\emph{(proved here)} \Cref{prop:ant:latticefree}.
+\item \textbf{The commutant and the invariant line.} For $\sigma$ with characteristic polynomial $X^2+X+1$ on a plane over a field $F$ of characteristic $0$:
+the commutant is $F[\sigma]\simeq F\otimes\Q(\zeta_3)$, its trace-zero part is $F(2\sigma+1)$ with $(2\sigma+1)^2=-3$, and $A\sigma A^{-1}=\sigma^q$ makes $A^{\pm1}$ act on
+it by $\chi_{-3}(q)$; for $\tau$ of order $4$, the line $F\tau$ and $\chi_{-4}(q)$; integrally $\End_{\langle\sigma\rangle}(T)=\Z_\ell[\sigma]\simeq\Z_\ell\otimes\Z[\zeta_3]$.
+\emph{(proved here)} \Cref{prop:ant:commutant}.
+\item \textbf{Cyclotomic integers.} $\mathcal O=\Z[\zeta_n]$; for $n=\ell^a$, $\ell=u(1-\zeta)^{\varphi(\ell^a)}$ is totally ramified; the discriminant formula; $p$ ramifies in
+$\Q(\zeta_n)$ iff $p\mid n$ ($n\not\equiv2\bmod4$). \emph{(proved here for prime powers and for (iv); stated in general, reference)} \Cref{thm:ant:cyclotomicintegers}.
+\item \textbf{Splitting in cyclotomic fields.} For $n=p^am$: $e=\varphi(p^a)$, $f=$ order of $p$ modulo $m$, $g=\varphi(m)/f$; inertia $(\Z/p^a)^\times\times1$, decomposition
+$(\Z/p^a)^\times\times\langle p\rangle$; $\Frob_p=\sigma_p$ for $p\nmid n$. \emph{(proved here)} \Cref{thm:ant:cyclotomicsplitting}.
+\item \textbf{$\Q(\sqrt{\ell^*})$.} The quadratic subfield of $\Q(\zeta_\ell)$, ramified only at $\ell$; $\chi_{\ell^*}(\Frob_p)=\bigl(\frac p\ell\bigr)$ for all $p\ne\ell$; imaginary iff
+$\ell\equiv3\pmod4$. \emph{(proved here)} \Cref{prop:ant:sqrtlstar}.
+\item \textbf{Quadratic reciprocity}, with both supplements, from \Cref{prop:ant:quadchar} and \Cref{prop:ant:sqrtlstar}. \emph{(proved here)} \Cref{cor:ant:qr}.
+\item \textbf{Kronecker-Weber.} Every abelian $K/\Q$ lies in some $\Q(\zeta_n)$; conductor; $G_\Q^{\mathrm{ab}}\simeq\hat\Z^\times$. \emph{(stated; reference)}
+\Cref{thm:ant:kroneckerweber}.
+\item \textbf{Artin map over $\Q$.} For $K\subseteq\Q(\zeta_n)$, $\Frob_p(K/\Q)=\sigma_p|_K$ depends only on $p\bmod n$ \emph{(proved here)}; idelic form and its sign
+conventions \emph{(stated; reference)}. \Cref{thm:ant:artinQ}.
+\item \textbf{Dirichlet characters and characters of $G_\Q$.} $\chi\mapsto\psi_\chi$, $\psi_\chi(\Frob_p)=\chi(p)$, is a bijection from primitive Dirichlet characters to
+continuous characters of $G_\Q$; ramification and conductor match; $\chi_\ell$ and $\bar\chi_\ell=\psi_{\omega_\ell}$ \emph{(proved here, given Kronecker-Weber)};
+twisting newforms \emph{(stated; \Cref{ch:hecke})}. \Cref{thm:ant:dirichletgalois}.
+\item \textbf{Dedekind zeta and densities.} $\zeta_K$ converges for $\mathrm{Re}\,s>1$ \emph{(proved here)}; simple pole at $1$ \emph{(stated; reference)}; Dirichlet
+density; primes of degree one have density one \emph{(proved here, given the pole)}. \Cref{prop:ant:dedekindzeta}.
+\item \textbf{Chebotarev.} For $L/K$ Galois and a class $C$, the primes with $\Frob_{\mathfrak p}=C$ have density $\#C/\#G$. \emph{(stated; reference)}
+\Cref{thm:ant:chebotarev}.
+\item \textbf{Consequences of Chebotarev.} Every element is a Frobenius; split primes have density $1/[L:K]$; Bauer's theorem; Dirichlet's theorem; inert primes
+of $\Q(\sqrt{\ell^*})$ have density $\frac12$. \emph{(proved here, given \Cref{thm:ant:chebotarev})} \Cref{cor:ant:chebotarev}.
+\item \textbf{Detecting a quadratic twist.} For $\rho$ semisimple, unramified outside $S$, in characteristic $\ne2$: $\rho\simeq\rho\otimes\chi_K$ iff $\tr\rho(\Frob_p)=0$ for
+the primes $p\notin S$ inert in $K$ (outside density zero). \emph{(proved here, given \Cref{ch:galois})} \Cref{prop:ant:twistdetect}.
+\item \textbf{Complex multiplication.} For $E/\Q$ with CM by $K$: class number one, $13$ values of $j$ \emph{(stated; reference)}; $\rho\simeq\rho\otimes\chi_K$, $a_p=0$ at good
+inert primes, and primes ramified in $K$ are bad \emph{(proof sketched here)}; conversely $a_p=0$ at almost all inert primes forces CM by $K$, and without CM
+$\{p:a_p=0\}$ has density $0$ \emph{(stated; reference)}; so CM by $\Q(\sqrt{\ell^*})$ forces $\ell\mid N$. \Cref{thm:ant:cm}.
+\item \textbf{Coefficient fields.} The image of a ring finite over $\Z$ in $\C$ is an order in a number field; $K_f$ is a number field and $a_n(f)\in\mathcal O_{K_f}$
+\emph{(proved here)}; conjugates are newforms, $K_f$ totally real \emph{(stated; \Cref{ch:hecke})}. \Cref{prop:ant:coefffield}.
+\item \textbf{Primes above $\ell$.} Reduction modulo $\lambda$; congruences of integers modulo $\lambda$ and $\ell$; enlarging $\mathcal O$ and $\lambda$; lying over for
+$\mathcal O[\alpha]$; the root of $X^2-aX+p$ congruent to a given root modulo a prime above $\lambda$. \emph{(proved here)} \Cref{prop:ant:primesabove}.
+\item \textbf{Maximal ideals from congruences.} $\ker(R\to\mathcal O\to\mathcal O/\lambda)$ is maximal of residue characteristic $\ell$, the same for congruent
+homomorphisms, and an ideal $J$ inside it with $R/J\simeq\Z/r$ has $\ell\mid r$ \emph{(proved here)}; $R\otimes\Z_\ell=\prod R_{\mathfrak m}$ \emph{(stated;
+\Cref{ch:modules})}. \Cref{prop:ant:congruencemaximal}.
+\item \textbf{$\mathcal O_K\otimes\Z_\ell=\prod_{\lambda\mid\ell}\mathcal O_{K,\lambda}$}, each a complete discrete valuation ring of rank $e_\lambda f_\lambda$ over $\Z_\ell$.
+\emph{(stated; \Cref{ch:local})} \Cref{prop:ant:otimesZl}.
+\end{enumerate}
+
+\section*{Where the paper uses this chapter}
+
+\begin{itemize}
+\item \textbf{Lemma lem:IV} (types $\kod{IV}$, $\kod{IV}^*$ at $q\ne3$): $\Z_3[\zeta_3]$ a discrete valuation ring with uniformiser $\pi$, \Cref{thm:ant:z3zeta3dvr}; $T_3E$ free of
+rank one over it and $E[3]\simeq\Z_3[\zeta_3]/(\pi^2)$ with a unipotent action, \Cref{cor:ant:z3zeta3modules}, \Cref{prop:ant:above3}; Frobenius conjugating $\sigma$ to
+$\sigma^q=\sigma^{\chi_{-3}(q)}$, \Cref{cor:ant:frobsigma}, \Cref{prop:ant:quadchar}; the line of $\ad V$ and its sign, \Cref{prop:ant:commutant}.
+\item \textbf{Lemma lem:euler} (the omitted factors at tame primes) \textbf{and the table of Section 1}: the tame relation, \Cref{prop:ant:tameconj},
+\Cref{cor:ant:frobsigma}; $\End_{I_q}(T)=\Z_\ell[\sigma]\simeq\Z_\ell\otimes\Z[\zeta_3]$, not a field for $\ell\equiv1\pmod3$, \Cref{prop:ant:zlzeta3}, \Cref{prop:ant:latticefree},
+\Cref{prop:ant:commutant}; $\chi_{-3}(q)$, $\chi_{-4}(q)$, \Cref{prop:ant:quadchar}, \Cref{ex:ant:characters}; the geometric Frobenius in $L_q(A_f,s)$ and the row
+$\kod{I}_n$, \Cref{conv:ant:frobenius}, \Cref{ex:ant:multiplicative}.
+\item \textbf{Section 1.1} (the local terms): $I_p$, $\Frob_p$, $V^{I_p}$, \Cref{prop:ant:frobGQ}; $L_p(A_f,s)=\det(1-\Frob_p^{-1}p^{-s}\mid A_f^{I_p})^{-1}$,
+\Cref{conv:ant:frobenius}. \textbf{Lemma lem:fpr}: $L_p(A_f,1)=L_p(A_f(1),0)$, \Cref{conv:ant:frobenius}.
+\item \textbf{Section 1.4, Lemma lem:twist, Theorems thm:twist and thm:quant}: $\chi_{q^*}$, the character of conductor $q$ of $\Q(\sqrt{q^*})$, ramified only at $q$,
+\Cref{prop:ant:ramonlyat}, \Cref{prop:ant:quadchar}, \Cref{cor:ant:qr}; $\chi_S$ and $D=\prod_{q\in S}q$, \Cref{prop:ant:ramonlyat}(iii); characters as Dirichlet and as
+Galois characters, \Cref{thm:ant:dirichletgalois}, \Cref{ex:ant:characters}.
+\item \textbf{Theorem thm:main} (the hypothesis on $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$): $\Q(\sqrt{\ell^*})\subseteq\Q(\zeta_\ell)$ and its splitting law, \Cref{prop:ant:sqrtlstar};
+the condition $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$, \Cref{prop:ant:twistdetect}, \Cref{warn:ant:chil}.
+\item \textbf{Lemma lem:h0 and Proposition prop:ns}: $\bar\chi_3^{\mathrm{cyc}}=\chi_{-3}$ and $\chi_{\ell^*}\ne\bar\chi_\ell$ for $\ell\ge5$, \Cref{ex:ant:characters},
+\Cref{warn:ant:chil}; twists by $\chi_{-3}$ and inert primes, \Cref{prop:ant:twistdetect}; complex multiplication and $a_p=0$ at inert primes (the corrected reading of the
+original version), \Cref{thm:ant:cm}, \Cref{cor:ant:chebotarev}.
+\item \textbf{Proposition prop:forms}: $q\equiv\chi_{-3}(q)\pmod3$ for $q\ne3$, \Cref{prop:ant:quadchar}(iii).
+\item \textbf{Lemma lem:crit} (congruence criterion): coefficients in the ring of integers $\mathcal O$ of a number field, \Cref{prop:ant:coefffield}; $\lambda\mid\ell$ and the
+maximal ideal of residue characteristic $\ell$, $\ell\mid r$, \Cref{prop:ant:primesabove}, \Cref{prop:ant:congruencemaximal}; over $\Z_\ell$, \Cref{prop:ant:otimesZl}.
+\item \textbf{Lemma lem:old} (oldforms): Frobenius at unramified primes and Chebotarev, \Cref{prop:ant:frobenius}, \Cref{prop:ant:frobGQ}, \Cref{thm:ant:chebotarev}; ``after
+enlarging $\mathcal O$ and $\lambda$'' and ``a prime above $\lambda$ in $\mathcal O[\alpha_p]$'', \Cref{prop:ant:primesabove}(iii) to (v).
+\item \textbf{Section 3 and Example ex:qual}: the twisting fields $\Q(\sqrt{-7})$, $\Q(\sqrt{-11})$, \Cref{ex:ant:quadexamples}; Chebotarev for congruences at all
+$p\nmid3N$, \Cref{cor:ant:chebotarev}.
+\end{itemize}
+
+\section{Number fields and their rings of integers}\label{sec:ant:integers}
+
+This section sets up the objects behind every ``$\mathcal O$'' and every ``prime $\lambda\mid\ell$'' of the paper: number fields, their rings of
+integers, traces and norms, integral bases and the discriminant, and the units. The paper's Lemmas lem:crit and lem:old take the
+coefficients of a newform in the ring of integers $\mathcal O$ of a number field; Lemma lem:IV and Lemma lem:euler work inside
+$\Z[\zeta_3]$ and $\Z[i]$, the rings of integers of $\Q(\sqrt{-3})$ and $\Q(i)$, whose discriminants $-3$ and $-4$ name the characters $\chi_{-3}$ and
+$\chi_{-4}$ of the table of Section 1. Nothing here is specific to elliptic curves.
+
+\begin{convention}\label{conv:ant:conventions}
+(a) We fix an algebraic closure $\Qbar$ of $\Q$ inside $\C$ (as in \Cref{ch:galois}); every number field is a subfield of $\Qbar$, and $\bar\Z$
+denotes the ring of all algebraic integers of $\Qbar$. We write $\zeta_n=e^{2\pi i/n}$, and $\zeta_3=(-1+\sqrt{-3})/2$.
+(b) The letters $p$, $q$, $\ell$ denote rational primes, as in the paper ($\ell$ the coefficient prime, $q$ a bad prime of $E$); the size of a
+residue field is written $N\mathfrak p$, never $q$. Uniformisers of discrete valuation rings are written $\varpi$; the paper's element
+$\pi=1-\zeta_3$ keeps its name, and in \Cref{sec:ant:quadratic} the letter $\pi$ means nothing else.
+(c) $D$ denotes the discriminant of a quadratic field, and $D_{\mathfrak P}$, $D_p$ decomposition groups; no other meaning of $D$ occurs.
+(d) The quadratic character of a quadratic field $K$ of discriminant $D$ is written $\chi_D$ (decision D3 and convention B-C6 of
+Appendix B): $\chi_{-4}$ for $\Q(i)$, $\chi_{-3}$ for $\Q(\sqrt{-3})$, $\chi_8$ for $\Q(\sqrt2)$, $\chi_{q^*}$ for $\Q(\sqrt{q^*})$; the index is
+always a fundamental discriminant, and $\chi_\ell$ with a letter index is the $\ell$-adic cyclotomic character.
+(e) $\Frob$ is the arithmetic Frobenius and $\Frob^{-1}$ the geometric one (\Cref{conv:ant:frobenius}). Since the cyclotomic polynomials are
+written $\Phi_n$ in this chapter, the geometric Frobenius is always written $\Frob_p^{-1}$ here (Appendix B also writes it $\Phi_p$).
+\end{convention}
+
+\begin{definition}\label{def:ant:numberfield}
+A \emph{number field} is a field $K\supseteq\Q$ with $n=[K:\Q]<\infty$. By the primitive element theorem (\Cref{ch:galois}) $K=\Q(\theta)$
+for some $\theta$, and there are exactly $n$ field embeddings $\sigma_1,\dots,\sigma_n\colon K\to\C$, sending $\theta$ to the $n$ roots of its
+minimal polynomial. If $r_1$ of them have image in $\R$, the other $2r_2$ come in complex conjugate pairs and $n=r_1+2r_2$. The field is
+\emph{totally real} if $r_2=0$ and \emph{imaginary quadratic} if $n=2$ and $r_1=0$.
+\end{definition}
+
+\begin{proposition}[algebraic integers]\label{prop:ant:integral}
+Let $K$ be a number field and $\alpha\in K$. The following are equivalent, and $\alpha$ is then called an \emph{algebraic integer}:
+(o) $\alpha$ is a root of a monic polynomial in $\Z[X]$; (i) the minimal polynomial of $\alpha$ over $\Q$ lies in $\Z[X]$; (ii) $\Z[\alpha]$ is a
+finitely generated $\Z$-module; (iii) $\alpha$ lies in a subring of $K$ that is finitely generated as a $\Z$-module. The algebraic integers of
+$K$ form a subring $\mathcal O_K$, the \emph{ring of integers}; $\mathcal O_K\cap\Q=\Z$; for every $\alpha\in K$ there is an integer $m\ge1$ with
+$m\alpha\in\mathcal O_K$, so $\Frac(\mathcal O_K)=K$; and $\mathcal O_K$ is \emph{integrally closed} in $K$: an element of $K$ that is a root of a
+monic polynomial with coefficients in $\mathcal O_K$ lies in $\mathcal O_K$.
+\end{proposition}
+
+\begin{proof}
+(o)$\Rightarrow$(i): if $\alpha$ is a root of a monic $g\in\Z[X]$, its minimal polynomial $m_\alpha$ divides $g$ in $\Q[X]$, and a monic factor
+in $\Q[X]$ of a monic polynomial of $\Z[X]$ lies in $\Z[X]$ by Gauss's lemma (\Cref{ch:rings}). (i)$\Rightarrow$(ii): if $m_\alpha\in\Z[X]$ is
+monic of degree $d$, division by $m_\alpha$ shows $\Z[\alpha]=\Z+\Z\alpha+\dots+\Z\alpha^{d-1}$. (ii)$\Rightarrow$(iii) is trivial.
+(iii)$\Rightarrow$(o): let $M\ni\alpha$ be a subring generated as a $\Z$-module by $m_1,\dots,m_r$. Write $\alpha m_i=\sum_ja_{ij}m_j$ with
+$a_{ij}\in\Z$, so $(\alpha I-A)\underline m=0$ for $A=(a_{ij})$ and the column $\underline m$. Multiplying by the adjugate of $\alpha I-A$ gives
+$\det(\alpha I-A)m_i=0$ for all $i$; as $1\in M$ is a $\Z$-combination of the $m_i$, $\det(\alpha I-A)=0$, and $\det(XI-A)$ is monic in $\Z[X]$.
+
+If $\alpha,\beta$ are algebraic integers, roots of monic integer polynomials of degrees $a$ and $b$, the ring $\Z[\alpha,\beta]$ is generated
+as a $\Z$-module by the $\alpha^i\beta^j$, $i<a$, $j<b$; it contains $\alpha\pm\beta$ and $\alpha\beta$, which are therefore integral by (iii).
+A rational root $x=u/v$ (in lowest terms) of a monic $X^d+c_{d-1}X^{d-1}+\dots+c_0\in\Z[X]$ satisfies $u^d=-v(c_{d-1}u^{d-1}+\dots+c_0v^{d-1})$, so
+$v\mid u^d$ and $v=\pm1$: hence $\mathcal O_K\cap\Q=\Z$. If $\alpha$ is a root of $a_dX^d+\dots+a_0\in\Z[X]$ with $a_d\ne0$, then $a_d\alpha$ is a root
+of the monic polynomial $X^d+a_{d-1}X^{d-1}+a_{d-2}a_dX^{d-2}+\dots+a_0a_d^{d-1}$. Finally, if $x\in K$ satisfies $x^d+c_{d-1}x^{d-1}+\dots+c_0=0$
+with $c_i\in\mathcal O_K$, then $\Z[c_0,\dots,c_{d-1},x]$ is a finitely generated $\Z$-module (each $c_i$ is integral, and powers of $x$ beyond
+$x^{d-1}$ are reduced by the equation), so $x\in\mathcal O_K$ by (iii).
+\end{proof}
+
+\begin{definition}\label{def:ant:tracenorm}
+For $\alpha\in K$ let $m_\alpha\colon K\to K$, $x\mapsto\alpha x$, a $\Q$-linear map. The \emph{trace} and \emph{norm} of $\alpha$ are
+$\Tr_{K/\Q}(\alpha)=\tr(m_\alpha)$ and $N_{K/\Q}(\alpha)=\det(m_\alpha)$. For a tower $L\supseteq K$ of number fields, $\Tr_{L/K}$ and $N_{L/K}$ are
+defined in the same way with $L$ viewed as a $K$-vector space.
+\end{definition}
+
+\begin{proposition}[trace and norm]\label{prop:ant:tracenorm}
+Let $K$ be a number field of degree $n$ with embeddings $\sigma_1,\dots,\sigma_n$, and $\alpha\in K$.
+\begin{enumerate}[label=(\roman*)]
+\item The characteristic polynomial of $m_\alpha$ is $\prod_i(X-\sigma_i(\alpha))=m_\alpha(X)^{n/d}$, $d=[\Q(\alpha):\Q]$, $m_\alpha$ the minimal
+polynomial. Hence $\Tr_{K/\Q}(\alpha)=\sum_i\sigma_i(\alpha)$ and $N_{K/\Q}(\alpha)=\prod_i\sigma_i(\alpha)$; $\Tr$ is $\Q$-linear, $N$ is
+multiplicative, and $N(\alpha)=0$ iff $\alpha=0$. If $K=\Q(\alpha)$ with minimal polynomial $X^n+c_{n-1}X^{n-1}+\dots+c_0$, then
+$\Tr(\alpha)=-c_{n-1}$ and $N(\alpha)=(-1)^nc_0$.
+\item If $\alpha\in\mathcal O_K$ then $\Tr(\alpha),N(\alpha)\in\Z$, and $\alpha\in\mathcal O_K^\times$ if and only if $N(\alpha)=\pm1$.
+\item For number fields $L\supseteq K$: $\Tr_{L/\Q}=\Tr_{K/\Q}\circ\Tr_{L/K}$ and $N_{L/\Q}=N_{K/\Q}\circ N_{L/K}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) If $\beta_1,\dots,\beta_{n/d}$ is a basis of $K$ over $\Q(\alpha)$, the elements $\beta_j\alpha^i$ ($0\le i<d$) form a basis of $K$ over $\Q$ in which
+$m_\alpha$ is block diagonal with $n/d$ copies of the companion matrix of $m_\alpha(X)$; so its characteristic polynomial is $m_\alpha(X)^{n/d}$.
+Each of the $d$ embeddings of $\Q(\alpha)$, which send $\alpha$ to the $d$ distinct roots of $m_\alpha$, extends to exactly $n/d$ embeddings of
+$K$ (\Cref{ch:galois}), so $\prod_i(X-\sigma_i(\alpha))=m_\alpha(X)^{n/d}$ as well. The remaining statements are properties of the trace and
+the determinant ($m_{\alpha\beta}=m_\alpha m_\beta$, and $m_\alpha$ is invertible for $\alpha\ne0$).
+(ii) By \Cref{prop:ant:integral}(i), $m_\alpha(X)\in\Z[X]$, so the characteristic polynomial has integer coefficients. If $\alpha\beta=1$ with
+$\beta\in\mathcal O_K$, then $N(\alpha)N(\beta)=1$ in $\Z$. Conversely, let $\chi(X)=X^n+\dots+c_1X+c_0$ be the characteristic polynomial of
+$m_\alpha$, with $c_0=(-1)^nN(\alpha)=\pm1$; by Cayley-Hamilton $\chi(\alpha)=0$, so $\alpha^{-1}=-c_0^{-1}(\alpha^{n-1}+\dots+c_1)\in\Z[\alpha]\subseteq\mathcal O_K$.
+(iii) By (i) applied over $K$ (with the same proof), $\Tr_{L/K}(\alpha)=\sum_\sigma\sigma(\alpha)$ over the $[L:K]$ embeddings $\sigma\colon L\to\Qbar$
+that are the identity on $K$. Fix an embedding $\tau\colon K\to\Qbar$ and extend it to an automorphism $\tilde\tau$ of $\Qbar$ (\Cref{ch:galois}); the
+embeddings of $L$ extending $\tau$ are the $\tilde\tau\circ\sigma$, so their sum at $\alpha$ is $\tau(\Tr_{L/K}\alpha)$. Summing over the $[K:\Q]$
+choices of $\tau$ gives $\Tr_{L/\Q}(\alpha)=\Tr_{K/\Q}(\Tr_{L/K}\alpha)$; the norm is the same with products.
+\end{proof}
+
+\begin{theorem}[integral bases and the discriminant]\label{thm:ant:integralbasis}
+Let $K$ be a number field of degree $n$.
+\begin{enumerate}[label=(\roman*)]
+\item The trace form $(x,y)\mapsto\Tr_{K/\Q}(xy)$ is a nondegenerate symmetric bilinear form on $K$.
+\item $\mathcal O_K$ is a free $\Z$-module of rank $n$. For a $\Z$-basis $\omega_1,\dots,\omega_n$ (an \emph{integral basis}) the integer
+$\disc(\omega_1,\dots,\omega_n)=\det\bigl(\Tr(\omega_i\omega_j)\bigr)=\det\bigl(\sigma_k(\omega_j)\bigr)^2$ is nonzero and independent of the basis; it is
+the \emph{discriminant} $d_K$ of $K$.
+\item If $\alpha_1,\dots,\alpha_n\in\mathcal O_K$ are linearly independent over $\Q$ and $M=\Z\alpha_1+\dots+\Z\alpha_n$, then
+$\disc(\alpha_1,\dots,\alpha_n)=[\mathcal O_K:M]^2\,d_K$. In particular, if $\disc(\alpha_1,\dots,\alpha_n)$ is squarefree then $M=\mathcal O_K$.
+\item If $K=\Q(\theta)$ with $\theta\in\mathcal O_K$ of minimal polynomial $g$, with roots $\theta_1,\dots,\theta_n$, then
+\[
+\disc(1,\theta,\dots,\theta^{n-1})=\prod_{i<j}(\theta_i-\theta_j)^2=\disc(g)=(-1)^{n(n-1)/2}N_{K/\Q}(g'(\theta)).
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) If $x\ne0$ then $\Tr(x\cdot x^{-1})=\Tr(1)=n\ne0$. (ii) By \Cref{prop:ant:integral} a $\Q$-basis of $K$ can be multiplied by integers to lie in
+$\mathcal O_K$; let $\alpha_1,\dots,\alpha_n$ be such a basis and $\alpha_1^\vee,\dots,\alpha_n^\vee$ the dual basis for the trace form, which exists
+by (i). For $x\in\mathcal O_K$, $x=\sum_i\Tr(x\alpha_i)\alpha_i^\vee$ with $\Tr(x\alpha_i)\in\Z$ (\Cref{prop:ant:tracenorm}(ii)). So
+$\bigoplus_i\Z\alpha_i\subseteq\mathcal O_K\subseteq\bigoplus_i\Z\alpha_i^\vee$, and $\mathcal O_K$, a subgroup of a free abelian group of rank $n$
+containing one of rank $n$, is free of rank $n$ (\Cref{ch:modules}). Since $\Tr(\omega_i\omega_j)=\sum_k\sigma_k(\omega_i)\sigma_k(\omega_j)$, the Gram matrix is
+$S^{\mathsf T}S$ with $S=(\sigma_k(\omega_j))_{k,j}$, which gives the second expression; it is nonzero by (i). If $\omega'=C\omega$ is another basis,
+$C\in\GL_n(\Z)$, the Gram matrix becomes $C(\cdot)C^{\mathsf T}$ and the determinant is multiplied by $\det(C)^2=1$.
+(iii) Write $\alpha=C\omega$ with $C\in\Mat_n(\Z)$; then $\disc(\alpha)=\det(C)^2d_K$, and $\abs{\det C}=[\mathcal O_K:M]$ by the elementary
+divisor theorem (\Cref{ch:modules}). If $\disc(\alpha)$ is squarefree, the square $[\mathcal O_K:M]^2$ dividing it is $1$.
+(iv) With $\sigma_k(\theta)=\theta_k$, the matrix $(\sigma_k(\theta^{j-1}))$ is the Vandermonde matrix of the $\theta_k$, of determinant
+$\prod_{i<j}(\theta_j-\theta_i)$. Writing $g(X)=\prod_k(X-\theta_k)$, $g'(\theta_i)=\prod_{k\ne i}(\theta_i-\theta_k)$, and the product of these over $i$
+is $(-1)^{n(n-1)/2}\prod_{i<j}(\theta_i-\theta_j)^2$; and $\prod_ig'(\theta_i)=\prod_i\sigma_i(g'(\theta))=N(g'(\theta))$.
+\end{proof}
+
+\begin{proposition}[quadratic fields]\label{prop:ant:quadraticintegers}
+Let $d\in\Z$ be squarefree, $d\ne0,1$, and $K=\Q(\sqrt d)$. If $d\equiv2,3\pmod4$ then $\mathcal O_K=\Z[\sqrt d]$ and $d_K=4d$; if $d\equiv1\pmod4$
+then $\mathcal O_K=\Z[\frac{1+\sqrt d}2]$ and $d_K=d$. A \emph{fundamental discriminant} is an integer $D\ne1$ that is either squarefree with
+$D\equiv1\pmod4$, or $D=4m$ with $m$ squarefree and $m\equiv2,3\pmod4$; the map $K\mapsto d_K$ is a bijection from quadratic fields to fundamental
+discriminants, with inverse $D\mapsto\Q(\sqrt D)$. The norm forms are $N(a+b\sqrt d)=a^2-db^2$ and, for $d\equiv1\pmod4$ and $\omega=\frac{1+\sqrt d}2$,
+$N(a+b\omega)=a^2+ab+\frac{1-d}4b^2$.
+\end{proposition}
+
+\begin{proof}
+Let $\alpha=a+b\sqrt d$ with $a,b\in\Q$, $b\ne0$. Its minimal polynomial is $X^2-2aX+(a^2-db^2)$, so $\alpha\in\mathcal O_K$ iff $2a\in\Z$ and
+$a^2-db^2\in\Z$. If $a\in\Z$ then $db^2\in\Z$, and $b\in\Z$ because $d$ is squarefree (if $b=u/v$ in lowest terms, $v^2\mid du^2$, so $v^2\mid d$). If
+$a=A/2$ with $A$ odd, then $4(a^2-db^2)=A^2-d(2b)^2\in4\Z$, so $d(2b)^2\in\Z$, $B:=2b\in\Z$ as before, and $A^2\equiv dB^2\pmod4$ with $A$ odd forces
+$B$ odd and $d\equiv1\pmod4$. This gives $\mathcal O_K$. For the basis $1,\sqrt d$ the Gram matrix of the trace form is $\mathrm{diag}(2,2d)$, of
+determinant $4d$; for $1,\omega$ it is $\sm21 1{(1+d)/2}$, of determinant $d$. The fundamental discriminants are exactly these values: $d$ for
+$d\equiv1\pmod4$ and $4d$ for $d\equiv2,3\pmod4$, and $\Q(\sqrt{d_K})=K$. The norm forms follow from $N(x)=x\bar x$.
+\end{proof}
+
+\begin{example}\label{ex:ant:quadraticrings}
+$\Q(i)$: $\mathcal O=\Z[i]$, $D=-4$, $N(a+bi)=a^2+b^2$. $\Q(\sqrt{-3})$: $\mathcal O=\Z[\zeta_3]$ since $\zeta_3=\frac{-1+\sqrt{-3}}2=\omega-1$, $D=-3$,
+and $N(a+b\zeta_3)=a^2-ab+b^2$; the subring $\Z[\sqrt{-3}]$ has index $2$ (its discriminant is $-12=2^2\cdot(-3)$, \Cref{thm:ant:integralbasis}(iii)) and is
+not integrally closed, which is why unique factorisation fails in it (\Cref{ch:rings}, where $4=2\cdot2=(1+\sqrt{-3})(1-\sqrt{-3})$). $\Q(\sqrt5)$:
+$\mathcal O=\Z[\frac{1+\sqrt5}2]$, $D=5$. $\Q(\sqrt{-7})$, $\Q(\sqrt{-11})$: $D=-7$, $-11$. $\Q(\sqrt{-5})$, $\Q(\sqrt2)$: $D=-20$, $8$.
+\end{example}
+
+\begin{theorem}[units]\label{thm:ant:units}
+(i) (Dirichlet's unit theorem.) $\mathcal O_K^\times\simeq\mu(K)\times\Z^{r_1+r_2-1}$, where $\mu(K)$, the group of roots of unity in $K$, is finite
+and cyclic. (ii) If $K$ is imaginary quadratic, $\mathcal O_K^\times=\mu(K)$, which is $\{\pm1\}$ except for $\mu(\Q(i))=\{\pm1,\pm i\}=\mu_4$ and
+$\mu(\Q(\sqrt{-3}))=\{\pm1,\pm\zeta_3,\pm\zeta_3^2\}=\mu_6$. (iii) $\Z[\sqrt2]^\times=\{\pm(1+\sqrt2)^k:k\in\Z\}$.
+\end{theorem}
+
+\begin{proof}
+(i) We do not prove this; see \cite[Chapter I, Section 7]{Neukirch} or \cite[Chapter 5]{Marcus77}. (ii) A unit has norm $\pm1$
+(\Cref{prop:ant:tracenorm}(ii)), and norms are $\ge0$ in an imaginary quadratic field, so units are the elements of norm $1$. For $d\equiv2,3\pmod4$,
+$d<0$: $a^2+\abs db^2=1$ has the solutions $(\pm1,0)$, and also $(0,\pm1)$ when $d=-1$. For $d\equiv1\pmod4$, $d<0$: with $\alpha=(A+B\sqrt d)/2$, $A\equiv B
+\pmod2$, the equation is $A^2+\abs dB^2=4$; for $\abs d\ge7$ only $B=0$, $A=\pm2$; for $d=-3$ also $A=\pm1$, $B=\pm1$, which are the six elements
+$\pm1,\pm\zeta_3,\pm\zeta_3^2$. (iii) Let $u_0=1+\sqrt2$, a unit of norm $-1$. If $u=a+b\sqrt2>1$ is a unit, its conjugate $\bar u=\pm u^{-1}$
+has $\abs{\bar u}<1$, so $a=(u+\bar u)/2>0$ and $b\sqrt2=(u-\bar u)/2>0$; hence $a,b\ge1$ and $u\ge u_0$. Given any unit $u>0$, choose $k$ with
+$u_0^k\le u<u_0^{k+1}$; then $u\,u_0^{-k}$ is a unit in $[1,u_0)$, so it is $1$. Units $u<0$ are $-1$ times positive ones.
+\end{proof}
+
+In the paper the units of $\Z[\zeta_3]$ appear in ``$\pi^2=-3$ up to a unit'' (Lemma lem:IV):
+$3=-\zeta_3^2(1-\zeta_3)^2$ and $\zeta_3^2\in\mu_6$ (\Cref{prop:ant:above3}).
+
+\section{Dedekind domains, ideals, norms and class groups}\label{sec:ant:dedekind}
+
+Unique factorisation of elements fails in rings of integers, but unique factorisation of ideals holds, and it is what gives meaning to
+``a prime $\lambda\mid\ell$'', to the valuation $v_\lambda$ and to the residue field $\mathcal O/\lambda$ in Lemmas lem:crit and lem:old of the paper.
+This section proves it (\Cref{thm:ant:idealfactorisation}), with the norm of an ideal, the Chinese remainder theorem and the localisations,
+which are discrete valuation rings in the sense of \Cref{ch:modules}. The class group is described but not used by the paper: the rings
+$\Z[i]$ and $\Z[\zeta_3]$ that the paper needs are principal ideal domains.
+
+\begin{definition}\label{def:ant:dedekind}
+A \emph{Dedekind domain} is a Noetherian integral domain $R$, not a field, which is integrally closed in its fraction field and in which every
+nonzero prime ideal is maximal.
+\end{definition}
+
+\begin{theorem}\label{thm:ant:dedekind}
+(i) For every number field $K$, $\mathcal O_K$ is a Dedekind domain; for a nonzero prime $\mathfrak p$ of $\mathcal O_K$, $\mathfrak p\cap\Z=p\Z$ for a
+prime $p$, and $\mathcal O_K/\mathfrak p$ is a finite field of characteristic $p$. (ii) A principal ideal domain that is not a field is a Dedekind
+domain. (iii) A Noetherian domain $R$ that is not a field is a Dedekind domain if and only if the localisation $R_{\mathfrak p}$ is a discrete
+valuation ring for every nonzero prime $\mathfrak p$.
+\end{theorem}
+
+\begin{proof}
+(i) $\mathcal O_K$ is a free $\Z$-module of finite rank (\Cref{thm:ant:integralbasis}), so every ideal, a subgroup, is finitely generated:
+$\mathcal O_K$ is Noetherian. It is integrally closed (\Cref{prop:ant:integral}) and not a field ($\frac12\notin\mathcal O_K$). Let $\mathfrak p\ne0$
+be prime and $0\ne\alpha\in\mathfrak p$, with minimal polynomial $X^d+\dots+c_1X+c_0$; then $c_0\ne0$ by irreducibility, and
+$c_0=-\alpha(\alpha^{d-1}+\dots+c_1)\in\mathfrak p\cap\Z$. So $\mathfrak p\cap\Z$ is a nonzero prime ideal of $\Z$, equal to $p\Z$. Then
+$\mathcal O_K/\mathfrak p$ is a quotient of $\mathcal O_K/p\mathcal O_K\simeq(\Z/p)^n$, a finite integral domain, hence a field: $\mathfrak p$ is
+maximal. (ii) A PID is Noetherian, is a UFD and hence integrally closed (\Cref{ch:rings}), and a nonzero prime $(\varpi)$ is maximal: if
+$(\varpi)\subseteq(a)$ then $\varpi=ab$, and $\varpi\mid a$ or $\varpi\mid b$, so $(a)=(\varpi)$ or $(a)=R$.
+(iii) ``Only if'' is \Cref{prop:ant:crt}(iv) below, whose proof uses only \Cref{thm:ant:idealfactorisation}. ``If'': a discrete valuation ring is
+integrally closed (\Cref{ch:modules}). If $x\in K$ lies in $R_{\mathfrak m}$ for every maximal ideal $\mathfrak m$, the ideal
+$\{r\in R:rx\in R\}$ is contained in no maximal ideal, so it is $R$ and $x\in R$; hence $R=\bigcap_{\mathfrak m}R_{\mathfrak m}$ is integrally
+closed. If $0\ne\mathfrak q\subsetneq\mathfrak m$ were primes, $\mathfrak qR_{\mathfrak m}\subsetneq\mathfrak mR_{\mathfrak m}$ would be two distinct
+nonzero primes of the discrete valuation ring $R_{\mathfrak m}$, which has only one.
+\end{proof}
+
+\begin{lemma}\label{lem:ant:primeproducts}
+Let $R$ be a Dedekind domain with fraction field $K$, and for a nonzero prime $\mathfrak p$ put $\mathfrak p^{-1}=\{x\in K:x\mathfrak p\subseteq R\}$.
+(i) Every nonzero ideal of $R$ contains a product of nonzero prime ideals. (ii) For every nonzero ideal $\mathfrak a$, $\mathfrak a\mathfrak p^{-1}\ne\mathfrak a$;
+in particular $\mathfrak p^{-1}\ne R$. (iii) $\mathfrak p\mathfrak p^{-1}=R$.
+\end{lemma}
+
+\begin{proof}
+(i) If not, the set of nonzero ideals not containing such a product has a maximal element $\mathfrak a$ ($R$ is Noetherian). It is not
+prime, and not $R$, so there are $b,c\notin\mathfrak a$ with $bc\in\mathfrak a$; the ideals $\mathfrak a+(b)$ and $\mathfrak a+(c)$ are strictly larger,
+so contain products of primes, and their product, contained in $\mathfrak a$, is a product of primes: a contradiction.
+(ii) First $\mathfrak p^{-1}\ne R$: take $0\ne a\in\mathfrak p$ and, by (i), primes with $\mathfrak p_1\cdots\mathfrak p_r\subseteq(a)\subseteq\mathfrak p$, $r$
+minimal. Some $\mathfrak p_i\subseteq\mathfrak p$ (as $\mathfrak p$ is prime), say $\mathfrak p_1$, and then $\mathfrak p_1=\mathfrak p$ (maximality). By
+minimality there is $b\in\mathfrak p_2\cdots\mathfrak p_r$ with $b\notin(a)$; then $b\mathfrak p\subseteq(a)$, so $b/a\in\mathfrak p^{-1}$ while $b/a\notin R$.
+Now let $\mathfrak a=(\alpha_1,\dots,\alpha_m)\ne0$ with $\mathfrak a\mathfrak p^{-1}=\mathfrak a$. For $x\in\mathfrak p^{-1}$, $x\alpha_i=\sum_ja_{ij}\alpha_j$ with
+$a_{ij}\in R$, so $\det(xI-(a_{ij}))=0$ as in \Cref{prop:ant:integral}, $x$ is integral over $R$, and $x\in R$. So $\mathfrak p^{-1}\subseteq R$, a
+contradiction. (iii) $\mathfrak p\subseteq\mathfrak p\mathfrak p^{-1}\subseteq R$ (as $1\in\mathfrak p^{-1}$), and $\mathfrak p\mathfrak p^{-1}\ne\mathfrak p$ by (ii); $\mathfrak p$ is maximal.
+\end{proof}
+
+\begin{theorem}[unique factorisation of ideals]\label{thm:ant:idealfactorisation}
+Let $R$ be a Dedekind domain with fraction field $K$.
+\begin{enumerate}[label=(\roman*)]
+\item Every nonzero ideal $\mathfrak a\ne R$ is a product $\mathfrak a=\mathfrak p_1^{a_1}\cdots\mathfrak p_r^{a_r}$ of distinct nonzero primes, $a_i\ge1$,
+uniquely up to order. We write $v_{\mathfrak p}(\mathfrak a)$ for the exponent of $\mathfrak p$ ($0$ if $\mathfrak p$ does not occur).
+\item A \emph{fractional ideal} is a nonzero finitely generated $R$-submodule of $K$, equivalently a set $x\mathfrak b$ with $x\in K^\times$ and
+$\mathfrak b$ a nonzero ideal. The fractional ideals form an abelian group $J_R$ under multiplication, free on the nonzero primes; the inverse of
+$\mathfrak a$ is $\mathfrak a^{-1}=\{x\in K:x\mathfrak a\subseteq R\}$.
+\item For nonzero ideals, $\mathfrak a\mid\mathfrak b$ (that is, $\mathfrak b=\mathfrak a\mathfrak c$ for an ideal $\mathfrak c$) if and only if
+$\mathfrak a\supseteq\mathfrak b$; $\mathfrak a+\mathfrak b$ and $\mathfrak a\cap\mathfrak b$ have exponents $\min$ and $\max$ of those of $\mathfrak a$, $\mathfrak b$.
+\item For $\alpha\in K^\times$ put $v_{\mathfrak p}(\alpha)=v_{\mathfrak p}(\alpha R)$. Then $v_{\mathfrak p}(\alpha\beta)=v_{\mathfrak p}(\alpha)+v_{\mathfrak p}(\beta)$
+and $v_{\mathfrak p}(\alpha+\beta)\ge\min(v_{\mathfrak p}(\alpha),v_{\mathfrak p}(\beta))$: $v_{\mathfrak p}$ is a discrete valuation of $K$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) Existence: otherwise let $\mathfrak a$ be maximal among the nonzero proper ideals that are not products of primes, and $\mathfrak p\supseteq\mathfrak a$ a
+maximal ideal. Then $\mathfrak a\subseteq\mathfrak a\mathfrak p^{-1}\subseteq\mathfrak p\mathfrak p^{-1}=R$, with $\mathfrak a\ne\mathfrak a\mathfrak p^{-1}$
+(\Cref{lem:ant:primeproducts}). If $\mathfrak a\mathfrak p^{-1}=R$ then $\mathfrak a=\mathfrak a\mathfrak p^{-1}\mathfrak p=\mathfrak p$, a prime; otherwise
+$\mathfrak a\mathfrak p^{-1}=\mathfrak p_1\cdots\mathfrak p_s$ by maximality, and $\mathfrak a=\mathfrak p_1\cdots\mathfrak p_s\mathfrak p$. Either way a contradiction.
+Uniqueness: if $\mathfrak p_1\cdots\mathfrak p_r=\mathfrak q_1\cdots\mathfrak q_s$, then $\mathfrak p_1$ contains the right side, hence some $\mathfrak q_j$, and
+$\mathfrak p_1=\mathfrak q_j$ by maximality; multiply by $\mathfrak p_1^{-1}$ (\Cref{lem:ant:primeproducts}(iii)) and induct.
+(ii) A fractional ideal $\mathfrak a$ with generators $x_i=a_i/s$ satisfies $s\mathfrak a\subseteq R$, so $\mathfrak a=s^{-1}\mathfrak b$; writing $sR$ and
+$\mathfrak b$ as products of primes, $\mathfrak a=\prod\mathfrak p^{a_{\mathfrak p}}$ with $a_{\mathfrak p}\in\Z$, almost all zero, and the exponents are unique
+by (i) after multiplying by a common denominator. Put $\mathfrak a'=\prod\mathfrak p^{-a_{\mathfrak p}}$; then $\mathfrak a\mathfrak a'=R$, so $\mathfrak a'\subseteq
+\mathfrak c:=\{x:x\mathfrak a\subseteq R\}$, and $\mathfrak c=\mathfrak c\mathfrak a\mathfrak a'\subseteq\mathfrak a'$. (iii) If $\mathfrak a\supseteq\mathfrak b$,
+then $\mathfrak c=\mathfrak a^{-1}\mathfrak b\subseteq\mathfrak a^{-1}\mathfrak a=R$ is an ideal with $\mathfrak b=\mathfrak a\mathfrak c$; the converse is clear. So
+$\mathfrak a\supseteq\mathfrak b$ iff $v_{\mathfrak p}(\mathfrak a)\le v_{\mathfrak p}(\mathfrak b)$ for all $\mathfrak p$; $\mathfrak a+\mathfrak b$ is the smallest
+ideal containing both, $\mathfrak a\cap\mathfrak b$ the largest contained in both, whence the exponents. (iv) The first identity is (i); and
+$(\alpha+\beta)\subseteq(\alpha)+(\beta)$, whose exponent at $\mathfrak p$ is the minimum, by (iii) extended to fractional ideals by scaling.
+\end{proof}
+
+\begin{proposition}[the norm of an ideal]\label{prop:ant:idealnorm}
+Let $K$ be a number field. For a nonzero ideal $\mathfrak a\subseteq\mathcal O_K$ the \emph{norm} $N\mathfrak a=\#(\mathcal O_K/\mathfrak a)$ is finite, and:
+\begin{enumerate}[label=(\roman*)]
+\item $N(\mathfrak a\mathfrak b)=N\mathfrak a\,N\mathfrak b$; for a prime $\mathfrak p$ and $k\ge0$, $\mathfrak p^k/\mathfrak p^{k+1}\simeq\mathcal O_K/\mathfrak p$ as $\mathcal O_K$-modules;
+\item $N(\alpha\mathcal O_K)=\abs{N_{K/\Q}(\alpha)}$ for $\alpha\ne0$;
+\item if $\mathfrak p\cap\Z=p\Z$ then $\mathcal O_K/\mathfrak p\simeq\F_{p^f}$, where $f=f(\mathfrak p\mid p)=[\mathcal O_K/\mathfrak p:\F_p]$, and $N\mathfrak p=p^f$;
+\item an ideal of prime norm is prime; $N\mathfrak a\in\mathfrak a$; and if $\gcd(N\mathfrak a,m)=1$ then $\mathfrak a+m\mathcal O_K=\mathcal O_K$;
+\item the discriminant of a $\Z$-basis of $\mathfrak a$ is $(N\mathfrak a)^2d_K$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+$\mathfrak a$ contains a nonzero integer $m$ (the constant term $c_0$ of the proof of \Cref{thm:ant:dedekind}), and $\mathcal O_K/m\mathcal O_K\simeq(\Z/m)^n$
+is finite. (i) The module $M=\mathfrak a/\mathfrak a\mathfrak p$ is a vector space over $\mathcal O_K/\mathfrak p$; it is nonzero
+(\Cref{thm:ant:idealfactorisation}) and has no subspace other than $0$ and $M$, because an ideal $\mathfrak b$ with $\mathfrak a\mathfrak p\subseteq
+\mathfrak b\subseteq\mathfrak a$ satisfies $\mathfrak a\mid\mathfrak b\mid\mathfrak a\mathfrak p$, so $\mathfrak b\in\{\mathfrak a,\mathfrak a\mathfrak p\}$. Hence $M$ is
+one-dimensional, $M\simeq\mathcal O_K/\mathfrak p$, and $N(\mathfrak a\mathfrak p)=N\mathfrak a\cdot\#(\mathfrak a/\mathfrak a\mathfrak p)=N\mathfrak a\,N\mathfrak p$;
+induction on the number of prime factors of $\mathfrak b$ gives the claim. (ii) $[\mathcal O_K:\alpha\mathcal O_K]$ is $\abs{\det}$ of the matrix of
+$m_\alpha$ on a $\Z$-basis (\Cref{ch:modules}), which is $\abs{N(\alpha)}$. (iii) $\mathcal O_K/\mathfrak p$ is a finite field
+(\Cref{thm:ant:dedekind}) containing $\Z/p$. (iv) If $N\mathfrak a=p$ is prime, $\mathfrak a\ne\mathcal O_K$, and a factorisation
+$\mathfrak a=\mathfrak b\mathfrak c$ into proper ideals would give $N\mathfrak a=N\mathfrak b\,N\mathfrak c$ composite. The additive group
+$\mathcal O_K/\mathfrak a$ has order $N\mathfrak a$, so $N\mathfrak a\cdot1\in\mathfrak a$; if $uN\mathfrak a+vm=1$, then $1\in\mathfrak a+m\mathcal O_K$.
+(v) is \Cref{thm:ant:integralbasis}(iii), with $[\mathcal O_K:\mathfrak a]=N\mathfrak a$.
+\end{proof}
+
+\begin{proposition}[Chinese remainder theorem, generators, localisation]\label{prop:ant:crt}
+In (ii) to (iv), $R$ is a Dedekind domain.
+\begin{enumerate}[label=(\roman*)]
+\item In a commutative ring $R$, let $\mathfrak a_1$, \dots, $\mathfrak a_r$ be pairwise coprime ideals, that is,
+$\mathfrak a_i+\mathfrak a_j=R$ for $i\ne j$. Then
+\[
+\mathfrak a_1\cdots\mathfrak a_r=\bigcap_i\mathfrak a_i\quad\text{and}\quad R/\mathfrak a_1\cdots\mathfrak a_r\simeq\prod_iR/\mathfrak a_i.
+\] In a Dedekind domain, powers of
+distinct primes are coprime, so $R/\mathfrak a\simeq\prod_iR/\mathfrak p_i^{a_i}$ for $\mathfrak a=\prod\mathfrak p_i^{a_i}$, and $R/\mathfrak p^a$ has length
+$a$, with composition factors $\mathfrak p^k/\mathfrak p^{k+1}\simeq R/\mathfrak p$.
+\item In a Dedekind domain every nonzero ideal $\mathfrak a$ is generated by two elements, the first an arbitrary nonzero $\alpha\in\mathfrak a$.
+\item A Dedekind domain with finitely many primes is a principal ideal domain; a Dedekind domain is a UFD if and only if it is a PID.
+\item For a nonzero prime $\mathfrak p$ of a Dedekind domain $R$, $R_{\mathfrak p}$ is a discrete valuation ring with maximal ideal
+$\mathfrak pR_{\mathfrak p}$, residue field $R/\mathfrak p$, and valuation $v_{\mathfrak p}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) For two ideals, $1=a+b$ with $a\in\mathfrak a_1$, $b\in\mathfrak a_2$; then $\mathfrak a_1\cap\mathfrak a_2=(\mathfrak a_1\cap\mathfrak a_2)(a+b)\subseteq\mathfrak a_1
+\mathfrak a_2$, and $x\mapsto(x\bmod\mathfrak a_1,x\bmod\mathfrak a_2)$ is surjective since $(x,y)$ is the image of $xb+ya$. Induct, using that
+$\mathfrak a_1$ is coprime to $\mathfrak a_2\cdots\mathfrak a_r$ (expand $1=\prod_{j\ge2}(a_j+b_j)$). In a Dedekind domain, a maximal ideal containing
+$\mathfrak p^a+\mathfrak q^b$ contains $\mathfrak p$ and $\mathfrak q$, so equals both; hence distinct primes give coprime powers. The filtration
+$R\supseteq\mathfrak p\supseteq\dots\supseteq\mathfrak p^a$ has the quotients of \Cref{prop:ant:idealnorm}(i), whose proof holds in any Dedekind domain.
+(ii) Let $\mathfrak p_1,\dots,\mathfrak p_r$ be the primes dividing $\alpha R$, $e_i=v_{\mathfrak p_i}(\mathfrak a)$, and choose $x_i\in\mathfrak p_i^{e_i}\setminus
+\mathfrak p_i^{e_i+1}$. By (i) there is $\beta\in R$ with $\beta\equiv x_i\pmod{\mathfrak p_i^{e_i+1}}$ for all $i$; then $v_{\mathfrak p_i}(\beta)=e_i$. Every
+prime dividing $\mathfrak a$ divides $\alpha R$, so $\beta\in\mathfrak a$ (\Cref{thm:ant:idealfactorisation}(iii)), and $(\alpha,\beta)=\alpha R+\beta R$
+has exponent $\min(v_{\mathfrak p_i}(\alpha),e_i)=e_i$ at $\mathfrak p_i$ and $0$ elsewhere: it is $\mathfrak a$.
+(iii) If the primes are $\mathfrak p_1,\dots,\mathfrak p_r$, choose by (i) $\pi_i\equiv x_i\pmod{\mathfrak p_i^2}$ with $x_i\in\mathfrak p_i\setminus\mathfrak p_i^2$
+and $\pi_i\equiv1\pmod{\mathfrak p_j}$ for $j\ne i$; then $\pi_iR=\mathfrak p_i$, and every ideal, a product of primes, is principal. A PID is a UFD
+(\Cref{ch:rings}). Conversely, in a UFD a nonzero prime $\mathfrak p$ contains a nonzero element, hence one of its irreducible factors $\varpi$, which
+is a prime element; $(\varpi)\subseteq\mathfrak p$ is a nonzero prime ideal, hence maximal, so $\mathfrak p=(\varpi)$, and all ideals are principal.
+(iv) A nonzero ideal $A$ of $R_{\mathfrak p}$ is $(A\cap R)R_{\mathfrak p}$, and for a prime $\mathfrak q\ne\mathfrak p$, $\mathfrak qR_{\mathfrak p}=R_{\mathfrak p}$
+($\mathfrak q\not\subseteq\mathfrak p$). So $A=\mathfrak p^aR_{\mathfrak p}$ with $a=v_{\mathfrak p}(A\cap R)$. If $\varpi\in\mathfrak p\setminus\mathfrak p^2$ then
+$\varpi R=\mathfrak p\mathfrak b$ with $\mathfrak b$ prime to $\mathfrak p$, so $\varpi R_{\mathfrak p}=\mathfrak pR_{\mathfrak p}$, and every nonzero ideal is
+$\varpi^aR_{\mathfrak p}$: $R_{\mathfrak p}$ is a local principal ideal domain, not a field, that is, a discrete valuation ring (\Cref{ch:modules}). Its
+valuation of $\alpha$ is the exponent $a$ with $\alpha R_{\mathfrak p}=\varpi^aR_{\mathfrak p}$, which is $v_{\mathfrak p}(\alpha)$. The map $R/\mathfrak p\to
+R_{\mathfrak p}/\mathfrak pR_{\mathfrak p}$ is injective ($\mathfrak pR_{\mathfrak p}\cap R=\mathfrak p$) and surjective (an $s\notin\mathfrak p$ is invertible
+modulo the maximal ideal $\mathfrak p$).
+\end{proof}
+
+\begin{theorem}[the class group]\label{thm:ant:classgroup}
+Let $K$ be a number field, $J_K$ its group of fractional ideals and $P_K$ the subgroup of principal fractional ideals $\alpha\mathcal O_K$. The
+\emph{class group} is $\Cl(K)=J_K/P_K$ and the \emph{class number} is $h_K=\#\Cl(K)$; $h_K=1$ iff $\mathcal O_K$ is a PID iff it is a UFD
+(\Cref{prop:ant:crt}(iii)). (Minkowski.) $\Cl(K)$ is finite: every class contains an integral ideal of norm at most
+$M_K=(4/\pi)^{r_2}\,(n!/n^n)\,\abs{d_K}^{1/2}$. Moreover $\abs{d_K}>1$ for $K\ne\Q$.
+\end{theorem}
+
+\begin{proof}[Reference]
+The definitions and the equivalences are proved above. We do not prove Minkowski's theorem; see \cite[Chapter I, Sections 5 and 6]{Neukirch} or
+\cite[Chapter 5]{Marcus77}. The idea: the embeddings $(\sigma_1,\dots,\sigma_{r_1+r_2})$ map an ideal $\mathfrak a$ to a lattice in
+$\R^{r_1}\times\C^{r_2}\simeq\R^n$ of covolume $2^{-r_2}\abs{d_K}^{1/2}N\mathfrak a$ (the Gram determinant of \Cref{thm:ant:integralbasis}, up to the
+factor $2^{-r_2}$ from the coordinates of $\C$), and Minkowski's convex body theorem gives $\alpha\in\mathfrak a$ with $\abs{N(\alpha)}\le
+M_KN\mathfrak a$. The inequality $\abs{d_K}>1$ follows: an integral ideal has norm at least $1$, so $M_K\ge1$, that is
+$\abs{d_K}^{1/2}\ge(\pi/4)^{r_2}n^n/n!\ge(\pi/4)^{n/2}n^n/n!$, and the last expression is $\pi/2>1$ for $n=2$ and increases with $n$ (the ratio of consecutive
+terms is $(\pi/4)^{1/2}(1+\frac1n)^n\ge2(\pi/4)^{1/2}>1$).
+\end{proof}
+
+\begin{example}[class numbers of small quadratic fields]\label{ex:ant:classnumbers}
+For a quadratic field $n!/n^n=\frac12$, so $M_K=\frac2\pi\abs D^{1/2}$ if $D<0$ and $M_K=\frac12D^{1/2}$ if $D>0$. Hence (all values computed with PARI's
+\texttt{quadclassunit}, which also confirms the class numbers):
+\begin{center}\small
+\begin{tabular}{lccccccc}
+\toprule
+$K$ & $\Q(\sqrt{-3})$ & $\Q(i)$ & $\Q(\sqrt{-7})$ & $\Q(\sqrt5)$ & $\Q(\sqrt2)$ & $\Q(\sqrt{-11})$ & $\Q(\sqrt{-5})$\\
+$D$ & $-3$ & $-4$ & $-7$ & $5$ & $8$ & $-11$ & $-20$\\
+$M_K$ & $1.10$ & $1.27$ & $1.68$ & $1.12$ & $1.41$ & $2.11$ & $2.85$\\
+$h_K$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+In the first five cases $M_K<2$, so every class contains the ideal of norm $1$, which is $\mathcal O_K$. For $\Q(\sqrt{-11})$, $M_K>2$, but there is
+no ideal of norm $2$, because $2$ is inert (\Cref{thm:ant:quadsplit}: $-11\equiv5\pmod8$); so again $h=1$. For $\Q(\sqrt{-5})$ the ideals of norm $\le2$ are
+$\mathcal O_K$ and $\mathfrak p_2$ of \Cref{ex:ant:sqrtminus5}, which is not principal, and $\mathfrak p_2^2=(2)$; so $h=2$. Also $h(\Q(\sqrt{-23}))=3$
+(stated; PARI). For $\Z[i]$ and $\Z[\zeta_3]$ the class number one is also a consequence of the Euclidean algorithm (\Cref{ch:rings}).
+\end{example}
+
+\begin{example}[$\Z\lbrack\sqrt{-5}\rbrack$]\label{ex:ant:sqrtminus5}
+$R=\Z[\sqrt{-5}]$ is the ring of integers of $\Q(\sqrt{-5})$ ($-5\equiv3\pmod4$), with $D=-20$. In $R$, $6=2\cdot3=(1+\sqrt{-5})(1-\sqrt{-5})$
+are two factorisations into irreducibles, no factor of one being associate to a factor of the other (\Cref{ch:rings}). Put
+$\mathfrak p_2=(2,1+\sqrt{-5})$, $\mathfrak p_3=(3,1+\sqrt{-5})$, $\bar{\mathfrak p}_3=(3,1-\sqrt{-5})$. The ring homomorphisms $R\to\F_2$,
+$a+b\sqrt{-5}\mapsto a+b$, and $R\to\F_3$, $a+b\sqrt{-5}\mapsto a\mp b$ (well defined because $(\pm1)^2+5\equiv0$ modulo $2$, resp. $3$), are surjective
+with kernels $\mathfrak p_2$, $\mathfrak p_3$, $\bar{\mathfrak p}_3$ (an element $a+b\sqrt{-5}$ with $a\equiv b\pmod 3$ is $b(1+\sqrt{-5})+(a-b)\in\mathfrak p_3$,
+and similarly for the others). So these are primes of norms $2,3,3$. Next, $\mathfrak p_2^2=(4,2+2\sqrt{-5},-4+2\sqrt{-5})$ contains
+$6=(2+2\sqrt{-5})-(-4+2\sqrt{-5})$, hence $2$, and is contained in $(2)$: $\mathfrak p_2^2=(2)$. Similarly $\mathfrak p_3\bar{\mathfrak p}_3=(9,3+3\sqrt{-5},
+3-3\sqrt{-5},6)=(3)$. Finally $1+\sqrt{-5}\in\mathfrak p_2\cap\mathfrak p_3=\mathfrak p_2\mathfrak p_3$ and both ideals have norm $6$, so
+$(1+\sqrt{-5})=\mathfrak p_2\mathfrak p_3$, and likewise $(1-\sqrt{-5})=\mathfrak p_2\bar{\mathfrak p}_3$. Thus
+\[
+(6)=\mathfrak p_2^2\,\mathfrak p_3\,\bar{\mathfrak p}_3,
+\]
+and the two factorisations of $6$ are two groupings of the same four prime ideals. None of $\mathfrak p_2,\mathfrak p_3,\bar{\mathfrak p}_3$ is principal: a
+generator would have norm $a^2+5b^2\in\{2,3\}$, which is impossible. This is the ideal-theoretic repair of \Cref{ch:rings}, and the pattern is
+the one predicted by \Cref{thm:ant:dedekindkummer}: $X^2+5\equiv(X+1)^2\pmod2$ and $\equiv(X-1)(X+1)\pmod3$.
+\end{example}
+
+\section{Splitting of primes, ramification and Frobenius}\label{sec:ant:splitting}
+
+This section explains how a prime of $K$ factors in an extension $L$, defines the decomposition and inertia groups and the Frobenius element,
+and proves the tame relation in the form in which the paper uses it. The paper's Section 1.1 is written in terms of $I_p$, $\Frob_p$ and
+$V^{I_p}$ (\Cref{prop:ant:frobGQ}); its local $L$-factors use the geometric Frobenius (\Cref{conv:ant:frobenius}); Lemma lem:old uses the
+Frobenius at unramified primes and Chebotarev (\Cref{prop:ant:frobenius}, \Cref{sec:ant:chebotarev}); Lemmas lem:IV and lem:euler use that
+a Frobenius at a tamely ramified prime $q$ conjugates inertia to its $q$-th power (\Cref{cor:ant:frobsigma}). The results on Frobenius elements
+are the black boxes that \Cref{ch:galois} states.
+
+\begin{theorem}[$\sum e_if_i=n$]\label{thm:ant:efg}
+Let $L/K$ be an extension of number fields of degree $n$, $\mathfrak p$ a nonzero prime of $\mathcal O_K$, and $\mathfrak p\mathcal O_L=
+\mathfrak P_1^{e_1}\cdots\mathfrak P_g^{e_g}$ with distinct primes $\mathfrak P_i$ (\Cref{thm:ant:idealfactorisation}). The $\mathfrak P_i$ are exactly the
+primes $\mathfrak P$ of $\mathcal O_L$ with $\mathfrak P\cap\mathcal O_K=\mathfrak p$ (``$\mathfrak P$ lies above $\mathfrak p$'', $\mathfrak P\mid\mathfrak p$). With the
+\emph{ramification index} $e_i=e(\mathfrak P_i\mid\mathfrak p)$ and the \emph{residue degree} $f_i=f(\mathfrak P_i\mid\mathfrak p)=[\mathcal O_L/\mathfrak P_i:
+\mathcal O_K/\mathfrak p]$,
+\[
+\sum_{i=1}^ge_if_i=n.
+\]
+$\mathfrak p$ is \emph{ramified} in $L$ if some $e_i>1$ and \emph{unramified} otherwise; \emph{totally ramified} if $g=1$, $e_1=n$; \emph{inert} if
+$g=1$, $f_1=n$; \emph{split completely} if $g=n$. For a quadratic $L/K$ each $\mathfrak p$ is exactly one of ramified, inert, split. In a tower
+$K\subseteq M\subseteq L$ with $\mathfrak P\mid\mathfrak q\mid\mathfrak p$: $e(\mathfrak P\mid\mathfrak p)=e(\mathfrak P\mid\mathfrak q)e(\mathfrak q\mid\mathfrak p)$ and
+$f(\mathfrak P\mid\mathfrak p)=f(\mathfrak P\mid\mathfrak q)f(\mathfrak q\mid\mathfrak p)$.
+\end{theorem}
+
+\begin{proof}
+A prime $\mathfrak P$ of $\mathcal O_L$ contains $\mathfrak p\mathcal O_L$ iff $\mathfrak P\cap\mathcal O_K\supseteq\mathfrak p$ iff $\mathfrak P\cap\mathcal O_K=\mathfrak p$
+(the left side is a prime of $\mathcal O_K$, nonzero as it contains $\mathfrak P\cap\Z$, hence maximal), and $\mathfrak P\supseteq\mathfrak p\mathcal O_L$
+iff $\mathfrak P$ divides $\mathfrak p\mathcal O_L$ (\Cref{thm:ant:idealfactorisation}(iii)). Let $\kappa=\mathcal O_K/\mathfrak p$. By
+\Cref{prop:ant:crt}(i), $\mathcal O_L/\mathfrak p\mathcal O_L\simeq\prod_i\mathcal O_L/\mathfrak P_i^{e_i}$, and $\mathcal O_L/\mathfrak P_i^{e_i}$ has a filtration
+with $e_i$ quotients $\mathfrak P_i^k/\mathfrak P_i^{k+1}\simeq\mathcal O_L/\mathfrak P_i$, each of dimension $f_i$ over $\kappa$; so $\dim_\kappa\mathcal O_L/
+\mathfrak p\mathcal O_L=\sum e_if_i$. To see that this dimension is $n$, let $S=\mathcal O_K\setminus\mathfrak p$ and $A=S^{-1}\mathcal O_K$, a discrete
+valuation ring (\Cref{prop:ant:crt}(iv)), hence a PID. $B=S^{-1}\mathcal O_L$ is a finitely generated torsion-free $A$-module ($\mathcal O_L$ is finitely
+generated over $\Z$), hence free (\Cref{ch:modules}), of rank $n$ because $B\otimes_AK=L$ (\Cref{prop:ant:integral}). So $B/\mathfrak pB\simeq\kappa^n$.
+Finally $\mathcal O_L/\mathfrak p\mathcal O_L\to B/\mathfrak pB$ is an isomorphism: every $s\in S$ has an inverse $s'$ modulo $\mathfrak p$, so $x/s\equiv s'x$
+(surjectivity), and if $x\in\mathcal O_L$ and $sx\in\mathfrak p\mathcal O_L$ with $s\in S$, then $x=s'sx-(ss'-1)x\in\mathfrak p\mathcal O_L$ (injectivity). For
+$K=\Q$ this is simply $\mathcal O_L\simeq\Z^n$. A quadratic $L/K$ has $\sum e_if_i=2$, so $(e,f,g)$ is $(2,1,1)$, $(1,2,1)$ or $(1,1,2)$. In a tower,
+substitute $\mathfrak q\mathcal O_L=\prod\mathfrak P^{e(\mathfrak P\mid\mathfrak q)}$ into $\mathfrak p\mathcal O_M=\prod\mathfrak q^{e(\mathfrak q\mid\mathfrak p)}$ and use
+uniqueness; the residue degrees multiply as degrees of the tower of residue fields.
+\end{proof}
+
+\begin{theorem}[Dedekind-Kummer]\label{thm:ant:dedekindkummer}
+Let $K=\Q(\theta)$ with $\theta\in\mathcal O_K$ of minimal polynomial $g\in\Z[X]$, and let $p$ be a prime with $p\nmid[\mathcal O_K:\Z[\theta]]$ (for
+instance $p^2\nmid\disc(g)$, by \Cref{thm:ant:integralbasis}(iii)). Let $\bar g=\bar g_1^{e_1}\cdots\bar g_r^{e_r}$ be the factorisation of $g\bmod p$
+into distinct monic irreducibles of $\F_p[X]$, and $g_i\in\Z[X]$ monic lifts of $\bar g_i$. Then $\mathfrak P_i=(p,g_i(\theta))$ are distinct primes,
+$f(\mathfrak P_i\mid p)=\deg\bar g_i$, and
+\[
+p\mathcal O_K=\mathfrak P_1^{e_1}\cdots\mathfrak P_r^{e_r}.
+\]
+The same holds for a relative extension $L=K(\theta)$, $\theta\in\mathcal O_L$, and a prime $\mathfrak p$ of $\mathcal O_K$ prime to the conductor
+$\{x\in\mathcal O_L:x\mathcal O_L\subseteq\mathcal O_K[\theta]\}$ (stated; \cite[Chapter I, Proposition 8.3]{Neukirch}).
+\end{theorem}
+
+\begin{proof}
+Let $m=[\mathcal O_K:\Z[\theta]]$, prime to $p$. The inclusion induces $\Z[\theta]/p\Z[\theta]\to\mathcal O_K/p\mathcal O_K$. It is injective: if
+$x\in\Z[\theta]$ and $x=py$ with $y\in\mathcal O_K$, then $my\in\Z[\theta]$, and with $um+vp=1$, $y=u(my)+vx\in\Z[\theta]$. Both sides have $p^n$
+elements, so it is an isomorphism, and $\Z[\theta]/p\simeq\Z[X]/(p,g)\simeq\F_p[X]/(\bar g)$. By the Chinese remainder theorem in $\F_p[X]$,
+\[
+A:=\mathcal O_K/p\mathcal O_K\simeq\F_p[X]/(\bar g)\simeq\prod_i\F_p[X]/(\bar g_i^{e_i}),
+\]
+whose maximal ideals are the $(\bar g_i)$, with residue fields $\F_p[X]/(\bar g_i)$ of degree $\deg\bar g_i$. The primes of $\mathcal O_K$ containing $p$
+correspond to the maximal ideals of $A$; the one corresponding to $(\bar g_i)$ is the preimage of $(\bar g_i(X))$, which is $\mathfrak P_i=(p,g_i(\theta))$.
+So these are the primes above $p$, distinct, with $f(\mathfrak P_i\mid p)=\deg\bar g_i$. In $A$, $\prod_i(\bar g_i)^{e_i}=(\bar g)=0$, so
+$\prod_i\mathfrak P_i^{e_i}\subseteq p\mathcal O_K$; writing $p\mathcal O_K=\prod_i\mathfrak P_i^{a_i}$, this says $a_i\le e_i$ (\Cref{thm:ant:idealfactorisation}(iii)),
+while $\sum a_if_i=n=\deg g=\sum e_if_i$ (\Cref{thm:ant:efg}). Hence $a_i=e_i$.
+\end{proof}
+
+\begin{example}[worked factorisations]\label{ex:ant:dkexamples}
+All of the following factorisations were checked with PARI.
+(a) $\Q(i)$, $g=X^2+1$, index $1$. Modulo $2$, $g\equiv(X+1)^2$: $2\Z[i]=(2,1+i)^2=(1+i)^2$, and indeed $2=-i(1+i)^2$. Modulo $5$, $g\equiv(X-2)(X+2)$:
+$5\Z[i]=(5,i-2)(5,i+2)=(2-i)(2+i)$. Modulo $3$, $g$ is irreducible: $3$ is inert, with residue field $\F_9$.
+(b) $\Q(\zeta_3)$, $g=X^2+X+1$, index $1$. Modulo $3$, $g\equiv(X-1)^2$: $3\Z[\zeta_3]=(3,\zeta_3-1)^2=(1-\zeta_3)^2$. Modulo $7$, $g\equiv(X-2)(X-4)$:
+$7=(7,\zeta_3-2)(7,\zeta_3-4)$, and these ideals are $(2-\zeta_3)$ and $(2-\zeta_3^2)$, of norm $4+2+1=7$, with $(2-\zeta_3)(2-\zeta_3^2)=7$ (note
+$\zeta_3^2=-1-\zeta_3\equiv4$ when $\zeta_3\equiv2$). Modulo $2$ and $5$, $g$ is irreducible: $2$ and $5$ are inert, with residue fields $\F_4$ and $\F_{25}$.
+(c) $\Q(\sqrt{-5})$: \Cref{ex:ant:sqrtminus5}.
+(d) The index matters. In $K=\Q(\sqrt{-7})$, $\mathcal O_K=\Z[\theta]$ with $\theta=\frac{1+\sqrt{-7}}2$, $g=X^2-X+2$, and $[\mathcal O_K:\Z[\sqrt{-7}]]=2$. Modulo $2$,
+$X^2+7\equiv(X+1)^2$ would wrongly suggest that $2$ ramifies; but $X^2-X+2\equiv X(X-1)\pmod2$, so $2$ splits:
+$2=\frac{1+\sqrt{-7}}2\cdot\frac{1-\sqrt{-7}}2$, and indeed $2\nmid d_K=-7$ (\Cref{thm:ant:discram}).
+(e) A non-Galois cubic. $K=\Q(2^{1/3})$ has $\mathcal O_K=\Z[2^{1/3}]$ and $d_K=\disc(X^3-2)=-108=-2^2\cdot3^3$ (stated; PARI's \texttt{nfbasis}; the
+index is prime to $5$, $7$ and $31$ since $\disc$ is divisible only by $2$ and $3$). Modulo $5$, $X^3-2\equiv(X+2)(X^2+3X+4)$ with the quadratic
+irreducible, so $5\mathcal O_K=\mathfrak P_1\mathfrak P_2$ with $f=1$ and $f=2$; modulo $7$, $X^3-2$ is irreducible ($2$ is not a cube modulo $7$), so $7$ is
+inert; modulo $31$ it has three roots ($4,7,20$), so $31$ splits completely. At $2$ and $3$ PARI finds $2\mathcal O_K=\mathfrak P^3$ and $3\mathcal O_K=\mathfrak P^3$,
+totally ramified ($X^3-2\equiv X^3$, resp. $(X+1)^3$, consistently with this, although the theorem applies at $2$ and $3$ only once the index is
+known to be $1$). Unequal residue degrees above $5$ cannot occur in a Galois extension (\Cref{prop:ant:galoissplitting}).
+\end{example}
+
+\begin{theorem}[Dedekind's discriminant theorem]\label{thm:ant:discram}
+A prime $p$ ramifies in the number field $K$ if and only if $p\mid d_K$. Hence only finitely many primes ramify in $K$, and at least one does if
+$K\ne\Q$ (\Cref{thm:ant:classgroup}). For an extension $L/K$, a prime $\mathfrak p$ of $K$ ramifies in $L$ iff $\mathfrak p$ divides the relative
+discriminant ideal $\mathfrak d_{L/K}$ (stated; \cite[Chapter III, Section 2]{Neukirch}).
+\end{theorem}
+
+\begin{proof}
+Let $\omega_1,\dots,\omega_n$ be an integral basis and $A=\mathcal O_K/p\mathcal O_K$, with $\F_p$-basis $\bar\omega_i$. The matrix of multiplication by
+$\bar x$ on $A$ is the reduction of the matrix of $m_x$, so $\Tr_{A/\F_p}(\bar x)=\Tr_{K/\Q}(x)\bmod p$ and $d_K\bmod p=\det(\Tr_{A/\F_p}(\bar\omega_i
+\bar\omega_j))$. Thus $p\mid d_K$ iff the trace form of the $\F_p$-algebra $A$ is degenerate. By \Cref{prop:ant:crt}, $A\simeq\prod_iA_i$ with
+$A_i=\mathcal O_K/\mathfrak P_i^{e_i}$, and the trace form of $A$ is the orthogonal sum of those of the $A_i$. If some $e_i>1$, $A_i$ contains a
+nonzero nilpotent $x$ (the image of an element of $\mathfrak P_i\setminus\mathfrak P_i^{e_i}$); then $xy$ is nilpotent for all $y$, a nilpotent
+endomorphism has trace $0$, and $x$ lies in the kernel of the trace form. If all $e_i=1$, each $A_i=\F_{p^{f_i}}$ is a field, whose trace form over
+$\F_p$ is nondegenerate: $\Tr(x)=x+x^p+\dots+x^{p^{f-1}}$ (the sum of the conjugates, as in \Cref{prop:ant:tracenorm}(i), the Galois group being
+generated by $x\mapsto x^p$, \Cref{ch:rings}) is a polynomial function of degree $p^{f-1}<p^f$, hence not identically zero, and if $\Tr(xy)=0$ for
+all $y$ with $x\ne0$ then $\Tr$ would vanish identically.
+\end{proof}
+
+From now on in this section $L/K$ is a \emph{Galois} extension of number fields with group $G$, $\mathfrak p$ is a nonzero prime of $K$ and
+$\mathfrak P\mid\mathfrak p$. Write $\kappa(\mathfrak p)=\mathcal O_K/\mathfrak p$ and $\kappa(\mathfrak P)=\mathcal O_L/\mathfrak P$, finite fields with
+$\#\kappa(\mathfrak p)=N\mathfrak p$. Every $\sigma\in G$ maps $\mathcal O_L$ to itself and primes above $\mathfrak p$ to primes above $\mathfrak p$.
+
+\begin{proposition}[decomposition and inertia groups]\label{prop:ant:galoissplitting}
+(i) $G$ acts transitively on the primes of $L$ above $\mathfrak p$. Hence all $e(\mathfrak P\mid\mathfrak p)=e$ are equal, all
+$f(\mathfrak P\mid\mathfrak p)=f$ are equal, and $efg=n=\#G$.
+(ii) The \emph{decomposition group} $D_{\mathfrak P}=\{\sigma\in G:\sigma\mathfrak P=\mathfrak P\}$ is the stabiliser of $\mathfrak P$ (\Cref{ch:groups}); each
+$\sigma\in D_{\mathfrak P}$ induces an automorphism $\bar\sigma$ of $\kappa(\mathfrak P)$ over $\kappa(\mathfrak p)$, and the \emph{inertia group}
+$I_{\mathfrak P}=\{\sigma\in D_{\mathfrak P}:\sigma(x)\equiv x\pmod{\mathfrak P}\text{ for all }x\in\mathcal O_L\}$ is the kernel of $\sigma\mapsto\bar\sigma$, a
+normal subgroup of $D_{\mathfrak P}$. Moreover $[G:D_{\mathfrak P}]=g$, $\#D_{\mathfrak P}=ef$, $D_{\sigma\mathfrak P}=\sigma D_{\mathfrak P}\sigma^{-1}$ and
+$I_{\sigma\mathfrak P}=\sigma I_{\mathfrak P}\sigma^{-1}$; if $G$ is abelian, $D_{\mathfrak P}$ and $I_{\mathfrak P}$ depend only on $\mathfrak p$.
+\end{proposition}
+
+\begin{proof}
+(i) Suppose $\mathfrak P'\mid\mathfrak p$ and $\mathfrak P'\ne\sigma\mathfrak P$ for all $\sigma\in G$. By the Chinese remainder theorem there is $x\in\mathcal O_L$
+with $x\in\mathfrak P'$ and $x\equiv1\pmod{\sigma\mathfrak P}$ for all $\sigma$. The norm $N_{L/K}(x)=\prod_{\sigma\in G}\sigma(x)$ is fixed by $G$ and integral,
+so lies in $\mathcal O_K$; it lies in $\mathfrak P'$ (the factor $x$ does), so in $\mathfrak P'\cap\mathcal O_K=\mathfrak p\subseteq\mathfrak P$. As $\mathfrak P$ is
+prime, some $\sigma(x)\in\mathfrak P$, that is $x\in\sigma^{-1}\mathfrak P$, contradicting $x\equiv1\pmod{\sigma^{-1}\mathfrak P}$. Each $\sigma$ induces
+an isomorphism $\mathcal O_L/\mathfrak P\simeq\mathcal O_L/\sigma\mathfrak P$ over $\kappa(\mathfrak p)$, and applying $\sigma$ to
+$\mathfrak p\mathcal O_L=\prod\mathfrak P_i^{e_i}$ permutes the factors keeping exponents; so $e$ and $f$ are constant on the orbit, which is everything, and
+\Cref{thm:ant:efg} gives $efg=n$. (ii) Orbit-stabiliser (\Cref{ch:groups}) gives $[G:D_{\mathfrak P}]=g$, so $\#D_{\mathfrak P}=n/g=ef$. A kernel is normal.
+$\tau\in I_{\mathfrak P}$ iff $\tau x-x\in\mathfrak P$ for all $x$ iff $(\sigma\tau\sigma^{-1})(\sigma x)-\sigma x\in\sigma\mathfrak P$ for all $x$ iff
+$\sigma\tau\sigma^{-1}\in I_{\sigma\mathfrak P}$; the same for $D$. If $G$ is abelian, conjugation is trivial, and transitivity gives the last claim.
+\end{proof}
+
+\begin{theorem}[the residue field extension]\label{thm:ant:residuegalois}
+In this situation:
+\begin{enumerate}[label=(\roman*)]
+\item The homomorphism $D_{\mathfrak P}\to\Gal(\kappa(\mathfrak P)/\kappa(\mathfrak p))$, $\sigma\mapsto\bar\sigma$, is surjective with kernel $I_{\mathfrak P}$.
+Hence $\#I_{\mathfrak P}=e$, and $D_{\mathfrak P}/I_{\mathfrak P}$ is cyclic of order $f$, generated by the class of any $\sigma$ with
+$\bar\sigma=(x\mapsto x^{N\mathfrak p})$.
+\item For $K\subseteq M\subseteq L$ with $H=\Gal(L/M)$ and $\mathfrak q=\mathfrak P\cap M$: $D_{\mathfrak P}(L/M)=D_{\mathfrak P}\cap H$ and
+$I_{\mathfrak P}(L/M)=I_{\mathfrak P}\cap H$; if $M/K$ is Galois, the images of $D_{\mathfrak P}$ and $I_{\mathfrak P}$ in $G/H=\Gal(M/K)$ are $D_{\mathfrak q}$ and
+$I_{\mathfrak q}$.
+\item $\mathfrak p$ splits completely in $L$ iff $D_{\mathfrak P}=1$, and $\mathfrak p$ is unramified in $L$ iff $I_{\mathfrak P}=1$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) $\kappa(\mathfrak P)/\kappa(\mathfrak p)$ is an extension of finite fields of degree $f$, Galois with cyclic group generated by $x\mapsto x^{N\mathfrak p}$
+(\Cref{ch:rings}). Choose $\bar\theta$ generating the cyclic group $\kappa(\mathfrak P)^\times$, so $\kappa(\mathfrak P)=\kappa(\mathfrak p)(\bar\theta)$, and by
+the Chinese remainder theorem a lift $\theta\in\mathcal O_L$ of $\bar\theta$ lying in every $\tau\mathfrak P\ne\mathfrak P$. The polynomial
+$h(X)=\prod_{\sigma\in G}(X-\sigma\theta)$ has coefficients in $\mathcal O_K$, and its reduction $\bar h=\prod_\sigma(X-\overline{\sigma\theta})$ modulo $\mathfrak P$ has
+coefficients in $\kappa(\mathfrak p)$ and the root $\bar\theta$; so $\bar\theta^{N\mathfrak p}$ is also a root: $\bar\theta^{N\mathfrak p}=\overline{\sigma\theta}$
+for some $\sigma$. Since $\bar\theta^{N\mathfrak p}\ne0$, $\sigma\theta\notin\mathfrak P$, so $\theta\notin\sigma^{-1}\mathfrak P$, which forces
+$\sigma^{-1}\mathfrak P=\mathfrak P$: $\sigma\in D_{\mathfrak P}$, and $\bar\sigma(\bar\theta)=\bar\theta^{N\mathfrak p}$, so $\bar\sigma$ is the generator
+$x\mapsto x^{N\mathfrak p}$. The image is therefore everything; the kernel is $I_{\mathfrak P}$ by definition, and $\#I_{\mathfrak P}=ef/f=e$.
+(ii) The first two equalities hold by definition. Restriction maps $D_{\mathfrak P}$ into $D_{\mathfrak q}$ and $I_{\mathfrak P}$ into $I_{\mathfrak q}$, with
+kernels $D_{\mathfrak P}\cap H$ and $I_{\mathfrak P}\cap H$, of orders $e(\mathfrak P\mid\mathfrak q)f(\mathfrak P\mid\mathfrak q)$ and $e(\mathfrak P\mid\mathfrak q)$ by (i) for
+$L/M$. So the images have orders $e(\mathfrak q\mid\mathfrak p)f(\mathfrak q\mid\mathfrak p)=\#D_{\mathfrak q}$ and $e(\mathfrak q\mid\mathfrak p)=\#I_{\mathfrak q}$
+(\Cref{thm:ant:efg}, and (i) for $M/K$). (iii) $D_{\mathfrak P}=1$ iff $ef=1$ iff $g=n$; $I_{\mathfrak P}=1$ iff $e=1$.
+\end{proof}
+
+\begin{convention}[arithmetic and geometric Frobenius]\label{conv:ant:frobenius}
+For $\mathfrak P$ unramified over $\mathfrak p$, the \emph{arithmetic Frobenius} $\Frob_{\mathfrak P}$ is the element of \Cref{prop:ant:frobenius}, characterised
+by $\Frob_{\mathfrak P}(x)\equiv x^{N\mathfrak p}\pmod{\mathfrak P}$; its inverse is the \emph{geometric Frobenius}. The book writes $\Frob_p$ for an
+arithmetic Frobenius at $p$ (\Cref{prop:ant:frobGQ}), as \Cref{ch:galois} does and as the paper does (Section 1.1: ``$\Frob_p$ is an arithmetic Frobenius
+at $p$ and $\Frob_p^{-1}$ a geometric one''). So $\Frob_p$ acts on $\mu_n$ ($p\nmid n$) by $\zeta\mapsto\zeta^p$, $\chi_\ell(\Frob_p)=p$,
+$\bar\chi_\ell(\Frob_p)=p\bmod\ell$, and for $E/\Q$ with good reduction at $p\ne\ell$ the characteristic polynomial of $\rho_{E,\ell}(\Frob_p)$ on $V_\ell E$ is
+$X^2-a_pX+p$ (\Cref{ch:ellcurves,ch:galrep}). Local $L$-factors of a representation $V$ of $G_\Q$ on a finite-dimensional $\Q_\ell$-vector space are
+written with the geometric Frobenius:
+\[
+L_p(V,s)=\det\bigl(1-\Frob_p^{-1}p^{-s}\bigm|V^{I_p}\bigr)^{-1}\qquad(p\ne\ell),
+\]
+so that $L_p(\Q_\ell(1),s)=(1-p^{-1-s})^{-1}$ and $L_p(V(1),s)=L_p(V,s+1)$, as $\chi_\ell(\Frob_p^{-1})=p^{-1}$. On $V_\ell E$ the geometric Frobenius has the
+eigenvalues $\alpha^{-1},\beta^{-1}$ (with $\alpha+\beta=a_p$, $\alpha\beta=p$), and on the dual $V_\ell E^\vee$ it has $\alpha,\beta$, so
+$L_p(V_\ell E^\vee,s)=(1-a_pp^{-s}+p^{1-2s})^{-1}$ is the Euler factor of $L(E,s)$. \emph{Dictionary.} When the multiset of Frobenius eigenvalues on
+$V^{I_p}$ is stable under inversion, the two conventions give the same factor: this is the case for $\ad V$ at a good prime (eigenvalues
+$\alpha/\beta,1,\beta/\alpha$) and on the lines on which Frobenius acts by $\pm1$ (types $\kod{II}$, $\kod{III}$, $\kod{IV}$ and their duals). When it is not
+stable they differ: if $E$ has multiplicative reduction at $q$, $(\ad V)^{I_q}$ is a line on which the arithmetic Frobenius acts by $q$ and the geometric one by
+$q^{-1}$ (\Cref{ex:ant:multiplicative}), and the factor $1-q^{-1-s}$ of the paper's table requires the geometric one.
+\end{convention}
+
+\begin{example}[the multiplicative case]\label{ex:ant:multiplicative}
+Let $E$ have split multiplicative reduction at $q\ne\ell$. In a suitable basis $e_1,e_2$ of $T_\ell E$ (\Cref{ch:reduction}), inertia acts through
+$\sm1{*}01$ with a nonzero corner, and an arithmetic Frobenius through $\rho(\Frob)=\sm q{c'}01$. On $\ad V$, with basis $e=e_1\otimes e_2^\vee$,
+$h$, $f$ (\Cref{ch:reps}), the invariants of a nontrivial unipotent $u=\sm1t01$ form the line $\Q_\ell e$ (as $u e u^{-1}=e$, while $h$ and $f$ are moved
+by $t$ times a nonzero vector), and $\rho(\Frob)\,e\,\rho(\Frob)^{-1}=qe$ (the matrix $e=\sm0100$ is scaled by $q\cdot1^{-1}$). So $\Frob$ acts on
+$(\ad V)^{I_q}$ by $q$, and $\Frob^{-1}$ by $q^{-1}$: $\det(1-\Frob_q^{-1}q^{-s}\mid(\ad V)^{I_q})=1-q^{-1-s}$, the entry of the paper's table, whereas the
+arithmetic Frobenius would give $1-q^{1-s}$. The nonsplit case is the same, the unramified quadratic character $\pm1$ cancelling in the adjoint.
+\end{example}
+
+\begin{proposition}[the Frobenius element]\label{prop:ant:frobenius}
+Let $L/K$ be Galois with group $G$, $\mathfrak p$ unramified in $L$ and $\mathfrak P\mid\mathfrak p$.
+\begin{enumerate}[label=(\roman*)]
+\item There is a unique $\Frob_{\mathfrak P}\in G$ with $\Frob_{\mathfrak P}(x)\equiv x^{N\mathfrak p}\pmod{\mathfrak P}$ for all $x\in\mathcal O_L$; it lies in
+$D_{\mathfrak P}$, generates it, and has order $f$.
+\item $\Frob_{\sigma\mathfrak P}=\sigma\Frob_{\mathfrak P}\sigma^{-1}$; so $\{\Frob_{\mathfrak P}:\mathfrak P\mid\mathfrak p\}$ is a conjugacy class of $G$, the
+\emph{Frobenius class} $\Frob_{\mathfrak p}$.
+\item $\mathfrak p$ splits completely in $L$ iff $\Frob_{\mathfrak p}=\{1\}$.
+\item If $G$ is abelian, $\Frob_{\mathfrak P}$ depends only on $\mathfrak p$ and is written $\Frob_{\mathfrak p}\in G$.
+\item If $K\subseteq M\subseteq L$ with $M/K$ Galois, then $\Frob_{\mathfrak P}|_M=\Frob_{\mathfrak P\cap M}$. If $K\subseteq K'\subseteq L$ and
+$\mathfrak p'=\mathfrak P\cap K'$ has residue degree $f'$ over $\mathfrak p$, then $\Frob_{\mathfrak P}(L/K')=\Frob_{\mathfrak P}(L/K)^{f'}$.
+\item If $\mathfrak p$ is ramified, the elements of $D_{\mathfrak P}$ inducing $x\mapsto x^{N\mathfrak p}$ on $\kappa(\mathfrak P)$ form a coset of
+$I_{\mathfrak P}$; each of them is called \emph{a Frobenius at $\mathfrak P$}, and there is no distinguished one.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) By \Cref{thm:ant:residuegalois}, $I_{\mathfrak P}=1$ and $D_{\mathfrak P}\simeq\Gal(\kappa(\mathfrak P)/\kappa(\mathfrak p))$, cyclic of order $f$; let
+$\Frob_{\mathfrak P}$ be the preimage of $x\mapsto x^{N\mathfrak p}$. If $\sigma\in G$ satisfies the congruence, then $\sigma(\mathfrak P)\subseteq\mathfrak P$
+(take $x\in\mathfrak P$), so $\sigma\mathfrak P=\mathfrak P$ and $\sigma\in D_{\mathfrak P}$ induces $x\mapsto x^{N\mathfrak p}$: $\sigma=\Frob_{\mathfrak P}$.
+(ii) $\sigma\Frob_{\mathfrak P}\sigma^{-1}(x)=\sigma(\Frob_{\mathfrak P}(\sigma^{-1}x))\equiv\sigma((\sigma^{-1}x)^{N\mathfrak p})=x^{N\mathfrak p}\pmod{\sigma\mathfrak P}$,
+and use uniqueness; all primes above $\mathfrak p$ are conjugate. (iii) $\Frob_{\mathfrak P}$ generates $D_{\mathfrak P}$; use
+\Cref{thm:ant:residuegalois}(iii). (iv) follows from (ii). (v) $\Frob_{\mathfrak P}|_M$ satisfies the defining congruence modulo $\mathfrak P\cap\mathcal O_M$ on
+$\mathcal O_M$, and $\mathfrak P\cap M$ is unramified over $\mathfrak p$ (\Cref{thm:ant:efg}); use uniqueness in $\Gal(M/K)$. For $K'$: both elements lie in
+$D_{\mathfrak P}(L/K)$ (as $D_{\mathfrak P}(L/K')\subseteq D_{\mathfrak P}(L/K)$) and induce $x\mapsto x^{(N\mathfrak p)^{f'}}=x^{N\mathfrak p'}$ on $\kappa(\mathfrak P)$;
+$D_{\mathfrak P}(L/K)\to\Gal(\kappa(\mathfrak P)/\kappa(\mathfrak p))$ is injective. (vi) is \Cref{thm:ant:residuegalois}(i).
+\end{proof}
+
+Examples, proved in \Cref{thm:ant:cyclotomicsplitting} and \Cref{prop:ant:quadchar}: in $\Q(\zeta_n)$, for $p\nmid n$, $\Frob_p=\sigma_p\colon\zeta_n\mapsto\zeta_n^p$;
+in $\Q(\sqrt d)$ of discriminant $D$, for $p\nmid D$, $\Frob_p(\sqrt d)=\bigl(\frac Dp\bigr)\sqrt d$.
+
+\begin{proposition}[Frobenius and subfields]\label{prop:ant:frobsubfield}
+Let $L/\Q$ be finite Galois with group $G$, $H\le G$, $M=L^H$, $p$ a prime unramified in $L$, $\mathfrak P\mid p$ and $F=\Frob_{\mathfrak P}$. The map
+$\sigma H\mapsto\sigma^{-1}\mathfrak P\cap M$ induces a bijection from the orbits of $\langle F\rangle$ acting on $G/H$ by left multiplication to the primes
+of $M$ above $p$; the residue degree of the prime is the length of the orbit, and all ramification indices are $1$.
+\end{proposition}
+
+\begin{proof}
+Every prime of $M$ above $p$ lies under a prime of $L$ above $p$ (\Cref{thm:ant:efg} for $L/M$), and these are the $\tau\mathfrak P$, $\tau\in G$. Two of
+them, $\tau\mathfrak P$ and $\tau'\mathfrak P$, lie over the same prime of $M$ iff they are conjugate under $H=\Gal(L/M)$
+(\Cref{prop:ant:galoissplitting}(i) for $L/M$), iff $\tau'\in H\tau D$ with $D=D_{\mathfrak P}=\langle F\rangle$. So the primes of $M$ above $p$ correspond to the
+double cosets $H\backslash G/D$, and inversion $H\tau D\mapsto D\tau^{-1}H$ identifies these with the $D$-orbits on $G/H$; with $\sigma=\tau^{-1}$ this is the
+stated map. For $\mathfrak q=\tau\mathfrak P\cap M$: $D_{\tau\mathfrak P}(L/M)=\tau D\tau^{-1}\cap H$ has order $f(\tau\mathfrak P\mid\mathfrak q)$ (all ramification is
+trivial), so $f(\mathfrak q\mid p)=f/\#(\tau D\tau^{-1}\cap H)=\#D/\#(D\cap\tau^{-1}H\tau)$, which is the length of the $D$-orbit of $\tau^{-1}H$ (its stabiliser in
+$D$ is $D\cap\tau^{-1}H\tau$).
+\end{proof}
+
+\begin{corollary}[Dedekind's theorem on cycle types]\label{cor:ant:cycletype}
+Let $f\in\Z[X]$ be separable of degree $n$ with leading coefficient $a$, $p$ a prime with $p\nmid a\disc(f)$, $L$ the splitting field of $f$, and
+$d_1,\dots,d_r$ the degrees of the irreducible factors of $f\bmod p$ in $\F_p[X]$. Then $p$ is unramified in $L$, and for $\mathfrak P\mid p$ the
+permutation of the roots of $f$ induced by $\Frob_{\mathfrak P}$ has cycle type $(d_1,\dots,d_r)$.
+\end{corollary}
+
+\begin{proof}
+Replacing $f$ by $a^{n-1}f(X/a)$, whose roots are $a$ times those of $f$, whose discriminant is a power of $a$ times $\disc(f)$, and whose
+factorisation modulo $p$ has the same degrees ($a$ is invertible modulo $p$), we may assume $f$ monic. Its roots $\beta_1,\dots,\beta_n$ lie in $\mathcal O_L$,
+and $\disc(f)=\prod_{i<j}(\beta_i-\beta_j)^2\notin\mathfrak P$, so their reductions are distinct roots of $\bar f$ in $\kappa(\mathfrak P)$: reduction is a
+bijection from the roots of $f$ to the roots of $\bar f$, compatible with the action of $D_{\mathfrak P}$. An element of $I_{\mathfrak P}$ acts trivially on
+$\kappa(\mathfrak P)$, so fixes each reduction, hence each $\beta_i$, hence $L$: $I_{\mathfrak P}=1$ and $p$ is unramified. $\Frob_{\mathfrak P}$ acts on the
+reductions as $x\mapsto x^p$, and the orbit of a root of $\bar f$ under $x\mapsto x^p$ consists of the roots of its irreducible factor over $\F_p$
+(\Cref{ch:rings}); so the cycles have lengths $d_1,\dots,d_r$.
+\end{proof}
+
+For example, in $\Q(2^{1/3})$ (\Cref{ex:ant:dkexamples}(e)), $X^3-2\equiv(X+2)(X^2+3X+4)\pmod5$, so $\Frob_5$ in $\Gal(\Q(2^{1/3},\zeta_3)/\Q)\simeq S_3$ is a
+transposition: it fixes one root and swaps the other two, and the primes above $5$ in $\Q(2^{1/3})$ have residue degrees $1$ and $2$, the orbit
+lengths of \Cref{prop:ant:frobsubfield}.
+
+\begin{proposition}[Frobenius elements in $G_\Q$]\label{prop:ant:frobGQ}
+Let $p$ be a prime. A \emph{prime of $\bar\Z$ above $p$} is a maximal ideal $\bar{\mathfrak P}$ of $\bar\Z$ containing $p$.
+\begin{enumerate}[label=(\roman*)]
+\item $\bar{\mathfrak P}\mapsto(\bar{\mathfrak P}\cap\mathcal O_L)_L$ is a bijection from the primes of $\bar\Z$ above $p$ to the compatible families of primes
+above $p$ in the finite Galois extensions $L/\Q$; $G_\Q$ acts transitively on them, and $\bar\Z/\bar{\mathfrak P}\simeq\Fbar_p$.
+\item The \emph{decomposition group} $D_{\bar{\mathfrak P}}=\{\sigma\in G_\Q:\sigma\bar{\mathfrak P}=\bar{\mathfrak P}\}$ and the \emph{inertia group}
+$I_{\bar{\mathfrak P}}$ (the kernel of the action of $D_{\bar{\mathfrak P}}$ on $\bar\Z/\bar{\mathfrak P}$) are closed subgroups, equal to
+$\varprojlim D_{\mathfrak P_L}$ and $\varprojlim I_{\mathfrak P_L}$, with surjective projections to $D_{\mathfrak P_L}$ and $I_{\mathfrak P_L}$ for every finite
+Galois $L$; for another choice $\sigma\bar{\mathfrak P}$ they are conjugated by $\sigma$. Once $\bar{\mathfrak P}$ is fixed we write $D_p$, $I_p$. The
+sequence $1\to I_p\to D_p\to\Gal(\Fbar_p/\F_p)\to1$ is exact, and $\Gal(\Fbar_p/\F_p)\simeq\hat\Z$ is topologically generated by $x\mapsto x^p$.
+\item \emph{A Frobenius at $p$} is any $\Frob_p\in D_p$ mapping to $x\mapsto x^p$; it is well defined up to $I_p$ and, when $\bar{\mathfrak P}$ varies, up
+to conjugation in $G_\Q$. Its image in $\Gal(L/\Q)$, for $L$ finite Galois and unramified at $p$, lies in the class $\Frob_p(L/\Q)$.
+\item A continuous representation $\rho$ of $G_\Q$ is \emph{unramified at $p$} if $\rho(I_p)=1$ for one, equivalently every, $\bar{\mathfrak P}\mid p$; then
+the conjugacy class of $\rho(\Frob_p)$, and in particular $\det(X-\rho(\Frob_p))$, is well defined. If $\rho$ has finite image, with $L$ the field cut
+out by $\rho$ (the fixed field of $\ker\rho$), then $\rho$ is unramified at $p$ iff $p$ is unramified in $L$, and $\rho(\Frob_p)$ is the image of the
+class $\Frob_p(L/\Q)$.
+\item (Stated; \Cref{ch:local}.) An embedding $\Qbar\to\Qbar_p$ identifies $D_{\bar{\mathfrak P}}$, for the prime it defines, with $G_{\Q_p}$ and
+$I_{\bar{\mathfrak P}}$ with the inertia subgroup of $G_{\Q_p}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $\bar{\mathfrak P}\cap\mathcal O_L$ is a prime of $\mathcal O_L$ containing $p$, and the family is compatible. Conversely the union of a compatible family is
+an ideal of $\bar\Z=\bigcup_L\mathcal O_L$ (a directed union) which is prime and contains $p$, and every nonzero prime of $\bar\Z$ is maximal (its trace on
+each $\mathcal O_L$ is). Given $\bar{\mathfrak P},\bar{\mathfrak P}'$, the sets $S_L=\{\sigma\in\Gal(L/\Q):\sigma\mathfrak P_L=\mathfrak P'_L\}$ are nonempty
+(\Cref{prop:ant:galoissplitting}) and finite, and restriction maps $S_{L'}$ into $S_L$ for $L\subseteq L'$; an inverse limit of nonempty finite sets is
+nonempty (\Cref{ch:galois}), and an element of it is a $\sigma\in G_\Q$ with $\sigma\bar{\mathfrak P}=\bar{\mathfrak P}'$. The residue ring $\bigcup_L\kappa(\mathfrak P_L)$
+is an algebraic extension of $\F_p$; it contains every $\F_{p^f}$, since a root in $\bar\Z$ of a monic lift of an irreducible polynomial of degree $f$
+over $\F_p$ reduces to a root of that polynomial. (ii) By definition $D_{\bar{\mathfrak P}}$ is the set of $\sigma$ whose restrictions lie in all
+$D_{\mathfrak P_L}$, which is the inverse limit, a closed subgroup; likewise for $I$. Surjectivity of the projections: for $L\subseteq L'$ the restriction
+maps $D_{\mathfrak P_{L'}}\to D_{\mathfrak P_L}$ and $I_{\mathfrak P_{L'}}\to I_{\mathfrak P_L}$ are surjective (\Cref{thm:ant:residuegalois}(ii)), and the
+fibres over a given element form an inverse system of nonempty finite sets. The exact sequence is the inverse limit of those of
+\Cref{thm:ant:residuegalois}(i), surjectivity again by compactness; and $\Gal(\Fbar_p/\F_p)=\varprojlim\Z/f\simeq\hat\Z$ (\Cref{ch:galois}).
+(iii) follows from (ii) and \Cref{prop:ant:frobenius}. (iv) Inertia groups for different $\bar{\mathfrak P}$ are conjugate. If $\rho(I_p)=1$, two Frobenius
+elements differ by $I_p$ and conjugation, so $\rho(\Frob_p)$ is defined up to conjugacy. If $\rho$ factors through $\Gal(L/\Q)$ injectively, then
+$\rho(I_p)$ is the image of $I_{\mathfrak P_L}$ by (ii), trivial iff $p$ is unramified in $L$, and the image of $\Frob_p$ is $\Frob_{\mathfrak P_L}$.
+(v) We do not prove this here; see \Cref{ch:local}.
+\end{proof}
+
+\begin{proposition}[tame inertia]\label{prop:ant:tameconj}
+Let $L/K$ be finite Galois, $\mathfrak P\mid\mathfrak p$, $p$ the residue characteristic, and suppose that $\#I_{\mathfrak P}$ is prime to $p$ ($\mathfrak P$ is
+\emph{tamely ramified}). Then $I_{\mathfrak P}$ is cyclic, and for every $F\in D_{\mathfrak P}$ inducing $x\mapsto x^{N\mathfrak p}$ on $\kappa(\mathfrak P)$ and every
+$\tau\in I_{\mathfrak P}$,
+\[
+F\tau F^{-1}=\tau^{N\mathfrak p}.
+\]
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+Let $\varpi$ be a uniformiser of the discrete valuation ring $\mathcal O_{L,\mathfrak P}$ (\Cref{prop:ant:crt}(iv)), on which $D_{\mathfrak P}$ acts. For
+$\tau\in I_{\mathfrak P}$, $\tau(\varpi)$ is again a uniformiser, so $\tau(\varpi)/\varpi$ is a unit; put $\theta(\tau)=\tau(\varpi)/\varpi\bmod\mathfrak P
+\in\kappa(\mathfrak P)^\times$. Since $\tau$ acts trivially modulo $\mathfrak P$ on $\mathcal O_{L,\mathfrak P}$ (the congruence $\tau x\equiv x$ extends from
+$\mathcal O_L$ to fractions with denominators prime to $\mathfrak P$), $\theta$ does not depend on $\varpi$ (replacing $\varpi$ by $u\varpi$ multiplies by
+$\tau(u)/u\equiv1$) and is a homomorphism: $\theta(\sigma\tau)=\sigma\bigl(\tau(\varpi)/\varpi\bigr)\cdot\sigma(\varpi)/\varpi\equiv\theta(\tau)\theta(\sigma)$. The kernel
+of $\theta$ is the first ramification group, which is a $p$-group; this is the step we do not prove (it uses the filtration of $I_{\mathfrak P}$ by the
+higher ramification groups, whose successive quotients embed in the additive groups $\mathfrak P^i/\mathfrak P^{i+1}$; \cite[Chapter IV, Section 2]{SerreLocalFields}).
+So when $\#I_{\mathfrak P}$ is prime to $p$, $\theta$ is injective and $I_{\mathfrak P}$, a subgroup of the cyclic group $\kappa(\mathfrak P)^\times$, is cyclic.
+For $F$ as stated, $\varpi'=F^{-1}(\varpi)$ is a uniformiser, and
+$\theta(F\tau F^{-1})=F\bigl(\tau(\varpi')/\varpi'\bigr)\bmod\mathfrak P=\theta(\tau)^{N\mathfrak p}=\theta(\tau^{N\mathfrak p})$, because $F$ acts on $\kappa(\mathfrak P)$ as
+$x\mapsto x^{N\mathfrak p}$. Injectivity of $\theta$ gives $F\tau F^{-1}=\tau^{N\mathfrak p}$. The profinite form, $\Frob\,t\,\Frob^{-1}=t^q$ on the tame inertia
+quotient of $G_{\Q_q}$, is proved in \Cref{ch:local}.
+\end{proof}
+
+\begin{corollary}[Frobenius on a tame image of inertia]\label{cor:ant:frobsigma}
+Let $q$ be a prime, $\ell\ne q$ an odd prime, and $\rho\colon G_\Q\to\GL_2(\Z_\ell)$ continuous with $\rho(I_q)$ finite of order prime to $q$ (for
+$\rho=\rho_{E,\ell}$ at a prime $q\ge5$ of additive potentially good reduction the order is $2$, $3$, $4$ or $6$, by Kraus's theorem, \Cref{ch:reduction,ch:galrep}).
+Then $\rho(I_q)$ is cyclic, and for every Frobenius $F\in D_q$ (\Cref{prop:ant:frobGQ}) and every $\tau\in I_q$,
+\[
+\rho(F)\rho(\tau)\rho(F)^{-1}=\rho(\tau)^q.
+\]
+In particular, if $\rho(I_q)$ is generated by $\sigma$ of order $3$ (or by $-\sigma$, of order $6$), then $\rho(F)$ commutes with $\sigma$ if $q\equiv1\pmod3$
+and conjugates it to $\sigma^{-1}$ if $q\equiv2\pmod3$; if $\rho(I_q)$ is generated by $\tau$ of order $4$, $\rho(F)$ commutes with $\tau$ if $q\equiv1\pmod4$ and
+conjugates it to $\tau^{-1}$ if $q\equiv3\pmod4$. None of this depends on the choice of $F$.
+\end{corollary}
+
+\begin{proof}
+The kernel $1+\ell\Mat_2(\Z_\ell)$ of reduction modulo $\ell$ contains no nontrivial element of finite order when $\ell$ is odd (\Cref{ch:groups,ch:reps}), so
+reduction $\rho\mapsto\bar\rho$ is injective on the finite group $\rho(I_q)$. Let $L$ be the field cut out by $\bar\rho$, a finite Galois extension of $\Q$
+with $\bar\rho\colon\Gal(L/\Q)\simeq\bar\rho(G_\Q)$, and $\mathfrak P=\bar{\mathfrak P}\cap\mathcal O_L$. By \Cref{prop:ant:frobGQ}(ii), $I_{\mathfrak P}$ is the
+image of $I_q$, so $\bar\rho(I_{\mathfrak P})=\bar\rho(I_q)\simeq\rho(I_q)$ has order prime to $q$, and $F|_L\in D_{\mathfrak P}$ induces $x\mapsto x^q$ on
+$\kappa(\mathfrak P)$. \Cref{prop:ant:tameconj} gives that $I_{\mathfrak P}$ is cyclic and $F|_L\,\tau|_L\,F|_L^{-1}=(\tau|_L)^q$, that is,
+$\bar\rho(F\tau F^{-1})=\bar\rho(\tau^q)$. Both $F\tau F^{-1}$ and $\tau^q$ lie in $I_q$, which is normal in $D_q$; so $\rho(F\tau F^{-1})$ and
+$\rho(\tau)^q$ lie in $\rho(I_q)$ and have the same reduction, hence are equal. The special cases: $\sigma^q=\sigma$ or $\sigma^2=\sigma^{-1}$ according to
+$q\bmod3$ ($q\ne3$ since $3\mid\#\rho(I_q)$ is prime to $q$); $(-\sigma)^q=-\sigma^q$ for $q$ odd, and for $q=2$ the order $6$ is not prime to $q$; $\tau^q=\tau$
+or $\tau^3=\tau^{-1}$ according to $q\bmod4$. Two Frobenius elements differ by an element of $I_q$, whose image commutes with the cyclic group $\rho(I_q)$.
+\end{proof}
+
+\begin{paperlink}\label{pl:ant:frobsigma}
+Lemma lem:IV: ``The arithmetic Frobenius acts on the tame quotient of $I_q$ by $x\mapsto x^q$, so $\rho(\Frob_q)\sigma\rho(\Frob_q)^{-1}=\sigma^q=
+\sigma^{\chi_{-3}(q)}$'' is \Cref{cor:ant:frobsigma}, at every prime $q\ne3$ at which the image of inertia has order $3$, including $q=2$ (the order $3$ is
+prime to $2$); $\sigma^{\chi_{-3}(q)}=\sigma^q$ because $\chi_{-3}(q)=1$ iff $q\equiv1\pmod3$ (\Cref{prop:ant:quadchar}). Lemma lem:euler: ``Frobenius
+centralises $\sigma$ if $q\equiv1\pmod3$ and inverts it if $q\equiv2$, for either choice of Frobenius'' is the same corollary, and the types
+$\kod{III}$, $\kod{III}^*$ use its order-$4$ case. The action on the invariant line of the adjoint is \Cref{prop:ant:commutant}.
+\end{paperlink}
+
+\section{Quadratic fields, \texorpdfstring{$\Z[i]$}{Z[i]}, \texorpdfstring{$\Z[\zeta_3]$}{Z[zeta3]} and the rings \texorpdfstring{$\Z_\ell[\zeta_3]$}{Zl[zeta3]}}\label{sec:ant:quadratic}
+
+Quadratic fields carry all the characters of the paper: $\chi_{-3}$ and $\chi_{-4}$ in the table of Section 1 and in Lemma lem:euler,
+$\chi_{q^*}$ in the twists of Section 1.4 and Lemma lem:twist, $\chi_S$ in Theorems thm:twist and thm:quant, and $\Q(\sqrt{\ell^*})$ in the hypothesis
+of Theorem thm:main. This section proves the splitting law (\Cref{thm:ant:quadsplit}), identifies the character of a quadratic field with a
+Kronecker symbol (\Cref{prop:ant:quadchar}), and then studies the two rings $\Z[i]$, $\Z[\zeta_3]$ and their $\ell$-adic versions, which carry the
+algebra of Lemma lem:IV ($\Z_3[\zeta_3]$ a discrete valuation ring with uniformiser $\pi=1-\zeta_3$, $T_3E$ free of rank one over it,
+$E[3]\simeq\Z_3[\zeta_3]/(\pi^2)$) and of Lemma lem:euler (the line spanned by $\sqrt{-3}=2\sigma+1$ and the sign $\chi_{-3}(q)$). The Kronecker symbol
+$\bigl(\frac Dp\bigr)$ is that of \Cref{ch:rings}: the Legendre symbol for odd $p$, and for $p=2$ it is $0$ if $2\mid D$, $1$ if $D\equiv\pm1\pmod8$ and $-1$ if
+$D\equiv\pm3\pmod8$.
+
+\begin{theorem}[splitting in quadratic fields]\label{thm:ant:quadsplit}
+Let $K=\Q(\sqrt d)$, $d\ne0,1$ squarefree, of discriminant $D$, and $p$ a prime. Then $p$ ramifies in $K$ iff $\bigl(\frac Dp\bigr)=0$ (iff $p\mid D$), splits
+iff $\bigl(\frac Dp\bigr)=1$, and is inert iff $\bigl(\frac Dp\bigr)=-1$. Explicitly: for odd $p\mid D$, $p\mathcal O_K=(p,\sqrt d)^2$; for odd $p\nmid D$ with
+$a^2\equiv d\pmod p$, $p\mathcal O_K=(p,\sqrt d-a)(p,\sqrt d+a)$ with distinct factors; for $p=2$: if $d\equiv3\pmod4$, $(2)=(2,1+\sqrt d)^2$; if
+$d\equiv2\pmod4$, $(2)=(2,\sqrt d)^2$; if $d\equiv1\pmod8$, $(2)=(2,\frac{1+\sqrt d}2)(2,\frac{1-\sqrt d}2)$; if $d\equiv5\pmod8$, $2$ is inert.
+\end{theorem}
+
+\begin{proof}
+Apply \Cref{thm:ant:dedekindkummer}. If $p$ is odd, take $\theta=\sqrt d$, $g=X^2-d$: the index $[\mathcal O_K:\Z[\sqrt d]]$ is $1$ or $2$, prime to $p$. If
+$p\mid d$, $\bar g=X^2$ and $p=(p,\sqrt d)^2$; if $d$ is a nonzero square $a^2$ modulo $p$, $\bar g=(X-a)(X+a)$ with $a\not\equiv-a$; otherwise $\bar g$ is
+irreducible. For odd $p$, $p\mid D$ iff $p\mid d$, and $\bigl(\frac Dp\bigr)=\bigl(\frac dp\bigr)$ since $D/d\in\{1,4\}$. If $p=2$ and $d\equiv2,3\pmod4$, take
+$\theta=\sqrt d$ (index $1$): $X^2-d\equiv X^2$ or $(X+1)^2\pmod 2$, and $2\mid D=4d$. If $d\equiv1\pmod4$ take $\theta=\frac{1+\sqrt d}2$, $g=X^2-X+\frac{1-d}4$
+(index $1$): modulo $2$, $g\equiv X(X+1)$ if $\frac{1-d}4$ is even, that is $d\equiv1\pmod8$, and $g\equiv X^2+X+1$, irreducible, if $d\equiv5\pmod8$; here
+$D=d$ is odd and $\bigl(\frac D2\bigr)=1$, resp. $-1$. The primes above $2$ for $d\equiv1\pmod8$ are $(2,\theta)$ and $(2,\theta-1)=(2,\frac{1-\sqrt d}2)$, as $\theta-1=-\frac{1-\sqrt d}2$.
+\end{proof}
+
+\begin{proposition}[the character of a quadratic field]\label{prop:ant:quadchar}
+Let $K=\Q(\sqrt d)$ have discriminant $D$ and let $\chi_D\colon G_\Q\to\{\pm1\}$ be its character, $\sigma(\sqrt d)=\chi_D(\sigma)\sqrt d$ (\Cref{ch:galois}).
+\begin{enumerate}[label=(\roman*)]
+\item For every prime $p\nmid D$, $\chi_D(\Frob_p)=\bigl(\frac Dp\bigr)$, the value at $p$ of the primitive real Dirichlet character $n\mapsto\bigl(\frac Dn\bigr)$ of
+conductor $\abs D$ (\Cref{ch:rings}).
+\item $\chi_D$ is unramified exactly at the primes $p\nmid D$; for $p\mid D$, $\chi_D(I_p)=\{\pm1\}$.
+\item In particular: $\chi_{-4}(\Frob_p)=(-1)^{(p-1)/2}$ for odd $p$ (conductor $4$); $\chi_{-3}(\Frob_p)=\bigl(\frac p3\bigr)$, which is $1$ iff $p\equiv1\pmod3$, for
+$p\ne3$, including $\chi_{-3}(\Frob_2)=-1$ (conductor $3$); for an odd prime $q$, $\chi_{q^*}(\Frob_p)=\bigl(\frac{q^*}p\bigr)=\bigl(\frac pq\bigr)$ for every prime
+$p\ne q$, including $p=2$ (conductor $q$); $\chi_8$ and $\chi_{-8}$, the characters of $\Q(\sqrt2)$ and $\Q(\sqrt{-2})$, have conductor $8$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $p$ is unramified (\Cref{thm:ant:discram}, $d_K=D$), and $\Frob_p\in\Gal(K/\Q)$ is trivial iff $D_{\mathfrak P}=1$ iff $p$ splits
+(\Cref{prop:ant:frobenius}(iii)) iff $\bigl(\frac Dp\bigr)=1$ (\Cref{thm:ant:quadsplit}); since both sides are $\pm1$ they agree. That $n\mapsto\bigl(\frac Dn\bigr)$ is a
+primitive Dirichlet character of conductor $\abs D$ for a fundamental discriminant $D$ is proved in \Cref{ch:rings}. (ii) For $p\mid D$, $p$ ramifies, the inertia
+group in $\Gal(K/\Q)$ has order $e=2$, and $\chi_D(I_p)$ is its image (\Cref{prop:ant:frobGQ}(ii)). (iii) is (i) for $D=-4,-3,q^*,\pm8$, together with
+$\bigl(\frac{-4}p\bigr)=\bigl(\frac{-1}p\bigr)=(-1)^{(p-1)/2}$, $\bigl(\frac{-3}p\bigr)=\bigl(\frac p3\bigr)$ and $\bigl(\frac{q^*}p\bigr)=\bigl(\frac pq\bigr)$ (quadratic reciprocity with its
+supplements, \Cref{ch:rings}, or \Cref{cor:ant:qr}); at $p=2$, $\bigl(\frac{q^*}2\bigr)=1$ iff $q^*\equiv1\pmod8$ iff $q\equiv\pm1\pmod8$ iff $\bigl(\frac2q\bigr)=1$. All
+these congruence conditions were also checked numerically for $p<3000$.
+\end{proof}
+
+\begin{proposition}[quadratic fields unramified outside a set of primes]\label{prop:ant:ramonlyat}
+(i) For an odd prime $q$, $\Q(\sqrt{q^*})$, $q^*=(-1)^{(q-1)/2}q$, is the unique quadratic field ramified only at $q$; its discriminant is $q^*$.
+(ii) Every fundamental discriminant is uniquely a product $D=D_0\prod_{q\in T}q^*$ with $T$ a finite set of odd primes and $D_0\in\{1,-4,8,-8\}$ (the
+\emph{prime discriminants}). A quadratic field is unramified outside a finite set $S$ of primes iff its discriminant has this form with $T\subseteq S$ and
+$D_0=1$ unless $2\in S$.
+(iii) For a finite set $S$ of odd primes, $\chi_S:=\prod_{q\in S}\chi_{q^*}$ is the character of $\Q(\sqrt{\prod_{q\in S}q^*})$, of discriminant
+$\prod_{q\in S}q^*$ and conductor $\prod_{q\in S}q$; it is ramified exactly at the primes of $S$.
+(iv) Hence twisting a representation of $G_\Q$ by $\chi_{q^*}$ or by $\chi_S$ does not change it on $I_p$ for $p\notin S$.
+\end{proposition}
+
+\begin{proof}
+(i) $q^*\equiv1\pmod4$ and is squarefree, so it is a fundamental discriminant, and $\Q(\sqrt{q^*})$ is ramified exactly at $q$ (\Cref{thm:ant:discram}).
+Conversely, a quadratic field ramified only at $q$ has odd discriminant $D$ divisible only by $q$, so $D=\pm q$; an odd fundamental discriminant is
+$\equiv1\pmod4$, which fixes the sign: $D=q^*$. (ii) If $D$ is odd, it is squarefree and $\equiv1\pmod 4$; writing $D=\pm\prod_{q\mid D}q$, the product
+$\prod_{q\mid D}q^*$ has the same absolute value and is $\equiv1\pmod4$, so equals $D$. If $D=4m$ with $m\equiv3\pmod4$, then $-m\equiv1\pmod 4$ is an odd
+fundamental discriminant (or $1$) and $D=-4\cdot(-m)$; if $m\equiv2\pmod4$, $m=2m'$ with $m'$ odd, and $D=8m'=\pm8\cdot(\pm m')$ with the sign chosen so that
+$\pm m'\equiv1\pmod 4$. Uniqueness: the odd part determines $T$, the sign and the $2$-part then determine $D_0$. The second statement follows from
+\Cref{thm:ant:discram}. (iii) $\prod_{q\in S}\chi_{q^*}(\sigma)$ is the sign by which $\sigma$ multiplies $\prod_{q\in S}\sqrt{q^*}$, a square root of $\prod q^*$;
+the product is a fundamental discriminant by (ii), whose conductor is its absolute value. (iv) $\chi_S$ is trivial on $I_p$ for $p\notin S$ by (iii) and
+\Cref{prop:ant:quadchar}(ii).
+\end{proof}
+
+\begin{example}[splitting tables]\label{ex:ant:quadexamples}
+By \Cref{thm:ant:quadsplit} and quadratic reciprocity:
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+field & $D$ & ramified & $p$ splits iff\\
+\midrule
+$\Q(i)$ & $-4$ & $2$ & $p\equiv1\pmod4$\\
+$\Q(\sqrt{-3})=\Q(\zeta_3)$ & $-3$ & $3$ & $p\equiv1\pmod3$ ($2$ is inert)\\
+$\Q(\sqrt{-7})$ & $-7$ & $7$ & $p\equiv1,2,4\pmod7$ ($2$ splits, $-7\equiv1\pmod8$)\\
+$\Q(\sqrt{-11})$ & $-11$ & $11$ & $p$ a square modulo $11$ ($2$, $7$ inert; $3$, $5$ split)\\
+$\Q(\sqrt5)$ & $5$ & $5$ & $p\equiv\pm1\pmod5$\\
+$\Q(\sqrt{-5})$ & $-20$ & $2,5$ & $p\equiv1,3,7,9\pmod{20}$ ($3$ and $7$ split)\\
+\bottomrule
+\end{tabular}
+\end{center}
+The paper's twists by these fields: 121a1 and its twist by $\chi_{-11}$ ($\Q(\sqrt{-11})=\Q(\sqrt{11^*})$), 539c1 and 980i1 twisted by $\chi_{-7}$
+($\Q(\sqrt{-7})=\Q(\sqrt{7^*})$), in the Example after the proof of Theorem thm:qual (Example ex:qual).
+\end{example}
+
+\begin{proposition}[Gaussian and Eisenstein primes]\label{prop:ant:gausseisenstein}
+(i) $\Z[i]$ and $\Z[\zeta_3]$ are Euclidean for the norms $a^2+b^2$ and $a^2-ab+b^2$ (\Cref{ch:rings}), hence principal ideal domains; their unit groups are
+$\mu_4$ and $\mu_6$ (\Cref{thm:ant:units}).
+(ii) Up to units, the primes of $\Z[i]$ are: $1+i$, with $2=-i(1+i)^2$; for each $p\equiv1\pmod4$, the two non-associate factors $a\pm bi$ of $p=a^2+b^2$;
+for each $p\equiv3\pmod4$, $p$ itself. For example $5=(2+i)(2-i)$, $13=(3+2i)(3-2i)$.
+(iii) Up to units, the primes of $\Z[\zeta_3]$ are: $\pi=1-\zeta_3$ (\Cref{prop:ant:above3}); for each $p\equiv1\pmod3$, the two non-associate factors
+$a+b\zeta_3$, $a+b\zeta_3^2$ of $p=a^2-ab+b^2$; for each $p\equiv2\pmod3$, $p$ itself. For example $7=(3+\zeta_3)(3+\zeta_3^2)$, $13=(4+\zeta_3)(4+\zeta_3^2)$.
+(iv) A prime $p$ is a sum of two squares iff $p=2$ or $p\equiv1\pmod4$ (Fermat); $p=a^2-ab+b^2$ for integers $a,b$ iff $p=3$ or $p\equiv1\pmod3$, and then
+$p=x^2+3y^2$ if moreover $p\ne3$.
+\end{proposition}
+
+\begin{proof}
+(ii) Every prime $\varpi$ of $\Z[i]$ lies above a unique rational $p$ (\Cref{thm:ant:dedekind}), and the primes above $p$ are given by
+\Cref{ex:ant:quadexamples}: $p=2$ is ramified, $p\equiv1\pmod4$ split, $p\equiv3\pmod4$ inert. In the split case $p\Z[i]=\mathfrak P\bar{\mathfrak P}$ with
+$\mathfrak P=(a+bi)$ principal of norm $p$, so $a^2+b^2=p$, and $\bar{\mathfrak P}=(a-bi)\ne\mathfrak P$. In the inert case $(p)$ is prime. (iii) The same with
+\Cref{ex:ant:dkexamples}(b) and $N(a+b\zeta_3)=a^2-ab+b^2$, $\overline{a+b\zeta_3}=a+b\zeta_3^2$. (iv) $p$ is a norm from $\Z[i]$ (resp. $\Z[\zeta_3]$) iff some
+prime above $p$ has norm $p$, iff $p$ is ramified or split. If $p=a^2-ab+b^2$ with $p\ne3$, then not both $a,b$ are even, and one of $a$, $b$, $a-b$ is
+even; by the symmetries $(a,b)\mapsto(b,a)$ and $(a,b)\mapsto(a-b,-b)$, which preserve the form, we may assume $b=2y$ even, and then
+$p=(a-y)^2+3y^2$. The small cases were also checked by computer for $p<300$.
+\end{proof}
+
+\begin{proposition}[the prime above $3$]\label{prop:ant:above3}
+In $\Z[\zeta_3]$ put $\pi=1-\zeta_3$ and $\sqrt{-3}:=1+2\zeta_3$.
+\begin{enumerate}[label=(\roman*)]
+\item $(\sqrt{-3})^2=-3$, $\sqrt{-3}=\zeta_3-\zeta_3^2=\zeta_3\pi$, $\pi^2=-3\zeta_3$ and $3=-\zeta_3^2\pi^2$. So $\pi$ and $\sqrt{-3}$ are associates, $N(\pi)=3$,
+$3\Z[\zeta_3]=(\pi)^2$ ($3$ is totally ramified), and $\pi^2=-3$ up to the unit $\zeta_3$.
+\item $\Z[\zeta_3]/(\pi)=\F_3$, and $\zeta_3\equiv1\pmod\pi$.
+\item $\Z[\zeta_3]/(3)=\Z[\zeta_3]/(\pi^2)$ is a local ring with nine elements, with $\F_3$-basis $1,\pi$; multiplication by $\zeta_3=1-\pi$ has the matrix
+$\sm10{-1}1$ in this basis. It is a nontrivial unipotent map, and its fixed points form the line $\pi\Z[\zeta_3]/(\pi^2)$.
+\item The analogue at $2$ in $\Z[i]$: $(2)=(1+i)^2$, $\Z[i]/(2)\simeq\F_2[x]/(x^2)$ with $x=1+i$, and multiplication by $i=1+x$ is a nontrivial unipotent map.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+All identities follow from $\zeta_3^2=-1-\zeta_3$: $(1+2\zeta_3)^2=1+4\zeta_3+4\zeta_3^2=-3$; $\zeta_3-\zeta_3^2=1+2\zeta_3$; $\zeta_3\pi=\zeta_3-\zeta_3^2$;
+$\pi^2=1-2\zeta_3+\zeta_3^2=-3\zeta_3$; $-\zeta_3^2\pi^2=3\zeta_3^3=3$. $N(\pi)=1+1+1=3$. (ii) $\Z[\zeta_3]/(\pi)$ has $N(\pi)=3$ elements, and
+$\zeta_3=1-\pi$. (iii) $(3)=(\pi^2)$ by (i); the quotient has $9$ elements, its ideals are $0$, $(\pi)/(\pi^2)$ and the whole ring
+(\Cref{prop:ant:crt}(i)), and $1,\pi$ is a basis since $\pi\notin(\pi^2)$. $\zeta_3\cdot1=1-\pi$ and $\zeta_3\pi=\pi-\pi^2\equiv\pi$, giving the matrix (columns are
+images). The fixed points of $x\mapsto\zeta_3x$ are the $x$ with $\pi x\equiv0$, that is $x\in(\pi)$. (iv) $(1+i)^2=2i$, so $(2)=(1+i)^2$; $\Z[i]/(2)$ has basis
+$1,x$ with $x^2=2i\equiv0$, and $i\cdot1=1+x$, $i\cdot x=x+x^2=x$.
+\end{proof}
+
+\begin{lemma}[quadratic algebras over $\Z_\ell$]\label{lem:ant:quadraticZl}
+Let $\ell$ be a prime, $g\in\Z_\ell[X]$ monic of degree $2$, $R=\Z_\ell[X]/(g)$ (free over $\Z_\ell$ with basis $1,x$, $x$ the class of $X$) and $\bar g=g\bmod\ell$.
+\begin{enumerate}[label=(\roman*)]
+\item If $\bar g$ is irreducible over $\F_\ell$, $R$ is a discrete valuation ring with uniformiser $\ell$ and residue field $\F_{\ell^2}$.
+\item If $g(X+c)$ is an Eisenstein polynomial at $\ell$ for some $c\in\Z_\ell$, $R$ is a discrete valuation ring with uniformiser $x-c$ and residue field
+$\F_\ell$, and $\ell R=(x-c)^2R$.
+\item If $\bar g=(X-\bar a)(X-\bar b)$ with $\bar a\ne\bar b$, then $g$ has roots $a,b\in\Z_\ell$ lifting $\bar a,\bar b$, and $R\simeq\Z_\ell\times\Z_\ell$, $x\mapsto(a,b)$.
+\end{enumerate}
+In each case $R$ is a principal ideal ring. If $T$ is an $R$-module which is free of rank $2$ over $\Z_\ell$ and satisfies $T\otimes\Q_\ell\simeq R\otimes\Q_\ell$ as
+$R\otimes\Q_\ell$-modules (automatic in cases (i) and (ii)), then $T$ is free of rank one over $R$.
+\end{lemma}
+
+\begin{proof}
+$R$ is Noetherian (finite over $\Z_\ell$) and $\ell$-adically complete, so an element $1-\ell z$ is a unit ($\sum_k(\ell z)^k$ converges).
+(i) $R/\ell R=\F_\ell[X]/(\bar g)=\F_{\ell^2}$ is a field, so $\ell R$ is maximal. If $y\notin\ell R$, $\bar y$ is invertible in $R/\ell R$: $yy'=1-\ell z$, and
+$y$ is a unit. So $R$ is local with maximal ideal $\ell R$. Every nonzero $y$ is $\ell^ky_0$ with $y_0\notin\ell R$ (as $\bigcap_k\ell^kR=0$, $R$ being free over
+$\Z_\ell$), so a product of nonzero elements is $\ell^{k+k'}$ times a unit, nonzero: $R$ is a domain. A Noetherian local domain, not a field, with
+principal maximal ideal is a discrete valuation ring (\Cref{ch:modules}).
+(ii) Write $y=x-c$, so $R=\Z_\ell[Y]/(Y^2+uY+v)$ with $u=\ell u'$, $u'\in\Z_\ell$, and $v=\ell w_0$, $w_0\in\Z_\ell^\times$. Then $R/(y)=\Z_\ell/(v)=\F_\ell$,
+so $(y)$ is maximal. If $z=s+ty$ ($s,t\in\Z_\ell$) is not in $(y)$, then $\ell\nmid s$, and the determinant of multiplication by $z$ in the basis $1,y$ is
+$s^2-stu+t^2v\equiv s^2\not\equiv0\pmod\ell$; so $z$ is a unit (Cayley-Hamilton, as in \Cref{prop:ant:tracenorm}(ii)), and $R$ is local with maximal ideal $(y)$.
+Next $y^2=-\ell(u'y+w_0)$ with $u'y+w_0\notin(y)$ a unit, so $\ell R=y^2R$. Hence $\bigcap_ky^kR=\bigcap_k\ell^kR=0$, every nonzero $z$ is $y^kw$ with $w$ a unit
+($k$ the largest exponent with $z\in y^kR$), and $y^k\ne0$ for all $k$; so a product of nonzero elements is nonzero, $R$ is a domain, and it is a discrete
+valuation ring with uniformiser $y$ (\Cref{ch:modules}).
+(iii) $R/\ell R\simeq\F_\ell[X]/(X-\bar a)\times\F_\ell[X]/(X-\bar b)=\F_\ell\times\F_\ell$ by the Chinese remainder theorem. Its idempotent $(1,0)$ lifts to an
+idempotent $e\in R$ (\Cref{ch:modules}, idempotent lifting over the complete ring $\Z_\ell$). Then $R=Re\times R(1-e)$, each factor is a direct summand of
+$R\simeq\Z_\ell^2$, hence free over $\Z_\ell$, and nonzero modulo $\ell$, hence of rank $1$; as $Re/\ell Re\simeq\F_\ell$ is spanned by $\bar e$, Nakayama gives
+$Re=\Z_\ell e$, and similarly $R(1-e)=\Z_\ell(1-e)$. So $R\simeq\Z_\ell\times\Z_\ell$ as rings, and the image of $x$ is a pair $(a,b)$ of roots of $g$ in $\Z_\ell$
+reducing to $\bar a,\bar b$.
+Modules: a discrete valuation ring and $\Z_\ell\times\Z_\ell$ are principal ideal rings. Let $T$ be as stated. If $R$ is a discrete valuation ring, $T$ is
+finitely generated and torsion-free over $R$ (if $zt=0$ with $z\ne0$, put $z'=\Tr(z)-z$, with $\Tr$ and $N$ the trace and determinant of multiplication by $z$ on $R$; by Cayley-Hamilton
+$zz'=N(z)$, which is nonzero as $R$ is a domain, so $N(z)t=z'zt=0$ and $t=0$), hence free (\Cref{ch:modules}), of rank $\rank_{\Z_\ell}T/\rank_{\Z_\ell}R=1$; in this case
+$R\otimes\Q_\ell$ is a field and the hypothesis on $T\otimes\Q_\ell$ holds automatically. If $R=\Z_\ell e\times\Z_\ell(1-e)$, then $T=eT\oplus(1-e)T$, each summand free over $\Z_\ell$, of
+ranks $\dim(e(T\otimes\Q_\ell))=1$ and $1$ by the hypothesis; a generator $t_1$ of $eT$ and $t_2$ of $(1-e)T$ give $T=R(t_1+t_2)$.
+\end{proof}
+
+\begin{theorem}[$\Z_3\lbrack\zeta_3\rbrack$]\label{thm:ant:z3zeta3dvr}
+Let $\Z_3[\zeta_3]:=\Z_3[X]/(X^2+X+1)$, $\zeta_3$ the class of $X$, $\pi=1-\zeta_3$. Then:
+\begin{enumerate}[label=(\roman*)]
+\item $\Z_3[\zeta_3]$ is an integral domain, free over $\Z_3$ with basis $1,\zeta_3$ (or $1,\pi$), and $\Z_3[\zeta_3]\simeq\Z_3\otimes_\Z\Z[\zeta_3]$;
+\item it is a discrete valuation ring with maximal ideal $(\pi)$, uniformiser $\pi$ and residue field $\F_3$; every nonzero element is $u\pi^k$ with $u$ a
+unit and $k\ge0$;
+\item $\pi^2=-3\zeta_3$, so $3\Z_3[\zeta_3]=\pi^2\Z_3[\zeta_3]$ and $v_\pi(3)=2$;
+\item (stated; \Cref{ch:local}) it is the $\pi$-adic completion of $\Z[\zeta_3]$ and the ring of integers of $\Q_3(\zeta_3)=\Q_3(\sqrt{-3})$, a totally
+ramified quadratic extension of $\Q_3$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+With $g=X^2+X+1$ and $c=1$, $g(X+1)=X^2+3X+3$ is Eisenstein at $3$; \Cref{lem:ant:quadraticZl}(ii) gives (i) except the last isomorphism, (ii) with uniformiser
+$\zeta_3-1=-\pi$, and $3\Z_3[\zeta_3]=\pi^2\Z_3[\zeta_3]$; the identity $\pi^2=-3\zeta_3$ is \Cref{prop:ant:above3}(i). The isomorphism
+$\Z_3\otimes_\Z\Z[\zeta_3]=\Z_3\otimes_\Z\Z[X]/(X^2+X+1)\simeq\Z_3[X]/(X^2+X+1)$ is right exactness of the tensor product. A direct check of locality: if
+$a+b\zeta_3\notin(\pi)$, i.e. $3\nmid a+b$, then $N(a+b\zeta_3)=a^2-ab+b^2\equiv(a+b)^2\not\equiv0\pmod3$ and $(a+b\zeta_3)^{-1}=(a+b\zeta_3^2)/(a^2-ab+b^2)$.
+(iv) We do not prove this here; see \Cref{ch:local} and \cite[Chapter I, Section 6]{SerreLocalFields}.
+\end{proof}
+
+\begin{corollary}[the lattice of Lemma lem:IV]\label{cor:ant:z3zeta3modules}
+Let $T$ be a free $\Z_3$-module of rank $2$ and $\sigma\in\Aut_{\Z_3}(T)$ with $\sigma^2+\sigma+1=0$ (for $\sigma\in\SL_2(\Z_3)$ of order $3$ this holds, its
+eigenvalues being the primitive cube roots of unity, \Cref{ch:reps}). Make $T$ a $\Z_3[\zeta_3]$-module with $\zeta_3$ acting as $\sigma$. Then:
+\begin{enumerate}[label=(\roman*)]
+\item $T$ is free of rank one over $\Z_3[\zeta_3]$, and $\Z_3[\sigma]\simeq\Z_3[X]/(X^2+X+1)$;
+\item $T/3T\simeq\Z_3[\zeta_3]/(\pi^2)$, and $\sigma$ acts on $T/3T$ as the nontrivial unipotent map of \Cref{prop:ant:above3}(iii), with fixed line $\pi T/3T$;
+\item for every $k\ge1$ the $\sigma$-fixed vectors of $T/\pi^kT$ form the line $\pi^{k-1}T/\pi^kT$ over $\F_3$, and $T^\sigma=0$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(i) $\sigma$ is not a scalar (a scalar $s\in\Z_3$ with $s^2+s+1=0$ does not exist, \Cref{thm:ant:z3zeta3dvr}(i)), so $X^2+X+1$ is the minimal polynomial of
+$\sigma$ and $\Z_3[\sigma]\simeq\Z_3[X]/(X^2+X+1)$. $T$ is torsion-free over the domain $\Z_3[\zeta_3]$ by the norm argument of \Cref{lem:ant:quadraticZl}, hence
+free, of rank $2/2=1$. (ii) $T\simeq\Z_3[\zeta_3]$ gives $T/3T\simeq\Z_3[\zeta_3]/(3)=\Z_3[\zeta_3]/(\pi^2)\simeq\Z[\zeta_3]/(\pi^2)$, and \Cref{prop:ant:above3}(iii)
+applies. (iii) In $\Z_3[\zeta_3]/(\pi^k)$, $\zeta_3x=x$ iff $\pi x\equiv0\pmod{\pi^k}$ iff $x\in(\pi^{k-1})$; and in $T$ itself $\pi x=0$ forces $x=0$.
+\end{proof}
+
+\begin{proposition}[$\Z_\ell\lbrack\zeta_3\rbrack$ and $\Z_\ell\lbrack i\rbrack$]\label{prop:ant:zlzeta3}
+For a prime $\ell$ put $\Z_\ell[\zeta_3]:=\Z_\ell[X]/(X^2+X+1)\simeq\Z_\ell\otimes_\Z\Z[\zeta_3]$ and $\Z_\ell[i]:=\Z_\ell[X]/(X^2+1)\simeq\Z_\ell\otimes_\Z\Z[i]$. These are
+defined as these quotient rings, not as subrings of an algebraic closure of $\Q_\ell$.
+\begin{enumerate}[label=(\roman*)]
+\item $\ell=3$: $\Z_3[\zeta_3]$ is the ramified discrete valuation ring of \Cref{thm:ant:z3zeta3dvr}.
+\item $\ell\equiv1\pmod3$: $X^2+X+1$ has two distinct roots in $\Z_\ell$, and $\Z_\ell[\zeta_3]\simeq\Z_\ell\times\Z_\ell$, which is not a domain.
+\item $\ell\equiv2\pmod3$: $\Z_\ell[\zeta_3]$ is an unramified discrete valuation ring with uniformiser $\ell$ and residue field $\F_{\ell^2}$.
+\item Likewise $\Z_\ell[i]\simeq\Z_\ell\times\Z_\ell$ for $\ell\equiv1\pmod4$, an unramified discrete valuation ring with residue field $\F_{\ell^2}$ for
+$\ell\equiv3\pmod4$, and a ramified discrete valuation ring with uniformiser $1+i$ for $\ell=2$.
+\item In all cases $\Q_\ell[\zeta_3]:=\Z_\ell[\zeta_3][1/\ell]=\Q_\ell\otimes_\Q\Q(\zeta_3)$ carries the $\Q_\ell$-linear involution $\zeta_3\mapsto\zeta_3^2$ (the
+nontrivial element of $\Gal(\Q(\zeta_3)/\Q)$, extended by scalars), which negates $\sqrt{-3}=1+2\zeta_3$; and $\sqrt{-3}$ is a unit of $\Z_\ell[\zeta_3]$ iff
+$\ell\ne3$. The same holds for $\Q_\ell[i]$ with $i\mapsto-i$, and $2i$ is a unit of $\Z_\ell[i]$ iff $\ell\ne2$.
+\end{enumerate}
+The trichotomy is the splitting of $\ell$ in $\Q(\zeta_3)$ and in $\Q(i)$ (\Cref{ex:ant:quadexamples}), and is the case $K=\Q(\zeta_3)$, $\Q(i)$ of
+\Cref{prop:ant:otimesZl}.
+\end{proposition}
+
+\begin{proof}
+(i) is \Cref{thm:ant:z3zeta3dvr}. For $\ell\ne3$, $X^2+X+1$ is separable modulo $\ell$ (its discriminant is $-3$), and it has a root in $\F_\ell$ iff $\F_\ell^\times$
+contains an element of order $3$ iff $3\mid\ell-1$ (\Cref{ch:rings}). So (ii) and (iii) are \Cref{lem:ant:quadraticZl}(iii) and (i) (for $\ell=2$,
+$X^2+X+1$ is irreducible over $\F_2$, and $2\equiv2\pmod 3$). (iv) The same with $X^2+1$, of discriminant $-4$: for odd $\ell$ it has a root modulo $\ell$
+iff $4\mid\ell-1$; for $\ell=2$, $(X+1)^2+1=X^2+2X+2$ is Eisenstein. (v) The tensor product with $\Q_\ell$ of the automorphism $\zeta_3\mapsto\zeta_3^2$ of
+$\Z[\zeta_3]$ preserves $\Z_\ell[\zeta_3]$ and sends $1+2\zeta_3$ to $1+2\zeta_3^2=-(1+2\zeta_3)$. $(\sqrt{-3})^2=-3$ is a unit iff $\ell\ne3$, and then
+$\sqrt{-3}$ is a unit; for $\ell=3$ it lies in the maximal ideal $(\pi)$. Likewise $(2i)^2=-4$.
+\end{proof}
+
+\begin{proposition}[lattices with an automorphism of order $3$, $4$ or $6$]\label{prop:ant:latticefree}
+Let $\ell$ be an odd prime, $T$ a free $\Z_\ell$-module of rank $2$, $m\in\{3,4,6\}$, and $g\in\Aut_{\Z_\ell}(T)$ with characteristic polynomial the
+cyclotomic polynomial $\Phi_m$ ($X^2+X+1$, $X^2+1$, $X^2-X+1$). This holds for every $g\in\SL_2(\Z_\ell)$ of order $m$ (its eigenvalues are $\zeta$, $\zeta^{-1}$
+with $\zeta$ a primitive $m$-th root of unity). Then $\Z_\ell[g]\simeq\Z_\ell[X]/(\Phi_m)$, which is $\Z_\ell[\zeta_3]$ for $m=3,6$ (via $X\mapsto\zeta_3$,
+resp. $X\mapsto-\zeta_3$) and $\Z_\ell[i]$ for $m=4$; $T$ is free of rank one over $\Z_\ell[g]$; and the commutant of $g$ in $\End_{\Z_\ell}(T)$ is $\Z_\ell[g]$.
+For $\ell=3$ and $m=3$ this is \Cref{cor:ant:z3zeta3modules}.
+\end{proposition}
+
+\begin{proof}
+$g$ is not a scalar (its characteristic polynomial has distinct roots), so $\Phi_m$ is its minimal polynomial and $\Z_\ell[g]\simeq\Z_\ell[X]/(\Phi_m)=:R$; and
+$\Phi_6(X)=\Phi_3(-X)$. By \Cref{prop:ant:zlzeta3}, $R$ is a discrete valuation ring or $\Z_\ell\times\Z_\ell$. Over $\Q_\ell$, $T\otimes\Q_\ell$ is a cyclic
+$\Q_\ell[g]$-module (a non-scalar endomorphism of a plane has a cyclic vector), so $T\otimes\Q_\ell\simeq R\otimes\Q_\ell$, and \Cref{lem:ant:quadraticZl} gives
+$T\simeq R$. Then the commutant of $g$ is $\End_R(T)=\End_R(R)=R$. (In the split case the idempotents are explicit: if $\zeta\in\Z_\ell$ is a root of $\Phi_m$,
+$e=(g-\zeta^{-1})/(\zeta-\zeta^{-1})$, whose denominator squares to $-3$ or $-4$, a unit.)
+\end{proof}
+
+\begin{proposition}[the commutant and the invariant line of the adjoint]\label{prop:ant:commutant}
+Let $F$ be a field of characteristic $0$, $V$ a two-dimensional $F$-vector space, and $\sigma\in\GL(V)$ with characteristic polynomial $X^2+X+1$ (so
+$\sigma^3=1$, $\det\sigma=1$).
+\begin{enumerate}[label=(\roman*)]
+\item The commutant $\{x\in\End_F(V):x\sigma=\sigma x\}$ is $F[\sigma]\simeq F[X]/(X^2+X+1)=F\otimes_\Q\Q(\zeta_3)$, of dimension $2$; it is a field iff $F$
+contains no primitive cube root of unity (for $F=\Q_\ell$: iff $\ell\not\equiv1\pmod3$). The same holds for $-\sigma$.
+\item The trace-zero part of $F[\sigma]$ is the line $F\cdot(2\sigma+1)$, and $(2\sigma+1)^2=-3$: it is ``the line spanned by $\sqrt{-3}$''.
+\item If $A\in\GL(V)$ satisfies $A\sigma A^{-1}=\sigma^q$ for a prime $q\ne3$, then conjugation by $A$ preserves $F[\sigma]$ and acts on it as
+$\id_F\otimes\Frob_q$, where $\Frob_q\in\Gal(\Q(\zeta_3)/\Q)$ is $\zeta_3\mapsto\zeta_3^q$; hence it acts on the line $F(2\sigma+1)$ by $\chi_{-3}(\Frob_q)=\chi_{-3}(q)$,
+and so does conjugation by $A^{-1}$.
+\item If $\tau\in\GL(V)$ has characteristic polynomial $X^2+1$, the commutant is $F[\tau]\simeq F\otimes_\Q\Q(i)$, its trace-zero part is $F\tau$, and
+$A\tau A^{-1}=\tau^q$ with $q$ an odd prime gives the action of conjugation by $A^{\pm1}$ on $F\tau$ by $\chi_{-4}(q)$.
+\item Integral form: if $F=\Q_\ell$, $\ell$ odd, and $T\subset V$ is a $\sigma$-stable $\Z_\ell$-lattice, the commutant of $\sigma$ in $\End_{\Z_\ell}(T)$ is
+$\Z_\ell[\sigma]\simeq\Z_\ell\otimes_\Z\Z[\zeta_3]$, and $T$ is free of rank one over it (\Cref{prop:ant:latticefree}); $\End_{\langle\sigma\rangle}(V)=\Q_\ell[\sigma]\simeq
+\Q_\ell\otimes_\Q\Q(\zeta_3)$. For $\ell\equiv1\pmod3$ neither is a domain.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $\sigma$ is not a scalar, so $V$ has a cyclic vector $v$ ($v,\sigma v$ a basis); an $x$ commuting with $\sigma$ is determined by $x(v)=av+b\sigma v$, so
+$x=a+b\sigma$. $F[X]/(X^2+X+1)$ is a field iff $X^2+X+1$ has no root in $F$; for $\Q_\ell$ use \Cref{prop:ant:zlzeta3}. (ii) $\tr(a+b\sigma)=2a-b$, which vanishes
+iff $a+b\sigma=\frac b2(2\sigma+1)$; and $(2\sigma+1)^2=4(\sigma^2+\sigma+1)-3=-3$. (iii) $A F[\sigma]A^{-1}=F[\sigma^q]=F[\sigma]$, and conjugation is an
+$F$-algebra automorphism sending $\sigma\mapsto\sigma^q$, which under $\sigma\leftrightarrow1\otimes\zeta_3$ is $\id\otimes(\zeta_3\mapsto\zeta_3^q)$. Explicitly
+$A(2\sigma+1)A^{-1}=2\sigma^q+1$, which is $2\sigma+1$ if $q\equiv1\pmod3$ and $2\sigma^2+1=-(2\sigma+1)$ if $q\equiv2\pmod 3$; and $\chi_{-3}(q)=\pm1$
+accordingly (\Cref{prop:ant:quadchar}(iii)). Since $\pm1$ is its own inverse, conjugation by $A^{-1}$ acts by the same sign. (iv) The same with $\tr(a+b\tau)=2a$ and
+$\tau^q=\tau$ or $\tau^3=-\tau$ according to $q\bmod4$. (v) is \Cref{prop:ant:latticefree} with $m=3$, tensored with $\Q_\ell$ for $V$; and
+\Cref{prop:ant:zlzeta3}(ii) for $\ell\equiv1\pmod3$.
+\end{proof}
+
+\begin{paperlink}\label{pl:ant:IV}
+Lemma lem:IV and the paragraph after it: ``$T_3E$ is then free of rank one over $\Z_3[X]/(X^2+X+1)\simeq\Z_3[\zeta_3]$, with $X$ acting as $\sigma$'' is
+\Cref{cor:ant:z3zeta3modules}(i), with $\sigma$ the generator of $\rho_{E,3}(I_q)$, of order $3$ and determinant $1$ (\Cref{ch:galrep}); here $\Z_3[\sigma]$, the
+subring of $\End(T)$ generated by $\sigma$, is isomorphic to $\Z_3[X]/(X^2+X+1)$ because $\sigma$ is not a scalar. ``Its image in $\Aut(E[3])$ is a nontrivial
+unipotent subgroup. Consequently $E[3]^{I_q}$ is a line'' is \Cref{cor:ant:z3zeta3modules}(ii): $E[3]=T/3T\simeq\Z_3[\zeta_3]/(\pi^2)$, $\sigma$ acts as
+multiplication by $\zeta_3=1-\pi$, and its fixed space is $\pi T/3T$. That $\Z_3[\zeta_3]$ is a discrete valuation ring with uniformiser $\pi=1-\zeta_3$ and
+residue field $\F_3$ is \Cref{thm:ant:z3zeta3dvr}; ``$\pi^2=-3$ up to a unit'' is \Cref{prop:ant:above3}(i). The same freeness is used in Lemma lem:tamadd,
+with the basis in which $\sigma=\sm0{-1}1{-1}$, the companion matrix of $X^2+X+1$ acting on the basis $t,\sigma t$ for a generator $t$.
+\end{paperlink}
+
+\begin{paperlink}\label{pl:ant:euler}
+Lemma lem:euler, types $\kod{II}$, $\kod{II}^*$, $\kod{IV}$, $\kod{IV}^*$: ``the invariants form the line spanned by $2\sigma+1$, whose square is $-3$, inside
+$\End_{I_q}(T)=\Z_\ell[\sigma]\simeq\Z_\ell\otimes\Z[\zeta_3]$ (not a field when $\ell\equiv1\pmod3$)''. The invariants of $I_q$ on $\ad V$ are the trace-zero
+elements of $\End_{I_q}(V)$, the commutant of $\rho(I_q)=\langle\pm\sigma\rangle$, which is the line $\Q_\ell(2\sigma+1)$ of \Cref{prop:ant:commutant}(ii); the
+integral statement is \Cref{prop:ant:commutant}(v). ``Frobenius ... acts on the line by $\chi_{-3}(q)$'' is \Cref{prop:ant:commutant}(iii) with $A=\rho(F)$
+supplied by \Cref{cor:ant:frobsigma}. Types $\kod{III}$, $\kod{III}^*$: the line spanned by $\tau$ and the sign $\chi_{-4}(q)$, \Cref{prop:ant:commutant}(iv); no
+diagonalisation of $\tau$ over $\Q_\ell$ is needed (it is impossible for $\ell\equiv3\pmod4$, $\Q_\ell[i]$ being a field). The table entries
+$1-\chi_{-3}(q)q^{-s}$ and $1-\chi_{-4}(q)q^{-s}$ follow with either Frobenius (\Cref{conv:ant:frobenius}). The original version of the note wrote ``$\Z_\ell[\zeta_3]\simeq
+\End_{I_q}(V)$''; the correct reading, adopted in the revised version, is that $\End_{I_q}(V)$ is the $\Q_\ell$-algebra $\Q_\ell\otimes\Q(\zeta_3)$ and
+$\Z_\ell\otimes\Z[\zeta_3]$ is the endomorphism ring $\End_{I_q}(T)$ of the lattice.
+\end{paperlink}
+
+\section{Cyclotomic fields and class field theory over \texorpdfstring{$\Q$}{Q}}\label{sec:ant:cyclotomic}
+
+The cyclotomic fields are where the characters of the paper live: $\chi_\ell$ and $\bar\chi_\ell$ describe the action on $\mu_{\ell^\infty}$, the quadratic
+characters $\chi_{-3}$, $\chi_{-4}$, $\chi_{q^*}$, $\chi_S$ factor through $\Gal(\Q(\zeta_n)/\Q)\simeq(\Z/n)^\times$, and the theorem of Kronecker and Weber
+says that every character of $G_\Q$ of finite order does. This section computes the splitting of primes in $\Q(\zeta_n)$, shows that
+$\Q(\sqrt{\ell^*})$ is the quadratic subfield of $\Q(\zeta_\ell)$ with its splitting law, and sets up the dictionary between Dirichlet characters and
+characters of $G_\Q$ that the paper uses in both directions: as Galois characters ($\rho\otimes\chi$ in Proposition prop:ns and Lemma lem:h0) and as
+Dirichlet characters ($a_n(g\otimes\chi)=\chi(n)a_n(g)$ in Lemma lem:twist(iii) and Theorems thm:twist and thm:qual). The Galois theory of $\Q(\zeta_n)$,
+$\Gal(\Q(\zeta_n)/\Q)\simeq(\Z/n)^\times$, $a\mapsto\sigma_a$ with $\sigma_a(\zeta_n)=\zeta_n^a$, is in \Cref{ch:galois}; the cyclotomic polynomials $\Phi_n$ and
+their factorisation modulo $p$ are in \Cref{ch:rings}.
+
+\begin{theorem}[rings of integers of cyclotomic fields]\label{thm:ant:cyclotomicintegers}
+Let $n\ge1$ and $K=\Q(\zeta_n)$, of degree $\varphi(n)$.
+\begin{enumerate}[label=(\roman*)]
+\item $\mathcal O_K=\Z[\zeta_n]$.
+\item If $n=\ell^a$ with $\ell$ prime and $\zeta=\zeta_{\ell^a}$, then $\prod_{b\in(\Z/\ell^a)^\times}(1-\zeta^b)=\Phi_{\ell^a}(1)=\ell$, each $1-\zeta^b$ is a unit times
+$1-\zeta$, and $\ell\mathcal O_K=(1-\zeta)^{\varphi(\ell^a)}\mathcal O_K$: $\ell$ is totally ramified, and $(1-\zeta)$ is a prime with residue field $\F_\ell$.
+\item $d_K=(-1)^{\varphi(n)/2}\,n^{\varphi(n)}\big/\prod_{p\mid n}p^{\varphi(n)/(p-1)}$; in particular $d(\Q(\zeta_\ell))=(-1)^{(\ell-1)/2}\ell^{\ell-2}$ for an odd prime
+$\ell$, $d(\Q(\zeta_3))=-3$, $d(\Q(\zeta_4))=-4$, $d(\Q(\zeta_8))=256$.
+\item For $n\not\equiv2\pmod4$, a prime $p$ ramifies in $\Q(\zeta_n)$ iff $p\mid n$. (Recall $\Q(\zeta_n)=\Q(\zeta_{2n})$ for $n$ odd.)
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We prove (i) and (ii) for $n=\ell^a$, (iii) for $n$ an odd prime, and (iv) after \Cref{thm:ant:cyclotomicsplitting}; the general case of (i) and (iii)
+is stated, see \cite[Chapter 2]{Washington} or \cite[Chapter I, Section 10]{Neukirch} (the formula of (iii) was checked against PARI's \texttt{nfdisc} for
+$n\in\{3,4,5,7,8,9,12,15,16,20\}$). (ii) $\Phi_{\ell^a}(X)=\sum_{j=0}^{\ell-1}X^{j\ell^{a-1}}=\prod_b(X-\zeta^b)$, so $\prod_b(1-\zeta^b)=\Phi_{\ell^a}(1)=\ell$. For
+$\ell\nmid b$, $(1-\zeta^b)/(1-\zeta)=1+\zeta+\dots+\zeta^{b-1}\in\Z[\zeta]$, and its inverse $(1-\zeta)/(1-\zeta^b)$ is of the same form since $\zeta=(\zeta^b)^{b'}$ with
+$bb'\equiv1$. So $\ell=u(1-\zeta)^{\varphi(\ell^a)}$ with $u$ a unit. Writing $(1-\zeta)=\prod\mathfrak P^{a_{\mathfrak P}}$, $\ell\mathcal O_K=\prod\mathfrak P^{\varphi(\ell^a)a_{\mathfrak P}}$
+and $\sum_{\mathfrak P}\varphi(\ell^a)a_{\mathfrak P}f_{\mathfrak P}=\varphi(\ell^a)$ (\Cref{thm:ant:efg}) forces a single $\mathfrak P$ with $a_{\mathfrak P}=f_{\mathfrak P}=1$.
+(i) for $n=\ell^a$: from $(X^{\ell^{a-1}}-1)\Phi_{\ell^a}(X)=X^{\ell^a}-1$, $(\xi-1)\Phi'_{\ell^a}(\zeta)=\ell^a\zeta^{-1}$ with $\xi=\zeta^{\ell^{a-1}}$ a primitive $\ell$-th
+root of unity, whose norm $N_{K/\Q}(\xi-1)$ is $\pm$ a power of $\ell$ by (ii). So $\disc(\Phi_{\ell^a})=\pm N(\Phi'_{\ell^a}(\zeta))$ is $\pm$ a power of $\ell$
+(\Cref{thm:ant:integralbasis}(iv)), and the index $[\mathcal O_K:\Z[\zeta]]$ is a power of $\ell$. Suppose $\ell$ divides it. Then some $x\in\mathcal O_K\setminus\Z[\zeta]$
+has $\ell x\in\Z[\zeta]$. With $\pi_\ell=1-\zeta$, the elements $1,\pi_\ell,\dots,\pi_\ell^{\varphi-1}$ ($\varphi=\varphi(\ell^a)$) form a $\Z$-basis of $\Z[\zeta]$; write
+$\ell x=\sum_ic_i\pi_\ell^i$ with not all $c_i$ divisible by $\ell$, and let $j$ be the least index with $\ell\nmid c_j$. Then $\sum_{i\ge j}c_i\pi_\ell^i=\ell x-\sum_{i<j}c_i\pi_\ell^i$
+lies in $\ell\mathcal O_K=\pi_\ell^\varphi\mathcal O_K$. But $v_{\pi_\ell}(c_j\pi_\ell^j)=j$, as $c_j$ is prime to $\ell$, while the other terms have valuation $>j$; so the
+left side has valuation $j<\varphi$: a contradiction. Hence $\mathcal O_K=\Z[\zeta]$.
+(iii) for an odd prime $\ell$: with $a=1$, $(\zeta-1)\Phi_\ell'(\zeta)=\ell\zeta^{\ell-1}$, $N(\zeta-1)=\prod_b(\zeta^b-1)=\ell$ (as $\ell-1$ is even) and
+$N(\ell\zeta^{\ell-1})=\ell^{\ell-1}$, so $N(\Phi'_\ell(\zeta))=\ell^{\ell-2}$, and $d=(-1)^{(\ell-1)(\ell-2)/2}\ell^{\ell-2}=(-1)^{(\ell-1)/2}\ell^{\ell-2}$.
+\end{proof}
+
+\begin{theorem}[splitting in cyclotomic fields]\label{thm:ant:cyclotomicsplitting}
+Let $n=p^am$ with $p\nmid m$, and let $f$ be the order of $p$ in $(\Z/m)^\times$. In $\Q(\zeta_n)$ the prime $p$ has $e=\varphi(p^a)$, residue degree $f$, and
+$g=\varphi(m)/f$ primes above it. Under $(\Z/n)^\times=(\Z/p^a)^\times\times(\Z/m)^\times$ the inertia group of $p$ is $(\Z/p^a)^\times\times\{1\}=\Gal(\Q(\zeta_n)/\Q(\zeta_m))$
+and the decomposition group is $(\Z/p^a)^\times\times\langle p\rangle$. For $p\nmid n$, $\Frob_p=\sigma_p$; so $p$ splits completely iff $p\equiv1\pmod n$, and $p$ is
+inert iff $p$ generates $(\Z/n)^\times$ (possible only if this group is cyclic).
+\end{theorem}
+
+\begin{proof}
+First let $p\nmid n$. $\disc(\Phi_n)$ divides $\disc(X^n-1)=\pm n^n$ (the discriminant of a product is the product of the discriminants times a square of a
+resultant), so $p\nmid\disc(\Phi_n)$; then $p$ is unramified (\Cref{thm:ant:discram}, as $d_K\mid\disc(\Phi_n)$) and $p\nmid[\mathcal O_K:\Z[\zeta_n]]$
+(\Cref{thm:ant:integralbasis}(iii)). Modulo $p$, $\Phi_n$ is a product of $\varphi(n)/f$ distinct irreducible factors of degree $f$, the order of $p$ modulo $n$
+(\Cref{ch:rings}); \Cref{thm:ant:dedekindkummer} gives the splitting. For $x=\sum_ia_i\zeta_n^i\in\Z[\zeta_n]$,
+$\sigma_p(x)=\sum_ia_i\zeta_n^{pi}\equiv(\sum_ia_i\zeta_n^i)^p\pmod{p}$ (the binomial theorem modulo $p$ and $a_i^p\equiv a_i$). A general $x\in\mathcal O_K$ has $kx\in\Z[\zeta_n]$
+for the index $k$, which is prime to $p$, and then $k\sigma_p(x)\equiv(kx)^p\equiv kx^p\pmod{\mathfrak P}$; so $\sigma_p(x)\equiv x^p\pmod{\mathfrak P}$ for every
+$\mathfrak P\mid p$, and $\sigma_p=\Frob_p$ (\Cref{prop:ant:frobenius}). It has order $f$; it is trivial iff $p\equiv1\pmod n$, and generates the group iff $p$ is
+inert. Now let $p\mid n$. In $\Q(\zeta_m)$, $p$ has $(e,f,g)=(1,f,\varphi(m)/f)$; in $\Q(\zeta_{p^a})$ it has $(\varphi(p^a),1,1)$ (\Cref{thm:ant:cyclotomicintegers}(ii)).
+In $\Q(\zeta_n)$, which contains both, $e$ is a multiple of $\varphi(p^a)$, $f$ a multiple of $f$, and $g\ge\varphi(m)/f$ (each prime of $\Q(\zeta_m)$ has a prime
+above it), by \Cref{thm:ant:efg}; as $efg=\varphi(n)=\varphi(p^a)\varphi(m)$, all three are equalities. The inertia group has order $\varphi(p^a)$, and its image
+in $\Gal(\Q(\zeta_m)/\Q)$ is the inertia group there, which is trivial (\Cref{thm:ant:residuegalois}(ii)); so it is $\Gal(\Q(\zeta_n)/\Q(\zeta_m))$, of order
+$\varphi(p^a)$. The decomposition group contains it and maps onto the decomposition group $\langle p\rangle$ of $\Q(\zeta_m)$, so it is the full preimage
+$(\Z/p^a)^\times\times\langle p\rangle$.
+\end{proof}
+
+\noindent\emph{Proof of \Cref{thm:ant:cyclotomicintegers}(iv).} By \Cref{thm:ant:cyclotomicsplitting}, $p$ ramifies iff $p\mid n$ and $\varphi(p^a)>1$, and
+$\varphi(p^a)=1$ only for $p^a=2$, excluded when $n\not\equiv2\pmod4$.\hfill$\square$
+
+\begin{example}\label{ex:ant:cyclotomicexamples}
+(Checked with PARI.) $n=3$: $p\equiv1\pmod3$ splits, $p\equiv2\pmod3$ is inert, $3$ is ramified. $n=5$: $11$ splits completely; $19$ and $29$ (order $2$
+modulo $5$) give $f=g=2$; $2$ and $3$ (order $4$) are inert. $n=7$: $2$ has order $3$ modulo $7$, so $f=3$, $g=2$; $13$ has order $2$, so $f=2$, $g=3$; $29\equiv1$
+splits completely. $n=8$: $2$ is totally ramified; $3$, $5$, $7$ have $f=g=2$; $17$ splits completely; $(\Z/8)^\times$ is not cyclic, so no prime is inert.
+\end{example}
+
+\begin{proposition}[$\Q(\sqrt{\ell^*})$]\label{prop:ant:sqrtlstar}
+Let $\ell$ be an odd prime and $\ell^*=(-1)^{(\ell-1)/2}\ell$.
+\begin{enumerate}[label=(\roman*)]
+\item $\Q(\sqrt{\ell^*})$ is the unique quadratic subfield of $\Q(\zeta_\ell)$ (\Cref{ch:galois}); it is ramified only at $\ell$, with discriminant $\ell^*$.
+\item For every prime $p\ne\ell$, including $p=2$, $\chi_{\ell^*}(\Frob_p)=\bigl(\frac p\ell\bigr)$: $p$ splits in $\Q(\sqrt{\ell^*})$ iff $p$ is a square modulo $\ell$, and
+$p$ is \emph{inert} iff $p$ is a non-square modulo $\ell$. The inert primes have density $\frac12$ (\Cref{cor:ant:chebotarev}).
+\item For $\ell=3$, $\Q(\sqrt{-3})=\Q(\zeta_3)$, and the inert primes are the $p\equiv2\pmod3$.
+\item $\Q(\sqrt{\ell^*})$ is imaginary iff $\ell\equiv3\pmod4$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) The discriminant is \Cref{prop:ant:ramonlyat}(i). (ii) In $\Gal(\Q(\zeta_\ell)/\Q)\simeq\F_\ell^\times$, $\Frob_p=\sigma_p$ corresponds to $p\bmod\ell$
+(\Cref{thm:ant:cyclotomicsplitting}). Its restriction to $\Q(\sqrt{\ell^*})$ is $\Frob_p$ there (\Cref{prop:ant:frobenius}(v)), which is trivial iff $\sigma_p$ lies in
+the unique subgroup of index $2$ of the cyclic group $\F_\ell^\times$, the squares. (iii) $\zeta_3=(-1+\sqrt{-3})/2$. (iv) $\ell^*<0$ iff $(\ell-1)/2$ is odd.
+\end{proof}
+
+\begin{corollary}[quadratic reciprocity, second proof]\label{cor:ant:qr}
+For distinct odd primes $p,q$: $\bigl(\frac{q^*}p\bigr)=\bigl(\frac pq\bigr)$, equivalently $\bigl(\frac pq\bigr)\bigl(\frac qp\bigr)=(-1)^{\frac{p-1}2\frac{q-1}2}$. Moreover
+$\bigl(\frac{-1}p\bigr)=(-1)^{(p-1)/2}$ and $\bigl(\frac2p\bigr)=(-1)^{(p^2-1)/8}$.
+\end{corollary}
+
+\begin{proof}
+$\chi_{q^*}(\Frob_p)$ equals $\bigl(\frac{q^*}p\bigr)$ by \Cref{prop:ant:quadchar}(i) together with \Cref{thm:ant:quadsplit} (whose proof uses only the meaning of the
+Legendre symbol, not reciprocity), and $\bigl(\frac pq\bigr)$ by \Cref{prop:ant:sqrtlstar}(ii). Since $\bigl(\frac{q^*}p\bigr)=\bigl(\frac{-1}p\bigr)^{(q-1)/2}\bigl(\frac qp\bigr)$,
+the second form follows from the first supplement. For the supplements: $\Q(i)=\Q(\zeta_4)$, and $\sigma_p(i)=i^p=(-1)^{(p-1)/2}i$, so $\bigl(\frac{-4}p\bigr)=
+\chi_{-4}(\Frob_p)=(-1)^{(p-1)/2}$; and $\sqrt2=\zeta_8+\zeta_8^{-1}\in\Q(\zeta_8)$, with $\sigma_p(\sqrt2)=\zeta_8^p+\zeta_8^{-p}$, which is $\sqrt2$ if $p\equiv\pm1\pmod8$
+and $-\sqrt2$ if $p\equiv\pm3\pmod8$; so $\bigl(\frac8p\bigr)=\bigl(\frac2p\bigr)=\chi_8(\Frob_p)=(-1)^{(p^2-1)/8}$.
+\end{proof}
+
+\Cref{ch:rings} proves reciprocity by Gauss sums; the proof above explains why the character of $\Q(\sqrt{q^*})$ is the Legendre symbol modulo $q$, which is
+what Lemma lem:twist means by ``$\chi_{q^*}$, the quadratic character of conductor $q$''.
+
+\begin{theorem}[Kronecker-Weber]\label{thm:ant:kroneckerweber}
+Every finite abelian extension $K/\Q$ is contained in $\Q(\zeta_n)$ for some $n$. The least such $n$ with $n\not\equiv2\pmod4$ is the \emph{conductor} $f_K$
+of $K$, and the primes dividing $f_K$ are exactly the primes ramified in $K$. Equivalently, the maximal abelian extension of $\Q$ is
+$\Q^{\mathrm{ab}}=\Q(\mu_\infty)=\bigcup_n\Q(\zeta_n)$, and the cyclotomic characters give $G_\Q^{\mathrm{ab}}=\Gal(\Q^{\mathrm{ab}}/\Q)\simeq\varprojlim_n(\Z/n)^\times=
+\hat\Z^\times=\prod_\ell\Z_\ell^\times$. For a quadratic field of discriminant $D$, $f_K=\abs D$.
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this; see \cite[Chapter 14]{Washington} or \cite[Chapter V, Section 1, and Chapter VI]{Neukirch} (chapter-level pointers). For a
+quadratic field the inclusion $K\subseteq\Q(\zeta_{\abs D})$ is elementary (\Cref{ch:galois}), and $f_K=\abs D$ is \Cref{thm:ant:dirichletgalois}(i) applied to
+the primitive character $n\mapsto\bigl(\frac Dn\bigr)$ of conductor $\abs D$ (\Cref{ch:rings}), which corresponds to $\chi_D$ by \Cref{prop:ant:quadchar}(i).
+\end{proof}
+
+\begin{theorem}[Artin reciprocity over $\Q$, explicit form]\label{thm:ant:artinQ}
+Let $K/\Q$ be abelian with $K\subseteq\Q(\zeta_n)$.
+\begin{enumerate}[label=(\roman*)]
+\item The \emph{Artin map} $\Art_K\colon(\Z/n)^\times\to\Gal(K/\Q)$, $a\mapsto\sigma_a|_K$, is surjective with kernel $H_K$, and $K\mapsto H_K$ is an
+inclusion-reversing bijection between the subfields of $\Q(\zeta_n)$ and the subgroups of $(\Z/n)^\times$.
+\item For every prime $p\nmid n$, $\Frob_p(K/\Q)=\Art_K(p\bmod n)$: the Frobenius of an unramified prime in an abelian extension depends only on $p\bmod n$.
+So $p\nmid n$ splits completely in $K$ iff $p\bmod n\in H_K$, and the residue degree of $p$ in $K$ is the order of $p$ in $(\Z/n)^\times/H_K$.
+\item (Stated.) In idelic form, the global Artin map $\Q^\times\backslash\A_\Q^\times\to G_\Q^{\mathrm{ab}}$ is surjective with kernel the connected
+component of the identity, and $\A_\Q^\times=\Q^\times\cdot(\R_{>0}\times\hat\Z^\times)$. In the normalisation in which a uniformiser at $p$ maps to an
+arithmetic Frobenius, an idele $(1,\dots,1,u_p,1,\dots)$ with $u_p\in\Z_p^\times$ maps to an element of the inertia group at $p$ acting on $\mu_{p^\infty}$ by
+$u_p^{-1}$. Deligne's normalisation sends uniformisers to geometric Frobenius elements, and then the sign is reversed.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) is Galois theory (\Cref{ch:galois}) for $\Gal(\Q(\zeta_n)/\Q)\simeq(\Z/n)^\times$. (ii) By \Cref{prop:ant:frobenius}(v) and \Cref{thm:ant:cyclotomicsplitting},
+$\Frob_p(K/\Q)=\Frob_p(\Q(\zeta_n)/\Q)|_K=\sigma_p|_K$; the residue degree is the order of $\Frob_p$ (\Cref{prop:ant:frobenius}(i)). (iii) We do not prove
+this; see \cite[Chapter VI, Sections 5 and 6]{Neukirch} or \cite[Chapter V]{MilneCFT}; nothing in the paper needs it.
+\end{proof}
+
+\begin{theorem}[Dirichlet characters and characters of $G_\Q$]\label{thm:ant:dirichletgalois}
+\begin{enumerate}[label=(\roman*)]
+\item Let $\chi$ be a primitive Dirichlet character, of conductor $f_\chi$ (\Cref{ch:rings}), and let $\psi_\chi$ be the composite
+\[
+G_\Q\to\Gal(\Q(\zeta_{f_\chi})/\Q)\simeq(\Z/f_\chi)^\times\xrightarrow{\ \chi\ }\C^\times.
+\] Then $\psi_\chi(\Frob_p)=\chi(p)$ for every prime $p\nmid f_\chi$, and
+$\chi\mapsto\psi_\chi$ is a bijection from primitive Dirichlet characters to continuous homomorphisms $G_\Q\to\C^\times$ (these have finite image,
+\Cref{ch:galois}). Each $\psi$ is determined by its values at the $\Frob_p$, $p\nmid f_\chi$. The field cut out by $\psi_\chi$ has conductor $f_\chi$, and
+$\psi_{\chi\chi'}=\psi_\chi\psi_{\chi'}$ when $\chi\chi'$ denotes the primitive character inducing the product.
+\item $\psi_\chi$ is unramified at $p$ iff $p\nmid f_\chi$. More precisely, if $f_\chi=p^am$ with $p\nmid m$, then $\psi_\chi(I_p)=\chi\bigl((\Z/p^a)^\times\times\{1\}\bigr)$.
+\item The same holds for characters with values in $\Qbar_\ell^\times$ or $\Fbar_\ell^\times$ of finite order (through a fixed embedding of roots of unity),
+and every continuous $\psi\colon G_\Q\to\Z_\ell^\times$ factors through $G_\Q^{\mathrm{ab}}\simeq\hat\Z^\times$; for instance $\chi_\ell$ is the projection
+$\hat\Z^\times\to\Z_\ell^\times$, and $\bar\chi_\ell=\psi_{\omega_\ell}$ for the character $\omega_\ell\colon a\mapsto a\bmod\ell$ of $(\Z/\ell)^\times$.
+\item (Stated; \Cref{ch:hecke,ch:modgalrep}.) Under this dictionary, twisting a newform's coefficients, $a_n\mapsto\chi(n)a_n$, corresponds to tensoring its
+Galois representation with $\psi_\chi$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) $\psi_\chi(\Frob_p)=\chi(p)$ by \Cref{thm:ant:cyclotomicsplitting}. Injectivity: $G_\Q\to(\Z/f_\chi)^\times$ is surjective, so $\psi_\chi$ determines $\chi$
+on $(\Z/f_\chi)^\times$, and $\psi_\chi$ determines $f_\chi$ as below. Surjectivity: a continuous $\psi\colon G_\Q\to\C^\times$ has finite abelian image,
+and its kernel cuts out a finite abelian extension, contained in some $\Q(\zeta_n)$ (\Cref{thm:ant:kroneckerweber}); so $\psi$ factors as
+$G_\Q\to(\Z/n)^\times\xrightarrow{\chi'}\C^\times$, and $\psi=\psi_\chi$ for the primitive $\chi$ inducing $\chi'$ (restriction from $\Q(\zeta_n)$ to $\Q(\zeta_{f_\chi})$
+is reduction $(\Z/n)^\times\to(\Z/f_\chi)^\times$). That $\psi$ is determined by its values at Frobenius elements outside a finite set follows from the density
+of Frobenius elements (\Cref{cor:ant:chebotarev}), or directly from Dirichlet's theorem on primes in progressions. The field $K$ cut out by $\psi_\chi$ lies
+in $\Q(\zeta_{f_\chi})$; if it lay in $\Q(\zeta_{f'})$ with $f'\mid f_\chi$, $f'<f_\chi$, then $\chi$ would be trivial on the kernel of $(\Z/f_\chi)^\times\to(\Z/f')^\times$,
+hence induced from a character modulo $f'$, contradicting primitivity; and if $K\subseteq\Q(\zeta_n)$ then $K\subseteq\Q(\zeta_n)\cap\Q(\zeta_{f_\chi})=\Q(\zeta_{\gcd(n,f_\chi)})$
+(the intersection contains $\Q(\zeta_{\gcd})$ and has degree $\varphi(n)\varphi(f_\chi)/\varphi(\lcm)=\varphi(\gcd)$, by Galois theory of the compositum
+$\Q(\zeta_{\lcm})$). So the least $n$ is $f_\chi$, which is $\not\equiv2\pmod4$ for a primitive character. Multiplicativity is clear on a common modulus.
+(ii) By \Cref{thm:ant:cyclotomicsplitting} the image of $I_p$ in $\Gal(\Q(\zeta_{f_\chi})/\Q)$ is $(\Z/p^a)^\times\times\{1\}$; $\chi$ is nontrivial on it when $a\ge1$,
+by primitivity (otherwise $\chi$ would factor through $(\Z/m)^\times$). (iii) The same proofs; the factorisation through $\hat\Z^\times$ is
+\Cref{thm:ant:kroneckerweber}, since a continuous homomorphism to the abelian group $\Z_\ell^\times$ factors through $G_\Q^{\mathrm{ab}}$. $\bar\chi_\ell(\Frob_p)=p\bmod
+\ell=\omega_\ell(p)$. (iv) We do not prove this here; see \Cref{ch:hecke,ch:modgalrep}.
+\end{proof}
+
+\begin{example}[the paper's characters in both languages]\label{ex:ant:characters}
+For $p$ unramified (arithmetic Frobenius):
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lllll}
+\toprule
+Galois character & field cut out & Dirichlet character & conductor & value at $\Frob_p$\\
+\midrule
+$\chi_{-4}$ & $\Q(i)=\Q(\zeta_4)$ & the nontrivial character mod $4$ & $4$ & $(-1)^{(p-1)/2}$\\
+$\chi_{-3}=\bar\chi_3^{\mathrm{cyc}}$ & $\Q(\sqrt{-3})=\Q(\zeta_3)$ & $\bigl(\frac\cdot3\bigr)$ & $3$ & $1$ iff $p\equiv1\pmod3$\\
+$\chi_{q^*}$, $q$ odd & $\Q(\sqrt{q^*})\subseteq\Q(\zeta_q)$ & $\bigl(\frac\cdot q\bigr)$ & $q$ & $\bigl(\frac pq\bigr)$\\
+$\chi_S=\prod_{q\in S}\chi_{q^*}$ & $\Q\bigl(\sqrt{\prod_{q\in S}q^*}\bigr)$ & $\prod_{q\in S}\bigl(\frac\cdot q\bigr)$ & $\prod_{q\in S}q$ & $\prod_{q\in S}\bigl(\frac pq\bigr)$\\
+$\chi_{\ell^*}=\bar\chi_\ell^{(\ell-1)/2}$ & $\Q(\sqrt{\ell^*})$ & $\bigl(\frac\cdot\ell\bigr)$ & $\ell$ & $\bigl(\frac p\ell\bigr)$\\
+$\bar\chi_\ell$ (values in $\F_\ell^\times$) & $\Q(\zeta_\ell)$ & $\omega_\ell\colon a\mapsto a\bmod\ell$ & $\ell$ & $p\bmod\ell$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The identity $\chi_{\ell^*}=\bar\chi_\ell^{(\ell-1)/2}$ means: the quadratic character $\bigl(\frac\cdot\ell\bigr)$ equals $a\mapsto a^{(\ell-1)/2}\bmod\ell$ (Euler's criterion),
+read in $\{\pm1\}\subset\F_\ell^\times$. The Dirichlet character $\bigl(\frac\cdot q\bigr)$ equals $\bigl(\frac{q^*}\cdot\bigr)$ by quadratic reciprocity (\Cref{ch:rings}), so the two
+descriptions of the column agree.
+\end{example}
+
+\begin{warning}\label{warn:ant:chil}
+$\chi_{\ell^*}$ and $\bar\chi_\ell$ coincide only for $\ell=3$: for $\ell\ge5$, $\bar\chi_\ell$ has order $\ell-1>2$. The cyclotomic character $\chi_\ell$ itself has
+infinite image $\Z_\ell^\times$. So ``$\rho\simeq\rho\otimes\chi_\ell$'' (impossible for every two-dimensional $\rho$: taking determinants, $\chi_\ell^2=1$, while $\chi_\ell(G_\Q)=\Z_\ell^\times$ is
+infinite), ``$\bar\rho\simeq\bar\rho\otimes\bar\chi_\ell$'' (possible only for $\ell=3$, by determinants: $\bar\chi_\ell^2=1$ forces $\ell-1\mid2$) and ``$\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$'' (a statement about the quadratic field $\Q(\sqrt{\ell^*})$,
+\Cref{prop:ant:twistdetect}) are three different conditions. The paper's term $h_\ell(E)$ (Lemma lem:h0) is governed by the second, and the hypothesis of
+Theorem thm:main by the third.
+\end{warning}
+
+\begin{paperlink}\label{pl:ant:twist}
+Section 1.4 and Lemma lem:twist: $E^{(q)}$ is the twist by $\chi_{q^*}$, ``the quadratic character of conductor $q$'', that is by $\Q(\sqrt{q^*})$; it is the
+character $\bigl(\frac\cdot q\bigr)$ of \Cref{ex:ant:characters}, ramified only at $q$ (\Cref{prop:ant:ramonlyat}), which is why Lemma lem:twist(i) holds at every
+$p\ne q$. Theorems thm:twist and thm:quant: $\chi_S=\prod_{q\in S}\chi_{q^*}$ and $D=\prod_{q\in S}q$ are the character and the conductor of
+$\Q(\sqrt{\prod_{q\in S}q^*})$ (\Cref{prop:ant:ramonlyat}(iii)), and ``the twist is unramified outside $S$'' is \Cref{prop:ant:ramonlyat}(iv). The map
+$\iota\colon h\mapsto\sum\chi_S(n)a_n(h)q^n$ uses $\chi_S$ as a Dirichlet character, and $\rho_{E_S}\simeq\rho_E\otimes\chi_S$ uses it as a Galois character; the
+two are the same character by \Cref{thm:ant:dirichletgalois}. The table of Section 1 uses $\chi_{-3}(q)$ and $\chi_{-4}(q)$ as values of Dirichlet characters,
+equal to the Galois values at $\Frob_q$ (\Cref{prop:ant:quadchar}(iii)), which is how they enter the proof of Lemma lem:euler. Proposition prop:forms uses
+$q\equiv\chi_{-3}(q)\pmod3$, which holds for every prime $q\ne3$ by \Cref{prop:ant:quadchar}(iii).
+\end{paperlink}
+
+\section[Densities, Chebotarev, complex multiplication]{Densities, the Chebotarev density theorem, complex multiplication}\label{sec:ant:chebotarev}
+
+The paper uses Chebotarev's theorem in two ways: to compare Galois representations through their Frobenius traces (Lemma lem:old, ``by Chebotarev
+and Brauer-Nesbitt'', and the optimal-level theorem in Section 3, applied to congruences $a_p(g)\equiv a_p(f)$ for all $p\nmid3N$), and to count primes inert
+in a quadratic field (Lemma lem:h0 in the original version of the note, Section sec:anomaly). This section states the theorem with the Frobenius of
+\Cref{prop:ant:frobenius} and over any number field, proves the corollaries the book needs, gives the criterion for a representation to be isomorphic to its
+twist by a quadratic character, and explains, in the form needed to read Lemma lem:h0 correctly, why $a_p(E)=0$ at the inert primes of a quadratic field
+happens only for curves with complex multiplication by that field. The form of Chebotarev over $\Q$ and its Brauer-Nesbitt corollaries are in
+\Cref{ch:galois}.
+
+\begin{proposition}[the Dedekind zeta function and densities]\label{prop:ant:dedekindzeta}
+Let $K$ be a number field of degree $n$.
+\begin{enumerate}[label=(\roman*)]
+\item $\zeta_K(s)=\sum_{\mathfrak a}N\mathfrak a^{-s}=\prod_{\mathfrak p}(1-N\mathfrak p^{-s})^{-1}$ (sum over the nonzero ideals, product over the nonzero primes)
+converges absolutely for $\mathrm{Re}\,s>1$.
+\item (Stated.) $\zeta_K$ extends meromorphically to $\mathrm{Re}\,s>1-1/n$ with a simple pole at $s=1$, whose residue is given by the analytic class number
+formula.
+\item Given (ii): $\sum_{\mathfrak p}N\mathfrak p^{-s}\sim\log\frac1{s-1}$ as $s\to1^+$. So the \emph{Dirichlet density} of a set $X$ of primes of $K$,
+$\delta(X)=\lim_{s\to1^+}\sum_{\mathfrak p\in X}N\mathfrak p^{-s}\big/\log\frac1{s-1}$ when the limit exists, is defined as in \Cref{ch:galois} with $N\mathfrak p$ in
+place of $p$. The primes $\mathfrak p$ with $f(\mathfrak p\mid p)\ge2$ have density $0$, so the primes of degree one have density $1$; finite sets have
+density $0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) By unique factorisation (\Cref{thm:ant:idealfactorisation}) and multiplicativity of the norm (\Cref{prop:ant:idealnorm}), the expansion of the finite
+products $\prod_{N\mathfrak p\le x}(1-N\mathfrak p^{-s})^{-1}$ contains each $N\mathfrak a^{-s}$ with $\mathfrak a$ composed of these primes exactly once. For real
+$s=\sigma>1$, at most $n$ primes lie above each rational $p$, each with $N\mathfrak p\ge p$ (\Cref{thm:ant:efg}), so
+$\prod_{\mathfrak p}(1-N\mathfrak p^{-\sigma})^{-1}\le\prod_p(1-p^{-\sigma})^{-n}=\zeta(\sigma)^n<\infty$; this bounds all partial sums of the series of positive terms.
+(ii) We do not prove this; see \cite[Chapter VII, Section 5]{Neukirch} or \cite[Chapter VIII]{LangANT}. (iii) $\log\zeta_K(s)=\sum_{\mathfrak p}\sum_{m\ge1}
+N\mathfrak p^{-ms}/m$, and the terms with $m\ge2$ are bounded by $n\sum_p\sum_{m\ge2}p^{-m}\le n\sum_p\frac{2}{p^2}<\infty$ near $s=1$; by (ii)
+$\log\zeta_K(s)=\log\frac1{s-1}+O(1)$. The primes with $f\ge2$ have $N\mathfrak p\ge p^2$, and $\sum_{f(\mathfrak p)\ge2}N\mathfrak p^{-s}\le n\sum_pp^{-2}$ stays
+bounded.
+\end{proof}
+
+\begin{theorem}[Chebotarev density theorem]\label{thm:ant:chebotarev}
+Let $L/K$ be a finite Galois extension of number fields with group $G$ and $C\subseteq G$ a conjugacy class. The set of primes $\mathfrak p$ of $K$, unramified in
+$L$, with $\Frob_{\mathfrak p}=C$ (\Cref{prop:ant:frobenius}(ii)) has Dirichlet density $\#C/\#G$. It also has natural density $\#C/\#G$ (counting the primes with
+$N\mathfrak p\le x$). For $G$ abelian the classes are elements, and the statement contains Dirichlet's theorem on primes in arithmetic progressions.
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this; see \cite[Chapter VII, Section 13]{Neukirch} (the theorem is numbered 13.4 there; this number and the others in this chapter are
+pointers not checked against a printed copy) or \cite[Chapter I, Section 2.2]{SerreAbelian}. The idea: for $G$ cyclic it follows from the nonvanishing
+at $s=1$ of the Hecke $L$-functions of $K$ (abelian class field theory), and the general case reduces to the cyclic one by restricting to the cyclic
+subgroup generated by an element of $C$. Only the Dirichlet density is used in this book; the natural density is not used in any proof.
+\end{proof}
+
+\begin{corollary}\label{cor:ant:chebotarev}
+In the setting of \Cref{thm:ant:chebotarev}:
+\begin{enumerate}[label=(\roman*)]
+\item every $\sigma\in G$ is $\Frob_{\mathfrak P}$ for infinitely many $\mathfrak P$ (lying over a set of primes $\mathfrak p$ of positive density);
+\item the primes of $K$ that split completely in $L$ have density $1/[L:K]$; if $M/K$ is a finite extension, not necessarily Galois, the primes of $K$ having
+a prime of degree one above them in $M$ have positive density;
+\item (Bauer) for $L$, $L'$ Galois over $K$: $L\subseteq L'$ iff every prime of $K$ that splits completely in $L'$, outside a set of density zero, splits
+completely in $L$; so a Galois extension of $K$ is determined by its set of split primes;
+\item (Dirichlet) for $K=\Q$, $L=\Q(\zeta_n)$: each class $a\in(\Z/n)^\times$ contains a set of primes of density $1/\varphi(n)$;
+\item for $L/\Q$ quadratic, the split and the inert primes each have density $\frac12$; in particular the primes inert in $\Q(\sqrt{\ell^*})$ (the $p$ with
+$\bigl(\frac p\ell\bigr)=-1$) have density $\frac12$, and for $\ell=3$ these are the $p\equiv2\pmod3$;
+\item if $L/\Q$ is Galois, possibly infinite, and unramified outside a finite set, the Frobenius elements at the primes outside any set of density zero are
+dense in $\Gal(L/\Q)$ (\Cref{ch:galois}).
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(i) Take the class of $\sigma$; a set of positive density is infinite (finite sets have density $0$), and for each such $\mathfrak p$ some $\mathfrak P\mid\mathfrak p$
+has $\Frob_{\mathfrak P}=\sigma$ (\Cref{prop:ant:frobenius}(ii)). (ii) $C=\{1\}$ and \Cref{prop:ant:frobenius}(iii). For $M$, let $L$ be a Galois closure of $M/K$,
+$G=\Gal(L/K)$, $H=\Gal(L/M)$; by \Cref{prop:ant:frobsubfield} (whose proof is the same over $K$), $\mathfrak p$ unramified in $L$ has a degree-one prime in $M$ iff
+$\langle\Frob_{\mathfrak P}\rangle$ fixes a point of $G/H$, which holds when $\Frob_{\mathfrak P}=1$; so the set contains the split primes, of density $1/[L:K]>0$.
+(iii) If $L\subseteq L'$, a prime split completely in $L'$ is split completely in $L$ (\Cref{thm:ant:efg}). Conversely, consider the compositum $LL'$, Galois
+over $K$, and the injection $\Gal(LL'/K)\to\Gal(L/K)\times\Gal(L'/K)$ by restriction, which sends $\Frob_{\mathfrak P}$ to the pair of Frobenius elements
+(\Cref{prop:ant:frobenius}(v)). So a prime unramified in $LL'$ splits completely in $LL'$ iff it splits completely in $L$ and in $L'$; by hypothesis this is
+the set of primes splitting completely in $L'$, up to density zero. By (ii), $1/[LL':K]=1/[L':K]$, so $LL'=L'$ and $L\subseteq L'$. (iv) $\Frob_p=\sigma_p$
+corresponds to $p\bmod n$ (\Cref{thm:ant:cyclotomicsplitting}), and $\#G=\varphi(n)$. (v) $G$ has two classes of size $1$; for $\Q(\sqrt{\ell^*})$ use
+\Cref{prop:ant:sqrtlstar}(ii). (vi) is proved in \Cref{ch:galois} from \Cref{thm:ant:chebotarev}.
+\end{proof}
+
+\begin{proposition}[detecting a quadratic twist]\label{prop:ant:twistdetect}
+Let $k$ be a field of characteristic $\ne2$ (a finite field, $\Fbar_\ell$, or a finite extension of $\Q_\ell$), $\rho\colon G_\Q\to\GL_2(k)$ continuous,
+semisimple, unramified outside a finite set $S$, and $K$ a quadratic field with character $\chi_K$. The following are equivalent:
+(a) $\rho\simeq\rho\otimes\chi_K$; (b) $\tr\rho(\Frob_p)=0$ for every prime $p\notin S$ inert in $K$; (c) $\tr\rho(\Frob_p)=0$ for all primes inert in $K$
+outside a set of density zero.
+\end{proposition}
+
+\begin{proof}
+(a)$\Rightarrow$(b): for $p\notin S$ unramified in $K$ and inert, $\tr\rho(\Frob_p)=\tr(\rho\otimes\chi_K)(\Frob_p)=\chi_K(\Frob_p)\tr\rho(\Frob_p)=-\tr\rho(\Frob_p)$, and
+$2$ is invertible in $k$; a prime inert in $K$ is unramified in $K$. (b)$\Rightarrow$(c) is trivial. (c)$\Rightarrow$(a): $\rho\otimes\chi_K$ is semisimple (it has
+the same invariant subspaces as $\rho$, $\chi_K$ acting by scalars) and unramified outside $S$ and the primes ramified in $K$. For $p$ outside this finite set,
+$\det(X-(\rho\otimes\chi_K)(\Frob_p))=X^2-\chi_K(\Frob_p)\tr\rho(\Frob_p)X+\det\rho(\Frob_p)$, which equals $\det(X-\rho(\Frob_p))$ when $p$ splits, and when $p$ is
+inert and $\tr\rho(\Frob_p)=0$. By (c) the characteristic polynomials agree at all primes outside a set of density zero, so $\rho\simeq\rho\otimes\chi_K$ by
+the Chebotarev and Brauer-Nesbitt theorem of \Cref{ch:galois} (both being semisimple).
+\end{proof}
+
+Two applications. (a) If $\bar\rho_{E,3}$ is irreducible, then $\bar\rho_{E,3}\simeq\bar\rho_{E,3}\otimes\chi_{-3}$ iff $3\mid a_p(E)$ for all primes $p\equiv2\pmod 3$ of good
+reduction (outside a density zero set), since $\tr\bar\rho_{E,3}(\Frob_p)=a_p\bmod3$ and the inert primes of $\Q(\sqrt{-3})$ are the $p\equiv2\pmod3$ (\Cref{ch:galois}
+gives the example $y^2=x^3-6x-8$). (b) If $\rho_{E,\ell}$ is semisimple (it always is, by Faltings's theorem, stated in \Cref{ch:galrep}; and it is irreducible
+when $\bar\rho_{E,\ell}$ is), then $\rho_{E,\ell}\simeq\rho_{E,\ell}\otimes\chi_K$ iff $a_p(E)=0$ for almost all $p$ inert in $K$ (outside a density zero set).
+The criterion concerns twisting by a quadratic character; it says nothing about $\rho\otimes\chi_\ell$, which is never isomorphic to $\rho$
+(\Cref{warn:ant:chil}).
+
+\begin{theorem}[complex multiplication]\label{thm:ant:cm}
+Let $E/\Q$ be an elliptic curve with complex multiplication, that is $\End_{\Qbar}(E)\ne\Z$. Then $\End_{\Qbar}(E)$ is an order $\mathcal O$ in an imaginary
+quadratic field $K$, the endomorphisms are defined over $K$, and $\sigma\in G_\Q$ acts on them through $\Gal(K/\Q)$, by complex conjugation of
+$\mathcal O\subset K$ when $\chi_K(\sigma)=-1$ (\Cref{ch:ellcurves}).
+\begin{enumerate}[label=(\roman*)]
+\item (Stated.) $\mathcal O$ has class number one; so $K=\Q(\sqrt{-d})$ with $d\in\{1,2,3,7,11,19,43,67,163\}$, and $j(E)$ is one of $13$ rational values.
+\item For every prime $\ell$, $\rho_{E,\ell}\simeq\rho_{E,\ell}\otimes\chi_K$, and $a_p(E)=0$ for every prime $p$ of good reduction inert in $K$.
+\item Every prime ramified in $K$ is a prime of bad reduction of $E$.
+\item (Stated.) Conversely, if $a_p(E)=0$ for all primes $p$ inert in a quadratic field $K$ outside a set of density zero, then $E$ has complex multiplication by
+$K$; in particular $K$ is imaginary.
+\item (Stated.) If $E$ has no complex multiplication, the set of primes $p$ with $a_p(E)=0$ has density $0$.
+\item Consequently, for an odd prime $\ell$, the condition ``$a_p(E)=0$ for almost all $p$ inert in $\Q(\sqrt{\ell^*})$'' holds if and only if $E$ has
+complex multiplication by $\Q(\sqrt{\ell^*})$; this needs $\ell\equiv3\pmod4$ and $\ell\in\{3,7,11,19,43,67,163\}$, and then $\ell$ divides the conductor of $E$ by (iii). It never
+happens when $\ell\nmid N$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+The structure of $\End_{\Qbar}(E)$ and the Galois action, $\rho_{E,\ell}(\sigma)\alpha\rho_{E,\ell}(\sigma)^{-1}=\sigma(\alpha)$ on $V_\ell E$ for $\alpha\in\End_{\Qbar}(E)$,
+are quoted from \Cref{ch:ellcurves} and \cite[Chapter II, Section 2]{SilvermanATAEC}. (ii) Choose $\alpha\in\mathcal O$ with $\bar\alpha=-\alpha$, $\alpha\ne0$ (for
+instance $\alpha=f\sqrt{-d}$ for a suitable integer $f$); it acts invertibly on $V_\ell E$, and $\rho(\sigma)\alpha\rho(\sigma)^{-1}=\sigma(\alpha)=\chi_K(\sigma)\alpha$. So
+$\alpha\rho(\sigma)\alpha^{-1}=\chi_K(\sigma)\rho(\sigma)$: $\alpha$ is an isomorphism $\rho\to\rho\otimes\chi_K$. For $p\ne\ell$ of good reduction and inert in $K$,
+$\chi_K(\Frob_p)=-1$ gives $a_p=\tr\rho(\Frob_p)=-a_p$, so $a_p=0$ (choose $\ell\ne p$, and $a_p\in\Z$). (iii) If $p$ is ramified in $K$ and $E$ had good reduction
+at $p$, take $\ell\ne p$: $\rho$ is unramified at $p$, and there is $\tau\in I_p$ with $\chi_K(\tau)=-1$ (\Cref{prop:ant:quadchar}(ii)); then
+$\alpha=\rho(\tau)\alpha\rho(\tau)^{-1}=\chi_K(\tau)\alpha=-\alpha$, a contradiction. (i) is the theorem of Heegner, Baker and Stark on imaginary quadratic fields of
+class number one, together with the fact that $j(E)\in\Q$ generates the ring class field of $\mathcal O$; see \cite[Chapter II and Appendix A]{SilvermanATAEC} and
+\cite[Sections 7, 11 and 12]{Cox}. (iv) We only indicate the argument. By \Cref{prop:ant:twistdetect}, $\rho_{E,\ell}\simeq\rho_{E,\ell}\otimes\chi_K$, so the trace of $\rho_{E,\ell}$ vanishes on
+$G_\Q\setminus G_K$. If $E$ had no complex multiplication, the image of $\rho_{E,\ell}$ would be open in $\GL_2(\Z_\ell)$ (Serre's open image theorem
+\cite{Serre72}), and the trace cannot vanish on a coset of an open subgroup of index $2$ of an open subgroup of $\GL_2(\Z_\ell)$ (such a coset contains elements
+$g$ and $(1+\ell^kx)g$ for all $x\in\Mat_2(\Z_\ell)$ and $k$ large, and $\tr(xg)$ is not identically zero). So $E$ has complex multiplication by some $K'$. If
+$K'\ne K$, a set of primes of positive density splits in $K'$ and is inert in $K$ (\Cref{cor:ant:chebotarev}(i) in $KK'$); at such a prime of good reduction
+the reduction is ordinary (Deuring's criterion, \cite[Section 14]{Cox}), so $a_p\not\equiv0\pmod p$ and $a_p\ne0$, a contradiction. (v) is due to Serre \cite[Section 7]{Serre81}. (vi) The forward implication is
+(iv); the converse is (ii). The class number one list and $\ell^*<0$ (needed for $K$ imaginary, \Cref{prop:ant:sqrtlstar}(iv)) give the list of $\ell$, and
+$\ell$ is ramified in $\Q(\sqrt{\ell^*})$.
+\end{proof}
+
+\begin{example}[curves with complex multiplication]\label{ex:ant:cmcurves}
+(Checked with PARI: $a_p=0$ at every good prime $p$ inert in the field among the first $70$ primes, and $a_p\ne0$ at the split primes listed.)
+$y^2=x^3-x$, conductor $32$, CM by $\Z[i]$: $a_p=0$ for $p\equiv3\pmod 4$, and $a_5=-2$, $a_{13}=6$, $a_{17}=2$, $a_{29}=-10$, $a_{37}=-2$.
+$y^2=x^3+1$ (36a1) and $y^2+y=x^3-7$ (27a1), $j=0$, CM by $\Z[\zeta_3]$: $a_p=0$ for $p\equiv2\pmod3$; for 36a1, $a_{13}=2$, $a_{37}=-10$.
+121b1 $=[0,-1,1,-7,10]$, $j=-2^{15}$, CM by the maximal order of $\Q(\sqrt{-11})=\Q(\sqrt{11^*})$: $a_p=0$ when $\bigl(\frac p{11}\bigr)=-1$, for example $a_2=a_7=0$,
+while $a_5=-3$, $a_{37}=7$. In each case the primes ramified in $K$ ($2$, $3$, $3$, $11$) divide the conductor, as \Cref{thm:ant:cm}(iii) requires.
+\end{example}
+
+\begin{paperlink}\label{pl:ant:h0}
+Lemma lem:h0 (revised version): $H^0(\Q,W^D)$ is cyclic of length $h_\ell(E)$, $h_\ell(E)=0$ for $\ell\ge5$ and $h_3(E)\le1$, ``for every $E$, with or without complex
+multiplication''. The proof is the determinant argument (\Cref{ch:reps,ch:galois}): an isomorphism $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$ forces
+$\chi_\ell^2\equiv1\pmod{\ell^k}$; it does not use complex multiplication or the distribution of inert primes. The original version of the note derived the finiteness
+from ``$\rho\simeq\rho\otimes\chi_\ell$ would force $a_p=0$ at all primes inert in $\Q(\sqrt{\ell^*})$'', which confuses the cyclotomic character $\chi_\ell$ with the
+quadratic character $\chi_{\ell^*}$ (\Cref{warn:ant:chil}); the correct statements about $a_p=0$ at inert primes are \Cref{prop:ant:twistdetect} and
+\Cref{thm:ant:cm}, and by \Cref{thm:ant:cm}(vi) the complex multiplication alternative cannot even occur when $\ell\nmid N$. The equivalence ``$h_3(E)=1$ iff
+$\bar\rho_{E,3}\simeq\bar\rho_{E,3}\otimes\chi_{-3}$'' uses $\bar\chi_3^{\mathrm{cyc}}=\chi_{-3}$ (\Cref{ex:ant:characters}), and Proposition prop:ns uses
+\Cref{prop:ant:twistdetect}(a)$\Leftrightarrow$(b) in application (a) above. Section sec:anomaly no longer needs the numerical check that some prime $p<1223$ inert in
+$\Q(\sqrt{-3})$ has $a_p\ne0$.
+\end{paperlink}
+
+\section{Coefficient fields and primes above \texorpdfstring{$\ell$}{l}}\label{sec:ant:coefficients}
+
+Lemmas lem:crit and lem:old of the paper work with eigenforms whose coefficients lie in ``the ring of integers $\mathcal O$ of a number field'', with ``a prime
+$\lambda\mid\ell$ of $\mathcal O$'', with congruences modulo $\lambda$, with ``a maximal ideal of residue characteristic $\ell$'' of the Hecke algebra, and with the
+operation ``after enlarging $\mathcal O$ and $\lambda$''. This section makes each of these precise. The Hecke algebra $\T$ itself, and the facts that its
+eigencharacters correspond to eigenforms, are in \Cref{ch:modforms,ch:hecke}; here only the algebra of a commutative ring that is finitely generated as a
+$\Z$-module is used.
+
+\begin{proposition}[coefficient fields]\label{prop:ant:coefffield}
+Let $R$ be a commutative ring, finitely generated as a $\Z$-module, and $\phi\colon R\to\C$ a ring homomorphism. Then every $\phi(t)$ is an algebraic integer,
+$K_\phi=\Q(\phi(R))$ is a number field, and $\phi(R)$ is a subring of $\mathcal O_{K_\phi}$ of finite index (an \emph{order}). For
+$\sigma\in G_\Q$, $\sigma\circ\phi$ is again such a homomorphism (a \emph{Galois conjugate}). For the eigencharacter $\phi_f\colon\T\to\C$, $T_n\mapsto a_n(f)$, of a
+newform $f$ of weight $2$ on $\Gamma_0(N)$: the \emph{coefficient field} $K_f=\Q(a_n(f):n\ge1)$ is a number field, every $a_n(f)$ lies in $\mathcal O_{K_f}$, and
+(stated; \Cref{ch:hecke}) the conjugates $f^\sigma=\sum\sigma(a_n)q^n$ are newforms and $K_f$ is totally real. For $f=f_E$, $K_f=\Q$, $\mathcal O=\Z$, and the only
+prime above $\ell$ is $\lambda=\ell$.
+\end{proposition}
+
+\begin{proof}
+$\phi(R)$ is a subring of $\C$ that is finitely generated as a $\Z$-module, so each of its elements is integral over $\Z$ (\Cref{prop:ant:integral}(iii),
+whose proof works in any field). The field $K_\phi$ is generated by the images of finitely many $\Z$-module generators, each algebraic, so it is a number
+field, and $\phi(R)\subseteq\mathcal O_{K_\phi}$. The $\Q$-span of $\phi(R)$ is a subring of $\C$ of finite dimension over $\Q$, a domain, hence a field, so it is $K_\phi$; thus
+$\phi(R)$ and $\mathcal O_{K_\phi}$ are free abelian groups of the same rank $[K_\phi:\Q]$ (\Cref{thm:ant:integralbasis}), and the index is finite. For $\sigma\in G_\Q$, $\sigma\circ\phi$ is a ring homomorphism. For $\phi_f$, $\T$ is finitely generated as a $\Z$-module
+(\Cref{ch:hecke}), $\phi_f(\T)=\Z[a_n(f):n\ge1]$, which spans $K_f$, and $a_1(f)=1$.
+\end{proof}
+
+\begin{proposition}[primes above $\ell$ and reduction modulo $\lambda$]\label{prop:ant:primesabove}
+Let $K$ be a number field, $\mathcal O=\mathcal O_K$ and $\ell$ a prime.
+\begin{enumerate}[label=(\roman*)]
+\item The primes $\lambda\mid\ell$ of $\mathcal O$ are the maximal ideals containing $\ell$; there are at most $[K:\Q]$ of them; $k_\lambda=\mathcal O/\lambda\simeq\F_{\ell^f}$
+with $f=f(\lambda\mid\ell)$; reduction modulo $\lambda$ is the ring homomorphism $\mathcal O\to k_\lambda$, $a\mapsto\bar a$.
+\item For $a,b\in\Z$: $a\equiv b\pmod\lambda$ iff $a\equiv b\pmod\ell$. For $a\in\mathcal O$: $\ell\mid N_{K/\Q}(a)$ iff some $\lambda\mid\ell$ contains $a$; and $a$ lies in
+every $\lambda\mid\ell$ iff $a$ lies in the radical of $\ell\mathcal O$, iff $a^m\in\ell\mathcal O$ for some $m\ge1$.
+\item (Enlarging.) If $K\subseteq K'$ then $\lambda\mathcal O_{K'}\ne\mathcal O_{K'}$, every prime $\lambda'$ of $\mathcal O_{K'}$ dividing $\lambda\mathcal O_{K'}$ has
+$\lambda'\cap\mathcal O=\lambda$, and reduction modulo $\lambda'$ restricts on $\mathcal O$ to reduction modulo $\lambda$ followed by $k_\lambda\subseteq k_{\lambda'}$.
+\item (Lying over, for orders.) Let $\alpha$ be integral over $\mathcal O$ and $\mathcal O'=\mathcal O[\alpha]$. For every prime $\lambda$ of $\mathcal O$ there is a maximal
+ideal $\mathfrak q$ of $\mathcal O'$ with $\mathfrak q\cap\mathcal O=\lambda$, namely $\mathfrak q=\lambda'\cap\mathcal O'$ for a prime $\lambda'$ above $\lambda$ in the ring of integers of
+$K(\alpha)$; its residue field is a finite field containing $k_\lambda$.
+\item (The step of Lemma lem:old.) Let $p\ne\ell$ be a prime, $a\in\mathcal O$, and $\alpha_p,\beta_p$ the roots of $X^2-aX+p$; let $\lambda'$ be a prime of the ring of
+integers of $K(\alpha_p)$ above $\lambda$. If $X^2-aX+p\equiv(X-u)(X-w)\pmod\lambda$ with $u,w\in\mathcal O$, then $\alpha_p\equiv u$ or $\alpha_p\equiv w\pmod{\lambda'}$,
+and $\beta_p$ is congruent to the other one. In particular, if $u=sp$ and $w=s$ with $s=\pm1$, one of $\alpha_p,\beta_p$ is congruent to $s$ modulo $\lambda'$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) A prime containing $\ell$ is nonzero, hence maximal; it lies above $\ell$ (\Cref{thm:ant:efg}), and there are at most $\sum e_if_i=[K:\Q]$ of them.
+$k_\lambda$ is a finite field of characteristic $\ell$ (\Cref{prop:ant:idealnorm}(iii)). (ii) $\lambda\cap\Z=\ell\Z$. $N_{K/\Q}(a\mathcal O)=\prod_{\mathfrak p}N\mathfrak p^{v_{\mathfrak p}(a)}$
+(\Cref{prop:ant:idealnorm}), divisible by $\ell$ iff some $\mathfrak p\mid\ell$ has $v_{\mathfrak p}(a)>0$. The intersection of the $\lambda\mid\ell$ is
+$\prod_{\lambda\mid\ell}\lambda$ (\Cref{prop:ant:crt}(i)), and $a$ lies in it iff $v_\lambda(a)\ge1$ for all $\lambda\mid\ell$ iff some power of $a$ lies in
+$\ell\mathcal O=\prod\lambda^{e_\lambda}$. (iii) \Cref{thm:ant:efg} for $K'/K$ and $\mathfrak p=\lambda$. (iv) Let $K''=K(\alpha)$ and $\lambda'$ a prime of $\mathcal O_{K''}$
+above $\lambda$, which exists by (iii). Then $\mathfrak q=\lambda'\cap\mathcal O'$ is a prime ideal of $\mathcal O'\subseteq\mathcal O_{K''}$ with $\mathfrak q\cap\mathcal O=
+\lambda$, and $\mathcal O'/\mathfrak q$ embeds in the finite field $\mathcal O_{K''}/\lambda'$, so it is a finite domain, hence a field. (v) $\alpha_p,\beta_p$ are
+integral over $\mathcal O$, so they lie in the ring of integers of $K(\alpha_p)$, whose quotient by $\lambda'$ is a field $k$. In $k[X]$,
+$(X-\bar\alpha_p)(X-\bar\beta_p)=X^2-\bar aX+\bar p=(X-\bar u)(X-\bar w)$, and unique factorisation in $k[X]$ gives $\{\bar\alpha_p,\bar\beta_p\}=\{\bar u,\bar w\}$ as
+multisets.
+\end{proof}
+
+\begin{proposition}[maximal ideals from congruences]\label{prop:ant:congruencemaximal}
+Let $R$ be a commutative ring, finitely generated as a $\Z$-module, $\mathcal O=\mathcal O_K$, $\lambda\mid\ell$ a prime of $\mathcal O$, and $\phi\colon R\to\mathcal O$ a
+ring homomorphism.
+\begin{enumerate}[label=(\roman*)]
+\item $\mathfrak m=\ker(R\xrightarrow{\phi}\mathcal O\to k_\lambda)$ is a maximal ideal of $R$, and $R/\mathfrak m$ is a subfield of $k_\lambda$, of characteristic $\ell$.
+\item If $\phi'\colon R\to\mathcal O$ is another ring homomorphism with $\phi'(t)\equiv\phi(t)\pmod\lambda$ for all $t$ in a set of ring generators of $R$ (for $R=\T$:
+$a_n(g)\equiv a_n(f)$ for all $n$), then $\phi$ and $\phi'$ define the same $\mathfrak m$.
+\item If $J\subseteq R$ is an ideal contained in $\mathfrak m$ such that $R/J$ is a cyclic group of order $r$, then $\ell\mid r$ (with $\ell\mid0$).
+\item (Stated; \Cref{ch:modules}.) $R\otimes\Z_\ell$ is the product of its localisations at its maximal ideals, which are the maximal ideals of $R$ containing $\ell$;
+and $\phi$ extends to $R\otimes\Z_\ell\to\mathcal O_\lambda$ (\Cref{prop:ant:otimesZl}), which factors through the factor $(R\otimes\Z_\ell)_{\mathfrak m}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $R/\mathfrak m$ embeds in the finite field $k_\lambda$; a subring of a finite field is a finite domain, hence a field. (ii) The two compositions
+$R\to k_\lambda$ are ring homomorphisms agreeing on generators, hence equal, so they have the same kernel. (iii) $R/\mathfrak m$ is a nonzero quotient of the
+cyclic group $R/J\simeq\Z/r$, so it is $\Z/s$ with $s\mid r$; it has characteristic $\ell$, so $s=\ell$. (iv) We do not prove this here; the decomposition
+is the idempotent-lifting theorem of \Cref{ch:modules}, and the extension of $\phi$ is $\phi\otimes\Z_\ell$ followed by the projection of
+$\mathcal O\otimes\Z_\ell$ onto its factor $\mathcal O_\lambda$ (\Cref{prop:ant:otimesZl}), which kills the idempotents of the other factors of $R\otimes\Z_\ell$.
+\end{proof}
+
+\begin{proposition}[$\mathcal O_K\otimes\Z_\ell$]\label{prop:ant:otimesZl}
+For a number field $K$ and a prime $\ell$,
+\[
+\mathcal O_K\otimes_\Z\Z_\ell\simeq\prod_{\lambda\mid\ell}\mathcal O_{K,\lambda},\qquad K\otimes_\Q\Q_\ell\simeq\prod_{\lambda\mid\ell}K_\lambda,
+\]
+where $\mathcal O_{K,\lambda}=\varprojlim_k\mathcal O_K/\lambda^k$ is the $\lambda$-adic completion, a complete discrete valuation ring, free over $\Z_\ell$ of rank $e_\lambda f_\lambda$
+($\sum_\lambda e_\lambda f_\lambda=[K:\Q]$), with uniformiser any $\varpi\in\lambda\setminus\lambda^2$ and residue field $k_\lambda$; and $K_\lambda$, its fraction field, is
+an extension of $\Q_\ell$ of degree $e_\lambda f_\lambda$. The cases $K=\Q(\zeta_3)$ and $\Q(i)$ are \Cref{prop:ant:zlzeta3}.
+\end{proposition}
+
+\begin{proof}[Reference]
+We do not prove this here; it is proved in \Cref{ch:local}, and see \cite[Chapter II, Section 8]{Neukirch} or \cite[Chapter II]{SerreLocalFields}. The
+algebraic core is the Chinese remainder theorem: $\mathcal O_K/\ell^k\mathcal O_K\simeq\prod_{\lambda\mid\ell}\mathcal O_K/\lambda^{ke_\lambda}$ for every $k$ (\Cref{prop:ant:crt}), and
+$\mathcal O_K\otimes\Z_\ell=\varprojlim_k\mathcal O_K/\ell^k\mathcal O_K$ because $\mathcal O_K$ is free of finite rank over $\Z$.
+\end{proof}
+
+\begin{example}[level $23$]\label{ex:ant:level23}
+The space $S_2(\Gamma_0(23))$ is two-dimensional and spanned by a newform $f$ and its Galois conjugate (stated; PARI's \texttt{mfinit([23,2],0)}, and
+LMFDB 23.2.a.a). Its coefficient field is $K_f=\Q(\sqrt5)$, and $a_2(f)$ is a root $\theta$ of $X^2+X-1$, the characteristic polynomial of $T_2$ (computed with
+PARI's \texttt{mfheckemat}); the first coefficients are
+\[
+f=q+\theta q^2+(-2\theta-1)q^3+(-\theta-1)q^4+2\theta q^5+(\theta-2)q^6+(2\theta+2)q^7+\cdots,\qquad\theta^2+\theta-1=0,
+\]
+and $a_{11}=-2\theta-4$, $a_{13}=3$ (PARI's \texttt{mfeigenbasis}). The ring of integers is $\mathcal O_{K_f}=\Z[\frac{1+\sqrt5}2]=\Z[\theta]$, as $\disc(X^2+X-1)=5$ is
+squarefree. Primes: $5=(\sqrt5)^2$ is ramified, with $\theta\equiv2\pmod{\sqrt5}$ since $X^2+X-1\equiv(X-2)^2\pmod5$; $11$ splits ($\bigl(\frac5{11}\bigr)=1$) into
+$\lambda=(11,\theta-3)$ and $\lambda'=(11,\theta-7)$, as $X^2+X-1\equiv(X-3)(X-7)\pmod{11}$, both with residue field $\F_{11}$; $2$ is inert ($5\equiv5\pmod8$), with
+residue field $\F_4$, in which $\theta$ reduces to a root of $X^2+X+1$, a primitive cube root of unity. So the reductions of $f$ modulo $\lambda$ and
+$\lambda'$ are different: modulo $\lambda$, $(a_2,a_3,a_5,a_7)\equiv(3,4,6,8)$, and modulo $\lambda'$, $(7,7,3,5)$; they are exchanged by $\Gal(K_f/\Q)$. A congruence
+``$a_n(g)\equiv a_n(f)\pmod\lambda$'' as in Lemma lem:crit depends on $\lambda$, not only on $\ell$. The Hecke algebra of level $23$ is $\T=\Z[T_2]\simeq\Z[\theta]$
+(\Cref{ch:modules}).
+\end{example}
+
+\begin{paperlink}\label{pl:ant:crit}
+Lemma lem:crit: ``an eigenform $g$ ... with coefficients in the ring of integers $\mathcal O$ of a number field, and a prime $\lambda\mid\ell$ of $\mathcal O$ such that
+$a_n(g)\equiv a_n(f)\pmod\lambda$ for every $n\ge1$''; then ``$I+J$ lies in the kernel of $\T\to\mathcal O/\lambda$, a maximal ideal of residue characteristic $\ell$, and
+$\ell$ divides $\#\T/(I+J)=r$''. The ring $\mathcal O$ exists by \Cref{prop:ant:coefffield} (the eigencharacter $\phi_g$ of $g$ takes values in a number field and in its
+ring of integers); $\phi_g\equiv\phi_f\pmod\lambda$ on the generators $T_n$ gives the same kernel $\mathfrak m$ (\Cref{prop:ant:congruencemaximal}(ii)), so
+$I=\ker\phi_f\subseteq\mathfrak m$ and $J\subseteq\ker\phi_g\subseteq\mathfrak m$; and $\ell\mid r$ is \Cref{prop:ant:congruencemaximal}(iii) applied to $I+J$. ``The same
+statements hold with $\Z$ replaced by $\Z_\ell$'' uses \Cref{prop:ant:congruencemaximal}(iv). Lemma lem:old: ``after enlarging $\mathcal O$ and $\lambda$'' is
+\Cref{prop:ant:primesabove}(iii): the eigenform $g$ built from $h$ has coefficients $\mu_p\in\{\alpha_p,\beta_p\}$ in a larger field, and a prime above $\lambda$ there
+restricts to $\lambda$; ``one of $\alpha_p,\beta_p$ is congruent to $a_p(f)$ modulo a prime above $\lambda$ in $\mathcal O[\alpha_p]$'' is
+\Cref{prop:ant:primesabove}(iv) and (v), with $X^2-a_p(h)X+p\equiv(X-a_p(f)p)(X-a_p(f))\pmod\lambda$ and $a_p(f)=\pm1$. In Section 3 of the paper all forms have
+rational coefficients and $\lambda=\ell$; Lemma lem:old is needed for general $h$, whose coefficient field can be larger, as in \Cref{ex:ant:level23}.
+\end{paperlink}
+
+\section{Exercises}\label{sec:ant:exercises}
+
+\begin{exercise}\label{ex:ant:ex-sqrt13}
+Let $K=\Q(\sqrt{13})$. Show that $\mathcal O_K=\Z[\omega]$ with $\omega=\frac{1+\sqrt{13}}2$, that $d_K=13$, and that $\frac{3+\sqrt{13}}2$ is a unit of norm $-1$. Factor
+$2$, $3$ and $13$ in $\mathcal O_K$ (answer: $2$ inert, $3$ split, $13$ ramified). Show that Dedekind-Kummer applied to $\theta=\sqrt{13}$ at $p=2$ would predict
+that $2$ ramifies, and explain why the theorem does not apply there.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-sqrtminus3}
+In the non-integrally closed ring $A=\Z[\sqrt{-3}]$ let $\mathfrak a=(2,1+\sqrt{-3})$. Show that $\mathfrak a^2=2\mathfrak a$ but $\mathfrak a\ne(2)$, so ideals cannot be
+cancelled in $A$; deduce that $A$ is not a Dedekind domain and identify the hypothesis of \Cref{def:ant:dedekind} that fails. What is $\mathfrak a\Z[\zeta_3]$?
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-factor}
+Factor $65$, $91$ and $1729=7\cdot13\cdot19$ into primes in $\Z[i]$ and in $\Z[\zeta_3]$. Deduce the number of ways of writing $65$ as $a^2+b^2$ with $0<a<b$, and
+explain the answer by counting the elements of norm $65$ in $\Z[i]$.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-sqrtminus5}
+Show that a prime $p\ne2,5$ splits in $\Q(\sqrt{-5})$ iff $p\equiv1,3,7,9\pmod{20}$. Show that the primes above $3$ and $7$ are not principal, that the
+primes above $3$ lie in the class of $\mathfrak p_2$ of \Cref{ex:ant:sqrtminus5}, and, using \Cref{thm:ant:classgroup}, that $h(\Q(\sqrt{-5}))=2$. Which primes $p$
+are of the form $a^2+5b^2$?
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-cubic}
+Let $L=\Q(2^{1/3},\zeta_3)$, with $\Gal(L/\Q)\simeq S_3$ acting on the three cube roots of $2$. For $p\ge5$, show using \Cref{cor:ant:cycletype}: if $p\equiv2\pmod3$,
+$\Frob_p$ is a transposition and $X^3-2$ has exactly one root modulo $p$; if $p\equiv1\pmod3$, $\Frob_p$ is trivial or a $3$-cycle according as $2$ is or is not a
+cube modulo $p$. Determine $\Frob_p$ for $p=5,7,31$, and deduce from \Cref{thm:ant:chebotarev} that $2$ is a cube modulo $p$ for a set of primes of density $\frac23$.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-ramify}
+Without using \Cref{thm:ant:discram}, show that an odd prime $p$ ramifies in $\Q(\sqrt d)$ ($d$ squarefree) iff $p\mid d$: compute $(p,\sqrt d)^2$ when $p\mid d$,
+and when $p\nmid d$ show that $\mathcal O_K/p\mathcal O_K$ is reduced.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-zeta7}
+Factor $2$, $13$ and $29$ in $\Z[\zeta_7]$ and check $efg=6$ against \Cref{thm:ant:cyclotomicsplitting}. The quadratic subfield of $\Q(\zeta_7)$ is $\Q(\sqrt{-7})$; check that
+the splitting of each of these primes in it agrees with $\bigl(\frac p7\bigr)$ and with the image of $\Frob_p=\sigma_p$ in $(\Z/7)^\times/(\Z/7)^{\times2}$.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-zeta8}
+Determine the decomposition and inertia groups in $\Gal(\Q(\zeta_8)/\Q)\simeq(\Z/8)^\times$ of $2$, $3$, $5$, $7$ and $17$. Identify the three quadratic subfields
+$\Q(i)$, $\Q(\sqrt2)$, $\Q(\sqrt{-2})$ with the subgroups $\{1,5\}$, $\{1,7\}$, $\{1,3\}$, and deduce that $\bigl(\frac{-2}p\bigr)=1$ iff $p\equiv1,3\pmod8$.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-unramified}
+(a) List the quadratic fields unramified outside $\{3,7\}$ (answer: $\Q(\sqrt{-3})$, $\Q(\sqrt{-7})$, $\Q(\sqrt{21})$). Which of them is cut out by $\chi_S$ for $S=\{3,7\}$,
+and what is its conductor? (b) List the seven quadratic fields unramified outside $\{2,3\}$, with their discriminants.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-valuations}
+In $\Z_3[\zeta_3]$ compute $v_\pi$ of $1+\zeta_3$, $2+\zeta_3$, $3$, $\sqrt{-3}$, $1-\zeta_3^2$ and $4+\zeta_3$ (answers $0,1,2,1,1,0$). Show that the unit group of
+$\Z_3[\zeta_3]/(\pi^2)$ is cyclic of order $6$, generated by the class of $-\zeta_3$, and that every unit of $\Z_3[\zeta_3]$ is $\pm\zeta_3^k$ times a unit congruent to $1$
+modulo $\pi^2$.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-sigma}
+Let $\sigma=\sm1{-3}1{-2}\in\GL_2(\Z_3)$, acting on $T=\Z_3^2$. Check that $\sigma$ has order $3$ and determinant $1$, that its reduction modulo $3$ is a nontrivial
+unipotent, and that $e_1$ generates $T$ over $\Z_3[\sigma]$. Show more generally that $v\in T$ generates $T$ over $\Z_3[\sigma]$ iff $v\notin(1-\sigma)T$, and find
+$(1-\sigma)T$ and the fixed line of $\sigma$ on $T/3T$ explicitly.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-z7}
+Describe $\Z_\ell[\zeta_3]$ for $\ell=2,5,7$. For $\ell=7$, find the roots of $X^2+X+1$ modulo $7$ and modulo $49$ (answers $2,4$ and $30,18$), and show that the
+idempotents of $\Z_7[\zeta_3]\simeq\Z_7\times\Z_7$ are congruent modulo $49$ to $4\zeta_3+27$ and $45\zeta_3+23$.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-euler}
+(a) Let $\sigma$ have characteristic polynomial $X^2+X+1$ and let $g=-\sigma$ (order $6$, types $\kod{II}$, $\kod{II}^*$). Show that the commutant of $g$ and its
+trace-zero line are those of $\sigma$, and that $AgA^{-1}=g^q$ for an odd prime $q\ne3$ gives the same sign $\chi_{-3}(q)$ as in \Cref{prop:ant:commutant}(iii).
+(b) Using the table of Section 1 of the paper, compute $e_\ell(E,q)$ for $q\in\{5,7,11,13\}$, every odd $\ell\ne q$, and the types $\kod{IV}$ and $\kod{III}$. Show that
+$e_3(E,q)\ge1$ for every $q\ge5$ of type $\kod{II}$, $\kod{II}^*$, $\kod{IV}$, $\kod{IV}^*$, and decide for which $q$ the same holds for type $\kod{III}$.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-signs}
+Let $E$ have nonsplit multiplicative reduction at $q\ne\ell$, with $\rho(\Frob)=\sm{-q}{c'}0{-1}$ for an arithmetic Frobenius. Show that the arithmetic Frobenius
+acts on $(\ad V)^{I_q}$ by $q$ and on $(\ad V(1))^{I_q}$ by $q^2$, and the geometric one by $q^{-1}$ and $q^{-2}$. Deduce that
+$\det(1-\Frob_q^{-1}\mid(\ad V(1))^{I_q})=1-q^{-2}=L_q(\ad V,1)^{-1}$, whereas the arithmetic Frobenius gives $1-q^2$: a different number with the same $\ell$-adic
+valuation.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-cm}
+Let $E\colon y^2=x^3-x$. Show that $a_p=0$ for every prime $p\equiv3\pmod4$, using the substitution $x\mapsto-x$ and $\bigl(\frac{-1}p\bigr)=-1$. Compute $a_5=-2$,
+$a_{13}=6$ and $a_{17}=2$ by counting points, and check that $p=(a_p/2)^2+b^2$ with $b\in\Z$ for $p=5,13,17$ and $29$ ($a_{29}=-10$). Relate the first statement to
+\Cref{thm:ant:cm}(ii), and the second to the factorisation $p=\varpi\bar\varpi$ in $\Z[i]$ with $a_p=\varpi+\bar\varpi$ for a suitable prime $\varpi$ above $p$ (stated;
+\Cref{ch:ellcurves}).
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-twist}
+(a) For 11a1, $a_2=-2$. Using \Cref{prop:ant:twistdetect} ((a)$\Rightarrow$(b) needs no semisimplicity), show that $\bar\rho_{E,3}\not\simeq\bar\rho_{E,3}\otimes\chi_{-3}$.
+(b) For $E\colon y^2=x^3-6x-8$, compute $a_5$, $a_{11}$, $a_{17}$ (answers $3$, $3$, $-6$) and explain, using \Cref{prop:ant:twistdetect} and \Cref{ch:galois}, why $3\mid a_p$
+for every prime $p\equiv2\pmod3$ of good reduction.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-level23}
+Let $f$ be the newform of level $23$ of \Cref{ex:ant:level23}, with coefficients $a_n=x_n+y_n\theta$, $x_n,y_n\in\Z$, and $f^\sigma$ its conjugate. Show that
+$a_n(f)\equiv a_n(f^\sigma)\pmod{\sqrt5}$ for all $n$, and that $(\sqrt5)$ is the only prime of $\mathcal O_{K_f}$ modulo which all coefficients of $f$ and $f^\sigma$
+agree. Compute the reduction of $f$ modulo the prime above $2$ up to $q^7$, in $\F_4$.
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-enlarge}
+Let $K=\Q(\sqrt5)$ and $K'=\Q(\sqrt5,i)$. Determine $e$, $f$, $g$ for $2$, $3$ and $5$ in $K$ and in $K'$ (answers in $K'$: $(2,2,1)$, $(1,2,2)$, $(2,1,2)$), and describe,
+for each prime $\lambda$ of $K$ above these, the primes $\lambda'$ of $K'$ above it and the inclusions $k_\lambda\subseteq k_{\lambda'}$ of \Cref{prop:ant:primesabove}(iii).
+\end{exercise}
+
+\begin{exercise}\label{ex:ant:ex-unitsquad}
+Show that $\Z[\frac{1+\sqrt5}2]^\times=\{\pm u^k:k\in\Z\}$ with $u=\frac{1+\sqrt5}2$, by the method of \Cref{thm:ant:units}(iii). Show that the reduction of $u$
+modulo the prime above $2$ has order $3$ in $\F_4^\times$ and modulo each prime above $11$ has order dividing $10$; which orders occur?
+\end{exercise}
+
+\section{Notes and references}\label{sec:ant:notes}
+
+The algebraic number theory of \Cref{sec:ant:integers,sec:ant:dedekind,sec:ant:splitting} follows Neukirch \cite{Neukirch}, Chapter I (Sections 2 to 3 for integrality,
+integral bases and Dedekind domains, Sections 8 and 9 for the splitting of primes, decomposition and inertia groups, Section 10 for cyclotomic fields), and
+Marcus \cite{Marcus77}, Chapters 2 to 4, which is the gentlest complete treatment and has many exercises of the kind given here. The proof of unique
+factorisation of ideals (\Cref{lem:ant:primeproducts}, \Cref{thm:ant:idealfactorisation}) is Neukirch's; the proof of transitivity in
+\Cref{prop:ant:galoissplitting} and of the surjectivity onto the residue Galois group in \Cref{thm:ant:residuegalois} are the standard ones (Marcus, Chapter 4).
+Atiyah and Macdonald \cite{AtiyahMacdonald}, Chapters 5 and 9, treat integral extensions, lying over and Dedekind domains in the language of commutative
+algebra. Lang \cite{LangANT} is a further reference for the Dedekind zeta function and densities (Chapter VIII). Minkowski's theorem, Dirichlet's unit theorem,
+the analytic continuation of $\zeta_K$ and Chebotarev's theorem are stated, with references to Neukirch, Chapter I, Sections 5 to 7, and Chapter VII, Sections 5 and
+13.
+
+The splitting of primes in quadratic fields and the Gaussian and Eisenstein integers are in Ireland and Rosen \cite{IrelandRosen}, Chapters 1 and 9 and
+Chapter 13, and in Cox \cite{Cox}, Sections 5 and 7, where prime discriminants (\Cref{prop:ant:ramonlyat}) are also discussed. Cyclotomic fields, the
+discriminant formula, Kronecker-Weber and the dictionary between Dirichlet characters and characters of $G_\Q$ follow Washington \cite{Washington}, Chapters 2, 3
+and 14. The tame relation (\Cref{prop:ant:tameconj}) is in Serre \cite{SerreLocalFields}, Chapter IV, Sections 1 and 2, where the higher ramification groups are
+defined; \Cref{ch:local} gives the local version. Frobenius elements in $G_\Q$ and their use for $\ell$-adic representations are in Serre \cite{SerreAbelian},
+Chapter I. Class field theory in idelic form, with its two sign conventions, is in Neukirch, Chapter VI, and in Milne's notes \cite{MilneCFT}.
+
+For complex multiplication, \Cref{thm:ant:cm} quotes Silverman \cite{SilvermanATAEC}, Chapter II and Appendix A (the thirteen rational $j$-invariants), and
+Cox \cite{Cox}, Sections 7 to 14 (class number one and Deuring's reduction criterion); the open image theorem is Serre \cite{Serre72}, and the density zero of
+$\{p:a_p(E)=0\}$ for $E$ without complex multiplication is Serre \cite{Serre81}. The argument that a prime ramified in the CM field divides the conductor
+(\Cref{thm:ant:cm}(iii)) is the elementary one given here; it can also be read off the conductor of an induced representation.
+
+All theorem, section and chapter numbers of books cited in this chapter (Neukirch, Marcus, Washington, Ireland-Rosen, Cox, Serre, Lang, Silverman) are recalled
+and were not checked against printed copies; they should be read as pointers, and no proof in the book depends on them. Every numerical example (class
+numbers, discriminants, factorisations of primes, Frobenius classes, the coefficients of the level $23$ newform, the traces of Frobenius of the curves of
+\Cref{ex:ant:cmcurves} and \Cref{ex:ant:ex-twist}) was checked with PARI/GP \cite{PARI}, for instance with the following commands.
+\begin{lstlisting}[language=GP]
+quadclassunit(-20)[1]                     \\ class number 2
+K = nfinit(x^3 - 2); idealprimedec(K, 5)  \\ residue degrees 1 and 2
+nfdisc(polcyclo(7))                       \\ -16807 = -7^5
+mf = mfinit([23,2],0); mfcoefs(mfeigenbasis(mf)[1], 13)
+E = ellinit([0,-1,1,-7,10]); [ellap(E,p) | p <- [2,7,5,37]]   \\ 0,0,-3,7
+\end{lstlisting}
