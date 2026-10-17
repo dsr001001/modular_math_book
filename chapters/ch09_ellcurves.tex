@@ -67,8 +67,8 @@ isogeny over $K$ gives $T_\ell E\hookrightarrow T_\ell E'$ with cokernel $(\ker\
 \Cref{def:ellcurves:rho}, \Cref{prop:ellcurves:rho}.
 \item \textbf{Self-duality.} $T_\ell E\simeq(T_\ell E)^\vee(1)$, so $H^1(E,\Z_\ell)=(T_\ell E)^\vee\simeq T_\ell E(-1)$ and $\ad$ of $T_\ell E$ and of its dual agree. \emph{(proved here)} \Cref{cor:ellcurves:dual-T}.
 \item \textbf{Complex conjugation.} For $E/\Q$ and $\ell$ odd, $\rho_{E,\ell}(c)\sim\operatorname{diag}(1,-1)$: eigenvalues $\pm1$, trace $0$, determinant $-1$. \emph{(proved here)} \Cref{cor:ellcurves:complex-conj}.
-\item \textbf{Frobenius conventions.} $\Frob_p$ arithmetic; $\rho_{E,\ell}(\Frob_p)$ has eigenvalues $\alpha_p,\beta_p$; $L_p(E,s)=\det(1-\Frob_pp^{-s}\mid V_\ell E)^{-1}=L_p(V_\ell E^\vee,s)$ and
-$L_p(V_\ell E,s)=L_p(E,s+1)$ with $L$-factors defined by the geometric Frobenius. \Cref{conv:ellcurves:frobenius}.
+\item \textbf{Frobenius conventions.} $\Frob_p$ arithmetic; $\rho_{E,\ell}(\Frob_p)$ has eigenvalues $\alpha_p,\beta_p$; at good $p$, $L_p(E,s)=\det(1-\Frob_pp^{-s}\mid V_\ell E)^{-1}=L_p(V_\ell E^\vee,s)$ and
+$L_p(V_\ell E,s)=L_p(E,s+1)$, with $L$-factors defined by the geometric Frobenius. \Cref{conv:ellcurves:frobenius}.
 \item \textbf{Endomorphism rings.} $\End_{\bar K}(E)$ is $\Z$, an order in an imaginary quadratic field, or (characteristic $p$ only) a maximal order in the quaternion algebra ramified at $p$, $\infty$.
 \emph{(stated; reference)} \Cref{thm:ellcurves:end}.
 \item \textbf{Normalised endomorphisms.} In characteristic $0$, $\alpha\mapsto c_\alpha$ ($\alpha^*\omega=c_\alpha\omega$) embeds $\End(E)$ in $\bar K$; $\End_\Q(E)=\Z$; for $E/\Q$ with CM by $\mathcal O\subset F$,
@@ -1021,7 +1021,7 @@ geometric one. $\rho_{E,\ell}(\Frob_p)$ has characteristic polynomial $X^2-a_pX+
 \item On the dual $V_\ell E^\vee=H^1$ the geometric Frobenius has the eigenvalues $\alpha_p,\beta_p$ (the inverse transpose of $\rho(\Frob_p)$ has eigenvalues
 $\alpha_p^{-1},\beta_p^{-1}$, and $\Frob_p^{-1}$ inverts them again), while on $V_\ell E$ itself the geometric Frobenius has the eigenvalues $\alpha_p^{-1}=\beta_p/p$ and
 $\beta_p^{-1}=\alpha_p/p$. Local $L$-factors are defined with the geometric Frobenius (Appendix B, \Cref{ch:notation}): $L_p(M,s)=\det(1-\Frob_p^{-1}p^{-s}\mid M^{I_p})^{-1}$.
-Hence
+Hence, at a prime $p$ of good reduction,
 \[
 L_p(E,s)=\det(1-\Frob_p\,p^{-s}\mid V_\ell E)^{-1}=L_p(V_\ell E^\vee,s)=(1-a_pp^{-s}+p^{1-2s})^{-1},
 \]
@@ -1303,7 +1303,7 @@ $M=\sm abcd$ with eigenvector $(\omega_1,\omega_2)$, so it is a root of the moni
 eigenvector, which span $\R^2$ because $\omega_1,\omega_2$ are $\R$-independent, would both be eigenvectors, so $M=\alpha\cdot1$ and $\alpha\in\Z$. So either $\alpha\in\Z$, or $\alpha$ is a non-real
 quadratic integer, and then $b\ne0$ and $\tau=(\alpha-a)/b\in\Q(\alpha)$ is imaginary quadratic. Conversely if $A\tau^2+B\tau+C=0$ with integers $A\ne0$, $B$, $C$, then
 $A\tau\Lambda_\tau\subseteq\Lambda_\tau$ for $\Lambda_\tau=\Z+\Z\tau$ ($A\tau\cdot\tau=-B\tau-C$), and $A\tau\notin\Z$. The ring $\End(\C/\Lambda)$ is a subring of $\C$ containing $\Z$, of rank at most $2$ over
-$\Z$ (it embeds into $\Z\omega_1+\Z\omega_2$ by $\alpha\mapsto\alpha\omega_1$, after scaling), so it is $\Z$ or an order in $\Q(\tau)$. (iv) By \Cref{thm:ellcurves:weil}(i), (ii) and the computation in the
+$\Z$ (it embeds into $\Lambda\simeq\Z^2$ by $\alpha\mapsto\alpha\omega_1$), so it is $\Z$ or an order in $\Q(\tau)$. (iv) By \Cref{thm:ellcurves:weil}(i), (ii) and the computation in the
 proof of \Cref{cor:ellcurves:det}(i). The value of $\zeta$ is computed in \cite[Chapter VI, exercises]{SilvermanAEC}; it matches the intersection pairing on $H_1$ up to a universal sign
 (\Cref{ch:curves}).
 \end{proof}
@@ -1465,8 +1465,8 @@ An elliptic curve $E$ over $\F_{\mathfrak q}$ is \emph{supersingular} if $E[p]=0
 \end{proof}
 
 \begin{proposition}[point counts of a quadratic twist over $\F_{\mathfrak q}$]\label{prop:ellcurves:twistFq}
-Let $\mathfrak q$ be odd, $E\colon y^2=f(x)$ with $f$ a cubic over $\F_{\mathfrak q}$, $\epsilon\in\F_{\mathfrak q}^\times$ a non-square, and $E^{\mathrm{tw}}\colon\epsilon y^2=f(x)$, which is isomorphic to
-$y^2=\epsilon^3f(x/\epsilon)$, the twist of $E$ by $\epsilon$ in the sense of \Cref{def:ellcurves:twist}. Let $\eta$ be the quadratic character of $\F_{\mathfrak q}^\times$, extended by $\eta(0)=0$. Then
+Let $\mathfrak q$ be odd, $E\colon y^2=f(x)$ with $f$ a cubic over $\F_{\mathfrak q}$, $\theta\in\F_{\mathfrak q}^\times$ a non-square, and $E^{\mathrm{tw}}\colon\theta y^2=f(x)$, which is isomorphic to
+$y^2=\theta^3f(x/\theta)$, the twist of $E$ by $\theta$ in the sense of \Cref{def:ellcurves:twist}. Let $\eta$ be the quadratic character of $\F_{\mathfrak q}^\times$, extended by $\eta(0)=0$. Then
 \[
 \#E(\F_{\mathfrak q})=\mathfrak q+1+\sum_{x\in\F_{\mathfrak q}}\eta(f(x)),\qquad a_{\mathfrak q}(E^{\mathrm{tw}})=-a_{\mathfrak q}(E),\qquad\#E(\F_{\mathfrak q})+\#E^{\mathrm{tw}}(\F_{\mathfrak q})=2\mathfrak q+2,
 \]
@@ -1476,9 +1476,9 @@ $y^2=\epsilon^3f(x/\epsilon)$, the twist of $E$ by $\epsilon$ in the sense of \C
 \end{proposition}
 
 \begin{proof}
-For each $x$, the number of $y\in\F_{\mathfrak q}$ with $y^2=c$ is $1+\eta(c)$, and with $\epsilon y^2=c$ it is $1+\eta(c/\epsilon)=1-\eta(c)$. Adding the point $O$, $\#E(\F_{\mathfrak q})=1+\sum_x(1+\eta(f(x)))$ and
+For each $x$, the number of $y\in\F_{\mathfrak q}$ with $y^2=c$ is $1+\eta(c)$, and with $\theta y^2=c$ it is $1+\eta(c/\theta)=1-\eta(c)$. Adding the point $O$, $\#E(\F_{\mathfrak q})=1+\sum_x(1+\eta(f(x)))$ and
 $\#E^{\mathrm{tw}}(\F_{\mathfrak q})=1+\sum_x(1-\eta(f(x)))$. So $a_{\mathfrak q}(E)=-\sum_x\eta(f(x))=-a_{\mathfrak q}(E^{\mathrm{tw}})$, the sum of the two counts is $2\mathfrak q+2$, and their product is
-$(\mathfrak q+1-a_{\mathfrak q})(\mathfrak q+1+a_{\mathfrak q})$. The isomorphism: multiplying $\epsilon y^2=f(x)$ by $\epsilon^3$ and putting $Y=\epsilon^2y$, $X=\epsilon x$ gives $Y^2=\epsilon^3f(X/\epsilon)$.
+$(\mathfrak q+1-a_{\mathfrak q})(\mathfrak q+1+a_{\mathfrak q})$. The isomorphism: multiplying $\theta y^2=f(x)$ by $\theta^3$ and putting $Y=\theta^2y$, $X=\theta x$ gives $Y^2=\theta^3f(X/\theta)$.
 \end{proof}
 
 \begin{theorem}[Frobenius at a prime of good reduction]\label{thm:ellcurves:frobQ}
@@ -1797,8 +1797,8 @@ $\sigma$, i.e.\ $\sigma P=\chi_d(\sigma)P$. (iv) We do not prove this; see \cite
 \item The model of \Cref{def:ellcurves:twist}(a) has $c_4(E^{(d)})=d^2c_4$, $c_6(E^{(d)})=d^3c_6$, $\Delta(E^{(d)})=d^6\Delta$ and $j(E^{(d)})=j(E)$. The integral model of
 \Cref{def:ellcurves:twist}(b) has invariants $2^4d^2c_4$, $2^6d^3c_6$, $2^{12}d^6\Delta$.
 \item Let $\operatorname{char}K\ne2,3$. If $j(E)=j(E')\ne0,1728$, then $E'\simeq E^{(d)}$ over $K$ with $d=\dfrac{c_6(E')\,c_4(E)}{c_6(E)\,c_4(E')}$, for any models of $E$ and $E'$.
-\item Let $q$ be an odd prime. The twists of $E$ by $q$ and by $q^*$ differ by the twist by $-1$, which multiplies $c_6$ by $-1$; if $q\equiv3\pmod4$ they are in general different curves, the
-twist by $q$ being ramified at $2$ as well. The twist by $q^*$ has invariants $(q^*)^2c_4$, $(q^*)^3c_6$, $(q^*)^6\Delta$; their $q$-adic valuations are those of $q^2c_4$, $q^3c_6$, $q^6\Delta$.
+\item Let $q$ be an odd prime. If $q\equiv1\pmod4$ then $q=q^*$. If $q\equiv3\pmod4$, the twists of $E$ by $q$ and by $q^*$ differ by the twist by $-1$, which multiplies $c_6$ by $-1$, and they
+are in general different curves, the twist by $q$ being ramified at $2$ as well. The twist by $q^*$ has invariants $(q^*)^2c_4$, $(q^*)^3c_6$, $(q^*)^6\Delta$; their $q$-adic valuations are those of $q^2c_4$, $q^3c_6$, $q^6\Delta$.
 \end{enumerate}
 \end{proposition}
 
@@ -1917,8 +1917,9 @@ L(E,s)=\prod_{p\nmid N}\bigl(1-a_pp^{-s}+p^{1-2s}\bigr)^{-1}\prod_{p\mid N}\bigl
 \begin{enumerate}[label=(\roman*)]
 \item $\abs{a_n}\le d(n)\sqrt n$, where $d(n)$ is the number of divisors of $n$; the series and the product converge absolutely and agree for $\operatorname{Re}s>3/2$.
 \item $a_{mn}=a_ma_n$ for coprime $m,n$; $a_{p^{k+1}}=a_pa_{p^k}-pa_{p^{k-1}}$ for $p\nmid N$, $k\ge1$; and $a_{p^k}=a_p^k$ for $p\mid N$.
-\item For $p\ne\ell$ the local factor is $\det\bigl(1-\Frob_p\,p^{-s}\bigm|(V_\ell E)^{I_p}\bigr)^{-1}$ (\Cref{conv:ellcurves:frobenius}): at good $p$ by \Cref{thm:ellcurves:frobQ}; at bad $p$, where
-$\dim(V_\ell E)^{I_p}$ is $1$ (multiplicative, with $\Frob_p$ acting by $a_p=\pm1$) or $0$ (additive), by \Cref{ch:galrep}. Isogenous curves have the same $L$-function
+\item For $p\ne\ell$ the local factor is $L_p(V_\ell E^\vee,s)=\det\bigl(1-\Frob_p^{-1}p^{-s}\bigm|(V_\ell E^\vee)^{I_p}\bigr)^{-1}$ (\Cref{conv:ellcurves:frobenius}): at good $p$ by
+\Cref{thm:ellcurves:frobQ}; at bad $p$, where $\dim(V_\ell E^\vee)^{I_p}$ is $1$ (multiplicative, with $\Frob_p^{-1}$ acting by $a_p=\pm1$) or $0$ (additive), by \Cref{ch:galrep}. At a
+good prime this is also $\det(1-\Frob_pp^{-s}\mid V_\ell E)^{-1}$, but not at a multiplicative prime: there the arithmetic Frobenius acts on the line $(V_\ell E)^{I_p}$ by $pa_p$, not by $a_p$. Isogenous curves have the same $L$-function
 (\Cref{thm:ellcurves:isogclass}(ii) and the invariance of the conductor), and $L(E^{(d)},s)$ has the same local factors as $\sum\chi_d(n)a_nn^{-s}$ at the primes $p\nmid ND$
 (\Cref{cor:ellcurves:twistap}).
 \item (Modularity.) $L(E,s)=L(f_E,s)$ for a newform $f_E$ of weight $2$ on $\Gamma_0(N)$; $L(E,s)$ extends to an entire function and satisfies a functional equation under $s\mapsto2-s$.
@@ -1927,10 +1928,13 @@ $\dim(V_\ell E)^{I_p}$ is $1$ (multiplicative, with $\Frob_p$ acting by $a_p=\pm
 
 \begin{proof}
 (i) At a good prime, $(1-a_pX+pX^2)^{-1}=\bigl((1-\alpha_pX)(1-\beta_pX)\bigr)^{-1}$, so $a_{p^k}=\sum_{i=0}^k\alpha_p^i\beta_p^{k-i}$ and $\abs{a_{p^k}}\le(k+1)p^{k/2}$ by \Cref{thm:ellcurves:charpoly}(iii); at a
-bad prime $\abs{a_{p^k}}=\abs{a_p}^k\le1$. With (ii) this gives $\abs{a_n}\le d(n)\sqrt n$. Since $d(n)=O(n^\varepsilon)$ for every $\varepsilon>0$, $\sum\abs{a_n}n^{-\sigma}$ converges for $\sigma>3/2$; the product of
+bad prime $\abs{a_{p^k}}=\abs{a_p}^k\le1$. With (ii) this gives $\abs{a_n}\le d(n)\sqrt n$. Since $d(n)=O(n^{c})$ for every $c>0$, $\sum\abs{a_n}n^{-\sigma}$ converges for $\sigma>3/2$; the product of
 the absolutely convergent local series over $p\le x$ contains every $a_nn^{-s}$ with all prime factors of $n$ at most $x$, and the difference from the full series tends to $0$.
 (ii) Expanding the product, $a_n$ is the product of the coefficients $a_{p^k}$ of the local series for $p^k\,\|\,n$; the recursion is the coefficient of $X^{k+1}$ in
-$(1-a_pX+pX^2)\sum_ka_{p^k}X^k=1$. (iii) At a good prime $\det(1-\Frob_pX\mid V_\ell E)=1-a_pX+pX^2$ by \Cref{thm:ellcurves:frobQ}; the bad primes are \Cref{ch:galrep}. (iv) We do not prove this;
+$(1-a_pX+pX^2)\sum_ka_{p^k}X^k=1$. (iii) At a good prime $\det(1-\Frob_p^{-1}X\mid V_\ell E^\vee)=\det(1-\Frob_pX\mid V_\ell E)=1-a_pX+pX^2$ by \Cref{conv:ellcurves:frobenius} and \Cref{thm:ellcurves:frobQ}; the bad
+primes are \Cref{ch:galrep}. At a multiplicative prime $V_\ell E$ restricted to the decomposition group is an extension of $\varepsilon$ by $\varepsilon\chi_\ell$, with $\varepsilon$ unramified and
+$\varepsilon(\Frob_p)=a_p$ (\Cref{ch:reduction}), so the inertia invariants of $V_\ell E$ are the line $\varepsilon\chi_\ell$, with arithmetic Frobenius eigenvalue $pa_p$, and those of
+$V_\ell E^\vee\simeq V_\ell E\otimes\chi_\ell^{-1}$ are the line $\varepsilon$, with geometric Frobenius eigenvalue $\varepsilon(\Frob_p)^{-1}=a_p$. (iv) We do not prove this;
 it is the theorem of Wiles, Taylor-Wiles and Breuil, Conrad, Diamond and Taylor \cite{Wiles95,TaylorWiles,BCDT}, with the analytic statements from the theory of modular forms; see
 \Cref{ch:moddeg,ch:lfunctions}.
 \end{proof}
