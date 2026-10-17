@@ -1028,7 +1028,7 @@ simple (\Cref{cor:ellcurves:divpol-roots}). If $m$ is even ($\ell=2\ne\operatorn
 $(m^2-4)/2$ distinct values $x(P)$ for $P\in E[m]\smallsetminus E[2]$ (points paired with their negatives) are roots of $f_m$, which has that degree and leading
 coefficient $m/2\ne0$ in $K$ (\Cref{prop:ellcurves:divpol-deg}), so they are simple roots. A simple root of a polynomial over $K$ is separable over $K$. Then $y(P)$ is a root of
 $g(Y)=Y^2+(a_1x(P)+a_3)Y-(x(P)^3+a_2x(P)^2+a_4x(P)+a_6)$, whose derivative at $y(P)$ is $\psi_2(P)$; if $\psi_2(P)\ne0$ it is a simple root, hence separable over
-$K(x(P))$, and if $\psi_2(P)=0$ (so $\operatorname{char}K\ne2$) then $y(P)=-(a_1x(P)+a_3)/2\in K(x(P))$. So the coordinates of the points of $E[\ell^n]$ lie in
+$K(x(P))$, and if $\psi_2(P)=0$ (so $\operatorname{char}K\ne2$, since in characteristic $2$ the prime $\ell$ is odd and $2P\ne O$) then $y(P)=-(a_1x(P)+a_3)/2\in K(x(P))$. So the coordinates of the points of $E[\ell^n]$ lie in
 $K^{\mathrm{sep}}$; this argument does not assume $K$ perfect, as \cite[Section III.7]{SilvermanAEC} does. An element of $G_K$ acts trivially on $E[\ell^n]$ iff it fixes $L_n$. So the kernel of $\rho_{E,\ell}\bmod\ell^n$ is the open subgroup $G_{L_n}$, and the
 inverse images of the basic open subgroups $\ker(\GL_2(\Z_\ell)\to\GL_2(\Z/\ell^n))$ are open: $\rho_{E,\ell}$ is continuous (\Cref{ch:galois}). (ii) By \Cref{cor:ellcurves:det}(i)
 with $m=\ell^n$ for all $n$, $\det\rho_{E,\ell}(\sigma)\equiv\chi_\ell(\sigma)\pmod{\ell^n}$ for every $n$. (iii) $\varphi$ maps $E[\ell^n]$ to $E'[\ell^n]$ compatibly with $[\ell]$ and
@@ -1810,13 +1810,16 @@ a curve of the class (\Cref{ch:moddeg}).
 
 \begin{paperlink}\label{pl:ellcurves:optimal}
 Section 1 of the paper: ``When $E[\ell]$ is irreducible, every curve of the class is linked to $E$ by a cyclic isogeny of degree prime to $\ell$'' is
-\Cref{lem:ellcurves:primetol}(i); the consequence for the modular degree is \Cref{ch:moddeg}. By (ii) and (iii) of the lemma, the hypotheses of Theorem thm:main, the right-hand side of (eq:identity), and
+\Cref{lem:ellcurves:primetol}(i); the consequence for the modular degree is \Cref{ch:moddeg}. By (ii) and (iii) of the lemma, the hypothesis of Theorem thm:main on $\bar\rho_{E,\ell}$, the right-hand side of (eq:identity), and
 the terms $e_\ell(E,q)$ (read off $V_\ell E$ at $q$), $t_\ell(E,q)$ and $h_\ell(E)$ of (eq:rule) in Conjecture conj:euler do not depend on which curve of the class is taken. The
 remaining term $w_3(E)$ of (eq:rule) is defined by the Kodaira type at $3$, and Kodaira types are not isogeny invariants in general: \curve{121c1} and \curve{121c2},
 joined by an $11$-isogeny, have types $\kod{IV}$ and $\kod{IV}^*$ at $11$, and \curve{11a1} and \curve{11a3}, joined by a $5$-isogeny, have $\kod{I}_5$ and $\kod{I}_1$ at
 $11$. In the situation of (eq:rule) at $\ell=3$, where $E[3]$ is irreducible and the class is linked by isogenies of degree prime to $3$, the type at $3$ was the same for all
 curves of the class in each of the $1{,}295$ classes of Cremona's tables below conductor $10{,}000$ with at least two curves, $3\mid N$, no $3$-isogeny and potentially good
-reduction at $3$; we do not prove this in general. The conjecture is in any case stated for the optimal curve. Section sec:oot keeps curves ``with trivial isogeny class (so that the curve is optimal and $E[\ell]$
+reduction at $3$ ($27$ of which have complex multiplication, which Conjecture conj:euler excludes); we do not prove this in general.
+With a $3$-isogeny the type at $3$ does vary: among the $1{,}293$ such classes below $10{,}000$ (with $3\mid N$, at least two curves and potentially good
+reduction at $3$), $w_3$ differs within $828$, for example \curve{54a} with types $\kod{IV}^*$, $\kod{II}^*$, $\kod{II}$ and $w_3=2,2,1$; Conjecture conj:euler at $\ell=3$
+excludes these classes, as $E[3]$ is then reducible. The conjecture is in any case stated for the optimal curve. Section sec:oot keeps curves ``with trivial isogeny class (so that the curve is optimal and $E[\ell]$
 is irreducible for every $\ell$)'': this is \Cref{cor:ellcurves:trivialclass}.
 \end{paperlink}
 
@@ -1966,7 +1969,7 @@ about curves. ``The twist of \curve{11a1} by $\chi_{-11}$ is in the class \curve
 \end{warning}
 
 \begin{paperlink}\label{pl:ellcurves:twist}
-Lemma lem:twist (ii) of the paper: ``the twist has a model with invariants $(q^*)^{2}c_4$, $(q^*)^{3}c_6$, $(q^*)^{6}\Delta$ and the same $j$-invariant'' is \Cref{prop:ellcurves:twistinv}(i), (iii), and its
+The proof of Lemma lem:twist (ii) of the paper: ``the twist has a model with invariants $(q^*)^{2}c_4$, $(q^*)^{3}c_6$, $(q^*)^{6}\Delta$ and the same $j$-invariant'' is \Cref{prop:ellcurves:twistinv}(i), (iii), and its
 model $y^2=x^3+q^*a_2x^2+(q^*)^2a_4x+(q^*)^3a_6$ is \Cref{def:ellcurves:twist}(a). Lemma lem:euler: in the row $\kod{I}_n^*$, ``$V=V'\otimes\chi_{q^*}$ with $V'$ Steinberg at $q$'' and ``$\ad V=\ad V'$'' are \Cref{thm:ellcurves:twistgal} (the
 Steinberg property of $V'$ is \Cref{ch:reduction}); in the row $\kod{I}_0^*$, ``$V=V'\otimes\chi_{q^*}$ with $V'$ unramified'' is \Cref{prop:ellcurves:twistgood}(i). Theorems thm:twist and thm:quant: $E_S$, $\chi_S$ and $a_p(f)=\chi_S(p)a_p(g)$ are \Cref{def:ellcurves:compositetwist}. The table of Section 1: ``$E'$ the quadratic twist of
 $E$ by $\Q(\sqrt{q^*})$'' is \Cref{prop:ellcurves:twistgood}, and (ii) of that proposition is why only $a_q(E')^2$ matters. Definition def:terms: ``The term $t_\ell$ is invariant under quadratic twist, and

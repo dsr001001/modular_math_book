@@ -460,6 +460,15 @@ Counts: **A: 12** strengthenings, **B: 10** errors, **C: 14** gaps, **D: 17** ex
 * **F3 (Chapter 10; expository; point 83).** Remark rem:wild's 58% is the share among curves numbered 1; over all
   curves it is 61%. Name the population.
 
+* **F4 (Chapter 11; correction; point 90).** sec:boundary: "28 of them with 3 | N" should be 44 (of the 90 non-CM
+  optimal curves with image Ns below 10,000), and the count omits 13 optimal CM curves with image N_s(F_3)
+  (j = -32768, 8000). Items A6 and E4 above repeat "28"; E4's check is 44 of 44.
+* **F5 (Chapter 11; correction, minor; point 91).** sec:forms: the 1,170 failures at l = 3 are the non-CM ones; CM
+  curves with j in {-32768, 8000}, 3 not dividing N, also fail (20 below 10,000).
+* **F6 (Chapter 9; expository; points 92, 93).** sec:data should say whether the extension-range test used only
+  classes with determined optimality (w_3 is not proved class-invariant); prop:no9 should cite Ligozat75 as the
+  primary source for cyclic 27-isogenies.
+
 ## Re-verification log
 
 | curve | what was checked | result |

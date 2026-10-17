@@ -1220,6 +1220,40 @@ eigenspace of the anemic Hecke algebra (the T_n with (n,N)=1) for the eigenvalue
 one for newforms). The paper uses this silently. Suggested wording: "by multiplicity one for newforms the plane is also the
 eigenspace of the T_n, (n,N)=1, with which w_N commutes". Found writing Chapter 8, confirmed by its reviewer.
 
+### 90. Section sec:boundary: "28 of them with 3 | N" should be 44; the count omits 13 CM curves (correction)
+The paragraph after the proof of prop:ns-structure (note_v2, line 556) says: "Among the 90 optimal curves with image Ns of
+conductor below 10,000 (28 of them with 3 | N), 74 have such a prime p>=5 ... and 16 have it only at p=2". Recomputed
+three times (Chapter 11 reviewer, Chapter 11 fixer, orchestrator) with PARI 2.17.2 and Cremona's files: 90, 74 and 16
+are right for non-CM optimal curves, but 44 of the 90 have 3 | N (14 with 3||N, 6 with 9||N, 24 with 27 | N; e.g.
+726a1, 2178b1, 3840h1, 6912d1), not 28. The proposition allows CM, yet the count leaves out the 13 optimal CM curves
+with image N_s(F_3) (j = -32768 or 8000): 121b1, 256a1, 256d1, 1089e1, 1936f1, 2304c1, 2304k1, 3025a1, 5929a1,
+6400f1, 6400r1, 7744a1, 7744s1; of these 7 have a prime p>=5 in R (R = {11}), 6 have R = {2} (type III), and 3 have
+3 | N. All 146 curves with this image (all curves, not only optimal) satisfy prop:ns-structure. Memo items A6 and E4
+repeat "28"; E4's data check ("28 of 28") should read 44 of 44 (the order-4 inertia never occurs only at 3). Fix for
+the paper: "non-CM" and "44 of them with 3 | N", or count all 103 curves (81 with p>=5 in R, 22 only at 2, 47 with
+3 | N).
+
+### 91. Section sec:forms: the 1,170 failures are the non-CM ones (correction, minor)
+"The hypothesis of Theorem thm:main fails on the working set for the 1,170 curves with image 3Ns ...; by Proposition
+prop:Sf there are no other failures among the curves with E[l] irreducible" holds for the non-CM population only: CM
+curves with j in {-32768, 8000} and 3 not dividing N have image N_s(F_3) and fail at l = 3 (20 below 10,000), and
+Cremona's galrep file gives them no label. Add "non-CM" (as Table tab:counts does) or count them. Found writing
+Chapter 11; also: 62 non-CM plus 20 CM curves below 10,000 have 3 in S_f, E[3] irreducible and 3 not dividing N.
+
+### 92. Section sec:data: the extension range and undetermined optimality (expository, minor)
+Optimality is determined up to 400000 and for 359,009 further classes up to 500000, while the tables go to 500000.
+The paper does not say whether the test of eq:rule in the extension range used only classes with determined
+optimality. If not, the right side relies on the class-invariance of w_3, which is unproved; it holds empirically
+below 10,000 when E[3] is irreducible (1,295 of 1,295 classes with 3 | N, at least two curves, no 3-isogeny and
+potentially good reduction at 3), and fails with a 3-isogeny (w_3 varies in 828 of 1,293 such classes, e.g. 54a).
+Found checking Chapter 9.
+
+### 93. prop:no9: the citation for "a rational cyclic 27-isogeny forces CM" (bibliographic, minor; medium confidence)
+The paper cites \cite{Ligozat75}, \cite{Kenku}; refs.bib's Kenku is the 1982 paper on the number of curves in an
+isogeny class, at best a secondary summary. The primary source is Ligozat (X_0(27) has genus one and three rational
+points, two of them cusps). Suggest citing Ligozat75 alone, or naming Kenku 1982 as a summary. Not checked against
+Kenku 1982 itself.
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
@@ -1375,3 +1409,35 @@ eigenspace of the T_n, (n,N)=1, with which w_N commutes". Found writing Chapter 
   equal); 4.2(iii) injectivity via Hilbert 90; "regular at P" is defined and can be tested on an affine chart.
 * Chapter 14 must supply T_n^t = w_N T_n w_N; Chapter 10 does not yet point to Chapter 8 for smoothness and the DVR
   criterion (it could).
+
+### B37. Items from writing Chapter 9
+
+* prop:ellcurves:invdiff (translation invariance and additivity of the invariant differential) is fully proved in
+  every characteristic from one polynomial identity checked in PARI with indeterminate a_i; Chapter 8's citation is
+  now accurate. Separability of K(E[l^n]) is proved for any K, l = 2 included.
+* Local L-factor at a multiplicative prime: arithmetic Frobenius acts on (V_l E)^{I_p} by p a_p; the uniform form is
+  L_p(V_l E^dual, s) with the geometric Frobenius (consistent with Chapters 7 and 10). Later chapters (19, 21) must not
+  use the V^{I_p} form with the arithmetic Frobenius.
+* Kodaira types are not isogeny invariants (121c1/121c2 IV/IV* at 11; 11a1/11a3 I_5/I_1; 54a IV*, II*, II at 3). The
+  class-invariance of the hypothesis of thm:main on rhobar, of eq:identity and of e_l, t_l, h_l is proved; that of w_3
+  is only observed (see point 92).
+* Optimal CM curves of odd modular degree: 27a1, 32a1, 49a1 (j = -3375), 243b1; 121d1, 539d1 have isogeny rows 5, 25
+  (middle curves 121d2, 539d2, the twists of 11a1). 121b1 has image exactly N_s(F_3).
+* Ligozat75 moved from bib/ch12.bib to refs.bib (B14). Notation: H for finite subgroups, Theta for the uniformisation
+  map, plain q for the q-expansion variable (declared), c_phi for isogeny constants.
+
+### B38. Items from writing Chapter 11
+
+* The D1 strengthening of lem:h0 (h_l = 0 for l >= 5, h_3 <= 1, iff the image is N_s(F_3), CM or not) is stated as the
+  theorem with a Commentary quoting both versions; prop:ns-structure has a D1 Commentary (the book adds the biquadratic
+  field, R as the ramified primes, the converse at type III primes p >= 5, and parts (v) to (vii)).
+* New prop:galrep:3-isogeny-paths: each 3-isogeny component of an isogeny class over Q is a path; the ends carry the
+  labels 3B.1.1 and 3B.1.2 (or 3B, 3B) in pairs, so #3B.1.1 = #3B.1.2 in every class (checked on 38,042 classes).
+* rem:types: thm:qual treats exactly the rows where, after a twist or none, the Serre exponent at q drops strictly
+  below the conductor exponent (IV, IV*; II, II*; I_n^* with l | n).
+* Neron-Ogg-Shafarevich is proved here; "good reduction iff p does not divide N" goes through the Artin-conductor
+  definition, avoiding a citation loop with Chapter 10. Chapter 10's Serre-Tate sketch should pass to a finite
+  subextension before applying it.
+* The l-independence of the Weil-Deligne representation (attributed here by Chapter 7) is only a sketched remark.
+* Data corrections: see points 90, 91. Notation: eta_1, eta_2 for characters of a reducible rhobar; newform g; pr_pm
+  for idempotents; varpi' for zeta_l - 1; Phi_E(k') for component groups.
