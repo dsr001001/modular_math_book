@@ -145,8 +145,8 @@ $a(\chi)=1$ for tame $\chi$, $a(\chi_{-4})=2$, $a(\chi_{\pm8})=3$ at $2$; the sa
 \Cref{thm:local:swan}.
 \item \textbf{Conductor of a Weil-Deligne representation} (definition): the exponent is
 $a(r,N)=\dim V-\dim(\ker N)^{r(I_K)}+\operatorname{sw}(r)$. \Cref{def:local:conductor}.
-\item \textbf{Properties.} $a(\rho)=\dim V-\dim V^{I_K}+\operatorname{sw}(\rho)$; $a(V\otimes\chi)=\dim V\cdot a(\chi)$ for $V$ unramified; $a(\Sp(2)\otimes\mu)=1$, $a(\Sp(2)\otimes\mu\chi)=2a(\chi)$; Ogg-Saito
-(stated). \emph{(proved here, except (iv): stated; reference)} \Cref{prop:local:conductor}.
+\item \textbf{Properties.} $a(\rho)=\dim V-\dim V^{I_K}+\operatorname{sw}(\rho)$; $a(V\otimes\chi)=\dim V\cdot a(\chi)$ for $V$ unramified; $a(\Sp(2)\otimes\mu)=1$, $a(\Sp(2)\otimes\mu\chi)=2a(\chi)$; the conductor
+exponent of $E$ at $p$ is $a(V_\ell E)$ (definition, \Cref{ch:reduction}). \emph{(proved here; independence of $\ell$ and Ogg's formula stated; reference)} \Cref{prop:local:conductor}.
 \item \textbf{Epsilon factors.} Existence and uniqueness (Langlands, Deligne) and the Weil-Deligne correction factor. \emph{(stated; reference)} \Cref{thm:local:epsilon}.
 \item \textbf{Unramified shape.} $A$ has eigenvalues $\alpha/\beta,1,\beta/\alpha$ for both Frobenii; $L(A,1)^{-1}=\frac{q-1}q\cdot\frac{(q+1)^2-a^2}{q^2}$. \emph{(proved here)}
 \Cref{prop:local:unramified-shape}.
@@ -217,7 +217,10 @@ $I_K=\Gal(\Qbar_p/K^{\ur})$ is the inertia group and $P_K=\Gal(\Qbar_p/K^{\tame}
 \item $\Z_\ell(1)=\varprojlim_k\mu_{\ell^k}$ (transition maps $\zeta\mapsto\zeta^\ell$), on which $G_K$ acts through the cyclotomic character
 $\chi_\ell$; it is written additively when it receives the values of cocycles. Where a $\Z_\ell$-valued version is needed we fix a
 generator $\zeta=(\zeta_{\ell^k})_k$ of $\Z_\ell(1)$ and identify $\Z_\ell(1)\simeq\Z_\ell$ by $\zeta\mapsto1$.
-\item $\Frob$ is an \emph{arithmetic} Frobenius and $\Phi=\Frob^{-1}$ the \emph{geometric} one (\Cref{conv:local:frobenius}).
+\item $\Frob$ is an \emph{arithmetic} Frobenius and $\Phi=\Frob^{-1}$ the \emph{geometric} one (\Cref{conv:local:frobenius}); $\Phi$ without subscript
+is always the geometric Frobenius of the local field in question, and the geometric Frobenius at a named prime $p$ is written $\Frob_p^{-1}$. With a
+numerical subscript, as in $\Phi_{p^n}$ and $\Phi_3$, the letter denotes a cyclotomic polynomial (\Cref{ch:rings}); $\Phig_q$ is the geometric component
+group of the N\'eron model at $q$ (\Cref{ch:reduction}).
 \item Other letters: $\varepsilon$ is an unramified character of order at most $2$ (the paper's Tate data), $\epsilon$ an
 epsilon factor; $\theta_m$ are the tame characters of \Cref{thm:local:tame-character}, $\theta_2$ the character of order two of inertia, and
 $\eta_{\ur}$ the unramified quadratic character; $[a]$ is the Teichm\"uller lift of $a$; $N$ is a monodromy operator (Sections
@@ -440,7 +443,7 @@ $c=\abs{f'(a_0)}$ and $\delta=\abs{f(a_0)}/c^2<1$. We show by induction that $a_
 holds for $n=0$. Given it for $n$, the step $h_n=-f(a_n)/f'(a_n)$ has $\abs{h_n}=\abs{f(a_n)}/c\le c\,\delta^{2^n}<c\le1$, so $a_{n+1}=a_n+h_n\in\mathcal O$;
 $\abs{f'(a_{n+1})-f'(a_n)}\le\abs{h_n}<c$ gives $\abs{f'(a_{n+1})}=c$ (\Cref{prop:local:absval}(ii)); and $f(a_{n+1})=h_n^2g(a_n,h_n)$ gives
 $\abs{f(a_{n+1})}\le\abs{h_n}^2\le c^2\delta^{2^{n+1}}$. Hence $\abs{a_{n+1}-a_n}=\abs{h_n}\to0$, the sequence converges to some $a\in\mathcal O$, and
-$f(a)=\lim f(a_n)=0$, $\abs{f'(a)}=c$. For $n\ge1$, $\abs{h_n}\le c\delta^{2^n}<c\delta=\abs{h_0}$, so $\abs{a-a_0}=\abs{h_0}=\abs{f(a_0)/f'(a_0)}<c$. If $b$ is a
+$f(a)=\lim f(a_n)=0$, $\abs{f'(a)}=c$. If $f(a_0)=0$, every $h_n$ is $0$, $a=a_0$ and $\abs{a-a_0}=0=\abs{f(a_0)/f'(a_0)}$; so assume $\delta>0$. For $n\ge1$, $\abs{h_n}\le c\delta^{2^n}<c\delta=\abs{h_0}$, so $\abs{a-a_0}=\abs{h_0}=\abs{f(a_0)/f'(a_0)}<c$. If $b$ is a
 root with $\abs{b-a_0}<c$, then $h=b-a$ has $\abs h<c$, and $0=f(b)=f'(a)h+h^2g(a,h)$; if $h\ne0$ this gives $c=\abs{f'(a)}=\abs{hg(a,h)}\le\abs h<c$,
 which is absurd. (b) is (a) with $\abs{f'(a_0)}=1$, since $\abs{f(a_0)}<1$ and $\abs{a-a_0}<1$ means $a\equiv a_0\pmod{\mathfrak m}$.
 \end{proof}
@@ -501,8 +504,9 @@ has two simple roots in $\F_\ell$, they lift by (b) of the theorem, and $R\simeq
 monic factors in $\Z_\ell[X]$ by \Cref{cor:local:irreducible}, and would reduce to one of $\bar g$); then $R$ is a domain, $R/\ell R=\F_\ell[X]/(\bar g)
 \simeq\F_{\ell^2}$ is a field, and an element of $R$ outside $\ell R$ is a unit (it is invertible modulo $\ell$, and $R$ is $\ell$-adically complete), so $R$
 is a discrete valuation ring with uniformiser $\ell$ and residue field $\F_{\ell^2}$, the ring of integers of the unramified quadratic extension of
-$\Q_\ell$ (\Cref{thm:local:unramified}). For $\ell=3$ (resp. $\ell=2$), $R$ is the ring of integers of a ramified quadratic extension
-(\Cref{prop:local:z3zeta3}, \Cref{prop:local:quadratic-ext}(iii)). This is the trichotomy that \Cref{ch:ant} stated for $\Z_\ell\otimes\Z[\zeta_3]$ and
+$\Q_\ell$ (\Cref{thm:local:unramified}). For $\ell=3$ (resp. $\ell=2$), $R$ is the ring of integers of a ramified quadratic extension:
+of $\Q_3(\sqrt{-3})$ by \Cref{prop:local:z3zeta3}(ii), and of $\Q_2(i)$ because $1+i$ is a root of the Eisenstein polynomial $X^2-2X+2$, so that
+$\Z_2[i]=\Z_2[1+i]$ is that ring of integers by \Cref{thm:local:eisenstein} (\Cref{ex:local:ramgroups}(a)). This is the trichotomy that \Cref{ch:ant} stated for $\Z_\ell\otimes\Z[\zeta_3]$ and
 $\Z_\ell\otimes\Z[i]$, now with the local input proved; it is why the paper's $\End_{I_q}(T)=\Z_\ell\otimes\Z[\zeta_3]$ is not a field for
 $\ell\equiv1\pmod3$.
 \end{enumerate}
@@ -769,7 +773,8 @@ $\mathfrak m_K$; and $v_K(c_0)=v_K(N_{L/K}\pi)=v_L(\pi)=1$, because $\abs{N_{L/K
 \begin{proposition}[examples of totally ramified extensions]\label{prop:local:z3zeta3}
 \begin{enumerate}[label=(\roman*)]
 \item For $n\ge1$, $\Phi_{p^n}(X+1)$ is Eisenstein, so $\Q_p(\zeta_{p^n})/\Q_p$ is totally ramified of degree $\varphi(p^n)$, with uniformiser
-$1-\zeta_{p^n}$, ring of integers $\Z_p[\zeta_{p^n}]$, and $\Gal(\Q_p(\zeta_{p^n})/\Q_p)\simeq(\Z/p^n)^\times$, all of it inertia.
+$1-\zeta_{p^n}$, ring of integers $\Z_p[\zeta_{p^n}]$, and $\Gal(\Q_p(\zeta_{p^n})/\Q_p)\simeq(\Z/p^n)^\times$; the residue field is $\F_p$, so the whole group acts
+trivially on it (it is all inertia, in the language of \Cref{sec:local:ram}).
 \item $\Q_3(\zeta_3)=\Q_3(\sqrt{-3})$ is a totally ramified quadratic extension, tamely ramified ($3\nmid2$). Its ring of integers is
 $\Z_3[\zeta_3]\simeq\Z_3[X]/(X^2+X+1)\simeq\Z_3\otimes_\Z\Z[\zeta_3]$, a discrete valuation ring with uniformiser $\pi=1-\zeta_3$, residue field $\F_3$
 and $\pi^2=-3\zeta_3$; it is the $\pi$-adic completion of $\Z[\zeta_3]$.
@@ -781,7 +786,8 @@ and $\pi^2=-3\zeta_3$; it is the $\pi$-adic completion of $\Z[\zeta_3]$.
 \begin{proof}
 (i) $\Phi_{p^n}(X)=\sum_{i=0}^{p-1}X^{ip^{n-1}}$, so modulo $p$, $\Phi_{p^n}(X+1)=((X+1)^{p^n}-1)/((X+1)^{p^{n-1}}-1)\equiv X^{p^n}/X^{p^{n-1}}=X^{\varphi(p^n)}$, and
 its constant term is $\Phi_{p^n}(1)=p$. The root $\zeta_{p^n}-1$ is then a uniformiser and $\mathcal O=\Z_p[\zeta_{p^n}-1]$ by \Cref{thm:local:eisenstein}. The
-Galois group embeds in $(\Z/p^n)^\times$ (\Cref{ch:galois}) and has order $\varphi(p^n)$; as $f=1$ it is all inertia (\Cref{prop:local:ramgroups}(i)).
+Galois group embeds in $(\Z/p^n)^\times$ (\Cref{ch:galois}) and has order $\varphi(p^n)$; as $f=1$ the residue field is $\F_p$, on which every automorphism is trivial (so, once \Cref{sec:local:ram} defines inertia,
+the whole group is the inertia group, \Cref{prop:local:ramgroups}(i)).
 (ii) $\Phi_3(X+1)=X^2+3X+3$ is Eisenstein at $3$, and $\sqrt{-3}=2\zeta_3+1$. So $\Q_3(\zeta_3)=\Q_3(\sqrt{-3})$, of degree $2$, $X^2+X+1$ is irreducible
 over $\Q_3$, the ring of integers is $\Z_3[\zeta_3-1]=\Z_3[\zeta_3]\simeq\Z_3[X]/(X^2+X+1)$, with uniformiser $\zeta_3-1=-\pi$; and
 $\pi^2=1-2\zeta_3+\zeta_3^2=-3\zeta_3$. Right exactness of $\otimes$ gives $\Z_3\otimes\Z[\zeta_3]\simeq\Z_3[X]/(X^2+X+1)$, and
@@ -790,10 +796,10 @@ $\pi^2=1-2\zeta_3+\zeta_3^2=-3\zeta_3$. Right exactness of $\otimes$ gives $\Z_3
 \end{proof}
 
 \begin{paperlink}\label{pl:local:z3zeta3}
-Lemma lem:IV and the remark after it speak of ``$\Z_3[X]/(X^2+X+1)\simeq\Z_3[\zeta_3]$, a discrete valuation ring with uniformiser $\pi=1-\zeta_3$ and
-residue field $\F_3$''. \Cref{ch:ant} proved that this ring is a discrete valuation ring and equals $\Z_3\otimes\Z[\zeta_3]$;
-\Cref{prop:local:z3zeta3}(ii) adds that it is the ring of integers of $\Q_3(\sqrt{-3})$ and the completion of $\Z[\zeta_3]$ at $(1-\zeta_3)$, which is
-what \Cref{ch:ant} stated with a pointer here.
+The paragraph after Lemma lem:IV says that ``$T_3E$ is then free of rank one over $\Z_3[X]/(X^2+X+1)\simeq\Z_3[\zeta_3]$, with $X$ acting as $\sigma$'', and
+the proof of Lemma lem:tamadd uses the same ring. \Cref{ch:ant} proved that this ring is a discrete valuation ring and equals $\Z_3\otimes\Z[\zeta_3]$;
+\Cref{prop:local:z3zeta3}(ii) identifies it as the ring of integers of $\Q_3(\sqrt{-3})$, a discrete valuation ring with uniformiser $\pi=1-\zeta_3$ and residue
+field $\F_3$, and as the completion of $\Z[\zeta_3]$ at $(1-\zeta_3)$, which is what \Cref{ch:ant} stated with a pointer here.
 \end{paperlink}
 
 \subsection{Completions of number fields}
@@ -985,18 +991,18 @@ lift, as in \Cref{cor:local:finite-tame-image} and \Cref{thm:local:kummer-inerti
 under inversion (as on $\ad V$ at a good prime, or on a line where Frobenius acts by $\pm1$), the two conventions give the same $L$-factor;
 otherwise they do not (the Steinberg case, \Cref{prop:local:steinberg-shape}).
 \item Group-theoretic statements (the tame relation, conjugation actions, the matrices in the proof of Lemma lem:tamfactor, Frobenius on Kummer
-classes) use $\Frob$; local $L$-factors use $\Phi$ (\Cref{def:local:L-factor}). The revised paper says so in Section 1.1; the original version used
-the arithmetic $\Frob$ in Lemma lem:tamfactor and, without saying so, the geometric one in Section 1.1, Lemma lem:euler and Lemma lem:fpr (memo,
-point B5).
+classes) use $\Frob$; local $L$-factors use $\Phi$ (\Cref{def:local:L-factor}). The revised paper says so in Section 1.1. The original version used
+the arithmetic $\Frob$ in Lemma lem:tamfactor, correctly, but wrote $\Frob_p$ in Section 1.1 where its table, Lemma lem:euler and Lemma lem:fpr require
+the geometric Frobenius.
 \end{enumerate}
 \end{convention}
 
 \begin{proposition}[unramified base change]\label{prop:local:unram-basechange}
 Let $K/\Q_p$ be finite unramified of degree $f$. Then $K^{\ur}=\Q_p^{\ur}$ and $K^{\tame}=\Q_p^{\tame}$, so $I_K=I_p$ and $P_K=P_p$ as subgroups of
 $G_K\subseteq G_{\Q_p}$, and $\Frob_K\equiv\Frob_{\Q_p}^f\pmod{I_p}$. Consequently, for a representation $\rho$ of $G_{\Q_p}$, the image $\rho(I_p)$, the
-invariants $V^{I_p}$, the property of being tamely or wildly ramified, the monodromy operator (\Cref{thm:local:grothendieck}) and the Swan and Artin
-conductors (\Cref{def:local:swan}, \Cref{def:local:conductor}) are unchanged by restriction to $G_K$. For an arbitrary finite $K/\Q_p$,
-$K^{\ur}=K\Q_p^{\ur}$ and $I_K=I_p\cap G_K$ has index $e(K/\Q_p)$ in $I_p$.
+invariants $V^{I_p}$ and the property of being tamely or wildly ramified are unchanged by restriction to $G_K$; so are the monodromy operator and the
+Swan and Artin conductors, which are defined later (forward references: \Cref{thm:local:grothendieck}, \Cref{def:local:swan}, \Cref{def:local:conductor}).
+For an arbitrary finite $K/\Q_p$, $K^{\ur}=K\Q_p^{\ur}$ and $I_K=I_p\cap G_K$ has index $e(K/\Q_p)$ in $I_p$.
 \end{proposition}
 
 \begin{proof}
@@ -1006,10 +1012,10 @@ unramified subextension, of degree $f(K/\Q_p)$, so that $K=K_0(\pi)$ with $\pi$ 
 (\Cref{thm:local:unramified}(iii), \Cref{thm:local:eisenstein}). That polynomial stays Eisenstein over every finite unramified extension of
 $K_0$, hence irreducible over $K_0^{\ur}=\Q_p^{\ur}$; so the index is $e$. If $K$ is unramified, $K=K_0\subseteq\Q_p^{\ur}$, so $K^{\ur}=\Q_p^{\ur}$. A finite
 extension of $K$ is tamely ramified over $K$ iff it is over $\Q_p$, $e$ being multiplicative and $e(K/\Q_p)=1$; so $K^{\tame}=\Q_p^{\tame}$
-(\Cref{thm:local:inertia-structure}(iii)). $\Frob_K$ induces $x\mapsto x^{p^f}$ on the residue field. The image $\rho(I_p)$, the invariants $V^{I_p}$ and tameness ($\rho(P_p)=1$) depend
+(\Cref{thm:local:inertia-structure}(ii)). $\Frob_K$ induces $x\mapsto x^{p^f}$ on the residue field. The image $\rho(I_p)$, the invariants $V^{I_p}$ and tameness ($\rho(P_p)=1$) depend
 only on the subgroups $I_p$, $P_p$, which do not change. The monodromy operator is determined by $\rho$ on an open subgroup of $I_p$ and by the
 tame character, which is the same for $K$ and $\Q_p$ because $p$ is a uniformiser of both (\Cref{thm:local:tame-character}(i)). For the
-conductors see \Cref{thm:local:swan}(iii).
+conductors see \Cref{thm:local:swan}(iii). (These two forward references do not use the present proposition, so there is no circularity.)
 \end{proof}
 
 \begin{proposition}[the cyclotomic character locally]\label{prop:local:cyclotomic-local}
@@ -1239,7 +1245,7 @@ notation for $\Z_\ell(1)$).
 \]
 where $q^{-1}$ is the inverse of $q$ in the ring $\prod_{\ell\ne p}\Z_\ell$ of exponents of the procyclic group $I_K/P_K$. For the geometric Frobenius,
 $\Phi\,t\,\Phi^{-1}=t^{q^{-1}}$. The same relations hold in $I_K^{(\ell)}\simeq\Z_\ell(1)$, with $q^{-1}\in\Z_\ell$.
-\item Let $\Frob$ be a lift as in \Cref{cor:local:frob-fixing-roots}. Then $\Gal(K^{\tame}/K)=(I_K/P_K)\rtimes\overline{\langle\Frob\rangle}\simeq\bigl(\prod_{\ell\ne p}\Z_\ell(1)\bigr)\rtimes\hat\Z$,
+\item Let $\Frob\in G_K$ be any arithmetic Frobenius lift. Then $\Gal(K^{\tame}/K)=(I_K/P_K)\rtimes\overline{\langle\Frob\rangle}\simeq\bigl(\prod_{\ell\ne p}\Z_\ell(1)\bigr)\rtimes\hat\Z$,
 the generator $1\in\hat\Z$ acting by multiplication by $q$. (Stated.) As a profinite group it is generated by $t$ and $\Frob$ subject to the single
 relation $\Frob\,t\,\Frob^{-1}=t^q$; see \cite[Chapter VII, Section 5]{NSW}.
 \end{enumerate}
@@ -1255,8 +1261,9 @@ Passing to the limit over $m=\ell^k$ gives the formula for $t_\ell$, since $\tau
 (ii) $\Frob$ acts on $\mu_m$ by $\zeta\mapsto\zeta^q$ (\Cref{conv:local:frobenius}(a)), so $\theta(\Frob\,\sigma\,\Frob^{-1})=\theta(\sigma)^q$; and $\Frob^{-1}$ acts by the
 inverse map $\zeta\mapsto\zeta^{q'}$, $qq'\equiv1\pmod m$, so $\theta(\Frob^{-1}\sigma\Frob)=\theta(\sigma)^{q^{-1}}$. As $\theta$ identifies $I_K/P_K$ with $\prod\Z_\ell(1)$, these are
 the stated relations; $\Phi=\Frob^{-1}$ gives the last one, and projecting to the $\ell$-component gives the relations in $I_K^{(\ell)}$.
-(iii) By \Cref{cor:local:split} applied to the image of $\Frob$, $\Gal(K^{\tame}/K)$ is the semidirect product of $\Gal(K^{\tame}/K^{\ur})=I_K/P_K$ by the
-closure of $\langle\Frob\rangle$, which is isomorphic to $\hat\Z$; the action is (ii).
+(iii) The proof of \Cref{cor:local:split} applies verbatim to the profinite group $\Gal(K^{\tame}/K)=G_K/P_K$, its closed normal subgroup
+$\Gal(K^{\tame}/K^{\ur})=I_K/P_K$ (with quotient $G_K/I_K\simeq\hat\Z$) and the image of $\Frob$: the closure of $\langle\Frob\rangle$ in $G_K/P_K$ is isomorphic to $\hat\Z$, meets
+$I_K/P_K$ trivially, and $\Gal(K^{\tame}/K)$ is the semidirect product of $I_K/P_K$ by it; the action is (ii).
 \end{proof}
 
 \begin{warning}[the sign in the tame relation]\label{warn:local:tame-sign}
@@ -1420,7 +1427,7 @@ $\ell^k\mid a$. The last statement is also \Cref{prop:local:qpur}(iv).
 \emph{Lemma lem:tamagawa-exp.} Over $\Q_q^{\ur}$ (or already over the unramified quadratic extension, where the curve is a Tate curve) the
 $\ell^t$-torsion is generated by $\mu_{\ell^t}$ and an $\ell^t$-th root of $q_E$, and inertia acts trivially on $E[\ell^t]$ iff it fixes that root, iff
 $\ell^t\mid v_q(q_E)=n_q$ by \Cref{thm:local:kummer-inertia}(v). This is the precise form of the paper's ``$q_E$ is an $\ell^t$-th power in $\Q_q^{\ur}$ iff
-$\ell^t\mid n_q$'' (important\_notes.md, point 8). \emph{Lemma lem:tamfactor.} ``The restriction of $\kappa$ to $I$ is $n$ times the tame character'' is
+$\ell^t\mid n_q$''. \emph{Lemma lem:tamfactor.} ``The restriction of $\kappa$ to $I$ is $n$ times the tame character'' is
 \Cref{thm:local:kummer-inertia}(ii) with $x=q_E$, $a=n$. ``$\kappa=n\kappa_q+\kappa_u$, where $\kappa_u$ is unramified, inflated from the class of $u$'' is (i) and
 (iii) with $\varpi=q$. ``$c'=\varepsilon\kappa(\Frob)$ is a cocycle value: it is $\varepsilon$ times the class of $u$ for the Frobenius lift fixing a compatible system of
 $\ell$-power roots of $q$, and in general it is well defined only modulo $\ell^{\min(v_\ell(n),v_\ell(q-1))}$'' is (iii) and (iv), together with
@@ -1453,7 +1460,8 @@ character is unramified iff its field is, and $\eta_{\ur}$ is the character of t
 A ramified quadratic character is nontrivial on $I_p$. A character of order $2$ of $I_p$ is continuous with finite image, so it kills the pro-$p$ group
 $P_p$ ($p$ odd), and factors through the procyclic $I_p/P_p\simeq\prod_{\ell\ne p}\Z_\ell(1)$, which has exactly one quotient of order $2$; and
 $\theta_2$ (\Cref{thm:local:tame-character}, $m=2$, $\varpi=p$) is such a character. (iii) $\Q_2^\times/(\Q_2^\times)^2$ has order $8$ with representatives $\pm1,\pm5,\pm2,\pm10$
-(\Cref{thm:local:powers}(vi)). $(1+\sqrt5)/2$ is a root of $X^2-X-1$, irreducible modulo $2$, so $\Q_2(\sqrt5)$ is unramified (\Cref{thm:local:unramified}(iv)); and
+(\Cref{thm:local:powers}(vi)). $\alpha=(1+\sqrt5)/2$ is a root of $X^2-X-1\in\Z_2[X]$, so it lies in the ring of integers of $L=\Q_2(\sqrt5)$, and its reduction is a root of $X^2+X+1$,
+which is irreducible over $\F_2$. So the residue field of $L$ contains $\F_4$, $f(L/\Q_2)=2=[L:\Q_2]$, $e(L/\Q_2)=1$ and $L$ is unramified (\Cref{thm:local:ef}); and
 $-3\cdot5=-15\equiv1\pmod8$ and $3\cdot(-5)\equiv1\pmod 8$ are squares, so $\Q_2(\sqrt{-3})=\Q_2(\sqrt5)$ and $\Q_2(\sqrt3)=\Q_2(\sqrt{-5})$. There is only one unramified quadratic
 extension, so the other six are ramified, of degree $2$, hence wild; the jumps are \Cref{ex:local:ramgroups}.
 \end{proof}
@@ -1528,7 +1536,7 @@ $\norm{\Phi}=q^{-1}$, $\norm{\cdot}$ is trivial on $I_K$, and $\norm w=\chi_\ell
 \[
 r(w)\,N\,r(w)^{-1}=\norm w\,N,\qquad\text{that is}\qquad r(\Frob)\,N\,r(\Frob)^{-1}=q\,N,\quad r(\Phi)\,N\,r(\Phi)^{-1}=q^{-1}N .
 \]
-(PLAN.md's ``$\Frob N\Frob^{-1}=p^{-1}N$'' is the geometric form with the wrong name; Appendix B, convention B-C2(f).) This $\norm{\cdot}$ agrees with
+Some sources write $\Frob\,N\,\Frob^{-1}=q^{-1}N$ with $\Frob$ geometric; here $\Frob$ is arithmetic (Appendix B, convention B-C2(f)). This $\norm{\cdot}$ agrees with
 Tate's normalisation in \cite{Tate79}.
 \end{convention}
 
@@ -1656,7 +1664,12 @@ On $I_1$, $\rho(\sigma)=\exp(t_\zeta(\sigma)N)$, so $r(\sigma)=1$; the kernel of
 (ii) Changing $\zeta$ to $\zeta^a$ leaves $r$ unchanged and replaces $N$ by $aN$. Let $k\ge1$ be such that conjugation by $r(\Phi^k)$ is trivial on the finite group
 $r(I_K)$ (it is an automorphism of finite order). Then $r(\Phi^k)$ commutes with $r(W_K)$, so its generalised eigenspaces $V_\lambda$ are $r(W_K)$-stable, and
 $N(V_\lambda)\subseteq V_{q^{-k}\lambda}$ because $r(\Phi^k)N=q^{-k}Nr(\Phi^k)$. Choose a representative $\lambda_0$ in each orbit of $q^{k\Z}$ on the eigenvalues and let $A$ act on
-$V_{\lambda_0q^{-kj}}$ by $a^j$. Then $A$ commutes with $r(W_K)$ and $ANA^{-1}=aN$, so $(r,N)\simeq(r,aN)$. If $\Phi$ is replaced by $\Phi'=\Phi\sigma_0$, a direct computation
+$V_{\lambda_0q^{-kj}}$ by $a^j$. Then $A$ commutes with $r(W_K)$ and $ANA^{-1}=aN$, so $(r,N)\simeq(r,aN)$. Here the eigenvalues lie in a finite Galois
+extension $F$ of $E_\lambda$, and $A$ is first defined on $V\otimes F$; it is defined over $E_\lambda$ if the representatives are chosen compatibly with
+$\Gal(F/E_\lambda)$. This is possible: if $\gamma\in\Gal(F/E_\lambda)$ maps an orbit to itself, then $\gamma(\lambda_0)=\lambda_0q^{-kj}$ for some $j$, and since
+$\gamma$ has finite order $m$, $\lambda_0=\gamma^m(\lambda_0)=\lambda_0q^{-kjm}$, so $j=0$. Choosing one $\lambda_0$ in each $\Gal(F/E_\lambda)$-orbit of orbits and
+$\gamma(\lambda_0)$ for its transforms is therefore well defined, and then $\gamma$ maps $V_{\lambda_0q^{-kj}}\otimes F$ semilinearly onto
+$V_{\gamma(\lambda_0)q^{-kj}}\otimes F$, so $A$ commutes with $\Gal(F/E_\lambda)$ and descends to $E_\lambda$ (as $a\in\Z_\ell^\times\subseteq E_\lambda$). If $\Phi$ is replaced by $\Phi'=\Phi\sigma_0$, a direct computation
 gives $r'(w)=r(w)\exp\bigl(t_\zeta(\sigma_0)\frac{q^n-1}{q-1}N\bigr)$ for $w=\Phi'^n\sigma$, and $B=\exp\bigl(-\frac{t_\zeta(\sigma_0)}{q-1}N\bigr)$ satisfies $B^{-1}r(w)B=r'(w)$ and commutes with $N$
 (use $r(w)^{-1}Nr(w)=q^nN$); so $(r',N)\simeq(r,N)$. (iii), (iv) We do not prove these; see Deligne \cite[Section 8]{Deligne73}, Tate \cite[Section 4.2]{Tate79}
 and Rohrlich \cite{Rohrlich94}; (iv) for elliptic curves follows from the description of $V_\ell E$ in \Cref{ch:reduction,ch:galrep}.
@@ -1713,7 +1726,8 @@ $\varepsilon$ trivial (split) or the unramified quadratic character (nonsplit).
 In Lemma lem:euler (type $\mathrm{I}_n$) and in the proof of Lemma lem:twist(iii), ``the local component is an unramified twist of the Steinberg
 representation''. On the Galois side this means $\WD(V_\ell E|_{G_{\Q_q}})\simeq\Sp(2)\otimes\mu$ with $\mu$ unramified, which is \Cref{ex:local:tate-shape-wd}(ii) for the Tate
 shape; the passage between the automorphic and the Galois side is \Cref{ch:modgalrep}. The proof of Lemma lem:tamfactor uses exactly the matrices of
-\Cref{ex:local:tate-shape-wd}, with corner $\varepsilon\kappa$ (the revised version has the correct corner; memo, point C6), $te_2=e_2+n'e_1$ with
+\Cref{ex:local:tate-shape-wd}, with corner $\varepsilon\kappa$ (the corner of the revised paper; the original version wrote $\kappa$, which does not satisfy the cocycle relation for
+the twisted matrices), $te_2=e_2+n'e_1$ with
 $n'=n\,t_\zeta(t)$, and $v_\ell(n')=v_\ell(n)$ for a generator $t$ of tame inertia.
 \end{paperlink}
 
@@ -1784,14 +1798,15 @@ The paper's $L_p(A_f,s)$, the table of Section 1, Lemma lem:euler, Lemma lem:fpr
 \texttt{lfunsympow} and the conventions of DFG04 \cite[Section 1.7.2]{DFG04} all use the geometric Frobenius: by \Cref{prop:local:L-factor}(iii), (iv) the identity
 $L_p(M(1),s)=L_p(M,s+1)$ of Lemma lem:fpr holds for $\Phi$ and fails for $\Frob$, and at a multiplicative prime the factor $1-q^{-1-s}$ of the table
 requires $\Phi$ (\Cref{prop:local:steinberg-shape}(iii)). On $\ad V$ at a good prime the eigenvalues $\alpha/\beta,1,\beta/\alpha$ are stable under inversion, so there
-the choice is invisible (important\_notes.md, point 11; memo, point B5).
+the choice is invisible.
 \end{warning}
 
 \begin{paperlink}\label{pl:local:Lfactor}
-Section 1.1 defines $L_p(A_f,s)=\det(1-\Frob_p^{-1}p^{-s}\mid A_f^{I_p})^{-1}$: this is \Cref{def:local:L-factor} for $M=A_f$ with $\Phi_p=\Frob_p^{-1}$. The naive factor
+Section 1.1 defines $L_p(A_f,s)=\det(1-\Frob_p^{-1}p^{-s}\mid A_f^{I_p})^{-1}$: this is \Cref{def:local:L-factor} for $M=A_f$, the geometric Frobenius
+at $p$ being $\Frob_p^{-1}$. The naive factor
 $L_p^{\nv}(A_f,s)$ is $L_p(A_f,s)$ when $\delta_p=\dim V^{I_p}>0$ and $1$ when $\delta_p=0$. The paragraph after Lemma lem:dfg21 writes
-``$\det(1-\Frob_p\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}$'' with $V^D=A_f(1)$: with $\Frob_p$ read as the geometric Frobenius this is
-$L_p(A_f(1),0)^{-1}=L_p(A_f,1)^{-1}$ by \Cref{prop:local:L-factor}(iii).
+``$\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}\ne0$'' with $V^D=A_f(1)$: the left side is $L_p(A_f(1),0)^{-1}$, which equals $L_p(A_f,1)^{-1}$ by
+\Cref{prop:local:L-factor}(iii). The original version of the paper wrote $\Frob_p$ in this sentence; it has to be read as the geometric Frobenius.
 \end{paperlink}
 
 \subsection{Swan and Artin conductors}
@@ -1853,8 +1868,9 @@ and for a continuous $\ell$-adic $\rho$, $a(\rho)=a(\WD(\rho))$.
 $a(\rho)=\dim V-\dim V^{I_K}$ if $\rho$ is tamely ramified.
 \item If $V$ is unramified and $\chi$ is a character, $a(V\otimes\chi)=\dim V\cdot a(\chi)$. If $\chi$ is ramified and $\mu$ unramified, $a(\Sp(2)\otimes\mu)=1$ and
 $a(\Sp(2)\otimes\mu\chi)=2a(\chi)$.
-\item (Stated; Ogg, Saito.) For an elliptic curve $E/\Q$ and $\ell\ne p$, $a(V_\ell E|_{G_{\Q_p}})$ is the exponent of $p$ in the conductor of $E$
-(\Cref{ch:reduction}).
+\item For an elliptic curve $E/\Q$ and $\ell\ne p$, \Cref{ch:reduction} defines the exponent of $p$ in the conductor of $E$ to be $a(V_\ell E|_{G_{\Q_p}})$;
+it does not depend on $\ell$. (Stated.) Ogg's formula (Saito in general) relates it to $v_p(\Delta)$ and the number of components of the special fibre
+of the N\'eron model.
 \end{enumerate}
 \end{proposition}
 
@@ -1863,7 +1879,8 @@ $a(\Sp(2)\otimes\mu\chi)=2a(\chi)$.
 (ii) follows from (i), \Cref{thm:local:swan}(iii) and \Cref{prop:local:unram-basechange}; $a(\rho)=0$ forces $V^{I_K}=V$. (iii) $I_K$ acts on $V\otimes\chi$ by the
 scalars $\chi(\sigma)$, so $(V\otimes\chi)^{G_i}$ is $V\otimes\chi$ or $0$ according as $\chi(G_i)=1$ or not, and each term of the sum is $\dim V$ times that for $\chi$. For
 $\Sp(2)\otimes\mu$, $r$ is unramified and $\dim(\ker N)^{r(I_K)}=1$, so $a=2-1+0=1$. For $\Sp(2)\otimes\mu\chi$, $r=(\mu\chi\oplus\norm{\cdot}\mu\chi)$ has $a(r)=2a(\chi)$
-by the previous case, and $(\ker N)^{r(I_K)}=V^{r(I_K)}=0$, so $a=2a(\chi)$. (iv) We do not prove this; see \cite[Section 2]{SerreTate68} and \Cref{ch:reduction}.
+by the previous case, and $(\ker N)^{r(I_K)}=V^{r(I_K)}=0$, so $a=2a(\chi)$. (iv) The first sentence is a definition. We do not prove the independence of $\ell$ or Ogg's formula; see \cite[Section 2]{SerreTate68}, Ogg \cite{Ogg}
+and \Cref{ch:reduction}, which also gives Saito's general proof.
 \end{proof}
 
 \begin{theorem}[epsilon factors]\label{thm:local:epsilon}
@@ -1966,8 +1983,9 @@ $a(A)=3-1+0=2$. (iv) In \Cref{ex:local:tate-shape-wd}, $N=aE_{12}$ maps $e_2$ to
 \end{proof}
 
 \begin{theorem}[the shapes at a tame prime]\label{thm:local:shapes-table}
-Under the standing hypotheses, suppose that $q\ge5$ (rows $1$ and $3$ hold for every $q$, rows $2$ and $4$ for every odd $q$, and rows $5$ and $6$ whenever
-$q\nmid\#\rho(I_q)$, with the same proofs). The following table
+Under the standing hypotheses, suppose that $q\ge5$. (Columns $1$ to $7$, which do not involve Kodaira types, hold more generally, with the same proofs:
+rows $1$ and $3$ for every $q$, rows $2$ and $4$ for every odd $q$, and rows $5$ and $6$ whenever $q\nmid\#\rho(I_q)$. The Kodaira column is asserted
+only for $q\ge5$.) The following table
 lists, for each shape of $\WD(V)$, the image of inertia, $\dim V^{I_q}$, $a(V)$, $L(V,s)^{-1}$, $\dim A^{I_q}$ and $L(A,s)^{-1}$ ($\Phi$ geometric); the last column,
 the Kodaira types of an elliptic curve with $V=V_\ell E$, is quoted from \Cref{ch:reduction,ch:galrep}.
 \begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
@@ -2016,7 +2034,8 @@ mod $3$ representation.
 Keep the standing hypotheses, with $q\in\{2,3\}$.
 \begin{enumerate}[label=(\roman*)]
 \item If $q=3$ and $\rho(I_3)$ is finite of order divisible by $3$, then $\rho$ is wildly ramified and $a(V)\ge3$. If moreover $\rho(I_3)$ is cyclic of order $3$ or
-$6$, $A^{I_3}$ is still the line spanned by $2\sigma+1$, but $\Frob$ need not act on it through $q\bmod3$.
+$6$, $A^{I_3}$ is still the line spanned by $2\sigma+1$, and $\Frob$ still acts on it by $+1$ or $-1$; but the sign is no longer determined by $q$,
+since the tame relation is not available on wild inertia.
 \item If $q=2$ and $\rho(I_2)$ is cyclic of order $3$, then \Cref{prop:local:tame-cyclic-shape} applies: $a(V)=2$, $L(A,s)^{-1}=1-\chi_{-3}(2)2^{-s}=1+2^{-s}$, and
 $L(A,1)^{-1}=\frac32$.
 \item If $\rho(I_q)$ is finite and not abelian, then $V$ is an absolutely irreducible representation of $\rho(I_q)$, $A^{I_q}=0$ and $L(A,s)=1$.
@@ -2027,8 +2046,9 @@ $L(A,1)^{-1}=\frac32$.
 \begin{proof}
 (i) $I_3/P_3$ has no quotient of order $3$ (\Cref{thm:local:tame-character}(ii)), so an element of order $3$ in $\rho(I_3)$ comes from $P_3$ (\Cref{prop:local:wild-image}(ii)),
 and $\operatorname{sw}(V)\ge\frac{g_1}{g_0}\dim(V/V^{G_1})>0$. An element of order $3$ and determinant $1$ has the eigenvalues $\zeta_3^{\pm1}$ and fixes no vector, so
-$V^{I_3}=0$; as $\operatorname{sw}$ is an integer (\Cref{thm:local:swan}(ii)), $a(V)=2+\operatorname{sw}(V)\ge3$. The computation of the commutant in \Cref{prop:local:tame-cyclic-shape}(iii) uses only the cyclicity; the action of $\Frob$ by
-$g\mapsto g^q$ used the tame relation, which is not available on wild inertia. (ii) $2\nmid3$, so the image is tame; $\chi_{-3}(2)=-1$. (iii) A two-dimensional
+$V^{I_3}=0$; as $\operatorname{sw}$ is an integer (\Cref{thm:local:swan}(ii)), $a(V)=2+\operatorname{sw}(V)\ge3$. The computation of the commutant in \Cref{prop:local:tame-cyclic-shape}(iii) uses only the cyclicity. $\Frob$ normalises $\rho(I_3)$, hence its unique subgroup $\langle\sigma\rangle$ of
+order $3$, so $\rho(\Frob)\sigma\rho(\Frob)^{-1}=\sigma^{\pm1}$; as $2\sigma^{-1}+1=2\sigma^2+1=-(2\sigma+1)$ (from $\sigma^2+\sigma+1=0$), $\Frob$ acts on the line by
+$\pm1$. In the tame case the sign was read off from $g\mapsto g^q$, which used the tame relation; that is not available on wild inertia. (ii) $2\nmid3$, so the image is tame; $\chi_{-3}(2)=-1$. (iii) A two-dimensional
 faithful representation of a finite non-abelian group in characteristic $0$ that fixed a line over $\overline\Omega$ would be triangular, hence (being semisimple)
 diagonal and abelian; so it is absolutely irreducible, its commutant is the scalars (Schur, \Cref{ch:reps}), and the trace-zero commutant is $0$. (iv) is
 \Cref{prop:local:conductor}(iii) with \Cref{thm:local:swan}(iv).
@@ -2037,15 +2057,16 @@ diagonal and abelian; so it is absolutely irreducible, its commutant is the scal
 \begin{remark}[what the paper takes from this at $2$ and $3$]\label{rem:local:wild-paper}
 \begin{enumerate}[label=(\alph*)]
 \item For a curve of type $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$, the image of inertia on $T_\ell E$ is cyclic of order exactly $3$; this is a theorem proved in
-\Cref{ch:galrep} from $E[3]^{I_2}\simeq\Phig_2[3]$ and in \Cref{ch:reduction} from the conductor exponent (important\_notes.md, point 43). With
+\Cref{ch:galrep} from $E[3]^{I_2}\simeq\Phig_2[3]$ and in \Cref{ch:reduction} from the conductor exponent. With
 \Cref{prop:local:wild-shapes}(ii) and $L(\Sym f,s)=L(A_f,s-1)$ (\Cref{ch:lfunctions}), $P_2(X)=1+2X$ and $e_3(E,2)=v_3(3/2)=1$, as Lemma lem:IV and
 Remark rem:wild state.
 \item For type $\mathrm{II}$ or $\mathrm{II}^*$ at $2$ the Kodaira type does not determine the image of inertia. When the image is non-abelian ($Q_8$ or $\SL_2(\F_3)$,
 acting absolutely irreducibly), $P_2=1$ by \Cref{prop:local:wild-shapes}(iii); but \curve{336f1} has type $\mathrm{II}$ at $2$ and $P_2=1+2X$, and \curve{1232l1} has type
-$\mathrm{II}^*$ at $2$ and a cubic $P_2$ (memo, point B4). The revised Remark rem:wild says this.
+$\mathrm{II}^*$ at $2$ and a cubic $P_2$. The revised Remark rem:wild says this; the original version of the paper asserted $P_2=1$ for every type $\mathrm{II}$ at $2$.
 \item At $q=2$ a curve of type $\mathrm{I}_n^*$ may have potentially good reduction, so the Kodaira type does not determine the Weil-Deligne shape (Definition
 def:terms: $t_\ell=0$ then); and in the potentially multiplicative case the conductor exponent is $4$ or $6$ by \Cref{prop:local:wild-shapes}(iv).
-\item At $q=3$, by (i), types $\mathrm{IV}$, $\mathrm{IV}^*$ are wild; this is why Lemma lem:IV excludes $q=3$ and Lemma lem:euler assumes $q\ge5$ for the potentially good
+\item At $q=3$ the image of inertia for types $\mathrm{IV}$, $\mathrm{IV}^*$ has order divisible by $3$ (\Cref{ch:reduction,ch:galrep}), so by (i) these types
+are wild; the paper says ``At $q=3$ the types $\mathrm{IV}$, $\mathrm{IV}^*$ are wildly ramified, and the lemma does not apply.'' this is why Lemma lem:IV excludes $q=3$ and Lemma lem:euler assumes $q\ge5$ for the potentially good
 rows.
 \end{enumerate}
 \end{remark}
@@ -2099,6 +2120,15 @@ $\Frob^{-1}t\,\Frob$ as powers of $t$. Then show directly, in the affine model, 
 The curve $E=\curve{14a1}$, $y^2+xy+y=x^3+4x-6$, has split multiplicative reduction of type $\mathrm{I}_3$ at $7$, and PARI gives the Tate parameter
 $q_E=6\cdot7^3+4\cdot7^4+6\cdot7^5+\cdots$. Compute $n$, the reduction $\bar u$ of the unit part, the class $c$ of Lemma lem:tamfactor at $\ell=3$ and $v_3(c)$, and deduce
 $v_3(\Tam_7(\ad T_3E))$ from the lemma. Do the same for $\curve{11a1}$ at $q=11$, $\ell=5$. (Answers: $2$ in both cases.)
+\end{exercise}
+
+\begin{exercise}\label{ex:local:ex-cprime}
+Let $q\ne\ell$ be primes, $x\in\Q_q^\times$ with $v_q(x)=n\ge1$, and $\kappa$ the Kummer cocycle of $x$ for a chosen compatible system of $\ell$-power roots,
+with $\Z_\ell(1)\simeq\Z_\ell$. Working directly from the definition of $\kappa$ (without quoting \Cref{thm:local:kummer-inertia}(iv)): (a) show that
+replacing the system of roots by another one changes $\kappa$ by the coboundary $g\mapsto(\chi_\ell(g)-1)z$ for some $z\in\Z_\ell$, so that
+$c'=\kappa(\Frob)$ changes by $(q-1)z$; (b) show that replacing $\Frob$ by $\Frob\sigma$ ($\sigma\in I_q$) changes $c'$ by $q\,n\,t_\ell(\sigma)$; (c) deduce that
+$\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ does not depend on any choice. This is the quantity in the formula of the paper's Lemma lem:tamfactor. (d) For
+$q=7$, $\ell=3$ and $x=7^3u$ with $u\equiv6\pmod7$, compute this minimum.
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-ramified-basechange}
