@@ -62,7 +62,8 @@ $\mathcal L(D)$ has a $k$-rational basis \emph{(proved here; the rational basis 
 regular differentials have no zeros. \emph{(proved here)} \Cref{cor:curves:rr-consequences}.
 \item \textbf{Plane curves.} A smooth plane curve of degree $d$ has genus $(d-1)(d-2)/2$, in any characteristic. \emph{(proof sketched here)} \Cref{thm:curves:plane-genus}.
 \item \textbf{Weierstrass equations.} A genus-one curve $C$ with $O\in C(k)$ is isomorphic over $k$, by $[x:y:1]$ with $x\in\mathcal L(2(O))$, $y\in\mathcal L(3(O))$, to a smooth Weierstrass cubic
-$y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$, $a_i\in k$, with $O\mapsto[0:1:0]$; conversely. \emph{(proved here)} \Cref{thm:curves:genus-one-weierstrass}.
+$y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$, $a_i\in k$, with $O\mapsto[0:1:0]$; conversely. \emph{(proved here, given that images of projective varieties are closed;
+the converse in characteristic $2$ rests on the sketched \Cref{thm:curves:plane-genus})} \Cref{thm:curves:genus-one-weierstrass}.
 \item \textbf{Genus one is $\Pic^0$.} For $g=1$ and $O\in C(k)$, $P\mapsto[(P)-(O)]$ is a $G_k$-equivariant bijection $C(\bar k)\to\Pic^0(C)$. \emph{(proved here)}
 \Cref{prop:curves:genus-one-pic}.
 \item \textbf{Nonconstant morphisms.} A morphism of curves is constant or surjective \emph{(stated; reference)}; $\varphi^*$ embeds $\bar k(C_2)$ in $\bar k(C_1)$ with finite index \emph{(proved here)}.
@@ -78,11 +79,11 @@ $\varphi^*\operatorname{div}f=\operatorname{div}\varphi^*f$, so $\varphi_*\varph
 sketched)}. \Cref{prop:curves:separability-frobenius}.
 \item \textbf{Ramification} (definition): unramified, branch points, tame and wild. \Cref{def:curves:ramification}.
 \item \textbf{Local computation.} For separable $\varphi$, $\ord_P\varphi^*\omega=e\,\ord_Q\omega+\ord_P(d(\varphi^*t_Q)/dt_P)$ with the last term $\ge e-1$, equality iff tame; finitely many ramified points.
-\emph{(proved here)} \Cref{lem:curves:local-differential}.
-\item \textbf{Riemann-Hurwitz.} $2g_1-2\ge\deg\varphi(2g_2-2)+\sum_P(e_\varphi(P)-1)$ for separable $\varphi$, with equality iff all ramification is tame. \emph{(proved here)}
+\emph{(proved here, given \Cref{prop:curves:separability-frobenius}(b) and \Cref{thm:curves:degree-formula})} \Cref{lem:curves:local-differential}.
+\item \textbf{Riemann-Hurwitz.} $2g_1-2\ge\deg\varphi(2g_2-2)+\sum_P(e_\varphi(P)-1)$ for separable $\varphi$, with equality iff all ramification is tame. \emph{(proved here, given \Cref{thm:curves:degree-formula} and Riemann-Roch)}
 \Cref{thm:curves:riemann-hurwitz}.
 \item \textbf{Consequences.} $g_1\ge g_2$ if $g_2\ge1$; morphisms of genus-one curves are unramified; hyperelliptic and Fermat genera; for $\varphi\colon X\to E$, $\sum(e_P-1)=2g(X)-2$
-(for $\varphi_{\curve{121a1}}$: $10$; $\varphi_{\curve{539c1}}$: $96$). \emph{(proved here)} \Cref{cor:curves:rh-consequences}.
+(for $\varphi_{\curve{121a1}}$: $10$; $\varphi_{\curve{539c1}}$: $96$). \emph{(proved here, given \Cref{thm:curves:riemann-hurwitz})} \Cref{cor:curves:rh-consequences}.
 \item \textbf{Riemann surfaces} (definition): charts with holomorphic transitions; meromorphic functions; holomorphic maps. \Cref{def:curves:riemann-surface}.
 \item \textbf{Holomorphic maps.} Local normal form $w=z^e$; open, surjective, finite fibres; constant degree $\sum_{P\mapsto Q}\operatorname{mult}_P$; finitely many ramification points;
 orientation-preserving. \emph{(proved here)} \Cref{thm:curves:holomorphic-maps}.
@@ -111,16 +112,16 @@ forms); $\langle\varphi_*\eta,\xi\rangle=\langle\eta,\varphi^*\xi\rangle$, $\var
 $H^1_{\mathrm{et}}\simeq T_\ell J(-1)$. \Cref{conv:curves:duality}.
 \item \textbf{Jacobian} (definition): $J(C)(\bar k)=\Pic^0(C)$; $J_{\mathrm{an}}(X)=H^0(X,\Omega^1)^\vee/\Lambda_X$. \Cref{def:curves:jacobian}.
 \item \textbf{Abel-Jacobi.} $\operatorname{AJ}\colon\Div^0(X)\to J_{\mathrm{an}}(X)$ is a well-defined homomorphism and $\iota\colon X\to J_{\mathrm{an}}$ is a holomorphic injection inducing the period isomorphism on
-$H_1$ \emph{(proved here)}; Abel's theorem and Jacobi inversion, $\Pic^0(X)\simeq J_{\mathrm{an}}(X)$ \emph{(stated; reference)}. \Cref{thm:curves:abel-jacobi}.
+$H_1$ \emph{(proved here, injectivity given Abel's theorem)}; Abel's theorem and Jacobi inversion, $\Pic^0(X)\simeq J_{\mathrm{an}}(X)$ \emph{(stated; reference)}. \Cref{thm:curves:abel-jacobi}.
 \item \textbf{Jacobian variety.} $J$ is an abelian variety of dimension $g$ over $k$ with $J(\bar k)=\Pic^0(C)$, $J(\C)=J_{\mathrm{an}}$, the Albanese universal property, and Mordell-Weil.
 \emph{(stated; reference)} \Cref{thm:curves:jacobian-variety}.
 \item \textbf{Functoriality.} $\varphi_*\colon J(X)\to J(Y)$ and $\varphi^*\colon J(Y)\to J(X)$ with $\varphi_*\varphi^*=[n]$; over $\C$, $\varphi_*$ is induced by $(\varphi^*)^\vee$ and $\varphi_*$ on $H_1$
 \emph{(proved here)}, $\varphi^*$ by the trace and $\varphi^!$ \emph{(proof sketched here)}; for $Y=E$, $\varphi=\varphi_*\circ\iota_X$. \Cref{prop:curves:jacobian-functoriality}.
-\item \textbf{Tori.} For a surjective map of complex tori, $\pi_0(\ker)\simeq M/A(\Lambda)$; for an injective lattice map, $\ker\simeq\operatorname{sat}(B(M))/B(M)$; maps of one-dimensional tori are $z\mapsto cz$ of
+\item \textbf{Tori.} For a surjective map of complex tori, $\pi_0(\ker)\simeq M/A(\Lambda)$; for $B\colon W\to V$ $\C$-linear and injective with $B(M)\subseteq\Lambda$, $\ker\simeq\operatorname{sat}(B(M))/B(M)$; maps of one-dimensional tori are $z\mapsto cz$ of
 degree $[\Lambda':c\Lambda]$. \emph{(proved here)} \Cref{lem:curves:tori}.
 \item \textbf{Degree and cup product.} $\langle\varphi^*x,\varphi^*y\rangle=n\langle x,y\rangle$; $\varphi_*\varphi^*=n$; $\varphi^*H^1(Y,\Z)$ saturated iff $\varphi_*$ onto on $H_1$ iff $\ker(J(X)\to J(Y))$
 connected iff $\varphi^*$ injective on $J$, the indices all equal; for $Y=E$, the cup product on $\varphi^*H^1(E)$ has ideal of values $n\Z$, Gram determinant $n^2$, $[H^1:M\oplus M^\perp]=n^2$ if
-saturated, and ideal $(n/c)\Z$ on the saturation in general; an isogeny of degree $m$ destroys saturation. \emph{(proved here; the identification of $\varphi^*$ on $J$ sketched)}
+saturated, and ideal $(n/m_0)\Z$ on the saturation in general, $m_0=\#\pi_0(\ker(J(X)\to E))$; an isogeny of degree $m$ destroys saturation. \emph{(proved here; the identification of $\varphi^*$ on $J$ sketched)}
 \Cref{prop:curves:degree-cup-product}.
 \item \textbf{Torsion.} $J(X)[n]=\frac1n\Lambda_X/\Lambda_X\simeq H_1(X,\Z/n)\simeq(\Z/n)^{2g}$; $J[\mf m]$ is a $\T/\mf m$-vector space \emph{(proved here)}; $J[n](\bar k)\simeq(\Z/n)^{2g}$ over $k$,
 $\operatorname{char}k\nmid n$ \emph{(stated; reference)}. \Cref{prop:curves:torsion}.
@@ -137,7 +138,7 @@ reference)} \Cref{thm:curves:weil-pairing-etale}.
 $v^*\mathcal C^*u^*$ \emph{(proved here)}; the action on $J$ and $T_\ell J$ is $\mathcal C_*$ \emph{(proof sketched here)}. \Cref{prop:curves:correspondence-actions}.
 \item \textbf{The adjoint is the transpose.} $\langle\mathcal C^*\xi,\eta\rangle_X=\langle\xi,(\mathcal C^t)^*\eta\rangle_Y$, that is $(\mathcal C^*)^\dagger=(\mathcal C^t)^*$; automorphisms are isometries;
 $\operatorname{PD}\circ\mathcal C^*=(\mathcal C^t)_*\circ\operatorname{PD}$. \emph{(proved here, given \Cref{prop:curves:transfer})} \Cref{thm:curves:adjoint-transpose}.
-\item \textbf{Twisted pairing.} If $t^t=w^*tw^*$ for every $t$ in a commutative ring $\T$ of combinations of correspondences, $w$ an involution of $X$, then $\langle x,w^*y\rangle$ is perfect and alternating
+\item \textbf{Twisted pairing.} If $t^t=w^*tw^*$ for every $t$ in a commutative $\Zl$-subalgebra $\T$ of $\End_{\Zl}(H^1(X,\Zl))$ spanned by actions of correspondences, $w$ an involution of $X$, then $\langle x,w^*y\rangle$ is perfect and alternating
 on $H^1(X,\Zl)$, every $t\in\T$ is self-adjoint for it, and $H^1(X,\Zl)=\bigoplus_{\mf m}H^1(X,\Zl)_{\mf m}$ is orthogonal with the pairing perfect on each summand. \emph{(proved here)}
 \Cref{cor:curves:twisted-pairing}.
 \end{enumerate}
@@ -149,7 +150,7 @@ on $H^1(X,\Zl)$, every $t\in\T$ is self-adjoint for it, and $H^1(X,\Zl)=\bigoplu
 degree $\degphi$): morphisms and their degree in every sense, \Cref{def:curves:degree}, \Cref{thm:curves:degree-formula}, \Cref{cor:curves:degree-three-ways}, \Cref{tab:curves:degree},
 \Cref{thm:curves:riemann-existence}; Riemann-Hurwitz checks of the quoted degrees, \Cref{cor:curves:rh-consequences}(e); why the optimal curve has minimal degree,
 \Cref{prop:curves:degree-cup-product}(iv), (v) and \Cref{pl:curves:pullback}.
-\item \textbf{Section 1, Remark rem:degree} (the formula of Zagier and Watkins: Petersson norm over the area of the period lattice): positivity and periods, \Cref{thm:curves:bilinear-relations},
+\item \textbf{Remark rem:degree (Section 4, sec:quant)} (the formula of Zagier and Watkins: Petersson norm over the area of the period lattice): positivity and periods, \Cref{thm:curves:bilinear-relations},
 \Cref{ex:curves:torus}.
 \item \textbf{Section 1.1 and Proposition prop:ns} ($\rho_{E,\ell}$ and the action of $G_\Q$ on $E[3]$ and on the roots of the $3$-division polynomial): the Galois action on points,
 \Cref{prop:curves:galois-action}, \Cref{pl:curves:galois}.
@@ -181,7 +182,9 @@ is the theory of compact Riemann surfaces with charts, as in a first course in c
 the two (Riemann's existence theorem and GAGA) is stated once, in \Cref{thm:curves:riemann-existence}, and every other
 comparison is proved from it. What is proved: every statement that is a computation with polynomials, valuations, local
 normal forms of holomorphic maps, change of variables in integrals, or linear algebra of lattices. What is sketched: the
-formula $\sum e_P=\deg\varphi$, the genus of plane curves, Riemann's bilinear relations, the Hodge decomposition, the transfer.
+formula $\sum e_P=\deg\varphi$, the genus of plane curves, the degree of the Frobenius morphism, the topological form of Riemann-Hurwitz, Riemann's bilinear
+relations, the Hodge decomposition, the transfer, the description of $\varphi^*$ on the Jacobian by the trace and the transfer, and the action of correspondences
+on the Jacobian.
 What is stated with a reference: the Nullstellensatz, Bezout's theorem, the equivalence between curves and function fields,
 Riemann-Roch, Riemann existence and GAGA, the classification of surfaces, Abel's theorem and Jacobi inversion, the
 algebraicity of the Jacobian, the Weil pairing and etale cohomology. In the paper the objects of this section are the
@@ -227,7 +230,8 @@ $V(S)\subseteq\A^n$ is an \emph{algebraic set}; for $Y\subseteq\A^n$, $I(Y)$ is 
 of a topology, the \emph{Zariski topology} (finite unions and arbitrary intersections of algebraic sets are algebraic: $V(S)\cup V(S')=V(SS')$,
 $\bigcap V(S_i)=V(\bigcup S_i)$). An \emph{affine variety} is an algebraic set $V$ with $I(V)$ prime. It is \emph{defined over $k$} if $I(V)$ is generated by
 polynomials in $k[x]$. Its \emph{coordinate ring} is the domain $\bar k[V]=\bar k[x]/I(V)$, its \emph{function field} $\bar k(V)=\Frac\bar k[V]$; if $V$ is defined
-over $k$, $k[V]=k[x]/(I(V)\cap k[x])$ and $k(V)=\Frac k[V]$. The \emph{dimension} of $V$ is the transcendence degree of $\bar k(V)$ over $\bar k$
+over $k$, $k[V]=k[x]/(I(V)\cap k[x])$ and $k(V)=\Frac k[V]$. A function $f\in\bar k(V)$ is \emph{regular at} $P\in V$ if $f=g/h$ with $g,h\in\bar k[V]$ and
+$h(P)\ne0$; then $f(P)=g(P)/h(P)$ does not depend on the choice. The \emph{dimension} of $V$ is the transcendence degree of $\bar k(V)$ over $\bar k$
 (\cite[Chapter VIII, Section 1]{Lang}; \Cref{ch:galois} treats algebraic and transcendental elements).
 \end{definition}
 
@@ -250,7 +254,8 @@ algebraic set}; a \emph{projective variety} is a projective algebraic set whose 
 $I(V)$ is generated by polynomials with coefficients in $k$. The sets $U_i=\{x_i\ne0\}$ are the standard charts, $U_i\simeq\A^n$ by dividing by
 $x_i$. The \emph{projective closure} $\bar V$ of an affine variety $V\subseteq\A^n=U_0$ is the zero set of the homogenisations of the elements of
 $I(V)$; conversely $V\cap U_i$ is obtained by dehomogenising. The \emph{function field} $\bar k(V)$ of a projective variety is the field of
-quotients $F/G$ of homogeneous polynomials of the same degree with $G\notin I(V)$, two quotients being equal when $FG'-F'G\in I(V)$.
+quotients $F/G$ of homogeneous polynomials of the same degree with $G\notin I(V)$, two quotients being equal when $FG'-F'G\in I(V)$; such an $f$ is
+\emph{regular at} $P\in V$ if $f=F/G$ with $G(P)\ne0$, and then $f(P)=F(P)/G(P)$.
 \end{definition}
 
 \begin{proposition}[points over subfields]\label{prop:curves:projective-points}
@@ -343,7 +348,7 @@ $-11^2$ for \curve{121a1}) is proved in \Cref{ch:ellcurves}.
 \end{example}
 
 \begin{theorem}[smooth points and discrete valuation rings]\label{thm:curves:smooth-dvr}
-Let $C$ be a curve, $P\in C(\bar k)$, $\bar k[C]_P=\{g/h:g,h\text{ regular at }P,\ h(P)\ne0\}\subseteq\bar k(C)$ its local ring and $\mf m_P$ the maximal ideal of
+Let $C$ be a curve, $P\in C(\bar k)$, $\bar k[C]_P=\{f\in\bar k(C):f\text{ regular at }P\}$ (\Cref{def:curves:projective-space}) its local ring and $\mf m_P$ the maximal ideal of
 functions vanishing at $P$. The following are equivalent: (a) $P$ is smooth; (b) $\dim_{\bar k}\mf m_P/\mf m_P^2=1$; (c) $\bar k[C]_P$ is a discrete
 valuation ring. At a smooth point $P=(a,b)$ of an affine plane model $f=0$, the class of a linear form $\lambda=u(x-a)+v(y-b)$ is a uniformiser iff the
 line $\lambda=0$ is not the tangent line; for instance $x-a$ is a uniformiser if $f_y(P)\ne0$. The valuation $\ord_P\colon\bar k(C)^\times\to\Z$ of $\bar k[C]_P$
@@ -458,7 +463,7 @@ $I(C)$ is generated by polynomials with coefficients in $k$, so $\sigma$ maps $I
 $F^\sigma(\sigma P)=\sigma(F(P))$ and $G^\sigma(\sigma P)=\sigma(G(P))\ne0$. So $f\mapsto\sigma f$ is a field automorphism of $\bar k(C)$ (semilinear over $\sigma$) that maps the
 local ring at $P$ onto the local ring at $\sigma P$ and $\mf m_P$ onto $\mf m_{\sigma P}$; it therefore maps a uniformiser at $P$ to one at $\sigma P$ and preserves
 valuations. That the fixed field is $k(C)$ is Hilbert's Theorem 90 for the vector space $\bar k(C)$ over $\bar k$ \cite[Chapter II, Section 5]{SilvermanAEC}.
-(iii) If $\varphi=[f_0:\dots:f_n]$ with $f_i\in k(C_1)$, then $\sigma f_i=f_i$, and by (ii) $\sigma(\varphi(P))=[\sigma f_0(\sigma P):\dots]=\varphi(\sigma P)$ If some $g\in\bar k(C_1)^\times$ is needed to evaluate at $P$, that is $\varphi(P)=[(gf_0)(P):\dots:(gf_n)(P)]$, then
+(iii) If $\varphi=[f_0:\dots:f_n]$ with $f_i\in k(C_1)$, then $\sigma f_i=f_i$, and by (ii) $\sigma(\varphi(P))=[\sigma f_0(\sigma P):\dots]=\varphi(\sigma P)$. If some $g\in\bar k(C_1)^\times$ is needed to evaluate at $P$, that is $\varphi(P)=[(gf_0)(P):\dots:(gf_n)(P)]$, then
 $\sigma(\varphi(P))=[(\sigma g\,f_0)(\sigma P):\dots:(\sigma g\,f_n)(\sigma P)]$, and $\sigma g$ does the same job at $\sigma P$, so this is $\varphi(\sigma P)$. The rest follows
 from (i).
 \end{proof}
@@ -675,7 +680,8 @@ g=\frac{(d-1)(d-2)}2.
 \end{theorem}
 
 \begin{proof}[Sketch of proof]
-Choose coordinates so that the line at infinity $Z=0$ meets $C$ in $d$ distinct points and $[0:1:0]\notin C$. On the affine part $f(x,y)=0$ put
+Choose coordinates in general position: so that $f_y$ is not identically zero, the line at infinity $Z=0$ is tangent to $C$ nowhere (so it meets $C$ in $d$
+distinct points, by \Cref{thm:curves:bezout}), and $[0:1:0]\notin C$. On the affine part $f(x,y)=0$ put
 $\omega_0=dx/f_y=-dy/f_x$ (the two agree because $f_x\,dx+f_y\,dy=d(f)=0$ on $C$). At an affine point with $f_y\ne0$, $x-a$ is a uniformiser and
 $\ord\omega_0=0$; at an affine point with $f_y=0$, $f_x\ne0$ by smoothness, $y-b$ is a uniformiser and $\ord\omega_0=\ord(-dy/f_x)=0$. So $\omega_0$ is regular
 and nowhere zero on the affine part. A computation in the chart at each point at infinity (as in \Cref{prop:curves:differentials}(iv)) gives
@@ -683,7 +689,10 @@ $\ord\omega_0=d-3$ there, so $\operatorname{div}(\omega_0)=(d-3)\cdot\operatorna
 $d(d-3)$ by Bezout (\Cref{thm:curves:bezout}). By \Cref{cor:curves:rr-consequences}(b), $2g-2=d(d-3)$, which is the formula. One also finds that the regular
 differentials are exactly the $h(x,y)\,\omega_0$ with $\deg h\le d-3$, a space of dimension $\binom{d-1}2$, in agreement with
 \Cref{cor:curves:rr-consequences}(a). See \cite[Chapter 8]{Fulton} and \cite[Chapter IV, Section 1, and Chapter I, Section 7]{Hartshorne} (sections not
-verified). The argument needs no hypothesis on the characteristic: a line meeting $C$ in $d$ distinct points exists over the infinite field $\bar k$.
+verified). The argument needs no hypothesis on the characteristic, because such coordinates always exist: the tangent lines of $C$ form at most a one-dimensional
+family in the two-dimensional family of lines, so a general line is tangent nowhere; and $F_X$, $F_Y$, $F_Z$ are not all identically zero ($C$ being smooth), so
+after a general linear change of coordinates $F_Y$, hence $f_y$, is not identically zero (in characteristic $p$ this can fail for special coordinates, when
+$f\in k[x,y^p]$).
 \end{proof}
 
 \begin{example}[genera]\label{ex:curves:genus-examples}
@@ -715,7 +724,7 @@ Let $C$ be a smooth projective curve of genus one over $k$ and $O\in C(k)$.
 \[
 y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6,\qquad a_i\in k.
 \]
-\item The morphism $\phi=[x:y:1]\colon C\to\PP^2$ is an isomorphism onto the projective cubic $E$ defined by this equation, $E$ is smooth, and $\phi(O)=[0:1:0]$.
+\item The morphism $\varphi=[x:y:1]\colon C\to\PP^2$ is an isomorphism onto the projective cubic $E$ defined by this equation, $E$ is smooth, and $\varphi(O)=[0:1:0]$.
 \item Conversely, a smooth Weierstrass cubic has genus one, and $[0:1:0]$ is a point of it defined over $k$.
 \end{enumerate}
 \end{theorem}
@@ -732,15 +741,16 @@ distinct pole orders, would be linearly independent, forcing all coefficients to
 $Ay^2+b_1xy+b_3y=Bx^3+b_2x^2+b_4x+b_6$ and substitute $x=ABx'$, $y=AB^2y'$; dividing by $A^3B^4$ gives a Weierstrass equation in $x'$, $y'$ with coefficients
 in $k$.
 
-(iii) $\phi$ is a morphism (\Cref{thm:curves:extend-morphism}) defined over $k$, with image in $E$. Writing $\phi=[x/y:1:1/y]$ and using $\ord_O(x/y)=1$,
-$\ord_O(1/y)=3$ gives $\phi(O)=[0:1:0]$. The Weierstrass polynomial is irreducible over $\bar k$: a factorisation would be $(y-p(x))(y-q(x))$ with
-$p+q=-a_1x-a_3$ and $pq=-(x^3+\dots)$, impossible since $\deg p,\deg q\le1$ would give $\deg pq\le2$. The image of $\phi$ is an irreducible closed
+(iii) $\varphi$ is a morphism (\Cref{thm:curves:extend-morphism}) defined over $k$, with image in $E$. Writing $\varphi=[x/y:1:1/y]$ and using $\ord_O(x/y)=1$,
+$\ord_O(1/y)=3$ gives $\varphi(O)=[0:1:0]$. The Weierstrass polynomial is irreducible over $\bar k$: it is monic of degree two in $y$, so no nonconstant polynomial in $x$ alone divides it, and a
+factorisation would be $(y-p(x))(y-r(x))$ with $p+r=-a_1x-a_3$ and $pr=-(x^3+a_2x^2+a_4x+a_6)$. Then $\deg p+\deg r=3$ is odd, so $\deg p\ne\deg r$, and
+$\deg(p+r)=\max(\deg p,\deg r)\ge2$, contradicting $\deg(p+r)\le1$. The image of $\varphi$ is an irreducible closed
 subset of $E$ (stated: images of projective varieties are closed) and not a point (as $x$ is not constant), so it is all of $E$. By
 \Cref{prop:curves:principal}(ii), $[\bar k(C):\bar k(x)]=\deg\operatorname{div}_\infty x=2$ and $[\bar k(C):\bar k(y)]=3$; hence $[\bar k(C):\bar k(x,y)]$ divides $2$ and $3$, so
-$\bar k(C)=\bar k(x,y)=\phi^*\bar k(E)$ and $\phi$ is birational. If $E$ were singular, it would be birational to $\PP^1$: projecting from the singular point $S$,
+$\bar k(C)=\bar k(x,y)=\varphi^*\bar k(E)$ and $\varphi$ is birational. If $E$ were singular, it would be birational to $\PP^1$: projecting from the singular point $S$,
 a line through $S$ meets $E$ in $S$ with multiplicity at least two and in one further point (\Cref{thm:curves:bezout}), which gives a birational map
 $E\dashrightarrow\PP^1$, as for the node in \Cref{thm:curves:smooth-model}. Then $C$ would be birational to $\PP^1$, hence isomorphic to it
-(\Cref{thm:curves:equivalence}), and of genus $0$, a contradiction. So $E$ is smooth, $\phi$ is a morphism of degree one between smooth projective curves,
+(\Cref{thm:curves:equivalence}), and of genus $0$, a contradiction. So $E$ is smooth, $\varphi$ is a morphism of degree one between smooth projective curves,
 and it is an isomorphism by \Cref{thm:curves:equivalence}.
 
 (iv) Genus one is \Cref{ex:curves:genus-examples}(b); $[0:1:0]$ has coordinates in $k$.
@@ -885,8 +895,10 @@ cohomology (over $\C$) & $\varphi^*$ on $H^2=\Z$; $\langle\varphi^*x,\varphi^*y\
 \begin{enumerate}[label=(\alph*)]
 \item In characteristic $0$ every nonconstant morphism of curves is separable.
 \item In characteristic $p$, $\varphi$ is separable iff $\varphi^*\omega\ne0$ for one (equivalently every) nonzero differential $\omega$ on $C_2$, where
-$\varphi^*(f\,dg)=(\varphi^*f)\,d(\varphi^*g)$. Every nonconstant $\varphi$ factors as $C_1\xrightarrow{\pi_r}C_1^{(r)}\xrightarrow{\lambda}C_2$ with $r=\deg_i\varphi$, $\pi_r$ the $r$-power
-Frobenius morphism of the next item and $\lambda$ separable (stated).
+$\varphi^*(f\,dg)=(\varphi^*f)\,d(\varphi^*g)$. For a power $r$ of $p$ and a curve $C\subseteq\PP^n$, let $C^{(r)}$ be the curve whose ideal is generated by the polynomials obtained from generators of $I(C)$ by raising
+their coefficients to the $r$-th power, and $\pi_r\colon C\to C^{(r)}$, $[x_0:\dots:x_n]\mapsto[x_0^r:\dots:x_n^r]$, the \emph{$r$-power Frobenius morphism} (it maps $C$ into $C^{(r)}$
+because $F^{(r)}(x_0^r,\dots,x_n^r)=F(x_0,\dots,x_n)^r$). Every nonconstant $\varphi$ factors as $C_1\xrightarrow{\pi_r}C_1^{(r)}\xrightarrow{\lambda}C_2$ with $r=\deg_i\varphi$ and $\lambda$
+separable (stated). For $C$ defined over $\F_q$, $C^{(q)}=C$ and $\pi_q$ is the morphism of the next item.
 \item Let $k=\F_q$ and $C\subseteq\PP^n$ a curve defined over $\F_q$. The \emph{$q$-power Frobenius morphism} $\pi_q\colon[x_0:\dots:x_n]\mapsto[x_0^q:\dots:x_n^q]$ maps $C$ to
 itself and is a bijection on $C(\bar\F_q)$; $\pi_q^*\bar\F_q(C)=\bar\F_q(C)^q$; $d(\pi_q^*f)=0$ for every $f$; $\pi_q$ is purely inseparable of degree $q$ and
 $e_{\pi_q}(P)=q$ at every point; its fixed points are $C(\F_q)$; and on $C(\bar\F_q)$ it coincides with the action of the arithmetic Frobenius $\Frob_q\in G_{\F_q}$.
@@ -1463,8 +1475,9 @@ is the period isomorphism of \Cref{thm:curves:bilinear-relations}(e). For $g=1$,
 \begin{proof}
 (i) Two paths from $Q_i$ to $P_i$ differ by a closed loop, so the integrals differ by a period, an element of $\Lambda_X$; the map is additive.
 (ii) We do not prove this; see \cite[Chapter VIII]{Miranda}, \cite[Sections 20 and 21]{Forster81} and \cite[Chapter 2, Section 2]{GriffithsHarris78} (not verified).
-The ``only if'' half of Abel's theorem ($\operatorname{AJ}(\operatorname{div}f)=0$) is a residue computation: pull back along $f\colon X\to\PP^1$ and use that $\PP^1$ has no
-holomorphic forms.
+The ``only if'' half of Abel's theorem ($\operatorname{AJ}(\operatorname{div}f)=0$) is a trace computation: for nonconstant $f\colon X\to\PP^1$,
+$\operatorname{div}f=f^*((0)-(\infty))$, and as in the proof of \Cref{prop:curves:jacobian-functoriality}(iii), $\operatorname{AJ}(\operatorname{div}f)(\omega)\equiv\int_\infty^0\Tr_f\omega$
+modulo periods; $\Tr_f\omega$ is a holomorphic form on $\PP^1$, hence $0$ (\Cref{prop:curves:differentials}(iv)).
 (iii) In a chart near $P_1$, $\iota(P)=\iota(P_1)+(\omega\mapsto\int_{P_1}^P\omega)$, and $P\mapsto\int_{P_1}^P\omega$ is a primitive of a holomorphic function, so $\iota$ is holomorphic. If
 $\iota(P)=\iota(Q)$ then $\operatorname{AJ}((P)-(Q))=0$, so $(P)\sim(Q)$ by Abel's theorem, and $P=Q$ since $g\ge1$ (\Cref{cor:curves:rr-consequences}(d)). For a loop $\gamma$ based at
 $P_0$, the path $t\mapsto(\omega\mapsto\int_{\gamma|[0,t]}\omega)$ in $H^0(X,\Omega^1)^\vee$ lifts $\iota\circ\gamma$ and ends at the period vector of $\gamma$; and $H_1(V/\Lambda,\Z)=\Lambda$ for a
@@ -1560,8 +1573,8 @@ connected; (d) $\varphi^*\colon J(Y)\to J(X)$ is injective. More precisely
 \end{align*}
 a divisor of $n^{2g_Y}$.
 \item Let $Y=E$ have genus one and $M=\varphi^*H^1(E,\Z)$. The cup product on $M$ has ideal of values $n\Z$ and Gram determinant $n^2$. If (iii) holds,
-$[H^1(X,\Z):M\oplus M^\perp]=n^2$, and for every prime $\ell$, $[H^1(X,\Zl):(M\otimes\Zl)\oplus(M\otimes\Zl)^\perp]=\ell^{2v_\ell(n)}$. In general, with $c=\#\pi_0(\ker(J(X)\to E))$,
-$c$ divides $n$ and the cup product on $\operatorname{sat}(M)$ has ideal of values $(n/c)\Z$.
+$[H^1(X,\Z):M\oplus M^\perp]=n^2$, and for every prime $\ell$, $[H^1(X,\Zl):(M\otimes\Zl)\oplus(M\otimes\Zl)^\perp]=\ell^{2v_\ell(n)}$. In general, with $m_0=\#\pi_0(\ker(J(X)\to E))$,
+$m_0$ divides $n$ and the cup product on $\operatorname{sat}(M)$ has ideal of values $(n/m_0)\Z$.
 \item (Isogenies.) Let $Y=E$, $\psi\colon E\to E'$ an isogeny of degree $m$ (a nonconstant holomorphic map of genus-one surfaces with $\psi(O)=O'$) and $\varphi'=\psi\circ\varphi$. Then
 $(\varphi')^*H^1(E',\Z)$ has index $m$ in $\varphi^*H^1(E,\Z)$. Hence if $\varphi^*H^1(E,\Z)$ is saturated and $m>1$, then $(\varphi')^*H^1(E',\Z)$ is not.
 \end{enumerate}
@@ -1586,8 +1599,8 @@ so this index is the first term. Hence the last equality and (a)$\Leftrightarrow
 $\sm0a{-a}0$ has ideal of values $a\Z$ and determinant $a^2$). By (i) and the injectivity of $\varphi^*$, the cup product on $M$ is $n$ times a unimodular alternating form: ideal of
 values $n\Z$, Gram determinant $n^2$. If $M$ is saturated, then $M\otimes\Zl$ is saturated in $H^1(X,\Zl)$, the cup product is perfect there (\Cref{thm:curves:cup-product}), and the
 theorem on Gram determinants of saturated sublattices (\Cref{ch:modules}) gives $[H^1(X,\Zl):(M\otimes\Zl)\oplus(M\otimes\Zl)^\perp]=\ell^{v_\ell(n^2)}$. The orthogonal commutes with
-$\otimes\Zl$ (it is a kernel, and $\Zl$ is flat over $\Z$), and an index of lattices is the product of its $\ell$-parts, which gives $n^2$. In general $[\operatorname{sat}(M):M]=c$ by (iii),
-so the Gram determinant of $\operatorname{sat}(M)$ is $n^2/c^2$, an integer square, and its ideal of values is $(n/c)\Z$; in particular $c\mid n$.
+$\otimes\Zl$ (it is a kernel, and $\Zl$ is flat over $\Z$), and an index of lattices is the product of its $\ell$-parts, which gives $n^2$. In general $[\operatorname{sat}(M):M]=m_0$ by (iii),
+so the Gram determinant of $\operatorname{sat}(M)$ is $n^2/m_0^2$, an integer square, and its ideal of values is $(n/m_0)\Z$; in particular $m_0\mid n$.
 
 (v) By \Cref{lem:curves:tori}(c), in suitable coordinates $E=\C/\Lambda$, $E'=\C/\Lambda'$, $\psi(z)=z$ with $\Lambda\subseteq\Lambda'$ of index $m$, and $\psi_*$ on $H_1$ is this inclusion. Its transpose
 $\psi^*\colon H^1(E',\Z)\to H^1(E,\Z)$ has image of index $m$ (the determinant of a matrix and of its transpose agree). As $\varphi^*$ is injective on $H^1(E,\Z)$ with image
@@ -1687,7 +1700,7 @@ $\varepsilon_N(f)=\pm1$ is real. Hence $\langle\varphi^*a,w_N^*\varphi^*b\rangle
 \item ``The Gram determinant of a rank-two alternating form is the square of its ideal of values'': \Cref{ch:modules}; this is \Cref{prop:curves:degree-cup-product}(iv).
 \end{enumerate}
 \Cref{prop:curves:degree-cup-product}(iv), (v) also explain ``minimal degree'' in the definition of the optimal curve: for a non-optimal parametrisation the image of $\varphi^*$ is not saturated, and the
-ideal of values on its saturation is $(n/c)\Z$, the degree of the optimal parametrisation through which it factors (\Cref{ch:moddeg}). Over $\Zl$ only the $\ell$-part of $c$ matters, which is why,
+ideal of values on its saturation is $(n/m_0)\Z$, with $m_0$ the order of the component group of \Cref{prop:curves:degree-cup-product}(iv): the degree of the optimal parametrisation through which it factors (\Cref{ch:moddeg}). Over $\Zl$ only the $\ell$-part of $m_0$ matters, which is why,
 when $E[\ell]$ is irreducible, the choice of curve in the class does not change $v_\ell$ (Section 1 of the paper).
 \end{paperlink}
 
@@ -1769,16 +1782,15 @@ that is, for the cup products, $(\mathcal C^*)^\dagger=(\mathcal C^t)^*$. Conseq
 \end{theorem}
 
 \begin{proof}
-The projection formula (\Cref{prop:curves:transfer}(iv)) and alternation give, for a nonconstant $\phi\colon X_1\to Y_1$, $\theta\in H^1(X_1)$, $\zeta\in H^1(Y_1)$, both
+The projection formula (\Cref{prop:curves:transfer}(iv)) and alternation give, for a nonconstant $\varphi\colon X_1\to Y_1$, $\theta\in H^1(X_1)$, $\zeta\in H^1(Y_1)$, both
 \[
-\langle\phi_*\theta,\zeta\rangle_{Y_1}=\langle\theta,\phi^*\zeta\rangle_{X_1}\quad\text{and}\quad\langle\zeta,\phi_*\theta\rangle_{Y_1}=-\langle\phi_*\theta,\zeta\rangle_{Y_1}=-\langle\theta,\phi^*\zeta\rangle_{X_1}=\langle\phi^*\zeta,\theta\rangle_{X_1}.
+\langle\varphi_*\theta,\zeta\rangle_{Y_1}=\langle\theta,\varphi^*\zeta\rangle_{X_1}\quad\text{and}\quad\langle\zeta,\varphi_*\theta\rangle_{Y_1}=-\langle\varphi_*\theta,\zeta\rangle_{Y_1}=-\langle\theta,\varphi^*\zeta\rangle_{X_1}=\langle\varphi^*\zeta,\theta\rangle_{X_1}.
 \]
 Apply the first to
-$\phi=\alpha$ (componentwise on $C$) and the second to $\phi=\beta$:
+$\varphi=\alpha$ (componentwise on $C$) and the second to $\varphi=\beta$:
 \[
 \langle\alpha_*\beta^*\xi,\eta\rangle_X=\langle\beta^*\xi,\alpha^*\eta\rangle_C=\langle\xi,\beta_*\alpha^*\eta\rangle_Y.
 \]
-Both sides equal $\int_C\beta^*\xi\wedge\alpha^*\eta$: away from the finitely many branch points, $\alpha$ and $\beta$ are coverings and this is the change of variables formula on each sheet.
 The identity holds on integral classes, hence with any coefficients by linearity.
 (a) Take $\mathcal C=\Gamma_w$: $\Gamma_w^*=w^*$ and $(\Gamma_w^t)^*=w_*=(w^{-1})^*$ (\Cref{prop:curves:transfer}(v)); so $\langle w^*x,w^*y\rangle=\langle x,(w^{-1})^*w^*y\rangle=\langle x,y\rangle$.
 (b) Take $\mathcal C=\Gamma_\varphi$. (c) For $\eta\in H^1(X,\Z)$: $\eta(\operatorname{PD}_X\mathcal C^*\xi)=\langle\mathcal C^*\xi,\eta\rangle_X=\langle\xi,(\mathcal C^t)^*\eta\rangle_Y=((\mathcal C^t)^*\eta)(\operatorname{PD}_Y\xi)=\eta((\mathcal C^t)_*\operatorname{PD}_Y\xi)$,
@@ -1786,7 +1798,7 @@ by \Cref{prop:curves:correspondence-actions}(a) for $\mathcal C^t$. With \Cref{p
 \end{proof}
 
 \begin{corollary}[twisted pairings and self-adjoint Hecke algebras]\label{cor:curves:twisted-pairing}
-Let $X$ be a compact Riemann surface, $w$ an automorphism of $X$ with $w^2=\mathrm{id}$, and $\T$ a commutative ring of endomorphisms of $H^1(X,\Zl)$, each of the form $t=\sum_ic_i\mathcal C_i^*$
+Let $X$ be a compact Riemann surface, $w$ an automorphism of $X$ with $w^2=\mathrm{id}$, and $\T$ a commutative $\Zl$-subalgebra of $\End_{\Zl}(H^1(X,\Zl))$ (so a $\Zl$-submodule, not merely a subring), each of whose elements is of the form $t=\sum_ic_i\mathcal C_i^*$
 with $c_i\in\Zl$ and $\mathcal C_i$ correspondences from $X$ to $X$. Put $t^t=\sum_ic_i(\mathcal C_i^t)^*$ (well defined, being the adjoint $t^\dagger$ by \Cref{thm:curves:adjoint-transpose}), and
 assume $t^t=w^*tw^*$ for all $t\in\T$. Put $[x,y]=\langle x,w^*y\rangle$. Then:
 \begin{enumerate}[label=(\roman*)]
@@ -1803,7 +1815,7 @@ By \Cref{thm:curves:adjoint-transpose}, $t^\dagger=t^t=w^*t(w^*)^{-1}$ for the c
 \Cref{ch:modules} (its parts on adjoints, idempotents and twisted pairings) now gives: $[\ ,\ ]$ is perfect, as the composite of a perfect pairing with the automorphism $w^*$; for
 $t\in\T$, $[tx,y]=\langle x,t^\dagger w^*y\rangle=\langle x,w^*tw^*w^*y\rangle=[x,ty]$; and $[y,x]=\langle y,w^*x\rangle=-\langle w^*x,y\rangle=-\langle x,w^*y\rangle=-[x,y]$, so $[\ ,\ ]$ is antisymmetric, hence alternating
 since $2$ is a nonzerodivisor in $\Zl$. For (iii), the same proposition of \Cref{ch:modules} shows that idempotents of a commutative ring of self-adjoint endomorphisms are self-adjoint, that the
-decomposition is orthogonal and that the pairing is perfect on each summand. $\T$ is a $\Zl$-submodule of the finite free module $\End(H^1(X,\Zl))$, so it is finite and free over $\Zl$, and
+decomposition is orthogonal and that the pairing is perfect on each summand. $\T$ is a $\Zl$-submodule of the finite free module $\End_{\Zl}(H^1(X,\Zl))$ by hypothesis, so it is finite and free over $\Zl$ (a submodule of a finite free module over the principal ideal domain $\Zl$), and
 it is the product of its localisations $\T_{\mf m}$, cut out by idempotents $e_{\mf m}$ (\Cref{ch:modules}); $H^1(X,\Zl)_{\mf m}=e_{\mf m}H^1(X,\Zl)$.
 \end{proof}
 
@@ -1831,7 +1843,7 @@ In Section 4.1 of the paper, the pairing $\hat\delta_!$ ``is perfect and alterna
 $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup product (this is what the composition with $w$ is for)''. With the input
 $T_n^t=w_{M^\Sigma}T_nw_{M^\Sigma}$ from
 \Cref{ch:moddeg}, \Cref{thm:curves:adjoint-transpose} says that $w^*T_n^*w^*$ is the adjoint of $T_n^*$, and \Cref{cor:curves:twisted-pairing}(i), (ii) is the sentence, with $X=X_0(M^\Sigma)$,
-$w=w_{M^\Sigma}$ and $\T$ the Hecke algebra tensored with $\Zl$; the factor $\frac12$ in $\hat\delta_!$ is a unit. The paragraph after Lemma lem:hecke and Step 2 of the proof of Theorem thm:quant:
+$w=w_{M^\Sigma}$ and $\T$ the image of the Hecke algebra tensored with $\Zl$ in $\End_{\Zl}(H^1(X_0(M^\Sigma),\Zl))$, a commutative $\Zl$-subalgebra; the factor $\frac12$ in $\hat\delta_!$ is a unit. The paragraph after Lemma lem:hecke and Step 2 of the proof of Theorem thm:quant:
 ``the idempotent $e_{\mf m}$ is self-adjoint for $\hat\delta_!$, so $H^1(X_0(N),\Zl)$ splits orthogonally into its local components and the pairing is perfect on each'' is
 \Cref{cor:curves:twisted-pairing}(iii). This supplies the hypothesis of Lemma lem:ddt417 for the module $L=H^1(X_0(N),\Zl)_{\mf m}$:
 a perfect $\Zl$-bilinear pairing for which $\T_{\mf m}$ is self-adjoint.
@@ -1863,7 +1875,7 @@ that $\operatorname{div}(dx/y)=0$, and that $g(C)=1$. If $h$ has no root in $k$ 
 
 \begin{exercise}\label{ex:curves:ex-bases}
 Let $C$ have genus one, $O\in C(k)$, and $x$, $y$ as in \Cref{thm:curves:genus-one-weierstrass}. Show that $\{x^iy^j:j\in\{0,1\},\ 2i+3j\le n\}$ is a basis of $\mathcal L(n(O))$ for every
-$n\ge1$ except $n=1$ (where the basis is $\{1\}$). Explain why the construction cannot be started on the conic $X^2+Y^2+Z^2=0$ over $\Q$ or on Selmer's cubic.
+$n\ge1$. Explain why the construction cannot be started on the conic $X^2+Y^2+Z^2=0$ over $\Q$ or on Selmer's cubic.
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-chord}
