@@ -1199,6 +1199,14 @@ with every s in I. Left and right orthogonals are mixed (harmless: both equal L[
 confirmed by its reviewer. (A third proposed point, that lem:crit needs the rank of T/(I+J) stated, was judged not a
 gap: the paper's "cyclic, of order r'" already asserts finiteness, which is equivalent to phi_f(J) != 0.)
 
+### 87. Paragraph after Lemma lem:IV: freeness of T_3E is not tied to q >= 5 (expository)
+The paragraph after lem:IV (v2) says "For q>=5 the order 3 is also the semistability defect ... and T_3E is then free of
+rank one over Z_3[X]/(X^2+X+1)", which reads as if the freeness needs q >= 5. It holds at every q != 3 where the image
+of inertia has order 3, q = 2 included: lem:IV gives a cyclic image of order 3 in SL_2(Z_3), so sigma^2+sigma+1 = 0 on
+T_3E, and T_3E is free of rank one over Z_3[zeta_3] (Chapter 6, cor:ant:z3zeta3modules). Only the identification with
+Kraus's semistability defect needs q >= 5. The paper itself uses the freeness at q = 2 in lem:tamadd. Suggested fix:
+move "T_3E is free of rank one ..." out of the q >= 5 sentence. Found writing Chapter 6, confirmed by its reviewer.
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
@@ -1280,3 +1288,40 @@ gap: the paper's "cyclic, of order r'" already asserts finiteness, which is equi
   D_4/Q_8 character table clash with eigenvalues lambda_i elsewhere in the chapter (cosmetic).
 * Chapter 4 relies on Chapter 6 (ch:ant) for T free of rank one over Z_l[g] and T/3T = Z_3[zeta_3]/(pi^2), and on
   ch:local for roots of unity in Q_l and tameness at q >= 5.
+
+### B33. Items from writing Chapter 5
+
+* New lemma lem:galois:nonempty-limit (an inverse limit over a directed set of nonempty finite sets is nonempty); Chapter
+  6 cites it through ch:galois. thm:galois:algebraic-closure(d): every F-embedding Fbar -> Fbar is an automorphism.
+* cor:galois:congruent-ap(d): for a newform h of weight 2 on Gamma_0(M) and l odd, a_p(h) = a_p(E) mod lambda on a set of
+  density one gives rhobar_h = rhobar_{E,l} tensor k when rhobar_{E,l} is irreducible (given ch:modgalrep). The paper's
+  "rhobar_g = rhobar, that is, a_p(g) = a_p(f) mod lambda" is (c) in one direction and (d) in the other.
+* The paper's ns3 function returns 1 exactly for image N_s(F_3), for every E/Q; checked by the reviewer on all 64,687
+  curves below conductor 10,000 (120 labelled 3Ns by Cremona's galrep file, plus 26 CM curves galrep leaves unlabelled).
+* The outline's y^2 = x^3-6x-8 is 6912d1 (image 3Ns); 726a1 has psi_3 = (x^2-x-74)(3x^2+8x+20).
+* Sketches upgraded to proofs: Artin-Schreier (b), the Kappe-Warren C4/D4 test, no small subgroups in GL_n(C),
+  disc(x^n-a), disc(Phi_l), disc(R_f) = disc(f). Notation: Frob_q (never phi_q), E_lambda for the l-adic coefficient
+  field, b(sigma), u(sigma) in the Kummer propositions.
+* Assigned elsewhere by the outlines: inertia and tame inertia (Chapter 1 points to ch:galois and ch:local; only Chapter
+  7 has it); chibar_l(Frob_p) = p mod l is a black box here, proved in Chapter 6; det rhobar_{E,l} = chibar_l is
+  Chapter 9 (Weil pairing).
+* Unverified pointers added: Lang VI.9 (Artin-Schreier), Lang XI (real closed fields), Lang IV.6 (symmetric
+  polynomials).
+
+### B34. Items from writing Chapter 6
+
+* prop:ant:latticefree: T free of rank one over Z_l[g] for g with characteristic polynomial Phi_m, m in {3,4,6}, any odd
+  l (Chapter 4 needs orders 4 and 6 as well as 3); prop:ant:commutant needs characteristic polynomial X^2+X+1 (resp.
+  X^2+1), not just sigma^2+sigma+1 = 0.
+* The tame statement cor:ant:frobsigma holds at every q with rho(I_q) of order prime to q, q = 2 and 3 included; the
+  tame relation itself is only sketched here and must be proved in Chapter 7, with D_p = G_{Q_p}, prop:ant:otimesZl and
+  Z_3[zeta_3] as the ring of integers of Q_3(sqrt(-3)).
+* How the paper uses Chebotarev and CM: in v2, prop:ns and lem:h0 get rhobar = rhobar tensor chi_{-3} from Ind psi by
+  Frobenius reciprocity; the trace criterion (3 | a_p for p = 2 mod 3, prop:ant:twistdetect) and the CM theorem are the
+  book's, used for the original version of lem:h0 and for the Chapter 5 example. The original sec:anomaly check was
+  "some p < 1223 inert in Q(sqrt(-3)) has 9 not dividing a_p", for h_3 <= 1.
+* The level-23 Hecke algebra T = Z[T_2] = Z[theta] is now proved in Chapter 6 (ex:ant:level23); Chapter 3 cites it.
+  Chapter 3's remark that its DVR criterion (e) is "used only in ch:ant" is no longer accurate (Chapter 6 uses (a)).
+* Notation: geometric Frobenius written Frob_p^{-1} (Phi_n are cyclotomic polynomials here), declared in
+  conv:ant:conventions(e); (1+sqrt d)/2 is theta_d; integral bases beta_i; the paper's D written prod_{q in S} q.
+* Chapter 9 must supply the Galois action on CM endomorphisms (exercise ex:ant:ex-cm points there).

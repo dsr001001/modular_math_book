@@ -1167,7 +1167,9 @@ above that disagrees with them.
 | **Chapter 2** | **written**: 2,170 lines, 47 pages, compiles (0 overfull boxes), lint clean; lean pipeline run by hand in an interactive session on the author's plan (write, combined review with 17 findings: 0 blocking, 3 major, 14 minor; fix; check found 1 major and 6 minor; second fix) |
 | **Chapter 3** | **written**: 2,529 lines, 58 pages, compiles (0 overfull boxes), lint clean; lean pipeline by hand (review: 1 blocking, 18 minor; fix; check: 6 minor, 4 applied by the orchestrator) |
 | **Chapter 4** | **written**: 2,053 lines, 45 pages, compiles (0 overfull boxes), lint clean; lean pipeline by hand (review: 1 blocking, 2 major, 11 minor; fix; check: 3 minor, recorded in B32) |
-| Chapters 5 to 9, 11 to 22, Appendix B, preface update | not yet written |
+| **Chapter 5** | **written**: 2,089 lines, 49 pages, compiles (0 overfull boxes), lint clean; lean pipeline by hand (review: 1 major, 10 minor; fix; check: 3 minor, fixed by the orchestrator) |
+| **Chapter 6** | **written**: 1,851 lines, 43 pages, compiles (0 overfull boxes), lint clean; lean pipeline by hand (review: 1 major, 12 minor; fix; check: 5 minor, fixed by the orchestrator) |
+| Chapters 7 to 9, 11 to 22, Appendix B, preface update | not yet written |
 
 **What the pilot taught.**
 * Length: 2,344 lines against a plan average of about 2,200 per chapter; the outline is a good predictor.

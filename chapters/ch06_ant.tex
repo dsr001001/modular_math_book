@@ -105,7 +105,7 @@ $\ell\ne3$. \emph{(proved here)} \Cref{prop:ant:zlzeta3}.
 \emph{(proved here)} \Cref{prop:ant:latticefree}.
 \item \textbf{The commutant and the invariant line.} For $\sigma$ with characteristic polynomial $X^2+X+1$ on a plane over a field $F$ of characteristic $0$:
 the commutant is $F[\sigma]\simeq F\otimes\Q(\zeta_3)$, its trace-zero part is $F(2\sigma+1)$ with $(2\sigma+1)^2=-3$, and $A\sigma A^{-1}=\sigma^q$, $q\ne3$ prime,
-makes $A^{\pm1}$ act on it by $\chi_{-3}(q)$; for $\tau$ of order $4$ and $q$ an odd prime, the line $F\tau$ and $\chi_{-4}(q)$; integrally, for $\ell$ odd,
+makes $A^{\pm1}$ act on it by $\chi_{-3}(q)$; for $\tau$ with characteristic polynomial $X^2+1$ (for example of order $4$ in $\SL_2$) and $q$ an odd prime, the line $F\tau$ and $\chi_{-4}(q)$; integrally, for $\ell$ odd,
 $\End_{\langle\sigma\rangle}(T)=\Z_\ell[\sigma]\simeq\Z_\ell\otimes\Z[\zeta_3]$.
 \emph{(proved here)} \Cref{prop:ant:commutant}.
 \item \textbf{Cyclotomic integers.} $\mathcal O=\Z[\zeta_n]$; for $n=\ell^a$, $\ell=u(1-\zeta)^{\varphi(\ell^a)}$ is totally ramified; the discriminant formula; $p$ ramifies in
@@ -161,7 +161,8 @@ Frobenius, with $\Frob^{-1}t\Frob=t^{q^{-1}}$ on tame inertia, \Cref{conv:ant:fr
 \Cref{prop:ant:ramonlyat}, \Cref{prop:ant:quadchar}, \Cref{cor:ant:qr}; $\chi_S$ and its conductor $\prod_{q\in S}q$ (the paper's $D$), \Cref{prop:ant:ramonlyat}(iii); characters as Dirichlet and as
 Galois characters, \Cref{thm:ant:dirichletgalois}, \Cref{ex:ant:characters}.
 \item \textbf{Theorem thm:main} (the hypothesis on $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$): $\Q(\sqrt{\ell^*})\subseteq\Q(\zeta_\ell)$ and its splitting law, \Cref{prop:ant:sqrtlstar};
-the condition $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$, \Cref{prop:ant:twistdetect}, \Cref{warn:ant:chil}.
+the condition $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$ (reached in the paper by Clifford theory, \Cref{ch:reps}; its trace form
+\Cref{prop:ant:twistdetect} is not used by the paper), \Cref{warn:ant:chil}.
 \item \textbf{Lemma lem:h0 and Proposition prop:ns}: $\bar\chi_3^{\mathrm{cyc}}=\chi_{-3}$ and $\chi_{\ell^*}\ne\bar\chi_\ell$ for $\ell\ge5$, \Cref{ex:ant:characters},
 \Cref{warn:ant:chil}; the isomorphism $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$ comes from induction from $\Q(\sqrt{-3})$, $\bar\rho\otimes\Fbar_3\simeq\Ind\psi$ with
 $\Ind\psi\otimes\chi_{-3}\simeq\Ind\psi$ (\Cref{ch:reps}), not from Frobenius traces; \Cref{prop:ant:twistdetect} gives the equivalent trace criterion
@@ -922,9 +923,9 @@ $d\equiv2\pmod4$, $(2)=(2,\sqrt d)^2$; if $d\equiv1\pmod8$, $(2)=(2,\frac{1+\sqr
 Apply \Cref{thm:ant:dedekindkummer}. If $p$ is odd, take $\theta=\sqrt d$, $g=X^2-d$: the index $[\mathcal O_K:\Z[\sqrt d]]$ is $1$ or $2$, prime to $p$. If
 $p\mid d$, $\bar g=X^2$ and $p=(p,\sqrt d)^2$; if $d$ is a nonzero square $a^2$ modulo $p$, $\bar g=(X-a)(X+a)$ with $a\not\equiv-a$; otherwise $\bar g$ is
 irreducible. For odd $p$, $p\mid D$ iff $p\mid d$, and $\bigl(\frac Dp\bigr)=\bigl(\frac dp\bigr)$ since $D/d\in\{1,4\}$. If $p=2$ and $d\equiv2,3\pmod4$, take
-$\theta=\sqrt d$ (index $1$): $X^2-d\equiv X^2$ or $(X+1)^2\pmod 2$, and $2\mid D=4d$. If $d\equiv1\pmod4$ take $\theta=\frac{1+\sqrt d}2$, $g=X^2-X+\frac{1-d}4$
+$\theta=\sqrt d$ (index $1$): $X^2-d\equiv X^2$ or $(X+1)^2\pmod 2$, and $2\mid D=4d$. If $d\equiv1\pmod4$ take $\theta_d=\frac{1+\sqrt d}2$, $g=X^2-X+\frac{1-d}4$
 (index $1$): modulo $2$, $g\equiv X(X+1)$ if $\frac{1-d}4$ is even, that is $d\equiv1\pmod8$, and $g\equiv X^2+X+1$, irreducible, if $d\equiv5\pmod8$; here
-$D=d$ is odd and $\bigl(\frac D2\bigr)=1$, resp. $-1$. The primes above $2$ for $d\equiv1\pmod8$ are $(2,\theta)$ and $(2,\theta-1)=(2,\frac{1-\sqrt d}2)$, as $\theta-1=-\frac{1-\sqrt d}2$.
+$D=d$ is odd and $\bigl(\frac D2\bigr)=1$, resp. $-1$. The primes above $2$ for $d\equiv1\pmod8$ are $(2,\theta_d)$ and $(2,\theta_d-1)=(2,\frac{1-\sqrt d}2)$, as $\theta_d-1=-\frac{1-\sqrt d}2$.
 \end{proof}
 
 \begin{proposition}[the character of a quadratic field]\label{prop:ant:quadchar}
@@ -1423,7 +1424,7 @@ Brauer-Nesbitt''); the original version of the note also used it to count primes
 that version). The opposite direction needs no density theorem: in Section 3 of the paper the optimal-level theorem gives $\bar\rho_g\simeq\bar\rho$, and
 $a_p(g)\equiv a_p(f)$ for all $p\nmid3N$ follows by taking traces of Frobenius (\Cref{prop:ant:frobGQ}(iv)). This section states the theorem with the Frobenius of
 \Cref{prop:ant:frobenius} and over any number field, proves the corollaries the book needs, gives the criterion for a representation to be isomorphic to its
-twist by a quadratic character, and explains, in the form needed to read Lemma lem:h0 correctly, why $a_p(E)=0$ at the inert primes of a quadratic field
+twist by a quadratic character, and explains, in the form needed to read the original version of Lemma lem:h0 correctly (\Cref{pl:ant:h0}), why $a_p(E)=0$ at the inert primes of a quadratic field
 happens only for curves with complex multiplication by that field. The form of Chebotarev over $\Q$ and its Brauer-Nesbitt corollaries are in
 \Cref{ch:galois}.
 
@@ -1574,8 +1575,8 @@ $\bar\rho_{E,3}\simeq\bar\rho_{E,3}\otimes\chi_{-3}$'' uses $\bar\chi_3^{\mathrm
 Proposition prop:ns, obtains $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$ from $\bar\rho\otimes\Fbar_3\simeq\Ind\psi$ for a character $\psi$ of
 $\Gal(\Qbar/\Q(\sqrt{-3}))$, by Frobenius reciprocity and $\Ind\psi\otimes\chi_{-3}\simeq\Ind\psi$ (\Cref{ch:reps}), not from Frobenius traces. Application (a) of
 \Cref{prop:ant:twistdetect} gives the equivalent trace criterion ($3\mid a_p$ for almost all $p\equiv2\pmod3$), used in the example of \Cref{ch:galois}, not in the
-paper. Section sec:anomaly no longer needs the numerical check that some prime $p<1223$ inert in
-$\Q(\sqrt{-3})$ has $a_p\ne0$.
+paper. Section sec:anomaly no longer needs the original numerical argument for $h_3(E)\le1$ (that some prime $p<1223$
+inert in $\Q(\sqrt{-3})$ has $9\nmid a_p$); $h_3(E)\le1$ now follows from Lemma lem:h0.
 \end{paperlink}
 
 \section{Coefficient fields and primes above \texorpdfstring{$\ell$}{l}}\label{sec:ant:coefficients}
@@ -1708,7 +1709,7 @@ rational coefficients and $\lambda=\ell$; Lemma lem:old is needed for general $h
 
 \begin{exercise}\label{ex:ant:ex-sqrt13}
 Let $K=\Q(\sqrt{13})$. Show that $\mathcal O_K=\Z[\theta_{13}]$ with $\theta_{13}=\frac{1+\sqrt{13}}2$, that $d_K=13$, and that $\frac{3+\sqrt{13}}2$ is a unit of norm $-1$. Factor
-$2$, $3$ and $13$ in $\mathcal O_K$ (answer: $2$ inert, $3$ split, $13$ ramified). Show that Dedekind-Kummer applied to $\theta=\sqrt{13}$ at $p=2$ would predict
+$2$, $3$ and $13$ in $\mathcal O_K$ (answer: $2$ inert, $3$ split, $13$ ramified). Show that Dedekind-Kummer applied to the generator $\sqrt{13}$ (that is, to $\Z[\sqrt{13}]$) at $p=2$ would predict
 that $2$ ramifies, and explain why the theorem does not apply there.
 \end{exercise}
 
