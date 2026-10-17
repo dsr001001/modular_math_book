@@ -90,7 +90,8 @@ $\ell^2-1$ with $\omega_2^{\ell+1}=\omega$; conjugation by $\Frob_\ell$ sends $\
 $\ell\mid a_\ell$, $\bar\rho|_{I_\ell}\otimes\F_{\ell^2}\simeq\omega_2\oplus\omega_2^\ell$ and $\bar\rho|_{D_\ell}$ is irreducible. Hence $a_\ell\bmod\ell$ is determined by
 $\bar\rho|_{D_\ell}$. \emph{(proof sketched here)} \Cref{thm:galrep:deligne-fontaine}.
 \item \textbf{Consequences at $\ell$.} For $\ell$ odd, $\ell\nmid N$: if $\bar\rho$ is reducible, $E$ is ordinary at $\ell$ and the two characters
-restrict to $I_\ell$ as $\omega$ and $1$; if $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$, then $\ell=3$ and $E$ is ordinary at $3$. \emph{(proved here)}
+restrict to $I_\ell$ as $\omega$ and $1$; if $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$, then $\ell=3$ and $E$ is ordinary at $3$. \emph{(proved here, given
+\Cref{thm:galrep:deligne-fontaine})}
 \Cref{cor:galrep:ordinary}.
 \item \textbf{Serre conductor.} For $\bar\sigma\colon G_\Q\to\GL_n(\Fbar_\ell)$ and $p\ne\ell$, $a_p(\bar\sigma)=n-\dim\bar\sigma^{I_p}+\operatorname{sw}_p(\bar\sigma)$ and
 $N(\bar\sigma)=\prod_{p\ne\ell}p^{a_p(\bar\sigma)}$; $a_p(\bar\sigma)=0$ iff $\bar\sigma$ is unramified at $p$; $a_p$ is invariant under extension of scalars and
@@ -101,7 +102,7 @@ the prime-to-$\ell$ part of $N$; the exponent at a multiplicative $p$ is $0$ or 
 odd it is $f_p-1$ for $\ell=3$ and types $\kod{IV}$, $\kod{IV}^*$, and $f_p$ otherwise. \emph{(proved here)}
 \Cref{prop:galrep:serre-conductor-E}.
 \item \textbf{Open image.} For $E$ without CM, $\rho_{E,\ell}(G_\Q)$ is open in $\GL_2(\Zl)$ and $\bar\rho_{E,\ell}$ is surjective for almost all $\ell$; with
-CM by $K$ and $\ell$ unramified in $K$ the image of $\bar\rho_{E,\ell}$ lies in the normaliser of a Cartan subgroup and not in the Cartan
+CM by an order in $K$ and $\ell$ odd and unramified in $K$ the image of $\bar\rho_{E,\ell}$ lies in the normaliser of a Cartan subgroup and not in the Cartan
 subgroup; a rational $\ell$-isogeny exists only for $\ell\in\{2,3,5,7,11,13,17,19,37,43,67,163\}$. \emph{(stated; reference)}
 \Cref{thm:galrep:open-image}.
 \item \textbf{Constraints on images.} For $\ell$ odd, $H=\bar\rho(G_\Q)$ has $\det H=\Fl^\times$ and contains a conjugate of $\operatorname{diag}(1,-1)$; so
@@ -112,6 +113,10 @@ subgroup (not in the Cartan subgroup if $\bar\rho$ is irreducible), or has proje
 (\texttt{3Nn}), $N_s(\F_3)$ (\texttt{3Ns}), $\mathrm B(\F_3)$ (\texttt{3B}), $\sm{1}{*}{0}{*}$ (\texttt{3B.1.1}), $\sm{*}{*}{0}{1}$ (\texttt{3B.1.2}), $C_s(\F_3)$
 (\texttt{3Cs}), $\{\operatorname{diag}(1,\pm1)\}$ (\texttt{3Cs.1.1}); never to $C_{ns}(\F_3)$. The orbits on the four lines are the factorisation pattern of
 $\psi_3$. \emph{(proved here; counts below conductor $10{,}000$)} \Cref{thm:galrep:mod3-images}.
+\item \textbf{$3$-isogeny paths.} For every $E/\Q$, CM or not, the rational $3$-isogenies make each isogeny class a disjoint union of paths; the
+ends of a path of length at least one have one stable line in $E[3]$, of characters $\eta$ and $\chi_{-3}\eta^{-1}$, the interior vertices two. So
+the ends pair the images \texttt{3B.1.1} and \texttt{3B.1.2}, which occur equally often in every isogeny class. \emph{(proved here)}
+\Cref{prop:galrep:3-isogeny-paths}.
 \item \textbf{Labels.} Sutherland's labels name the subgroup; the dictionary for $\ell=3$ and the labels occurring at $\ell=5,7,11,13$
 below conductor $10{,}000$. \emph{(convention; data)} \Cref{conv:galrep:labels}.
 \item \textbf{Zywina.} For non-CM $E/\Q$ and $\ell\le13$ the possible images of $\bar\rho_{E,\ell}$ are listed, with the corresponding families of
@@ -121,7 +126,8 @@ $\bar\rho\simeq\bar\rho\otimes\chi_K$ $\iff$ $\bar\rho\otimes\Fbar_\ell\simeq\In
 isomorphism $\bar\rho\to\bar\rho\otimes\chi_K$ has trace $0$ and $H^0(\Q,\ad\bar\rho\otimes\chi_K)$ is a line. \emph{(proved here)}
 \Cref{prop:galrep:dihedral}.
 \item \textbf{$\Q(\sqrt{\ell^*})$ is automatic for $\ell\ge5$ (Proposition prop:Sf).} For $\ell$ odd, $\ell\nmid N$, $\bar\rho$ irreducible: if $\ell\ge5$,
-$\bar\rho$ is absolutely irreducible on $G_{\Q(\sqrt{\ell^*})}$; if $\ell=3$ and it is not, $E$ is ordinary at $3$. \emph{(proved here)}
+$\bar\rho$ is absolutely irreducible on $G_{\Q(\sqrt{\ell^*})}$; if $\ell=3$ and it is not, $E$ is ordinary at $3$. \emph{(proved here, given
+\Cref{thm:galrep:deligne-fontaine})}
 \Cref{thm:galrep:lstar-automatic}.
 \item \textbf{Proposition prop:ns.} If $E[3]$ is irreducible, the image is $\GL_2(\F_3)$, $N_{ns}(\F_3)$ or $N_s(\F_3)$; $\bar\rho_{E,3}$ is absolutely
 irreducible on $G_{\Q(\sqrt{-3})}$ unless the image is $N_s(\F_3)$, and then $\bar\rho_{E,3}\otimes\F_9\simeq\Ind\psi$ with $\psi$ of order $4$,
@@ -137,10 +143,11 @@ set $R$ of primes $p\ne3$ with $\rho_{E,3}(I_p)$ cyclic of order $4$ is nonempty
 field of $\psi_3$; for $p\in R$, $\Frob_p$ acts on $(\ad V)^{I_p}$ by $\chi_{-3}(p)$ and $e_3(E,p)=v_3(p-\chi_{-3}(p))\ge1$; if $p\in R$, $p\ge5$, the type is
 $\kod{III}$ or $\kod{III}^*$ and $p\equiv\pm1\pmod{12}$. \emph{(proved here)} \Cref{prop:galrep:ns-structure}.
 \item \textbf{$S_f$.} For $\ell$ odd, $\ell\nmid N$: $\ell\notin S_f$ $\iff$ $E[\ell]$ irreducible and $h_\ell(E)=0$ $\iff$ $E[\ell]$ irreducible and not
-($\ell=3$ and image $N_s(\F_3)$). \emph{(proved here)} \Cref{cor:galrep:Sf}.
-\item \textbf{Reducible $\bar\rho$.} For $\ell$ odd, $\ell\nmid N$, $E[\ell]$ reducible: $\bar\rho^{\mathrm{ss}}=\psi_1\oplus\psi_2$, $\psi_1\psi_2=\bar\chi_\ell$, $E$ ordinary
-at $\ell$, $\{\psi_i|_{I_\ell}\}=\{\omega,1\}$, both unramified at multiplicative primes; if $E$ is semistable, $\{\psi_1,\psi_2\}=\{1,\bar\chi_\ell\}$,
-$a_p\equiv1+p\pmod\ell$, and $E$ or an $\ell$-isogenous curve has a rational point of order $\ell$. \emph{(proved here)}
+($\ell=3$ and image $N_s(\F_3)$). \emph{(proved here, given \Cref{thm:galrep:deligne-fontaine} for $\ell\ge5$)} \Cref{cor:galrep:Sf}.
+\item \textbf{Reducible $\bar\rho$.} For $\ell$ odd, $\ell\nmid N$, $E[\ell]$ reducible: $\bar\rho^{\mathrm{ss}}=\eta_1\oplus\eta_2$, $\eta_1\eta_2=\bar\chi_\ell$, $E$ ordinary
+at $\ell$, $\{\eta_i|_{I_\ell}\}=\{\omega,1\}$, both unramified at multiplicative primes; if $E$ is semistable, $\{\eta_1,\eta_2\}=\{1,\bar\chi_\ell\}$,
+$a_p\equiv1+p\pmod\ell$, and $E$ or an $\ell$-isogenous curve has a rational point of order $\ell$. \emph{(proved here, given
+\Cref{thm:galrep:deligne-fontaine})}
 \Cref{prop:galrep:reducible}.
 \item \textbf{Eisenstein labels at $3$.} $3\mid\#E(\Q)_{\mathrm{tors}}$ iff the image is \texttt{3B.1.1} or \texttt{3Cs.1.1}; \texttt{3Cs.1.1} means
 $E[3]\simeq\Z/3\oplus\mu_3$, not the split Cartan subgroup; without CM such a curve has no rational point of order $9$. \emph{(proved here,
@@ -273,12 +280,14 @@ displayed equality. For $\ell=3$, $\F_3^\times=\{\pm1\}$, its squares are $\{1\}
 according as $g$ fixes $\sqrt{-3}=2\zeta_3+1$ or not: $\bar\chi_3=\chi_{-3}$.
 
 (iii) Since $c^2=1$, $\rho(c)^2=1$, and $\det\rho(c)=\chi_\ell(c)=-1$ because $c(\zeta)=\zeta^{-1}$ on all roots of unity. As $2\in\Zl^\times$, the
-endomorphisms $\pi_\pm=\frac12(1\pm\rho(c))$ of $T$ are complementary idempotents, so $T=\pi_+T\oplus\pi_-T$ with $\pi_\pm T=T^{c=\pm1}$. Both are direct
+endomorphisms $\operatorname{pr}_\pm=\frac12(1\pm\rho(c))$ of $T$ are complementary idempotents, so $T=\operatorname{pr}_+T\oplus\operatorname{pr}_-T$ with $\operatorname{pr}_\pm T=T^{c=\pm1}$. Both are direct
 summands of a free $\Zl$-module of rank $2$, hence free; their ranks add to $2$; and they cannot be $2$ and $0$, since then $\rho(c)=\pm1$ would
 have determinant $1$. So both have rank one, and a basis $e_+,e_-$ adapted to the decomposition gives $\rho(c)=\operatorname{diag}(1,-1)$. Reducing
 modulo $\ell$ gives the statement on $\bar\rho(c)$; $1\ne-1$ in $\Fl$ as $\ell$ is odd.
 
-(iv) This is the criterion of N\'eron, Ogg and Shafarevich, \Cref{thm:galrep:nos} below: $E$ has good reduction at $p\nmid N$.
+(iv) The conductor exponent $f_p$ is defined in \Cref{ch:reduction} as the Artin conductor of $V$, so $p\nmid N$ means
+$\dim V-\dim V^{I_p}+\operatorname{sw}_p(V)=0$; both terms are nonnegative, so $V^{I_p}=V$, and $I_p$ acts trivially on $V$, hence on $T\subset V$
+(see also \Cref{thm:galrep:nos} below).
 \end{proof}
 
 \begin{theorem}[Faltings]\label{thm:galrep:faltings}
@@ -314,10 +323,10 @@ $\chi_d(g)\bar\rho(g)$ and $\bar\rho(g)$ have the same image in $\PGL_2(\Fl)$. A
 If $H$ contains an element $g$ with $g^2=-1$, choose $s\in G_\Q$ with $\bar\rho(s)=g$: then $((\bar\rho\otimes\chi_d)(s))^2=g^2=-1$, so $-1\in H'$, hence
 $H'\subseteq H\{\pm1\}=H$ and $H\subseteq H'\{\pm1\}=H'$, and $H'=H$. The groups $\GL_2(\F_3)$, $N_{ns}(\F_3)$ and $N_s(\F_3)$ all contain $J$, with $J^2=-1$; so
 the surjective image, \texttt{3Nn} and \texttt{3Ns} are fixed by every twist. In the reducible cases write
-$\bar\rho\sim\sm{\psi_1}{*}{0}{\psi_2}$ with $\psi_1\psi_2=\chi_{-3}$ (\Cref{prop:galrep:rho-basic}(ii)); then $\bar\rho\otimes\chi_d\sim\sm{\psi_1\chi_d}{*}{0}{\psi_2\chi_d}$,
-and the twist is split iff $\bar\rho$ is. By \Cref{thm:galrep:mod3-images}, \texttt{3B.1.1} is the non-split case with $\psi_1=1$, \texttt{3B.1.2} the
-non-split case with $\psi_1=\chi_{-3}$, \texttt{3B} the non-split case with $\psi_1\notin\{1,\chi_{-3}\}$, and \texttt{3Cs.1.1}, \texttt{3Cs} the split cases
-with $\{\psi_1,\psi_2\}=\{1,\chi_{-3}\}$, respectively $\{\psi_1,\psi_2\}\ne\{1,\chi_{-3}\}$. Twisting by $\chi_{-3}$ sends $\psi_1=1$ to $\chi_{-3}$ and $\chi_{-3}$ to $1$,
+$\bar\rho\sim\sm{\eta_1}{*}{0}{\eta_2}$ with $\eta_1\eta_2=\chi_{-3}$ (\Cref{prop:galrep:rho-basic}(ii)); then $\bar\rho\otimes\chi_d\sim\sm{\eta_1\chi_d}{*}{0}{\eta_2\chi_d}$,
+and the twist is split iff $\bar\rho$ is. By \Cref{thm:galrep:mod3-images}, \texttt{3B.1.1} is the non-split case with $\eta_1=1$, \texttt{3B.1.2} the
+non-split case with $\eta_1=\chi_{-3}$, \texttt{3B} the non-split case with $\eta_1\notin\{1,\chi_{-3}\}$, and \texttt{3Cs.1.1}, \texttt{3Cs} the split cases
+with $\{\eta_1,\eta_2\}=\{1,\chi_{-3}\}$, respectively $\{\eta_1,\eta_2\}\ne\{1,\chi_{-3}\}$. Twisting by $\chi_{-3}$ sends $\eta_1=1$ to $\chi_{-3}$ and $\chi_{-3}$ to $1$,
 and sends a character outside $\{1,\chi_{-3}\}$ to another such; twisting by $\chi_d$ with $\chi_d\notin\{1,\chi_{-3}\}$ sends both $1$ and $\chi_{-3}$ outside
 $\{1,\chi_{-3}\}$. This gives every case.
 
@@ -335,9 +344,9 @@ Let $\ell$ be odd.
 \item $\bar\rho_{E,\ell}$ is reducible iff $E$ has a rational isogeny of degree $\ell$; for $\ell=3$, iff the $3$-division polynomial $\psi_3$ has a root
 in $\Q$.
 \item The semisimplification $\bar\rho^{\mathrm{ss}}$ is determined up to isomorphism by the classes $a_p(E)\bmod\ell$ for $p$ in any set of primes of
-density one not dividing $N\ell$; if $\bar\rho$ is irreducible, $\bar\rho$ itself is. If $h$ is a newform of weight $2$ with coefficients in the ring of
-integers $\mathcal O$ of a number field, $\lambda\mid\ell$ a prime of $\mathcal O$ with residue field $k$, and $a_p(h)\equiv a_p(E)\pmod\lambda$ for a set of
-primes of density one, then $\bar\rho_{h,\lambda}\simeq\bar\rho_{E,\ell}\otimes_{\Fl}k$ over a common finite extension of $k$ whenever $\bar\rho_{E,\ell}$ is irreducible.
+density one not dividing $N\ell$; if $\bar\rho$ is irreducible, $\bar\rho$ itself is. If $g$ is a newform of weight $2$ with coefficients in the ring of
+integers $\mathcal O$ of a number field, $\lambda\mid\ell$ a prime of $\mathcal O$ with residue field $k$, and $a_p(g)\equiv a_p(E)\pmod\lambda$ for a set of
+primes of density one, then $\bar\rho_{g,\lambda}\simeq\bar\rho_{E,\ell}\otimes_{\Fl}k$ over a common finite extension of $k$ whenever $\bar\rho_{E,\ell}$ is irreducible.
 \end{enumerate}
 \end{proposition}
 
@@ -357,17 +366,18 @@ $x$-coordinates of the four lines (\Cref{ch:ellcurves}).
 Chebotarev's theorem every element of the finite group $\bar\rho(G_\Q)$ is $\bar\rho(\Frob_p)$ for a set of primes of positive density, which meets every
 set of density one; so the characteristic polynomials of all elements of the image are determined by the $a_p\bmod\ell$ on the given set,
 and by the Brauer-Nesbitt theorem so is the semisimplification (\Cref{ch:galois}, \Cref{ch:reps}). If $\bar\rho$ is irreducible it is
-semisimple and equal to $\bar\rho^{\mathrm{ss}}$. For the newform, $\bar\rho_{h,\lambda}$ (\Cref{ch:modgalrep}) has characteristic polynomial $X^2-a_p(h)X+p$ at
-$\Frob_p$ for $p$ prime to the level and $\ell$, so the same argument over $k$ gives $\bar\rho_{h,\lambda}^{\mathrm{ss}}\simeq(\bar\rho_{E,\ell}\otimes k)^{\mathrm{ss}}$
+semisimple and equal to $\bar\rho^{\mathrm{ss}}$. For the newform, $\bar\rho_{g,\lambda}$ (\Cref{ch:modgalrep}) has characteristic polynomial $X^2-a_p(g)X+p$ at
+$\Frob_p$ for $p$ prime to the level and $\ell$, so the same argument over $k$ gives $\bar\rho_{g,\lambda}^{\mathrm{ss}}\simeq(\bar\rho_{E,\ell}\otimes k)^{\mathrm{ss}}$
 after extension of scalars to a common finite field; when $\bar\rho_{E,\ell}$ is irreducible it is absolutely irreducible by (i), so
-$\bar\rho_{E,\ell}\otimes k$ is irreducible and semisimple, and $\bar\rho_{h,\lambda}$, having it as its semisimplification and the same dimension, is isomorphic
+$\bar\rho_{E,\ell}\otimes k$ is irreducible and semisimple, and $\bar\rho_{g,\lambda}$, having it as its semisimplification and the same dimension, is isomorphic
 to it (a representation whose semisimplification is irreducible is irreducible). The statement over $\Fl$ alone needs the absolute
 irreducibility: \Cref{ch:galois} gives the details.
 \end{proof}
 
 \begin{paperlink}
 Lemma lem:old, the case $p\nmid\ell N$: ``Consequently $\bar\rho_h\simeq\bar\rho$ over a common finite extension of $\F_\ell$, by Chebotarev and
-Brauer-Nesbitt, $\bar\rho$ being irreducible, hence absolutely irreducible.'' This is \Cref{prop:galrep:irreducibility}(iii) with (i). The same
+Brauer-Nesbitt, $\bar\rho$ being irreducible, hence absolutely irreducible.'' This is \Cref{prop:galrep:irreducibility}(iii) with (i), the paper's
+newform $h$ being the book's $g$. The same
 reading of ``irreducible'' is used in Lemma lem:h0 (Schur's lemma for $\bar\rho$) and in Proposition prop:Sf; for $\bar\rho_{E,\ell}$, $\ell$ odd, the two
 notions agree, but for the restriction of $\bar\rho$ to $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$ they do not (\Cref{prop:galrep:ns}).
 \end{paperlink}
@@ -420,19 +430,20 @@ coordinates in the maximal unramified extension $K^{\ur}$, hence in a finite unr
 The reduction type, the identity component and the component group do not change under unramified extension (\Cref{ch:reduction}), so
 $E$ has bad reduction over $K'$ and there are exact sequences
 \[
-0\to E_1(K')\to E_0(K')\to\tilde E_{\mathrm{ns}}(k')\to0,\qquad 0\to E_0(K')\to E(K')\to\Phi(k')\to0,
+0\to E_1(K')\to E_0(K')\to\tilde E_{\mathrm{ns}}(k')\to0,\qquad 0\to E_0(K')\to E(K')\to\Phi_E(k')\to0,
 \]
-where $\Phi(k')\subseteq\Phi(\bar k)$ is a subgroup of the geometric component group, a finite group whose order $c$ does not depend on $K'$
+where $\Phi_E(k')\subseteq\Phi_E(\bar k)$ is a subgroup of the geometric component group, a finite group whose order does not depend on $K'$
 (\Cref{ch:reduction}). The group $E_1(K')$ has no $m$-torsion, so $E_0(K')[m]$ injects into $\tilde E_{\mathrm{ns}}(k')[m]$. Here $\tilde E_{\mathrm{ns}}(k')$ is
 $k'^+$ (additive reduction), which has no $m$-torsion as $p\nmid m$, or $k'^\times$ or the kernel of the norm from the quadratic extension of $k'$
 (multiplicative reduction), subgroups of $\bar k^\times$, whose $m$-torsion is cyclic of order at most $m$. Hence $\#E_0(K')[m]\le m$ and
 \[
-m^2=\#E[m]=\#E(K')[m]\le\#E_0(K')[m]\cdot\#\Phi(k')\le m\,c .
+m^2=\#E[m]=\#E(K')[m]\le\#E_0(K')[m]\cdot\#\Phi_E(k')\le m\cdot\#\Phi_E(\bar k) .
 \]
-So $m\le c$: only finitely many $m$ are possible, contradicting (d).
+So $m\le\#\Phi_E(\bar k)$: only finitely many $m$ are possible, contradicting (d).
 
-(e), (f): see the sketch below. For $E/\Q$, $E$ has good reduction at $p$ iff $p\nmid N$ (definition of the conductor, \Cref{ch:reduction}), and $\rho_{E,\ell}$ is
-unramified at $p$ iff $I_p$ acts trivially on $T$; this is (a)$\Leftrightarrow$(b) over $K=\Q_p$.
+(e), (f): see the sketch below. For $E/\Q$, the conductor exponent $f_p$ is the Artin conductor $\dim V-\dim V^{I_p}+\operatorname{sw}_p(V)$ of $V=V_\ell E$
+(its definition in \Cref{ch:reduction}), a sum of two nonnegative terms; so $f_p=0$ iff $V^{I_p}=V$ (the Swan term then vanishes), iff $\rho_{E,\ell}$ is
+unramified at $p$, iff $E$ has good reduction at $p$ by (a)$\Leftrightarrow$(b) over $K=\Q_p$.
 \end{proof}
 
 \begin{proof}[Sketch of proof of (e) and (f)]
@@ -796,7 +807,7 @@ Let $q\ne3$ be a prime at which $E$ has reduction of type $\kod{IV}$ or $\kod{IV
 conductor of $\bar\rho_{E,3}$ has exponent $1$ at $q$; and the conductor of $E$ has exponent $f_q=2$;
 \item if $\sigma$ generates $\rho_{E,3}(I_q)$, then $T_3E$ is free of rank one over $\Z_3[X]/(X^2+X+1)\simeq\Z_3[\zeta_3]$ with $X$ acting as $\sigma$, and
 $E[3]\simeq\Z_3[\zeta_3]/(\pi^2)$ with $\pi=1-\zeta_3$, $\sigma-1$ acting as multiplication by $-\pi$;
-\item for $\ell\ne q$, $(\ad V_\ell E)^{I_q}=\Ql(2\sigma+1)$ is a line on which $\Frob_q$ and $\Frob_q^{-1}$ act by $\chi_{-3}(q)$; so, with the conventions of
+\item for $\ell\ne q$ and $\sigma$ a generator of $\rho_{E,\ell}(I_q)$, $(\ad V_\ell E)^{I_q}=\Ql(2\sigma+1)$ is a line on which $\Frob_q$ and $\Frob_q^{-1}$ act by $\chi_{-3}(q)$; so, with the conventions of
 \Cref{conv:galrep:notation}(c), $L_q(A_f,s)^{-1}=1-\chi_{-3}(q)q^{-s}$, $P_q(X)=1-\chi_{-3}(q)qX$ and $e_\ell(E,q)=v_\ell(q-\chi_{-3}(q))$.
 \end{enumerate}
 \end{lemma}
@@ -865,7 +876,7 @@ $3$-torsion points, an image of $I_2$ on $E[3]$ of order $3$ with an inertia-fix
 \curve{52a1}, \curve{140b1} and \curve{980i1}, \texttt{lfuneuler(lfunsympow(E,2),2)} returns $1/(1+2X)$, that is, $P_2(X)=1+2X$.
 
 \begin{paperlink}
-Proposition prop:forms of the revised paper has no exception, and its last sentence reads: ``The previous version excepted the types
+Proposition prop:forms of the revised paper has no exception, and the paragraph after its proof reads: ``The previous version excepted the types
 $\mathrm{IV}$, $\mathrm{IV}^*$ at $2$ and checked $e_3(E,2)\ge1$ on the $92{,}812$ such curves of the working set, where PARI's factor at $2$ is
 $1+2X$ for every one of them; Lemma~lem:IV shows that it must be.'' This is \Cref{cor:galrep:IV-at-2}. The same corollary is what lets case
 (a) of Theorem thm:qual hold at $q=2$: the Serre exponent of $\bar\rho_{E,3}$ at $2$ is $1$ while $4\,\|\,N$, so the level drops at $2$ exactly as at a prime
@@ -924,14 +935,22 @@ The revised paper's Remark rem:types: ``For all these types $E[3]^{I_q}=0$ and t
 twist by $\chi_{q^*}$ lowers that exponent for $\mathrm{I}_0^*$, $\mathrm{I}_n^*$, $\mathrm{II}$, $\mathrm{II}^*$; it lowers the conductor of $E$
 only for $\mathrm{I}_0^*$ and $\mathrm{I}_n^*$.'' This is (a) and (b) of \Cref{prop:galrep:mod3-inertia}. The original version applied the first
 sentence only to ``the last two cases'' ($\kod{II}$, $\kod{II}^*$ and $\kod{I}_n^*$), omitted $\kod{I}_0^*$, and said the twist lowers ``the conductor exponent'', which
-is right for $\bar\rho_{E,3}$ and wrong for $E$ in the case $\kod{II}\leftrightarrow\kod{IV}^*$. Theorem thm:qual treats exactly the rows in which a twist, or no twist,
-gives Serre exponent at most $1$ at $q$ while $q^2\,\|\,N$: $\kod{IV}$, $\kod{IV}^*$ (case (a)), $\kod{II}$, $\kod{II}^*$ (case (b)) and $\kod{I}_n^*$ with $\ell\mid n$ (case (c)).
+is right for $\bar\rho_{E,3}$ and wrong for $E$ in the case $\kod{II}\leftrightarrow\kod{IV}^*$. Among the additive rows, Theorem thm:qual treats exactly those in
+which, without the twist or with the twist by $\chi_{q^*}$, the Serre exponent at $q$ is strictly smaller than the conductor exponent at $q$ of the
+corresponding curve ($E$, respectively $E^{(q)}$): $\kod{IV}$, $\kod{IV}^*$ without the twist ($1<2$, case (a)); $\kod{II}$, $\kod{II}^*$ with it ($1<2$, case
+(b)); and $\kod{I}_n^*$ with $3\mid n$ with it ($0<1$, case (c) at $\ell=3$). In the rows $\kod{I}_0^*$ ($0=0$ after the twist), $\kod{I}_n^*$ with $3\nmid n$ ($1=1$)
+and $\kod{III}$, $\kod{III}^*$ ($2=2$ either way) the Serre exponent never drops below the conductor exponent, and no level is gained.
 \end{paperlink}
 
 \begin{remark}[the wild primes]\label{rem:galrep:wild-inertia}
 At $q=2$ and $q=3$ the Kodaira type does not determine $\rho(I_q)$ (\Cref{thm:galrep:serre-tate}(iii)). At $q=2$ the image can be $Q_8$ or $\SL_2(\F_3)$
-(non-abelian, so absolutely irreducible on $V$, $(\ad V)^{I_2}=0$ and $P_2=1$), cyclic of order $4$ or $6$ with a wild part, or cyclic of order $3$, the
-last exactly for the types $\kod{IV}$, $\kod{IV}^*$ (\Cref{cor:galrep:IV-at-2} and \Cref{ch:reduction}); at $q=3$ an image of order divisible by $3$ is wild.
+(non-abelian, so absolutely irreducible on $V$, $(\ad V)^{I_2}=0$ and $P_2=1$), cyclic of order $2$, $4$ or $6$ (with a nontrivial wild part, since the tame
+quotient $\prod_{r\ne2}\Z_r(1)$ of $I_2$ has no quotient of even order), or cyclic of order $3$. The last happens exactly for the types $\kod{IV}$, $\kod{IV}^*$.
+These types have it by \Cref{cor:galrep:IV-at-2}. Conversely, if $\rho(I_2)$ has order $3$, the reduction is additive and potentially good
+(\Cref{thm:galrep:nos}), reduction modulo $3$ is injective on $\rho_{E,3}(I_2)$ (\Cref{thm:galrep:serre-tate}(ii)), and an element of order $3$ of
+$\SL_2(\F_3)$ has characteristic polynomial $X^2+X+1=(X-1)^2$, so it is a nontrivial unipotent and fixes a line; hence $E[3]^{I_2}\ne0$, so
+$\Phig_2[3]\ne0$ by \Cref{lem:galrep:component-invariants}(i), and among the additive types only $\kod{IV}$ and $\kod{IV}^*$ have a component group of order
+divisible by $3$ (\Cref{ch:reduction}). At $q=3$ an image of order divisible by $3$ is wild.
 What survives at every $q\ne\ell$ is \Cref{lem:galrep:component-invariants} and the conductor formula \Cref{prop:galrep:serre-conductor-E}. On samples
 of $40$ curves per type at $q=2$ (conductor below $10{,}000$, surjective mod $3$ image), for the potentially good types $\kod{II}$, $\kod{II}^*$, $\kod{III}$,
 $\kod{III}^*$, $\kod{I}_0^*$ and $\kod{I}_m^*$ the least common multiple of the ramification indices of $2$ in the fields $\Q(P)$, $P\in E[3]$, was $2$, $4$, $6$ or $8$,
@@ -994,11 +1013,11 @@ $\Ind_{G_{\Q_{\ell^2}}}^{G_{\Q_\ell}}\psi$ is irreducible, with restriction $\om
 (i) $\mu_{\ell^n-1}$ lies in $\Q_\ell^{\ur}$, which is the fixed field of $I_\ell$; Kummer theory over $\Q_\ell^{\ur}$ (\Cref{ch:local}) shows that
 $\sigma\mapsto\sigma(\varpi_n)/\varpi_n$ is a homomorphism $I_\ell\to\mu_{\ell^n-1}$, independent of the root (two roots differ by a factor in $\mu_{\ell^n-1}$, fixed by
 $I_\ell$). The extension $\Q_\ell^{\ur}(\varpi_n)$ is totally and tamely ramified of degree $\ell^n-1$ ($v(\varpi_n)=1/(\ell^n-1)$), so the map is onto, and it is
-trivial on wild inertia, a pro-$\ell$ group. (ii) Let $\pi=\zeta_\ell-1$. For $\sigma\in I_\ell$ with $\sigma(\zeta_\ell)=\zeta_\ell^a$, $a=\chi_\ell(\sigma)\bmod\ell$,
-$\sigma(\pi)/\pi=1+\zeta_\ell+\cdots+\zeta_\ell^{a-1}\equiv a\pmod{\pi}$. Now $\ell=\prod_{a=1}^{\ell-1}(1-\zeta_\ell^a)$ and $(1-\zeta_\ell^a)/(1-\zeta_\ell)\equiv a\pmod\pi$, with $(\ell-1)!\equiv-1\pmod\ell$ (Wilson); as $\ell-1$ is even,
-this gives $\pi^{\ell-1}=-\ell\cdot w$ with $w\equiv1\pmod\pi$, so $\pi=\zeta'\varpi_1w'$ where
+trivial on wild inertia, a pro-$\ell$ group. (ii) Let $\varpi'=\zeta_\ell-1$, a uniformiser of $\Q_\ell(\zeta_\ell)$. For $\sigma\in I_\ell$ with $\sigma(\zeta_\ell)=\zeta_\ell^a$, $a=\chi_\ell(\sigma)\bmod\ell$,
+$\sigma(\varpi')/\varpi'=1+\zeta_\ell+\cdots+\zeta_\ell^{a-1}\equiv a\pmod{\varpi'}$. Now $\ell=\prod_{a=1}^{\ell-1}(1-\zeta_\ell^a)$ and $(1-\zeta_\ell^a)/(1-\zeta_\ell)\equiv a\pmod{\varpi'}$, with $(\ell-1)!\equiv-1\pmod\ell$ (Wilson); as $\ell-1$ is even,
+this gives $\varpi'^{\,\ell-1}=-\ell\cdot w$ with $w\equiv1\pmod{\varpi'}$, so $\varpi'=\zeta'\varpi_1w'$ where
 $(\zeta')^{\ell-1}=-1$ and $(w')^{\ell-1}=w$; both $\zeta'$ and $w'$ lie in $\Q_\ell^{\ur}$ (Hensel's lemma, $\ell\nmid\ell-1$) and are fixed by $I_\ell$. Hence
-$\omega(\sigma)=\sigma(\pi)/\pi\bmod\mathfrak m=a$. (iii) $\varpi_2^{\ell+1}$ is a root of $X^{\ell-1}=\ell$, so $\omega_2^{\ell+1}=\omega$; the order is $\ell^2-1$ by (i). (iv) Put
+$\omega(\sigma)=\sigma(\varpi')/\varpi'\bmod\mathfrak m=a$. (iii) $\varpi_2^{\ell+1}$ is a root of $X^{\ell-1}=\ell$, so $\omega_2^{\ell+1}=\omega$; the order is $\ell^2-1$ by (i). (iv) Put
 $F^{-1}(\varpi_2)=\zeta\varpi_2$ with $\zeta\in\mu_{\ell^2-1}$. Then $\sigma F^{-1}(\varpi_2)=\zeta\omega_2(\sigma)\varpi_2$ (lifting $\omega_2(\sigma)$ to $\mu_{\ell^2-1}$, fixed by $\sigma$), and
 applying $F$, which acts on $\mu_{\ell^2-1}\subset\Q_\ell^{\ur}$ by $x\mapsto x^\ell$, gives $F\sigma F^{-1}(\varpi_2)=F(\zeta)\omega_2(\sigma)^\ell F(\varpi_2)=\omega_2(\sigma)^\ell\varpi_2$, since
 $F(\zeta)F(\varpi_2)=F(\zeta\varpi_2)=\varpi_2$. A character of $G_{\Q_\ell}$ is invariant under conjugation, and $\omega_2^\ell\ne\omega_2$ because $\ell^2-1\nmid\ell-1$; so $\omega_2$
@@ -1018,8 +1037,8 @@ $\bar\rho|_{D_\ell}$ is irreducible.
 \item Hence $a_\ell\bmod\ell$ is determined by $\bar\rho|_{D_\ell}$: it is $0$ if $\bar\rho|_{D_\ell}$ is irreducible, and otherwise it is the eigenvalue of $\Frob_\ell$ on
 the unique unramified one-dimensional quotient of $\bar\rho|_{D_\ell}$.
 \end{enumerate}
-The same holds for a newform $h$ of weight $2$ and level prime to $\ell$ with coefficients in $\mathcal O$, with $a_\ell(h)\bmod\lambda$ and
-$\bar\rho_{h,\lambda}$ (Deligne in the ordinary case, Fontaine in the supersingular case).
+The same holds for a newform $g$ of weight $2$ and level prime to $\ell$ with coefficients in $\mathcal O$, with $a_\ell(g)\bmod\lambda$ and
+$\bar\rho_{g,\lambda}$ (Deligne in the ordinary case, Fontaine in the supersingular case).
 \end{theorem}
 
 \begin{proof}[Sketch of proof]
@@ -1035,7 +1054,8 @@ $\ell=3$, $|a_3|\le3$ and $3\mid a_3$. (iii) If $\bar\rho|_{D_\ell}$ is irreduci
 the restriction is irreducible), and the one-dimensional quotients of $\bar\rho|_{D_\ell}$ are among the two characters of its semisimplification,
 $\bar\chi_\ell\mu(a_\ell^{-1})$ and $\mu(a_\ell)$; the first is ramified because $\omega\ne1$ for $\ell$ odd, so $\mu(a_\ell)$ is the unique unramified one-dimensional
 quotient, and its value at $\Frob_\ell$ is $a_\ell\bmod\ell$. For newforms the description of $\bar\rho_{h,\lambda}|_{D_\ell}$ is due to Deligne (ordinary) and Fontaine
-(supersingular); see \cite[Section 2]{Edixhoven92}, as cited by the paper, and \Cref{ch:modgalrep}. We do not prove these.
+(supersingular); see \cite[Section 2]{Edixhoven92}, as cited by the paper, and \Cref{ch:modgalrep}. We do not prove these. (The paper writes $h$ for this
+newform; here $h$ is the matrix $\operatorname{diag}(1,-1)$.)
 \end{proof}
 
 \begin{paperlink}
@@ -1186,7 +1206,8 @@ group theory of \Cref{ch:groups}, fixes the dictionary with Sutherland's labels,
 \begin{enumerate}[label=(\roman*)]
 \item (Serre) If $E/\Q$ has no complex multiplication, $\rho_{E,\ell}(G_\Q)$ is open in $\GL_2(\Zl)$ for every $\ell$, and $\bar\rho_{E,\ell}$ is surjective for all but
 finitely many $\ell$.
-\item If $E$ has complex multiplication by an order in an imaginary quadratic field $K$ and $\ell$ is odd and unramified in $K$, the image of
+\item If $E$ has complex multiplication by an order in an imaginary quadratic field $K$ and $\ell$ is odd and unramified in $K$ (then $\ell$ is prime to
+the conductor of the order, which for $E/\Q$ is $1$, $2$ or $3$, and $3$ only for $K=\Q(\sqrt{-3})$, \Cref{ch:ellcurves}), the image of
 $\bar\rho_{E,\ell}$ lies in the normaliser of a Cartan subgroup, split or nonsplit according as $\ell$ splits or is inert in $K$, and is not contained
 in the Cartan subgroup itself.
 \item (Mazur) $E/\Q$ has a rational isogeny of prime degree $\ell$ (equivalently, $\bar\rho_{E,\ell}$ is reducible, for $\ell$ odd) only for
@@ -1235,7 +1256,7 @@ label & order & subgroup $H$ & arithmetic meaning & degrees of factors of $\psi_
 \texttt{3B} & $12$ & $\mathrm B(\F_3)$ & stable line, character $\ne1,\chi_{-3}$ & $1+3$ & $S_3$\\
 \texttt{3B.1.1} & $6$ & $\sm{1}{*}{0}{*}$ & rational point of order $3$, non-split & $1+3$ & $S_3$\\
 \texttt{3B.1.2} & $6$ & $\sm{*}{*}{0}{1}$ & $\mu_3\subset E[3]$, quotient $\Z/3$, non-split & $1+3$ & $S_3$\\
-\texttt{3Cs} & $4$ & $C_s(\F_3)$ & $E[3]\simeq\psi\oplus\psi\chi_{-3}$, $\psi\ne1,\chi_{-3}$ & $1+1+2$ & $C_2$\\
+\texttt{3Cs} & $4$ & $C_s(\F_3)$ & $E[3]\simeq\eta\oplus\eta\chi_{-3}$, $\eta\ne1,\chi_{-3}$ & $1+1+2$ & $C_2$\\
 \texttt{3Cs.1.1} & $2$ & $\{\operatorname{diag}(1,\pm1)\}$ & $E[3]\simeq\Z/3\oplus\mu_3$ & $1+1+2$ & $C_2$\\
 \bottomrule
 \end{tabular}
@@ -1252,10 +1273,10 @@ the orbits of $H$ on lines are the sets of roots of the irreducible factors of $
 $H/(H\cap\{\pm1\})$ ($\pm1$ are the only elements fixing every line), is the Galois group of $\psi_3$. The orbit structures and groups in the table are
 read off from the subgroups (\Cref{ch:groups}): $\GL_2(\F_3)$ and $N_{ns}(\F_3)$ are transitive, with quotients $S_4$ and $D_4$; $N_s(\F_3)$ has the two orbits
 $\{\langle e_1\rangle,\langle e_2\rangle\}$ and $\{\langle e_1+e_2\rangle,\langle e_1-e_2\rangle\}$, quotient $V_4$; the Borel groups fix $\langle e_1\rangle$ and permute the other three lines
-as $S_3$; the subgroups of $C_s$ fix $\langle e_1\rangle$, $\langle e_2\rangle$ and swap the other two. The arithmetic meanings: a stable line with character $\psi_1$ and
-quotient $\psi_2=\chi_{-3}\psi_1^{-1}$ (determinant $\chi_{-3}$) gives image in $\mathrm B$; it is $\sm1*0*$ iff $\psi_1=1$ (the points of the line are rational), $\sm**01$ iff
-$\psi_2=1$, i.e.\ $\psi_1=\chi_{-3}$ (the line is $\mu_3$, by the Weil pairing); the image contains the unipotent group iff the extension is non-split; and in
-the split case $E[3]\simeq\psi_1\oplus\psi_2$, with image $\{\operatorname{diag}(1,\pm1)\}$ iff $\{\psi_1,\psi_2\}=\{1,\chi_{-3}\}$. The irreducible cases are \Cref{prop:galrep:ns}
+as $S_3$; the subgroups of $C_s$ fix $\langle e_1\rangle$, $\langle e_2\rangle$ and swap the other two. The arithmetic meanings: a stable line with character $\eta_1$ and
+quotient $\eta_2=\chi_{-3}\eta_1^{-1}$ (determinant $\chi_{-3}$) gives image in $\mathrm B$; it is $\sm1*0*$ iff $\eta_1=1$ (the points of the line are rational), $\sm**01$ iff
+$\eta_2=1$, i.e.\ $\eta_1=\chi_{-3}$ (the line is $\mu_3$, by the Weil pairing); the image contains the unipotent group iff the extension is non-split; and in
+the split case $E[3]\simeq\eta_1\oplus\eta_2$, with image $\{\operatorname{diag}(1,\pm1)\}$ iff $\{\eta_1,\eta_2\}=\{1,\chi_{-3}\}$. The irreducible cases are \Cref{prop:galrep:ns}
 and \Cref{prop:galrep:dihedral}: the image is $N_s(\F_3)$ iff $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$, and $N_{ns}(\F_3)$ is the normaliser of the Cartan subgroup $C_{ns}$, cut out
 by a quadratic field $\Q(\sqrt d)$ with $\bar\rho\simeq\bar\rho\otimes\chi_d$ and $d\ne-3$ (as $C_{ns}(\F_3)\not\subseteq\SL_2(\F_3)$).
 \end{proof}
@@ -1284,12 +1305,85 @@ curves, those whose image is the one forced by the complex multiplication: the $
 $j\in\{1728,287496,-3375,16581375,-884736,-884736000,-147197952000\}$ (image \texttt{3Nn}) and the $154$ with $j\in\{0,54000,-12288000\}$ (image
 \texttt{3B}); the CM column counts all of them. Every count is for conductor below $10{,}000$.
 
+The equal counts of \texttt{3B.1.1} and \texttt{3B.1.2} in the table are not an accident. They hold class by class, because the rational
+$3$-isogenies arrange each isogeny class into paths whose two ends carry the two labels.
+
+\begin{proposition}[paths of $3$-isogenies]\label{prop:galrep:3-isogeny-paths}
+Let $E/\Q$ be an elliptic curve, with or without complex multiplication. Let $\Gamma$ be the graph whose vertices are the $\Q$-isomorphism classes of the
+curves $\Q$-isogenous to $E$, two vertices being joined when there is an isogeny of degree $3$ over $\Q$ between them (the dual isogeny also has degree
+$3$, so the relation is symmetric).
+\begin{enumerate}[label=(\roman*)]
+\item For each vertex $E'$, $E'[3]$ has at most two $G_\Q$-stable lines, and $C\mapsto E'/C$ is a bijection from the set of these lines to the set of
+neighbours of $E'$.
+\item Each connected component of $\Gamma$ is a path $E_0,E_1,\dots,E_k$ (pairwise distinct vertices, $E_{i-1}$ joined to $E_i$). If $k\ge1$, the two ends
+have exactly one stable line in $E_0[3]$, respectively $E_k[3]$, so their images are \texttt{3B}, \texttt{3B.1.1} or \texttt{3B.1.2}; the interior vertices
+have two, so their images are \texttt{3Cs} or \texttt{3Cs.1.1}.
+\item If $k\ge1$ and $G_\Q$ acts on the stable line of $E_0[3]$ by the character $\eta$, then it acts on the stable line of $E_k[3]$ by $\chi_{-3}\eta^{-1}$.
+Hence $E_0$ has image \texttt{3B.1.1} iff $E_k$ has image \texttt{3B.1.2}, $E_0$ has image \texttt{3B.1.2} iff $E_k$ has image \texttt{3B.1.1}, and
+$E_0$ has image \texttt{3B} iff $E_k$ has.
+\item In every isogeny class over $\Q$ the number of curves with image \texttt{3B.1.1} equals the number with image \texttt{3B.1.2}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+All isogenies and isomorphisms are over $\Q$. We use three facts from \Cref{ch:ellcurves}. (F1) A finite $G_\Q$-stable subgroup $C$ of $A(\Qbar)$ is the
+kernel of an isogeny $A\to A/C$, and an isogeny is determined by its kernel up to an isomorphism of its target; for an isogeny $\varphi$ of degree $3$,
+$\hat\varphi\varphi=[3]$, so $\ker\hat\varphi=\varphi(A[3])$, a line. (F2) Every $A/\Q$ has $\End_\Q(A)=\Z$ (the endomorphisms of a curve with complex
+multiplication by $K$ that are not integers are defined only over $K$); so $\Aut_\Q(A)=\{\pm1\}$, and an endomorphism over $\Q$ of degree $3^m$ is
+$\pm3^{m/2}$, whose kernel $A[3^{m/2}]$ is not cyclic when $m\ge1$. (F3) An isogeny class over $\Q$ is finite: isogenous curves have the same
+conductor, and there are finitely many curves over $\Q$ of given conductor (Shafarevich's theorem, \cite[Section IX.6]{SilvermanAEC}).
+
+\emph{Step 1: cyclic composites.} Let $\varphi_i\colon A_{i-1}\to A_i$ ($1\le i\le m$) be isogenies of degree $3$ with $\ker\varphi_{i+1}\ne\varphi_i(A_{i-1}[3])$ for
+$1\le i<m$. Then $\Phi_m=\varphi_m\circ\cdots\circ\varphi_1$ has cyclic kernel, of order $3^m$. For $m=1$ this is clear. Suppose $\Phi_{m-1}$ has cyclic
+kernel and $\ker\Phi_m$ is not cyclic. A finite abelian $3$-group that is not cyclic contains a subgroup $(\Z/3)^2$, and in $A_0$ that subgroup is
+$A_0[3]$; so $\Phi_m$ kills $A_0[3]$, that is, $\varphi_m$ kills $\Phi_{m-1}(A_0[3])$. As $\ker\Phi_{m-1}$ is cyclic, it meets $A_0[3]$ in a group of
+order $3$, so $\Phi_{m-1}(A_0[3])$ has order $3$; it lies in $\varphi_{m-1}(A_{m-2}[3])$, which also has order $3$, so the two are equal, and
+$\ker\varphi_m=\varphi_{m-1}(A_{m-2}[3])$: a contradiction.
+
+(i) If three lines of $E'[3]$ were stable, every element of $H=\bar\rho_{E',3}(G_\Q)$ would have three eigenlines in a plane, hence be a scalar
+$\pm1$, of determinant $1$; but $\det H=\F_3^\times$ (\Cref{prop:galrep:rho-basic}(ii)). The neighbours of $E'$ are the curves $E'/C$, by (F1), since the
+kernel of an isogeny of degree $3$ is a stable line. Suppose $C\ne C'$ are stable lines and $\iota\colon E'/C\to E'/C'$ is an isomorphism; let
+$\varphi\colon E'\to E'/C$ and $\psi\colon E'\to E'/C'$ be the quotient maps. If $\ker(\hat\psi\iota)=\varphi(E'[3])=\ker\hat\varphi$, then by (F1) and (F2)
+$\hat\psi\iota=\pm\hat\varphi$; dualising (the dual of an isomorphism is its inverse), $\psi=\pm\iota\varphi$, so $C'=\ker\psi=\ker\varphi=C$, which is false. So
+Step 1 applies to $\varphi$ and $\hat\psi\iota$: the endomorphism $\hat\psi\iota\varphi$ of $E'$ has degree $9$ and cyclic kernel, contradicting (F2). Hence
+$C\mapsto E'/C$ is injective.
+
+(ii) $\Gamma$ has no cycle. Let $v_0,v_1,\dots,v_m=v_0$ be a cycle, $m\ge3$, with $v_0,\dots,v_{m-1}$ distinct. Choose curves $A_i$ in the classes $v_i$, with
+$A_m=A_0$, and isogenies $\varphi_i\colon A_{i-1}\to A_i$ of degree $3$. If $\ker\varphi_{i+1}=\varphi_i(A_{i-1}[3])=\ker\hat\varphi_i$ for some $1\le i<m$, then
+$A_{i+1}\simeq A_i/\ker\hat\varphi_i\simeq A_{i-1}$ by (F1), so $v_{i+1}=v_{i-1}$, which is impossible in a cycle of length $m\ge3$. By Step 1,
+$\varphi_m\circ\cdots\circ\varphi_1$ is an endomorphism of $A_0$ of degree $3^m$ with cyclic kernel, contradicting (F2). So each component is a tree,
+finite by (F3), in which every vertex has degree at most $2$ by (i): a path. By (i) the degree of a vertex is its number of stable lines, $1$ at the
+ends and $2$ in the interior when $k\ge1$. One stable line means $E[3]$ is a non-split extension (a split $E[3]$ has the two lines of its
+decomposition), two mean that it is split; the labels follow from \Cref{thm:galrep:mod3-images}.
+
+(iii) Let $\varphi_i\colon E_{i-1}\to E_i$ ($1\le i\le k$) be isogenies of degree $3$, $C_{i-1}=\ker\varphi_i\subset E_{i-1}[3]$ and $B_i=\varphi_i(E_{i-1}[3])=\ker\hat\varphi_i
+\subset E_i[3]$, both stable lines. The map $\varphi_i$ induces a $G_\Q$-isomorphism $E_{i-1}[3]/C_{i-1}\simeq B_i$, and $\det\bar\rho_{E_{i-1},3}=\chi_{-3}$
+(\Cref{prop:galrep:rho-basic}(ii)); so if $G_\Q$ acts on $C_{i-1}$ by $\alpha$, it acts on $B_i$ by $\chi_{-3}\alpha^{-1}$. For $0<i<k$, $E_i/B_i\simeq E_{i-1}$ and
+$E_i/C_i\simeq E_{i+1}\ne E_{i-1}$, so $B_i\ne C_i$ by (i), $E_i[3]=B_i\oplus C_i$, and $G_\Q$ acts on $C_i$ by $\chi_{-3}$ divided by its character on
+$B_i$. Starting from $\eta$ on $C_0$, induction gives $\chi_{-3}\eta^{-1}$ on every $B_i$ and $\eta$ on every $C_i$; at the end, $B_k$ is the stable line of
+$E_k[3]$. By \Cref{thm:galrep:mod3-images} (the arithmetic meanings in its proof), a non-split $E'[3]$ whose stable line has character $\eta$ has image
+\texttt{3B.1.1} if $\eta=1$, \texttt{3B.1.2} if $\eta=\chi_{-3}$, and \texttt{3B} otherwise; and $\eta\mapsto\chi_{-3}\eta^{-1}$ exchanges $1$ and $\chi_{-3}$ and maps
+every other character to another character outside $\{1,\chi_{-3}\}$.
+
+(iv) A curve with image \texttt{3B.1.1} or \texttt{3B.1.2} has exactly one stable line, so by (i) and (ii) it is an end of a component with $k\ge1$, whose
+other end is a different curve. Sending each end to the other end of its component is an involution of the set of such ends in the class, and by
+(iii) it exchanges the two labels.
+\end{proof}
+
+The data agree. In Cremona's tables below conductor $10{,}000$, the $3$-isogenies read from the isogeny matrices of the file \texttt{allisog} form
+$4{,}924$ components with at least one edge in the $38{,}042$ classes; every one is a path whose interior vertices have image \texttt{3Cs} or
+\texttt{3Cs.1.1} and whose ends have the images \texttt{3B} and \texttt{3B}, or \texttt{3B.1.1} and \texttt{3B.1.2}; and in every class the two labels
+occur equally often.
+
 \begin{remark}
 The curves with a rational point of order $3$ are exactly those with image \texttt{3B.1.1} or \texttt{3Cs.1.1} (\Cref{prop:galrep:eis-labels}): $2{,}811$
 and $264$ curves below conductor $10{,}000$, as the torsion orders in \cite{ecdata} confirm. The labels \texttt{3B.1.1} and \texttt{3B.1.2} occur equally
-often in the table ($2{,}772$ non-CM curves each). The twist by $\chi_{-3}$ exchanges them (\Cref{prop:galrep:twist-isogeny}(ii)), but it changes the
-conductor in general, and a $3$-isogeny from a \texttt{3B.1.1} curve leads to a curve containing $\mu_3$, which may be split (\curve{14a4} is
-$3$-isogenous to \curve{14a1}, of image \texttt{3Cs.1.1}); so the equality of the two counts is an observation on the table, which we have not proved. The
+often in the table ($2{,}772$ non-CM and $39$ CM curves each), by \Cref{prop:galrep:3-isogeny-paths}(iv). The twist by $\chi_{-3}$ also exchanges them
+(\Cref{prop:galrep:twist-isogeny}(ii)), but it changes the conductor in general, so it does not explain the equality below a conductor bound; the pairing
+inside the class does. For example, the class \curve{14a} consists of the two paths \curve{14a3}, \curve{14a1}, \curve{14a4} and \curve{14a5}, \curve{14a2},
+\curve{14a6}: the ends \curve{14a3}, \curve{14a5} have image \texttt{3B.1.2}, the ends \curve{14a4}, \curve{14a6} image \texttt{3B.1.1}, and the middle curves
+\curve{14a1}, \curve{14a2} image \texttt{3Cs.1.1} ($E[3]\simeq\Z/3\oplus\mu_3$; the quotient by $\mu_3$ is the \texttt{3B.1.1} end, which has the rational
+point of order $3$ coming from $E[3]/\mu_3$, and the quotient by $\Z/3$ is the \texttt{3B.1.2} end). The
 image \texttt{3Cs.1.1} is not the split Cartan subgroup, which is \texttt{3Cs}, but its subgroup $\{1,\operatorname{diag}(1,-1)\}$ of order $2$. The image \texttt{3Nn} is
 dihedral too: $\bar\rho$ is induced from the quadratic field cut out by $\bar\rho^{-1}(C_{ns})$ (\Cref{prop:galrep:dihedral}); what fails for \texttt{3Ns}, and
 only for it, is irreducibility over $\Q(\sqrt{-3})$ (\Cref{prop:galrep:ns}).
@@ -1510,7 +1604,7 @@ In particular $H^0(\Q,W^D)=0$ whenever $\ell\notin S_f$.
 \begin{proof}
 (i) For $\ell$ odd, $\End(T/\ell^k)=\ad(T/\ell^k)\oplus(\Z/\ell^k)\cdot1$ (a scalar $a$ has trace $2a$, and $2$ is a unit), so $\ad T\otimes\Z/\ell^k=\ad(T/\ell^k)$ and
 $W^D[\ell^k]=\ad T(1)\otimes\ell^{-k}\Zl/\Zl\simeq\ad(T/\ell^k)(1)$. Taking $G_\Q$-invariants commutes with taking $\ell^k$-torsion. The $G_\Q$-invariants of $\End(T/\ell^k)(1)$
-are the $G_\Q$-maps $\phi\colon T/\ell^k\to(T/\ell^k)(1)$, and the trace is a $G_\Q$-map $\End(T/\ell^k)(1)\to(\Z/\ell^k)(1)=\mu_{\ell^k}$; so $\tr\phi\in H^0(\Q,\mu_{\ell^k})=1$, as $\Q$
+are the $G_\Q$-maps $\phi\colon T/\ell^k\to(T/\ell^k)(1)$, and the trace is a $G_\Q$-map $\End(T/\ell^k)(1)\to(\Z/\ell^k)(1)=\mu_{\ell^k}$; so $\tr\phi\in H^0(\Q,(\Z/\ell^k)(1))=0$, as $\Q$
 contains no nontrivial $\ell$-th root of unity for $\ell$ odd. (Equivalently, as in the paper: $\tr\phi=\chi_\ell(g)\tr\phi$ for every $g$, and $1-\chi_\ell(c)=2$ is a unit.)
 
 (ii) By (i) with $k=1$, $H^0(\Q,W^D)[\ell]=\Hom_{G_\Q}(\bar\rho,\bar\rho\otimes\bar\chi_\ell)$. Both are absolutely irreducible (\Cref{prop:galrep:irreducibility}(i)), so this space is $0$
@@ -1537,10 +1631,15 @@ absolutely irreducible on $G_{\Q(\sqrt{\ell^*})}$ (and $\ell\nmid2N$); for $\ell
 \emph{Commentary.} The revised paper's Lemma lem:h0 states: ``Moreover $h_\ell(E)=0$ for every $\ell\ge5$, and $h_3(E)\le1$, with equality if and only if
 $\bar\rho_{E,3}\simeq\bar\rho_{E,3}\otimes\chi_{-3}$, if and only if $\bar\rho_{E,3}$ is not absolutely irreducible on $\Gal(\overline\Q/\Q(\sqrt{-3}))$. This holds for every
 $E$, with or without complex multiplication''. \Cref{lem:galrep:h0} is this statement, with the image $N_s(\F_3)$ added to the list of equivalent
-conditions. The original version stated only that the group ``vanishes if and only if $\bar\rho\not\simeq\bar\rho\otimes\bar\chi_\ell$'' and that ``for $E$ without
-complex multiplication it is finite'', and argued that $\rho\simeq\rho\otimes\chi_\ell$ would force $a_p=0$ at the primes inert in $\Q(\sqrt{\ell^*})$. That argument
-confuses the cyclotomic character $\chi_\ell$ with the quadratic character $\chi_{\ell^*}$; the determinant argument of (iii) replaces it, gives the
-stronger bound $h_\ell\le1$, and needs no hypothesis on complex multiplication. (For $\ell\nmid N$ the CM case is anyway harmless: complex
+conditions. The original version stated: ``Let $\ell$ be odd with $\bar\rho$ irreducible. Then $H^0(\Q,W^D)=H^0(\Q,\ad T(1)\otimes\Q_\ell/\Z_\ell)$ is
+finite, and it vanishes if and only if $\bar\rho\not\simeq\bar\rho\otimes\bar\chi_\ell$. For $\ell\ge5$ it always vanishes; for $\ell=3$ it vanishes if and only
+if $\bar\rho_{E,3}$ is absolutely irreducible on $\Gal(\overline\Q/\Q(\sqrt{-3}))$. Its length $h_\ell(E)$ is the largest $k$ such that
+$\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$, and for $E$ without complex multiplication it is finite.'' So the vanishing criteria, at $\ell\ge5$
+and at $\ell=3$, and the description of the length were already there. What the revision adds is the bound $h_3(E)\le1$ (and with it a valid proof
+of finiteness) and the removal of the hypothesis on complex multiplication. The original proof derived the finiteness from the claim that
+$\rho\simeq\rho\otimes\chi_\ell$ would force $a_p=0$ at the primes inert in $\Q(\sqrt{\ell^*})$. That argument confuses the cyclotomic character $\chi_\ell$
+with the quadratic character $\chi_{\ell^*}$; the determinant argument of (iii) replaces it, gives $h_\ell\le1$ (and $h_\ell=0$ for $\ell\ge5$) directly,
+and needs no hypothesis on complex multiplication. (For $\ell\nmid N$ the CM case is anyway harmless: complex
 multiplication by $\Q(\sqrt{\ell^*})$ forces $\ell\mid N$, \Cref{ch:ellcurves}.) Two further points. The criterion for $h_\ell(E)>0$ uses $\bar\chi_\ell$, not
 $\chi_{\ell^*}$; they agree only for $\ell=3$, and for $\ell\ge5$ the isomorphism $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$ can hold only if $\ell\mid N$
 (\Cref{thm:galrep:lstar-automatic}). And the original version's numerical check in Section sec:anomaly, that some prime $p<1223$ inert in
@@ -1615,7 +1714,14 @@ type $\kod{II}$, $\kod{II}^*$ occurs at $p\ge5$ and no type $\kod{IV}$, $\kod{IV
 $3\nmid N$. Of the $120$ non-CM curves, $100$ have primes $p\ge5$ in $R$, all of type $\kod{III}$ or $\kod{III}^*$ and $\equiv1$ or $11\pmod{12}$; for the other $20$ (the
 classes \curve{3840h}, \curve{3840k}, \curve{3840o}, \curve{3840r}, \curve{4864b}, \curve{4864c}, \curve{4864o}, \curve{4864p}, \curve{6912d}, \curve{6912f}, \curve{6912j},
 \curve{6912l}, \curve{6912p}, \curve{6912r}, \curve{6912v}, \curve{6912x}), $R=\{2\}$, and the type at $2$ is $\kod{III}$ or $\kod{III}^*$ with $f_2=8$. PARI's Euler factors are
-$1+11X$ for \curve{726a1} at $11$, $1-13X$ for \curve{338d1} at $13$, and $1+2X$ for \curve{3840h1} and \curve{6912d1} at $2$, as (iv) predicts.
+$1+11X$ for \curve{726a1} at $11$, $1-13X$ for \curve{338d1} at $13$, and $1+2X$ for \curve{3840h1} and \curve{6912d1} at $2$, as (iv) predicts. Of the $26$
+curves with complex multiplication, $14$ have $R=\{11\}$ and $12$ have $R=\{2\}$.
+
+For the optimal curves (the curve of Cremona's file \texttt{degphi} in each class, which is the first curve of the class except for \curve{990h3}) we
+recomputed the counts: below conductor $10{,}000$ there are $90$ optimal curves without complex multiplication with image $N_s(\F_3)$, of which $44$ have
+$3\mid N$, $74$ have a prime $p\ge5$ in $R$ and $16$ have $R=\{2\}$; and $13$ optimal curves with complex multiplication with this image, namely \curve{121b1},
+\curve{256a1}, \curve{256d1}, \curve{1089e1}, \curve{1936f1}, \curve{2304c1}, \curve{2304k1}, \curve{3025a1}, \curve{5929a1}, \curve{6400f1}, \curve{6400r1},
+\curve{7744a1} and \curve{7744s1}, of which $3$ have $3\mid N$, $7$ (those with $j=-32768$) have $R=\{11\}$ and $6$ (those with $j=8000$) have $R=\{2\}$.
 
 \begin{paperlink}
 Section sec:anomaly: ``Conversely every $\Ns$ curve of the tables has a prime of type $\mathrm{III}$ or $\mathrm{III}^*$ with a positive term $e_3$''; ``The
@@ -1624,6 +1730,27 @@ $q=2$''. \Cref{prop:galrep:ns-structure} proves these observations, except that 
 argument: the revised paper says so (``that the type at $2$ is always $\mathrm{III}$ or $\mathrm{III}^*$ is not proved''), and the data show $\kod{III}$ or
 $\kod{III}^*$ in every case. What is proved at $2$ is the cyclic image of order $4$ and the Euler factor $1+2X$. The paper's ``the violation involves a prime
 $p\equiv-1\pmod3$ with $t_3(E,p)\ge1$'' is consistent with (ii): every potentially multiplicative prime $p\ne3$ of a \texttt{3Ns} curve has $t_3(E,p)\ge1$.
+
+The sentence after the proof of Proposition prop:ns-structure reads: ``Among the $90$ optimal curves with image $\Ns$ of conductor below $10{,}000$ ($28$
+of them with $3\mid N$), $74$ have such a prime $p\ge5$, of type $\mathrm{III}$ or $\mathrm{III}^*$ and $p\equiv1$ or $11\pmod{12}$, and $16$ have it only at
+$p=2$''. Our recomputation above agrees with $90$, $74$ and $16$ for the curves without complex multiplication, which are the ones the sentence counts;
+among them $44$, not $28$, have $3\mid N$. The $13$ optimal curves with complex multiplication and image $N_s(\F_3)$ are not counted there, although the
+proposition covers them.
+\end{paperlink}
+
+\begin{paperlink}
+\emph{Commentary.} The revised paper's Proposition prop:ns-structure reads: ``Let $E/\Q$ have mod $3$ image conjugate to $N_s(\F_3)$. (i) For every
+prime $p\ne3$, $\bar\rho_{E,3}(I_p)$ lies in the cyclic group $C_4=N_s(\F_3)\cap\SL_2(\F_3)$. Consequently every prime $p\ne3$ with $v_p(j_E)<0$ has $3\mid v_p(j_E)$,
+so $t_3(E,p)\ge1$; no prime $p\ne3$ has type $\mathrm{IV}$ or $\mathrm{IV}^*$; and no prime $p\ge5$ has type $\mathrm{II}$ or $\mathrm{II}^*$. (ii) There is a
+prime $p\ne3$ at which the image of $I_p$ in $\operatorname{Aut}(T_3E)$ is cyclic of order $4$. At every such prime, $(\ad V_3E)^{I_p}$ is a line on which
+Frobenius acts by $\chi_{-3}(p)$, $P_p(X)=1-\chi_{-3}(p)pX$ and $e_3(E,p)=v_3(p-\chi_{-3}(p))\ge1$. (iii) If such a prime $p$ is at least $5$, then $E$ has type
+$\mathrm{III}$ or $\mathrm{III}^*$ at $p$ and $p\equiv\pm1\pmod{12}$.'' Its (i) is part (ii) of \Cref{prop:galrep:ns-structure}; its (ii) and (iii) are contained
+in parts (iii) and (iv). Following decision D1, the book states more: part (i) (the splitting field of $\psi_3$ is biquadratic, with quadratic subfields
+$K_1$, $K_2$, $\Q(\sqrt{-3})$); in (ii), that a prime $p\ge5$ of type $\kod{I}_n^*$ has $3\mid n$; in (iii), the description of the set $R$ of these primes as the
+primes $p\ne3$ ramified in $K_1$, equivalently in $K_2$, so that $R$ is read from the discriminants of the factors of $\psi_3$; that the reduction at $p\in R$
+is potentially good with $\rho_{E,\ell}(I_p)$ cyclic of order $4$ for every $\ell\ne p$; and the converse, that every prime $p\ge5$ of type $\kod{III}$ or
+$\kod{III}^*$ lies in $R$; in (iv), the factor $P_2(X)=1+2X$ and $e_3(E,2)=1$ when $2\in R$; and parts (v) to (vii): (v) is a consequence of Proposition prop:ns
+that the paper does not state, and (vi), (vii) are Proposition prop:Sf and Lemma lem:h0 specialised to the curves with this image.
 \end{paperlink}
 
 \begin{corollary}[$S_f$ for elliptic curves]\label{cor:galrep:Sf}
@@ -1650,27 +1777,27 @@ sec:eis and Conjecture conj:eis, where the controlling invariant is rational tor
 at a prime $\ell\nmid N$ and the dictionary between the reducible mod $3$ images and torsion.
 
 \begin{proposition}[reducible $\bar\rho$]\label{prop:galrep:reducible}
-Let $\ell$ be odd, $\ell\nmid N$, and $E[\ell]$ reducible, with a stable line on which $G_\Q$ acts by $\psi_1$ and quotient character $\psi_2$.
+Let $\ell$ be odd, $\ell\nmid N$, and $E[\ell]$ reducible, with a stable line on which $G_\Q$ acts by $\eta_1$ and quotient character $\eta_2$.
 \begin{enumerate}[label=(\roman*)]
-\item $\bar\rho^{\mathrm{ss}}=\psi_1\oplus\psi_2$ and $\psi_1\psi_2=\bar\chi_\ell$.
-\item $E$ is ordinary at $\ell$, and $\{\psi_1|_{I_\ell},\psi_2|_{I_\ell}\}=\{\omega,1\}$.
-\item $\psi_1$ and $\psi_2$ are unramified at every prime of multiplicative reduction.
-\item If $E$ is semistable, then $\{\psi_1,\psi_2\}=\{1,\bar\chi_\ell\}$, so $a_p\equiv1+p\pmod\ell$ for every $p\nmid N\ell$, and $E$ or a curve $\ell$-isogenous to it over $\Q$ has a
+\item $\bar\rho^{\mathrm{ss}}=\eta_1\oplus\eta_2$ and $\eta_1\eta_2=\bar\chi_\ell$.
+\item $E$ is ordinary at $\ell$, and $\{\eta_1|_{I_\ell},\eta_2|_{I_\ell}\}=\{\omega,1\}$.
+\item $\eta_1$ and $\eta_2$ are unramified at every prime of multiplicative reduction.
+\item If $E$ is semistable, then $\{\eta_1,\eta_2\}=\{1,\bar\chi_\ell\}$, so $a_p\equiv1+p\pmod\ell$ for every $p\nmid N\ell$, and $E$ or a curve $\ell$-isogenous to it over $\Q$ has a
 rational point of order $\ell$.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-(i) The composition factors of $\bar\rho$ are $\psi_1$ and $\psi_2$, and $\psi_1\psi_2=\det\bar\rho=\bar\chi_\ell$ (\Cref{prop:galrep:rho-basic}(ii)). (ii) is
+(i) The composition factors of $\bar\rho$ are $\eta_1$ and $\eta_2$, and $\eta_1\eta_2=\det\bar\rho=\bar\chi_\ell$ (\Cref{prop:galrep:rho-basic}(ii)). (ii) is
 \Cref{cor:galrep:ordinary}(i). (iii) At a multiplicative prime $q$, $\bar\rho(I_q)$ consists of unipotent elements (\Cref{thm:galrep:tate-shape}(i)); a unipotent element
 has the single eigenvalue $1$, so it acts trivially on every one-dimensional subquotient, in particular on the line and on the quotient. (iv) If $E$
-is semistable, $\psi_1$ and $\psi_2$ are unramified at every $p\ne\ell$: at good primes by \Cref{thm:galrep:nos}, at multiplicative primes by (iii). A character
+is semistable, $\eta_1$ and $\eta_2$ are unramified at every $p\ne\ell$: at good primes by \Cref{thm:galrep:nos}, at multiplicative primes by (iii). A character
 of $G_\Q$ unramified outside $\ell$ (and $\infty$) factors through $\Gal(\Q(\zeta_{\ell^\infty})/\Q)\simeq\Zl^\times$ by the theorem of Kronecker and Weber (\Cref{ch:ant}); if it
 takes values in $\Fbar_\ell^\times$, its order is prime to $\ell$, so it factors through the quotient $\Gal(\Q(\zeta_\ell)/\Q)\simeq\Fl^\times$ and is a power $\bar\chi_\ell^a$. As
 $\Q(\zeta_\ell)/\Q$ is totally ramified at $\ell$, $\bar\chi_\ell^a$ is determined by its restriction $\omega^a$ to $I_\ell$; by (ii) the two characters are $\bar\chi_\ell$ and $1$.
-Then $a_p\equiv\tr\bar\rho(\Frob_p)=\psi_1(\Frob_p)+\psi_2(\Frob_p)=p+1\pmod\ell$. If $\psi_1=1$ the line consists of rational points: a rational point of order $\ell$. If
-$\psi_1=\bar\chi_\ell$, the line $C$ is isomorphic to $\mu_\ell$, and on $E'=E/C$ the image of $E[\ell]$ is $E[\ell]/C$, a subgroup of order $\ell$
-on which $G_\Q$ acts by $\psi_2=1$: a rational point of order $\ell$ on the $\ell$-isogenous curve $E'$.
+Then $a_p\equiv\tr\bar\rho(\Frob_p)=\eta_1(\Frob_p)+\eta_2(\Frob_p)=p+1\pmod\ell$. If $\eta_1=1$ the line consists of rational points: a rational point of order $\ell$. If
+$\eta_1=\bar\chi_\ell$, the line $C$ is isomorphic to $\mu_\ell$, and on $E'=E/C$ the image of $E[\ell]$ is $E[\ell]/C$, a subgroup of order $\ell$
+on which $G_\Q$ acts by $\eta_2=1$: a rational point of order $\ell$ on the $\ell$-isogenous curve $E'$.
 \end{proof}
 
 We checked (iv) on every curve of conductor below $10{,}000$ with square-free $N$, $\ell\nmid N$, and a Borel or split Cartan label at $\ell=3$, $5$, $7$ ($1{,}315$,
@@ -1743,19 +1870,21 @@ irreducible on $\Gal(\Qbar/\Q(\sqrt{-3}))$ when $\ell=3$ (\Cref{prop:galrep:irre
 The optimal-level paragraph of Section 3: ``For $\bar\sigma=\bar\rho_{E',\ell}$ with $E'$ an elliptic curve of conductor prime to $\ell$, the restriction to $D_\ell$ comes
 from the finite flat group scheme $E'[\ell]$ and is good, and $\det\bar\sigma=\bar\chi_\ell$ forces the nebentypus, which is trivial modulo $\lambda$ and of order
 prime to $\ell$, to be trivial.'' The first clause is \Cref{thm:galrep:good-at-l}(i), the determinant is \Cref{prop:galrep:rho-basic}(ii), and the nebentypus
-argument is \Cref{ch:modgalrep}'s. The extra hypothesis of \cite[Theorem 3.15]{DDT} at $\ell=3$ is, by \Cref{cor:galrep:Sf}, exactly ``image not \texttt{3Ns}'', which is
-how Theorem thm:qual states it.
+argument is \Cref{ch:modgalrep}'s. Theorem thm:qual states the extra hypothesis at $\ell=3$ as the paper's ``absolutely irreducible when restricted to
+$\Gal(\overline\Q/\Q(\sqrt{-3}))$''; by \Cref{prop:galrep:ns} this is equivalent to the image not being
+$N_s(\F_3)$, the form in which \Cref{thm:galrep:optimal-level}(ii) states it.
 \end{paperlink}
 
 \begin{example}[the paper's Example, read through this chapter]\label{ex:galrep:level-lowering}
-The congruences of the Example of Section 3 of the paper, with the Serre conductors of \Cref{ex:galrep:serre-conductor-examples} and the modular
-degrees from Cremona's file \texttt{degphi}:
+The congruences of the Example of Section 3 of the paper (case (a) at $q=2$, case (b), case (c) at $\ell=3$ and at $\ell=5$), together with one case (a)
+at $q=11$ that the paper does not list and the book adds as an illustration (the curve \curve{121c1} of \Cref{ex:galrep:serre-conductor-examples}),
+with the Serre conductors of \Cref{ex:galrep:serre-conductor-examples} and the modular degrees from Cremona's file \texttt{degphi}:
 \begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
 \begin{tabular}{lllll}
 \toprule
 case & curve, $\degphi$ & type at $q$ & level lowering & congruent form\\
 \midrule
-(a), $q=11$ & \curve{121c1}, $6$ & $\kod{IV}$ at $11$ & $N(\bar\rho_3)=11$ & $f_{\curve{11a}}$\\
+(a), $q=11$ (added) & \curve{121c1}, $6$ & $\kod{IV}$ at $11$ & $N(\bar\rho_3)=11$ & $f_{\curve{11a}}$\\
 (a), $q=2$ & \curve{52a1}, $3$ & $\kod{IV}^*$ at $2$ & $N(\bar\rho_3)=26$ & $f_{\curve{26b}}$\\
 (b) & \curve{121a1}, $6$ & $\kod{II}$ at $11$ & twist by $\chi_{-11}$: \curve{121c2}, $N(\bar\rho_3)=11$ & $f_{\curve{11a}}$, twisted\\
 (c), $\ell=3$ & \curve{539c1}, $2^5\cdot3^2$ & $\kod{I}_3^*$ at $7$ & twist by $\chi_{-7}$: \curve{77c1}, $N(\bar\rho_3)=11$ & $f_{\curve{11a}}$, twisted\\
@@ -1763,7 +1892,9 @@ case & curve, $\degphi$ & type at $q$ & level lowering & congruent form\\
 \bottomrule
 \end{tabular}
 \end{center}
-In case (a) at $q=11$, $3\mid\deg\varphi_{\curve{121c1}}=6$; at $q=2$, $3=\deg\varphi_{\curve{52a1}}$, where the bound $e_3(E,2)=1$ of \Cref{cor:galrep:IV-at-2} is attained. In
+The paper identifies the twisted forms: $f_{\curve{11a}}\otimes\chi_{-11}=f_{\curve{121d}}$, $f_{\curve{11a}}\otimes\chi_{-7}=f_{\curve{539d}}$ and
+$f_{\curve{20a}}\otimes\chi_{-7}=f_{\curve{980g}}$ (recomputed: the twists of \curve{11a1} and \curve{20a1} have the traces of Frobenius of \curve{121d1},
+\curve{539d1}, \curve{980g1}). In case (a) at $q=11$, $3\mid\deg\varphi_{\curve{121c1}}=6$; at $q=2$, $3=\deg\varphi_{\curve{52a1}}$, where the bound $e_3(E,2)=1$ of \Cref{cor:galrep:IV-at-2} is attained. In
 case (b) the Serre exponent $2$ of $\bar\rho_{\curve{121a1},3}$ at $11$ drops to $1$ after the twist (\Cref{prop:galrep:mod3-inertia}). In case (c) the type $\kod{I}_3^*$ has
 $3\mid n=3$, so the twist $\bar\rho\otimes\chi_{-7}$ is unramified at $7$ (\Cref{lem:galrep:tamagawa-exp} for \curve{77c1}, type $\kod{I}_3$) and the level drops by $7^2$. The
 congruences of \Cref{ex:galrep:serre-conductor-examples} were checked for all $p<2000$ ($p<1224$ at $\ell=5$) away from the bad primes; Sturm's bound
@@ -1865,7 +1996,8 @@ the paper's phrase ``the split Cartan image \texttt{3Cs.1.1}'' misdescribes \cur
 
 \begin{exercise}\label{ex:galrep:conductors}
 Compute $N(\bar\rho_{E,3})$ from \Cref{prop:galrep:serre-conductor-E} for \curve{539c1}, \curve{77c1}, \curve{726a1} and \curve{6912d1}, and $N(\bar\rho_{E,5})$ for \curve{980i1} and
-\curve{140b1}. Which congruences of the paper's Example of Section 3 do these explain, and why does the one at $\ell=5$ not fall under Theorem thm:qual?
+\curve{140b1}. Which of these curves occur in the paper's Example of Section 3, directly or as the twist of a curve there, and which are illustrations
+added here? Which congruences of that Example do the former explain, and why does the one at $\ell=5$ not fall under Theorem thm:qual?
 \end{exercise}
 
 \begin{exercise}\label{ex:galrep:ns-ordinary}
@@ -1902,13 +2034,17 @@ that the types $\kod{IV}$, $\kod{IV}^*$ at $2$ have cyclic inertia of order $3$ 
 with image \texttt{3Ns} (\Cref{prop:galrep:ns-structure}). The first may well be known; we found no reference. The corrected Lemma lem:h0
 (\Cref{lem:galrep:h0}) replaces an argument that confused $\chi_\ell$ with $\chi_{\ell^*}$. The formula $a_p(\bar\rho_{E,\ell})=f_p-\dim\Phig_p[\ell]$
 (\Cref{prop:galrep:serre-conductor-E}) is standard in substance (it is how the Serre conductor of an elliptic curve is computed in practice) but we
-know no reference that states it in this form.
+know no reference that states it in this form. The pairing of the images \texttt{3B.1.1} and \texttt{3B.1.2} by the ends of the $3$-isogeny paths
+(\Cref{prop:galrep:3-isogeny-paths}) is elementary and surely known; we found no reference that states it.
 
 \paragraph{Computations.} All numbers were computed with PARI/GP 2.17.2 \cite{PARI} through \texttt{cypari2}, on Cremona's files \texttt{allcurves},
-\texttt{galrep} and \texttt{degphi} \cite{ecdata} for conductors below $10{,}000$ ($64{,}687$ curves, $462$ with complex multiplication). The checks reported in
-the text are: the mod $3$ image of every curve from $\psi_3$ against the \texttt{galrep} label (\Cref{thm:galrep:mod3-images}); the image of inertia modulo $3$
+\texttt{allisog}, \texttt{galrep} and \texttt{degphi} \cite{ecdata} for conductors below $10{,}000$ ($64{,}687$ curves, $462$ with complex multiplication, recognised
+by their $j$-invariant among the $13$ rational CM $j$-invariants). The checks reported in
+the text are: the mod $3$ image of every curve from $\psi_3$ against the \texttt{galrep} label (\Cref{thm:galrep:mod3-images}); the $3$-isogeny paths of all
+$38{,}042$ classes (\Cref{prop:galrep:3-isogeny-paths}); the image of inertia modulo $3$
 by Kodaira type at $q\ge5$ and at $q=2$ (\Cref{prop:galrep:mod3-inertia}, \Cref{rem:galrep:wild-inertia}); all $4{,}750$ curves with type $\kod{IV}$ or $\kod{IV}^*$ at $2$
-(\Cref{cor:galrep:IV-at-2}); all $146$ curves with image \texttt{3Ns} (\Cref{prop:galrep:ns-structure}); the ordinarity at $\ell$ of the curves with reducible
+(\Cref{cor:galrep:IV-at-2}); all $146$ curves with image \texttt{3Ns}, and the $103$ optimal ones among them, the optimal curve being the one listed in \texttt{degphi}
+(\Cref{prop:galrep:ns-structure}); the ordinarity at $\ell$ of the curves with reducible
 $\bar\rho_{E,\ell}$, $\ell\nmid N$ (\Cref{cor:galrep:ordinary}); the congruences $a_p\equiv1+p$ (\Cref{prop:galrep:reducible}); the dihedral images at $\ell=5,7$
 (\Cref{thm:galrep:lstar-automatic}); and the Serre conductors and congruences of \Cref{ex:galrep:serre-conductor-examples}. Every count is for conductor below
 $10{,}000$; nothing beyond that range was checked.
