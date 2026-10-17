@@ -1053,9 +1053,9 @@ stable line would be stable under $I_\ell$ and $F$), so $\bar\rho|_{D_\ell}$ is 
 $\ell=3$, $|a_3|\le3$ and $3\mid a_3$. (iii) If $\bar\rho|_{D_\ell}$ is irreducible we are in case (ii) and $a_\ell\equiv0$. Otherwise we are in case (i) (in case (ii)
 the restriction is irreducible), and the one-dimensional quotients of $\bar\rho|_{D_\ell}$ are among the two characters of its semisimplification,
 $\bar\chi_\ell\mu(a_\ell^{-1})$ and $\mu(a_\ell)$; the first is ramified because $\omega\ne1$ for $\ell$ odd, so $\mu(a_\ell)$ is the unique unramified one-dimensional
-quotient, and its value at $\Frob_\ell$ is $a_\ell\bmod\ell$. For newforms the description of $\bar\rho_{h,\lambda}|_{D_\ell}$ is due to Deligne (ordinary) and Fontaine
+quotient, and its value at $\Frob_\ell$ is $a_\ell\bmod\ell$. For newforms the description of $\bar\rho_{g,\lambda}|_{D_\ell}$ is due to Deligne (ordinary) and Fontaine
 (supersingular); see \cite[Section 2]{Edixhoven92}, as cited by the paper, and \Cref{ch:modgalrep}. We do not prove these. (The paper writes $h$ for this
-newform; here $h$ is the matrix $\operatorname{diag}(1,-1)$.)
+newform; here it is $g$, and $h$ is the matrix $\operatorname{diag}(1,-1)$.)
 \end{proof}
 
 \begin{paperlink}
@@ -1326,12 +1326,12 @@ $E_0$ has image \texttt{3B} iff $E_k$ has.
 \end{proposition}
 
 \begin{proof}
-All isogenies and isomorphisms are over $\Q$. We use three facts from \Cref{ch:ellcurves}. (F1) A finite $G_\Q$-stable subgroup $C$ of $A(\Qbar)$ is the
+All isogenies and isomorphisms are over $\Q$. We use two facts from \Cref{ch:ellcurves} and one from \Cref{ch:reduction} and the literature. (F1) A finite $G_\Q$-stable subgroup $C$ of $A(\Qbar)$ is the
 kernel of an isogeny $A\to A/C$, and an isogeny is determined by its kernel up to an isomorphism of its target; for an isogeny $\varphi$ of degree $3$,
 $\hat\varphi\varphi=[3]$, so $\ker\hat\varphi=\varphi(A[3])$, a line. (F2) Every $A/\Q$ has $\End_\Q(A)=\Z$ (the endomorphisms of a curve with complex
 multiplication by $K$ that are not integers are defined only over $K$); so $\Aut_\Q(A)=\{\pm1\}$, and an endomorphism over $\Q$ of degree $3^m$ is
 $\pm3^{m/2}$, whose kernel $A[3^{m/2}]$ is not cyclic when $m\ge1$. (F3) An isogeny class over $\Q$ is finite: isogenous curves have the same
-conductor, and there are finitely many curves over $\Q$ of given conductor (Shafarevich's theorem, \cite[Section IX.6]{SilvermanAEC}).
+conductor (\Cref{ch:reduction}), and there are finitely many curves over $\Q$ of given conductor (Shafarevich's theorem, \cite[Section IX.6]{SilvermanAEC}).
 
 \emph{Step 1: cyclic composites.} Let $\varphi_i\colon A_{i-1}\to A_i$ ($1\le i\le m$) be isogenies of degree $3$ with $\ker\varphi_{i+1}\ne\varphi_i(A_{i-1}[3])$ for
 $1\le i<m$. Then $\Phi_m=\varphi_m\circ\cdots\circ\varphi_1$ has cyclic kernel, of order $3^m$. For $m=1$ this is clear. Suppose $\Phi_{m-1}$ has cyclic
@@ -1636,7 +1636,7 @@ finite, and it vanishes if and only if $\bar\rho\not\simeq\bar\rho\otimes\bar\ch
 if $\bar\rho_{E,3}$ is absolutely irreducible on $\Gal(\overline\Q/\Q(\sqrt{-3}))$. Its length $h_\ell(E)$ is the largest $k$ such that
 $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$, and for $E$ without complex multiplication it is finite.'' So the vanishing criteria, at $\ell\ge5$
 and at $\ell=3$, and the description of the length were already there. What the revision adds is the bound $h_3(E)\le1$ (and with it a valid proof
-of finiteness) and the removal of the hypothesis on complex multiplication. The original proof derived the finiteness from the claim that
+of finiteness), the statement that the group is cyclic, and the removal of the hypothesis on complex multiplication. The original proof derived the finiteness from the claim that
 $\rho\simeq\rho\otimes\chi_\ell$ would force $a_p=0$ at the primes inert in $\Q(\sqrt{\ell^*})$. That argument confuses the cyclotomic character $\chi_\ell$
 with the quadratic character $\chi_{\ell^*}$; the determinant argument of (iii) replaces it, gives $h_\ell\le1$ (and $h_\ell=0$ for $\ell\ge5$) directly,
 and needs no hypothesis on complex multiplication. (For $\ell\nmid N$ the CM case is anyway harmless: complex
@@ -1731,7 +1731,7 @@ argument: the revised paper says so (``that the type at $2$ is always $\mathrm{I
 $\kod{III}^*$ in every case. What is proved at $2$ is the cyclic image of order $4$ and the Euler factor $1+2X$. The paper's ``the violation involves a prime
 $p\equiv-1\pmod3$ with $t_3(E,p)\ge1$'' is consistent with (ii): every potentially multiplicative prime $p\ne3$ of a \texttt{3Ns} curve has $t_3(E,p)\ge1$.
 
-The sentence after the proof of Proposition prop:ns-structure reads: ``Among the $90$ optimal curves with image $\Ns$ of conductor below $10{,}000$ ($28$
+The paragraph after the proof of Proposition prop:ns-structure says: ``Among the $90$ optimal curves with image $\Ns$ of conductor below $10{,}000$ ($28$
 of them with $3\mid N$), $74$ have such a prime $p\ge5$, of type $\mathrm{III}$ or $\mathrm{III}^*$ and $p\equiv1$ or $11\pmod{12}$, and $16$ have it only at
 $p=2$''. Our recomputation above agrees with $90$, $74$ and $16$ for the curves without complex multiplication, which are the ones the sentence counts;
 among them $44$, not $28$, have $3\mid N$. The $13$ optimal curves with complex multiplication and image $N_s(\F_3)$ are not counted there, although the
@@ -1918,7 +1918,7 @@ $E[5]\simeq\Z/5\oplus\mu_5$ for \curve{11a1} is consistent with the first statem
 
 \begin{exercise}\label{ex:galrep:torsion-ur}
 Let $K/\Q_p$ be finite, $\ell\ne p$, and $E/K$. Using the filtration $E_1\subseteq E_0\subseteq E$ over the finite unramified extensions of $K$, show: (a) if the
-reduction is additive, $E(K^{\ur})[\ell^\infty]$ is finite, of order dividing $\#\Phi(\bar k)$; (b) if it is multiplicative, $E(K^{\ur})[\ell^\infty]$ is an extension of a
+reduction is additive, $E(K^{\ur})[\ell^\infty]$ is finite, of order dividing $\#\Phi_E(\bar k)$; (b) if it is multiplicative, $E(K^{\ur})[\ell^\infty]$ is an extension of a
 finite group by $\mu_{\ell^\infty}$, so it is infinite; (c) if it is good, $E(K^{\ur})[\ell^\infty]\simeq(\Qlmod)^2$. Deduce once more the criterion of N\'eron, Ogg and
 Shafarevich, and the dichotomy of \Cref{thm:galrep:nos}(e), (f) for $E$ with bad reduction over $K$ itself.
 \end{exercise}
