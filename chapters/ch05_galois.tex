@@ -83,7 +83,7 @@ $\alpha^n\in F$. \emph{(proved here)} \Cref{thm:galois:kummer-cyclic}.
 \item \textbf{Kummer theory.} If $\operatorname{char}F\nmid n$ and $\mu_n\subset F$, $\Delta\mapsto F(\Delta^{1/n})$ is a bijection from the groups
 $F^{\times n}\subseteq\Delta\subseteq F^\times$ with $\Delta/F^{\times n}$ finite to the finite abelian extensions of exponent dividing $n$, and
 $\Gal(F(\Delta^{1/n})/F)\times\Delta/F^{\times n}\to\mu_n$ is a perfect pairing. \emph{(proved here)} \Cref{thm:galois:kummer}.
-\item \textbf{The affine shape.} Without $\mu_n\subset F$, $\sigma\mapsto\sm{c(\sigma)}{k(\sigma)}01$ embeds $\Gal(F(\mu_n,a^{1/n})/F)$ in
+\item \textbf{The affine shape.} Without $\mu_n\subset F$, $\sigma\mapsto\sm{u(\sigma)}{b(\sigma)}01$ embeds $\Gal(F(\mu_n,a^{1/n})/F)$ in
 $\Z/n\rtimes(\Z/n)^\times$. \emph{(proved here)} \Cref{prop:galois:kummer-affine}.
 \item \textbf{Kummer theory over $\F_q$.} For $\ell\nmid q$, $v=v_\ell(q-1)$, $u\in\F_q^\times$, $k\le v$: $\chi_u(\Frob_q)=u^{(q-1)/\ell^k}$; $u\mapsto
 u^{(q-1)/\ell^v}$ identifies $\F_q^\times/(\F_q^\times)^{\ell^v}$ with $\mu_{\ell^v}(\F_q)$; the $\ell$-adic value $\kappa_u(\Frob_q)\in\Zl(1)/(q-1)$ is the class
@@ -111,6 +111,8 @@ $\rho\colon G_F\to\GL(V)$ with image $H$, then $G_f$ is the image of $H$ in $\PG
 $F(\sqrt{\disc f})$ is cut out by $\det\rho$; the image is $\GL_2(\F_3)$, $N_{ns}(\F_3)$ or $N_s(\F_3)$ (when $H$ fixes no line and contains an element of
 determinant $-1$ and trace $0$) according as $f$ is irreducible with group $S_4$, irreducible with group $D_4$, or a product of two irreducible quadratics.
 \emph{(proved here)} \Cref{prop:galois:quartic-on-lines}.
+\item \textbf{Nonempty inverse limits.} An inverse limit, over a directed set, of nonempty finite sets is nonempty. \emph{(proved here)}
+\Cref{lem:galois:nonempty-limit}.
 \item \textbf{Infinite Galois extensions.} $\Gal(L/F)=\varprojlim\Gal(K/F)$ over the finite Galois $K\subseteq L$, a profinite group in the Krull
 topology. \emph{(proved here)} \Cref{prop:galois:infinite}.
 \item \textbf{Krull's fundamental theorem.} Closed subgroups correspond to intermediate fields; $\Gal(L/L^H)=\overline H$; open subgroups correspond to
@@ -150,7 +152,7 @@ $\rho|_H$ is not absolutely irreducible iff $\rho\simeq\rho\otimes\chi$ iff $\rh
 \item \textbf{Reduction.} Reductions of two stable lattices have isomorphic semisimplifications; if one is irreducible the lattices are homothetic.
 \emph{(proved here)} \Cref{prop:galois:reduction-ss}.
 \item \textbf{The $\ell$-adic Kummer cocycle.} For $a\in F^\times$ and $\ell\ne\operatorname{char}F$, $\kappa_a(\sigma)=(\sigma(\alpha_k)/\alpha_k)_k\in\Zl(1)$
-satisfies $\kappa_a(\sigma\tau)=\kappa_a(\sigma)+\chi_\ell(\sigma)\kappa_a(\tau)$, so, writing $\kappa_a=k\cdot e$ for a generator $e$ of $\Zl(1)$, $\sigma\mapsto\sm{\chi_\ell(\sigma)}{k(\sigma)}01$ is a continuous
+satisfies $\kappa_a(\sigma\tau)=\kappa_a(\sigma)+\chi_\ell(\sigma)\kappa_a(\tau)$, so, writing $\kappa_a=b\cdot e$ for a generator $e$ of $\Zl(1)$, $\sigma\mapsto\sm{\chi_\ell(\sigma)}{b(\sigma)}01$ is a continuous
 representation; it changes by a coboundary with the root system; $\kappa_a(\sigma\tau\sigma^{-1})=\chi_\ell(\sigma)\kappa_a(\tau)$ for $\tau\in\ker\chi_\ell$;
 if $\mu_{\ell^k}\subset K$, $\kappa_a\bmod\ell^k$ vanishes on $G_K$ iff $a\in K^{\times\ell^k}$. \emph{(proved here)} \Cref{prop:galois:l-adic-kummer}.
 \item \textbf{Frobenius elements.} For $K/\Q$ finite Galois unramified at $p$, the Frobenius elements at the primes above $p$ form a conjugacy class
@@ -164,9 +166,10 @@ over $X\setminus S$ are dense in $\Gal(L/\Q)$. \emph{(proved here, from Chebotar
 \item \textbf{Chebotarev and Brauer-Nesbitt.} Two continuous semisimple $n$-dimensional representations of $G_\Q$, unramified outside a finite set, with the
 same Frobenius characteristic polynomials on a set of density one, are isomorphic. \emph{(proved here)} \Cref{cor:galois:chebotarev-bn}.
 \item \textbf{Congruent traces.} If $\rho_1,\rho_2\colon G_\Q\to\GL_2(\mathcal{O})$ have congruent traces and determinants of Frobenius modulo $\lambda$ on a
-set of density one, then $\bar\rho_1^{ss}\simeq\bar\rho_2^{ss}$, and $\bar\rho_2\simeq\bar\rho_1$ if $\bar\rho_1$ is absolutely irreducible; for newforms,
-$a_p(h)\equiv a_p(f)\pmod\lambda$ for almost all $p$ gives $\bar\rho_h\simeq\bar\rho_{E,\ell}\otimes k$ when $\bar\rho_{E,\ell}$ is irreducible.
-\emph{(proved here, given the representations of newforms)} \Cref{cor:galois:congruent-ap}.
+set of density one, then $\bar\rho_1^{ss}\simeq\bar\rho_2^{ss}$, and $\bar\rho_2\simeq\bar\rho_1$ if $\bar\rho_1$ is absolutely irreducible; (d) for a newform $h$
+of weight $2$ and $\ell$ odd, $a_p(h)\equiv a_p(E)\pmod\lambda$ on a set of density one gives $\bar\rho_h\simeq\bar\rho_{E,\ell}\otimes k$ when $\bar\rho_{E,\ell}$ is irreducible.
+\emph{((a) to (c) proved here; the newform statement (d) proved here, given the representations of newforms of \Cref{ch:modgalrep})}
+\Cref{cor:galois:congruent-ap}.
 \end{enumerate}
 
 \section*{Where the paper uses this chapter}
@@ -993,20 +996,20 @@ of order $d$ iff its dual $\Delta/F^{\times n}$ is.
 
 \begin{proposition}[The affine shape without roots of unity]\label{prop:galois:kummer-affine}
 Let $\operatorname{char}F\nmid n$, $a\in F^\times$, $\alpha^n=a$, $L=F(\mu_n,\alpha)$, and fix a primitive $n$-th root of unity $\zeta_n$. For $\sigma\in\Gal(L/F)$
-define $c(\sigma)\in(\Z/n)^\times$ and $k(\sigma)\in\Z/n$ by $\sigma(\zeta_n)=\zeta_n^{c(\sigma)}$ and $\sigma(\alpha)=\zeta_n^{k(\sigma)}\alpha$. Then
+define $u(\sigma)\in(\Z/n)^\times$ and $b(\sigma)\in\Z/n$ by $\sigma(\zeta_n)=\zeta_n^{u(\sigma)}$ and $\sigma(\alpha)=\zeta_n^{b(\sigma)}\alpha$. Then
 \[
-\sigma\longmapsto\begin{pmatrix}c(\sigma)&k(\sigma)\\0&1\end{pmatrix}
+\sigma\longmapsto\begin{pmatrix}u(\sigma)&b(\sigma)\\0&1\end{pmatrix}
 \]
-is an injective homomorphism from $\Gal(L/F)$ to the affine group $\bigl\{\sm ck01:c\in(\Z/n)^\times,\ k\in\Z/n\bigr\}\simeq\Z/n\rtimes(\Z/n)^\times$. Equivalently,
-$k(\sigma\tau)=k(\sigma)+c(\sigma)k(\tau)$: $k$ is a $1$-cocycle for the action of $\Gal(L/F)$ on $\Z/n$ through $c$. Its restriction to $\Gal(L/F(\mu_n))$ (where
-$c=1$) is the Kummer character $\chi_a$, read in $\Z/n$ through $\zeta_n$.
+is an injective homomorphism from $\Gal(L/F)$ to the affine group $\bigl\{\sm ub01:u\in(\Z/n)^\times,\ b\in\Z/n\bigr\}\simeq\Z/n\rtimes(\Z/n)^\times$. Equivalently,
+$b(\sigma\tau)=b(\sigma)+u(\sigma)b(\tau)$: $b$ is a $1$-cocycle for the action of $\Gal(L/F)$ on $\Z/n$ through $u$. Its restriction to $\Gal(L/F(\mu_n))$ (where
+$u=1$) is the Kummer character $\chi_a$, read in $\Z/n$ through $\zeta_n$.
 \end{proposition}
 
 \begin{proof}
 $L$ is the splitting field of the separable $x^n-a$ (its roots $\zeta\alpha$ generate $\mu_n$ and $\alpha$), so it is Galois. We have
-$\sigma\tau(\zeta_n)=\sigma(\zeta_n^{c(\tau)})=\zeta_n^{c(\sigma)c(\tau)}$ and
-$\sigma\tau(\alpha)=\sigma(\zeta_n^{k(\tau)}\alpha)=\zeta_n^{c(\sigma)k(\tau)}\zeta_n^{k(\sigma)}\alpha$, which is the matrix product
-$\sm{c(\sigma)}{k(\sigma)}01\sm{c(\tau)}{k(\tau)}01$. The map is injective since $\sigma$ is determined by $\sigma(\zeta_n)$ and $\sigma(\alpha)$.
+$\sigma\tau(\zeta_n)=\sigma(\zeta_n^{u(\tau)})=\zeta_n^{u(\sigma)u(\tau)}$ and
+$\sigma\tau(\alpha)=\sigma(\zeta_n^{b(\tau)}\alpha)=\zeta_n^{u(\sigma)b(\tau)}\zeta_n^{b(\sigma)}\alpha$, which is the matrix product
+$\sm{u(\sigma)}{b(\sigma)}01\sm{u(\tau)}{b(\tau)}01$. The map is injective since $\sigma$ is determined by $\sigma(\zeta_n)$ and $\sigma(\alpha)$.
 \end{proof}
 
 For $x^3-2$ over $\Q$ (\Cref{ex:galois:x3minus2}) the Galois group has order $6$ and embeds in the affine group of order $6$, so
@@ -1151,9 +1154,13 @@ $\delta_f\in F$ (fundamental theorem), iff $\disc f=(a^{n-1}\delta_f)^2$ is a sq
 of $G_f\cap A_n$, of index $1$ or $2$, contains $\delta_f$, and equals $F(\delta_f)$ by degrees. The last formula is (b) with $\sqrt{\disc f}=a^{n-1}\delta_f$.
 (d) The roots of $gh$ are those of $g$ and of $h$; the squared differences between roots of $g$ and roots of $h$ contribute $\prod_{i,j}(r_i-s_j)^2$.
 (e) The quadratic case is $(r_1-r_2)^2=(r_1+r_2)^2-4r_1r_2$. For $f=x^3+px+q$, by (a) $\disc f=-\prod_i(3r_i^2+p)$. With $e_1=\sum r_i=0$, $e_2=p$, $e_3=r_1r_2r_3=-q$:
-$\sum r_i^2=e_1^2-2e_2=-2p$, $\sum_{i<j}r_i^2r_j^2=e_2^2-2e_1e_3=p^2$, $\prod r_i^2=q^2$, so $\prod(3r_i^2+p)=27q^2+9p\cdot p^2+3p^2(-2p)+p^3=27q^2+4p^3$. The general
-cubic follows over $\Q$ by the substitution $x\mapsto x-b/3$, which does not change the differences of the roots; being an identity between integer polynomials
-in $b,c,d$, it then holds over every field. For $f=x^n-a$ with roots $r_i$: $f'(r_i)=nr_i^{n-1}$ and $\prod r_i=(-1)^{n+1}a$, so
+$\sum r_i^2=e_1^2-2e_2=-2p$, $\sum_{i<j}r_i^2r_j^2=e_2^2-2e_1e_3=p^2$, $\prod r_i^2=q^2$, so $\prod(3r_i^2+p)=27q^2+9p\cdot p^2+3p^2(-2p)+p^3=27q^2+4p^3$. For the general
+cubic $f=x^3+bx^2+cx+d$ over a field of characteristic $0$, the substitution $x\mapsto x-b/3$ does not change the differences of the roots and gives $f(x-b/3)=x^3+px+q$ with
+$p=c-b^2/3$ and $q=d-bc/3+2b^3/27$; expanding $-4p^3-27q^2$ gives $b^2c^2-4c^3-4b^3d-27d^2+18bcd$ (a routine expansion, which we also checked by computer algebra).
+This proves the formula over every field of characteristic $0$. For the generic monic cubic, $\prod_{i<j}(r_i-r_j)^2$ is a symmetric polynomial in the roots with integer
+coefficients, hence a polynomial with integer coefficients in $b,c,d$ (the theorem on symmetric polynomials, which holds over $\Z$; we do not prove it, see
+\cite[Chapter IV, Section 6]{Lang}); the computation just made shows that this polynomial is $b^2c^2-4c^3-4b^3d-27d^2+18bcd$ in $\Q[b,c,d]$, hence in $\Z[b,c,d]$, and
+specialising gives the formula over every field, of characteristic $3$ included. For $f=x^n-a$ with roots $r_i$: $f'(r_i)=nr_i^{n-1}$ and $\prod r_i=(-1)^{n+1}a$, so
 $\prod f'(r_i)=n^n(-1)^{(n+1)(n-1)}a^{n-1}$ and $\disc f=(-1)^{n(n-1)/2+n^2-1}n^na^{n-1}$; the exponent differs from $(n-1)(n-2)/2$ by $n^2+n-2=(n+2)(n-1)$, which is even.
 For $\Phi_\ell$ (degree $\ell-1$, roots $\zeta^a$, $1\le a\le\ell-1$, $\zeta=\zeta_\ell$): differentiating $(x-1)\Phi_\ell(x)=x^\ell-1$ at $\zeta^a$ gives
 $(\zeta^a-1)\Phi_\ell'(\zeta^a)=\ell\zeta^{-a}$. Now $\prod_a\zeta^{-a}=\zeta^{-\ell(\ell-1)/2}=1$ ($\ell$ odd) and $\prod_a(\zeta^a-1)=\prod_a(1-\zeta^a)=\Phi_\ell(1)=\ell$ (an even
@@ -1300,8 +1307,14 @@ Let $E$ be 6912d1, $y^2=x^3-6x-8$ ($j=-1728$, which is not a CM $j$-invariant; $
 two irreducible quadratics with discriminants $24$ and $-8$, so $K_1=\Q(\sqrt6)$, $K_2=\Q(\sqrt{-2})$, and the third quadratic subfield of $K_1K_2$ is
 $\Q(\sqrt{-12})=\Q(\sqrt{-3})$, as \Cref{prop:galois:quartic-on-lines}(e) predicts; the resolvent cubic of $\psi_3/3$ is $(y-4)(y^2+16y+112)$, with exactly one rational
 root. Since $\det\bar\rho_{E,3}$ is surjective and only $N_s(\F_3)$ has the pattern $2+2$ in the table of (d), the image is $N_s(\F_3)$ (Sutherland's 3Ns, as in Cremona's
-tables). Then $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$ (\Cref{prop:galois:index-two}), so $\tr\bar\rho(\Frob_p)=\chi_{-3}(\Frob_p)\tr\bar\rho(\Frob_p)$, and $a_p\equiv0\pmod3$
-whenever $\chi_{-3}(\Frob_p)=-1$, that is for $p\equiv2\pmod 3$ (\Cref{prop:galois:quadratic-characters}). Indeed $a_5=3$, $a_{11}=3$, $a_{17}=-6$, $a_{23}=6$, $a_{29}=6$,
+tables). The group $N_s(\F_3)$ acts absolutely irreducibly on $\Fbar_3^2$: a line
+stable under it is an eigenline of $\operatorname{diag}(1,-1)$, hence a coordinate axis, and the antidiagonal elements swap the two axes. The image of
+$G_{\Q(\sqrt{-3})}$ is the determinant-one subgroup $\{\pm1,\pm J\}$ (\Cref{prop:galois:restriction}(c)), which is abelian, so $\bar\rho|_{G_{\Q(\sqrt{-3})}}$ is not absolutely
+irreducible, and $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$ by \Cref{prop:galois:index-two}. For the primes $p\ne3$ of good reduction (here $p\ge5$) one has
+$\tr\bar\rho_{E,3}(\Frob_p)\equiv a_p\pmod3$ (\Cref{ch:ellcurves}, \Cref{ch:galrep}). So $a_p\equiv\chi_{-3}(\Frob_p)a_p\pmod3$, and $a_p\equiv0\pmod3$ whenever
+$\chi_{-3}(\Frob_p)=-1$, that is for $p\equiv2\pmod 3$ (\Cref{prop:galois:quadratic-characters}(c)). This part of the example looks ahead: it uses
+\Cref{prop:galois:restriction}, \Cref{prop:galois:index-two} and \Cref{prop:galois:quadratic-characters} of Section 8 and the Frobenius elements of Section 9
+(\Cref{thm:galois:frobenius}); nothing in Sections 6 to 8 depends on it. Indeed $a_5=3$, $a_{11}=3$, $a_{17}=-6$, $a_{23}=6$, $a_{29}=6$,
 $a_{41}=6$, $a_{47}=12$, $a_{53}=-3$, $a_{59}=12$, $a_{71}=-6$; note $9\nmid a_5$. By contrast 11a1, $y^2+y=x^3-x^2-10x-20$, has
 \[
 \psi_3=3x^4-4x^3-60x^2-237x-21,
@@ -1326,7 +1339,27 @@ lem:tamagawa-exp and lem:tamfactor. This section extends the fundamental theorem
 topology, defines the absolute Galois group and the cyclotomic character $\chi_\ell$, proves $\chi_\ell(G_\Q)=\Zl^\times$ (the fact that forces $\ell=3$ in Lemma
 lem:h0), and studies complex conjugation, the element of $G_\Q$ that makes ``irreducible'' and ``absolutely irreducible'' coincide for $\bar\rho_{E,\ell}$. Inverse
 limits, profinite groups and their basic properties (open subgroups are closed of finite index, open normal subgroups form a basis at $1$, continuous images of
-compact groups are closed) are \Cref{ch:groups}.
+compact groups are closed) are \Cref{ch:groups}. One compactness statement is used repeatedly, here and in \Cref{ch:ant}, so we isolate it first.
+
+\begin{lemma}[Inverse limits of nonempty finite sets]\label{lem:galois:nonempty-limit}
+Let $(I,\le)$ be a directed set (a partially ordered set in which any two elements have a common upper bound), and let $(X_i)_{i\in I}$ be nonempty finite sets with maps
+$f_{ij}\colon X_j\to X_i$ for $i\le j$, such that $f_{ii}$ is the identity and $f_{ij}\circ f_{jk}=f_{ik}$ for $i\le j\le k$. Then the inverse limit
+\[
+\varprojlim_{i\in I}X_i=\Bigl\{(x_i)_{i\in I}\in\prod_{i\in I}X_i:\ f_{ij}(x_j)=x_i\text{ for all }i\le j\Bigr\}
+\]
+is nonempty.
+\end{lemma}
+
+\begin{proof}
+Give each $X_i$ the discrete topology; it is compact, being finite, so $P=\prod_iX_i$ is compact by Tychonoff's theorem (\Cref{ch:groups}). For $i\le j$ the set
+$C_{ij}=\{x\in P:f_{ij}(x_j)=x_i\}$ is closed: it is the preimage of a subset of the finite discrete space $X_i\times X_j$ under the continuous projection $P\to X_i\times X_j$.
+The inverse limit is $\bigcap_{i\le j}C_{ij}$. By compactness it suffices to show that finitely many of the $C_{ij}$, say $C_{i_1j_1},\dots,C_{i_rj_r}$, have a common point.
+As $I$ is directed, there is $m\in I$ with $j_s\le m$ (hence $i_s\le m$) for $s=1,\dots,r$. Choose $y\in X_m$ (it is nonempty), put $x_i=f_{im}(y)$ for every $i$ among the
+$i_s$, $j_s$, and choose $x_i\in X_i$ arbitrarily for the other $i$. Then $f_{i_sj_s}(x_{j_s})=f_{i_sj_s}f_{j_sm}(y)=f_{i_sm}(y)=x_{i_s}$ for each $s$, so $x$ lies in all $r$
+sets. Hence $\bigcap_{i\le j}C_{ij}\ne\emptyset$.
+\end{proof}
+
+Both hypotheses matter: an inverse limit of nonempty \emph{infinite} sets can be empty (take $X_n=\{n,n+1,n+2,\dots\}$, $n\in\N$, with the inclusions as maps).
 
 \begin{proposition}[Infinite Galois extensions]\label{prop:galois:infinite}
 Let $L/F$ be a Galois extension of arbitrary degree and $\mathcal{K}$ the set of finite Galois subextensions $K/F$ of $L$.
@@ -1352,11 +1385,10 @@ directedness), which is a field automorphism over $F$ (its inverse is given by t
 projections to finitely many factors $\Gal(K_1/F),\dots,\Gal(K_r/F)$; under (a) such a kernel is $\Gal(L/K_1\cdots K_r)$, and $K_1\cdots K_r\in\mathcal{K}$. So the
 two topologies agree, and the inverse limit of finite groups is profinite (\Cref{ch:groups}). If $M/F$ is finite, its normal closure $M'$ in $L$ is in $\mathcal{K}$
 (\Cref{prop:galois:normal}), and $\Gal(L/M)\supseteq\Gal(L/M')$ is a union of cosets of an open subgroup.
-(c) Let $K_0\in\mathcal{K}$ and $\tau\in\Gal(K_0/F)$. For $K\supseteq K_0$ in $\mathcal{K}$ the set $X_K$ of $\sigma\in\Gal(K/F)$ with $\sigma|_{K_0}=\tau$ is finite and
-nonempty (\Cref{thm:galois:fundamental}(d)). The product $P=\prod_{K\supseteq K_0}X_K$ is compact (Tychonoff, \Cref{ch:groups}). For $K'\subseteq K''$ the set
-$C_{K',K''}=\{x\in P:x_{K''}|_{K'}=x_{K'}\}$ is closed, and finitely many of them have a common point: choose $K^*\in\mathcal{K}$ containing all the fields involved and
-$\sigma^*\in X_{K^*}$, and put $x_K=\sigma^*|_K$ for $K\subseteq K^*$, arbitrary otherwise. Hence all the $C_{K',K''}$ have a common point, a compatible family
-$(\sigma_K)_{K\supseteq K_0}$; as the $K\supseteq K_0$ exhaust $L$, it defines as in (a) an element $\sigma\in\Gal(L/F)$, and $\sigma|_{K_0}=\tau$. (Alternatively,
+(c) Let $K_0\in\mathcal{K}$ and $\tau\in\Gal(K_0/F)$. The set $\mathcal{K}_0$ of $K\in\mathcal{K}$ containing $K_0$ is directed by inclusion (by (a)). For $K\in\mathcal{K}_0$ the
+set $X_K$ of $\sigma\in\Gal(K/F)$ with $\sigma|_{K_0}=\tau$ is finite and nonempty (\Cref{thm:galois:fundamental}(d)), and for $K'\subseteq K''$ in $\mathcal{K}_0$ restriction
+maps $X_{K''}$ to $X_{K'}$, compatibly with composition. By \Cref{lem:galois:nonempty-limit} there is a compatible family $(\sigma_K)_{K\in\mathcal{K}_0}$. Every $K\in\mathcal{K}$
+lies in $KK_0\in\mathcal{K}_0$, so the members of $\mathcal{K}_0$ exhaust $L$, and the family defines as in (a) an element $\sigma\in\Gal(L/F)$, with $\sigma|_{K_0}=\tau$. (Alternatively,
 extend $\tau$ to an $F$-embedding $L\to\Fbar$ by \Cref{thm:galois:algebraic-closure}(b); its image is $L$ by normality.) For $L/F$ finite, $\{1\}=\Gal(L/L)$ is open.
 \end{proof}
 
@@ -1427,9 +1459,12 @@ $\Gal(\Q(2^{1/3},\zeta_3)/\Q)\simeq S_3$ is a quotient (\Cref{ex:galois:x3minus2
 \begin{example}[Two warnings]\label{ex:galois:warnings}
 (1) The subgroup $\Frob_p^{\Z}$ of $G_{\F_p}\simeq\widehat\Z$ is dense and not closed: it is countable, while $\widehat\Z$ is uncountable. Its fixed field is $\F_p$, the same as
 that of $G_{\F_p}$; this is why \Cref{thm:galois:krull}(c) requires closed subgroups.
-(2) A subgroup of finite index need not be open. Let $L=\Q(\sqrt{-1},\sqrt2,\sqrt3,\sqrt5,\sqrt7,\dots)$, the compositum of all quadratic fields. By Kummer theory
-(\Cref{cor:galois:kummer-absolute} with $n=2$) $\Gal(L/\Q)\simeq\Hom(\Q^\times/\Q^{\times2},\{\pm1\})\simeq\prod_{\N}\Z/2$, and $\Q^\times/\Q^{\times2}$ is an
-$\F_2$-vector space with basis $-1$ and the primes. The open subgroups of index $2$ are the kernels of the countably many continuous characters, which are the
+(2) A subgroup of finite index need not be open. Let $L=\Q(\sqrt{-1},\sqrt2,\sqrt3,\sqrt5,\sqrt7,\dots)$, the compositum of all quadratic fields. The fields $\Q(\Delta^{1/2})$ with
+$\Delta/\Q^{\times2}$ finite are finite Galois and cofinal among the finite subextensions of $L$ (each of these lies in a compositum of finitely many quadratic fields), and
+$\Gal(\Q(\Delta^{1/2})/\Q)\simeq\Hom(\Delta/\Q^{\times2},\{\pm1\})$ compatibly with restriction (\Cref{thm:galois:kummer}(a) with $n=2$). Passing to the limit
+(\Cref{prop:galois:infinite}(a), where the limit may be taken over this cofinal family) gives $\Gal(L/\Q)\simeq\varprojlim_\Delta\Hom(\Delta/\Q^{\times2},\{\pm1\})=
+\Hom(\Q^\times/\Q^{\times2},\{\pm1\})\simeq\prod_{\N}\Z/2$, as $\Q^\times/\Q^{\times2}$ is the union of the $\Delta/\Q^{\times2}$ and is an $\F_2$-vector space with basis
+$-1$ and the primes. The open subgroups of index $2$ are the kernels of the countably many continuous characters, which are the
 evaluations at the elements of $\Q^\times/\Q^{\times2}$; but $\prod_\N\Z/2$ has uncountably many subgroups of index $2$ (kernels of linear forms on an
 $\F_2$-vector space of uncountable dimension, whose existence uses the axiom of choice), so most are not open. We do not use this.
 \end{example}
@@ -1534,8 +1569,9 @@ criterion of \Cref{ch:reps}: a line of $\bar k^2$ stable under $\rho(G_\Q)$ is a
 $\det\rho=\bar\chi_\ell$, $\bar\chi_\ell(c)=-1\ne1$ in $\F_\ell$ as $\ell$ is odd.
 \end{proof}
 
-We do not prove (c); see \cite[Chapter XI]{Lang} (real closed fields), where it is deduced from the theorem of Artin and Schreier that a field $K$ with $[\bar K:K]$ finite
-and greater than $1$ is real closed with $\bar K=K(i)$. It is not used in the paper; what is used, in Proposition prop:ns and Lemmas lem:h0, lem:old and lem:dfg21, is
+We do not prove (c). It follows from the theorem of Artin and Schreier that a field $K$ with $[\bar K:K]$ finite and greater than $1$ has characteristic $0$ and
+$\bar K=K(i)$ (\cite[Chapter VI, Section 9]{Lang}), together with the theory of real closed fields (\cite[Chapter XI]{Lang}), which shows that such a $K$ is real closed;
+both locations are pointers we have not re-verified. It is not used in the paper; what is used, in Proposition prop:ns and Lemmas lem:h0, lem:old and lem:dfg21, is
 (d) and the fact that $\Gal(\C/\R)=\{1,c\}$ has order $2$ (so $H^1(\R,M)$ is killed by $2$, \Cref{ch:galcoh}).
 
 \section[Continuous representations]{Continuous representations of profinite groups}\label{sec:galois:reps}
@@ -1729,13 +1765,13 @@ $\alpha_{k+1}^\ell=\alpha_k$, and define, in the additive notation of \Cref{conv
 \]
 \begin{enumerate}[label=(\alph*)]
 \item $\kappa_a$ is continuous and $\kappa_a(\sigma\tau)=\kappa_a(\sigma)+\chi_\ell(\sigma)\kappa_a(\tau)$: a continuous $1$-cocycle (\Cref{ch:cohomology}). Equivalently, writing
-$\kappa_a(\sigma)=k(\sigma)e$ for a generator $e$ of $\Zl(1)$,
+$\kappa_a(\sigma)=b(\sigma)e$ for a generator $e$ of $\Zl(1)$,
 \[
-\sigma\longmapsto\begin{pmatrix}\chi_\ell(\sigma)&k(\sigma)\\0&1\end{pmatrix}
+\sigma\longmapsto\begin{pmatrix}\chi_\ell(\sigma)&b(\sigma)\\0&1\end{pmatrix}
 \]
-is a continuous homomorphism $G_F\to\GL_2(\Zl)$: the action on $\Zl e_1\oplus\Zl e_2$ with $e_1=e$, $\sigma e_1=\chi_\ell(\sigma)e_1$, $\sigma e_2=e_2+k(\sigma)e_1$.
+is a continuous homomorphism $G_F\to\GL_2(\Zl)$: the action on $\Zl e_1\oplus\Zl e_2$ with $e_1=e$, $\sigma e_1=\chi_\ell(\sigma)e_1$, $\sigma e_2=e_2+b(\sigma)e_1$.
 \item Another compatible system changes $\kappa_a$ by the coboundary $\sigma\mapsto(\chi_\ell(\sigma)-1)z$ for some $z\in\Zl(1)$. For the product systems,
-$\kappa_{ab}=\kappa_a+\kappa_b$. The $k$-th component of $\kappa_a$, restricted to $G_{F(\mu_{\ell^k})}$, is the Kummer character $\chi_a$ with $n=\ell^k$.
+$\kappa_{aa'}=\kappa_a+\kappa_{a'}$ for $a,a'\in F^\times$. The $k$-th component of $\kappa_a$, restricted to $G_{F(\mu_{\ell^k})}$, is the Kummer character $\chi_a$ with $n=\ell^k$.
 \item On $\ker\chi_\ell=G_{F(\mu_{\ell^\infty})}$, $\kappa_a$ is a homomorphism, and for $\sigma\in G_F$, $\tau\in\ker\chi_\ell$:
 $\kappa_a(\sigma\tau\sigma^{-1})=\chi_\ell(\sigma)\kappa_a(\tau)$.
 \item If $K\supseteq F$ contains $\mu_{\ell^k}$, then $\kappa_a\bmod\ell^k$ vanishes on $G_K$ iff $a\in(K^\times)^{\ell^k}$.
@@ -1749,7 +1785,7 @@ $\kappa_a(\sigma\tau\sigma^{-1})=\chi_\ell(\sigma)\kappa_a(\tau)$.
 \]
 and $\sigma$ acts on $\mu_{\ell^k}$ by raising to the power $\chi_\ell(\sigma)$; additively this is the cocycle relation. The $k$-th component is constant on the cosets
 of the open subgroup $G_{F(\mu_{\ell^k},\alpha_k)}$ (for $\tau$ in it, $\kappa_a(\sigma\tau)_k=\kappa_a(\sigma)_k+\chi_\ell(\sigma)\kappa_a(\tau)_k=\kappa_a(\sigma)_k$), so $\kappa_a$ is
-continuous. The matrix identity $\sm{\chi(\sigma)}{k(\sigma)}01\sm{\chi(\tau)}{k(\tau)}01=\sm{\chi(\sigma\tau)}{k(\sigma)+\chi(\sigma)k(\tau)}01$ is the cocycle relation.
+continuous. The matrix identity $\sm{\chi(\sigma)}{b(\sigma)}01\sm{\chi(\tau)}{b(\tau)}01=\sm{\chi(\sigma\tau)}{b(\sigma)+\chi(\sigma)b(\tau)}01$ is the cocycle relation.
 (b) Another system is $(\epsilon_k\alpha_k)$ with $\epsilon=(\epsilon_k)\in\Zl(1)$, and $\sigma(\epsilon_k\alpha_k)/\epsilon_k\alpha_k=(\sigma(\epsilon_k)/\epsilon_k)\cdot\sigma(\alpha_k)/
 \alpha_k$; additively the change is $\sigma(\epsilon)-\epsilon=(\chi_\ell(\sigma)-1)\epsilon$. Additivity in $a$ is clear. On $G_{F(\mu_{\ell^k})}$ the $k$-th component is
 $\sigma(\alpha_k)/\alpha_k=\chi_a(\sigma)$ by definition (\Cref{prop:galois:kummer-character}, over $F(\mu_{\ell^k})$, with $n=\ell^k$, $\alpha=\alpha_k$).
@@ -1778,7 +1814,8 @@ the lift of $\Frob$), and only its class modulo $(n,q-1)\Zl$ is meaningful, whic
 
 The step ``$\bar\rho_h\simeq\bar\rho$ by Chebotarev and Brauer-Nesbitt'' in Lemma lem:old compares two residual representations through the characteristic polynomials
 of Frobenius elements, which are known only at the primes not dividing $\ell N$. This section states what Frobenius elements are (they are constructed in
-\Cref{ch:ant}; nothing in Sections 1 to 8 depends on them), states the Chebotarev density theorem, and proves the consequences used in the paper: Frobenius elements
+\Cref{ch:ant}; no theorem of Sections 1 to 7 depends on them, and in Sections 6 and 8 they enter only through the stated \Cref{thm:galois:frobenius}, in
+\Cref{ex:galois:ns-example} and \Cref{prop:galois:quadratic-characters}(c)), states the Chebotarev density theorem, and proves the consequences used in the paper: Frobenius elements
 are dense, so a semisimple representation is determined by their characteristic polynomials, and congruent traces give isomorphic residual representations. A
 worked example checks the factorisation patterns of $\psi_3$ against Frobenius, as the test of Section sec:data does.
 
@@ -1890,6 +1927,10 @@ $\det\rho_1(\Frob_p)\equiv\det\rho_2(\Frob_p)\pmod\lambda$ for all $p$ in a set 
 \item $\bar\rho_1^{ss}\simeq\bar\rho_2^{ss}$ over $k$.
 \item If $\bar\rho_1$ is absolutely irreducible, then $\bar\rho_2\simeq\bar\rho_1$.
 \item Conversely, if $\bar\rho_1^{ss}\simeq\bar\rho_2^{ss}$, the congruences hold for every $p\notin S$.
+\item (Newforms; given the representations attached to newforms, \Cref{ch:modgalrep}.) Let $\ell$ be odd, $E/\Q$ an elliptic curve of conductor $N$ with
+$\bar\rho_{E,\ell}$ irreducible, and $h$ a newform of weight $2$ and level $M$ whose coefficients lie in $\mathcal{O}$ (for a chosen embedding of its coefficient field).
+If $a_p(h)\equiv a_p(E)\pmod\lambda$ for all $p\nmid\ell MN$ in a set of density one, then $\bar\rho_h\simeq\bar\rho_{E,\ell}\otimes_{\F_\ell}k$, for every choice of the stable
+lattice defining $\bar\rho_h$.
 \end{enumerate}
 \end{corollary}
 
@@ -1900,17 +1941,21 @@ $\bar\rho_i$, hence on its subquotients); apply \Cref{cor:galois:chebotarev-bn}.
 (b) $\bar\rho_2^{ss}\simeq\bar\rho_1^{ss}=\bar\rho_1$ is irreducible of dimension $2$, so the two-dimensional $\bar\rho_2$ has an irreducible composition factor of
 dimension $2$, hence is irreducible and equal to its semisimplification.
 (c) Characteristic polynomials of $\bar\rho_i(\Frob_p)$ and of $\bar\rho_i^{ss}(\Frob_p)$ agree.
+(d) The black box of \Cref{ch:modgalrep} gives a continuous $\rho_{h,\lambda}\colon G_\Q\to\GL_2(\mathcal{O})$ (after choosing a stable lattice,
+\Cref{prop:galois:continuous-reps}(c)), unramified outside $M\ell$, with $\det\rho_{h,\lambda}=\chi_\ell$ and $\tr\rho_{h,\lambda}(\Frob_p)=a_p(h)$ for $p\nmid M\ell$. Take
+$\rho_1=\rho_{E,\ell}\otimes_{\Zl}\mathcal{O}$, which is unramified outside $\ell N$ with $\det\rho_1=\chi_\ell$ and $\tr\rho_1(\Frob_p)=a_p(E)$ for $p\nmid\ell N$
+(\Cref{ch:ellcurves}, \Cref{ch:galrep}), and $\rho_2=\rho_{h,\lambda}$, with $S$ the primes dividing $\ell MN$. The determinants of Frobenius agree and the traces are
+congruent on a set of density one. Since $\bar\rho_{E,\ell}$ is irreducible and $\det\bar\rho_{E,\ell}=\bar\chi_\ell$ with $\ell$ odd, it is absolutely irreducible
+(\Cref{prop:galois:complex-conjugation}(d)), and so is $\bar\rho_1=\bar\rho_{E,\ell}\otimes_{\F_\ell}k$. By (b), $\bar\rho_h=\bar\rho_2\simeq\bar\rho_1$; the argument
+applies to every stable lattice (and \Cref{prop:galois:reduction-ss} gives the independence of $\bar\rho_h^{ss}$ directly).
 \end{proof}
 
 \begin{paperlink}
 Lemma lem:old, case $p\nmid\ell N$: ``$\bar\rho_h\simeq\bar\rho$ over a common finite extension of $\F_\ell$, by Chebotarev and Brauer-Nesbitt, $\bar\rho$ being irreducible,
-hence absolutely irreducible''. Here one uses the black box of \Cref{ch:modgalrep}: a newform $h$ of weight $2$ and level $M$ with coefficients in $\mathcal{O}$ has a
-representation $\rho_{h,\lambda}\colon G_\Q\to\GL_2(\mathcal{O})$ (after choosing a stable lattice, \Cref{prop:galois:continuous-reps}(c)), unramified outside $M\ell$, with
-$\det\rho_{h,\lambda}=\chi_\ell$ and $\tr\rho_{h,\lambda}(\Frob_p)=a_p(h)$ for $p\nmid M\ell$. Enlarging $\mathcal{O}$ so that it contains the coefficients of $h$ and taking
-$\rho_2=\rho_{E,\ell}\otimes\mathcal{O}$ (whose residual representation is $\bar\rho_{E,\ell}\otimes_{\F_\ell}k$), \Cref{cor:galois:congruent-ap} with $S$ the primes dividing $\ell N$
-gives $\bar\rho_h^{ss}\simeq(\bar\rho_{E,\ell}\otimes k)^{ss}$, independently of the lattice by \Cref{prop:galois:reduction-ss}. The two residual representations a priori live
-over different finite fields ($k$ and $\F_\ell$), so they are compared over $k$. Since $\bar\rho_{E,\ell}$ is irreducible, it is absolutely irreducible
-(\Cref{prop:galois:complex-conjugation}(d)), so (b) gives $\bar\rho_h\simeq\bar\rho_{E,\ell}\otimes k$. The same argument gives the congruences in the proof of Theorem thm:qual
+hence absolutely irreducible''. This is \Cref{cor:galois:congruent-ap}(d), after enlarging $\mathcal{O}$ so that it contains the coefficients of the newform $h$ of the
+lemma; it rests on the black box of \Cref{ch:modgalrep} (the representation $\rho_{h,\lambda}$ with $\tr\rho_{h,\lambda}(\Frob_p)=a_p(h)$). The two residual representations
+a priori live over different finite fields ($k$ and $\F_\ell$), so they are compared over $k$, as $\bar\rho_{E,\ell}\otimes_{\F_\ell}k$; and ``irreducible, hence absolutely
+irreducible'' is \Cref{prop:galois:complex-conjugation}(d). The same argument gives the congruences in the proof of Theorem thm:qual
 (Section sec:proof: ``$\bar\rho_g\simeq\bar\rho$, that is, $a_p(g)\equiv a_p(f)\pmod\lambda$ for all $p\nmid 3N$'') and in the Example of that section.
 \end{paperlink}
 
@@ -1993,7 +2038,8 @@ The paper's example 726a1 is $y^2+xy=x^3+x^2-35x-51$, with mod $3$ image 3Ns. Ch
 \]
 that the two factors have discriminants $297=3^3\cdot11$ and $-176=-2^4\cdot11$, so that $K_1=\Q(\sqrt{33})$, $K_2=\Q(\sqrt{-11})$ and the third quadratic subfield of $K_1K_2$ is
 $\Q(\sqrt{-3})$, as \Cref{prop:galois:quartic-on-lines}(e) requires. Verify that $a_p\equiv0\pmod 3$ for the primes $p\equiv2\pmod3$, $p\nmid726$, $p<100$, and find the
-primes $p<60$ at which $\psi_3\bmod p$ splits into four linear factors (answer: $31$, $37$).
+primes $p<60$, $p\nmid726$, at which $\psi_3\bmod p$ splits into four distinct linear factors (answer: $31$, $37$). (At $p=2$ and $p=11$ it also splits into linear factors,
+with repetitions; at $p=3$ its degree drops.)
 \end{exercise}
 
 \begin{exercise}\label{exer:galois:121}
@@ -2029,7 +2075,7 @@ are \cite[Chapter VI, Sections 6 and 8]{Lang}; Capelli's criterion is \cite[Chap
 \cite[Chapter IV, Section 1]{Neukirch}, \cite[Chapter I, Section 1]{NSW} and \cite[Chapter 7]{MilneFields}. Continuous $\ell$-adic representations, lattices, the
 independence of $\bar\rho^{ss}$ from the lattice and the use of Chebotarev's theorem with Brauer-Nesbitt are in \cite[Chapter I]{SerreAbelian} and \cite[Section 1]{DDT}; the
 Chebotarev density theorem itself is \cite[Chapter VII, Section 13]{Neukirch}, and the comparison of densities \cite[Chapter VI, Section 4]{SerreCourse}. The theorem of
-Artin and Schreier on elements of finite order is in \cite[Chapter XI]{Lang}. The Kummer cocycle of a Tate parameter and its matrix form are \cite[Chapter IV]{SerreAbelian}
+Artin and Schreier is in \cite[Chapter VI, Section 9]{Lang}, and the real closed fields behind the statement on elements of finite order in \cite[Chapter XI]{Lang}. The Kummer cocycle of a Tate parameter and its matrix form are \cite[Chapter IV]{SerreAbelian}
 and \Cref{ch:reduction}; its cohomological meaning is \cite[Chapter VI]{NSW} and \Cref{ch:galcoh}.
 
 The chapter and section numbers of the books cited in this chapter (Lang, Dummit-Foote, Neukirch, Neukirch-Schmidt-Wingberg, Serre, Washington, Ireland-Rosen,
