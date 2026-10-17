@@ -11,7 +11,7 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Outlines of all 22 chapters and Appendix B | done, reviewed for consistency | `outlines/chNN_slug.md`, `outlines/chB_notation.md` |
 | Plan and outlines as one PDF | done (649 pages) | `docs/book_plan.pdf`, rebuilt by `tools/build_plan_pdf.sh` |
 | Bibliography | done, verified, 203 entries, no duplicates | `refs.bib` (shared), `bib/chNN.bib` (single-chapter) |
-| Findings about the paper | 87 points plus book-internal notes (B1 to B34) | `important/important_notes.md` (full record) |
+| Findings about the paper | 89 points plus book-internal notes (B1 to B36) | `important/important_notes.md` (full record) |
 | Memo for the paper's author | done | `important/paper_memo.md` (final, reconciled) |
 | Revised paper with the stronger results | done (32 pages), needs the author's review | `paper/note_v2.tex`, `docs/note_v2.pdf`, change log `paper/CHANGES_v2.md` |
 | Preface | written (needs a final update) | `frontmatter/preface.tex` |
@@ -23,7 +23,9 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Chapter 4 (reps) | done: lean pipeline by hand, review (1 blocking, 2 major, 11 minor, all fixed), check (3 minor, in B32); 2,053 lines, 45 pages | `chapters/ch04_reps.tex` |
 | Chapter 5 (galois) | done: lean pipeline by hand, review (1 major, 10 minor, all fixed), check (3 minor, fixed); 2,089 lines, 49 pages | `chapters/ch05_galois.tex` |
 | Chapter 6 (ant) | done: lean pipeline by hand, review (1 major, 12 minor, all fixed), check (5 minor, fixed); 1,851 lines, 43 pages | `chapters/ch06_ant.tex` |
-| Other chapters, Appendix B | **not yet written**; next is Chapter 7 (local fields: must prove the tame relation, see B34), then 8 and 9 | `chapters/` |
+| Chapter 7 (local) | done: lean pipeline by hand, review (3 major, 13 minor), check (1 blocking from the fix, 3 minor), second fix; 2,219 lines, 52 pages | `chapters/ch07_local.tex` |
+| Chapter 8 (curves) | done: lean pipeline by hand, review (1 blocking, 2 major, 12 minor), check (2 major, 2 minor), second fix; 1,988 lines, 50 pages | `chapters/ch08_curves.tex` |
+| Other chapters, Appendix B | **not yet written**; next is Chapter 9 (elliptic curves over fields), then 11 (Part III; 10 is done) | `chapters/` |
 
 The original paper is `note_Oct10_7pm.tex`. Labels in the revised paper are the same.
 

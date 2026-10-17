@@ -1207,6 +1207,19 @@ T_3E, and T_3E is free of rank one over Z_3[zeta_3] (Chapter 6, cor:ant:z3zeta3m
 Kraus's semistability defect needs q >= 5. The paper itself uses the freeness at q = 2 in lem:tamadd. Suggested fix:
 move "T_3E is free of rank one ..." out of the q >= 5 sentence. Found writing Chapter 6, confirmed by its reviewer.
 
+### 88. Proposition prop:pullback, proof: a complex plane intersected with a Z_l-lattice (expository)
+The proof (v2) says H^1(X_0(N),Z_l)[I_f], a saturated lattice, is "its intersection with H^1(X_0(N),Z_l)", intersecting a
+complex plane with a Z_l-lattice, which share no ambient space. Correct reading: H^1(X_0(N),Q)[I_f] is a two-dimensional
+Q-form of the plane, and H^1(X_0(N),Z_l)[I_f] = H^1(X_0(N),Z)[I_f] tensor Z_l by flatness. Found writing Chapter 8,
+confirmed by its reviewer; no result changes.
+
+### 89. Proposition prop:pullback, proof: w_N and the plane (expository)
+"w_N commutes with the T_n, (n,N)=1, so it preserves the plane": the plane is the I_f-kernel for the full Hecke algebra,
+U_p included, and w_N does not commute with U_p for p | N. The inference holds because, f being new of level N, the
+eigenspace of the anemic Hecke algebra (the T_n with (n,N)=1) for the eigenvalues of f is already the plane (multiplicity
+one for newforms). The paper uses this silently. Suggested wording: "by multiplicity one for newforms the plane is also the
+eigenspace of the T_n, (n,N)=1, with which w_N commutes". Found writing Chapter 8, confirmed by its reviewer.
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
@@ -1325,3 +1338,40 @@ move "T_3E is free of rank one ..." out of the q >= 5 sentence. Found writing Ch
 * Notation: geometric Frobenius written Frob_p^{-1} (Phi_n are cyclotomic polynomials here), declared in
   conv:ant:conventions(e); (1+sqrt d)/2 is theta_d; integral bases beta_i; the paper's D written prod_{q in S} q.
 * Chapter 9 must supply the Galois action on CM endomorphisms (exercise ex:ant:ex-cm points there).
+
+### B35. Items from writing Chapter 7
+
+* The tame relation is proved here in full (Frob t Frob^{-1} = t^q, Phi t Phi^{-1} = t^{q^{-1}}, P_K pro-p and the kernel
+  of the tame character), with D_p = G_{Q_p} (Krasner), O tensor Z_l, Z_3[zeta_3] as the ring of integers of
+  Q_3(sqrt(-3)), roots of unity in Q_l, and tameness iff the inertia image has order prime to q. This completes what
+  Chapters 1, 4 and 6 deferred.
+* Outline corrections: replacing zeta by zeta^a replaces N by aN; Frobenius-semisimplicity is automatic in dimension 2
+  with N != 0; 5.6 needs continuity into a Hausdorff group; table 9.4: rows 1, 3 at every q, rows 2, 4 at odd q, rows 5,
+  6 when q does not divide #rho(I_q), Kodaira column only for q >= 5.
+* The shapes table was checked by the reviewer on 675 (curve, bad prime) pairs from data/ecdata against
+  lfuneuler(lfunsympow(E,2),q).
+* Conductor: Chapter 10 defines the conductor exponent as a(V_l E); Ogg's formula f = v(Delta_min) + 1 - m uses m, the
+  number of components of the special fibre of the minimal REGULAR model (Kodaira's count), not of the Neron model
+  (IV*: 7 against 3; II*: 9 against 1). A fix in this chapter first got this wrong; the check caught it.
+* Phi conventions in Chapter 7: Phi alone is the local geometric Frobenius; at a named prime write Frob_p^{-1}; Phi_n
+  is a cyclotomic polynomial; \Phig_q the geometric component group (B-C2(b)).
+* Book text must not refer to internal files (PLAN.md, important_notes.md, paper_memo.md); Chapter 7's references were
+  removed, and every quotation of the paper was compared with note_v2.tex and made verbatim or turned into a paraphrase.
+  Later chapters should check quotations the same way.
+
+### B36. Items from writing Chapter 8
+
+* cor:curves:twisted-pairing needs T a commutative Z_l-SUBALGEBRA of End(H^1(X,Z_l)) (a subring such as Z gives a false
+  decomposition over maximal ideals); the Hecke application holds because T is the Z-span of the T_n, so
+  t^t = w^* t w^* follows from the case of T_n by linearity.
+* For a parametrisation varphi = psi o varphi_opt with psi an isogeny, the order m_0 of the component group of
+  ker(J(X) -> E) is deg psi, and n/m_0 = deg varphi_opt; the ideal of values of the cup product on the saturation of the
+  image of varphi^* is (n/m_0)Z. This is what "minimal degree" means for the optimal curve.
+* Remark rem:degree is in Section 4 of note_v2 (sec:quant), not Section 1.
+* Notation: the Frobenius twist of a curve is C^{[r]} (the parenthesised C^{(r)} is the twist notation of B-C13(e));
+  Abel-Jacobi map AJ (u is the Tate unit, B-C14); Riemann-Roch space dimension l(D); varphi for maps of curves
+  (B-C13(b)); m_0 for the component group order (c is reserved, B-C9).
+* thm:curves:plane-genus holds in every characteristic; 11.5(iii) proved with the new lem:curves:tori (all four indices
+  equal); 4.2(iii) injectivity via Hilbert 90; "regular at P" is defined and can be tested on an affine chart.
+* Chapter 14 must supply T_n^t = w_N T_n w_N; Chapter 10 does not yet point to Chapter 8 for smoothness and the DVR
+  criterion (it could).
