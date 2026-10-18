@@ -469,6 +469,9 @@ Counts: **A: 12** strengthenings, **B: 10** errors, **C: 14** gaps, **D: 17** ex
   classes with determined optimality (w_3 is not proved class-invariant); prop:no9 should cite Ligozat75 as the
   primary source for cyclic 27-isogenies.
 
+* **F7 (Chapter 13; correction; point 94).** rem:afterquant (2): "open" is contradicted; r_E divides
+  eta^Hecke(g^S) as integers, so Step 1 is an equality under thm:quant's hypotheses. E5 upgraded to settled.
+
 ## Re-verification log
 
 | curve | what was checked | result |

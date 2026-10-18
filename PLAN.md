@@ -1173,7 +1173,11 @@ above that disagrees with them.
 | **Chapter 8** | **written**: 1,988 lines, 50 pages, compiles (0 overfull boxes), lint clean; lean pipeline by hand (review: 1 blocking, 2 major, 12 minor; fix; check: 2 major, 2 minor; second fix by the orchestrator) |
 | **Chapter 9** | **written**: 2,234 lines, 52 pages, compiles (0 overfull boxes), lint clean; lean pipeline by hand (review: 4 blocking, 3 major, 13 minor; fix; check: 5 minor, 4 fixed by the orchestrator) |
 | **Chapter 11** | **written**: 2,050 lines, 48 pages, compiles (0 overfull boxes), lint clean; lean pipeline by hand (review: 7 major, 9 minor; fix; check: 5 minor, fixed by the orchestrator) |
-| Chapters 12 to 22, Appendix B, preface update | not yet written |
+| **Chapter 12** | **written**: 1,860 lines, 48 pages, 0 overfull, lint clean; review (1 blocking, 4 major, 6 minor), fix, check (3 major), second fix by the orchestrator |
+| **Chapter 13** | **written**: 1,852 lines, 48 pages, 0 overfull, lint clean; review (1 blocking, 5 major, 9 minor), fix (new prop:hecke:congruence-module, cor:hecke:rE-divides); check of fixes skipped to save model use |
+| **Chapter 14** | **written**: 1,680 lines, 46 pages, 0 overfull, lint clean; review (1 blocking, 3 major, 9 minor), fix, check (1 major, 1 minor), second fix by the orchestrator |
+| **Chapter 15** | **written**: 1,856 lines, 48 pages, 0 overfull, lint clean; review (2 major, 11 minor), fix, check (3 minor), second fix by the orchestrator |
+| Chapters 16 to 22, Appendix B, preface update | not yet written |
 
 **What the pilot taught.**
 * Length: 2,344 lines against a plan average of about 2,200 per chapter; the outline is a good predictor.

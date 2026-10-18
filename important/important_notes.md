@@ -1254,6 +1254,14 @@ isogeny class, at best a secondary summary. The primary source is Ligozat (X_0(2
 points, two of them cusps). Suggest citing Ligozat75 alone, or naming Kenku 1982 as a summary. Not checked against
 Kenku 1982 itself.
 
+### 94. Remark rem:afterquant (2): "Whether Step 1 is an equality without that hypothesis is open" is contradicted (correction; high confidence)
+The twist map iota sends f to g^S and f^perp into the T-stable complement of g^S, so r_E divides the generator of
+eta^Hecke(g^S) as integers, at every l (Chapter 13, cor:hecke:rE-divides, with a full proof of the congruence-module
+statement for a Q-valued eigencharacter whose generalised eigenspace is a line). With the paper's Step 1 this makes Step 1
+an equality under the hypotheses of thm:quant, whether or not l is in S_f. Level 539 (modules 288, 504) agrees. Memo E5
+is upgraded from medium to settled. Suggested wording: "Step 1 is an equality under the hypotheses of the theorem: iota
+maps f^perp into the T-stable complement of g^S, so r_E divides the generator of eta^Hecke(g^S)."
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
@@ -1441,3 +1449,18 @@ Kenku 1982 itself.
 * The l-independence of the Weil-Deligne representation (attributed here by Chapter 7) is only a sketched remark.
 * Data corrections: see points 90, 91. Notation: eta_1, eta_2 for characters of a reducible rhobar; newform g; pr_pm
   for idempotents; varpi' for zeta_l - 1; Phi_E(k') for component groups.
+
+### B39. Items from writing Chapters 12 to 15
+* t -> w_N t w_N maps T onto w_N T w_N, which differs from T in general (level 22: w U_2 w not in Q[U_2]); every argument
+  of the book uses only t^t = w t w. The outline's "involution of T" (ch14 4.2(iii)) was wrong.
+* For p | N the correspondence (X_0(Np), z->z, z->pz) is U_p^t; U_p is (X_0(Np), z->pz, z->z). Chapter 8 corrected.
+* Chapter 12 proves the Petersson change of variables for congruence subgroups and their GL_2^+(Q)-conjugates, and
+  C(X_0(N)) = C(j, j_N); tags depending on the sketched chart theorems say "given the charts of ...".
+* Chapter 13: depletion f^Sigma is an eigenform at level N only if every prime of N divides M^Sigma (f11^{2} at 132
+  fails). Chapter 10 now says Atkin-Li is stated and sketched in Chapter 13 (only q^2 | M proved).
+* Chapter 14: Deligne-Rapoport model at p || N is semistable, regular except at supersingular points with extra
+  automorphisms; deg | r_E at every prime is ARS Theorem 2.2 (verified); Ribet-Takahashi is a Remark from Pasten's
+  summary, hypotheses, theorem numbers and n_q vs c_q unverified against the originals.
+* Chapter 15 supplies rhobar_m for maximal ideals (Deligne-Serre, Carayol 94) and defines Eisenstein (reducible over T/m).
+* Chapter 20 must state and prove v_l(r_E) = v_l(eta^Hecke(g^S)) under thm:quant's hypotheses, citing Chapter 13.
+  note_v2 writes chi_{q*}; only the original writes chi_q.

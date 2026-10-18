@@ -6,7 +6,8 @@ computes them on $q$-expansions; proves commutativity, multiplicativity and the 
 the pairing $(g,t)\mapsto a_1(tg)$ between integral forms and $\T$ is perfect; computes Petersson adjoints; states the theory of Atkin, Lehner and Li (newforms,
 multiplicity one, strong multiplicity one); works out $U_p$ on oldforms, the stabilised and depleted forms and the level $M^\Sigma$ of the paper's Section 4.1; proves
 the decomposition $\T\otimes\Q=\Q\times\T'$ used in Lemma lem:crit; and treats twisting, including the theorem of Atkin and Li and the transport of congruences along
-the twist map $\iota$ of Theorems thm:twist and thm:quant. It ends with the $L$-function of a newform and the Rankin-Selberg residue. It uses \Cref{ch:rings} (Gauss
+the twist map $\iota$ of Theorems thm:twist and thm:quant, with the consequence that the congruence number $r_E$ divides the Hecke congruence module of the depleted form
+$g^S$ of Step 1 of the proof of Theorem thm:quant at every prime. It ends with the $L$-function of a newform and the Rankin-Selberg residue. It uses \Cref{ch:rings} (Gauss
 sums, Dirichlet characters), \Cref{ch:modules} (lattices, saturation, duality of free modules, idempotents of finite algebras, generalised eigenspaces, congruence
 ideals), \Cref{ch:ant} (algebraic integers, orders) and, above all, \Cref{ch:modforms} (the slash operator, $q$-expansions, the Petersson product, the Atkin-Lehner
 involutions, the integral structure $S_2(\Gamma_0(N);\Z)$ and Sturm's bound). Galois representations of newforms (\Cref{ch:modgalrep}) appear only in sketches and
@@ -632,8 +633,8 @@ class of $h$ has order exactly $r$, and $r$ is bounded by the index.
 
 The equality $r_f\Z=\eta(\phi_f)$ is the paper's Lemma lem:crit, proved in \Cref{ch:modgalrep} from \Cref{thm:hecke:perfect-pairing}, \Cref{cor:hecke:pairing-consequences} and
 \Cref{thm:hecke:newform-splitting}; its relation with the modular degree (the theorem of Agashe, Ribet and Stein) is \Cref{ch:moddeg}. The paper also uses $\eta(\pi)$ for the
-eigencharacter $\pi$ of a depleted form $g^S$, which is not a newform (``$\eta^{\mathrm{Hecke}}(g^S)$'', Step 1 of the proof of Theorem thm:quant); \Cref{prop:hecke:complements} says
-when the same arguments apply. Computed values of $r_f$ are in \Cref{ex:hecke:congruence-numbers}.
+eigencharacter $\pi$ of a depleted form $g^S$, which is not a newform (``$\eta^{\mathrm{Hecke}}(g^S)$'', Step 1 of the proof of Theorem thm:quant); \Cref{prop:hecke:congruence-module}
+proves the conclusions of the lemma for such $\pi$, and for $\phi_f$ itself. Computed values of $r_f$ are in \Cref{ex:hecke:congruence-numbers}.
 
 \begin{paperlink}\label{pl:hecke:crit-pairing}
 The proof of Lemma lem:crit uses, in this order: the perfect pairing (\Cref{thm:hecke:perfect-pairing}); ``under it the forms killed by $I$ are $\Z f$'' (\Cref{cor:hecke:pairing-consequences}(iii));
@@ -1069,7 +1070,8 @@ $N$'', and in Step 1 ``on that span the operators $U_q$, $q\in S$, have the eige
 
 This section assembles the previous ones into a description of $\T\otimes\Qbar$ and of the generalised eigenspaces of $\T$. It proves the decomposition $\T\otimes\Q=\Q\times\T'$ that
 the proof of Lemma lem:crit writes down without proof; it separates the $\T$-stable complement of an eigenform from its Petersson complement, the distinction on which
-Step 1 of the proof of Theorem thm:quant depends; it describes the local components $\T_{\mf m}$ of $\T_\ell$ and their effect on forms; and it explains how congruences at
+Step 1 of the proof of Theorem thm:quant depends, and proves the congruence-module statement of Lemma lem:crit for every rational eigencharacter whose generalised eigenspace
+is a line; it describes the local components $\T_{\mf m}$ of $\T_\ell$ and their effect on forms; and it explains how congruences at
 primes become congruences at all $n$.
 
 \begin{theorem}[the structure of $\T$]\label{thm:hecke:structure}
@@ -1143,9 +1145,9 @@ larger than $\Q$, as happens for the depleted form $f_{11}^{\{2\}}$ at level $88
 Let $g\in S_k(N)$ be a normalised eigenform of $\T=\T_N$ with eigencharacter $\pi$ whose generalised eigenspace is the line $\C g$ (a newform of level $N$; or $f^\Sigma$ at level $M^\Sigma$,
 \Cref{prop:hecke:depletion}(iv)). Let $g^c$ be the $\T$-stable complement of $\C g$, the sum of the other generalised eigenspaces.
 \begin{enumerate}[label=(\roman*)]
-\item $S_k(N)=\C g\oplus g^c$, and $\T\otimes\C=\C\times\T''$ with $\T''$ acting faithfully on $g^c$. If $\pi$ takes values in $\Q$ (so $k=2$ and $g$ has rational coefficients), the idempotent of the
-first factor lies in $\T\otimes\Q$, $g^c$ is spanned by forms with rational coefficients, $g^c\cap S_2(N;\Z)$ is saturated of rank $d-1$, and the conclusions of
-\Cref{thm:hecke:newform-splitting}(iii),(iv) hold with $g^c$ in place of $f^\perp$.
+\item $S_k(N)=\C g\oplus g^c$, and $\T\otimes\C=\C\times\T''$ with $\T''$ acting faithfully on $g^c$. If $k=2$ and $\pi$ takes values in $\Q$ (so that $g$ has rational coefficients), the idempotent of the
+first factor lies in $\T\otimes\Q$, $g^c$ is spanned by forms with rational coefficients, and $g^c\cap S_2(N;\Z)$ is saturated of rank $d-1$. (Rationality of $\pi$ alone does
+not force $k=2$: $\Delta$ has rational eigenvalues. The integral consequences are \Cref{prop:hecke:congruence-module}.)
 \item If $g$ is a newform of level $N$, $g^c=g^\perp$.
 \item If $g$ is not a newform, $g^c\ne g^\perp$ in general: for $g=f_{11}^{\{2\}}$ at level $44$, the stabilisation $h=f_{11}-\beta f_{11}(2z)$ lies in $g^c$ and $\langle g,h\rangle=\frac5{12}\langle f_{11},f_{11}\rangle_{44}\ne0$.
 \end{enumerate}
@@ -1155,7 +1157,8 @@ first factor lies in $\T\otimes\Q$, $g^c$ is spanned by forms with rational coef
 (i) The decomposition of a finite commutative algebra and its module into generalised eigenspaces (\Cref{ch:modules}) gives an idempotent $e_g\in\T\otimes\C$ projecting onto the
 generalised eigenspace $\C g$ along $g^c$, and $e_g(\T\otimes\C)=\C e_g$ because that eigenspace is a line on which $\T$ acts by $\pi$. If $\pi$ is $\Q$-valued, the idempotent of $\T\otimes\Q$
 attached to the maximal ideal $\ker(\pi\otimes\Q)$ acts on $S_k(N)\otimes\C$ as the projection onto the sum of the generalised eigenspaces of the conjugates of $\pi$, which is $\C g$ ($\pi$
-is its own only conjugate); so $e_g\in\T\otimes\Q$, and $g^c=\ker e_g$ is defined over $\Q$. The rest is as in \Cref{prop:hecke:rf-finite} and \Cref{thm:hecke:newform-splitting}. (ii) is
+is its own only conjugate); so $e_g\in\T\otimes\Q$, and $g^c=\ker e_g$ is defined over $\Q$. Saturation and rank are proved as in \Cref{prop:hecke:rf-finite}: $g^c\cap S_2(N;\Z)$ is the
+intersection of a lattice with a subspace of $S_2(N;\Q)$ of dimension $d-1$. (ii) is
 \Cref{thm:hecke:newform-splitting}(i): both are the sum of the other eigenspaces. (iii) $h$ is an eigenvector of $U_2$ with eigenvalue $\alpha\ne0$, while $g$ has $U_2$-eigenvalue $0$, so $h$
 lies in another generalised eigenspace. The Gram matrix of $f_{11}(z)$, $f_{11}(2z)$, $f_{11}(4z)$ at level $44$ is $\langle f_{11},f_{11}\rangle_{44}$ times
 \[
@@ -1168,9 +1171,68 @@ for both $\beta=-1\pm i$.
 \begin{paperlink}\label{pl:hecke:complements}
 The proof of Theorem thm:twist speaks of ``$g^\perp$, the $\T$-stable complement of the $g$-line (the sum of the generalised eigenspaces of the other systems of eigenvalues)'': at level $N_S$,
 where $g$ is a newform, the two notions agree (\Cref{prop:hecke:complements}(ii)). Step 1 of the proof of Theorem thm:quant uses ``the $\T$-stable complement of the $g^S$-line (not the
-Petersson complement, which is not $\T$-stable when the $U_p$ are involved)''; \Cref{prop:hecke:complements}(iii) shows that the two differ there, and (i) shows that the argument of
-Lemma lem:crit runs with the $\T$-stable complement for any eigencharacter whose generalised eigenspace is a line (the proof of the lemma in \Cref{ch:modgalrep} uses
-only the conclusions of \Cref{thm:hecke:newform-splitting}).
+Petersson complement, which is not $\T$-stable when the $U_p$ are involved)''; \Cref{prop:hecke:complements}(iii) shows that the two differ there. The paper then says that
+``the proof of Lemma lem:crit, carried out over $\Z_\ell$'' applies to the eigencharacter $\pi$ of $g^S$. That proof cannot be copied word for word: its first step identifies the
+complement by Petersson adjoints and multiplicity one for a newform, which are not available for $g^S$. \Cref{prop:hecke:congruence-module} below replaces that step by
+\Cref{prop:hecke:complements}(i) and proves the conclusions of the lemma for every $\Q$-valued eigencharacter of weight $2$ whose generalised eigenspace is a line.
+\end{paperlink}
+
+\begin{proposition}[the congruence module of a rational eigencharacter]\label{prop:hecke:congruence-module}
+Let $k=2$, $S=S_2(N;\Z)$, $S_\Q=S_2(N;\Q)$, and let $\pi\colon\T\to\Q$ be a ring homomorphism whose generalised eigenspace in $S_2(N)$ is a line. Then $\pi(\T)=\Z$ and the line is
+$\C g$, where $g=\sum_n\pi(T_n)q^n\in S$ is the normalised eigenform of $\pi$. Let $g^c$ be the $\T$-stable complement of $\C g$, $W=g^c\cap S_\Q$, $\Lambda=g^c\cap S$, $I=\ker\pi$ and $J=\Ann_\T(I)$.
+\begin{enumerate}[label=(\roman*)]
+\item $I\cap J=0$, $J=\Ann_\T(g^c)$, $I=\Ann_\T(J)$, and $\T/(I+J)$ is a finite cyclic group. Writing $r_\pi=\#\T/(I+J)$, one has $\pi(J)=r_\pi\Z$, that is, $\eta(\pi)=r_\pi\Z$.
+\item $S[I]=\Z g$, $S[J]=\Lambda$ and $[S:\Z g\oplus\Lambda]=r_\pi$. For an integer $m\ge1$ there is $h\in\Lambda$ with $g\equiv h\pmod m$ if and only if $m\mid r_\pi$. So the moduli of congruences
+between $g$ and integral forms of the $\T$-stable complement are exactly the divisors of $r_\pi$.
+\item Let $\ell$ be a prime, $S_\ell=S\otimes\Zl$, $\T_\ell=\T\otimes\Zl$ and $\pi_\ell=\pi\otimes\Zl\colon\T_\ell\to\Zl$. Then $\pi_\ell(\Ann_{\T_\ell}\ker\pi_\ell)=\ell^{v_\ell(r_\pi)}\Zl$, and for $t\ge0$ there is
+$h\in S_\ell\cap(W\otimes\Ql)$, a form of $S_\ell$ in the $\T$-stable complement, with $g\equiv h\pmod{\ell^t}$ if and only if $t\le v_\ell(r_\pi)$.
+\item If $g$ is a newform of level $N$, then $g^c=g^\perp$, $\Lambda=g^\perp\cap S$ and $r_\pi=r_g$, the congruence number of \Cref{def:hecke:congruence-ideal}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Each $\pi(t)$ is an eigenvalue of $t$, hence a root of the characteristic polynomial of $t$ acting on the lattice $S$ (\Cref{prop:hecke:hecke-algebra}), a monic integer polynomial, so $\pi(t)$ is a rational
+algebraic integer, an integer; and $\pi(T_1)=1$, so $\pi(\T)=\Z$. By \Cref{thm:hecke:eigen-dictionary}(ii), $g=f_\pi$ lies in $S$ and $tg=\pi(t)g$, so $g$ lies in the generalised eigenspace of $\pi$,
+which is therefore $\C g$.
+
+\emph{Step 1: the splitting.} By \Cref{prop:hecke:complements}(i) there is an idempotent $e\in\T\otimes\Q$ acting as $1$ on $g$ and as $0$ on $g^c$, and $S_2(N)=\C g\oplus g^c$. As $e$ preserves
+$S_\Q$, we get $S_\Q=\Q g\oplus W$, $g^c=W\otimes\C$ and $W=\ker(e|_{S_\Q})$. The algebra $\T\otimes\Q$ acts faithfully on $S_\Q$ (\Cref{thm:hecke:perfect-pairing}(iii)). For $t\in\T\otimes\Q$, the
+elements $te$ and $\pi(t)e$ agree on $g$ and on $W$, so $te=\pi(t)e$. Put $\T'=(1-e)(\T\otimes\Q)$. Then $t\mapsto(\pi(t),(1-e)t)$ identifies $\T\otimes\Q$ with $\Q\times\T'$ (the first factor
+being $\Q e$), and $\T'$ acts faithfully on $W$: an element $(1-e)t$ that kills $W$ also kills $g$, as $(1-e)g=0$, hence is $0$.
+
+\emph{Step 2: the ideals.} Since $\Q$ is flat over $\Z$, $I\otimes\Q=\ker(\pi\otimes\Q)=0\times\T'$. An element $t=(a,t')$ of $\T\subseteq\Q\times\T'$ kills $I$ if and only if it kills $I\otimes\Q$, if and
+only if $t'\T'=0$, if and only if $t'=0$ ($\T'$ contains its unit $1-e$). So $J=\T\cap(\Q e\times0)$. By faithfulness on $W$, $t$ kills $g^c=W\otimes\C$ if and only if $t'=0$; so $J=\Ann_\T(g^c)$.
+Clearly $I\cap J=0$. Some multiple $me$, $m\ge1$, lies in $\T$ (clear denominators), and $me\in J$ with $\pi(me)=m\ne0$. An element $t\in\T$ kills $J$ iff $t\cdot me=m\pi(t)e=0$, iff $\pi(t)=0$; so
+$\Ann_\T(J)=I$. As $\pi$ maps $\T$ onto $\Z$ with kernel $I$ and is injective on $J$, $\T/(I+J)\simeq\Z/\pi(J)$, which is cyclic and finite because $m\in\pi(J)$. Hence $\pi(J)=r_\pi\Z$, and
+$\eta(\pi)=\pi(\Ann_\T\ker\pi)=\pi(J)=r_\pi\Z$ (\Cref{def:hecke:congruence-ideal} with $\mathcal O=\Z$; $\pi$ is surjective). Finally $\T/I\simeq\Z$ and $\T/J$ are torsion-free: if $mt\in J$ with $m\ne0$,
+then $m(1-e)t=0$, so $(1-e)t=0$ and $t\in J$.
+
+\emph{Step 3: the index.} By \Cref{cor:hecke:pairing-consequences}(iii), $S[I]=\Z f_\pi=\Z g$. The ideal $J$ kills $g^c\supseteq\Lambda$; conversely, if $x\in S$ and $Jx=0$, then $me\,x=0$, so $ex=0$ and
+$x\in S\cap\ker e=\Lambda$. So $S[J]=\Lambda$. Step 2 gives the hypotheses of \Cref{cor:hecke:pairing-consequences}(iv), which yields $[S:\Z g\oplus\Lambda]=\#\T/(I+J)=r_\pi$.
+
+\emph{Step 4: the congruences.} The map $\varepsilon\colon S/(\Z g\oplus\Lambda)\to\Q g/\Z g$, $x\mapsto ex$, is well defined ($e$ fixes $g$, kills $\Lambda$ and maps $S$ into $S_\Q\cap\C g=\Q g$) and
+injective (if $ex=cg$ with $c\in\Z$, then $e(x-cg)=0$, so $x-cg\in\Lambda$). So $S/(\Z g\oplus\Lambda)$ is isomorphic to a subgroup of order $r_\pi$ of $\Q g/\Z g\simeq\Q/\Z$, and the only such
+subgroup is $r_\pi^{-1}\Z g/\Z g$. If $g\equiv h\pmod m$ with $h\in\Lambda$, then $x=(g-h)/m\in S$ and $ex=g/m$, whose class has order $m$ and lies in $r_\pi^{-1}\Z g/\Z g$; so $m\mid r_\pi$.
+Conversely, choose $x\in S$ with $\varepsilon(x)$ the class of $g/r_\pi$; replacing $x$ by $x-cg$ for a suitable $c\in\Z$ we may assume $ex=g/r_\pi$. Then $h_0=g-r_\pi x$ lies in $S$ and $eh_0=0$,
+so $h_0\in\Lambda$, and $g-h_0=r_\pi x$: a congruence modulo $r_\pi$, hence modulo every divisor $m$ of $r_\pi$.
+
+\emph{Step 5: (iii).} By flatness of $\Zl$ over $\Z$, $\ker\pi_\ell=I\otimes\Zl$, and Step 2 run in $\T_\ell\subseteq\Ql e\times(\T'\otimes\Ql)$ shows $\Ann_{\T_\ell}(\ker\pi_\ell)=\T_\ell\cap\Ql e$. As $\T/J$ is
+free, $J\otimes\Zl$ is saturated in $\T_\ell$ with $\Ql$-span $\Ql e$, so $\T_\ell\cap\Ql e=J\otimes\Zl$, whose image under $\pi_\ell$ is $r_\pi\Zl=\ell^{v_\ell(r_\pi)}\Zl$. Likewise $\Lambda$ is saturated in $S$, so
+$\Lambda_\ell=\Lambda\otimes\Zl$ equals $S_\ell\cap(W\otimes\Ql)$. The group $S_\ell/(\Zl g\oplus\Lambda_\ell)=(S/(\Z g\oplus\Lambda))\otimes\Zl$ is cyclic of order $\ell^{v_\ell(r_\pi)}$, and Step 4 runs verbatim
+with $\Ql g/\Zl g\simeq\Ql/\Zl$, whose finite subgroups are cyclic and determined by their order.
+
+(iv) By \Cref{prop:hecke:complements}(ii), $g^c=g^\perp$; so $\Lambda$ is the lattice $L$ of \Cref{prop:hecke:rf-finite}, and by (ii) the largest modulus of a congruence between $g$ and an
+element of $L$, which is $r_g$ by definition, is $r_\pi$.
+\end{proof}
+
+For a newform $f$ with rational coefficients, (i), (ii) and (iv) are the paper's Lemma lem:crit (whose full proof, with its own first step, is in \Cref{ch:modgalrep}); the point of
+the proposition is that only the line hypothesis is used. The hypothesis cannot be dropped: for $f_{11}^{\{2\}}$ at level $88$ the generalised eigenspace has dimension $2$
+(\Cref{ex:hecke:level-88}), the local factor of $\T_{88}\otimes\Q$ through which $\pi$ factors is not $\Q$, and Step 1 fails.
+
+\begin{paperlink}\label{pl:hecke:congruence-module}
+Step 1 of the proof of Theorem thm:quant: ``Now the proof of Lemma lem:crit, carried out over $\Z_\ell$ with the pairing $S_2(\Gamma_0(N);\Z_\ell)\times\T_\ell\to\Z_\ell$, shows that
+$\ell^{v_\ell(\eta^{\mathrm{Hecke}}(g^S))}$ is the largest power $\ell^t$ for which $g^S\equiv h\pmod{\ell^t}$ coefficientwise with $h\in S_2(\Gamma_0(N);\Z_\ell)$ in the $\T$-stable complement of
+the $g^S$-line'' is \Cref{prop:hecke:congruence-module}(iii) for the eigencharacter $\pi$ of $g^S$, whose generalised eigenspace at level $N=N_S^S$ is a line by \Cref{prop:hecke:depletion}(iv).
 \end{paperlink}
 
 \begin{proposition}[local components]\label{prop:hecke:local-components}
@@ -1178,8 +1240,9 @@ Let $\ell$ be a prime, $k=2$, $S_\ell=S_2(N;\Zl)$, and $\T_\ell=\T\otimes\Zl=\pr
 idempotents $e_{\mf m}$ (\Cref{ch:modules}).
 \begin{enumerate}[label=(\roman*)]
 \item $S_\ell=\bigoplus_{\mf m}e_{\mf m}S_\ell$, and $e_{\mf m}S_\ell\otimes\Qbar_\ell$ is the sum of the generalised eigenspaces of the $\phi\colon\T\to\Qbar_\ell$ whose reduction has kernel $\mf m$.
-\item A ring homomorphism $\phi\colon\T_\ell\to\mathcal O_\lambda$ factors through exactly one $\T_{\mf m}$; the other factors lie in $\ker\phi$, and $\Ann_{\T_\ell}(\ker\phi)=\Ann_{\T_{\mf m}}(\ker\phi\cap\T_{\mf m})$, so
-$\eta(\phi)=\eta(\phi|_{\T_{\mf m}})$.
+\item A ring homomorphism $\phi\colon\T_\ell\to\mathcal O_\lambda$ factors through exactly one $\T_{\mf m}$; the other factors lie in $\ker\phi$, and $\Ann_{\T_\ell}(\ker\phi)=\Ann_{\T_{\mf m}}(\ker\phi\cap\T_{\mf m})$.
+The same holds for the finite $\mathcal O_\lambda$-algebra $\T_{\mathcal O_\lambda}=\T_\ell\otimes_{\Zl}\mathcal O_\lambda$ and its local factors; so for a surjective $\phi\colon\T_{\mathcal O_\lambda}\to\mathcal O_\lambda$ the congruence
+ideal $\eta(\phi)=\phi(\Ann\ker\phi)$ of \Cref{def:hecke:congruence-ideal} is computed in the local factor through which $\phi$ factors.
 \item $\langle e_{\mf m}g,t\rangle=\langle g,e_{\mf m}t\rangle$; the pairing of \Cref{thm:hecke:perfect-pairing} restricts to perfect pairings $e_{\mf m}S_\ell\times\T_{\mf m}\to\Zl$, and
 $e_{\mf m}S_\ell\simeq\Hom_{\Zl}(\T_{\mf m},\Zl)$.
 \item $e_{\mf m}$ preserves $S_\ell$ and every $\T$-stable subspace of $S_2(N)\otimes\Ql$. If $g\in e_{\mf m}S_\ell$, $h\in S_\ell\cap W$ with $W$ a $\T$-stable subspace, and $g\equiv h\pmod{\ell^t}$, then
@@ -1193,7 +1256,8 @@ eigenspaces $V(\phi)$, $\phi\colon\T\to\Qbar_\ell$ (\Cref{ch:modules}); such $\p
 has the single eigenvalue $\phi(e_{\mf m})\in\{0,1\}$, and an idempotent with one eigenvalue acts by it (its minimal polynomial divides $X^2-X$). Finally $\phi(e_{\mf m})=1$ iff $e_{\mf m}$ is not
 in the maximal ideal $\phi^{-1}(\mf m_{\overline\Z_\ell})$ of $\T_\ell$, iff that ideal is $\mf m$. (ii) $\phi(e_{\mf m})\in\{0,1\}$ and $\sum_{\mf m}\phi(e_{\mf m})=1$, so exactly one $\phi(e_{\mf m})$ is $1$, and $e_{\mf m'}\in\ker\phi$
 for $\mf m'\ne\mf m$, so $\T_{\mf m'}=e_{\mf m'}\T_\ell\subseteq\ker\phi$. If $a$ kills $\ker\phi$, it kills each $e_{\mf m'}$, so $a=e_{\mf m}a\in\T_{\mf m}$; and an element of $\T_{\mf m}$ kills $\ker\phi$ iff it kills
-$\ker\phi\cap\T_{\mf m}$, since it kills the other factors. (iii) $\langle e_{\mf m}g,t\rangle=a_1(te_{\mf m}g)=\langle g,e_{\mf m}t\rangle$. Hence $\langle e_{\mf m}S_\ell,\T_{\mf m'}\rangle=\langle S_\ell,e_{\mf m}e_{\mf m'}\T_\ell\rangle=0$ for $\mf m\ne\mf m'$: the
+$\ker\phi\cap\T_{\mf m}$, since it kills the other factors. The argument uses only that $\T_\ell$ is a finite product of local rings with idempotents $e_{\mf m}$; $\T_{\mathcal O_\lambda}$, finite over the
+complete local ring $\mathcal O_\lambda$, is such a product as well (\Cref{ch:modules}). (iii) $\langle e_{\mf m}g,t\rangle=a_1(te_{\mf m}g)=\langle g,e_{\mf m}t\rangle$. Hence $\langle e_{\mf m}S_\ell,\T_{\mf m'}\rangle=\langle S_\ell,e_{\mf m}e_{\mf m'}\T_\ell\rangle=0$ for $\mf m\ne\mf m'$: the
 perfect pairing $S_\ell\times\T_\ell\to\Zl$ (\Cref{thm:hecke:perfect-pairing}(iii)) is block diagonal for the two decompositions, so each block is perfect. (iv) $e_{\mf m}\in\T_\ell$ acts on $S_\ell$, and a
 $\T$-stable $\Ql$-subspace is $\T_\ell$-stable. If $g-h=\ell^tx$ with $x\in S_\ell$, then $g-e_{\mf m}h=e_{\mf m}(g-h)=\ell^te_{\mf m}x$.
 \end{proof}
@@ -1236,7 +1300,8 @@ $U_p$-eigenvalues (the proof of Lemma lem:old, \Cref{ch:modgalrep}). The congrue
 
 This section treats the twist of a modular form by a Dirichlet character, in the generality the paper needs: quadratic characters $\chi_{q^*}$ and their products $\chi_S$. It
 proves the elementary properties of the twist operator (level, integrality, intertwining with Hecke operators, twisting twice), states the theorem of Atkin and Li (the
-paper's Lemma lem:twist (iii)), and proves the transport of congruences along the twist map $\iota$ used in the proofs of Theorems thm:twist and thm:quant. In this section
+paper's Lemma lem:twist (iii)), proves the transport of congruences along the twist map $\iota$ used in the proofs of Theorems thm:twist and thm:quant, and deduces that $r_E$
+divides the Hecke congruence module of $g^S$ (\Cref{cor:hecke:rE-divides}). In this section
 $q$ denotes an odd prime; the $q$-expansion variable appears only as $e^{2\pi inz}$.
 
 \begin{proposition}[the twist operator]\label{prop:hecke:twist-operator}
@@ -1371,31 +1436,75 @@ complement.
 (i) By \Cref{thm:hecke:atkin-lehner}(iv) at level $M$, $g^\perp=\bigoplus_{h'\ne g}V_{h'}$, the sum over newforms $h'\ne g$ of levels dividing $M$; it suffices to treat $h\in V_{h'}$, an eigenvector of
 $\T^{(M)}$ for the system of $h'$. By \Cref{prop:hecke:twist-operator}(vi), $\iota(h)$ is an eigenvector of the $T_p$, $p\nmid L$, with eigenvalues $\chi_S(p)a_p(h')$. These differ from
 $a_p(f)=\chi_S(p)a_p(g)$ at infinitely many $p$, because $a_p(h')\ne a_p(g)$ for infinitely many $p$ (\Cref{thm:hecke:strong-multiplicity-one}(i)). So \Cref{thm:hecke:strong-multiplicity-one}(iii) applies. If
-$L=N_f$, the only $f(dz)$ is $f$. (ii) Apply $\iota$, which is linear and preserves integrality and congruences coefficientwise. (iii) $\iota(f)=\iota\circ\iota(g)=g^S$ by
+$L=N_f$, the only $f(dz)$ is $f$. (ii) Apply $\iota$, which is linear and preserves integrality and congruences coefficientwise. With $r=r_g$ this gives a congruence modulo $r_g$ between $f$ and an integral form
+orthogonal to $f$; by \Cref{prop:hecke:congruence-module}(ii),(iv) for $\phi_f$ the moduli of such congruences are exactly the divisors of $r_f$, so $r_g\mid r_f$. (iii) $\iota(f)=\iota\circ\iota(g)=g^S$ by
 \Cref{prop:hecke:twist-operator}(v). At level $N_f$, $\lcm(N_f,D^2)=N_f$, so $\iota$ maps $S_2(N_f)$ to itself. By \Cref{thm:hecke:atkin-lehner}(iv), $f^\perp=\bigoplus_{h'\ne f}V_{h'}$ over newforms of
 levels dividing $N_f$, and $\iota(V_{h'})$ lies in the eigenspace of $\T^{(N_f)}$ for the system $\chi_S(p)a_p(h')$. If that were the system of $g$, then $a_p(h')=\chi_S(p)a_p(g)=a_p(f)$ for almost all $p$,
 and $h'=f$ by \Cref{thm:hecke:strong-multiplicity-one}(i). So $\iota(f^\perp)$ lies in the sum of the eigenspaces of $\T^{(N_f)}$ for systems other than that of $g$, which is contained in the sum of
 the generalised eigenspaces of $\T$ other than that of $g^S$ (every generalised eigenspace of $\T$ lies in one eigenspace of $\T^{(N_f)}$), that is, in the $\T$-stable complement of $\C g^S$.
 \end{proof}
 
-\begin{remark}[the engine of Theorems thm:twist and thm:quant]\label{rem:hecke:transport-engine}
-\Cref{prop:hecke:twist-transport}(ii) is the proof of Theorem thm:twist; (iii) with \Cref{prop:hecke:complements} gives the reverse of Step 1 of the proof of Theorem thm:quant. There
-$g=f_{E_S}$ has level $N_S$, $f=f_E$ has level $N=N_S^S$ with $q^2\mid N$ for $q\in S$, $\iota(g)=f$ (the paper: ``both are multiplicative, $a_p(f)=\chi_S(p)a_p(g)$ for $p\nmid D$ since the twist is
-unramified outside $S$, and $a_{q^k}(f)=0$ for $q\in S$ since $q^2\mid N$''), and $g^S$ has a line as generalised eigenspace at level $N$ (\Cref{prop:hecke:depletion}(iv)). By (iii), a
-congruence of modulus $r_E$ for $f$ gives one for $g^S$ in its $\T$-stable complement, so by the argument of Lemma lem:crit for the eigencharacter $\pi$ of $g^S$
-(\Cref{prop:hecke:complements}(i), \Cref{ch:modgalrep}) $r_E$ divides the order of $\T/(\ker\pi+\Ann_\T\ker\pi)$, the generator of $\eta^{\mathrm{Hecke}}(g^S)$. Together with the paper's Step 1, which
-gives $v_\ell(r_E)\ge v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ for $\ell\notin S$, this makes Step 1 an equality for every $\ell\notin S$, in particular for every $\ell\nmid N$, with no hypothesis on $S_f$. The
-revised paper's Remark rem:afterquant (2) still calls this question open (``Whether Step 1 is an equality without that hypothesis is open''). At level $539$ the Hecke congruence modules
-of $(\text{77c})^{\{7\}}$ and $(\text{11a})^{\{7\}}$ have orders $288=r(\curve{539c1})$ and $504=r(\curve{539d1})$ (\Cref{ex:hecke:twist-pairs}). The theorems themselves are proved in
-\Cref{ch:congruence}.
+\Cref{prop:hecke:twist-transport}(ii) is the proof of Theorem thm:twist. Part (iii), combined with \Cref{prop:hecke:congruence-module}, runs Step 1 of the proof of Theorem
+thm:quant backwards, and gives a divisibility that holds at every prime.
+
+\begin{theorem}[$r_f$ divides the congruence module of $g^S$]\label{thm:hecke:rE-divides}
+Let $g$ be a newform of weight $2$ and level $M$ and $f$ a newform of weight $2$ and level $N$, both with rational coefficients. Let $S$ be a finite set of odd primes, $D=\prod_{q\in S}q$,
+$\chi_S=\prod_{q\in S}\chi_{q^*}$ and $\iota=\iota_S$ (\Cref{prop:hecke:twist-operator}(vi)), and assume
+\begin{enumerate}[label=(\alph*)]
+\item $D^2\mid N$;
+\item $\iota(g)=f$, that is, $a_n(f)=\chi_S(n)a_n(g)$ for all $n\ge1$;
+\item $M^S=N$, where $M^S=M\prod_{q\in S}q^{\delta_q(g)}$ (\Cref{def:hecke:depletion}).
+\end{enumerate}
+Then $g^S\in S_2(N)$ is a normalised eigenform of $\T=\T_N$ whose generalised eigenspace is the line $\C g^S$; its eigencharacter $\pi\colon\T\to\Z$ satisfies the hypotheses of
+\Cref{prop:hecke:congruence-module}; and $r_f$ divides $r_\pi=\#\T/(\ker\pi+\Ann_\T\ker\pi)$, the positive generator of $\eta^{\mathrm{Hecke}}(g^S)=\pi(\Ann_\T\ker\pi)$. Equivalently,
+$v_\ell(r_f)\le v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ for every prime $\ell$.
+\end{theorem}
+
+\begin{proof}
+By (c) and \Cref{prop:hecke:depletion}(iii),(iv), $g^S\in S_2(N)$ is a normalised eigenform of $\T_N$ and its generalised eigenspace is $\C g^S$. Its eigenvalues $\pi(T_n)=a_n(g^S)$ are
+integers, so $\pi$ is $\Q$-valued and \Cref{prop:hecke:congruence-module} applies. By the definition of $r_f$ there is $h\in f^\perp\cap S_2(N;\Z)$ with $f\equiv h\pmod{r_f}$. The hypotheses of
+\Cref{prop:hecke:twist-transport}(iii) hold with $N_f=N$: $D^2\mid N$ by (a), $\iota(g)=f$ by (b), and $g^S\in S_2(N)$ with a line as generalised eigenspace. So $g^S\equiv\iota(h)\pmod{r_f}$
+with $\iota(h)$ an integral form in the $\T$-stable complement of $\C g^S$, and \Cref{prop:hecke:congruence-module}(ii) gives $r_f\mid r_\pi$.
+\end{proof}
+
+\begin{corollary}[the case of the paper]\label{cor:hecke:rE-divides}
+Let $E/\Q$ be an elliptic curve of conductor $N$ with newform $f=f_E$, let $S$ be the set of odd primes $q$ at which $E$ has Kodaira type $\kod{I}_0^*$ or $\kod{I}_n^*$ ($n\ge1$), and let
+$E_S=E\otimes\chi_S$, of conductor $N_S$, with newform $g=f_{E_S}$. Let $\pi\colon\T_N\to\Z$ be the eigencharacter of $g^S$. Then $r_E$ divides the positive generator of
+$\eta^{\mathrm{Hecke}}(g^S)=\pi(\Ann_{\T_N}\ker\pi)$, as integers: $v_\ell(r_E)\le v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ for every prime $\ell$, including $\ell=2$, the primes dividing $N$ and the
+primes of $S$.
+\end{corollary}
+
+\begin{proof}
+We check (a) to (c) of \Cref{thm:hecke:rE-divides} with $M=N_S$, using the twist lemmas of \Cref{ch:reduction} (the paper's Lemma lem:twist (i), (ii)). At $q\in S$, $E_S$ has good
+reduction if $E$ has type $\kod{I}_0^*$ and multiplicative reduction if $E$ has type $\kod{I}_n^*$, so $\delta_q(g)=2$, resp.\ $1$, $v_q(N_S)=0$, resp.\ $1$, and $v_q(N)=2$ (the conductor
+exponent of the twist, \Cref{ch:reduction}). At a prime $p\notin S$ the character $\chi_S$ is unramified (at $p=2$ because each $q^*\equiv1\pmod4$), and $E$, $E_S$ have the same reduction type
+and conductor exponent. Hence $v_q(N)=2$ for $q\in S$, which is (a), and $N_S\prod_{q\in S}q^{\delta_q(g)}=N$, which is (c). For (b): $V_\ell E_S\simeq V_\ell E\otimes\chi_S$, so at a prime $p\nmid D$ of good
+reduction $a_p(E_S)=\chi_S(p)a_p(E)$ (traces of Frobenius); at $p\nmid D$ of multiplicative reduction $a_p=\pm1$ according as the reduction is split or not, and the unramified twist changes the
+splitting exactly when $\chi_S(p)=-1$ (\Cref{ch:reduction}); at $p\nmid D$ of additive reduction both are $0$. With the modularity of $E$ and $E_S$ this is $a_p(f)=\chi_S(p)a_p(g)$ for every
+prime $p\nmid D$. Both $f$ and $\iota(g)$ are normalised with multiplicative coefficients satisfying the same prime-power relations at $p\nmid D$ (a prime $p\nmid D$ divides $N$ iff it divides
+$N_S$), and $a_{q^r}(f)=0=a_{q^r}(\iota(g))$ for $q\in S$, $r\ge1$, by \Cref{prop:hecke:newform-local}(iii) as $q^2\mid N$. So $\iota(g)=f$. The theorem gives $r_E=r_f\mid r_\pi$.
+\end{proof}
+
+\begin{remark}[Commentary: Step 1 of the proof of Theorem thm:quant is an equality]\label{rem:hecke:commentary-step1}
+The paper's Remark rem:afterquant (2) reads: ``When $\ell\notin S_f$ every inequality of the proof is an equality, in particular those of Steps 1 and 2; no multiplicity one at level $N$ or
+$N_S$ is used. Whether Step 1 is an equality without that hypothesis is open; the Hecke congruence modules at level $539$ (of orders $288$ and $504$) are consistent with it.''
+Step 1 of the paper's proof of Theorem thm:quant proves, under the hypotheses of that theorem ($\ell$ odd, $\ell\nmid2N$, $E[\ell]$ irreducible), the inequality
+$v_\ell(r_E)\ge v_\ell(\eta^{\mathrm{Hecke}}(g^S))$, by transporting congruences from $g^S$ to $f$ along $\iota$ inside the $\mf m$-component. \Cref{cor:hecke:rE-divides} gives the opposite
+inequality at every prime, by transporting congruences from $f$ to $g^S$. Together: under the hypotheses of Theorem thm:quant,
+\[
+v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S)),
+\]
+whether or not $\ell\in S_f$. So Step 1 is always an equality, and the question that the remark calls open has a positive answer. This chapter proves the divisibility; the equality, with the paper's Step 1 proved in full, is stated and proved in \Cref{ch:congruence}. At level $539$ the
+two modules are those of $(\text{77c})^{\{7\}}$ and $(\text{11a})^{\{7\}}$, of orders $288=r(\curve{539c1})$ and $504=r(\curve{539d1})$ (\Cref{ex:hecke:twist-pairs}): the corollary explains why
+$r_E$ divides them; the equality there at $\ell=2$ and $\ell=7$, outside the hypotheses of Theorem thm:quant, is observed, not proved by either argument.
 \end{remark}
 
 \section{The $L$-function of a newform; Rankin-Selberg}\label{sec:hecke:lfunctions}
 
 This section attaches to a normalised eigenform its Dirichlet series and Euler product, states the functional equation, and states the Rankin-Selberg formula that relates
-the Petersson norm $\langle f,f\rangle$ to the symmetric square $L$-function. In the paper these appear in Section 1 (``the Petersson norm'', ``$\langle f,f\rangle$ is the special value
-$L(\Sym f,2)$ up to the local factors at the bad primes'') and in Section 1.1 ($\delta_p$ as the degree of a local factor). The exact formula with all bad factors is
-\Cref{ch:lfunctions}'s.
+the Petersson norm $\langle f,f\rangle$ to the symmetric square $L$-function. In the paper these appear in Section 1 (``The classical route to the degree is the Petersson norm'', and
+``$\langle f,f\rangle$ is the special value of the naive symmetric square $L$-function at $s=2$'', which is \Cref{thm:hecke:rankin-selberg}(iii) up to the explicit factor $N/(8\pi^3)$; see also
+\Cref{warn:hecke:rankin}) and in Section 1.1 ($\delta_p$ as the degree of a local factor). The relation with the true symmetric square, with all bad factors, is \Cref{ch:lfunctions}'s.
 
 \begin{proposition}[Euler products]\label{prop:hecke:euler-product}
 Let $f$ be a normalised eigenform of $\T_N$ of weight $k$. The series $L(f,s)=\sum_{n\ge1}a_n(f)n^{-s}$ converges absolutely for $\operatorname{Re}s>k/2+1$ (\Cref{ch:modforms}), and there
@@ -1460,11 +1569,13 @@ at $p\,\|\,N$ the series is $(1-X)^{-1}$, and at $p^2\mid N$ it is $1$.
 D(f,s)=\frac{\zeta^{(N)}(s-1)\,L^{(N)}(\Sym f,s)}{\zeta^{(N)}(2s-2)}\prod_{p\mid N}\sum_ra_{p^r}^2p^{-rs},
 \]
 where $L(\Sym f,s)$ is
-normalised as in the paper and in PARI's \texttt{lfunsympow} (Appendix B, \Cref{ch:notation}) and the superscript $(N)$ removes the factors at $p\mid N$. If $N$ is squarefree,
-$D(f,s)=\zeta^{(N)}(s-1)L(\Sym f,s)/\zeta^{(N)}(2s-2)$ and
+normalised as in the paper and in PARI's \texttt{lfunsympow} (Appendix B, \Cref{ch:notation}) and the superscript $(N)$ removes the factors at $p\mid N$. The product over $p\mid N$ is the
+naive factor at $p$, so $D(f,s)=\zeta^{(N)}(s-1)L^{\nv}(\Sym f,s)/\zeta^{(N)}(2s-2)$, with $L^{\nv}$ the naive symmetric square (the true factors at the good and multiplicative primes, $1$ at
+the additive ones), and for every $N$
 \[
-\langle f,f\rangle=\frac{N\,L(\Sym f,2)}{8\pi^3}.
+\langle f,f\rangle=\frac{N\,L^{\nv}(\Sym f,2)}{8\pi^3}.
 \]
+If $N$ is squarefree, $L^{\nv}=L$ and $\langle f,f\rangle=N\,L(\Sym f,2)/(8\pi^3)$.
 \item In general $D(f,s)$ is \emph{not} the symmetric square $L$-function: it has the extra factor $1+p^{1-s}$ at every good prime, and at the bad primes the relation with $L(\Sym f,s)$
 involves correction factors (\Cref{ch:lfunctions}; \cite[Lemma 2.12]{DFG04}, \cite{Shimura76}).
 \end{enumerate}
@@ -1483,9 +1594,11 @@ geometric series,
 \sum_ra_{p^r}^2X^r=\frac1{(\alpha-\beta)^2}\Bigl(\frac{\alpha^2}{1-\alpha^2X}-\frac{2p}{1-pX}+\frac{\beta^2}{1-\beta^2X}\Bigr)=\frac{1+pX}{(1-\alpha^2X)(1-pX)(1-\beta^2X)},
 \]
 an identity of rational functions checked by clearing denominators (it also holds when $\alpha=\beta$, by continuity). At $p\,\|\,N$, $a_{p^r}^2=1$; at $p^2\mid N$, $a_{p^r}=0$ for $r\ge1$. (iii) At a good $p$,
-$L_p(\Sym f,s)^{-1}=(1-\alpha^2p^{-s})(1-p^{1-s})(1-\beta^2p^{-s})$ (Appendix B), and $1+p^{1-s}=(1-p^{2-2s})/(1-p^{1-s})$ is the factor of $\zeta(s-1)/\zeta(2s-2)$; multiply over $p\nmid N$. For squarefree $N$ the
-local factors at $p\mid N$ are $(1-p^{-s})^{-1}$, which is $L_p(\Sym f,s)$ at a multiplicative prime. The residue of $\zeta^{(N)}(s-1)$ at $s=2$ is $\prod_{p\mid N}(1-p^{-1})$ and
-$\zeta^{(N)}(2)=\frac{\pi^2}6\prod_{p\mid N}(1-p^{-2})$, so $\operatorname{Res}_{s=2}D=\frac6{\pi^2}\prod_{p\mid N}(1+p^{-1})^{-1}L(\Sym f,2)=\frac{6N}{\pi^2\mu(N)}L(\Sym f,2)$; compare with (i).
+$L_p(\Sym f,s)^{-1}=(1-\alpha^2p^{-s})(1-p^{1-s})(1-\beta^2p^{-s})$ (Appendix B), and $1+p^{1-s}=(1-p^{2-2s})/(1-p^{1-s})$ is the factor of $\zeta(s-1)/\zeta(2s-2)$; multiply over $p\nmid N$. By (ii) the
+local factor at $p\mid N$ is $(1-p^{-s})^{-1}$ if $p\,\|\,N$, which is $L_p(\Sym f,s)$ at a multiplicative prime (Appendix B), and $1$ if $p^2\mid N$, the naive factor at an additive prime; this
+gives the formula with $L^{\nv}$. The residue of $\zeta^{(N)}(s-1)$ at $s=2$ is $\prod_{p\mid N}(1-p^{-1})$ and
+$\zeta^{(N)}(2)=\frac{\pi^2}6\prod_{p\mid N}(1-p^{-2})$, so $\operatorname{Res}_{s=2}D=\frac6{\pi^2}\prod_{p\mid N}(1+p^{-1})^{-1}L^{\nv}(\Sym f,2)=\frac{6N}{\pi^2\mu(N)}L^{\nv}(\Sym f,2)$; compare with (i). For squarefree
+$N$ there are no additive primes.
 \end{proof}
 
 \begin{example}[numerical checks]\label{ex:hecke:rankin-numerics}
@@ -1494,7 +1607,7 @@ With PARI, to $30$ to $40$ digits ($\langle f,f\rangle$ is $\mu(N)$ times the va
 $\langle f,f\rangle=0.0469001478734951878\ldots$ and $L(\Sym f,2)=1.0575992445909578\ldots$, and $11\,L(\Sym f,2)/(8\pi^3)$ agrees with $\langle f,f\rangle$ to all digits; for \curve{37a1},
 $\langle f,f\rangle=0.3717541475106960\ldots=37L(\Sym f,2)/(8\pi^3)$. The residue formula (i), with $D(f,s)$ written as in (iii) with the local factors at $p\mid N$ computed from (ii), holds to $30$
 digits for \curve{11a1}, \curve{37a1}, \curve{20a1}, \curve{121a1} and \curve{99a1}; for the last three, whose levels are not squarefree, $N\,L(\Sym f,2)/(8\pi^3)$ differs from $\langle f,f\rangle$
-($0.0542\ldots$ against $0.0813\ldots$ for \curve{20a1}).
+($0.0542\ldots$ against $0.0813\ldots$ for \curve{20a1}), while $N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ agrees with it to $18$ digits in all five cases (\Cref{ex:hecke:ex-rankin}).
 \end{example}
 
 \begin{warning}[the Rankin series is not the symmetric square]\label{warn:hecke:rankin}
@@ -1568,7 +1681,7 @@ where $1=v_3(7^2-1)$ is the Euler term $e_3(E,7)$ of Theorem thm:quant (the pape
 (c) Case $\kod I_0^*$: \curve{539d1} has type $\kod I_0^*$ at $7$, $f_{\text{539d}}=f_{\text{11a}}\otimes\chi_{-7}$ ($7\nmid11$), $r(\text{11a})=1$ divides $504$, and $v_3(504)=2=0+e_3(E,7)$.
 (d) Step 1 of the proof of Theorem thm:quant at level $539$, $S=\{7\}$: the depleted forms $g^S$ are $(\text{77c})^{\{7\}}=g+g(7z)$ and $(\text{11a})^{\{7\}}=f_{11}+2f_{11}(7z)+7f_{11}(49z)$ (\Cref{ex:hecke:depleted}),
 each spanning its generalised eigenspace in $S_2(539)$; their Hecke congruence modules, computed as the index of $\Z g^S\oplus((g^S)^c\cap S_2(539;\Z))$ with the $\T$-stable complement
-(\Cref{prop:hecke:complements}), have orders $288$ and $504$, equal to $r(\text{539c})$ and $r(\text{539d})$, as \Cref{rem:hecke:transport-engine} predicts; and $\iota((\text{77c})^{\{7\}})=f_{\text{539c}}$,
+(\Cref{prop:hecke:complements}), have orders $288$ and $504$, equal to $r(\text{539c})$ and $r(\text{539d})$, consistent with \Cref{cor:hecke:rE-divides} and \Cref{rem:hecke:commentary-step1}; and $\iota((\text{77c})^{\{7\}})=f_{\text{539c}}$,
 $\iota((\text{11a})^{\{7\}})=f_{\text{539d}}$ (checked to $n=3000$; $\iota$ kills multiples of $7$, so this is \Cref{ex:hecke:twist-table}). At level $44$ the module of $f_{11}^{\{2\}}$ has order $2$, and
 at level $121$ that of $f_{11}^{\{11\}}=f_{11}-f_{11}(11z)$ has order $24=r(\text{121d})$.
 \end{example}
@@ -1615,8 +1728,10 @@ of $U_2$, while its stabilisations are, with $a_{2^r}=\alpha^r$.
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-pairing33}
-At level $33$ find a $\Z$-basis of $S_2(33;\Z)$ from $q$-expansions up to the Sturm bound $8$, write the matrices of $T_1,\dots,T_8$, show that they span a lattice of rank $3$, and check that the
-pairing matrix $(a_1(t_jg_i))$ has determinant $\pm1$. At level $77$ show that $T_1,\dots,T_7$ span a sublattice of index $5$ in $\T_{77}$. (Answer: see \Cref{ex:hecke:pairing-table}.)
+Let $g_1,\dots,g_d$ be a $\Z$-basis of $S_2(N;\Z)$. Show, using \Cref{thm:hecke:perfect-pairing}, that $T_1,\dots,T_d$ are linearly independent iff the matrix $(a_n(g_i))_{1\le i,n\le d}$ is
+invertible, and that then $[\T:\Z T_1+\cdots+\Z T_d]=\abs{\det(a_n(g_i))}$. At level $67$ ($d=5$) compute a $\Z$-basis from $q$-expansions and show that $T_1,\dots,T_5$ span a sublattice of
+index $8$, while $T_1,\dots,T_6$ span $\T_{67}$. (Hint: under $\T\simeq\Hom(S_2(N;\Z),\Z)$, $T_n$ is the functional $a_n$. Answer for level $67$: index $8$; the first $n$ with
+$\Z T_1+\cdots+\Z T_n=\T_{67}$ is $6$. Likewise at level $85$, $d=7$, the index is $7$ and $n=8$ suffices.)
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-local}
@@ -1627,8 +1742,9 @@ $\ker\pi$, and $\eta(\pi)=\Z_3$. Use \Cref{thm:hecke:newform-splitting}(iv) for 
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-level22}
-At level $22$, verify the matrices of \Cref{ex:hecke:level-22} by hand from \Cref{prop:hecke:Up-adjoint}(ii) and \Cref{ch:modforms}'s formula for $w_{22}$, and show that the eigenvectors
-$f_{11}-\beta f_{11}(2z)$ of $U_2$ are not orthogonal to each other. Conclude that no basis of $S_2(22)$ consists of orthogonal eigenvectors of $U_2$.
+At level $22$, with the Gram matrix of \Cref{ex:hecke:level-22}, show that the two eigenvectors $f_{11}-\beta f_{11}(2z)$ of $U_2$ ($\beta=-1\pm i$) are not orthogonal to each other, and
+conclude that no basis of $S_2(22)$ consists of orthogonal eigenvectors of $U_2$. (Hint: with $\beta_1=-1+i$, $\beta_2=-1-i$, the product is $\bigl(1+\tfrac13(\beta_1+\bar\beta_2)+\tfrac14\beta_1\bar\beta_2\bigr)\langle f_{11},f_{11}\rangle_{22}$, and $\bar\beta_2=\beta_1$ gives
+$\bigl(\tfrac13+\tfrac i6\bigr)\langle f_{11},f_{11}\rangle_{22}\ne0$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-jordan}
@@ -1659,8 +1775,10 @@ almost all $p$, so $g=f'$ by \Cref{thm:hecke:strong-multiplicity-one}(i), and th
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-elltwist}
-(Lemma lem:twist (iii).) With PARI's \texttt{elltwist} and \texttt{ellglobalred}, find the conductors of the twists of \curve{11a1} by $-11$ and by $-7$, of \curve{14a1} and \curve{77c1} by $-7$, and of
-\curve{539c1}, \curve{539d1}, \curve{121a1} by $-7$, $-7$, $-11$. Which satisfy $q^2\nmid M$, and where does the level drop? Show that the twist of \curve{20a1} by $-7$ lies in the class 980g, not 980i.
+(Lemma lem:twist (iii).) Predict from \Cref{thm:hecke:atkin-li} the conductor of each twist below, then check with PARI's \texttt{elltwist} and \texttt{ellglobalred} and identify the
+isogeny class from the $a_n$: \curve{17a1} by $-3$, \curve{21a1} by $-3$, \curve{63a1} by $-3$, \curve{27a1} by $-3$, \curve{50a1} by $5$. In which cases does the level drop, and in which is
+the naive twist a newform of the same level? (Answer: the classes 153c, 63a, 21a, 27a and 50b (the twist of \curve{50a1} is \curve{50b3}); the level is $\lcm(M,q^2)$ in the first two cases ($3\nmid17$, $3\,\|\,21$),
+drops in the third ($3^2\mid63$, and the twist undoes a twist), and is kept in the last two; \curve{27a1} has complex multiplication by $\Q(\sqrt{-3})$, so its twist by $\chi_{-3}$ is isogenous to it.)
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-99}
@@ -1669,8 +1787,9 @@ the discrepancy can only be at $3$. Find the newforms of level $99$ congruent to
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-rankin}
-Prove the identity $\sum_ra_{p^r}^2X^r=(1+pX)/((1-\alpha^2X)(1-pX)(1-\beta^2X))$ by clearing denominators, and deduce that $\sum a_n^2n^{-s}$ has the factor $1+p^{1-s}$ beyond $L_p(\Sym f,s)$. Compute
-$\langle f,f\rangle$ for \curve{11a1} with \texttt{mfpetersson} and check $\langle f,f\rangle=11L(\Sym f,2)/(8\pi^3)$.
+(The naive symmetric square at an additive prime.) \curve{20a1} has type $\kod{IV}^*$ at $2$ and multiplicative reduction at $5$. Compute the Euler factors of PARI's \texttt{lfunsympow(E,2)}
+at $2$ and $5$ with \texttt{lfuneuler}, and check numerically that $\langle f,f\rangle=20\,L^{\nv}(\Sym f,2)/(8\pi^3)$, whereas $20\,L(\Sym f,2)/(8\pi^3)$ is smaller by the factor $L_2(\Sym f,2)$.
+(Answer: $L_2(\Sym f,s)=(1+2^{1-s})^{-1}$, so $L_2(\Sym f,2)=2/3$; $L_5(\Sym f,s)=(1-5^{-s})^{-1}$; $\langle f,f\rangle=0.0813494568\ldots$ and $20L(\Sym f,2)/(8\pi^3)=0.0542329712\ldots$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-fe}
@@ -1684,6 +1803,28 @@ maximal ideals of $\T_{23}$ above $5$ and above $11$ together with the correspon
 $11=\frac{7+\sqrt5}2\cdot\frac{7-\sqrt5}2$ splits; above $5$ there is one maximal ideal, with residue field $\F_5$, and the two eigenforms become congruent modulo it.)
 \end{exercise}
 
+\begin{exercise}\label{ex:hecke:ex-lemold}
+(The eigenvectors in Lemma lem:old, at level $99$.) Take $N=99$ and $p=3$. (a) For $h=f_{11}$ ($a_3=-1$, $3\nmid11$, $e_3=2$), write the matrix of $U_3$ on $\operatorname{span}\{f_{11}(z),f_{11}(3z),f_{11}(9z)\}$,
+and check that $f_{11}-\beta f_{11}(3z)$ and $f_{11}-\alpha f_{11}(3z)$, $\alpha,\beta$ the roots of $X^2+X+3$, and the depleted form $f_{11}+f_{11}(3z)+3f_{11}(9z)$ are eigenvectors with eigenvalues $\alpha$, $\beta$, $0$. (b) For $h$ the
+newform of 33a ($a_3=-1$, $3\,\|\,33$, $e_3=1$), show that $h$ and $h+h(3z)$ are eigenvectors with eigenvalues $-1$ and $0$. (c) For $h$ the newform of 99a viewed at level $297$ ($3^2\mid99$, $e_3=1$),
+show that $U_3$ is a nilpotent Jordan block on $\operatorname{span}\{h,h(3z)\}$ with eigenvector $h$. In each case show that every eigenvalue has a one-dimensional eigenspace, and check that
+the characteristic polynomial of $U_3$ on $S_2(99)$ is $X^6(X+1)(X^2+X+3)$. (Hint: \Cref{prop:hecke:Up-oldspan}; the six zeros come from the four newforms of level $99$, from (a) and from (b).)
+\end{exercise}
+
+\begin{exercise}\label{ex:hecke:ex-gauss}
+(Primitivity in the Gauss-sum formula.) Let $\chi$ be the character modulo $9$ induced by $\chi_{-3}$ (so $\chi(u)=\chi_{-3}(u)$ for $3\nmid u$ and $\chi(u)=0$ otherwise), and
+$G(n)=\sum_{u\bmod9}\chi(u)e^{2\pi inu/9}$. Show that $G(1)=0$ and $G(3)=3\,\mathfrak g(\chi_{-3})=3i\sqrt3$, so that $G(n)=\bar\chi(n)G(1)$ fails at $n=3$ and the formula of
+\Cref{prop:hecke:twist-operator}(i) cannot be used with $\chi$. Show that nevertheless $f\otimes\chi=f\otimes\chi_{-3}$ as $q$-series. (Hint: group $u$ by its class modulo $3$; the sum of
+$e^{2\pi ik/3}$ over $k\bmod3$ vanishes.)
+\end{exercise}
+
+\begin{exercise}\label{ex:hecke:ex-case-c}
+(Case (c) of Theorem thm:twist.) \curve{75a1} has type $\kod{IV}$ at $5$ and \curve{75c1} type $\kod{II}$. Show with PARI that the twist of \curve{75a1} by $\chi_5$ is \curve{75c2}, of type
+$\kod{II}^*$ at $5$, and that the twist of \curve{75c1} is \curve{75a2}, of type $\kod{IV}^*$, in accordance with \Cref{ch:reduction}. Compute $r_f$ for the newforms of 75a and 75c by the lattice
+method of \Cref{ex:hecke:congruence-numbers} and check $r(\text{75a})=r(\text{75c})$, as Theorem thm:twist predicts when $N_S=N$; do the same for 50a and 50b with $\chi_5$. (Answer: $r=6$ for
+both 75a and 75c, equal to the modular degrees; $r=2$ for 50a and 50b.)
+\end{exercise}
+
 \section{Notes and references}\label{sec:hecke:notes}
 
 Hecke operators on modular forms of level one go back to Hecke and, for the multiplicativity of $\tau$, to Mordell; the double coset formalism is Shimura's \cite[Chapter 3]{Shimura71}.
@@ -1691,7 +1832,7 @@ We followed Diamond and Shurman \cite[Chapter 5]{DiamondShurman} for the double 
 the normalisation of \Cref{conv:hecke:double-coset}; Serre \cite[Chapter VII]{SerreCourse} and Koblitz \cite{Koblitz} treat level one, and Miyake \cite[Chapter 4]{Miyake} the general theory
 with characters. The section numbers of Diamond-Shurman (5.1 to 5.10, 6.3), Shimura (3.1 to 3.6, 7.2), Miyake (4.3, 4.6), Agashe-Ribet-Stein (Section 3), Darmon-Diamond-Taylor (Section 1)
 and Zagier (Section 1) cited in the text are pointers we have not verified against the printed editions (for Diamond-Flach-Guo we use Section 1.7.3, the section the paper cites), and the theorem numbers \cite[Theorem 4.6.19]{Miyake}, \cite[Theorem 3.1]{AtkinLi78} and \cite[Theorem 3]{AtkinLehner70} are quoted as the paper (for the last
-two) and the literature cite them, not checked.
+two) and the literature cite them, not checked; nor is the exact form of the hypothesis in \cite[Theorem 3.1]{AtkinLi78}.
 
 The theory of newforms is due to Atkin and Lehner \cite{AtkinLehner70} for trivial character and to Li \cite{Li75} in general; strong multiplicity one in the form of
 \Cref{thm:hecke:strong-multiplicity-one}(i) is in Miyake's book and in Li's paper; the density-one form uses the Galois representations of \Cref{ch:modgalrep}. The theorem on twists of
@@ -1705,5 +1846,7 @@ homomorphisms (\Cref{thm:hecke:eigen-dictionary}) is the starting point of Mazur
 (\texttt{mfinit}, \texttt{mfheckemat}, \texttt{mfpetersson}, \texttt{mftwist}, \texttt{mfcoefs}); the curve data are Cremona's \cite{Cremona97}.
 
 Two results here go beyond what the paper states. \Cref{thm:hecke:newform-splitting} proves the decomposition $\T\otimes\Q=\Q\times\T'$ that the proof of Lemma lem:crit writes down, and shows
-that the $\T$-stability of $f^\perp$ needs no adjoints of the $U_p$. \Cref{prop:hecke:twist-transport}(iii) gives the converse transport along $\iota$, which makes Step 1 of the proof of
-Theorem thm:quant an equality for every $\ell\nmid N$ (\Cref{rem:hecke:transport-engine}); the revised paper leaves this open in its Remark rem:afterquant (2).
+that the $\T$-stability of $f^\perp$ needs no adjoints of the $U_p$. \Cref{prop:hecke:congruence-module} proves the conclusions of Lemma lem:crit for every rational eigencharacter of weight $2$ whose generalised eigenspace is a line,
+which is what Step 1 of the proof of Theorem thm:quant uses for $g^S$. \Cref{prop:hecke:twist-transport}(iii) gives the converse transport along $\iota$, and with it
+\Cref{cor:hecke:rE-divides} proves $r_E\mid\eta^{\mathrm{Hecke}}(g^S)$ at every prime; with the paper's Step 1 this makes Step 1 an equality under the hypotheses of Theorem thm:quant,
+which the revised paper leaves open in its Remark rem:afterquant (2) (\Cref{rem:hecke:commentary-step1}; the equality theorem is in \Cref{ch:congruence}).

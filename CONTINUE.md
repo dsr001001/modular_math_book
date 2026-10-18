@@ -11,7 +11,7 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Outlines of all 22 chapters and Appendix B | done, reviewed for consistency | `outlines/chNN_slug.md`, `outlines/chB_notation.md` |
 | Plan and outlines as one PDF | done (649 pages) | `docs/book_plan.pdf`, rebuilt by `tools/build_plan_pdf.sh` |
 | Bibliography | done, verified, 203 entries, no duplicates | `refs.bib` (shared), `bib/chNN.bib` (single-chapter) |
-| Findings about the paper | 93 points plus book-internal notes (B1 to B38) | `important/important_notes.md` (full record) |
+| Findings about the paper | 94 points plus book-internal notes (B1 to B39) | `important/important_notes.md` (full record) |
 | Memo for the paper's author | done | `important/paper_memo.md` (final, reconciled) |
 | Revised paper with the stronger results | done (32 pages), needs the author's review | `paper/note_v2.tex`, `docs/note_v2.pdf`, change log `paper/CHANGES_v2.md` |
 | Preface | written (needs a final update) | `frontmatter/preface.tex` |
@@ -27,7 +27,8 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Chapter 8 (curves) | done: lean pipeline by hand, review (1 blocking, 2 major, 12 minor), check (2 major, 2 minor), second fix; 1,988 lines, 50 pages | `chapters/ch08_curves.tex` |
 | Chapter 9 (ellcurves) | done: lean pipeline by hand, review (4 blocking, 3 major, 13 minor), check (5 minor); 2,234 lines, 52 pages | `chapters/ch09_ellcurves.tex` |
 | Chapter 11 (galrep) | done: lean pipeline by hand, review (7 major, 9 minor), check (5 minor); 2,050 lines, 48 pages | `chapters/ch11_galrep.tex` |
-| Other chapters, Appendix B | **not yet written**; Parts I to III are complete; next is Part IV, Chapters 12 to 15 | `chapters/` |
+| Chapters 12 to 15 (Part IV) | done: lean pipeline by hand; Chapter 13's fixes were not independently checked (do that first next session) | `chapters/ch12_modforms.tex` to `ch15_modgalrep.tex` |
+| Other chapters, Appendix B | **not yet written**; Parts I to IV are complete; next is Part V, Chapters 16 to 19 | `chapters/` |
 
 The original paper is `note_Oct10_7pm.tex`. Labels in the revised paper are the same.
 
