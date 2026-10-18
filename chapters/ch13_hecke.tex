@@ -341,13 +341,13 @@ a_m(T_{n_1}T_{n_2}f)=\sum_{d_1\mid(m,n_1)}d_1^{k-1}\sum_{d_2\mid(mn_1/d_1^2,\,n_
 prime to $N$. Induction on the number of prime factors gives (iii).
 
 (iv) By (ii) and the definition, both sides are multiplicative in the coprime parts of $m$ and $n$, so it suffices to treat $m=p^a$, $n=p^b$. For $p\mid N$ this is
-$U_p^aU_p^b=U_p^{a+b}$. For $p\nmid N$ write $T_r=T_{p^r}$, $c=p^{k-1}$, $R(a,b)=\sum_{i=0}^{\min(a,b)}c^iT_{a+b-2i}$, and prove $T_aT_b=R(a,b)$ for $b\ge a$ by induction on $a$; the case
-$b<a$ follows by commutativity, $R$ being symmetric. The cases $a=0$ and $a=1$ are the definition. For the step let $b\ge a+1$; then $T_{a+1}T_b=T_1T_aT_b-cT_{a-1}T_b=T_1R(a,b)-cR(a-1,b)$.
-In $R(a,b)$ every index $a+b-2i\ge b-a\ge1$, so $T_1T_{a+b-2i}=T_{a+b+1-2i}+cT_{a+b-1-2i}$, and
+$U_p^aU_p^b=U_p^{a+b}$. For $p\nmid N$ write $\tau_r=T_{p^r}$ (so $\tau_0=T_1=1$ and $\tau_1=T_p$), $c=p^{k-1}$, $R(a,b)=\sum_{i=0}^{\min(a,b)}c^i\tau_{a+b-2i}$, and prove $\tau_a\tau_b=R(a,b)$ for $b\ge a$ by induction on $a$; the case
+$b<a$ follows by commutativity, $R$ being symmetric. The cases $a=0$ and $a=1$ are the definition. For the step let $b\ge a+1$; then $\tau_{a+1}\tau_b=\tau_1\tau_a\tau_b-c\tau_{a-1}\tau_b=\tau_1R(a,b)-cR(a-1,b)$.
+In $R(a,b)$ every index $a+b-2i\ge b-a\ge1$, so $\tau_1\tau_{a+b-2i}=\tau_{a+b+1-2i}+c\tau_{a+b-1-2i}$, and
 \[
-T_1R(a,b)=\sum_{i=0}^ac^iT_{a+1+b-2i}+\sum_{i=1}^{a+1}c^iT_{a+b+1-2i},\qquad cR(a-1,b)=\sum_{i=1}^{a}c^iT_{a+b+1-2i}.
+\tau_1R(a,b)=\sum_{i=0}^ac^i\tau_{a+1+b-2i}+\sum_{i=1}^{a+1}c^i\tau_{a+b+1-2i},\qquad cR(a-1,b)=\sum_{i=1}^{a}c^i\tau_{a+b+1-2i}.
 \]
-The difference is $\sum_{i=0}^ac^iT_{a+1+b-2i}+c^{a+1}T_{b-a-1}=R(a+1,b)$.
+The difference is $\sum_{i=0}^ac^i\tau_{a+1+b-2i}+c^{a+1}\tau_{b-a-1}=R(a+1,b)$.
 
 (v) The coefficient of $X^{r+1}$ in $(\sum_rT_{p^r}X^r)(1-T_pX+p^{k-1}X^2)$ is $T_{p^{r+1}}-T_pT_{p^r}+p^{k-1}T_{p^{r-1}}=0$ for $r\ge1$, that of $X$ is $T_p-T_p=0$ and that of $X^0$ is $1$; for $p\mid N$
 the series is geometric.
