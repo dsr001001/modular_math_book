@@ -1142,7 +1142,7 @@ first factor lies in $\T\otimes\Q$, $g^c$ is spanned by forms with rational coef
 (i) The decomposition of a finite commutative algebra and its module into generalised eigenspaces (\Cref{ch:modules}) gives an idempotent $e_g\in\T\otimes\C$ projecting onto the
 generalised eigenspace $\C g$ along $g^c$, and $e_g(\T\otimes\C)=\C e_g$ because that eigenspace is a line on which $\T$ acts by $\pi$. If $\pi$ is $\Q$-valued, the idempotent of $\T\otimes\Q$
 attached to the maximal ideal $\ker(\pi\otimes\Q)$ acts on $S_k(N)\otimes\C$ as the projection onto the sum of the generalised eigenspaces of the conjugates of $\pi$, which is $\C g$ ($\pi$
-is its own only conjugate); so $e_g\in\T\otimes\Q$, and $g^c=\kere_g$ is defined over $\Q$. The rest is as in \Cref{prop:hecke:rf-finite} and \Cref{thm:hecke:newform-splitting}. (ii) is
+is its own only conjugate); so $e_g\in\T\otimes\Q$, and $g^c=\ker e_g$ is defined over $\Q$. The rest is as in \Cref{prop:hecke:rf-finite} and \Cref{thm:hecke:newform-splitting}. (ii) is
 \Cref{thm:hecke:newform-splitting}(i): both are the sum of the other eigenspaces. (iii) $h$ is an eigenvector of $U_2$ with eigenvalue $\alpha\ne0$, while $g$ has $U_2$-eigenvalue $0$, so $h$
 lies in another generalised eigenspace. The Gram matrix of $f_{11}(z)$, $f_{11}(2z)$, $f_{11}(4z)$ at level $44$ is $\langle f_{11},f_{11}\rangle_{44}$ times
 \[
@@ -1619,8 +1619,9 @@ $f_{11}-\beta f_{11}(2z)$ of $U_2$ are not orthogonal to each other. Conclude th
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-jordan}
-Compute the matrix of $U_2$ on $V_{f_{11},2,3}\subset S_2(88)$, its Jordan form, and a basis of generalised eigenvectors. Deduce that $U_2(U_2^2+2U_2+2)$ is a nonzero nilpotent element of $\T_{88}\otimes\Q$.
-Find a newform $h$ and a level at which $U_p$ has a Jordan block of size $3$. (Hint: \Cref{prop:hecke:Up-oldspan}(iv); for instance $h=f_{11}$ at level $11\cdot2^4$, or $p^2\mid M$ with $e=2$.)
+Let $N=176=2^4\cdot11$, so that $\dim S_2(176)=19$ and $\dim S_2^{\mathrm{new}}(176)=5$. Using \Cref{thm:hecke:structure} and \Cref{prop:hecke:Up-oldspan}, list the spaces $V_h$ and the Jordan
+blocks of $U_2$ on each, predict the characteristic and minimal polynomials of $U_2$ on $S_2(176)$, and check them with PARI's \texttt{mfheckemat}. (Answer: $X^{17}(X^2+2X+2)$ and $X^3(X^2+2X+2)$;
+blocks of size $3$ at $0$ on $V_{f_{11},2,4}$ and $V_{f_{44},2,2}$, of size $2$ on the three $V_{h,2,1}$ with $h$ new of level $88$, of size $1$ on the five newforms of level $176$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-depletion}
