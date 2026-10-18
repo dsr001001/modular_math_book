@@ -39,7 +39,7 @@ fibres of $Y_0(N)\to Y(1)$ over $i$ and $\zeta_3$. \emph{(proved here)} \Cref{pr
 \item \textbf{$X(\Gamma)$ is a compact Riemann surface} (with charts $q_h$ at the cusps), algebraic by Riemann existence and GAGA. \emph{(proof sketched here; \cite{DiamondShurman},
 \Cref{ch:curves})} \Cref{thm:modforms:x0-compact}.
 \item \textbf{Genus formula.} $X_0(N)\to X(1)$ has degree $\mu(N)$, ramified over $i$, $\zeta_3$, $\infty$, and $g(X_0(N))=1+\frac\mu{12}-\frac{\nu_2}4-\frac{\nu_3}3-\frac{\nu_\infty}2$; table of
-genera ($g(X_0(11))=1$, $g(X_0(121))=6$, $g(X_0(539))=49$). \emph{(proved here, given Riemann-Hurwitz from \Cref{ch:curves})} \Cref{thm:modforms:genus-formula}.
+genera ($g(X_0(11))=1$, $g(X_0(121))=6$, $g(X_0(539))=49$). \emph{(proved here, given the charts of \Cref{thm:modforms:y0-riemann-surface}(ii) and \Cref{thm:modforms:x0-compact}, and Riemann-Hurwitz from \Cref{ch:curves})} \Cref{thm:modforms:genus-formula}.
 \item \textbf{Moduli.} $Y_0(N)$ classifies $(E,C)$, $C$ cyclic of order $N$; $Y_1(N)$ classifies $(E,P)$; $Y(N)$ classifies $(E,(P,Q))$, $(P,Q)$ a basis of $E[N]$ with Weil pairing
 $e_N(P,Q)=\zeta_N$, where $\zeta_N=e_N(\frac1N,\frac\tau N)$ on $\C/(\Z+\Z\tau)$ is $e^{2\pi i/N}$ or its inverse according to the normalisation of $e_N$; $w_N(E,C)=(E/C,E[N]/C)$; cusps are degenerate
 objects; $X_0(N)$ has a model over $\Q$. \emph{(proved here for (i) to (iii), given \Cref{ch:ellcurves}; (iv), (v) stated; \cite{DeligneRapoport73}, \cite{KatzMazur85}, \cite{DiamondShurman})}
@@ -62,13 +62,13 @@ $\Delta=\eta^{24}$. \emph{(proved here; $\Delta=\eta^{24}$ given the transformat
 \item \textbf{Valence formula, level one.} $v_\infty+\frac12v_i+\frac13v_{\zeta_3}+\sum v_p=\frac k{12}$. \emph{(proved here)} \Cref{thm:modforms:valence-level-one}.
 \item \textbf{Level one structure.} $M_2=0$, $M_k=\C E_k$ for $k=4,\dots,10,14$, $S_k=\Delta M_{k-12}$, dimension formula, $M_*=\C[E_4,E_6]$; zeros of $\Delta$, $E_4$, $E_6$. \emph{(proved here)}
 \Cref{cor:modforms:level-one-structure}.
-\item \textbf{$j$ is a bijection} $\SL_2(\Z)\backslash\HH\to\C$ and an isomorphism $X(1)\simeq\PP^1(\C)$; every $j_0$ is $j(\Lambda)$. \emph{(proved here)} \Cref{thm:modforms:j-bijective}.
+\item \textbf{$j$ is a bijection} $\SL_2(\Z)\backslash\HH\to\C$ and an isomorphism $X(1)\simeq\PP^1(\C)$; every $j_0$ is $j(\Lambda)$. \emph{(proved here; the isomorphism $X(1)\simeq\PP^1(\C)$ given the charts of \Cref{thm:modforms:y0-riemann-surface}(ii) and \Cref{thm:modforms:x0-compact}, and \Cref{ch:curves})} \Cref{thm:modforms:j-bijective}.
 \item \textbf{The function field of $X_0(N)$.} $j_N(z)=j(Nz)$ is a meromorphic function on $X_0(N)$; $\C(X(1))=\C(j)$; the conjugates of $j_N$ over $\C(j)$ are the $\mu(N)$ distinct functions
-$j(N\alpha_iz)$, $\SL_2(\Z)=\bigsqcup\Gamma_0(N)\alpha_i$, so $j_N$ has degree $\mu(N)$ over $\C(j)$ and $\C(X_0(N))=\C(j,j_N)$. \emph{(proved here, given \Cref{ch:curves} for
-$[\C(X_0(N)):\C(j)]=\deg\pi$)} \Cref{prop:modforms:function-field}.
+$j(N\alpha_iz)$, $\SL_2(\Z)=\bigsqcup\Gamma_0(N)\alpha_i$, so $j_N$ has degree $\mu(N)$ over $\C(j)$ and $\C(X_0(N))=\C(j,j_N)$. \emph{(proved here, given the charts of \Cref{thm:modforms:y0-riemann-surface}(ii) and \Cref{thm:modforms:x0-compact},
+and \Cref{ch:curves} for $[\C(X_0(N)):\C(j)]=\deg\pi$)} \Cref{prop:modforms:function-field}.
 \item \textbf{Valence formula for $\Gamma_0(N)$.} $\sum_Pv_P(f)/e_P=k\mu(N)/12$. \emph{(proof sketched here; \cite{DiamondShurman}, \cite{Shimura71})} \Cref{thm:modforms:valence-gamma0}.
 \item \textbf{Weight two forms are differentials.} $S_2(\Gamma_0(N))\simeq H^0(X_0(N),\Omega^1)$ by $f\mapsto f(z)\,dz$; $M_2$ corresponds to differentials with simple poles at the cusps, residue
-$\frac h{2\pi i}b_0$; $\dim S_2=g$, $\dim M_2=g+\nu_\infty-1$. \emph{(proved here, given \Cref{ch:curves})} \Cref{thm:modforms:weight-two-differentials}.
+$\frac h{2\pi i}b_0$; $\dim S_2=g$, $\dim M_2=g+\nu_\infty-1$. \emph{(proved here, given the charts of \Cref{thm:modforms:y0-riemann-surface}(ii) and \Cref{thm:modforms:x0-compact}, and \Cref{ch:curves})} \Cref{thm:modforms:weight-two-differentials}.
 \item \textbf{Dimension formulas} for $S_k(\Gamma_0(N))$, $M_k(\Gamma_0(N))$. \emph{(proved here for $k\le2$; sketched here for $k\ge4$; \cite{DiamondShurman})} \Cref{thm:modforms:dimension-formulas}.
 \item \textbf{Weight two Eisenstein series.} $E_2(z)-NE_2(Nz)\in M_2(\Gamma_0(N))\smallsetminus S_2$, with $a_0=1-N$; $M_2(\Gamma_0(p))=\C E_2^{(p)}\oplus S_2(\Gamma_0(p))$. \emph{(proved here, given the
 transformation law of $\eta$)} \Cref{prop:modforms:eisenstein-weight-two}.
@@ -93,7 +93,7 @@ image is the $\ell$-integral forms; congruences modulo $m$ or $\lambda$ are deci
 \Cref{cor:modforms:integral-lattice}.
 \item \textbf{Atkin-Lehner matrices} (definition): $W_d=\sm{dx}y{Nz}{dw}$, $\det W_d=d$, for $d\,\|\,N$. \Cref{def:modforms:atkin-lehner}.
 \item \textbf{Atkin-Lehner involutions.} The matrix $W_d$ normalises $\Gamma_0(N)$, $W_d^2\in d\Gamma_0(N)$, $W_dW_{d'}\in\gcd(d,d')\mathcal W_{d*d'}$, where $\mathcal W_e$ is the set of Atkin-Lehner matrices for $e\,\|\,N$ and $d*d'=dd'/\gcd(d,d')^2$; commuting holomorphic involutions $w_d$ of $X_0(N)$ and of
-$M_k(\Gamma_0(N))$ ($k$ even); $w_N\colon z\mapsto-1/(Nz)$; $w_d^*\omega_f=\omega_{f|_2W_d}$. \emph{(proved here)} \Cref{prop:modforms:atkin-lehner}.
+$M_k(\Gamma_0(N))$ ($k$ even); $w_N\colon z\mapsto-1/(Nz)$; $w_d^*\omega_f=\omega_{f|_2W_d}$. \emph{(proved here; the statement on $X_0(N)$ given the charts of \Cref{thm:modforms:y0-riemann-surface}(ii) and \Cref{thm:modforms:x0-compact})} \Cref{prop:modforms:atkin-lehner}.
 \item \textbf{Atkin-Lehner and pairings.} $w_d$ is a self-adjoint isometric involution of $S_k(\Gamma_0(N))$; $\dim S_2^+=g(X_0(N)/w_N)$; $w_N^*$ preserves the cup product and acts by $\varepsilon$ on
 $\omega_f$, $\overline{\omega_f}$ when $f|_2W_N=\varepsilon f$. \emph{(proved here, given \Cref{ch:curves})} \Cref{prop:modforms:atkin-lehner-petersson}.
 \item \textbf{Atkin-Lehner and cusps.} $w_N$ maps cusps of denominator invariant $c$ to $N/c$; for $N$ squarefree the $w_e$ act simply transitively on the cusps. \emph{(proved here)}
@@ -629,7 +629,8 @@ $ad-bc\equiv1\pmod N$, and by \Cref{prop:modforms:indices}(i) we may then take $
 $\tau'=\omega_2/\omega_1=\frac{d\tau+c}{b\tau+a}\in\HH$, and $z\mapsto z/\omega_1$ maps $(E_\tau,(P,Q))$ to $(E_{\tau'},(\frac1N,\frac{\tau'}N))$: this is surjectivity. Conversely an isomorphism
 $z\mapsto\alpha z$ from $(E_\tau,(\frac1N,\frac\tau N))$ to $(E_{\tau'},(\frac1N,\frac{\tau'}N))$ satisfies $\alpha=m_{11}+m_{12}\tau'$, $\alpha\tau=m_{21}+m_{22}\tau'$ with $\sm{m_{11}}{m_{12}}{m_{21}}{m_{22}}\equiv I\pmod N$ of
 determinant $1$ (it maps the oriented basis $(1,\tau)$ to an oriented basis of $\Lambda_{\tau'}$), so $\tau=\frac{m_{22}\tau'+m_{21}}{m_{12}\tau'+m_{11}}$ with $\sm{m_{22}}{m_{21}}{m_{12}}{m_{11}}\in\Gamma(N)$: this is injectivity.
-That $\zeta_N$ does not depend on $\tau$ is the statement of \Cref{ch:ellcurves} on the Weil pairing over $\C$ for an oriented basis.
+That $\zeta_N$ does not depend on $\tau$ is part (iv) of the proposition on isogenies of complex tori in \Cref{ch:ellcurves} ($e_N=\zeta^{\det}$ on $\frac1N\Lambda/\Lambda$ for an
+oriented basis).
 (iii) The first statement is clear. For the second, $E_\tau/\langle\frac1N\rangle=\C/(\frac1N\Z+\Z\tau)$, and multiplication by $N$ identifies it with $\C/\Lambda_{N\tau}$, sending $E_\tau[N]/C$ to the
 subgroup generated by $\tau=\frac{N\tau}N$. Multiplication by $(N\tau)^{-1}$ identifies $(\C/\Lambda_{N\tau},\langle\frac{N\tau}N\rangle)$ with $(\C/\Lambda_{-1/(N\tau)},\langle\frac1N\rangle)$,
 since $(N\tau)^{-1}\Lambda_{N\tau}=\Z(N\tau)^{-1}+\Z=\Lambda_{-1/(N\tau)}$.
@@ -1368,9 +1369,10 @@ The set $\alpha\mathcal F_\Delta$ is a fundamental set for $\Gamma_1=\alpha\Delt
 $z\mapsto\alpha z$ preserves null sets. By the fact above (first for $\abs\phi$, which shows integrability), the integral equals $\int_{\mathcal F_{\Gamma_1}}\phi\,d\mu=\langle f,g\rangle_{\Gamma_1}$.
 \end{proof}
 
-Part (iv) is the form in which \Cref{ch:hecke} uses the change of variables: there $\Gamma=\Gamma_0(N)\cap\alpha\Gamma_0(N)\alpha^{-1}$ for a matrix $\alpha$ of a double coset, a congruence
-subgroup, while $\alpha^{-1}\Gamma\alpha$ need not lie in $\SL_2(\Z)$. The groups of (iii) are what is needed for that: they need not lie in $\SL_2(\Z)$, but they are
-commensurable with it.
+\Cref{ch:hecke} uses (iv) in two ways. For the adjoints of double coset operators, $\Gamma=\Gamma_0(N)\cap\alpha\Gamma_0(N)\alpha^{-1}$ for a matrix $\alpha$ of a
+double coset; then $\Gamma$ and $\alpha^{-1}\Gamma\alpha=\alpha^{-1}\Gamma_0(N)\alpha\cap\Gamma_0(N)$ are both congruence subgroups of $\SL_2(\Z)$, and (iv) is needed
+only because $\alpha$ normalises neither. For the norms of oldforms, $\Gamma=\Gamma_0(M)$ and $\alpha=\sm p001$; then $\alpha^{-1}\Gamma\alpha$ does not lie in
+$\SL_2(\Z)$, and (iii) is needed to define the product over it.
 
 The factor in (i) is why the normalisation matters as soon as levels change: the paper passes from level $M$ to $M^\Sigma$ in Section 4.1, and Theorem thm:quant works at level
 $N$ with forms of level $N_S$. The normalised product of \Cref{conv:modforms:petersson-normalisations}(c) is level-independent; congruence questions do not see the factor at all,
