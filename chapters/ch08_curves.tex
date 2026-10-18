@@ -1720,7 +1720,7 @@ $(t^t)_*=(w_Ntw_N)_*$ (\Cref{thm:curves:adjoint-transpose}(c) and \Cref{ch:modde
 
 \section{Correspondences, their actions, and adjoints}\label{sec:curves:correspondences}
 
-Hecke operators are correspondences: $T_p$ on $X_0(N)$ is the pair of maps $X_0(Np)\rightrightarrows X_0(N)$ given by $z\mapsto z$ and $z\mapsto pz$ (\Cref{ch:moddeg}). This section defines
+Hecke operators are correspondences: for $p\nmid N$, $T_p$ on $X_0(N)$ is the pair of maps $X_0(Np)\rightrightarrows X_0(N)$ given by $z\mapsto z$ and $z\mapsto pz$ (\Cref{ch:moddeg}). This section defines
 correspondences between curves, their actions on divisors, the Jacobian, $H_1$, $H^1$ and holomorphic differentials, and proves the general theorem behind the sentence of
 Section 4.1 of the paper ``the Hecke operators, $U_p$ included, are self-adjoint for it, because $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup product'': the
 adjoint of a correspondence for the cup product is its transpose (\Cref{thm:curves:adjoint-transpose}). \Cref{cor:curves:twisted-pairing} then turns ``the transpose of every $t$ is
@@ -1735,8 +1735,8 @@ to $X$. The \emph{sum} of two correspondences is the disjoint union. For automor
 
 Examples. (a) The \emph{graph} $\Gamma_\varphi=(X,\mathrm{id},\varphi)$ of a nonconstant morphism $\varphi\colon X\to Y$, and its transpose $\Gamma_\varphi^t=(X,\varphi,\mathrm{id})$. (b) An automorphism $w$ of
 $X$ gives $\Gamma_w$, whose transpose acts as $\Gamma_{w^{-1}}$ (\Cref{prop:curves:correspondence-actions}(c) and \Cref{prop:curves:transfer}(v)). (c) (Forward pointer,
-\Cref{ch:moddeg}.) For a prime $p\nmid N$, the Hecke correspondence $T_p=(X_0(Np),\alpha_1,\alpha_p)$ on $X_0(N)$, with $\alpha_1(z)=z$ and $\alpha_p(z)=pz$ on $\HH$; $U_p$ for $p\mid N$
-similarly. The image of $(\alpha,\beta)\colon C\to X\times Y$ is a divisor on the surface $X\times Y$, and correspondences up to the obvious equivalence form a ring under composition (fibre
+\Cref{ch:moddeg}.) For a prime $p\nmid N$, the Hecke correspondence $T_p=(X_0(Np),\alpha_1,\alpha_p)$ on $X_0(N)$, with $\alpha_1(z)=z$ and $\alpha_p(z)=pz$ on $\HH$. For $p\mid N$ the same triple is $U_p^t=w_NU_pw_N$, not $U_p$, and $U_p$ is
+$(X_0(Np),\alpha_p,\alpha_1)$ (\Cref{ch:moddeg}). The image of $(\alpha,\beta)\colon C\to X\times Y$ is a divisor on the surface $X\times Y$, and correspondences up to the obvious equivalence form a ring under composition (fibre
 products); we need neither, because the Hecke algebra is defined as the ring of operators that the correspondences generate (\Cref{ch:hecke}).
 
 \begin{definition}[actions of a correspondence]\label{def:curves:correspondence-actions}
