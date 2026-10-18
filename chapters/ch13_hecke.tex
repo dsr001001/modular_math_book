@@ -95,27 +95,38 @@ free of rank one over $\T\otimes\C$; $\T\otimes\Q$ is reduced iff every $m_{h,p}
 through $\phi_f$ and $\T'$ acting faithfully on $f^\perp$; the idempotent of the first factor lies in $\T\otimes\Q$ and kills $f^\perp$. \emph{(proved here, given
 \Cref{thm:hecke:atkin-lehner})} \Cref{thm:hecke:newform-splitting}.
 \item \textbf{$\T$-stable versus Petersson complements.} For an eigencharacter $\pi$ whose generalised eigenspace is a line $\C g$: $S_k(N)=\C g\oplus g^c$ with $g^c$ the $\T$-stable
-complement, $\T\otimes\Q=\Q\times\T''$ when $\pi$ is rational, $g^c\cap S_2(N;\Z)$ saturated of rank $d-1$; $g^c=g^\perp$ for newforms, not in general (level $44$).
+complement, $\T\otimes\Q=\Q\times\T''$ when $k=2$ and $\pi$ is $\Q$-valued, $g^c\cap S_2(N;\Z)$ saturated of rank $d-1$; $g^c=g^\perp$ for newforms, not in general (level $44$).
 \emph{(proved here)} \Cref{prop:hecke:complements}.
-\item \textbf{Local components.} $\T_\ell=\prod_{\mf m}\T_{\mf m}$; the pairing is perfect on each $e_{\mf m}S_2(N;\Zl)\times\T_{\mf m}$; a homomorphism $\phi\colon\T\to\mathcal O_\lambda$ factors
-through one $\T_{\mf m}$, the other factors lie in $\ker\phi$, and $\eta(\phi)$ is computed in $\T_{\mf m}$; $e_{\mf m}$ preserves integrality, $\T$-stable subspaces and
+\item \textbf{The congruence module of a rational eigencharacter.} Let $k=2$ and $\pi\colon\T\to\Q$ a ring homomorphism whose generalised eigenspace is a line $\C g$, with $\T$-stable
+complement $g^c$ and $\Lambda=g^c\cap S_2(N;\Z)$. Then $\pi(\T)=\Z$, $\T/(\ker\pi+\Ann_\T\ker\pi)$ is cyclic of order $r_\pi$ with $\eta(\pi)=r_\pi\Z$, $[S_2(N;\Z):\Z g\oplus\Lambda]=r_\pi$, and
+$g\equiv h\pmod m$ for some $h\in\Lambda$ iff $m\mid r_\pi$; the same over $\Zl$ for every $\ell$; for a newform $g$ of level $N$, $r_\pi=r_g$. \emph{(proved here, given the integral basis
+theorem of \Cref{ch:modforms})} \Cref{prop:hecke:congruence-module}.
+\item \textbf{Local components.} $\T_\ell=\prod_{\mf m}\T_{\mf m}$; the pairing is perfect on each $e_{\mf m}S_2(N;\Zl)\times\T_{\mf m}$; a homomorphism $\phi\colon\T_\ell\to\mathcal O_\lambda$ factors
+through one $\T_{\mf m}$, the other factors lie in $\ker\phi$, and $\Ann(\ker\phi)$ lies in $\T_{\mf m}$, so that for surjective $\phi\colon\T_{\mathcal O_\lambda}\to\mathcal O_\lambda$ the congruence ideal $\eta(\phi)$ is computed in a local factor; $e_{\mf m}$ preserves integrality, $\T$-stable subspaces and
 congruences. \emph{(proved here)} \Cref{prop:hecke:local-components}.
 \item \textbf{Congruences.} For normalised eigenforms of $\T_N$: congruence at all $n$ $\iff$ at all primes $\iff$ $\phi_f\equiv\phi_g$ on $\T$; this implies, and when $\T/\mf m_{f,\lambda}=\F_\ell$ is
 equivalent to, $\mf m_{f,\lambda}=\mf m_{g,\lambda}$; for newforms, congruence at the primes outside $\Sigma$ gives $f^\Sigma\equiv g^\Sigma$ at all $n$. \emph{(proved here)} \Cref{prop:hecke:congruences}.
 \item \textbf{The twist operator.} For primitive $\chi$ of conductor $r$: $f\otimes\chi=\mathfrak g(\bar\chi)^{-1}\sum_u\bar\chi(u)f|_k\sm1{u/r}01$ lies in $S_k(\Gamma_0(\lcm(M,r^2)),\chi^2)$; for
-quadratic $\chi$ it preserves integrality, intertwines $T_p$ with $\chi(p)T_p$ ($p\nmid r$), kills $U_p$ for $p\mid r$, and $(f\otimes\chi)\otimes\chi=f^{\{p\mid r\}}$; the
+quadratic $\chi$ it preserves integrality, intertwines $T_p$ with $\chi(p)T_p$ ($p\nmid r$), satisfies $U_p(f\otimes\chi)=0$ for $p\mid r$, and $(f\otimes\chi)\otimes\chi=f^{\{p\mid r\}}$; the
 paper's $\iota=\iota_S$. \emph{(proved here)} \Cref{prop:hecke:twist-operator}.
 \item \textbf{Atkin-Li.} For a newform $g$ of weight $2$ on $\Gamma_0(M)$ and $\chi=\chi_{q^*}$ with $q^2\nmid M$, $g\otimes\chi$ is a newform on $\Gamma_0(\lcm(M,q^2))$; for $q^2\mid M$ it
 is the $q$-depletion of a newform of level dividing $M$. \emph{(stated; reference, with a sketch; the case $q^2\mid M$ proved here)} \Cref{thm:hecke:atkin-li}.
 \item \textbf{Transport along $\iota$.} $\iota$ maps $g^\perp$ into the forms orthogonal to every $f(dz)$, $f$ the newform with system $\chi_S(p)a_p(g)$; congruences
-$g\equiv h$ become $f\equiv\iota(h)$ when $f=\iota(g)$; conversely $\iota(f)=g^S$ and $\iota(f^\perp)$ lies in the $\T$-stable complement of $g^S$. \emph{(proved here, given
+$g\equiv h$ become $f\equiv\iota(h)$ when $f=\iota(g)$, so $r_g\mid r_f$ for rational $g$, $f$; conversely $\iota(f)=g^S$ and $\iota(f^\perp)$ lies in the $\T$-stable complement of $g^S$. \emph{(proved here, given
 \Cref{thm:hecke:atkin-lehner} and \Cref{thm:hecke:strong-multiplicity-one})} \Cref{prop:hecke:twist-transport}.
+\item \textbf{$r_f$ divides the congruence module of $g^S$.} Let $g$ (level $M$) and $f$ (level $N$) be newforms of weight $2$ with rational coefficients, $S$ a finite set of odd primes with
+$D^2\mid N$, $\iota(g)=f$ and $M^S=N$, and $\pi$ the eigencharacter of $g^S$ on $\T_N$. Then $r_f$ divides $r_\pi$, the positive generator of $\eta(\pi)=\eta^{\mathrm{Hecke}}(g^S)$.
+\emph{(proved here, given \Cref{thm:hecke:atkin-lehner} and \Cref{thm:hecke:strong-multiplicity-one})} \Cref{thm:hecke:rE-divides}.
+\item \textbf{The case of the paper.} For $E/\Q$ of conductor $N$, $S$ the set of odd primes at which $E$ has type $\kod{I}_0^*$ or $\kod{I}_n^*$, $E_S=E\otimes\chi_S$ and $g=f_{E_S}$: $r_E$
+divides the positive generator of $\eta^{\mathrm{Hecke}}(g^S)$, as integers, so $v_\ell(r_E)\le v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ for every prime $\ell$. With Step 1 of the paper's proof of
+Theorem thm:quant this is an equality under that theorem's hypotheses, with no condition on $S_f$. \emph{(proved here, given the twist lemmas of \Cref{ch:reduction}; the equality
+given Step 1, \Cref{ch:congruence})} \Cref{cor:hecke:rE-divides}.
 \item \textbf{Euler products.} $L(f,s)=\prod_{p\nmid N}(1-a_pp^{-s}+p^{k-1-2s})^{-1}\prod_{p\mid N}(1-a_pp^{-s})^{-1}$ for a normalised eigenform of $\T_N$; $L(f^\Sigma,s)=L(f,s)\prod_{p\in\Sigma}L_p(f,s)^{-1}$.
 \emph{(proved here)} \Cref{prop:hecke:euler-product}.
 \item \textbf{Functional equation.} If $f|_kW_N=\varepsilon_Nf$ then $\Lambda(f,s)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(f,s)$ is entire and $\Lambda(f,s)=i^k\varepsilon_N\Lambda(f,k-s)$; sign $-\varepsilon_N$ in
 weight $2$. \emph{(proof sketched here)} \Cref{thm:hecke:functional-equation}.
 \item \textbf{Rankin-Selberg.} $\operatorname{Res}_{s=k}\sum|a_n(f)|^2n^{-s}=\frac{3(4\pi)^k}{\pi\Gamma(k)\mu(N)}\langle f,f\rangle$; for a rational newform of weight $2$ and squarefree level
-$\langle f,f\rangle=N\,L(\Sym f,2)/(8\pi^3)$; the Rankin series is not the symmetric square $L$-function. \emph{(proof sketched here; the local identities proved)}
+$\langle f,f\rangle=N\,L(\Sym f,2)/(8\pi^3)$, and for every level $\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$; the Rankin series is not the symmetric square $L$-function. \emph{(proof sketched here; the local identities proved)}
 \Cref{thm:hecke:rankin-selberg}.
 \end{enumerate}
 
@@ -139,11 +150,14 @@ analogue is \Cref{prop:hecke:Up-adjoint}.
 \item \textbf{Theorem thm:twist}: the twist map $\iota$, generalised eigenspaces and the transport $g^\perp\to f^\perp$, \Cref{prop:hecke:twist-operator},
 \Cref{prop:hecke:twist-transport}, \Cref{ex:hecke:twist-pairs}. The theorem is proved in \Cref{ch:congruence}.
 \item \textbf{Theorem thm:quant, Step 1}: strong multiplicity one, the eigenvalue $0$ of $U_q$ with multiplicity one, units among the $U_q$-eigenvalues, the $\T$-stable
-complement of $g^S$, idempotents of $\T_\ell$, \Cref{prop:hecke:depletion}, \Cref{cor:hecke:Up-eigenvalues}, \Cref{prop:hecke:complements},
-\Cref{prop:hecke:local-components}, \Cref{prop:hecke:twist-transport}. The theorem is proved in \Cref{ch:congruence}.
+complement of $g^S$, idempotents of $\T_\ell$, the $\Z_\ell$-version of Lemma lem:crit for $\pi$, \Cref{prop:hecke:depletion}, \Cref{cor:hecke:Up-eigenvalues}, \Cref{prop:hecke:complements},
+\Cref{prop:hecke:congruence-module}, \Cref{prop:hecke:local-components}, \Cref{prop:hecke:twist-transport}. The theorem is proved in \Cref{ch:congruence}.
 \item \textbf{Lemma lem:hecke and the paragraph after it} (the congruence ideal computed in $\T_{\mf m}$): \Cref{prop:hecke:local-components}.
-\item \textbf{Section 1 and the remark after the Example of Section 3}: the congruence number $r_E$, \Cref{def:hecke:congruence-ideal}, \Cref{ex:hecke:congruence-numbers}
-(99a1, 539d1); the Petersson norm and Rankin-Selberg, \Cref{thm:hecke:rankin-selberg}.
+\item \textbf{Section 1, Section 3 (preamble) and the remark after the Example of Section 3}: the congruence number $r_E$ (introduced in Section 1 and defined again in the
+preamble of Section 3), \Cref{def:hecke:congruence-ideal}, \Cref{ex:hecke:congruence-numbers} (99a1, 539d1, in the unlabelled remark after the Example).
+\item \textbf{Section 1}: the Petersson norm, ``$\langle f,f\rangle$ is the special value of the naive symmetric square $L$-function at $s=2$'', \Cref{thm:hecke:rankin-selberg}(iii).
+\item \textbf{Remark rem:afterquant (2)}: whether Step 1 of the proof of Theorem thm:quant is an equality; \Cref{prop:hecke:congruence-module}, \Cref{thm:hecke:rE-divides},
+\Cref{cor:hecke:rE-divides} and the Commentary after it.
 \item \textbf{The Example of Section 3}: $f_{\text{11a}}\otimes\chi_{-11}$ is the form of 121d, \Cref{thm:hecke:atkin-li}, \Cref{ex:hecke:level-121}.
 \end{itemize}
 
@@ -205,7 +219,7 @@ level of $U_p$ can often be left implicit.
 \begin{convention}[twists and depletion]\label{conv:hecke:twists}
 (a) For a Dirichlet character $\chi$ of conductor $r$, the \emph{(naive) twist} is $f\otimes\chi=\sum_n\chi(n)a_n(f)q^n$, with $\chi(n)=0$ when $(n,r)>1$. It is a $q$-series operation;
 whether $f\otimes\chi$ is a newform is a theorem (\Cref{thm:hecke:atkin-li}). (b) For an odd prime $q$, $q^*=(-1)^{(q-1)/2}q$ and $\chi_{q^*}=\bigl(\frac{q^*}{\cdot}\bigr)$ is the quadratic
-character of conductor $q$, the character of $\Q(\sqrt{q^*})$; the paper writes it $\chi_q$, and the book never does, $\chi_\ell$ being the cyclotomic character. For a finite
+character of conductor $q$, the character of $\Q(\sqrt{q^*})$; the original version of the paper writes it $\chi_q$, the revised version $\chi_{q^*}$, and the book never writes $\chi_q$, $\chi_\ell$ being the cyclotomic character. For a finite
 set $S$ of odd primes, $D=\prod_{q\in S}q$ and $\chi_S=\prod_{q\in S}\chi_{q^*}$, a primitive quadratic character of conductor $D$. Values used below: $\chi_{-7}(2)=1$ and
 $\chi_{-11}(2)=-1$. For an elliptic curve, $E^{(q)}=E\otimes\chi_{q^*}$ is the twist by $\Q(\sqrt{q^*})$. (c) For a finite set $\Sigma$ of primes and a $q$-series $h=\sum a_nq^n$,
 the \emph{$\Sigma$-depletion} is $h^\Sigma=\sum_{(n,\Sigma)=1}a_nq^n$, where $(n,\Sigma)=1$ means that no prime of $\Sigma$ divides $n$; for one prime we write $h^{\{p\}}$. A parenthesised
@@ -803,7 +817,7 @@ and the trace of \Cref{lem:hecke:trace} \cite[Section 5.7]{DiamondShurman}.
 \item Let $f$ be a newform of level $M$, $L$ a multiple of $M$, and $h\in S_k(L)$ an eigenvector of $\T^{(L)}$ for a system $\psi$ with $\psi(T_p)\ne a_p(f)$ for infinitely many $p$. Then $h$ is
 orthogonal to every $f(dz)$, $d\mid L/M$. If $h'$ is a newform of level dividing $L$ different from $f$, then its system satisfies this hypothesis.
 \end{enumerate}
-Part (i) is stated with a reference: \cite[Theorem 4.6.19]{Miyake} (the theorem number to be verified), \cite{Li75}; it is a consequence of (ii) of \Cref{thm:hecke:atkin-lehner}
+Part (i) is stated with a reference: \cite[Theorem 4.6.19]{Miyake}, \cite{Li75}; it is a consequence of (ii) of \Cref{thm:hecke:atkin-lehner}
 applied at the level $L=\lcm(M,M')$ once one knows that finitely many $T_p$ may be ignored, which is the content of the theorem. Part (ii) is sketched below; (iii) is proved here.
 \end{theorem}
 
@@ -816,11 +830,11 @@ these differ for some $p\nmid L$, since they differ for infinitely many $p$. Eig
 \end{proof}
 
 \begin{paperlink}\label{pl:hecke:smo}
-Strong multiplicity one is used in three places. In the proof of Theorem thm:qual (b) and (c): ``$g=f'$ by strong multiplicity one'', two newforms with the same $a_p$ for $p\nmid qN$
+Strong multiplicity one is used in three places, and the Atkin-Lehner decomposition in a fourth. In the proof of Theorem thm:qual (b) and (c): ``$g=f'$ by strong multiplicity one'', two newforms with the same $a_p$ for $p\nmid qN$
 (\Cref{thm:hecke:strong-multiplicity-one}(i)). In the proof of Theorem thm:twist: ``a system of $T_p$-eigenvalues ... differing from that of $g$ at infinitely many $p$'', so that $\iota(h)\in f^\perp$
 (\Cref{thm:hecke:strong-multiplicity-one}(iii) and \Cref{prop:hecke:twist-transport}). In Step 1 of the proof of Theorem thm:quant: ``strong multiplicity one identifies the forms with
 the $T_p$-eigenvalues of $g$, $p\nmid N$, with the span of the $g(dz)$, $d\mid N/N_S$'', which is \Cref{thm:hecke:atkin-lehner}(ii) with $L=N$, together with (i) to exclude newforms of
-other levels. In Lemma lem:old, ``orthogonal to the newform $f$ (whether $M<N$, or $M=N$ and $h\ne f$)'' is \Cref{thm:hecke:atkin-lehner}(iv).
+other levels. The fourth is Lemma lem:old: ``orthogonal to the newform $f$ (whether $M<N$, or $M=N$ and $h\ne f$)'' is \Cref{thm:hecke:atkin-lehner}(iv).
 \end{paperlink}
 
 \begin{proposition}[local behaviour of newforms]\label{prop:hecke:newform-local}
@@ -1273,7 +1287,7 @@ Let $g$ be a newform of weight $2$ on $\Gamma_0(M)$, $q$ an odd prime and $\chi=
 $g\otimes\chi=(g')^{\{q\}}$, which equals $g'$ iff $a_q(g')=0$.
 \end{enumerate}
 In cases (i) and (ii) the level is $\lcm(M,q^2)$: this is the paper's Lemma lem:twist (iii). Parts (i), (ii) are stated with a reference, \cite[Theorem 3.1]{AtkinLi78} as cited by the
-paper (the theorem number and the exact form of the hypothesis there to be verified), \cite{Li75} for the case $q\nmid M$, \cite[Section 3.6]{Shimura71}; part (iii) is proved here.
+paper, \cite{Li75} for the case $q\nmid M$, \cite[Section 3.6]{Shimura71}; part (iii) is proved here.
 \end{theorem}
 
 \begin{proof}[Sketch of proof of (i), (ii), and proof of (iii)]
