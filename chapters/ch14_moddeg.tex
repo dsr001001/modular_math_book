@@ -1,0 +1,1648 @@
+\chapter{Modular curves over \texorpdfstring{$\Q$}{Q}, Jacobians and the modular degree}\label{ch:moddeg}
+\chaptermark{Modular curves and the modular degree}
+
+The paper is about one integer, the modular degree $\degphi$ of the $X_0(N)$-optimal curve $E$ of an isogeny class. This
+chapter defines it and proves the facts about it that the paper uses. It puts the modular curve $X_0(N)$ of \Cref{ch:modforms}
+over $\Q$, builds its Jacobian $J_0(N)$ and the action of the Hecke algebra of \Cref{ch:hecke} on $J_0(N)$, on $H_1$ and on $H^1$ by
+correspondences, and proves the identity $T_n^t=w_NT_nw_N$ that makes the pairing $\hat\delta_!$ of Section 4.1 of the paper
+perfect, alternating and Hecke self-adjoint. It then constructs the optimal curve as a quotient of $J_0(N)$, characterises it,
+and proves the four descriptions of $\degphi$ the paper uses: the degree of a map of curves, the integer $n$ with
+$E\to J_0(N)\to E$ equal to $[n]$, the Petersson norm divided by the area of the period lattice (the formula of Zagier and
+Watkins, with the Manin constant in the numerator), and the ideal of values of $\hat\delta_!$ on the lattice $M_{f,\lambda}$ of
+Diamond, Flach and Guo (Proposition prop:pullback of the paper, proved here in a stronger form). From the last description the
+chapter deduces the divisibility $\degphi\mid r_E$ of Agashe, Ribet and Stein at every prime, and explains why the equality can fail
+at primes $p$ with $p^2\mid N$ (the curve \curve{99a1}). The deep inputs (the $\Q$-structure of $X_0(N)$, the Eichler-Shimura relation,
+modularity, multiplicity one, the theorems of Mazur, of Ribet and Takahashi, and of Calegari and Emerton) are stated precisely
+with references.
+
+\section*{Core results at a glance}
+
+Throughout, $E/\Q$ has conductor $N$, $f=f_E$ is its newform, $\phi_f\colon\T\to\Z$ the eigencharacter, $I_f=\ker\phi_f$, $\T$ the full Hecke algebra of level $N$ ($U_p$ included), $\ell$ a prime, and
+$\varepsilon_N(f)=\pm1$ the eigenvalue of $w_N$ on $f$.
+
+\begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
+\item \textbf{Conventions.} $W_N=\sm0{-1}N0$; slash $(f|_k\gamma)=(\det\gamma)^{k/2}(cz+d)^{-k}f(\gamma z)$; $\T$ acts by pushforward $t_*$ on $J_0(N)$, $H_1$, $T_\ell J_0(N)$ and by pullback $t^*$ on $S_2$, $H^1$;
+unnormalised Petersson product; $\varphi^*\omega_E=c_\varphi\cdot2\pi if\,dz$ with $c_E>0$; ``optimal'' means $X_0(N)$-optimal; Eisenstein means $\bar\rho_{\mf m}$ reducible. \emph{(convention)}
+\Cref{conv:moddeg:setup}.
+\item \textbf{$X_0(N)$ over $\Q$.} $X_0(N)$ is a smooth projective geometrically connected curve over $\Q$, a coarse moduli space for $(E,C)$ with $C$ cyclic of order $N$; $j$ and the $w_d$ are defined over $\Q$,
+$w_N(E,C)=(E/C,E[N]/C)$; good reduction at $p\nmid N$. \emph{(stated; reference)} \Cref{thm:moddeg:x0-over-q}.
+\item \textbf{Cusps over $\Q$.} Cusps $a/c$, $c\mid N$, $a\bmod\gcd(c,N/c)$; those of denominator $c$ are defined over $\Q(\zeta_{\gcd(c,N/c)})$ and permuted simply transitively; $\infty$, $0$ are rational; all cusps are
+rational iff $\gcd(c,N/c)\le2$ for all $c\mid N$. \emph{(proof sketched here; reference)} \Cref{prop:moddeg:cusps-over-q}.
+\item \textbf{Rational points.} A $G_K$-stable cyclic $C$ gives a $K$-point of $Y_0(N)$, and conversely up to twist when $j\ne0,1728$; $Y_0(N)(\Q)\ne\emptyset$ iff $N\le19$ or $N\in\{21,25,27,37,43,67,163\}$.
+\emph{(proved here; the list stated, Mazur, Kenku)} \Cref{prop:moddeg:rational-points}.
+\item \textbf{Hecke correspondences.} $\mathcal C_\alpha=(X(\Gamma_\alpha),\pi_1,\pi_\alpha)$, $\Gamma_\alpha=\Gamma\cap\alpha^{-1}\Gamma\alpha$, $\pi_1(\Gamma_\alpha z)=\Gamma z$, $\pi_\alpha(\Gamma_\alpha z)=\Gamma\alpha z$; $T_p$, $U_p=\mathcal C_{\mathrm{diag}(1,p)}$.
+\emph{(definition)} \Cref{def:moddeg:hecke-correspondence}.
+\item \textbf{Properties.} $\mathcal C_\alpha$ depends only on $\Gamma\alpha\Gamma=\bigsqcup\Gamma\alpha\gamma_i$; $X(\Gamma_{\mathrm{diag}(1,p)})\simeq X_0(Np)$ with $\pi_1$, $\pi_\alpha$ becoming $z\mapsto pz$, $z\mapsto z$; on moduli
+$T_p(E,C)=\sum_D(E/D,(C+D)/D)$; defined over $\Q$. \emph{(proved here; moduli sketched)} \Cref{prop:moddeg:hecke-correspondence}.
+\item \textbf{Compatibility.} The form $\mathcal C_\alpha^*(f\,dz)=(\sum f|_2\alpha_i)\,dz$ is \Cref{ch:hecke}'s $T_p$ or $U_p$; $t\mapsto t^*\in\End H^1(X_0(N),\Z)$ and $t\mapsto t_*\in\End H_1$ are injective ring homomorphisms;
+$\T$ is finite free over $\Z$. \emph{(proved here)} \Cref{prop:moddeg:hecke-compatibility}.
+\item \textbf{The transpose.} $\mathcal C_\alpha^t\simeq\mathcal C_{(\det\alpha)\alpha^{-1}}$; $\mathcal C_{\beta\alpha\beta^{-1}}\simeq w_\beta\mathcal C_\alpha w_\beta^{-1}$; $W_N\mathrm{diag}(1,p)W_N^{-1}=\mathrm{diag}(p,1)$; hence $T_p^t\simeq w_NT_pw_N$,
+$U_p^t\simeq w_NU_pw_N$, and $(t^*)^\dagger=w_N^*t^*w_N^*$ for the cup product, for every $t\in\T$; $T_p^t\simeq T_p$ for $p\nmid N$. \emph{(proved here)} \Cref{thm:moddeg:transpose}.
+\item \textbf{The pairing $\hat\delta_!$.} $\hat\delta_!(x,y)=\langle x,w_N^*y\rangle$ is perfect and alternating on $H^1(X_0(N),R)$ ($R=\Z,\Zl,\Ql$), every $t^*$ is self-adjoint, and $H^1(X_0(N),\Zl)=\bigoplus_{\mf m}H^1_{\mf m}$
+orthogonally with $\hat\delta_!$ perfect on each summand. \emph{(proved here)} \Cref{cor:moddeg:delta-hat}.
+\item \textbf{$J_0(N)$.} $J_0(N)=\Jac(X_0(N)_\Q)$, $\iota(P)=[(P)-(\infty)]$. \emph{(definition)} \Cref{def:moddeg:j0}.
+\item \textbf{Structure.} Abelian variety over $\Q$ of dimension $g=\dim S_2$, good reduction at $p\nmid N$; $J_0(N)(\C)$ is $S_2^\vee$ modulo $H_1(X_0(N),\Z)$; universal property of $\iota$; dimensions $1$, $1$, $1$, $2$, $7$, $9$, $6$, $19$, $49$, $109$, $145$ for
+$N=11$, $14$, $20$, $37$, $77$, $99$, $121$, $140$, $539$, $726$, $980$. \emph{(proved here, given \Cref{ch:curves}; good reduction stated)} \Cref{thm:moddeg:j0}.
+\item \textbf{Hecke on $J_0(N)$.} $t\mapsto t_*$ embeds $\T$ in $\End_\Q J_0(N)$, commuting with $G_\Q$ on $T_\ell J_0(N)$; $t^t=w_Ntw_N$ (in general not in $\T$); $I_fJ_0(N)$, $J_0(N)/I_fJ_0(N)$, $H^1[I_f]$ are the same
+for the Albanese and the Picard actions. \emph{(proved here)} \Cref{prop:moddeg:hecke-on-j0}.
+\item \textbf{$T_\ell J_0(N)$ versus $H^1$.} $H^1(X_0(N),\Zl)=(T_\ell J_0(N))^\vee\simeq T_\ell J_0(N)(-1)$; $\Psi=w_{N*}\circ\operatorname{PD}$ is a $\T_\ell$-isomorphism $H^1\to T_\ell J_0(N)$, Galois-equivariant after
+the twist; freeness over $\T_{\mf m}$ transfers, and $H^1(X_0(N),\Fl)_{\mf m}[\mf m]\simeq J_0(N)[\mf m]$. \emph{(proved here, given the \'etale statements of \Cref{ch:curves})}
+\Cref{prop:moddeg:tate-module-vs-h1}.
+\item \textbf{The $f$-lattice.} $V_f=H^1(X_0(N),\Q)[I_f]$, $M_{f,\lambda}=H^1(X_0(N),\Zl)[I_f]$. \emph{(definition)} \Cref{def:moddeg:f-lattice}.
+\item \textbf{Properties of $M_{f,\lambda}$.} $V_f\otimes\C=\C\omega_f\oplus\C\overline{\omega_f}$, also the eigenspace of the anemic algebra; $M_{f,\lambda}=H^1(X_0(N),\Z)[I_f]\otimes\Zl$ is saturated of rank $2$; $w_N^*$ acts on it by
+$\varepsilon_N(f)$; it is $G_\Q$-stable. \emph{(proved here, given \Cref{ch:hecke})} \Cref{prop:moddeg:f-lattice}.
+\item \textbf{Shimura's quotient.} $J_f=J_0(N)/I_fJ_0(N)$ is an abelian variety over $\Q$ of dimension $[K_f:\Q]$ with connected kernel $I_fJ_0(N)$; for rational $f$, $E_f=J_f$ is an elliptic curve, $\T$ acts by $\phi_f$,
+$\varphi_{E_f}^*H^1(E_f,\Q)=V_f$; $L(E_f,s)=L(f,s)$. \emph{(proved here for rational $f$; sketched in general; the $L$-function stated)} \Cref{thm:moddeg:shimura-quotient}.
+\item \textbf{Eichler-Shimura.} $(T_p)_*=\pi_p+\hat\pi_p$ on $J_0(N)_{\Fp}$ for $p\nmid N$; hence $\Frob_p^2-T_p\Frob_p+p=0$ on $T_\ell J_0(N)$, and $a_p(E_f)=a_p(f)$. \emph{(congruence relation stated; consequences
+proved here)} \Cref{thm:moddeg:eichler-shimura}.
+\item \textbf{Modularity.} Every $E/\Q$ of conductor $N$ has a newform $f_E$ of level $N$ with $a_p(f_E)=a_p(E)$ for all $p$; equivalently $E$ is isogenous to $E_{f_E}$. \emph{(stated; Wiles, Taylor-Wiles, BCDT,
+Carayol)} \Cref{thm:moddeg:modularity}.
+\item \textbf{Classes and newforms.} $E\mapsto f_E$ is a bijection from isogeny classes of conductor $N$ to rational newforms of level $N$. \emph{(proof sketched here)} \Cref{cor:moddeg:classes-and-newforms}.
+\item \textbf{Modular parametrisation.} A nonconstant $\varphi\colon X_0(N)\to E$ over $\Q$ with $\varphi(\infty)=O$; equivalently a nonzero $h\colon J_0(N)\to E$. \emph{(definition)} \Cref{def:moddeg:parametrisation}.
+\item \textbf{Optimal curves.} Every $h\colon J_0(N)\to E$ ($E$ in the class of $f$) kills $I_fJ_0(N)$; every parametrisation is $\psi\circ\varphi_{E_f}$ with $\psi$ an isogeny; $\psi$ an isomorphism $\Leftrightarrow$ $\ker\varphi_*$
+connected $\Leftrightarrow$ $\varphi_*$ onto on $H_1$ $\Leftrightarrow$ $\varphi^*H^1$ saturated $\Leftrightarrow$ $\varphi^*$ injective on $E$ $\Leftrightarrow$ $\deg\varphi$ minimal; $E_f$ is the optimal curve. \emph{(proved here,
+given Eichler-Shimura and modularity)} \Cref{thm:moddeg:optimal}.
+\item \textbf{The modular degree.} $\degphi$ is the degree of $\varphi_E$; $E\to J_0(N)\to E$ is $[\degphi]$; $A\cap B\simeq(\Z/\degphi)^2$; the cup product on $\varphi_E^*H^1(E,\Z)$ has ideal of values $\degphi\Z$. \emph{(proved
+here)} \Cref{prop:moddeg:degree-descriptions}.
+\item \textbf{Along the class.} If $E[\ell]$ is irreducible, every curve of the class has minimal parametrisation degree of the same $\ell$-adic valuation as $\degphi$; false for \curve{11a} at $\ell=5$.
+\emph{(proved here)} \Cref{prop:moddeg:valuation-in-class}.
+\item \textbf{Cremona's convention.} Curve $1$ of each class is optimal, except \curve{990h} (optimal curve \curve{990h3}, $\degphi=1728$); optimality determined to conductor $400000$ and for $359{,}009$ classes
+beyond. \emph{(convention; data)} \Cref{conv:moddeg:cremona-optimal}.
+\item \textbf{Manin constant.} $\varphi^*\omega_E=c_\varphi\cdot2\pi if(z)\,dz$; $c_E=c_{\varphi_E}>0$. \emph{(definition)} \Cref{def:moddeg:manin-constant}.
+\item \textbf{$c_\varphi$.} $\varphi^*\omega_E\in\C\omega_f\setminus0$, $c_\varphi\in\Q^\times$, $c_{\psi\circ\varphi_E}=c_Eu_\psi$ with $u_\psi u_{\hat\psi}=\deg\psi$. \emph{(proved here; integrality of $u_\psi$ stated)}
+\Cref{prop:moddeg:manin-rational}.
+\item \textbf{Known results.} $c_E\in\Z$ (Edixhoven); $c_E=1$ conjecturally; $p\mid c_E\Rightarrow p=2$ or $p^2\mid N$; $c_E=1$ for semistable $E$. \emph{(stated; reference)} \Cref{thm:moddeg:manin-known}.
+\item \textbf{Zagier-Watkins.} For every modular parametrisation,
+\[
+\deg\varphi\cdot\vol(\Lambda_E)=4\pi^2c_\varphi^2\,\langle f,f\rangle\qquad(\text{unnormalised Petersson product}).
+\]
+\emph{(proved here)} \Cref{thm:moddeg:zagier-watkins}.
+\item \textbf{Congruence number.} $r_E$: the largest $r$ with $f\equiv g\pmod r$, $g\in S_2(\Gamma_0(N);\Z)\cap f^\perp$; $\eta_f=\phi_f(\Ann_\T I_f)$. \emph{(definition)} \Cref{def:moddeg:congruence-number}.
+\item \textbf{Congruence ideals.} $\T\otimes\Q=\Q\times\T'$, $I_f\cap\Ann I_f=0$, $\eta_f\ne0$; $\eta_f\Zl$ is computed in $\T_{\mf m}$; $r_E<\infty$. \emph{(proved here)} \Cref{prop:moddeg:congruence-ideal}.
+\item \textbf{Lemma lem:crit.} $\T/(I_f+\Ann_\T f^\perp)\simeq\Z/r_E$, so $r_E\Z=\eta_f$, also over $\Zl$; a congruent eigenform in $f^\perp$ gives $\ell\mid r_E$. \emph{(stated; proved in \Cref{ch:modgalrep})}
+\Cref{lem:moddeg:crit}.
+\item \textbf{Agashe-Ribet-Stein.} For optimal $E$: $\degphi\mid r_E$, and $v_p(\degphi)=v_p(r_E)$ when $p^2\nmid N$. \emph{(stated; the divisibility proved here in \Cref{cor:moddeg:ars-divisibility})}
+\Cref{thm:moddeg:ars}.
+\item \textbf{$M_{f,\lambda}$ is the pullback.} For optimal $E$ and every prime $\ell$: $\varphi_E^*$ is injective with saturated image, $\varphi_E^*H^1(E,\Zl)=M_{f,\lambda}$, and $M_{f,\lambda}\simeq T_\ell E(-1)$ as Galois modules, so
+$\ad M_{f,\lambda}\simeq\ad T_\ell E$. \emph{(proved here)} \Cref{prop:moddeg:mf-is-pullback}.
+\item \textbf{$w_N$ on $M_{f,\lambda}$.} $\varphi_E\circ w_N=\varepsilon_N(f)\varphi_E+\varphi_E(0)$, so $w_N^*=\varepsilon_N(f)$ on $M_{f,\lambda}$. \emph{(proved here)} \Cref{lem:moddeg:wn-on-mf}.
+\item \textbf{The degree as a congruence ideal.} For optimal $E$ and every prime $\ell$,
+\[
+\hat\delta_!(\varphi_E^*a,\varphi_E^*b)=\varepsilon_N(f)\,\degphi\,\langle a,b\rangle_E,
+\]
+so the ideal of values of $\hat\delta_!$ on $M_{f,\lambda}$ is $\degphi\Zl$; with the paper's description of \cite{DFG04}, $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$. \emph{(proved here)} \Cref{thm:moddeg:degree-is-eta}.
+\item \textbf{Divisibility at every prime.} For every prime $\ell$, $v_\ell(\degphi)\le v_\ell(r_E)$, with equality if $H^1(X_0(N),\Zl)_{\mf m}$ is free over $\T_{\mf m}$. \emph{(proved here, given Lemma lem:crit)}
+\Cref{cor:moddeg:ars-divisibility}.
+\item \textbf{Lemma lem:hecke.} $v_\ell(\degphi)=v_\ell(\text{values of }\hat\delta_!\text{ on }M_{f,\lambda})\le v_\ell(r_E)$ always; $=v_\ell(r_E)$ if $\ell^2\nmid N$; $=v_\lambda(\eta^\emptyset_{f,\lambda})$ if $\ell\nmid2N$ and $\bar\rho$
+irreducible. \emph{(proved here, given \Cref{thm:moddeg:ars} and the identification with \cite{DFG04})} \Cref{thm:moddeg:lem-hecke}.
+\item \textbf{The maximal ideal of $(f,\ell)$.} $\mf m_{f,\ell}\ni\ell,I_f$; $\bar\rho_{\mf m}$ with $\tr\bar\rho_{\mf m}(\Frob_p)=T_p$; $\mf m_{f,\ell}$ is Eisenstein iff $E[\ell]$ is reducible. \emph{(definition; $\bar\rho_{\mf m}$ stated)}
+\Cref{def:moddeg:maximal-ideal}.
+\item \textbf{Multiplicity one.} For $\ell\nmid2N$ and $\mf m$ non-Eisenstein, $\dim_{\T/\mf m}J_0(N)[\mf m]=2$. \emph{(stated; Mazur, Ribet, Ribet-Stein)} \Cref{thm:moddeg:multiplicity-one}.
+\item \textbf{Gorenstein.} Then $\T_{\mf m}$ is Gorenstein and $H^1(X_0(N),\Zl)_{\mf m}\simeq\T_{\mf m}^2\simeq T_\ell J_0(N)_{\mf m}$; so $v_\ell(r_E)=v_\ell(\degphi)$ for $\ell\nmid2N$, $E[\ell]$ irreducible. \emph{(proved here, given
+multiplicity one)} \Cref{thm:moddeg:gorenstein}.
+\item \textbf{Cuspidal subgroup.} $C_N\subseteq J_0(N)$ generated by cuspidal divisors of degree $0$. \emph{(definition)} \Cref{def:moddeg:cuspidal-subgroup}.
+\item \textbf{Manin-Drinfeld.} $(T_p)_*(0)=(p+1)(0)$, $(T_p)_*(\infty)=(p+1)(\infty)$ for $p\nmid N$; $T_p-p-1$ is an isogeny; $[(0)-(\infty)]$ is a rational torsion point; $C_N$ is finite. \emph{(proved here; the
+finiteness of $C_N$ stated)} \Cref{prop:moddeg:manin-drinfeld}.
+\item \textbf{Mazur at prime level.} $J_0(N)(\Q)_{\tors}=C_N\simeq\Z/n$, $n=\operatorname{num}\frac{N-1}{12}$; $\T/I_{\mathrm{Eis}}\simeq\Z/n$; Eisenstein maximal ideals at odd $\ell$ exist iff $\ell\mid n$. \emph{(stated; reference)}
+\Cref{thm:moddeg:mazur-prime-level}.
+\item \textbf{Shimura subgroup.} $\mathcal S_N=\ker(J_0(N)\to J_1(N))$. \emph{(definition)} \Cref{def:moddeg:shimura-subgroup}.
+\item \textbf{Its properties.} $\#\mathcal S_N$ is the saturation index of $\pi^*H^1(X_0(N),\Z)$; $\mathcal S_N$ is finite, multiplicative and Eisenstein; $\mathcal S_N[\mf m]=0$ for $\mf m$ non-Eisenstein. \emph{(proved here; (ii)
+stated)} \Cref{prop:moddeg:shimura-subgroup}.
+\item \textbf{The image of $0$.} $\varphi_E(0)\in E(\Q)_{\tors}$ and $\varphi_E(0)\equiv c_EL(E,1)\pmod{\Lambda_E}$; its order is the denominator of $c_EL(E,1)/\Omega$. \emph{(proved here, given the Mellin transform of
+\Cref{ch:lfunctions})} \Cref{prop:moddeg:image-of-zero}.
+\item \textbf{Shimura curves.} $X_0^D(M)$, its Jacobian isogenous to the $D$-new quotient of $J_0(DM)$; $\delta_D=\deg\varphi_{E,D}$. \emph{(definition; stated)} \Cref{def:moddeg:shimura-curve}.
+\item \textbf{Ribet-Takahashi.} For $E$ optimal semistable, $N=DM$, $E[\ell]$ irreducible: $v_\ell(\degphi)=v_\ell(\delta_D)+\sum_{q\mid D}v_\ell(n_q)$. \emph{(stated, after the paper's summary; reference)}
+\Cref{thm:moddeg:ribet-takahashi}.
+\item \textbf{Watkins's conjecture.} $2^{\rank E(\Q)}\mid\degphi$; true for all $38{,}042$ optimal curves of conductor below $10{,}000$. \emph{(conjecture; data checked)} \Cref{conj:moddeg:watkins}.
+\item \textbf{Calegari-Emerton.} Odd $\degphi$ implies at most two odd bad primes, even analytic rank, and a rational $2$-torsion point, or prime conductor with supersingular reduction at $2$ and $E(\R)$
+connected, or CM with $N\in\{27,32,49,243\}$. \emph{(stated; reference; data checked)} \Cref{thm:moddeg:calegari-emerton}.
+\end{enumerate}
+
+\section*{Where the paper uses this chapter}
+
+\begin{itemize}
+\item \textbf{Section 1 (Introduction) and the abstract.} The $X_0(N)$-optimal curve, the modular parametrisation
+$\varphi_E\colon X_0(N)\to E$ and ``minimal degree'' (\Cref{def:moddeg:parametrisation,thm:moddeg:optimal,prop:moddeg:degree-descriptions});
+the sentence on the choice of curve when $E[\ell]$ is irreducible (\Cref{prop:moddeg:valuation-in-class}); computability
+(\Cref{rem:moddeg:computing-the-degree}); the $abc$ connection (\Cref{rem:moddeg:abc-size}); the Petersson norm and Zagier, Watkins
+(\Cref{thm:moddeg:zagier-watkins}); Agashe, Ribet and Stein and the congruence number $r_E$
+(\Cref{def:moddeg:congruence-number,thm:moddeg:ars,cor:moddeg:ars-divisibility}).
+\item \textbf{Section 1.5 (History).} The parametrisations by Shimura curves of Ribet and Takahashi
+(\Cref{def:moddeg:shimura-curve,thm:moddeg:ribet-takahashi}).
+\item \textbf{Section sec:proof (proof of Theorem thm:qual).} The congruence number and Lemma lem:crit (\Cref{lem:moddeg:crit}, proved in
+\Cref{ch:modgalrep}); ``it suffices to prove $\ell\mid r$'' (\Cref{thm:moddeg:ars}); the remark on \curve{99a1} and \curve{726a1}
+(\Cref{ex:moddeg:99a1-and-726a1,ex:moddeg:99-at-3}).
+\item \textbf{Section 4.1 (sec:dfg).} $H^1(X_0(M^\Sigma),\Zl)$ with its Hecke action, the pairing $\hat\delta_!$ and the sentence
+``$w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup product'' (\Cref{prop:moddeg:hecke-compatibility,thm:moddeg:transpose,cor:moddeg:delta-hat}); the
+lattice $M_{f,\lambda}$ (\Cref{def:moddeg:f-lattice}) and the checklist for the identification with Diamond, Flach and Guo's objects
+(\Cref{rem:moddeg:dfg-normalisation}).
+\item \textbf{Proposition prop:pullback.} \Cref{prop:moddeg:mf-is-pullback}, \Cref{lem:moddeg:wn-on-mf} and \Cref{thm:moddeg:degree-is-eta}, with a
+Commentary on the paper's statement and proof; the paragraph after the proposition is \Cref{prop:moddeg:mf-is-pullback}(d).
+\item \textbf{Lemma lem:hecke, Remark rem:free and the paragraph between them.} \Cref{thm:moddeg:lem-hecke}, the divisibility at every prime
+(\Cref{cor:moddeg:ars-divisibility}), multiplicity one and the Gorenstein property
+(\Cref{def:moddeg:maximal-ideal,thm:moddeg:multiplicity-one,thm:moddeg:gorenstein,rem:moddeg:rem-free-after-39}), and the identification of
+$T_\ell J_0(N)$ with $H^1(X_0(N),\Zl)$ as Hecke modules (\Cref{prop:moddeg:tate-module-vs-h1}).
+\item \textbf{Section 4.2 and the proof of Theorem thm:main.} $M_{f,\lambda}\simeq H^1(E,\Zl)\simeq T_\ell E(-1)$ and $\ad M_{f,\lambda}\simeq\ad T_\ell E$
+(\Cref{prop:moddeg:mf-is-pullback}(d)); the equality in (eq:identity) (\Cref{thm:moddeg:lem-hecke}).
+\item \textbf{Remark rem:degree.} The formula of Zagier and Watkins with $c_E^2$ in the numerator (\Cref{thm:moddeg:zagier-watkins,ex:moddeg:zw-numerics}).
+\item \textbf{Section sec:data.} Optimality in Cremona's tables and the class \curve{990h} (\Cref{conv:moddeg:cremona-optimal}); \texttt{ellmoddegree}
+(\Cref{rem:moddeg:computing-the-degree}).
+\item \textbf{Conjecture conj:eis, Section sec:eis, Open question 4.} The cuspidal subgroup, Mazur's Eisenstein ideal, the Shimura subgroup and
+the image of the cusp $0$ (\Cref{prop:moddeg:manin-drinfeld,thm:moddeg:mazur-prime-level,def:moddeg:shimura-subgroup,prop:moddeg:image-of-zero,rem:moddeg:eisenstein-and-the-paper}).
+\item \textbf{Section sec:two, Open question 5.} Watkins's conjecture and the theorem of Calegari and Emerton (\Cref{conj:moddeg:watkins,thm:moddeg:calegari-emerton}).
+\end{itemize}
+
+\section{Overview and standing notation}\label{sec:moddeg:overview}
+
+This section fixes the conventions of the chapter and says which section answers which sentence of the paper. The paper
+uses the chapter in six places: the optimal curve and its parametrisation (Sections \ref{sec:moddeg:x0q} to \ref{sec:moddeg:optimal}); the
+Petersson norm and the Manin constant (\Cref{sec:moddeg:manin}); the congruence number and the theorem of Agashe, Ribet and Stein
+(\Cref{sec:moddeg:congruence}); the cohomology of $X_0(N)$ with its Hecke action and the pairing $\hat\delta_!$ (\Cref{sec:moddeg:hecke,sec:moddeg:jacobian});
+the identification of the congruence ideal of Diamond, Flach and Guo with $\degphi$ (\Cref{sec:moddeg:degree-eta,sec:moddeg:mult-one}); and the Eisenstein
+case, the Shimura curves and the prime $2$ (\Cref{sec:moddeg:eisenstein,sec:moddeg:shimura-two}).
+
+\begin{convention}[standing conventions of this chapter]\label{conv:moddeg:setup}
+\leavevmode
+\begin{enumerate}[label=(C\arabic*)]
+\item \emph{Curves and levels.} $N\ge1$; $X_0(N)$ is the compact Riemann surface of \Cref{ch:modforms} and, by \Cref{thm:moddeg:x0-over-q}, a smooth
+projective curve over $\Q$; $Y_0(N)\subset X_0(N)$ is the complement of the cusps; $\infty$ and $0$ are the cusps $\Gamma_0(N)\infty$ and $\Gamma_0(N)0$;
+$g=g(X_0(N))$; $\Gamma=\Gamma_0(N)$. $W_N=\sm0{-1}N0$ and $w_N$ is the involution $z\mapsto-1/(Nz)$ of $X_0(N)$ and the operator $f\mapsto f|_2W_N$
+(\Cref{ch:modforms}). The slash operator is $(f|_k\gamma)(z)=(\det\gamma)^{k/2}(cz+d)^{-k}f(\gamma z)$, so that in weight $2$
+$(f|_2\gamma)(z)\,dz=\gamma^*(f(z)\,dz)$. The letter $q$ is the variable $e^{2\pi iz}$ of $q$-expansions and also a bad prime of $E$
+(Appendix B, B-C1); the two never occur in one display.
+\item \emph{Hecke actions.} $\T=\Z[T_n:n\ge1]\subset\End_\C S_2(\Gamma_0(N))$ is the full Hecke algebra of \Cref{ch:hecke}, the operators $U_p=T_p$ for
+$p\mid N$ included; $\T_\ell=\T\otimes\Zl$. A correspondence $\mathcal C$ acts on $J_0(N)$, on $H_1(X_0(N),\Z)$ and on $T_\ell J_0(N)$ by pushforward
+$\mathcal C_*$ (``Albanese'') and on $H^0(X_0(N),\Omega^1)=S_2(\Gamma_0(N))$, $H^1(X_0(N),\Z)$ and $H^1(X_0(N),\Zl)$ by pullback $\mathcal C^*$, the transpose of
+$\mathcal C_*$ (\Cref{ch:curves}). For $t\in\T$ the two resulting actions are written $t_*$ and $t^*$ (\Cref{prop:moddeg:hecke-compatibility}); every
+statement ``$\T$ acts on \dots'' names which.
+\item \emph{Duals and adjoints} (Appendix B, B-C4). $M^\vee=\Hom(M,\Zl)$ (or $\Hom(M,\Z)$); $A^\dagger$ is the adjoint of an operator for a pairing;
+a star after a map is a pullback. The paper's Pontryagin duals occur only inside \texttt{paperlink} environments.
+\item \emph{Petersson product, Manin constant} (B-C8, B-C9). $\langle f,g\rangle=\int_{\Gamma_0(N)\backslash\HH}f\bar g\,dx\,dy$ is unnormalised in weight
+$2$, and $\langle f,f\rangle=\frac i2\int_{X_0(N)}\omega_f\wedge\overline{\omega_f}$ with $\omega_f=f(z)\,dz$. For an elliptic curve $E/\Q$, $\omega_E$ is the N\'eron
+differential of a global minimal model, $\Lambda_E$ its period lattice and $\vol(\Lambda_E)=\frac i2\int_{E(\C)}\omega_E\wedge\bar\omega_E$; $\varphi^*\omega_E=c_\varphi\cdot2\pi if(z)\,dz$
+defines $c_\varphi$, and $c_E>0$. PARI's \texttt{mfpetersson} divides by $\mu(N)=[\SL_2(\Z):\Gamma_0(N)]$. The Manin constant is never a bare $c$.
+\item \emph{Frobenius} (B-C2(g), B-C3). On $T_\ell J$ the arithmetic Frobenius at $p\nmid N\ell$ acts as the $p$-power Frobenius endomorphism
+$\pi_p$ of the reduction; $\hat\pi_p=p\pi_p^{-1}$ is the Verschiebung; on $H^1=(T_\ell J)^\vee$ the geometric Frobenius has the same characteristic
+polynomial (\Cref{ch:curves}).
+\item \emph{Optimal curves, labels, coefficients.} ``Optimal'' means $X_0(N)$-optimal (\Cref{thm:moddeg:optimal}). Curve labels are Cremona's;
+\cite{ARS12} and \cite{Cremona97} print \curve{99A1} for \curve{99a1}. The newform of an elliptic curve has rational coefficients, so $\lambda=\ell$ and
+$\mathcal O=\Zl$ throughout, and the paper's $v_\lambda$ is $v_\ell$.
+\item \emph{Eisenstein.} A maximal ideal $\mf m$ of $\T$ (or of $\T_\ell$) is \emph{Eisenstein} if the residual representation $\bar\rho_{\mf m}$ of
+\Cref{def:moddeg:maximal-ideal} is reducible. Mazur's \emph{Eisenstein ideal} $I_{\mathrm{Eis}}$ at prime level is a specific ideal
+(\Cref{thm:moddeg:mazur-prime-level}). The letter $D$ is used for the quaternion discriminant of a Shimura curve (\Cref{sec:moddeg:shimura-two}) and,
+in quotations, for the deficit of Conjecture conj:eis; $\mathcal S_N$ is the Shimura subgroup.
+\item \emph{Typography.} Double names take plain hyphens: Eichler-Shimura, Agashe-Ribet-Stein, Zagier-Watkins, Manin-Drinfeld,
+Ribet-Takahashi, Calegari-Emerton, Deligne-Rapoport, Boston-Lenstra-Ribet, Jacquet-Langlands.
+\end{enumerate}
+\end{convention}
+
+\noindent\textbf{Standing notation.} Throughout, $E/\Q$ is an elliptic curve of conductor $N$, $f=f_E\in S_2(\Gamma_0(N))$ its newform
+(\Cref{thm:moddeg:modularity}), $\phi_f\colon\T\to\Z$, $T_n\mapsto a_n(f)$, its eigencharacter (an upright $\phi$; a curly $\varphi$ is always a map of
+curves), $I_f=\ker\phi_f$ (the paper's $I$ in Lemma lem:crit and its $\wp$ in Lemma lem:ddt417), and $f^\perp$ the Petersson orthogonal
+complement of $f$ in $S_2(\Gamma_0(N))$, which is $\T$-stable (\Cref{ch:hecke}). $\varepsilon_N(f)=\pm1$ is the eigenvalue of $w_N$ on $f$.
+
+\begin{center}\small
+\begin{tabular}{p{7.2cm}p{6.3cm}}
+\toprule
+sentence or object of the paper & where in this chapter\\
+\midrule
+``the $X_0(N)$-optimal curve, for which $\varphi_E$ has minimal degree'' & \Cref{thm:moddeg:optimal,prop:moddeg:degree-descriptions}\\
+``$\degphi$ is $\langle f,f\rangle$ divided by the area of the period lattice'' & \Cref{thm:moddeg:zagier-watkins}\\
+``$\degphi$ divides the congruence number $r_E$'' & \Cref{thm:moddeg:ars,cor:moddeg:ars-divisibility}\\
+$\hat\delta_!$ perfect, alternating, $\T$ self-adjoint & \Cref{thm:moddeg:transpose,cor:moddeg:delta-hat}\\
+Proposition prop:pullback & \Cref{prop:moddeg:mf-is-pullback,thm:moddeg:degree-is-eta}\\
+Lemma lem:hecke, Remark rem:free & \Cref{thm:moddeg:lem-hecke,thm:moddeg:gorenstein,rem:moddeg:rem-free-after-39}\\
+\curve{99A1}: degree $4$, congruence number $12$ & \Cref{ex:moddeg:99a1-and-726a1,ex:moddeg:99-at-3}\\
+Conjecture conj:eis, Open question 4 & \Cref{sec:moddeg:eisenstein}\\
+Section 1.5, Section sec:two & \Cref{sec:moddeg:shimura-two}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{The modular curve \texorpdfstring{$X_0(N)$}{X0(N)} over \texorpdfstring{$\Q$}{Q}}\label{sec:moddeg:x0q}
+
+\Cref{ch:modforms} builds $X_0(N)$ as a compact Riemann surface. The paper needs more: the modular parametrisation $\varphi_E\colon X_0(N)\to E$ is
+a morphism of curves over $\Q$, its cohomology carries an action of $G_\Q$ (Section 4.1 of the paper works with $H^1$ of a curve over $\Q$), and the cusps
+$\infty$ and $0$ are rational points (the base point of $\varphi_E$, and the point whose image is studied in Open question 4). This section states the
+existence of the $\Q$-model, describes the cusps over $\Q$, records what is known about rational points, and works out the smallest levels.
+
+\begin{theorem}[$X_0(N)$ over $\Q$; stated]\label{thm:moddeg:x0-over-q}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item There is a smooth projective geometrically connected curve $X_0(N)_\Q$ over $\Q$ whose complex points are the Riemann surface $X_0(N)$, such
+that $Y_0(N)_\Q$ is a coarse moduli space for pairs $(E,C)$ of an elliptic curve and a cyclic subgroup of order $N$: for every algebraically closed
+field $K$ of characteristic $0$, $Y_0(N)(K)$ is in bijection with the isomorphism classes of such pairs over $K$, compatibly with $\Aut(K)$, and for
+$K=\C$ the bijection is the one of \Cref{ch:modforms}, $\Gamma_0(N)\tau\mapsto(\C/(\Z+\Z\tau),\langle\frac1N\rangle)$.
+\item The forgetful map $X_0(N)\to X(1)=\PP^1_j$, $(E,C)\mapsto j(E)$, and the involutions $w_d$ for $d\,\|\,N$ are defined over $\Q$; on moduli
+$w_N(E,C)=(E/C,E[N]/C)$.
+\item The function field of $X_0(N)_\Q$ is $\Q(j,j_N)$, $j_N(z)=j(Nz)$, and $\Phi_N(j,j_N)=0$ for the modular polynomial $\Phi_N\in\Z[X,Y]$.
+\item $X_0(N)_\Q$ has good reduction at every prime $p\nmid N$ (Igusa; Deligne and Rapoport); for $p\,\|\,N$ it has a regular model over $\Zp$ whose
+special fibre is two copies of $X_0(N/p)_{\Fp}$ crossing transversally at the supersingular points.
+\end{enumerate}
+\end{theorem}
+
+We do not prove this; see \cite[Sections 6.7, 7.2]{Shimura71}, \cite[Sections 7.7, 8.2 to 8.6]{DiamondShurman}, \cite[Sections 8 and 9]{DiamondIm},
+\cite{DeligneRapoport73} and \cite{KatzMazur85} (section numbers not verified). The idea of (i) and (iii): $j$ and $j_N$ are $\Gamma_0(N)$-invariant
+functions on $\HH$ with $q$-expansions in $\Z((q))$, they generate the function field of $X_0(N)$ over $\C$ (\Cref{ch:modforms}), and the subfield
+$\Q(j,j_N)$ has $\C$ as a linearly disjoint extension (the $q$-expansion principle: a function in $\C(j,j_N)$ whose $q$-expansion has rational
+coefficients lies in $\Q(j,j_N)$); the smooth projective curve over $\Q$ with this function field is $X_0(N)_\Q$. The polynomial $\Phi_N$ has integer
+coefficients because the conjugates $j(\gamma z)$, $\gamma$ running over $\SL_2(\Z)\backslash\{\alpha\in M_2(\Z):\det\alpha=N,\ \alpha\text{ primitive}\}$,
+are permuted by $\SL_2(\Z)$ and have $q$-expansions with coefficients in $\Z[\zeta_N]$, permuted by $\Gal(\Q(\zeta_N)/\Q)$ (Kronecker). From now on
+$X_0(N)$ also denotes the curve over $\Q$.
+
+\begin{proposition}[cusps over $\Q$]\label{prop:moddeg:cusps-over-q}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item The cusps of $X_0(N)$ are the classes of $a/c$ with $c\mid N$, $c\ge1$, $\gcd(a,c)=1$, $a$ taken modulo $\gcd(c,N/c)$; there are
+$\varphi(\gcd(c,N/c))$ of denominator $c$ ($\varphi$ is Euler's function in this proposition only), and $\sum_{c\mid N}\varphi(\gcd(c,N/c))$ in all.
+\item The cusps of denominator $c$ are defined over $\Q(\zeta_{\gcd(c,N/c)})$, and $\Gal(\Q(\zeta_{\gcd(c,N/c)})/\Q)$ permutes them simply transitively.
+\item In particular $\infty$ ($c=N$) and $0$ ($c=1$) are $\Q$-rational, and every cusp is $\Q$-rational if and only if $\gcd(c,N/c)\le2$ for every $c\mid N$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+(i) is the description of the cusps of $\Gamma_0(N)$ in \Cref{ch:modforms}. (ii) Near the cusps the moduli problem degenerates to the Tate curve
+$\mathbb G_m/q^{\Z}$ over $\Q((q^{1/N}))$; the cusp of $a/c$ corresponds to a cyclic subgroup of order $N$ generated by an element $\zeta_N^{u}q^{v/N}$, and
+the field of definition of that subgroup modulo the automorphisms of the Tate curve with its subgroup is $\Q(\zeta_{\gcd(c,N/c)})$, the element
+$\sigma_t\colon\zeta\mapsto\zeta^t$ sending the cusp of $a/c$ to that of $a'/c$ with $a'\equiv t^{\pm1}a\pmod{\gcd(c,N/c)}$ (the sign depends on the normalisation of the
+moduli interpretation at the cusps, and only the field of definition is used below). See \cite{Ogg73}, \cite[Section 6.3]{Stein} and
+\cite[Chapter 3, exercises]{DiamondShurman} (not verified). (iii) $\varphi(d)=1$ iff $d\le2$; for $c=N$ and $c=1$, $\gcd(c,N/c)=1$.
+\end{proof}
+
+\begin{example}[cusps at three levels]\label{ex:moddeg:cusps}
+By (i), $X_0(20)$ has $6$ cusps ($\gcd(c,20/c)=1,2,1,1,2,1$ for $c=1,2,4,5,10,20$), all rational. $X_0(99)$ has $8$ cusps: one for each of $c=1,9,11,99$, and two
+for each of $c=3$ and $c=33$ ($\gcd=3$), each pair conjugate over $\Q(\zeta_3)=\Q(\sqrt{-3})$. $X_0(121)$ has $12$ cusps: $\infty$, $0$ and ten of denominator $11$,
+conjugate over $\Q(\zeta_{11})$. These counts agree with \Cref{ch:modforms}.
+\end{example}
+
+\begin{proposition}[rational points of $Y_0(N)$]\label{prop:moddeg:rational-points}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item Let $K$ be a field of characteristic $0$. If $E/K$ has a cyclic subgroup $C$ of order $N$ stable under $G_K$, the point $(E,C)$ of $Y_0(N)$ is
+$K$-rational. Conversely a $K$-rational point of $Y_0(N)$ with $j\ne0,1728$ is represented by such a pair over $K$, unique up to quadratic twist.
+\item (Mazur; Kenku; stated.) $Y_0(N)(\Q)\ne\emptyset$ if and only if $N\le19$ or $N$ is one of $21$, $25$, $27$, $37$, $43$, $67$, $163$. $Y_0(N)(\Q)$ is infinite exactly when $X_0(N)$
+has genus $0$ ($N\le10$ or $N\in\{12,13,16,18,25\}$), and the rational points of $Y_0(27)$, $Y_0(43)$, $Y_0(67)$ and $Y_0(163)$ are CM points.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) If $E$ and $C$ are defined over $K$, then for $\sigma\in\Aut(\bar K/K)$ the pair $(E^\sigma,C^\sigma)$ is $(E,C)$, so its point is fixed by $\sigma$
+(\Cref{thm:moddeg:x0-over-q}(i)), and a point of a curve over $K$ fixed by $\Aut(\bar K/K)$ is $K$-rational. Conversely, let $P\in Y_0(N)(K)$ with
+$j(P)\ne0,1728$, and let $E_0/K$ be any curve with $j(E_0)=j(P)$ (\Cref{ch:ellcurves}). Over $\bar K$, $P$ is $(E_0,C)$ for a cyclic $C\subset E_0$ of order $N$.
+For $\sigma$ fixing $K$, $(E_0,C^\sigma)\simeq(E_0,C)$; as $\Aut(E_0)=\{\pm1\}$ and $-1$ fixes every subgroup, $C^\sigma=C$. Two pairs over $K$ with the same point
+are isomorphic over $\bar K$ by an isomorphism unique up to sign, so they differ by a quadratic twist (\Cref{ch:ellcurves}). (ii) We do not prove this; see
+\cite{Mazur78} for prime $N$, \cite{Kenku79,Kenku80a,Kenku80b,Kenku81} for the remaining levels and \cite{Ligozat75} for $N=27$; the list is
+summarised in \cite{Kenku} (statement not verified against that summary).
+\end{proof}
+
+A consequence used in \Cref{ch:ellcurves} (the proof of Proposition prop:no9 of the paper): a rational cyclic $27$-isogeny is a rational point of $Y_0(27)$, so
+it exists only for CM curves \cite{Ligozat75}.
+
+\begin{example}[the smallest levels]\label{ex:moddeg:small-levels}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item $X_0(11)$ has genus $1$ and the rational point $\infty$, so it is an elliptic curve over $\Q$ with origin $\infty$, and $J_0(11)=X_0(11)$. Its period
+lattice is the lattice of periods of $2\pi if_{11}(z)\,dz$, $f_{11}=\eta(z)^2\eta(11z)^2$ (\Cref{ch:modforms}), and its $j$-invariant, computed from the period
+ratio (\Cref{ch:ellcurves}), is $-122023936/161051$: $X_0(11)$ is the curve \curve{11a1} $=[0,-1,1,-10,-20]$ (the other two curves of the class have
+$j=-52893159101157376/11$ and $-4096/11$). The modular parametrisation of \curve{11a1} is the identity, of degree $1$.
+\item In the same way $X_0(14)$ and $X_0(20)$, of genus $1$, are the curves \curve{14a1} and \curve{20a1}, with parametrisations of degree $1$.
+\item $X_0(37)$ has genus $2$, and $w_{37}$ has $2$ fixed points (\Cref{ch:modforms}); by Riemann-Hurwitz, $2\cdot2-2=2(2g'-2)+2$, so $X_0(37)/w_{37}$ has genus
+$g'=1$. With origin the image of $\infty$, it is an elliptic curve over $\Q$ (the quotient map is defined over $\Q$ by \Cref{thm:moddeg:x0-over-q}(ii)), and the
+pullback of its holomorphic differential is $w_{37}$-invariant. $S_2(\Gamma_0(37))$ is spanned by the newforms $f_{37a}$ and $f_{37b}$ with $\varepsilon_{37}=+1$ and $-1$, so the
+pullback is a multiple of $f_{37a}\,dz$. The quotient has good reduction outside $37$ (it is a quotient of $J_0(37)$, \Cref{thm:moddeg:j0}), so its conductor is
+$37$, no elliptic curve over $\Q$ having conductor $1$; and the pullback of the differential of a curve of conductor $37$ along a modular parametrisation is a
+multiple of its newform (\Cref{prop:moddeg:manin-rational}). So the quotient lies in the class \curve{37a} (\Cref{cor:moddeg:classes-and-newforms}). That class has one curve,
+\curve{37a1}; so $X_0(37)\to X_0(37)/w_{37}\simeq\curve{37a1}$ is a modular parametrisation of degree $2$, and it is the optimal one (\Cref{ex:moddeg:37}).
+\end{enumerate}
+The identifications in (a) and (b) are computations from the periods; they are confirmed by Cremona's tables \cite{Cremona97,ecdata}, which give
+$\deg\varphi=1$ for \curve{11a1}, \curve{14a1}, \curve{20a1} and $2$ for \curve{37a1}.
+\end{example}
+
+\begin{paperlink}\label{pl:moddeg:over-q}
+Section 1 of the paper: ``$\varphi_E\colon X_0(N)\to E$ its modular parametrisation'' is a morphism of curves over $\Q$ sending the rational cusp $\infty$ to $O$
+(\Cref{thm:moddeg:x0-over-q}, \Cref{prop:moddeg:cusps-over-q}(iii)). Section 4.1 uses $H^1(X_0(M^\Sigma),\Zl)$ with its Galois action: this is the
+\'etale cohomology of the curve over $\Q$ (\Cref{prop:moddeg:tate-module-vs-h1}). The rational isogenies of Section sec:eis and the cyclic $27$-isogeny of
+Proposition prop:no9 are rational points of $Y_0(\ell)$ and $Y_0(27)$ (\Cref{prop:moddeg:rational-points}).
+\end{paperlink}
+
+\section{Hecke correspondences and their adjoints}\label{sec:moddeg:hecke}
+
+The Hecke operators of \Cref{ch:hecke} act on $q$-expansions. To act on $J_0(N)$, on $H_1(X_0(N),\Z)$ and on $H^1(X_0(N),\Zl)$, as Section 4.1 of the paper and
+Remark rem:free require, they must come from correspondences on the curve. This section defines the Hecke correspondences, shows that they induce
+\Cref{ch:hecke}'s operators on differentials, so that the same ring $\T$ acts on forms and on cohomology, and proves the identity the paper uses in
+Section 4.1: \emph{the adjoint of $T_n$ for the cup product is $w_NT_nw_N$}, with $U_p$ included. \Cref{ch:curves} supplies the general theory (correspondences,
+their actions, the adjoint of a correspondence is its transpose); the input specific to $X_0(N)$ is a two-line matrix computation.
+
+For $\alpha\in M_2(\Z)$ with $\det\alpha=m>0$ put $\Gamma_\alpha=\Gamma\cap\alpha^{-1}\Gamma\alpha$. It has finite index in $\Gamma$: if $\gamma=1+NmX\in\Gamma(Nm)$, then
+$\alpha\gamma\alpha^{-1}=1+N\alpha X\alpha'$ with $\alpha'=m\alpha^{-1}\in M_2(\Z)$, an integral matrix of determinant $1$ congruent to $1$ modulo $N$; so $\Gamma(Nm)\subseteq\Gamma_\alpha$.
+
+\begin{definition}[Hecke correspondences]\label{def:moddeg:hecke-correspondence}
+For $\alpha$ as above, the \emph{Hecke correspondence} of $\alpha$ is the correspondence $\mathcal C_\alpha=(X(\Gamma_\alpha),\pi_1,\pi_\alpha)$ from $X_0(N)$ to itself in the sense
+of \Cref{ch:curves}, where $X(\Gamma_\alpha)$ is the compactified quotient $\Gamma_\alpha\backslash\HH^*$ and
+\[
+\pi_1(\Gamma_\alpha z)=\Gamma z,\qquad\pi_\alpha(\Gamma_\alpha z)=\Gamma\alpha z.
+\]
+($\pi_\alpha$ is well defined: for $\gamma\in\Gamma_\alpha$, $\alpha\gamma z=(\alpha\gamma\alpha^{-1})\alpha z$ with $\alpha\gamma\alpha^{-1}\in\Gamma$.) For a prime $p$ put
+$T_p=\mathcal C_{\mathrm{diag}(1,p)}$ if $p\nmid N$ and $U_p=\mathcal C_{\mathrm{diag}(1,p)}$ if $p\mid N$. For $\beta\in\GL_2^+(\Q)$ normalising $\Gamma$, $w_\beta$ is the automorphism
+$\Gamma z\mapsto\Gamma\beta z$ of $X_0(N)$; for $\beta=W_N$ it is the involution $w_N$ ($W_N^2=-N$ acts trivially on $\HH$).
+\end{definition}
+
+By \Cref{ch:curves}, $\mathcal C_\alpha$ acts on divisors and on $J_0(N)$ by $(\mathcal C_\alpha)_*=\pi_{\alpha*}\pi_1^*$, on $H_1$ by $\pi_{\alpha*}\pi_1^!$, on $H^1$ by
+$\mathcal C_\alpha^*=\pi_{1*}\pi_\alpha^*$, and on holomorphic differentials by $\omega\mapsto\Tr_{\pi_1}(\pi_\alpha^*\omega)$.
+
+\begin{proposition}[Hecke correspondences]\label{prop:moddeg:hecke-correspondence}
+Let $\alpha\in M_2(\Z)$, $\det\alpha>0$.
+\begin{enumerate}[label=(\roman*)]
+\item If $\gamma_1,\dots,\gamma_r$ represent $\Gamma_\alpha\backslash\Gamma$, then $\Gamma\alpha\Gamma=\bigsqcup_i\Gamma\alpha\gamma_i$, and $(\mathcal C_\alpha)_*(\Gamma z)=\sum_i(\Gamma\alpha\gamma_iz)$ for
+$z\in\HH$ (with multiplicities at the ramification points of $\pi_1$). If $\beta=\gamma\alpha\gamma'$ with $\gamma,\gamma'\in\Gamma$, then $\mathcal C_\beta\simeq\mathcal C_\alpha$: the map
+$\Gamma_\alpha z\mapsto\Gamma_\beta\gamma'^{-1}z$ is an isomorphism $X(\Gamma_\alpha)\to X(\Gamma_\beta)$ compatible with the two pairs of maps. So $\mathcal C_\alpha$ depends only on
+$\Gamma\alpha\Gamma$.
+\item Let $p$ be prime and $\alpha=\mathrm{diag}(1,p)$. Then $\Gamma_\alpha=\Gamma_0(N)\cap\Gamma^0(p)$, $\alpha\Gamma_\alpha\alpha^{-1}=\Gamma_0(Np)$, and $\Gamma_\alpha z\mapsto\Gamma_0(Np)(z/p)$
+is an isomorphism $X(\Gamma_\alpha)\simeq X_0(Np)$ under which $\pi_1$ becomes $z\mapsto pz$ and $\pi_\alpha$ becomes $z\mapsto z$. The degree of $\pi_1$ is $p+1$ if $p\nmid N$ and
+$p$ if $p\mid N$, with coset representatives giving
+\[
+\Gamma\alpha\Gamma=\bigsqcup_{j=0}^{p-1}\Gamma\Mtwo1j0p\ \sqcup\ \Gamma\Mtwo p001\ (p\nmid N),\qquad\Gamma\alpha\Gamma=\bigsqcup_{j=0}^{p-1}\Gamma\Mtwo1j0p\ (p\mid N).
+\]
+\item (Moduli; sketched.) Under \Cref{thm:moddeg:x0-over-q}(i), $(T_p)_*(E,C)=\sum_D(E/D,(C+D)/D)$ over the $p+1$ subgroups $D\subset E$ of order $p$ ($p\nmid N$), and
+$(U_p)_*(E,C)=\sum_{D\cap C=0}(E/D,(C+D)/D)$ over the $p$ subgroups $D$ of order $p$ meeting $C$ trivially ($p\mid N$).
+\item $T_p$, $U_p$ and the $w_d$ ($d\,\|\,N$) are correspondences defined over $\Q$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $\Gamma\alpha\gamma=\Gamma\alpha\gamma'$ iff $\alpha\gamma'\gamma^{-1}\alpha^{-1}\in\Gamma$ iff $\gamma'\gamma^{-1}\in\Gamma\cap\alpha^{-1}\Gamma\alpha=\Gamma_\alpha$; so the cosets $\Gamma\alpha\gamma_i$ are distinct and exhaust $\Gamma\alpha\Gamma$. The fibre
+of $\pi_1$ over $\Gamma z$ is $\{\Gamma_\alpha\gamma_iz\}$ (with multiplicities), and $\pi_\alpha(\Gamma_\alpha\gamma_iz)=\Gamma\alpha\gamma_iz$; this is the formula for $\pi_{\alpha*}\pi_1^*$. For $\beta=\gamma\alpha\gamma'$:
+$\beta^{-1}\Gamma\beta=\gamma'^{-1}\alpha^{-1}\Gamma\alpha\gamma'$, so $\Gamma_\beta=\gamma'^{-1}\Gamma_\alpha\gamma'$ and $\Gamma_\alpha z\mapsto\Gamma_\beta\gamma'^{-1}z$ is a well-defined isomorphism. It satisfies
+$\pi_1(\Gamma_\beta\gamma'^{-1}z)=\Gamma z$ and $\pi_\beta(\Gamma_\beta\gamma'^{-1}z)=\Gamma\gamma\alpha\gamma'\gamma'^{-1}z=\Gamma\alpha z$.
+
+(ii) For $\gamma=\sm abcd\in\Gamma$, $\alpha\gamma\alpha^{-1}=\sm a{b/p}{pc}d$, which lies in $\Gamma$ iff $p\mid b$; so $\Gamma_\alpha=\Gamma\cap\Gamma^0(p)$, and its conjugate
+$\alpha\Gamma_\alpha\alpha^{-1}$ consists of the $\sm a{b'}{c'}d$ of determinant $1$ with $Np\mid c'$, which is $\Gamma_0(Np)$. The map $z\mapsto\alpha z=z/p$ therefore induces
+$X(\Gamma_\alpha)\simeq X_0(Np)$, and $\Gamma z=\Gamma p(z/p)$, $\Gamma\alpha z=\Gamma(z/p)$ give the two maps. The index $[\Gamma_0(N):\Gamma_0(N)\cap\Gamma^0(p)]$ is $p+1$ for $p\nmid N$ and
+$p$ for $p\mid N$, and the displayed matrices lie in $\Gamma\alpha\Gamma$ and represent distinct cosets; see \Cref{ch:hecke} and \cite[Section 5.2]{DiamondShurman}. For
+$p\nmid N$ the matrix $\sm p001$ lies in $\Gamma\alpha\Gamma$ by the computation in the proof of \Cref{thm:moddeg:transpose}(iv).
+
+(iii) (Sketch.) The point $\Gamma z$ is $(\C/\Lambda_z,\langle\frac1N\rangle)$ with $\Lambda_z=\Z+\Z z$. The lattices $\Lambda_{(z+j)/p}$ ($0\le j<p$) and $\frac1p\Z+\Z z=\frac1p\Lambda_{pz}$ are the $p+1$
+lattices containing $\Lambda_z$ with index $p$, that is, the subgroups $D$ of order $p$ of $E=\C/\Lambda_z$, and $\C/\Lambda'=E/D$; the image of $\frac1N$ generates $(C+D)/D$
+(for $\Lambda'=\frac1p\Lambda_{pz}$ one rescales by $p$, and $\frac1N$, $\frac1p$ generate $\frac1{Np}\Z/\Z$ when $p\nmid N$). For $p\mid N$ the missing lattice $\frac1p\Z+\Z z$ is the one
+whose subgroup $D=\langle\frac1p\rangle$ lies in $C=\langle\frac1N\rangle$. See \cite[Sections 5.2, 7.9]{DiamondShurman}.
+
+(iv) $X_0(Np)$, $z\mapsto pz$ and $z\mapsto z$ are defined over $\Q$ by \Cref{thm:moddeg:x0-over-q} (on moduli $z\mapsto z$ is $(E,C)\mapsto(E,pC')$ for the cyclic group $C'$ of order $Np$
+attached to $z$, and $z\mapsto pz$ is $(E,C')\mapsto(E/C'[p],C'/C'[p])$), and so are the $w_d$.
+\end{proof}
+
+\Cref{ch:curves} writes the Hecke correspondence for $p\nmid N$ as $(X_0(Np),z\mapsto z,z\mapsto pz)$. By (ii) that is $\mathcal C_{\mathrm{diag}(p,1)}$, the transpose of
+$\mathcal C_{\mathrm{diag}(1,p)}$; for $p\nmid N$ the two are isomorphic (\Cref{thm:moddeg:transpose}(iv)), but for $p\mid N$ the correspondence $(X_0(Np),z\mapsto z,z\mapsto pz)$ is
+$U_p^t$, not $U_p$, and $U_p$ itself is $(X_0(Np),z\mapsto pz,z\mapsto z)$.
+
+\begin{proposition}[compatibility with the Hecke operators on forms]\label{prop:moddeg:hecke-compatibility}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item For $f\in S_2(\Gamma_0(N))$ and $\Gamma\alpha\Gamma=\bigsqcup_i\Gamma\alpha_i$: $\mathcal C_\alpha^*(f(z)\,dz)=\bigl(\sum_if|_2\alpha_i\bigr)(z)\,dz$. For $\alpha=\mathrm{diag}(1,p)$ this is $(T_pf)(z)\,dz$
+($p\nmid N$), respectively $(U_pf)(z)\,dz$ ($p\mid N$), with \Cref{ch:hecke}'s operators.
+\item There is a unique ring homomorphism $\T\to\End_\Z H^1(X_0(N),\Z)$, $t\mapsto t^*$, with $T_p\mapsto\mathcal C_{\mathrm{diag}(1,p)}^*$ for every prime $p$. It is injective, and its
+$\C$-linear extension to $H^1(X_0(N),\C)=S_2\oplus\overline{S_2}$ is $t$ on $S_2$ and $\bar\omega\mapsto\overline{t\omega}$ on $\overline{S_2}$. The transposes $t_*$ on
+$H_1(X_0(N),\Z)=H^1(X_0(N),\Z)^\vee$ define a second injective ring homomorphism, which is the action of the correspondences by pushforward. In particular $\T$ is a finite
+free $\Z$-module, and $\T_\ell=\T\otimes\Zl$ acts faithfully on $H^1(X_0(N),\Zl)$ and on $H_1(X_0(N),\Zl)$.
+\item Since $\T\otimes\C\simeq\Hom_\C(S_2,\C)$ by $(t,g)\mapsto a_1(tg)$ (\Cref{ch:hecke}), every $\psi\in\Hom_\Z(\T,\Z)$ is $t\mapsto a_1(tg_\psi)$ for a unique $g_\psi\in S_2$ with
+$a_n(g_\psi)=\psi(T_n)\in\Z$; so $S_2(\Gamma_0(N);\Z)$ has rank $g$. (This is the route from the integral structure of $H^1$ to Shimura's integral basis; \Cref{ch:modforms,ch:hecke}
+prove the statement differently.)
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) By definition $\mathcal C_\alpha^*\omega=\Tr_{\pi_1}(\pi_\alpha^*\omega)$. On $\HH$, $\pi_\alpha$ is $z\mapsto\alpha z$, and $d(\alpha z)/dz=\det\alpha/(cz+d)^2$, so $\pi_\alpha^*(f(z)\,dz)=(f|_2\alpha)(z)\,dz$
+(\Cref{conv:moddeg:setup}(C1)). The local sections of $\pi_1$ near a point $\Gamma z$ off the branch locus are $s_i\colon\Gamma z\mapsto\Gamma_\alpha\gamma_iz$, so
+$\Tr_{\pi_1}(g\,dz)=\sum_is_i^*(g\,dz)=\sum_i(g|_2\gamma_i)\,dz$ for a weight-two form $g$ on $\Gamma_\alpha$. With $g=f|_2\alpha$ and $\alpha_i=\alpha\gamma_i$ (part (i) of
+\Cref{prop:moddeg:hecke-correspondence}) the sum is $\sum_if|_2\alpha_i$. For $\alpha=\mathrm{diag}(1,p)$ and the representatives of
+\Cref{prop:moddeg:hecke-correspondence}(ii): $f|_2\sm1j0p=\frac1pf(\frac{z+j}p)$ and $f|_2\sm p001=pf(pz)$, and summing gives $\sum_n(a_{np}+pa_{n/p})q^n$ (the last term for
+$p\nmid N$ only), which is \Cref{ch:hecke}'s $T_pf$, respectively $U_pf$, in weight $2$, where the normalising factor $(\det\alpha)^{k/2-1}$ is $1$.
+
+The class of a holomorphic $\omega$ is mapped by $\mathcal C^*=\pi_{1*}\pi_\alpha^*$ on $H^1$ to the class of $\Tr_{\pi_1}\pi_\alpha^*\omega$: \Cref{ch:curves} computes $\pi_{1*}$ on a representative
+$\theta$ vanishing near the branch points; if $\theta=\omega+dF$, then $\Tr\theta-\Tr\omega=d(\Tr F)$ on the complement of the branch points, so the two forms have the same
+integrals over loops avoiding them, and such loops span $H_1$.
+
+(ii) Let $P$ be the polynomial ring $\Z[x_p:p\text{ prime}]$, let $\rho_1\colon P\to\End_\C S_2$ send $x_p$ to $T_p$ (or $U_p$), and $\rho_2\colon P\to\End_\Z H^1(X_0(N),\Z)$, $x_p\mapsto\mathcal C_{\mathrm{diag}(1,p)}^*$. The image
+of $\rho_1$ is $\T$, because every $T_n$ is a polynomial in the $T_p$ and $U_p$ (\Cref{ch:hecke}). Each $\mathcal C^*$ on $H^1(X_0(N),\C)$ preserves $S_2$ (pullbacks and traces of
+holomorphic forms are holomorphic, \Cref{ch:curves}), acts there as $\rho_1(x_p)$ by (i), and commutes with complex conjugation, being defined over $\Z$. So for
+$F\in P$, $\rho_2(F)$ is $\rho_1(F)$ on $S_2$ and its conjugate on $\overline{S_2}$, and $\rho_2(F)=0$ iff $\rho_1(F)=0$ ($H^1(X_0(N),\Z)$ is a lattice in $H^1(X_0(N),\C)$, which is
+$S_2\oplus\overline{S_2}$ by \Cref{ch:curves}). Hence $\ker\rho_1=\ker\rho_2$, and $t\mapsto t^*$ is the isomorphism $\T=P/\ker\rho_1\to\rho_2(P)$. Transposition reverses products,
+and $\T$ is commutative, so $t\mapsto t_*$ is again a ring homomorphism; it is the pushforward action because $\mathcal C^*$ is the transpose of $\mathcal C_*$ (\Cref{ch:curves}). $\T$ is
+a subring of the endomorphism ring of a lattice of rank $2g$, hence free of finite rank over $\Z$; $\T\otimes\Zl\to\End(H^1(X_0(N),\Z))\otimes\Zl$ is injective because
+$\Zl$ is flat over $\Z$.
+
+(iii) $\Hom_\Z(\T,\Z)$ is a lattice in $\Hom_\Z(\T,\C)=\Hom_\C(\T\otimes\C,\C)$, which the perfect pairing identifies with $S_2$; and $a_n(g_\psi)=a_1(T_ng_\psi)=\psi(T_n)$.
+\end{proof}
+
+\begin{theorem}[the transpose of a Hecke correspondence]\label{thm:moddeg:transpose}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item For $\alpha\in M_2(\Z)$ with $\det\alpha>0$ put $\alpha'=(\det\alpha)\alpha^{-1}$. Then $\mathcal C_\alpha^t\simeq\mathcal C_{\alpha'}$: the map $u\colon X(\Gamma_\alpha)\to X(\Gamma_{\alpha'})$,
+$\Gamma_\alpha z\mapsto\Gamma_{\alpha'}\alpha z$, is an isomorphism with $\pi_1\circ u=\pi_\alpha$ and $\pi_{\alpha'}\circ u=\pi_1$.
+\item For $\beta\in\GL_2^+(\Q)$ normalising $\Gamma$, $\mathcal C_{\beta\alpha\beta^{-1}}\simeq w_\beta\,\mathcal C_\alpha\,w_\beta^{-1}$ (whenever $\beta\alpha\beta^{-1}\in M_2(\Z)$), so
+$\mathcal C_{\beta\alpha\beta^{-1}}^*=(w_\beta^{-1})^*\mathcal C_\alpha^*w_\beta^*$ on $H^1$.
+\item $W_N\,\mathrm{diag}(1,p)\,W_N^{-1}=\mathrm{diag}(p,1)=\mathrm{diag}(1,p)'$. Hence, for every prime $p$,
+\[
+T_p^t\simeq w_NT_pw_N\ (p\nmid N),\qquad U_p^t\simeq w_NU_pw_N\ (p\mid N),
+\]
+and for every $t\in\T$, $(t^*)^\dagger=w_N^*t^*w_N^*$ for the cup product on $H^1(X_0(N),\Z)$, and likewise for $t_*$ and the intersection pairing on $H_1(X_0(N),\Z)$.
+\item For $p\nmid N$, $\Gamma\,\mathrm{diag}(1,p)\,\Gamma=\Gamma\,\mathrm{diag}(p,1)\,\Gamma$; so $T_p^t\simeq T_p$, $T_p^*$ is self-adjoint for the cup product and commutes with $w_N^*$. For $p\mid N$,
+$U_p^*$ is in general not self-adjoint for the cup product (\Cref{ex:moddeg:ex-u2}).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) Scalars act trivially on $\HH$ and by conjugation, so $\alpha'^{-1}\Gamma\alpha'=\alpha\Gamma\alpha^{-1}$ and $\Gamma_{\alpha'}=\Gamma\cap\alpha\Gamma\alpha^{-1}=\alpha\Gamma_\alpha\alpha^{-1}$. Hence
+$\Gamma_\alpha z\mapsto\Gamma_{\alpha'}\alpha z$ is well defined and bijective, an isomorphism of the compact Riemann surfaces (it is induced by an automorphism of $\HH^*$). Then
+$\pi_1(u(\Gamma_\alpha z))=\Gamma\alpha z=\pi_\alpha(\Gamma_\alpha z)$, and $\pi_{\alpha'}(u(\Gamma_\alpha z))=\Gamma\alpha'\alpha z=\Gamma(\det\alpha)z=\Gamma z=\pi_1(\Gamma_\alpha z)$. So $u$ is an isomorphism from
+$\mathcal C_\alpha^t=(X(\Gamma_\alpha),\pi_\alpha,\pi_1)$ to $\mathcal C_{\alpha'}=(X(\Gamma_{\alpha'}),\pi_1,\pi_{\alpha'})$.
+
+(ii) Put $\alpha_\beta=\beta\alpha\beta^{-1}$. As $\beta$ normalises $\Gamma$, $\Gamma_{\alpha_\beta}=\Gamma\cap\beta\alpha^{-1}\beta^{-1}\Gamma\beta\alpha\beta^{-1}=\beta\Gamma_\alpha\beta^{-1}$, and $v\colon\Gamma_\alpha z\mapsto\Gamma_{\alpha_\beta}\beta z$ is an
+isomorphism with $\pi_1(v(\Gamma_\alpha z))=\Gamma\beta z=w_\beta(\pi_1(\Gamma_\alpha z))$ and $\pi_{\alpha_\beta}(v(\Gamma_\alpha z))=\Gamma\beta\alpha z=w_\beta(\pi_\alpha(\Gamma_\alpha z))$. In the notation of \Cref{ch:curves},
+$(C,v^{-1}\circ\alpha,u\circ\beta)=u\,\mathcal C\,v$; here the triple is $(X(\Gamma_\alpha),w_\beta\pi_1,w_\beta\pi_\alpha)=w_\beta\,\mathcal C_\alpha\,w_\beta^{-1}$, which acts on $H^1$ by
+$(w_\beta^{-1})^*\mathcal C_\alpha^*w_\beta^*$ (\Cref{ch:curves}).
+
+(iii) $W_N\,\mathrm{diag}(1,p)=\sm0{-p}N0$ and $W_N^{-1}=\frac1N\sm01{-N}0$, so
+\[
+W_N\Mtwo100p W_N^{-1}=\frac1N\Mtwo0{-p}N0\Mtwo01{-N}0=\frac1N\Mtwo{pN}00N=\Mtwo p001,
+\]
+and $\mathrm{diag}(1,p)'=p\,\mathrm{diag}(1,p)^{-1}=\mathrm{diag}(p,1)$. By (i) and (ii), with $\alpha=\mathrm{diag}(1,p)$ and $\beta=W_N$ (which normalises $\Gamma_0(N)$, \Cref{ch:modforms}),
+$\mathcal C_\alpha^t\simeq\mathcal C_{\alpha'}=\mathcal C_{W_N\alpha W_N^{-1}}\simeq w_N\mathcal C_\alpha w_N^{-1}$, and $w_N^{-1}=w_N$. Isomorphic correspondences act identically, so by
+\Cref{ch:curves} (the adjoint of $\mathcal C^*$ for the cup product is $(\mathcal C^t)^*$) and (ii), $(T_p^*)^\dagger=(T_p^t)^*=w_N^*T_p^*w_N^*$, and the same for $U_p$. Let
+$\mathcal A=\{t\in\T:(t^*)^\dagger=w_N^*t^*w_N^*\}$. It contains $1$ and every $T_p$, $U_p$, and it is closed under sums; it is closed under products because, with $w=w_N^*$,
+$w^2=1$ and $\T$ commutative, $((st)^*)^\dagger=(s^*t^*)^\dagger=(t^*)^\dagger(s^*)^\dagger=wt^*ws^*w=w(ts)^*w=w(st)^*w$. As $\T$ is generated as a ring by the $T_p$ and $U_p$,
+$\mathcal A=\T$. Poincare duality is an isometry carrying $\mathcal C^*$ to $(\mathcal C^t)_*$ (\Cref{ch:curves}), which gives the statement on $H_1$.
+
+(iv) Choose integers $b$, $d$ with $pd-bN=1$ and put $\gamma_1=\sm pbNd$, $\gamma_2=\sm1bN{dp}$, both in $\Gamma_0(N)$. Then
+$\gamma_1\,\mathrm{diag}(1,p)=\sm p{bp}N{dp}=\mathrm{diag}(p,1)\,\gamma_2$, so $\mathrm{diag}(p,1)=\gamma_1\mathrm{diag}(1,p)\gamma_2^{-1}$ and the double cosets agree. By
+\Cref{prop:moddeg:hecke-correspondence}(i) and (i) above, $T_p^t\simeq\mathcal C_{\mathrm{diag}(p,1)}\simeq T_p$, so $(T_p^*)^\dagger=T_p^*$; with (iii), $T_p^*=w_N^*T_p^*w_N^*$.
+\end{proof}
+
+\begin{corollary}[the pairing $\hat\delta_!$]\label{cor:moddeg:delta-hat}
+Let $R$ be $\Z$, $\Zl$ or $\Ql$ and $\langle\ ,\ \rangle$ the cup product on $H^1(X_0(N),R)$ (\Cref{ch:curves}).
+\begin{enumerate}[label=(\roman*)]
+\item $(t^*)^\dagger=w_N^*t^*w_N^*$ for every $t\in\T\otimes R$.
+\item The pairing
+\[
+\hat\delta_!(x,y)=\langle x,w_N^*y\rangle
+\]
+is perfect and alternating on $H^1(X_0(N),R)$, and every $t^*$, $t\in\T\otimes R$ (the $U_p^*$ included), is self-adjoint for it.
+\item Let $R=\Zl$. Then every idempotent of $\T_\ell$ is self-adjoint for $\hat\delta_!$,
+\[H^1(X_0(N),\Zl)=\bigoplus_{\mf m}H^1(X_0(N),\Zl)_{\mf m}\]
+(over the maximal ideals $\mf m$ of $\T_\ell$) is an orthogonal decomposition, and $\hat\delta_!$ is perfect on each summand.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(i) is \Cref{thm:moddeg:transpose}(iii), extended $R$-linearly. (ii) $w=w_N^*$ is an isometry of the cup product with $w^2=1$ (\Cref{ch:curves}), so $w^\dagger=w^{-1}=w$. The cup
+product is perfect, so $\hat\delta_!$, its composite with the automorphism $w$, is perfect. $\hat\delta_!(y,x)=\langle y,wx\rangle=-\langle wx,y\rangle=-\langle x,wy\rangle=-\hat\delta_!(x,y)$; so
+$\hat\delta_!$ is antisymmetric, and alternating because $2\hat\delta_!(x,x)=0$ and $H^1(X_0(N),R)$ is torsion-free. For $t\in\T\otimes R$,
+$\hat\delta_!(t^*x,y)=\langle x,(t^*)^\dagger wy\rangle=\langle x,wt^*wwy\rangle=\langle x,wt^*y\rangle=\hat\delta_!(x,t^*y)$. (iii) $\T_\ell$ is a finite free $\Zl$-algebra
+(\Cref{prop:moddeg:hecke-compatibility}(ii)), so $\T_\ell=\prod_{\mf m}\T_{\mf m}$ with orthogonal idempotents $e_{\mf m}$ (\Cref{ch:modules}). An element of $\T_\ell$ is
+self-adjoint by (ii); for an idempotent $e$, $\hat\delta_!(ex,(1-e)y)=\hat\delta_!(x,e(1-e)y)=0$, so the decomposition is orthogonal, and a perfect pairing restricted to the
+summands of an orthogonal decomposition is perfect on each (\Cref{ch:modules}). This is \Cref{ch:curves}'s corollary on twisted pairings, whose hypothesis $t^t=w^*tw^*$ is
+(i).
+\end{proof}
+
+\begin{remark}[the Petersson side]\label{rem:moddeg:petersson-analogue}
+On $S_2(\Gamma_0(N))$, $T_n$ is self-adjoint for the Petersson product when $(n,N)=1$, and $U_p^\dagger=w_NU_pw_N$ for $p\mid N$ (\Cref{ch:hecke}); a newform is a $w_N$-eigenvector
+with eigenvalue $\varepsilon_N(f)=\pm1$. The two statements agree: on $S_2\subset H^1(X_0(N),\C)$, $\langle f,g\rangle=\frac i2\langle\omega_f,\overline{\omega_g}\rangle_{\mathrm{cup}}$, and $\mathcal C^*$
+commutes with complex conjugation, so $\frac i2\langle\mathcal C^*\omega_f,\overline{\omega_g}\rangle=\frac i2\langle\omega_f,\overline{(\mathcal C^t)^*\omega_g}\rangle$: the Petersson adjoint of $\mathcal C^*$ on $S_2$ is
+$(\mathcal C^t)^*$. This is why $f$ is an eigenvector of the adjoints of the $T_n$ (Lemma lem:crit), with the same eigenvalues.
+\end{remark}
+
+\begin{paperlink}\label{pl:moddeg:delta-hat}
+In Section 4.1 of the paper the pairing $\hat\delta_!$ ``is perfect and alternating on $H^1(X_0(M^\Sigma),\Z_\ell)$, and the Hecke operators, $U_p$ included, are self-adjoint for it,
+because $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup product (this is what the composition with $w$ is for; see \cite[\S\S1.6.1, 1.8.2]{DFG04} and \cite[\S4.4]{DDT})''.
+This is \Cref{thm:moddeg:transpose}(iii) and \Cref{cor:moddeg:delta-hat}(ii) at level $M^\Sigma$. The paper's $\hat\delta_!$ is that of \cite{DFG04}, which on classes from
+$X_0(M^\Sigma)$ the paper describes as ``$\frac12$ times the cup product on $X_0(M^\Sigma)$ composed with $w_{M^\Sigma}$''; the book's $\hat\delta_!$ (Appendix B, B-C13(f)) omits
+the factor $\frac12$, a unit for odd $\ell$, so the two have the same ideal of values on every sublattice. The sentence of the paragraph after Lemma lem:hecke, ``the
+idempotent $e_{\mf m}$ is self-adjoint for $\hat\delta_!$, so $H^1(X_0(N),\Z_\ell)$ splits orthogonally into its local components and the pairing is perfect on each'', is
+\Cref{cor:moddeg:delta-hat}(iii).
+\end{paperlink}
+
+\section{The Jacobian \texorpdfstring{$J_0(N)$}{J0(N)}, its homology and the \texorpdfstring{$f$}{f}-lattice}\label{sec:moddeg:jacobian}
+
+The modular parametrisation factors through the Jacobian $J_0(N)$, optimality is a statement about the kernel of $J_0(N)\to E$, Remark rem:free speaks of $J_0(N)[\mf m]$
+and of the Tate module, and Section 4.1 of the paper defines the lattice $M_{f,\lambda}$ inside $H^1(X_0(N),\Zl)$. This section applies \Cref{ch:curves} to $X_0(N)$, keeps
+track of which Hecke action lives on which object, and defines $M_{f,\lambda}$.
+
+\begin{definition}[$J_0(N)$]\label{def:moddeg:j0}
+$J_0(N)=\Jac(X_0(N)_\Q)$, the Jacobian of the curve $X_0(N)$ over $\Q$ (\Cref{ch:curves}); $\iota\colon X_0(N)\to J_0(N)$, $P\mapsto[(P)-(\infty)]$, is the Abel-Jacobi map with base
+point $\infty$.
+\end{definition}
+
+\begin{theorem}[structure of $J_0(N)$]\label{thm:moddeg:j0}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item $J_0(N)$ is an abelian variety over $\Q$ of dimension $g=\dim S_2(\Gamma_0(N))$, with good reduction at every prime $p\nmid N$.
+\item $J_0(N)(\C)=S_2(\Gamma_0(N))^\vee/H_1(X_0(N),\Z)$, where $\gamma\in H_1$ is sent to $f\mapsto\int_\gamma f(z)\,dz$.
+\item $\iota$ is defined over $\Q$, and every morphism $X_0(N)\to A$ over $\Q$ to an abelian variety sending $\infty$ to $0$ is $h\circ\iota$ for a unique homomorphism
+$h\colon J_0(N)\to A$ over $\Q$.
+\item For $N=11$, $14$, $20$, $37$, $77$, $99$, $121$, $140$, $539$, $726$, $980$ the dimension of $J_0(N)$ is $1$, $1$, $1$, $2$, $7$, $9$, $6$, $19$, $49$, $109$, $145$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) The Jacobian of a smooth projective curve of genus $g$ over $\Q$ is an abelian variety of dimension $g$ over $\Q$ (\Cref{ch:curves}, stated), and $g=\dim S_2$ because
+$f\mapsto f\,dz$ identifies $S_2(\Gamma_0(N))$ with the holomorphic differentials (\Cref{ch:modforms}). Good reduction of $J_0(N)$ at $p\nmid N$ follows from that of $X_0(N)$
+(\Cref{thm:moddeg:x0-over-q}(iv)); we do not prove the implication (the Jacobian of a smooth proper curve over $\Zp$ is an abelian scheme; see \cite[Section 9.4]{BLR}, not verified).
+(ii) is the analytic Jacobian and the Abel-Jacobi theorem of \Cref{ch:curves} with $H^0(X_0(N),\Omega^1)=S_2$. (iii) The base point $\infty$ is rational
+(\Cref{prop:moddeg:cusps-over-q}), so the universal property of \Cref{ch:curves} applies over $\Q$. (iv) is \texttt{mfdim([N,2],1)} in PARI, and equals the genus formula of
+\Cref{ch:modforms}.
+\end{proof}
+
+\begin{proposition}[the Hecke action on $J_0(N)$ and $T_\ell J_0(N)$]\label{prop:moddeg:hecke-on-j0}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item $t\mapsto t_*$ is an injective ring homomorphism $\T\to\End_\Q(J_0(N))$; on $J_0(N)(\C)=S_2^\vee/H_1$ the endomorphism $t_*$ is induced by the transpose of $t$ on $S_2$, and on the
+lattice $H_1$ it is $t_*$ of \Cref{prop:moddeg:hecke-compatibility}(ii).
+\item On $T_\ell J_0(N)=H_1(X_0(N),\Zl)$ the action is $t_*$, and it commutes with $G_\Q$.
+\item For $t\in\T$ put $t^t=w_Ntw_N\in\End_\C S_2$; on $H^1$ its action is $(t^t)^*=w_N^*t^*w_N^*=(t^*)^\dagger$ (\Cref{thm:moddeg:transpose}(iii)), and $t\mapsto t^t$ is a ring isomorphism from
+$\T$ onto $w_N\T w_N$. In general $w_N\T w_N\ne\T$ (\Cref{ex:moddeg:ex-u2}). The \emph{Picard} action of $\T$ on $J_0(N)$ is $t\mapsto(t^t)_*$. A newform $f$ of level $N$ is an eigenvector of
+every $t^t$ with eigenvalue $\phi_f(t)$. Hence $I_fJ_0(N)$, $J_0(N)/I_fJ_0(N)$ and $H^1(X_0(N),\Zl)[I_f]$ are the same whether $\T$ acts through $t_*$ (Albanese) or through $(t^t)_*$
+(Picard).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) A correspondence acts on $J_0(N)$ by $\mathcal C_*$, compatibly with Abel-Jacobi: by the transpose of $\mathcal C^*$ on differentials and by $\mathcal C_*$ on $H_1$
+(\Cref{ch:curves}). On generators these are $\T$'s operators, so the ring homomorphism of \Cref{prop:moddeg:hecke-compatibility}(ii) gives an action on the complex torus,
+injective because it is injective on $H_1$; it is defined over $\Q$ because the correspondences are (\Cref{prop:moddeg:hecke-correspondence}(iv)). (ii) $T_\ell J=H_1\otimes\Zl$
+naturally for homomorphisms of tori (\Cref{ch:curves}); an endomorphism defined over $\Q$ commutes with $G_\Q$ on torsion points. (iii) The first assertions are \Cref{thm:moddeg:transpose}(iii) and the fact that conjugation by an involution is a ring isomorphism. If $f$ is a newform, $f|_2W_N=\varepsilon_N(f)f$
+with $\varepsilon_N(f)=\pm1$ (\Cref{ch:hecke}), so $w_Ntw_Nf=\varepsilon_N(f)w_Ntf=\varepsilon_N(f)\phi_f(t)w_Nf=\phi_f(t)f$. The Picard version of $I_fJ_0(N)$ is
+$\sum_{t\in I_f}w_{N*}t_*w_{N*}J_0(N)=w_{N*}(I_fJ_0(N))$. Its Lie algebra, in $S_2^\vee$, is the image under the transpose of $w_N^*$ of the Lie algebra of $I_fJ_0(N)$; the latter is
+the annihilator of $S_2[I_f]=\C f$ (the Lie algebra of $t_*J_0(N)$ is the image of the transpose of $t$, whose annihilator is $\ker t$), and $w_N^*$ preserves $\C f$; a connected
+closed subgroup of a complex torus is determined by its Lie algebra, so $w_{N*}(I_fJ_0(N))=I_fJ_0(N)$. On $H^1$, $x$ is killed by all $(t^t)^*-\phi_f(t)$, $t\in I_f$, iff $w_N^*x\in M_{f,\lambda}$, iff
+$x\in M_{f,\lambda}$, because $w_N^*$ preserves $M_{f,\lambda}$ (\Cref{prop:moddeg:f-lattice}(iii)).
+\end{proof}
+
+\begin{proposition}[$T_\ell J_0(N)$ and $H^1(X_0(N),\Zl)$ as Hecke modules]\label{prop:moddeg:tate-module-vs-h1}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item $H^1(X_0(N),\Zl)=\Hom_{\Zl}(T_\ell J_0(N),\Zl)$, with $t^*$ the transpose of $t_*$. As $G_\Q$-modules (\'etale cohomology of the curve over $\Q$),
+$H^1_{\mathrm{et}}(X_0(N)_{\Qbar},\Zl)\simeq(T_\ell J_0(N))^\vee\simeq T_\ell J_0(N)(-1)$, and the cup product is $G_\Q$-equivariant with values in $\Zl(-1)$.
+\item The map $\Psi=w_{N*}\circ\operatorname{PD}\colon H^1(X_0(N),\Zl)\to H_1(X_0(N),\Zl)=T_\ell J_0(N)$ is an isomorphism of $\T_\ell$-modules for the actions $t^*$ on the source and
+$t_*$ on the target. Poincare duality $\operatorname{PD}$ alone intertwines $t^*$ with $(t^t)_*$. After the Tate twist by $\Zl(-1)$, $\Psi$ is $G_\Q$-equivariant.
+\item Hence, for every maximal ideal $\mf m$ of $\T_\ell$, the module $T_\ell J_0(N)_{\mf m}$ is free over $\T_{\mf m}$ if and only if $H^1(X_0(N),\Zl)_{\mf m}$ is, and
+$H^1(X_0(N),\Fl)_{\mf m}[\mf m]\simeq J_0(N)[\mf m]$ as $\T/\mf m$-vector spaces.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) is \Cref{ch:curves} (the Tate module and $H^1$; the Weil pairing and \'etale cohomology, stated there), with the comparison isomorphism compatible with correspondences.
+(ii) By \Cref{ch:curves}, $\operatorname{PD}\circ\mathcal C^*=(\mathcal C^t)_*\circ\operatorname{PD}$, so $\operatorname{PD}\circ t^*=(t^t)_*\circ\operatorname{PD}=(w_Ntw_N)_*\circ\operatorname{PD}$ by
+\Cref{thm:moddeg:transpose}(iii) and \Cref{prop:moddeg:hecke-on-j0}(iii). Composing with $w_{N*}$ and using $w_N^2=1$: $\Psi\circ t^*=w_{N*}(w_Ntw_N)_*\operatorname{PD}=t_*w_{N*}\operatorname{PD}=t_*\circ\Psi$.
+$\Psi$ is an isomorphism because both factors are. Over $\Qbar$, Poincare duality is the Weil pairing $T_\ell J\simeq(T_\ell J)^\vee(1)$, which is $G_\Q$-equivariant, and $w_N$ is defined over
+$\Q$; so $\Psi$ is $G_\Q$-equivariant as a map $H^1\to T_\ell J(-1)$. (iii) An isomorphism of $\T_\ell$-modules maps $\mf m$-components to $\mf m$-components. For the second
+statement reduce $\Psi$ modulo $\ell$: $H^1(X_0(N),\Fl)\simeq H_1(X_0(N),\Fl)=J_0(N)[\ell]$ (\Cref{ch:curves}), $\T$-equivariantly, and take $\mf m$-torsion.
+\end{proof}
+
+\begin{warning}[four identifications that are easy to confuse]\label{warn:moddeg:four-identifications}
+\leavevmode
+\begin{enumerate}[label=(\arabic*)]
+\item $T_\ell J_0(N)=H_1(X_0(N),\Zl)$: covariant, $\T$ acts by $t_*$.
+\item $H^1(X_0(N),\Zl)=\Hom(T_\ell J_0(N),\Zl)$: contravariant, $\T$ acts by $t^*$; Galois-equivariantly it is $T_\ell J_0(N)(-1)$, not $T_\ell J_0(N)$.
+\item $\operatorname{PD}\colon H^1\to H_1$ intertwines $t^*$ with $(t^t)_*=(w_Ntw_N)_*$, not with $t_*$.
+\item $w_{N*}\circ\operatorname{PD}$ intertwines $t^*$ with $t_*$, and is Galois-equivariant only after the twist by $\Zl(-1)$.
+\end{enumerate}
+For an elliptic curve the difference between (1) and (2) is the difference between $T_\ell E$, of determinant $\chi_\ell$, and $H^1(E,\Zl)\simeq T_\ell E(-1)$, of determinant
+$\chi_\ell^{-1}$. The adjoint does not see it: $\ad(T^\vee)\simeq\ad T\simeq\ad(T(-1))$ (\Cref{ch:reps}).
+\end{warning}
+
+\begin{definition}[the $f$-lattice]\label{def:moddeg:f-lattice}
+Let $f$ be a newform of level $N$ with rational coefficients and $\ell$ a prime. Put $V_f=H^1(X_0(N),\Q)[I_f]$ and
+\[
+M_{f,\lambda}=H^1(X_0(N),\Zl)[I_f]=\{x:\ t^*x=\phi_f(t)x\ \text{for all }t\in\T\}.
+\]
+\end{definition}
+
+\begin{proposition}[the $f$-lattice]\label{prop:moddeg:f-lattice}
+In the situation of \Cref{def:moddeg:f-lattice}:
+\begin{enumerate}[label=(\roman*)]
+\item $V_f\otimes\C=H^1(X_0(N),\C)[I_f]=\C\,\omega_f\oplus\C\,\overline{\omega_f}$, of dimension $2$; $V_f\otimes\R$ is spanned by $\operatorname{Re}\omega_f$ and $\operatorname{Im}\omega_f$. The subspace killed by
+the anemic algebra $\T^{(N)}=\Z[T_n:(n,N)=1]$ acting through $\phi_f$ is the same plane.
+\item $M_{f,\lambda}=H^1(X_0(N),\Z)[I_f]\otimes\Zl=H^1(X_0(N),\Zl)\cap(V_f\otimes\Ql)$; it is a saturated $\Zl$-sublattice of rank $2$.
+\item $w_N^*$ preserves $V_f$ and $M_{f,\lambda}$, and acts on both by $\varepsilon_N(f)$.
+\item $M_{f,\lambda}$ is stable under $G_\Q$ (in \'etale cohomology).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Kernels of linear maps over $\Q$ commute with extension of scalars; so the complexification of $V_f$ is the space $H^1(X_0(N),\C)[I_f]$. By \Cref{prop:moddeg:hecke-compatibility}(ii) this is
+$S_2[I_f]\oplus\overline{S_2[I_f]}$ (for $t\in I_f$ the class $t\bar\omega$, which is $\overline{t\omega}$, vanishes iff $t\omega$ does). The eigenspace of $\phi_f$ in $S_2$ is the line $\C f$: by the theory of
+newforms (\Cref{ch:hecke}), $S_2$ is the direct sum of the spaces spanned by the $g(dz)$, $g$ a newform of level $M\mid N$ and $d\mid N/M$, the anemic algebra acts on each
+by the eigenvalues of $g$, distinct newforms have distinct anemic eigenvalue systems (strong multiplicity one), and for $g=f$ of level $N$ only $d=1$ occurs. This argument
+uses only $\T^{(N)}$, which gives the last sentence. (ii) The first equality is flatness of $\Zl$ over $\Z$; the second holds because $x\in H^1(X_0(N),\Zl)$ is killed by $I_f$ iff
+its image in $H^1(X_0(N),\Ql)$ is. A kernel of endomorphisms of a torsion-free module is saturated (\Cref{ch:modules}). The rank is $\dim V_f=2$. (iii) $w_N^*$ commutes with every
+$t^*$, $t\in\T^{(N)}$ (\Cref{thm:moddeg:transpose}(iv)), so it preserves the plane, which by (i) is the $\phi_f$-eigenspace of $\T^{(N)}$. On it $w_N^*\omega_f=(f|_2W_N)\,dz=\varepsilon_N(f)\omega_f$,
+and $w_N^*\overline{\omega_f}=\overline{w_N^*\omega_f}=\varepsilon_N(f)\overline{\omega_f}$ since $\varepsilon_N(f)$ is real. $w_N^*$ preserves $H^1(X_0(N),\Zl)$, hence $M_{f,\lambda}$. (iv) $t^*$ commutes with
+$G_\Q$, so the kernel of $I_f$ is $G_\Q$-stable.
+\end{proof}
+
+\begin{paperlink}\label{pl:moddeg:f-lattice}
+Section 4.1 of the paper defines $M_{f^\Sigma,\lambda}$ as ``the kernel on it of the kernel of the eigencharacter of $f^\Sigma$ on the full Hecke algebra, $U_p$ included''; with
+$\Sigma=\emptyset$ and $H^1(X_0(N),\Zl)$ in place of the integral structure of Diamond, Flach and Guo this is \Cref{def:moddeg:f-lattice}. In the proof of
+Proposition prop:pullback the paper says that $H^1(X_0(N),\Z_\ell)[I_f]$, ``a saturated lattice, is its intersection with $H^1(X_0(N),\Z_\ell)$'', the plane being the complex
+plane $\C f\,dz\oplus\C\overline{f\,dz}$: read with the $\Q$-form $V_f$ of that plane, as in \Cref{prop:moddeg:f-lattice}(ii). It also says ``The involution $w_N$ commutes with the
+$T_n$, $(n,N)=1$, so it preserves the plane'': the plane is defined by the full algebra, $U_p$ included, with which $w_N$ does not commute, and the inference holds because the
+plane is also the eigenspace of the anemic algebra (\Cref{prop:moddeg:f-lattice}(i), (iii)). Remark rem:free: ``The identification of $T_\ell J_0(N)$ with $H^1(X_0(N),\Z_\ell)$ as
+Hecke modules uses Poincar\'e duality composed with $w_N$, which is not Galois equivariant; freeness transfers nevertheless'' is \Cref{prop:moddeg:tate-module-vs-h1}(ii), (iii):
+$\Psi$ is Galois-equivariant after a Tate twist.
+\end{paperlink}
+
+\section{Eichler-Shimura and modularity}\label{sec:moddeg:eichler-shimura}
+
+The paper starts from ``the newform attached to'' $E$. This section explains the two directions of that attachment: from a newform $f$ with rational coefficients
+Shimura's construction produces an elliptic curve $E_f$ as a quotient of $J_0(N)$, whose Frobenius traces are the $a_p(f)$ by the congruence relation of Eichler and
+Shimura; and the modularity theorem says that every elliptic curve over $\Q$ is isogenous to one of these. The quotient $E_f$ is the optimal curve of
+\Cref{sec:moddeg:optimal}, and the congruence relation is the first step in the construction of the Galois representation of $f$ (\Cref{ch:modgalrep}).
+
+\begin{theorem}[Shimura's quotient]\label{thm:moddeg:shimura-quotient}
+Let $f$ be a newform of level $N$ with coefficient field $K_f$ and $I_f=\ker(\T\to K_f,\ T_n\mapsto a_n(f))$.
+\begin{enumerate}[label=(\roman*)]
+\item $I_fJ_0(N)=\sum_{t\in I_f}t_*J_0(N)$ is an abelian subvariety of $J_0(N)$ defined over $\Q$, and $J_f=J_0(N)/I_fJ_0(N)$ is an abelian variety over $\Q$ of dimension
+$[K_f:\Q]$ on which $\T$ acts through $\T/I_f\hookrightarrow K_f$. The quotient map $\pi_f\colon J_0(N)\to J_f$ has connected kernel. (The book writes $J_f$ for Shimura's
+$A_f$, which is the paper's adjoint representation; Appendix B, B-C12(c).)
+\item If $f$ has rational coefficients, $J_f=:E_f$ is an elliptic curve over $\Q$, $t\in\T$ acts on it as multiplication by $\phi_f(t)$, and $\varphi_{E_f}=\pi_f\circ\iota$ satisfies
+$\varphi_{E_f}^*H^1(E_f,\Q)=V_f$ and $\varphi_{E_f}^*\omega_{E_f}\in\C\,\omega_f$.
+\item (Shimura; stated.) $L(J_f,s)=\prod_{\sigma\colon K_f\to\C}L(f^\sigma,s)$; in particular $L(E_f,s)=L(f,s)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof of (ii), and sketch of (i)]
+(i) Let $t_1,\dots,t_r$ generate $I_f$ as an abelian group. Then $I_fJ_0(N)$, which is $\sum_it_{i*}J_0(N)$, is the image of $J_0(N)^r$ under the homomorphism $(x_i)\mapsto\sum_it_{i*}x_i$,
+defined over $\Q$; the image of an abelian variety under a homomorphism is an abelian subvariety (connected, as the image of a connected group), and the quotient of an
+abelian variety by an abelian subvariety exists over the field of definition (stated; see the references on abelian varieties in \Cref{ch:curves}). $\T$ is commutative, so each $t_*$ preserves
+$I_fJ_0(N)$ and acts on $J_f$; and $t-\phi_f(t)$, which lies in $I_f$ when $f$ is rational, maps $J_0(N)$ into $I_fJ_0(N)$, so $t$ acts on $J_f$ as $\phi_f(t)$ in that case.
+The kernel $I_fJ_0(N)$ is connected by construction. Over $\C$, the Lie algebra of $t_*J_0(N)$ is the image of the transpose of $t$ on $S_2^\vee$, whose annihilator in $S_2$ is
+$\ker t$; so the Lie algebra of $I_fJ_0(N)$ is the annihilator of $S_2[I_f]$, which is spanned by the conjugates $f^\sigma$ and has dimension $[K_f:\Q]$ (\Cref{ch:hecke}). Hence
+$\dim J_f=[K_f:\Q]$.
+(ii) For rational $f$, $S_2[I_f]=\C f$ and $\dim J_f=1$: $J_f$ is a connected projective group variety of dimension one over $\Q$, an elliptic curve with origin the image of
+$0$. Let $x\in H^1(E_f,\Q)$. As $t$ acts on $E_f$ as $\phi_f(t)$, and multiplication by an integer $m$ acts on $H^1$ of an elliptic curve as $m$ (\Cref{ch:curves}),
+$t^*\varphi_{E_f}^*x=\varphi_{E_f}^*(\phi_f(t)x)$ (pullback along $\iota$ identifies $t_*$ on $J_0(N)$ with $t^*$ on $H^1(X_0(N))$, \Cref{prop:moddeg:hecke-on-j0}). So
+$\varphi_{E_f}^*H^1(E_f,\Q)\subseteq V_f$; both have dimension $2$ ($\varphi_{E_f}^*$ is injective by \Cref{ch:curves}), so they are equal. Then $\varphi_{E_f}^*\omega_{E_f}$ is a
+holomorphic form in $V_f\otimes\C=\C\omega_f\oplus\C\overline{\omega_f}$ (\Cref{prop:moddeg:f-lattice}), hence in $\C\omega_f$.
+(iii) We do not prove this; see \cite[Theorem 7.14 and Section 7.5]{Shimura71} (theorem number not verified), \cite{Shimura73}, \cite[Section 6.6]{DiamondShurman}. At the primes
+$p\nmid N$ it follows from \Cref{thm:moddeg:eichler-shimura}.
+\end{proof}
+
+\begin{theorem}[the congruence relation of Eichler and Shimura]\label{thm:moddeg:eichler-shimura}
+Let $p\nmid N$ be prime.
+\begin{enumerate}[label=(\roman*)]
+\item (Stated.) In $\End\bigl(J_0(N)_{\Fp}\bigr)$, the reduction of $(T_p)_*$ is $\pi_p+\hat\pi_p$, where $\pi_p$ is the $p$-power Frobenius endomorphism and $\hat\pi_p=p\pi_p^{-1}$
+the Verschiebung.
+\item On $T_\ell J_0(N)$, $\ell\ne p$, the arithmetic Frobenius $\Frob_p$ (which acts as $\pi_p$, \Cref{ch:curves}) satisfies $\Frob_p^2-(T_p)_*\Frob_p+p=0$. On each generalised
+eigenspace $W_\psi$ of $\T$ in $T_\ell J_0(N)\otimes\Qbar_\ell$ (for a character $\psi\colon\T\to\Qbar_\ell$) the eigenvalues of $\Frob_p$ are roots of $X^2-\psi(T_p)X+p$.
+\item If $f$ has rational coefficients, $E_f$ has good reduction at $p$, $\det(X-\Frob_p\mid T_\ell E_f)=X^2-a_p(f)X+p$, and $a_p(E_f)=p+1-\#\tilde E_f(\Fp)=a_p(f)$; on $H^1(E_f,\Zl)$
+the geometric Frobenius has the same characteristic polynomial.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) We do not prove this; see \cite[Section 7.4]{Shimura71}, \cite[Section 8.7]{DiamondShurman}, \cite[Section 10]{DiamondIm} (numbering not verified). The idea is
+Kronecker's congruence $\Phi_p(X,Y)\equiv(X^p-Y)(X-Y^p)\pmod p$ read on moduli through \Cref{prop:moddeg:hecke-correspondence}(iii): over $\bar\F_p$, for an ordinary curve $E$
+the quotient of $E$ by its connected subgroup of order $p$ is the Frobenius twist $E^{(p)}$, and the quotients by the $p$ \'etale subgroups are the curves whose Frobenius twist is
+$E$; so modulo $p$ the correspondence $T_p$ is the graph of the Frobenius morphism plus its transpose, which act on the Jacobian as $\pi_p$ and $\hat\pi_p$.
+(ii) Reduction modulo $p$ is injective on $\ell$-power torsion and commutes with all endomorphisms; $\pi_p\hat\pi_p=p$, so (i) gives $\pi_p^2-(T_p)_*\pi_p+p=\pi_p(\pi_p+\hat\pi_p-T_p)=0$.
+On $W_\psi$, $(T_p)_*-\psi(T_p)$ is nilpotent and commutes with $\Frob_p$; so $\Frob_p^2-\psi(T_p)\Frob_p+p$ is nilpotent there, and every eigenvalue of $\Frob_p$ on $W_\psi$ is a
+root of $X^2-\psi(T_p)X+p$.
+(iii) $E_f$ is a quotient of $J_0(N)$, which has good reduction at $p$, so $E_f$ has good reduction at $p$ (N\'eron-Ogg-Shafarevich, \Cref{ch:galrep}: $T_\ell E_f$ is a quotient of
+the unramified $T_\ell J_0(N)\otimes\Ql$). The homomorphism $\pi_f$ reduces to a surjection $J_0(N)_{\Fp}\to(E_f)_{\Fp}$, which commutes with Frobenius and Verschiebung (both are
+natural for homomorphisms), and $T_p$ acts on $E_f$ as $a_p(f)$. Hence $a_p(f)\pi_f=\pi_f\circ(T_p)_*=(\pi_p+\hat\pi_p)\circ\pi_f$ after reduction, and as $\pi_f$ is surjective,
+$\pi_p+\hat\pi_p=a_p(f)$ in $\End(\tilde E_f)$. By \Cref{ch:ellcurves}, $\pi_p+\hat\pi_p=[p+1-\#\tilde E_f(\Fp)]$ and $\det(X-\Frob_p\mid T_\ell E_f)=X^2-a_p(E_f)X+p$; $\End(\tilde E_f)$ is
+torsion-free, so $a_p(E_f)=a_p(f)$. The statement on $H^1$ is \Cref{ch:curves} (B-C3).
+\end{proof}
+
+\begin{theorem}[modularity; stated]\label{thm:moddeg:modularity}
+For every elliptic curve $E/\Q$ of conductor $N$ there is a newform $f_E\in S_2(\Gamma_0(N))$ with rational coefficients such that $a_p(f_E)=a_p(E)$ for every prime $p$ (with
+$a_p(E)\in\{0,\pm1\}$ the usual value at $p\mid N$). Equivalently, $E$ is isogenous over $\Q$ to $E_{f_E}$; and $L(E,s)=L(f_E,s)$.
+\end{theorem}
+
+We do not prove this. It is the theorem of Wiles \cite{Wiles95} and Taylor and Wiles \cite{TaylorWiles} for semistable $E$, completed by Breuil, Conrad, Diamond and Taylor
+\cite{BCDT}; that the level of $f_E$ is the conductor is Carayol's theorem \cite{Carayol86}. The conjecture goes back to Taniyama, Shimura and Weil; Weil showed that the
+functional equations of all twists characterise modular forms. The proof establishes an isomorphism $R=\T$ between a deformation ring of $\bar\rho_{E,\ell}$ and a localised Hecke
+algebra (\Cref{ch:congruence}), and it is in the course of that proof that the congruence ideals of \Cref{sec:moddeg:degree-eta} first appear. The equivalence of the two forms:
+$E_{f_E}$ has the same $a_p$ as $E$ for $p\nmid N$ (\Cref{thm:moddeg:eichler-shimura}), so $T_\ell E\otimes\Ql\simeq T_\ell E_{f_E}\otimes\Ql$ (Chebotarev and Brauer-Nesbitt, \Cref{ch:galois,ch:reps}; both are
+semisimple by Faltings, \Cref{ch:galrep}), and Faltings's isogeny theorem gives an isogeny; conversely isogenous curves have the same $a_p$ and the same conductor.
+
+\begin{corollary}[isogeny classes and newforms]\label{cor:moddeg:classes-and-newforms}
+$E\mapsto f_E$ is a bijection from the $\Q$-isogeny classes of elliptic curves of conductor $N$ to the newforms of level $N$ with rational coefficients.
+\end{corollary}
+
+\begin{proof}[Sketch of proof]
+Well defined: isogenous curves have the same $a_p$ (\Cref{ch:ellcurves}). Injective: curves with the same $a_p$ for almost all $p$ are isogenous (Faltings, as above). Surjective:
+for $f$ rational of level $N$, $E_f$ has conductor $N$ (Carayol \cite{Carayol86}; stated) and $a_p(E_f)=a_p(f)$ for $p\nmid N$ (\Cref{thm:moddeg:eichler-shimura}), so $f_{E_f}$ and $f$ are
+newforms of level $N$ with the same $a_p$ for almost all $p$, hence equal by strong multiplicity one (\Cref{ch:hecke}).
+\end{proof}
+
+\begin{example}[levels $11$ and $99$]\label{ex:moddeg:class-11a}
+(a) The class \curve{11a} corresponds to $f_{11}=\eta(z)^2\eta(11z)^2$. It has three curves, \curve{11a1}, \curve{11a2}, \curve{11a3}, with isogeny degrees $5$ (\curve{11a1} to \curve{11a2}
+and to \curve{11a3}) and $25$ (\curve{11a2} to \curve{11a3}) (\texttt{allisog} \cite{ecdata}). Since $X_0(11)=J_0(11)$ is \curve{11a1} (\Cref{ex:moddeg:small-levels}) and $\T=\Z$ at level $11$ (so
+$I_f=0$ and $E_f=J_0(11)$), \Cref{thm:moddeg:eichler-shimura}(iii) proves $\#\curve{11a1}(\Fp)=p+1-a_p(f_{11})$ for every $p\ne11$: the identity of \Cref{ch:modforms}, checked
+there numerically, is a theorem. The modular parametrisations of \curve{11a2} and \curve{11a3} are the two $5$-isogenies out of \curve{11a1}, of degree $5$ each
+(\Cref{thm:moddeg:optimal}(ii)).
+
+(b) $\dim S_2(\Gamma_0(99))=9$. The newforms of level $99$ with rational coefficients are those of the four classes \curve{99a}, \curve{99b}, \curve{99c}, \curve{99d}, and there
+are no others (\texttt{mfdim([99,2],0)} $=4$); level $33$ has one newform and level $11$ one. By the decomposition of \Cref{ch:hecke}, $9=4\cdot1+1\cdot2+1\cdot3$, the
+multiplicities being the numbers of divisors of $99/33$ and $99/11$.
+\end{example}
+
+\begin{paperlink}\label{pl:moddeg:modularity}
+Section 1 of the paper: ``Let $E/\Q$ be an elliptic curve of conductor $N$ and let $f=f_E\in S_2(\Gamma_0(N))$ be the newform attached to it'' is
+\Cref{thm:moddeg:modularity}; ``the isogeny class of $E$'' corresponds to $f$ by \Cref{cor:moddeg:classes-and-newforms}. Lemma lem:old uses the $a_p$ of newforms as traces of
+Frobenius, which is \Cref{thm:moddeg:eichler-shimura}(iii) for rational newforms and its extension to all newforms in \Cref{ch:modgalrep}.
+\end{paperlink}
+
+\section[Optimal curves and the modular degree]{Optimal curves, the modular parametrisation and the modular degree}\label{sec:moddeg:optimal}
+
+This section defines the objects of the paper's first sentence: the modular parametrisation, the $X_0(N)$-optimal curve and the modular degree. The main point is
+\Cref{thm:moddeg:optimal}: every modular parametrisation of every curve of an isogeny class factors through Shimura's quotient $E_f$, so that ``minimal degree'',
+``connected kernel'' and ``saturated pullback on $H^1$'' all single out the same curve. The section ends with Cremona's labelling convention and the table of modular
+degrees used in the rest of the book.
+
+\begin{definition}[modular parametrisation]\label{def:moddeg:parametrisation}
+Let $E/\Q$ have conductor $N$. A \emph{modular parametrisation} of $E$ is a nonconstant morphism $\varphi\colon X_0(N)\to E$ over $\Q$ with $\varphi(\infty)=O$. By
+\Cref{thm:moddeg:j0}(iii), modular parametrisations correspond bijectively to nonzero homomorphisms $h\colon J_0(N)\to E$ over $\Q$, by $\varphi=h\circ\iota$ and $h=\varphi_*$ (the
+pushforward of divisor classes, \Cref{ch:curves}).
+\end{definition}
+
+\begin{theorem}[optimal curves]\label{thm:moddeg:optimal}
+Let $\mathcal I$ be an isogeny class of elliptic curves over $\Q$ of conductor $N$, $f$ its newform (\Cref{cor:moddeg:classes-and-newforms}), $E_f=J_0(N)/I_fJ_0(N)$ and
+$\varphi_{E_f}=\pi_f\circ\iota$ (\Cref{thm:moddeg:shimura-quotient}).
+\begin{enumerate}[label=(\roman*)]
+\item Every homomorphism $h\colon J_0(N)\to E$ over $\Q$ to a curve $E\in\mathcal I$ vanishes on $I_fJ_0(N)$.
+\item (Factorisation.) $E_f\in\mathcal I$, and for every $E\in\mathcal I$ and every modular parametrisation $\varphi$ of $E$ there is a unique isogeny $\psi\colon E_f\to E$ over $\Q$ with
+$\varphi=\psi\circ\varphi_{E_f}$. Hence $\deg\varphi=\deg\psi\cdot\deg\varphi_{E_f}$, and every isogeny $\psi\colon E_f\to E$ gives a modular parametrisation $\psi\circ\varphi_{E_f}$.
+\item (Characterisations.) For $E\in\mathcal I$ and a modular parametrisation $\varphi$ of $E$ the following are equivalent: (a) $\psi$ in (ii) is an isomorphism; (b)
+$\ker(\varphi_*\colon J_0(N)\to E)$ is connected; (c) $\varphi_*\colon H_1(X_0(N),\Z)\to H_1(E,\Z)$ is surjective; (d) $\varphi^*H^1(E,\Z)$ is saturated in $H^1(X_0(N),\Z)$; (e)
+$\varphi^*\colon E=E^\vee\to J_0(N)$ is injective; (f) $\deg\varphi$ is the minimum of the degrees of all modular parametrisations of all curves in $\mathcal I$.
+\item (Uniqueness.) Up to unique isomorphism, $(E_f,\varphi_{E_f})$ is the only pair $(E,\varphi)$ with $E\in\mathcal I$ satisfying these conditions. $E_f$ is the
+\emph{$X_0(N)$-optimal curve} (or \emph{strong Weil curve}) of $\mathcal I$, $\varphi_{E_f}$ its \emph{modular parametrisation} $\varphi_E$, and $\degphi$ its \emph{modular degree}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) We may assume $h\ne0$; then $h$ is surjective and $h_*\colon V_\ell J_0(N)\to V_\ell E$ is a surjective $G_\Q$-equivariant map. Decompose
+$V=V_\ell J_0(N)\otimes\Qbar_\ell=\bigoplus_\psi W_\psi$ into the generalised eigenspaces of $\T$ (\Cref{ch:modules}); each $W_\psi$ is $G_\Q$-stable, because $G_\Q$ commutes with $\T$. Suppose
+$h_*(W_\psi)\ne0$. It is a $G_\Q$-stable subspace of $V_\ell E\otimes\Qbar_\ell$ and a quotient of $W_\psi$, so for every prime $p\nmid N\ell$ the arithmetic Frobenius has on it an eigenvalue
+$\alpha$ which is a root of $X^2-a_p(E)X+p$ (\Cref{ch:ellcurves}) and of $X^2-\psi(T_p)X+p$ (\Cref{thm:moddeg:eichler-shimura}(ii)). Then $a_p(E)=\alpha+p/\alpha=\psi(T_p)$; and $a_p(E)=a_p(f)$
+by \Cref{thm:moddeg:modularity}. So $\psi(T_p)=a_p(f)$ for every prime $p\nmid N\ell$. The characters of $\T$ that occur in $V$ take algebraic values and are, after
+an identification of the algebraic numbers in $\Qbar_\ell$ and in $\C$, the eigencharacters of eigenforms in $S_2(\Gamma_0(N))$ (\Cref{prop:moddeg:hecke-compatibility}(ii), with $\Psi$ of
+\Cref{prop:moddeg:tate-module-vs-h1}); by strong multiplicity one (\Cref{ch:hecke}), which allows any finite set of exceptional primes, an eigenform with $a_p=a_p(f)$ for all
+$p\nmid N\ell$ is a multiple of $f$ (\Cref{prop:moddeg:f-lattice}(i)); so $\psi=\phi_f$. Hence $h_*$ kills
+$\bigoplus_{\psi\ne\phi_f}W_\psi$. That sum is $I_fV$: $I_f$ kills $W_{\phi_f}$, and for $\psi\ne\phi_f$ some $t\in I_f$ has $\psi(t)\ne0$ (otherwise $\psi$ factors through $\T/I_f=\Z$ and equals
+$\phi_f$), and $t$ is invertible on $W_\psi$. Now $V_\ell(I_fJ_0(N))=I_fV_\ell J_0(N)$, as $I_fJ_0(N)$ is the image of $J_0(N)^r$ under $(t_i)$; so $h(I_fJ_0(N))$ is a connected
+subgroup of $E$ with trivial rational Tate module, hence $0$.
+
+(ii) By (i) and the universal property of the quotient, $\varphi_*=\psi\circ\pi_f$ for a unique homomorphism $\psi\colon E_f\to E$ over $\Q$ ($\pi_f$ is surjective); $\psi\ne0$, so $\psi$ is an
+isogeny, and $\varphi=\varphi_*\circ\iota=\psi\circ\varphi_{E_f}$. Degrees of nonconstant maps of curves multiply (\Cref{ch:curves}). $E_f\in\mathcal I$: a curve $E\in\mathcal I$ is isogenous to
+$E_{f_E}=E_f$ by \Cref{thm:moddeg:modularity}. Conversely $\psi\circ\varphi_{E_f}$ is nonconstant, defined over $\Q$, and sends $\infty$ to $\psi(O)=O$.
+
+(iii) (b)$\Leftrightarrow$(c)$\Leftrightarrow$(d)$\Leftrightarrow$(e) is \Cref{ch:curves} (the proposition on the degree and the cup product, part (iii)), with $J(E)=E$. (a)$\Rightarrow$(b):
+$\ker\varphi_*=\ker(\psi\circ\pi_f)=\ker\pi_f=I_fJ_0(N)$, connected. (b)$\Rightarrow$(a): $\ker\varphi_*=\pi_f^{-1}(\ker\psi)$ contains $I_fJ_0(N)$ with finite quotient $\ker\psi$; both have dimension
+$g-1$, so if $\ker\varphi_*$ is connected it equals the connected closed subgroup $I_fJ_0(N)$ of the same dimension, and $\ker\psi=0$. (a)$\Leftrightarrow$(f): by (ii) the degrees of all
+modular parametrisations of curves in $\mathcal I$ are the numbers $\deg\psi\cdot\deg\varphi_{E_f}$, with minimum $\deg\varphi_{E_f}$, attained exactly when $\deg\psi=1$.
+
+(iv) If $(E,\varphi)$ satisfies (a), then $\psi\colon E_f\to E$ is the unique isomorphism with $\varphi=\psi\circ\varphi_{E_f}$.
+\end{proof}
+
+The paper's definition (Section 1: ``the $X_0(N)$-optimal curve, for which the modular parametrisation $\varphi_E\colon X_0(N)\to E$ has minimal degree'') is (f); the proof
+of Proposition prop:pullback uses (b) and (c); and Section sec:data speaks of optimality as a property ``determined in the tables'', which is (a) checked by computation
+(\Cref{conv:moddeg:cremona-optimal}).
+
+\begin{proposition}[descriptions of the modular degree]\label{prop:moddeg:degree-descriptions}
+Let $E$ be optimal, $d=\degphi$, $A=\varphi_E^*(E)\subseteq J_0(N)$ and $B=\ker\varphi_{E*}=I_fJ_0(N)$.
+\begin{enumerate}[label=(\roman*)]
+\item $d$ is the degree of the morphism of curves $\varphi_E$: the degree of the extension of function fields $\Q(X_0(N))\supseteq\varphi_E^*\Q(E)$, the number of preimages of a general point, the factor by
+which $\varphi_E^*$ multiplies degrees of divisors, and the topological degree (\Cref{ch:curves}).
+\item $\varphi_{E*}\circ\varphi_E^*=[d]$ on $E$: the composite $E=E^\vee\to J_0(N)\to E$ is multiplication by $d$.
+\item $A\simeq E$, and $A\cap B=\varphi_E^*(E[d])\simeq(\Z/d)^2$; so $d$ is the exponent of the finite group $A\cap B$.
+\item $\langle\varphi_E^*x,\varphi_E^*y\rangle_{X_0(N)}=d\,\langle x,y\rangle_E$ for $x,y\in H^1(E,\Z)$; the cup product on $\varphi_E^*H^1(E,\Z)$ has ideal of values $d\Z$ and Gram determinant $d^2$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) is \Cref{ch:curves}. (ii) is the functoriality of Jacobians (\Cref{ch:curves}): $\varphi_*\varphi^*=[\deg\varphi]$ on $J(E)=E$. (iii) $\varphi_E^*$ is injective by
+\Cref{thm:moddeg:optimal}(iii)(e), so $A\simeq E$. For $y\in E$, $\varphi_E^*y\in B$ iff $\varphi_{E*}\varphi_E^*y=dy=0$; so $A\cap B=\varphi_E^*(E[d])\simeq E[d]\simeq(\Z/d)^2$, whose exponent is $d$.
+(iv) is the projection formula and the unimodularity of the cup product on $H^1(E,\Z)$ (\Cref{ch:curves}).
+\end{proof}
+
+\begin{proposition}[the valuation of the degree along the class]\label{prop:moddeg:valuation-in-class}
+Let $E$ be optimal in $\mathcal I$, $\ell$ a prime with $E[\ell]$ irreducible, and $E'\in\mathcal I$. Every isogeny $E\to E'$ of minimal degree is cyclic of degree prime to $\ell$, and the
+minimal degree of a modular parametrisation of $E'$ has the same $\ell$-adic valuation as $\degphi$. Without irreducibility this fails: in the class \curve{11a} at $\ell=5$ the minimal
+degrees are $1$, $5$, $5$.
+\end{proposition}
+
+\begin{proof}
+If an isogeny $\psi\colon E\to E'$ has $E[m]\subseteq\ker\psi$ with $m>1$, it factors as $\psi'\circ[m]$ with $\deg\psi'=\deg\psi/m^2$; so an isogeny of minimal degree has cyclic kernel. A cyclic
+kernel of order divisible by $\ell$ contains a unique subgroup of order $\ell$, which is then $G_\Q$-stable, contradicting the irreducibility of $E[\ell]$ (\Cref{ch:ellcurves}). By
+\Cref{thm:moddeg:optimal}(ii) the modular parametrisations of $E'$ are the $\psi\circ\varphi_E$, so the minimal degree is $\min_\psi\deg\psi\cdot\degphi$, and $v_\ell(\min\deg\psi)=0$. For
+\curve{11a}: \curve{11a1} is optimal with $\degphi=1$ (\Cref{ex:moddeg:small-levels}), and the isogenies of minimal degree to \curve{11a2} and \curve{11a3} have degree $5$
+(\Cref{ex:moddeg:class-11a}); $E[5]$ is reducible (\curve{11a1} has a rational point of order $5$).
+\end{proof}
+
+\begin{paperlink}\label{pl:moddeg:class-choice}
+Section 1 of the paper: ``When $E[\ell]$ is irreducible, every curve of the class is linked to $E$ by a cyclic isogeny of degree prime to $\ell$, so $v_\ell$ of the degree of its
+minimal parametrisation is $v_\ell(\degphi)$: at such an $\ell$ the choice of the optimal curve does not matter.'' This is \Cref{prop:moddeg:valuation-in-class}. The hypothesis
+matters: the appendix of the paper notes that \texttt{rule} must be run on the optimal curve (``990h1 returns \texttt{[4, 3]} while the optimal curve 990h3 of its class returns
+\texttt{[3, 3]}''), and the class \curve{990h} has $3$-isogenies.
+\end{paperlink}
+
+\begin{convention}[Cremona's labels and optimality]\label{conv:moddeg:cremona-optimal}
+In Cremona's tables \cite{Cremona97,ecdata} curve number $1$ of each class is the optimal curve, with the single exception of the class \curve{990h}, whose optimal curve is
+\curve{990h3} $=[1,-1,1,-1568,-4669]$ (the \texttt{degphi} file lists the class with this equation and $\degphi=1728$; PARI's \texttt{ellmoddegree} also returns $1728$ for it and
+$5184=3\cdot1728$ for \curve{990h1}). Optimality is certified by comparing the period lattices of the curves of the class with the lattice of $\varphi^*$ computed from modular
+symbols \cite[Chapter II]{Cremona97}; Section sec:data of the paper says: ``Optimality is determined in the tables for every class of conductor at most $400000$ and for
+$359{,}009$ further classes up to $500000$.'' The LMFDB numbers curves differently (\Cref{ch:ellcurves}).
+\end{convention}
+
+\begin{example}[the running table]\label{ex:moddeg:running-degrees}
+The optimal curves used in the book, with rank and torsion order from \texttt{allcurves}, $\degphi$ from \texttt{degphi} \cite{ecdata} (in every case equal to PARI's
+\texttt{ellmoddegree}), and $\dim J_0(N)$:
+\begin{center}\small
+\begin{tabular}{llllll}
+\toprule
+curve & $N$ & rank & $\#E(\Q)_{\tors}$ & $\degphi$ & $\dim J_0(N)$\\
+\midrule
+\curve{11a1} & $11$ & $0$ & $5$ & $1$ & $1$\\
+\curve{20a1} & $2^2\cdot5$ & $0$ & $6$ & $1$ & $1$\\
+\curve{37a1} & $37$ & $1$ & $1$ & $2$ & $2$\\
+\curve{99a1} & $3^2\cdot11$ & $1$ & $2$ & $4$ & $9$\\
+\curve{121a1} & $11^2$ & $0$ & $1$ & $6$ & $6$\\
+\curve{539c1} & $7^2\cdot11$ & $1$ & $2$ & $288=2^5\cdot3^2$ & $49$\\
+\curve{726a1} & $2\cdot3\cdot11^2$ & $1$ & $2$ & $144=2^4\cdot3^2$ & $109$\\
+\curve{980i1} & $2^2\cdot5\cdot7^2$ & $0$ & $1$ & $2880=2^6\cdot3^2\cdot5$ & $145$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Further optimal curves that occur: \curve{14a1} ($1$), \curve{19a1} ($1$), \curve{27a1} ($1$), \curve{37b1} ($2$), \curve{77c1} ($6$), \curve{99b1} ($12$), \curve{99c1} ($12$), \curve{99d1} ($6$),
+\curve{121b1} ($4$), \curve{121c1} ($6$), \curve{121d1} ($24$), \curve{140b1} ($60$), \curve{243b1} ($9$), \curve{539d1} ($72$), \curve{990h3} ($1728$). Checks: the degrees are $1$
+exactly at the levels of genus one; \curve{37a1} has degree $2$ as in \Cref{ex:moddeg:37}; \curve{121a1} is the paper's case (b) of Theorem thm:qual with $e_3=1$ attained, \curve{539c1} its
+case (c), \curve{980i1} the $\ell=5$ illustration of the Example after its proof, and \curve{726a1} the curve with image $\Ns$ of the appendix.
+\end{example}
+
+\begin{example}[$X_0(37)\to\curve{37a1}$ is optimal]\label{ex:moddeg:37}
+Let $\varphi\colon X_0(37)\to X_0(37)/w_{37}\simeq\curve{37a1}$ be the quotient map of \Cref{ex:moddeg:small-levels}(c), of degree $2$. By \Cref{thm:moddeg:optimal}(ii), $\varphi=\psi\circ\varphi_E$
+with $E$ the optimal curve of the class \curve{37a}, which has only one curve; so $\psi$ is an endomorphism of \curve{37a1} over $\Q$, that is, $[m]$ for an integer $m\ne0$ (\curve{37a1} has no
+complex multiplication, $j=110592/37$), of degree $m^2$. As $2=m^2\degphi$, $m=\pm1$ and $\degphi=2$: the quotient by $w_{37}$ is the optimal parametrisation, without any appeal to
+tables.
+\end{example}
+
+\section{The Manin constant and the formula of Zagier and Watkins}\label{sec:moddeg:manin}
+
+The paper's introduction says: ``Up to explicit factors $\degphi$ is $\langle f,f\rangle$ divided by the area of the period lattice of $E$ (Zagier \cite{Zagier85}, Watkins
+\cite{Watkins02})'', and Remark rem:degree gives the exact formula. This section defines the constant that measures the difference between the N\'eron differential of $E$ and the
+differential of the newform, proves the exact formula in three lines, and checks it numerically; the warning at the end records the two normalisations that are easy to get
+wrong.
+
+\begin{definition}[the Manin constant]\label{def:moddeg:manin-constant}
+Let $\varphi$ be a modular parametrisation of $E$ (conductor $N$, newform $f$). The constant $c_\varphi$ is defined by
+\[
+\varphi^*\omega_E=c_\varphi\cdot2\pi i\,f(z)\,dz=c_\varphi\,f(q)\,\frac{dq}q\qquad(q=e^{2\pi iz}).
+\]
+The \emph{Manin constant} of $E$ is $c_E=c_{\varphi_E}$ for the optimal curve, the sign of $\omega_E$ being chosen so that $c_E>0$ (Appendix B, B-C9).
+\end{definition}
+
+\begin{proposition}[the constant $c_\varphi$]\label{prop:moddeg:manin-rational}
+In \Cref{def:moddeg:manin-constant}:
+\begin{enumerate}[label=(\roman*)]
+\item $\varphi^*\omega_E$ is a nonzero multiple of $\omega_f=f(z)\,dz$, so $c_\varphi$ is well defined and nonzero.
+\item $c_\varphi\in\Q^\times$.
+\item If $\varphi=\psi\circ\varphi_{E_0}$ with $E_0$ optimal and $\psi\colon E_0\to E$ an isogeny (\Cref{thm:moddeg:optimal}(ii)), and $\psi^*\omega_E=u_\psi\,\omega_{E_0}$, then $c_\varphi=c_{E_0}u_\psi$;
+$u_\psi$ is a nonzero integer (stated), and $u_\psi u_{\hat\psi}=\deg\psi$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) By \Cref{thm:moddeg:optimal}(ii), $\varphi=\psi\circ\varphi_{E_0}$. The pullback of an invariant differential by an isogeny is a constant multiple of the invariant differential
+(\Cref{ch:ellcurves}), so $\varphi^*\omega_E=u_\psi\varphi_{E_0}^*\omega_{E_0}$, and $\varphi_{E_0}^*\omega_{E_0}\in\C\omega_f$ by \Cref{thm:moddeg:shimura-quotient}(ii). It is nonzero because $\varphi$ is
+nonconstant (a nonconstant holomorphic map is a local biholomorphism off a finite set). Also $2\pi i\,dz=dq/q$.
+(ii) The function $1/j$ lies in $\Q(X_0(N))$ and has $q$-expansion $q-744q^2+\cdots\in\Q[[q]]$ at the cusp $\infty$, which has width $1$; so $q$ is a local parameter at the rational point
+$\infty$ for the $\Q$-structure, and the completed local ring there is $\Q[[q]]$. The differential $\varphi^*\omega_E$ is defined over $\Q$, so its expansion $c_\varphi\sum_na_n(f)q^{n-1}dq$ has
+rational coefficients; as $a_1(f)=1$, $c_\varphi\in\Q$.
+(iii) $c_\varphi$ is computed from $\varphi^*\omega_E=\varphi_{E_0}^*\psi^*\omega_E=u_\psi\varphi_{E_0}^*\omega_{E_0}$. That $u_\psi\in\Z$ uses N\'eron models: $\psi$ extends to the N\'eron models over $\Z$, and the
+N\'eron differential generates the invariant differentials of the N\'eron model (\Cref{ch:reduction}; \cite[Chapter II]{Cremona97}); we do not prove it here. From $\hat\psi\circ\psi=[\deg\psi]$
+and $[m]^*\omega=m\omega$ (\Cref{ch:ellcurves}), $u_\psi u_{\hat\psi}=\deg\psi$.
+\end{proof}
+
+\begin{theorem}[what is known about the Manin constant; stated]\label{thm:moddeg:manin-known}
+Let $E/\Q$ be optimal.
+\begin{enumerate}[label=(\roman*)]
+\item (Edixhoven \cite{Edixhoven91}.) $c_E\in\Z$; hence $c_\varphi\in\Z$ for every modular parametrisation, by \Cref{prop:moddeg:manin-rational}(iii).
+\item (Manin's conjecture.) $c_E=1$. (The literature writes $c_E=\pm1$ when the sign of $\omega_E$ is not normalised.)
+\item If a prime $p$ divides $c_E$, then $p=2$ or $p^2\mid N$: Mazur \cite{Mazur78} for $p\nmid2N$, Abbes and Ullmo \cite{AU96} for $p\mid N$, $p^2\nmid N$.
+\item $c_E=1$ for every semistable optimal $E$ (\v Cesnavi\v cius \cite{Cesnavicius18}, completing the cases left by \cite{Mazur78,AU96} at $p=2$); further results relate $c_E$ to
+$\degphi$ (\v Cesnavi\v cius, Neururer and Saha \cite{CNS}), and computations of Cremona and of Agashe, Ribet and Stein \cite{ARS06} confirm $c_E=1$ for all optimal curves in large
+ranges of conductors.
+\item For non-optimal parametrisations $c_\varphi\ne1$ is possible (\Cref{ex:moddeg:zw-numerics}).
+\end{enumerate}
+\end{theorem}
+
+We do not prove this. Items (iii) and (iv) are stated as we recall the sources; the exact hypotheses, in particular at $p=2$ and the ranges of the computations, were not
+checked against them, and the book uses none of (i) to (iv) in a proof. The paper uses the Manin constant only in Remark rem:degree, where $c_E^2$ appears explicitly, and in
+the heuristic sentence of Section 1.
+
+\begin{theorem}[the formula of Zagier and Watkins]\label{thm:moddeg:zagier-watkins}
+For every modular parametrisation $\varphi$ of $E$, with the unnormalised Petersson product,
+\[
+\deg\varphi\cdot\vol(\Lambda_E)=4\pi^2c_\varphi^2\,\langle f,f\rangle.
+\]
+In particular, for the optimal curve,
+\[
+\degphi=\frac{4\pi^2c_E^2\langle f,f\rangle}{\vol(\Lambda_E)},\quad\text{which is }\frac{4\pi^2\langle f,f\rangle}{\vol(\Lambda_E)}\text{ if }c_E=1.
+\]
+\end{theorem}
+
+\begin{proof}
+For a nonconstant map $\varphi$ of compact Riemann surfaces and a smooth $2$-form $\rho$ on the target, $\int_{X_0(N)}\varphi^*\rho=\deg\varphi\int_E\rho$ (\Cref{ch:curves}). With
+$\rho=\frac i2\omega_E\wedge\bar\omega_E$ the right side is $\deg\varphi\cdot\vol(\Lambda_E)$. On the left, $\varphi^*\omega_E=2\pi ic_\varphi\,\omega_f$ with $c_\varphi$ real, so
+$\varphi^*\rho=\frac i2\cdot4\pi^2c_\varphi^2\,\omega_f\wedge\overline{\omega_f}$, whose integral is $4\pi^2c_\varphi^2\langle f,f\rangle$ (\Cref{conv:moddeg:setup}(C4); $\frac i2dz\wedge d\bar z=dx\wedge dy$).
+\end{proof}
+
+In the language of physics: the $L^2$ norm of a pulled-back one-form counts every sheet of the cover, so the area of a $d$-sheeted cover is $d$ times the area of the base.
+
+\begin{warning}[normalisations in the formula of Zagier and Watkins]\label{warn:moddeg:zw-normalisation}
+(1) The Manin constant stands in the \emph{numerator}: $\degphi=4\pi^2c_E^2\langle f,f\rangle/\vol(\Lambda_E)$. The check is the class \curve{11a} (\Cref{ex:moddeg:zw-numerics}): the parametrisation of
+\curve{11a3} has degree $5$ and $c_\varphi=5$, and $4\pi^2\langle f,f\rangle/\vol(\Lambda_{\curve{11a3}})=1/5=5/5^2$. (2) $\langle f,f\rangle$ is unnormalised; PARI's \texttt{mfpetersson} returns
+$\langle f,f\rangle/\mu(N)$, and books that divide by $\vol(\Gamma_0(N)\backslash\HH)=\pi\mu(N)/3$ change the constant $4\pi^2$. (3) $\vol(\Lambda_E)$ is the area of a fundamental
+parallelogram of the period lattice of the N\'eron differential, $\abs{\operatorname{Im}(\bar\omega_1\omega_2)}$ for PARI's periods \texttt{E.omega} $=[\omega_1,\omega_2]$; it is not the real
+period $\Omega_E$. The normalisations of \cite{Zagier85,Watkins02} were not compared with these; the formula above is proved directly.
+\end{warning}
+
+\begin{example}[numerical check]\label{ex:moddeg:zw-numerics}
+Unnormalised Petersson norms ($\mu(N)$ times \texttt{mfpetersson}), period areas, and the quotient $4\pi^2\langle f,f\rangle/\vol(\Lambda_E)=\deg\varphi/c_\varphi^2$, computed with PARI to $40$ digits
+(the last column agrees with a rational number to all of them):
+\begin{center}\small
+\begin{tabular}{llllll}
+\toprule
+curve & $\langle f,f\rangle$ & $\vol(\Lambda_E)$ & $4\pi^2\langle f,f\rangle/\vol$ & $\deg\varphi$ & $c_\varphi$\\
+\midrule
+\curve{11a1} & $0.04690014787349518782$ & $1.85154362345595931771$ & $1$ & $1$ & $1$\\
+\curve{11a2} & same & $0.37030872469119186354$ & $5$ & $5$ & $1$\\
+\curve{11a3} & same & $9.25771811727979658854$ & $1/5$ & $5$ & $5$\\
+\curve{20a1} & $0.08134945682538172857$ & $3.21154782844006508758$ & $1$ & $1$ & $1$\\
+\curve{37a1} & $0.37175414751069605028$ & $7.33813274078957673907$ & $2$ & $2$ & $1$\\
+\curve{99a1} & $0.53851956871086065179$ & $5.31497510542145355032$ & $4$ & $4$ & $1$\\
+\curve{121a1} & $0.42823936001195717858$ & $2.81770204819580190671$ & $6$ & $6$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+In the class \curve{11a} the parametrisations of \curve{11a2} and \curve{11a3} both have degree $5$ (\Cref{thm:moddeg:optimal}(ii)), so the formula forces $c_\varphi=1$ for \curve{11a2} and $c_\varphi=5$ for
+\curve{11a3}: the $5$-isogeny $\psi\colon\curve{11a1}\to\curve{11a3}$ has $u_\psi=5$, and its dual $u_{\hat\psi}=1$. For the optimal curves of the table the computation gives $c_E^2=1$, in
+agreement with Manin's conjecture (the degrees being those of Cremona's tables).
+\end{example}
+
+\begin{remark}[Rankin's method and the computation of $\degphi$]\label{rem:moddeg:rankin-and-computation}
+(a) Rankin and Shimura express $\langle f,f\rangle$ through the special value $L^{\nv}(\Sym f,2)$ of the naive symmetric square $L$-function: $\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$
+(Remark rem:degree of the paper, citing \cite{Rankin39,Shimura76} and \cite[Lemma 2.12]{DFG04}; \Cref{ch:lfunctions}). Combined with \Cref{thm:moddeg:zagier-watkins} this is Watkins's
+method of computing $\degphi$ \cite{Watkins02}, implemented in PARI's \texttt{ellmoddegree}, which assumes $c_E=1$. (b) The Rankin series $\sum a_n^2n^{-s}$ is not the naive symmetric
+square $L$-function (\Cref{ch:lfunctions}; Appendix B, B-C7). (c) In the book's normalisation the ``explicit factors'' of the paper's Section 1 are $4\pi^2c_E^2$.
+\end{remark}
+
+\begin{paperlink}\label{pl:moddeg:zw}
+Remark rem:degree: ``By the formula of Zagier and Watkins \cite{Zagier85,Watkins02}, $\degphi\cdot\operatorname{vol}(\Lambda_E)=4\pi^2c_E^2\langle f,f\rangle$, with the unnormalised Petersson product
+and the Manin constant $c_E>0$ in the numerator'' is \Cref{thm:moddeg:zagier-watkins} for $\varphi=\varphi_E$. The remark's check ``With $c_E=1$ the first formula reproduces $\degphi$ to $30$
+digits for 11a1, 121a1, 539d1, 1232l1 and 726a1'' is of the same kind as \Cref{ex:moddeg:zw-numerics}.
+\end{paperlink}
+
+\section[The congruence number and Agashe-Ribet-Stein]{The congruence number and the theorem of Agashe, Ribet and Stein}\label{sec:moddeg:congruence}
+
+The paper reaches the modular degree through the congruence number: ``By a theorem of Agashe, Ribet and Stein \cite[Theorem 2.2]{ARS12}, $\degphi$ divides the
+\emph{congruence number} $r_E$ \dots with $v_p(\degphi)=v_p(r_E)$ for every prime $p$ with $p^2\nmid N$'' (Section 1), and the proof of Theorem thm:qual reduces to ``$\ell\mid r$''. This
+section defines $r_E$ and the Hecke congruence ideal, states Lemma lem:crit (proved in \Cref{ch:modgalrep}) and the theorem of Agashe, Ribet and Stein, and computes $r_E$
+directly for the curves of the book, \curve{99a1} included. The divisibility half of the theorem is proved in \Cref{sec:moddeg:degree-eta} at every prime.
+
+\begin{definition}[congruence number and congruence ideal]\label{def:moddeg:congruence-number}
+Let $f=f_E$. The \emph{congruence number} $r_E$ is the largest integer $r$ such that $f\equiv g\pmod r$ coefficientwise for some $g\in S_2(\Gamma_0(N);\Z)\cap f^\perp$. The
+\emph{Hecke congruence ideal} of $f$ is $\eta_f=\phi_f(\Ann_\T I_f)\subseteq\Z$, and for a prime $\ell$, $\eta_f\Zl=(\phi_f\otimes\Zl)(\Ann_{\T_\ell}(I_f\T_\ell))$. (These are the definitions of
+\Cref{ch:hecke} for $f=f_E$; $r_E$ depends only on the isogeny class.)
+\end{definition}
+
+\begin{proposition}[congruence ideals of a newform]\label{prop:moddeg:congruence-ideal}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item $\T\otimes\Q=\Q\times\T'$, with $\phi_f\otimes\Q$ the first projection; hence $I_f\cap\Ann_\T(I_f)=0$ and $\eta_f\ne0$.
+\item Let $\mf m=\mf m_{f,\ell}$ be the maximal ideal of $\T_\ell$ containing $\ell$ and $I_f$. Then $\eta_f\Zl$ is the congruence ideal of $\phi_f$ restricted to the local factor $\T_{\mf m}$: the other
+local factors of $\T_\ell$ lie in $\ker(\phi_f\otimes\Zl)$, not in its annihilator.
+\item $r_E$ is finite: $\Z f\oplus(f^\perp\cap S_2(\Gamma_0(N);\Z))$ has finite index in $S_2(\Gamma_0(N);\Z)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $\T\otimes\Q$ is a finite-dimensional commutative $\Q$-algebra acting faithfully on $S_2(\Gamma_0(N))$ (\Cref{prop:moddeg:hecke-compatibility}); let $A$ be its local factor through which
+$\phi_f$ factors and $e$ its idempotent. Then $eS_2$ is the generalised eigenspace of $\phi_f$, which is $\C f$ (\Cref{prop:moddeg:f-lattice}(i)), and $A\otimes\C$ acts faithfully on the line
+$eS_2$, so $A\otimes\C$ embeds in $\C$ and $A=\Q$. The rest is \Cref{ch:modules} (the proposition on congruence ideals, parts (ii), (iii)). (ii) is part (v) of the same proposition,
+$\Zl$ being complete. (iii) is \Cref{ch:hecke}: both summands are saturated and their ranks add up, and a congruence modulo $r$ gives the element $(f-g)/r$ of order $r$ in the
+quotient.
+\end{proof}
+
+\begin{lemma}[the paper's Lemma lem:crit; stated, proved in \Cref{ch:modgalrep}]\label{lem:moddeg:crit}
+Let $J=\Ann_\T(f^\perp)$. Then $J=\Ann_\T(I_f)$ and $\T/(I_f+J)\simeq\Z/r_E$; equivalently $r_E\Z=\eta_f$. The same holds over $\Zl$, with $r_E$ replaced by its $\ell$-part:
+$r_E\Zl=\eta_f\Zl$. If a normalised eigenform $g\in f^\perp$ with coefficients in the ring of integers of a number field satisfies $a_n(g)\equiv a_n(f)\pmod\lambda$ for every $n$, for a
+prime $\lambda\mid\ell$, then $\ell\mid r_E$.
+\end{lemma}
+
+This chapter uses only $r_E\Zl=\eta_f\Zl$ (in \Cref{cor:moddeg:ars-divisibility,thm:moddeg:lem-hecke}).
+
+\begin{theorem}[Agashe, Ribet and Stein; stated]\label{thm:moddeg:ars}
+Let $E$ be optimal of conductor $N$. Then $\degphi\mid r_E$, and $v_p(\degphi)=v_p(r_E)$ for every prime $p$ with $p^2\nmid N$.
+\end{theorem}
+
+We do not prove the theorem as a whole; it is \cite[Theorem 2.2]{ARS12}, as the paper cites it (the number is the paper's; we have not checked it against the published
+text). This chapter proves the divisibility at every prime (\Cref{cor:moddeg:ars-divisibility}) and the equality at primes $\ell\nmid2N$ for which $\mf m_{f,\ell}$ is not Eisenstein, given
+multiplicity one (\Cref{thm:moddeg:gorenstein}); the equality at $p\,\|\,N$, at $p=2$ and in the Eisenstein case is theirs. The idea of their proof: with $A$ and $B$ as in
+\Cref{prop:moddeg:degree-descriptions}, $\degphi$ is the exponent of $A\cap B$, equivalently of $H_1(J_0(N),\Z)/(H_1(A,\Z)+H_1(B,\Z))$, while $r_E$ is the exponent of
+$S_2(\Z)/(S_2(\Z)[I_f]+S_2(\Z)[J])$; the perfect pairing $S_2(\Z)\times\T\to\Z$ (\Cref{ch:hecke}) and the action of $\T$ on $H_1$ compare the two, and they agree at $p$ when $H_1(X_0(N),\Zp)$ is
+locally free of rank two over $\T\otimes\Zp$ at the relevant maximal ideal, which they establish for $p^2\nmid N$ from results of Mazur, Ribet and others. Zagier \cite{Zagier85} first
+compared $\degphi$ with congruence primes, and Ribet \cite{Ribet83} proved the divisibility $\degphi\mid r_E$ in an earlier form.
+
+\begin{remark}[the size of the degree]\label{rem:moddeg:abc-size}
+Section 1 of the paper: ``the conjectured bound $\degphi\ll_\varepsilon N^{2+\varepsilon}$ is equivalent to a form of the $abc$ conjecture, see \cite[\S2]{ARS12} and the references there''. The
+references there include Frey \cite{Frey} and Mai and Murty \cite{MaiMurty}. Through \Cref{thm:moddeg:zagier-watkins} the bound is a bound for $\langle f,f\rangle/\vol(\Lambda_E)$; through
+\Cref{thm:moddeg:ars} it bounds the congruence primes of $f$ (compare \cite{Murty99}). Nothing in the paper depends on it.
+\end{remark}
+
+\begin{example}[congruence numbers computed directly]\label{ex:moddeg:99a1-and-726a1}
+The following algorithm computes $r_E$. (1) Take a $\Q$-basis of $S_2(\Gamma_0(N))$ with rational $q$-expansions (\texttt{mfbasis(mfinit([N,2],1))}), and compute the lattice
+$S_2(\Gamma_0(N);\Z)$ of forms with integral coefficients as the saturation of the $\Q$-span of the truncated expansions in $\Z^M$, $M$ beyond Sturm's bound (\texttt{matrixqz(A,-2)}); a
+rational form whose first $M$ coefficients are integers is integral by Sturm's theorem (\Cref{ch:modforms}). (2) Compute the matrices of $T_p$ ($U_p$ for $p\mid N$) on this lattice from
+$a_n(T_pg)=a_{np}(g)+pa_{n/p}(g)$ (the second term for $p\nmid N$ only). (3) Find the primitive integral functional $\lambda$ on the lattice with $\lambda\circ T_p=a_p(f)\lambda$ for
+$p\le23$ (the common eigenline was already one-dimensional): its kernel is $f^\perp\cap S_2(\Gamma_0(N);\Z)$, because $f^\perp$ is the sum of the other generalised eigenspaces. (4) Then $\lambda\colon S_2(\Gamma_0(N);\Z)\to\Z$ is onto with
+kernel $L=f^\perp\cap S_2(\Z)$, so $\Z f\oplus L$ has index $\abs{\lambda(f)}$, and $r_E=\abs{\lambda(f)}$ by the cyclic-quotient argument in the proof of Lemma lem:crit. The results, with
+$\degphi$ from \texttt{ellmoddegree} and \texttt{degphi}:
+\begin{center}\small
+\begin{tabular}{lllll}
+\toprule
+curve & $N$ & $\degphi$ & $r_E$ & primes $p$ with $p^2\mid N$\\
+\midrule
+\curve{11a1} & $11$ & $1$ & $1$ & none\\
+\curve{20a1} & $2^2\cdot5$ & $1$ & $1$ & $2$\\
+\curve{37a1} & $37$ & $2$ & $2$ & none\\
+\curve{77c1} & $7\cdot11$ & $6$ & $6$ & none\\
+\curve{88a1} & $2^3\cdot11$ & $8$ & $16$ & $2$\\
+\curve{99a1} & $3^2\cdot11$ & $4$ & $12$ & $3$\\
+\curve{99b1} & $3^2\cdot11$ & $12$ & $12$ & $3$\\
+\curve{99c1} & $3^2\cdot11$ & $12$ & $12$ & $3$\\
+\curve{99d1} & $3^2\cdot11$ & $6$ & $6$ & $3$\\
+\curve{121a1} & $11^2$ & $6$ & $6$ & $11$\\
+\curve{121b1} & $11^2$ & $4$ & $4$ & $11$\\
+\curve{121c1} & $11^2$ & $6$ & $6$ & $11$\\
+\curve{121d1} & $11^2$ & $24$ & $24$ & $11$\\
+\curve{140b1} & $2^2\cdot5\cdot7$ & $60$ & $60$ & $2$\\
+\curve{539c1} & $7^2\cdot11$ & $288$ & $288$ & $7$\\
+\curve{539d1} & $7^2\cdot11$ & $72$ & $504$ & $7$\\
+\curve{726a1} & $2\cdot3\cdot11^2$ & $144$ & $1584$ & $11$\\
+\curve{980i1} & $2^2\cdot5\cdot7^2$ & $2880$ & $2880$ & $2$, $7$\\
+\bottomrule
+\end{tabular}
+\end{center}
+So \curve{99a1} has $\degphi=4$ and $r_E=12$, as \cite[Table 1]{ARS12} and the paper's remark after Theorem thm:qual say, and the discrepancy is at $3$, with $3^2\mid99$. The congruence behind
+$3\mid r_E$: $a_n(f_{99a})\equiv a_n(f_{99b})\equiv a_n(f_{99d})\pmod3$ for all $n\le60$, beyond Sturm's bound $24$ for $\Gamma_0(99)$, so for all $n$ (\Cref{ch:modforms}); the forms
+$f_{99b}$, $f_{99d}$ are newforms of level $99$ different from $f_{99a}$, hence in $f^\perp$, and Lemma lem:crit gives $3\mid r_E$. ($f_{99c}$ is not congruent to $f_{99a}$ modulo $3$:
+$a_2=1$ against $-1$.) The paper's curves \curve{726a1} (ratio $11$, $11^2\mid726$) and \curve{539d1} (ratio $7$, $7^2\mid539$) are further examples, and \curve{88a1} (ratio $2$, $2^3\mid88$) a fourth (\Cref{ex:moddeg:ex-88}). In every other case of the table the two
+numbers agree, also at primes $p$ with $p^2\mid N$ (\curve{121a1}, \curve{539c1}, \curve{980i1}, \curve{99b1}, \curve{99d1}): the equality can hold there; only the guarantee is lost.
+\end{example}
+
+\begin{paperlink}\label{pl:moddeg:99a1}
+The remark after the Example following the proof of Theorem thm:qual: ``The last step needs only $\ell^2\nmid N$, and it cannot be dropped there: Table 1 of \cite{ARS12} lists the curve 99A1, of
+conductor $9\cdot11$, with modular degree $4$ and congruence number $12$; likewise 726a1 has $\degphi=144$ and $r_E=1584=11\cdot144$, with $11^2\mid726$, and 539d1 has $\degphi=72$ and
+$r_E=504=7\cdot72$, with $7^2\mid539$.'' All three pairs are recomputed in \Cref{ex:moddeg:99a1-and-726a1}. The opening of Section sec:proof (``By \cite[Theorem 2.2]{ARS12}, $\deg\varphi_{E_0}$ divides
+$r$ and $v_p(\deg\varphi_{E_0})=v_p(r)$ for every prime $p$ with $p^2\nmid N$; as $\ell\nmid N$ it suffices to prove $\ell\mid r$'') uses \Cref{thm:moddeg:ars} at $p=\ell$, where $\ell^2\nmid N$.
+\end{paperlink}
+
+\section{The modular degree as a congruence ideal}\label{sec:moddeg:degree-eta}
+
+This section proves the paper's Proposition prop:pullback in the following form: for the optimal curve the lattice $M_{f,\lambda}$ is exactly $\varphi_E^*H^1(E,\Zl)$, the pairing
+$\hat\delta_!$ has ideal of values $\degphi\cdot\Zl$ on it, and this holds for every prime $\ell$ with no hypothesis on $\bar\rho$ or on multiplicity one. The inputs are optimality (the
+kernel of $J_0(N)\to E$ is connected, so the pullback is saturated), Hecke equivariance, the Atkin-Lehner sign and the projection formula. Two consequences follow: the divisibility
+$\degphi\mid r_E$ of Agashe, Ribet and Stein at every prime, by the inequality half of Lemma lem:ddt417 (\Cref{cor:moddeg:ars-divisibility}); and Lemma lem:hecke of the paper
+(\Cref{thm:moddeg:lem-hecke}). The example \curve{99a1} at $\ell=3$ shows that the Hecke-side inequality can be strict.
+
+\begin{proposition}[$M_{f,\lambda}$ is the pullback of $H^1(E)$]\label{prop:moddeg:mf-is-pullback}
+Let $E$ be optimal with newform $f$, $\varphi=\varphi_E$, and $\ell$ any prime.
+\begin{enumerate}[label=(\alph*)]
+\item (Hecke equivariance.) $\varphi_*\circ t_*=\phi_f(t)\varphi_*$ on $H_1(X_0(N),\Z)$ and $t^*\circ\varphi^*=\phi_f(t)\varphi^*$ on $H^1(E,\Z)$, for every $t\in\T$; so $\varphi^*H^1(E,\Z)\subseteq H^1(X_0(N),\Z)[I_f]$.
+\item (Saturation.) $\varphi^*\colon H^1(E,\Z)\to H^1(X_0(N),\Z)$ is injective with saturated image.
+\item $\varphi^*H^1(E,\Z)=H^1(X_0(N),\Z)[I_f]$, and for every prime $\ell$
+\[
+M_{f,\lambda}=H^1(X_0(N),\Zl)[I_f]=\varphi^*H^1(E,\Zl).
+\]
+\item (Galois structure.) In \'etale cohomology $\varphi^*$ is $G_\Q$-equivariant, so $M_{f,\lambda}\simeq H^1_{\mathrm{et}}(E_{\Qbar},\Zl)\simeq(T_\ell E)^\vee\simeq T_\ell E(-1)$ as $\Zl[G_\Q]$-modules, and
+$\ad M_{f,\lambda}\simeq\ad T_\ell E$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) $E=E_f=J_0(N)/I_fJ_0(N)$ and $\varphi_*=\pi_f$ (\Cref{thm:moddeg:optimal}(iv), \Cref{def:moddeg:parametrisation}); $t$ acts on $E_f$ as $\phi_f(t)$ (\Cref{thm:moddeg:shimura-quotient}(ii)), so
+$\pi_f\circ t_*=\phi_f(t)\pi_f$ on $J_0(N)$ and on $H_1$. Transposing, with $t^*$ the transpose of $t_*$ and $\varphi^*$ that of $\varphi_*$ (\Cref{prop:moddeg:hecke-compatibility}(ii)), gives
+$t^*\varphi^*=\phi_f(t)\varphi^*$; for $t\in I_f$ this is $0$.
+(b) $\ker\varphi_*$ is connected (\Cref{thm:moddeg:optimal}(iii)(b)), so $\varphi_*$ is surjective on $H_1$ and $\varphi^*H^1(E,\Z)$ is saturated (\Cref{ch:curves}, the proposition on the degree
+and the cup product); $\varphi^*$ is injective because $\varphi_*\varphi^*=\deg\varphi\ne0$ and $H^1(E,\Z)$ is torsion-free.
+(c) $H^1(X_0(N),\Z)[I_f]$ has rank $2$ (\Cref{prop:moddeg:f-lattice}), as has $\varphi^*H^1(E,\Z)$, which it contains by (a). The quotient $H^1(X_0(N),\Z)[I_f]/\varphi^*H^1(E,\Z)$ is then finite, and it
+embeds in $H^1(X_0(N),\Z)/\varphi^*H^1(E,\Z)$, which is torsion-free by (b); so it is $0$. Tensoring with the flat $\Z$-module $\Zl$ and using \Cref{prop:moddeg:f-lattice}(ii) gives the statement
+over $\Zl$.
+(d) The comparison isomorphism between Betti and \'etale cohomology is compatible with pullbacks (\Cref{ch:curves}), and $\varphi$ is defined over $\Q$; so $\varphi^*\colon H^1_{\mathrm{et}}(E_{\Qbar},\Zl)\to
+H^1_{\mathrm{et}}(X_0(N)_{\Qbar},\Zl)$ is $G_\Q$-equivariant, injective with image $M_{f,\lambda}$ by (c). $H^1_{\mathrm{et}}(E_{\Qbar},\Zl)\simeq(T_\ell E)^\vee\simeq T_\ell E(-1)$ by the Weil pairing
+(\Cref{ch:curves}; Appendix B, B-C5(b)), and the trace-zero adjoint is insensitive to duals and Tate twists (\Cref{ch:reps}; B-C12(b)).
+\end{proof}
+
+\begin{lemma}[$w_N$ on $M_{f,\lambda}$]\label{lem:moddeg:wn-on-mf}
+Let $E$ be optimal with newform $f$. As morphisms $X_0(N)\to E$,
+\[
+\varphi_E\circ w_N=\varepsilon_N(f)\,\varphi_E+\varphi_E(0),
+\]
+and $w_N^*$ acts on $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)$ by $\varepsilon_N(f)$. Hence $\hat\delta_!(x,y)=\varepsilon_N(f)\langle x,y\rangle$ for $x,y\in M_{f,\lambda}$.
+\end{lemma}
+
+\begin{proof}
+Put $\varepsilon=\varepsilon_N(f)$ and $\chi(P)=\varphi_E(w_NP)-\varphi_E(0)$. Then $\chi$ is a morphism over $\Q$ (\Cref{thm:moddeg:x0-over-q}(ii)) with $\chi(\infty)=\varphi_E(0)-\varphi_E(0)=O$, as
+$w_N(\infty)=0$. The differential $\omega_E$ is translation invariant, so
+\[
+\chi^*\omega_E=w_N^*\varphi_E^*\omega_E=c_E\cdot2\pi i\,(f|_2W_N)(z)\,dz=\varepsilon\,c_E\cdot2\pi if(z)\,dz=\varepsilon\,\varphi_E^*\omega_E=(\varepsilon\varphi_E)^*\omega_E,
+\]
+using \Cref{conv:moddeg:setup}(C1) and $[-1]^*\omega_E=-\omega_E$. The homomorphisms $\chi_*$ and $(\varepsilon\varphi_E)_*\colon J_0(N)\to E$ are induced on $J_0(N)(\C)=S_2^\vee/H_1$ by the transposes of the
+pullbacks of $\omega_E$ (\Cref{ch:curves}, functoriality of the Jacobian), which agree; so $\chi_*=(\varepsilon\varphi_E)_*$ and $\chi=\chi_*\circ\iota=\varepsilon\varphi_E$. On $H^1$, translations act trivially
+(they are homotopic to the identity) and $[\varepsilon]^*=\varepsilon$, so $w_N^*\varphi_E^*=(\varphi_E\circ w_N)^*=\varepsilon\varphi_E^*$, first on $H^1(E,\Z)$ and then on $H^1(E,\Zl)$; with
+\Cref{prop:moddeg:mf-is-pullback}(c) this is the action on $M_{f,\lambda}$. Finally $\hat\delta_!(x,y)=\langle x,w_N^*y\rangle=\varepsilon\langle x,y\rangle$.
+\end{proof}
+
+This proof does not use the description of $M_{f,\lambda}\otimes\C$ as a plane; \Cref{prop:moddeg:f-lattice}(iii) gives a second proof.
+
+\begin{theorem}[the modular degree is the ideal of values of $\hat\delta_!$]\label{thm:moddeg:degree-is-eta}
+Let $E$ be optimal and $\ell$ any prime. For $a,b\in H^1(E,\Zl)$,
+\[
+\hat\delta_!(\varphi_E^*a,\varphi_E^*b)=\varepsilon_N(f)\,\degphi\,\langle a,b\rangle_E .
+\]
+Hence the ideal of values of $\hat\delta_!$ on $M_{f,\lambda}\times M_{f,\lambda}$ is $\degphi\cdot\Zl$, and the Gram determinant of $\hat\delta_!$ in a basis of $M_{f,\lambda}$ is $(\degphi)^2$ up to a unit of $\Zl$.
+The same holds over $\Z$: the ideal of values of $\hat\delta_!$ on $H^1(X_0(N),\Z)[I_f]$ is $\degphi\cdot\Z$. Consequently, if the ideal $\eta^\emptyset_{f,\lambda}$ of Diamond, Flach and Guo is the
+ideal of values of $\hat\delta_!$ (or of $\frac12\hat\delta_!$) on $M_{f,\lambda}$, as Section 4.1 of the paper describes it for $\ell\nmid2N$ with $\bar\rho$ irreducible, then
+$v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$, with no multiplicity-one or Gorenstein hypothesis.
+\end{theorem}
+
+\begin{proof}
+By \Cref{lem:moddeg:wn-on-mf} and the projection formula (\Cref{prop:moddeg:degree-descriptions}(iv)),
+$\hat\delta_!(\varphi_E^*a,\varphi_E^*b)=\varepsilon_N(f)\langle\varphi_E^*a,\varphi_E^*b\rangle_{X_0(N)}=\varepsilon_N(f)\degphi\langle a,b\rangle_E$. The cup product on $H^1(E,\Zl)$ is perfect and alternating of rank two, so its
+ideal of values is $\Zl$ and its Gram determinant a unit (\Cref{ch:curves}); multiplying by the unit $\varepsilon_N(f)$ and by $\degphi$ gives ideal of values $\degphi\Zl$ and Gram determinant
+$(\degphi)^2$ times a unit. By \Cref{prop:moddeg:mf-is-pullback}(c), $\varphi_E^*H^1(E,\Zl)$ is all of $M_{f,\lambda}$. The argument over $\Z$ is the same. The last sentence: $\frac12$ is a unit for odd
+$\ell$.
+\end{proof}
+
+In the language of physics: a loop on $E$ lifts to $\degphi$ loops on $X_0(N)$, and their intersection numbers add up.
+
+\noindent\emph{Commentary.} The revised paper states this as Proposition prop:pullback: ``Let $E$ be $X_0(N)$-optimal with newform $f$, $\varphi=\varphi_E$, $I_f$ the kernel of the eigencharacter
+$\phi_f\colon\T\to\Z$ of $f$ on the full Hecke algebra, and $\ell$ a prime. Then $\varphi^*\colon H^1(E,\Z_\ell)\to H^1(X_0(N),\Z_\ell)$ is injective, with image the kernel lattice
+$H^1(X_0(N),\Z_\ell)[I_f]$, and $\langle\varphi^*a,\,w_N^*\varphi^*b\rangle_{X_0(N)}=\varepsilon_N(f)\,\degphi\,\langle a,b\rangle_E$ \dots In particular, for $\ell$ odd, the ideal of values of
+$\frac12\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Z_\ell)[I_f]$ is $\degphi\,\Z_\ell$, and its Gram determinant is $(\degphi)^2$ up to a unit. If $\ell\nmid2N$ and $\bar\rho_{E,\ell}$ is irreducible, then
+$M_{f,\lambda}=\varphi^*H^1(E,\Z_\ell)$, and $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$.'' The book's \Cref{prop:moddeg:mf-is-pullback,lem:moddeg:wn-on-mf,thm:moddeg:degree-is-eta} prove this
+and slightly more: (1) the statements hold integrally and at every prime, $\ell=2$ and $\ell\mid N$ included, for the pairing $\langle x,w_N^*y\rangle$ without the factor $\frac12$; (2) the
+action of $w_N$ is derived from the identity of maps $\varphi_E\circ w_N=\varepsilon_N(f)\varphi_E+\varphi_E(0)$, which replaces the paper's argument ``The involution $w_N$ commutes with the $T_n$,
+$(n,N)=1$, so it preserves the plane'' (that argument needs the plane to be the eigenspace of the anemic algebra, \Cref{prop:moddeg:f-lattice}(i), (iii)); (3) the step ``$H^1(X_0(N),\Z_\ell)[I_f]$,
+a saturated lattice, is its intersection with $H^1(X_0(N),\Z_\ell)$'' is replaced by the comparison of two saturated sublattices of $H^1(X_0(N),\Z)$ of rank two, one containing the other
+(the paper intersects a complex plane with a $\Zl$-lattice, which share no ambient space; the $\Q$-form $V_f$ of \Cref{prop:moddeg:f-lattice} is what is meant); (4) the Galois structure
+$M_{f,\lambda}\simeq T_\ell E(-1)$, which the paper states in the paragraph after the proof, is part (d) of \Cref{prop:moddeg:mf-is-pullback}. The hypotheses $\ell\nmid2N$ and $\bar\rho$ irreducible
+enter only the identification of $H^1(X_0(N),\Zl)$ with the integral structure of \cite{DFG04} (\Cref{rem:moddeg:dfg-normalisation}).
+
+\begin{corollary}[the divisibility of Agashe, Ribet and Stein at every prime]\label{cor:moddeg:ars-divisibility}
+Let $E$ be optimal. For every prime $\ell$, $v_\ell(\degphi)\le v_\ell(r_E)$; that is, $\degphi\mid r_E$. Equality holds at $\ell$ if $H^1(X_0(N),\Zl)_{\mf m}$ is free over $\T_{\mf m}$ for $\mf m=\mf m_{f,\ell}$.
+\end{corollary}
+
+\begin{proof}
+Let $\mathcal O=\Zl$, $\pi=\phi_f\otimes\Zl\colon\T_\ell\to\Zl$, $\wp=\ker\pi=I_f\T_\ell$ and $I=\Ann_{\T_\ell}(\wp)$. By \Cref{prop:moddeg:congruence-ideal} and Lemma lem:crit (\Cref{lem:moddeg:crit}),
+$\eta=\pi(I)=r_E\Zl\ne0$. By \Cref{prop:moddeg:congruence-ideal}(ii) and \Cref{ch:modules}, $\wp=\wp_{\mf m}\times\T''$ with $\T''$ the product of the other local factors, so $\eta$ is the
+congruence ideal of $\pi|_{\T_{\mf m}}$, and $L=H^1(X_0(N),\Zl)_{\mf m}$ satisfies $L[\wp_{\mf m}]=H^1(X_0(N),\Zl)[\wp]=M_{f,\lambda}$ (an element killed by $\wp$ is killed by $\T''$, hence lies in the
+$\mf m$-component). $L$ is a faithful $\T_{\mf m}$-module, free of finite rank over $\Zl$, with the pairing $\hat\delta_!$, which is perfect on $L$ and for which $\T_{\mf m}$ is self-adjoint
+(\Cref{cor:moddeg:delta-hat}(iii)). By \Cref{ch:modules} (the module ingredients of Lemma lem:ddt417, and the Gram determinant of a saturated sublattice):
+$Q=L/(L[\wp_{\mf m}]\oplus L[I_{\mf m}])$ is killed by $\eta$, and $Q\simeq\coker\bigl(M_{f,\lambda}\to\Hom(M_{f,\lambda},\Zl)\bigr)$, the map induced by $\hat\delta_!$, so $\len Q$ is the valuation of the Gram
+determinant, $2v_\ell(\degphi)$ by \Cref{thm:moddeg:degree-is-eta}. $Q$ is a quotient of $\Hom(M_{f,\lambda},\Zl)\simeq\Zl^2$ killed by $r_E$, hence a quotient of $(\Zl/r_E)^2$, and
+$2v_\ell(\degphi)=\len Q\le2v_\ell(r_E)$. If $L\simeq\T_{\mf m}^2$, then $Q\simeq(\T_{\mf m}/(\wp_{\mf m}+I_{\mf m}))^2\simeq(\Zl/\eta)^2$ (\Cref{ch:modules}), and equality holds.
+\end{proof}
+
+This is the assembly of the inequality half of Lemma lem:ddt417 in the case at hand ($d=2$); \Cref{ch:congruence} proves the lemma in general. The paper cites \cite{ARS12} for the
+divisibility; the corollary derives it from \Cref{thm:moddeg:degree-is-eta}, so that the theorem of Agashe, Ribet and Stein is needed only for the reverse inequality.
+
+\begin{theorem}[Lemma lem:hecke of the paper]\label{thm:moddeg:lem-hecke}
+Let $E$ be optimal and $\ell$ a prime.
+\begin{enumerate}[label=(\roman*)]
+\item $v_\ell(\degphi)=v_\ell(\text{ideal of values of }\hat\delta_!\text{ on }M_{f,\lambda})\le v_\ell(r_E)$, with no further hypothesis.
+\item If $\ell^2\nmid N$, then $v_\ell(\degphi)=v_\ell(r_E)$ (\Cref{thm:moddeg:ars}).
+\item If $\ell\nmid2N$ and $\bar\rho_{E,\ell}$ is irreducible, then, with the integral structure of \cite{DFG04} identified with $H^1(X_0(N),\Zl)$ after localisation at $\mf m_{f,\ell}$ as in Section 4.1
+of the paper (\Cref{rem:moddeg:dfg-normalisation}),
+\[
+v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda}).
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) is \Cref{thm:moddeg:degree-is-eta} and \Cref{cor:moddeg:ars-divisibility}; (ii) is \Cref{thm:moddeg:ars}; (iii) combines (ii) with the last sentence of \Cref{thm:moddeg:degree-is-eta}.
+\end{proof}
+
+\noindent\emph{Commentary.} The revised paper states: ``Let $E$ be $X_0(N)$-optimal, $\ell$ an odd prime with $\ell\nmid 2N$ and $\bar\rho$ irreducible, and $\mathfrak m$ the maximal ideal of
+$\T\otimes\Z_\ell$ containing $\ell$ and $\ker\phi_f$. Then $v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda})$.'' This is (iii). The book adds (i): the cohomological side of the identity
+needs no hypothesis on $\ell$ or $\bar\rho$, and the divisibility $\degphi\mid r_E$ follows from it. The version of 10 October 2026 proved only $v_\ell(r_E)\ge v_\lambda(\eta^\emptyset_{f,\lambda})$, with
+equality under freeness; the paragraph after the lemma in the revised paper records this. Consequences for the paper, assembled in \Cref{ch:congruence}: the identity (eq:identity) of
+Theorem thm:main holds with equality whenever $\ell\notin S_f$, with no multiplicity-one hypothesis; and in Step 4 of the proof of Theorem thm:quant, (iii) applied to the optimal curve
+of the class of the twist gives the comparison at level $N_S$ without freeness, so that the first inequality of Theorem thm:quant is an equality whenever $\ell\notin S_f$. Freeness is still
+the tool for forms not attached to an optimal quotient, such as the depleted form of Step 2 (\Cref{rem:moddeg:rem-free-after-39}).
+
+\begin{remark}[the identification with the objects of Diamond, Flach and Guo]\label{rem:moddeg:dfg-normalisation}
+\Cref{thm:moddeg:degree-is-eta} is a theorem about the ideal of values of $\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Zl)[I_f]$. That this ideal is the $\eta^\emptyset_{f,\lambda}$ of \cite{DFG04} rests on five
+points, which Section 4.1 of the paper asserts and \Cref{ch:congruence} compares with the text of \cite{DFG04}.
+\begin{enumerate}[label=(\arabic*)]
+\item \emph{Which curve.} The integral structure $M(N,1)_{!,\lambda}$ of \cite{DFG04} is defined through a modular curve of full level; the paper says that it ``contains the pull-back of
+$H^1(X_0(M^\Sigma),\Z_\ell)$ with finite index'' and that after localisation at a non-Eisenstein $\mf m$ ``we take it \dots to agree with $H^1(X_0(M^\Sigma),\Z_\ell)_{\mathfrak m}$'', the cokernel being
+Eisenstein. This matters: pulling back along a covering of degree $n$ multiplies the cup product by $n$ (\Cref{ch:curves}), so if the comparison failed at a non-Eisenstein $\mf m$ the
+ideal of values could change by a non-unit. For $X_1(N)\to X_0(N)$ the relevant obstruction is the Shimura subgroup (\Cref{def:moddeg:shimura-subgroup}, \Cref{ex:moddeg:ex-shimura}).
+\item \emph{Interior cohomology.} For constant coefficients, the image of $H^1_c(Y_0(N),\Zl)$ in $H^1(Y_0(N),\Zl)$ is $H^1(X_0(N),\Zl)$, and $H^1(\Gamma_0(N),\Zl)=H^1(Y_0(N),\Zl)$. Proof: with $S$ the set
+of cusps, the exact sequence $H^0(S)\to H^1_c(Y)\to H^1(X)\to H^1(S)=0$ makes $H^1_c(Y)\to H^1(X)$ onto, and $H^1(X)\to H^1(Y)$ is injective because $H^1(X,Y)$ is, by excision, a sum of
+$H^1(D,D\setminus\{P\})=0$ over small discs $D$ around the cusps; so the image of $H^1_c(Y)\to H^1(Y)$ is $H^1(X)$. And $H^1(\Gamma_0(N),\Zl)=\Hom(\Gamma_0(N),\Zl)$ kills the elements of finite order
+($\Zl$ is torsion-free), and $\Gamma_0(N)$ modulo the normal subgroup they generate is $\pi_1(Y_0(N))$ (Armstrong's theorem on quotients by groups with fixed points), so
+$\Hom(\Gamma_0(N),\Zl)=\Hom(\pi_1(Y_0(N)),\Zl)=H^1(Y_0(N),\Zl)$.
+\item \emph{The operator.} $[UwU]\omega$ is $w_N^*$ with no scalar in weight $2$ and trivial character, and the cup product of \cite{DFG04} differs from the book's by the factor $\frac12$ the paper
+records; this is harmless for odd $\ell$.
+\item \emph{Kernel, not projection.} $M_{f,\lambda}$ is the kernel lattice $L[\wp]$, as the paper says, and not the image of $L$ under the projection to the $f$-component (the dual lattice,
+which would change the ideal of values by the congruence ideal).
+\item \emph{Values versus Gram.} $\eta$ is the ideal of values, equivalently the square root of the Gram determinant (\Cref{ch:modules}), as the paper says.
+\end{enumerate}
+If (3) or (5) differed by a unit nothing would change; if (1) or (4) differed, the paper's own description of $\eta$ in Section 4.1 would need correcting, independently of
+\Cref{thm:moddeg:degree-is-eta}.
+\end{remark}
+
+\begin{example}[\curve{99a1} at $\ell=3$]\label{ex:moddeg:99-at-3}
+Let $E=\curve{99a1}$ and $\ell=3$, so $3^2\mid N$ and the paper's theorems do not apply. By \Cref{thm:moddeg:degree-is-eta} the ideal of values of $\hat\delta_!$ on $M_{f,3}$ is $4\Z_3=\Z_3$, while
+$v_3(r_E)=1$ (\Cref{ex:moddeg:99a1-and-726a1}). So the inequality of \Cref{cor:moddeg:ars-divisibility} is strict, and $L=H^1(X_0(99),\Z_3)_{\mf m}$ is not free over $\T_{\mf m}$ for $\mf m=\mf m_{f,3}$.
+Since $\rank_{\Z_3}L=2\rank_{\Z_3}\T_{\mf m}$ (\Cref{thm:moddeg:gorenstein}, step (b) of the proof, which does not use $\ell\nmid N$), the freeness criterion of \Cref{ch:modules} shows
+$\dim_{\F_3}L/\mf mL\ne2$; it is not $1$ (a cyclic $\T_{\mf m}$-module has rank at most $\rank\T_{\mf m}$); so it is at least $3$, and by \Cref{prop:moddeg:tate-module-vs-h1}(iii) and duality
+$\dim_{\F_3}J_0(99)[\mf m]\ge3$: multiplicity one fails at $\mf m$. Yet $\bar\rho_{\curve{99a1},3}$ is irreducible: the class \curve{99a} has only a $2$-isogeny (\texttt{allisog}), and Cremona's
+\texttt{galrep} file lists no non-surjective mod $3$ image for it. This is why the paper's Remark rem:free needs $\ell\nmid N$.
+\end{example}
+
+\begin{paperlink}\label{pl:moddeg:lem-hecke}
+The paragraph after Lemma lem:hecke in the revised paper: ``Without the hypotheses the inequality of Lemma lem:ddt417 can be strict: at 99a1 and $\ell=3$, where $3\mid N$,
+$\degphi=4$ and $r_E=12$, so $H^1(X_0(99),\Z_3)_{\mathfrak m}$ is not free over $\T_{\mathfrak m}$.'' This is \Cref{ex:moddeg:99-at-3}. The same paragraph: ``the congruence ideal is computed in
+$\T_{\mathfrak m}$: the other local factors of $\T\otimes\Z_\ell$ lie in the kernel $\wp$'' is \Cref{prop:moddeg:congruence-ideal}(ii). Section 4.2 of the paper: ``by Proposition prop:pullback,
+$\varphi_E^*$ identifies the lattice $M_{f,\lambda}$ of \cite{DFG04} with $H^1(E,\Z_\ell)\simeq T_\ell E(-1)$, so its adjoint is $\ad T$'' is \Cref{prop:moddeg:mf-is-pullback}(d).
+\end{paperlink}
+
+\section[Multiplicity one and the Gorenstein property]{Multiplicity one, the Gorenstein property and Remark rem:free}\label{sec:moddeg:mult-one}
+
+The paper's Remark rem:free explains when $H^1(X_0(N),\Zl)_{\mf m}$ is free over the localised Hecke algebra: multiplicity one makes $\T_{\mf m}$ Gorenstein and the module free of rank two. Since
+\Cref{thm:moddeg:degree-is-eta}, the paper's main theorems no longer need this; it remains the conceptual reason for the equality in the theorem of Agashe, Ribet and Stein at $\ell\nmid2N$, and the
+tool for forms that are not attached to an optimal quotient. This section defines the maximal ideal attached to $(f,\ell)$, states multiplicity one, proves the Gorenstein property from it
+with \Cref{ch:modules}'s criterion, and says what Remark rem:free is still for.
+
+\begin{definition}[the maximal ideal of $(f,\ell)$]\label{def:moddeg:maximal-ideal}
+For $f=f_E$ and a prime $\ell$, $\mf m=\mf m_{f,\ell}$ is the maximal ideal of $\T_\ell$ containing $\ell$ and $I_f$, the kernel of $\T_\ell\to\Zl\to\Fl$, $t\mapsto\phi_f(t)\bmod\ell$; $\T_\ell=\prod_{\mf m'}\T_{\mf m'}$ over
+its maximal ideals (\Cref{ch:modules}). For every maximal ideal $\mf m$ of $\T$ (or $\T_\ell$) with residue characteristic $\ell$ there is a semisimple continuous representation
+$\bar\rho_{\mf m}\colon G_\Q\to\GL_2(\T/\mf m)$, unramified outside $N\ell$, with $\tr\bar\rho_{\mf m}(\Frob_p)=T_p\bmod\mf m$ and $\det\bar\rho_{\mf m}=\bar\chi_\ell$ (\Cref{ch:modgalrep}; stated). For
+$\mf m=\mf m_{f,\ell}$, $\bar\rho_{\mf m}\simeq\bar\rho_{E,\ell}^{\mathrm{ss}}$, by \Cref{thm:moddeg:eichler-shimura}(iii), Chebotarev and Brauer-Nesbitt (\Cref{ch:galois,ch:reps}). $\mf m$ is
+\emph{Eisenstein} if $\bar\rho_{\mf m}$ is reducible (\Cref{conv:moddeg:setup}(C7)); so $\mf m_{f,\ell}$ is Eisenstein iff $E[\ell]$ is reducible.
+\end{definition}
+
+\begin{theorem}[multiplicity one; stated]\label{thm:moddeg:multiplicity-one}
+Let $\ell\nmid2N$ and let $\mf m$ be a non-Eisenstein maximal ideal of $\T$ of residue characteristic $\ell$. Then $J_0(N)[\mf m]$ is a $2$-dimensional $\T/\mf m$-vector space, isomorphic to $\bar\rho_{\mf m}$ as a
+$G_\Q$-module.
+\end{theorem}
+
+We do not prove this. For prime $N$ it is Mazur's \cite[Chapter II]{Mazur77}; in general the argument is Mazur's, through the $q$-expansion principle modulo $\ell$ and the good
+reduction of $J_0(N)$ at $\ell$, as written in \cite[Section 5]{Ribet90} (section number not verified). The isomorphism with $\bar\rho_{\mf m}$ follows from the dimension by the theorem of Boston,
+Lenstra and Ribet. The paper's route, in Remark rem:free, is through $J_1(N)$: \cite[Theorem 3.5]{RibetStein} gives multiplicity one for $J_1(N)$, ``the only possible exception there having Serre
+weight $\ell$, which does not occur in weight $2$ with $\ell\nmid N$'', and $J_0(N)[\mf m]\to J_1(N)[\mf m']$ is injective because its kernel lies in the Shimura subgroup, which is Eisenstein
+(\Cref{def:moddeg:shimura-subgroup}).
+
+\begin{theorem}[Gorenstein and free of rank two]\label{thm:moddeg:gorenstein}
+In the situation of \Cref{thm:moddeg:multiplicity-one}, with $\mf m$ a maximal ideal of $\T_\ell$: $\T_{\mf m}$ is Gorenstein, and
+$H^1(X_0(N),\Zl)_{\mf m}\simeq\T_{\mf m}^2\simeq T_\ell J_0(N)_{\mf m}$ as $\T_{\mf m}$-modules. Consequently, for $E$ optimal, $\ell\nmid2N$ and $E[\ell]$ irreducible, $v_\ell(r_E)=v_\ell(\degphi)$.
+\end{theorem}
+
+\begin{proof}
+Let $L=H^1(X_0(N),\Zl)_{\mf m}$, with the pairing $\hat\delta_!$, perfect on $L$ with $\T_{\mf m}$ self-adjoint (\Cref{cor:moddeg:delta-hat}(iii)). We check the hypotheses of the freeness criterion of
+\Cref{ch:modules} with $d=2$.
+(a) $\dim_{\T/\mf m}L/\mf mL=2$. Put $W=L/\ell L=H^1(X_0(N),\Fl)_{\mf m}$; $\hat\delta_!$ induces a perfect pairing on $W$ for which $\T$ is self-adjoint, so $(W/\mf mW)^\vee\simeq W[\mf m]$ (a functional
+vanishing on $\mf mW$ is $\langle-,y\rangle$ with $\langle\mf mW,y\rangle=\langle W,\mf my\rangle=0$, that is $y\in W[\mf m]$). Hence $\dim_{\Fl}L/\mf mL=\dim_{\Fl}W[\mf m]=\dim_{\Fl}J_0(N)[\mf m]$ by
+\Cref{prop:moddeg:tate-module-vs-h1}(iii), and dividing by $[\T/\mf m:\Fl]$, $\dim_{\T/\mf m}L/\mf mL=2$ by \Cref{thm:moddeg:multiplicity-one}.
+(b) $\rank_{\Zl}L=2\rank_{\Zl}\T_{\mf m}$. By \Cref{prop:moddeg:hecke-compatibility}(ii), (iii), $H^1(X_0(N),\C)=S_2\oplus\overline{S_2}$ with $S_2\simeq\Hom_\Z(\T,\C)$ as $\T$-modules, and
+$\overline{S_2}\simeq S_2$ as well (complex conjugation on the second factor of $\Hom_\Z(\T,\Z)\otimes\C$ is $\T$-linear). So for $t\in\T$,
+$\tr(t\mid H^1(X_0(N),\Q))=2\tr(t\mid\Hom_\Z(\T,\Q))=2\tr(t\mid\T\otimes\Q)$, the trace of a transpose being the same. Both sides are $\Ql$-linear in $t\in\T\otimes\Ql$ and agree on $\T$, so they agree on
+the idempotent $e_{\mf m}$, whose trace on a module is the dimension of its $\mf m$-part: $\rank L=\dim e_{\mf m}H^1(X_0(N),\Ql)=2\dim e_{\mf m}(\T\otimes\Ql)=2\rank\T_{\mf m}$.
+The criterion gives $L\simeq\T_{\mf m}^2$ and $\T_{\mf m}$ Gorenstein; $T_\ell J_0(N)_{\mf m}\simeq L$ by \Cref{prop:moddeg:tate-module-vs-h1}(ii). For the last statement, $\mf m_{f,\ell}$ is non-Eisenstein when
+$E[\ell]$ is irreducible (\Cref{def:moddeg:maximal-ideal}), and \Cref{cor:moddeg:ars-divisibility} gives equality under freeness.
+\end{proof}
+
+This is the theorem the paper cites as \cite{Tilouine97} in Remark rem:free (see also \cite[Chapter 2]{Wiles95} and \cite[Section 4]{DDT}). Step (b) holds for every $\ell$ and every $\mf m$; only (a) uses
+multiplicity one, and it is (a) that fails for \curve{99a1} at $\ell=3$ (\Cref{ex:moddeg:99-at-3}).
+
+\begin{remark}[what Remark rem:free is still for]\label{rem:moddeg:rem-free-after-39}
+After \Cref{thm:moddeg:degree-is-eta,thm:moddeg:lem-hecke}: (a) Remark rem:free is not needed for the equality in Lemma lem:hecke or in (eq:identity) of Theorem thm:main. (b) It is not needed
+for the equality in the first inequality of Theorem thm:quant when $\ell\notin S_f$ either: \Cref{thm:moddeg:lem-hecke}(iii) applies to the optimal curve of each of the two classes compared. It
+remains the natural tool for comparing the Hecke congruence ideal with the cohomological one for forms that are not attached to an optimal quotient, such as the depleted form $g^S$ of Step 2
+of the paper's proof, where it turns an inequality into an equality. (c) It is the conceptual reason for the equality in the theorem of Agashe, Ribet and Stein at $\ell\nmid2N$ with $E[\ell]$
+irreducible (\Cref{thm:moddeg:gorenstein}). It fails for $\ell\mid N$ in general (\Cref{ex:moddeg:99-at-3}).
+\end{remark}
+
+\begin{paperlink}\label{pl:moddeg:rem-free}
+Remark rem:free, sentence by sentence. ``Freeness of $H^1(X_0(N),\Z_\ell)_{\mathfrak m}$ over $\T_{\mathfrak m}$ holds when $J_0(N)[\mathfrak m]$ is two-dimensional, since the localised Hecke algebra is then
+Gorenstein and the Tate module is free of rank two'': \Cref{thm:moddeg:gorenstein}, step (a) being the two-dimensionality and step (b) a rank count. ``$J_0(N)[\mathfrak m]$ is two-dimensional for
+$\ell\nmid2N$ and $\bar\rho$ irreducible'': \Cref{thm:moddeg:multiplicity-one} (stated). ``The identification of $T_\ell J_0(N)$ with $H^1(X_0(N),\Z_\ell)$ as Hecke modules uses Poincar\'e duality
+composed with $w_N$'': \Cref{prop:moddeg:tate-module-vs-h1}. ``After Proposition prop:pullback this is not needed for Theorem thm:main or for Theorem thm:quant'': \Cref{rem:moddeg:rem-free-after-39}.
+\end{paperlink}
+
+\section{Cuspidal subgroup, Eisenstein ideal, Shimura subgroup}\label{sec:moddeg:eisenstein}
+
+When $E[\ell]$ is reducible every theorem of the paper is out of reach: the maximal ideal $\mf m_{f,\ell}$ is Eisenstein, multiplicity one and the results of Diamond, Flach and Guo are
+unavailable, and the modular degree can fall short of the local bound (the deficit $D$ of Conjecture conj:eis). Open question 4 asks for an interpretation of that deficit ``presumably
+through the cuspidal subgroup of $J_0(N)$ \cite{Mazur77}''. This section defines the cuspidal subgroup, proves that the cusps $0$ and $\infty$ differ by a torsion point and computes its
+image on the optimal curve, states Mazur's theorem at prime level, and defines the Shimura subgroup used in Remark rem:free.
+
+\begin{definition}[the cuspidal subgroup]\label{def:moddeg:cuspidal-subgroup}
+The \emph{cuspidal subgroup} $C_N\subseteq J_0(N)(\Qbar)$ is the subgroup generated by the classes of the divisors of degree $0$ supported on the cusps. It is $G_\Q$-stable, because $G_\Q$ permutes the
+cusps (\Cref{prop:moddeg:cusps-over-q}); the \emph{rational cuspidal subgroup} is generated by the classes of the $G_\Q$-invariant cuspidal divisors of degree $0$, and lies in $J_0(N)(\Q)$.
+\end{definition}
+
+\begin{proposition}[Manin-Drinfeld for $0$ and $\infty$]\label{prop:moddeg:manin-drinfeld}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item For $p\nmid N$, $(T_p)_*(\infty)=(p+1)(\infty)$ and $(T_p)_*(0)=(p+1)(0)$ as divisors.
+\item For $p\nmid N$ every eigenvalue of $T_p$ on $S_2(\Gamma_0(N))$ has absolute value at most $2\sqrt p<p+1$, so $(T_p-p-1)_*$ is an isogeny of $J_0(N)$.
+\item The class $x=[(0)-(\infty)]$ lies in $\ker(T_p-p-1)_*$, so it is a torsion point of $J_0(N)(\Q)$.
+\item (Manin; Drinfeld; stated.) $C_N$ is finite.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) By \Cref{prop:moddeg:hecke-correspondence}(i), $(T_p)_*(\Gamma c)=\sum_i(\Gamma\alpha_ic)$ for a cusp $c$, with the representatives $\alpha_i$ of \Cref{prop:moddeg:hecke-correspondence}(ii), counted with the
+multiplicities of $\pi_1$ (total $p+1$): every point of $X(\Gamma_\alpha)$ over $\Gamma c$ is $\Gamma_\alpha\gamma c$ for some $\gamma\in\Gamma$ and maps to $\Gamma\alpha\gamma c$, which is one of the $\Gamma\alpha_ic$. Now
+$\sm1j0p\infty=\infty$ and $\sm p001\infty=\infty$, so all images of $\infty$ are $\infty$. And $\sm1j0p0=j/p$, $\sm p001 0=0$; for $1\le j<p$ the cusp $j/p$ has denominator $p$ with
+$\gcd(p,N)=1$, so it is $\Gamma_0(N)$-equivalent to $0$ (\Cref{prop:moddeg:cusps-over-q}(i): the cusps of denominator prime to $N$ form the single class of $0$). So all images of $0$ are $0$.
+(ii) By \Cref{thm:moddeg:eichler-shimura}(ii) the eigenvalues $\alpha$ of Frobenius on $W_\psi$ are roots of $X^2-\psi(T_p)X+p$, and $\abs\alpha=\sqrt p$ by Weil's theorem (\Cref{ch:curves}); so
+$\psi(T_p)=\alpha+p/\alpha$ has absolute value at most $2\sqrt p$ for every eigencharacter $\psi$ (this is the Ramanujan-Petersson bound in weight $2$, \Cref{ch:modforms}). Hence $T_p-p-1$ is
+invertible on $S_2$, its transpose on $S_2^\vee$ is invertible, and the induced endomorphism of $J_0(N)(\C)=S_2^\vee/H_1$ is surjective with finite kernel.
+(iii) By (i), $(T_p-p-1)_*x=[(p+1)(0)-(p+1)(\infty)]-(p+1)x=0$; an element of the finite kernel of an isogeny is torsion; $0$ and $\infty$ are rational (\Cref{prop:moddeg:cusps-over-q}).
+(iv) We do not prove this; see \cite[Chapter II]{Mazur77}, \cite[Section 6.6]{Stein} and \cite{Ogg73} (not verified). The proof is (i) to (iii) for every cusp, with the cusps not defined over
+$\Q$ handled by the Galois action.
+\end{proof}
+
+\begin{theorem}[Mazur at prime level; stated]\label{thm:moddeg:mazur-prime-level}
+Let $N$ be prime and $n$ the numerator of $(N-1)/12$.
+\begin{enumerate}[label=(\roman*)]
+\item The class of $(0)-(\infty)$ has order $n$ and generates $C_N$.
+\item $J_0(N)(\Q)_{\tors}=C_N\simeq\Z/n$.
+\item The \emph{Eisenstein ideal} $I_{\mathrm{Eis}}\subseteq\T$, generated by the $T_p-1-p$ ($p\ne N$) and $1+w_N$, satisfies $\T/I_{\mathrm{Eis}}\simeq\Z/n$; it annihilates $C_N$ and the Shimura subgroup $\mathcal S_N$,
+which has order $n$, is of multiplicative type, and is Cartier dual to $C_N$.
+\item For $\ell$ odd, a maximal ideal $\mf m$ of $\T$ of residue characteristic $\ell$ is Eisenstein in the sense of \Cref{conv:moddeg:setup}(C7) iff $\mf m\supseteq I_{\mathrm{Eis}}$, and such $\mf m$ exist iff $\ell\mid n$.
+\end{enumerate}
+\end{theorem}
+
+We do not prove this; see \cite[Chapter II]{Mazur77} (the numbering of Mazur's results, and the cases $\ell=2$ and $\ell=N$ of (iv), were not checked against the text). For $N=11$: $n=5$, and
+$J_0(11)(\Q)=\curve{11a1}(\Q)\simeq\Z/5$, generated by the cusp $0$ (\Cref{ex:moddeg:small-levels}); $\ell=5$ is Eisenstein, and indeed $a_p(f_{11})\equiv1+p\pmod5$ for $p\ne11$ ($a_2=-2$, $a_3=-1$, $a_5=1$,
+$a_7=-2$), the congruence of $f_{11}$ with the Eisenstein series of \Cref{ch:modforms}. For $N=37$: $n=3$, and the curve \curve{37b1} has $E(\Q)\simeq\Z/3$.
+
+\begin{definition}[the Shimura subgroup]\label{def:moddeg:shimura-subgroup}
+Let $\pi\colon X_1(N)\to X_0(N)$ be the forgetful map. The \emph{Shimura subgroup} is $\mathcal S_N=\ker(\pi^*\colon J_0(N)\to J_1(N))$.
+\end{definition}
+
+\begin{proposition}[the Shimura subgroup]\label{prop:moddeg:shimura-subgroup}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item $\#\mathcal S_N=[\operatorname{sat}(\pi^*H^1(X_0(N),\Z)):\pi^*H^1(X_0(N),\Z)]$, the saturation taken in $H^1(X_1(N),\Z)$; so $\mathcal S_N=0$ iff $\pi^*H^1(X_0(N),\Z)$ is saturated ($g(X_0(N))\ge1$).
+\item (Stated.) $\mathcal S_N$ is finite and of multiplicative type (Cartier dual to a constant group), and $T_p$ acts on it as $1+p$ for $p\nmid N$: it is Eisenstein.
+\item If $\mf m$ is a non-Eisenstein maximal ideal of $\T$, then $\mathcal S_N[\mf m]=0$, so $\pi^*\colon J_0(N)[\mf m]\to J_1(N)$ is injective.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) is \Cref{ch:curves} (the proposition on the degree and the cup product, part (iii), (a)$\Leftrightarrow$(d) with the index formula) for $\pi$. (ii) We do not prove this; see \cite[Chapter II]{Mazur77}
+for prime $N$, and \cite{LingOesterle} and \cite{Ribet88} in general (not verified). (iii) If $0\ne x\in\mathcal S_N[\mf m]$, then $T_p-1-p$ and $\mf m$ both kill $x$, so $T_p\equiv1+p\pmod{\mf m}$ for all $p\nmid N\ell$
+($\T/\mf m$ acts faithfully on the nonzero $\T/\mf m$-space spanned by the $\T$-translates of $x$). Then $\tr\bar\rho_{\mf m}(\Frob_p)=\tr(1\oplus\bar\chi_\ell)(\Frob_p)$ for those $p$, and by Chebotarev and
+Brauer-Nesbitt the semisimple $\bar\rho_{\mf m}$ is $1\oplus\bar\chi_\ell$, reducible: a contradiction.
+\end{proof}
+
+For the optimal curve, $\mf m_{f,\ell}$ is Eisenstein exactly when $E$ has a rational $\ell$-isogeny (\Cref{def:moddeg:maximal-ideal}; \Cref{ch:galrep}). Then \Cref{thm:moddeg:multiplicity-one,thm:moddeg:gorenstein},
+the theorems of \cite{DFG04} and the hypothesis of Lemma lem:hecke all fail, and the modular degree can lose local divisibility: the deficit $D$ of Conjecture conj:eis (\Cref{ch:galrep}).
+
+\begin{proposition}[the image of the cusp $0$]\label{prop:moddeg:image-of-zero}
+Let $E$ be optimal. Then $\varphi_E(0)\in E(\Q)_{\tors}$, and under $E(\C)\simeq\C/\Lambda_E$, $P\mapsto\int_O^P\omega_E$,
+\[
+\varphi_E(0)\equiv c_E\,L(E,1)\pmod{\Lambda_E}.
+\]
+Since $\Lambda_E\cap\R=\Z\Omega$ with $\Omega$ the least positive real period, $c_EL(E,1)/\Omega\in\Q$ and the order of $\varphi_E(0)$ is its denominator.
+\end{proposition}
+
+\begin{proof}
+$\varphi_E=\varphi_{E*}\circ\iota$ and $\iota(0)=x=[(0)-(\infty)]$, so $\varphi_E(0)=\varphi_{E*}(x)$, a rational torsion point by \Cref{prop:moddeg:manin-drinfeld}(iii). For $z\in\HH$, the composite
+$\HH\to X_0(N)\to E(\C)\to\C/\Lambda_E$ is $z\mapsto\int_{i\infty}^z\varphi_E^*\omega_E=c_E\int_{i\infty}^z2\pi if(\tau)\,d\tau$ (the integral converges at $i\infty$, $f$ being cuspidal), and it extends continuously to the
+cusp $0$. Along the imaginary axis, $\tau=iy$:
+\[
+\int_{i\infty}^02\pi if(\tau)\,d\tau=\int_\infty^0(-2\pi)f(iy)\,dy=2\pi\int_0^\infty f(iy)\,dy=L(f,1),
+\]
+the last equality being the Mellin transform $(2\pi)^{-s}\Gamma(s)L(f,s)=\int_0^\infty f(iy)y^{s-1}\,dy$ at $s=1$ (\Cref{ch:lfunctions}; stated there). With $L(f,1)=L(E,1)$ (\Cref{thm:moddeg:modularity})
+this gives the congruence. $\Lambda_E$ is stable under complex conjugation (E and $\omega_E$ are defined over $\R$), so $\Lambda_E\cap\R$ is a nonzero discrete subgroup $\Z\Omega$; a real number $r$ defines a
+point of order $m$ in $\C/\Lambda_E$ iff $m$ is least with $mr\in\Z\Omega$.
+\end{proof}
+
+\begin{example}[$L(E,1)/\Omega$ and torsion]\label{ex:moddeg:image-of-zero}
+PARI (\texttt{lfun(E,1)/E.omega[1]}, recognised as a rational number to $40$ digits) gives $L(E,1)/\Omega=1/5$, $1/6$, $1/3$, $1/6$, $1/3$, $2/3$, $1$, $1/3$ for \curve{11a1}, \curve{14a1}, \curve{19a1}, \curve{20a1},
+\curve{27a1}, \curve{37b1}, \curve{121a1}, \curve{243b1}, whose torsion orders are $5$, $6$, $3$, $6$, $3$, $3$, $1$, $3$; and $L(E,1)=0$ for the rank-one curves \curve{37a1}, \curve{99a1}, \curve{539c1},
+\curve{726a1}, so $\varphi_E(0)=O$ for them. With $c_E=1$ (Manin's conjecture, confirmed by computation in this range, \Cref{thm:moddeg:manin-known}(iv)) the order of $\varphi_E(0)$ is the denominator, and in each of these examples $\varphi_E(0)$ generates $E(\Q)_{\tors}$. For \curve{11a1}, $\varphi_E$ is the
+identity of $X_0(11)$ and the statement is that the cusp $0$ has order $5$ (\Cref{thm:moddeg:mazur-prime-level}).
+\end{example}
+
+\begin{remark}[the Eisenstein case in the paper]\label{rem:moddeg:eisenstein-and-the-paper}
+Ihara's lemma and Proposition 1.4 of \cite{DFG04}, multiplicity one (\Cref{thm:moddeg:multiplicity-one}) and the identification of the integral structure of \cite{DFG04} with $H^1(X_0(N),\Zl)$
+(\Cref{rem:moddeg:dfg-normalisation}) all need $\bar\rho$ irreducible; \Cref{prop:moddeg:mf-is-pullback} does not. Conjecture conj:eis bounds the deficit by the $\ell$-part of the torsion, and
+\Cref{ch:ellcurves} proves that its bound $D\le2$ at $\ell=3$ follows from the first (Proposition prop:no9 of the paper). \Cref{prop:moddeg:image-of-zero} links rational torsion with the
+cuspidal subgroup: $\varphi_E(0)$ is a rational torsion point, the image of the cuspidal class $[(0)-(\infty)]$, and it often generates $E(\Q)_{\tors}$. This is a heuristic for Open question 4, not an
+argument.
+\end{remark}
+
+\begin{paperlink}\label{pl:moddeg:eis}
+Open question 4: ``Identify the deficit of Conjecture conj:eis with a natural invariant of the Eisenstein ideal at $\ell$, presumably through the cuspidal subgroup of $J_0(N)$ \cite{Mazur77}.''
+\Cref{def:moddeg:cuspidal-subgroup,prop:moddeg:manin-drinfeld,thm:moddeg:mazur-prime-level,prop:moddeg:image-of-zero} are the objects named there. Remark rem:free: ``$J_0(N)[\mathfrak m]$ injects into
+$J_1(N)[\mathfrak m']$ under the pull-back map, whose kernel, the Shimura subgroup, is Eisenstein'' is \Cref{prop:moddeg:shimura-subgroup}(iii).
+\end{paperlink}
+
+\section[Shimura curves, the prime 2, computing the degree]{Shimura curves, the prime \texorpdfstring{$2$}{2} and the computation of the modular degree}\label{sec:moddeg:shimura-two}
+
+Three topics of the paper lie outside its theorems but next to them: the comparison of $\degphi$ with the degree of a parametrisation by a Shimura curve (Section 1.5, the history of the
+multiplicative part of (eq:main)), the prime $\ell=2$ (Section sec:two: Watkins's conjecture and the theorem of Calegari and Emerton), and the computation of $\degphi$ on which all the
+paper's data rest. This section states what is used, with data checks.
+
+\begin{definition}[Shimura curves; stated]\label{def:moddeg:shimura-curve}
+Let $D>1$ be a product of an even number of distinct primes and $M\ge1$ prime to $D$. The \emph{Shimura curve} $X_0^D(M)$ is the curve attached to an Eichler order of level $M$ in the indefinite
+quaternion algebra over $\Q$ of discriminant $D$; it is a smooth projective curve over $\Q$ without cusps. By the Jacquet-Langlands correspondence, in Ribet's form \cite{Ribet90}, its Jacobian
+$J_0^D(M)$ is isogenous over $\Q$, compatibly with the Hecke operators $T_p$, $p\nmid DM$, to the $D$-new quotient of $J_0(DM)$. For $E$ of conductor $N=DM$ with $D\,\|\,N$ there is an optimal
+parametrisation $\varphi_{E,D}\colon X_0^D(M)\to E$, defined through the Jacobian (a base point being chosen; the degree does not depend on it); its degree is written $\delta_D$.
+\end{definition}
+
+\begin{theorem}[Ribet and Takahashi; stated]\label{thm:moddeg:ribet-takahashi}
+Let $E$ be optimal and semistable of conductor $N=DM$ as in \Cref{def:moddeg:shimura-curve}, and let $n_q=v_q(\Delta_E)=\#\Phig_q$ for $q\mid D$. Then for every prime $\ell$ with $E[\ell]$ irreducible (and
+under the further conditions of \cite{RibetTakahashi97,Takahashi01})
+\[
+v_\ell(\degphi)=v_\ell(\delta_D)+\sum_{q\mid D}v_\ell(n_q).
+\]
+In particular $v_\ell(\degphi)\ge\sum_{q\mid D}v_\ell(n_q)=\sum_{q\mid D}t_\ell(E,q)$.
+\end{theorem}
+
+We do not prove this; see \cite{RibetTakahashi97} for $D=pq$ and \cite{Takahashi01} in general; Pasten \cite{Pasten} controls the contribution of the primes where $E[\ell]$ is reducible. The
+statement follows the paper's summary in Section 1.5 (``compared $\degphi$ with the degree of a parametrisation by a Shimura curve and found the product of the $n_q$ over the primes of the
+quaternion discriminant, up to primes where $E[\ell]$ is reducible''); whether the sources state it with the geometric component groups $n_q$ or the Tamagawa numbers $c_q$ (they differ at
+nonsplit primes), and with which further excluded primes, was not checked. The idea of the proof: Ribet's exact sequence relating the character groups of the tori of $J_0(N)$ at $q$ and of
+$J_0^D(M)$ at another prime, with the component groups as cokernels of the monodromy pairings. The last inequality is the multiplicative part of (eq:main) at the primes of $D$; the paper's
+Theorem thm:main contains it for every multiplicative prime, with $t_\ell(E,q)=v_\ell(n_q)$ (Lemma lem:tamagawa-exp of the paper).
+
+\begin{conjecture}[Watkins]\label{conj:moddeg:watkins}
+For every optimal $E/\Q$, $2^{\rank E(\Q)}\mid\degphi$.
+\end{conjecture}
+
+Data: all $38{,}042$ optimal curves of conductor below $10{,}000$ satisfy it (\texttt{degphi} and \texttt{allcurves} \cite{ecdata}); for instance \curve{37a1}, \curve{99a1}, \curve{121b1}, \curve{539c1}, \curve{726a1}
+have rank $1$ and degrees $2$, $4$, $4$, $288$, $144$. The conjecture is due to Watkins \cite{Watkins02}; partial results are in \cite{Dummigan06,CalegariEmerton09,Yazdani11,CaroPasten22,HatleyKundu,BKP}, which the
+paper cites without statements, and which this book does not state either.
+
+\begin{theorem}[Calegari and Emerton; stated]\label{thm:moddeg:calegari-emerton}
+Let $E/\Q$ be optimal of odd modular degree. Then $N$ has at most two odd prime factors, $E$ has even analytic rank, and either (a) $E$ has a rational point of order $2$, or (b) $N$ is prime, $E$
+is supersingular at $2$ and $E(\R)$ is connected, or (c) $E$ has complex multiplication and $N\in\{27,32,49,243\}$.
+\end{theorem}
+
+We do not prove this. The statement is the one of Section sec:two of the revised paper: ``a curve of odd modular degree has at most two odd bad primes and even analytic rank, and either it has a
+rational $2$-torsion point, or its conductor is prime, it is supersingular at $2$ and $E(\R)$ is connected, or it has complex multiplication and $N\in\{27,32,49,243\}$'', from
+\cite{CalegariEmerton09} (as Theorem 1.1 of the arXiv version; the published numbering was not checked). Data (\texttt{degphi}, \texttt{allcurves}, and PARI for $a_2$, the discriminant and $j$): $103$
+optimal curves of conductor below $10{,}000$ have odd modular degree, and all satisfy the theorem; $55$ have a rational point of order $2$, $46$ have prime conductor, no rational point of order $2$,
+$a_2$ even and negative discriminant, and two, \curve{27a1} ($\degphi=1$) and \curve{243b1} ($\degphi=9$), both with $j=0$ and torsion $\Z/3$, are covered only by (c). The odd-degree optimal curves of
+conductor below $100$ are \curve{11a1}, \curve{14a1}, \curve{15a1}, \curve{17a1}, \curve{19a1}, \curve{20a1}, \curve{21a1}, \curve{24a1}, \curve{27a1}, \curve{32a1}, \curve{33a1}, \curve{36a1}, \curve{46a1}, \curve{49a1},
+\curve{52a1}, \curve{57b1}, \curve{67a1}, \curve{73a1}, \curve{89b1}. The version of 10 October 2026 omitted case (c) and the conditions in (b); \curve{27a1} and \curve{243b1} were counterexamples to that
+paraphrase.
+
+\begin{remark}[computing the modular degree]\label{rem:moddeg:computing-the-degree}
+Three methods. (a) Zagier's \cite{Zagier85}: compute $\varphi_{E*}$ on $H_1(X_0(N),\Z)$ from modular symbols and read $\degphi$ off the index of \Cref{prop:moddeg:degree-descriptions}(iv), the cup product
+on $\varphi_E^*H^1(E,\Z)$ having ideal of values $\degphi\Z$ (\cite[Chapter II]{Cremona97}). (b) Watkins's \cite{Watkins02}: compute $\langle f,f\rangle$ from the special value of the symmetric square $L$-function
+with the bad Euler factors and apply \Cref{thm:moddeg:zagier-watkins} with $c_E=1$; PARI's \texttt{ellmoddegree} implements this, and, as \Cref{ex:moddeg:zw-numerics} shows for \curve{11a3}, returns
+$\deg\varphi/c_\varphi^2$ (here $1/5$) when applied to a non-optimal curve. (c) Cremona's comparison of the period lattices of the curves of a class with the lattice of $\varphi^*$ certifies optimality
+(\Cref{conv:moddeg:cremona-optimal}). The paper's appendix: ``The function \texttt{ellmoddegree} needs about $32$ MB of stack with PARI 2.17 for conductors in the thousands''. \Cref{ch:computation}
+has the sessions.
+\end{remark}
+
+\begin{paperlink}\label{pl:moddeg:two}
+Section 1 of the paper: ``The modular degree is computable \cite{Cremona97,Watkins02}'' is \Cref{rem:moddeg:computing-the-degree}; Section sec:two quotes Watkins's conjecture
+(\Cref{conj:moddeg:watkins}) and the theorem of Calegari and Emerton (\Cref{thm:moddeg:calegari-emerton}); Section 1.5 summarises Ribet and Takahashi (\Cref{thm:moddeg:ribet-takahashi}).
+\end{paperlink}
+
+\section{Exercises}\label{sec:moddeg:exercises}
+
+\begin{exercise}\label{ex:moddeg:ex-cusps}
+List the cusps of $X_0(50)$ and of $X_0(72)$ by denominator, with their fields of definition, and find all $N\le30$ for which some cusp of $X_0(N)$ is not rational.
+\emph{Answer.} $X_0(50)$: $12$ cusps; four each of denominators $5$ and $10$, conjugate over $\Q(\zeta_5)$, the other four rational. $X_0(72)$: $16$ cusps; two each of denominators $3$, $6$, $12$, $24$, conjugate
+over $\Q(\sqrt{-3})$, the other eight rational. $N=9,16,18,25,27$ (\Cref{prop:moddeg:cusps-over-q}(iii)).
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-u2}
+Let $f=f_{11}$ and $V=\operatorname{span}\{f(z),f(2z)\}=S_2(\Gamma_0(22))$. (a) Using $a_2(f)=-2$ and $f|_2W_{11}=-f$, show that in the basis $f(z)$, $f(2z)$ the matrices (columns are images) of $U_2$ and
+$w_{22}$ are $U=\sm{-2}1{-2}0$ and $W=\sm0{-1/2}{-2}0$. (b) Show that $WUW=\sm0{-1/2}4{-2}$ is not of the form $a+bU$; deduce that $\T=\Z[U_2]$ at level $22$ and that $w_{22}\T w_{22}\ne\T$
+(\Cref{prop:moddeg:hecke-on-j0}(iii)). (c) With $A=\langle f,f\rangle_{\Gamma_0(22)}$, the Petersson Gram matrix in this basis is $G=\sm A{-A/3}{-A/3}{A/4}$ (check the off-diagonal entry with PARI's
+\texttt{mfpetersson}). Verify $W^{\mathsf T}GW=G$ and $G^{-1}U^{\mathsf T}G=WUW$: the Petersson adjoint of $U_2$ is $w_{22}U_2w_{22}$, and $U_2$ is not self-adjoint.
+\emph{Hint.} $U_2f=\sum a_{2n}q^n=a_2f-2f(2z)$ and $U_2(f(2z))=f$; $W_{22}=W_{11}\,\mathrm{diag}(2,1)$ and $\mathrm{diag}(2,1)W_{22}=2W_{11}$. For (b), $a+bU$ has entries $(a-2b,b;-2b,a)$.
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-counts}
+Using \Cref{thm:moddeg:eichler-shimura}(iii) and $X_0(11)=\curve{11a1}$, predict $\#\curve{11a1}(\Fp)$ for $p=2,3,5,7,13$ from $f_{11}=q-2q^2-q^3+2q^4+q^5+2q^6-2q^7-2q^9-2q^{10}+q^{11}-2q^{12}+4q^{13}+\cdots$, and
+check by counting points on $y^2+y=x^3-x^2-10x-20$. \emph{Answer.} $5,5,5,10,10$.
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-37-lvalue}
+Let $\varphi\colon X_0(37)\to X_0(37)/w_{37}=\curve{37a1}$ be the optimal parametrisation (\Cref{ex:moddeg:37}). (a) Show $\varphi\circ w_{37}=\varphi$ and deduce from \Cref{lem:moddeg:wn-on-mf} that
+$\varepsilon_{37}(f_{37a})=+1$ and $\varphi(0)=O$. (b) Deduce from \Cref{prop:moddeg:image-of-zero} that $c_EL(\curve{37a1},1)\in\Z\Omega$. (c) The functional equation of $L(f,s)$ has sign $-\varepsilon_N(f)$
+(\Cref{ch:hecke,ch:lfunctions}); conclude $L(\curve{37a1},1)=0$. \emph{Hint for (a).} $w_{37}(\infty)=0$, and $\varphi\circ w_{37}=\varepsilon\varphi+\varphi(0)$ with $\varphi\circ w_{37}=\varphi$ forces $\varepsilon=1$ and
+$\varphi(0)=O$ (compare the pullbacks of $\omega_E$).
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-11a-degrees}
+In the class \curve{11a} every isogeny $\curve{11a1}\to\curve{11a2}$ is $\psi_5\circ[m]$ for the cyclic $5$-isogeny $\psi_5$ and an integer $m\ne0$ (the curves have no complex multiplication), and likewise for
+\curve{11a3}. (a) Show that the degrees of the modular parametrisations of \curve{11a2} and of \curve{11a3} are the numbers $5m^2$. (b) Show that a degree-$d$ isogeny $\psi\colon E\to E'$ satisfies
+$u_\psi^2\vol(\Lambda_E)=d\vol(\Lambda_{E'})$, and use the volumes of \Cref{ex:moddeg:zw-numerics} to find $u_{\psi_5}=\pm1$ for \curve{11a2} and $\pm5$ for \curve{11a3}. (c) Deduce $c_\varphi=m$, respectively $5m$,
+for the parametrisation of degree $5m^2$, in agreement with \Cref{thm:moddeg:zagier-watkins}. \emph{Hint for (b).} Integrate $\frac i2\psi^*(\omega_{E'}\wedge\bar\omega_{E'})$ over $E$.
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-manin-class}
+Let $E$ be optimal, $\ell$ a prime with $E[\ell]$ irreducible, and $\varphi'$ a modular parametrisation of minimal degree of a curve $E'$ of the class. Show that $v_\ell(c_{\varphi'})=v_\ell(c_E)$.
+\emph{Hint.} $c_{\varphi'}=c_Eu_\psi$ with $\psi$ of degree prime to $\ell$ (\Cref{prop:moddeg:valuation-in-class}), and $u_\psi u_{\hat\psi}=\deg\psi$ with both factors integers.
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-121a1}
+Recompute $\deg\varphi_{\curve{121a1}}=6$ from \Cref{thm:moddeg:zagier-watkins}: take the newform of \curve{121a} in PARI (\texttt{mfeigenbasis(mfinit([121,2],0))}), compute \texttt{mfpetersson} of its symbol,
+multiply by $\mu(121)=132$, and divide $4\pi^2$ times the result by $\vol(\Lambda_E)=\abs{\operatorname{Im}(\bar\omega_1\omega_2)}$ for \texttt{E.omega}. \emph{Answer.} $4\pi^2\cdot0.4282393600\ldots/2.8177020481\ldots=6.0000\ldots$
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-88}
+The optimal curve \curve{88a1} $=[0,0,0,-4,4]$ has $\degphi=8$, and the algorithm of \Cref{ex:moddeg:99a1-and-726a1} gives $r_E=16$. At which prime do the two differ, and why does this not contradict
+\Cref{thm:moddeg:ars}? Show that $H^1(X_0(88),\Z_2)_{\mf m}$ is not free over $\T_{\mf m}$ for $\mf m=\mf m_{f,2}$. \emph{Answer.} At $2$, with $2^2\mid88$; freeness would give equality in
+\Cref{cor:moddeg:ars-divisibility}.
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-md}
+Let $x=[(0)-(\infty)]\in J_0(N)$. (a) For $N=11$, $T_2$ acts on $J_0(11)$ as $a_2=-2$; deduce $5x=0$ from $T_2x=3x$. (b) For $N=37$, the newforms have $(a_2,a_3)=(-2,-3)$ and $(0,1)$. Show $(T_2+2)T_2=0$ and
+$(T_3+3)(T_3-1)=0$ on $J_0(37)$, and deduce $15x=21x=0$, so $3x=0$. Compare with \Cref{thm:moddeg:mazur-prime-level}. \emph{Hint.} $\T$ acts faithfully on $J_0(N)$ (\Cref{prop:moddeg:hecke-on-j0}).
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-up-cusp}
+Let $N=p$ be prime. Show $(U_p)_*(\infty)=p(\infty)$ and $(U_p)_*(0)=(0)+(p-1)(\infty)$, so that $(U_p-1)_*x=0$ for $x=[(0)-(\infty)]$. Using $U_p=-w_p$ on $S_2(\Gamma_0(p))$ (all forms are new, and $a_p=-\varepsilon_p$ for a
+newform of prime level, \Cref{ch:hecke}), relate this to the generator $1+w_p$ of Mazur's Eisenstein ideal. \emph{Hint.} The representatives are $\sm1j0p$, $0\le j<p$, and $j/p\sim\infty$ for $1\le j<p$ when $N=p$.
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-37-lattice}
+Let $\varphi\colon X_0(37)\to E=\curve{37a1}$ be the quotient by $w_{37}$. Show that $\varphi^*H^1(E,\Z)$ is the $(+1)$-eigenlattice of $w_{37}^*$ on $H^1(X_0(37),\Z)$, that it equals $H^1(X_0(37),\Z)[I_f]$ for $f=f_{37a}$,
+and that the cup product on it has ideal of values $2\Z$ and Gram determinant $4$. \emph{Hint.} $\varphi\circ w_{37}=\varphi$; the eigenlattice is saturated of rank $2$; use \Cref{ex:moddeg:37} and
+\Cref{prop:moddeg:degree-descriptions}(iv).
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-j037}
+With $E=\curve{37a1}$, $A=\varphi_E^*(E)$ and $B=\ker\varphi_{E*}$ in $J_0(37)$: show that $B$ is an elliptic curve on which $\T$ acts through the eigencharacter of $f_{37b}$, that $A\cap B\simeq(\Z/2)^2$, and that
+addition $A\times B\to J_0(37)$ is an isogeny with kernel $\simeq(\Z/2)^2$. Deduce that $B$ lies in the class \curve{37b}. \emph{Hint.} \Cref{prop:moddeg:degree-descriptions}(iii); the Lie algebra of $B$ is the
+annihilator of $\C f_{37a}$; \Cref{thm:moddeg:eichler-shimura}(ii) on $T_\ell B$.
+\end{exercise}
+
+\begin{exercise}\label{ex:moddeg:ex-level37-hecke}
+At level $37$ show that $\T=\Z[T_2]\simeq\Z[x]/(x(x+2))$: check $a_n(f_{37a})\equiv a_n(f_{37b})\pmod2$ for $n\le6$ (Sturm's bound) to get $\T\subseteq\{(a,b)\in\Z^2:a\equiv b\bmod2\}$ under
+$t\mapsto(\phi_{37a}(t),\phi_{37b}(t))$, and show that $Z[T_2]$ is that whole ring. Deduce $\eta_{f_{37a}}=2\Z$ and $r_{\curve{37a1}}=2=\degphi$. \emph{Hint.} $T_2\mapsto(-2,0)$; $\Ann(\ker\phi_{37a})=\Z T_2$.
+\end{exercise}
+
+\begin{exercise}[harder]\label{ex:moddeg:ex-shimura}
+Let $\pi$ be the forgetful map $X_1(N)\to X_0(N)$, of degree $\#(\Z/N)^\times/\{\pm1\}$ for $N\ge3$. (a) Show $\langle\pi^*x,\pi^*y\rangle_{X_1(N)}=\deg\pi\,\langle x,y\rangle_{X_0(N)}$, and that
+$\pi^*H^1(X_0(N),\Z)$ is saturated iff $\mathcal S_N=0$. (b) For $N=11$, both curves have genus $1$, $\deg\pi=5$ and $\#\mathcal S_{11}=5$ (\Cref{thm:moddeg:mazur-prime-level}); show that the cup product on the
+saturation of $\pi^*H^1(X_0(11),\Z)$ is unimodular, although on $\pi^*H^1(X_0(11),\Z)$ it has values $5\Z$. (c) Explain why this is the content of point (1) of \Cref{rem:moddeg:dfg-normalisation}: pulled back to a
+$\Gamma_1$-type curve, the ideal of values on the saturated lattice is not the ideal of values on $X_0(N)$, and the difference is governed by the Shimura subgroup, which is Eisenstein.
+\emph{Hint.} \Cref{ch:curves} (the proposition on the degree and the cup product, parts (i), (iii), (iv)) and \Cref{prop:moddeg:shimura-subgroup}(i).
+\end{exercise}
+
+\section{Notes and references}\label{sec:moddeg:notes}
+
+\emph{Modular curves over $\Q$ and Hecke correspondences.} The $\Q$-structure of $X_0(N)$, the Hecke correspondences and the congruence relation are in Shimura's book \cite{Shimura71} (Chapters 6
+and 7; we cite Sections 6.7, 7.2, 7.4 and 7.5 and Theorem 7.14 from memory, as unverified pointers), in Diamond and Shurman \cite{DiamondShurman} (Sections 3.8, 5.2, 6.1 to 6.6, 7.7, 7.9, 8.2 to 8.7, again
+unverified pointers), and in the survey of Diamond and Im \cite{DiamondIm} (Sections 8 to 10). The integral models are Deligne and Rapoport's \cite{DeligneRapoport73} and Katz and Mazur's \cite{KatzMazur85}. The
+cusps over $\Q$ are in Ogg \cite{Ogg73} and Stein's book \cite{Stein}. The rational points of $Y_0(N)$ are Mazur's \cite{Mazur78} and Kenku's \cite{Kenku79,Kenku80a,Kenku80b,Kenku81}, with Ligozat
+\cite{Ligozat75} for $N=27$. The identity $T_n^t=w_NT_nw_N$ (\Cref{thm:moddeg:transpose}) is classical; the paper cites \cite[\S\S1.6.1, 1.8.2]{DFG04} and \cite[\S4.4]{DDT} for it; the proof here is
+the matrix computation $W_N\,\mathrm{diag}(1,p)\,W_N^{-1}=\mathrm{diag}(p,1)$ combined with \Cref{ch:curves}'s theorem that the adjoint of a correspondence is its transpose. \Cref{ex:moddeg:ex-u2} shows that
+$w_N\T w_N$ need not be $\T$; the book therefore treats $t\mapsto t^t$ as an isomorphism onto another ring of operators, not as an involution of $\T$.
+
+\emph{Optimal curves and the modular degree.} The factorisation \Cref{thm:moddeg:optimal} and Cremona's conventions are in \cite[Chapter II]{Cremona97}; Stevens \cite{Stevens89} discusses optimal curves
+for $X_1(N)$ as well. The proof of \Cref{thm:moddeg:optimal}(i) given here uses only the congruence relation, modularity and strong multiplicity one. Cremona's \texttt{ecdata} files \cite{ecdata} were
+used for every curve-level number in the chapter (conductor below $10{,}000$), and every modular degree printed was recomputed with PARI's \texttt{ellmoddegree} \cite{PARI}.
+
+\emph{The Manin constant and Zagier-Watkins.} Zagier \cite{Zagier85} computes $\degphi$ from modular symbols and compares it with congruence primes; Watkins \cite{Watkins02} computes it from the symmetric
+square $L$-value; Rankin and Shimura \cite{Rankin39,Shimura76} give $\langle f,f\rangle$ (\Cref{ch:lfunctions}). The proof of \Cref{thm:moddeg:zagier-watkins} given here is direct, so the normalisations of
+\cite{Zagier85,Watkins02} were not compared with the book's. The Manin constant: Manin's conjecture; Edixhoven \cite{Edixhoven91}; Mazur \cite{Mazur78}; Abbes and Ullmo \cite{AU96}; Agashe, Ribet and Stein
+\cite{ARS06}; \v Cesnavi\v cius \cite{Cesnavicius18}; \v Cesnavi\v cius, Neururer and Saha \cite{CNS}. The statements in \Cref{thm:moddeg:manin-known}(iii), (iv) are recalled, not checked against these
+texts.
+
+\emph{Congruence numbers.} Ribet \cite{Ribet83} introduced congruence primes and proved $\degphi\mid r_E$ in an early form; Agashe, Ribet and Stein \cite{ARS12} prove \Cref{thm:moddeg:ars} (Theorem 2.2 and
+Table 1 as the paper cites them; numbers not verified) and discuss the $abc$ connection (Section 2, with \cite{Frey,MaiMurty}; see also \cite{Murty99}). The congruence numbers of
+\Cref{ex:moddeg:99a1-and-726a1} were computed for this book by the algorithm described there; they agree with the paper's values for \curve{99a1}, \curve{726a1} and \curve{539d1}.
+
+\emph{The congruence ideal of Diamond, Flach and Guo.} \Cref{prop:moddeg:mf-is-pullback,lem:moddeg:wn-on-mf,thm:moddeg:degree-is-eta} are the book's version of the paper's Proposition prop:pullback; the
+argument is the projection formula, as in \cite{Zagier85} and \cite[Section 3]{ARS12}. The objects of \cite{DFG04} (Sections 1.5.3, 1.6.1, 1.6.2, 1.7.3, equations (13), (14), as the paper cites them) are
+compared with $H^1(X_0(N),\Zl)$ in \Cref{ch:congruence}; \Cref{rem:moddeg:dfg-normalisation} lists what that comparison involves. Lemma lem:ddt417 is \cite[Lemma 4.17]{DDT}, inequality half.
+
+\emph{Multiplicity one, Gorenstein, Eisenstein.} Mazur \cite{Mazur77} (Chapter II) for prime level and the Eisenstein ideal; Ribet \cite{Ribet90} (Section 5, unverified) for multiplicity one in general;
+Ribet and Stein \cite{RibetStein} (Theorem 3.5 as the paper cites it) for $J_1(N)$; Tilouine \cite{Tilouine97}, Wiles \cite[Chapter 2]{Wiles95} and \cite[Section 4]{DDT} for the Gorenstein property; Ling and Oesterl\'e
+\cite{LingOesterle} and Ribet \cite{Ribet88} for the Shimura subgroup. The proof of \Cref{thm:moddeg:gorenstein} from multiplicity one is \Cref{ch:modules}'s freeness criterion.
+
+\emph{Modularity, Shimura curves, the prime $2$.} Modularity: \cite{Wiles95,TaylorWiles,BCDT}, with Carayol \cite{Carayol86} for the level. Shimura curves and the degree comparison: \cite{Ribet90,RibetTakahashi97,Takahashi01,Pasten}; the form of \Cref{thm:moddeg:ribet-takahashi} follows the paper's summary. Watkins's conjecture \cite{Watkins02} and the results of \cite{Dummigan06,CalegariEmerton09,Yazdani11,CaroPasten22,HatleyKundu,BKP}; \Cref{thm:moddeg:calegari-emerton} is quoted from the revised paper and the arXiv version of \cite{CalegariEmerton09}. The data checks of
+\Cref{conj:moddeg:watkins,thm:moddeg:calegari-emerton} use all $38{,}042$ optimal curves of conductor below $10{,}000$.
