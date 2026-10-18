@@ -1630,7 +1630,8 @@ $\rho\bmod\ell^t$ is unramified at $q$ iff $\ell^t\mid n_q$; the twist by the un
 \begin{remark}[Ribet and Takahashi]\label{rem:modgalrep:ribet-takahashi}
 Ribet and Takahashi \cite{RibetTakahashi97,Takahashi01} compare $\degphi$ with the degree of a parametrisation of $E$ by the Shimura curve attached to an indefinite
 quaternion algebra of discriminant $N^-\,\|\,N$ ($N^-$ a product of an even number of primes of multiplicative reduction), and find the product of the $n_q$ over $q\mid N^-$,
-up to primes $\ell$ at which $E[\ell]$ is reducible; Pasten \cite{Pasten} controls that error term. The precise statement is in \Cref{ch:moddeg}.
+up to primes $\ell$ at which $E[\ell]$ is reducible; Pasten \cite{Pasten} controls that error term. \Cref{ch:moddeg} records the comparison in the form summarised by the paper and by Pasten, with its hypotheses and theorem
+numbers marked as not verified against the original sources.
 \end{remark}
 
 \begin{theorem}[Pollack and Weston]\label{thm:modgalrep:pollack-weston}
@@ -1747,7 +1748,7 @@ $a-b\in r\Z$ on $\T$, so $m=r$.
 
 \begin{exercise}[the congruence number of \curve{196a1}]\label{exer:modgalrep:196a1}
 (machine) \curve{196a1} is optimal, of conductor $196=2^2\cdot7^2$, with types $\kod{IV}$ at $2$ and $\kod{II}$ at $7$, and $\deg\varphi=6$. Adapt the code of the Notes to compute
-$r=[S_2(\Gamma_0(196);\Z):\Z f\oplus L]$ (with $T_3$ or $T_5$ in place of $T_5$ if needed: $a_p(f)$ must be a simple eigenvalue). At which primes $p$ with $p^2\mid N$ do $v_p(r)$
+$r=[S_2(\Gamma_0(196);\Z):\Z f\oplus L]$ (the Notes use $T_5$, which works here, and $T_3$ gives the same index; what matters is that $a_p(f)$ is a simple eigenvalue of $T_p$). At which primes $p$ with $p^2\mid N$ do $v_p(r)$
 and $v_p(\deg\varphi)$ differ? \emph{Answer.} $r=42=7\cdot6$ (the same with $T_3$ and $T_5$); $v_7(42)=1\ne0=v_7(6)$, while $v_2(42)=1=v_2(6)$: the hypothesis $p^2\nmid N$ of
 \Cref{thm:modgalrep:ars} allows a difference at $p$ but does not force one.
 \end{exercise}
@@ -1768,7 +1769,8 @@ $\deg\varphi=6$.
 In cases (b) and (c) of the proof of Theorem thm:qual, give a second proof of $h\ne f$ by comparing the types at $q$ of $h=g^\chi$ and of $f$ (the type is determined by the
 newform, \Cref{thm:modgalrep:carayol}(i)). Then show that this argument cannot work for type $\kod{I}_0^*$, and compare with \Cref{rem:modgalrep:why-these-types}(ii).
 \emph{Answer.} In case (b), $q\,\|\,M$, so $g$ has type (St) at $q$ and $h$ has type (RSt) (\Cref{prop:modgalrep:twist-conductor}), while $f$ has type (RPS) or (SC)
-(\Cref{prop:modgalrep:kodaira-dictionary}). In case (c), $q\nmid M$, so $g$ has type (U) and $h$ type (RPS), while $f$ has type (RSt). For type $\kod{I}_0^*$, $f$ has type (RPS) with
+(\Cref{prop:modgalrep:kodaira-dictionary}). In case (c), $q\nmid M$, so $g$ has type (U) and $h$ type (RPS), while $f$ has type (RSt) ($f$ is the twist by $\chi$ of $f_{E'}$, of type (St), so of type (RSt) by
+\Cref{prop:modgalrep:twist-conductor}; this covers $q=3$, where the Kodaira dictionary is not stated). For type $\kod{I}_0^*$, $f$ has type (RPS) with
 characters $\chi_{q^*}$ times unramified ones, which is also the type of $g^\chi$ for every $g$ of type (U) at $q$; so the types cannot separate $h$ from $f$, and indeed $h=f$ can occur.
 \end{exercise}
 
