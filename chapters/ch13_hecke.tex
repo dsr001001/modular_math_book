@@ -20,8 +20,8 @@ operator, $\T=\T_N$ the full Hecke algebra (the $U_p$ included), $\T^{(N)}$ the 
 $\Sigma$-depleted form.
 
 \begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
-\item \textbf{Conventions.} The standing notation; the double coset operator $[\Gamma\alpha\Gamma]_kf=(\det\alpha)^{k/2-1}\sum_if|_k\alpha_i$ (equal to Diamond-Shurman's); $T_p$ at
-$p\mid N$ is written $U_p$, and the level is written as a superscript when two levels occur, $T_p^{(M)}h=U_p^{(Mp)}h+p^{k-1}h(pz)$; naive twists $f\otimes\chi$ and depletion
+\item \textbf{Conventions.} The standing notation; the double coset operator, normalised as
+$[\Gamma\alpha\Gamma]_kf=(\det\alpha)^{k/2-1}\sum_if|_k\alpha_i$, equal to Diamond-Shurman's; $T_p$ at $p\mid N$ is written $U_p$, and the level is written as a superscript when two levels occur, $T_p^{(M)}h=U_p^{(Mp)}h+p^{k-1}h(pz)$; naive twists $f\otimes\chi$ and depletion
 $f^\Sigma$. \Cref{conv:hecke:standing}, \Cref{conv:hecke:double-coset}, \Cref{conv:hecke:level}, \Cref{conv:hecke:twists}.
 \item \textbf{Double coset operators} (definition). For $\alpha\in\GL_2^+(\Q)$, $\Gamma\alpha\Gamma=\bigsqcup_{i=1}^r\Gamma\alpha_i$ with $r=[\Gamma:\Gamma\cap\alpha^{-1}\Gamma\alpha]$ finite, and
 $[\Gamma\alpha\Gamma]_k$ is well defined and preserves $M_k(N)$ and $S_k(N)$. \emph{(proved here)} \Cref{def:hecke:double-coset}, \Cref{prop:hecke:double-coset}.
@@ -29,6 +29,8 @@ $[\Gamma\alpha\Gamma]_k$ is well defined and preserves $M_k(N)$ and $S_k(N)$. \e
 $\Gamma\sm100p\Gamma=\bigsqcup_{j=0}^{p-1}\Gamma\sm1j0p$. $T_p=[\Gamma\sm100p\Gamma]_k$, written $U_p$ when $p\mid N$. \emph{(proved here)} \Cref{prop:hecke:coset-decomposition}.
 \item \textbf{$q$-expansions.} $a_n(T_pf)=a_{pn}(f)+p^{k-1}a_{n/p}(f)$ for $p\nmid N$ and $a_n(U_pf)=a_{pn}(f)$ for $p\mid N$, for all $n\ge0$. \emph{(proved here)}
 \Cref{prop:hecke:Tp-q-expansion}.
+\item \textbf{The operators $\mathcal U_p$, $V_p$.} On $q$-series $\mathcal U_pV_p=1$, $V_p\mathcal U_p$ is the projection onto the multiples of $p$, and the operators at different primes (and $V_d$ with
+$(d,p)=1$) commute. \emph{(proved here)} \Cref{lem:hecke:UV}.
 \item \textbf{The operators $T_n$.} With $T_{p^{r+1}}=T_pT_{p^r}-p^{k-1}T_{p^{r-1}}$ ($p\nmid N$), $T_{p^r}=U_p^r$ ($p\mid N$) and $T_n=\prod_{p^r\|n}T_{p^r}$: all $T_n$ commute;
 $T_mT_n=\sum_{d\mid(m,n),(d,N)=1}d^{k-1}T_{mn/d^2}$; $a_m(T_nf)=\sum_{d\mid(m,n),(d,N)=1}d^{k-1}a_{mn/d^2}(f)$, so $a_1(T_nf)=a_n(f)$; $\sum_rT_{p^r}X^r=(1-T_pX+p^{k-1}X^2)^{-1}$
 or $(1-U_pX)^{-1}$. \emph{(proved here)} \Cref{thm:hecke:Tn}.
@@ -74,7 +76,10 @@ the consequence proved here)} \Cref{thm:hecke:strong-multiplicity-one}.
 reference, with a sketch)}. \Cref{prop:hecke:newform-local}.
 \item \textbf{Galois conjugates.} The old and new subspaces are defined over $\Q$; conjugates of newforms are newforms; $K_f$ is totally real for a newform $f$. \emph{(proved
 here, given \Cref{thm:hecke:atkin-lehner})} \Cref{cor:hecke:galois-newforms}.
-\item \textbf{Dimensions.} $\dim S_k(N)=\sum_{M\mid N}\sigma_0(N/M)\dim S_k^{\mathrm{new}}(M)$ and $\dim S_k^{\mathrm{new}}(N)=\sum_{M\mid N}\beta(N/M)\dim S_k(M)$, $\beta=\mu*\mu$. \emph{(proved
+\item \textbf{Dimensions.} With $\beta=\mu*\mu$:
+\[
+\dim S_k(N)=\sum_{M\mid N}\sigma_0(N/M)\dim S_k^{\mathrm{new}}(M),\qquad\dim S_k^{\mathrm{new}}(N)=\sum_{M\mid N}\beta(N/M)\dim S_k(M).
+\] \emph{(proved
 here, given \Cref{thm:hecke:atkin-lehner})} \Cref{cor:hecke:dimensions}.
 \item \textbf{$U_p$ on oldforms.} For a newform $h$ of level $M$, on $V_{h,p,e}=\operatorname{span}\{h(p^jz):0\le j\le e\}$: $U_ph(p^jz)=h(p^{j-1}z)$, $U_ph=a_ph-p^{k-1}h(pz)$ ($p\nmid M$) or
 $a_ph$ ($p\mid M$); $h(p^ez)$ is cyclic; characteristic polynomial $X^{e-1}(X^2-a_pX+p^{k-1})$ or $X^e(X-a_p)$; eigenvectors: the stabilisations $h-\beta_ph(pz)$, $h-\alpha_ph(pz)$,
@@ -95,8 +100,8 @@ complement, $\T\otimes\Q=\Q\times\T''$ when $\pi$ is rational, $g^c\cap S_2(N;\Z
 \item \textbf{Local components.} $\T_\ell=\prod_{\mf m}\T_{\mf m}$; the pairing is perfect on each $e_{\mf m}S_2(N;\Zl)\times\T_{\mf m}$; a homomorphism $\phi\colon\T\to\mathcal O_\lambda$ factors
 through one $\T_{\mf m}$, the other factors lie in $\ker\phi$, and $\eta(\phi)$ is computed in $\T_{\mf m}$; $e_{\mf m}$ preserves integrality, $\T$-stable subspaces and
 congruences. \emph{(proved here)} \Cref{prop:hecke:local-components}.
-\item \textbf{Congruences.} For normalised eigenforms of $\T_N$: congruence at all $n$ $\iff$ at all primes $\iff$ $\phi_f\equiv\phi_g$ on $\T$ $\iff$ same maximal ideal; congruence at
-the primes outside $\Sigma$ gives $f^\Sigma\equiv g^\Sigma$ at all $n$. \emph{(proved here)} \Cref{prop:hecke:congruences}.
+\item \textbf{Congruences.} For normalised eigenforms of $\T_N$: congruence at all $n$ $\iff$ at all primes $\iff$ $\phi_f\equiv\phi_g$ on $\T$; this implies, and when $\T/\mf m_{f,\lambda}=\F_\ell$ is
+equivalent to, $\mf m_{f,\lambda}=\mf m_{g,\lambda}$; for newforms, congruence at the primes outside $\Sigma$ gives $f^\Sigma\equiv g^\Sigma$ at all $n$. \emph{(proved here)} \Cref{prop:hecke:congruences}.
 \item \textbf{The twist operator.} For primitive $\chi$ of conductor $r$: $f\otimes\chi=\mathfrak g(\bar\chi)^{-1}\sum_u\bar\chi(u)f|_k\sm1{u/r}01$ lies in $S_k(\Gamma_0(\lcm(M,r^2)),\chi^2)$; for
 quadratic $\chi$ it preserves integrality, intertwines $T_p$ with $\chi(p)T_p$ ($p\nmid r$), kills $U_p$ for $p\mid r$, and $(f\otimes\chi)\otimes\chi=f^{\{p\mid r\}}$; the
 paper's $\iota=\iota_S$. \emph{(proved here)} \Cref{prop:hecke:twist-operator}.
@@ -413,7 +418,7 @@ the $a_j(f)$. Since $S_2(N;\Z)$ spans $S_2(N)$, an operator that kills $S_2(N;\Z
 
 \begin{paperlink}\label{pl:hecke:span}
 Lemma lem:crit concludes from ``$a_n(g)\equiv a_n(f)\pmod\lambda$ for every $n\ge1$'' that ``$\phi_g\equiv\phi_f\pmod\lambda$ on all of $\T$''. This is \Cref{prop:hecke:hecke-algebra}(ii): every
-$t\in\T$ is $\sum c_nT_n$ with $c_n\in\Z$, so $\phi_g(t)-\phi_f(t)=\sum c_n(a_n(g)-a_n(f))\in\lambda$. The same fact makes the identity $t^{\mathsf T}=w^*tw^*$ of \Cref{ch:curves} hold for
+$t\in\T$ is $\sum c_nT_n$ with $c_n\in\Z$, so $\phi_g(t)-\phi_f(t)=\sum c_n(a_n(g)-a_n(f))\in\lambda$. The same fact makes the identity $t^t=w^*tw^*$ of \Cref{ch:curves} hold for
 all $t\in\T$ once it holds for the $T_n$.
 \end{paperlink}
 
@@ -506,8 +511,8 @@ and $\langle g,T_n\rangle=a_1(T_ng)=a_n(g)$ by \Cref{thm:hecke:Tn}(iii).
 then for every $g$ and $n$, $a_n(tg)=a_1(T_ntg)=\langle T_ng,t\rangle=0$, so $tg=0$; as $S$ spans $S_2(N)$, $t=0$. \emph{Ranks.} Tensoring with $\Q$, the two injections give
 $\dim_\Q S_\Q\le\dim_\Q\T_\Q$ and $\dim_\Q\T_\Q\le\dim_\Q S_\Q$, where $S_\Q=S\otimes\Q$ has dimension $d$; so $\T$ has rank $d$ and both maps become isomorphisms over $\Q$.
 \emph{Surjectivity on the left.} Let $\psi\colon\T\to\Z$ be additive. By the isomorphism over $\Q$ there is $g\in S_\Q$, a form with rational coefficients, with $a_1(tg)=\psi(t)$ for all
-$t$. Then $a_n(g)=\psi(T_n)\in\Z$ for all $n$, so $g$ has integer coefficients: $g\in S$. Hence $S\to\Hom(\T,\Z)$ is an isomorphism. \emph{Surjectivity on the right.} $\T$ is free of
-rank $d$ (it is a subgroup of the free group $\Mat_d(\Z)$, \Cref{prop:hecke:hecke-algebra}(iii), of rank $d$), so the composite $\T\to\Hom(S,\Z)\to\Hom(\Hom(\T,\Z),\Z)$, the second map
+$t$. Then $a_n(g)=\psi(T_n)\in\Z$ for all $n$, so $g$ has integer coefficients: $g\in S$. Hence $S\to\Hom(\T,\Z)$ is an isomorphism. \emph{Surjectivity on the right.} $\T$ is free (a subgroup of the free group $\Mat_d(\Z)$,
+\Cref{prop:hecke:hecke-algebra}(iii)) of rank $d$, so the composite $\T\to\Hom(S,\Z)\to\Hom(\Hom(\T,\Z),\Z)$, the second map
 being the dual of the isomorphism just proved, is the canonical isomorphism of a free module of finite rank with its double dual (\Cref{ch:modules}); hence the first
 map is an isomorphism.
 
@@ -589,7 +594,8 @@ has matrix $M^{\mathsf T}$, so its cokernel also has order $\abs{\det M}$. Under
 \end{proof}
 
 The hypotheses of (iv) hold in Lemma lem:crit: $\T/I\simeq\Z$ for $I=\ker\phi_f$, and $J=\Ann_\T(f^\perp)$ is the kernel of the action on $f^\perp$, so $\T/J$ is a subring of $\End(f^\perp)$,
-torsion-free; $I\cap J=0$ and the finiteness of $\T/(I+J)$ come from \Cref{thm:hecke:newform-splitting}. Without torsion-freeness the statement can fail (\Cref{ch:modules}).
+torsion-free; $I\cap J=0$ and the finiteness of $\T/(I+J)$ come from \Cref{thm:hecke:newform-splitting}. Torsion-freeness is what makes $\T/I\times\T/J$ free, so that the
+determinant argument applies.
 
 \begin{definition}[congruence ideal and congruence number]\label{def:hecke:congruence-ideal}
 Let $\mathcal O$ be $\Z$, $\Z_{(\ell)}$, $\Zl$ or the completion $\mathcal O_\lambda$ of the ring of integers of a number field, and $\phi\colon\T_{\mathcal O}\to\mathcal O$ a surjective ring homomorphism. Its
@@ -617,8 +623,8 @@ when the same arguments apply. Computed values of $r_f$ are in \Cref{ex:hecke:co
 
 \begin{paperlink}\label{pl:hecke:crit-pairing}
 The proof of Lemma lem:crit uses, in this order: the perfect pairing (\Cref{thm:hecke:perfect-pairing}); ``under it the forms killed by $I$ are $\Z f$'' (\Cref{cor:hecke:pairing-consequences}(iii));
-``the forms killed by $J$ are $L=f^\perp\cap S_2(\Gamma_0(N);\Z)$'' (\Cref{cor:hecke:pairing-consequences}(ii) with $J=\Ann_\T(f^\perp)$: a form killed by $J$ lies in the sum of the
-generalised eigenspaces on which $J$ acts by $0$, which by \Cref{thm:hecke:newform-splitting} is $f^\perp$, and conversely $J$ kills $f^\perp$); ``Dualising the inclusion $\T\subset\T/I\times\T/J$
+``the forms killed by $J$ are $L=f^\perp\cap S_2(\Gamma_0(N);\Z)$'' (with $J=\Ann_\T(f^\perp)$: $J$ kills $L$ by definition, and a form killed by
+$J$ is killed by the idempotent $e\in J\otimes\Q$ of \Cref{thm:hecke:newform-splitting}(ii), so lies in $\ker e=f^\perp$); ``Dualising the inclusion $\T\subset\T/I\times\T/J$
 ... shows that $\Z f\oplus L$ has index $r'$'' (\Cref{cor:hecke:pairing-consequences}(iv)); and ``Every step holds verbatim over $\Z_\ell$, the pairing being perfect after tensoring with
 $\Z_\ell$'' (\Cref{thm:hecke:perfect-pairing}(iii)). The full proof is in \Cref{ch:modgalrep}.
 \end{paperlink}
@@ -872,8 +878,10 @@ $\tau(a_n(f))=a_n(f^\sigma)$ is real by (ii) and \Cref{prop:hecke:newform-local}
 \end{proof}
 
 \begin{corollary}[dimensions]\label{cor:hecke:dimensions}
-$\dim S_k(N)=\sum_{M\mid N}\sigma_0(N/M)\dim S_k^{\mathrm{new}}(M)$, and $\dim S_k^{\mathrm{new}}(N)=\sum_{M\mid N}\beta(N/M)\dim S_k(M)$, where $\beta=\mu*\mu$ is the multiplicative function with
-$\beta(p)=-2$, $\beta(p^2)=1$ and $\beta(p^r)=0$ for $r\ge3$ ($\mu$ the Moebius function).
+\[
+\dim S_k(N)=\sum_{M\mid N}\sigma_0(N/M)\dim S_k^{\mathrm{new}}(M),\qquad\dim S_k^{\mathrm{new}}(N)=\sum_{M\mid N}\beta(N/M)\dim S_k(M),
+\]
+where $\beta=\mu*\mu$ is the multiplicative function with $\beta(p)=-2$, $\beta(p^2)=1$ and $\beta(p^r)=0$ for $r\ge3$ ($\mu$ the Moebius function).
 \end{corollary}
 
 \begin{proof}
@@ -963,20 +971,14 @@ roots are algebraic integers with $\alpha\beta=p$, so at $\lambda\nmid p$ both a
 \end{proof}
 
 The characteristic polynomials of $U_p$ on the whole space at the levels of the paper (PARI's \texttt{mfheckemat}):
-\begin{center}
-\begin{tabular}{lll}
-\toprule
-level, operator & characteristic polynomial & minimal polynomial\\
-\midrule
-$88$, $U_2$ & $X^7(X^2+2X+2)$ & $X^2(X^2+2X+2)$\\
-$99$, $U_3$ & $X^6(X+1)(X^2+X+3)$ & $X(X+1)(X^2+X+3)$\\
-$121$, $U_{11}$ & $X^5(X-1)$ & $X(X-1)$\\
-$539$, $U_7$ & $X^{42}(X-1)^3(X+1)^2(X^2+2X+7)$ & $X(X-1)(X+1)(X^2+2X+7)$\\
-$980$, $U_7$ & $X^{126}(X-1)^8(X+1)^9(X^2-2X+7)$ & $X(X-1)(X+1)(X^2-2X+7)$\\
-$1089$, $U_3$ & $X^{76}(X-1)^{10}(X+1)^{11}(X^2-2X+3)^2(X^2+X+3)^4$ & $X(X-1)(X+1)(X^2-2X+3)(X^2+X+3)$\\
-\bottomrule
-\end{tabular}
-\end{center}
+\begin{itemize}
+\item level $88$, $U_2$: $X^7(X^2+2X+2)$; minimal polynomial $X^2(X^2+2X+2)$;
+\item level $99$, $U_3$: $X^6(X+1)(X^2+X+3)$; minimal polynomial $X(X+1)(X^2+X+3)$;
+\item level $121$, $U_{11}$: $X^5(X-1)$; minimal polynomial $X(X-1)$;
+\item level $539$, $U_7$: $X^{42}(X-1)^3(X+1)^2(X^2+2X+7)$; minimal polynomial $X(X-1)(X+1)(X^2+2X+7)$;
+\item level $980$, $U_7$: $X^{126}(X-1)^8(X+1)^9(X^2-2X+7)$; minimal polynomial $X(X-1)(X+1)(X^2-2X+7)$;
+\item level $1089$, $U_3$: $X^{76}(X-1)^{10}(X+1)^{11}(X^2-2X+3)^2(X^2+X+3)^4$; minimal polynomial\\ $X(X-1)(X+1)(X^2-2X+3)(X^2+X+3)$.
+\end{itemize}
 
 \begin{paperlink}\label{pl:hecke:units}
 In Step 1 of the proof of Theorem thm:quant: ``The generalised eigenforms of $\T$ whose eigencharacter is congruent to $\pi$ modulo $\mf m$ have $U_q\equiv0$ at $q\in S$'', and then only
@@ -1045,7 +1047,7 @@ $f^\Sigma=f$, level $121$ ($\delta_{11}=0$); for $g$ of class 77c and $\Sigma=\{
 \end{example}
 
 \begin{paperlink}\label{pl:hecke:section41}
-Section 4.1 of the paper: ``Put $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$ and let $f^\Sigma=\sum_{(n,\Sigma)=1}a_n(f)q^n$ be the $\Sigma$-depleted eigenform, of level $M^\Sigma$'' is
+In Section 4.1 of the paper, ``Put $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$ and let $f^\Sigma=\sum_{(n,\Sigma)=1}a_n(f)q^n$ be the $\Sigma$-depleted eigenform, of level $M^\Sigma$'' is
 \Cref{def:hecke:depletion} and \Cref{prop:hecke:depletion}(iii), (iv). The proof of Theorem thm:quant: ``$N_S^\Sigma=N_S\prod_{q\in S}q^{\delta_q}=N$: the $S$-depleted form $g^S$ lives at level
 $N$'', and in Step 1 ``on that span the operators $U_q$, $q\in S$, have the eigenvalue $0$ with multiplicity one'', is \Cref{prop:hecke:depletion}(iv) for $g$ at level $N=N_S^S$.
 \end{paperlink}
@@ -1077,8 +1079,9 @@ product of the multiplicities of the $\mu_p$. $\T\otimes\Q$ is reduced iff every
 with $V_{d'}$ for $(d',p)=1$. (ii) On $V_h$ every $T_n$ with $(n,N)=1$ is a scalar, and every $T_n$ is a product of such an operator and powers of the $U_p$ (\Cref{thm:hecke:Tn}); so $A_h$ is
 the algebra generated by the $U_p$ on $\bigotimes_pV_{h,p,e_p}$. Each $U_p$ has a cyclic vector on its factor, so the algebra it generates there is $\C[X]/(m_{h,p})$ (\Cref{ch:modules}); and
 the map $\bigotimes_p\C[X]/(m_{h,p})\to\bigotimes_p\End(V_{h,p,e_p})=\End(V_h)$ is injective, a tensor product of injective linear maps over a field. Hence $A_h\simeq\bigotimes_p\C[X]/(m_{h,p})$, of dimension
-$\prod_p\deg m_{h,p}=\prod_p(e_p+1)=\dim V_h$. The map $\T\otimes\C\to\prod_hA_h$ is injective because $\T\otimes\C$ acts faithfully on $S_k(N)=\bigoplus V_h$ (\Cref{thm:hecke:perfect-pairing}(iii) in weight $2$;
-in general $\T\otimes\C\subseteq\End S_k(N)$ by definition, as $\T$ is free). It is surjective: the systems of the $V_h$ are pairwise distinct (\Cref{thm:hecke:atkin-lehner}(ii)), so by Lagrange
+$\prod_p\deg m_{h,p}=\prod_p(e_p+1)=\dim V_h$. The map $\T\otimes\C\to\prod_hA_h$ is injective because $\T\otimes\C$ acts faithfully on $S_k(N)=\bigoplus V_h$ ($\T$ preserves the lattice $S_k(N;\Z)$ of forms with integer
+coefficients by \Cref{thm:hecke:Tn}(iii), which spans $S_k(N)$ in every even weight by the integral basis theorem of \Cref{ch:modforms}; so $\T\subseteq\End_\Z S_k(N;\Z)$, and tensoring this
+inclusion with the flat $\Z$-module $\C$ gives $\T\otimes\C\subseteq\End_\C S_k(N)$). It is surjective: the systems of the $V_h$ are pairwise distinct (\Cref{thm:hecke:atkin-lehner}(ii)), so by Lagrange
 interpolation in finitely many $T_n$, $(n,N)=1$, which act semisimply (\Cref{thm:hecke:self-adjoint}), there are idempotents $\epsilon_h\in\T^{(N)}\otimes\C$ acting as $1$ on $V_h$ and $0$ on the other $V_{h'}$;
 then $\epsilon_h(\T\otimes\C)$ maps onto $A_h$ and to $0$ in the other factors. The dimension count gives $\rank\T=\sum_h\dim V_h=\dim S_k(N)$ (for $k=2$ this is also
 \Cref{thm:hecke:perfect-pairing}). Each $V_h$ is cyclic over $A_h$, generated by $h((N/M_h)z)$ (a tensor product of cyclic vectors), so $S_k(N)=\bigoplus V_h$ is cyclic over $\prod A_h$, hence free of
@@ -1314,8 +1317,17 @@ $q^2\mid M$ & \curve{539c1}, $\chi_{-7}$ & \curve{77c1} & level drops\\
 \bottomrule
 \end{tabular}
 \end{center}
-We also checked the coefficient identities $a_n(\curve{121d1})=\chi_{-11}(n)a_n(\curve{11a1})$, $a_n(\curve{539d1})=\chi_{-7}(n)a_n(\curve{11a1})$, $a_n(\curve{539c1})=\chi_{-7}(n)a_n(\curve{77c1})$,
-$a_n(\curve{121c1})=\chi_{-11}(n)a_n(\curve{121a1})$ and $a_n(\curve{980g1})=\chi_{-7}(n)a_n(\curve{20a1})$ for all $n\le3000$; the last fails for \curve{980i1}. So $f_{\text{20a}}\otimes\chi_{-7}$ is the form of
+For all $n\le3000$ we also checked the coefficient identities
+\[
+a_n(\curve{121d1})=\chi_{-11}(n)a_n(\curve{11a1}),\qquad a_n(\curve{539d1})=\chi_{-7}(n)a_n(\curve{11a1}),
+\]
+\[
+a_n(\curve{539c1})=\chi_{-7}(n)a_n(\curve{77c1}),\qquad a_n(\curve{121c1})=\chi_{-11}(n)a_n(\curve{121a1}),
+\]
+\[
+a_n(\curve{980g1})=\chi_{-7}(n)a_n(\curve{20a1});
+\]
+the last fails with \curve{980i1} in place of \curve{980g1}. So $f_{\text{20a}}\otimes\chi_{-7}$ is the form of
 980g, and the paper's congruence ``$f_{\text{980i}}\equiv f_{\text{20a}}\otimes\chi_{-7}=f_{\text{980g}}\pmod5$'' (Example of Section 3) is a congruence between two different newforms of level $980$, as the paper
 writes it. (As $5\mid980$, the paper uses this example only as an illustration.) In case $q^2\mid M$ the naive twist is a depletion: $a_7(\curve{77c1})=-1$, while $f_{\text{539c}}\otimes\chi_{-7}$ has
 $a_7=0$.
@@ -1383,10 +1395,15 @@ $(1-\chi(p)a_pp^{-s}+p^{k-1-2s})^{-1}$.
 \end{proposition}
 
 \begin{proof}
-By multiplicativity (\Cref{prop:hecke:eigenforms}(ii)) and absolute convergence, $L(f,s)=\prod_p\sum_{r\ge0}a_{p^r}p^{-rs}$. The series $\sum_ra_{p^r}X^r$ is the image under $\phi_f$ of $\sum_rT_{p^r}X^r$,
-which is $(1-a_pX+p^{k-1}X^2)^{-1}$ or $(1-a_pX)^{-1}$ by \Cref{thm:hecke:Tn}(v); put $X=p^{-s}$. The weight-$2$ factors use \Cref{prop:hecke:newform-local}(iii). For $f^\Sigma$, whose
-coefficients at $p\in\Sigma$ vanish, the factor at $p\in\Sigma$ is $1$, and the others are those of $f$. For $f\otimes\chi$, the coefficients $\chi(n)a_n$ are multiplicative with
-$\sum_r\chi(p)^ra_{p^r}X^r=(1-a_p\chi(p)X+p^{k-1}\chi(p)^2X^2)^{-1}$, and $\chi(p)^2=1$.
+By multiplicativity (\Cref{prop:hecke:eigenforms}(ii)) and absolute convergence,
+\[
+L(f,s)=\prod_p\sum_{r\ge0}a_{p^r}p^{-rs}.
+\]
+The series $\sum_ra_{p^r}X^r$ is the image under $\phi_f$ of $\sum_rT_{p^r}X^r$, which is $(1-a_pX+p^{k-1}X^2)^{-1}$ or $(1-a_pX)^{-1}$ by \Cref{thm:hecke:Tn}(v); put $X=p^{-s}$. The weight-$2$ factors use \Cref{prop:hecke:newform-local}(iii). For $f^\Sigma$, whose
+coefficients at $p\in\Sigma$ vanish, the factor at $p\in\Sigma$ is $1$, and the others are those of $f$. For $f\otimes\chi$, the coefficients $\chi(n)a_n$ are multiplicative, and
+\[
+\sum_r\chi(p)^ra_{p^r}X^r=(1-a_p\chi(p)X+p^{k-1}\chi(p)^2X^2)^{-1},\qquad\chi(p)^2=1.
+\]
 \end{proof}
 
 \begin{theorem}[functional equation]\label{thm:hecke:functional-equation}
@@ -1398,8 +1415,10 @@ extends to an entire function, bounded in vertical strips, with $\Lambda(f,s)=i^
 \end{theorem}
 
 \begin{proof}[Sketch of proof]
-For $\operatorname{Re}s$ large, integrate $f(iy)=\sum a_ne^{-2\pi ny}$ termwise against $y^{s-1}$: $\int_0^\infty e^{-2\pi ny}y^{s-1}dy=(2\pi n)^{-s}\Gamma(s)$. The relation $f|_kW_N=\varepsilon_Nf$ at $z=iy$ reads
-$f\bigl(\tfrac{i}{Ny}\bigr)=\varepsilon_Ni^kN^{k/2}y^kf(iy)$. Split the integral at $y=1/\sqrt N$ and substitute $y\mapsto1/(Ny)$ on $(0,1/\sqrt N)$:
+For $\operatorname{Re}s$ large, integrate $f(iy)=\sum a_ne^{-2\pi ny}$ termwise against $y^{s-1}$, using $\int_0^\infty e^{-2\pi ny}y^{s-1}dy=(2\pi n)^{-s}\Gamma(s)$. The relation $f|_kW_N=\varepsilon_Nf$ at $z=iy$ reads
+\[
+f\Bigl(\frac{i}{Ny}\Bigr)=\varepsilon_Ni^kN^{k/2}y^kf(iy).
+\] Split the integral at $y=1/\sqrt N$ and substitute $y\mapsto1/(Ny)$ on $(0,1/\sqrt N)$:
 \[
 \Lambda(f,s)=N^{s/2}\int_{1/\sqrt N}^\infty f(iy)y^{s-1}dy+i^k\varepsilon_NN^{(k-s)/2}\int_{1/\sqrt N}^\infty f(iy)y^{k-s-1}dy.
 \]
@@ -1418,8 +1437,16 @@ Let $f\in S_k(N)$ and $D(f,s)=\sum_{n\ge1}\abs{a_n(f)}^2n^{-s}$.
 \operatorname{Res}_{s=k}D(f,s)=\frac{3\,(4\pi)^k}{\pi\,\Gamma(k)\,\mu(N)}\,\langle f,f\rangle,\qquad\text{in weight }2:\quad\operatorname{Res}_{s=2}D(f,s)=\frac{48\pi}{\mu(N)}\langle f,f\rangle,
 \]
 with the unnormalised Petersson product.
-\item At a good prime $p$ of a newform $f$ of weight $2$ with real coefficients, $\sum_ra_{p^r}^2X^r=\dfrac{1+pX}{(1-\alpha_p^2X)(1-pX)(1-\beta_p^2X)}$; at $p\,\|\,N$ it is $(1-X)^{-1}$, at $p^2\mid N$ it is $1$.
-\item Hence, for a newform of weight $2$ with rational coefficients, $D(f,s)=\zeta^{(N)}(s-1)\,L^{(N)}(\Sym f,s)\,\zeta^{(N)}(2s-2)^{-1}\prod_{p\mid N}\sum_ra_{p^r}^2p^{-rs}$, where $L(\Sym f,s)$ is
+\item At a good prime $p$ of a newform $f$ of weight $2$ with real coefficients,
+\[
+\sum_ra_{p^r}^2X^r=\frac{1+pX}{(1-\alpha_p^2X)(1-pX)(1-\beta_p^2X)};
+\]
+at $p\,\|\,N$ the series is $(1-X)^{-1}$, and at $p^2\mid N$ it is $1$.
+\item Hence, for a newform of weight $2$ with rational coefficients,
+\[
+D(f,s)=\frac{\zeta^{(N)}(s-1)\,L^{(N)}(\Sym f,s)}{\zeta^{(N)}(2s-2)}\prod_{p\mid N}\sum_ra_{p^r}^2p^{-rs},
+\]
+where $L(\Sym f,s)$ is
 normalised as in the paper and in PARI's \texttt{lfunsympow} (Appendix B, \Cref{ch:notation}) and the superscript $(N)$ removes the factors at $p\mid N$. If $N$ is squarefree,
 $D(f,s)=\zeta^{(N)}(s-1)L(\Sym f,s)/\zeta^{(N)}(2s-2)$ and
 \[
@@ -1449,7 +1476,8 @@ $\zeta^{(N)}(2)=\frac{\pi^2}6\prod_{p\mid N}(1-p^{-2})$, so $\operatorname{Res}_
 \end{proof}
 
 \begin{example}[numerical checks]\label{ex:hecke:rankin-numerics}
-With PARI ($30$ to $40$ digits; $\langle f,f\rangle=\mu(N)\cdot\texttt{mfpetersson}$, $L(\Sym f,s)$ from \texttt{lfunsympow}, bad factors from \texttt{lfuneuler}): for \curve{11a1},
+With PARI, to $30$ to $40$ digits ($\langle f,f\rangle$ is $\mu(N)$ times the value of \texttt{mfpetersson}; $L(\Sym f,s)$ comes from \texttt{lfunsympow} and its bad factors from
+\texttt{lfuneuler}): for \curve{11a1},
 $\langle f,f\rangle=0.0469001478734951878\ldots$ and $L(\Sym f,2)=1.0575992445909578\ldots$, and $11\,L(\Sym f,2)/(8\pi^3)$ agrees with $\langle f,f\rangle$ to all digits; for \curve{37a1},
 $\langle f,f\rangle=0.3717541475106960\ldots=37L(\Sym f,2)/(8\pi^3)$. The residue formula (i), with $D(f,s)$ written as in (iii) with the local factors at $p\mid N$ computed from (ii), holds to $30$
 digits for \curve{11a1}, \curve{37a1}, \curve{20a1}, \curve{121a1} and \curve{99a1}; for the last three, whose levels are not squarefree, $N\,L(\Sym f,2)/(8\pi^3)$ differs from $\langle f,f\rangle$
@@ -1485,12 +1513,22 @@ For each rational newform $f$ below we computed $r_f$ as the index of $\Z f\oplu
 $t-\phi_f(t)$ for a random $t\in\T$ for which $\phi_f(t)$ is a simple root of the characteristic polynomial of $t$; and compared with the modular degree of the optimal curve from
 Cremona's \texttt{degphi} file:
 \begin{center}
-\begin{tabular}{lccccccccccccc}
+\begin{tabular}{lccccccc}
 \toprule
-curve & 11a1 & 33a1 & 37a1 & 37b1 & 44a1 & 77a1 & 77b1 & 77c1 & 88a1 & 99a1 & 99b1 & 99c1 & 99d1\\
+curve & 11a1 & 33a1 & 37a1 & 37b1 & 44a1 & 77a1 & 77b1\\
 \midrule
-$r_f$ & 1 & 3 & 2 & 2 & 2 & 4 & 20 & 6 & 16 & 12 & 12 & 12 & 6\\
-$\degphi$ & 1 & 3 & 2 & 2 & 2 & 4 & 20 & 6 & 8 & 4 & 12 & 12 & 6\\
+$r_f$ & 1 & 3 & 2 & 2 & 2 & 4 & 20\\
+$\degphi$ & 1 & 3 & 2 & 2 & 2 & 4 & 20\\
+\bottomrule
+\end{tabular}
+
+\medskip
+\begin{tabular}{lcccccc}
+\toprule
+curve & 77c1 & 88a1 & 99a1 & 99b1 & 99c1 & 99d1\\
+\midrule
+$r_f$ & 6 & 16 & 12 & 12 & 12 & 6\\
+$\degphi$ & 6 & 8 & 4 & 12 & 12 & 6\\
 \bottomrule
 \end{tabular}
 
@@ -1547,9 +1585,9 @@ G = matrix(2,2,i,j,mfpetersson(S[i],S[j])); G/G[1,1]  \\ [1,-1/3;-1/3,1/4]
 \section{Exercises}\label{sec:hecke:exercises}
 
 \begin{exercise}\label{ex:hecke:ex-cosets}
-Let $p\mid N$ and $U_p^\star=[\Gamma_0(N)\sm p001\Gamma_0(N)]_2$. Show that $U_p^\star=w_NU_pw_N=U_p^\dagger$, and compute $U_2^\star$ on $f_{11}(z)$, $f_{11}(2z)$ at level $22$. Show that $U_2^\star$ is not given by any
-formula expressing $a_n(U_2^\star f)$ through finitely many $a_m(f)$ valid on all of $S_2(22)$. (Answer: $U_2^\star f_{11}=4f_{11}(2z)$ and $U_2^\star f_{11}(2z)=-\frac12f_{11}-2f_{11}(2z)$; the first has $a_1=0$, $a_2=4$, while
-$a_1(f_{11})=1$, $a_2(f_{11})=-2$; compare with $f_{11}(2z)$, which has the same $a_1$ and $a_2(f_{11}(2z))=1$.)
+Let $p\mid N$ and $U_p^\star=[\Gamma_0(N)\sm p001\Gamma_0(N)]_2$. Show that $U_p^\star=w_NU_pw_N=U_p^\dagger$. Compute $U_2^\star$ on $f_{11}(z)$, $f_{11}(2z)$ at level $22$, and show that $U_2^\star$ does not commute with
+$U_2$, so that $\T_{22}$ and $U_2^\dagger$ generate a noncommutative algebra. (Answer: $U_2^\star f_{11}=4f_{11}(2z)$ and $U_2^\star f_{11}(2z)=-\frac12f_{11}-2f_{11}(2z)$; $U_2U_2^\star$ and $U_2^\star U_2$ have the
+matrices $\sm4{-1}01$ and $\sm10{-4}4$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:hecke:ex-tau}

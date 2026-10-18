@@ -244,7 +244,7 @@ special fibre is two copies of $X_0(N/p)_{\Fp}$ crossing transversally at the su
 We do not prove this; see \cite[Sections 6.7, 7.2]{Shimura71}, \cite[Sections 7.7, 8.2 to 8.6]{DiamondShurman}, \cite[Sections 8 and 9]{DiamondIm},
 \cite{DeligneRapoport73} and \cite{KatzMazur85} (section numbers not verified). The idea of (i) and (iii): $j$ and $j_N$ are $\Gamma_0(N)$-invariant
 functions on $\HH$ with $q$-expansions in $\Z((q))$, they generate the function field of $X_0(N)$ over $\C$ (\Cref{ch:modforms}), and the subfield
-$\Q(j,j_N)$ has $\C$ as a linearly disjoint extension (the $q$-expansion principle: a function in $\C(j,j_N)$ whose $q$-expansion has rational
+$\Q(j,j_N)$ is linearly disjoint from $\C$ over $\Q$ (the $q$-expansion principle: a function in $\C(j,j_N)$ whose $q$-expansion has rational
 coefficients lies in $\Q(j,j_N)$); the smooth projective curve over $\Q$ with this function field is $X_0(N)_\Q$. The polynomial $\Phi_N$ has integer
 coefficients because the conjugates $j(\gamma z)$, $\gamma$ running over $\SL_2(\Z)\backslash\{\alpha\in M_2(\Z):\det\alpha=N,\ \alpha\text{ primitive}\}$,
 are permuted by $\SL_2(\Z)$ and have $q$-expansions with coefficients in $\Z[\zeta_N]$, permuted by $\Gal(\Q(\zeta_N)/\Q)$ (Kronecker). From now on
@@ -386,12 +386,12 @@ lattices containing $\Lambda_z$ with index $p$, that is, the subgroups $D$ of or
 (for $\Lambda'=\frac1p\Lambda_{pz}$ one rescales by $p$, and $\frac1N$, $\frac1p$ generate $\frac1{Np}\Z/\Z$ when $p\nmid N$). For $p\mid N$ the missing lattice $\frac1p\Z+\Z z$ is the one
 whose subgroup $D=\langle\frac1p\rangle$ lies in $C=\langle\frac1N\rangle$. See \cite[Sections 5.2, 7.9]{DiamondShurman}.
 
-(iv) $X_0(Np)$, $z\mapsto pz$ and $z\mapsto z$ are defined over $\Q$ by \Cref{thm:moddeg:x0-over-q} (on moduli $z\mapsto z$ is $(E,C)\mapsto(E,pC')$ for the cyclic group $C'$ of order $Np$
-attached to $z$, and $z\mapsto pz$ is $(E,C')\mapsto(E/C'[p],C'/C'[p])$), and so are the $w_d$.
+(iv) $X_0(Np)$, $z\mapsto pz$ and $z\mapsto z$ are defined over $\Q$ by \Cref{thm:moddeg:x0-over-q} (on moduli, with $C'$ the cyclic subgroup of order $Np$ attached to a point of $X_0(Np)$,
+$z\mapsto z$ is $(E,C')\mapsto(E,pC')$ and $z\mapsto pz$ is $(E,C')\mapsto(E/C'[p],C'/C'[p])$), and so are the $w_d$.
 \end{proof}
 
-\Cref{ch:curves} writes the Hecke correspondence for $p\nmid N$ as $(X_0(Np),z\mapsto z,z\mapsto pz)$. By (ii) that is $\mathcal C_{\mathrm{diag}(p,1)}$, the transpose of
-$\mathcal C_{\mathrm{diag}(1,p)}$; for $p\nmid N$ the two are isomorphic (\Cref{thm:moddeg:transpose}(iv)), but for $p\mid N$ the correspondence $(X_0(Np),z\mapsto z,z\mapsto pz)$ is
+\Cref{ch:curves} writes the Hecke correspondence for $p\nmid N$ as $(X_0(Np),z\mapsto z,z\mapsto pz)$. Since $\Gamma_{\mathrm{diag}(p,1)}=\Gamma_0(Np)$ (the computation in (ii)), that is
+$\mathcal C_{\mathrm{diag}(p,1)}$, the transpose of $\mathcal C_{\mathrm{diag}(1,p)}$ (\Cref{thm:moddeg:transpose}(i)); for $p\nmid N$ the two are isomorphic (\Cref{thm:moddeg:transpose}(iv)), but for $p\mid N$ the correspondence $(X_0(Np),z\mapsto z,z\mapsto pz)$ is
 $U_p^t$, not $U_p$, and $U_p$ itself is $(X_0(Np),z\mapsto pz,z\mapsto z)$.
 
 \begin{proposition}[compatibility with the Hecke operators on forms]\label{prop:moddeg:hecke-compatibility}
@@ -876,9 +876,9 @@ curve & $N$ & rank & $\#E(\Q)_{\tors}$ & $\degphi$ & $\dim J_0(N)$\\
 \end{tabular}
 \end{center}
 Further optimal curves that occur: \curve{14a1} ($1$), \curve{19a1} ($1$), \curve{27a1} ($1$), \curve{37b1} ($2$), \curve{77c1} ($6$), \curve{99b1} ($12$), \curve{99c1} ($12$), \curve{99d1} ($6$),
-\curve{121b1} ($4$), \curve{121c1} ($6$), \curve{121d1} ($24$), \curve{140b1} ($60$), \curve{243b1} ($9$), \curve{539d1} ($72$), \curve{990h3} ($1728$). Checks: the degrees are $1$
-exactly at the levels of genus one; \curve{37a1} has degree $2$ as in \Cref{ex:moddeg:37}; \curve{121a1} is the paper's case (b) of Theorem thm:qual with $e_3=1$ attained, \curve{539c1} its
-case (c), \curve{980i1} the $\ell=5$ illustration of the Example after its proof, and \curve{726a1} the curve with image $\Ns$ of the appendix.
+\curve{121b1} ($4$), \curve{121c1} ($6$), \curve{121d1} ($24$), \curve{140b1} ($60$), \curve{243b1} ($9$), \curve{539d1} ($72$), \curve{990h3} ($1728$). Checks: the curves of degree $1$ are those
+of levels of genus one, as they must be (a map of degree one is an isomorphism, so $X_0(N)\simeq E$); \curve{37a1} has degree $2$ as in \Cref{ex:moddeg:37}; \curve{121a1} is the paper's case (b) of Theorem thm:qual with $e_3=1$ attained, \curve{539c1} its
+case (c), \curve{980i1} the $\ell=5$ illustration of Example ex:qual, and \curve{726a1} the curve with image $\Ns$ of the appendix.
 \end{example}
 
 \begin{example}[$X_0(37)\to\curve{37a1}$ is optimal]\label{ex:moddeg:37}
@@ -892,7 +892,7 @@ tables.
 
 The paper's introduction says: ``Up to explicit factors $\degphi$ is $\langle f,f\rangle$ divided by the area of the period lattice of $E$ (Zagier \cite{Zagier85}, Watkins
 \cite{Watkins02})'', and Remark rem:degree gives the exact formula. This section defines the constant that measures the difference between the N\'eron differential of $E$ and the
-differential of the newform, proves the exact formula in three lines, and checks it numerically; the warning at the end records the two normalisations that are easy to get
+differential of the newform, proves the exact formula in three lines, and checks it numerically; the warning after the proof records the normalisations that are easy to get
 wrong.
 
 \begin{definition}[the Manin constant]\label{def:moddeg:manin-constant}
@@ -1096,7 +1096,7 @@ curve & $N$ & $\degphi$ & $r_E$ & primes $p$ with $p^2\mid N$\\
 \bottomrule
 \end{tabular}
 \end{center}
-So \curve{99a1} has $\degphi=4$ and $r_E=12$, as \cite[Table 1]{ARS12} and the paper's remark after Theorem thm:qual say, and the discrepancy is at $3$, with $3^2\mid99$. The congruence behind
+So \curve{99a1} has $\degphi=4$ and $r_E=12$, as \cite[Table 1]{ARS12} and the remark after the paper's Example ex:qual say, and the discrepancy is at $3$, with $3^2\mid99$. The congruence behind
 $3\mid r_E$: $a_n(f_{99a})\equiv a_n(f_{99b})\equiv a_n(f_{99d})\pmod3$ for all $n\le60$, beyond Sturm's bound $24$ for $\Gamma_0(99)$, so for all $n$ (\Cref{ch:modforms}); the forms
 $f_{99b}$, $f_{99d}$ are newforms of level $99$ different from $f_{99a}$, hence in $f^\perp$, and Lemma lem:crit gives $3\mid r_E$. ($f_{99c}$ is not congruent to $f_{99a}$ modulo $3$:
 $a_2=1$ against $-1$.) The paper's curves \curve{726a1} (ratio $11$, $11^2\mid726$) and \curve{539d1} (ratio $7$, $7^2\mid539$) are further examples, and \curve{88a1} (ratio $2$, $2^3\mid88$) a fourth (\Cref{ex:moddeg:ex-88}). In every other case of the table the two
@@ -1536,7 +1536,7 @@ over $\Q(\sqrt{-3})$, the other eight rational. $N=9,16,18,25,27$ (\Cref{prop:mo
 
 \begin{exercise}\label{ex:moddeg:ex-u2}
 Let $f=f_{11}$ and $V=\operatorname{span}\{f(z),f(2z)\}=S_2(\Gamma_0(22))$. (a) Using $a_2(f)=-2$ and $f|_2W_{11}=-f$, show that in the basis $f(z)$, $f(2z)$ the matrices (columns are images) of $U_2$ and
-$w_{22}$ are $U=\sm{-2}1{-2}0$ and $W=\sm0{-1/2}{-2}0$. (b) Show that $WUW=\sm0{-1/2}4{-2}$ is not of the form $a+bU$; deduce that $\T=\Z[U_2]$ at level $22$ and that $w_{22}\T w_{22}\ne\T$
+$w_{22}$ are $U=\sm{-2}1{-2}0$ and $W=\sm0{-1/2}{-2}0$. (b) Show that $\T=\Z[U_2]$ at level $22$ (the $T_p$, $p\nmid22$, act as $a_p(f)$ and $U_{11}$ as $a_{11}(f)=1$), that $WUW=\sm0{-1/2}4{-2}$ is not of the form $a+bU$, and deduce that $w_{22}\T w_{22}\ne\T$
 (\Cref{prop:moddeg:hecke-on-j0}(iii)). (c) With $A=\langle f,f\rangle_{\Gamma_0(22)}$, the Petersson Gram matrix in this basis is $G=\sm A{-A/3}{-A/3}{A/4}$ (check the off-diagonal entry with PARI's
 \texttt{mfpetersson}). Verify $W^{\mathsf T}GW=G$ and $G^{-1}U^{\mathsf T}G=WUW$: the Petersson adjoint of $U_2$ is $w_{22}U_2w_{22}$, and $U_2$ is not self-adjoint.
 \emph{Hint.} $U_2f=\sum a_{2n}q^n=a_2f-2f(2z)$ and $U_2(f(2z))=f$; $W_{22}=W_{11}\,\mathrm{diag}(2,1)$ and $\mathrm{diag}(2,1)W_{22}=2W_{11}$. For (b), $a+bU$ has entries $(a-2b,b;-2b,a)$.
@@ -1601,7 +1601,7 @@ annihilator of $\C f_{37a}$; \Cref{thm:moddeg:eichler-shimura}(ii) on $T_\ell B$
 
 \begin{exercise}\label{ex:moddeg:ex-level37-hecke}
 At level $37$ show that $\T=\Z[T_2]\simeq\Z[x]/(x(x+2))$: check $a_n(f_{37a})\equiv a_n(f_{37b})\pmod2$ for $n\le6$ (Sturm's bound) to get $\T\subseteq\{(a,b)\in\Z^2:a\equiv b\bmod2\}$ under
-$t\mapsto(\phi_{37a}(t),\phi_{37b}(t))$, and show that $Z[T_2]$ is that whole ring. Deduce $\eta_{f_{37a}}=2\Z$ and $r_{\curve{37a1}}=2=\degphi$. \emph{Hint.} $T_2\mapsto(-2,0)$; $\Ann(\ker\phi_{37a})=\Z T_2$.
+$t\mapsto(\phi_{37a}(t),\phi_{37b}(t))$, and show that $\Z[T_2]$ is that whole ring. Deduce $\eta_{f_{37a}}=2\Z$ and $r_{\curve{37a1}}=2=\degphi$. \emph{Hint.} $T_2\mapsto(-2,0)$; $\Ann(\ker\phi_{37a})=\Z T_2$.
 \end{exercise}
 
 \begin{exercise}[harder]\label{ex:moddeg:ex-shimura}
@@ -1637,7 +1637,7 @@ Table 1 as the paper cites them; numbers not verified) and discuss the $abc$ con
 \Cref{ex:moddeg:99a1-and-726a1} were computed for this book by the algorithm described there; they agree with the paper's values for \curve{99a1}, \curve{726a1} and \curve{539d1}.
 
 \emph{The congruence ideal of Diamond, Flach and Guo.} \Cref{prop:moddeg:mf-is-pullback,lem:moddeg:wn-on-mf,thm:moddeg:degree-is-eta} are the book's version of the paper's Proposition prop:pullback; the
-argument is the projection formula, as in \cite{Zagier85} and \cite[Section 3]{ARS12}. The objects of \cite{DFG04} (Sections 1.5.3, 1.6.1, 1.6.2, 1.7.3, equations (13), (14), as the paper cites them) are
+argument is the projection formula (compare \cite{Zagier85} and \cite{ARS12}, whose arguments we have not compared in detail). The objects of \cite{DFG04} (Sections 1.5.3, 1.6.1, 1.6.2, 1.7.3, equations (13), (14), as the paper cites them) are
 compared with $H^1(X_0(N),\Zl)$ in \Cref{ch:congruence}; \Cref{rem:moddeg:dfg-normalisation} lists what that comparison involves. Lemma lem:ddt417 is \cite[Lemma 4.17]{DDT}, inequality half.
 
 \emph{Multiplicity one, Gorenstein, Eisenstein.} Mazur \cite{Mazur77} (Chapter II) for prime level and the Eisenstein ideal; Ribet \cite{Ribet90} (Section 5, unverified) for multiplicity one in general;
