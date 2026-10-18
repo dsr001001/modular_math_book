@@ -27,7 +27,7 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Chapter 8 (curves) | done: lean pipeline by hand, review (1 blocking, 2 major, 12 minor), check (2 major, 2 minor), second fix; 1,988 lines, 50 pages | `chapters/ch08_curves.tex` |
 | Chapter 9 (ellcurves) | done: lean pipeline by hand, review (4 blocking, 3 major, 13 minor), check (5 minor); 2,234 lines, 52 pages | `chapters/ch09_ellcurves.tex` |
 | Chapter 11 (galrep) | done: lean pipeline by hand, review (7 major, 9 minor), check (5 minor); 2,050 lines, 48 pages | `chapters/ch11_galrep.tex` |
-| Chapters 12 to 15 (Part IV) | done: lean pipeline by hand; Chapter 13's fixes were not independently checked (do that first next session) | `chapters/ch12_modforms.tex` to `ch15_modgalrep.tex` |
+| Chapters 12 to 15 (Part IV) | done: lean pipeline by hand | `chapters/ch12_modforms.tex` to `ch15_modgalrep.tex` |
 | Other chapters, Appendix B | **not yet written**; Parts I to IV are complete; next is Part V, Chapters 16 to 19 | `chapters/` |
 
 The original paper is `note_Oct10_7pm.tex`. Labels in the revised paper are the same.
