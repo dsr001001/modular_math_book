@@ -40,8 +40,10 @@ fibres of $Y_0(N)\to Y(1)$ over $i$ and $\zeta_3$. \emph{(proved here)} \Cref{pr
 \Cref{ch:curves})} \Cref{thm:modforms:x0-compact}.
 \item \textbf{Genus formula.} $X_0(N)\to X(1)$ has degree $\mu(N)$, ramified over $i$, $\zeta_3$, $\infty$, and $g(X_0(N))=1+\frac\mu{12}-\frac{\nu_2}4-\frac{\nu_3}3-\frac{\nu_\infty}2$; table of
 genera ($g(X_0(11))=1$, $g(X_0(121))=6$, $g(X_0(539))=49$). \emph{(proved here, given Riemann-Hurwitz from \Cref{ch:curves})} \Cref{thm:modforms:genus-formula}.
-\item \textbf{Moduli.} $Y_0(N)$ classifies $(E,C)$, $C$ cyclic of order $N$; $Y_1(N)$ classifies $(E,P)$; $w_N(E,C)=(E/C,E[N]/C)$; cusps are degenerate objects; $X_0(N)$ has a model over $\Q$.
-\emph{(proved here for (i) to (iii), given \Cref{ch:ellcurves}; (iv), (v) stated; \cite{DeligneRapoport73}, \cite{KatzMazur85}, \cite{DiamondShurman})} \Cref{thm:modforms:moduli}.
+\item \textbf{Moduli.} $Y_0(N)$ classifies $(E,C)$, $C$ cyclic of order $N$; $Y_1(N)$ classifies $(E,P)$; $Y(N)$ classifies $(E,(P,Q))$, $(P,Q)$ a basis of $E[N]$ with Weil pairing
+$e_N(P,Q)=\zeta_N$, where $\zeta_N=e_N(\frac1N,\frac\tau N)$ on $\C/(\Z+\Z\tau)$ is $e^{2\pi i/N}$ or its inverse according to the normalisation of $e_N$; $w_N(E,C)=(E/C,E[N]/C)$; cusps are degenerate
+objects; $X_0(N)$ has a model over $\Q$. \emph{(proved here for (i) to (iii), given \Cref{ch:ellcurves}; (iv), (v) stated; \cite{DeligneRapoport73}, \cite{KatzMazur85}, \cite{DiamondShurman})}
+\Cref{thm:modforms:moduli}.
 \item \textbf{Slash operator} (definition) $(f|_k\gamma)(z)=(\det\gamma)^{k/2}(cz+d)^{-k}f(\gamma z)$. \Cref{def:modforms:slash}.
 \item \textbf{Slash properties.} Action, scalars act by $\sgn(\lambda)^k$, $(f|_2\gamma)\,dz=\gamma^*(f\,dz)$, $y^{k/2}\abs f$ invariant. \emph{(proved here)} \Cref{lem:modforms:slash}.
 \item \textbf{Modular and cusp forms} (definition): $M_k(\Gamma)\supseteq S_k(\Gamma)$, holomorphy and vanishing at all cusps. \Cref{def:modforms:modular-form}.
@@ -61,6 +63,9 @@ $\Delta=\eta^{24}$. \emph{(proved here; $\Delta=\eta^{24}$ given the transformat
 \item \textbf{Level one structure.} $M_2=0$, $M_k=\C E_k$ for $k=4,\dots,10,14$, $S_k=\Delta M_{k-12}$, dimension formula, $M_*=\C[E_4,E_6]$; zeros of $\Delta$, $E_4$, $E_6$. \emph{(proved here)}
 \Cref{cor:modforms:level-one-structure}.
 \item \textbf{$j$ is a bijection} $\SL_2(\Z)\backslash\HH\to\C$ and an isomorphism $X(1)\simeq\PP^1(\C)$; every $j_0$ is $j(\Lambda)$. \emph{(proved here)} \Cref{thm:modforms:j-bijective}.
+\item \textbf{The function field of $X_0(N)$.} $j_N(z)=j(Nz)$ is a meromorphic function on $X_0(N)$; $\C(X(1))=\C(j)$; the conjugates of $j_N$ over $\C(j)$ are the $\mu(N)$ distinct functions
+$j(N\alpha_iz)$, $\SL_2(\Z)=\bigsqcup\Gamma_0(N)\alpha_i$, so $j_N$ has degree $\mu(N)$ over $\C(j)$ and $\C(X_0(N))=\C(j,j_N)$. \emph{(proved here, given \Cref{ch:curves} for
+$[\C(X_0(N)):\C(j)]=\deg\pi$)} \Cref{prop:modforms:function-field}.
 \item \textbf{Valence formula for $\Gamma_0(N)$.} $\sum_Pv_P(f)/e_P=k\mu(N)/12$. \emph{(proof sketched here; \cite{DiamondShurman}, \cite{Shimura71})} \Cref{thm:modforms:valence-gamma0}.
 \item \textbf{Weight two forms are differentials.} $S_2(\Gamma_0(N))\simeq H^0(X_0(N),\Omega^1)$ by $f\mapsto f(z)\,dz$; $M_2$ corresponds to differentials with simple poles at the cusps, residue
 $\frac h{2\pi i}b_0$; $\dim S_2=g$, $\dim M_2=g+\nu_\infty-1$. \emph{(proved here, given \Cref{ch:curves})} \Cref{thm:modforms:weight-two-differentials}.
@@ -75,7 +80,9 @@ the transformation law of $\eta$, except (iv): stated, \Cref{ch:moddeg}, checked
 \item \textbf{Petersson properties.} Well defined, convergent, positive definite; in weight $2$, $\langle f,g\rangle=\frac i2\int_{X_0(N)}\omega_f\wedge\overline{\omega_g}$. \emph{(proved here)} \Cref{prop:modforms:petersson}.
 \item \textbf{Normalisations.} PARI's \texttt{mfpetersson} is the book's product divided by $\mu(N)$; other books divide by $\pi\mu(N)/3$; $\degphi\cdot\vol(\Lambda_E)=4\pi^2c_E^2\langle f,f\rangle$.
 \Cref{conv:modforms:petersson-normalisations}, checked in \Cref{ex:modforms:petersson-numerics}.
-\item \textbf{Change of group.} $\langle f,g\rangle_\Gamma=[\bar\Gamma_0(N):\bar\Gamma]\langle f,g\rangle_{\Gamma_0(N)}$; invariance under normalising $\alpha$. \emph{(proved here)} \Cref{prop:modforms:petersson-change}.
+\item \textbf{Change of group.} $\langle f,g\rangle_\Gamma=[\bar\Gamma_0(N):\bar\Gamma]\langle f,g\rangle_{\Gamma_0(N)}$; invariance under normalising $\alpha$; for $\Gamma\subset\SL_2(\Q)$ containing some $\Gamma(M)$ with
+finite index, $\langle f,g\rangle_\Gamma=[\bar\Gamma:\bar\Gamma_1]^{-1}\langle f,g\rangle_{\Gamma_1}$ ($\Gamma_1\subseteq\Gamma\cap\SL_2(\Z)$ a congruence subgroup of finite index, $\bar{\ }$ the image in $\PSL_2(\R)$) is
+well defined, and $\langle f|_k\alpha,g|_k\alpha\rangle_{\alpha^{-1}\Gamma\alpha}=\langle f,g\rangle_\Gamma$ for every $\alpha\in\GL_2^+(\Q)$. \emph{(proved here)} \Cref{prop:modforms:petersson-change}.
 \item \textbf{Orthogonal complement.} $S_k=\C f\oplus f^\perp$ with projection $g\mapsto\frac{\langle g,f\rangle}{\langle f,f\rangle}f$. \emph{(proved here)} \Cref{prop:modforms:orthogonal-complement}.
 \item \textbf{Integral forms} (definition): $S_k(\Gamma_0(N);A)$ for $A\subseteq\C$, and $S_k(\Gamma_0(N);R)=S_k(\Gamma_0(N);\Z)\otimes R$ for any ring $R$. \Cref{def:modforms:integral-forms}.
 \item \textbf{Integral bases.} $S_k(\Gamma_0(N))$ and $M_k(\Gamma_0(N))$ have bases of forms with integer coefficients. \emph{(stated; \cite{Shimura71}, \cite{DiamondShurman})} \Cref{thm:modforms:integral-basis}.
@@ -85,7 +92,7 @@ the transformation law of $\eta$, except (iv): stated, \Cref{ch:moddeg}, checked
 image is the $\ell$-integral forms; congruences modulo $m$ or $\lambda$ are decided by $a_n$, $n\le B_2(N)$. \emph{(proved here, given \Cref{thm:modforms:integral-basis,thm:modforms:sturm})}
 \Cref{cor:modforms:integral-lattice}.
 \item \textbf{Atkin-Lehner matrices} (definition): $W_d=\sm{dx}y{Nz}{dw}$, $\det W_d=d$, for $d\,\|\,N$. \Cref{def:modforms:atkin-lehner}.
-\item \textbf{Atkin-Lehner involutions.} The matrix $W_d$ normalises $\Gamma_0(N)$, $W_d^2\in d\Gamma_0(N)$, $W_dW_{d'}\in\gcd(d,d')\mathcal W_{d*d'}$; commuting holomorphic involutions $w_d$ of $X_0(N)$ and of
+\item \textbf{Atkin-Lehner involutions.} The matrix $W_d$ normalises $\Gamma_0(N)$, $W_d^2\in d\Gamma_0(N)$, $W_dW_{d'}\in\gcd(d,d')\mathcal W_{d*d'}$, where $\mathcal W_e$ is the set of Atkin-Lehner matrices for $e\,\|\,N$ and $d*d'=dd'/\gcd(d,d')^2$; commuting holomorphic involutions $w_d$ of $X_0(N)$ and of
 $M_k(\Gamma_0(N))$ ($k$ even); $w_N\colon z\mapsto-1/(Nz)$; $w_d^*\omega_f=\omega_{f|_2W_d}$. \emph{(proved here)} \Cref{prop:modforms:atkin-lehner}.
 \item \textbf{Atkin-Lehner and pairings.} $w_d$ is a self-adjoint isometric involution of $S_k(\Gamma_0(N))$; $\dim S_2^+=g(X_0(N)/w_N)$; $w_N^*$ preserves the cup product and acts by $\varepsilon$ on
 $\omega_f$, $\overline{\omega_f}$ when $f|_2W_N=\varepsilon f$. \emph{(proved here, given \Cref{ch:curves})} \Cref{prop:modforms:atkin-lehner-petersson}.
@@ -596,7 +603,10 @@ For $\tau\in\HH$ let $\Lambda_\tau=\Z+\Z\tau$ and $E_\tau=\C/\Lambda_\tau$.
 \begin{enumerate}[label=(\roman*)]
 \item Every pair $(E,C)$ of an elliptic curve $E/\C$ and a cyclic subgroup $C\subset E$ of order $N$ is isomorphic to $(E_\tau,\langle\frac1N+\Lambda_\tau\rangle)$ for some $\tau\in\HH$, and
 $\Gamma_0(N)\tau\mapsto(E_\tau,\langle\frac1N\rangle)$ is a bijection from $Y_0(N)$ onto the set of isomorphism classes of such pairs.
-\item Likewise $\Gamma_1(N)\tau\mapsto(E_\tau,\frac1N+\Lambda_\tau)$ is a bijection from $Y_1(N)$ onto the isomorphism classes of pairs $(E,P)$ with $P\in E$ of exact order $N$.
+\item Likewise $\Gamma_1(N)\tau\mapsto(E_\tau,\frac1N+\Lambda_\tau)$ is a bijection from $Y_1(N)$ onto the isomorphism classes of pairs $(E,P)$ with $P\in E$ of exact order $N$. Let
+$\zeta_N=e_N(\frac1N+\Lambda_\tau,\frac\tau N+\Lambda_\tau)$, with $e_N$ the Weil pairing of \Cref{ch:ellcurves}; it is the same primitive $N$-th root of unity for every $\tau\in\HH$, namely
+$e^{2\pi i/N}$ or $e^{-2\pi i/N}$ according to the normalisation of $e_N$ (\Cref{ch:ellcurves}). Then $\Gamma(N)\tau\mapsto(E_\tau,(\frac1N+\Lambda_\tau,\frac\tau N+\Lambda_\tau))$ is a bijection from
+$Y(N)$ onto the isomorphism classes of pairs $(E,(P,Q))$ with $(P,Q)$ a basis of $E[N]$ and $e_N(P,Q)=\zeta_N$.
 \item Under (i) the map $\pi$ of \Cref{thm:modforms:genus-formula} is $(E,C)\mapsto E$, and $(E,C)\mapsto(E/C,E[N]/C)$ is $\Gamma_0(N)\tau\mapsto\Gamma_0(N)\bigl(-1/(N\tau)\bigr)$, the
 Atkin-Lehner involution $w_N$ (\Cref{prop:modforms:atkin-lehner}).
 \item (Cusps.) The cusps correspond to degenerate objects: generalised elliptic curves (N\'eron polygons) with a cyclic subgroup of order $N$; over the Tate
@@ -614,6 +624,12 @@ to $(E_{\gamma\tau},\langle\frac1N\rangle)$. So every pair has the stated form. 
 $c\tau+d=(a-c\tau')^{-1}$, so the isomorphism $z\mapsto z/(c\tau+d)$ sends $\frac1N$ to $\frac{a-c\tau'}N$, which generates $\langle\frac1N+\Lambda_{\tau'}\rangle$ iff $N\mid c$ (and then $a$ is a
 unit modulo $N$). So $(E_\tau,\langle\frac1N\rangle)\simeq(E_{\tau'},\langle\frac1N\rangle)$ iff $\tau'\in\Gamma_0(N)\tau$; the sign $\pm$ does not matter since $-I\in\Gamma_0(N)$.
 (ii) The same computation: $\frac{a-c\tau'}N\equiv\pm\frac1N\pmod{\Lambda_{\tau'}}$ iff $N\mid c$ and $a\equiv\pm1\pmod N$, that is, $\gamma\in\pm\Gamma_1(N)$, which acts on $\HH$ as $\Gamma_1(N)$.
+For $Y(N)$: if $(P,Q)$ is a basis of $E_\tau[N]$, write $P=\frac{a+b\tau}N$, $Q=\frac{c+d\tau}N$ modulo $\Lambda_\tau$; bilinearity gives $e_N(P,Q)=\zeta_N^{ad-bc}$, so $e_N(P,Q)=\zeta_N$ iff
+$ad-bc\equiv1\pmod N$, and by \Cref{prop:modforms:indices}(i) we may then take $\sm abcd\in\SL_2(\Z)$. Then $\omega_1=a+b\tau$, $\omega_2=c+d\tau$ is a basis of $\Lambda_\tau$ with
+$\tau'=\omega_2/\omega_1=\frac{d\tau+c}{b\tau+a}\in\HH$, and $z\mapsto z/\omega_1$ maps $(E_\tau,(P,Q))$ to $(E_{\tau'},(\frac1N,\frac{\tau'}N))$: this is surjectivity. Conversely an isomorphism
+$z\mapsto\alpha z$ from $(E_\tau,(\frac1N,\frac\tau N))$ to $(E_{\tau'},(\frac1N,\frac{\tau'}N))$ satisfies $\alpha=m_{11}+m_{12}\tau'$, $\alpha\tau=m_{21}+m_{22}\tau'$ with $\sm{m_{11}}{m_{12}}{m_{21}}{m_{22}}\equiv I\pmod N$ of
+determinant $1$ (it maps the oriented basis $(1,\tau)$ to an oriented basis of $\Lambda_{\tau'}$), so $\tau=\frac{m_{22}\tau'+m_{21}}{m_{12}\tau'+m_{11}}$ with $\sm{m_{22}}{m_{21}}{m_{12}}{m_{11}}\in\Gamma(N)$: this is injectivity.
+That $\zeta_N$ does not depend on $\tau$ is the statement of \Cref{ch:ellcurves} on the Weil pairing over $\C$ for an oriented basis.
 (iii) The first statement is clear. For the second, $E_\tau/\langle\frac1N\rangle=\C/(\frac1N\Z+\Z\tau)$, and multiplication by $N$ identifies it with $\C/\Lambda_{N\tau}$, sending $E_\tau[N]/C$ to the
 subgroup generated by $\tau=\frac{N\tau}N$. Multiplication by $(N\tau)^{-1}$ identifies $(\C/\Lambda_{N\tau},\langle\frac{N\tau}N\rangle)$ with $(\C/\Lambda_{-1/(N\tau)},\langle\frac1N\rangle)$,
 since $(N\tau)^{-1}\Lambda_{N\tau}=\Z(N\tau)^{-1}+\Z=\Lambda_{-1/(N\tau)}$.
@@ -977,6 +993,50 @@ $v_q(j_E)$ (Definition def:terms, with the paper's $q$ a prime there): the algeb
 $E(\C)\simeq\C/\Lambda_\tau$. The Tate curve of \Cref{ch:reduction} is the $\mathsf q$-adic analogue of the expansion of $j$ in $q$.
 \end{paperlink}
 
+The bijectivity of $j$ also describes the function field of $X_0(N)$, which \Cref{ch:moddeg} uses to put $X_0(N)$ over $\Q$. Meromorphic functions on $X_0(N)$ are identified with
+$\Gamma_0(N)$-invariant meromorphic functions on $\HH$ that are meromorphic in the charts $q_h$ at the cusps, and by Riemann existence and GAGA (\Cref{ch:curves}) they form the
+function field $\C(X_0(N))$ of the curve. Write $\delta_N=\sm N001$, so that $j(Nz)=j(\delta_Nz)$.
+
+\begin{proposition}[the function field of $X_0(N)$]\label{prop:modforms:function-field}
+Let $N\ge1$, $j_N(z)=j(Nz)$, and $\SL_2(\Z)=\bigsqcup_{i=1}^{\mu(N)}\Gamma_0(N)\alpha_i$ with $\alpha_1=I$.
+\begin{enumerate}[label=(\roman*)]
+\item $j_N$ is a meromorphic function on $X_0(N)$, holomorphic on $Y_0(N)$.
+\item Every meromorphic function on $X(1)$ is a rational function of $j$: $\C(X(1))=\C(j)$; through $\pi$ of \Cref{thm:modforms:genus-formula}, $\C(j)\subseteq\C(X_0(N))$.
+\item The functions $f_i(z)=j(\delta_N\alpha_iz)$, $1\le i\le\mu(N)$, are pairwise distinct and are permuted by $z\mapsto\gamma z$, $\gamma\in\SL_2(\Z)$; the polynomial
+$\Phi(X)=\prod_i(X-f_i)$ has coefficients in $\C(j)$ and is the minimal polynomial of $j_N=f_1$ over $\C(j)$. So $[\C(j,j_N):\C(j)]=\mu(N)$.
+\item $\C(X_0(N))=\C(j,j_N)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) For $\gamma=\sm abcd\in\Gamma_0(N)$, $\delta_N\gamma=\gamma'\delta_N$ with $\gamma'=\sm a{Nb}{c/N}d\in\SL_2(\Z)$, so $j_N(\gamma z)=j(\gamma'\delta_Nz)=j_N(z)$. So $j_N$ is a
+$\Gamma_0(N)$-invariant holomorphic function on $\HH$, holomorphic on $Y_0(N)$ by \Cref{thm:modforms:y0-riemann-surface}(ii). At a cusp $\sigma\infty$ of width $h$, write $\delta_N\sigma=\sigma'\beta$ with
+$\sigma'\in\SL_2(\Z)$ and $\beta=\sm ab0d$, $ad=N$ (as in the proof of \Cref{prop:modforms:mf-basic}(e)). Then $j_N(\sigma z)=j(\beta z)=\sum_{n\ge-1}c(n)e^{2\pi inb/d}e^{2\pi inaz/d}$, with $c(n)$ the
+coefficients of $j$ (\Cref{prop:modforms:delta-j}); this is invariant under $z\mapsto z+h$ (as $\pm\sigma T^h\sigma^{-1}\in\Gamma_0(N)$), so only exponents in $\frac1h\Z$ occur, and it is a Laurent
+series in $q_h$ with finitely many negative terms: $j_N$ is meromorphic at the cusp.
+(ii) By \Cref{thm:modforms:j-bijective}, $j\colon X(1)\to\PP^1(\C)$ is an isomorphism, and the meromorphic functions on $\PP^1(\C)$ are the rational functions (\Cref{ch:curves}).
+Composition with $\pi$ embeds $\C(X(1))$ in $\C(X_0(N))$.
+(iii) Replacing $\alpha_i$ by $\gamma\alpha_i$, $\gamma\in\Gamma_0(N)$, does not change $f_i$, by (i). For $\gamma\in\SL_2(\Z)$, $\Gamma_0(N)\alpha_i\gamma=\Gamma_0(N)\alpha_{s(i)}$ for a permutation $s$
+of the cosets, and $f_i(\gamma z)=f_{s(i)}(z)$; the action of $\SL_2(\Z)$ on $\Gamma_0(N)\backslash\SL_2(\Z)$ by right multiplication is transitive.
+\emph{Distinctness.} Suppose $f_i=f_l$. For each $z\in\HH$, $j(\delta_N\alpha_iz)=j(\delta_N\alpha_lz)$, so by \Cref{thm:modforms:j-bijective} there is $g\in\SL_2(\Z)$ with
+$\delta_N\alpha_iz=g\delta_N\alpha_lz$. For fixed $g$ the set of such $z$ is closed, and $\SL_2(\Z)$ is countable, so by Baire's theorem one of these sets has an interior point. Two
+M\"obius transformations that agree on an open set are equal, and the matrices of $\GL_2^+(\R)$ inducing a given one differ by a real scalar; comparing determinants, $\delta_N\alpha_i=\pm g\delta_N\alpha_l$.
+Then $\alpha_i\alpha_l^{-1}=\pm\delta_N^{-1}g\delta_N=\pm\sm{g_{11}}{g_{12}/N}{Ng_{21}}{g_{22}}$, which lies in $\SL_2(\Z)$ and has lower left entry divisible by $N$, so $\alpha_i\alpha_l^{-1}\in\Gamma_0(N)$
+and $i=l$.
+\emph{Coefficients.} The coefficients of $\Phi$ are the elementary symmetric functions of the $f_i$: holomorphic on $\HH$, invariant under $\SL_2(\Z)$ (which permutes the $f_i$), and
+Laurent series in $e^{2\pi iz/N}$ with finitely many negative terms (by the computation in (i), $f_i(z)=j(\beta_iz)$ with $\beta_i=\sm{a_i}{b_i}0{d_i}$, $a_id_i=N$, and $a_i/d_i=a_i^2/N$), hence,
+being invariant under $z\mapsto z+1$, Laurent series in $q$.
+So they are meromorphic functions on $X(1)$, and lie in $\C(j)$ by (ii).
+\emph{Irreducibility.} Let $P\in\C(j)[X]$ with $P(f_1)=0$. Composing with $\gamma\in\SL_2(\Z)$ fixes the coefficients of $P$, so $P(f_{s(1)})=0$; by transitivity every $f_i$ is a root, and
+as the $f_i$ are distinct, $\deg P\ge\mu(N)$. Hence $\Phi$ is the minimal polynomial of $f_1=j_N$ and $[\C(j,j_N):\C(j)]=\mu(N)$.
+(iv) The holomorphic map $j\circ\pi\colon X_0(N)\to\PP^1(\C)$ has degree $\deg\pi\cdot\deg j=\mu(N)\cdot1$ (\Cref{thm:modforms:genus-formula,thm:modforms:j-bijective}), and the degree of a
+nonconstant function $F$ on a curve $C$, viewed as a map to $\PP^1$, is $[\C(C):\C(F)]$ (\Cref{ch:curves}). So $[\C(X_0(N)):\C(j)]=\mu(N)$, and $\C(j,j_N)\subseteq\C(X_0(N))$
+has the same degree over $\C(j)$ by (iii); the two fields are equal.
+\end{proof}
+
+The polynomial $\Phi$, written as a polynomial $\Phi_N(j,X)$ in two variables, is the classical modular polynomial; for $N=2,3,5$ PARI's \texttt{polmodular} has degree $3,4,6=\mu(N)$ in
+each variable. That $\Phi_N\in\Z[X,Y]$ (Kronecker), and the resulting model of $X_0(N)$ over $\Q$ with function field $\Q(j,j_N)$, are in \Cref{ch:moddeg}.
+
 \section{Forms on \texorpdfstring{$\Gamma_0(N)$}{Gamma0(N)}: valence, differentials and dimensions}\label{sec:modforms:gamma0}
 
 This section passes from level one to $\Gamma_0(N)$. Its central statement is that weight-two cusp forms are exactly the holomorphic differentials on $X_0(N)$,
@@ -1169,7 +1229,7 @@ a cubic curve.
 
 \begin{example}[small levels]\label{ex:modforms:small-levels}
 \begin{enumerate}[label=(\alph*)]
-\item For the twelve levels $N=11$, $14$, $15$, $17$, $19$, $20$, $21$, $24$, $27$, $32$, $36$, $49$ of genus $1$, $S_2(\Gamma_0(N))$ is one-dimensional, spanned by the newform of the optimal curve of conductor $N$ (\Cref{ch:moddeg}). Seven of these are $\eta$-products, each checked against Cremona's curve for $n\le300$:
+\item For the twelve levels $N=11$, $14$, $15$, $17$, $19$, $20$, $21$, $24$, $27$, $32$, $36$, $49$ of genus $1$, $S_2(\Gamma_0(N))$ is one-dimensional, spanned by the newform of the optimal curve of conductor $N$ (\Cref{ch:moddeg}). Eight of these are $\eta$-products, each checked against Cremona's curve for $n\le300$:
 \begin{center}
 \begin{tabular}{@{}llll@{}}
 \toprule
@@ -1252,6 +1312,19 @@ A numerical value of a Petersson norm is never quoted without its normalisation.
 viewed at level $NM$, $\langle f,g\rangle_{\Gamma_0(NM)}=\frac{\mu(NM)}{\mu(N)}\langle f,g\rangle_{\Gamma_0(N)}$.
 \item If $\alpha\in\GL_2^+(\Q)$ normalises $\Gamma_0(N)$, then $\langle f|_k\alpha,g|_k\alpha\rangle=\langle f,g\rangle$ for $f\in S_k(\Gamma_0(N))$, $g\in M_k(\Gamma_0(N))$, provided $f|_k\alpha$ and $g|_k\alpha$
 again lie in these spaces.
+\item (Groups commensurable with $\SL_2(\Z)$.) Let $\Gamma\subset\SL_2(\Q)$ be a subgroup that contains some $\Gamma(M)$ as a subgroup of finite index, and write $\bar\Gamma$ for its image in
+$\PSL_2(\R)$. Define $M_k(\Gamma)\supseteq S_k(\Gamma)$ by the conditions of \Cref{def:modforms:modular-form} (invariance under $\Gamma$, behaviour under every $\sigma\in\SL_2(\Z)$). For a congruence
+subgroup $\Gamma_1\subseteq\SL_2(\Z)$ write $\langle f,g\rangle_{\Gamma_1}=\int_{\mathcal F_{\Gamma_1}}f\bar gy^k\,d\mu$, with $\mathcal F_{\Gamma_1}$ the domain of \Cref{prop:modforms:coset-domains} for
+$\pm\Gamma_1$. For $f\in S_k(\Gamma)$, $g\in M_k(\Gamma)$ the number
+\[
+\langle f,g\rangle_\Gamma=[\bar\Gamma:\bar\Gamma_1]^{-1}\langle f,g\rangle_{\Gamma_1},
+\]
+for $\Gamma_1\subseteq\Gamma\cap\SL_2(\Z)$ a congruence subgroup of finite index in $\Gamma$, does not depend on $\Gamma_1$, and for $\Gamma\subseteq\Gamma_0(N)$ of finite index it is the product of \Cref{def:modforms:petersson}.
+\item (Change of variables.) In the situation of (iii) let $\alpha\in\GL_2^+(\Q)$. Then $\alpha^{-1}\Gamma\alpha$ is again a group as in (iii), $f\mapsto f|_k\alpha$ maps $M_k(\Gamma)$ onto
+$M_k(\alpha^{-1}\Gamma\alpha)$ and $S_k(\Gamma)$ onto $S_k(\alpha^{-1}\Gamma\alpha)$, and
+\[
+\langle f|_k\alpha,g|_k\alpha\rangle_{\alpha^{-1}\Gamma\alpha}=\langle f,g\rangle_\Gamma\qquad(f\in S_k(\Gamma),\ g\in M_k(\Gamma)).
+\]
 \end{enumerate}
 \end{proposition}
 
@@ -1261,7 +1334,43 @@ $\SL_2(\Z)$), and the integrand is $\Gamma_0(N)$-invariant. Both $\Gamma_0(NM)$ 
 (ii) Let $D$ be a fundamental domain. The identity of (i) of \Cref{prop:modforms:petersson} holds for $\alpha\in\GL_2^+(\R)$ (the factors $\det\alpha$ cancel against
 $\operatorname{Im}(\alpha z)=\det\alpha\,y/\abs{cz+d}^2$), so $\int_D(f|_k\alpha)\overline{(g|_k\alpha)}y^k\,d\mu=\int_D\phi(\alpha z)\,d\mu(z)=\int_{\alpha D}\phi\,d\mu$, and $\alpha D$ is a fundamental domain for
 $\alpha\Gamma_0(N)\alpha^{-1}=\Gamma_0(N)$.
+
+For (iii) and (iv) we use one measure-theoretic fact. Call a measurable set $D\subseteq\HH$ a \emph{fundamental set} for a congruence subgroup $\Gamma_1$ if the translates $\gamma D$,
+$\gamma\in\bar\Gamma_1$, cover $\HH$ and any two distinct ones meet in a null set; $\mathcal F_{\Gamma_1}$ is one, by \Cref{prop:modforms:coset-domains} (translates of $\mathcal F$ meet only in
+boundary arcs). If $D,D'$ are fundamental sets for $\Gamma_1$ and $\phi\ge0$ is measurable and $\Gamma_1$-invariant, then, by the invariance of $\phi\,d\mu$,
+\[
+\int_D\phi\,d\mu=\sum_{\gamma\in\bar\Gamma_1}\int_{D\cap\gamma D'}\phi\,d\mu=\sum_{\gamma\in\bar\Gamma_1}\int_{\gamma^{-1}D\cap D'}\phi\,d\mu=\int_{D'}\phi\,d\mu ;
+\]
+applied to $\abs\phi$ and then to the positive and negative parts of $\operatorname{Re}\phi$ and $\operatorname{Im}\phi$, the same holds for every $\Gamma_1$-invariant $\phi$ integrable over $D'$.
+(iii) Since $f\bar g\,y^k$ is invariant under $-I$, it is invariant under $\pm\Gamma_1$, and the integral over $\mathcal F_{\Gamma_1}$ converges by the argument of \Cref{prop:modforms:petersson}(ii) (the
+expansions of $f|_k\sigma$ in $q_h$ at every cusp have no constant term). If $\Gamma_2\subseteq\Gamma_1$ are two congruence subgroups as in (iii) and $\delta_1,\dots,\delta_r$ represent
+$\bar\Gamma_2\backslash\bar\Gamma_1$, then $\bigcup_j\delta_j\mathcal F_{\Gamma_1}$ is a fundamental set for $\Gamma_2$, so $\langle f,g\rangle_{\Gamma_2}=r\langle f,g\rangle_{\Gamma_1}$, with
+$r=[\bar\Gamma_1:\bar\Gamma_2]$; as indices multiply, $[\bar\Gamma:\bar\Gamma_2]^{-1}\langle f,g\rangle_{\Gamma_2}=[\bar\Gamma:\bar\Gamma_1]^{-1}\langle f,g\rangle_{\Gamma_1}$. Two choices $\Gamma_1$, $\Gamma_1'$ are compared through
+$\Gamma_1\cap\Gamma_1'$, which is again a congruence subgroup of finite index in $\Gamma$. For $\Gamma\subseteq\Gamma_0(N)$ take $\Gamma_1=\Gamma$ (and $\Gamma_0(N)$ itself in \Cref{def:modforms:petersson}).
+(iv) Replacing $\alpha$ by a positive multiple changes neither $\alpha^{-1}\Gamma\alpha$ nor $f|_k\alpha$ (the factors $\lambda^k$ and $\lambda^{-k}$ cancel), so we may assume $\alpha\in M_2(\Z)$; put
+$m=\det\alpha$ and $\alpha'=m\alpha^{-1}\in M_2(\Z)$. For every $L\ge1$ and $X\in M_2(\Z)$,
+\[
+\alpha(1+mLX)\alpha^{-1}=1+L\,\alpha X\alpha',\qquad\alpha^{-1}(1+mLX)\alpha=1+L\,\alpha'X\alpha,
+\]
+so $\alpha\Gamma(mL)\alpha^{-1}\subseteq\Gamma(L)$ and $\alpha^{-1}\Gamma(mL)\alpha\subseteq\Gamma(L)$. Hence $\alpha^{-1}\Gamma\alpha\supseteq\alpha^{-1}\Gamma(M)\alpha\supseteq\Gamma(mM)$, and
+$[\alpha^{-1}\Gamma\alpha:\Gamma(mM)]\le[\alpha^{-1}\Gamma\alpha:\alpha^{-1}\Gamma(m^2M)\alpha]=[\Gamma:\Gamma(m^2M)]<\infty$ because $\alpha^{-1}\Gamma(m^2M)\alpha\subseteq\Gamma(mM)$. So $\alpha^{-1}\Gamma\alpha$ is as in (iii).
+For $\gamma\in\Gamma$, $(f|_k\alpha)|_k(\alpha^{-1}\gamma\alpha)=f|_k\gamma|_k\alpha=f|_k\alpha$ by \Cref{lem:modforms:slash}. For $\sigma\in\SL_2(\Z)$ write $\alpha\sigma=\sigma'\beta$ with $\sigma'\in\SL_2(\Z)$ and
+$\beta$ upper triangular with integer entries, as in the proof of \Cref{prop:modforms:mf-basic}(e); then $(f|_k\alpha)|_k\sigma=(f|_k\sigma')|_k\beta$ is bounded on $\{\operatorname{Im}z\ge1\}$,
+and tends to $0$ there if $f$ is a cusp form, by the argument given there. So $f|_k\alpha\in M_k(\alpha^{-1}\Gamma\alpha)$, in $S_k$ if $f\in S_k(\Gamma)$; $\alpha^{-1}$ gives the inverse map.
+For the product take $\Gamma_1=\Gamma(m^2M)\subseteq\Gamma$. Then $\Delta=\alpha^{-1}\Gamma_1\alpha$ satisfies $\Gamma(m^3M)\subseteq\Delta\subseteq\Gamma(mM)$ (the first inclusion because
+$\alpha\Gamma(m^3M)\alpha^{-1}\subseteq\Gamma(m^2M)$), so it is a congruence subgroup of finite index in $\alpha^{-1}\Gamma\alpha$, and conjugation by $\alpha$ gives
+$[\overline{\alpha^{-1}\Gamma\alpha}:\bar\Delta]=[\bar\Gamma:\bar\Gamma_1]$. It therefore suffices to show $\langle f|_k\alpha,g|_k\alpha\rangle_\Delta=\langle f,g\rangle_{\Gamma_1}$. With $\phi=f\bar g\,y^k$, the
+identity $\phi(\alpha z)=(f|_k\alpha)(z)\overline{(g|_k\alpha)(z)}\,y^k$ (as in (ii)) and the invariance of $d\mu$ give
+\[
+\langle f|_k\alpha,g|_k\alpha\rangle_\Delta=\int_{\mathcal F_\Delta}\phi(\alpha z)\,d\mu(z)=\int_{\alpha\mathcal F_\Delta}\phi\,d\mu .
+\]
+The set $\alpha\mathcal F_\Delta$ is a fundamental set for $\Gamma_1=\alpha\Delta\alpha^{-1}$: its translates are $\gamma\alpha\mathcal F_\Delta=\alpha(\alpha^{-1}\gamma\alpha)\mathcal F_\Delta$, and the diffeomorphism
+$z\mapsto\alpha z$ preserves null sets. By the fact above (first for $\abs\phi$, which shows integrability), the integral equals $\int_{\mathcal F_{\Gamma_1}}\phi\,d\mu=\langle f,g\rangle_{\Gamma_1}$.
 \end{proof}
+
+Part (iv) is the form in which \Cref{ch:hecke} uses the change of variables: there $\Gamma=\Gamma_0(N)\cap\alpha\Gamma_0(N)\alpha^{-1}$ for a matrix $\alpha$ of a double coset, a congruence
+subgroup, while $\alpha^{-1}\Gamma\alpha$ need not lie in $\SL_2(\Z)$. The groups of (iii) are what is needed for that: they need not lie in $\SL_2(\Z)$, but they are
+commensurable with it.
 
 The factor in (i) is why the normalisation matters as soon as levels change: the paper passes from level $M$ to $M^\Sigma$ in Section 4.1, and Theorem thm:quant works at level
 $N$ with forms of level $N_S$. The normalised product of \Cref{conv:modforms:petersson-normalisations}(c) is level-independent; congruence questions do not see the factor at all,
@@ -1312,7 +1421,10 @@ constant of that parametrisation to be $5$ (Exercise \ref{ex:modforms:ex-peterss
 \item (\Cref{ch:hecke}.) For $(n,N)=1$ the Hecke operator $T_n$ is self-adjoint for $\langle\ ,\ \rangle$; for $p\mid N$, $U_p$ is not, its adjoint being $w_NU_pw_N$; newforms with different
 systems of eigenvalues are orthogonal, and oldforms are orthogonal to newforms.
 \item (\Cref{ch:lfunctions}.) Rankin-Selberg: for a newform $f$ of weight $2$ and level $N$, $\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ with the naive symmetric square
-$L$-function (\cite[Lemma 2.12]{DFG04}, \cite{Shimura76}, \cite{Rankin39}); we checked this to $40$ digits for \curve{11a1} and \curve{37a1} with PARI's \texttt{lfunsympow} (at these squarefree levels the naive and the true $L$-function agree, so the check does not see the difference). The Rankin
+$L$-function (\cite[Lemma 2.12]{DFG04}, \cite{Shimura76}, \cite{Rankin39}); we checked this to $40$ digits for \curve{11a1} and \curve{37a1} with PARI's \texttt{lfunsympow} (at these squarefree levels the naive and the true $L$-function agree, so the check does not see the difference).
+At \curve{121a1}, of additive reduction at $11$ with $a_{11}=0$, it does: $\langle f,f\rangle=0.4282393600\ldots=121\,L^{\nv}(\Sym f,2)/(8\pi^3)$, while the true $L$-function gives
+$121\,L(\Sym f,2)/(8\pi^3)=0.3925527466\ldots$; the ratio is $\frac{12}{11}$ to $40$ digits, the inverse of the Euler factor $(1+11^{1-s})^{-1}$ at $s=2$ that the true $L$-function has at $11$ and
+the naive one omits (PARI's coefficients of \texttt{lfunsympow} at $11$ and $121$ are $-11$ and $121$). The Rankin
 series $\sum a_n(f)^2n^{-s}$ is not $L^{\nv}(\Sym f,s)$: it equals $\zeta^{(N)}(s-1)L^{\nv}(\Sym f,s)/\zeta^{(N)}(2s-2)$, and at a good prime it carries an extra factor $1+p^{1-s}$
 (\Cref{ch:notation}, B-C7).
 \item (\Cref{ch:moddeg}.) The formula of Zagier and Watkins $\degphi\cdot\vol(\Lambda_E)=4\pi^2c_E^2\langle f,f\rangle$ in general.
@@ -1412,8 +1524,9 @@ $F\in L\otimes\Z_\ell$. The statement for $\F_\ell$ is injectivity of the trunca
 
 \begin{paperlink}\label{pl:modforms:crit}
 Lemma lem:crit ends: ``Every step holds verbatim over $\Z_\ell$, the pairing being perfect after tensoring with $\Z_\ell$.'' On the side of forms, the module there is
-$S_2(\Gamma_0(N);\Z_\ell)=S_2(\Gamma_0(N);\Z)\otimes\Z_\ell$ (\Cref{def:modforms:integral-forms}); \Cref{cor:modforms:integral-lattice}(iii) says that it embeds in $\Z_\ell[[q]]$, so that ``$f\equiv g\pmod{\ell^t}$
-coefficientwise'' makes sense for its elements, and that it consists exactly of the $\ell$-integral forms. Step 1 of the proof of Theorem thm:quant uses the same module: ``projecting
+$S_2(\Gamma_0(N);\Z_\ell)=S_2(\Gamma_0(N);\Z)\otimes\Z_\ell$ (\Cref{def:modforms:integral-forms}); \Cref{cor:modforms:integral-lattice}(iii) says that it embeds in $\Z_\ell[[q]]$, so that congruences modulo $\ell^t$
+coefficientwise make sense for its elements, and that it consists exactly of the $\ell$-integral forms. Step 1 of the proof of Theorem thm:quant uses the same module: it speaks of
+``$g^S\equiv h\pmod{\ell^t}$ coefficientwise with $h\in S_2(\Gamma_0(N);\Z_\ell)$'', and continues ``projecting
 $h$ to the $\mathfrak m$-component (an idempotent of $\T_\ell$, so the projection stays in the complement and the congruence survives)''. Here the idempotent $e_{\mathfrak m}\in\T_\ell$
 acts on $S_2(\Gamma_0(N);\Z_\ell)$ (the Hecke operators preserve $S_2(\Gamma_0(N);\Z)$, \Cref{ch:hecke}), and if $g^S-h\in\ell^tS_2(\Gamma_0(N);\Z_\ell)$ then $e_{\mathfrak m}(g^S-h)=g^S-e_{\mathfrak m}h\in\ell^tS_2(\Gamma_0(N);\Z_\ell)$ because $e_{\mathfrak m}g^S=g^S$; by
 the injectivity of (iii) this is a congruence of $q$-expansions. In Theorem thm:twist the twist map $h\mapsto h\otimes\chi_S=\sum\chi_S(n)a_n(h)q^n$ ``maps $S_2(\Gamma_0(N_S))$ into
@@ -1575,8 +1688,10 @@ $\frac1{10}$ (Exercise \ref{ex:modforms:ex-cusps20}).
 \begin{example}[the action on $q$-expansions]\label{ex:modforms:atkin-lehner-q-expansions}
 \begin{enumerate}[label=(\alph*)]
 \item $f|_kW_N(z)=N^{k/2}(Nz)^{-k}f(-1/(Nz))$ is, up to the factor and the change of variable $z\mapsto Nz$, the expansion of $f$ at the cusp $0$. It is determined by $f$ through the
-transformation law, not coefficient by coefficient: there is no formula expressing $a_n(f|_kW_N)$ in terms of finitely many $a_m(f)$ that holds on all of $M_k(\Gamma_0(N))$, and
-$a_n(f|_kW_N)=\pm a_n(f)$ holds only for eigenvectors of $w_N$.
+transformation law. Since $M_k(\Gamma_0(N))$ is finite-dimensional and $f\mapsto(a_0(f),\dots,a_B(f))$ is injective for $B=\lfloor k\mu(N)/12\rfloor$ (\Cref{thm:modforms:valence-gamma0}), each
+$a_n(f|_kW_N)$ is a linear combination $\sum_{m\le B}c_{n,m}a_m(f)$ with constants $c_{n,m}$ depending on $N$, $k$ and $n$; but these constants depend on the whole space and can only be
+computed through the transformation law (for instance from a basis whose expansions at $0$ are known). There is no uniform coefficientwise rule: $a_n(f|_kW_N)=\pm a_n(f)$ for all $n$ holds
+only for eigenvectors of $w_N$.
 \item (Oldforms; \Cref{ch:hecke}.) Let $h\in M_k(\Gamma_0(M))$, $p\nmid M$ prime, and $N=Mp$. Then $W_N=W_M\sm p001$ and $\sm p001W_N=W_M\cdot pI$, so by \Cref{prop:modforms:mf-basic}(e)
 \[
 (h|_kW_N)(z)=p^{k/2}(h|_kW_M)(pz),\qquad\bigl(h(pz)\bigr)\big|_kW_N=p^{-k/2}(h|_kW_M)(z).
@@ -1620,7 +1735,7 @@ $u\in\{10,17,75,82\}$ give $\nu_3=4$ ($7\equiv13\equiv1\pmod3$); $\mu=112$, $\nu
 (a) Show that for a prime $p\ge5$, $g(X_0(p))=\lfloor\frac{p+1}{12}\rfloor-1$ if $p\equiv1\pmod{12}$ and $\lfloor\frac{p+1}{12}\rfloor$ otherwise, and deduce that $g(X_0(p))=0$ exactly for
 $p\in\{2,3,5,7,13\}$. (b) Show $\nu_2(N),\nu_3(N)\le2^{\omega(N)}\le\nu_\infty(N)$ and hence $g(X_0(N))\ge1+\frac{\mu(N)-13\nu_\infty(N)}{12}$. (c) Show $\nu_\infty(p^e)\le2p^{\lfloor e/2\rfloor}$, so that
 $\nu_\infty(N)/\mu(N)\le\prod_{p^e\|N}\frac{2p^{1+\lfloor e/2\rfloor-e}}{p+1}$, and conclude that $\mu(N)-13\nu_\infty(N)\ge12$, hence $g(X_0(N))\ge2$, for all but finitely many $N$, all of which
-can be listed. \emph{Answer to the last part:} there are $63$ exceptions, the largest being $N=169$; together with the table computed for $N\le2000$ this proves that the lists of
+can be listed. \emph{Answer to the last part:} there are $64$ exceptions ($63$ with $N\ge2$), the largest being $N=169$; together with the table computed for $N\le2000$ this proves that the lists of
 levels of genus $0$ and $1$ in \Cref{sec:modforms:modular-curves} are complete. (For (a): $\mu=p+1$, $\nu_\infty=2$, and $(\nu_2,\nu_3)$ is determined by $p\bmod12$.)
 \end{exercise}
 
@@ -1660,16 +1775,19 @@ $f_{20}^{12}=\Delta(2z)\Delta(10z)$ lies in $S_{24}(\Gamma_0(20))$ by \Cref{prop
 \end{exercise}
 
 \begin{exercise}\label{ex:modforms:ex-petersson-pari}
-(a) With PARI, compute \texttt{mfpetersson} for the newform of \curve{11a1}, multiply by $\mu(11)=12$, and check $4\pi^2\langle f,f\rangle=\vol(\Lambda_{\curve{11a1}})$ (use
-\texttt{E.omega}). (b) The curves \curve{11a2} and \curve{11a3} receive parametrisations $X_0(11)\to\curve{11a1}\to\curve{11a2}$, $\curve{11a3}$ of degree $5$. Compute
+(a) Compute $\langle f_{11},f_{11}\rangle$ without \texttt{mfpetersson}, by integrating over the fundamental domain $\mathcal F\cup\bigcup_{j=0}^{10}ST^j\mathcal F$ of \Cref{prop:modforms:coset-domains}. Show
+first, from $W_{11}=S\sm{11}001$ and $f_{11}|_2W_{11}=-f_{11}$, that $(f_{11}|_2S)(z)=-\frac1{11}f_{11}(z/11)$, and deduce from \Cref{prop:modforms:petersson}(ii) that
+$\langle f_{11},f_{11}\rangle=\int_{\mathcal F}\bigl(\abs{f_{11}(z)}^2+\frac1{121}\sum_{j=0}^{10}\abs{f_{11}(\frac{z+j}{11})}^2\bigr)dx\,dy$. Evaluate the integral numerically with the first $400$
+coefficients. (b) The curves \curve{11a2} and \curve{11a3} receive parametrisations $X_0(11)\to\curve{11a1}\to\curve{11a2}$, $\curve{11a3}$ of degree $5$. Compute
 $\vol(\Lambda_{\curve{11a2}})$ and $\vol(\Lambda_{\curve{11a3}})$ and use $\deg\varphi\cdot\vol(\Lambda)=4\pi^2c_\varphi^2\langle f,f\rangle$ to find the constants $c_\varphi$ of these two parametrisations.
-\emph{Answer:} the volumes are $\frac15$ and $5$ times $\vol(\Lambda_{\curve{11a1}})=1.8515\ldots$, so $c_\varphi^2=1$ and $25$: the constants are $1$ and $5$. With the Manin constant in the
+\emph{Answer:} (a) $f_{11}|_2S=f_{11}|_2W_{11}|_2\sm{1/11}001=-\frac1{11}f_{11}(z/11)$, and $(f|_2ST^j)(z)=(f|_2S)(z+j)$; in weight $2$, $y^2\,d\mu=dx\,dy$. Numerical integration
+(truncating at $y=40$) gives $0.04690014787349$, in agreement with $12\cdot\texttt{mfpetersson}=0.0469001478734952$ of \Cref{ex:modforms:petersson-numerics}. (b) The volumes are $\frac15$ and $5$
+times $\vol(\Lambda_{\curve{11a1}})=1.8515\ldots$, so $c_\varphi^2=1$ and $25$: the constants are $1$ and $5$. With the Manin constant in the
 denominator one would get the impossible value $\frac15$ for \curve{11a3}.
 \end{exercise}
 
 \begin{exercise}\label{ex:modforms:ex-level22}
-Let $f=f_{11}$. (a) Show $\langle f,f\rangle_{\Gamma_0(22)}=3\langle f,f\rangle_{\Gamma_0(11)}$. (b) Prove that for $\alpha\in\GL_2^+(\Q)$ and finite-index subgroups $\Gamma,\Gamma'$ of $\SL_2(\Z)$ with
-$\alpha\Gamma'\alpha^{-1}\subseteq\Gamma$, $\langle f|_k\alpha,g|_k\alpha\rangle_{\Gamma'}=\langle f,g\rangle_{\alpha\Gamma'\alpha^{-1}}$, and deduce, with $\alpha=\sm2001$, that
+Let $f=f_{11}$. (a) Show $\langle f,f\rangle_{\Gamma_0(22)}=3\langle f,f\rangle_{\Gamma_0(11)}$. (b) Deduce from \Cref{prop:modforms:petersson-change}(iv), with $\alpha=\sm2001$, that
 $\langle f(2z),f(2z)\rangle_{\Gamma_0(22)}=\frac34\langle f,f\rangle_{\Gamma_0(11)}$.
 \emph{Hint:} $\alpha\Gamma_0(22)\alpha^{-1}=\Gamma_0(11)\cap\Gamma^0(2)$, where $\Gamma^0(2)$ consists of the matrices with $b$ even; it has index $3$ in $\Gamma_0(11)$, and $f(2z)=\frac12f|_2\alpha$. (PARI gives
 $-\langle f,f\rangle_{\Gamma_0(11)}$ for $\langle f(z),f(2z)\rangle_{\Gamma_0(22)}$, which is $\frac{a_2(f)}2\langle f,f\rangle_{\Gamma_0(11)}$; \Cref{ch:hecke} explains the factor.)
@@ -1680,7 +1798,8 @@ Let $f,g\in S_2(\Gamma_0(N);\Z)$ be normalised eigenforms of all the Hecke opera
 $a_{p^{r+1}}=a_pa_{p^r}-p\,a_{p^{r-1}}$ for $p\nmid N$, and $a_{p^r}=a_p^r$ for $p\mid N$). Show that if $a_p(f)\equiv a_p(g)\pmod\ell$ for all primes $p\le B_2(N)$, then $f\equiv g\pmod\ell$
 coefficientwise.
 \emph{Hint:} the recursions express $a_n$, $n\le B_2(N)$, through the $a_p$ with $p\le n$, by polynomials with integer coefficients; then use \Cref{cor:modforms:integral-lattice}(iv). The
-hypothesis includes the primes $p\mid N$, whose $a_p$ are not determined by the others; this is why the paper compares $a_3$ and $a_{11}$ separately in its Example.
+hypothesis includes the primes $p\mid N$, whose $a_p$ are not determined by the others, and the prime $p=\ell$. For the congruence modulo $3$ at level $121$ these are the primes
+excluded in the original version of the paper ($p=\ell=3$, and $p=11$ dividing $N$), which is why \Cref{ex:modforms:paper-congruences}(b) lists $a_3$ and $a_{11}$ separately.
 \end{exercise}
 
 \begin{exercise}\label{ex:modforms:ex-al-existence}
