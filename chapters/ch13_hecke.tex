@@ -636,9 +636,9 @@ $f$-line is $\T$-stable, and so is $f^\perp$, because $f$ is an eigenvector of t
 but its adjoint is $w_NU_pw_N$, and a newform is an eigenvector of $w_N$. The cohomological analogue, with the cup product in place of the Petersson product, is the
 statement of the paper's Section 4.1 that $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ (\Cref{ch:moddeg}).
 
-For a subgroup $\Gamma'\subseteq\SL_2(\Z)$ of finite index containing $-1$ and cusp forms $f,g$ of weight $k$ for $\Gamma'$ we write $\langle f,g\rangle_{\Gamma'}=\int_{\Gamma'\backslash\HH}f\bar gy^k\,d\mu$, $d\mu=dx\,dy/y^2$. We
+For a congruence subgroup $\Gamma'\subseteq\SL_2(\Z)$ containing $-1$, or a conjugate $\alpha^{-1}\Gamma'\alpha$ of one by $\alpha\in\GL_2^+(\Q)$, and cusp forms $f,g$ of weight $k$ for it, we write $\langle f,g\rangle_{\Gamma'}=\int_{\Gamma'\backslash\HH}f\bar gy^k\,d\mu$, $d\mu=dx\,dy/y^2$. The product is defined in \Cref{ch:modforms} for these groups (each contains a conjugate of some $\Gamma(M)$, and the definition goes through such a subgroup). We
 use two facts from \Cref{ch:modforms}: the function $f\bar g\,y^k$ is $\Gamma'$-invariant, and for $\alpha\in\GL_2^+(\Q)$, $\langle f|_k\alpha,g|_k\alpha\rangle_{\alpha^{-1}\Gamma'\alpha}=\langle f,g\rangle_{\Gamma'}$ (change of
-variables $z\mapsto\alpha z$, using $\operatorname{Im}(\alpha z)^{k/2}\abs{f(\alpha z)}=(\operatorname{Im}z)^{k/2}\abs{(f|_k\alpha)(z)}$), where $\alpha^{-1}\Gamma'\alpha$ need not lie in $\SL_2(\Z)$ but is commensurable with it.
+variables $z\mapsto\alpha z$, using $\operatorname{Im}(\alpha z)^{k/2}\abs{f(\alpha z)}=(\operatorname{Im}z)^{k/2}\abs{(f|_k\alpha)(z)}$), where $\alpha^{-1}\Gamma'\alpha$ need not lie in $\SL_2(\Z)$. Every group used below is of this kind: $\Gamma_0(N)$, $\Gamma\cap\alpha^{-1}\Gamma\alpha$, and the conjugate $\alpha^{-1}\Gamma_0(M)\alpha$ in the proof of \Cref{prop:hecke:Up-adjoint}(ii).
 
 \begin{proposition}[adjoints of double coset operators]\label{prop:hecke:double-coset-adjoint}
 Let $\Gamma=\Gamma_0(N)$, $\alpha\in\GL_2^+(\Q)$ and $\alpha'=(\det\alpha)\alpha^{-1}$. For $f,g\in S_k(N)$,
@@ -1011,7 +1011,7 @@ $\delta_p=2,1,0$ for good, multiplicative and additive reduction, and $\delta_p=
 \item $f^\Sigma\in S_k(M^\Sigma)$, and $M^\Sigma$ is the least level $L$ with $f^\Sigma\in S_k(L)$.
 \item $f^\Sigma$ is a normalised eigenform of the full Hecke algebra of level $M^\Sigma$, with $U_pf^\Sigma=0$ for $p\in\Sigma$ and the eigenvalues of $f$ at the other $T_n$, and its generalised
 eigenspace in $S_k(M^\Sigma)$ is the line $\C f^\Sigma$.
-\item At a level $N$ with $M^\Sigma\mid N$, $f^\Sigma$ is still a normalised eigenform of $\T_N$, but its generalised eigenspace can be larger.
+\item At a level $N$ with $M^\Sigma\mid N$ such that every prime dividing $N$ divides $M^\Sigma$, $f^\Sigma$ is still a normalised eigenform of $\T_N$, but its generalised eigenspace can be larger. Without the condition on the primes of $N$ it need not be an eigenform of $\T_N$.
 \item $L(f^\Sigma,s)=L(f,s)\prod_{p\in\Sigma}L_p(f,s)^{-1}$.
 \end{enumerate}
 \end{proposition}
@@ -1028,8 +1028,7 @@ and agree with those of $f$ elsewhere; by \Cref{lem:hecke:eigen-criterion} at th
 eigenvector for its eigencharacter is in particular an eigenvector of $\T^{(M^\Sigma)}$ for the system of $f$ (\Cref{thm:hecke:self-adjoint}), so it lies in $V_f=\operatorname{span}\{f(dz):d\mid d_0\}$
 (\Cref{thm:hecke:atkin-lehner}(ii)). Writing $d=\prod_pp^{j_p}$, the map $\bigotimes_{p\in\Sigma}V_{f,p,\delta_p}\to V_f$, $\otimes_p h(p^{j_p}z)\mapsto f(dz)$ (with $h=f$ in each factor) is an isomorphism under which $U_p$
 acts on the $p$-th factor (because $\mathcal U_pV_{d'}=V_{d'}\mathcal U_p$ for $(d',p)=1$). On $V_{f,p,\delta_p}$ the characteristic polynomial of $U_p$ is $X(X^2-a_pX+p^{k-1})$, $X(X-a_p)$ with $a_p\ne0$, or $X$,
-so $0$ is a simple root; the joint generalised eigenspace for the eigenvalues $0$ is the tensor product of these lines, a line. (v) The eigenform property is (iv) with
-\Cref{lem:hecke:eigen-criterion} at level $N$. For the second statement see \Cref{ex:hecke:level-88}: $f_{11}^{\{2\}}$ spans its generalised eigenspace at level $44=M^{\{2\}}$, but lies in a
+so $0$ is a simple root; the joint generalised eigenspace for the eigenvalues $0$ is the tensor product of these lines, a line. (v) Every prime $p\mid N$ divides $M^\Sigma$, so either $p\in\Sigma$, where $b_{p^r}=0=b_p^r$, or $p\mid M$, $p\notin\Sigma$, where $b_{p^r}=a_{p^r}(f)=a_p(f)^r$ (\Cref{prop:hecke:eigenforms}(ii) at level $M$); the primes $p\nmid N$ satisfy the recursion of $f$. So the eigenform property is \Cref{lem:hecke:eigen-criterion} at level $N$. The condition is needed: for $f=f_{11}$, $\Sigma=\{2\}$ and $N=132=3\cdot44$, the coefficients of $f^\Sigma$ at $3$ and $9$ are $a_3=-1$ and $a_9=a_3^2-3=-2\ne a_3^2$, so $f^\Sigma$ is not an eigenvector of $U_3$ at level $132$ (\Cref{lem:hecke:eigen-criterion}). For the second statement see \Cref{ex:hecke:level-88}: $f_{11}^{\{2\}}$ spans its generalised eigenspace at level $44=M^{\{2\}}$, but lies in a
 Jordan block of $U_2$ at level $88$. (vi) is \Cref{prop:hecke:euler-product} applied to $f^\Sigma$ and $f$.
 \end{proof}
 
