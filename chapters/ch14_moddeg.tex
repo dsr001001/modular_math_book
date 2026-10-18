@@ -240,7 +240,7 @@ $w_N(E,C)=(E/C,E[N]/C)$.
 \item $X_0(N)_\Q$ has good reduction at every prime $p\nmid N$ (Igusa; Deligne and Rapoport). For $p\,\|\,N$ it has a semistable model over $\Zp$
 (Deligne and Rapoport) whose special fibre is two copies of $X_0(N/p)_{\Fp}$ meeting in ordinary double points at the supersingular points; at such a point the
 complete local ring over $W(\bar\F_p)$ is $W(\bar\F_p)[[x,y]]/(xy-p^k)$ with $k=\frac12\#\Aut$ of the corresponding supersingular curve with its level structure,
-$k\in\{1,2,3\}$, so the model is regular except at the supersingular points whose pair has automorphisms other than $\pm1$ (possible only for $j=0$ or $1728$),
+so $k\in\{1,2,3\}$ when $p\ge5$ (for $N=p\in\{2,3\}$ it can reach $12$ or $6$), and the model is regular except at the supersingular points whose pair has automorphisms other than $\pm1$ (possible only for $j=0$ or $1728$),
 which Edixhoven resolves.
 \end{enumerate}
 \end{theorem}
@@ -1204,7 +1204,7 @@ In the language of physics: a loop on $E$ lifts to $\degphi$ loops on $X_0(N)$, 
 $\phi_f\colon\T\to\Z$ of $f$ on the full Hecke algebra, and $\ell$ a prime. Then $\varphi^*\colon H^1(E,\Z_\ell)\to H^1(X_0(N),\Z_\ell)$ is injective, with image the kernel lattice
 $H^1(X_0(N),\Z_\ell)[I_f]$, and $\langle\varphi^*a,\,w_N^*\varphi^*b\rangle_{X_0(N)}=\varepsilon_N(f)\,\degphi\,\langle a,b\rangle_E$ \dots In particular, for $\ell$ odd, the ideal of values of
 $\frac12\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Z_\ell)[I_f]$ is $\degphi\,\Z_\ell$, and its Gram determinant is $(\degphi)^2$ up to a unit. If $\ell\nmid2N$ and $\bar\rho_{E,\ell}$ is irreducible, then
-$M_{f,\lambda}=\varphi^*H^1(E,\Z_\ell)$, and $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$.'' (The omitted words are ``where $\langle\ ,\ \rangle$ denotes the cup product and $\varepsilon_N(f)=\pm1$ the eigenvalue of $w_N$ on $f$.'') The book's
+$M_{f,\lambda}=\varphi^*H^1(E,\Z_\ell)$, and $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$.'' (The omitted words are ``$(a,b\in H^1(E,\Z_\ell))$, where $\langle\ ,\ \rangle$ denotes the cup product and $\varepsilon_N(f)=\pm1$ the eigenvalue of $w_N$ on $f$.'') The book's
 \Cref{prop:moddeg:mf-is-pullback,lem:moddeg:wn-on-mf,thm:moddeg:degree-is-eta} prove this, with these differences. (1) The paper's first two sentences are already stated for every prime
 $\ell$, integrally over $\Z_\ell$, for the pairing $\langle x,w_N^*y\rangle$ with no factor $\frac12$; only its ``In particular'' sentence on the ideal of values and the Gram determinant is
 restricted to odd $\ell$, because it is phrased for $\frac12\langle x,w_N^*y\rangle$. What the book adds is the statement over $\Z$ (the ideal of values on $H^1(X_0(N),\Z)[I_f]$ is
