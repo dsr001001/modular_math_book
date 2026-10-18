@@ -117,6 +117,7 @@ $\End S_2(\Gamma_0(N))$): \Cref{prop:modforms:q-expansion}, \Cref{def:modforms:i
 \item \textbf{Definition def:terms} ($v_q(j_E)$): \Cref{prop:modforms:delta-j}, \Cref{thm:modforms:j-bijective}, \Cref{pl:modforms:ch9}.
 \item \textbf{The running example \curve{11a1}}: \Cref{thm:modforms:level-eleven}, \Cref{ex:modforms:eisenstein-congruence}, \Cref{ex:modforms:petersson-numerics}.
 \end{itemize}
+
 \section{The upper half plane}\label{sec:modforms:upper-half-plane}
 
 This section fixes the stage: the upper half plane, the action of $\GL_2^+(\R)$ by M\"obius transformations, and the invariant
@@ -328,7 +329,7 @@ $\gcd(c,d,N)=1$ modulo multiplication by $(\Z/N)^\times$. Hence
 (i) Let $\bar\gamma=\sm{\bar a}{\bar b}{\bar c}{\bar d}\in\SL_2(\Z/N)$. Lift $\bar c,\bar d$ to integers $c,d$ with $c\ne0$ (take $c=N$ if $\bar c=0$). Since $\gcd(c,d,N)=1$, we can
 replace $d$ by $d+tN$ with $\gcd(c,d+tN)=1$: let $t$ be the product of the primes dividing $c$ but not $d$; a prime $p\mid c$ that divides $d$ does not divide $N$
 or $t$, so $p\nmid d+tN$, and a prime $p\mid c$ not dividing $d$ divides $t$, so again $p\nmid d+tN$. Now choose $a',b'\in\Z$ with $a'd-b'c=1$. The solutions
-$(x,y)\in(\Z/N)^2$ of $xd-yc=1$ are $(a',b')+k(c,d)$, $k\in\Z/N$, because $(c,d)$ is unimodular modulo $N$ (Chapter 2's Chinese remainder theorem reduces
+$(x,y)\in(\Z/N)^2$ of $xd-yc=1$ are $(a',b')+k(c,d)$, $k\in\Z/N$, because $(c,d)$ is unimodular modulo $N$ (the Chinese remainder theorem of \Cref{ch:rings} reduces
 this to prime powers, where it is linear algebra over a local ring). So $(\bar a,\bar b)=(a'+kc,b'+kd)\bmod N$ for some $k\in\Z$, and $\sm{a'+kc}{b'+kd}cd\in\SL_2(\Z)$
 lifts $\bar\gamma$. For the order: by the Chinese remainder theorem $\SL_2(\Z/N)=\prod\SL_2(\Z/p^e)$; reduction $\GL_2(\Z/p^e)\to\GL_2(\F_p)$ is onto with kernel
 $I+pM_2(\Z/p^e)$ of order $p^{4(e-1)}$, $\#\GL_2(\F_p)=(p^2-1)(p^2-p)$, and $\det\colon\GL_2(\Z/p^e)\to(\Z/p^e)^\times$ is onto, so
@@ -372,6 +373,7 @@ rows of $I$ and $ST^j=\sm0{-1}1j$ are $(0:1)$ and $(1:j)$, the $p+1$ points of $
 For $\Gamma_0(11)$ the domain consists of $\mathcal F$ and the eleven translates $ST^j\mathcal F$, $0\le j\le10$. The translate $ST^j\mathcal F$ is the image of the strip piece
 $T^j\mathcal F$ under $z\mapsto-1/z$, a curvilinear triangle bounded by three geodesics (two of them semicircles through $0$) with one ideal vertex at the cusp $0$. So eleven of the twelve
 triangles cluster at $0$, and the domain has two ideal vertices, $\infty$ and $0$, which are the two cusps of $\Gamma_0(11)$ (\Cref{prop:modforms:cusps-gamma0}).
+
 \section{Cusps, widths and elliptic points}\label{sec:modforms:cusps}
 
 The compact curve $X_0(N)$ is $Y_0(N)$ together with finitely many cusps, and the map $X_0(N)\to X(1)$ is ramified only at the cusps and at the
@@ -627,6 +629,7 @@ the curve of \Cref{thm:modforms:x0-compact}, defined over $\Q$ by \Cref{thm:modf
 the paper uses $H^1(X_0(M^\Sigma),\Z_\ell)$, the cohomology of the compact Riemann surface $X_0(M^\Sigma)$ (\Cref{ch:curves}); its rank is $2g(X_0(M^\Sigma))$, for example
 $2g(X_0(121))=12$.
 \end{paperlink}
+
 \section{Modular forms, \texorpdfstring{$q$}{q}-expansions and nebentypus}\label{sec:modforms:forms}
 
 This section defines the objects of the paper's first sentence about modular forms, ``let $f=f_E\in S_2(\Gamma_0(N))$ be the newform attached to it'': the
@@ -710,7 +713,7 @@ $f$ is a cusp form iff $b_0(\sigma)=0$ for a set of $\sigma$ representing all cu
 \end{proposition}
 
 \begin{proof}
-(ii) Since $z\mapsto q=e^{2\pi iz}$ maps $\HH$ onto the punctured disc and identifies $z$ and $z+1$ only, $G(q)=g(z)$ is well defined and holomorphic (locally $z=\frac1{2\pi i}\log q$).
+(ii) Since $z\mapsto q=e^{2\pi iz}$ maps $\HH$ onto the punctured disc and identifies exactly the points that differ by integers, $G(q)=g(z)$ is well defined and holomorphic (locally $z=\frac1{2\pi i}\log q$).
 Its Laurent series converges absolutely and locally uniformly on the punctured disc. The set $\{\operatorname{Im}z\ge1\}$ corresponds to $0<\abs q\le e^{-2\pi}$, and Riemann's
 theorem on removable singularities gives the equivalences.
 (i) $T\in\Gamma_0(N)$ gives the period, and (ii) the expansion with $n\ge0$ (taking $\sigma=I$ in \Cref{def:modforms:modular-form}(b)). A power series with radius of
@@ -807,12 +810,13 @@ to $\ell$'', an element of $S_2(\Gamma_0(M),\chi)$ in the sense of \Cref{def:mod
 nebentypus, which is trivial modulo $\lambda$ and of order prime to $\ell$, to be trivial'', so that the newform lies in $S_2(\Gamma_0(M))$; the Galois-theoretic content of
 that sentence (the determinant of $\rho_f$ is $\chi\chi_\ell$) is \Cref{ch:modgalrep}'s.
 \end{paperlink}
+
 \section{Level one: Eisenstein series, \texorpdfstring{$\Delta$}{Delta}, \texorpdfstring{$j$}{j} and the valence formula}\label{sec:modforms:level-one}
 
 Level one is where every structural fact can be proved with a contour integral. This section constructs the Eisenstein series $E_k$, the cusp form $\Delta$ and
 the function $j$, proves the valence formula, and deduces the structure of $M_*(\SL_2(\Z))$ and the bijectivity of $j$. It discharges two debts of
-\Cref{ch:ellcurves}: the $q$-expansion of $j$ and the bijection $j\colon\SL_2(\Z)\backslash\HH\to\C$. The paper uses level one only through these objects: Chapter 9's $j$-invariant
-$j_E$, whose valuations $v_q(j_E)$ enter Definition def:terms, and the Eisenstein series behind the Eisenstein case of Section 6 (\Cref{prop:modforms:eisenstein-weight-two}).
+\Cref{ch:ellcurves}: the $q$-expansion of $j$ and the bijection $j\colon\SL_2(\Z)\backslash\HH\to\C$. The paper uses level one only through these objects: the $j$-invariant $j_E$ of
+\Cref{ch:ellcurves}, whose valuations enter Definition def:terms, and the Eisenstein series behind the Eisenstein case of Section sec:eis (\Cref{prop:modforms:eisenstein-weight-two}).
 
 \begin{proposition}[Eisenstein series of level one]\label{prop:modforms:eisenstein-level-one}
 For even $k\ge4$ the series $G_k(z)=\sum_{(m,n)\in\Z^2\smallsetminus\{0\}}(mz+n)^{-k}$ converges absolutely and locally uniformly on $\HH$, $G_k\in M_k(\SL_2(\Z))$, and $G_k=2\zeta(k)E_k$ with
@@ -845,7 +849,7 @@ G_k(z)&=2\zeta(k)+2\sum_{m\ge1}\sum_{n\in\Z}(mz+n)^{-k}=2\zeta(k)+\frac{2(2\pi i
 &=2\zeta(k)+\frac{2(2\pi i)^k}{(k-1)!}\sum_{n\ge1}\sigma_{k-1}(n)q^n.
 \end{aligned}
 \]
-With Euler's $\zeta(k)=-\frac{(2\pi i)^kB_k}{2\,k!}$ this is $2\zeta(k)E_k$. So $G_k$ is bounded on $\{\operatorname{Im}z\ge1\}$, and since every $\sigma\in\SL_2(\Z)$ fixes it, it is holomorphic at the cusp;
+With Euler's $\zeta(k)=-\frac{(2\pi i)^kB_k}{2\,k!}$ this is $2\zeta(k)E_k$. So $G_k$ is bounded on $\{\operatorname{Im}z\ge1\}$, and since $G_k|_k\sigma=G_k$ for every $\sigma\in\SL_2(\Z)$, it is holomorphic at the cusp;
 $B_4=-\frac1{30}$ and $B_6=\frac1{42}$ give $240$ and $-504$. The transformation law of $E_2$ is \Cref{prop:modforms:eta} below, combined with
 $\frac{\eta'}\eta=\frac{\pi i}{12}E_2$: differentiating $\log\eta(-1/z)=\frac12\log\frac zi+\log\eta(z)$ gives $z^{-2}\frac{\eta'}\eta(-1/z)=\frac1{2z}+\frac{\eta'}\eta(z)$, which is the stated
 identity. Then $\operatorname{Im}(-1/z)=y/\abs z^2$ gives $E_2^*(-1/z)=z^2E_2^*(z)+\frac{6z}{\pi i}+\frac{3(z^2-\abs z^2)}{\pi y}=z^2E_2^*(z)$, because $z^2-\abs z^2=z(z-\bar z)=2iyz$; and
@@ -972,6 +976,7 @@ $q$-expansion of $j$ to this chapter. They are \Cref{thm:modforms:j-bijective} a
 $v_q(j_E)$ (Definition def:terms, with the paper's $q$ a prime there): the algebraic $j$-invariant of \Cref{ch:ellcurves}, which equals $j(\tau)$ at any $\tau$ with
 $E(\C)\simeq\C/\Lambda_\tau$. The Tate curve of \Cref{ch:reduction} is the $\mathsf q$-adic analogue of the expansion of $j$ in $q$.
 \end{paperlink}
+
 \section{Forms on \texorpdfstring{$\Gamma_0(N)$}{Gamma0(N)}: valence, differentials and dimensions}\label{sec:modforms:gamma0}
 
 This section passes from level one to $\Gamma_0(N)$. Its central statement is that weight-two cusp forms are exactly the holomorphic differentials on $X_0(N)$,
@@ -1091,6 +1096,7 @@ The paper's Conjecture conj:eis and Section sec:eis treat the Eisenstein case, w
 $\kod{I}_5$) has order $5$, and the deficit $D=1$ of Conjecture conj:eis is matched by $v_5(\#E(\Q)_{\mathrm{tors}})=1$. Open question 4 of the paper asks to identify the
 deficit with an invariant of the Eisenstein ideal, for prime level the ideal of $\T$ generated by the $T_p-1-p$, $p\nmid N$, and $1+w_N$ (\cite{Mazur77}, \Cref{ch:moddeg}).
 \end{paperlink}
+
 \section{The Dedekind \texorpdfstring{$\eta$}{eta}-function and the level \texorpdfstring{$11$}{11} example}\label{sec:modforms:eta}
 
 The running example of the paper is the curve \curve{11a1}, and its newform is the most explicit modular form there is: $\eta(z)^2\eta(11z)^2$. This section proves
@@ -1163,9 +1169,7 @@ a cubic curve.
 
 \begin{example}[small levels]\label{ex:modforms:small-levels}
 \begin{enumerate}[label=(\alph*)]
-\item For the twelve levels $N=11$, $14$, $15$, $17$, $19$, $20$, $21$, $24$, $27$, $32$, $36$, $49$ of genus $1$, $S_2(\Gamma_0(N))$ is one-dimensional, spanned by the newform of the optimal
-curve of
-conductor $N$ (\Cref{ch:moddeg}). Seven of these are $\eta$-products, each checked against Cremona's curve for $n\le300$:
+\item For the twelve levels $N=11$, $14$, $15$, $17$, $19$, $20$, $21$, $24$, $27$, $32$, $36$, $49$ of genus $1$, $S_2(\Gamma_0(N))$ is one-dimensional, spanned by the newform of the optimal curve of conductor $N$ (\Cref{ch:moddeg}). Seven of these are $\eta$-products, each checked against Cremona's curve for $n\le300$:
 \begin{center}
 \begin{tabular}{@{}llll@{}}
 \toprule
@@ -1308,7 +1312,7 @@ constant of that parametrisation to be $5$ (Exercise \ref{ex:modforms:ex-peterss
 \item (\Cref{ch:hecke}.) For $(n,N)=1$ the Hecke operator $T_n$ is self-adjoint for $\langle\ ,\ \rangle$; for $p\mid N$, $U_p$ is not, its adjoint being $w_NU_pw_N$; newforms with different
 systems of eigenvalues are orthogonal, and oldforms are orthogonal to newforms.
 \item (\Cref{ch:lfunctions}.) Rankin-Selberg: for a newform $f$ of weight $2$ and level $N$, $\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ with the naive symmetric square
-$L$-function (\cite[Lemma 2.12]{DFG04}, \cite{Shimura76}, \cite{Rankin39}); we checked this to $40$ digits for \curve{11a1} and \curve{37a1} with PARI's \texttt{lfunsympow}. The Rankin
+$L$-function (\cite[Lemma 2.12]{DFG04}, \cite{Shimura76}, \cite{Rankin39}); we checked this to $40$ digits for \curve{11a1} and \curve{37a1} with PARI's \texttt{lfunsympow} (at these squarefree levels the naive and the true $L$-function agree, so the check does not see the difference). The Rankin
 series $\sum a_n(f)^2n^{-s}$ is not $L^{\nv}(\Sym f,s)$: it equals $\zeta^{(N)}(s-1)L^{\nv}(\Sym f,s)/\zeta^{(N)}(2s-2)$, and at a good prime it carries an extra factor $1+p^{1-s}$
 (\Cref{ch:notation}, B-C7).
 \item (\Cref{ch:moddeg}.) The formula of Zagier and Watkins $\degphi\cdot\vol(\Lambda_E)=4\pi^2c_E^2\langle f,f\rangle$ in general.
@@ -1324,10 +1328,11 @@ unnormalised Petersson product and the Manin constant $c_E>0$ in the numerator''
 complement for a newform $g$ (\Cref{ch:hecke}), and in Step 1 of the proof of Theorem thm:quant it insists on the $\T$-stable complement ``(not the Petersson complement, which is not
 $\T$-stable when the $U_p$ are involved)'', because there the form $g^S$ is not a newform.
 \end{paperlink}
+
 \section{Integral forms, the Sturm bound and congruences}\label{sec:modforms:integral}
 
-The paper's congruences live in $S_2(\Gamma_0(N);\Z)$ and $S_2(\Gamma_0(N);\Z_\ell)$: the congruence number is defined with an ``integral cusp form'', Lemma lem:crit uses ``the pairing
-$S_2(\Gamma_0(N);\Z)\times\T\to\Z$'' and its version over $\Z_\ell$, Theorem thm:twist needs a twist map that ``preserves integrality'', and Step 1 of the proof of Theorem thm:quant
+The paper's congruences live in $S_2(\Gamma_0(N);\Z)$ and $S_2(\Gamma_0(N);\Z_\ell)$: the congruence number is defined with an ``integral cusp form'', Lemma lem:crit uses the pairing
+``$S_2(\Gamma_0(N);\Z)\times\T\to\Z$'' and its version over $\Z_\ell$, Theorem thm:twist needs a twist map that ``preserves integrality'', and Step 1 of the proof of Theorem thm:quant
 projects a congruence inside $S_2(\Gamma_0(N);\Z_\ell)$. This section defines these modules, states Shimura's theorem that they are lattices of full rank, proves Sturm's bound in
 the form needed, and deduces that a congruence between two forms of the same level can be decided on finitely many coefficients. It then proves the congruences of the
 paper's Example for all $n$. The perfect pairing with the Hecke algebra is \Cref{ch:hecke}'s.
@@ -1437,6 +1442,7 @@ supplies the numbers. The version of 10 October 2026 stated the congruences only
 checks already contain a proof once the excluded $a_p$ are compared as well, because the $a_n$ with $n\le B_2(N)$ are determined by the $a_p$ with $p\le B_2(N)$ through the Hecke recursion
 (\Cref{ch:hecke}). In Lemma lem:old the paper passes from the $a_p$ to all $a_n$ by that recursion, not by Sturm's bound.
 \end{paperlink}
+
 \section{The Atkin-Lehner involutions}\label{sec:modforms:atkin-lehner}
 
 The Atkin-Lehner involutions are the symmetries of $X_0(N)$ that do not come from $\SL_2(\Z)$. The paper meets the most important one, $w_N$, in Section 4.1: the pairing $\hat\delta_!$
@@ -1585,6 +1591,7 @@ $a_{11}=1$, root number $+1$; \curve{37a1} has $\varepsilon_{37}=+1$, $a_{37}=-1
 
 For (b): $W_M\sm p001=\sm0{-1}{Mp}0=W_N$ and $\sm p001W_N=\sm0{-p}{Mp}0=W_M\cdot pI$; then $h|_kW_N=(h|_kW_M)|_k\sm p001=p^{k/2}(h|_kW_M)(pz)$, and $h(pz)=p^{-k/2}h|_k\sm p001$ gives
 $h(pz)|_kW_N=p^{-k/2}h|_kW_M|_k(pI)=p^{-k/2}h|_kW_M$.
+
 \section{Exercises}\label{sec:modforms:exercises}
 
 \begin{exercise}\label{ex:modforms:ex-reduce}
@@ -1605,8 +1612,8 @@ widths add up to $\mu(p^3)$. Deduce $g(X_0(27))=1$ and $g(X_0(125))=8$.
 
 \begin{exercise}\label{ex:modforms:ex-elliptic}
 Find the elliptic points of $\Gamma_0(65)$ and of $\Gamma_0(91)$, by solving $u^2+1\equiv0$ and $u^2-u+1\equiv0$ modulo $N$, and compute $g(X_0(65))$ and $g(X_0(91))$.
-\emph{Answer:} for $65$, $u\in\{8,18,47,57\}$ give $\nu_2=4$, and $\nu_3=0$ ($5\equiv2\pmod3$); $\mu=84$, $\nu_\infty=4$, $g=5$. For $91$, $\nu_2=0$ ($7\equiv3\pmod4$) and $\nu_3=4$
-($7\equiv13\equiv1\pmod3$); $\mu=112$, $\nu_\infty=4$, $g=7$.
+\emph{Answer:} for $65$, $u\in\{8,18,47,57\}$ give $\nu_2=4$, and $\nu_3=0$ ($5\equiv2\pmod3$); $\mu=84$, $\nu_\infty=4$, $g=5$. For $91$, $\nu_2=0$ ($7\equiv3\pmod4$), and
+$u\in\{10,17,75,82\}$ give $\nu_3=4$ ($7\equiv13\equiv1\pmod3$); $\mu=112$, $\nu_\infty=4$, $g=7$.
 \end{exercise}
 
 \begin{exercise}\label{ex:modforms:ex-genus-bound}
@@ -1705,6 +1712,7 @@ points of $w_{121}$ and compare with the class number $h(-484)=6$.
 \emph{Answer:} (a) $i\sqrt N\cdot1=N\cdot\frac i{\sqrt N}$ and $i\sqrt N\cdot\frac i{\sqrt N}=-1$, so $i\sqrt N\Lambda_{z_0}\subseteq\Lambda_{z_0}$, of index $\abs{i\sqrt N}^2=N$, and $(i\sqrt N)^{-1}\cdot\frac i{\sqrt N}=\frac1N$ generates the
 kernel. (b) $2\cdot6+2-4\cdot2=6$.
 \end{exercise}
+
 \section{Notes and references}\label{sec:modforms:notes}
 
 The chapter follows Diamond and Shurman \cite{DiamondShurman} (Chapters 1 to 3 for the modular curves, the genus and the dimensions, Chapter 5 for the Petersson product and
