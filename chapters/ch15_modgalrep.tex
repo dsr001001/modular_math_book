@@ -40,6 +40,13 @@ irreducible; conversely; and equality on a density-one set gives $f=h$. \emph{(p
 \item \textbf{$\rho_{f_E,\ell}$ and $\rho_{E,\ell}$.} $J_f=E_0$ and $\rho_{f,\ell}\simeq\rho_{E,\ell}\otimes\Ql$. The lattice $M_{f,\lambda}=H^1(X_0(N),\Zl)[\ker\phi_f]$ equals $\varphi_{E_0}^*H^1(E_0,\Zl)$, which is isomorphic to
 $T_\ell E_0(-1)$, without hypotheses; it is homothetic to $(T_\ell E)^\vee$ when $\bar\rho$ is irreducible; $\ad M_{f,\lambda}\simeq\ad T_\ell E_0$. \emph{(proved here, given \Cref{ch:moddeg})}
 \Cref{thm:modgalrep:comparison-E}.
+\item \textbf{The representation $\bar\rho_{\mathfrak m}$.} For a maximal ideal $\mathfrak m$ of $\T$ (equivalently of $\T_\ell$) of residue characteristic $\ell$: a normalised eigenform of all of $\T$ with
+eigencharacter $\theta\colon\T\to\mathcal{O}$ and $\ker(\T\to\mathcal{O}/\lambda)=\mathfrak m$ exists (Deligne-Serre lifting), lying in $V_h$ for a newform $h$ of level $M\mid N$; there is a semisimple continuous
+$\bar\rho_{\mathfrak m}\colon G_\Q\to\GL_2(\T/\mathfrak m)$, unramified outside $N\ell$, with $\det(X-\bar\rho_{\mathfrak m}(\Frob_p))=X^2-(T_p\bmod\mathfrak m)X+p$ ($p\nmid N\ell$), $\det\bar\rho_{\mathfrak m}=\bar\chi_\ell$, unique up to
+isomorphism (for $\ell$ odd the traces suffice), with $\bar\rho_{\mathfrak m}\otimes k_\lambda\simeq\bar\rho_{h,\lambda}^{\mathrm{ss}}$; for $\mathfrak m=\mathfrak m_{f,\lambda}$, $\bar\rho_{\mathfrak m}\otimes k_\lambda\simeq\bar\rho_{f,\lambda}^{\mathrm{ss}}$, and $\bar\rho_{\mathfrak m_{f_E,\ell}}\simeq\bar\rho_{E,\ell}^{\mathrm{ss}}$.
+\emph{(proof sketched here; Deligne and Serre, Carayol)} \Cref{prop:modgalrep:rhobar-m}.
+\item \textbf{Eisenstein.} $\mathfrak m$ is Eisenstein if $\bar\rho_{\mathfrak m}$ is reducible over $\T/\mathfrak m$; for $\ell$ odd, equivalently absolutely reducible; $\mathfrak m_{f_E,\ell}$ is Eisenstein iff
+$E[\ell]$ is reducible. \emph{(definition)} \Cref{def:modgalrep:eisenstein}.
 \item \textbf{Local Langlands for $\GL_2(\Q_p)$.} A bijection $\pi\mapsto\operatorname{rec}(\pi)$ to two-dimensional Frobenius-semisimple Weil-Deligne representations, compatible with
 twists, preserving conductors and matching principal series, twists of Steinberg and supercuspidals with sums of characters, $\Sp(2)\otimes\mu$ and irreducible
 representations. \emph{(stated; reference)} \Cref{thm:modgalrep:local-langlands}.
@@ -60,8 +67,8 @@ inertial order $3,4,6\mapsto2$. \emph{(proved here, given \Cref{ch:local})} \Cre
 \Cref{thm:modgalrep:carayol})} \Cref{cor:modgalrep:atkin-li}.
 \item \textbf{Twists of newforms.} $g^\chi$ exists and is unique, of level $M\prod_{q\mid r}q^{a(\WD_q\otimes\chi)-a(\WD_q)}$ dividing $\lcm(M,r^2)$; $a_n(g^\chi)=\chi(n)a_n(g)$ for $(n,r)=1$;
 $g\otimes\chi=(g^\chi)^{\Sigma(r)}$; $(g^\chi)^\chi=g$; $f_{E^{(d)}}=(f_E)^{\chi_d}$. \emph{(proved here, given \Cref{thm:modgalrep:carayol}, \Cref{ch:hecke})} \Cref{prop:modgalrep:twists}.
-\item \textbf{At $\ell\nmid N$.} $J_f[\ell^k]$ and its subquotients are finite flat, so $\bar\rho|_{D_\ell}$ is finite (good); $\rho|_{G_{\Q_\ell}}$ is crystalline with Hodge-Tate weights $0,1$ and
-crystalline Frobenius polynomial $X^2-a_\ell X+\ell$; Fontaine-Laffaille range for $\ell\ge3$; Serre weight $2$. \emph{(proof sketched here; references)} \Cref{thm:modgalrep:crystalline}.
+\item \textbf{At $\ell\nmid N$.} $J_f[\ell^k]$ and its subquotients are finite flat, so $\bar\rho|_{D_\ell}$ is finite flat; $\rho|_{G_{\Q_\ell}}$ is crystalline with Hodge-Tate weights $0,1$ and
+crystalline Frobenius polynomial $X^2-a_\ell X+\ell$; Fontaine-Laffaille range for $\ell\ge3$; Serre weight $2$ (for $\bar\rho$ irreducible). \emph{(proof sketched here; references)} \Cref{thm:modgalrep:crystalline}.
 \item \textbf{Deligne, Fontaine.} For $\ell$ odd and $\ell\nmid N$: if $a_\ell\not\equiv0$, $\bar\rho|_{D_\ell}\simeq\sm{\bar\chi_\ell\mu(\bar a_\ell^{-1})}{*}{0}{\mu(\bar a_\ell)}$; if $a_\ell\equiv0$, $\bar\rho|_{I_\ell}\simeq\omega_2\oplus\omega_2^\ell$ and $\bar\rho|_{D_\ell}$
 is irreducible \emph{(stated; reference)}; hence $a_\ell\bmod\lambda$ is $0$ or the Frobenius eigenvalue on the unique unramified quotient, and is determined by $\bar\rho|_{D_\ell}$
 \emph{(proved here)}. \Cref{thm:modgalrep:deligne-fontaine}.
@@ -75,22 +82,23 @@ character lifting $\varepsilon(\bar\sigma)$. \emph{(stated; reference)} \Cref{th
 \Cref{thm:modgalrep:mazur-principle}.
 \item \textbf{Ribet.} $\ell$ odd, $\ell\nmid N$, $\bar\rho$ irreducible, $q\,\|\,N$, $\bar\rho$ unramified at $q$: $\bar\rho$ arises from level $N/q$. \emph{(stated; idea of proof)} \Cref{thm:modgalrep:ribet}.
 \item \textbf{The optimal level (DDT Theorem 3.15).} $\ell$ odd, $\bar\sigma$ irreducible and modular, absolutely irreducible on $\Gal(\Qbar/\Q(\sqrt{-3}))$ if $\ell=3$: $\bar\sigma$ arises in weight $2$,
-level $N(\bar\sigma)\ell^{\delta(\bar\sigma)}$, character of order prime to $\ell$, $\delta=0$ if $\bar\sigma|_{D_\ell}$ is good. \emph{(stated; reference)} \Cref{thm:modgalrep:optimal-level}.
+level $N(\bar\sigma)\ell^{\delta(\bar\sigma)}$, character of order prime to $\ell$, $\delta\in\{0,1\}$, $\delta=0$ if $\bar\sigma|_{D_\ell}$ is finite flat. \emph{(stated; reference)} \Cref{thm:modgalrep:optimal-level}.
 \item \textbf{For elliptic curves.} $\ell$ odd, $\ell\nmid N'$, $\bar\rho_{E',\ell}$ irreducible, image not $N_s(\F_3)$ if $\ell=3$: $\bar\rho_{E',\ell}$ arises from a newform on $\Gamma_0(N(\bar\rho))$, trivial character,
 and $N(\bar\rho)\mid N'$. \emph{(proved here, given \Cref{thm:modgalrep:optimal-level})} \Cref{cor:modgalrep:optimal-level-E}.
-\item \textbf{Level raising (Ribet).} For $q\nmid N\ell$: $\bar\rho$ arises from a form new at $q$ of level dividing $Nq$ iff $a_q^2\equiv(q+1)^2\pmod\lambda$; then $a_q(f)\equiv(q+1)a_q(g)$. \emph{(necessity
+\item \textbf{Level raising (Ribet).} For $\ell$ odd, $\bar\rho=\bar\rho_{f,\lambda}$ irreducible and $q\nmid N\ell$: $\bar\rho$ arises from a form new at $q$ of level dividing $Nq$ iff $a_q^2\equiv(q+1)^2\pmod\lambda$; then $a_q(f)\equiv(q+1)a_q(g)$. \emph{(necessity
 proved here; sufficiency stated, reference)} \Cref{thm:modgalrep:level-raising}.
 \item \textbf{The level-raising factor.} $(1-\frac\alpha{\beta p})(1-\frac1p)(1-\frac\beta{\alpha p})=\frac{p-1}p\cdot\frac{(p+1)^2-a_p^2}{p^2}=L_p(A_f,1)^{-1}$ at good $p$; $1-p^{-2}$ at $p\,\|\,N$. \emph{(proved here)}
 \Cref{prop:modgalrep:level-raising-factor}.
-\item \textbf{Theorem thm:dfg14.} $\eta^\Sigma_{f,\lambda}=\eta^\emptyset_{f,\lambda}\prod_{p\in\Sigma}L_p^{\nv}(A_f,1)^{-1}$ for $\ell\nmid2M$, $\bar\rho$ irreducible. \emph{(stated; proof idea in \Cref{ch:congruence})}
+\item \textbf{Theorem thm:dfg14.} For $f$ a newform on $\Gamma_0(M)$ with rational coefficients, $\ell\nmid2M$, $\bar\rho_f$ irreducible:
+$\eta^\Sigma_{f,\lambda}=\eta^\emptyset_{f,\lambda}\prod_{p\in\Sigma}L_p^{\nv}(A_f,1)^{-1}$. \emph{(stated; proof idea in \Cref{ch:congruence})}
 \Cref{thm:modgalrep:dfg14}.
-\item \textbf{Ihara's lemma.} For $q\nmid N\ell$ and $\mathfrak m$ non-Eisenstein, $H^1(X_0(N),\F_\ell)^2_{\mathfrak m}\to H^1(X_0(Nq),\F_\ell)$, $(x,y)\mapsto\alpha_1^*x+\alpha_q^*y$, is injective. \emph{(stated;
-reference)} \Cref{lem:modgalrep:ihara}.
+\item \textbf{Ihara's lemma.} For $q\nmid N\ell$ and $\mathfrak m$ non-Eisenstein (\Cref{def:modgalrep:eisenstein}), $H^1(X_0(N),\F_\ell)^2_{\mathfrak m}\to H^1(X_0(Nq),\F_\ell)$, $(x,y)\mapsto\alpha_1^*x+\alpha_q^*y$, is
+injective. \emph{(stated; reference)} \Cref{lem:modgalrep:ihara}.
 \item \textbf{The congruence number.} $r_f$ is the largest $r$ with $f\equiv g\pmod r$, $g\in f^\perp\cap S_2(\Gamma_0(N);\Z)$. \emph{(definition)} \Cref{def:modgalrep:congruence-number}.
 \item \textbf{Agashe, Ribet, Stein.} $\deg\varphi_{E_0}\mid r$, with equal $p$-adic valuations for $p^2\nmid N$; $r(\curve{99a1})=12$, $\deg\varphi=4$. \emph{(stated; reference; data computed here)}
 \Cref{thm:modgalrep:ars}.
 \item \textbf{Lemma lem:crit.} $I=\ker\phi_f$, $J=\Ann_\T(f^\perp)$: $I\cap J=0$, $J=\Ann_\T I$, $I=\Ann_\T J$, $\T/(I+J)\simeq\Z/r$, $r\Z=\phi_f(J)$, $[S_2(\Z):\Z f\oplus L]=r$, and the congruence moduli
-are the divisors of $r$; an eigenform $g\in f^\perp$ of all of $\T$ with $a_n(g)\equiv a_n(f)\pmod\lambda$ for every $n$ forces $\ell\mid r$; the same over $\Zl$. \emph{(proved here, given
+are the divisors of $r$; an eigenform $g\in W\otimes\Qbar$ ($W=L\otimes\Q$, the rational forms in $f^\perp$) of all of $\T$ with $a_n(g)\equiv a_n(f)\pmod\lambda$ for every $n$ forces $\ell\mid r$; the same over $\Zl$. \emph{(proved here, given
 \Cref{ch:hecke})} \Cref{lem:modgalrep:crit}.
 \item \textbf{$U_p$ on oldforms.} On $\langle h(p^jz)\rangle$: eigenvalues $\alpha_p,\beta_p$ (and $0$ if $e_p\ge2$) for $p\nmid M$, $a_p(h)$ and $0$ for $p\,\|\,M$, $0$ for $p^2\mid M$, with explicit
 eigenvectors; any choice gives a normalised eigenform of all of $\T$ in $V_h$. \emph{(proved here)} \Cref{lem:modgalrep:Up-oldspace}.
@@ -100,9 +108,11 @@ unramified: $V_h$ contains an eigenform of all of $\T$ congruent to $f$ at every
 \item \textbf{Theorem thm:qual.} $\ell$ odd, $\ell\nmid N$, $\bar\rho_{E,\ell}$ irreducible (and not $N_s(\F_3)$ if $\ell=3$), and at $q\ne\ell$ type (a) $\kod{IV},\kod{IV}^*$, $q\ge5$ or $q=2$, $\ell=3$; (b)
 $\kod{II},\kod{II}^*$, $q\ge5$, $\ell=3$; or (c) $\kod{I}_n^*$, $\ell\mid n$, $q$ odd: then $\ell\mid\deg\varphi_{E_0}$. \emph{(proved here, given the stated theorems
 \Cref{thm:modgalrep:carayol,thm:modgalrep:deligne-fontaine,thm:modgalrep:optimal-level,thm:modgalrep:ars})} \Cref{thm:modgalrep:qual}.
-\item \textbf{The twist map.} $\iota_S\colon h\mapsto h\otimes\chi_S$ twists generalised eigensystems by $\chi_S$, maps $g^\perp$ into $f^\perp$ when $f=g^{\chi_S}$, and $\iota(g)=(g^{\chi_S})^S=\iota(g^S)$. \emph{(proved
+\item \textbf{The twist map.} $\iota_S\colon h\mapsto h\otimes\chi_S$ twists generalised eigensystems by $\chi_S$, maps $g^\perp$ into $f^\perp$ when $f=g^{\chi_S}$ has level $N$ with
+$\lcm(M,D^2)\mid N$ ($M$ the level of $g$), and $\iota(g)=(g^{\chi_S})^S=\iota(g^S)$. \emph{(proved
 here, given \Cref{ch:hecke})} \Cref{prop:modgalrep:twist-map}.
-\item \textbf{Levels of $E_S$ and $g^S$.} $N_S=N/D$, $N/D^2$, $N$ for types $\kod{I}_n^*$, $\kod{I}_0^*$, potentially good at $S$; $\iota(f_{E_S})=f_E$; $g^S$ lies at level $N_S\prod q^{\delta_q}=N$.
+\item \textbf{Levels of $E_S$ and $g^S$.} For $S$ a set of odd primes $q$ with $q^2\mid N$: $N_S=N/D$, $N/D^2$, $N$ for types $\kod{I}_n^*$, $\kod{I}_0^*$, potentially good (with $q\ge5$) at
+every $q\in S$; $\iota(f_{E_S})=f_E$; $g^S$ lies at level $N_S\prod q^{\delta_q}=N$.
 \emph{(proved here)} \Cref{prop:modgalrep:twist-levels}.
 \item \textbf{Theorem thm:twist.} If $q^2\mid N$ for $q\in S$ and $\lcm(N_S,D^2)\mid N$, then $r_{E_S}\mid r_E$, with equality if also $\lcm(N,D^2)\mid N_S$. \emph{(stated; proved in \Cref{ch:congruence})}
 \Cref{thm:modgalrep:twist-monotonicity}.
