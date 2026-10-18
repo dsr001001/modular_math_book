@@ -411,6 +411,73 @@ $T_\ell E(-1)$, and only when $\bar\rho$ is irreducible. Only the adjoint enters
 every reading.
 \end{paperlink}
 
+The Hecke-algebra side of the same objects is the residual representation of a maximal ideal of $\T$. \Cref{ch:moddeg} uses it (multiplicity one,
+the Gorenstein property, the word ``Eisenstein''), and Ihara's lemma (\Cref{lem:modgalrep:ihara}) is stated for it. Its construction combines the lifting
+lemma of Deligne and Serre with the representations of newforms constructed above.
+
+\begin{proposition}[the residual representation of a maximal ideal]\label{prop:modgalrep:rhobar-m}
+Let $N\ge1$, $\T=\T_N$, and let $\mathfrak m$ be a maximal ideal of $\T$ with residue characteristic $\ell$; $k_{\mathfrak m}=\T/\mathfrak m$ is a finite field. (The maximal ideals of
+$\T_\ell=\T\otimes\Zl$ are the ideals $\mathfrak m\T_\ell$ for these $\mathfrak m$, with the same residue fields, so everything below applies to $\T_\ell$ as well.)
+\begin{enumerate}[label=(\roman*)]
+\item (Lifting.) There are the ring of integers $\mathcal{O}$ of a number field, a prime $\lambda\mid\ell$ of $\mathcal{O}$, a ring homomorphism $\theta\colon\T\to\mathcal{O}$ with
+$\ker(\T\to\mathcal{O}\to\mathcal{O}/\lambda)=\mathfrak m$, and a normalised eigenform $g\in S_2(\Gamma_0(N))$ of all of $\T$ with eigencharacter $\theta$, so $a_n(g)=\theta(T_n)\in\mathcal{O}$. The form $g$ lies in
+$V_h$ for a newform $h$ of weight $2$ on $\Gamma_0(M)$, $M\mid N$, and $\theta(T_p)=a_p(h)$ for $p\nmid N$.
+\item There is a continuous semisimple representation $\bar\rho_{\mathfrak m}\colon G_\Q\to\GL_2(k_{\mathfrak m})$, unramified outside $N\ell$, with
+\[
+\det\bigl(X-\bar\rho_{\mathfrak m}(\Frob_p)\bigr)=X^2-(T_p\bmod\mathfrak m)X+p\qquad(p\nmid N\ell),
+\]
+and $\det\bar\rho_{\mathfrak m}=\bar\chi_\ell$. Among semisimple representations it is determined up to isomorphism by these characteristic polynomials; for $\ell$ odd the traces
+$T_p\bmod\mathfrak m$ alone determine it, while for $\ell=2$ the determinant must be imposed as well. For every $(h,\lambda)$ as in (i),
+$\bar\rho_{\mathfrak m}\otimes_{k_{\mathfrak m}}k_\lambda\simeq\bar\rho_{h,\lambda}^{\mathrm{ss}}$, where $k_{\mathfrak m}\into k_\lambda$ is induced by $\theta$.
+\item For a newform $f$ of weight $2$ on $\Gamma_0(N)$ and a prime $\lambda\mid\ell$ of $\mathcal{O}_f$, $\mathfrak m_{f,\lambda}=\ker(\T\to\mathcal{O}_f\to k_\lambda)$, $t\mapsto\phi_f(t)\bmod\lambda$, is a
+maximal ideal and $\bar\rho_{\mathfrak m_{f,\lambda}}\otimes k_\lambda\simeq\bar\rho_{f,\lambda}^{\mathrm{ss}}$. For $f=f_E$, $\T/\mathfrak m_{f,\ell}=\F_\ell$ and $\bar\rho_{\mathfrak m_{f,\ell}}\simeq\bar\rho_{E,\ell}^{\mathrm{ss}}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+(i) $\T$ is free of finite rank over $\Z$ (a subring of $\End_\Z S_2(\Gamma_0(N);\Z)$), so $\T_\ell=\prod_{\mathfrak m'}\T_{\mathfrak m'}$ over the maximal ideals containing $\ell$
+(\Cref{ch:modules}), and $\T_{\mathfrak m}$ is a nonzero direct factor, free of finite rank over $\Zl$. Hence $\T_{\mathfrak m}\otimes\Ql$ is a nonzero finite-dimensional $\Ql$-algebra and has
+a homomorphism $\theta_\ell\colon\T_{\mathfrak m}\to\overline\Q_\ell$. Its image is integral over $\Zl$, so lies in the integers of $\overline\Q_\ell$, and composing with the reduction map gives a
+homomorphism $\T_{\mathfrak m}\to\Fbar_\ell$ of the local ring $\T_{\mathfrak m}$, whose kernel is therefore $\mathfrak m\T_{\mathfrak m}$; restricted to $\T$, the kernel is $\mathfrak m$. The values $\theta_\ell(T_n)$ are
+roots of the characteristic polynomials of the $T_n$ on $S_2(\Gamma_0(N);\Z)$, so they are algebraic; fixing $\Qbar\subset\overline\Q_\ell$, they generate a number field, and $\theta$ is
+$\theta_\ell$ with values in its ring of integers $\mathcal{O}$, $\lambda$ the prime given by the embedding. Next, $\T\otimes\Qbar$ acts faithfully on $S_2(\Gamma_0(N);\Z)\otimes\Qbar$, so the
+generalised eigenspace for the character $\theta\otimes\Qbar$ is nonzero (as in Step 1 of the proof of \Cref{lem:modgalrep:crit}), and commuting operators on a nonzero space
+over an algebraically closed field have a common eigenvector $g$. By \Cref{prop:modgalrep:newforms-recap}(i), $a_1(g)\ne0$; normalised, $a_n(g)=a_1(T_ng)=\theta(T_n)$. By
+\Cref{prop:modgalrep:newforms-recap}(iv), $g$ lies in the generalised eigenspace $V_h$ of the $T_p$, $p\nmid N$, for the eigenvalues $\theta(T_p)$, where $h$ is the newform with
+$a_p(h)=\theta(T_p)$. This is the lifting lemma of Deligne and Serre \cite[Lemme 6.11]{DeligneSerre74} (the number is an unverified pointer).
+
+(ii) Enlarge $\mathcal{O}$ to contain $K_h$ and let $\bar\rho=\bar\rho_{h,\lambda}^{\mathrm{ss}}$ over $k_\lambda$ (\Cref{prop:modgalrep:lattices}(i)); it is unramified outside $M\ell$, and
+$\det(X-\bar\rho(\Frob_p))\equiv X^2-\theta(T_p)X+p\pmod\lambda$ for $p\nmid N\ell$, a polynomial with coefficients in the image of $k_{\mathfrak m}$. The map $\sigma\mapsto\det(X-\bar\rho(\sigma))$ is
+continuous with values in a finite set, and the Frobenius elements at $p\nmid N\ell$ are dense in $G_\Q$ (Chebotarev, \Cref{ch:galois}); so every characteristic polynomial
+of $\bar\rho$ has coefficients in $k_{\mathfrak m}$. It remains to descend $\bar\rho\otimes\Fbar_\ell$, which is semisimple, to $k_{\mathfrak m}$. Let $F$ generate $\Gal(\Fbar_\ell/k_{\mathfrak m})$.
+If $\bar\rho\otimes\Fbar_\ell\simeq\psi_1\oplus\psi_2$ is a sum of characters, its conjugate by $F$ has the same characteristic polynomials, so $\{\psi_1^F,\psi_2^F\}=\{\psi_1,\psi_2\}$
+(Brauer-Nesbitt, \Cref{ch:reps}). If $F$ fixes both, the $\psi_i$ take values in $k_{\mathfrak m}$ and $\bar\rho_{\mathfrak m}=\psi_1\oplus\psi_2$. If $F$ exchanges them, $\psi_1$ takes values in the
+quadratic extension $k'$ of $k_{\mathfrak m}$ and $\psi_2=\psi_1^F$; let $\bar\rho_{\mathfrak m}$ be $k'$, viewed as a two-dimensional $k_{\mathfrak m}$-space, with $\sigma$ acting by multiplication by $\psi_1(\sigma)$. It is
+irreducible, and over $\Fbar_\ell$ the eigenvalues of $\sigma$ are $\psi_1(\sigma)$ and $\psi_1(\sigma)^F$, so $\bar\rho_{\mathfrak m}\otimes\Fbar_\ell\simeq\psi_1\oplus\psi_2$. If $\bar\rho\otimes\Fbar_\ell$ is absolutely
+irreducible, a representation over $\Fbar_\ell$ whose characteristic polynomials have coefficients in the finite field $k_{\mathfrak m}$ is realised over $k_{\mathfrak m}$, because the Brauer
+group of a finite field is trivial (Wedderburn); see Carayol \cite{Carayol94} (the theorem on representations whose traces lie in a subring; we have not checked its
+number). In each case $\bar\rho_{\mathfrak m}$ is semisimple and continuous (it has the same kernel as $\bar\rho\otimes\Fbar_\ell$). Uniqueness and the isomorphism with $\bar\rho_{h,\lambda}^{\mathrm{ss}}$
+over $k_\lambda$ are Brauer-Nesbitt again, the characteristic polynomials being known on the dense set of Frobenius elements, hence everywhere; for $\ell$ odd,
+$2<\ell$ and equal traces suffice (\Cref{ch:reps}). The determinant is $\bar\chi_\ell$ because both are continuous and agree on $\Frob_p$, $p\nmid N\ell$.
+
+(iii) The image of $\T$ in $k_\lambda$ is a finite subring of a field, hence a field, so $\mathfrak m_{f,\lambda}$ is maximal; in (i) one may take $\theta=\phi_f$, $g=h=f$, and (ii) gives the
+isomorphism. For $f=f_E$, $\mathcal{O}_f=\Z$, $k_\lambda=\F_\ell=\T/\mathfrak m_{f,\ell}$, and $\bar\rho^{\mathrm{ss}}_{f,\ell}\simeq\bar\rho^{\mathrm{ss}}_{E,\ell}$ because $T_\ell E_0$ is a stable lattice
+(\Cref{thm:modgalrep:comparison-E}(i)) and the semisimplified reduction does not depend on the lattice (\Cref{prop:modgalrep:lattices}(i)), nor on the curve in the
+isogeny class.
+\end{proof}
+
+\begin{definition}[Eisenstein maximal ideals]\label{def:modgalrep:eisenstein}
+A maximal ideal $\mathfrak m$ of $\T$ (or of $\T_\ell$) of residue characteristic $\ell$ is \emph{Eisenstein} if $\bar\rho_{\mathfrak m}$ (\Cref{prop:modgalrep:rhobar-m}) is reducible over
+$\T/\mathfrak m$, and \emph{non-Eisenstein} otherwise.
+\end{definition}
+
+For $\ell$ odd, $\bar\rho_{\mathfrak m}$ is odd ($\det\bar\rho_{\mathfrak m}(c)=\bar\chi_\ell(c)=-1$), so it is reducible over $\T/\mathfrak m$ if and only if it is absolutely reducible (the criterion of
+\Cref{ch:reps} by an element with two distinct eigenvalues in the field, as in \Cref{prop:modgalrep:lattices}(ii)). For $\ell=2$ the two notions differ
+(\Cref{exer:modgalrep:l-two}), and some authors call $\mathfrak m$ Eisenstein when $\bar\rho_{\mathfrak m}$ is absolutely reducible; this book does not. By \Cref{prop:modgalrep:rhobar-m}(iii),
+for $E/\Q$ of conductor $N$ and every prime $\ell$, $\mathfrak m_{f_E,\ell}$ is Eisenstein if and only if $E[\ell]$ is reducible. The name comes from Mazur's Eisenstein ideal at prime level
+(\Cref{ch:moddeg}): it contains $T_p-1-p$ for $p\nmid N$, so a maximal ideal $\mathfrak m$ containing it has $\det(X-\bar\rho_{\mathfrak m}(\Frob_p))=(X-1)(X-p)$ for $p\nmid N\ell$, hence
+$\bar\rho_{\mathfrak m}\simeq\mathbf 1\oplus\bar\chi_\ell$ by Chebotarev and Brauer-Nesbitt, and $\mathfrak m$ is Eisenstein.
+
 \section[Local-global compatibility]{Local-global compatibility and local components}\label{sec:modgalrep:local}
 
 This section describes $\rho_{f,\lambda}|_{G_{\Q_p}}$ for every prime $p\ne\ell$. The paper uses this description in four places: $\delta_p=\dim V^{I_p}=2,1,0$ in Section
@@ -428,7 +495,10 @@ exponent is $a(V)=\dim V-\dim V^{I_K}+\operatorname{sw}(V)$, additive, invariant
 $\dim V-\dim V^{I_K}$ when $V$ is tame. The special representation $\Sp(2)$ has basis $e_0,e_1$ with $Ne_0=e_1$, $Ne_1=0$, $r(w)e_i=\norm w^ie_i$; a two-dimensional
 $(r,N)$ with $N\ne0$ is $\Sp(2)\otimes\mu$ for a unique character $\mu$ (the character on $V/\ker N$); $a(\Sp(2)\otimes\mu)=1$ for $\mu$ unramified and $2a(\mu)$ for $\mu$
 ramified; a two-dimensional Frobenius-semisimple $(r,0)$ is a sum of two characters or is irreducible, and for $p$ odd an irreducible one is
-induced from a quadratic extension. The $\epsilon$-factors of Langlands and Deligne are defined there as well; the paper does not use them.
+induced from a quadratic extension. The $\epsilon$-factors of Langlands and Deligne are defined there as well, and they give root numbers: for a newform
+$f$ of weight $2$ on $\Gamma_0(N)$ the sign $-\varepsilon_N(f)$ of the functional equation of $L(f,s)$ (\Cref{ch:hecke}) is the global root number, the product of
+the local root numbers (normalised $\epsilon$-factors) of the $\WD_p(f)$, which are $1$ for $p\nmid N$ and $-a_p(f)$ for $p\,\|\,N$, and of $-1$ at the infinite place (Deligne
+\cite{Deligne73}). The paper does not use $\epsilon$-factors.
 On the Galois side, $\Sp(2)\otimes\mu$ is the representation $\sm{\mu\chi_\ell}{*}{0}{\mu}$ of $G_K$ (after identifying characters of $W_K$ and of $G_K$ with values
 in $\Ql^\times$); on $I_K$ it is $\mu$ times $\sm{1}{c\,t_\ell}{0}{1}$ with $c\ne0$ and $t_\ell$ the tame character, and it is non-split.
 \end{remark}
@@ -436,17 +506,18 @@ in $\Ql^\times$); on $I_K$ it is $\mu$ times $\sm{1}{c\,t_\ell}{0}{1}$ with $c\n
 \begin{theorem}[the local Langlands correspondence for $\GL_2(\Q_p)$]\label{thm:modgalrep:local-langlands}
 Fix an isomorphism $\overline\Q_\ell\simeq\C$. There is a bijection $\pi\mapsto\operatorname{rec}(\pi)$ from isomorphism classes of irreducible admissible
 infinite-dimensional representations of $\GL_2(\Q_p)$ to isomorphism classes of two-dimensional Frobenius-semisimple Weil-Deligne
-representations of $W_{\Q_p}$, characterised by the compatibility with twists by characters (identified through local class field theory) and
-the preservation of $L$- and $\epsilon$-factors of pairs. It preserves conductors, $a(\operatorname{rec}\pi)=a(\pi)$, where $p^{a(\pi)}$ is the conductor of Casselman's
+representations of $W_{\Q_p}$; in the unitary normalisation it is characterised by the compatibility with twists by characters (identified through local
+class field theory) and the preservation of $L$- and $\epsilon$-factors of pairs. It preserves conductors, $a(\operatorname{rec}\pi)=a(\pi)$, where $p^{a(\pi)}$ is the conductor of Casselman's
 newvector theory \cite{Casselman73}, and it matches the types: principal series $\pi(\mu_1,\mu_2)$ with sums of two characters, twists $\St\otimes\mu$ of
 the Steinberg representation with $\Sp(2)\otimes\mu$, and supercuspidal representations with irreducible representations ($N=0$); in each case
 up to one fixed unramified twist, so that ``$\mu$ unramified'' has the same meaning on both sides.
 \end{theorem}
 
 We do not prove this; see Bushnell and Henniart \cite{BushnellHenniart06}, and Rohrlich \cite{Rohrlich94} for the Weil-Deligne side of elliptic
-curves. Two normalisations are in common use, differing by the twist by $\abs{\det}^{1/2}$, and some sources attach to a newform the dual of
-our $\rho_{f,\lambda}$; we fix none of them, because everything this book uses (conductors, the type, $L$-factors) is invariant under unramified twists and
-duality or is stated directly on the Galois side (\Cref{thm:modgalrep:carayol}(iii)). The automorphic names below are labels and enter no proof.
+curves. In the unitary normalisation $\operatorname{rec}$ preserves $L$- and $\epsilon$-factors; the other normalisation in common use differs from it by the twist by
+$\abs{\det}^{1/2}$ (and preserves these factors only up to the corresponding shift of $s$), and some sources attach to a newform the dual of our
+$\rho_{f,\lambda}$. The book needs no choice: conductors and types are invariant under unramified twists and duality, and the $L$-factors it uses are stated
+directly on the Galois side (\Cref{thm:modgalrep:carayol}(iii)). The automorphic names below are labels and enter no proof.
 
 \begin{definition}[local components]\label{def:modgalrep:local-component}
 A newform $f$ of weight $2$ on $\Gamma_0(N)$ generates a cuspidal automorphic representation $\pi_f=\bigotimes'_v\pi_v$ of $\GL_2(\A_\Q)$ (Jacquet and Langlands
@@ -465,7 +536,7 @@ over $\C$, does not depend on $\ell\ne p$ or on $\lambda$, and its type is that 
 $N$ in general.
 \item $L_p(f,s)=L(V,s-1)=\det(1-\Frob_p^{-1}p^{1-s}\mid V^{I_p})^{-1}$, where $L_p(f,s)$ is the Euler factor of \Cref{prop:modgalrep:newforms-recap}(v). Equivalently:
 for $p\nmid N$ the arithmetic Frobenius has eigenvalues $\alpha$, $\beta$ on $V$ with $\alpha+\beta=a_p(f)$, $\alpha\beta=p$; for $p\mid N$, either $V^{I_p}=0$ and $a_p(f)=0$, or
-$V^{I_p}$ is a line on which $\Frob_p$ acts by $p\,a_p(f)$ and $a_p(f)\ne0$.
+$V^{I_p}$ is a line on which $\Frob_p$ acts by $p/a_p(f)$ and $a_p(f)\ne0$ (equivalently by $p\,a_p(f)$, as $a_p(f)=\pm1$ by \Cref{thm:modgalrep:local-types}).
 \end{enumerate}
 \end{theorem}
 
@@ -511,8 +582,8 @@ By \Cref{thm:modgalrep:carayol}(ii), $a(V)=v_p(N)$, and $\det V=\chi_\ell|_{G_{\
 then $r|_{I_p}$, a representation of a finite group in characteristic $0$, is semisimple with a fixed line: $r|_{I_p}\simeq1\oplus\psi$ with $\psi\ne1$ (as $\dim V^{I_p}=1$).
 But $\det r|_{I_p}=\psi$ must be trivial, because $\det V$ is unramified. So $N\ne0$, and $V\simeq\Sp(2)\otimes\mu$ for the character $\mu$ on $V/\ker N$
 (\Cref{rem:modgalrep:wd-recap}). As $a(\Sp(2)\otimes\mu)=2a(\mu)\ge2$ for ramified $\mu$, $\mu$ is unramified. Comparing determinants, $\norm{\cdot}\mu^2=\norm{\cdot}$, so $\mu^2=1$. Now
-$V^{I_p}=\ker N$ is the line on which $W_{\Q_p}$ acts by $\norm{\cdot}\mu$, so $\Frob_p$ acts on it by $p\,\mu(\Frob_p)$, and \Cref{thm:modgalrep:carayol}(iii) gives
-$a_p(f)=\mu(\Frob_p)=\pm1$. This is (St).
+$V^{I_p}=\ker N$ is the line on which $W_{\Q_p}$ acts by $\norm{\cdot}\mu$, so $\Frob_p$ acts on it by $p\,\mu(\Frob_p)$, and \Cref{thm:modgalrep:carayol}(iii) (first form:
+the eigenvalue is $p/a_p(f)$) gives $a_p(f)=\mu(\Frob_p)^{-1}=\mu(\Frob_p)=\pm1$. This is (St).
 
 \emph{$a(V)\ge2$.} $\dim V^{I_p}=2$ is impossible ($V$ would be unramified). Suppose $\dim V^{I_p}=1$. If $N=0$, the argument just given shows that
 $r|_{I_p}$ is trivial, so $V^{I_p}=V$, a contradiction. If $N\ne0$, $V\simeq\Sp(2)\otimes\mu$ and $V^{I_p}=(\ker N)^{r(I_p)}$ is a line only if $\mu$ is unramified,
@@ -673,7 +744,7 @@ Brauer-Nesbitt in characteristic $0$; both representations are irreducible), $\r
 $\rho_{g,\lambda}\otimes\chi$ (\Cref{thm:modgalrep:carayol}(ii), with $\ell$ chosen prime to $Mr$), which differs from that of $\rho_{g,\lambda}$ only at the primes dividing $r$.
 Coefficients: for $p\nmid r$, $\WD_p(g^\chi)=\WD_p(g)\otimes\chi$ with $\chi$ unramified at $p$, so $\delta_p$ is the same for both and, by
 \Cref{thm:modgalrep:carayol}(iii) (applied with an $\ell\ne p$), $a_p(g^\chi)=\chi(p)a_p(g)$ for all $p\nmid r$: if $\delta_p=2$ the Frobenius eigenvalues are multiplied by
-$\chi(p)$; if $\delta_p=1$ the eigenvalue $p\,a_p$ on $V^{I_p}$ is; if $\delta_p=0$ both sides vanish. The multiplicativity and the recursions of
+$\chi(p)$; if $\delta_p=1$ the eigenvalue $p/a_p$ on $V^{I_p}$ is, and $\chi(p)^{-1}=\chi(p)$; if $\delta_p=0$ both sides vanish. The multiplicativity and the recursions of
 \Cref{prop:modgalrep:newforms-recap}(i), which $n\mapsto\chi(n)a_n(g)$ also satisfies on $n$ prime to $r$ (because $\chi(p)^2=1$), give $a_n(g^\chi)=\chi(n)a_n(g)$ for $(n,r)=1$.
 Both $g\otimes\chi$ and $(g^\chi)^{\Sigma(r)}$ have $n$-th coefficient $\chi(n)a_n(g)$ for $(n,r)=1$ and $0$ otherwise, so they are equal. (iii) $\rho_{(g^\chi)^\chi}\simeq\rho_g\otimes\chi^2=\rho_g$
 and uniqueness. (iv) $\rho_{E^{(d)},\ell}\simeq\rho_{E,\ell}\otimes\chi_d$ (\Cref{ch:ellcurves}), and both $f_{E^{(d)}}$ and $(f_E)^{\chi_d}$ have this representation
@@ -716,7 +787,7 @@ Let $f$ be a newform of weight $2$ on $\Gamma_0(N)$, $\lambda\mid\ell$, $\ell\nm
 \begin{enumerate}[label=(\roman*)]
 \item $J_f$ has good reduction at $\ell$; for every $k\ge1$ the $G_{\Q_\ell}$-module $J_f[\ell^k]$ is the generic fibre of a finite flat group scheme over $\Zl$ (the
 $\ell^k$-torsion of the N\'eron model, an abelian scheme), and so is every $G_{\Q_\ell}$-stable subquotient of it. In particular the reduction $\bar\rho_{f,\lambda}|_{D_\ell}$
-of any stable lattice is \emph{finite}, which is ``good'' in the sense of \cite[Theorem 3.15]{DDT}.
+of any stable lattice is \emph{finite flat}, which is what \Cref{thm:modgalrep:optimal-level} needs for $\delta=0$ (the paper's word is ``good'').
 \item $\rho_{f,\lambda}|_{G_{\Q_\ell}}$ is crystalline with Hodge-Tate weights $0$ and $1$, and the crystalline Frobenius on $\Dcris(V_\lambda(f))$ has characteristic
 polynomial $X^2-a_\ell(f)X+\ell$. For $\ell\ge3$ the weights lie in the Fontaine-Laffaille range $[0,\ell-2]$, so that stable lattices correspond to
 Fontaine-Laffaille modules.
@@ -787,8 +858,9 @@ Let $\bar\sigma\colon G_\Q\to\GL_2(\Fbar_\ell)$ be continuous, odd ($\det\bar\si
 $\bar\sigma|_{D_\ell}$ is finite flat.
 \item The \emph{character} $\varepsilon(\bar\sigma)\colon(\Z/N(\bar\sigma))^\times\to\Fbar_\ell^\times$ is defined by $\det\bar\sigma=\varepsilon(\bar\sigma)\bar\chi_\ell^{k(\bar\sigma)-1}$.
 \item $\bar\sigma$ \emph{arises from} a newform $g$ (of some weight, level and character) if $\bar\sigma\simeq\bar\rho_{g,\lambda}\otimes_{k_\lambda}\Fbar_\ell$ for some prime $\lambda\mid\ell$ of the
-coefficient field of $g$ and some embedding $k_\lambda\into\Fbar_\ell$; when $\bar\sigma$ is absolutely irreducible this is equivalent, for $g$ of weight $2$ with trivial
-character and level $M$, to $\tr\bar\sigma(\Frob_p)=a_p(g)\bmod\lambda$ for all $p\nmid M\ell N(\bar\sigma)$ (\Cref{cor:modgalrep:congruent-newforms}). $\bar\sigma$ is \emph{modular} if it
+coefficient field of $g$ and some embedding $k_\lambda\into\Fbar_\ell$; when $\bar\sigma$ is absolutely irreducible and either $\ell$ is odd or $\det\bar\sigma=\bar\chi_\ell$, this is
+equivalent, for $g$ of weight $2$ with trivial character and level $M$, to $\tr\bar\sigma(\Frob_p)=a_p(g)\bmod\lambda$ for all $p\nmid M\ell N(\bar\sigma)$ (Brauer-Nesbitt, as in
+\Cref{cor:modgalrep:congruent-newforms}; for $\ell=2$ traces do not determine a two-dimensional semisimple representation, and the determinant is needed). $\bar\sigma$ is \emph{modular} if it
 arises from some newform.
 \end{enumerate}
 \end{definition}
@@ -848,7 +920,8 @@ unramified at $q$ and $q\not\equiv1\pmod\ell$. Then $\bar\rho$ arises from a new
 \end{theorem}
 
 \begin{proof}[Idea of proof]
-$\bar\rho$ is realised in $J_0(N)[\mathfrak m]$ for the maximal ideal $\mathfrak m$ of $\T_N$ attached to $(f,\lambda)$. At $q$ the N\'eron model of $J_0(N)$ has semiabelian
+$\bar\rho$ is realised in $J_0(N)[\mathfrak m]$ for the maximal ideal $\mathfrak m=\mathfrak m_{f,\lambda}$ of $\T_N$ attached to $(f,\lambda)$ (\Cref{prop:modgalrep:rhobar-m}(iii)), which is
+non-Eisenstein. At $q$ the N\'eron model of $J_0(N)$ has semiabelian
 reduction whose toric part is governed by the $q$-new quotient (the character group of Grothendieck and Raynaud). If $\bar\rho$ arose only from
 $q$-new forms, $J_0(N)[\mathfrak m]$ would be controlled by the toric part, on which inertia acts unipotently and $\Frob_q$ acts by $\pm q$ on the subobject and $\pm1$ on
 the quotient, with the monodromy pairing measuring the extension; ``unramified at $q$'' together with $q\not\equiv1\pmod\ell$ (so that the two Frobenius
@@ -881,11 +954,13 @@ modulo $\lambda$ occurring in the reduction of a Hecke-stable lattice lifts to a
 \begin{theorem}[the optimal level; Ribet, Carayol, Diamond]\label{thm:modgalrep:optimal-level}
 Let $\ell$ be odd and $\bar\sigma\colon G_\Q\to\GL_2(\Fbar_\ell)$ irreducible and modular, and if $\ell=3$ assume that $\bar\sigma|_{\Gal(\Qbar/\Q(\sqrt{-3}))}$ is absolutely irreducible.
 Then $\bar\sigma$ arises from a newform of weight $2$ and level $N(\bar\sigma)\ell^{\delta(\bar\sigma)}$ with character of order prime to $\ell$, where $\delta(\bar\sigma)\in\{0,1\}$ and
-$\delta(\bar\sigma)=0$ when $\bar\sigma|_{D_\ell}$ is good in the sense of \cite{DDT}, in particular when it is finite flat.
+$\delta(\bar\sigma)=0$ when $\bar\sigma|_{D_\ell}$ is finite flat, that is, isomorphic to the generic fibre of a finite flat group scheme over $\Zl$.
 \end{theorem}
 
 We do not prove this; it is \cite[Theorem 3.15]{DDT}, as the paper quotes it, combining Ribet \cite{Ribet90}, Carayol \cite{Carayol89} and Diamond
-\cite{Diamond95}. Two remarks on the hypothesis at $\ell=3$, which is Diamond's. (a) For $\bar\sigma=\bar\rho_{E,3}$ irreducible it holds exactly when the image is not
+\cite{Diamond95}. The paper says ``good'' for the condition giving $\delta=0$; \cite{DDT} state that condition in a more general form, which we have not
+reproduced, and the finite flat case stated here is the one the paper uses (\Cref{cor:modgalrep:optimal-level-E}). Two remarks on the hypothesis at $\ell=3$, which
+is Diamond's. (a) For $\bar\sigma=\bar\rho_{E,3}$ irreducible it holds exactly when the image is not
 $N_s(\F_3)$, the normaliser of a split Cartan subgroup (\Cref{ch:galrep}, the proposition on the image $\Ns$). (b) For $\ell\ge5$, $\ell\nmid N(E)$ and $\bar\rho_{E,\ell}$
 irreducible, the analogous condition on $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$ holds automatically (\Cref{ch:galrep}), although the theorem does not need it.
 
@@ -1025,12 +1100,12 @@ twist $E'$ of good reduction, gives the $\kod{I}_0^*$ entry of the table of Sect
 
 \begin{lemma}[Ihara's lemma]\label{lem:modgalrep:ihara}
 Let $q\nmid N\ell$ be prime, $\alpha_1,\alpha_q\colon X_0(Nq)\to X_0(N)$ the two degeneracy maps ($z\mapsto z$ and $z\mapsto qz$), and $\mathfrak m$ a maximal ideal of $\T_N$ of residue
-characteristic $\ell$ whose residual representation is irreducible. Then the map $H^1(X_0(N),\F_\ell)^2_{\mathfrak m}\to H^1(X_0(Nq),\F_\ell)$, $(x,y)\mapsto\alpha_1^*x+\alpha_q^*y$, is
-injective. Equivalently (Ribet), the kernel of $J_0(N)^2\to J_0(Nq)$, $(x,y)\mapsto\alpha_1^*x+\alpha_q^*y$, is the Shimura subgroup $\mathcal S_N$ embedded antidiagonally,
-which is Eisenstein.
+characteristic $\ell$ that is non-Eisenstein (\Cref{def:modgalrep:eisenstein}). Then the map $H^1(X_0(N),\F_\ell)^2_{\mathfrak m}\to H^1(X_0(Nq),\F_\ell)$, $(x,y)\mapsto\alpha_1^*x+\alpha_q^*y$, is
+injective.
 \end{lemma}
 
-We do not prove this; see Ribet \cite{Ribet84} and Diamond and Taylor \cite{DiamondTaylor94} (Ihara's original argument uses the congruence
+This follows from Ribet's form of the lemma: the kernel of $J_0(N)^2\to J_0(Nq)$, $(x,y)\mapsto\alpha_1^*x+\alpha_q^*y$, is the Shimura subgroup $\mathcal S_N$ embedded
+antidiagonally, and only Eisenstein maximal ideals are in the support of $\mathcal S_N$. We prove neither statement; see Ribet \cite{Ribet84} and Diamond and Taylor \cite{DiamondTaylor94} (Ihara's original argument uses the congruence
 subgroup property of $\SL_2(\Z[1/q])$). It is the input of \Cref{thm:modgalrep:level-raising}(ii) and of Theorem thm:dfg14 (\Cref{ch:congruence}).
 
 \begin{example}[level raising for $f_{11a}$ and $f_{20a}$]\label{ex:modgalrep:level-raising}
@@ -1090,19 +1165,20 @@ $3$-adic valuations differ, as $9\mid N$ allows; for \curve{539d1}, $\deg\varphi
 
 \begin{lemma}[the congruence criterion; the paper's Lemma lem:crit]\label{lem:modgalrep:crit}
 Let $f$, $L$, $r$ be as in \Cref{def:modgalrep:congruence-number}, $\T$ the full Hecke algebra of level $N$, $\phi_f\colon\T\to\Z$, $T_n\mapsto a_n(f)$, $I=\ker\phi_f$ and
-$J=\Ann_\T(f^\perp)$.
+$J=\Ann_\T(f^\perp)$. Write $S=S_2(\Gamma_0(N);\Z)$, $S_\Q=S\otimes\Q$, and $W=L\otimes\Q=f^\perp\cap S_\Q$, the forms with rational coefficients orthogonal to $f$; Step 1
+of the proof shows $f^\perp=W\otimes\C$.
 \begin{enumerate}[label=(\roman*)]
 \item $I\cap J=0$, $J=\Ann_\T(I)$, $I=\Ann_\T(J)$, and $\T/(I+J)$ is a finite cyclic group of order $r$; equivalently $r\Z=\phi_f(J)=\phi_f(\Ann_\T I)$, the congruence ideal of $\phi_f$.
 Moreover $[S_2(\Gamma_0(N);\Z):\Z f\oplus L]=r$, and $f\equiv g\pmod m$ for some $g\in L$ if and only if $m\mid r$.
-\item Let $\mathcal{O}$ be the ring of integers of a number field, $\lambda\mid\ell$ a prime of $\mathcal{O}$, and $g\in(S_2(\Gamma_0(N))\otimes\Qbar)\cap f^\perp$ a normalised eigenform of \emph{all} of $\T$
+\item Let $\mathcal{O}$ be the ring of integers of a number field, $\lambda\mid\ell$ a prime of $\mathcal{O}$, and $g\in W\otimes\Qbar=(S_\Q\otimes\Qbar)\cap f^\perp$ (inside $S_\Q\otimes\C=S_2(\Gamma_0(N))$) a normalised eigenform of \emph{all} of $\T$
 with coefficients in $\mathcal{O}$ such that $a_n(g)\equiv a_n(f)\pmod\lambda$ for \emph{every} $n\ge1$. Then $\ell\mid r$.
 \item The same holds over $\Zl$: with $\T_\ell=\T\otimes\Zl$, $I_\ell=I\otimes\Zl$, $J_\ell=J\otimes\Zl$, one has $\T_\ell/(I_\ell+J_\ell)\simeq\Z/\ell^{v_\ell(r)}$, $\phi_f(\Ann_{\T_\ell}I_\ell)=\ell^{v_\ell(r)}\Zl$,
-and $\ell^{v_\ell(r)}$ is the largest power $\ell^t$ such that $f\equiv h\pmod{\ell^t}$ for some $h\in L\otimes\Zl$, the forms in $f^\perp$ with coefficients in $\Zl$.
+and $\ell^{v_\ell(r)}$ is the largest power $\ell^t$ such that $f\equiv h\pmod{\ell^t}$ for some $h\in L\otimes\Zl=(S\otimes\Zl)\cap(W\otimes\Ql)$ (inside $S\otimes\Ql$).
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-Write $S=S_2(\Gamma_0(N);\Z)$, $S_\Q=S\otimes\Q$; then $S_2(\Gamma_0(N))=S\otimes\C$ and $S$ is $\T$-stable (\Cref{ch:modforms,ch:hecke}). $\T$ is a subring of $\End_\Z(S)$, so it is
+With $S$, $S_\Q$ as in the statement, $S_2(\Gamma_0(N))=S\otimes\C$ and $S$ is $\T$-stable (\Cref{ch:modforms,ch:hecke}). $\T$ is a subring of $\End_\Z(S)$, so it is
 free of finite rank over $\Z$ and $\T\otimes\Q\subseteq\End_\Q(S_\Q)$ acts faithfully.
 
 \emph{Step 1: $\T\otimes\Q=\Q\times\T'$.} First, $f^\perp$ is $\T$-stable. The adjoint $t\mapsto t^\dagger$ for the Petersson product is additive and reverses products, so
@@ -1113,10 +1189,10 @@ Next, $\T\otimes\Q$ is a finite-dimensional commutative $\Q$-algebra, so $\T\oti
 the factor $(\T\otimes\Q)_{\mathfrak n}$ acting faithfully on the generalised eigenspace $(S_\Q)_{\mathfrak n}$ (\Cref{ch:modules}). Let $\mathfrak n_f=\ker(\phi_f\otimes\Q)$. The generalised
 eigenspace $(S_\Q)_{\mathfrak n_f}\otimes\C$ lies in the generalised eigenspace of the $T_p$, $p\nmid N$, for the eigenvalues $a_p(f)$, which is $V_f=\C f$
 (\Cref{prop:modgalrep:newforms-recap}(iv), strong multiplicity one: $f$ has level $N$, so $V_f$ is spanned by $f$ alone). So $(S_\Q)_{\mathfrak n_f}=\Q f$, and the factor
-$(\T\otimes\Q)_{\mathfrak n_f}$ embeds in $\End_\Q(\Q f)=\Q$; it is therefore $\Q$, acting through $\phi_f$. Let $\T'=\prod_{\mathfrak n\ne\mathfrak n_f}(\T\otimes\Q)_{\mathfrak n}$ and $W=\bigoplus_{\mathfrak n\ne\mathfrak n_f}(S_\Q)_{\mathfrak n}$:
+$(\T\otimes\Q)_{\mathfrak n_f}$ embeds in $\End_\Q(\Q f)=\Q$; it is therefore $\Q$, acting through $\phi_f$. Let $\T'=\prod_{\mathfrak n\ne\mathfrak n_f}(\T\otimes\Q)_{\mathfrak n}$ and $W=\bigoplus_{\mathfrak n\ne\mathfrak n_f}(S_\Q)_{\mathfrak n}$ (we show below that this is the $W$ of the statement):
 then $\T\otimes\Q=\Q\times\T'$, $S_\Q=\Q f\oplus W$, and $\T'$ acts faithfully on $W$ with its unit acting as the identity. Let $e_f=(1,0)$. It projects $S_\Q$ onto $\Q f$
 along $W$. Since $f^\perp$ is $\T$-stable, $e_f(f^\perp)\subseteq f^\perp\cap\C f=0$, so $f^\perp\subseteq\ker e_f=W\otimes\C$, and the two have dimension $\dim S_\Q-1$; hence
-$f^\perp=W\otimes\C$ and $L=S\cap W$.
+$f^\perp=W\otimes\C$, $W=f^\perp\cap S_\Q$ and $L=S\cap W$, so $W=L\otimes\Q$.
 
 \emph{Step 2: the ideals.} In $\T\otimes\Q=\Q\times\T'$, $\phi_f(a,t')=a$. An element $(a,t')$ kills $f^\perp=W\otimes\C$ iff $t'=0$. Hence $I=\T\cap(0\times\T')$ and $J=\T\cap(\Q\times0)$, and
 $I\cap J=0$. Since $\T$ is a lattice in $\T\otimes\Q$, $I\otimes\Q=0\times\T'$ and $J\otimes\Q=\Q\times0$ (tensoring with $\Q$ is exact), and $J\ne0$. An element $(a,t')$ kills $I$ iff
@@ -1142,7 +1218,7 @@ and $e_fh_1=f/m$, whose class in $\Q f/\Z f$ has order exactly $m$; so $m\mid r'
 divisors of $r'$, the largest is $r=r'$, and (i) is proved.
 
 \emph{Step 6: (ii).} Let $\phi_g\colon\T\to\mathcal{O}$, $t\mapsto$ the eigenvalue of $t$ on $g$; it is a ring homomorphism with $\phi_g(T_n)=a_n(g)\in\mathcal{O}$
-(\Cref{prop:modgalrep:newforms-recap}(i), $a_1(g)=1$). It kills $J$: for $t\in J$, $\phi_g(t)g=tg=0$ as $g\in f^\perp\otimes\Qbar$. The two ring homomorphisms $\T\to\mathcal{O}/\lambda$ obtained
+(\Cref{prop:modgalrep:newforms-recap}(i), $a_1(g)=1$). It kills $J$: for $t\in J$, $\phi_g(t)g=tg=0$ as $g\in W\otimes\Qbar\subseteq f^\perp$. The two ring homomorphisms $\T\to\mathcal{O}/\lambda$ obtained
 from $\phi_g$ and $\phi_f$ agree on every $T_n$, hence on $\T$; so $\phi_g(t)\equiv\phi_f(t)=0\pmod\lambda$ for $t\in I$. Hence $I+J$ lies in the kernel $\mathfrak m$ of $\T\to\mathcal{O}/\lambda$,
 $t\mapsto\phi_g(t)\bmod\lambda$. Its image is a subring of the finite field $\mathcal{O}/\lambda$, hence a finite integral domain, hence a field of characteristic $\ell$; so $\mathfrak m$ is a
 maximal ideal with $\ell\in\mathfrak m$, and $\T/(I+J)$ surjects onto $\T/\mathfrak m\ne0$, a group of exponent $\ell$. So $\ell\mid\#\T/(I+J)=r$.
@@ -1207,13 +1283,15 @@ stated. The coefficient of $h_0$ in each listed eigenvector is $1$, and $h(dz)$ 
 Let $f=f_E$ be as in \Cref{def:modgalrep:congruence-number}, $\ell$ an odd prime with $\ell\nmid N$, and $\bar\rho=\bar\rho_{E,\ell}$ irreducible. Let $h\ne f$ be a newform of weight $2$
 on $\Gamma_0(M)$, $M\mid N$, with coefficients in the ring of integers $\mathcal{O}$ of a number field, and $\lambda\mid\ell$ a prime of $\mathcal{O}$ with $a_p(h)\equiv a_p(f)\pmod\lambda$ for all
 primes $p\nmid\ell N$. Assume that $p\nmid M$ for every prime $p\,\|\,N$ at which $\bar\rho$ is unramified. Then, after enlarging $\mathcal{O}$ and $\lambda$, the span $V_h$ of the $h(dz)$,
-$d\mid N/M$, contains a normalised eigenform $g$ of all of $\T$ with coefficients in $\mathcal{O}$ and $a_n(g)\equiv a_n(f)\pmod\lambda$ for every $n\ge1$; it lies in $f^\perp\otimes\Qbar$.
+$d\mid N/M$, contains a normalised eigenform $g$ of all of $\T$ with coefficients in $\mathcal{O}$ and $a_n(g)\equiv a_n(f)\pmod\lambda$ for every $n\ge1$; it lies in $W\otimes\Qbar$
+(notation of \Cref{lem:modgalrep:crit}).
 Consequently $\ell\mid r$.
 \end{lemma}
 
 \begin{proof}
 \emph{Step 1: orthogonality.} $V_h$ is $\T$-stable and orthogonal to $f$: if $M<N$ it is a different summand of \Cref{prop:modgalrep:newforms-recap}(iv) from $V_f=\C f$, and
-if $M=N$ then $V_h=\C h$ with $h\ne f$. So any $g\in V_h\otimes\Qbar$ lies in $f^\perp\otimes\Qbar$.
+if $M=N$ then $V_h=\C h$ with $h\ne f$. The forms $h(dz)$ have coefficients in $\mathcal{O}\subset\Qbar$, so they lie in $S_\Q\otimes\Qbar$ (their coordinates in a $\Z$-basis of $S$ solve a
+uniquely solvable linear system, given by finitely many coefficients, with entries in $\Qbar$). So any $\Qbar$-combination $g$ of the $h(dz)$ lies in $(S_\Q\otimes\Qbar)\cap f^\perp=W\otimes\Qbar$.
 
 \emph{Step 2: the residual representations.} By \Cref{thm:modgalrep:comparison-E}, $\bar\rho_f\simeq\bar\rho\otimes_{\F_\ell}k_\lambda$, which is absolutely irreducible
 (\Cref{prop:modgalrep:lattices}(ii)). By \Cref{cor:modgalrep:congruent-newforms}(ii), $\bar\rho_h\simeq\bar\rho\otimes k_\lambda$.
@@ -1369,8 +1447,8 @@ the level can be lowered and raised back by the twist to a \emph{different} newf
 \begin{enumerate}[label=(\roman*)]
 \item Types $\kod{III}$, $\kod{III}^*$ at $q\ge5$: the Serre exponent of $\bar\rho_{E,3}$ and of its twist is $2$; nothing can be lowered. These are the types relevant to the image
 $\Ns$ (Section sec:anomaly of the paper).
-\item Type $\kod{I}_0^*$: $E'=E^{(q)}$ has good reduction at $q$ and $M=N(\bar\rho\otimes\chi)$ divides $N/q^2$. But \Cref{cor:modgalrep:optimal-level-E} may return $g=f_{E'}$ itself (it does
-whenever $N(\bar\rho\otimes\chi)=N/q^2$), and then $h=g^\chi=f$: no new congruence. For \curve{539d1} at $\ell=3$ ($\kod{I}_0^*$ at $7$, twist \curve{11a3}), $N(\bar\rho\otimes\chi_{-7})=11$ and
+\item Type $\kod{I}_0^*$: $E'=E^{(q)}$ has good reduction at $q$ and $M=N(\bar\rho\otimes\chi)$ divides $N/q^2$. But \Cref{cor:modgalrep:optimal-level-E} is existential and may return
+$g=f_{E'}$ itself (nothing excludes this when $N(\bar\rho\otimes\chi)=N/q^2$), and then $h=g^\chi=f$: no new congruence. For \curve{539d1} at $\ell=3$ ($\kod{I}_0^*$ at $7$, twist \curve{11a3}), $N(\bar\rho\otimes\chi_{-7})=11$ and
 $g=f_{11a}$, $h=f_{539d}=f$. The $\kod{I}_0^*$ contribution is reached by level raising instead (Theorem thm:quant and \Cref{thm:modgalrep:quant}).
 \item Type $\kod{I}_n^*$ with $\ell\nmid n$: $\bar\rho\otimes\chi$ is ramified at $q$ with exponent $1$, so $M$ has $q^1$, $h=g^\chi$ has $q^2$, and \Cref{cor:modgalrep:optimal-level-E} may
 return $g=f_{E'}$, giving $h=f$.
@@ -1420,9 +1498,9 @@ $336$; the row \curve{121c1} is the book's. All data in the table were recompute
 
 \begin{remark}[the paper's remark on $\ell\mid N$]\label{rem:modgalrep:l-divides-N}
 The remark after the paper's Example says that $\ell\nmid N$ is used in three places. (i) In the optimal-level theorem: \Cref{cor:modgalrep:optimal-level-E} needs $\bar\rho|_{D_\ell}$
-finite, so that the level is $N(\bar\rho)$ and the character is trivial; for \curve{140b1} at $\ell=5$ the level is $N(\bar\rho)\cdot5$. (ii) In Lemma lem:old at $p=\ell$:
+finite flat, so that the level is $N(\bar\rho)$ rather than $N(\bar\rho)\ell$ (the triviality of the character uses only the determinant and the order prime to $\ell$); for \curve{140b1} at $\ell=5$ the level is $N(\bar\rho)\cdot5$. (ii) In Lemma lem:old at $p=\ell$:
 \Cref{thm:modgalrep:deligne-fontaine} needs the levels prime to $\ell$. (iii) In passing from $r$ to $\deg\varphi$, which needs only $\ell^2\nmid N$ and fails without it: for
-\curve{99a1} (the 99A1 of \cite[Table 1]{ARS12}, $N=9\cdot11$), $\deg\varphi=4$ and $r=12$; for \curve{539d1}, $\deg\varphi=72$ and $r=504$; for \curve{726a1}, $\deg\varphi=144$ and $r=1584$ (the last three examples are the paper's, and all were
+\curve{99a1} (the 99A1 of \cite[Table 1]{ARS12}, $N=9\cdot11$), $\deg\varphi=4$ and $r=12$; for \curve{539d1}, $\deg\varphi=72$ and $r=504$; for \curve{726a1}, $\deg\varphi=144$ and $r=1584$ (all three examples are the paper's, and all were
 recomputed here as indices of $\Z f\oplus L$). The
 remark ends: ``so do they at $q=3$ in cases (a) and (b), where $q=\ell$ and the theorem does not apply.'' Here $\ell=3$, so $q=3$ means $3\mid N$: the inertia group at $3$ then
 acts on $T_3E$ through an infinite group (it contains the cyclotomic character on the determinant), and the local theory at $q=\ell$ is the $\ell$-adic one of
@@ -1617,9 +1695,12 @@ $f_{11a}\otimes\chi_5=f_{275b}$. (b) Show that $f_{77c}\otimes\chi_{-7}=f_{539c}
 \end{exercise}
 
 \begin{exercise}[twists of curves and optimality]\label{exer:modgalrep:twist-optimal}
-(machine) Show that the twist of the optimal curve \curve{121c1} by $\Q(\sqrt{-11})$ is \curve{121a2}, not the optimal curve \curve{121a1}, and that \curve{11a3} twists to \curve{121d1}. Explain
-why, when $E[\ell]$ is irreducible, $v_\ell$ of the degree of the minimal parametrisation of any curve of the class equals $v_\ell(\deg\varphi_{E_0})$, so that Theorem thm:qual can be
-stated for any $E$ in the class. \emph{Hint.} The isogenies in the class have degree prime to $\ell$ (\Cref{ch:galrep}).
+(machine) Show that the twist of the optimal curve \curve{19a1} by $\Q(\sqrt{-3})$ is \curve{171b2}, not the optimal curve \curve{171b1}, and that \curve{171b1} is the twist of
+\curve{19a3}; so twisting preserves optimality in neither direction. Explain why, when $E[\ell]$ is irreducible, $v_\ell$ of the degree of the minimal parametrisation
+$X_0(N)\to E$ of any curve $E$ of the class equals $v_\ell(\deg\varphi_{E_0})$, so that Theorem thm:qual can be stated for any $E$ in the class. Why does this argument say
+nothing at $\ell=3$ for the classes 19a and 171b? \emph{Hint.} When $E[\ell]$ is irreducible the isogenies in the class have degree prime to $\ell$ (\Cref{ch:galrep}).
+\emph{Answer to the last question.} Both classes consist of three curves linked by isogenies of degrees $3$ and $9$ (Cremona's \texttt{allisog}), so $E[3]$ is
+reducible; $\deg\varphi_{171b1}=8$ and $\deg\varphi_{19a1}=1$.
 \end{exercise}
 
 \begin{exercise}[ramification of $\bar\rho$ at a Steinberg prime]\label{exer:modgalrep:steinberg-unramified}
@@ -1664,9 +1745,11 @@ $\T/(I+J)$, the index $[S:\Z\phi\oplus\Z\psi]$, and the largest $m$ with $\phi-\
 $a-b\in r\Z$ on $\T$, so $m=r$.
 \end{exercise}
 
-\begin{exercise}[the congruence number of \curve{99a1}]\label{exer:modgalrep:99a1}
-(machine) Compute $[S_2(\Gamma_0(99);\Z):\Z f\oplus L]$ for $f=f_{99a}$ and find $g\in L$ with $f\equiv g\pmod{12}$. Which hypothesis of \Cref{thm:modgalrep:ars} fails at $3$? \emph{Answer.} $12$;
-$v_3(12)=1\ne0=v_3(4)$, and $9\mid99$.
+\begin{exercise}[the congruence number of \curve{196a1}]\label{exer:modgalrep:196a1}
+(machine) \curve{196a1} is optimal, of conductor $196=2^2\cdot7^2$, with types $\kod{IV}$ at $2$ and $\kod{II}$ at $7$, and $\deg\varphi=6$. Adapt the code of the Notes to compute
+$r=[S_2(\Gamma_0(196);\Z):\Z f\oplus L]$ (with $T_3$ or $T_5$ in place of $T_5$ if needed: $a_p(f)$ must be a simple eigenvalue). At which primes $p$ with $p^2\mid N$ do $v_p(r)$
+and $v_p(\deg\varphi)$ differ? \emph{Answer.} $r=42=7\cdot6$ (the same with $T_3$ and $T_5$); $v_7(42)=1\ne0=v_7(6)$, while $v_2(42)=1=v_2(6)$: the hypothesis $p^2\nmid N$ of
+\Cref{thm:modgalrep:ars} allows a difference at $p$ but does not force one.
 \end{exercise}
 
 \begin{exercise}[the hypothesis of Lemma lem:old]\label{exer:modgalrep:old-hypothesis}
@@ -1681,9 +1764,12 @@ the eigenform of Lemma lem:old, and check $3\mid\deg\varphi$. \emph{Answer.} $N(
 $\deg\varphi=6$.
 \end{exercise}
 
-\begin{exercise}[the step $h\ne f$]\label{exer:modgalrep:h-ne-f}
-In case (b) of the proof, suppose one argued ``if $h=f$ then $g=h\otimes\chi=f\otimes\chi=f_{E'}$''. Show on \curve{121a1} ($g=f_{11a}$, $h=f_{121d}$) that $h\otimes\chi_{-11}$ is $f_{11a}^{\{11\}}$, not $f_{11a}$, so
-the first equality is false; then give the correct argument with newform twists. \emph{Hint.} \Cref{conv:modgalrep:twists} and \Cref{prop:modgalrep:twists}(iii).
+\begin{exercise}[the step $h\ne f$ by local types]\label{exer:modgalrep:h-ne-f}
+In cases (b) and (c) of the proof of Theorem thm:qual, give a second proof of $h\ne f$ by comparing the types at $q$ of $h=g^\chi$ and of $f$ (the type is determined by the
+newform, \Cref{thm:modgalrep:carayol}(i)). Then show that this argument cannot work for type $\kod{I}_0^*$, and compare with \Cref{rem:modgalrep:why-these-types}(ii).
+\emph{Answer.} In case (b), $q\,\|\,M$, so $g$ has type (St) at $q$ and $h$ has type (RSt) (\Cref{prop:modgalrep:twist-conductor}), while $f$ has type (RPS) or (SC)
+(\Cref{prop:modgalrep:kodaira-dictionary}). In case (c), $q\nmid M$, so $g$ has type (U) and $h$ type (RPS), while $f$ has type (RSt). For type $\kod{I}_0^*$, $f$ has type (RPS) with
+characters $\chi_{q^*}$ times unramified ones, which is also the type of $g^\chi$ for every $g$ of type (U) at $q$; so the types cannot separate $h$ from $f$, and indeed $h=f$ can occur.
 \end{exercise}
 
 \begin{exercise}[another instance of case (c)]\label{exer:modgalrep:1175b1}
@@ -1694,8 +1780,12 @@ quartic coefficient field; $\deg\varphi=288$.
 \end{exercise}
 
 \begin{exercise}[a type $\kod{I}_0^*$ curve]\label{exer:modgalrep:I0star}
-Run the construction of the proof of Theorem thm:qual on \curve{539d1} at $\ell=3$ (type $\kod{I}_0^*$ at $7$, twist \curve{11a3}) as if it were case (c), and show that it returns $h=f$.
-Then explain how Theorem thm:quant still gives $9\mid\deg\varphi_{539d1}=72$. \emph{Hint.} \Cref{rem:modgalrep:why-these-types}(ii) and \Cref{rem:modgalrep:quant-level-raising}.
+(machine) Show that the twist of \curve{37a1} by $\Q(\sqrt{-7})$ is \curve{1813b1}, of type $\kod{I}_0^*$ at $7$, and that its mod $3$ representation is surjective (Cremona's
+\texttt{galrep} lists no exceptional image). Run the construction of the proof of Theorem thm:qual at $\ell=3$ as if this were case (c): compute $N(\bar\rho\otimes\chi_{-7})$ and
+show that the construction returns $h=f$. Then compute $e_3(E,7)$ from \Cref{prop:modgalrep:level-raising-factor} with $a_7(f_{37a})=-1$, and compare the bound of
+\Cref{thm:modgalrep:quant} with $\deg\varphi_{1813b1}$. \emph{Answer.} $\bar\rho\otimes\chi_{-7}\simeq\bar\rho_{37a1,3}$ is ramified at $37$ (type $\kod{I}_1$, $3\nmid1$), so $N(\bar\rho\otimes\chi_{-7})=37=N/7^2$; of
+the two newforms of level $37$, $f_{37b}$ has reducible mod $3$ representation (image \texttt{3Cs.1.1}), so $g=f_{37a}$ and $h=g^{\chi_{-7}}=f_{1813b}=f$. Next
+$e_3(E,7)=v_3(7-1)+v_3(8^2-1)=1+2=3$ and $v_3(r_{37a})=v_3(2)=0$, so $v_3(\deg\varphi)\ge3$; and $\deg\varphi_{1813b1}=756=2^2\cdot3^3\cdot7$, so the bound is attained.
 \end{exercise}
 
 \begin{exercise}[Theorem thm:quant at $\ell=5$]\label{exer:modgalrep:quant-5}
@@ -1712,7 +1802,8 @@ $\rho\bmod5^t$ unramified at $11$ on $T_5(\curve{11a1})$ and on $T_5(\curve{11a3
 
 \paragraph{Sources followed.} The construction of $\rho_{f,\lambda}$ in weight $2$ follows Shimura \cite[Chapter 7]{Shimura71} and Diamond and Shurman
 \cite[Chapter 9]{DiamondShurman}, with the integral and residual facts as in Diamond and Im \cite{DiamondIm} and Darmon, Diamond and Taylor
-\cite{DDT}; the general construction is Deligne's \cite{Deligne}, and irreducibility in general is Ribet's \cite{Ribet77}. The automorphic representation
+\cite{DDT}; the residual representation of a maximal ideal of $\T$ rests on the lifting lemma of Deligne and Serre \cite{DeligneSerre74} and, for its field of
+definition, on Carayol \cite{Carayol94}; the general construction is Deligne's \cite{Deligne}, and irreducibility in general is Ribet's \cite{Ribet77}. The automorphic representation
 of a newform is from Jacquet and Langlands \cite{JacquetLanglands70}, conductors of representations of $\GL_2(\Q_p)$ from Casselman \cite{Casselman73}, the local Langlands
 correspondence from Bushnell and Henniart \cite{BushnellHenniart06}, and local-global compatibility from Langlands \cite{Langlands73}, Deligne
 \cite{Deligne73} and Carayol \cite{Carayol86}; Rohrlich \cite{Rohrlich94} is the reference for Weil-Deligne representations of elliptic curves, and
@@ -1728,7 +1819,8 @@ in Diamond, Flach and Guo \cite{DFG04}; Kim and Ota \cite{KimOta}, Pollack and W
 
 \paragraph{Theorem numbers.} The numbers printed are those the paper itself cites: \cite[Theorems 3.1(e), 3.15]{DDT}, \cite[Theorem 2.2]{Ribet83},
 \cite[Lemma 2.1]{AU96}, \cite[Theorem 3]{AtkinLehner70}, \cite[Theorem 3.1]{AtkinLi78}, \cite[Theorem 2.2]{ARS12}, \cite[Section 2]{Edixhoven92}, \cite[Proposition 1.4(c)]{DFG04},
-\cite[Theorem 1.1, Definition 2.12]{KimOta}. ``Theorem 7.14'' of \cite{Shimura71} is an unverified pointer from the edition we know. All other references are cited by
+\cite[Theorem 1.1, Definition 2.12]{KimOta}. ``Theorem 7.14'' of \cite{Shimura71} is an unverified pointer from the edition we know, and so is ``Lemme 6.11'' of
+\cite{DeligneSerre74} for the lifting lemma; the theorem of \cite{Carayol94} on representations with traces in a subring is cited without a number. All other references are cited by
 chapter, section or as a whole; we have not verified the numbering of the main theorems of \cite{Carayol86}, \cite{Ribet84}, \cite{Ribet90} or \cite{DiamondTaylor94},
 nor the precise hypotheses of \cite{Ribet84}, \cite{Carayol89} (\Cref{rem:modgalrep:carayol-lemma}) and \cite{PollackWeston11}; the statements given here are those the
 paper uses, or special cases of the published ones.
