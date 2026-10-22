@@ -27,7 +27,8 @@ non-CM, $E[\ell]$ irreducible; Eisenstein: non-CM, reducible; hypothesis populat
 curves, $189$ CM; base populations $33{,}851$, $37{,}319$, $37{,}691$, $37{,}839$, $37{,}823$ at $\ell=3,5,7,11,13$. \emph{(convention; counts proved here, by computation)}
 \Cref{conv:computation:populations}.
 \item \textbf{Running PARI; the language; pitfalls.} \texttt{gp} or \texttt{cypari2}; without \texttt{elldata}, \texttt{ellsearch} fails, so files are read directly;
-default stack $8{,}000{,}000$ bytes, maximum $8{,}003{,}584$; \texttt{factor} drops the content; a GP file must be loaded with \texttt{read}. \emph{(stated; reference
+default stack $8{,}000{,}000$ bytes, maximum $8{,}003{,}584$; \texttt{factor} drops the content; a GP file must be loaded with \texttt{read};
+\texttt{mfsturm} of an \texttt{mfinit} space is smaller than Sturm's bound $k\mu(N)/12$ ($50$ against $112$ at level $539$). \emph{(stated; reference
 \cite{PARIusers}; behaviour checked here)} \Cref{rem:computation:install,rem:computation:gp-language,ex:computation:first-session,warn:computation:pitfalls}.
 \item \textbf{\texttt{ellglobalred}.} Returns $[N,[u,r,s,t],\prod c_p,F,L]$ with $F$ the factorisation of $N$ (so \texttt{R[4][,1]} is the column of bad primes) and
 $L[i]=[f_p,k_p,0,c_p]$, $k_p$ PARI's Kodaira code; for \curve{726a1}, $L=[[1,10,0,2],[1,7,0,1],[2,3,0,2]]$ (types $\kod{I}_6$, $\kod{I}_3$, $\kod{III}$).
@@ -321,6 +322,12 @@ leading coefficient, and drops the content, sign included: \texttt{factor(3*x\^{
 \item A file of GP code must be loaded with \texttt{read}. Pasted into \texttt{pari('...')} as one string, the paper's file
 \texttt{euler\_rule.gp} does not produce two functions: in our test the definition of \texttt{ns3} became part of the body of
 \texttt{rule}, and \texttt{rule(E, 3)} returned a function instead of a pair. Reading the file is the reliable route.
+\item \texttt{mfsturm} depends on its argument. On a pair $[N,k]$ it returns Sturm's bound $k\mu(N)/12$, $\mu(N)=[\SL_2(\Z):\Gamma_0(N)]$
+(\Cref{ch:modforms}): \texttt{mfsturm([539, 2])} is $112$. On a space created by \texttt{mfinit} it returns a smaller number adapted to that
+space: \texttt{mfsturm(mfinit([539, 2]))} is $88$ and, for the cuspidal space, \texttt{mfsturm(mfinit([539, 2], 1))} is $50$. The smaller numbers
+are not valid bounds for the integrality of an arbitrary rational combination of $q$-expansions; used as truncation points in the
+congruence-module computation of \Cref{ch:moddeg} at level $539$, the bound $50$ gives the wrong modules ($1440$ and $2520$ instead of
+$288$ and $504$, as found while writing \Cref{ch:congruence}). For congruences and integrality, use $k\mu(N)/12$.
 \end{enumerate}
 \end{warning}
 \section{Invariants of a curve in PARI}\label{sec:computation:invariants}
@@ -1012,7 +1019,7 @@ roughly linearly with $N$, and the coefficients themselves cost more as $N$ grow
 up to conductor $500000$; the paper recomputed fifteen of them inside the tables and $893$ outside (Section sec:oot). The congruence module of
 \Cref{ch:moddeg} is a Smith normal form computation (\texttt{matsnf}, \texttt{mathnf} in PARI; \Cref{ch:modules}), and the modular-forms
 functions \texttt{mfinit}, \texttt{mfbasis}, \texttt{mfcoefs}, \texttt{mfheckemat}, \texttt{mfsturm}, \texttt{mfpetersson} used in \Cref{ch:modforms,ch:hecke,ch:moddeg,ch:modgalrep}
-are explained there with their normalisations.
+are explained there with their normalisations. One trap is recorded in \Cref{warn:computation:pitfalls}(h): \texttt{mfsturm} applied to a space returns less than Sturm's bound.
 \end{remark}
 
 \begin{example}[\texttt{ellmoddegree} against Cremona's degrees]\label{ex:computation:moddeg-check}
@@ -1779,7 +1786,7 @@ occur in \texttt{R[5]}? (Answer: \curve{20a1}: $N=20$, $[[2,-4,0,3],[1,6,0,2]]$,
 \begin{exercise}\label{exer:computation:sturm}
 With \texttt{ellan}, check that $a_p(\curve{121a1})\equiv\chi_{-11}(p)a_p(\curve{11a1})\pmod3$ for every prime $p<500$, $p\ne3,11$ (use \texttt{kronecker(-11, p)}),
 and that $a_n(\curve{121a1})\equiv a_n(\curve{121d1})\pmod3$ for all $n\le500$, with \curve{121d1} $=[0,-1,1,-40,-221]$. Explain why the second check, which is far
-more than needed, proves the congruence for every $n$ (\texttt{mfsturm([121, 2])} returns $22$; \Cref{ch:modforms}), and why the first does not by
+more than needed, proves the congruence for every $n$ (\texttt{mfsturm([121, 2])} returns $22=2\mu(121)/12$; \Cref{ch:modforms}; see \Cref{warn:computation:pitfalls}(h)), and why the first does not by
 itself.
 \end{exercise}
 
