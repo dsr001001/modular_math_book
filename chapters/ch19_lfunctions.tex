@@ -67,7 +67,7 @@ $a_p=p+1-\#\tilde E(\F_p)$ at every $p$. \emph{(definition)} \Cref{def:lfunction
 $L(E,s)$ is an isogeny invariant. \emph{(proved here, given \Cref{ch:ellcurves,ch:reduction,ch:galrep})} \Cref{prop:lfunctions:LE}.
 \item \textbf{Functional equation of $L(E,s)$.} $L(E,s)=L(f_E,s)$; $\Lambda(E,s)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(E,s)$ is entire with $\Lambda(E,s)=w_E\Lambda(E,2-s)$,
 $w_E=-\varepsilon_N(f_E)$; $w_E=-\prod_{p\mid N}w_p$ with $w_p=-a_p$ at multiplicative $p$. \emph{(modularity and local root numbers stated; the rest
-proved given \Cref{ch:hecke})} \Cref{thm:lfunctions:LE-feq}.
+proved here given \Cref{ch:hecke}, where the functional equation of $L(f,s)$ is sketched)} \Cref{thm:lfunctions:LE-feq}.
 \item \textbf{The adjoint and the symmetric square.} $\Sym V^\vee\simeq A_f(-1)$, so $L_p(\Sym f,s)=L_p(A_f,s-1)$ for every $p$; $P_p\in\Z[X]$, $P_p(0)=1$,
 $\deg P_p=\dim A_f^{I_p}\in\{0,1,3\}$, $P_p(p^{-2})=L_p(A_f,1)^{-1}\in\Z[1/p]$. \emph{(definition)} \Cref{def:lfunctions:ad-sym}; \emph{(proved here, given
 \Cref{ch:reps} and Sections~\ref{sec:lfunctions:local-terms}, \ref{sec:lfunctions:all-primes})} \Cref{prop:lfunctions:ad-sym}.
@@ -86,7 +86,7 @@ the $a_p(f)$ alone, and $L^{\nv}(\ad f,s)=L(\ad f,s)\prod_{p^2\mid N}L_p(A_f,s)^
 \item \textbf{Rankin's and Shimura's series.} For $\operatorname{Re}s>2$, exactly: $\sum a_n(f)^2n^{-s}=\zeta^{(N)}(s-1)L^{\nv}(\Sym f,s)/\zeta^{(N)}(2s-2)$ and
 $\sum a_{n^2}(f)n^{-s}=L^{\nv}(\Sym f,s)/\zeta^{(N)}(2s-2)$. \emph{(proved here; the first given \Cref{ch:hecke})} \Cref{prop:lfunctions:rankin-series}.
 \item \textbf{Petersson norm.} $\langle f,f\rangle=\frac N{8\pi^3}L^{\nv}(\Sym f,2)=\frac N{8\pi^3}L(\ad f,1)\prod_{p^2\mid N}L_p(A_f,1)^{-1}$: only the additive primes
-contribute a correction. \emph{(proved here, given \Cref{ch:hecke})} \Cref{thm:lfunctions:petersson-sym2}.
+contribute a correction. \emph{(the first equality is \Cref{ch:hecke}'s, where the unfolding is sketched; the true-$L$ form proved here, given it)} \Cref{thm:lfunctions:petersson-sym2}.
 \item \textbf{The degree formula.} For every modular parametrisation,
 \[
 \deg\varphi\cdot\vol(\Lambda_E)=\frac{c_\varphi^2NL^{\nv}(\ad f,1)}{2\pi};\qquad B_E=\frac{c_E^2NL(\ad f,1)}{2\pi\vol(\Lambda_E)}\in\Q^\times
@@ -107,8 +107,9 @@ $v_\ell(q^2-1)$, $v_\ell(q-\chi_{-3}(q))$, $v_\ell(q-\chi_{-4}(q))$, $v_\ell(q-1
 at every $q\ne\ell$. \emph{(proved here, given Kraus's theorem via \Cref{ch:galrep})} \Cref{lem:lfunctions:euler}.
 \item \textbf{Twists.} $L_q(A_f,s)$ and $L(\ad f,s)$ are invariant under every quadratic twist, $t_\ell(E,q)$ too; $e_\ell(E,q)$ is invariant under twists unramified
 at $q$ but not in general (\curve{11a1}: $e_3=0$; \curve{121d2}: $e_3=1$). \emph{(proved here)} \Cref{prop:lfunctions:twists}.
-\item \textbf{The $L$-part of Lemma lem:fpr.} For $\ell$ odd and $p\mid N$, $p\ne\ell$: $\det(1-\Phi_p\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}=P_p(p^{-2})$, a nonzero element of
-$\Z[1/p]$ of $\ell$-adic valuation $e_\ell(E,p)$ (additive $p$) or $v_\ell(p^2-1)$ (multiplicative $p$). \emph{(proved here)} \Cref{prop:lfunctions:fpr-L-part}.
+\item \textbf{The $L$-part of Lemma lem:fpr.} For every prime $p\ne\ell$: $\det(1-\Phi_p\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}=P_p(p^{-2})$, a nonzero element of
+$\Z[1/p]$, so a nonzero $\ell$-adic integer, of $\ell$-adic valuation $v_\ell((p-1)((p+1)^2-a_p^2))$ (good $p$), $v_\ell(p^2-1)$ (multiplicative $p$, or additive with
+$v_p(j_E)<0$), $e_\ell(E,p)$ (additive $p$). \emph{(proved here)} \Cref{prop:lfunctions:fpr-L-part}.
 \item \textbf{The naive factors at $s=1$.} $L_p^{\nv}(A_f,1)^{-1}$ is $\frac{(p-1)((p+1)^2-a_p^2)}{p^3}$, $1-p^{-2}$, $1$ for $p\nmid N$, $p\,\|\,N$, $p^2\mid N$; the true and naive
 valuations differ by $e_\ell(E,p)$. \emph{(proved here)} \Cref{prop:lfunctions:naive-factors}.
 \item \textbf{Every bad prime (the paper's Proposition prop:shapes).} At every bad $q\ne\ell$, $2$ and $3$ included, $P_q$ is $1-X$ (potentially multiplicative),
@@ -203,8 +204,10 @@ The revised paper says in Section 1.1 that $L_p(A_f,s)=\det(1-\Frob_p^{-1}p^{-s}
 \cite[\S1.1.1]{DFG04}'', and that ``The matrices in the proof of Lemma~lem:tamfactor are those of the arithmetic Frobenius''. Both are needed. The table of
 Section 1, Lemma lem:euler, PARI's factors and the identity $L_p(A_f,1)=L_p(A_f(1),0)$ of Lemma lem:fpr hold for $\Phi_p$ and fail for $\Frob_p$ at a
 multiplicative prime: there $\Frob_q$ acts on $A_f^{I_q}$ by $q$ and would give $1-q^{1-s}$ (\Cref{prop:lfunctions:multiplicative}). The original version of the paper
-wrote $\Frob_p$ in Section 1.1 and after Lemma lem:dfg21; it has to be read as the geometric Frobenius. The rows of the table at additive primes do not see the
-difference, because there the eigenvalues on $A_f^{I_q}$ are stable under inversion (\Cref{prop:lfunctions:local-factor}(iii)).
+wrote $\Frob_p$ in Section 1.1 and after Lemma lem:dfg21; it has to be read as the geometric Frobenius. The rows of the potentially good types
+($\mathrm{II}$, $\mathrm{II}^*$, $\mathrm{III}$, $\mathrm{III}^*$, $\mathrm{IV}$, $\mathrm{IV}^*$, $\mathrm I_0^*$) do not see the difference, because there the eigenvalues on $A_f^{I_q}$
+are stable under inversion; the rows $\mathrm I_n$ and $\mathrm I_n^*$ do, since for $\mathrm I_n^*$ too $A_f^{I_q}$ is the line of $e$ with $\Frob_q$ acting by $q$
+(\Cref{prop:lfunctions:local-factor}(iii)).
 \end{warning}
 
 \begin{convention}[the four normalisations]\label{conv:lfunctions:normalisations}
@@ -474,7 +477,7 @@ $L_p(M,s)=\det(1-r(\Phi)p^{-s}\mid(\ker N)^{r(I_p)})^{-1}$.
 \item $L_p(M\oplus M',s)=L_p(M,s)L_p(M',s)$ and $L_p(M(n),s)=L_p(M,s+n)$ for every $n\in\Z$.
 \item Write $L_p^{\Frob}(M,s)=\det(1-\Frob_p\,p^{-s}\mid M^{I_p})^{-1}$. Then $L_p^{\Frob}(M,s)=L_p(M,s)$ for all $s$ iff the multiset of eigenvalues of $\Frob_p$ on $M^{I_p}$ is
 stable under $\lambda\mapsto\lambda^{-1}$. This holds for $\ad V$ at a good prime and at a prime of potentially good reduction, and fails for $\ad V$ at a
-multiplicative prime and for $V_\ell E$ at a good prime.
+prime of potentially multiplicative reduction (multiplicative, or additive with $v_p(j_E)<0$) and for $V_\ell E$ at a good prime.
 \item (At $p=\ell$.) If $E$ has good reduction at $\ell$, then $V_\ell E$ is crystalline and the crystalline Frobenius on $\Dcris(V_\ell E^\vee)$ has characteristic polynomial
 $X^2-a_\ell X+\ell$; so $L_\ell(V_\ell E^\vee,s)=L_\ell(E,s)$, and $L_\ell(A_f,s)$ is given by the formula of \Cref{prop:lfunctions:good-factor} at $p=\ell$.
 \end{enumerate}
@@ -485,7 +488,7 @@ $X^2-a_\ell X+\ell$; so $L_\ell(V_\ell E^\vee,s)=L_\ell(E,s)$, and $L_\ell(A_f,s
 (with multiplicity), then $\det(1-\Frob_pX)=\prod(1-\lambda_iX)$ and $\det(1-\Phi_pX)=\prod(1-\lambda_i^{-1}X)$; two polynomials with constant term $1$ are equal iff their
 multisets of inverse roots are. On $\ad V$ at a good prime the arithmetic eigenvalues are $\alpha/\beta,1,\beta/\alpha$, a set stable under inversion. At a prime of potentially
 good reduction $A_f^{I_p}$ is either $0$, a line on which Frobenius acts by $\pm1$, or all of $A_f\simeq\ad V_\ell E'$ for a twist $E'$ of good reduction
-(\Cref{prop:lfunctions:all-shapes}); each is stable. At a multiplicative prime $A_f^{I_p}$ is a line with arithmetic eigenvalue $p\ne p^{-1}$
+(\Cref{prop:lfunctions:all-shapes}); each is stable. At a prime of potentially multiplicative reduction, multiplicative or additive, $A_f^{I_p}$ is a line with arithmetic eigenvalue $p\ne p^{-1}$
 (\Cref{prop:lfunctions:multiplicative}). On $V_\ell E$ at a good prime the arithmetic eigenvalues are $\alpha,\beta$ with $\alpha\beta=p$; stability would need
 $\{\alpha,\beta\}=\{\alpha^{-1},\beta^{-1}\}=\{\beta/p,\alpha/p\}$, impossible since $\alpha\ne\alpha/p$ and $\alpha=\beta/p$, $\beta=\alpha/p$ would give $p^2=1$.
 (iv) We do not prove this; it is the comparison theorem of Fontaine and Messing (crystalline cohomology of the reduction) together with the computation of the
@@ -644,7 +647,7 @@ trace-zero endomorphisms, or Appendix B, B-C12) and $\det V^\vee=(\det V)^{-1}=\
 $L_p(\Sym V^\vee,s)=L_p(A_f(-1),s)=L_p(A_f,s-1)$ by \Cref{prop:lfunctions:local-factor}(ii). (ii) By (i), $P_p(X)=\det(1-\Phi_pX\mid(\Sym V^\vee)^{I_p})$, of degree
 $\dim(\Sym V^\vee)^{I_p}=\dim A_f^{I_p}$, the twist being unramified. The explicit lists, \Cref{prop:lfunctions:good-factor} at good $p$ and \Cref{prop:lfunctions:all-shapes} at bad
 $p$, show that $P_p$ is one of $(1-pX)(1-(a^2-2p)X+p^2X^2)$ with $a\in\Z$, $1-X$, $1\mp pX$, $1$: integral, of degree $3$, $1$, $1$, $0$. At $s=2$,
-$L_p(\Sym f,2)=L_p(A_f,1)$, so $P_p(p^{-2})=L_p(A_f,1)^{-1}$; it lies in $\Z[1/p]$, and it is nonzero by the same list (\Cref{prop:lfunctions:fpr-L-part}). (iii) $\Phi_p$ has
+$L_p(\Sym f,2)=L_p(A_f,1)$, so $P_p(p^{-2})=L_p(A_f,1)^{-1}$; it lies in $\Z[1/p]$, and it is nonzero by the same list (\Cref{prop:lfunctions:good-factor}(ii) at good $p$, \Cref{prop:lfunctions:all-shapes} at bad $p$). (iii) $\Phi_p$ has
 eigenvalues $\alpha,\beta$ on $V^\vee$ (\Cref{conv:lfunctions:frobenius}), hence $\alpha^2,\alpha\beta,\beta^2$ on $\Sym V^\vee$.
 \end{proof}
 
@@ -868,14 +871,11 @@ $s=2$ and
 \end{theorem}
 
 \begin{proof}
-By the Rankin-Selberg theorem of \Cref{ch:hecke} (the unfolding of $\abs f^2y^2E(z,s)$, due to Rankin \cite{Rankin39} and Selberg \cite{Selberg40}; its proof is sketched
-there), $D(f,s)=\sum a_n^2n^{-s}$ continues meromorphically, is holomorphic on $\operatorname{Re}s\ge2$ except for a simple pole at $s=2$, and $\operatorname{Res}_{s=2}D(f,s)=\frac{48\pi}{\mu(N)}\langle f,f\rangle$.
-By \Cref{prop:lfunctions:rankin-series}(A), $L^{\nv}(\Sym f,s)=D(f,s)\zeta^{(N)}(2s-2)/\zeta^{(N)}(s-1)$ on $\operatorname{Re}s>2$, and the right side continues meromorphically; near $s=2$,
-$D(f,s)$ and $\zeta^{(N)}(s-1)$ both have simple poles and $\zeta^{(N)}(2s-2)$ is holomorphic and nonzero, so $L^{\nv}(\Sym f,s)$ is holomorphic at $s=2$ with
-\[
-L^{\nv}(\Sym f,2)\cdot\operatorname{Res}_{s=2}\frac{\zeta^{(N)}(s-1)}{\zeta^{(N)}(2s-2)}=\operatorname{Res}_{s=2}D(f,s).
-\]
-By \Cref{prop:lfunctions:partial-zeta} the left side is $\frac{6N}{\pi^2\mu(N)}L^{\nv}(\Sym f,2)$; comparing with $\frac{48\pi}{\mu(N)}\langle f,f\rangle$ gives the first equality. By
+The first equality, at every level $N$, is the Rankin-Selberg theorem of \Cref{ch:hecke}, stated and proved there from the residue of $D(f,s)=\sum a_n^2n^{-s}$ at $s=2$
+(the unfolding of $\abs f^2y^2E(z,s)$, due to Rankin \cite{Rankin39} and Selberg \cite{Selberg40}, is sketched there); we do not prove it again. In the notation of this
+chapter: $D(f,s)$ has a simple pole at $s=2$ with residue $\frac{48\pi}{\mu(N)}\langle f,f\rangle$ and is holomorphic elsewhere on $\operatorname{Re}s\ge2$, and
+$L^{\nv}(\Sym f,s)=D(f,s)\zeta^{(N)}(2s-2)/\zeta^{(N)}(s-1)$ (\Cref{prop:lfunctions:rankin-series}(A)), so $L^{\nv}(\Sym f,s)$ is holomorphic at $s=2$ and the residue of
+$\zeta^{(N)}(s-1)/\zeta^{(N)}(2s-2)$ there, $\frac{6N}{\pi^2\mu(N)}$ (\Cref{prop:lfunctions:partial-zeta}), converts one residue into the other. What this chapter adds is the true value. By
 \Cref{prop:lfunctions:naive}(ii) and \Cref{prop:lfunctions:ad-sym}, $L(\Sym f,s)$ is $L^{\nv}(\Sym f,s)$ times $\prod_{p^2\mid N}P_p(p^{-s})^{-1}$, a finite product of rational functions of
 $p^{-s}$ which are finite and nonzero at $s=2$ (\Cref{prop:lfunctions:fpr-L-part}); this gives holomorphy of $L(\Sym f,s)$ at $2$ and the second and third equalities, with
 $P_p(p^{-2})=L_p(A_f,1)^{-1}$.
@@ -883,7 +883,8 @@ $P_p(p^{-2})=L_p(A_f,1)^{-1}$.
 
 So the paper's sentence, in its original form ``$\langle f,f\rangle$ is the special value $L(\Sym f,2)$ up to the local factors at the bad primes'', holds in the
 precise form: up to $N/(8\pi^3)$ and the omitted factors at the \emph{additive} primes only; the multiplicative primes contribute nothing beyond the factor $N$. For
-square-free $N$ there is no correction, as \Cref{ch:hecke} states; the values for fifteen curves are in \Cref{ex:lfunctions:petersson-table}. Diamond, Flach and Guo
+square-free $N$ there is no correction. \Cref{ch:hecke} states and proves the first (naive) equality at every level, and the true value for square-free $N$; the
+second and third equalities, with the correction $\prod_{p^2\mid N}P_p(p^{-2})$ at the additive primes, are what this chapter adds. The values for fifteen curves are in \Cref{ex:lfunctions:petersson-table}. Diamond, Flach and Guo
 \cite[Lemma 2.12]{DFG04} express the Petersson norm through the naive $L$-value, as the revised paper says (``$\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ at every level''); we have
 not compared their constant with ours, and the proof above does not use their lemma.
 
@@ -940,8 +941,9 @@ Let $E/\Q$ be an elliptic curve (modular, as every $E/\Q$ is) and $p\ge5$ a prim
 surjective. Then the Bloch-Kato Selmer group of the symmetric square of $E$ with coefficients $\Q_p/\Z_p$, $H^1_f(\Q,\Sym H^1(E_{\overline\Q},\Q_p/\Z_p)(1))$, is finite.
 \end{theorem}
 
-We do not prove this; see \cite{Flach92}. The hypotheses above are those under which Flach's theorem is usually recalled; we have not checked them, or the
-explicit annihilator, against the original, which bounds the Selmer group in terms of the degree of the modular parametrisation. Since $\Sym V^\vee(1)\simeq A_f$ (\Cref{prop:lfunctions:ad-sym}(i), with $V=V_pE$), and the isomorphism $\Sym W'\simeq\ad W'\otimes\det W'$ holds for lattices when $2$ is
+We do not prove this; see \cite{Flach92}. The hypotheses above are those under which Flach's theorem is usually recalled, and they agree with the secondary
+account in the introduction of \cite{Langer97} ($p\ge5$, good reduction at $p$, $\rho_{E,p}$ surjective, which for $p\ge5$ is equivalent to the surjectivity of $\bar\rho_{E,p}$ by a lemma of Serre), which extends the finiteness to some primes dividing the
+conductor; we have not checked them, or the explicit annihilator, against the original, which bounds the Selmer group in terms of the degree of the modular parametrisation. Since $\Sym V^\vee(1)\simeq A_f$ (\Cref{prop:lfunctions:ad-sym}(i), with $V=V_pE$), and the isomorphism $\Sym W'\simeq\ad W'\otimes\det W'$ holds for lattices when $2$ is
 invertible (\Cref{ch:reps}), the group is the $H^1_f(\Q,W)$ of \Cref{rem:lfunctions:bloch-kato-reading} with $\ell=p$. The proof
 constructs classes in the cohomology of $\Sym$ from elements of $K_2$ (more precisely $H^3_{\mathcal M}$) of $X_0(N)\times X_0(N)$ supported on modular curves, and runs a
 Kolyvagin-type argument; these are the ancestors of the Beilinson-Flach elements. The paper cites it as ``the first place where the modular degree meets
@@ -1082,7 +1084,7 @@ and they hold at every odd $q$ (\Cref{ch:reduction}); the row $\mathrm I_n$ used
 potentially good rows, where it makes the image tame and determined by the type.
 \end{proof}
 
-Verification: on all $64{,}687$ curves of conductor below $10{,}000$ in Cremona's tables \cite{ecdata}, all $117{,}232$ pairs (curve, bad prime $q\ge5$) have PARI's $P_q$
+Verification: on all $64{,}687$ curves of conductor below $10{,}000$ in Cremona's tables \cite{ecdata}, all $118{,}232$ pairs (curve, bad prime $q\ge5$) have PARI's $P_q$
 equal to the table ($\mathrm I_n$: $102{,}309$; $\mathrm I_n^*$: $6{,}224$; $\mathrm I_0^*$: $2{,}241$, with $a'$ from \texttt{elltwist}; $\mathrm{II}$: $1{,}575$; $\mathrm{II}^*$: $760$; $\mathrm{III}$ and
 $\mathrm{III}^*$: $1{,}394$ each; $\mathrm{IV}$: $760$; $\mathrm{IV}^*$: $1{,}575$), with no exception.
 
@@ -1116,8 +1118,8 @@ Let $\chi$ be a quadratic Dirichlet character and $E^\chi=E\otimes\chi$, with ne
 \item If $\chi$ is unramified at $q$, then $\delta_q$, $a_q^2$, the naive factor at $q$ and (for $q\ne\ell$) $e_\ell(E,q)$ are the same for $E$ and $E^\chi$.
 \item Let $q$ be odd, $q\ne\ell$, and $\chi=\chi_{q^*}$. If $q\ge5$, the exchanges $\mathrm{II}\leftrightarrow\mathrm{IV}^*$, $\mathrm{III}\leftrightarrow\mathrm{III}^*$, $\mathrm{IV}\leftrightarrow\mathrm{II}^*$ leave
 $e_\ell(E,q)$ unchanged ($\delta_q=0$ on both sides). The exchange $\mathrm I_n\leftrightarrow\mathrm I_n^*$ changes it from $0$ to $v_\ell(q^2-1)$; under $\mathrm I_0\leftrightarrow\mathrm I_0^*$ the
-term is undefined on the good side and $v_\ell(q-1)+v_\ell((q+1)^2-a_q^2)$ on the $\mathrm I_0^*$ side. In every case
-$e_\ell(E,q)+v_\ell(L_q^{\nv}(A_f,1)^{-1})=v_\ell(L_q(A_f,1)^{-1})$, which is invariant.
+term is undefined on the good side and $v_\ell(q-1)+v_\ell((q+1)^2-a_q^2)$ on the $\mathrm I_0^*$ side. In every case in which $q$ is bad on both sides,
+$e_\ell(E,q)+v_\ell(L_q^{\nv}(A_f,1)^{-1})=v_\ell(L_q(A_f,1)^{-1})$, and the right side is invariant in all cases.
 \item $t_\ell(E,q)$ is invariant under every quadratic twist.
 \end{enumerate}
 \end{proposition}
@@ -1144,11 +1146,13 @@ $v_\ell(L_q^{\nv}(A_g,1)^{-1})=v_\ell(L_q(A_f,1)^{-1})=e_\ell(E,q)$ by (iii) and
 \end{paperlink}
 
 \begin{proposition}[the $L$-part of Lemma lem:fpr]\label{prop:lfunctions:fpr-L-part}
-Let $\ell$ be odd, $p\mid N$, $p\ne\ell$, and $V^D=\Hom(A_f,\Q_\ell(1))\simeq A_f(1)$ (the trace form makes $A_f$ self-dual, \Cref{ch:reps}). Then
+Let $p\ne\ell$ be any prime, good or bad, and $V^D=\Hom(A_f,\Q_\ell(1))\simeq A_f(1)$ (the trace form, nondegenerate on trace-zero matrices in characteristic $0$, makes $A_f$
+self-dual, \Cref{ch:reps}). Then
 \[
 \det\bigl(1-\Phi_p\bigm|(V^D)^{I_p}\bigr)=L_p(A_f(1),0)^{-1}=L_p(A_f,1)^{-1}=P_p(p^{-2}),
 \]
-a nonzero element of $\Z[1/p]\subset\Z_{(\ell)}$, of $\ell$-adic valuation $e_\ell(E,p)$ if $p$ is additive and $v_\ell(1-p^{-2})=v_\ell(p^2-1)$ if $p$ is multiplicative. If $\Phi_p$ is
+a nonzero element of $\Z[1/p]\subset\Z_{(\ell)}$, hence a nonzero $\ell$-adic integer. Its $\ell$-adic valuation is $v_\ell\bigl((p-1)((p+1)^2-a_p^2)\bigr)$ if $p\nmid N$,
+$v_\ell(1-p^{-2})=v_\ell(p^2-1)$ if $p$ is multiplicative or additive with $v_p(j_E)<0$, and $e_\ell(E,p)$ if $p$ is additive. If $\Phi_p$ is
 replaced by $\Frob_p$, the determinant changes by the $\ell$-adic unit $\det(-\Frob_p\mid(V^D)^{I_p})$, so its vanishing is unaffected, but the equality with $L_p(A_f,1)^{-1}$ needs
 $\Phi_p$.
 \end{proposition}
@@ -1156,7 +1160,8 @@ $\Phi_p$.
 \begin{proof}
 The first equality is the definition at $s=0$, the second \Cref{prop:lfunctions:local-factor}(ii), the third \Cref{prop:lfunctions:ad-sym}(ii). By \Cref{prop:lfunctions:all-shapes},
 $P_p(p^{-2})$ is one of $1-p^{-2}$, $1-c/p$ with $c=\pm1$, $\frac{(p-1)((p+1)^2-a'^2)}{p^3}$ with $\abs{a'}\le2\sqrt p$, and $1$; each is a nonzero element of $\Z[1/p]$ (the cubic by the Hasse
-bound, \Cref{prop:lfunctions:good-factor}(ii)). The valuations are \Cref{prop:lfunctions:terms}(i) and \Cref{prop:lfunctions:multiplicative}. For the last statement: if $u$ has
+bound, \Cref{prop:lfunctions:good-factor}(ii)); at a good $p$ the list is \Cref{prop:lfunctions:good-factor}(ii) itself, with $a'=a_p$. The valuations are
+\Cref{prop:lfunctions:good-factor}(ii), \Cref{prop:lfunctions:terms}(i) and \Cref{prop:lfunctions:multiplicative}. For the last statement: if $u$ has
 eigenvalues $\mu_i$ on a space of dimension $d$, then $\det(1-u^{-1})=\prod(1-\mu_i^{-1})=\prod(-\mu_i^{-1})\prod(1-\mu_i)$, and $\prod(-\mu_i^{-1})=\det(-u)^{-1}$. On $(V^D)^{I_p}=A_f^{I_p}(1)$
 the arithmetic eigenvalues are $p$ times those on $A_f^{I_p}$, that is $p\cdot p=p^2$ (multiplicative), $\pm p$, or $p\alpha'/\beta',p,p\beta'/\alpha'$; their product is a power of $p$ up to
 sign, a unit at $\ell$.
@@ -1315,8 +1320,10 @@ for $5{,}073$, $1+2X$ for $146$); in all $716$ the twist has $a'=\pm1$, so by \C
 The revised Remark rem:wild replaces (iii) and (iv) by the classification of Proposition prop:shapes, the examples \curve{336f1}, \curve{1232l1}, \curve{592c1}, and ``A type $\mathrm I_n^*$ at
 $2$ has potentially good reduction in a little over half of the cases ($58\%$ below conductor $10{,}000$), usually with $P_2=1$, and then $t_\ell=0$''; the $58\%$ is the share
 over optimal curves. It adds: ``Among optimal non-CM curves of conductor below $10{,}000$, every cubic factor at $2$ ($1{,}143$) and at $3$ ($2{,}283$) is of shape (ii).'' The
-counts $1{,}143$ and $2{,}283$ are those over all $64{,}687$ curves; over the optimal non-CM curves they are $534$ and $1{,}308$ (and the statement holds in both populations,
-by \Cref{prop:lfunctions:all-shapes}). The last sentence of the remark, ``At $q=\ell$ the Euler factor is not the relevant quantity, and the weights $w_3$ of
+counts $1{,}143$ and $2{,}283$ are those over all $64{,}687$ curves; over the optimal non-CM curves they are $534$ and $1{,}308$. Moreover ``of shape (ii)'' has no empirical content as stated: a cubic $P_q$ is
+of shape (ii) for every curve, by Proposition prop:shapes (\Cref{prop:lfunctions:all-shapes}), so the statement holds in both populations as a theorem. What the
+computation checks is that each cubic returned by PARI equals $(1-qX)(1-(a'^2-2q)X+q^2X^2)$ with $a'$ computed independently from a quadratic twist of good reduction
+(\Cref{rem:lfunctions:pari}); that agreement is the empirical point. The last sentence of the remark, ``At $q=\ell$ the Euler factor is not the relevant quantity, and the weights $w_3$ of
 Conjecture~conj:euler are empirical'', is consistent with \Cref{def:lfunctions:terms}, which defines $e_\ell$ only for $q\ne\ell$, while $t_\ell$ is used at $q=\ell$ as well.
 \end{remark}
 
@@ -1569,12 +1576,12 @@ $\frac12$; Gelbart and Jacquet \cite{GelbartJacquet} constructed the lift $\Ad(\
 factors of the symmetric square at the primes of potentially good reduction were computed by Coates and Schmidt \cite{CoatesSchmidt87}, and Watkins \cite{Watkins02}
 describes how the bad factors are found in practice; we have not checked their normalisations against \Cref{rem:lfunctions:normalisations}. Deligne's conjecture is
 \cite{Deligne79}; Sturm \cite{Sturm80} and Zagier \cite{Zagier85} treat the critical values of the symmetric square. Flach's finiteness theorem is \cite{Flach92}; its
-hypotheses in \Cref{thm:lfunctions:flach} are as usually recalled, not checked against the original. The Bloch-Kato conjecture is \cite{BlochKato}, and the theorem of
+hypotheses in \Cref{thm:lfunctions:flach} are as usually recalled and as in the secondary account of Langer \cite{Langer97}, not checked against the original. The Bloch-Kato conjecture is \cite{BlochKato}, and the theorem of
 Diamond, Flach and Guo is \cite{DFG04} (\Cref{ch:blochkato,ch:congruence}).
 
 \emph{Rankin-Selberg.} The method is due to Rankin \cite{Rankin39} and Selberg \cite{Selberg40}; Shimura \cite{Shimura76} treats the special values. The exact relation of
 \Cref{prop:lfunctions:rankin-series}, with no correction at the bad primes, and the resulting \Cref{thm:lfunctions:petersson-sym2} at every level are elementary
-consequences of the local computation; the revised paper states the latter in Remark rem:degree, citing \cite{Rankin39,Shimura76} and \cite[Lemma 2.12]{DFG04}. The degree formula
+consequences of the local computation (the naive equality at every level is \Cref{ch:hecke}'s); the revised paper states the latter in Remark rem:degree, citing \cite{Rankin39,Shimura76} and \cite[Lemma 2.12]{DFG04}. The degree formula
 combines it with the formula of Zagier \cite{Zagier85} and Watkins \cite{Watkins02} (\Cref{ch:moddeg}).
 
 \emph{The local factors at the bad primes.} Lemma lem:euler at $q\ge5$ rests on the images of inertia of Serre and Tate \cite{SerreTate68} and Kraus \cite{Kraus90}
