@@ -381,7 +381,7 @@ $\Z_\ell$-module (\Cref{ch:modules}); this is the paper's ${}^*$ in Lemma lem:df
 \end{convention}
 
 \begin{definition}[Kummer duals]\label{def:galcoh:kummer-duals}
-Let $\mu$ be the group of all roots of unity in $\overline K$ (or any discrete $G$-module isomorphic to $\Q/\Z$ prime to $\operatorname{char}K$). For a finite
+Let $\mu$ be the group of roots of unity in $\overline K$ of order prime to $\operatorname{char}K$. For a finite
 $G$-module $M$ of order prime to $\operatorname{char}K$, the \emph{Kummer dual} is $M^D=\Hom(M,\mu)$; if $M$ has $\ell$-power order, $M^D=\Hom(M,\mu_{\ell^\infty})=M^*(1)$. For
 $T$ as in \Cref{conv:galcoh:duals}:
 \[
@@ -403,7 +403,7 @@ W\times T^D\to\Q_\ell/\Z_\ell(1),\qquad T\times W^D\to\Q_\ell/\Z_\ell(1)
 are $G$-equivariant and perfect: each module is identified with the continuous homomorphisms from the other into the target.
 \item $W^D\simeq\Hom(T,\Q_\ell/\Z_\ell(1))=T^*(1)$, and for each $k$, $W[\ell^k]^D=(T/\ell^kT)^D\simeq T^D/\ell^kT^D\simeq W^D[\ell^k]$.
 \item $(T^D)^D=T$ canonically; $W^D$ is the Kummer dual of $T$ and $T^D$ that of $W$ in the sense of (i).
-\item $\Z_\ell^D=\Z_\ell(1)$ and $\Z_\ell(1)^D=\Z_\ell$; $(\Q_\ell/\Z_\ell)^D=\Z_\ell(1)$ in the sense of (iii). For an elliptic curve $E/K$ and $n$ prime to
+\item $\Z_\ell^D=\Z_\ell(1)$ and $\Z_\ell(1)^D=\Z_\ell$; for $T=\Z_\ell$, $W^D=\mu_{\ell^\infty}$, and the Kummer dual of $W=\Q_\ell/\Z_\ell$ in the sense of (iii) is $\Z_\ell(1)$. For an elliptic curve $E/K$ and $n$ prime to
 $\operatorname{char}K$, the Weil pairing gives $E[n]^D\simeq E[n]$ and $(T_\ell E)^D\simeq T_\ell E$.
 \end{enumerate}
 \end{proposition}
@@ -792,7 +792,7 @@ H^1(G/I,W)=W/(\Frob-1)W$ is surjective because $V\to W$ is; so $\pi(\Hur(K,V))=\
 \begin{warning}
 For $p\ne\ell$ and $T$ \emph{ramified} at $p$, the propagated condition $\iota^{-1}(\Hur(\Q_p,V))$ can be strictly larger than $\Hur(\Q_p,T)$: it contains all of
 $H^1(\Q_p,T)_{\tors}$. The quotient is what the Tamagawa factor of \Cref{ch:blochkato} measures. The two coincide when $T$ is unramified at $p$
-(\Cref{prop:galcoh:propagation}(iii)), and only then.
+(\Cref{prop:galcoh:propagation}(iii)); they must not be identified in general.
 \end{warning}
 
 \begin{corollary}[vanishing unramified cohomology]\label{cor:galcoh:ur-vanishing}
@@ -857,7 +857,7 @@ Throughout, $q\ne\ell$ are primes, $G=G_{\Q_q}$, $I=I_q$, $v=v_\ell(q-1)$, and $
 system of $\ell$-power roots of $q$, $t_\ell(\sigma)=\kappa_q(\sigma)$ for $\sigma\in I$, independently of the system.
 
 \begin{proposition}[unramified Kummer classes are unit classes]\label{prop:galcoh:unit-classes}
-Let $K$ be a finite extension of $\Q_p$, $p\ne\ell$, with residue field $\F_q$, ring of integers $\mathcal O_K$ and uniformiser $\varpi$.
+Let $K$ be a finite extension of $\Q_p$, $p\ne\ell$, with residue field $k_K$, ring of integers $\mathcal O_K$ and uniformiser $\varpi$.
 \begin{enumerate}[label=(\roman*)]
 \item For $n$ prime to $p$, the Kummer isomorphism $K^\times/(K^\times)^n\simeq H^1(K,\mu_n)$ maps the image of $\mathcal O_K^\times$ onto $\Hur(K,\mu_n)$. In the limit,
 $\mathcal O_K^\times\otimes\Z_\ell\subseteq\widehat{K^\times}$ corresponds to $\Hur(K,\Z_\ell(1))$.
@@ -874,8 +874,8 @@ with vertical isomorphisms the Kummer map and $a\mapsto a\,t_\ell$; in particula
 \end{proposition}
 
 \begin{proof}
-(i) A unit $u$ has an $n$-th root in $K^{\ur}$: $X^n-\bar u$ is separable over the residue field, so it has a root in $\overline\F_q$, which lifts by Hensel's lemma to the
-completion of a finite unramified extension (\Cref{ch:local}). So $I_K$ fixes an $n$-th root of $u$, and the Kummer cocycle of $u$ built from it vanishes on $I_K$:
+(i) A unit $u$ has an $n$-th root in $K^{\ur}$: $X^n-\bar u$ is separable over $k_K$, so it has a simple root in a finite extension of $k_K$, which lifts by Hensel's lemma
+to a root in the corresponding finite unramified extension of $K$ (\Cref{ch:local}). So $I_K$ fixes an $n$-th root of $u$, and the Kummer cocycle of $u$ built from it vanishes on $I_K$:
 $\delta(u)\in\Hur(K,\mu_n)$. Conversely let $x=\varpi^au$ with $\Res_{I_K}\delta(x)=0$. By \Cref{prop:galcoh:kummer-class}(i) for $L=K^{\ur}$ (whose absolute Galois group is
 $I_K$), $x$ is an $n$-th power in $K^{\ur}$; as $u$ is one, so is $\varpi^a$, and since $v_K$ extends to $K^{\ur}$ with the same value group, $n\mid a$. So $x\in\mathcal O_K^\times(K^\times)^n$.
 The limit statement follows by \Cref{thm:galcoh:kummer-ladic}. (ii) The formula $\Res\kappa_x=v_K(x)t_\ell$ is \Cref{ch:local} (the theorem on the Kummer cocycle on
@@ -1086,8 +1086,8 @@ For $i\in I_{\mathfrak p}$, which acts trivially on $M$, and $\sigma\in G_\Q$, t
 because $\sigma i\,c(\sigma^{-1})=\sigma c(\sigma^{-1})=-c(\sigma)$. So $c$ vanishes on $I_{\sigma\mathfrak p}$ if and only if it vanishes on $I_{\mathfrak p}$, and it suffices to take the
 prime $\mathfrak p$ of the fixed embedding, where the condition is $\Res_pc\in\Hur(\Q_p,M)$.
 (ii) Let $L$ be the finite Galois extension cut out by the action on $M$. The restriction of $c$ to $G_L$ is a continuous homomorphism to the finite group $M$; its kernel is
-an open subgroup of $G_L$, with fixed field $L'$ finite over $\Q$. If $p$ is unramified in $L'$, every $I_{\mathfrak p}$ above $p$ lies in $G_{L'}$, on which $c$ vanishes. Only
-finitely many primes ramify in $L'$.
+an open subgroup of $G_L$, with fixed field $L'$ finite over $\Q$; let $L''$ be the Galois closure of $L'$. If $p$ is unramified in $L''$, every $I_{\mathfrak p}$ above $p$
+lies in $G_{L''}\subseteq G_{L'}$, on which $c$ vanishes. Only finitely many primes ramify in $L''$.
 \end{proof}
 
 \begin{theorem}[finiteness for $G_{\Q,S}$]\label{thm:galcoh:gqs-finite}
@@ -1333,7 +1333,8 @@ $H^0(\Q,V)=0$.
 (i) $H^1_{\mathcal L}(\Q,W)\subseteq H^1(G_{\Q,S},W)$, which is cofinitely generated by \Cref{thm:galcoh:gqs-finite}, and a subgroup of a cofinitely generated group is
 cofinitely generated (its Pontryagin dual is a quotient of a finitely generated $\Z_\ell$-module). $H^1_{\mathcal L}(\Q,T)$ is a submodule of the finitely generated
 $H^1(G_{\Q,S},T)$, and $\Z_\ell$ is noetherian.
-(ii) Let $c\in H^1_{\mathcal L}(\Q,T)$; then $c\in H^1(G_{\Q,S},T)$ and $\Res_v(\iota c)=\iota(\Res_vc)\in L_{V,v}$ for all $v$, so $\iota c\in H^1_{L_V}(\Q,V)=0$, and $c$ is torsion by
+(ii) Let $c\in H^1_{\mathcal L}(\Q,T)$; then $c\in H^1(G_{\Q,S},T)$ (the conditions outside $S$ are unramified, \Cref{ex:galcoh:selmer-structures}(d) and
+\Cref{prop:galcoh:unramified-almost-everywhere}(i)), and $\Res_v(\iota c)=\iota(\Res_vc)\in L_{V,v}$ for all $v$, so $\iota c\in H^1_{L_V}(\Q,V)=0$, and $c$ is torsion by
 \Cref{prop:galcoh:tvw}(ii). Conversely, if $c\in H^1(G_{\Q,S},T)$ is torsion, so is each $\Res_vc$, which therefore lies in $\ker\iota\subseteq\iota^{-1}L_{V,v}$
 (\Cref{prop:galcoh:propagation}(i)). The isomorphisms are \Cref{prop:galcoh:tvw}(ii) for $G=G_{\Q,S}$ (\Cref{thm:galcoh:gqs-finite}).
 (iii) The image of $H^1_{\mathcal L}(\Q,T)\otimes\Q_\ell/\Z_\ell$ in $H^1_{\mathcal L}(\Q,W)$ has finite index, and $H^1_{\mathcal L}(\Q,T)\otimes\Q_\ell=H^1_{L_V}(\Q,V)$; we do not give the details,
@@ -1344,8 +1345,8 @@ see \cite[Section 1.5]{Rubin}.
 In Theorem thm:main the group $H^1_f(\Q,\ad T\otimes\Q_\ell/\Z_\ell)$ is the Selmer group of the Bloch-Kato structure on $W$, and in Section 4.2 of the paper
 $H^1_\Sigma(\Q,W)\supseteq H^1_f(\Q,W)$ is the Selmer group of its relaxation at $\Sigma$ (\Cref{ex:galcoh:selmer-structures}(b), (d)). Lemma lem:dfg21 puts
 $H^1_f(\Q_p,T^D)=\iota^{-1}H^1_f(\Q_p,V^D)$, the dual structure on $T^D$ in the sense of \Cref{prop:galcoh:dual-structure}(iii), and its hypothesis $H^1_f(\Q,V^D)=0$ is
-the hypothesis of \Cref{prop:galcoh:selmer-l-adic}(ii) for $T^D$; that proposition then says that the Selmer group $H^1_f(\Q,T^D)$ is $H^0(\Q,W^D)$, the group whose dual is the
-last term of the lemma.
+the hypothesis of \Cref{prop:galcoh:selmer-l-adic}(ii) for $T^D$; that proposition then says (as $H^0(\Q,V^D)=0$) that the Selmer group $H^1_f(\Q,T^D)$ is $H^0(\Q,W^D)$, the group whose dual is
+the last term of the lemma.
 \end{paperlink}
 \section[Global duality]{Global duality: Poitou-Tate and the formula of Greenberg and Wiles}\label{sec:galcoh:global-duality}
 
@@ -1613,7 +1614,7 @@ To obtain the paper's Lemma lem:dfg21 and the proof of Theorem thm:main from \Cr
 the Bloch-Kato local conditions $H^1_f(\Q_v,V)$, with $H^1_f=\Hur$ at $p\ne\ell$ and $H^1_f(\R,-)=0$; their exact orthogonality at $\ell$ (Bloch and Kato); the vanishing
 $H^1_f(\Q,V^D)=0$ (Theorem thm:dfg27, \cite[Theorem 2.7]{DFG04}); and the splitting $\len H^1_f(\Q_p,T^D)=\len H^0(\Q_p,W^D)=v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(A))$ of Lemma
 lem:fpr (\cite[I.4.2.2]{FPR94}), whose Euler factor is \Cref{prop:galcoh:unramified-computed}(iv) and whose Tamagawa factor comes from
-\Cref{prop:galcoh:ur-sequence}. \Cref{ch:lfunctions} identifies $\det(1-\Phi_p\mid(V^D)^{I_p})$ with $L_p(A_f,1)^{-1}$. This chapter supplies the duality, the local structure
+\Cref{prop:galcoh:ur-sequence}. \Cref{ch:lfunctions} identifies $\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})$ with $L_p(A_f,1)^{-1}$. This chapter supplies the duality, the local structure
 (\Cref{sec:galcoh:unramified}) and the global sequence.
 \end{remark}
 \section{Exercises}\label{sec:galcoh:exercises}
@@ -1651,13 +1652,13 @@ and $2$, the last because the class of $6$ is $0$ and $v_3(0)$ is read as $v=2$.
 \begin{exercise}\label{ex:galcoh:ex-uniformiser}
 Let $K$ be a finite extension of $\Q_q$, $q\ne\ell$, and $\varpi$, $\varpi'=\varpi w$ two uniformisers ($w$ a unit). Let $\operatorname{pr}$ and $\operatorname{pr}'$ be the retractions
 $H^1(K,\Z_\ell(1))\to\Hur(K,\Z_\ell(1))$ attached to them as in \Cref{prop:galcoh:canonical-splitting}. Show that $\operatorname{pr}'[\kappa_x]=\operatorname{pr}[\kappa_x]-v_K(x)[\kappa_w]$.
-Deduce that, with $n=v_K(x)$ and $c$, $c'$ the classes of $\operatorname{pr}[\kappa_x]$ and $\operatorname{pr}'[\kappa_x]$ in $\Z/\ell^{v_\ell(\#k_K-1)}$, the quantity $\min(v_\ell(n),v_\ell(\#k_K-1),v_\ell(c))$
-does not depend on the uniformiser. \emph{Hint:} $x=\varpi^nu=\varpi'^n(uw^{-n})$; the two classes differ by a multiple of $n$.
+Deduce that, with $n=v_K(x)$ and $c_1$, $c_2$ the classes of $\operatorname{pr}[\kappa_x]$ and $\operatorname{pr}'[\kappa_x]$ in $\Z/\ell^{v_\ell(\#k_K-1)}$,
+$\min(v_\ell(n),v_\ell(\#k_K-1),v_\ell(c_1))=\min(v_\ell(n),v_\ell(\#k_K-1),v_\ell(c_2))$: the quantity of Lemma lem:tamfactor does not depend on the uniformiser. \emph{Hint:} $x=\varpi^nu=\varpi'^n(uw^{-n})$; the two classes differ by a multiple of $n$.
 \end{exercise}
 
 \begin{exercise}\label{ex:galcoh:ex-corner}
 Let $\varepsilon\colon G\to\{\pm1\}$ be a character, $\chi\colon G\to\Z_\ell^\times$ a character and $\kappa$ a cocycle with values in $\Z_\ell(\chi)$, so $\kappa(gh)=\kappa(g)+\chi(g)\kappa(h)$.
-Show that $g\mapsto\sm{\chi\varepsilon(g)}{\varepsilon\kappa(g)}0{\varepsilon(g)}$ is a homomorphism and that $g\mapsto\sm{\chi\varepsilon(g)}{\kappa(g)}0{\varepsilon(g)}$ is one only if $\kappa(gh)=\varepsilon(h)\kappa(g)+\chi(g)\varepsilon(g)\varepsilon(h)\kappa(h)$
+Show that $g\mapsto\sm{\chi\varepsilon(g)}{\varepsilon\kappa(g)}0{\varepsilon(g)}$ is a homomorphism and that $g\mapsto\sm{\chi\varepsilon(g)}{\kappa(g)}0{\varepsilon(g)}$ is one only if $\kappa(gh)=\varepsilon(h)\kappa(g)+\chi(g)\varepsilon(g)\kappa(h)$
 for all $g,h$, which fails for a Kummer cocycle when $\varepsilon\ne1$. What changes in $c'$ if the paper's original matrix is used? \emph{Answer:} the upper right entry of the
 product is $\chi\varepsilon(g)\varepsilon\kappa(h)+\varepsilon\kappa(g)\varepsilon(h)=\varepsilon(gh)\kappa(gh)$; with the corrected matrix $c'$ is multiplied by $\varepsilon(\Frob)=\pm1$, which changes no valuation.
 \end{exercise}
