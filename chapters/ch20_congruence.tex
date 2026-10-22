@@ -1,0 +1,1536 @@
+\chapter{Hecke algebras, congruence ideals and the theorem of Diamond, Flach and Guo}\label{ch:congruence}
+\chaptermark{Congruence ideals and Diamond-Flach-Guo}
+
+This chapter is where Section 4 of the paper is proved. It joins three threads that earlier chapters have prepared separately. The first is
+the commutative algebra of congruences: a surjection $\pi\colon\T\onto\mathcal O$ from a finite free algebra has a congruence ideal $\eta(\pi)$ that measures how
+far $\T$ is from splitting off the factor $\mathcal O$, and a lemma of Darmon, Diamond and Taylor compares $\eta(\pi)$ with the Gram determinant of a pairing on a
+module (\Cref{ch:modules} proves every ingredient; the lemma is proved here). The second is the arithmetic of modular forms: the Hecke algebra $\T$ of
+level $N$, the congruence number $r_E$, the depleted forms $f^\Sigma$ and the twist map $\iota$ (\Cref{ch:hecke,ch:moddeg,ch:modgalrep}). The third is the
+theorem of Diamond, Flach and Guo \cite{DFG04}: the length of an imprimitive adjoint Selmer group is the valuation of a naive congruence ideal, and that
+ideal changes with the level by the naive Euler factors of the adjoint $L$-function. With the Selmer bookkeeping of \Cref{ch:blochkato} and the Euler
+factors of \Cref{ch:lfunctions}, these three threads give the paper's Theorem thm:main, as an equality, and Theorems thm:twist and thm:quant.
+
+The chapter assembles; it does not re-derive what other chapters prove. Its own full proofs are: Lemma lem:ddt417 (\Cref{lem:congruence:ddt417}); the
+deduction of part (c) of the proposition of Diamond, Flach and Guo from part (b) (\Cref{thm:congruence:dfg14}); the assembly of Theorem thm:main
+(\Cref{thm:congruence:main}); Theorem thm:twist (\Cref{thm:congruence:twist}); Theorem thm:quant with its equality clause (\Cref{thm:congruence:quant}); and
+the equality $v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ in Step 1 of the proof of Theorem thm:quant, which the paper's Remark rem:afterquant (2) calls open
+(\Cref{lem:congruence:quant-step1}). The deep theorems (the Taylor-Wiles method, the theorems of Diamond, Flach and Guo, Hida's theorem, the formula of
+Kim and Ota) are stated precisely, with an outline of their proofs and the references.
+
+\section*{Core results at a glance}
+
+Throughout, $f$ is a newform of weight $2$ on $\Gamma_0(M)$ (from Section \ref{sec:congruence:assembly} on, $f=f_E$ with $E$ optimal of conductor $N$), $\T$ the full Hecke algebra ($U_p$ included), $\ell$ an odd
+prime, $\pi\colon\T_{\mathcal O}\onto\mathcal O$ a surjection with $\wp=\ker\pi$, $I=\Ann(\wp)$, $\eta(\pi)=\pi(I)$, and $\Frob_p^{-1}$ the geometric Frobenius.
+
+\begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
+\item \textbf{Conventions and warnings.} Notation C(a) to C(h); the paper's $I,J$ of Lemma lem:crit are our $\wp,I$; the Hecke ideal $\eta^{\mathrm{Hecke}}$ and the cohomological ideal $\eta^\Sigma_{f,\lambda}$ are
+different objects. \emph{(convention)} \Cref{conv:congruence:setup}, \Cref{warn:congruence:letters}, \Cref{warn:congruence:two-ideals}.
+\item \textbf{Local components.} $\T_\ell=\prod_{\mf m}\T_{\mf m}$; $\mf m_{f,\ell}=(\ell,T_n-a_n(f))$; $e_{\mf m}S_2\otimes\overline\Q_\ell=\bigoplus_{\mf m_\phi=\mf m}V(\phi)$, and forms of $V_h$ in $\mf m_{f,\ell}$ have $\bar\rho_h^{\mathrm{ss}}\simeq\bar\rho_f^{\mathrm{ss}}$; the pairings
+$S_2(\Zl)\times\T_\ell\to\Zl$ and $\hat\delta_!$ are perfect on each component, the latter orthogonally. \emph{(proved here by citation of \Cref{ch:modules,ch:hecke,ch:moddeg})} \Cref{prop:congruence:hecke-local}.
+\item \textbf{Level $539$.} At $\ell=3$ the newforms $539$c, $539$d share one maximal ideal and the depleted $(77\mathrm c)^{\{7\}}$, $(11\mathrm a)^{\{7\}}$ another; the congruence modules have orders $288$, $504$, $288$, $504$.
+\emph{(computed)} \Cref{ex:congruence:level-539}.
+\item \textbf{Congruence ideal, module, cotangent module} (definition): $\eta(\pi)=\pi(I)$, $\mathcal C(\pi)=\T/(\wp+I)$, $\mathrm{Cot}(\pi)=\wp/\wp^2$. \Cref{def:congruence:congruence-module}.
+\item \textbf{Properties.} $\mathcal C(\pi)\simeq\mathcal O/\eta$; $\eta\ne0\iff\wp\cap I=0\iff$ the factor of $\T_K$ at $\pi$ is $K$; then $I\simeq\eta$, $\Ann(I)=\wp$, $\eta$ is the denominator of the idempotent; $\eta$ is computed in the
+local factor of $\pi$ (the other factors lie in $\wp$); $\mathrm{Cot}(\pi)$ is finite iff the factor is $K$. \emph{(proved here, given \Cref{ch:modules})} \Cref{prop:congruence:congruence-module}.
+\item \textbf{Toy algebras.} $\T_r$: $\len\mathrm{Cot}=v(\eta)=r$; $\T_3^\flat$: $2>1$; $\mathcal O[x]/(x^2)$: $\eta=0$. \emph{(proved here)} \Cref{ex:congruence:toy}.
+\item \textbf{Hecke congruence ideal} (definition): $\eta^{\mathrm{Hecke}}_f=\eta(\phi_f)$, and $\eta^{\mathrm{Hecke}}(g)$ for an eigenform $g$. It is nonzero whenever the generalised eigenspace is a line (newforms, depleted forms).
+\emph{(proved here, given \Cref{ch:hecke})} \Cref{def:congruence:newform-ideal}, \Cref{prop:congruence:newform-ideal}.
+\item \textbf{Lemma lem:crit as congruence modules.} $\T/(\wp+I)\simeq\Z/r_E$, $\eta^{\mathrm{Hecke}}_f=r_E\Z$, the congruence moduli are the divisors of $r_E$, also over $\Zl$; and
+$S_2(\Z)/(\Z f\oplus L)\simeq\Hom(\mathcal C(\phi_f),\Q/\Z)$. \emph{(stated; proved in \Cref{ch:modgalrep}; the duality proved here)} \Cref{thm:congruence:crit}.
+\item \textbf{Line eigenspaces.} For $\pi\colon\T_N\to\Z$ with generalised eigenspace $\C g$ and $\T$-stable complement $g^c$: $\eta(\pi)=r(\pi)\Z$ with $r(\pi)=[S_2(\Z):\Z g\oplus(g^c\cap S_2(\Z))]$ the largest congruence modulus;
+the Petersson complement does not work in general. \emph{(proved in \Cref{ch:hecke}; recalled)} \Cref{prop:congruence:crit-general}, \Cref{warn:congruence:complement}.
+\item \textbf{Hida.} Outside an explicit finite set, $\lambda$ divides $\langle f,f\rangle/\Omega^+_f\Omega^-_f$ iff $\lambda$ is a congruence prime. \emph{(stated; reference)} \Cref{thm:congruence:hida}, \Cref{rem:congruence:hida-to-dfg}.
+\item \textbf{Three ideals.} For optimal $E$, $\ell\nmid2N$, $E[\ell]$ irreducible: $\eta^{\mathrm{Hecke}}_f\Zl=r_E\Zl$, $v_\ell(r_E)=v_\ell(\degphi)=v_\ell(\eta^\emptyset_{f,\ell})$; at \curve{99a1}, $\ell=3$: $1\ne0$. \emph{(proved here, given the cited theorems)}
+\Cref{rem:congruence:two-ideals}.
+\item \textbf{Wiles's numerical criterion.} For local $\T$ finite free over $\mathcal O$ and $\eta\ne0$: $\len\mathrm{Cot}(\pi)\ge v(\eta)$, with equality iff $\T$ is a complete intersection; $R\onto\T$ with $\len\mathrm{Cot}(\pi_R)\le v(\eta)$ is an
+isomorphism. \emph{(proof sketched here; Wiles, Lenstra)} \Cref{thm:congruence:numerical-criterion}.
+\item \textbf{Lemma lem:ddt417.} $\T$ finite free over a discrete valuation ring $\mathcal O$, acting self-adjointly on $L$ free with a perfect pairing; $L[\wp]$ of rank $d$ with Gram determinant $\Delta\ne0$: then
+$d\,v(\eta)\ge v(\Delta)$, with equality if $L$ is free over $\T$. \emph{(proved here, given \Cref{ch:modules})} \Cref{lem:congruence:ddt417}; Commentary on the paper's statement
+\Cref{rem:congruence:ddt417-commentary}; hypotheses \Cref{rem:congruence:ddt417-hypotheses}; test cases \Cref{ex:congruence:ddt417-checks}.
+\item \textbf{Depletion} (definition, recalled): $\delta_p$, $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$, $f^\Sigma$, the naive factor $L^{\nv}_p(A_f,s)$. \Cref{def:congruence:depletion-recall}.
+\item \textbf{Integral structure} (definition, after Diamond, Flach and Guo) and its comparison: $M(M,1)_{!,\lambda,\mf m}=H^1(X_0(M),\Zl)_{\mf m}$ for non-Eisenstein $\mf m$. \emph{(proof sketched here)}
+\Cref{def:congruence:integral-structure}, \Cref{prop:congruence:integral-structure}.
+\item \textbf{The pairing $\hat\delta_!$} (definition) and its properties: on pulled-back classes it is $\frac12\langle x,w_M^*y\rangle$; perfect, alternating, $\T$ self-adjoint, perfect on components. \emph{(proved here, given
+\Cref{ch:moddeg}; the normalisation of Diamond, Flach and Guo as the paper describes it)} \Cref{def:congruence:dfg-pairing}, \Cref{prop:congruence:dfg-pairing}.
+\item \textbf{$M_{f^\Sigma,\lambda}$ and $\eta^\Sigma_{f,\lambda}$} (definition): the kernel lattice of $\ker\theta_{f^\Sigma}$ and the ideal of values of $\hat\delta_!$ on it. For $\bar\rho_f$ irreducible: saturated of rank $2$, in the
+$\mf m$-component, Gram determinant $(\eta^\Sigma_{f,\lambda})^2$; for $\Sigma=\emptyset$ and optimal $E$, $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)\simeq T_\ell E(-1)$. \emph{(proved here, given \Cref{ch:moddeg} and
+\Cref{prop:congruence:integral-structure})} \Cref{def:congruence:eta-sigma}, \Cref{prop:congruence:eta-sigma}.
+\item \textbf{Lemma lem:hecke.} For optimal $E$, $\ell$ odd, $\ell\nmid N$, $E[\ell]$ irreducible: $v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda})$, with no freeness hypothesis. \emph{(proved here, given
+\cite[Theorem 2.2]{ARS12}, \Cref{ch:moddeg} and \Cref{prop:congruence:integral-structure})} \Cref{thm:congruence:lem-hecke}; values \Cref{ex:congruence:eta-values}.
+\item \textbf{Remark rem:free.} Multiplicity one gives $H^1(X_0(N),\Zl)_{\mf m}\simeq\T_{\mf m}^2$; no longer needed for Theorems thm:main and thm:quant. \emph{(stated; proved in \Cref{ch:moddeg} given multiplicity one)}
+\Cref{rem:congruence:rem-free}.
+\item \textbf{The map $\gamma$} (definition): $\gamma=\sum_m\epsilon_m\phi_m$, $\gamma(f)=f^\Sigma$. \Cref{def:congruence:gamma}.
+\item \textbf{Theorem thm:dfg14} (Diamond, Flach and Guo, Proposition 1.4). For $\ell\nmid2M$, $\ell\notin\Sigma$: $\gamma^t\gamma=u\prod_pL^{\nv}_p(A_f,1)^{-1}$ on $M_f$; if $\bar\rho_f$ is irreducible,
+$\eta^\Sigma_{f,\lambda}=\eta^\emptyset_{f,\lambda}\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}$. \emph{((a), (b) sketched; (c) proved here given (a), (b) and Ihara's lemma; reference)} \Cref{thm:congruence:dfg14},
+\Cref{rem:congruence:dfg14-status}.
+\item \textbf{The three cases.} $L^{\nv}_p(A_f,1)^{-1}$ is $1$ (additive), $\frac{p-1}p\cdot\frac{(p+1)^2-a_p^2}{p^2}$ (good; Wiles's factor), $1-p^{-2}$ (multiplicative). \emph{(proved here)} \Cref{prop:congruence:three-cases};
+interpretation \Cref{rem:congruence:factors-count}; Ihara and the Eisenstein case \Cref{rem:congruence:ihara}; refined structures \Cref{rem:congruence:refined-structures}.
+\item \textbf{The exceptional set} (definition): $\lambda\mid Nk!$ or $\bar\rho|_{G_{\Q(\sqrt{\ell^*})}}$ not absolutely irreducible. For $f_E$ and $\ell\nmid2N$: $\ell\notin S_f$ iff $E[\ell]$ irreducible and not ($\ell=3$, image $\Ns$), iff
+moreover $h_\ell(E)=0$. \emph{(definition checked against \cite{DFG04}; the proposition proved in \Cref{ch:galrep})} \Cref{def:congruence:exceptional-set}, \Cref{prop:congruence:exceptional-set}.
+\item \textbf{$H^1_\Sigma(\Q,W)$} (definition): unramified outside $\Sigma\cup\set\ell$, Bloch-Kato at $\ell$, free on $\Sigma$; equal to the Bloch-Kato conditions outside $\Sigma$ when $\Sigma$ contains the ramified
+primes. \Cref{def:congruence:selmer-sigma}.
+\item \textbf{Minimal ramification} (definition); the primes dividing $N$ form an admissible $\Sigma$. \Cref{def:congruence:minimally-ramified}.
+\item \textbf{Theorem thm:dfg37} (Diamond, Flach and Guo, Theorem 3.7): for $\lambda\notin S_f$ and $\Sigma\not\ni\ell$ with $M_{f,\lambda}$ minimally ramified outside $\Sigma$, $\len H^1_\Sigma(\Q,A_{f,\lambda}\otimes K_\lambda/\mathcal O_\lambda)=v_\lambda(\eta^\Sigma_{f,\lambda})$.
+\emph{(stated; reference)} \Cref{thm:congruence:dfg37}.
+\item \textbf{Theorem 0.2 of Diamond, Flach and Guo} (quoted): the same for $\Sigma\supseteq\set{p\mid N}$, $\lambda\nmid\Sigma$. \emph{(stated; checked against \cite{DFG04})} \Cref{thm:congruence:dfg02}.
+\item \textbf{Theorem thm:dfg27.} For $\ell\notin S_f$: $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0=H^0(\Q,A_f)=H^1_f(\Q,A_f)$. \emph{(stated; reference)} \Cref{thm:congruence:dfg27}.
+\item \textbf{Theorem 0.1 of Diamond, Flach and Guo} (quoted): the $\lambda$-part of the Bloch-Kato conjecture for $A_f$ and $A_f(1)$, $\lambda\notin S_f$. \emph{(stated; checked against \cite{DFG04})} \Cref{thm:congruence:dfg01}.
+\item \textbf{$\ell=3$.} As published, the theorems cover $\ell=3$ in weight $2$ ($S_f$ excludes only $\lambda\mid2N$ and the induced case); the mechanism of the proof at $\ell=3$ is reported, not re-checked. \emph{(checked
+in part)} \Cref{rem:congruence:ell-three}.
+\item \textbf{Deformation rings} (definition) and Mazur's theorem: the ring $R_\Sigma$ exists, and the Pontryagin dual of its cotangent module at a point $\rho$ is the Selmer group $H^1_\Sigma(\Q,\ad M_\rho\otimes K/\mathcal O)$. \emph{(proof sketched here; \cite{DDT})} \Cref{def:congruence:deformation-ring},
+\Cref{thm:congruence:deformation-ring}.
+\item \textbf{The Hecke side} (definition): $\T_\Sigma$ and $R_\Sigma\onto\T_\Sigma$. \Cref{def:congruence:hecke-side}.
+\item \textbf{Taylor-Wiles.} For $\rho_0$ absolutely irreducible over $\Q(\sqrt{\ell^*})$, twist-minimal, Serre weight in $[2,\ell-1]$: $R_\Sigma\simeq\T_\Sigma$ complete intersections, cohomology free, and $\len H^1_\Sigma=v(\eta^\Sigma)$.
+\emph{(proof sketched here; references)} \Cref{thm:congruence:tw-axiomatic}; hypotheses \Cref{rem:congruence:where-hypothesis}; why length equals valuation \Cref{rem:congruence:why-length-equals-eta}.
+\item \textbf{Theorem thm:main.} For optimal $E$, $\ell$ odd, $\ell\nmid N$, $\ell\notin S_f$:
+\begin{gather*}
+v_\ell(\degphi)=\len H^1_f(\Q,W)+\sum_{q\mid N}v_\ell(\Tam_q(\ad T))+\sum_{q\mid N}e_\ell(E,q),\\
+v_\ell(\degphi)\ge\sum_{q\mid N}e_\ell(E,q)+\sum_{q\mid N}t_\ell(E,q),
+\end{gather*}
+an equality with no multiplicity-one hypothesis. \emph{(proved here, given the theorems of Diamond, Flach and Guo and \Cref{ch:blochkato,ch:lfunctions,ch:moddeg})} \Cref{thm:congruence:main}; hypotheses
+\Cref{rem:congruence:hypothesis-table}.
+\item \textbf{Corollary cor:explicit.} $v_\ell(\degphi)=\len H^1_f(\Q,W)+\sum_qe_\ell(E,q)+\sum_{v_q(j)<0}\bigl(t_\ell+\min(t_\ell,v_\ell(q-1),v_\ell(c(u_q)))\bigr)$. \emph{(proved here, given \Cref{thm:congruence:main} and
+\Cref{ch:blochkato})} \Cref{cor:congruence:explicit}; examples (\curve{11a1}, \curve{121a1}, \curve{539c1} at $3$, all with $H^1_f=0$) \Cref{ex:congruence:main-examples}.
+\item \textbf{Remark rem:ko(1).} The Tamagawa excess $\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))$ raises the bound by exactly that amount when $\ell\notin S_f$. \emph{(proved here, given \Cref{ch:blochkato})}
+\Cref{rem:congruence:rem-ko-1}.
+\item \textbf{Remark rem:ko(2).} Kim and Ota's formula gives $v_\ell(r_E)\ge\sum_{q\mid N^-}t_\ell(E,q)$, contained in (eq:thm), and with \Cref{cor:congruence:explicit} a Selmer formula for the $N^-$-new congruence ideal.
+\emph{(proved here, given \cite{KimOta})} \Cref{prop:congruence:kim-ota}, \Cref{rem:congruence:kim-ota-identification}.
+\item \textbf{The twist map.} $\iota_S$ preserves integrality, twists eigensystems by $\chi_S$, maps $g^\perp$ into $f^\perp$ when $\iota(g)=f$; levels $N_S=N/D$, $N/D^2$, $N$ for types $\kod{I}_n^*$, $\kod{I}_0^*$, potentially good.
+\emph{(proved in \Cref{ch:hecke,ch:modgalrep}; recalled)} \Cref{prop:congruence:twist-inputs}.
+\item \textbf{Theorem thm:twist.} If $q^2\mid N$ ($q\in S$) and $\lcm(N_S,D^2)\mid N$, then $r_{E_S}\mid r_E$; if also $\lcm(N,D^2)\mid N_S$, then $r_{E_S}=r_E$. \emph{(proved here, given \Cref{ch:hecke})}
+\Cref{thm:congruence:twist}; cases and data ($25{,}477$ and $14{,}880$ pairs below conductor $10{,}000$) \Cref{ex:congruence:twist-cases}.
+\item \textbf{Theorem thm:quant.} For optimal $E$, $\ell$ odd, $\ell\nmid N$, $E[\ell]$ irreducible, $S$ the odd primes of type $\kod{I}_0^*$, $\kod{I}_n^*$ ($q=3$ allowed): $v_\ell(\degphi)\ge v_\ell(r_{E_S})+\sum_{q\in S}e_\ell(E,q)$, with
+equality if $\ell\notin S_f$. \emph{(proved here, given \Cref{thm:congruence:dfg14}, \Cref{thm:congruence:main} and the cited chapters)} \Cref{thm:congruence:quant}.
+\item \textbf{The set-up.} $g^S$ lives at level $N$ with generalised eigenspace $\C g^S$, and $\iota(g^S)=f$. \emph{(proved here, given \Cref{ch:hecke,ch:reduction})} \Cref{lem:congruence:quant-setup}.
+\item \textbf{Step 1 is an equality.} $r_E\mid r_\pi$ and $v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ for every prime $\ell\notin S$, with no other hypothesis. \emph{(proved here, given \Cref{ch:hecke})}
+\Cref{lem:congruence:quant-step1}; Commentary on Remark rem:afterquant (2) and Open question 6 \Cref{rem:congruence:step1-commentary}.
+\item \textbf{Steps 2 to 4.} $v_\ell(\eta^{\mathrm{Hecke}}(g^S))\ge v_\ell(\eta^S_{g,\ell})=v_\ell(\eta^\emptyset_{g,\ell})+\sum_{q\in S}e_\ell(E,q)$ and $v_\ell(\eta^\emptyset_{g,\ell})=v_\ell(r_{E_S})$. \emph{(proved here, given \Cref{thm:congruence:dfg14})}
+\Cref{lem:congruence:quant-steps234}.
+\item \textbf{All equalities.} For $\ell\notin S_f$: $v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S))=v_\ell(\eta^S_{g,\ell})=v_\ell(r_{E_S})+\sum_{q\in S}e_\ell(E,q)$. \emph{(proved here)} \Cref{cor:congruence:quant-equality}; remarks
+\Cref{rem:congruence:outer-inequality}, \Cref{rem:congruence:after-quant}.
+\item \textbf{Beyond the hypothesis.} For image $\Ns$ at $3$, (eq:identity) with $-h_3(E)$ would follow from $H^1_f(\Q,V^D)=0$ and $v_3(\eta^\Sigma)=\len H^1_\Sigma$; what Open questions 1 and 2 need. \emph{(conditional)}
+\Cref{rem:congruence:rem-ns}, \Cref{rem:congruence:open-question-2}, \Cref{rem:congruence:open-question-1}.
+\item \textbf{The citations of Diamond, Flach and Guo,} with their status. \Cref{rem:congruence:imported-table}.
+\end{enumerate}
+
+\section*{Where the paper uses this chapter}
+
+\begin{itemize}
+\item \textbf{Section 1} (``The congruence number is the congruence ideal of $f$ in the full Hecke algebra \dots\ from Hida to Diamond, Flach and Guo''; the hypothesis of Theorem thm:main and
+\cite[Theorem 0.1]{DFG04}): \Cref{thm:congruence:crit}, \Cref{thm:congruence:hida}, \Cref{thm:congruence:dfg01}, \Cref{def:congruence:exceptional-set}.
+\item \textbf{Lemma lem:crit}, restated as a statement about congruence modules: \Cref{thm:congruence:crit}, \Cref{prop:congruence:crit-general}.
+\item \textbf{Section 4.1} ($M^\Sigma$, $f^\Sigma$, the integral structure, $M_{f^\Sigma,\lambda}$, $\hat\delta_!$, $\eta^\Sigma_{f,\lambda}$): \Cref{def:congruence:depletion-recall} to \Cref{prop:congruence:eta-sigma}.
+\item \textbf{Theorem thm:dfg14 and the paragraph after it}: \Cref{thm:congruence:dfg14}, \Cref{prop:congruence:three-cases}.
+\item \textbf{Proposition prop:pullback and Lemma lem:hecke}: \Cref{prop:congruence:eta-sigma}(iii), \Cref{thm:congruence:lem-hecke}.
+\item \textbf{Lemma lem:ddt417}: \Cref{lem:congruence:ddt417}, \Cref{rem:congruence:ddt417-commentary}. \textbf{Remark rem:free}: \Cref{rem:congruence:rem-free}.
+\item \textbf{Section 4.2} ($S_f$, Proposition prop:Sf, Theorems thm:dfg37 and thm:dfg27, the minimal-ramification paragraph): \Cref{def:congruence:exceptional-set} to \Cref{rem:congruence:ell-three}.
+\item \textbf{Lemmas lem:dfg21, lem:fpr, lem:h0}: used in Step 4 of \Cref{thm:congruence:main}, proved in \Cref{ch:blochkato}.
+\item \textbf{Section 4.3} (the proof of Theorem thm:main, Corollary cor:explicit): \Cref{thm:congruence:main}, \Cref{cor:congruence:explicit}.
+\item \textbf{Remark rem:ko}: \Cref{rem:congruence:rem-ko-1}, \Cref{prop:congruence:kim-ota}.
+\item \textbf{Theorem thm:twist and the paragraph after it}: \Cref{thm:congruence:twist}, \Cref{ex:congruence:twist-cases}.
+\item \textbf{Theorem thm:quant, its proof and Remark rem:afterquant}: \Cref{thm:congruence:quant} to \Cref{rem:congruence:after-quant}.
+\item \textbf{Remark rem:ns, Open questions 1, 2 and 6}: \Cref{rem:congruence:rem-ns}, \Cref{rem:congruence:open-question-2}, \Cref{rem:congruence:open-question-1}, \Cref{rem:congruence:step1-commentary}.
+\item \textbf{Every citation of \cite{DFG04}}: \Cref{rem:congruence:imported-table}.
+\end{itemize}
+
+\section{Overview and conventions}\label{sec:congruence:overview}
+
+This section fixes notation and gives a map of Section 4 of the paper. Every sentence of that section is either a citation of an imported
+theorem, a result proved in an earlier chapter, or a step proved here; the table below says which. The two warnings concern the two places where
+the paper's notation can mislead: the letters $I$ and $J$ of Lemma lem:crit, and the two different congruence ideals of Section 4.
+
+\begin{convention}[standing notation]\label{conv:congruence:setup}
+\begin{enumerate}[label=(\alph*)]
+\item \emph{Newforms and coefficients.} $f$ is a newform of weight $2$ on $\Gamma_0(M)$ with trivial character. In Sections \ref{sec:congruence:hecke-local} to
+\ref{sec:congruence:taylor-wiles} its coefficients may lie in a number field $K$ with a prime $\lambda\mid\ell$; then $\mathcal O=\mathcal O_{K,\lambda}$, with uniformiser $\varpi$ and
+valuation $v$, $v(\varpi)=1$. From Section \ref{sec:congruence:assembly} on, $f=f_E$ has rational coefficients, $K=\Q$, $\lambda=\ell$ and $\mathcal O=\Zl$ (the paper's
+``$\lambda=\ell$''). The prime $\ell$ is odd and $\ell\nmid M$ unless we say otherwise.
+\item \emph{Hecke algebras.} $\T=\T_M=\Z[T_n:n\ge1]\subset\End S_2(\Gamma_0(M))$ is the \emph{full} Hecke algebra, the operators $U_p=T_p$ for $p\mid M$ included
+(\Cref{ch:hecke}). $\T_\ell=\T\otimes\Zl$, $\T_{\mathcal O}=\T\otimes\mathcal O$; for a maximal ideal $\mf m$ of $\T_\ell$ (or $\T_{\mathcal O}$), $\T_{\mf m}$ is the localisation, a direct factor
+cut out by an idempotent $e_{\mf m}$. $\T$ acts on $H^1(X_0(M),\Zl)$ by pull-back $t^*$ (\Cref{ch:moddeg}).
+\item \emph{Congruence data.} For a surjective homomorphism of $\mathcal O$-algebras $\pi\colon\T_{\mathcal O}\onto\mathcal O$ we write $\wp=\ker\pi$, $I=\Ann(\wp)$, $\eta(\pi)=\pi(I)$ (the
+\emph{congruence ideal}), $\mathcal C(\pi)=\T_{\mathcal O}/(\wp+I)$ (the \emph{congruence module}) and $\mathrm{Cot}(\pi)=\wp/\wp^2$ (the \emph{cotangent module}). The letters
+$\mathcal C$ and $\mathrm{Cot}$ are this chapter's; the literature writes $\Omega$ and $\Phi$, which the book reserves for other objects (Appendix B).
+\item \emph{Two congruence ideals.} $\eta^{\mathrm{Hecke}}(\pi)$ is $\eta(\pi)$ of (c), an invariant of the algebra $\T$; $\eta^\Sigma_{f,\lambda}$ is the naive $\Sigma$-finite congruence ideal of
+Diamond, Flach and Guo (\Cref{def:congruence:eta-sigma}), an invariant of a lattice with a pairing. For a newform at its level, $\eta^{\mathrm{Hecke}}_f=\eta^{\mathrm{Hecke}}(\phi_f)$.
+\item \emph{Lengths.} All counts of finite $\mathcal O$-modules are lengths $\len_{\mathcal O}$; for $\mathcal O=\Zl$, $\#X=\ell^{\len X}$ (Appendix B, B-C10).
+\item \emph{Frobenius and duals.} $\Frob_p$ is an arithmetic Frobenius and $\Frob_p^{-1}$ the geometric one; $L$-factors use the geometric Frobenius,
+$L_p(V,s)=\det(1-\Frob_p^{-1}p^{-s}\mid V^{I_p})^{-1}$ (B-C2). $M^\vee=\Hom(M,\mathcal O)$ is the linear dual, $X^*$ the Pontryagin dual, $V^D=\Hom(V,\Ql(1))$, and $t^\dagger$ the
+adjoint of an operator. With $T=T_\ell E$: $A=\ad T$, $A_f=\ad V_\ell E$, $W=A\otimes\Qlmod$, $T^D\simeq A(1)$, $V^D$, $W^D$ as in \Cref{ch:blochkato}.
+\item \emph{Twists.} For a finite set $S$ of odd primes, $D=\prod_{q\in S}q$, $\chi_S=\prod_{q\in S}\chi_{q^*}$, $\iota=\iota_S\colon h\mapsto h\otimes\chi_S=\sum\chi_S(n)a_n(h)q^n$ (the naive twist,
+\Cref{ch:hecke}); $E_S=E\otimes\chi_S$ of conductor $N_S$, $g=f_{E_S}$, and $E^{(q)}=E\otimes\chi_{q^*}$. In this chapter $D$ has no other meaning.
+\item \emph{Depletion.} $\delta_p=2,1,0$ according as $p\nmid M$, $p\,\|\,M$, $p^2\mid M$; $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$; $f^\Sigma=\sum_{(n,\Sigma)=1}a_n(f)q^n$.
+\end{enumerate}
+\end{convention}
+
+\begin{warning}[the letters of Lemma lem:crit]\label{warn:congruence:letters}
+In the paper's Lemma lem:crit, $I=\ker\phi_f$ and $J=\Ann_\T(f^\perp)$. In Lemma lem:ddt417 and in this chapter, $\wp=\ker\pi$ and $I=\Ann_\T(\wp)$. So for $\pi=\phi_f$ the paper's
+$I$ is our $\wp$, and the paper's $J$ is our $I$ (that $J=\Ann_\T(\ker\phi_f)$ is part of Lemma lem:crit, \Cref{thm:congruence:crit}). We use the paper's letters only when we
+quote Lemma lem:crit.
+\end{warning}
+
+\begin{warning}[two congruence ideals]\label{warn:congruence:two-ideals}
+The Hecke congruence ideal $\eta^{\mathrm{Hecke}}(\pi)$ and the cohomological ideal $\eta^\Sigma_{f,\lambda}$ of Diamond, Flach and Guo are different objects. The first is defined from the
+ring $\T$ and the homomorphism $\pi$ alone; the second from the pairing $\hat\delta_!$ on a rank-two lattice in cohomology. Lemma lem:ddt417 compares them
+($v(\eta^{\mathrm{Hecke}})\ge v(\eta^{\mathrm{coh}})$), with equality when the cohomology is free over the Hecke algebra; for the newform of an optimal curve at $\ell\nmid2N$ they agree
+without any freeness hypothesis (\Cref{rem:congruence:two-ideals}). The paper's Section 4 uses both, and Step 2 of the proof of Theorem thm:quant is exactly the comparison.
+\end{warning}
+
+The paper's Section 4, sentence by sentence, against this chapter and the chapters that supply the inputs:
+\begin{center}\small
+\begin{tabular}{p{0.36\textwidth}p{0.26\textwidth}p{0.28\textwidth}}
+\toprule
+paper (Section 4) & here & inputs proved in\\
+\midrule
+4.1: $M^\Sigma$, $f^\Sigma$, the integral structure, $M_{f^\Sigma,\lambda}$, $\hat\delta_!$, $\eta^\Sigma_{f,\lambda}$ & \Cref{def:congruence:depletion-recall} to \Cref{def:congruence:eta-sigma} & \Cref{ch:hecke,ch:moddeg,ch:modules}\\
+Theorem thm:dfg14 and the paragraph after it & \Cref{thm:congruence:dfg14}, \Cref{prop:congruence:three-cases} & \Cref{ch:lfunctions,ch:modgalrep}\\
+Proposition prop:pullback, Lemma lem:hecke & \Cref{thm:congruence:lem-hecke} & \Cref{ch:moddeg}\\
+Lemma lem:ddt417 & \Cref{lem:congruence:ddt417} & \Cref{ch:modules}\\
+Remark rem:free & \Cref{rem:congruence:rem-free} & \Cref{ch:moddeg,ch:modules}\\
+4.2: $S_f$, Proposition prop:Sf & \Cref{def:congruence:exceptional-set} & \Cref{ch:galrep,ch:blochkato}\\
+Theorems thm:dfg37, thm:dfg27 & \Cref{thm:congruence:dfg37}, \Cref{thm:congruence:dfg27} & imported \cite{DFG04}\\
+Lemmas lem:dfg21, lem:fpr, lem:h0 & Step 4 of \Cref{thm:congruence:main} & \Cref{ch:blochkato,ch:galcoh,ch:galrep}\\
+4.3: proof of Theorem thm:main, Corollary cor:explicit & \Cref{thm:congruence:main} & \Cref{ch:blochkato,ch:lfunctions,ch:moddeg}\\
+Remark rem:ko & \Cref{rem:congruence:rem-ko-1}, \Cref{prop:congruence:kim-ota} & \Cref{ch:blochkato,ch:modgalrep}\\
+4.4: Theorem thm:twist & \Cref{thm:congruence:twist} & \Cref{ch:hecke,ch:modgalrep}\\
+Theorem thm:quant and its proof & \Cref{thm:congruence:quant} & \Cref{ch:hecke,ch:reduction,ch:lfunctions}\\
+Remark rem:afterquant & \Cref{lem:congruence:quant-step1}, \Cref{rem:congruence:after-quant} & \Cref{ch:hecke}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For a reader with a physics background, two images may help, one sentence each. The congruence module measures how far a lattice fails to split as the
+direct sum of its intersections with two complementary eigenspaces, as the unit cell of a crystal need not be a product of cells of two sublattices. The
+numerical criterion of Wiles (\Cref{thm:congruence:numerical-criterion}) is an index theorem: the size of a tangent space bounds a defect, with equality
+exactly in the most rigid (complete intersection) case.
+
+\section{Hecke algebras over $\Zl$ and their local components}\label{sec:congruence:hecke-local}
+
+This section recalls, with references, the structure of the Hecke algebra over $\Zl$ that every later section uses: the splitting into local
+components, the maximal ideal attached to a newform, and which forms live in a given component. The paper uses these facts in Lemma lem:hecke
+(``$\mf m$ the maximal ideal of $\T\otimes\Zl$ containing $\ell$ and $\ker\phi_f$''), in Remark rem:free and in Steps 1 and 2 of the proof of Theorem thm:quant.
+Nothing here is new; the point is to have the statements in one place, in the form in which they are used.
+
+\begin{proposition}[local components, recollection]\label{prop:congruence:hecke-local}
+Let $M\ge1$, $\T=\T_M$, $d=\dim S_2(\Gamma_0(M))$ and $\ell$ a prime.
+\begin{enumerate}[label=(\roman*)]
+\item $\T$ is a free $\Z$-module of rank $d$; so $\T_\ell$ is a finite free $\Zl$-algebra, it has finitely many maximal ideals, all containing $\ell$, and
+$\T_\ell=\prod_{\mf m}\T_{\mf m}$ with $\T_{\mf m}=e_{\mf m}\T_\ell$ local and finite free over $\Zl$.
+\item Let $\phi\colon\T\to\overline\Q_\ell$ be a ring homomorphism (a system of eigenvalues); its values lie in the ring of integers $\mathcal O$ of a finite extension of $\Ql$, and
+$\mf m_\phi=\ker(\T_\ell\to\mathcal O\to\mathcal O/\varpi)$ is a maximal ideal. If $\phi=\phi_f$ for a newform $f$ with rational coefficients, $\mf m_{f,\ell}=\mf m_{\phi_f}$ is generated by $\ell$ and
+the elements $T_n-a_n(f)$.
+\item $e_{\mf m}\bigl(S_2(\Gamma_0(M);\Zl)\otimes\overline\Q_\ell\bigr)$ is the sum of the generalised eigenspaces $V(\phi)$ of the systems $\phi$ with $\mf m_\phi=\mf m$, that is, with
+$\phi\equiv\phi'$ modulo the maximal ideal of $\overline\Z_\ell$ for one (hence every) $\phi'$ with $\mf m_{\phi'}=\mf m$. If $V(\phi)$ lies in the old space $V_h$ of a newform $h$ and
+$\mf m_\phi=\mf m_{f,\ell}$, then $a_p(h)\equiv a_p(f)$ for all $p\nmid M\ell$, so $\bar\rho_h^{\mathrm{ss}}\simeq\bar\rho_f^{\mathrm{ss}}$.
+\item The pairing $S_2(\Gamma_0(M);\Zl)\times\T_\ell\to\Zl$, $(h,t)\mapsto a_1(th)$, is perfect and restricts to a perfect pairing $e_{\mf m}S_2(\Gamma_0(M);\Zl)\times\T_{\mf m}\to\Zl$. The pairing
+$\hat\delta_!(x,y)=\langle x,w_M^*y\rangle$ on $H^1(X_0(M),\Zl)$ is perfect and alternating, every $t\in\T$ is self-adjoint for it, and $H^1(X_0(M),\Zl)=\bigoplus_{\mf m}e_{\mf m}H^1(X_0(M),\Zl)$
+is an orthogonal decomposition on whose summands $\hat\delta_!$ is perfect.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) The freeness of $\T$ is proved in \Cref{ch:hecke} (the perfect pairing with the integral forms); the splitting of a finite free algebra over the complete ring $\Zl$
+is the idempotent-lifting theorem of \Cref{ch:modules}, which also shows that the maximal ideals contain $\ell$. (ii) The eigenvalues of $T_n$ are algebraic integers
+(\Cref{ch:hecke}), so $\phi(\T)$ is a finitely generated $\Z$-module of integral elements and $\phi(\T_\ell)$ an order in a finite extension; its image in the residue field is
+a field, so $\mf m_\phi$ is maximal. If $\phi=\phi_f$ is $\Z$-valued, $\T_\ell/(\ell,T_n-a_n(f):n\ge1)$ is a quotient of $\Z/\ell$ (each $T_n$ becomes a scalar), and it is nonzero
+because it maps onto $\F_\ell$ through $\phi_f$; so the ideal generated is $\mf m_{f,\ell}$. (iii) The first sentence is the theorem on generalised eigenspaces over a complete
+discrete valuation ring of \Cref{ch:modules}, applied to $L=S_2(\Gamma_0(M);\Zl)$, which is a faithful $\T_\ell$-module. For the second, $\phi(T_p)=a_p(h)$ for $p\nmid M$ on $V_h$
+(multiplicity one, \Cref{ch:hecke}), so $\mf m_\phi=\mf m_{f,\ell}$ gives $a_p(h)\equiv a_p(f)$ modulo the maximal ideal for $p\nmid M\ell$, and Brauer-Nesbitt with Chebotarev gives the
+isomorphism of semisimplifications (\Cref{ch:modgalrep}). (iv) The first statement is \Cref{ch:hecke} (the pairing is perfect over $\Z$ and stays perfect after $\otimes\Zl$), and
+its restriction to components is \Cref{ch:hecke} again (the local components proposition). The second is \Cref{ch:moddeg}: $t^\dagger=w_M^*t^*w_M^*$ for the cup product, so
+$\hat\delta_!$ makes $\T$ self-adjoint, and an idempotent of a self-adjoint commutative algebra gives an orthogonal decomposition on whose summands a perfect
+pairing stays perfect (\Cref{ch:modules}).
+\end{proof}
+
+\begin{paperlink}
+The paragraph after the paper's Lemma lem:hecke says that ``the other local factors of $\T\otimes\Zl$ lie in the kernel $\wp$, $\phi_f$ factors through $\T_{\mf m}$, and
+$\operatorname{Ann}(\wp)$ decomposes along the idempotents; and the idempotent $e_{\mf m}$ is self-adjoint for $\hat\delta_!$, so $H^1(X_0(N),\Zl)$ splits orthogonally into its local
+components and the pairing is perfect on each''. These are \Cref{prop:congruence:hecke-local}(iv) and \Cref{prop:congruence:congruence-module}(iv) below.
+\end{paperlink}
+
+\begin{example}[level $539$ at $\ell=3$]\label{ex:congruence:level-539}
+This example runs through Sections \ref{sec:congruence:modules} and \ref{sec:congruence:quant}. At level $539=7^2\cdot11$ consider four eigenforms of $\T_{539}$ with integer
+coefficients: the newforms $f_{\text{539c}}$ and $f_{\text{539d}}$, and the depleted forms $(f_{\text{77c}})^{\{7\}}$ and $(f_{\text{11a}})^{\{7\}}$, which live at level $539$ because $\delta_7=1$ for
+\curve{77c1} (multiplicative at $7$, so $77\cdot7=539$) and $\delta_7=2$ for \curve{11a1} (good at $7$, so $11\cdot49=539$). The curve \curve{539c1} has type $\kod{I}_3^*$ at $7$ and is the twist of
+\curve{77c1} by $\chi_{-7}$; \curve{539d1} has type $\kod{I}_0^*$ at $7$ and is the twist of \curve{11a1} by $\chi_{-7}$. So $\iota_{\{7\}}$ sends the two depleted forms to the two newforms.
+Computed with PARI/GP (all $n\le130$, beyond Sturm's bound $112$ for $\Gamma_0(539)$): $a_n(f_{\text{539c}})\equiv a_n(f_{\text{539d}})\pmod3$ for every $n$, and
+$a_n((f_{\text{77c}})^{\{7\}})\equiv a_n((f_{\text{11a}})^{\{7\}})\pmod3$ for every $n$; but $a_3(f_{\text{539c}})=-2$ while $a_3((f_{\text{77c}})^{\{7\}})=2$. So $\T_{539}\otimes\Z_3$ has a maximal ideal $\mf m_1$
+containing the two newforms' systems and another, $\mf m_2$, containing the two depleted systems; $\iota$ exchanges them (it multiplies $T_p$ by $\chi_{-7}(p)$). The Hecke
+congruence modules, computed as the index $[S_2(539;\Z):\Z g\oplus(g^c\cap S_2(539;\Z))]$ with $g^c$ the $\T$-stable complement (\Cref{prop:congruence:crit-general}), are
+\[
+\#\mathcal C(f_{\text{539c}})=288,\quad\#\mathcal C(f_{\text{539d}})=504,\quad\#\mathcal C((f_{\text{77c}})^{\{7\}})=288,\quad\#\mathcal C((f_{\text{11a}})^{\{7\}})=504,
+\]
+with $288=2^53^2$ and $504=2^33^27$. The modular degrees are $\deg\varphi_{\curve{539c1}}=288$ and $\deg\varphi_{\curve{539d1}}=72$ (\Cref{ch:moddeg}): at $\ell=7$, where $7^2\mid539$, the
+congruence number $r(\curve{539d1})=504$ and the degree differ. That the depleted modules equal the congruence numbers of the twisted newforms is
+\Cref{lem:congruence:quant-step1} at every $\ell\ne7$. (Computational note: the index must be computed with the integral structure cut out by Sturm's bound $\frac{2}{12}[\SL_2(\Z):\Gamma_0(539)]=112$;
+the number $50$ returned by PARI's \texttt{mfsturm} for this space is too small to test integrality, and with it the computation returns the spurious orders
+$1440$ and $2520$.)
+\end{example}
+
+\section{Congruence modules and congruence ideals}\label{sec:congruence:modules}
+
+This section defines the congruence ideal of a surjection from a finite free algebra, records its basic properties (proved in \Cref{ch:modules}),
+and reads the paper's Lemma lem:crit in this language: the congruence number $r_E$ is the congruence ideal of $\phi_f$ in the full Hecke algebra, and
+the same holds for the depleted form $g^S$ of Theorem thm:quant once the right complement is used. In the paper this is the sentence of Section 1
+``The congruence number is the congruence ideal of $f$ in the full Hecke algebra of level $N$ (Lemma lem:crit), and the theory of such ideals, from Hida to
+Diamond, Flach and Guo, expresses them through the adjoint Selmer group and the adjoint $L$-value'', and it underlies Lemma lem:hecke and Step 1 of the proof
+of Theorem thm:quant. Hida's theorem, which started the subject, is stated at the end as context; the paper does not use it in a proof.
+
+\begin{definition}[congruence ideal, congruence module, cotangent module]\label{def:congruence:congruence-module}
+Let $\mathcal O$ be a complete discrete valuation ring with fraction field $K$, $\T$ a commutative $\mathcal O$-algebra which is free of finite rank as an $\mathcal O$-module, and
+$\pi\colon\T\onto\mathcal O$ a surjective homomorphism of $\mathcal O$-algebras. Put $\wp=\ker\pi$ and $I=\Ann_\T(\wp)$. The \emph{congruence ideal} of $\pi$ is $\eta(\pi)=\pi(I)\subseteq\mathcal O$, the
+\emph{congruence module} is $\mathcal C(\pi)=\T/(\wp+I)$, and the \emph{cotangent module} is $\mathrm{Cot}(\pi)=\wp/\wp^2$.
+\end{definition}
+
+\begin{proposition}[properties of congruence ideals]\label{prop:congruence:congruence-module}
+In the situation of \Cref{def:congruence:congruence-module}:
+\begin{enumerate}[label=(\roman*)]
+\item $\pi$ induces an isomorphism $\mathcal C(\pi)\simeq\mathcal O/\eta(\pi)$.
+\item $\eta(\pi)\ne0$ if and only if $\wp\cap I=0$, if and only if the local factor of the finite $K$-algebra $\T_K=\T\otimes K$ through which $\pi_K$ factors is $K$ itself.
+\item If $\eta(\pi)\ne0$, then $\pi$ restricts to an isomorphism $I\simeq\eta(\pi)$, so $I$ is free of rank one over $\mathcal O$; $\Ann_\T(I)=\wp$; and $\eta(\pi)=\set{a\in\mathcal O:ae_\pi\in\T}$, where
+$e_\pi\in\T_K$ is the idempotent of the factor $K$ of (ii).
+\item If $\T=\prod_{\mf m}\T_{\mf m}$ is the decomposition into local factors and $\pi$ factors through $\T_{\mf m_0}$, then the factors $\T_{\mf m}$, $\mf m\ne\mf m_0$, lie in $\wp$, $I\subseteq\T_{\mf m_0}$,
+and $\eta(\pi)=\eta(\pi|_{\T_{\mf m_0}})$: the congruence ideal is computed in the local factor of $\pi$.
+\item $\mathrm{Cot}(\pi)$ is a finitely generated $\mathcal O$-module, and it is finite (of finite length) if and only if the factor of $\T_K$ through which $\pi_K$ factors is $K$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) The structure map $\mathcal O\to\T$ is a section of $\pi$, so $\T=\mathcal O\cdot1\oplus\wp$ as $\mathcal O$-modules, $t=\pi(t)+(t-\pi(t))$. Hence $\pi$ induces $\T/\wp\simeq\mathcal O$, which carries
+the image of $I$ onto $\pi(I)$, and $\T/(\wp+I)\simeq\mathcal O/\pi(I)$. (ii), (iii), (iv) are the proposition on congruence ideals of \Cref{ch:modules}; we recall the key step of (ii),
+which Lemma lem:ddt417 uses. If $\eta(\pi)\ne0$, choose $t\in I$ with $\pi(t)\ne0$. For $x\in\wp\cap I$: $tx=0$ because $t\in I$ kills $\wp\ni x$, and $(\pi(t)-t)x=0$ because $\pi(t)-t\in\wp$ and $x\in I$
+kills $\wp$. Adding, $\pi(t)x=0$, so $x=0$ since $\T$ is torsion-free. Conversely, if $\eta(\pi)=0$ then $I\subseteq\wp$, and $I\ne0$ (\Cref{ch:modules}), so $\wp\cap I\ne0$. For (iv), note that
+the idempotent $1-e_{\mf m_0}$ maps to $0$ under $\pi$ (the image of an idempotent in the domain $\mathcal O$ is $0$ or $1$, and $\pi(e_{\mf m_0})=1$), so $\prod_{\mf m\ne\mf m_0}\T_{\mf m}=(1-e_{\mf m_0})\T\subseteq\wp$; an
+element of $I$ kills $1-e_{\mf m_0}$, hence lies in $e_{\mf m_0}\T$, and inside $\T_{\mf m_0}$ it kills $\wp\cap\T_{\mf m_0}$; conversely an element of $\T_{\mf m_0}$ killing $\wp\cap\T_{\mf m_0}$ kills
+$\wp=(\wp\cap\T_{\mf m_0})\times\prod_{\mf m\ne\mf m_0}\T_{\mf m}$. So $I=\Ann_{\T_{\mf m_0}}(\wp\cap\T_{\mf m_0})$. (v) $\wp$ is a submodule of the finitely generated module $\T$ over the noetherian ring
+$\mathcal O$. Localisation is exact, so $\mathrm{Cot}(\pi)\otimes K=\wp_K/\wp_K^2$, where $\wp_K=\ker\pi_K$. Write $\T_K=A\times B$ with $A$ the local factor through which $\pi_K$ factors, so
+$\wp_K=\mf n\times B$ with $\mf n$ the maximal ideal of $A$, and $\wp_K/\wp_K^2=\mf n/\mf n^2$ (as $B^2=B$). By Nakayama's lemma in the artinian local ring $A$, $\mf n/\mf n^2=0$ iff $\mf n=0$ iff $A=K$.
+A finitely generated $\mathcal O$-module is finite iff it is killed by $\otimes K$.
+\end{proof}
+
+\begin{example}[three toy algebras]\label{ex:congruence:toy}
+(a) For $r\ge1$ let $\T_r=\set{(a,b)\in\mathcal O^2:a\equiv b\pmod{\varpi^r}}$ and $\pi(a,b)=a$. Then $\wp=0\times\varpi^r\mathcal O$, $I=\varpi^r\mathcal O\times0$, $\eta=\varpi^r\mathcal O$, $\mathcal C(\pi)\simeq\mathcal O/\varpi^r$,
+and $\wp^2=0\times\varpi^{2r}\mathcal O$, so $\mathrm{Cot}(\pi)\simeq\mathcal O/\varpi^r$: $\len\mathrm{Cot}(\pi)=v(\eta)=r$. This is the algebra of two eigenforms congruent modulo $\varpi^r$, and
+$\T_r\simeq\mathcal O[x]/(x(x-\varpi^r))$ by $x\mapsto(0,\varpi^r)$ is a complete intersection.
+(b) Let $\T_3^\flat=\set{(a,b,c)\in\mathcal O^3:a\equiv b\equiv c\pmod\varpi}$ and $\pi(a,b,c)=a$. Then $\wp=0\times\varpi\mathcal O\times\varpi\mathcal O$, $I=\varpi\mathcal O\times0\times0$, $\eta=\varpi\mathcal O$, but
+$\wp^2=0\times\varpi^2\mathcal O\times\varpi^2\mathcal O$ and $\mathrm{Cot}(\pi)\simeq(\mathcal O/\varpi)^2$: $\len\mathrm{Cot}(\pi)=2>1=v(\eta)$. Three pairwise congruent forms; $\T_3^\flat$ is not a complete
+intersection (it is not even Gorenstein, \Cref{ch:modules}).
+(c) Let $\T=\mathcal O[x]/(x^2)$ and $\pi(x)=0$. Then $\wp=\mathcal Ox=I$, $\eta=0$ and $\mathrm{Cot}(\pi)=\mathcal Ox$ is infinite: the factor of $\T_K$ at $\pi$ is $K[x]/(x^2)$, not $K$. This is
+the shape of a Jordan block of a Hecke operator, such as $U_2$ at level $88$ on the forms $f_{\text{11a}}(dz)$, $d\mid8$ (\Cref{ch:hecke}).
+These three cases are the whole content of Wiles's numerical criterion (\Cref{thm:congruence:numerical-criterion}) in miniature: $\len\mathrm{Cot}\ge v(\eta)$, with equality for
+the complete intersection (a), strict inequality for (b), and both sides degenerate in (c).
+\end{example}
+
+\begin{definition}[the Hecke congruence ideal of a newform]\label{def:congruence:newform-ideal}
+Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$, $K_f$ its coefficient field, $\lambda$ a prime of $K_f$ above $\ell$, and $\mathcal O$ the completion of the ring of integers of $K_f$ at
+$\lambda$. The eigencharacter $\phi_f\colon\T\to\mathcal O_{K_f}$ extends to a surjection $\phi_f\colon\T_{\mathcal O}\onto\mathcal O$ (its image is an $\mathcal O$-submodule containing $1$, hence $\mathcal O$). Its
+congruence ideal $\eta^{\mathrm{Hecke}}_f=\eta(\phi_f)\subseteq\mathcal O$ is the \emph{Hecke congruence ideal} of $f$. More generally, for an eigenform $g$ of $\T_M$ with eigencharacter $\pi$, we write
+$\eta^{\mathrm{Hecke}}(g)=\eta(\pi)$.
+\end{definition}
+
+\begin{proposition}[the Hecke congruence ideal is nonzero]\label{prop:congruence:newform-ideal}
+In \Cref{def:congruence:newform-ideal}, $\eta^{\mathrm{Hecke}}_f\ne0$. More generally $\eta(\pi)\ne0$ for every eigencharacter $\pi$ whose generalised eigenspace in $S_2(\Gamma_0(M))\otimes\overline K$ is a line,
+in particular for $\pi$ the eigencharacter of a depleted form $f^\Sigma$ at level $M^\Sigma$.
+\end{proposition}
+
+\begin{proof}
+$S_2(\Gamma_0(M))\otimes\C$ is free of rank one over $\T\otimes\C$ (\Cref{ch:hecke}, the structure of $\T$), so the local factor of $\T\otimes\overline K$ at $\pi$ has the dimension of the
+generalised eigenspace of $\pi$. If that is a line, the factor is $\overline K$, so the factor of $\T_K$ through which $\pi$ factors is $K$, and $\eta(\pi)\ne0$ by
+\Cref{prop:congruence:congruence-module}(ii). For a newform the generalised eigenspace is the line $\C f$ (multiplicity one and strong multiplicity one, \Cref{ch:hecke}); for
+a depleted form at level $M^\Sigma$ it is the line $\C f^\Sigma$ (\Cref{ch:hecke}, depletion).
+\end{proof}
+
+\begin{theorem}[Lemma lem:crit as a statement about congruence modules]\label{thm:congruence:crit}
+Let $E$ have conductor $N$, $f=f_E$, $\T=\T_N$, $\wp=\ker\phi_f$ and $I=\Ann_\T(\wp)$. Then $I=\Ann_\T(f^\perp)$, the congruence module $\mathcal C(\phi_f)=\T/(\wp+I)$ is cyclic of order $r_E$,
+$\eta^{\mathrm{Hecke}}_f=r_E\Z$, and the integers $m$ for which $f\equiv h\pmod m$ with $h\in f^\perp\cap S_2(\Gamma_0(N);\Z)$ are exactly the divisors of $r_E$; the same holds over $\Zl$ with $r_E$
+replaced by its $\ell$-part. Moreover, with $L=f^\perp\cap S_2(\Gamma_0(N);\Z)$, the perfect pairing $S_2(\Gamma_0(N);\Z)\times\T\to\Z$ induces
+\[
+S_2(\Gamma_0(N);\Z)/(\Z f\oplus L)\ \simeq\ \Hom\bigl(\mathcal C(\phi_f),\Q/\Z\bigr):
+\]
+the congruence module is dual to the failure of the integral forms to split along the decomposition $S_2=\C f\oplus f^\perp$.
+\end{theorem}
+
+\begin{proof}
+Everything except the last display is the paper's Lemma lem:crit, which \Cref{ch:modgalrep} proves in full (with the decomposition $\T\otimes\Q=\Q\times\T'$ of \Cref{ch:hecke});
+we do not repeat it. For the display: the forms killed by $\wp$ are $\Z f$ and those killed by $I$ are $L$ (\Cref{ch:modgalrep}, in the proof of Lemma lem:crit), and for a
+perfect pairing $S\times\T\to\Z$ with $\T$ acting compatibly, ideals $\mf a,\mf b$ with $\mf a\cap\mf b=0$, $\T/\mf a$ and $\T/\mf b$ torsion-free of complementary ranks, one has
+$S/(S[\mf a]\oplus S[\mf b])\simeq(\T/(\mf a+\mf b))^*$ (\Cref{ch:modules}, the duality between an algebra and a module). Take $\mf a=\wp$, $\mf b=I$; $\wp\cap I=0$ by
+\Cref{prop:congruence:newform-ideal} and \Cref{prop:congruence:congruence-module}(ii), $\T/\wp\simeq\Z$ has rank $1$ and $\T/I$ embeds in $\T'$, of rank $\rank\T-1$.
+\end{proof}
+
+\begin{paperlink}
+Lemma lem:crit is stated in the paper's Section 3 with the letters $I=\ker\phi_f$ and $J$ the annihilator of $f^\perp$ (\Cref{warn:congruence:letters}); the paper's proof says
+``Dualising the inclusion $\T\subset\T/I\times\T/J$, whose cokernel is $\T/(I+J)$, shows that $\Z f\oplus L$ has index $r'$''. That sentence is the display of
+\Cref{thm:congruence:crit}, read as a statement about orders. Its use in Section 4 is the identification $\eta^{\mathrm{Hecke}}_f\Zl=r_E\Zl$ in Lemma lem:hecke and in Step 1 of the proof of Theorem thm:quant.
+\end{paperlink}
+
+\begin{proposition}[Lemma lem:crit for an eigencharacter whose generalised eigenspace is a line]\label{prop:congruence:crit-general}
+Let $\pi\colon\T_N\to\Z$ be a ring homomorphism whose generalised eigenspace in $S_2(\Gamma_0(N))\otimes\C$ is a line $\C g$ ($g$ normalised), and let $g^c$ be the $\T$-stable complement of
+$\C g$, the sum of the generalised eigenspaces of the other systems of eigenvalues. Put $\Lambda=g^c\cap S_2(\Gamma_0(N);\Z)$. Then $\T/(\ker\pi+\Ann_\T\ker\pi)$ is cyclic of order
+$r(\pi)=[S_2(\Gamma_0(N);\Z):\Z g\oplus\Lambda]$, $\eta(\pi)=r(\pi)\Z$, and $g\equiv h\pmod m$ for some $h\in\Lambda$ if and only if $m\mid r(\pi)$. The same holds over $\Zl$ for every prime $\ell$, with
+$r(\pi)$ replaced by its $\ell$-part. If $g$ is a newform of level $N$, then $g^c=g^\perp$ and $r(\pi)=r_g$.
+\end{proposition}
+
+\begin{proof}
+This is the proposition on the congruence module of a rational eigencharacter in \Cref{ch:hecke}, whose proof is that of Lemma lem:crit with $g^c$ in place of $f^\perp$.
+\end{proof}
+
+\begin{warning}[the complement must be $\T$-stable]\label{warn:congruence:complement}
+For $g$ not a newform at level $N$ (for instance a depleted form), the Petersson orthogonal complement of $\C g$ need not be $\T$-stable, because the operators $U_p$, $p\mid N$, are
+not normal (\Cref{ch:hecke} gives an example at level $44$). \Cref{prop:congruence:crit-general} is false with the Petersson complement in general. The paper's Step 1 of the
+proof of Theorem thm:quant says ``in the $\T$-stable complement of the $g^S$-line (not the Petersson complement, which is not $\T$-stable when the $U_p$ are involved)'', which is
+right; Theorem thm:twist uses $g^\perp$ for a newform $g$ at its own level, where the two complements agree.
+\end{warning}
+
+\begin{theorem}[Hida]\label{thm:congruence:hida}
+Let $f$ be a normalised newform of weight $k\ge2$ and level $N$, and let $\Omega^\pm_f$ be its periods, normalised by integrality of the modular symbols. Then $\langle f,f\rangle$ divided by
+$\Omega^+_f\Omega^-_f$ is an algebraic number, and for primes $\lambda$ outside an explicit finite set (containing the primes dividing $N$ and small primes depending on $k$), $\lambda$ divides this
+ratio if and only if $\lambda$ is a congruence prime of $f$, that is, $\lambda$ divides $\eta^{\mathrm{Hecke}}_f$. Through the Rankin-Shimura method, $\langle f,f\rangle$ is a multiple, by explicit factors,
+of the naive adjoint $L$-value $L^{\nv}(A_f,1)$.
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this. The statement combines two results of Hida from 1981: \cite{Hida81} proves that a prime dividing the normalised Petersson norm (outside the excluded set) is a
+congruence prime, and a companion paper of the same year proves the converse; we cite only the first, have not checked the precise excluded set, and state the theorem as context. See
+\cite{HidaBook} for an exposition; \cite{Ribet83} treats the weight-$2$ case from the side of modular curves. The Petersson norm as a naive $L$-value is proved in the book's normalisation in \Cref{ch:lfunctions}: $\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ for a
+rational newform of weight $2$.
+\end{proof}
+
+\begin{remark}[from Hida to Diamond, Flach and Guo]\label{rem:congruence:hida-to-dfg}
+Hida's theorem detects congruence primes; it does not compute the exact power. For an elliptic curve the exact power is the subject of this chapter: the
+modular degree is a period ratio (the formula of Zagier and Watkins, \Cref{ch:moddeg}), and \Cref{thm:congruence:main} identifies its $\ell$-adic valuation with the length of a
+Selmer group plus local terms. The paper cites \cite[Lemma 2.12]{DFG04} for the formula of the Petersson norm on $\Gamma_1(N)$ as a naive $L$-value, which Diamond,
+Flach and Guo deduce from Hida's Rankin-Shimura computation; in the book's normalisation (unnormalised product on $\Gamma_0(N)$) it is the formula recalled in the proof
+above, proved in \Cref{ch:lfunctions}. We have not re-checked the constants of the $\Gamma_1(N)$ version against \cite{DFG04}; the book uses only its own normalisation.
+\end{remark}
+
+\begin{remark}[the three ideals of this chapter, at once]\label{rem:congruence:two-ideals}
+Let $E$ be $X_0(N)$-optimal, $f=f_E$, $\ell$ an odd prime with $\ell\nmid N$ and $E[\ell]$ irreducible. Then
+\begin{align*}
+\eta^{\mathrm{Hecke}}_f\Zl&=r_E\Zl&&(\text{\Cref{thm:congruence:crit}}),\\
+v_\ell(r_E)&=v_\ell(\degphi)&&(\text{\cite[Theorem 2.2]{ARS12}}),\\
+v_\ell(\degphi)&=v_\lambda(\eta^\emptyset_{f,\lambda})&&(\text{\Cref{thm:congruence:lem-hecke}}),
+\end{align*}
+so all three ideals agree. Lemma lem:ddt417 (\Cref{lem:congruence:ddt417}) gives $v(\eta^{\mathrm{Hecke}})\ge v(\eta^{\mathrm{coh}})$ in general, with equality when the cohomology is free over the
+Hecke algebra; the inequality is strict where freeness fails. Outside the hypotheses it can fail to be an equality: for \curve{99a1} at $\ell=3$, with $3\mid99$, the
+Hecke ideal has valuation $v_3(r_E)=v_3(12)=1$ while the ideal of values of $\hat\delta_!$ on $M_{f,\lambda}$ is $\degphi\,\Z_3=4\Z_3=\Z_3$ (\Cref{ch:moddeg}; $r=12$ and $\degphi=4$
+recomputed with PARI/GP).
+\end{remark}
+
+\section{Wiles's numerical criterion and Lemma lem:ddt417}\label{sec:congruence:ddt417}
+
+This section proves the paper's Lemma lem:ddt417, the piece of commutative algebra that compares the Hecke congruence ideal with the Gram determinant
+of a pairing on a module. The paper uses it in Step 2 of the proof of Theorem thm:quant (with $d=2$, for a depleted form) and, in the version of 10 October
+2026, in the proof of Lemma lem:hecke. To put it in context we first state Wiles's numerical criterion, of which the lemma is the half that survives in the
+presence of a module; the criterion itself is used in this book only in the outline of the Taylor-Wiles method (Section \ref{sec:congruence:taylor-wiles}).
+
+\begin{theorem}[Wiles's numerical criterion; Lenstra]\label{thm:congruence:numerical-criterion}
+Let $\mathcal O$ be a complete discrete valuation ring with finite residue field, $\T$ a local $\mathcal O$-algebra, finite and free as an $\mathcal O$-module, and $\pi\colon\T\onto\mathcal O$ a surjection with
+$\eta=\eta(\pi)\ne0$. Then:
+\begin{enumerate}[label=(\roman*)]
+\item $\len_{\mathcal O}\mathrm{Cot}(\pi)\ge v(\eta)$;
+\item equality holds if and only if $\T$ is a complete intersection over $\mathcal O$, that is, a quotient of a power series ring $\mathcal O[[x_1,\dots,x_n]]$ by $n$ elements;
+\item if $R\onto\T$ is a surjection of complete local noetherian $\mathcal O$-algebras compatible with $\pi$ (so that $\pi$ extends to $\pi_R\colon R\onto\mathcal O$) and
+$\len\mathrm{Cot}(\pi_R)\le v(\eta)<\infty$, then $R\to\T$ is an isomorphism and both rings are complete intersections.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+For a complete intersection $\T=\mathcal O[[x_1,\dots,x_n]]/(f_1,\dots,f_n)$ with $\pi(x_i)=0$, both $\len\mathrm{Cot}(\pi)$ and $v(\eta)$ equal $v\bigl(\det(\partial f_i/\partial x_j)(0)\bigr)$: the cotangent module is the
+cokernel of the Jacobian matrix at $0$, and Tate's description of the annihilator of $\wp$ in a complete intersection (by the determinant of a matrix expressing the $f_i$ in terms
+of the $x_j$) gives $\eta$. The general inequality (i) and the converse in (ii) reduce to this case by writing $\T$ as a quotient of a complete intersection with the same
+cotangent module and comparing the two congruence ideals; Lenstra's proof uses the Gorenstein property and a flat deformation. Part (iii) follows from (i) for $\T$ and the
+surjection $\mathrm{Cot}(\pi_R)\onto\mathrm{Cot}(\pi)$: $\len\mathrm{Cot}(\pi_R)\ge\len\mathrm{Cot}(\pi)\ge v(\eta)\ge\len\mathrm{Cot}(\pi_R)$ forces equalities, so $\T$ is a complete intersection, and
+then a complete intersection is not a proper quotient of a ring with the same cotangent length. We do not give the details; see \cite[Appendix]{Wiles95}, \cite{Lenstra95}, and
+\cite[Section 5]{DDT} (Wiles's numerical criterion). The examples of \Cref{ex:congruence:toy} show each case.
+\end{proof}
+
+\begin{remark}[why the paper needs a version with a module]\label{rem:congruence:why-a-module}
+The ideal that Diamond, Flach and Guo control is not $\eta(\pi)$, an invariant of the ring, but the ideal of values of a pairing on the $\pi$-part of a module $L$ (the
+cohomology of a modular curve, \Cref{def:congruence:eta-sigma}). Lemma lem:ddt417 compares the two. It is an equality when $L$ is free over $\T$, which is what a
+multiplicity-one theorem gives (the freeness criterion of \Cref{ch:modules} and the Gorenstein theorem of \Cref{ch:moddeg}). The paper says: ``We also need the following piece of
+commutative algebra, which is the inequality half of \cite[Lemma 4.17]{DDT}.''
+\end{remark}
+
+\begin{lemma}[Lemma lem:ddt417]\label{lem:congruence:ddt417}
+Let $\mathcal O$ be a discrete valuation ring, $\T$ a commutative $\mathcal O$-algebra that is free of finite rank as an $\mathcal O$-module, and $L$ a $\T$-module that is free of finite rank over $\mathcal O$,
+with a perfect $\mathcal O$-bilinear pairing $\langle\ ,\ \rangle\colon L\times L\to\mathcal O$ for which every $t\in\T$ is self-adjoint. Let $\pi\colon\T\onto\mathcal O$ be a surjective homomorphism of $\mathcal O$-algebras,
+$\wp=\ker\pi$, $I=\Ann_\T(\wp)$ and $\eta=\pi(I)$. Suppose that $L[\wp]$ has rank $d$ over $\mathcal O$ and that the Gram determinant $\Delta$ of the pairing on $L[\wp]$ is nonzero. Then
+\[
+\eta^d\subseteq\Delta\mathcal O,\qquad\text{that is,}\qquad d\cdot v(\eta)\ \ge\ v(\Delta),
+\]
+and equality holds if $L$ is free over $\T$.
+\end{lemma}
+
+\begin{proof}
+Here $L[\mf a]$ denotes the submodule of $L$ killed by an ideal $\mf a$; it is free over $\mathcal O$ as a submodule of a free module over a principal ideal domain, so its Gram
+determinant is defined up to the square of a unit, and $v(\Delta)$ does not depend on the basis (\Cref{ch:modules}).
+
+\emph{Step 0: the case $\eta=0$, and $\wp\cap I=0$.} If $\eta=0$ the inequality says $\infty\ge v(\Delta)$ and there is nothing to prove. Assume $\eta\ne0$ and fix $t\in I$ with $\pi(t)$ a
+generator of $\eta$. Then $\wp\cap I=0$ by \Cref{prop:congruence:congruence-module}(ii) (the argument there uses only that $\T$ is torsion-free, not that it is reduced).
+
+\emph{Step 1: $Q=L/(L[\wp]+L[I])$ is killed by $\eta$.} Let $x\in L$. Since $\wp I=0$, every element of $\wp$ kills $tx$, so $tx\in L[\wp]$. For $s\in I$, $s(\pi(t)-t)\in I\wp=0$, so $(\pi(t)-t)x\in L[I]$.
+Hence $\pi(t)x=tx+(\pi(t)-t)x\in L[\wp]+L[I]$, and $\pi(t)$, a generator of $\eta$, kills $Q$.
+
+\emph{Step 2: the sum is direct.} If $y\in L[\wp]\cap L[I]$, then $y$ is killed by $\wp+I$, which contains $\pi(t)=t+(\pi(t)-t)$ ($t\in I$, $\pi(t)-t\in\wp$). So $\pi(t)y=0$, and $y=0$ since $L$ is
+torsion-free and $\pi(t)\ne0$. Thus $Q=L/(L[\wp]\oplus L[I])$.
+
+\emph{Step 3: $L[\wp]$ is saturated and $L[\wp]^\perp=L[I]$.} $L[\wp]$ is saturated: if $ax\in L[\wp]$ with $0\ne a\in\mathcal O$, then $a(sx)=s(ax)=0$ for $s\in\wp$, so $sx=0$. Let $y\in L[I]$ and $x\in L[\wp]$. Since $\pi(t)-t\in\wp$ kills $x$ and $t\in I$ kills $y$,
+\[
+\pi(t)\langle x,y\rangle=\langle tx,y\rangle+\langle(\pi(t)-t)x,y\rangle=\langle x,ty\rangle+0=0,
+\]
+using self-adjointness of $t$, and $\langle x,y\rangle=0$. Thus
+$L[I]\subseteq L[\wp]^\perp$. Conversely let $y\perp L[\wp]$. For $s\in I$ and $z\in L$, $sz\in L[\wp]$ (as in Step 1), so $\langle sy,z\rangle=\langle y,sz\rangle=0$ for all $z$; the pairing being perfect,
+$sy=0$. So $y\in L[I]$. (This step is the only one that uses self-adjointness.)
+
+\emph{Step 4: $Q$ is the cokernel of the Gram map.} The map $L\to L[\wp]^\vee=\Hom_{\mathcal O}(L[\wp],\mathcal O)$, $y\mapsto\langle-,y\rangle$, is surjective because $L[\wp]$ is saturated and the
+pairing is perfect, and its kernel is $L[\wp]^\perp=L[I]$ (\Cref{ch:modules}, the Gram cokernel theorem). So $L/L[I]\simeq L[\wp]^\vee$, and under this isomorphism the image of $L[\wp]$
+is the image of the Gram map $L[\wp]\to L[\wp]^\vee$. Hence $Q\simeq\coker(L[\wp]\to L[\wp]^\vee)$, a module of length $v(\Delta)$ (the cokernel of a square matrix over a discrete
+valuation ring has length the valuation of its determinant).
+
+\emph{Step 5: the inequality.} $L[\wp]^\vee\simeq\mathcal O^d$ surjects onto $Q$, so $Q$ is generated by $d$ elements; by Step 1 it is killed by $\eta$. So $Q$ is a quotient of $(\mathcal O/\eta)^d$
+and $v(\Delta)=\len Q\le d\,v(\eta)$.
+
+\emph{Step 6: equality for free $L$.} Let $L\simeq\T^r$ as $\T$-modules. Then $L[\wp]\simeq(\T[\wp])^r=I^r$ and $L[I]\simeq\Ann_\T(I)^r=\wp^r$ (\Cref{prop:congruence:congruence-module}(iii)), and
+$I\simeq\eta$ is free of rank one over $\mathcal O$, so $d=r$. Then $Q\simeq(\T/(\wp+I))^r\simeq(\mathcal O/\eta)^d$ by \Cref{prop:congruence:congruence-module}(i), of length $d\,v(\eta)$.
+\end{proof}
+
+\begin{remark}[Commentary: the paper's statement of Lemma lem:ddt417]\label{rem:congruence:ddt417-commentary}
+The paper states the lemma for $\mathcal O$ ``a discrete valuation ring with finite residue field'' and concludes ``$\#\mathcal O/\Delta\le\#(\mathcal O/\eta)^d$''. The book's \Cref{lem:congruence:ddt417} is stated with
+lengths over any discrete valuation ring; for a finite residue field of order $\kappa$ the two forms agree, since $\#X=\kappa^{\len X}$. Three steps that the paper's proof compresses are
+expanded above. (a) The paper's ``First $\wp\cap I=0$: \dots\ $\T$ being torsion-free'' is Step 0; the paper rightly adds that this does not follow from reducedness, since the
+full Hecke algebra can have nilpotents (\Cref{ex:congruence:toy}(c)). (b) The paper's ``Since $L$ is torsion-free and $\wp\cap I=0$, the sum $L[\wp]+L[I]$ is direct'' is Step 2; the operative
+reason is that the nonzero scalar $\pi(t)$ lies in $\wp+I$. (c) In the paper's proof of $L[\wp]^\perp=L[I]$, the converse inclusion shows that the single element $t$ kills $y$; this suffices
+because $I=\mathcal O t$ (\Cref{prop:congruence:congruence-module}(iii)), and Step 3 above uses every $s\in I$ instead. In the paper's direct inclusion the identity
+``$\pi(t)\langle x,y\rangle=\langle tx,y\rangle=\langle x,ty\rangle=0$'' uses $(\pi(t)-t)x=0$ for $x\in L[\wp]$, which is how Step 3 reads it.
+\end{remark}
+
+\begin{remark}[on the hypotheses]\label{rem:congruence:ddt417-hypotheses}
+(a) Without $\eta\ne0$ the intersection $\wp\cap I$ can be nonzero: for $\T=\mathcal O[x]/(x^2)$ acting on $L=\T$, $\wp=I=\mathcal Ox$. The lemma survives because then $\eta=0$. (b) If $\eta=0$ and $L$
+is free over $\T$, then $\Delta=0$ (\Cref{ch:modules}): $I\subseteq\wp$ gives $I^2=0$ and the pairing vanishes on $L[\wp]=I^r$. So in the free case the hypothesis $\Delta\ne0$ forces
+$\eta\ne0$. (c) Self-adjointness is used only in Step 3. (d) For the Hecke algebra of a modular curve the module $L$ is $H^1(X_0(N),\Zl)_{\mf m}$, the algebra $\T_{\mf m}$ and the
+pairing $\hat\delta_!$ restricted to the $\mf m$-component, which is perfect there (\Cref{prop:congruence:hecke-local}(iv)); by \Cref{prop:congruence:congruence-module}(iv) the
+congruence ideal of $\pi$ on $\T_\ell$ is the one computed on $\T_{\mf m}$.
+\end{remark}
+
+\begin{example}[the lemma on test cases]\label{ex:congruence:ddt417-checks}
+(a) $L=\T_r$ (\Cref{ex:congruence:toy}(a)) with $\langle s,u\rangle=\lambda_0(su)$, $\lambda_0(a,b)=(a-b)/\varpi^r$, a perfect pairing for which $\T_r$ is self-adjoint: $L[\wp]=I=\mathcal O(\varpi^r,0)$,
+$d=1$, $\Delta=\lambda_0((\varpi^r,0)^2)=\varpi^r$; equality, $L$ being free. (b) $L=\mathcal O^2$ with $\T_r$ acting diagonally and the standard pairing: $L[\wp]=\mathcal Oe_1$, $\Delta=1$, so $0=v(\Delta)<r=v(\eta)$;
+strict, and $L$ is not free over $\T_r$. (c) $L=\T_r^2$ with $\langle x,y\rangle=\lambda_0(x_1y_2-x_2y_1)$, alternating: $d=2$, $\Delta=\varpi^{2r}=\eta^2$. This is the shape of Step 2 of the proof
+of Theorem thm:quant. (These computations are in \Cref{ch:modules}.) (d) The modular case outside the hypotheses: for \curve{99a1} and $\ell=3$, $L=H^1(X_0(99),\Z_3)_{\mf m}$, $d=2$,
+$v_3(\eta^{\mathrm{Hecke}})=v_3(r_E)=1$ and the ideal of values on $L[\wp]$ is $4\Z_3=\Z_3$, so $v_3(\Delta)=0<2$: $L$ is not free over $\T_{\mf m}$ (\Cref{rem:congruence:two-ideals}).
+\end{example}
+
+\section[The lattices of Diamond, Flach and Guo; Lemma lem:hecke]{The lattices and ideals of Diamond, Flach and Guo; Lemma lem:hecke}\label{sec:congruence:dfg-lattices}
+
+This section sets up the objects of the paper's Section 4.1: the depleted form $f^\Sigma$ at level $M^\Sigma$, the integral structure on cohomology, the lattice
+$M_{f^\Sigma,\lambda}$, the pairing $\hat\delta_!$ and the naive $\Sigma$-finite congruence ideal $\eta^\Sigma_{f,\lambda}$, in the form in which Diamond, Flach and Guo define them for weight $2$
+and trivial character \cite[Sections 1.5.3, 1.6.2, 1.7.3]{DFG04}, and compares them with the cohomology of $X_0(M^\Sigma)$, as the paper does. It then states Lemma lem:hecke
+as an equality, which \Cref{ch:moddeg} proves, and Remark rem:free. These are the inputs of Step 1 of the proof of Theorem thm:main and of Steps 2 to 4 of the proof of
+Theorem thm:quant.
+
+\begin{definition}[depletion and naive factors, recalled]\label{def:congruence:depletion-recall}
+Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ and $\Sigma$ a finite set of primes. For a prime $p$ put $\delta_p=2$, $1$, $0$ according as $p\nmid M$, $p\,\|\,M$, $p^2\mid M$; for $f=f_E$ these
+are good, multiplicative and additive reduction, and $\delta_p=\dim V_\ell E^{I_p}$ for $p\ne\ell$ (\Cref{ch:modgalrep}). Put $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$ and
+$f^\Sigma=\sum_{(n,\Sigma)=1}a_n(f)q^n$. The \emph{naive} local factor of the adjoint $L$-function is $L^{\nv}_p(A_f,s)=L_p(A_f,s)$ if $\delta_p>0$ and $1$ if $\delta_p=0$ (\Cref{ch:lfunctions}).
+\end{definition}
+
+By \Cref{ch:hecke} (depletion), $f^\Sigma$ is a normalised eigenform of the full Hecke algebra $\T_{M^\Sigma}$, with $U_pf^\Sigma=0$ for $p\in\Sigma$, and its generalised eigenspace in
+$S_2(\Gamma_0(M^\Sigma))$ is the line $\C f^\Sigma$; $M^\Sigma$ is the least level at which $f^\Sigma$ is an eigenform of all $T_n$. The paper's Section 1.1 says it follows ``the conventions of
+\cite[\S1.7.2]{DFG04}'' for $\delta_p$ and the naive factors; there $\delta_p$ is the dimension of the inertia invariants of the lattice $M_{f,\lambda}$ of \Cref{def:congruence:eta-sigma}, which is the
+same number because $M_{f,\lambda}$ is dual to $T_\ell E$ up to homothety.
+
+\begin{definition}[the integral structure]\label{def:congruence:integral-structure}
+Let $M\ge1$ and $\ell\nmid 2M$. Diamond, Flach and Guo \cite[Sections 1.2, 1.4]{DFG04} define, for the open compact subgroup $U_0(M)\subset\GL_2(\widehat\Z)$ and the trivial character, a
+$\Zl$-lattice $M(M,1)_{!,\lambda}$ in the first cohomology of the modular curve of level $M$: it is the image of the $U_0(M)$-invariants of the compactly supported cohomology
+of the (adelic, open) modular curve $Y_{N'}$ of full level $N'$, for an auxiliary $N'\ge3$ with $U_{N'}\subseteq U_0(M)$, in the torsion-free quotient of the $U_0(M)$-invariants of its
+cohomology, with the Hecke action by double cosets. It does not depend on $N'$.
+\end{definition}
+
+\begin{proposition}[comparison with $H^1(X_0(M),\Zl)$]\label{prop:congruence:integral-structure}
+Let $\ell\nmid2M$. Pull-back along $Y_{N'}\to Y_0(M)$ maps $H^1(X_0(M),\Zl)$ (the interior cohomology of $Y_0(M)$) $\T$-equivariantly onto a sublattice of finite index of $M(M,1)_{!,\lambda}$. For
+every maximal ideal $\mf m$ of $\T_\ell$ that is not Eisenstein (\Cref{ch:moddeg}), the localisations agree:
+\[
+M(M,1)_{!,\lambda,\mf m}=H^1(X_0(M),\Zl)_{\mf m}.
+\]
+In particular this holds for $\mf m=\mf m_{f,\lambda}$ when $\bar\rho_{f,\lambda}$ is irreducible, which is the only case the paper uses.
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+The interior cohomology (the image of $H^1_c$ in $H^1$) of $Y_0(M)$ with $\Zl$-coefficients is $H^1(X_0(M),\Zl)$ (\Cref{ch:moddeg}); pull-back to the finite cover $Y_{N'}$ lands in the
+$U_0(M)$-invariants and is compatible with the Hecke correspondences, and it is injective with finite cokernel after tensoring with $\Ql$ (the covering has finite degree, and
+push-forward composed with pull-back is multiplication by the degree). By the inflation-restriction sequence for the covering group, the cokernel is a subquotient of a
+group of homomorphisms from the covering group to $\Qlmod$, that is, it comes from abelian unramified subcovers of congruence covers of $X_0(M)$. On such classes the
+Hecke operators $T_p$, $p\nmid MN'$, act through $1+p$ (more precisely through an Eisenstein ideal), as on the Shimura covering $X_1(M)\to X_0(M)$
+\cite{LingOesterle,Ribet88}; so the cokernel is supported on Eisenstein maximal ideals and vanishes after localisation at a non-Eisenstein $\mf m$. When $\ell$ does not divide
+the order of the covering group the cokernel is $0$ (transfer). Diamond, Flach and Guo use the same device (kernel and cokernel supported at Eisenstein ideals) in
+\cite[Lemma 1.8, Corollary 1.9]{DFG04}, and arrange a covering of degree prime to $\ell$ with an auxiliary prime \cite[Section 1.8]{DFG04}. The Eisenstein property of the cokernel
+is proved in the cited sources for the Shimura covering; for general congruence covers we have given only the sketch above.
+\end{proof}
+
+\begin{paperlink}
+The paper (Section 4.1) says that the integral structure ``contains the pull-back of $H^1(X_0(M^\Sigma),\Zl)$ with finite index, and we use it only after localisation at a maximal ideal
+$\mf m$ of the Hecke algebra whose residual representation is irreducible, where we take it, as in the version of 10 October 2026, to agree with $H^1(X_0(M^\Sigma),\Zl)_{\mf m}$''. That
+is \Cref{prop:congruence:integral-structure}; the word ``take'' marks it, correctly, as the one input of Section 4.1 that the paper sketches rather than proves.
+\end{paperlink}
+
+\begin{definition}[the pairing $\hat\delta_!$]\label{def:congruence:dfg-pairing}
+Diamond, Flach and Guo define $\hat\delta_!$ on $M(M,1)_!$ as the cup product into $H^2_c$ of the full-level curve, restricted to invariants and divided by the index $[U_0(M):U_{N'}]$, composed
+with the operator $[UwU]_\omega$ attached to $w=\sm0{-1}M0$ \cite[Sections 1.5.2, 1.5.3, (13), (14)]{DFG04}; for weight $2$ and trivial character this operator is the Atkin-Lehner
+involution $w_M$, with no scalar factor. On $H^1(X_0(M),\Zl)$ the book writes $\hat\delta_!(x,y)=\langle x,w_M^*y\rangle$, the cup product composed with $w_M^*$ (Appendix B, B-C13(f);
+\Cref{ch:moddeg}).
+\end{definition}
+
+\begin{proposition}[properties of $\hat\delta_!$]\label{prop:congruence:dfg-pairing}
+Let $\ell$ be odd.
+\begin{enumerate}[label=(\roman*)]
+\item On classes pulled back from $X_0(M)$, the pairing of Diamond, Flach and Guo is $c\langle x,w_M^*y\rangle$ with $c=\deg(Y_{N'}\to Y_0(M))/[U_0(M):U_{N'}]=\frac12$, a unit in $\Zl$.
+\item $\langle x,w_M^*y\rangle$ is perfect and alternating on $H^1(X_0(M),\Zl)$, every $t\in\T$, the $U_p$ included, is self-adjoint for it, and its restriction to each $\mf m$-component is perfect.
+\end{enumerate}
+So on a non-Eisenstein component the two pairings agree up to a unit, and the ideals of values and Gram determinants of their restrictions to any sublattice have the same
+valuations.
+\end{proposition}
+
+\begin{proof}
+(i) The degree of a finite map of curves multiplies the fundamental class in $H^2$ by the degree, so the cup product of pulled-back classes is $\deg(Y_{N'}\to Y_0(M))$ times the
+cup product on $Y_0(M)$. The group $U_0(M)/U_{N'}$ acts on $Y_{N'}$ over $Y_0(M)$ through its quotient by the image of $\pm1$, because $-1\in\GL_2(\Q)$ acts trivially on the upper and
+lower half planes; so the degree is half the index, and $c=\frac12$. We have not compared the normalisation of $[UwU]_\omega$ with $w_M^*$ beyond the statement for weight $2$ and trivial character
+recalled in \Cref{def:congruence:dfg-pairing}, as the paper describes it. (ii) This is the corollary on $\hat\delta_!$ in \Cref{ch:moddeg}: the transpose of the correspondence $t$ is $w_Mtw_M$,
+so $(t^*)^\dagger=w_M^*t^*w_M^*$ for the cup product, whence $\langle tx,w_M^*y\rangle=\langle x,w_M^*ty\rangle$; $w_M^*$ is an involution adjoint to itself, and the cup product is alternating and perfect
+on a smooth projective curve (Poincar\'e duality, \Cref{ch:curves}), so $\langle x,w_M^*y\rangle$ is perfect, and alternating because $\langle x,w_M^*x\rangle=-\langle w_M^*x,x\rangle=-\langle w_M^*x,w_M^{*2}x\rangle$ $=-\langle x,w_M^*x\rangle$, as $w_M^*$
+preserves the cup product, so $2\langle x,w_M^*x\rangle=0$. The statement on components is \Cref{prop:congruence:hecke-local}(iv).
+\end{proof}
+
+\begin{definition}[the kernel lattice and the naive $\Sigma$-finite congruence ideal]\label{def:congruence:eta-sigma}
+Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ with rational coefficients, $\ell\nmid2M$, and $\Sigma$ a finite set of primes. For an eigenform $h$ of $\T_{M'}$ with eigencharacter $\theta_h$ put
+\[
+M_{h,\lambda}=M(M',1)_{!,\lambda}[\ker\theta_h],
+\]
+the submodule killed by the kernel of $\theta_h$ on the full Hecke algebra \cite[Sections 1.1.2, 1.6.2]{DFG04}. With $h=f^\Sigma$ at level $M^\Sigma$, the restriction of $\hat\delta_!$ to the rank-two lattice
+$M_{f^\Sigma,\lambda}$ is alternating; its ideal of values, the image of $\wedge^2M_{f^\Sigma,\lambda}$ under $\hat\delta_!$, is an ideal of $\Zl$, written $\eta^\Sigma_{f,\lambda}$: the \emph{naive $\Sigma$-finite
+congruence ideal} of $f$ \cite[Section 1.7.3]{DFG04}. For $\Sigma=\emptyset$, $f^\emptyset=f$ and $M_{f,\lambda}$ is the lattice of $f$ at level $M$.
+\end{definition}
+
+\begin{proposition}[properties of $M_{f^\Sigma,\lambda}$ and $\eta^\Sigma_{f,\lambda}$]\label{prop:congruence:eta-sigma}
+In \Cref{def:congruence:eta-sigma} assume that $\bar\rho_f$ is irreducible, and let $\mf m$ be the maximal ideal of $\T_{M^\Sigma}\otimes\Zl$ attached to $f^\Sigma$.
+\begin{enumerate}[label=(\roman*)]
+\item $M_{f^\Sigma,\lambda}=H^1(X_0(M^\Sigma),\Zl)[\ker\theta_{f^\Sigma}]$; it is saturated, of rank $2$, stable under $G_\Q$, and contained in the $\mf m$-component.
+\item The Gram determinant of $\hat\delta_!$ on $M_{f^\Sigma,\lambda}$ is $(\eta^\Sigma_{f,\lambda})^2$ up to a unit: if $a$ generates the ideal of values, the Gram matrix in a suitable basis is $\sm0a{-a}0$.
+\item For $\Sigma=\emptyset$ and $f=f_E$ with $E$ optimal, $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)$, which is $\Hom(T_\ell E,\Zl)\simeq T_\ell E(-1)$ as a Galois module; hence $\ad M_{f,\lambda}\simeq\ad T_\ell E$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $\theta=\theta_{f^\Sigma}$ factors through $\T_{\mf m}$, so $\theta(e_{\mf m})=1$ and $1-e_{\mf m}\in\ker\theta$; an element $x$ killed by $\ker\theta$ satisfies $x=e_{\mf m}x$. So $M_{f^\Sigma,\lambda}$ lies in the
+$\mf m$-component, where \Cref{prop:congruence:integral-structure} identifies the integral structure with $H^1(X_0(M^\Sigma),\Zl)_{\mf m}$ ($\mf m$ is not Eisenstein: its residual
+representation is $\bar\rho_f$, \Cref{ch:modgalrep}). A submodule killed by an ideal is saturated (Step 3 of the proof of \Cref{lem:congruence:ddt417}). By the Eichler-Shimura
+isomorphism $H^1(X_0(M^\Sigma),\C)\simeq S_2\oplus\overline{S_2}$, which is Hecke-equivariant, the $\theta$-eigenspace is $\C f^\Sigma\oplus\C\overline{f^\Sigma}$, because the eigenspace of $\theta$ in $S_2$ lies in its
+generalised eigenspace, the line $\C f^\Sigma$; so the rank is $2$. The Hecke correspondences are defined over $\Q$, so the \'etale realisation of $M_{f^\Sigma,\lambda}$ is $G_\Q$-stable
+(\Cref{ch:moddeg}). (ii) An alternating form on $\Zl^2$ with basis $e_1,e_2$ has Gram matrix $\sm0a{-a}0$ with $a=\hat\delta_!(e_1,e_2)$, and its values $\hat\delta_!(xe_1+ye_2,ze_1+we_2)=(xw-yz)a$ fill $a\Zl$; the
+determinant is $a^2$ (\Cref{ch:modules}). (iii) is the theorem ``$M_{f,\lambda}$ is the pull-back'' of \Cref{ch:moddeg} (the paper's Proposition prop:pullback), with the Weil pairing
+and the comparison of \'etale and Betti cohomology.
+\end{proof}
+
+\begin{paperlink}
+The paper's Section 4.2 wrote, in the version of 10 October 2026, that $M_{f,\lambda}$ and $T_\ell E$ are homothetic; the revised paper says that $\varphi_E^*$ identifies $M_{f,\lambda}$ with
+$H^1(E,\Zl)\simeq T_\ell E(-1)$, the dual of $T_\ell E$, ``so its adjoint is $\ad T$''. \Cref{prop:congruence:eta-sigma}(iii) is that sentence; the adjoint is insensitive to dualising and twisting
+(\Cref{ch:blochkato}), so nothing in the assembly depends on the difference.
+\end{paperlink}
+
+\begin{theorem}[Lemma lem:hecke, with Proposition prop:pullback]\label{thm:congruence:lem-hecke}
+Let $E$ be $X_0(N)$-optimal, $f=f_E$, $\ell$ an odd prime with $\ell\nmid N$ and $E[\ell]$ irreducible. Then
+\[
+v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda}).
+\]
+No freeness or multiplicity-one hypothesis is needed.
+\end{theorem}
+
+\begin{proof}
+The first equality is the theorem of Agashe, Ribet and Stein, \cite[Theorem 2.2]{ARS12}, since $\ell^2\nmid N$ (\Cref{ch:moddeg}). For the second: by the theorem ``the degree as a
+congruence ideal'' of \Cref{ch:moddeg} (the paper's Proposition prop:pullback), for every $a,b\in H^1(E,\Zl)$,
+$\langle\varphi_E^*a,w_N^*\varphi_E^*b\rangle_{X_0(N)}=\varepsilon_N(f)\,\degphi\,\langle a,b\rangle_E$, and the cup product on $H^1(E,\Zl)$ is unimodular, so the ideal of values of $\langle x,w_N^*y\rangle$ on
+$\varphi_E^*H^1(E,\Zl)=M_{f,\lambda}$ is $\degphi\,\Zl$. By \Cref{prop:congruence:dfg-pairing}(i) and \Cref{prop:congruence:integral-structure}, the pairing of Diamond, Flach and Guo on their
+lattice $M_{f,\lambda}$ (which is the same lattice, by \Cref{prop:congruence:eta-sigma}(i), the maximal ideal of $(f,\ell)$ being non-Eisenstein) differs from it by the unit $\frac12$. So
+$\eta^\emptyset_{f,\lambda}=\degphi\,\Zl$.
+\end{proof}
+
+\begin{paperlink}
+The revised paper's proof of Lemma lem:hecke is these two sentences. The version of 10 October 2026 proved only $v_\ell(r_E)\ge v_\lambda(\eta^\emptyset_{f,\lambda})$, by \Cref{lem:congruence:ddt417} applied
+to $L=H^1(X_0(N),\Zl)_{\mf m}$ and $\pi=\phi_f$, with $d=2$ and $\Delta=(\eta^\emptyset_{f,\lambda})^2$, and equality when $L$ is free over $\T_{\mf m}$; the paragraph after the lemma in the revised paper
+records this argument and the two points that make it correct: the congruence ideal is computed in $\T_{\mf m}$, the other local factors lying in the \emph{kernel} $\wp$ (not in its
+annihilator, \Cref{prop:congruence:congruence-module}(iv)); and $\hat\delta_!$ is perfect on the $\mf m$-component (\Cref{prop:congruence:hecke-local}(iv)).
+\end{paperlink}
+
+\begin{remark}[Remark rem:free]\label{rem:congruence:rem-free}
+For $\ell\nmid2N$ and $\mf m$ non-Eisenstein, $J_0(N)[\mf m]$ is two-dimensional over $\T/\mf m$ (Mazur, Ribet; \cite[Theorem 3.5]{RibetStein} for $J_1(N)$, transported to $J_0(N)$ through the
+Shimura subgroup, which is Eisenstein); then $\T_{\mf m}$ is Gorenstein and $H^1(X_0(N),\Zl)_{\mf m}\simeq\T_{\mf m}^2$ \cite{Tilouine97}. Both steps are in \Cref{ch:moddeg} (multiplicity one stated,
+Gorenstein and freeness proved given it), and the freeness criterion is in \Cref{ch:modules}. After \Cref{thm:congruence:lem-hecke} this is \emph{not} needed for Theorem thm:main, nor for any
+step of Theorem thm:quant (\Cref{thm:congruence:quant}), nor for the equality clauses of either. It remains the conceptual reason why the Hecke and the cohomological
+congruence ideals agree at $\ell\nmid2N$ (\Cref{lem:congruence:ddt417} with equality), and with \Cref{lem:congruence:ddt417} it gives a second proof of $v_\ell(r_E)=v_\ell(\degphi)$ for
+$\ell\nmid2N$, $E[\ell]$ irreducible. Freeness fails in general when $\ell\mid N$: \curve{99a1} at $\ell=3$ (\Cref{ex:congruence:ddt417-checks}(d)).
+\end{remark}
+
+\begin{example}[values of $\eta^\emptyset$]\label{ex:congruence:eta-values}
+By \Cref{thm:congruence:lem-hecke}, $v_\ell(\eta^\emptyset_{f,\ell})=v_\ell(\degphi)$ whenever $\ell\nmid2N$ and $E[\ell]$ is irreducible. At $\ell=3$ (all curves below have $E[3]$ irreducible and
+$3\nmid N$; degrees from PARI/GP and Cremona's tables): \curve{11a1}, $\degphi=1$, $v_3=0$; \curve{77c1}, $6$, $v_3=1$; \curve{121a1}, $6$, $v_3=1$; \curve{121d1}, $24$, $v_3=1$; \curve{539c1},
+$288$, $v_3=2$; \curve{539d1}, $72$, $v_3=2$. For the depleted forms of \Cref{ex:congruence:level-539}, \Cref{thm:congruence:dfg14} below gives
+$v_3(\eta^{\{7\}}_{\text{77c},3})=v_3(\eta^\emptyset_{\text{77c},3})+v_3(1-7^{-2})=1+1=2$ and $v_3(\eta^{\{7\}}_{\text{11a},3})=0+v_3\bigl(\frac67\cdot\frac{64-4}{49}\bigr)=0+2=2$, equal to $v_3(288)$ and $v_3(504)$:
+this is Theorem thm:quant read backwards (\Cref{thm:congruence:quant}).
+\end{example}
+
+\section{The variation of the congruence ideal with $\Sigma$}\label{sec:congruence:dfg14}
+
+This section treats the paper's Theorem thm:dfg14, \cite[Proposition 1.4(c)]{DFG04}: adding a prime $p$ to $\Sigma$ multiplies the naive congruence ideal by the naive Euler
+factor $L^{\nv}_p(A_f,1)^{-1}$. The paper uses it twice: in the proof of Theorem thm:main, to pass from level $N$ to $\Sigma=\set{p\mid N}$, and in Step 3 of the proof of Theorem
+thm:quant, to pass from the newform $g=f_{E_S}$ at level $N_S$ to its depletion at level $N$. We state it, explain the three cases of the paragraph after it, and show
+how part (c) follows from part (b) given the saturation statement that Ihara's lemma provides.
+
+\begin{definition}[the map $\gamma$]\label{def:congruence:gamma}
+Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ and $\Sigma$ a finite set of primes. For $m\mid M^\Sigma/M=\prod_{p\in\Sigma}p^{\delta_p}$ let $\epsilon_m\colon H^1(X_0(M))\to H^1(X_0(M^\Sigma))$ be the
+pull-back along the degeneracy map $z\mapsto mz$ (on forms, $h\mapsto h(mz)$, up to the normalisation of \cite[Section 1.7.3]{DFG04}), and let $\phi_m$ be the endomorphism of the
+cohomology at level $M$ which is multiplicative in coprime $m$ with $\phi_1=1$, $\phi_p=-T_p$ and $\phi_{p^2}=p$. Put
+\[
+\gamma=\sum_{m\mid M^\Sigma/M}\epsilon_m\phi_m,
+\]
+and let $\gamma^t$ be its adjoint for the pairings $\hat\delta_!$ at the two levels. On $q$-expansions $\gamma(f)=\prod_{p\in\Sigma,\,\delta_p=2}(1-a_pV_p+pV_p^2)\prod_{p\in\Sigma,\,\delta_p=1}(1-a_pV_p)\,f=f^\Sigma$,
+with $V_p\colon h(z)\mapsto h(pz)$ (\Cref{ch:hecke}, depletion).
+\end{definition}
+
+\begin{theorem}[Diamond, Flach and Guo, Proposition 1.4; the paper's Theorem thm:dfg14]\label{thm:congruence:dfg14}
+Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ with rational coefficients, $\ell$ a prime with $\ell\nmid2M$, and $\Sigma$ a finite set of primes with $\ell\notin\Sigma$.
+\begin{enumerate}[label=(\alph*)]
+\item $\gamma$ restricts to an isomorphism $M_f\otimes\Q\to M_{f^\Sigma}\otimes\Q$ of the rational eigenspaces, compatible with $f\mapsto f^\Sigma$.
+\item On $M_f$, $\gamma^t\circ\gamma=u\cdot\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}$ with $u=\prod_{p\in\Sigma,\,\delta_p=1}(-a_p)\prod_{p\in\Sigma,\,\delta_p=2}p$, an $\ell$-adic unit; in particular $\hat\delta_!$ is non-degenerate on
+$M_{f^\Sigma}$.
+\item If $\bar\rho_f$ is irreducible, then $\gamma(M_{f,\lambda})=M_{f^\Sigma,\lambda}$ and
+\[
+\eta^\Sigma_{f,\lambda}=\eta^\emptyset_{f,\lambda}\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}.
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof of (c) from (a), (b) and saturation; sketch of (a), (b)]
+(a) The maps $\epsilon_m$ are injective on the $f$-isotypic part with images the $f(mz)$-parts of the old space (multiplicity one, \Cref{ch:hecke}), and $\gamma$ maps the $f$-part onto the
+line of the depletion and its conjugate, by the $q$-expansion formula; it commutes with $G_\Q$ because the degeneracy maps are defined over $\Q$.
+
+(b) This is a double-coset computation (Diamond, Flach and Guo refer to \cite[Chapter 2]{Wiles95} and \cite[Section 4]{DDT}); we sketch it in the case of one good prime $p$. The
+pairings $\hat\delta_!(\epsilon_ix,\epsilon_jy)$ for $i,j\in\set{1,p,p^2}$ are the cup products at level $M$ of $x$ with $y$ transformed by the composites $\epsilon_i^t\epsilon_j$, which are
+Hecke operators at level $M$ ($\epsilon_1^t\epsilon_1$ is the degree $(p+1)p$ of the covering, $\epsilon_1^t\epsilon_p$ is $T_p$, and so on); on $M_f$ each acts by a scalar polynomial in $a_p$ and $p$, and
+expanding $\gamma^t\gamma=\sum_{i,j}\phi_i^t\epsilon_i^t\epsilon_j\phi_j$ gives a scalar, which equals $p\,(p-1)((p+1)^2-a_p^2)/p^3$ up to the normalisations of the $\epsilon_m$, that is $u$ times Wiles's factor.
+The multiplicative case is the $2\times2$ analogue. The non-degeneracy
+follows since every factor is nonzero (\Cref{prop:congruence:three-cases}). We do not give the details; see \cite[Section 1.7.3]{DFG04}.
+
+(c) The lattices $\gamma(M_{f,\lambda})$ and $M_{f^\Sigma,\lambda}$ are $G_\Q$-stable lattices in the same two-dimensional representation, by (a), and $\gamma(M_{f,\lambda})\subseteq M_{f^\Sigma,\lambda}$ because
+$\gamma$ preserves integral cohomology ($p\ne\ell$ for $p\in\Sigma$, so the normalising factors of the $\epsilon_m$ are units) and maps the $f$-eigenspace into the $f^\Sigma$-eigenspace by (a), and
+$M_{f^\Sigma,\lambda}$ is the intersection of that eigenspace with the integral cohomology. As $\bar\rho_f$ is irreducible, every
+$G_\Q$-stable lattice in it is homothetic to a given one (\Cref{ch:modgalrep}, lattices), so $\gamma(M_{f,\lambda})=\ell^nM_{f^\Sigma,\lambda}$ for some $n\ge0$. The degeneracy maps are injective
+modulo $\ell$ on the $\mf m$-part when $\bar\rho_f$ is irreducible (Ihara's lemma, stated in \Cref{ch:modgalrep}, and its analogues at multiplicative primes and at level $p^2$, which
+Diamond, Flach and Guo use); this means that $\gamma(M_{f,\lambda})$ is saturated in the cohomology at level $M^\Sigma$, so $n=0$. Now for $x,y\in M_{f,\lambda}$,
+\[
+\hat\delta_!(\gamma x,\gamma y)=\hat\delta_!(x,\gamma^t\gamma y)=u\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}\,\hat\delta_!(x,y),
+\]
+so the ideal of values on $M_{f^\Sigma,\lambda}=\gamma(M_{f,\lambda})$ is $\eta^\emptyset_{f,\lambda}$ times $\prod_pL^{\nv}_p(A_f,1)^{-1}$, $u$ being a unit ($a_p=\pm1$ at $\delta_p=1$, and $p\ne\ell$).
+\end{proof}
+
+\begin{remark}[status of the statement]\label{rem:congruence:dfg14-status}
+The paper cites only part (c), as ``\cite[Proposition 1.4(c)]{DFG04}'', under the standing assumptions of its Section 4.1: $f$ with rational coefficients, $\lambda=\ell\nmid2M$, $\Sigma$ a finite set of
+primes. It does not say $\ell\notin\Sigma$; every use has $\ell\notin\Sigma$ ($\Sigma=\set{p\mid N}$ with $\ell\nmid N$, and $\Sigma=S$ with $\ell\nmid N$), and the integral structures and the Fontaine-Laffaille
+theory behind \Cref{thm:congruence:dfg37} require the level to be prime to $\ell$, so we state the theorem with $\ell\notin\Sigma$. The form of (b) printed above, with the unit $u$, is reported from a reading of the
+published text made when the chapter was planned and was not re-checked; the book uses only (c).
+\end{remark}
+
+\begin{proposition}[the three cases]\label{prop:congruence:three-cases}
+Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ with rational coefficients and $p$ a prime. The factor $L^{\nv}_p(A_f,1)^{-1}$ of \Cref{thm:congruence:dfg14} is:
+\begin{enumerate}[label=(\roman*)]
+\item $1$ if $\delta_p=0$ ($p^2\mid M$, additive for $f=f_E$): adding $p$ to $\Sigma$ changes neither the level nor the ideal;
+\item if $\delta_p=2$ ($p\nmid M$, good), with $\alpha,\beta$ the roots of $X^2-a_pX+p$,
+\[
+\Bigl(1-\frac\alpha\beta p^{-1}\Bigr)\Bigl(1-p^{-1}\Bigr)\Bigl(1-\frac\beta\alpha p^{-1}\Bigr)=\frac{p-1}p\cdot\frac{(p+1)^2-a_p^2}{p^2},
+\]
+Wiles's level-raising factor, of $\ell$-adic valuation $v_\ell(p-1)+v_\ell((p+1)^2-a_p^2)$ for $\ell\ne p$;
+\item $1-p^{-2}$ if $\delta_p=1$ ($p\,\|\,M$, multiplicative), of valuation $v_\ell(p^2-1)$.
+\end{enumerate}
+So only the primes with $\delta_p\ge1$ contribute.
+\end{proposition}
+
+\begin{proof}
+(i) is the definition of the naive factor. (ii) The geometric Frobenius acts on $A_f=\ad V$ with eigenvalues $\alpha/\beta$, $1$, $\beta/\alpha$ (Appendix B, B-C3(d); this set does not depend on the choice of
+Frobenius), so $L_p(A_f,1)^{-1}$ is the displayed product. Expanding the outer factors, $(1-\frac\alpha\beta p^{-1})(1-\frac\beta\alpha p^{-1})=1-\frac{\alpha^2+\beta^2}{\alpha\beta}p^{-1}+p^{-2}=1-\frac{a_p^2-2p}{p^2}+\frac1{p^2}=\frac{(p+1)^2-a_p^2}{p^2}$,
+using $\alpha+\beta=a_p$, $\alpha\beta=p$. (iii) At a multiplicative prime $(\ad V)^{I_p}$ is a line on which the geometric Frobenius acts by $p^{-1}$ (\Cref{ch:lfunctions}), so $L_p(A_f,s)^{-1}=1-p^{-1-s}$, which is
+$1-p^{-2}$ at $s=1$; equivalently $L^{\nv}_p(A_f,s)^{-1}=1-a_p^2p^{-1-s}$ with $a_p^2=1$. The valuations follow, $p$ being prime to $\ell$.
+\end{proof}
+
+\begin{remark}[what the factors count]\label{rem:congruence:factors-count}
+At a good prime $p\ne\ell$, $v_\ell((p+1)^2-a_p^2)>0$ is Ribet's level-raising condition $a_p\equiv\pm(p+1)\pmod\ell$ for a newform of level $Mp$ congruent to $f$ (\Cref{ch:modgalrep}), and
+$v_\ell(p-1)>0$ allows congruences with forms of level $Mp^2$ whose local component at $p$ is a ramified principal series of $\ell$-power order. The valuation of the factor is the
+number of new congruences that $f^\Sigma$ acquires at the higher level. At a multiplicative prime the factor $1-p^{-2}$ is the analogue for raising $p\,\|\,M$ to $p^2$. The paper's
+paragraph after Theorem thm:dfg14 (``adding a good prime $p$ multiplies the ideal by \dots\ Wiles's level-raising factor; adding a multiplicative prime multiplies it by $1-p^{-2}$'') is
+\Cref{prop:congruence:three-cases}.
+\end{remark}
+
+\begin{remark}[Ihara's lemma and the Eisenstein case]\label{rem:congruence:ihara}
+Irreducibility of $\bar\rho_f$ enters part (c) twice: in the homothety of lattices, and in Ihara's lemma, which says that the degeneracy maps are injective modulo $\ell$ on
+non-Eisenstein components. In the Eisenstein case the factor relating $\eta^\Sigma$ and $\eta^\emptyset$ can differ from the Euler factor by a non-unit; the paper's Conjecture conj:eis and
+Section sec:eis concern that case, which lies outside every theorem of the paper.
+\end{remark}
+
+\begin{remark}[refined integral structures]\label{rem:congruence:refined-structures}
+Diamond, Flach and Guo also use refined integral structures \cite[Section 1.8]{DFG04}, which change the level at exceptional primes $p\equiv-1\pmod\ell$ where the local
+representation is induced from the unramified quadratic extension, and add an auxiliary prime $r$ at which the Euler factor is a unit, so that the relevant cover has degree
+prime to $\ell$ and the pairing is perfect integrally. With them the naive factors are replaced by the true ones; this is how the true Euler factors enter their proof of
+the Tamagawa number conjecture. The paper never uses the refined ideals: it combines the naive ideal (\Cref{thm:congruence:dfg14}) with Lemma lem:dfg21, whose local terms carry the
+true factors, and the difference between the two is exactly $\sum_qe_\ell(E,q)$ (Step 5 of \Cref{thm:congruence:main}).
+\end{remark}
+
+\section[The exceptional set and the theorems of DFG]{The exceptional set and the theorems of Diamond, Flach and Guo}\label{sec:congruence:dfg-theorems}
+
+This section states the theorems of Diamond, Flach and Guo that the paper imports in its Section 4.2: Theorem thm:dfg37 (the length of the $\Sigma$-imprimitive
+adjoint Selmer group is the valuation of the naive congruence ideal), Theorem thm:dfg27 (vanishing of global invariants and Selmer groups), and their main theorem on the
+Tamagawa number conjecture, together with the exceptional set $S_f$ and the notion of minimal ramification that enter the hypotheses. It also records what has been checked
+about the case $\ell=3$, which \Cref{ch:blochkato} left open. The proofs are by the Taylor-Wiles method, outlined in Section \ref{sec:congruence:taylor-wiles}.
+
+\begin{definition}[the exceptional set]\label{def:congruence:exceptional-set}
+Let $f$ be a newform of weight $k\ge2$ and level $N$ with coefficients in $K$. Diamond, Flach and Guo define $S_f$ as the set of finite primes $\lambda$ of $K$ such that either $\lambda\mid Nk!$, or the
+residual representation $M_{f,\lambda}/\lambda M_{f,\lambda}$ is not absolutely irreducible when restricted to $G_F$, where $F=\Q(\sqrt{(-1)^{(\ell-1)/2}\ell})$ and $\lambda\mid\ell$ \cite[Section 0.2]{DFG04}; the
+paper cites the definition as \cite[(31)]{DFG04}. For $k=2$ and $K=\Q$: $\ell\in S_f$ iff $\ell\mid2N$ or $\bar\rho|_{\Gal(\Qbar/\Q(\sqrt{\ell^*}))}$ is not absolutely irreducible.
+\end{definition}
+
+\begin{proposition}[the paper's Proposition prop:Sf]\label{prop:congruence:exceptional-set}
+Let $E/\Q$ have conductor $N$, $f=f_E$, and $\ell$ an odd prime with $\ell\nmid N$. Then $\ell\notin S_f$ if and only if $E[\ell]$ is irreducible and, when $\ell=3$, the mod $3$ image is not conjugate to
+$N_s(\F_3)$ (Sutherland's label $\Ns$); equivalently, $E[\ell]$ is irreducible and $h_\ell(E)=0$. In particular, for $\ell\ge5$ with $\ell\nmid N$, $\ell\notin S_f$ as soon as $E[\ell]$ is irreducible.
+\end{proposition}
+
+\begin{proof}
+This is the paper's Proposition prop:Sf, proved in \Cref{ch:galrep} (with the fundamental characters of \Cref{ch:modgalrep} and the subgroups of $\GL_2(\F_3)$ of \Cref{ch:groups});
+the equivalence with $h_\ell(E)=0$ is Lemma lem:h0 (\Cref{ch:galrep,ch:blochkato}). In outline: an irreducible $\bar\rho$ is absolutely irreducible (complex conjugation has eigenvalues $\pm1$), and its
+restriction to $G_F$ fails to be absolutely irreducible iff $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$; restricted to inertia at $\ell$ this is impossible for $\ell\ge5$ (compare the fundamental
+characters in the ordinary and supersingular cases), and for $\ell=3$ it happens exactly for the image $N_s(\F_3)$.
+\end{proof}
+
+\begin{definition}[the $\Sigma$-imprimitive Selmer group]\label{def:congruence:selmer-sigma}
+Let $\Sigma$ be a finite set of primes not containing $\ell$ and $W=\ad T\otimes\Qlmod$. Following \cite[Section 2.1]{DFG04}, $H^1_\Sigma(\Q,W)$ is the subgroup of $H^1(\Q,W)$ of classes that are
+unramified at every $p\notin\Sigma\cup\set{\ell}$ (that is, lie in $H^1_{\ur}(\Q_p,W)$), satisfy the Bloch-Kato condition $H^1_f(\Q_\ell,W)$ at $\ell$, and are unrestricted at $p\in\Sigma$ and at $\infty$ (\Cref{ch:blochkato}).
+\end{definition}
+
+If $\Sigma$ contains every prime $p\ne\ell$ at which $W$ is ramified, then at $p\notin\Sigma\cup\set{\ell}$ the module $W$ is unramified, $W^{I_p}=W$ is divisible, and $H^1_{\ur}(\Q_p,W)=H^1_f(\Q_p,W)$
+(\Cref{ch:blochkato}); so $H^1_\Sigma(\Q,W)$ is also the group with the Bloch-Kato conditions outside $\Sigma$, and $H^1_f(\Q,W)\subseteq H^1_\Sigma(\Q,W)$. Diamond, Flach and Guo write the unramified condition
+in general because $H^1_{\ur}(\Q_p,W)$ need not be divisible at a ramified prime (\Cref{ex:congruence:ex-hur}). They define the condition at $\ell$ through Fontaine-Laffaille theory,
+as the extensions that lie in the essential image of the Fontaine-Laffaille functor, and compare it with the Bloch-Kato condition.
+
+\begin{definition}[minimal ramification]\label{def:congruence:minimally-ramified}
+Let $\rho_0\colon G_\Q\to\GL_2(k)$ be a residual representation and $p\ne\ell$. A lift $\rho$ of $\rho_0$ (to $\mathcal O$, or to an artinian $\mathcal O$-algebra $A$) is \emph{minimally ramified at $p$} if
+$\rho(I_p)$ maps isomorphically onto $\rho_0(I_p)$ when $\ell\nmid\#\rho_0(I_p)$, and if the coinvariants $M/M^{I_p}$ of the module $M$ of $\rho$ are free of rank one over $A$ (for $\rho$ over $\mathcal O$: $\dim(M\otimes K)^{I_p}=1$)
+when $\ell\mid\#\rho_0(I_p)$ \cite[Section 3.1]{DFG04}. $M_{f,\lambda}$ is \emph{minimally ramified outside $\Sigma$} if it is so at every prime $p\notin\Sigma\cup\set{\ell}$.
+\end{definition}
+
+If $\Sigma$ contains every prime $p\ne\ell$ at which $\rho_f$ is ramified, then $M_{f,\lambda}$ is minimally ramified outside $\Sigma$: at $p\notin\Sigma\cup\set{\ell}$, $\rho_f(I_p)=1=\rho_0(I_p)$. For $f=f_E$ and
+$\Sigma=\set{p\mid N}$, $\rho_{E,\ell}$ is unramified outside $N\ell$ (\Cref{ch:galrep}), so the paper's choice qualifies. Diamond, Flach and Guo also use smaller sets $\Sigma$ internally (the minimal
+deformation problem at the twist-minimal level); the paper never needs them.
+
+\begin{theorem}[Diamond, Flach and Guo, Theorem 3.7; the paper's Theorem thm:dfg37]\label{thm:congruence:dfg37}
+Let $f$ be a newform of weight $k\ge2$ and level $N$ with coefficients in $K$, $\lambda\notin S_f$, and $\Sigma$ a finite set of primes not containing $\ell$ such that $M_{f,\lambda}$ is minimally
+ramified outside $\Sigma$. Then $H^1_\Sigma(\Q,A_{f,\lambda}\otimes K_\lambda/\mathcal O_\lambda)$ is finite, of length $v_\lambda(\eta^\Sigma_{f,\lambda})$. For $f=f_E$, $\ell\notin S_f$ and $\Sigma=\set{p\mid N}$:
+\[
+\len H^1_\Sigma(\Q,W)=v_\ell(\eta^\Sigma_{f,\ell}),\qquad W=\ad T_\ell E\otimes\Qlmod.
+\]
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this; see \cite[Section 3]{DFG04} and the outline in Section \ref{sec:congruence:taylor-wiles}. For $f=f_E$ the module $A_{f,\lambda}=\ad M_{f,\lambda}$ is $\ad T_\ell E$ by
+\Cref{prop:congruence:eta-sigma}(iii), and $\Sigma=\set{p\mid N}$ satisfies the hypothesis by the remark after \Cref{def:congruence:minimally-ramified}.
+\end{proof}
+
+\begin{theorem}[Diamond, Flach and Guo, Theorem 0.2]\label{thm:congruence:dfg02}
+The introduction of \cite{DFG04} states the theorem in the form the paper uses: ``Let $f$ be a newform of weight $k\ge2$ and level $N$ with coefficients in $K$. Suppose $\Sigma$ is a finite
+set of rational primes containing those dividing $N$. Suppose that $\lambda$ is a prime of $K$ which is not in $S_f$ and does not divide any prime in $\Sigma$. Then the $\mathcal O_{K,\lambda}$-module
+$H^1_\Sigma(G_\Q,A_{f,\lambda}/\mathcal A_{f,\lambda})$ has length $v_\lambda(\eta^\Sigma_f)$.'' It is labelled there ``Theorem 0.2 (= Theorem 3.7)''. Here $A_{f,\lambda}/\mathcal A_{f,\lambda}$ is the divisible module
+$A_{f,\lambda}\otimes K_\lambda/\mathcal O_\lambda$, that is $W$ for $f=f_E$.
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this; it is the case of \Cref{thm:congruence:dfg37} in which $\Sigma$ contains the primes dividing $N$, which suffices for the paper (\Cref{ch:blochkato} states it as a pointer).
+\end{proof}
+
+\begin{theorem}[Diamond, Flach and Guo, Theorem 2.7; the paper's Theorem thm:dfg27]\label{thm:congruence:dfg27}
+If $\ell\notin S_f$, then $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$, and the same holds for $A_f=\ad V$: $H^0(\Q,A_f)=H^1_f(\Q,A_f)=0$. Here $V^D=A_f(1)$.
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this; see \cite[Section 2]{DFG04}, where it is stated for $A_f$ and $B_f=A_f(1)$, and \Cref{ch:blochkato}, which states it and sketches its derivation: $H^1_f(\Q,A_f)=0$ because the
+divisible part of $H^1_f(\Q,W)$ lies in the finite group $H^1_\Sigma(\Q,W)$ of \Cref{thm:congruence:dfg37}, and the vanishing for $V^D$ follows from the Euler characteristic formula.
+Only $H^1_f(\Q,V^D)=0$ is needed in the paper; $H^0(\Q,V^D)=0$ holds for every $E$ (\Cref{ch:blochkato}).
+\end{proof}
+
+\begin{theorem}[Diamond, Flach and Guo, Theorem 0.1]\label{thm:congruence:dfg01}
+``Let $f$ be a newform of weight $k\ge2$ and level $N$ with coefficients in $K$. If $\lambda$ is not in $S_f$, then the $\lambda$-part of the Bloch-Kato conjecture holds for $A_f$ and $A_f(1)$.''
+\cite[Theorem 0.1]{DFG04}, which is labelled ``(= Theorem 2.15)'' there.
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this; see \cite[Section 2]{DFG04}. Its proof takes $\Sigma=\set{p\mid N}$ and combines \Cref{thm:congruence:dfg14}, the comparison of $H^1_\Sigma$ with $H^1_f$ (the paper's Lemma
+lem:dfg21), the local formula of Fontaine and Perrin-Riou (the paper's Lemma lem:fpr) and \Cref{thm:congruence:dfg37}, with the Petersson norm and the periods in place of the modular degree:
+it is the same assembly as the proof of Theorem thm:main (\Cref{thm:congruence:main}). The statement of the conjecture is in \Cref{ch:blochkato}.
+\end{proof}
+
+\begin{remark}[does Diamond, Flach and Guo's theorem cover $\ell=3$ in weight $2$?]\label{rem:congruence:ell-three}
+\Cref{ch:blochkato} noted that the adjoint has Hodge-Tate weights $\set{-1,0,1}$, so that Fontaine-Laffaille theory cannot be applied to $\ad T$ directly when $\ell=3$, and left open
+how Diamond, Flach and Guo treat that case. What has been checked against the published text is this. The abstract of \cite{DFG04} says that $\lambda$ ``is any prime of $K$ not dividing
+$Nk!$'' such that the residual representation is absolutely irreducible over $\Q(\sqrt{(-1)^{(\ell-1)/2}\ell})$; the definition of $S_f$ in the introduction excludes only $\lambda\mid Nk!$ and the
+non-absolutely-irreducible case; and Theorems 0.1 and 0.2, quoted above, are stated for every $\lambda\notin S_f$. For $k=2$, $Nk!=2N$, so as \emph{statements} these theorems include $\ell=3$ whenever
+$3\nmid N$ and $\bar\rho|_{\Gal(\Qbar/\Q(\sqrt{-3}))}$ is absolutely irreducible; this is what the paper means by ``It covers $\ell=3$ in weight $2$: $S_f$ excludes only the primes dividing $2N$ and the induced case''.
+How the proof avoids the obstruction at $\ell=3$ is, according to a reading of the published text made when this chapter was planned but not re-checked at the time of writing:
+Fontaine-Laffaille theory is applied to $M_{f,\lambda}$ itself (Hodge-Tate weights $0,1$, an interval of length $1\le\ell-2$), and the local condition at $\ell$ for the adjoint is defined through
+extensions of such short objects, which are compared with the Bloch-Kato condition for every $\ell>2$; the Taylor-Wiles set-up asks for Serre weight $2\le k\le\ell-1$, which holds for $k=2$,
+$\ell=3$. The book therefore treats Theorem thm:main at $\ell=3$ (with $3\nmid N$ and image not $\Ns$) as a theorem, with this caveat on the depth of the check.
+\end{remark}
+
+\section{The Taylor-Wiles method in outline}\label{sec:congruence:taylor-wiles}
+
+This section explains, without proofs, why the length of a Selmer group should equal the valuation of a congruence ideal, which is the content of
+\Cref{thm:congruence:dfg37}. The reader's natural question, ``why should a Selmer group know about congruences?'', has a short answer: the Selmer group is the dual of
+the cotangent space of a deformation ring, the congruence ideal is the congruence ideal of a Hecke algebra, the two rings are isomorphic, and Wiles's numerical
+criterion converts the isomorphism into an equality of lengths. The paper does not use the method beyond \Cref{thm:congruence:dfg37}, but its hypotheses are exactly those of
+the method, and Section 1.5 of the paper contrasts it with the ``level lowering and twisting'' of Theorems thm:qual and thm:quant. The standard reference is \cite{DDT};
+\cite{Wiles95,TaylorWiles,Diamond96} are the original papers.
+
+\begin{definition}[deformation rings]\label{def:congruence:deformation-ring}
+Let $k$ be a finite field of characteristic $\ell$, $\mathcal O$ the ring of integers of a finite extension of $\Ql$ with residue field $k$, and $\rho_0\colon G_\Q\to\GL_2(k)$ continuous, odd and absolutely
+irreducible. For a finite set $\Sigma$ of primes not containing $\ell$, a \emph{deformation of type $\Sigma$} of $\rho_0$ to a complete local noetherian $\mathcal O$-algebra $A$ with residue field $k$ is a strict
+equivalence class of lifts $\rho\colon G_\Q\to\GL_2(A)$ that are unramified outside $\Sigma\cup\set{\ell}\cup\set{\text{primes where }\rho_0\text{ ramifies}}$, minimally ramified (\Cref{def:congruence:minimally-ramified}) at the
+ramified primes outside $\Sigma\cup\set\ell$, unrestricted at $\Sigma$, of fixed determinant $\chi_\ell$, and of Fontaine-Laffaille (``short crystalline'') type at $\ell$.
+\end{definition}
+
+\begin{theorem}[Mazur; representability and the tangent space]\label{thm:congruence:deformation-ring}
+In the situation of \Cref{def:congruence:deformation-ring} the functor of deformations of type $\Sigma$ is represented by a complete local noetherian $\mathcal O$-algebra $R_\Sigma$. If $\pi\colon R_\Sigma\onto\mathcal O$
+corresponds to a lift $\rho$ with module $M_\rho$, there is a natural isomorphism
+\[
+\Hom_{\mathcal O}\bigl(\mathrm{Cot}(\pi),K/\mathcal O\bigr)\simeq H^1_\Sigma\bigl(\Q,\ad M_\rho\otimes K/\mathcal O\bigr),
+\]
+the Selmer group with the local conditions of type $\Sigma$.
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+Representability follows from Schlessinger's criteria, using absolute irreducibility (so that the deformations have only scalar automorphisms) and the finiteness of
+$H^1(G_{\Q,S},\ad\rho_0)$. Infinitesimal deformations of $\rho$ to the ring $(\mathcal O/\varpi^n)[\varepsilon]$, $\varepsilon^2=0$, correspond to cohomology classes in $H^1(\Q,\ad M_\rho/\varpi^n)$, a lift $(1+\varepsilon c)\rho$ being determined by a
+cocycle $c$; the conditions of type $\Sigma$ become the local conditions defining $H^1_\Sigma$, and passing to the limit over $n$ gives the isomorphism. We do not give the details; see
+\cite[Sections 2.2 to 2.8]{DDT}.
+\end{proof}
+
+\begin{definition}[the Hecke side]\label{def:congruence:hecke-side}
+With $\rho_0=\bar\rho_{f,\lambda}$ and $\Sigma$ as above, let $\T_\Sigma$ be the localisation at the maximal ideal of $\rho_0$ of the Hecke algebra acting on the cohomology $L_\Sigma$ of the modular curve
+of level $N(\rho_0)\prod_{p\in\Sigma}p^{\delta_p}$ (with the minimal conductor $N(\rho_0)$ at the twist-minimal level), and let $\pi\colon\T_\Sigma\onto\mathcal O$ be the eigencharacter of the depletion of $f$.
+\end{definition}
+
+The Galois representation with coefficients in $\T_\Sigma$ built from the cohomology (Carayol) is a deformation of type $\Sigma$, so it induces $R_\Sigma\to\T_\Sigma$, which is surjective because $\T_\Sigma$ is
+generated by traces of Frobenius elements. The point $\pi$ of $\T_\Sigma$ pulls back to a point of $R_\Sigma$.
+
+\begin{theorem}[Taylor-Wiles, in the axiomatic form of Diamond, Flach and Guo]\label{thm:congruence:tw-axiomatic}
+Let $\rho_0$ be odd, absolutely irreducible on $G_F$ with $F=\Q(\sqrt{(-1)^{(\ell-1)/2}\ell})$, of minimal conductor among its twists, with Serre weight $k$, $2\le k\le\ell-1$. Then for every $\Sigma$ the map
+$R_\Sigma\to\T_\Sigma$ is an isomorphism of complete intersections, $L_\Sigma$ is free over $\T_\Sigma$, and for every lift $\rho$ of type $\Sigma$ with values in $\mathcal O$ (all of which are modular),
+\[
+\len_{\mathcal O}H^1_\Sigma(\Q,\ad M_\rho\otimes K/\mathcal O)=v\bigl(\eta(\T_\Sigma,\pi)\bigr)=v\bigl(\eta^\Sigma\bigr),
+\]
+with $\eta^\Sigma$ the ideal of values of the pairing on $L_\Sigma[\ker\pi]$.
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+For $\Sigma=\emptyset$: choose, for each $n$, a set $Q_n$ of auxiliary primes $q\equiv1\pmod{\ell^n}$ at which $\rho_0$ is unramified with $\rho_0(\Frob_q)$ having distinct eigenvalues, of a fixed
+cardinality $r=\dim H^1_\emptyset(\Q,\ad\rho_0)$, such that the dual Selmer group with the relaxed conditions at $Q_n$ vanishes. Allowing ramification at $Q_n$ makes $R_{Q_n}$ a quotient of a
+power series ring in $r$ variables and $\T_{Q_n}$ free over the group ring of an $\ell$-group $\Delta_{Q_n}$ of rank $r$; patching over $n$ produces a power series ring mapping onto a module free
+over a power series ring in the same number of variables, whence $R_\emptyset\simeq\T_\emptyset$ is a complete intersection and the cohomology is free. For general $\Sigma$, both sides change by
+the same local factors as $\Sigma$ grows: on the Selmer side by the comparison of local conditions (the paper's Lemma lem:dfg21 and \Cref{ch:galcoh}), on the Hecke side by
+\Cref{thm:congruence:dfg14}; with the numerical criterion (\Cref{thm:congruence:numerical-criterion}(iii)) this gives the equality at every $\Sigma$. Diamond, Flach and Guo formulate this
+as an axiomatic theorem \cite[Section 3]{DFG04}; see \cite{DDT} (Chapters 3 to 5) for the case of semistable elliptic curves, and \cite{Diamond96} for the freeness and the role of the
+cohomology. We do not give the details.
+\end{proof}
+
+\begin{remark}[where each part of the hypothesis $\ell\notin S_f$ is used]\label{rem:congruence:where-hypothesis}
+(a) $\ell\nmid N$: the representation is crystalline at $\ell$ with Hodge-Tate weights $0,1$, Fontaine-Laffaille theory applies to $M_{f,\lambda}$, and the levels are prime to $\ell$.
+(b) $\ell\nmid k!$, that is $\ell\ne2$ for $k=2$: the weights $0,1$ must lie in an interval of length at most $\ell-2$.
+(c) Absolute irreducibility over $\Q(\sqrt{\ell^*})$: the auxiliary primes $q\in Q_n$ are found by Chebotarev in $\Gal(\overline\Q/\Q(\mu_{\ell^n}))$, and one needs elements $g$ there whose image $\rho_0(g)$ has
+distinct eigenvalues and which detect any given class of the dual Selmer group. When $\rho_0$ is induced from $\Q(\sqrt{\ell^*})\subseteq\Q(\mu_\ell)$, its restriction to $G_{\Q(\mu_\ell)}$ is reducible, and the argument
+fails. For elliptic curves with $\ell\nmid2N$ this bites only at $\ell=3$ with image $\Ns$ (\Cref{prop:congruence:exceptional-set}).
+The paper's Section 1.5 and Section sec:anomaly turn on (c): Theorems thm:qual and thm:quant avoid it, and the curves with image $\Ns$ are where the identity needs a correction
+(Section \ref{sec:congruence:beyond}).
+\end{remark}
+
+\begin{remark}[why the length equals the valuation]\label{rem:congruence:why-length-equals-eta}
+In three lines, for $\ell\notin S_f$:
+(1) $H^1_\Sigma(\Q,W)^*\simeq\mathrm{Cot}(\pi_{R_\Sigma})$ (\Cref{thm:congruence:deformation-ring});
+(2) $R_\Sigma\simeq\T_\Sigma$ is a complete intersection, so $\len\mathrm{Cot}(\pi)=v(\eta(\T_\Sigma,\pi))$ (\Cref{thm:congruence:tw-axiomatic}, \Cref{thm:congruence:numerical-criterion}(ii));
+(3) $L_\Sigma$ is free over $\T_\Sigma$, so $\eta(\T_\Sigma,\pi)=\eta^\Sigma$ (\Cref{lem:congruence:ddt417}, equality case, with $d=2$).
+So the Selmer group ``knows'' the congruences because its dual is the cotangent space of a ring that is isomorphic to the Hecke algebra, and in a complete intersection the
+cotangent space has exactly the size of the congruence module. The toy algebras of \Cref{ex:congruence:toy} show what would go wrong otherwise.
+\end{remark}
+
+\section{The assembly: proof of Theorem thm:main}\label{sec:congruence:assembly}
+
+This section proves the paper's main theorem. The proof is an assembly: every input is a theorem proved or stated elsewhere, and the work here is to check that the
+hypotheses match and that the local terms combine as claimed. The paper's Section 4.3 gives the proof in one paragraph; we give it in six numbered steps, each naming its
+input and the hypothesis it uses. The result is an equality, with no multiplicity-one hypothesis, because Lemma lem:hecke is an equality (\Cref{thm:congruence:lem-hecke}).
+From now on $f=f_E$ has rational coefficients and $\lambda=\ell$.
+
+\begin{theorem}[the paper's Theorem thm:main]\label{thm:congruence:main}
+Let $E/\Q$ be $X_0(N)$-optimal, $f=f_E$, $T=T_\ell E$, $W=\ad T\otimes\Qlmod$, and let $\ell$ be an odd prime with $\ell\nmid N$ and $\ell\notin S_f$ (equivalently, by \Cref{prop:congruence:exceptional-set}, $E[\ell]$
+irreducible and, if $\ell=3$, mod $3$ image not $\Ns$). Then
+\begin{equation}\label{eq:congruence:identity}
+v_\ell(\degphi)=\len_{\Zl}H^1_f(\Q,W)+\sum_{q\mid N}v_\ell\bigl(\Tam_q(\ad T)\bigr)+\sum_{q\mid N}e_\ell(E,q),
+\end{equation}
+which is the paper's (eq:identity), and consequently
+\begin{equation}\label{eq:congruence:thm}
+v_\ell(\degphi)\ge\sum_{q\mid N}e_\ell(E,q)+\sum_{q\mid N}t_\ell(E,q),
+\end{equation}
+which is the paper's (eq:thm).
+\end{theorem}
+
+\begin{proof}
+Let $\Sigma$ be the set of primes dividing $N$; it is nonempty (no elliptic curve over $\Q$ has good reduction everywhere, \Cref{ch:reduction}) and $\ell\notin\Sigma$.
+
+\emph{Step 1 (the degree is the congruence ideal; uses optimality, $\ell\nmid2N$, $E[\ell]$ irreducible).} By \Cref{thm:congruence:lem-hecke},
+\[
+v_\ell(\degphi)=v_\ell(\eta^\emptyset_{f,\ell}).
+\]
+
+\emph{Step 2 (vary $\Sigma$; uses $\bar\rho$ irreducible, $\ell\nmid2N$, $\ell\notin\Sigma$).} By \Cref{thm:congruence:dfg14}(c),
+\[
+v_\ell(\eta^\emptyset_{f,\ell})=v_\ell(\eta^\Sigma_{f,\ell})-\sum_{q\in\Sigma}v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr).
+\]
+By \Cref{prop:congruence:three-cases} only the multiplicative primes contribute, each with $v_\ell(q^2-1)$.
+
+\emph{Step 3 (Taylor-Wiles; uses $\ell\notin S_f$).} $M_{f,\ell}$ is minimally ramified outside $\Sigma$ (the remark after \Cref{def:congruence:minimally-ramified}) and $\ad M_{f,\ell}\simeq\ad T$
+(\Cref{prop:congruence:eta-sigma}(iii)), so \Cref{thm:congruence:dfg37} gives
+\[
+v_\ell(\eta^\Sigma_{f,\ell})=\len H^1_\Sigma(\Q,W).
+\]
+
+\emph{Step 4 (the Selmer half; uses $\ell\notin S_f$, $\ell$ odd).} By the Selmer identity of \Cref{ch:blochkato} (which packages the paper's Lemma lem:dfg21 in the form proved there, Lemma
+lem:fpr at every $q\in\Sigma$, Lemma lem:h0 in the form $h_\ell(E)=0$ for $\ell\notin S_f$, and Theorem thm:dfg27 for the hypothesis $H^1_f(\Q,V^D)=0$, the hypothesis $H^0(\Q,V^D)=0$ being automatic),
+\[
+\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{q\in\Sigma}\Bigl(v_\ell\bigl(L_q(A_f,1)^{-1}\bigr)+v_\ell\bigl(\Tam_q(\ad T)\bigr)\Bigr).
+\]
+The term at $\infty$ vanishes because $H^1(\R,T^D)$ is killed by $2$ and $\ell$ is odd, and the term $H^0(\Q,W^D)^*$ of Lemma lem:dfg21 vanishes because $h_\ell(E)=0$.
+
+\emph{Step 5 (cancellation of the naive factors; Definition def:terms).} Combining Steps 1 to 4,
+\[
+v_\ell(\degphi)=\len H^1_f(\Q,W)+\sum_{q\mid N}v_\ell\bigl(\Tam_q(\ad T)\bigr)+\sum_{q\mid N}v_\ell\Bigl(\frac{L_q(A_f,1)^{-1}}{L^{\nv}_q(A_f,1)^{-1}}\Bigr).
+\]
+At a multiplicative $q$ the true and naive factors coincide ($\delta_q=1>0$) and the term is $0$; at an additive $q$ the naive factor is $1$ and the term is $v_\ell(L_q(A_f,1)^{-1})$. In both cases the
+term is $e_\ell(E,q)$ by Definition def:terms (\Cref{ch:lfunctions}). This is \eqref{eq:congruence:identity}.
+
+\emph{Step 6 (the inequality).} $\len H^1_f(\Q,W)\ge0$. At every prime $q\mid N$ with $v_q(j_E)<0$ (multiplicative, or additive of type $\kod{I}_n^*$, $q=2$ included),
+$v_\ell(\Tam_q(\ad T))=t_\ell(E,q)+\min(t_\ell(E,q),v_\ell(q-1),v_\ell(c(u_q)))\ge t_\ell(E,q)$, by Lemma lem:tamfactor and its extension to potentially multiplicative additive primes
+(\Cref{ch:blochkato}; at an additive prime one applies Lemma lem:tamfactor to the local quadratic twist that is multiplicative, $\ad T$ being unchanged, with $n=-v_q(j_E)$, not the
+index of the Kodaira symbol, which differs at $q=2$). At the other bad primes $t_\ell(E,q)=0$ and $\Tam_q(\ad T)=\Zl$ (Lemma lem:tamadd, \Cref{ch:blochkato}). This gives \eqref{eq:congruence:thm}.
+\end{proof}
+
+\begin{corollary}[the paper's Corollary cor:explicit]\label{cor:congruence:explicit}
+Under the hypotheses of \Cref{thm:congruence:main},
+\begin{multline*}
+v_\ell(\degphi)=\len H^1_f(\Q,W)+\sum_{q\mid N}e_\ell(E,q)\\
++\sum_{q:\,v_q(j_E)<0}\Bigl(t_\ell(E,q)+\min\bigl(t_\ell(E,q),v_\ell(q-1),v_\ell(c(u_q))\bigr)\Bigr),
+\end{multline*}
+with $u_q$ the unit part of the Tate parameter at $q$ and $c(u_q)$ the class of its reduction (Appendix B, B-C14). So $\len H^1_f(\Q,W)$ is computable from $\degphi$ and local data.
+\end{corollary}
+
+\begin{proof}
+Substitute the values of the Tamagawa factors of \Cref{ch:blochkato} (Step 6 above) into \eqref{eq:congruence:identity}.
+\end{proof}
+
+\begin{paperlink}
+The paper's proof of Theorem thm:main (Section 4.3), sentence by sentence. ``By Lemma lem:hecke, $v_\ell(\degphi)=v_\lambda(\eta^\emptyset_{f,\lambda})$'': Step 1. ``By Theorem thm:dfg14, \dots'': Step 2.
+``By Theorem thm:dfg37, $v_\lambda(\eta^\Sigma_{f,\lambda})=\len H^1_\Sigma(\Q,W)$'': Step 3. ``By Theorem thm:dfg27 the hypotheses of Lemma lem:dfg21 hold, and $H^0(\Q,W^D)=0$ by Lemma lem:h0'', with
+the display and ``by Lemma lem:fpr each local term is \dots'': Step 4. The display of $v_\ell(\degphi)$ and ``the last sum is $\sum_{p\mid N}e_\ell(E,p)$ by Definition def:terms'': Step 5. ``For
+(eq:thm), the Selmer length is nonnegative, $v_\ell(\Tam_p(\ad T))\ge t_\ell(E,p)$ at every potentially multiplicative prime $p$, multiplicative or additive, $p=2$ included, by Lemma
+lem:tamfactor'': Step 6. The version of 10 October 2026 stated (eq:identity) as an inequality with equality under freeness, and argued at additive potentially multiplicative primes
+through the global twist $E_{\{p\}}$ of Lemma lem:twist, which exists only for odd $p$; the revised paper, like Step 6, argues locally.
+\end{paperlink}
+
+\begin{remark}[the hypotheses, and what fails without each]\label{rem:congruence:hypothesis-table}
+\begin{center}\small
+\begin{tabular}{p{0.24\textwidth}p{0.2\textwidth}p{0.46\textwidth}}
+\toprule
+hypothesis & used in & without it\\
+\midrule
+$E$ optimal & Step 1 & for another curve of the class the parametrisation has degree $\deg\psi\cdot\degphi$; harmless for $v_\ell$ when $E[\ell]$ is irreducible (\Cref{ch:moddeg})\\
+$\ell\nmid N$ & Steps 1, 3, 5 & Agashe-Ribet-Stein fails at $\ell^2\mid N$ (\curve{99a1}); Fontaine-Laffaille and the integral structures need $\ell\nmid N$; Lemma lem:fpr needs $q\ne\ell$\\
+$\ell$ odd & Steps 1, 4 & the factor $\frac12$ in $\hat\delta_!$; the term at $\infty$; self-duality of $\ad T$\\
+$E[\ell]$ irreducible & Steps 1, 2 & non-Eisenstein $\mf m$; homothety of lattices; Ihara's lemma\\
+irreducible over $\Q(\sqrt{\ell^*})$ & Steps 3, 4 & Taylor-Wiles (\Cref{rem:congruence:where-hypothesis}); $h_\ell(E)=0$ and $H^1_f(\Q,V^D)=0$\\
+multiplicity one & nowhere & \Cref{rem:congruence:rem-free}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{remark}
+
+\begin{example}[three curves at $\ell=3$]\label{ex:congruence:main-examples}
+Each curve below has $3\nmid N$ and $E[3]$ irreducible with image not $\Ns$ (Cremona's \texttt{galrep} file), so $3\notin S_f$ and \Cref{thm:congruence:main} applies; the Selmer lengths are
+therefore \emph{computed}. Data from PARI/GP.
+(a) \curve{11a1}: type $\kod{I}_5$ at $11$, $\degphi=1$. Here $e_3(E,11)=0$ (multiplicative), $t_3(E,11)=v_3(5)=0$, so $v_3(\Tam_{11}(\ad T))=0$, and $0=\len H^1_f(\Q,W)$.
+(b) \curve{121a1}: type $\kod{II}$ at $11$ (potentially good), $\degphi=6$. PARI's symmetric square Euler factor at $11$ is $(1+11X)^{-1}$, so $L_{11}(A_f,1)^{-1}=1+\frac{11}{121}=\frac{12}{11}$ and
+$e_3(E,11)=v_3(12)=1$; $\Tam_{11}(\ad T)=\Z_3$ (Lemma lem:tamadd). So $1=v_3(6)=\len H^1_f(\Q,W)+0+1$ and $H^1_f(\Q,\ad T_3E\otimes\Q_3/\Z_3)=0$.
+(c) \curve{539c1}: type $\kod{I}_3^*$ at $7$ ($v_7(j)=-3$) and $\kod{I}_2$ at $11$, $\degphi=288$, $v_3=2$. At $7$: $e_3=v_3(1-7^{-2})=v_3(48)=1$, $t_3=v_3(3)=1$, and the Tate parameter of the
+multiplicative twist \curve{77c1} is $q_E=5\cdot7^3+O(7^4)$, so $\bar u=5$, which is not a cube in $\F_7^\times$ (the cubes are $\pm1$): $\min(1,v_3(6),v_3(c(u)))=0$ and $v_3(\Tam_7(\ad T))=1$. At $11$: $t_3=v_3(2)=0$,
+$e_3=0$. So $2=\len H^1_f(\Q,W)+1+1$, and the Selmer group vanishes again. Had $\bar u$ been a cube, the identity would have forced $v_3(\degphi)\ge3$.
+Further examples with nonzero Selmer groups are in \Cref{ch:blochkato}.
+\end{example}
+
+\section{Remark rem:ko: the Tamagawa excess and the formula of Kim and Ota}\label{sec:congruence:rem-ko}
+
+This section treats the paper's Remark rem:ko, which compares \Cref{thm:congruence:main} with two finer statements: the excess in the Tamagawa factor at a multiplicative prime
+(part (1), tested in the paper's Section sec:tam), and the formula of Kim and Ota for the change of the congruence ideal when primes are moved into the new part of the
+level (part (2), quoted in the paper's Section 1.5).
+
+\begin{remark}[Remark rem:ko(1)]\label{rem:congruence:rem-ko-1}
+Let $q\ne\ell$ be a prime with $v_q(j_E)<0$, $n=-v_q(j_E)$, and $u$ the unit part of the Tate parameter. The Tamagawa factor is
+$v_\ell(\Tam_q(\ad T))=t_\ell(E,q)+\min\bigl(v_\ell(n),v_\ell(q-1),v_\ell(c(u))\bigr)$, with $t_\ell(E,q)=v_\ell(n)$ (\Cref{ch:blochkato}). The excess is positive exactly when $\ell\mid n$, $q\equiv1\pmod\ell$ and $\bar u$ is an
+$\ell$-th power in $\F_q^\times$, and then it is at least $1$ and can be larger. By \eqref{eq:congruence:identity}, for $\ell\notin S_f$ the lower bound for $v_\ell(\degphi)$ rises by exactly that excess:
+\[
+v_\ell(\degphi)\ \ge\ \sum_{q\mid N}e_\ell(E,q)+\sum_{q:\,v_q(j_E)<0}\Bigl(t_\ell(E,q)+\min\bigl(t_\ell(E,q),v_\ell(q-1),v_\ell(c(u_q))\bigr)\Bigr),
+\]
+at multiplicative primes and at additive potentially multiplicative primes alike. The paper's ``gives $v_\ell(\Tam_q)\ge t_\ell(E,q)+1$'' is the case of a positive excess; the abstract's
+``raises the bound by at least one'' is the same statement. In \Cref{ex:congruence:main-examples}(c) the excess at $7$ vanishes because $\bar u=5$ is not a cube.
+\end{remark}
+
+\begin{proposition}[Remark rem:ko(2): Kim and Ota against Theorem thm:main]\label{prop:congruence:kim-ota}
+Let $E$ be optimal with conductor $N=N^+N^-$, $N^-$ square-free, $\ell\ge5$, $\ell\nmid N$, $\ell\notin S_f$, $\bar\rho$ ramified at every $q\mid N^-$ with $q\equiv\pm1\pmod\ell$, so that the formula of Kim and Ota
+holds (\Cref{ch:modgalrep}):
+\[
+\ord_\lambda\eta_f(N)=\ord_\lambda\eta_f(N^+,N^-)+\sum_{q\mid N^-}t_\ell(E,q).
+\]
+\begin{enumerate}[label=(\roman*)]
+\item $v_\ell(r_E)\ge\sum_{q\mid N^-}t_\ell(E,q)$, and this is contained in \eqref{eq:congruence:thm}, which needs neither $\ell\ge5$ nor the condition at $q\equiv\pm1$.
+\item If $\eta_f(N)$ is either the Hecke congruence ideal $\eta^{\mathrm{Hecke}}_f\Zl$ of \Cref{def:congruence:newform-ideal} or the ideal $\eta^\emptyset_{f,\lambda}$ of \Cref{def:congruence:eta-sigma}, then
+\begin{multline*}
+\ord_\lambda\eta_f(N^+,N^-)=\len H^1_f(\Q,W)+\sum_{q\mid N}e_\ell(E,q)+\sum_{q\mid N^-}\min\bigl(t_\ell,v_\ell(q-1),v_\ell(c(u_q))\bigr)\\
++\sum_{q\mid N^+,\,v_q(j_E)<0}\bigl(t_\ell+\min(t_\ell,v_\ell(q-1),v_\ell(c(u_q)))\bigr),
+\end{multline*}
+with $t_\ell=t_\ell(E,q)$: a Selmer-theoretic reading of the congruence ideal of the $N^-$-new quotient.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) is in \Cref{ch:modgalrep}; it is contained in \eqref{eq:congruence:thm} because the primes of $N^-$ are multiplicative and all other terms of \eqref{eq:congruence:thm} are nonnegative. (ii) In either case
+$\ord_\lambda\eta_f(N)=v_\ell(\degphi)$: by \Cref{thm:congruence:crit} and Agashe-Ribet-Stein in the first, by \Cref{thm:congruence:lem-hecke} in the second. Subtract the formula of Kim and Ota from
+\Cref{cor:congruence:explicit}; the primes of $N^-$ have $v_q(j_E)<0$, and their terms $t_\ell(E,q)$ cancel.
+\end{proof}
+
+\begin{remark}[on the identification in (ii)]\label{rem:congruence:kim-ota-identification}
+We have not checked in \cite{KimOta} whether their $\eta_f(N)$ is defined as the congruence ideal of the full Hecke algebra (as the paper's Remark rem:ko(2) says: ``concerns the same
+congruence ideal'') or as a cohomological ideal; under the hypotheses of the proposition the two have the same valuation (\Cref{rem:congruence:two-ideals}), so (ii) holds in either reading.
+The theorem numbers \cite[Theorem 1.1, Definition 2.12]{KimOta} are cited as the paper cites them.
+\end{remark}
+
+\section{Twist monotonicity: Theorem thm:twist}\label{sec:congruence:twist}
+
+This section proves the paper's Theorem thm:twist: under a quadratic twist that does not raise the level, the congruence number can only drop. The proof transports
+congruences along the twist map $\iota$ and uses nothing beyond \Cref{ch:hecke}; in particular it needs no hypothesis on $\ell$. It is the model for Step 1 of the proof of
+Theorem thm:quant in the next section, and its data paragraph is where the paper first sees the Euler terms that Theorem thm:quant explains.
+
+\begin{proposition}[the twist map, recollection]\label{prop:congruence:twist-inputs}
+Let $S$ be a finite set of odd primes, $D=\prod_{q\in S}q$, $\chi_S$ and $\iota=\iota_S$ as in \Cref{conv:congruence:setup}(g).
+\begin{enumerate}[label=(\roman*)]
+\item $\iota$ maps $S_2(\Gamma_0(M))$ into $S_2(\Gamma_0(\lcm(M,D^2)))$ and integral forms to integral forms; $\iota(h)=\iota(h^S)$, and $\iota\circ\iota(h)=h^S$.
+\item If $h$ lies in the generalised eigenspace of the operators $T_p$, $p\nmid MD$, for a system $(\lambda_p)$, then $\iota(h)$ lies in the generalised eigenspace for the system $(\chi_S(p)\lambda_p)$.
+\item If $h$ lies in a sum of generalised eigenspaces for systems that differ at infinitely many $p$ from the system of a newform $f$ of level $N$, then $\iota(h)$ (when it has level dividing $N$)
+lies in $f^\perp$ provided the twisted systems differ from that of $f$ at infinitely many $p$; in particular, if $g$ is a newform with $\iota(g)=f$, then $\iota$ maps the forms of level dividing $N$ in
+$g^\perp$ into $f^\perp$.
+\item (Levels of twists.) Let $E$ have conductor $N$, $S$ a set of odd primes with $q^2\mid N$ for $q\in S$, and suppose $E$ has, at every $q\in S$, type $\kod{I}_n^*$ ($n\ge1$), resp.\ $\kod{I}_0^*$, resp.\
+$\kod{II},\kod{III},\kod{IV}$ or a dual with $q\ge5$. Then $N_S=N/D$, resp.\ $N/D^2$, resp.\ $N$, and in every case $\iota(f_{E_S})=f_E$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) and (ii) are \Cref{ch:hecke} (the twist operator); (iii) is \Cref{ch:hecke} (transport along $\iota$), which rests on strong multiplicity one: a generalised eigenform of the $T_p$, $p\nmid N$,
+for a system different from that of $f$ at infinitely many $p$ is orthogonal to every $f(dz)$. (iv) is \Cref{ch:modgalrep} (levels of $E_S$), with the twist lemma of \Cref{ch:reduction} for the
+types, and the case of the paper's Lemma lem:twist(iii) for $\iota(f_{E_S})=f_E$ (\Cref{ch:hecke}, the case of the paper).
+\end{proof}
+
+\begin{theorem}[the paper's Theorem thm:twist]\label{thm:congruence:twist}
+Let $E/\Q$ have conductor $N$, let $S$ be a set of odd primes, $D=\prod_{q\in S}q$, $\chi_S=\prod_{q\in S}\chi_{q^*}$, and $E_S=E\otimes\chi_S$ of conductor $N_S$. If $q^2\mid N$ for every $q\in S$ and $\lcm(N_S,D^2)\mid N$,
+then $r_{E_S}\mid r_E$. If moreover $\lcm(N,D^2)\mid N_S$, then $r_{E_S}=r_E$.
+\end{theorem}
+
+\begin{proof}
+Let $f=f_E$, $g=f_{E_S}$, $\iota=\iota_S$.
+
+\emph{(1) $\iota(g)=f$.} By \Cref{prop:congruence:twist-inputs}(i), $\iota(g)\in S_2(\Gamma_0(\lcm(N_S,D^2)))\subseteq S_2(\Gamma_0(N))$. Both $f$ and $\iota(g)$ have multiplicative coefficients ($\chi_S$ is multiplicative).
+For a prime $p\nmid D$ the character $\chi_S$ is unramified at $p$ (also at $p=2$, as $D^*=\prod q^*\equiv1\pmod4$), so $V_\ell E\simeq V_\ell E_S\otimes\chi_S$ gives $a_p(f)=\chi_S(p)a_p(g)$ at primes of good
+reduction, and the same holds at multiplicative primes (the unramified twist changes split to nonsplit exactly when $\chi_S(p)=-1$) and at additive primes (both coefficients vanish). The
+prime-power coefficients at $p\nmid D$ satisfy the same recursion on both sides, $p$ dividing $N$ if and only if it divides $N_S$. For $q\in S$, $a_{q^k}(f)=0$ because $q^2\mid N$ (\Cref{ch:hecke}), and
+$a_{q^k}(\iota(g))=\chi_S(q^k)a_{q^k}(g)=0$. So $\iota(g)=f$.
+
+\emph{(2) $\iota$ maps $g^\perp$ into $f^\perp$.} At level $N_S$, $g$ is a newform, so $g^\perp$ is $\T$-stable and is the sum of the generalised eigenspaces of the systems of eigenvalues different from that of
+$g$ (\Cref{ch:hecke}); each such system differs from that of $g$ at infinitely many primes (strong multiplicity one). Twisting multiplies the eigenvalues by $\chi_S(p)$, so the twisted systems differ from
+that of $f=\iota(g)$ at infinitely many primes, and \Cref{prop:congruence:twist-inputs}(iii) gives $\iota(g^\perp)\subseteq f^\perp$, the images having level dividing $N$.
+
+\emph{(3) Transport.} By definition of $r_{E_S}$ there is $h\in g^\perp\cap S_2(\Gamma_0(N_S);\Z)$ with $g\equiv h\pmod{r_{E_S}}$ coefficientwise. Applying $\iota$, which preserves integrality and congruences
+(it multiplies each coefficient by $0$ or $\pm1$), $f=\iota(g)\equiv\iota(h)\pmod{r_{E_S}}$ with $\iota(h)\in f^\perp\cap S_2(\Gamma_0(N);\Z)$. By Lemma lem:crit (\Cref{thm:congruence:crit}) the moduli of such congruences
+are exactly the divisors of $r_E$, so $r_{E_S}\mid r_E$. (The definition of $r_E$ as the largest modulus gives only $r_{E_S}\le r_E$; the divisibility needs Lemma lem:crit, as the paper says.)
+
+\emph{(4) Symmetry.} $E=(E_S)\otimes\chi_S$, and if $\lcm(N,D^2)\mid N_S$ then $q^2\mid N_S$ for $q\in S$; so the hypotheses hold with the roles of $E$ and $E_S$ exchanged, and $r_E\mid r_{E_S}$.
+\end{proof}
+
+\begin{example}[the three cases, and the data]\label{ex:congruence:twist-cases}
+By \Cref{prop:congruence:twist-inputs}(iv) the hypotheses of \Cref{thm:congruence:twist} hold in three cases (the paper's list after the theorem).
+(a) Type $\kod{I}_n^*$ at every $q\in S$: $N_S=N/D$, $r_{E_S}\mid r_E$. For instance \curve{539c1} ($\kod{I}_3^*$ at $7$) and \curve{77c1}: $r=288$ and $6$; \curve{980i1} ($\kod{I}_5^*$ at $7$) and \curve{140b1}
+($\kod{I}_5$ at $7$): $\degphi=2880$ and $60$; \curve{121d1} ($\kod{I}_1^*$ at $11$) and \curve{11a1}: $r=24$ and $1$.
+(b) Type $\kod{I}_0^*$ at every $q\in S$: $N_S=N/D^2$, $E_S$ good at $S$. For instance \curve{539d1} and \curve{11a1}: $r=504$ and $1$.
+(c) Potentially good types $\kod{II},\kod{III},\kod{IV}$ or duals at $q\ge5$: $N_S=N$ and $r_{E_S}=r_E$. For instance \curve{121a1} (type $\kod{II}$ at $11$) and \curve{121c1} (type $\kod{IV}$): $r=6=6$.
+(Congruence numbers computed with PARI/GP as the index of \Cref{prop:congruence:crit-general}, degrees with \texttt{ellmoddegree}.)
+At $\ell=3$ the $3$-adic valuations of the modular degrees in (a) and (b) are $2$ against $1$, $2$ against $1$, $1$ against $0$, and $2$ against $0$: the difference is $e_3(E,q)$, namely
+$v_3(7^2-1)=1$, $v_3(48)=1$, $v_3(11^2-1)=1$, and, for the $\kod{I}_0^*$ prime $7$ of \curve{539d1}, $v_3\bigl(\frac67\cdot\frac{64-4}{49}\bigr)=2$. This is Theorem thm:quant.
+\emph{The data, recomputed.} For every $X_0(N)$-optimal curve without complex multiplication of conductor below $10{,}000$ (Cremona's \texttt{degphi} file), let $S$ be the set of odd primes of type
+$\kod{I}_0^*$ or $\kod{I}_n^*$ (PARI codes $-1$ and $\le-5$), and consider the pairs $(E,\ell)$ with $S\ne\emptyset$, $\ell\in\set{3,5,7,11,13}$, $\ell\nmid N$ and $E[\ell]$ irreducible (no label $\ell$B or $\ell$Cs in Cremona's
+\texttt{galrep} file). There are $25{,}477$ such pairs ($15{,}607$ with $3\in S$; $8$ with $\ell=3$ and image $\Ns$), and in every one
+$v_\ell(\degphi)=v_\ell(\deg\varphi_{E_S'})+\sum_{q\in S}e_\ell(E,q)$, with $E_S'$ the optimal curve of the class of $E_S$, located by its conductor and its $a_p$ for $p<80$, and $e_\ell(E,q)=v_\ell(q^2-1)$
+(type $\kod{I}_n^*$) or $v_\ell(q-1)+v_\ell((q+1)^2-a_q(E_S)^2)$ (type $\kod{I}_0^*$). For case (c), with $S$ the set of primes $q\ge5$ of type $\kod{II},\kod{III},\kod{IV}$ or a dual and the same conditions on $\ell$,
+there are $14{,}880$ pairs ($42$ with image $\Ns$ at $\ell=3$), and $v_\ell(\degphi)=v_\ell(\deg\varphi_{E_S'})$ in every one.
+\end{example}
+
+\begin{paperlink}
+The paragraph after Theorem thm:twist in the revised paper reports, on the working set, the pairs (curve, prime of type $\kod{I}_n^*$) and (curve, prime of potentially good additive type) with
+$v_\ell(\degphi)\ge v_\ell(\deg\varphi_{E_q})$ and ``equality in every pair of case (c)'', and then: ``In cases (a) and (b) Theorem thm:quant predicts a difference equal to the Euler term, which is
+positive in case (a) at $\ell=3$ for every $q\ne3$, as $3\mid q^2-1$''; and ``Below conductor $10{,}000$ the difference equals the Euler term in all $25{,}477$ pairs''. The count $25{,}477$ agrees with
+\Cref{ex:congruence:twist-cases}; the working-set counts are the paper's and were not recomputed here. The version of 10 October 2026 said ``strict inequality only in case (b)'', which
+case (a) contradicts (\curve{539c1}, \curve{980i1}, \curve{121d1}).
+\end{paperlink}
+
+\section{Theorem thm:quant}\label{sec:congruence:quant}
+
+This section proves the paper's Theorem thm:quant: at the odd primes of type $\kod{I}_0^*$ and $\kod{I}_n^*$ the omitted Euler factor divides the modular degree, under the sole
+hypothesis that $E[\ell]$ is irreducible, and with equality (after removing the congruence number of the twist) when $\ell\notin S_f$. The proof raises the level from $N_S$ to $N$ by
+depleting the newform of the twist, and moves congruences between levels with $\iota$. We prove, in addition, that Step 1 of the paper's proof is an equality at every prime $\ell\notin S$
+(\Cref{lem:congruence:quant-step1}), which the paper's Remark rem:afterquant (2) leaves open.
+
+\begin{theorem}[the paper's Theorem thm:quant]\label{thm:congruence:quant}
+Let $E$ be $X_0(N)$-optimal and let $\ell$ be an odd prime with $\ell\nmid N$ and $E[\ell]$ irreducible. Let $S$ be the set of odd primes $q$ at which $E$ has type $\kod{I}_0^*$ or $\kod{I}_n^*$ ($n\ge1$), $\chi_S=\prod_{q\in S}\chi_{q^*}$,
+$E_S=E\otimes\chi_S$, and $E_S'$ the optimal curve of the isogeny class of $E_S$. Then
+\begin{equation}\label{eq:congruence:quant}
+v_\ell(\degphi)\ \ge\ v_\ell(r_{E_S})+\sum_{q\in S}e_\ell(E,q)\ \ge\ \sum_{q\in S}e_\ell(E,q).
+\end{equation}
+If moreover $\ell\notin S_f$ (automatic for $\ell\ge5$, \Cref{prop:congruence:exceptional-set}), the first inequality is an equality and $v_\ell(r_{E_S})=v_\ell(\deg\varphi_{E_S'})$:
+\[
+v_\ell(\degphi)=v_\ell(\deg\varphi_{E_S'})+\sum_{q\in S}e_\ell(E,q).
+\]
+\end{theorem}
+
+\begin{lemma}[the set-up]\label{lem:congruence:quant-setup}
+In \Cref{thm:congruence:quant}, let $f=f_E$, $g=f_{E_S}$ (of level $N_S$), $D=\prod_{q\in S}q$ and $\iota=\iota_S$. Then $\ell\notin S$, and:
+\begin{enumerate}[label=(\roman*)]
+\item $E_S$ has good reduction at the $\kod{I}_0^*$ primes of $S$ and multiplicative reduction at the $\kod{I}_n^*$ primes; so $\delta_q(g)=2$, resp.\ $1$, and $N_S^S=N_S\prod_{q\in S}q^{\delta_q(g)}=N$;
+\item $D^2\mid N$, and at $q\notin S$ the curves $E$ and $E_S$ have the same reduction type, the same Euler factors (true and naive) and the same $e_\ell(E,q)$;
+\item $g^S\in S_2(\Gamma_0(N))$ is a normalised eigenform of $\T=\T_N$ with $U_qg^S=0$ for $q\in S$, its generalised eigenspace is the line $\C g^S$, and $\iota(g^S)=\iota(g)=f$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+$\ell\notin S$ because $S$ consists of primes dividing $N$; in particular $\ell\ne3$ if $3\in S$. (i) is the twist lemma of \Cref{ch:reduction} (the paper's Lemma lem:twist, valid at every odd $q$ for
+these exchanges: $\kod{I}_0^*\leftrightarrow\kod{I}_0$, $\kod{I}_n^*\leftrightarrow\kod{I}_n$), with the levels of \Cref{prop:congruence:twist-inputs}(iv). (ii) $v_q(N)=2$ for $q\in S$ (types $\kod{I}_0^*$, $\kod{I}_n^*$ at odd $q$ have
+conductor exponent $2$, \Cref{ch:reduction}). At $q\notin S$ the character $\chi_S$ is unramified (at $q=2$ too, as $\prod_{q\in S}q^*\equiv1\pmod4$), so the twist does not change the type, $a_q(E_S)^2=a_q(E)^2$,
+and the local factors of $\ad V$, which are twist-invariant, agree (\Cref{ch:lfunctions}). (iii) By (i) and \Cref{ch:hecke} (depletion) $g^S$ is an eigenform of $\T_N$ with generalised eigenspace $\C g^S$;
+$\iota$ kills the coefficients at multiples of $D$, so $\iota(g^S)=\iota(g)$, which is $f$ by \Cref{prop:congruence:twist-inputs}(iv).
+\end{proof}
+
+\begin{lemma}[Step 1, as an equality]\label{lem:congruence:quant-step1}
+In the situation of \Cref{lem:congruence:quant-setup}, let $\pi\colon\T_N\to\Z$ be the eigencharacter of $g^S$ and $\eta^{\mathrm{Hecke}}(g^S)=\pi(\Ann_{\T_N}\ker\pi)=r_\pi\Z$ (\Cref{prop:congruence:crit-general}).
+Then $r_E\mid r_\pi$, and for every prime $\ell\notin S$,
+\[
+v_\ell(r_E)=v_\ell\bigl(\eta^{\mathrm{Hecke}}(g^S)\bigr).
+\]
+No hypothesis on $\ell$ other than $\ell\notin S$ is needed: neither $\ell$ odd, nor $\ell\nmid N$, nor $E[\ell]$ irreducible, nor $\ell\notin S_f$.
+\end{lemma}
+
+\begin{proof}
+\emph{$r_E\mid r_\pi$.} This is \Cref{ch:hecke} (``$r_f$ divides the congruence module of $g^S$'', and its corollary for the paper's situation): take $h\in f^\perp\cap S_2(\Gamma_0(N);\Z)$ with $f\equiv h\pmod{r_E}$; then
+$g^S=\iota(f)\equiv\iota(h)\pmod{r_E}$, because $\iota\circ\iota(g)=g^S$ and $\iota(f)=\iota(\iota(g))$; and $\iota(f^\perp)$ lies in the $\T$-stable complement of $\C g^S$ (the systems in $f^\perp$ differ from that of $f$ at infinitely many
+primes, so their twists differ from that of $g$, by strong multiplicity one). \Cref{prop:congruence:crit-general} gives $r_E\mid r_\pi$. So $v_\ell(r_E)\le v_\ell(r_\pi)$ for every $\ell$.
+
+\emph{$v_\ell(r_E)\ge v_\ell(r_\pi)$ for $\ell\notin S$ (the paper's Step 1).} Let $t=v_\ell(r_\pi)$ and $\mf m$ the maximal ideal of $\T_\ell$ attached to $\pi$. By \Cref{prop:congruence:crit-general} over $\Zl$ there is
+$h\in g^c\cap S_2(\Gamma_0(N);\Zl)$, $g^c$ the $\T$-stable complement of $\C g^S$, with $g^S\equiv h\pmod{\ell^t}$. Since $\pi$ factors through $\T_{\mf m}$, $e_{\mf m}g^S=g^S$; the idempotent $e_{\mf m}\in\T_\ell$ preserves
+$S_2(\Gamma_0(N);\Zl)$ and $g^c$, so $h'=e_{\mf m}h\in g^c\cap S_2(\Gamma_0(N);\Zl)$ and $g^S-h'=e_{\mf m}(g^S-h)\in\ell^tS_2(\Gamma_0(N);\Zl)$. By \Cref{prop:congruence:hecke-local}(iii), $h'$ lies in the sum of the generalised
+eigenspaces $V(\phi)$ with $\phi\ne\pi$ and $\phi\equiv\pi$ modulo the maximal ideal of $\overline\Z_\ell$. For such $\phi$ and $q\in S$, $\phi(U_q)\equiv\pi(U_q)=0$; every eigenvalue of $U_q$ on $S_2(\Gamma_0(N))$ is $0$ or a unit at every
+prime not above $q$ (\Cref{ch:hecke}: it is $0$, $\pm1$ or a root of $X^2-a_q(h)X+q$ for a newform $h$), and $\ell\ne q$, so $\phi(U_q)=0$. Each $V(\phi)$ lies in the old space $V_h$ of a newform $h$ of level dividing $N$.
+If $h=g$, then $\phi$ agrees with $\pi$ on the $T_p$, $p\nmid N$, and on the $U_q$, $q\in S$; the operators $U_p$ for $p\mid N_S$, $p\notin S$, act on $V_g$ by the scalar $a_p(g)$ (no oldforms at those primes,
+$v_p(N)=v_p(N_S)$); so $\phi=\pi$, which is excluded. Hence $h\ne g$. The twist $\iota(V(\phi))$ lies in $S_2(\Gamma_0(N))$, because the level of a twist by $\chi_S$ divides $\lcm(N,D^2)=N$, and in the generalised
+eigenspace of the $T_p$, $p\nmid N$, for the system $\chi_S(p)a_p(h)$; this differs from the system $\chi_S(p)a_p(g)$ of $f$ at infinitely many $p$ (otherwise $h=g$ by strong multiplicity one), so
+$\iota(V(\phi))\subseteq f^\perp$ (\Cref{prop:congruence:twist-inputs}(iii)). Therefore $\iota(h')\in f^\perp\cap S_2(\Gamma_0(N);\Zl)$ and
+\[
+f=\iota(g^S)\equiv\iota(h')\pmod{\ell^t}.
+\]
+By Lemma lem:crit over $\Zl$ (\Cref{thm:congruence:crit}), $t\le v_\ell(r_E)$.
+\end{proof}
+
+\begin{remark}[Commentary: Remark rem:afterquant (2) and Open question 6]\label{rem:congruence:step1-commentary}
+The paper proves, in its Step 1, the inequality $v_\ell(r_E)\ge v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ under the hypotheses of Theorem thm:quant, and says in Remark rem:afterquant (2): ``When $\ell\notin S_f$
+every inequality of the proof is an equality, in particular those of Steps 1 and 2; no multiplicity one at level $N$ or $N_S$ is used. Whether Step 1 is an equality without that hypothesis is
+open; the Hecke congruence modules at level $539$ (of orders $288$ and $504$) are consistent with it.'' Its Open question 6 lists ``whether Step 1 of the proof of Theorem thm:quant is an
+equality when $\ell\in S_f$''. \Cref{lem:congruence:quant-step1} answers both: Step 1 is an equality at every prime $\ell\notin S$, whether or not $\ell\in S_f$ and whether or not $E[\ell]$ is irreducible,
+because the transport along $\iota$ works in both directions (\Cref{ch:hecke} supplies the direction from $f$ to $g^S$). The proof of the paper's direction above also shows that the hypotheses
+$\ell$ odd, $\ell\nmid N$ and $E[\ell]$ irreducible are not used in Step 1, only $\ell\ne q$ for $q\in S$. At level $539$, \Cref{ex:congruence:level-539} gives $r(\curve{539c1})=288$ and $r(\curve{539d1})=504$, equal to the
+two depleted modules as integers; the $7$-parts ($7\in S$) are not covered by the lemma, and there the equality ($7^0$ and $7^1$) is observed, not proved.
+\end{remark}
+
+\begin{lemma}[Steps 2 to 4]\label{lem:congruence:quant-steps234}
+In the situation of \Cref{lem:congruence:quant-setup}, with $\ell$ odd, $\ell\nmid N$ and $E[\ell]$ irreducible:
+\begin{enumerate}[label=(\roman*)]
+\item (Step 2) $v_\ell(\eta^{\mathrm{Hecke}}(g^S))\ge v_\ell(\eta^S_{g,\ell})$;
+\item (Step 3) $v_\ell(\eta^S_{g,\ell})=v_\ell(\eta^\emptyset_{g,\ell})+\sum_{q\in S}e_\ell(E,q)$;
+\item (Step 4) $v_\ell(\eta^\emptyset_{g,\ell})=v_\ell(\deg\varphi_{E_S'})=v_\ell(r_{E_S})$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The residual representation of $g$ is $\bar\rho\otimes\chi_S$, irreducible, and $\ell\nmid2N_S$, $N_S$ dividing $N$.
+
+(i) Apply \Cref{lem:congruence:ddt417} with $\mathcal O=\Zl$, $\T$ replaced by $\T_{\mf m}$ ($\mf m$ the maximal ideal of $\pi$), $L=H^1(X_0(N),\Zl)_{\mf m}$, the pairing $\hat\delta_!$ (perfect on the $\mf m$-component, with
+$\T_{\mf m}$ self-adjoint, \Cref{prop:congruence:hecke-local}(iv)), and $\pi\colon\T_{\mf m}\onto\Zl$. The congruence ideal of $\pi$ on $\T_{\mf m}$ is $\eta^{\mathrm{Hecke}}(g^S)\Zl$ (\Cref{prop:congruence:congruence-module}(iv)).
+The module $L[\ker\pi]$ is $H^1(X_0(N),\Zl)[\ker\pi]$, which is $M_{g^S,\ell}$ of \Cref{def:congruence:eta-sigma} (level $N=N_S^S$; \Cref{prop:congruence:eta-sigma}(i), $\mf m$ being non-Eisenstein as its residual
+representation is $\bar\rho\otimes\chi_S$): rank $d=2$, Gram determinant $(\eta^S_{g,\ell})^2$ up to a unit (\Cref{prop:congruence:eta-sigma}(ii)), nonzero by (ii) and (iii) below. So
+$2v_\ell(\eta^{\mathrm{Hecke}}(g^S))\ge2v_\ell(\eta^S_{g,\ell})$. Freeness of $L$ over $\T_{\mf m}$ is not needed.
+
+(ii) Apply \Cref{thm:congruence:dfg14}(c) to $g$ (level $N_S$, $\ell\nmid2N_S$, $\ell\notin S$, $\bar\rho_g$ irreducible) with $\Sigma=S$:
+$v_\ell(\eta^S_{g,\ell})=v_\ell(\eta^\emptyset_{g,\ell})+\sum_{q\in S}v_\ell(L^{\nv}_q(A_g,1)^{-1})$. At $q\in S$, $\delta_q(g)\ge1$, so $L^{\nv}_q(A_g,1)=L_q(A_g,1)$; $A_g\simeq A_f$, the adjoint being unchanged by twisting
+(\Cref{ch:lfunctions}); and $f$ has $\delta_q(f)=0$, so $e_\ell(E,q)=v_\ell(L_q(A_f,1)^{-1})$ by Definition def:terms. The values are those of Lemma lem:euler: $v_\ell(q^2-1)$ at an $\kod{I}_n^*$ prime and
+$v_\ell(q-1)+v_\ell((q+1)^2-a_q(E_S)^2)$ at an $\kod{I}_0^*$ prime, $q=3$ included (\Cref{ch:lfunctions}; for $q=3$, $\ell\ne3$).
+
+(iii) \Cref{thm:congruence:lem-hecke} applied to $E_S'$, which is optimal of conductor $N_S$, with $\ell\nmid2N_S$ and $E_S'[\ell]\simeq E_S[\ell]$ irreducible (the isogeny between $E_S$ and $E_S'$ has degree prime to $\ell$,
+as $E_S[\ell]$ is irreducible). Its newform is $g$. No freeness is used.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{thm:congruence:quant}]
+\emph{The inequalities.} As $\ell^2\nmid N$, $v_\ell(\degphi)=v_\ell(r_E)$ \cite[Theorem 2.2]{ARS12}. By \Cref{lem:congruence:quant-step1} (only the inequality $\ge$ is needed here) and
+\Cref{lem:congruence:quant-steps234},
+\[
+v_\ell(\degphi)=v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S))\ge v_\ell(\eta^S_{g,\ell})=v_\ell(r_{E_S})+\sum_{q\in S}e_\ell(E,q),
+\]
+and the second inequality of \eqref{eq:congruence:quant} holds because $r_{E_S}$ is an integer.
+
+\emph{The equality.} Let $\ell\notin S_f$. Then $\ell\notin S_{f_{E_S'}}$: $\ell\nmid2N_S$, and $\bar\rho_{E_S'}\simeq\bar\rho\otimes\chi_S$, whose restriction to $\Gal(\overline\Q/\Q(\sqrt{\ell^*}))$ is absolutely irreducible iff that of $\bar\rho$
+is. Apply \Cref{thm:congruence:main} to $E$ (conductor $N$) and to $E_S'$ (conductor $N_S$). The $G_\Q$-modules $\ad T_\ell E$ and $\ad T_\ell E_S'$ are isomorphic (twisting does not change the adjoint, and
+$T_\ell E_S\simeq T_\ell E_S'$ by an isogeny of degree prime to $\ell$), so the Selmer groups $H^1_f(\Q,W)$ coincide and, at every prime $q$, so do the Tamagawa factors $\Tam_q(\ad T)$, which are local
+invariants of $\ad T$ (at a prime where $\ad T$ is unramified they are trivial, so the sums over $q\mid N$ and over $q\mid N_S$ agree). By \Cref{lem:congruence:quant-setup}(ii) the Euler terms agree at
+$q\notin S$; at $q\in S$, $e_\ell(E_S',q)=0$, the reduction of $E_S'$ being good or multiplicative. Subtracting the two identities \eqref{eq:congruence:identity},
+\[
+v_\ell(\degphi)-v_\ell(\deg\varphi_{E_S'})=\sum_{q\in S}e_\ell(E,q),
+\]
+and $v_\ell(\deg\varphi_{E_S'})=v_\ell(r_{E_S})$ by \Cref{lem:congruence:quant-steps234}(iii).
+\end{proof}
+
+\begin{corollary}[every step is an equality when $\ell\notin S_f$]\label{cor:congruence:quant-equality}
+In \Cref{thm:congruence:quant}, if $\ell\notin S_f$ then
+\[
+v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S))=v_\ell(\eta^S_{g,\ell})=v_\ell(r_{E_S})+\sum_{q\in S}e_\ell(E,q).
+\]
+In particular the Hecke and cohomological congruence ideals of the depleted form $g^S$ at level $N$ have the same valuation, a freeness-type statement obtained without any multiplicity-one
+theorem.
+\end{corollary}
+
+\begin{proof}
+The chain in the proof of \Cref{thm:congruence:quant} begins and ends with $v_\ell(\degphi)=v_\ell(r_E)$ when the first inequality of \eqref{eq:congruence:quant} is an equality, so every inequality in it is an
+equality.
+\end{proof}
+
+\begin{remark}[the outer inequality, and the word ``elementary'']\label{rem:congruence:outer-inequality}
+The outer inequality, $v_\ell(\degphi)$ at least $\sum_{q\in S}e_\ell(E,q)$, needs only Step 1 (the paper's direction), Steps 2 and 3, and the integrality of $\eta^\emptyset_{g,\ell}$; neither Agashe-Ribet-Stein at level $N_S$ nor
+any multiplicity-one theorem. It is still not elementary: Step 3 is the proposition of Diamond, Flach and Guo and Step 2 is Lemma lem:ddt417. The revised paper's abstract says ``by a twisting
+argument and the level-raising formula of Diamond, Flach and Guo'', which is accurate; the version of 10 October 2026 said ``by an elementary twisting argument''.
+\end{remark}
+
+\begin{remark}[Remark rem:afterquant (1) and (3)]\label{rem:congruence:after-quant}
+(1) Theorem thm:quant is level raising: from $N_S$ to $N_S^S=N$, at the price of the level-raising Euler factors of \Cref{prop:congruence:three-cases}. For $\ell=3$, a single prime of type $\kod{I}_n^*$ (necessarily
+$q\ge5$, since $3\nmid N$) forces $3\mid\degphi$, because $3\mid q^2-1$; so does a prime of type $\kod{I}_0^*$ with $q\equiv1\pmod3$, because then $3\mid q-1$. Neither needs the hypothesis on $\Q(\sqrt{-3})$, and
+neither is in Theorem thm:qual. (3) For the potentially good types $\kod{II},\kod{III},\kod{IV}$ and their duals the quadratic twist does not lower the level ($N_S=N$ in \Cref{prop:congruence:twist-inputs}(iv)), $f$ is its own
+depletion at $S$, and \Cref{thm:congruence:dfg14} gives no factor; Step 1 has nothing to transport. The omitted factor at such primes is reached only through \Cref{thm:congruence:dfg37}, that is with
+$\ell\notin S_f$, and the paper's Section sec:anomaly shows that for $\ell=3$ and image $\Ns$ the bound can fail through a type $\kod{III}$ term. The data of \Cref{ex:congruence:twist-cases}(c) (equality of
+$v_\ell$ of the degrees in all $14{,}880$ pairs) are consistent with this: twisting at potentially good primes moves neither side.
+\end{remark}
+
+\section{Beyond the hypothesis: Remark rem:ns and Open questions 1 and 2}\label{sec:congruence:beyond}
+
+This section records what the assembly of Section \ref{sec:congruence:assembly} gives, and what it would need, at the two boundaries of the hypothesis of Theorem thm:main: the
+curves with $\ell=3$ and image $\Ns$, where $3\in S_f$ (the paper's Remark rem:ns, Section sec:anomaly and Open question 2), and the primes $\ell\mid N$ (Open question 1).
+
+\begin{remark}[Remark rem:ns: the conditional identity for image $\Ns$]\label{rem:congruence:rem-ns}
+Let $\ell=3$, $3\nmid N$, and let the image of $\bar\rho_{E,3}$ be $N_s(\F_3)$. Then $3\in S_f$ and neither \Cref{thm:congruence:dfg37} nor \Cref{thm:congruence:dfg27} applies. Steps 1 and 2 of
+\Cref{thm:congruence:main} still hold ($E[3]$ is irreducible). Step 4 holds in a corrected form \emph{if} $H^1_f(\Q,V^D)=0$ (equivalently $H^1_f(\Q,\ad V_3E)=0$, \Cref{ch:blochkato}); the condition
+$H^0(\Q,V^D)=0$ is automatic. Then Lemma lem:dfg21 gives, with $h_3(E)=1$ (Lemma lem:h0; \Cref{ch:galrep}),
+\[
+\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\bigl(v_3(L_p(A_f,1)^{-1})+v_3(\Tam_p(\ad T))\bigr)-h_3(E)
+\]
+(\Cref{ch:blochkato} proves this, conditionally). If in addition $v_3(\eta^\Sigma_{f,3})=\len H^1_\Sigma(\Q,W)$ held, as in \Cref{thm:congruence:dfg37}, Steps 1, 2 and 5 would give (eq:identity) with $h_3(E)$
+subtracted on the right, which is the shape of Conjecture conj:euler. The paper now states the assumption $H^1_f(\Q,V^D)=0$ explicitly (``we assume it here''); Diamond, Flach and Guo's Theorem 2.7 does
+not supply it for these curves, because it is proved only for $\lambda\notin S_f$.
+\end{remark}
+
+\begin{remark}[Open question 2]\label{rem:congruence:open-question-2}
+For the curves with image $\Ns$ at $\ell=3$ two inputs are missing. (a) On the Hecke side, $v_3(\eta^\Sigma_{f,3})=\len H^1_\Sigma(\Q,W)$ would need the Taylor-Wiles method for a residual representation induced
+from $\Q(\sqrt{-3})=\Q(\mu_3)$, where the auxiliary primes cannot kill the dual Selmer group (\Cref{rem:congruence:where-hypothesis}(c)). (b) On the Selmer side, $H^1_f(\Q,\ad V_3E)=0$. The paper's data
+(failures of (eq:thm) by exactly one, never more, for these curves) and the equality in all $8$ pairs with image $\Ns$ in \Cref{ex:congruence:twist-cases}, which lie outside
+\Cref{thm:congruence:quant}'s equality clause, are consistent with the corrected identity. We do not survey later work on residually dihedral representations, which we have not checked
+against these questions.
+\end{remark}
+
+\begin{remark}[Open question 1: primes $\ell$ dividing $N$]\label{rem:congruence:open-question-1}
+At $\ell\mid N$ three steps of \Cref{thm:congruence:main} fail. Step 1: Agashe-Ribet-Stein can fail when $\ell^2\mid N$, and $r_E\ne\degphi$ occurs (\curve{99a1}: $r=12$, $\degphi=4$ at $\ell=3$; \curve{539d1}: $r=504$,
+$\degphi=72$ at $\ell=7$; \Cref{ch:moddeg}). Step 3: $\ell\mid N$ puts $\ell$ in $S_f$; the integral structures and the Fontaine-Laffaille condition at $\ell$ need $\ell\nmid N$. Step 5: the Euler factor at $q=\ell$ is not
+the relevant local quantity (the paper's Remark rem:wild). A replacement would be a deformation condition at $\ell$ (finite flat, ordinary or semistable) whose local index plays the role of
+$e_\ell(E,\ell)$; the paper's empirical weights $w_3$ at $q=\ell=3$ are the target. We record the question without an answer.
+\end{remark}
+
+\section{The imported statements}\label{sec:congruence:imported}
+
+This section lists, for reference, every statement of \cite{DFG04} that the paper cites, what it says, where the paper uses it, and what this book has checked. It is the place that
+\Cref{ch:blochkato,ch:lfunctions} point to for the status of these citations.
+
+\begin{remark}[the citations of Diamond, Flach and Guo]\label{rem:congruence:imported-table}
+In the column ``status'', \emph{checked} means compared with the published text \cite{DFG04} for this chapter; \emph{as cited} means that the statement is used in the form in which the paper
+cites it, with its content summarised from a reading of the published text made when this chapter was planned, not repeated at the time of writing.
+\begin{center}\small
+\begin{tabular}{p{0.19\textwidth}p{0.36\textwidth}p{0.2\textwidth}p{0.13\textwidth}}
+\toprule
+citation & content (book's notation) & paper's use & status\\
+\midrule
+Theorem 0.1 (= Theorem 2.15) & $\lambda$-part of Bloch-Kato for $A_f$, $A_f(1)$, $\lambda\notin S_f$ & Section 1.2 & checked\\
+Theorem 0.2 (= Theorem 3.7) & $\len H^1_\Sigma=v_\lambda(\eta^\Sigma_f)$, $\Sigma\supseteq\set{p\mid N}$, $\lambda\notin S_f$, $\lambda\nmid\Sigma$ & thm:dfg37 & checked\\
+definition of $S_f$ (Section 0.2; the paper's (31)) & $\lambda\mid Nk!$ or residually not absolutely irreducible over $\Q(\sqrt{\ell^*})$ & Section 4.2 & checked (Section 0.2)\\
+Theorem 3.7 & as Theorem 0.2, with ``minimally ramified outside $\Sigma$'' & thm:dfg37 & as cited\\
+Proposition 1.4(c) & $\eta^\Sigma=\eta^\emptyset\prod L^{\nv}_p(A_f,1)^{-1}$, $\bar\rho$ irreducible & thm:dfg14 & as cited\\
+Theorem 2.7 & $H^0=H^1_f=0$ for $A_f$ and $A_f(1)$ & thm:dfg27 & as cited\\
+Lemma 2.1 & the exact sequence of Lemma lem:dfg21 & lem:dfg21 & as cited\\
+Lemma 2.12 & Petersson norm as naive adjoint $L$-value & Section 1 & as cited\\
+(57), p.~708 & $\Tam_p(M)=\Tam_p(M^D)$; definition of $\Tam_p$ & lem:fpr, Section 1.2 & as cited\\
+Sections 1.5.3, 1.6.2, 1.7.2, 1.7.3; (13), (14) & $\hat\delta_!$, $M_f$, $\delta_p$, $L^{\nv}_p$, $\eta^\Sigma_f$ & Section 4.1 & as cited; $\eta^\Sigma_f$ ``defined in Section 1.7.3'' checked\\
+Sections 1.6.1, 1.8.2 & Hecke operators self-adjoint & Section 4.1 & as cited\\
+Section 2.1 & $H^1_f$ and $H^1_\Sigma$ & Section 4.2 & as cited\\
+Lemma 1.8, Corollary 1.9 & Eisenstein kernels and cokernels & Section 4.1 & as cited\\
+\bottomrule
+\end{tabular}
+\end{center}
+Two differences of wording matter. Lemma 2.1 of \cite{DFG04} asks that $\Sigma$ contain every prime at which $H^1_f(\Q_p,W)\ne H^1_{\ur}(\Q_p,W)$; the paper's ``every prime $p\ne\ell$ at which $W$ is ramified''
+implies it, since the two groups agree at unramified $p\ne\ell$. And $H^1_\Sigma$ of \cite{DFG04} uses the unramified condition outside $\Sigma\cup\set\ell$, which is the Bloch-Kato condition when
+$\Sigma\supseteq\set{p\mid N}$ (Section \ref{sec:congruence:dfg-theorems}). A longer version of \cite{DFG04} is now available \cite{DFG04long}, dated ``August 2001, with minor update December 2025''; it
+numbers differently (its Theorem 0.1 is labelled ``= Theorem 8.10'', its Theorem 0.2 ``= Theorem 7.15'', and its exceptional set is called $T_f$). The book, like the paper, cites the published numbering.
+\end{remark}
+
+\section{Exercises}\label{sec:congruence:exercises}
+
+\begin{exercise}\label{ex:congruence:ex-three-forms}
+Let $1\le r\le s$ and $\T=\set{(a,b,c)\in\mathcal O^3:a\equiv b\pmod{\varpi^r},\ a\equiv c\pmod{\varpi^s}}$, with $\pi(a,b,c)=a$. Compute $\wp$, $I$, $\eta(\pi)$ and $\mathrm{Cot}(\pi)$, and show that $\len\mathrm{Cot}(\pi)>v(\eta)$, so that
+$\T$ is not a complete intersection. Do the same for the projections to $b$ and to $c$. (Answer: $\wp=0\times\varpi^r\mathcal O\times\varpi^s\mathcal O$, $I=\varpi^s\mathcal O\times0\times0$, $\eta=\varpi^s\mathcal O$,
+$\mathrm{Cot}\simeq\mathcal O/\varpi^r\oplus\mathcal O/\varpi^s$, of length $r+s>s$. For the projection to $b$: $\eta=\varpi^r\mathcal O$ and $\mathrm{Cot}\simeq\mathcal O/\varpi^r$, equality; the third coordinate is congruent to $b$ only
+through $a$.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-wp-cap-I}
+Let $\T=\mathcal O[x]/(x^2(x-\varpi))$ and $\pi(x)=0$. Show that $\Ann_\T(\wp)=x(x-\varpi)\T\subseteq\wp$, so $\eta=0$ and $\wp\cap I\ne0$, and that the factor of $\T_K$ at $\pi$ is $K[x]/(x^2)$. Then let $\pi'(x)=\varpi$ and
+show $\eta(\pi')=\varpi^2\mathcal O$. Why does Lemma lem:ddt417 survive the first case? (Hint: \Cref{rem:congruence:ddt417-hypotheses}(a). For $\pi'$: $I=x^2\T$ and $\pi'(x^2)=\varpi^2$.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-ddt-diag}
+Let $\T_3^\flat$ act diagonally on $L=\mathcal O^3$ with the standard pairing. Run the proof of \Cref{lem:congruence:ddt417}: find $L[\wp]$, $L[I]$, $Q$, and compare $v(\Delta)$ with $v(\eta)$. Is $L$ free over $\T_3^\flat$? (Answer: $L[\wp]=\mathcal Oe_1$, $L[I]=\mathcal Oe_2\oplus\mathcal Oe_3$, $Q=0$,
+$v(\Delta)=0<1=v(\eta)$; $L$ is not free, since by Step 6 a free module would give $v(\Delta)=d\,v(\eta)$.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-alternating}
+(a) Prove that for an alternating form on a free module of rank two over $\mathcal O$ the image of $\wedge^2$ is the ideal of values and the Gram determinant is its square (\Cref{prop:congruence:eta-sigma}(ii)).
+(b) Show that in rank four the ideal of values does not determine the Gram determinant: compare the block-diagonal forms with blocks $\sm0a{-a}0$, $\sm0b{-b}0$ for $(a,b)=(1,1)$ and $(1,\varpi)$.
+(Answer to (b): both have ideal of values $\mathcal O$; the determinants are $1$ and $\varpi^2$. So for a lattice of rank $d>2$ the Gram determinant,
+not the ideal of values, is the right invariant; Diamond, Flach and Guo only need rank two.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-idempotent}
+Let $\T$ be a commutative $\Zl$-algebra of operators on a lattice $L$ with a perfect pairing for which every $t\in\T$ is self-adjoint. Show that every idempotent $e\in\T$ is self-adjoint, that $eL\perp(1-e)L$,
+and that the pairing restricted to $eL$ is perfect. Deduce that for $\mf m=\mf m_{f,\ell}$ the lattice $M_{f,\lambda}$ lies in $e_{\mf m}H^1(X_0(N),\Zl)$ and that $\hat\delta_!$ is perfect there. (Hint: $\langle ex,(1-e)y\rangle=\langle x,e(1-e)y\rangle=0$; a
+perfect pairing on $eL\oplus(1-e)L$ with the summands orthogonal is perfect on each.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-level-raising}
+Let $f=f_{\text{11a}}$ and $\ell=3$. For the primes $p<40$, $p\ne3,11$, compute $v_3$ of Wiles's factor $\frac{(p-1)((p+1)^2-a_p^2)}{p^3}$ and say which part, $p-1$ or $(p+1)^2-a_p^2$, contributes. Which primes satisfy Ribet's
+level-raising condition $a_p\equiv\pm(p+1)\pmod3$? (Answer, with $a_p=-2,1,-2,4,-2,0,-1,0,7,3$ for $p=2,5,7,13,17,19,23,29,31,37$: the valuation is positive for $p=7$ ($1+1$), $13$ ($1+2$), $19$ ($2+0$),
+$29$ ($0+2$), $31$ ($1+1$), $37$ ($2+0$); the level-raising condition holds for $p=7,13,29,31$; at $p=19,37$ only $p\equiv1\pmod 3$ contributes, which corresponds to congruences at level $11p^2$.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-factor-11a}
+For $f=f_{\text{11a}}$ compute $L^{\nv}_2(A_f,1)^{-1}$ and $L^{\nv}_7(A_f,1)^{-1}$, and deduce $v_3(\eta^{\{2\}}_{f,3})$ and $v_3(\eta^{\{7\}}_{f,3})$ from \Cref{thm:congruence:dfg14}. Compare the second with the Euler factor
+of the symmetric square of \curve{539d1} at $7$, which PARI gives as $(1+3X-21X^2-343X^3)^{-1}$, and explain the coincidence. (Answer: $\frac12\cdot\frac{9-4}{4}=\frac58$, a $3$-adic unit, so
+$v_3(\eta^{\{2\}})=0$; $\frac67\cdot\frac{64-4}{49}=\frac{360}{343}$, so $v_3(\eta^{\{7\}})=0+2=2$. And $1+\frac3{49}-\frac{21}{49^2}-\frac{343}{49^3}=\frac{360}{343}$: \curve{539d1} is the twist of \curve{11a1} by $\chi_{-7}$, the true adjoint
+factor is twist-invariant, and \curve{11a1} is good at $7$, so its true factor is Wiles's factor. This is Step 3 of the proof of Theorem thm:quant, and $v_3(\eta^{\{7\}})=2=v_3(504)$.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-sf}
+Let $E$ have good reduction at $\ell\ge5$ and $E[\ell]$ irreducible. Using the description of $\bar\rho|_{I_\ell}$ by fundamental characters (ordinary: $\omega\oplus1$ up to semisimplification; supersingular:
+$\omega_2\oplus\omega_2^\ell$), show that $\bar\rho\not\simeq\bar\rho\otimes\chi_{\ell^*}$, so $\ell\notin S_f$. Where does the argument fail for $\ell=3$? (Hint: $\chi_{\ell^*}|_{I_\ell}=\omega^{(\ell-1)/2}$; in the ordinary case
+$\set{\omega,1}=\set{\omega^{(\ell+1)/2},\omega^{(\ell-1)/2}}$ forces $(\ell-1)\mid\frac{\ell+1}2$. For $\ell=3$ it holds: $\omega^2=1$ and $\omega^{1}=\omega$.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-hur}
+(a) Let $p\ne\ell$ and $W=T\otimes\Qlmod$ with $T$ unramified at $p$. Show that $H^1_{\ur}(\Q_p,W)=W/(\Frob_p-1)W$ is divisible and equals $H^1_f(\Q_p,W)$. (b) Let $T=\Zl^2$ with inertia acting through the
+tame quotient by $t\mapsto\sm1{\ell^a}01$ and a Frobenius acting trivially on $T^{I_p}$ (possible when $p\equiv1\pmod{\ell^a}$). Show that $W^{I_p}\simeq\Qlmod\oplus\Z/\ell^a$ and that $H^1_{\ur}(\Q_p,W)$ is not divisible,
+while $H^1_f(\Q_p,W)$, its maximal divisible subgroup (\Cref{ch:blochkato}), is $\Qlmod$. This is why Diamond, Flach and Guo write the unramified condition only outside a set $\Sigma$ that contains the
+ramified primes. (Hint for (b): $(x,y)$ is fixed by $t$ iff $\ell^ay=0$ in $\Qlmod$.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-77c}
+Write out \Cref{thm:congruence:main} for \curve{77c1} at $\ell=3$: $N=77$, type $\kod{I}_3$ at $7$ and $\kod{I}_2$ at $11$, $\degphi=6$, $E[3]$ irreducible with image not $\Ns$, and Tate parameter at $7$ equal to
+$5\cdot7^3+O(7^4)$. Compute every term of \Cref{cor:congruence:explicit} and deduce $\len H^1_f(\Q,\ad T_3E\otimes\Q_3/\Z_3)$. (Answer: $e_3=0$ at both primes (semistable); at $7$, $t_3=1$ and $\bar u=5$ is not a cube in $\F_7^\times$,
+so the Tamagawa term is $1$; at $11$, $t_3=v_3(2)=0$. So $1=v_3(6)=\len H^1_f+1$ and the Selmer group is $0$. Compare \Cref{ex:congruence:main-examples}(c): \curve{539c1} is the twist of \curve{77c1} by
+$\chi_{-7}$, with the same Selmer group and Tamagawa factors and one more Euler term.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-ko}
+In the situation of \Cref{rem:congruence:rem-ko-1} with $\ell=3$, $n=9$ and $q\equiv1\pmod9$, show that the excess $\min(v_3(9),v_3(q-1),v_3(c(u)))$ is $2$ if $\bar u$ is a ninth power in $\F_q^\times$, $1$ if it is a cube but
+not a ninth power, and $0$ otherwise; so the bound of (eq:thm) can be exceeded by $2$ at one prime. (Hint: $c(u)$ is the class of $\bar u$ in $\F_q^\times/(\F_q^\times)^{9}$, a cyclic group of order $9$, and $v_3$ of a class is
+read as in Appendix B, B-C10.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-121}
+Show that $\iota_{\{11\}}(f_{\text{121c}})=f_{\text{121a}}$ (both sides lie in $S_2(\Gamma_0(121))$, so it suffices to compare $a_n$ for $n\le22$, Sturm's bound; for instance $a_2,a_3,a_5,a_7,a_{13}$ are $-1,2,1,2,-1$ for \curve{121a1} and $1,2,1,-2,1$ for \curve{121c1}), and deduce $r(\curve{121a1})=r(\curve{121c1})$ from \Cref{thm:congruence:twist}. Why does the same twist not lower the level? (Answer: $\chi_{-11}(p)$ is $-1,+1,+1,-1,-1$ for $p=2,3,5,7,13$; the types $\kod{II}$
+and $\kod{IV}$ at $11$ are exchanged and both have conductor exponent $2$, so $N_S=N=121$ and both hypotheses of the theorem hold; $r=6$ for both.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-q3}
+(Theorem thm:quant at $q=3$.) The curves \curve{333d1} and \curve{477a1} have type $\kod{I}_0^*$ at $3$ and $\degphi=28$. PARI gives the Euler factor of the symmetric square at $3$ as $(1-6X+18X^2-27X^3)^{-1}$ for both.
+Compute $L_3(A_f,1)^{-1}$, compare with the formula $\frac23\cdot\frac{16-a_3(E')^2}9$ for a twist $E'$ with good reduction at $3$, find $a_3(E')^2$, and check the inequality of \Cref{thm:congruence:quant} at $\ell=7$.
+(Answer: $1-\frac69+\frac{18}{81}-\frac{27}{729}=\frac{14}{27}$, so $a_3(E')^2=9$; $e_7(E,3)=v_7(\frac{14}{27})=1\le v_7(28)=1$. As $7\notin S_f$, the equality clause gives $v_7(\deg\varphi_{E_S'})=0$.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-chain}
+For \curve{539d1} and $\ell=3$ compute each term of the chain of \Cref{cor:congruence:quant-equality}: $v_3(r_E)$, $v_3(\eta^{\mathrm{Hecke}}(g^S))$ with $g=f_{\text{11a}}$, $v_3(\eta^{\{7\}}_{g,3})$, $v_3(r_{E_S})$ and $e_3(E,7)$, using
+\Cref{ex:congruence:level-539} and \Cref{ex:congruence:ex-factor-11a}. Then do the same at $\ell=2$ for Step 1 only, which \Cref{lem:congruence:quant-step1} covers although $\ell=2$ is outside the hypotheses of Theorem thm:quant.
+(Answer: $2=2=2=0+2$. At $\ell=2$: $v_2(504)=3=v_2(504)$.)
+\end{exercise}
+
+\begin{exercise}\label{ex:congruence:ex-step1-prime}
+Explain where the proof of the paper's inequality (the second half of the proof of \Cref{lem:congruence:quant-step1}) breaks down for $\ell=q\in S$, when $E$ has type $\kod{I}_0^*$ at $q$ and $E_S$ is ordinary at $q$
+($q\nmid a_q(g)$). (Answer: the roots $\alpha,\beta$ of $X^2-a_q(g)X+q$ satisfy $\alpha\beta=q$ with $\alpha$ a $q$-adic unit, so $\beta$ is not a unit; the stabilisation $g(z)-\alpha g(qz)$, with $U_q$-eigenvalue $\beta\equiv0$, lies in the same
+maximal ideal as $g^S$ at $\ell=q$. It belongs to the old space of $g$ itself, and $\iota$ sends it to a form with the system of $f$, which is not in $f^\perp$: the transport fails. Congruences between
+$g^S$ and this stabilisation contribute to $\eta^{\mathrm{Hecke}}(g^S)$ but not to $r_E$.)
+\end{exercise}
+
+\section{Notes and references}\label{sec:congruence:notes}
+
+\emph{Congruence modules.} Congruence primes go back to Hida \cite{Hida81}, who related them to the Petersson norm and the special value of the symmetric square; \cite{HidaBook} is an
+exposition, and \cite{Ribet83} treats weight $2$ through modular curves. The algebraic formalism of \Cref{def:congruence:congruence-module} is that of \cite[Section 4]{DDT}; Lenstra's
+paper \cite{Lenstra95} proves the numerical criterion in the form of \Cref{thm:congruence:numerical-criterion} and its relation to the Gorenstein property. Lemma lem:ddt417 is the inequality half of
+\cite[Lemma 4.17]{DDT}, as the paper cites it; we have not compared the numbering with the published text of \cite{DDT}, and the book proves only the part the paper states. Wiles's
+numerical criterion is in \cite[Appendix]{Wiles95} and \cite[Section 5]{DDT}; the theorem number sometimes quoted for it in \cite{DDT} is not verified here.
+
+\emph{Diamond, Flach and Guo.} The paper cites the published version \cite{DFG04}; so does the book. We checked against it the abstract, the definition of $S_f$ in the introduction, the
+statements of Theorems 0.1 and 0.2 with their identifications ``(= Theorem 2.15)'' and ``(= Theorem 3.7)'', and the sentence that $\eta^\Sigma_f$ is ``defined in Section 1.7.3''. The other
+numbered items (Proposition 1.4, Theorem 2.7, Lemmas 2.1 and 2.12, the displays (13), (14), (31), (57), and the sections listed in \Cref{rem:congruence:imported-table}) are cited as the paper
+cites them; their summaries here follow a reading of the published text made when the chapter was planned. The longer version \cite{DFG04long} (``August 2001, with minor update December
+2025'') contains the foundational details omitted from the published paper, with different numbering. The Taylor-Wiles method is \cite{Wiles95,TaylorWiles}; \cite{Diamond96} gives the freeness
+of the cohomology and the version without the Gorenstein hypothesis; \cite{DDT} (Chapters 2 to 5) is the standard account, and we followed its organisation in
+Section \ref{sec:congruence:taylor-wiles}. Level raising and Ihara's lemma are \cite{Ribet84,Ribet90} and \cite{DiamondTaylor94}; Fontaine-Laffaille theory is \cite{FontaineLaffaille}, and the
+local formula of Fontaine and Perrin-Riou is \cite[I.4.2.2]{FPR94}, as recalled in \cite{DFG04}.
+
+\emph{The modular degree.} Agashe, Ribet and Stein \cite[Theorem 2.2]{ARS12} (theorem number as cited by the paper and checked in \Cref{ch:moddeg}); the multiplicity-one and Gorenstein results
+behind Remark rem:free are \cite{Mazur77}, \cite[Theorem 3.5]{RibetStein} (as cited by the paper) and \cite{Tilouine97}; the Shimura subgroup is \cite{LingOesterle,Ribet88}. The formula of Kim and Ota
+is \cite[Theorem 1.1]{KimOta}, and Pollack and Weston's earlier result is \cite{PollackWeston11}; Ribet and Takahashi's comparison with Shimura curves is \cite{RibetTakahashi97}.
+
+\emph{What is new here.} Relative to the paper: \Cref{lem:congruence:quant-step1} (Step 1 of the proof of Theorem thm:quant is an equality at every prime outside $S$, which answers the question
+left open in Remark rem:afterquant (2) and Open question 6, the divisibility being due to \Cref{ch:hecke}); the observation that Step 1 uses no hypothesis on $\ell$ beyond $\ell\notin S$;
+\Cref{cor:congruence:quant-equality}; the length form of Lemma lem:ddt417 over any discrete valuation ring; and the recomputation of the data of the paragraph after Theorem thm:twist
+(\Cref{ex:congruence:twist-cases}). All numbers in this chapter were computed with PARI/GP \cite{PARI} (version 2.17, through the Python interface \texttt{cypari2}) and Cremona's files
+\cite{ecdata} for conductors below $10{,}000$; how to reproduce such computations is explained in \Cref{ch:computation}, and the notation is collected in \Cref{ch:notation}. The paper's own
+account of these results, with the book's commentary, is in \Cref{ch:paper}.
