@@ -62,13 +62,13 @@ $H^i(K,V)\times H^{2-i}(K,V^D)\to\Q_\ell$ are perfect; $\langle\pi x,y\rangle=\l
 $H^2(K,T)\simeq H^0(K,W^D)^*$. \emph{(proved here, given \Cref{thm:galcoh:local-euler,thm:galcoh:tate-local-duality})} \Cref{cor:galcoh:local-duality-consequences}.
 \item \textbf{Orders over $\Q_p$.} $\#H^i(\Q_p,\Z/\ell^k)=\ell^k,\ell^{k+m},\ell^m$ and $\#H^i(\Q_p,\mu_{\ell^k})=\ell^m,\ell^{k+m},\ell^k$ ($m=\min(k,v_\ell(p-1))$, $p\ne\ell$); $\mu_p$ over $\Q_p$ has
 characteristic $p^{-1}$; $E[5]\subset E(\Q_{11})$ for \curve{11a1}. \emph{(proved here, given the stated theorems)} \Cref{ex:galcoh:local-orders}.
-\item \textbf{Unramified classes} (definition): $\Hur(\Q_p,M)=\operatorname{im}(\Inf\colon H^1(G/I,M^I)\to H^1(\Q_p,M))=\ker(H^1(\Q_p,M)\to H^1(I,M))\simeq H^1(G/I,M^I)$.
+\item \textbf{Unramified classes} (definition; $K/\Q_p$ finite): $\Hur(K,M)=\operatorname{im}(\Inf\colon H^1(G_K/I_K,M^{I_K})\to H^1(K,M))=\ker(H^1(K,M)\to H^1(I_K,M))\simeq H^1(G_K/I_K,M^{I_K})$.
 \Cref{def:galcoh:unramified}.
 \item \textbf{Computation.} $\Hur(\Q_p,M)\simeq M^I/(\Frob-1)M^I$; $\#\Hur(\Q_p,M)=\#H^0(\Q_p,M)$ for finite $M$; $\Hur(\Q_p,V)=0$ iff $H^0(\Q_p,V)=0$ iff $\det(1-\Frob\mid V^I)\ne0$ iff
 $\det(1-\Phi\mid V^I)\ne0$; for $p\ne\ell$, $\#\Hur(\Q_p,T)=\ell^{v_\ell\det(1-\Frob\mid V^I)}=\ell^{v_\ell\det(1-\Phi\mid V^I)}$ when finite. \emph{(proved here, given \Cref{ch:cohomology})}
 \Cref{prop:galcoh:unramified-computed}.
-\item \textbf{The inertia sequence.} $0\to\Hur(\Q_p,M)\to H^1(\Q_p,M)\to H^1(I,M)^{G/I}\to0$ is exact (conjugation action). \emph{(proved here, given the five-term sequence of
-\Cref{ch:cohomology})} \Cref{prop:galcoh:ur-sequence}.
+\item \textbf{The inertia sequence.} $0\to\Hur(\Q_p,M)\to H^1(\Q_p,M)\to H^1(I,M)^{G/I}\to0$ is exact (conjugation action), for $M$ of type (D), and for types (C), (V) at $p\ne\ell$.
+\emph{(proved here, given \Cref{ch:cohomology} and \Cref{thm:galcoh:local-finiteness}; types (C), (V) by passage to the limit)} \Cref{prop:galcoh:ur-sequence}.
 \item \textbf{Exact orthogonality} ($p\ne\ell$). $\Hur(\Q_p,M)$ and $\Hur(\Q_p,M^D)$ are exact annihilators ($M$ finite of $\ell$-power order); so are $\Hur(\Q_p,V)$ and $\Hur(\Q_p,V^D)$.
 False for $p=\ell$. \emph{(proved here, given \Cref{thm:galcoh:local-euler,thm:galcoh:tate-local-duality})} \Cref{thm:galcoh:ur-orthogonal}.
 \item \textbf{Propagation.} For $L_V\subseteq H^1(K,V)$: $L_T=\iota^{-1}L_V\supseteq H^1(K,T)_{\tors}$, $L_W=\pi L_V$ divisible; if $L_V^\perp=L_{V^D}$ then $L_W^\perp=L_{T^D}$ and
@@ -78,7 +78,7 @@ $(H^1(K,W)/L_W)^*\simeq L_{T^D}$; for $T$ unramified, $p\ne\ell$, the propagatio
 $\pi(0)=0$. (The paper: ``$H^1_f(\Q_p,T^D)$ is the torsion of $H^1(\Q_p,T^D)$, a finite group''.) \emph{(proved here, given \Cref{thm:galcoh:local-finiteness})}
 \Cref{cor:galcoh:ur-vanishing}.
 \item \textbf{Examples.} $\Hur(\Q_p,\Z_\ell(1))=\Z_\ell(1)/(p-1)$; $H^1(\Q_p,\Z_\ell)=\Hur$; Tate curve: $\Hur(\Q_p,V_\ell E)=0$; $\ad V_\ell E$ at a multiplicative prime: $\det(1-\Phi\mid(V^D)^I)=1-p^{-2}$,
-$\det(1-\Frob\mid(V^D)^I)=1-p^2$, $\#\Hur(\Q_p,T^D)=\ell^{v_\ell(p^2-1)}$; types $\mathrm{III}$, $\mathrm{III}^*$: $\ell^{v_\ell(q-\chi_{-4}(q))}$. \emph{(proved here, given \Cref{ch:galrep,ch:lfunctions})}
+$\det(1-\Frob\mid(V^D)^I)=1-p^2$, $\#\Hur(\Q_p,T^D)=\ell^{v_\ell(p^2-1)}$; types $\mathrm{III}$, $\mathrm{III}^*$: $\ell^{v_\ell(q-\chi_{-4}(q))}$. \emph{(proved here, given \Cref{ch:galrep}; the last an illustration depending on \Cref{ch:lfunctions})}
 \Cref{ex:galcoh:ur-examples}.
 \item \textbf{Unit classes.} For $K/\Q_p$ finite, $p\nmid n$: the Kummer isomorphism maps $\mathcal O_K^\times$ onto $\Hur(K,\mu_n)$; the valuation sequence of $\widehat{K^\times}$ is the inertia
 sequence for $\Z_\ell(1)$, with $\Res\kappa_x=v_K(x)t_\ell$ and $\Hom(I_K,\Z_\ell(1))^{G/I}=\Z_\ell t_\ell$. \emph{(proved here)} \Cref{prop:galcoh:unit-classes}.
@@ -90,8 +90,8 @@ $\F_q^\times\otimes\Z_\ell$. \emph{(proved here)} \Cref{prop:galcoh:unramified-v
 $\operatorname{pr}_{\ur}[\kappa]$ is the class of $\bar u$; $\kappa|_I=nt_\ell$ (so $n'=n$); for the lift fixing the roots of $q$, $c'=\varepsilon\kappa_u(\Frob)$, of class $\pm$ the class of $\bar u$; in
 general $c'$ is defined modulo $(n,q-1)\Z_\ell$; $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))=\min(v_\ell(n),v_\ell(q-1),v_\ell(c))$. \emph{(proved here, given \Cref{ch:local,ch:galrep})}
 \Cref{thm:galcoh:tate-kummer-class}.
-\item \textbf{The formula of Lemma lem:tamfactor.} $\len\bigl((H^1(I,\ad T)_{\tors})^{G/I}\bigr)=v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c))$. \emph{(proved here, given the model computation of
-\Cref{ch:cohomology})} \Cref{cor:galcoh:tamfactor}.
+\item \textbf{The formula of Lemma lem:tamfactor} (a pointer). $\len\bigl((H^1(I,\ad T)_{\tors})^{G/I}\bigr)=v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c))$: the model computation of
+\Cref{ch:cohomology} with the identification of $n'$, $c'$ above; the lemma is assembled in \Cref{ch:blochkato}. \emph{(proved here, given \Cref{ch:cohomology})} \Cref{cor:galcoh:tamfactor}.
 \item \textbf{Tate parameters at $\ell=3$.} \curve{77c1}, \curve{791a1}, \curve{1577a1} at $q=7,7,19$: extra term $0,1,1$, bound $1,2,2=v_3(\degphi)$; \curve{11a1} at $\ell=5$: Eisenstein.
 \emph{(computed)} \Cref{ex:galcoh:tate-kummer-examples}.
 \item \textbf{Lemma lem:tamagawa-exp, cohomologically.} $\rho\bmod\ell^t$ is unramified at $q$ iff $nt_\ell\equiv0\pmod{\ell^t}$ iff $\ell^t\mid n$ iff $q_E$ is an $\ell^t$-th power in $\Q_q^{\ur}$.
@@ -879,7 +879,7 @@ This section proves the last sentences of the paper's proof of Lemma lem:tamfact
 identification of the unramified component of the Kummer class of the Tate parameter with the class of the reduction of its unit part, and the exact
 indeterminacy of the corner entry $c'$ of $\rho(\Frob)$. The field-theoretic facts (Hensel's lemma, the tame character $t_\ell$, the decomposition
 $\kappa_x=v_K(x)\kappa_\varpi+\kappa_u$, the value of $\kappa_u$ at Frobenius, the Frobenius lift fixing roots of the uniformiser) are proved in \Cref{ch:local}, and
-the group cohomology of $\ad T$ is \Cref{ch:cohomology} (the model computation). What is added here is the cohomological reading and the assembly.
+the group cohomology of $\ad T$ is \Cref{ch:cohomology} (the model computation). What is added here is the cohomological reading and the identification of $c'$; the assembly of Lemma lem:tamfactor is \Cref{ch:blochkato}.
 
 Throughout, $q\ne\ell$ are primes, $G=G_{\Q_q}$, $I=I_q$, $v=v_\ell(q-1)$, and $t_\ell\colon I\to\Z_\ell(1)$ is the tame character of \Cref{ch:local}: for any compatible
 system of $\ell$-power roots of $q$, $t_\ell(\sigma)=\kappa_q(\sigma)$ for $\sigma\in I$, independently of the system.
@@ -1013,20 +1013,19 @@ $\varepsilon$ is a unit). Finally $\min(v_\ell(n),v,v_\ell(\tilde c))=\min(v_\el
 \end{proof}
 
 \begin{corollary}[the formula of Lemma lem:tamfactor]\label{cor:galcoh:tamfactor}
-In the situation of \Cref{thm:galcoh:tate-kummer-class}, with $M=\ad T$,
+In the situation of \Cref{thm:galcoh:tate-kummer-class}, with $M=\ad T$, the model computation of \Cref{ch:cohomology} gives
 \[
 \len\Bigl(\bigl(H^1(I,\ad T)_{\tors}\bigr)^{G/I}\Bigr)=v_\ell(n)+\min\bigl(v_\ell(n),v_\ell(q-1),v_\ell(c)\bigr).
 \]
 \end{corollary}
 
 \begin{proof}
-The model computation of \Cref{ch:cohomology} gives the length $v_\ell(n')+\min(v_\ell(n'),v_\ell(q-1),v_\ell(c'))$ for the matrices of
-\Cref{thm:galcoh:tate-kummer-class} with any $n'$ and $c'$; insert $v_\ell(n')=v_\ell(n)$ (part (ii)) and part (v).
+\Cref{ch:cohomology} proves the length $v_\ell(n')+\min(v_\ell(n'),v_\ell(q-1),v_\ell(c'))$ for matrices of this shape with any $n'$ and $c'$; this chapter contributes only the
+identification of $n'$ and $c'$: $v_\ell(n')=v_\ell(n)$ by \Cref{thm:galcoh:tate-kummer-class}(ii), and the minimum by part (v).
 \end{proof}
 
-\noindent The identification of $\Fitt_{\Z_\ell}$ of this module with $\Tam_q(\ad T)$, and hence the statement of Lemma lem:tamfactor itself, is \Cref{ch:blochkato}. At an
-additive prime of potentially multiplicative reduction, $E$ is over $\Q_q$ the twist of the Tate curve $E_{q_E}$ by a ramified quadratic character, $\ad T$ is unchanged by
-the twist, and the same computation applies with $n=v_q(q_E)=-v_q(j_E)$.
+\noindent Lemma lem:tamfactor itself (the Fitting ideal of this module is $\Tam_q(\ad T)$, the assembly of the proof, and the additive potentially multiplicative case) is
+\Cref{ch:blochkato}; the corollary is the pointer from the two computations to that assembly.
 
 \begin{paperlink}\label{pl:galcoh:tamfactor}
 The end of the proof of Lemma lem:tamfactor in the revised paper reads: ``Finally, $q$ being a uniformiser of $\Q_q$, $H^1(\Q_q,\Z_\ell(1))$ splits as
@@ -1647,9 +1646,14 @@ lem:fpr (\cite[I.4.2.2]{FPR94}), whose Euler factor is \Cref{prop:galcoh:unramif
 \end{remark}
 \section{Exercises}\label{sec:galcoh:exercises}
 
-\begin{exercise}\label{ex:galcoh:ex-real-mu}
-From \Cref{thm:galcoh:kummer} deduce $H^1(\R,\mu_n)=\R^\times/(\R^\times)^n$, and show that it is $0$ for $n$ odd and $\Z/2$ for $n$ even. Compare with
-\Cref{prop:galcoh:real-place}. \emph{Hint:} every positive real is an $n$-th power; $-1$ is one iff $n$ is odd.
+\begin{exercise}[a twist by an even quadratic character]\label{ex:galcoh:ex-even-twist}
+Let $\ell$ be odd, $d>1$ a fundamental discriminant, $\chi_d$ its (even) quadratic character and $T=\Z_\ell(\chi_d)$, so $T^D=\Z_\ell(1)(\chi_d)$. (a) For $p\nmid d\ell$ show
+$\Hur(\Q_p,T)=\Z_\ell/(\chi_d(p)-1)$, which is $\Z_\ell$ or $0$, and $\#\Hur(\Q_p,T^D)=\ell^{v_\ell(p\chi_d(p)-1)}$. (b) For $p\mid d$, $p\ne\ell$, show $H^1(\Q_p,T)=0$.
+(c) Show $H^0(\Q,W)=0$ and $H^0(\Q,W^D)=0$; contrast with \Cref{ex:galcoh:ex-h3}. (d) Evaluate (a) for $d=5$, $\ell=3$ at $p=2,7,11$.
+\emph{Answer:} (a) \Cref{prop:galcoh:unramified-computed}(i), (iv), $\Frob$ acting by $\chi_d(p)$ on $T$ and by $p\chi_d(p)$ on $T^D$. (b) $I_p$ acts by $\chi_d|_{I_p}\ne1$ on $V$ and on
+$V^D$, so both have no invariants, $H^1(\Q_p,V)=0$ by \Cref{cor:galcoh:local-duality-consequences}, and $H^1(\Q_p,T)=H^1(\Q_p,T)_{\tors}\simeq H^0(\Q_p,W)\subseteq W[2]=0$
+(\Cref{prop:galcoh:tvw}(ii)). (c) $H^0(\Q,W)\subseteq W[2]=0$; an element of order $\ell$ of $W^D$ is fixed only if $\bar\chi_\ell\chi_d=1$, which forces $\bar\chi_\ell$ quadratic, so
+$\ell=3$ and $\chi_d=\chi_{-3}$, which is odd. (d) $\chi_5(2)=\chi_5(7)=-1$, $\chi_5(11)=1$: $\Hur(\Q_p,T)=0,0,\Z_3$ and $\#\Hur(\Q_p,T^D)=3^{v_3(3)},3^{v_3(8)},3^{v_3(10)}=3,1,1$.
 \end{exercise}
 
 \begin{exercise}\label{ex:galcoh:ex-orders}
@@ -1758,11 +1762,14 @@ $\chi\colon G_{\Q_p}\to\Z/\ell$ and $a\in\Q_p^\times$, $\operatorname{inv}(\chi\
 orthogonal to unit classes, and count.
 \end{exercise}
 
-\begin{exercise}\label{ex:galcoh:ex-hyp-b}
-(Harder.) Show that hypothesis (b) of \Cref{thm:galcoh:relaxing-sigma} implies $H^0(\Q,V^D)=0$, and that in the paper's situation it holds at every $p\in\Sigma$. Then take
-$T=\Z_\ell(1)$, so $T^D=\Z_\ell$: show that (b) fails at every prime, that $H^0(\Q,W^D)=\Q_\ell/\Z_\ell$ is infinite, but that $H^1(G_{\Q,S},\Z_\ell)_{\tors}=0$. Which step of the proof of
-\Cref{thm:galcoh:relaxing-sigma}(iii) breaks, and what is the last term of the sequence of part (i) in general? \emph{Hint:} \Cref{prop:galcoh:tvw}(ii): the torsion is $H^0$
-modulo its divisible part; the remark after \Cref{thm:galcoh:relaxing-sigma}.
+\begin{exercise}[Greenberg-Wiles on the Kummer side]\label{ex:galcoh:ex-gw-mu}
+Let $\ell$ be odd, $M=\mu_\ell$, and $\mathcal L$ the structure with $\mathcal L_p=\Hur(\Q_p,\mu_\ell)$ for $p\ne\ell$, $\mathcal L_\ell=H^1(\Q_\ell,\mu_\ell)$, $\mathcal L_\infty=0$. Using global Kummer
+theory and \Cref{prop:galcoh:unit-classes}, show that $H^1_{\mathcal L}(\Q,\mu_\ell)$ is the image of $\ell^{\Z}$ in $\Q^\times/(\Q^\times)^\ell$, of order $\ell$. Identify the dual structure on
+$\Z/\ell$ and show $H^1_{\mathcal L^*}(\Q,\Z/\ell)=0$. Check \Cref{thm:galcoh:greenberg-wiles}, and compare with \Cref{ex:galcoh:ex-gw-ell}, where the roles of $M$ and $M^D$ are exchanged.
+\emph{Answer:} $a\in\Q^\times$ is a unit times an $\ell$-th power at each $p\ne\ell$ iff $\ell\mid v_p(a)$ for all $p\ne\ell$, iff $a\in\pm\ell^{\Z}(\Q^\times)^\ell$, and $-1=(-1)^\ell$. The dual
+structure is unramified at $p\ne\ell$ (\Cref{thm:galcoh:ur-orthogonal}) and $0$ at $\ell$; a character in it is unramified everywhere, hence trivial (Minkowski). Right side:
+$\frac{\#H^0(\Q,\mu_\ell)}{\#H^0(\Q,\Z/\ell)}=\frac1\ell$, the factors at $p\ne\ell$ and at $\infty$ are $1$ (\Cref{prop:galcoh:unramified-computed}(ii); $H^0(\R,\mu_\ell)=1$), and at
+$\ell$ the factor is $\#H^1(\Q_\ell,\mu_\ell)/\#H^0(\Q_\ell,\mu_\ell)=\ell^2$ (\Cref{ex:galcoh:local-orders}(b)); so both sides equal $\ell$.
 \end{exercise}
 \section{Notes and references}\label{sec:galcoh:notes}
 
