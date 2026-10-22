@@ -45,7 +45,7 @@ by $d^0r$; split iff the class is $0$; every class occurs. For $\sm{\chi_\ell\va
 Brown)} \Cref{thm:cohomology:h2-ext}.
 \item \textbf{Long exact sequence in $M$.} $0\to M'\to M\to M''\to0$ gives $0\to H^0(G,M')\to\cdots\to H^n(G,M'')\xrightarrow{\delta}H^{n+1}(G,M')\to\cdots$, natural, $\Zl$-linear.
 \emph{(proved here)} \Cref{prop:cohomology:les-groups}.
-\item \textbf{$H^0$ and torsion.} $H^0(G,W[m])=H^0(G,W)[m]$; $W[\ell^k]\simeq T/\ell^kT$ for $W=T\otimes\Qlmod$, so $H^0(G,W)[\ell^k]=H^0(G,T/\ell^kT)$; a finite $\ell$-group with
+\item \textbf{$H^0$ and torsion.} $H^0(G,W[m])=H^0(G,W)[m]$; for a $\Zl[G]$-module $T$ without $\ell$-torsion, $W[\ell^k]\simeq T/\ell^kT$ for $W=T\otimes\Qlmod$, so $H^0(G,W)[\ell^k]=H^0(G,T/\ell^kT)$; a finite $\ell$-group with
 $\#A[\ell]\le\ell$ is cyclic of length the largest $k$ with an element of order $\ell^k$; if $\#H^0(G,T/\ell T)\le\ell$, $H^0(G,W)$ is finite cyclic or $\simeq\Qlmod$, and when finite its
 length is the largest $k$ with an invariant element of $T/\ell^kT$ outside $\ell T/\ell^kT$. \emph{(proved here, given \Cref{ch:modules})} \Cref{lem:cohomology:h0-torsion}.
 \item \textbf{Compatible pairs.} $(f\colon G'\to G,\ \varphi\colon M\to M')$ with $\varphi(f(g')m)=g'\varphi(m)$ induces $(f,\varphi)^*\colon H^n(G,M)\to H^n(G',M')$ on cochains. \emph{(proved here)}
@@ -59,7 +59,8 @@ $H^n$ finite for $M$ finitely generated, and for $\ell\nmid N$ and $\ell$-primar
 ($(h_0\cdot\varphi)-\varphi=d^0\varphi(h_0)$), so an action of $G/H$; $\Res$ lands in the invariants ($\sigma\cdot\Res c-\Res c=d^0c(\sigma)$). Same for profinite groups.
 \emph{(proved here for $n\le1$; triviality on $H$ for $n\ge2$ stated)} \Cref{prop:cohomology:conjugation}.
 \item \textbf{Inflation-restriction.} $0\to H^1(G/H,M^H)\to H^1(G,M)\to H^1(H,M)^{G/H}$ exact, extended by the transgression to $H^2(G/H,M^H)\to H^2(G,M)$; $\Inf$ is an isomorphism on
-$H^1$ if $H^1(H,M)=0$; valid with continuous cochains. \emph{(three-term sequence and corollary proved here; five-term sequence and higher version stated, transgression
+$H^1$ if $H^1(H,M)=0$; valid with continuous cochains, the five-term sequence for types (D) and, when $G/H\simeq\widehat\Z$, (C) and (V)
+(\Cref{prop:cohomology:inf-res-zhat}). \emph{(three-term sequence and corollary proved here; five-term sequence and higher version stated, transgression
 sketched)} \Cref{thm:cohomology:inf-res}.
 \item \textbf{Hochschild-Serre.} $E_2^{p,q}=H^p(G/H,H^q(H,M))\Rightarrow H^{p+q}(G,M)$; if $H^q(H,M)=0$ for $q\ge1$, $\Inf$ is an isomorphism in all degrees. \emph{(stated;
 reference)} \Cref{thm:cohomology:hochschild-serre}.
@@ -80,8 +81,8 @@ has a stable lattice. \emph{(proved here)} \Cref{prop:cohomology:continuous}.
 $T\to V\to W$, $T\xrightarrow{\ell^k}T\to T/\ell^k$; and $\ker(H^1(G,T)\to H^1(G,V))=H^1(G,T)_{\mathrm{tor}}=\delta(H^0(G,W))$. \emph{(proved here)} \Cref{prop:cohomology:les-cont}.
 \item \textbf{Tate's limit theorem.} $0\to\varprojlim^1H^{n-1}(G,T_k)\to H^n(G,T)\to\varprojlim H^n(G,T_k)\to0$; $H^1(G,T)=\varprojlim H^1(G,T/\ell^kT)$ always; $H^n(G,V)=H^n(G,T)\otimes\Ql$.
 \emph{(stated; reference; the case $n=1$ and the statement for $V$ proved here)} \Cref{thm:cohomology:tate-limits}.
-\item \textbf{Finiteness of $H^1$.} $H^1(G,T)=\varprojlim H^1(G,T/\ell^k)$; if $H^1(G,A)$ is finite for finite $\ell$-primary $A$, $H^1(G,T)$ is finitely generated and its torsion finite.
-\emph{(proved here, given topological Nakayama)} \Cref{prop:cohomology:h1-fg}.
+\item \textbf{Finiteness of $H^1$.} $H^1(G,T)=\varprojlim H^1(G,T/\ell^k)$; if $H^1(G,A)$ is finite for finite $\ell$-primary $A$ (for instance $G$ finite, procyclic onto $\Zl$, or $I_q$ with $q\ne\ell$), $H^1(G,T)$ is finitely generated and its
+torsion finite. \emph{(proved here, given topological Nakayama, \Cref{rem:cohomology:top-nakayama})} \Cref{prop:cohomology:h1-fg}.
 \item \textbf{Supernatural orders.} $\#G$, pro-$\ell$ groups, order prime to $\ell$, $G^{(\ell)}=G/K_\ell$. \emph{(definition)} \Cref{def:cohomology:supernatural}.
 \item \textbf{Pro-$\ell$ quotients.} $G^{(\ell)}$ is the maximal pro-$\ell$ quotient; $\ell\nmid\#G\Rightarrow G^{(\ell)}=1$, not conversely ($A_4$, $\ell=2$); $K_\ell^{(\ell)}=1$; closed subgroups of
 pro-$\ell$ groups and finitely generated $\Zl$-modules are pro-$\ell$; Sylow subgroups. \emph{(proved here; Sylow stated)} \Cref{lem:cohomology:pro-l}.
@@ -91,7 +92,8 @@ trivial, $\Hom_{\mathrm{cont}}(G,M)=0$. \emph{(proved here for $H^1$ and for typ
 \item \textbf{Through the pro-$\ell$ quotient.} $K$ normal acting trivially: $\Inf\colon H^1(G/K,M)\simeq H^1(G,M)$ if $K^{(\ell)}=1$; in all degrees if $\ell\nmid\#K$; pro-$\ell$ image of $G$ gives
 $H^1(G,M)=H^1(G^{(\ell)},M)$. \emph{(proved here, except the all-degrees statement, given Hochschild-Serre)} \Cref{cor:cohomology:pro-l-quotient}.
 \item \textbf{Inertia at $q\ne\ell$.} With $K=\ker t_\ell$ ($\ell\nmid\#K$) and $M$ of type (C) or (V) with pro-$\ell$ inertia image: $H^1(I_q,M)\simeq H^1(I_q/K,M)\simeq M/(t-1)M$ via $c\mapsto c(t)$;
-$H^n(I_q,M)=0$ for $n\ge2$. \emph{(proved here, given \Cref{ch:local}; the last part given stated results)} \Cref{prop:cohomology:tame-inertia}.
+$H^n(I_q,M)=0$ for $n\ge2$; for every $M$ of type (C), $H^1(I_q,M)\simeq M^K/(t-1)M^K$ is finitely generated with finite torsion. \emph{(proved here, given
+\Cref{ch:local}; the vanishing for $n\ge2$ given stated results)} \Cref{prop:cohomology:tame-inertia}.
 \item \textbf{Procyclic groups.} Quotients of $\widehat\Z$; with a surjection $\pi$ onto $\Zl$, $\pi(F)$ is a unit; continuous actions of $\widehat\Z$, $\Zl$ on type (C) modules; unipotent
 elements generate $\Zl$-actions. \emph{(proved here)} \Cref{lem:cohomology:procyclic}.
 \item \textbf{Cocycles on powers.} $c(F^k)=(1+F+\dots+F^{k-1})c(F)$, and $c(\gamma)\equiv\pi(\gamma)c(F)$ modulo $(F-1)M$; in particular $c(t^a)\equiv a\,c(t)$, $a\in\Zl$. \emph{(proved here)}
@@ -103,16 +105,20 @@ $\#H^1=\#H^0$ for finite $M$, $H^n=0$ for $n\ge2$. \emph{($H^0$, $H^1$ proved he
 \item \textbf{Procyclic, compact coefficients.} $\Gamma$ procyclic with a surjection onto $\Zl$ (e.g. $\Zl$, $\Zl(1)$, $\widehat\Z$, $I_q/P_q$), $M$ of type (C) or (V): $H^0=\ker(F-1)$,
 $H^1(\Gamma,M)\simeq M/(F-1)M$ via $c\mapsto c(F)$, $H^n=0$ for $n\ge2$; $H^1(\Gamma,V)=0$ iff $\det(1-F\mid V)\ne0$. \emph{((i), (ii) proved here; (iii) stated)}
 \Cref{thm:cohomology:procyclic-compact}.
+\item \textbf{Inflation-restriction over $\widehat\Z$.} $G$ profinite, $H\trianglelefteq G$ closed, $G/H\simeq\widehat\Z$, $M$ of type (D) (torsion), (C) or (V): $0\to H^1(G/H,M^H)\to H^1(G,M)\to
+H^1(H,M)^{G/H}\to0$ is exact; with $H^2(G/H,M^H)=0$ this is the five-term sequence of \Cref{thm:cohomology:inf-res}(b) for these coefficients. \emph{(proved here; the vanishing of
+$H^2$ stated)} \Cref{prop:cohomology:inf-res-zhat}.
 \item \textbf{The model setting.} $G\trianglerighteq I\supseteq K$, $\ell\nmid\#K$, $I/K\simeq\Zl$ generated by $t$, $\Frob$ generating $G/I\simeq\widehat\Z$, $\Frob\,t\,\Frob^{-1}\equiv t^q$, $M$ of type (C),
 $K$ acting trivially; dictionary with $G_{\Q_q}$, $I_q$, $\ad T_\ell E$. \emph{(construction; imports from \Cref{ch:local,ch:galrep})} \Cref{constr:cohomology:model}.
-\item \textbf{Frobenius on $H^1$ of inertia.} $H^1(I,M)\simeq M/(t-1)M$; $\overline\Frob$ acts by $q^{-1}\rho(\Frob)$, well defined since $\rho(\Frob)(t-1)M\subseteq(t-1)M$, independent of the lift;
-$(H^1(I,M)_{\mathrm{tor}})^{G/I}=\{\bar m\in(M/(t-1)M)_{\mathrm{tor}}:\rho(\Frob)\bar m=q\bar m\}$. \emph{(proved here)} \Cref{prop:cohomology:frob-h1}.
+\item \textbf{Frobenius on $H^1$ of inertia.} $G$ acting on $M$ by $\rho_M$: $H^1(I,M)\simeq M/(t-1)M$; $\overline\Frob$ acts by $q^{-1}\rho_M(\Frob)$ (for $M=\ad T$:
+$q^{-1}\Ad\rho(\Frob)$), well defined since $\rho_M(\Frob)(t-1)M\subseteq(t-1)M$, independent of the lift;
+$(H^1(I,M)_{\mathrm{tor}})^{G/I}=\{\bar m\in(M/(t-1)M)_{\mathrm{tor}}:\rho_M(\Frob)\bar m=q\bar m\}$. \emph{(proved here)} \Cref{prop:cohomology:frob-h1}.
 \item \textbf{The Tate shape.} For $\rho(t)=\sm1{n'}01$, $\rho(\Frob)=\sm{\varepsilon q}{c'}0\varepsilon$ on $\ad T$ (basis $e,h,f$): $(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$; $\Frob\cdot e=qe$,
 $\Frob\cdot h=h-2\varepsilon c'e$, $\Frob\cdot f=q^{-1}(f+\varepsilon c'h-c'^2e)$. \emph{(proved here)} \Cref{lem:cohomology:tate-shape}.
-\item \textbf{The model computation.} $\ell$ odd, $v=v_\ell(n')$: $(t-1)\ad T=n'(\Zl e\oplus\Zl h)$; $H^1(I,\ad T)=(\Zl/n')^2\oplus\Zl$, torsion $(\Z/\ell^v)^2$; $\overline\Frob$: $\bar e\mapsto\bar e$,
-$\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e)$; invariants $\simeq\Z/\ell^v\oplus\Z/\ell^m$, $m=\min(v,v_\ell(q-1),v_\ell(c'))$, length $v+m$; $m$ depends on $c'$ only modulo $(n',q-1)$, the
-indeterminacy of $c'$; for $T$: invariants $\Z/\ell^v$ (split) or $0$ (nonsplit). \emph{(proved here)} \Cref{prop:cohomology:model}.
-\item \textbf{Fitting ideal of the invariants.} $\Fitt_{\Zl}((H^1(I,\ad T)_{\mathrm{tor}})^{G/I})=\ell^{v+m}\Zl$, the Tamagawa factor; $v_\ell(\Tam_q(\ad T))=v_\ell(n')+\min(v_\ell(n'),v_\ell(q-1),v_\ell(c'))$.
+\item \textbf{The model computation.} $\ell$ odd, $w=v_\ell(n')$ (the paper's $v$ is $v_\ell(q-1)$): $(t-1)\ad T=n'(\Zl e\oplus\Zl h)$; $H^1(I,\ad T)=(\Zl/n')^2\oplus\Zl$, torsion $(\Z/\ell^w)^2$; $\overline\Frob$: $\bar e\mapsto\bar e$,
+$\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e)$; invariants $\simeq\Z/\ell^w\oplus\Z/\ell^m$, $m=\min(w,v_\ell(q-1),v_\ell(c'))$, length $w+m$; $m$ depends on $c'$ only modulo $(n',q-1)$, the
+indeterminacy of $c'$; for $T$: invariants $\Z/\ell^w$ (split) or $0$ (nonsplit). \emph{(proved here)} \Cref{prop:cohomology:model}.
+\item \textbf{Fitting ideal of the invariants.} $\Fitt_{\Zl}((H^1(I,\ad T)_{\mathrm{tor}})^{G/I})=\ell^{w+m}\Zl$, the Tamagawa factor; $v_\ell(\Tam_q(\ad T))=v_\ell(n')+\min(v_\ell(n'),v_\ell(q-1),v_\ell(c'))$.
 \emph{(proved here, given \Cref{ch:modules}; identifications of $n'$, $c'$ in \Cref{ch:galrep,ch:galcoh})} \Cref{cor:cohomology:fitting}.
 \item \textbf{Cup products.} $(a\cup b)(g_1,\dots,g_{p+q})=a(g_1,\dots,g_p)\otimes g_1\cdots g_pb(\dots)$. \emph{(definition)} \Cref{def:cohomology:cup}.
 \item \textbf{Properties of $\cup$.} Leibniz rule; well defined on classes; associative, graded commutative, compatible with $\Res$, $\Inf$, $\delta$, $\Cor$. \emph{(degree $(1,1)$ proved
@@ -133,7 +139,7 @@ here; the rest stated)} \Cref{prop:cohomology:cup}.
 \item \textbf{Lemma lem:tamfactor} (the Tamagawa factor at a multiplicative prime), every group-cohomological step: the Tate shape as a cocycle
 (\Cref{prop:cohomology:corner}); ``by inflation-restriction $H^1(I,M')=H^1(\langle t\rangle,M')=M'/(t-1)M'$'' (\Cref{thm:cohomology:inf-res}, \Cref{cor:cohomology:pro-l-quotient},
 \Cref{prop:cohomology:tame-inertia}, \Cref{thm:cohomology:procyclic-compact}); the conjugation action of $G/I$ (\Cref{prop:cohomology:conjugation}); ``$c(t^k)\equiv k\,c(t)$''
-(\Cref{lem:cohomology:powers}); ``$\Frob$ acts on $M/(t-1)M$ as $q^{-1}\rho(\Frob)$'' (\Cref{prop:cohomology:frob-h1}); the explicit $(t-1)M$, the invariants and their
+(\Cref{lem:cohomology:powers}); ``$\Frob$ acts on $M/(t-1)M$ as $q^{-1}\rho(\Frob)$'', where $q^{-1}\Ad\rho(\Frob)$ is meant (\Cref{prop:cohomology:frob-h1}, \Cref{pl:cohomology:tamfactor}); the explicit $(t-1)M$, the invariants and their
 Fitting ideal (\Cref{lem:cohomology:tate-shape}, \Cref{prop:cohomology:model}, \Cref{cor:cohomology:fitting}); $H^1(G/I,\Zl(1)^I)=\Zl(1)/(q-1)$
 (\Cref{ex:cohomology:procyclic-examples}). The paperlink \Cref{pl:cohomology:tamfactor} matches each sentence of the proof.
 \item \textbf{Section 1.2} (the definition $\Tam_p(M)=\Fitt_{\Zl}((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}})$) and \textbf{Lemma lem:fpr}: the object $(H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}$ is
@@ -189,9 +195,10 @@ write $A_{\mathrm{tor}}$ for the torsion submodule of a $\Zl$-module, as the pap
 \Cref{ch:blochkato,ch:lfunctions} compute $L$-factors with the \emph{geometric} Frobenius $\Frob^{-1}$:
 $L_p(M,s)=\det(1-\Frob_p^{-1}p^{-s}\mid M^{I_p})^{-1}$. An eigenvalue $\lambda$ of the arithmetic Frobenius is the eigenvalue $\lambda^{-1}$ of the
 geometric one. In this chapter only the arithmetic Frobenius occurs. The two conventions are both used in the paper: the proof of Lemma lem:tamfactor,
-with $\rho(\Frob)=\sm{\varepsilon q}{c'}{0}{\varepsilon}$, is written with the arithmetic Frobenius, while Section 1.1 and the paragraph after Lemma lem:dfg21
-(``$\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}$'') use the geometric one. The vanishing statements we prove (\Cref{prop:cohomology:unramified})
-do not depend on the convention, since $1$ is an eigenvalue of $\Frob$ if and only if it is an eigenvalue of $\Frob^{-1}$.
+with $\rho(\Frob)=\sm{\varepsilon q}{c'}{0}{\varepsilon}$, is written with the arithmetic Frobenius, and Section 1.1 uses the geometric one. The paragraph after Lemma lem:dfg21 uses both: the quotient
+$(V^D)^{I_p}/(\Frob_p-1)$ is written with the arithmetic Frobenius and the determinant ``$\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}$'' with the geometric
+one. The quotient does not depend on the choice, because $\Frob_p^{-1}-1=-\Frob_p^{-1}(\Frob_p-1)$ has the same image as $\Frob_p-1$; and the vanishing statements we prove
+(\Cref{prop:cohomology:unramified}) do not depend on the convention, since $1$ is an eigenvalue of $\Frob$ if and only if it is an eigenvalue of $\Frob^{-1}$.
 \end{warning}
 
 The chapter proceeds from the general to the particular. Sections 2 and 3 recall the homological algebra (complexes, the long exact sequence,
@@ -729,7 +736,8 @@ is exact.
 $\Inf\colon H^1(G/H,M)\to H^1(G,M)$ is an isomorphism.
 \end{enumerate}
 These hold for abstract groups; and, with the conventions of \Cref{sec:cohomology:profinite}, for profinite $G$, closed normal $H$ and continuous
-cochains with coefficients of type (D), (C) or (V) (in (b) and (c) for type (D); see \Cref{rem:cohomology:inf-res-continuous}).
+cochains with coefficients of type (D), (C) or (V) (in (b) and (c) for type (D); see \Cref{rem:cohomology:inf-res-continuous}). For $G/H\simeq\widehat\Z$, (b) holds
+also for types (C) and (V), with $\operatorname{tg}=0$ (\Cref{prop:cohomology:inf-res-zhat}).
 \end{theorem}
 
 \begin{proof}
@@ -1006,6 +1014,13 @@ $\Z/(F-1)\Z=\Z$.
 \end{enumerate}
 \end{warning}
 
+\begin{remark}[topological Nakayama, recalled]\label{rem:cohomology:top-nakayama}
+We use the following form of Nakayama's lemma, proved in \Cref{ch:modules}: \emph{let $X$ be a compact (Hausdorff) $\Zl$-module, for instance a compact pro-$\ell$ abelian
+group; if $X/\ell X$ is finite, then $X$ is a finitely generated $\Zl$-module, and any elements whose images generate $X/\ell X$ generate $X$.} It applies to
+$H^n(G,T)$ for $T$ of type (C) whenever this group is an inverse limit of finite groups (\Cref{thm:cohomology:tate-limits}), and is used in
+\Cref{prop:cohomology:h1-fg} and in \Cref{ch:galcoh}.
+\end{remark}
+
 \begin{proposition}[finiteness of $H^1$ for type (C)]\label{prop:cohomology:h1-fg}
 Let $G$ be profinite and $T$ of type (C).
 \begin{enumerate}[label=(\roman*)]
@@ -1014,7 +1029,8 @@ $\ell$-groups.
 \item Suppose $H^1(G,A)$ is finite for every finite $G$-module $A$ of $\ell$-power order. Then $H^1(G,T)$ is a finitely generated $\Zl$-module,
 $H^1(G,V)=H^1(G,T)\otimes\Ql$ is finite-dimensional for $V=T\otimes\Ql$, and $H^1(G,T)_{\mathrm{tor}}$ is finite.
 \item The hypothesis of (ii) holds for finite groups, for procyclic groups admitting a continuous surjection onto $\Zl$ (\Cref{thm:cohomology:procyclic-compact}
-gives $H^1(\Gamma,T)=T/(F-1)T$ directly), and for $G_{\Q_p}$ and $G_{\Q,S}$ (\Cref{ch:galcoh}).
+gives $H^1(\Gamma,T)=T/(F-1)T$ directly), for the inertia group $I_q$ at a prime $q\ne\ell$ (\Cref{prop:cohomology:tame-inertia}(iv)), and for $G_{\Q_p}$ and $G_{\Q,S}$
+(\Cref{ch:galcoh}).
 \end{enumerate}
 \end{proposition}
 
@@ -1023,12 +1039,14 @@ gives $H^1(\Gamma,T)=T/(F-1)T$ directly), and for $G_{\Q_p}$ and $G_{\Q,S}$ (\Cr
 
 (ii) First let $T$ have no $\ell$-torsion. The sequence $0\to T\xrightarrow{\ell}T\to T/\ell T\to0$ has a continuous section
 (\Cref{prop:cohomology:les-cont}(d)), and its long exact sequence embeds $H^1(G,T)/\ell H^1(G,T)$ into the finite group $H^1(G,T/\ell T)$. By (i) $H^1(G,T)$ is
-compact, and a compact $\Zl$-module $A$ with $A/\ell A$ finite is finitely generated (topological Nakayama, \Cref{ch:modules}). In general $T_{\mathrm{tor}}$ is
+compact, and a compact $\Zl$-module $A$ with $A/\ell A$ finite is finitely generated (\Cref{rem:cohomology:top-nakayama}). In general $T_{\mathrm{tor}}$ is
 finite and $T/T_{\mathrm{tor}}$ has no $\ell$-torsion; the sequence $0\to T_{\mathrm{tor}}\to T\to T/T_{\mathrm{tor}}\to0$ has a continuous section
 (\Cref{prop:cohomology:les-cont}(b)), and $H^1(G,T)$ is an extension of a submodule of the finitely generated $H^1(G,T/T_{\mathrm{tor}})$ by a quotient of the finite
 $H^1(G,T_{\mathrm{tor}})$. The statement about $V$ is \Cref{thm:cohomology:tate-limits}(iii), and the torsion of a finitely generated $\Zl$-module is finite.
 
-(iii) For a finite group, $H^1(G,A)$ is finite because the cochain groups are. The other cases are proved where cited.
+(iii) For a finite group, $H^1(G,A)$ is finite because the cochain groups are. For $I_q$, the proof of \Cref{prop:cohomology:tame-inertia}(iv) applies verbatim to a finite
+$\ell$-primary $A$, with \Cref{thm:cohomology:prime-to-l}(a) and \Cref{thm:cohomology:procyclic-discrete} for $I/K\simeq\Zl$, and gives $H^1(I_q,A)\simeq A^K/(t-1)A^K$, a finite group.
+The other cases are proved where cited.
 \end{proof}
 
 \section[Groups of order prime to l and pro-l quotients]{Groups of order prime to $\ell$ and pro-$\ell$ quotients}\label{sec:cohomology:prime-to-l}
@@ -1135,6 +1153,11 @@ $c\mapsto c(t)$ induces
 H^1(I,M)\ \simeq\ H^1(I/K,M)\ \simeq\ M/(t-1)M .
 \]
 \item (Given \Cref{thm:cohomology:hochschild-serre} and \Cref{thm:cohomology:tate-limits}(i), both stated.) $H^n(I,M)=0$ for $n\ge2$, for $M$ as in (ii) of type (C).
+\item For \emph{every} $M$ of type (C) (resp. (V)), with no hypothesis on the image of $I$: $H^1(K,M)=0$, $M^K$ is of type (C) (resp. (V)), and
+\[
+\Inf\colon H^1(I/K,M^K)\xrightarrow{\ \sim\ }H^1(I,M),\qquad H^1(I,M)\simeq M^K/(t-1)M^K\quad\text{via }[c]\mapsto c(t).
+\]
+In particular $H^1(I,M)$ is a finitely generated $\Zl$-module (resp. a finite-dimensional $\Ql$-space), and $H^1(I,M)_{\mathrm{tor}}$ is finite.
 \end{enumerate}
 \end{proposition}
 
@@ -1143,9 +1166,15 @@ H^1(I,M)\ \simeq\ H^1(I/K,M)\ \simeq\ M/(t-1)M .
 and are $\ell$-groups: it is trivial. So $K$ acts trivially, \Cref{cor:cohomology:pro-l-quotient}(a) gives the first isomorphism, and
 \Cref{thm:cohomology:procyclic-compact} applied to $\Gamma=I/K\simeq\Zl$ gives the second. Composing, a cocycle $c$ on $I$ that is inflated from $I/K$ is sent to
 $c(t)$; an arbitrary cocycle is cohomologous to an inflated one, and changing $c$ by $d^0m$ changes $c(t)$ by $(t-1)m$, so the map $[c]\mapsto c(t)\bmod(t-1)M$ is
-defined on all of $H^1(I,M)$ by the same formula. (iii) By \Cref{thm:cohomology:prime-to-l}(b), $H^q(K,M/\ell^kM)=0$ for $q\ge1$, so by
+defined on all of $H^1(I,M)$ by the same formula. (iii) By \Cref{thm:cohomology:prime-to-l}(a), $H^q(K,M/\ell^kM)=0$ for $q\ge1$, so by
 \Cref{thm:cohomology:hochschild-serre} $H^n(I,M/\ell^kM)=H^n(I/K,M/\ell^kM)$, which is $0$ for $n\ge2$ (\Cref{thm:cohomology:procyclic-discrete}). Passing to the limit
 with \Cref{thm:cohomology:tate-limits} (the $H^1(I,M/\ell^kM)$ being finite) gives $H^n(I,M)=0$.
+
+(iv) $H^1(K,M)=0$ by \Cref{thm:cohomology:prime-to-l}(b) (its proof for $H^1$ uses only \Cref{thm:cohomology:tate-limits}(ii) in degree $1$, which is proved). $M^K$ is closed in $M$
+(\Cref{rem:cohomology:inf-res-continuous}), so it is a $\Zl$-submodule of type (C) (resp. a subspace, of type (V)), on which $I/K$ acts continuously. By
+\Cref{thm:cohomology:inf-res}(d), valid for continuous cochains by \Cref{rem:cohomology:inf-res-continuous}, $\Inf$ is an isomorphism. By (i), $I/K\simeq\Zl$ is procyclic,
+generated by the image of $t$, so \Cref{thm:cohomology:procyclic-compact} gives $H^1(I/K,M^K)\simeq M^K/(t-1)M^K$, $[c]\mapsto c(t)$, and the finiteness statements of its last
+paragraph. The composite is $[c]\mapsto c(t)$ as in (ii).
 \end{proof}
 
 \section{Procyclic groups}\label{sec:cohomology:procyclic}
@@ -1298,7 +1327,10 @@ because $F^k\gamma^{-1}\in U_N$ acts trivially on $M/\ell^NM$. As $N$ is arbitra
 $c_T(F)=\ell^am$ just constructed, and put $c=\ell^{-a}c_T$.
 
 (iii) is stated; see \cite[Chapter I, Sections 3 and 4]{SerreGaloisCoh} ($\operatorname{cd}_\ell\Gamma\le1$) and \cite[Section 2]{Tate95}; it follows from
-\Cref{thm:cohomology:procyclic-discrete} and \Cref{thm:cohomology:tate-limits}.
+\Cref{thm:cohomology:procyclic-discrete} and \Cref{thm:cohomology:tate-limits} when $\Gamma$ is $\widehat\Z$ or $\Zl$. For a general $\Gamma\simeq\prod_p\Z/p^{a_p}$ with $a_\ell=\infty$,
+first remove the prime-to-$\ell$ part: $\Gamma=\Gamma_\ell\times\Gamma'$ with $\Gamma_\ell\simeq\Zl$ and $\ell\nmid\#\Gamma'$, so $H^q(\Gamma',A)=0$ for $q\ge1$ and finite $\ell$-primary $A$
+(\Cref{thm:cohomology:prime-to-l}(a)), and \Cref{thm:cohomology:hochschild-serre} gives $H^n(\Gamma,A)=H^n(\Gamma_\ell,A^{\Gamma'})$, which vanishes for $n\ge2$ by
+\Cref{thm:cohomology:procyclic-discrete}; then pass to the limit over $A=M/\ell^kM$ with \Cref{thm:cohomology:tate-limits}.
 
 The consequences: $M/(F-1)M$ is a quotient of a finitely generated module; for $V$, $F-1$ is surjective if and only if it is injective, if and only if
 $\det(F-1)=\pm\det(1-F)\ne0$.
@@ -1442,51 +1474,51 @@ $(t-1)^2f=n'(t-1)h=-2n'^2e$ and $(t-1)^3f=0$. The symbolic computation was also 
 \end{proof}
 
 \begin{proposition}[the model computation]\label{prop:cohomology:model}
-Let $\ell$ be odd, $M=\ad T$ as in \Cref{lem:cohomology:tate-shape}, and $v=v_\ell(n')$.
+Let $\ell$ be odd, $M=\ad T$ as in \Cref{lem:cohomology:tate-shape}, and $w=v_\ell(n')$.
 \begin{enumerate}[label=(\alph*)]
 \item $(t-1)M=n'(\Zl e\oplus\Zl h)$, so
 \begin{gather*}
 H^1(I,M)=M/(t-1)M=(\Zl/n')\bar e\oplus(\Zl/n')\bar h\oplus\Zl\bar f,\\
-H^1(I,M)_{\mathrm{tor}}=(\Z/\ell^v)\bar e\oplus(\Z/\ell^v)\bar h\simeq(\Z/\ell^v)^2 .
+H^1(I,M)_{\mathrm{tor}}=(\Z/\ell^w)\bar e\oplus(\Z/\ell^w)\bar h\simeq(\Z/\ell^w)^2 .
 \end{gather*}
 \item $\overline\Frob$ acts on the torsion by $\bar e\mapsto\bar e$ and $\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e)$.
-\item With $m=\min\bigl(v,\,v_\ell(q-1),\,v_\ell(c')\bigr)$,
+\item With $m=\min\bigl(w,\,v_\ell(q-1),\,v_\ell(c')\bigr)$,
 \[
-\bigl(H^1(I,M)_{\mathrm{tor}}\bigr)^{G/I}=\{x\bar e+y\bar h:\ (q-1)y\equiv0,\ c'y\equiv0\pmod{\ell^v}\}\ \simeq\ \Z/\ell^v\oplus\Z/\ell^m,
+\bigl(H^1(I,M)_{\mathrm{tor}}\bigr)^{G/I}=\{x\bar e+y\bar h:\ (q-1)y\equiv0,\ c'y\equiv0\pmod{\ell^w}\}\ \simeq\ \Z/\ell^w\oplus\Z/\ell^m,
 \]
-of order $\ell^{v+m}$, length $v+m$ and Fitting ideal $\ell^{v+m}\Zl$.
-\item $m$ depends on $c'$ only modulo $\ell^{\min(v,v_\ell(q-1))}\Zl=(n',q-1)\Zl$. This is exactly the indeterminacy of $c'=b(\Frob)$: replacing $\Frob$ by $\Frob\,t^a$ ($a\in\Zl$)
+of order $\ell^{w+m}$, length $w+m$ and Fitting ideal $\ell^{w+m}\Zl$.
+\item $m$ depends on $c'$ only modulo $\ell^{\min(w,v_\ell(q-1))}\Zl=(n',q-1)\Zl$. This is exactly the indeterminacy of $c'=b(\Frob)$: replacing $\Frob$ by $\Frob\,t^a$ ($a\in\Zl$)
 changes $c'$ by $\varepsilon qn'a$, and replacing $e_2$ by $e_2+re_1$ (which changes the cocycle $b/\varepsilon$ by a coboundary, \Cref{prop:cohomology:corner}(ii)) changes $c'$
 by $\varepsilon r(q-1)$; rescaling $e_1$, $e_2$ multiplies $c'$ by a unit.
-\item (Check with $M=T$.) $H^1(I,T)=(\Zl/n')\bar e_1\oplus\Zl\bar e_2$, with torsion $(\Z/\ell^v)\bar e_1$, on which $\overline\Frob$ acts by $q^{-1}\cdot\varepsilon q=\varepsilon$. So
-$(H^1(I,T)_{\mathrm{tor}})^{G/I}$ is $(\Z/\ell^v)\bar e_1$ if $\varepsilon=1$ and $0$ if $\varepsilon=-1$, with Fitting ideal $\ell^v\Zl$, resp. $\Zl$.
+\item (Check with $M=T$.) $H^1(I,T)=(\Zl/n')\bar e_1\oplus\Zl\bar e_2$, with torsion $(\Z/\ell^w)\bar e_1$, on which $\overline\Frob$ acts by $q^{-1}\cdot\varepsilon q=\varepsilon$. So
+$(H^1(I,T)_{\mathrm{tor}})^{G/I}$ is $(\Z/\ell^w)\bar e_1$ if $\varepsilon=1$ and $0$ if $\varepsilon=-1$, with Fitting ideal $\ell^w\Zl$, resp. $\Zl$.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
 (a) By \Cref{lem:cohomology:tate-shape}, $(t-1)M$ is spanned by $-2n'e$ and $n'h-n'^2e$, that is $(t-1)M=n'(\Zl\cdot2e+\Zl(h-n'e))$. As $\ell$ is odd, $2\in\Zl^\times$, so this
-is $n'(\Zl e+\Zl(h-n'e))=n'(\Zl e\oplus\Zl h)$. Since $e,h,f$ is a basis, $M/(t-1)M=(\Zl/n')\bar e\oplus(\Zl/n')\bar h\oplus\Zl\bar f$, and $\Zl/n'\Zl=\Z/\ell^v$ (if $v=0$ it is $0$).
+is $n'(\Zl e+\Zl(h-n'e))=n'(\Zl e\oplus\Zl h)$. Since $e,h,f$ is a basis, $M/(t-1)M=(\Zl/n')\bar e\oplus(\Zl/n')\bar h\oplus\Zl\bar f$, and $\Zl/n'\Zl=\Z/\ell^w$ (if $w=0$ it is $0$).
 \Cref{prop:cohomology:frob-h1}(a) identifies this with $H^1(I,M)$.
 
 (b) By \Cref{prop:cohomology:frob-h1}(b), $\overline\Frob$ acts by $q^{-1}\rho(\Frob)$; by \Cref{lem:cohomology:tate-shape}, $q^{-1}\Frob\cdot e=e$ and $q^{-1}\Frob\cdot h=q^{-1}(h-2\varepsilon c'e)$.
 
-(c) $\overline\Frob(x\bar e+y\bar h)-(x\bar e+y\bar h)=-2\varepsilon c'q^{-1}y\,\bar e+(q^{-1}-1)y\,\bar h$. This vanishes if and only if $c'y\equiv0$ and $(q-1)y\equiv0\pmod{\ell^v}$, because
-$2$, $\varepsilon$, $q$ are units and $\bar e,\bar h$ are independent generators of $(\Z/\ell^v)^2$. By \Cref{prop:cohomology:frob-h1}(c) these are the $G/I$-invariants. The
-condition on $y\in\Z/\ell^v$ is $\ell^{\min(v,v_\ell(q-1),v_\ell(c'))}y=0$, which cuts out the subgroup $\ell^{v-m}\Z/\ell^v\simeq\Z/\ell^m$; $x$ is free. The order and length follow,
+(c) $\overline\Frob(x\bar e+y\bar h)-(x\bar e+y\bar h)=-2\varepsilon c'q^{-1}y\,\bar e+(q^{-1}-1)y\,\bar h$. This vanishes if and only if $c'y\equiv0$ and $(q-1)y\equiv0\pmod{\ell^w}$, because
+$2$, $\varepsilon$, $q$ are units and $\bar e,\bar h$ are independent generators of $(\Z/\ell^w)^2$. By \Cref{prop:cohomology:frob-h1}(c) these are the $G/I$-invariants. The
+condition on $y\in\Z/\ell^w$ is $\ell^{\min(w,v_\ell(q-1),v_\ell(c'))}y=0$, which cuts out the subgroup $\ell^{w-m}\Z/\ell^w\simeq\Z/\ell^m$; $x$ is free. The order and length follow,
 and $\Fitt_{\Zl}(A)=\ell^{\len A}\Zl$ for finite $A$ (\Cref{ch:modules}).
 
-(d) If $c''=c'+\ell^\mu z$ with $\mu=\min(v,v_\ell(q-1))$ and $z\in\Zl$, then $\min(\mu,v_\ell(c''))=\min(\mu,v_\ell(c'))$, so $m$ is unchanged. The first change:
+(d) If $c''=c'+\ell^\mu z$ with $\mu=\min(w,v_\ell(q-1))$ and $z\in\Zl$, then $\min(\mu,v_\ell(c''))=\min(\mu,v_\ell(c'))$, so $m$ is unchanged. The first change:
 $\rho(\Frob\,t^a)=\rho(\Frob)\rho(t)^a=\sm{\varepsilon q}{c'}{0}{\varepsilon}\sm1{n'a}01=\sm{\varepsilon q}{c'+\varepsilon qn'a}{0}{\varepsilon}$. The second: by the formula in the proof of
 \Cref{prop:cohomology:corner}(ii), the corner becomes $b+r(\chi\varepsilon-\varepsilon)$, whose value at $\Frob$ is $c'+\varepsilon r(q-1)$; on $I$ it is unchanged, so $n'$ is unchanged.
 In both cases the change is a multiple of $n'$ or of $q-1$, hence lies in $(n',q-1)\Zl=\ell^\mu\Zl$.
 
 (e) By \Cref{lem:cohomology:tate-shape}, $(t-1)T=n'\Zl e_1$, which gives $H^1(I,T)$ by \Cref{prop:cohomology:frob-h1}(a). The action is $q^{-1}\rho(\Frob)\bar e_1=q^{-1}\varepsilon q\bar e_1$.
-If $\varepsilon=-1$ the invariants are the $x$ with $2x\equiv0\pmod{\ell^v}$, which is $x\equiv0$ for $\ell$ odd.
+If $\varepsilon=-1$ the invariants are the $x$ with $2x\equiv0\pmod{\ell^w}$, which is $x\equiv0$ for $\ell$ odd.
 \end{proof}
 
 \begin{corollary}[the Fitting ideal of the invariants]\label{cor:cohomology:fitting}
-In the model setting with $\ell$ odd, the ideal $\Fitt_{\Zl}\bigl((H^1(I,M)_{\mathrm{tor}})^{G/I}\bigr)$ is defined (the module is finite), and equals $\ell^{v+m}\Zl$ for $M=\ad T$ and
-$\ell^v\Zl$ or $\Zl$ (as $\varepsilon=1$ or $-1$) for $M=T$. For $G=G_{\Q_q}$ this ideal is the Tamagawa factor $\Tam_q(M)$ of the paper's Section 1.2, defined in
+In the model setting with $\ell$ odd, the ideal $\Fitt_{\Zl}\bigl((H^1(I,M)_{\mathrm{tor}})^{G/I}\bigr)$ is defined (the module is finite), and equals $\ell^{w+m}\Zl$ for $M=\ad T$ and
+$\ell^w\Zl$ or $\Zl$ (as $\varepsilon=1$ or $-1$) for $M=T$. For $G=G_{\Q_q}$ this ideal is the Tamagawa factor $\Tam_q(M)$ of the paper's Section 1.2, defined in
 \Cref{ch:blochkato}; so
 \[
 v_\ell\bigl(\Tam_q(\ad T)\bigr)=v_\ell(n')+\min\bigl(v_\ell(n'),v_\ell(q-1),v_\ell(c')\bigr),
@@ -1502,7 +1534,7 @@ chapters cited.
 
 \begin{remark}\label{rem:cohomology:model-remarks}
 \begin{enumerate}[label=(\roman*)]
-\item If $v=0$ every torsion module above is $0$ and every Fitting ideal is $\Zl$, consistently with the formula ($m\le v=0$).
+\item If $w=0$ every torsion module above is $0$ and every Fitting ideal is $\Zl$, consistently with the formula ($m\le w=0$).
 \item The free part $\Zl\bar f$ of $H^1(I,\ad T)$ is not $\Frob$-stable: $q^{-1}\Frob\cdot\bar f=q^{-2}(\bar f+\varepsilon c'\bar h-c'^2\bar e)$ by \Cref{lem:cohomology:tate-shape}. Only the
 torsion is needed, and it is stable (\Cref{prop:cohomology:frob-h1}(c)).
 \item For $M=T$ the answer $\ell^{v_\ell(n)}$ (split, $\varepsilon=1$) or $1$ (nonsplit, $\varepsilon=-1$) is the $\ell$-part of the Tamagawa number $c_q(E)$, which is $n$ for
@@ -1660,7 +1692,7 @@ an eigenvalue of its inverse.
 \begin{paperlink}\label{pl:cohomology:unramified}
 After Lemma lem:dfg21: ``For $p\in\Sigma$ the group $H^1_f(\Q_p,V^D)=H^1_{\mathrm{ur}}(\Q_p,V^D)=(V^D)^{I_p}/(\Frob_p-1)$ vanishes, because
 $\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}\ne0$''. The last equality in the chain and the vanishing are \Cref{prop:cohomology:unramified}(ii). (The image of $\Frob_p-1$ equals that of
-$\Frob_p^{-1}-1=-\Frob_p^{-1}(\Frob_p-1)$, so the quotient does not depend on which Frobenius is meant.) the equality
+$\Frob_p^{-1}-1=-\Frob_p^{-1}(\Frob_p-1)$, so the quotient does not depend on which Frobenius is meant.) The equality
 $H^1_f=\Hur$ at $p\ne\ell$ is \Cref{ch:blochkato}, and the value of the determinant is \Cref{ch:lfunctions}. The next sentences, ``So $H^1_f(\Q_p,T^D)$ is the torsion of
 $H^1(\Q_p,T^D)$, a finite group'', use \Cref{prop:cohomology:les-cont}(iii): the preimage of $0$ under $H^1(\Q_p,T^D)\to H^1(\Q_p,V^D)$ is the torsion; finiteness is
 \Cref{prop:cohomology:h1-fg}(ii) with the finiteness theorem of \Cref{ch:galcoh}.
@@ -1732,8 +1764,8 @@ $3\times3$ matrix of $t-1$ in the basis $e,h,f$.
 \end{exercise}
 
 \begin{exercise}\label{ex:cohomology:ell2}
-Redo \Cref{prop:cohomology:model}(a) for $\ell=2$. Show that $(t-1)M=n'(2\Z_2e\oplus\Z_2h')$ with $h'=h-n'e$, so that $H^1(I,\ad T)_{\mathrm{tor}}\simeq\Z/2^{v+1}\oplus\Z/2^v$, not $(\Z/2^v)^2$; and that
-for $M=T$ and $\varepsilon=-1$ the invariants are $\{x:2x\equiv0\}\simeq\Z/2$ when $v\ge1$. Where else does the proof of \Cref{prop:cohomology:model} use $\ell$ odd?
+Redo \Cref{prop:cohomology:model}(a) for $\ell=2$. Show that $(t-1)M=n'(2\Z_2e\oplus\Z_2h')$ with $h'=h-n'e$, so that $H^1(I,\ad T)_{\mathrm{tor}}\simeq\Z/2^{w+1}\oplus\Z/2^w$, not $(\Z/2^w)^2$; and that
+for $M=T$ and $\varepsilon=-1$ the invariants are $\{x:2x\equiv0\}\simeq\Z/2$ when $w\ge1$. Where else does the proof of \Cref{prop:cohomology:model} use $\ell$ odd?
 \emph{Answer.} $e,h',f$ is a basis, and $(t-1)h=-2n'e$, $(t-1)f=n'h'$. In (c) the factor $2$ in $2\varepsilon c'q^{-1}y$ is no longer a unit.
 \end{exercise}
 
@@ -1750,7 +1782,7 @@ $u\equiv-1$ by hand from $q_E=j_E^{-1}(1+O(11^5))$, using $2^{12}\equiv4$ and $3
 from \Cref{ch:galcoh} that $\min(v_5(n),v_5(q-1),v_5(c'))=\min(v_5(n),v_5(q-1),v_5(c))$ with $v_5(c)=v_5(q-1)=1$ here, deduce from \Cref{prop:cohomology:model} that
 $(H^1(I_{11},\ad T_5E)_{\mathrm{tor}})^{G/I}$ has order $25$. (c) Check \Cref{prop:cohomology:model}(e) against $c_{11}=5$. (d) The modular degree of \curve{11a1} is $1$. Explain why this does not
 contradict Theorem thm:main.
-\emph{Answer.} (b) $v=1$, $v_5(10)=1$, $m=1$, order $5^{1+1}$. (c) $\varepsilon=1$, invariants $\Z/5$. (d) Theorem thm:main requires $E[5]$ irreducible, and $E(\Q)\simeq\Z/5$, so $E[5]$
+\emph{Answer.} (b) $w=1$, $v_5(10)=1$, $m=1$, order $5^{1+1}$. (c) $\varepsilon=1$, invariants $\Z/5$. (d) Theorem thm:main requires $E[5]$ irreducible, and $E(\Q)\simeq\Z/5$, so $E[5]$
 is reducible; the computation illustrates Lemma lem:tamfactor, which needs no irreducibility.
 \begin{lstlisting}[language=GP]
 E = ellinit([0,-1,1,-10,-20], O(11^8));
