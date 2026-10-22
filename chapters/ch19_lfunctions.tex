@@ -87,8 +87,11 @@ the $a_p(f)$ alone, and $L^{\nv}(\ad f,s)=L(\ad f,s)\prod_{p^2\mid N}L_p(A_f,s)^
 $\sum a_{n^2}(f)n^{-s}=L^{\nv}(\Sym f,s)/\zeta^{(N)}(2s-2)$. \emph{(proved here; the first given \Cref{ch:hecke})} \Cref{prop:lfunctions:rankin-series}.
 \item \textbf{Petersson norm.} $\langle f,f\rangle=\frac N{8\pi^3}L^{\nv}(\Sym f,2)=\frac N{8\pi^3}L(\ad f,1)\prod_{p^2\mid N}L_p(A_f,1)^{-1}$: only the additive primes
 contribute a correction. \emph{(proved here, given \Cref{ch:hecke})} \Cref{thm:lfunctions:petersson-sym2}.
-\item \textbf{The degree formula.} $\deg\varphi\cdot\vol(\Lambda_E)=c_\varphi^2NL^{\nv}(\ad f,1)/(2\pi)$. With $B_E=c_E^2NL(\ad f,1)/(2\pi\vol(\Lambda_E))$, which lies in $\Q^\times$,
-$\degphi=B_E\prod_{q^2\mid N}L_q(A_f,1)^{-1}$ and $v_\ell(\degphi)=v_\ell(B_E)+\sum_{q\mid N}e_\ell(E,q)$ for every $\ell\nmid N$, unconditionally. \emph{(proved here, given
+\item \textbf{The degree formula.} For every modular parametrisation,
+\[
+\deg\varphi\cdot\vol(\Lambda_E)=\frac{c_\varphi^2NL^{\nv}(\ad f,1)}{2\pi};\qquad B_E=\frac{c_E^2NL(\ad f,1)}{2\pi\vol(\Lambda_E)}\in\Q^\times
+\]
+satisfies $\degphi=B_E\prod_{q^2\mid N}L_q(A_f,1)^{-1}$, and $v_\ell(\degphi)=v_\ell(B_E)+\sum_{q\mid N}e_\ell(E,q)$ for every $\ell\nmid N$, unconditionally. \emph{(proved here, given
 \Cref{ch:hecke,ch:moddeg})} \Cref{cor:lfunctions:degree-formula}.
 \item \textbf{Flach's theorem.} For $p\ge5$ of good reduction with $\bar\rho_{E,p}$ surjective, the Selmer group of the symmetric square of $E$ with $\Q_p/\Z_p$
 coefficients is finite. \emph{(stated; reference)} \Cref{thm:lfunctions:flach}.
@@ -171,8 +174,8 @@ quadratic twist by $\Q(\sqrt d)$.
 \item $\langle f,g\rangle=\int_{\Gamma_0(N)\backslash\HH}f\bar g\,dx\,dy$ is the unnormalised Petersson product of weight $2$ (Appendix B, B-C8); PARI's \texttt{mfpetersson} returns
 $\langle f,g\rangle/\mu(N)$ with $\mu(N)=[\SL_2(\Z):\Gamma_0(N)]=N\prod_{p\mid N}(1+p^{-1})$. $\Lambda_E$ is the period lattice of the Neron differential $\omega_E$ of the
 minimal model, $\vol(\Lambda_E)$ its covolume (PARI's \texttt{E.area}), and $c_E>0$ the Manin constant (Appendix B, B-C9).
-\item Kodaira symbols are $\mathrm I_n,\mathrm I_n^*$ ($n\ge1$), $\mathrm I_0^*$, $\mathrm{II},\mathrm{III},\mathrm{IV}$ and their duals; PARI's codes, \texttt{elllocalred(E,q)[2]}, are $n+4$ for
-$\mathrm I_n$ and $-(n+4)$ for $\mathrm I_n^*$ when $n\ge1$, $1$ for $\mathrm I_0$, $-1$ for $\mathrm I_0^*$, and $\pm2,\pm3,\pm4$ for $\mathrm{II}/\mathrm{II}^*$, $\mathrm{III}/\mathrm{III}^*$,
+\item Kodaira symbols are $\mathrm I_n$, $\mathrm I_n^*$ ($n\ge1$), $\mathrm I_0^*$, $\mathrm{II}$, $\mathrm{III}$, $\mathrm{IV}$ and their duals. PARI's codes (the second entry of
+\texttt{elllocalred(E,q)}) are $n+4$ for $\mathrm I_n$ and $-(n+4)$ for $\mathrm I_n^*$ when $n\ge1$, $1$ for $\mathrm I_0$, $-1$ for $\mathrm I_0^*$, and $\pm2,\pm3,\pm4$ for $\mathrm{II}/\mathrm{II}^*$, $\mathrm{III}/\mathrm{III}^*$,
 $\mathrm{IV}/\mathrm{IV}^*$ (\Cref{ch:reduction}).
 \item No component groups occur in this chapter, so the geometric Frobenius at $p$ is written $\Phi_p$ (Appendix B, B-C2(b)).
 \end{enumerate}
@@ -206,10 +209,13 @@ difference, because there the eigenvalues on $A_f^{I_q}$ are stable under invers
 
 \begin{convention}[the four normalisations]\label{conv:lfunctions:normalisations}
 \begin{enumerate}[label=(\alph*)]
-\item The \emph{adjoint} $L$-function is $L(\ad f,s)=L(A_f,s)$, the product of the $L_p(A_f,s)$, each factor computed with any $\ell\ne p$ (\Cref{thm:lfunctions:compatible-system}). It is
-the paper's and DFG04's adjoint; its value is used at $s=1$; its functional equation relates $s$ and $1-s$.
+\item The \emph{adjoint} $L$-function,
+\[
+L(\ad f,s)=L(A_f,s)=\prod_pL_p(A_f,s),
+\]
+has each local factor computed with some prime $\ell\ne p$ (\Cref{thm:lfunctions:compatible-system}). It is the paper's and DFG04's adjoint; its value is used at $s=1$; its functional equation relates $s$ and $1-s$.
 \item The \emph{symmetric square} $L$-function is $L(\Sym f,s)=\prod_pL_p(\Sym V^\vee,s)$, which is $L(\ad f,s-1)$ (\Cref{prop:lfunctions:ad-sym}). It is the paper's $L(\Sym f,s)$ and
-PARI's \texttt{lfunsympow(E,2)}; its value is used at $s=2$; its functional equation relates $s$ and $3-s$. So $L(\Sym f,2)=L(\ad f,1)$, and we write both every time.
+PARI's \texttt{lfunsympow(E,2)}; its value is used at $s=2$; its functional equation relates $s$ and $3-s$. So $L(\Sym f,2)=L(\ad f,1)$, and we often write both.
 \item For every prime $q$, $P_q(X)\in\Z[X]$ is the polynomial with $L_q(\Sym f,s)=P_q(q^{-s})^{-1}$; hence $P_q(q^{-2})=L_q(A_f,1)^{-1}$. PARI's
 \texttt{lfuneuler(lfunsympow(E,2),q)} returns the rational function $1/P_q(x)$ in $x=q^{-s}$.
 \item The \emph{naive} factor is $L_p^{\nv}(A_f,s)=L_p(A_f,s)$ if $\delta_p>0$ and $1$ if $\delta_p=0$; $L^{\nv}(\ad f,s)=\prod_pL_p^{\nv}(A_f,s)$ and
@@ -238,7 +244,7 @@ Let $D(s)=\sum a_nn^{-s}$ be a Dirichlet series.
 with $D'(s)=-\sum a_n(\log n)n^{-s}$.
 \item If $a_n=O(n^c)$, then $\sigma_a\le c+1$. The same holds if $a_n=O(n^{c+r})$ for every real $r>0$.
 \item If $D(\sigma)=0$ for all real $\sigma$ larger than some $\sigma_1>\sigma_a$, then $a_n=0$ for every $n$.
-\item If $D(s)=\sum a_nn^{-s}$ and $D'(s)=\sum b_nn^{-s}$ both converge absolutely at $s$, then $D(s)D'(s)=\sum_nc_nn^{-s}$ with $c_n=\sum_{de=n}a_db_e$, absolutely convergent.
+\item If $D(s)=\sum a_nn^{-s}$ and $G(s)=\sum b_nn^{-s}$ both converge absolutely at $s$, then $D(s)G(s)=\sum_nc_nn^{-s}$ with $c_n=\sum_{de=n}a_db_e$, absolutely convergent.
 \end{enumerate}
 \end{proposition}
 
@@ -307,7 +313,7 @@ The Mellin transform $\phi\mapsto\int_0^\infty\phi(y)y^{s-1}dy$ is the Fourier t
 $u=\log y$ it is $\int\phi(e^u)e^{su}du$. Part (iii) is how the $L$-function of a modular form arises from its $q$-expansion (\Cref{ch:hecke}), and how
 $\zeta$ arises from a theta series below.
 
-\section[Zeta, Dirichlet and Dedekind]{The Riemann zeta function, Dirichlet \texorpdfstring{$L$}{L}-functions and Dedekind zeta functions}\label{sec:lfunctions:zeta}
+\section[Zeta, Dirichlet and Dedekind]{The zeta functions of Riemann and Dedekind, and Dirichlet \texorpdfstring{$L$}{L}-functions}\label{sec:lfunctions:zeta}
 
 This section treats the three classical $L$-functions of degree one or two that the rest of the chapter uses as tools. The paper uses the residue of
 $\zeta$ at $1$ and the value $\zeta(2)$ through the Rankin-Selberg formula of Remark rem:degree (\Cref{prop:lfunctions:partial-zeta}), and the quadratic characters
@@ -534,7 +540,7 @@ $p^{w/2}$. Then the Euler product $L(M,s)$ converges absolutely, and is nonzero,
 \begin{proof}
 Write $L_p(M,s)^{-1}=\prod_{i=1}^{d_p}(1-\lambda_ip^{-s})$ with $d_p\le d$ and $\abs{\lambda_i}\le p^{w/2}$. Expanding each factor as a geometric series, the coefficient of $p^{-ks}$ in
 $L_p(M,s)$ is the complete symmetric polynomial $h_k(\lambda_1,\dots,\lambda_{d_p})$, of absolute value at most $\binom{k+d-1}{d-1}p^{kw/2}$, which is the coefficient of $p^{-ks}$
-in $(1-p^{w/2-s})^{-d}$. Multiplying over $p$, the Dirichlet series $L(M,s)=\sum c_nn^{-s}$ has $\abs{c_n}\le\tau_d(n)n^{w/2}$, where $\sum\tau_d(n)n^{-s}=\zeta(s)^d$; so $\sum\abs{c_n}n^{-\sigma}\le
+in $(1-p^{w/2-s})^{-d}$. Multiplying over $p$, the Dirichlet series $L(M,s)=\sum c_nn^{-s}$ has $\abs{c_n}\le r_d(n)n^{w/2}$, where $\sum r_d(n)n^{-s}=\zeta(s)^d$; so $\sum\abs{c_n}n^{-\sigma}\le
 \zeta(\sigma-w/2)^d<\infty$ for $\sigma>1+w/2$, and \Cref{prop:lfunctions:euler-product} applies, every factor being nonzero there (a factor $1-\lambda p^{-s}$ vanishes only when
 $\abs{p^{s}}=\abs\lambda\le p^{w/2}$). (a) At a good $p$ the eigenvalues of $\Phi_p$ on $V_\ell E^\vee$ are $\alpha,\beta$, of absolute value $\sqrt p$ by the Hasse bound
 (\Cref{ch:ellcurves}); at a bad $p$ the eigenvalue is $a_p=\pm1$ or there is none (\Cref{prop:lfunctions:LE}). (b) At a good $p$ the eigenvalues on $A_f$ are
@@ -574,7 +580,7 @@ for split multiplicative, nonsplit multiplicative, additive reduction, and the t
 
 \begin{proposition}[$L(E,s)$ and $V_\ell E$]\label{prop:lfunctions:LE}
 \begin{enumerate}[label=(\roman*)]
-\item For every $p\ne\ell$, $L_p(E,s)=L_p(V_\ell E^\vee,s)=L_p(V_\ell E,s-1)$, and $\delta_p$ is the degree of $L_p(E,s)^{-1}$ as a polynomial in $p^{-s}$.
+\item For every $p\ne\ell$, $L_p(E,s)$ equals $L_p(V_\ell E^\vee,s)$ and $L_p(V_\ell E,s-1)$, and $\delta_p$ is the degree of $L_p(E,s)^{-1}$ as a polynomial in $p^{-s}$.
 \item $L(E,s)$ converges absolutely, and is nonzero, on $\operatorname{Re}s>\frac32$.
 \item Isogenous curves have the same $L$-function.
 \end{enumerate}
@@ -1351,7 +1357,7 @@ skipped unless \texttt{iii} $=1$; at an additive $q$ no division is made, becaus
 \item at every $q$, $q=\ell$ included, \texttt{t} $=t_\ell(E,q)$ from \texttt{valuation(j, q)};
 \item the correction $h_3(E)$, computed by \texttt{ns3(E)} (image $N_s(\F_3)$, \Cref{ch:galrep}), is subtracted when \texttt{iii} $=1$ and $\ell=3$.
 \end{enumerate}
-Values, recomputed with PARI 2.17.2 and the paper's code verbatim: for \curve{121a1}, \texttt{rule(ellinit([1,1,1,-30,-76]),~3)} returns \texttt{[1,~1]}: at $q=11$, type $\mathrm{II}$,
+Values, recomputed with PARI 2.17.2 and the paper's code verbatim: for \curve{121a1}, with \texttt{E = ellinit([1,1,1,-30,-76])}, \texttt{rule(E,~3)} returns \texttt{[1,~1]}: at $q=11$, type $\mathrm{II}$,
 \texttt{r} $=\frac{12}{11}$, \texttt{e} $=1$, \texttt{t} $=0$, and $\degphi=6$. For \curve{726a1} $=[1,1,0,-35,-51]$ (image $\Ns$), \texttt{rule(E,3)} and \texttt{rule(E,3,1)} both return
 \texttt{[2, 2]}: at $q=2$, type $\mathrm I_6$, \texttt{r} $=\frac34/(1-\frac14)=1$, \texttt{e} $=0$, \texttt{t} $=v_3(6)=1$; at $q=3=\ell$, type $\mathrm I_3$, $w_3=0$, \texttt{t} $=1$; at $q=11$, type
 $\mathrm{III}$, \texttt{r} $=\frac{12}{11}$, \texttt{e} $=1$ counted only with \texttt{iii} $=1$, and then cancelled by \texttt{ns3} $=1$; and $\degphi=144=2^4\cdot3^2$.
