@@ -1,0 +1,1837 @@
+\chapter{Bloch-Kato Selmer groups, Tamagawa factors and the adjoint motive}\label{ch:blochkato}
+\markboth{\MakeUppercase{\chaptername\ \thechapter.\ Bloch-Kato Selmer groups and Tamagawa factors}}{}
+
+Theorem thm:main of the paper says that $v_\ell(\degphi)$ is the length of a Bloch-Kato Selmer group plus Tamagawa factors plus omitted Euler factors. This chapter
+defines the first two, computes the second at every bad prime, and proves the Selmer half of the theorem: the comparison of the Bloch-Kato Selmer group with the
+$\Sigma$-imprimitive one of Diamond, Flach and Guo, with every local term identified. It proves the paper's Lemmas lem:fpr, lem:tamfactor and lem:tamadd and its
+Corollary cor:explicit, restates Lemma lem:dfg21 and Lemma lem:h0 in the language of Selmer groups, and places the whole in the framework of the Tamagawa number
+conjecture of Bloch and Kato.
+
+\section*{Core results at a glance}
+
+Throughout, $E/\Q$ has conductor $N$, $\ell$ is an odd prime, $T=T_\ell E$, $V=T\otimes\Ql$, $A=\ad T$, $A_f=\ad V$, $W=A\otimes\Qlmod$, $T^D=\Hom(A,\Zl(1))$, $V^D=T^D\otimes\Ql$, $W^D=V^D/T^D$, and $\Sigma$ is
+the set of primes dividing $N$; $p\ne\ell$ in all local statements unless said otherwise.
+
+\begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
+\item \textbf{Conventions.} Linear dual $M^\vee$, Kummer dual $M^D=\Hom(M,\Zl(1))=M^\vee(1)$, Pontryagin dual $X^*$; $\Frob_p$ arithmetic, $L_p(M,s)=\det(1-\Frob_p^{-1}p^{-s}\mid M^{I_p})^{-1}$
+with the geometric Frobenius; $\Ql(1)$ has Hodge-Tate weight $+1$; Tate data $q_E$, $\nu=-v_q(j_E)$, $u=q_Eq^{-\nu}$, $c(u)$ the class of $\bar u$ in $\F_q^\times/(\F_q^\times)^{\ell^{v_\ell(q-1)}}$, $v_\ell(c(u))$ the
+largest $k\le v_\ell(q-1)$ with $\bar u$ an $\ell^k$-th power. \emph{(convention)} \Cref{conv:blochkato:setup}.
+\item \textbf{$\ell$-adic representations.} A continuous $G_K\to\GL(V)$ on a finite-dimensional $\Ql$-space; a stable lattice $T$; $W=V/T$. \emph{(definition)}
+\Cref{def:blochkato:l-adic-rep}.
+\item \textbf{Lattices.} Stable lattices exist; $W[\ell^k]\simeq T/\ell^kT$; lattices are commensurable, and all stable lattices are homothetic if $T/\ell T$ is irreducible. \emph{(proved
+here)} \Cref{prop:blochkato:lattices}.
+\item \textbf{Tate twists.} $\Zl(1)=\varprojlim\mu_{\ell^k}$, $M(n)=M\otimes\Zl(1)^{\otimes n}$. \emph{(definition)} \Cref{def:blochkato:twists}.
+\item \textbf{Twists at $p\ne\ell$.} $M(n)^{I_p}=M^{I_p}(n)$ and Frobenius eigenvalues are multiplied by $p^n$ (arithmetic) or $p^{-n}$ (geometric); $\wedge^2T_\ell E\simeq\Zl(1)$, $(T_\ell E)^\vee\simeq T_\ell E(-1)$.
+\emph{(proved here, given \Cref{ch:ellcurves})} \Cref{prop:blochkato:twists}.
+\item \textbf{Kummer duals.} $V^D=V^\vee(1)$, $T^D=T^\vee(1)$, $W^D=V^D/T^D$; $X^*=\Hom_{\mathrm{cont}}(X,\Qlmod)$. \emph{(definition)} \Cref{def:blochkato:duals}.
+\item \textbf{Kummer duality.} $W^D\simeq\Hom(T,\mu_{\ell^\infty})$, $T^D\simeq\Hom(W,\mu_{\ell^\infty})$, perfect equivariant pairings; $(T^D)^D=T$; $X^*$ has the length of $X$ for finite $X$.
+\emph{(proved here, given \Cref{ch:modules})} \Cref{prop:blochkato:duals}.
+\item \textbf{The adjoint is self-dual.} For $\ell$ odd the trace form is perfect on $A$ (Gram determinant $-2$), so $T^D\simeq A(1)$, $V^D\simeq A_f(1)$, $W^D\simeq\ad T(1)\otimes\Qlmod$;
+$\ad$ is unchanged by twisting by a character, by homothety and by dualising; so $\ad M_{f,\lambda}\simeq\ad T_\ell E$, and $\ad T$ is the same $G_{\Q_q}$-module for $E$ and its twists.
+\emph{(proved here, given \Cref{ch:reps,ch:moddeg})} \Cref{prop:blochkato:adjoint-self-dual}.
+\item \textbf{Geometric representations.} Unramified almost everywhere and de Rham at $\ell$. \emph{(definition)} \Cref{def:blochkato:geometric}.
+\item \textbf{Purity.} $V_\ell E$ and its tensor constructions are geometric \emph{(stated; reference)}; at $p\nmid N\ell$ the Frobenius eigenvalues on $V_\ell E$, $A_f$, $V^D$ have absolute values
+$p^{1/2}$, $1$, $p$ \emph{(proved here, given \Cref{ch:ellcurves})}. \Cref{prop:blochkato:purity}.
+\item \sloppy \textbf{Global invariants.} If $\bar\rho$ is absolutely irreducible, $H^0(\Q,A_f)=H^0(\Q,W)=0$; $H^0(\Q,V^D)=0$ for every $E$; $A_f$, $A_f(1)$, $A_f(-1)$ are pairwise non-isomorphic.
+\emph{(proved here)} \Cref{prop:blochkato:global-invariants}.
+\item \textbf{The Frobenius dictionary.} $L_p(M(1),s)=L_p(M,s+1)$; $(F-1)X=(F^{-1}-1)X$; $\#X/(F-1)X=\ell^{v_\ell\det(1-F^{-1}\mid X)}$ for a lattice $X$; $\det(1-\Frob_p^{-1}p^{-s}\mid V_\ell E)^{-1}=L_p(E,s+1)$.
+\emph{(proved here)} \Cref{prop:blochkato:frobenius-dictionary}.
+\item \textbf{The adjoint at $p\ne\ell$.} $A_f^{I_p}$, the geometric Frobenius on it and $L_p(A_f,1)^{-1}=\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})$ by reduction type: $1-p^{-2}$ at potentially multiplicative primes,
+$(1-\frac{\alpha}{\beta p})(1-\frac1p)(1-\frac{\beta}{\alpha p})$ at good primes, $1-cp^{-1}$ for cyclic inertia of order $3,4,6$, $\frac{p-1}p\cdot\frac{(p+1)^2-a^2}{p^2}$ for $\rho(I_p)=\{\pm1\}$, $1$ for non-abelian
+inertia. \emph{(proved here, given \Cref{ch:local,ch:galrep})} \Cref{prop:blochkato:local-adjoint}.
+\item \textbf{Local invariants.} $H^0(\Q_p,V^D)=0$ and $L_p(A_f,1)^{-1}\in\Q^\times$; $H^0(\Q_p,A_f)$ is $0$ or a line by type, nonzero at some bad primes. \emph{(proved here)}
+\Cref{lem:blochkato:no-local-invariants}.
+\item \textbf{Local finiteness.} $H^1(\Q_p,T^D)$ has rank $\dim H^0(\Q_p,A_f)$; it is finite when that is $0$; its torsion is always finite. \emph{(proved here, given \Cref{ch:galcoh})}
+\Cref{cor:blochkato:local-finiteness}.
+\item \textbf{Integrality.} $L_p(A_f,1)^{-1}=\det(1-\Frob_p^{-1}\mid(T^D)^{I_p})\in\Z_{(\ell)}\cap\Q^\times$, $\#(T^D)^{I_p}/(\Frob_p-1)=\ell^{v_\ell(L_p(A_f,1)^{-1})}$; the valuation is $v_\ell(p^2-1)$ at potentially
+multiplicative primes and $e_\ell(E,p)$ at additive primes. \emph{(proved here, given \Cref{ch:lfunctions} for $e_\ell$)} \Cref{lem:blochkato:euler-integral}.
+\item \textbf{Period rings.} $\BdR\supset\Bst\supset\Bcris$, $D_\bullet(V)=(B_\bullet\otimes V)^{G_{\Q_\ell}}$; de Rham, semistable, crystalline representations; Hodge-Tate weights. \emph{(stated; reference)}
+\Cref{def:blochkato:period-rings}.
+\item \textbf{Good reduction.} $V_\ell B$ is crystalline iff the abelian variety $B/\Q_\ell$ has good reduction; for $E$ good at $\ell$, $\Dcris((V_\ell E)^\vee)$ has Frobenius polynomial
+$X^2-a_\ell X+\ell$. \emph{(stated; reference)} \Cref{thm:blochkato:crystalline-good-reduction}.
+\item \textbf{Stability.} Crystalline and de Rham representations are stable under the tensor operations; for $\ell\nmid N$, $A_f$, $V^D$, $V^\vee$ are crystalline with weights $\{-1,0,1\}$,
+$\{0,1,2\}$, $\{-1,0\}$. \emph{(stated; reference; the consequences proved here)} \Cref{prop:blochkato:crystalline-closure}.
+\item \textbf{Fontaine-Laffaille.} An exact equivalence between strongly divisible filtered modules with weights in an interval of length at most $\ell-2$ and lattices in
+crystalline representations. \emph{(stated; reference)} \Cref{thm:blochkato:fontaine-laffaille}.
+\item \sloppy \textbf{Local dimensions at $\ell$.} $\dim H^1_f(\Q_\ell,V)=\dim H^0(\Q_\ell,V)+\#\{\text{positive Hodge-Tate weights}\}$; for $\ell\nmid N$, $\dim H^1_f(\Q_\ell,A_f)=\dim H^0(\Q_\ell,A_f)+1$ and
+$\dim H^1_f(\Q_\ell,V^D)=2$. \emph{(proof sketched here; reference)} \Cref{prop:blochkato:dimension-formula}.
+\item \textbf{Bloch-Kato local conditions.} $H^1_f(\Q_p,V)=H^1_{\ur}(\Q_p,V)$ for $p\ne\ell$; $H^1_f(\Q_\ell,V)=\ker(H^1(\Q_\ell,V)\to H^1(\Q_\ell,\Bcris\otimes V))$, with $H^1_e\subseteq H^1_f\subseteq H^1_g$;
+$H^1_f(\R,V)=0$. \emph{(definition)} \Cref{def:blochkato:local-conditions}.
+\item \textbf{Propagation.} $H^1_f(\Q_p,T)=\iota^{-1}H^1_f(\Q_p,V)$, $H^1_f(\Q_p,W)=\pi H^1_f(\Q_p,V)$. \emph{(definition)} \Cref{def:blochkato:propagation}.
+\item \sloppy \textbf{Propagated conditions.} $H^1_f(\Q_p,T)\supseteq H^1(\Q_p,T)_{\mathrm{tor}}=\ker\iota$; $H^1_f(\Q_p,W)\simeq(\Qlmod)^{\dim H^1_f(\Q_p,V)}$. \emph{(proved here, given \Cref{ch:galcoh})}
+\Cref{prop:blochkato:propagation}.
+\item \textbf{The conditions at $p\ne\ell$.} $H^1_f(\Q_p,V)=V^{I_p}/(\Frob_p-1)$; $0\to H^1_{\ur}(\Q_p,T)\to H^1(\Q_p,T)\to H^1(I_p,T)^{G_{\Q_p}}\to0$; $H^1_f(\Q_p,T)/H^1_{\ur}(\Q_p,T)\simeq(H^1(I_p,T)_{\mathrm{tor}})^{G_{\Q_p}}$;
+$H^1_f(\Q_p,W)$ is the maximal divisible subgroup of $H^1_{\ur}(\Q_p,W)$; if $H^0(\Q_p,V)=0$ then $H^1_f(\Q_p,T)=H^1(\Q_p,T)_{\mathrm{tor}}$ is finite. \emph{(proved here, given
+\Cref{ch:cohomology,ch:galcoh})} \Cref{prop:blochkato:local-unramified}.
+\item \textbf{Duality.} $H^1_f(\Q_v,V)$ and $H^1_f(\Q_v,V^D)$ are exact annihilators; $H^1(\Q_v,W)/H^1_f(\Q_v,W)\simeq H^1_f(\Q_v,T^D)^*$. \emph{(proved here for $v\ne\ell$, given \Cref{ch:galcoh};
+stated with reference at $v=\ell$)} \Cref{prop:blochkato:local-duality-f}.
+\item \textbf{Bloch-Kato Selmer groups.} $H^1_f(\Q,M)$: classes whose localisations lie in $H^1_f(\Q_v,M)$ at every place. \emph{(definition)} \Cref{def:blochkato:selmer}.
+\item \textbf{Finite level.} $H^1_f=H^1_{\ur}$ at unramified primes, and $H^1_f(\Q,M)\subseteq H^1(G_{\Q,S},M)$ is cut out by the conditions at $S$. \emph{(proved here)} \Cref{lem:blochkato:selmer-S}.
+\item \textbf{Relations.} $H^1_f(\Q,T)=\iota^{-1}H^1_f(\Q,V)$ with torsion the image of $H^0(\Q,W)$; $H^1_f(\Q,W)$ is cofinitely generated with maximal divisible subgroup $\pi H^1_f(\Q,V)$, so it is finite
+iff $H^1_f(\Q,V)=0$. \emph{(proved here, given the finiteness theorems of \Cref{ch:galcoh})} \Cref{prop:blochkato:selmer-relations}.
+\item \textbf{The $\Sigma$-imprimitive Selmer group.} $H^1_\Sigma(\Q,W)$: Bloch-Kato at $\ell$, unramified outside $\Sigma\cup\{\ell\}$, nothing on $\Sigma$. \emph{(definition)}
+\Cref{def:blochkato:sigma-selmer}.
+\item \textbf{Finiteness of $H^1_\Sigma$.} If $H^1_f(\Q,V)=0$ and $H^0(\Q_p,V^D)=0$ for $p\in\Sigma$, then $0\to H^1_f(\Q,W)\to H^1_\Sigma(\Q,W)\to\bigoplus_{p\in\Sigma}H^1_f(\Q_p,T^D)^*$ is exact with finite outer
+terms. \emph{(proved here)} \Cref{prop:blochkato:sigma-finite}.
+\item \textbf{The paper's Selmer groups.} $H^1_f(\Q,\ad T\otimes\Qlmod)$ and $H^1_\Sigma(\Q,\ad T\otimes\Qlmod)$. \emph{(definition)} \Cref{def:blochkato:adjoint-selmer}.
+\item \textbf{Euler characteristic.} $\dim H^1_f(\Q,V)-\dim H^1_f(\Q,V^D)=\dim H^0(\Q,V)-\dim H^0(\Q,V^D)+\sum_v(\dim H^1_f(\Q_v,V)-\dim H^0(\Q_v,V))$ \emph{(proof sketched here; reference)}; for $A_f$ the
+right side is $0$, so $H^1_f(\Q,A_f)=0\iff H^1_f(\Q,V^D)=0$ \emph{(proved here, given the formula)}. \Cref{prop:blochkato:euler-characteristic}.
+\item \textbf{Tamagawa factor.} $\Tam_p(M)=\Fitt_{\Zl}\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$, the Fitting ideal of the invariants. \emph{(definition)} \Cref{def:blochkato:tamagawa}.
+\item \textbf{Index description.} $\ell^{v_\ell(\Tam_p(M))}=[H^1_f(\Q_p,M):H^1_{\ur}(\Q_p,M)]$. \emph{(proved here)} \Cref{prop:blochkato:tam-index}.
+\item \textbf{Basic properties.} $\Tam_p(M)=\Zl$ if $M$ is unramified or inertia acts through a finite group of order prime to $\ell$; $\Tam_p(\ad T)=\Tam_p(\ad(T\otimes\chi))$; $\Tam_p(\ad T_\ell E)=\Zl$ at good
+primes and when $\rho(I_p)=\{\pm1\}$. \emph{(proved here)} \Cref{prop:blochkato:tam-basic}.
+\item \textbf{Fontaine and Perrin-Riou (Lemma lem:fpr).} If $H^0(\Q_p,X\otimes\Ql)=0$ then $0\to X^{I_p}/(\Frob_p-1)\to H^1(\Q_p,X)_{\mathrm{tor}}\to(H^1(I_p,X)_{\mathrm{tor}})^{G_{\Q_p}}\to0$ is exact and
+$\Fitt H^1_f(\Q_p,X)=\det(1-\Frob_p^{-1}\mid X^{I_p})\Tam_p(X)$; for $X=T^D$, $\Fitt H^1_f(\Q_p,T^D)=L_p(A_f,1)^{-1}\Tam_p(T^D)$ and $\len H^1_f(\Q_p,T^D)=\len H^0(\Q_p,W^D)$. \emph{(proved here, given
+\Cref{ch:galcoh})} \Cref{thm:blochkato:fpr-local}.
+\item \textbf{$\Tam_p(T^D)=\Tam_p(A)$.} For the adjoint of $E$ at every $p\ne\ell$; at potentially multiplicative primes both invariant modules are $\Z/\ell^v\oplus\Z/\ell^m$. \emph{(proved here)}
+\Cref{prop:blochkato:tam-dual}.
+\item \textbf{Tamagawa numbers.} $v_\ell(\Tam_p(T_\ell E))=v_\ell(c_p)$. \emph{(proved here, given \Cref{ch:reduction})} \Cref{prop:blochkato:tam-of-E}.
+\item \textbf{Tate data.} The Tate shape $\sm{\chi_\ell\varepsilon}{\varepsilon\kappa}{0}{\varepsilon}$, $\kappa|_I=n\,t_\ell$, $\Frob\,t\,\Frob^{-1}=t^q$, $\kappa=n\kappa_q+\kappa_u$, $[\kappa_u]\leftrightarrow\bar u$. \emph{(convention;
+recollection from \Cref{ch:local,ch:galrep,ch:galcoh})} \Cref{conv:blochkato:tate-data}.
+\item \textbf{Lemma lem:tamfactor.} At a multiplicative prime $q\ne\ell$: $H^1(I_q,\ad T)_{\mathrm{tor}}\simeq(\Z/\ell^{v_\ell(n)})^2$ and
+\[
+v_\ell(\Tam_q(\ad T))=v_\ell(n)+\min\bigl(v_\ell(n),v_\ell(q-1),v_\ell(c(u))\bigr)\ \ge\ t_\ell(E,q).
+\]
+\emph{(proved here, given \Cref{ch:galrep,ch:cohomology,ch:galcoh})} \Cref{lem:blochkato:tamfactor}.
+\item \textbf{Consequences.} The excess $\min(\dots)$ is positive iff $\ell\mid n$, $q\equiv1\pmod\ell$ and $\bar u\in(\F_q^\times)^\ell$; it is $0$ at $q=2$ and independent of split or nonsplit. \emph{(proved
+here)} \Cref{cor:blochkato:tamfactor-consequences}.
+\item \sloppy \textbf{Potentially multiplicative additive primes.} At $q\ne\ell$, $q=2$ included: $v_\ell(\Tam_q(\ad T))=v_\ell(\nu)+\min(v_\ell(\nu),v_\ell(q-1),v_\ell(c(u)))$. \emph{(proved here, given
+\Cref{ch:reduction,ch:galrep})} \Cref{prop:blochkato:tam-potmult}.
+\item \textbf{Examples.} Tate data and $v_\ell(\Tam_q(\ad T))$ for \curve{11a1}, \curve{14a1}, \curve{539c1}, \curve{791a1}, \curve{1184f1}, \curve{1748e1}. \emph{(computed)}
+\Cref{ex:blochkato:tamfactor-examples}.
+\item \textbf{Finite inertia image.} If $I_q$ acts through a finite $\Delta$, $H^1(I_q,M)_{\mathrm{tor}}=H^1(\Delta,M)$. \emph{(proved here)} \Cref{lem:blochkato:finite-inertia-image}.
+\item \sloppy \textbf{$\ad T$ is free over $\Z_3[C_3]$.} For $\sigma\in\GL_2(\Z_3)$ of order $3$, $\ad T\simeq\Z_3[\langle\sigma\rangle]$, so $H^1(\langle\sigma\rangle,\ad T)=0$, while $H^1(\langle\sigma\rangle,T)\simeq\F_3$. \emph{(proved here)}
+\Cref{prop:blochkato:ad-free-c3}.
+\item \textbf{Additive primes (Lemma lem:tamadd).} For $\ell$ odd and $q\ne\ell$ of potentially good additive reduction, $H^1(I_q,\ad T)_{\mathrm{tor}}=0$ and $\Tam_q(\ad T)=\Tam_q(\ad T(1))=\Zl$.
+\emph{(proved here, given \Cref{ch:galrep})} \Cref{thm:blochkato:tam-additive}.
+\item \sloppy \textbf{The explicit identity (Corollary cor:explicit).} $\sum_{q\mid N}v_\ell(\Tam_q(\ad T))=\sum_{v_q(j)<0}\bigl(t_\ell+\min(t_\ell,v_\ell(q-1),v_\ell(c(u_q)))\bigr)$ \emph{(proved here)}; hence, under the
+hypothesis of Theorem thm:main, $v_\ell(\degphi)=\len H^1_f(\Q,W)+\sum_qe_\ell(E,q)+\sum_{v_q(j)<0}\bigl(t_\ell+\min(\dots)\bigr)$ \emph{(given Theorem thm:main, \Cref{ch:congruence})}.
+\Cref{cor:blochkato:explicit-identity}.
+\item \textbf{The excess on the tables.} Below conductor $10{,}000$ the excess is never negative and is $0$ for $8{,}688$ of $13{,}203$, $19{,}019$ of $23{,}361$, $25{,}133$ of $28{,}134$ curves at
+$\ell=3,5,7$. \emph{(computed)} \Cref{rem:blochkato:open-question-3}.
+\item \textbf{The exceptional set.} $S_f=\{\ell:\ell\mid2N$ or $\bar\rho|_{\Gal(\Qbar/\Q(\sqrt{\ell^*}))}$ not absolutely irreducible$\}$. \emph{(definition)} \Cref{def:blochkato:exceptional-set}.
+\item \textbf{Theorem thm:dfg27.} If $\ell\notin S_f$ then $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0=H^1_f(\Q,A_f)$. \emph{(stated; reference; a derivation from Theorem thm:dfg37 sketched)}
+\Cref{thm:blochkato:dfg27}.
+\item \textbf{Lemma lem:h0 in Selmer form.} If $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$, $H^0(\Q,W^D)\simeq H^1_f(\Q,T^D)=H^1(\Q,T^D)_{\mathrm{tor}}$ \emph{(proved here)}; $H^0(\Q,W^D)\simeq\Z/\ell^{h_\ell(E)}$, $h_\ell=0$ for
+$\ell\ge5$, $h_3\le1$ with equality iff the image is $N_s(\F_3)$ \emph{(proved in \Cref{ch:galrep})}. \Cref{prop:blochkato:h0-selmer}.
+\item \textbf{Lemma lem:dfg21.} If $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$ and $\Sigma\ne\emptyset$ contains the ramified primes $p\ne\ell$:
+\[
+0\to H^1_f(\Q,W)\to H^1_\Sigma(\Q,W)\to\bigoplus_{p\in\Sigma\cup\{\infty\}}H^1_f(\Q_p,T^D)^*\to H^0(\Q,W^D)^*\to0.
+\]
+\emph{(proved here, given \Cref{ch:galcoh})} \Cref{lem:blochkato:dfg21}.
+\item \textbf{The length identity.} Under these hypotheses,
+$\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\bigl(v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(\ad T))\bigr)-h_\ell(E)$. \emph{(proved here)} \Cref{cor:blochkato:length-identity}.
+\item \textbf{The Selmer identity.} For $\ell\notin S_f$, $H^1_f(\Q,W)$ and $H^1_\Sigma(\Q,W)$ are finite and
+\begin{multline*}
+\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{q\mid N}v_\ell\bigl(L_q(A_f,1)^{-1}\bigr)\\
++\sum_{v_q(j)<0}\Bigl(t_\ell(E,q)+\min\bigl(t_\ell(E,q),v_\ell(q-1),v_\ell(c(u_q))\bigr)\Bigr).
+\end{multline*}
+\emph{(proved here, given Theorem thm:dfg27)} \Cref{thm:blochkato:selmer-identity}.
+\item \textbf{Remark rem:ns.} For $\ell=3$, image $N_s(\F_3)$, $3\nmid N$: if $H^1_f(\Q,V^D)=0$, the length identity holds with $-h_3(E)=-1$. \emph{(proved here; conditional)}
+\Cref{prop:blochkato:rem-ns}.
+\item \textbf{Section sec:tam.} Below conductor $10{,}000$ the refined inequality has no exception; equality rises from $596$ to $714$ of $1{,}050$ curves at $\ell=3$ and from $203$ to $220$ of $252$ at
+$\ell=5$. \emph{(computed)} \Cref{ex:blochkato:sec-tam}.
+\item \textbf{The adjoint motive.} Realisations $A_f$, Hodge numbers $h^{1,-1}=h^{0,0}=h^{-1,1}=1$, $L(\ad f,s)=L(\Sym f,s+1)$; $s=1$ is critical and $L(\ad f,1)\ne0$. \emph{(definition; properties
+stated with reference, the nonvanishing given \Cref{ch:lfunctions})} \Cref{def:blochkato:adjoint-motive}.
+\item \textbf{The Tamagawa number conjecture.} Schematically,
+\[
+\frac{L(M,0)}{\Omega(M)}\sim_\ell\frac{\prod_p\#(\Zl/\Tam_p(T))\cdot\#H^1_f(\Q,W_M^D)}{\#H^0(\Q,W_M)\cdot\#H^0(\Q,W_M^D)}.
+\] \emph{(stated in outline;
+reference)} \Cref{conj:blochkato:tnc}.
+\item \textbf{Diamond, Flach and Guo, Theorem 0.1.} For $\lambda\notin S_f$ the $\lambda$-part of the conjecture holds for the adjoint motive at $s=1$. \emph{(stated; reference)} \Cref{thm:blochkato:dfg-01}.
+\item \textbf{Diamond, Flach and Guo, Theorem 0.2 (thm:dfg37).} For $\ell\notin S_f$, $H^1_\Sigma(\Q,W)$ is finite of length $v_\lambda(\eta^\Sigma_{f,\lambda})$. \emph{(stated; reference; see \Cref{ch:congruence})}
+\Cref{thm:blochkato:dfg-02}.
+\item \textbf{Flach.} For $\ell$ outside an explicit finite set the Bloch-Kato Selmer group of $\Sym T_\ell E\otimes\Qlmod$ ($=W^D$) is finite, annihilated by an integer built from $\degphi$. \emph{(stated in
+outline; reference)} \Cref{thm:blochkato:flach}.
+\end{enumerate}
+
+\section*{Where the paper uses this chapter}
+
+\begin{itemize}
+\item \textbf{Section 1.2} (the definition of $\Tam_p(M)$; ``at a prime of good reduction it is $0$''; the Bloch-Kato Selmer group): \Cref{def:blochkato:tamagawa},
+\Cref{prop:blochkato:tam-basic}, \Cref{def:blochkato:selmer}, \Cref{def:blochkato:adjoint-selmer}.
+\item \textbf{Section 1.1} (the geometric Frobenius in $L_p(A_f,s)$): \Cref{prop:blochkato:frobenius-dictionary}, \Cref{prop:blochkato:local-adjoint}.
+\item \textbf{Section 4.2} ($A$, $W$, $T^D\simeq A(1)$ via the trace form, $M_{f,\lambda}$ and its adjoint, $H^1_f$, $H^1_\Sigma$, $S_f$): \Cref{prop:blochkato:adjoint-self-dual},
+\Cref{def:blochkato:sigma-selmer}, \Cref{def:blochkato:exceptional-set}.
+\item \textbf{Theorem thm:dfg27}: \Cref{thm:blochkato:dfg27}, \Cref{prop:blochkato:euler-characteristic}, \Cref{prop:blochkato:global-invariants}.
+\item \textbf{Lemma lem:dfg21 and the paragraph after it}: \Cref{lem:blochkato:dfg21}, \Cref{prop:blochkato:local-unramified}, \Cref{prop:blochkato:local-duality-f},
+\Cref{lem:blochkato:no-local-invariants}, \Cref{cor:blochkato:local-finiteness}.
+\item \textbf{Lemma lem:fpr}: \Cref{thm:blochkato:fpr-local}, \Cref{prop:blochkato:tam-dual}, \Cref{lem:blochkato:euler-integral}, \Cref{prop:blochkato:frobenius-dictionary}.
+\item \textbf{Lemma lem:h0} (as it is used in Selmer groups): \Cref{prop:blochkato:h0-selmer}.
+\item \textbf{Lemma lem:tamfactor} (all of it, including the additive potentially multiplicative case and $q=2$): \Cref{conv:blochkato:tate-data}, \Cref{lem:blochkato:tamfactor},
+\Cref{prop:blochkato:tam-potmult}, \Cref{prop:blochkato:tam-of-E}.
+\item \textbf{Lemma lem:tamadd and Corollary cor:explicit}: \Cref{lem:blochkato:finite-inertia-image}, \Cref{prop:blochkato:ad-free-c3}, \Cref{thm:blochkato:tam-additive},
+\Cref{cor:blochkato:explicit-identity}.
+\item \textbf{The proof of Theorem thm:main} (the Selmer bookkeeping from Theorem thm:dfg27 to the local terms; the potentially multiplicative primes): \Cref{cor:blochkato:length-identity},
+\Cref{thm:blochkato:selmer-identity}, \Cref{rem:blochkato:assembly}.
+\item \textbf{Remark rem:ko(1)} and the abstract's sentence on the Tamagawa factor: \Cref{cor:blochkato:tamfactor-consequences}.
+\item \textbf{Remark rem:ns, Section 1.3, Conjecture conj:euler} (the term $h_\ell(E)$), \textbf{Open question 2}: \Cref{prop:blochkato:rem-ns}, \Cref{rem:blochkato:conj-euler-h},
+\Cref{rem:blochkato:open-question-2}.
+\item \textbf{Section sec:tam} and \textbf{Section sec:sharp} (the identity (eq:identity) ``says what the excess is''): \Cref{ex:blochkato:sec-tam}, \Cref{rem:blochkato:what-sec-tam-tests},
+\Cref{ex:blochkato:selmer-examples}.
+\item \textbf{Open question 3}: \Cref{thm:blochkato:tam-additive}, \Cref{rem:blochkato:open-question-3}.
+\item \textbf{Section 1} (the Tamagawa number conjecture of Diamond, Flach and Guo; Flach's theorem; the Petersson norm): \Cref{thm:blochkato:dfg-01}, \Cref{thm:blochkato:flach},
+\Cref{rem:blochkato:degree-as-l-value}.
+\end{itemize}
+
+\section{Overview and conventions}\label{sec:blochkato:overview}
+
+The paper's Theorem thm:main is an identity between $v_\ell(\degphi)$ and three kinds of terms: the length of a Bloch-Kato Selmer
+group, Tamagawa factors, and omitted Euler factors. This chapter owns the first two and the bookkeeping that joins them to the
+third. It defines the objects of the paper's Section 1.2 ($\ell$-adic representations, lattices, the three duals, the Bloch-Kato local
+conditions, the Selmer groups $H^1_f$ and $H^1_\Sigma$, the Tamagawa factor $\Tam_p$); proves Lemma lem:fpr at every $p\ne\ell$, Lemma
+lem:tamfactor in every step, and Lemma lem:tamadd; specialises the abstract comparison of Selmer structures of \Cref{ch:galcoh} to the
+paper's Lemma lem:dfg21; and proves the Selmer half of Theorem thm:main (\Cref{thm:blochkato:selmer-identity}), which
+\Cref{ch:congruence} combines with the congruence ideals. It ends with Remark rem:ns, Section sec:tam, Open questions 2 and 3, and the
+Tamagawa number conjecture of Bloch and Kato, of which (eq:identity) is a reading through the modular degree. The group cohomology
+is \Cref{ch:cohomology}'s, the Galois cohomology (Tate local duality, the Euler characteristic formulas, unramified classes,
+Poitou-Tate) is \Cref{ch:galcoh}'s, and the local representations of $E$ are \Cref{ch:galrep}'s; this chapter cites them and does not
+prove them again. Two facts are imported from later chapters and are used only in remarks and examples: the values $e_\ell(E,q)$
+(\Cref{ch:lfunctions}) and the congruence-ideal theorems of Diamond, Flach and Guo (\Cref{ch:congruence}).
+
+\begin{convention}[notation of this chapter]\label{conv:blochkato:setup}
+\begin{enumerate}[label=(\alph*)]
+\item \emph{Objects.} $E/\Q$ is given by a global minimal model and has conductor $N$; $\ell$ is an odd prime unless said otherwise;
+$p$ is any prime and $q$ usually a bad prime of $E$. $T=T_\ell E$, $V=T\otimes\Ql$, $\rho=\rho_{E,\ell}$, $\bar\rho$ its reduction. The paper's
+objects are $A=\ad T$ (trace zero), $A_f=\ad V=A\otimes\Ql$, $W=A\otimes\Qlmod$, and their Kummer duals $T^D$, $V^D$, $W^D$ (item (b));
+$\Sigma$ is the set of primes dividing $N$, and $\delta_p=\dim V^{I_p}$. In the general statements of Sections \ref{sec:blochkato:representations}
+to \ref{sec:blochkato:selmer} the letters $V$, $T$, $W=V/T$ denote an arbitrary $\ell$-adic representation, a stable lattice and the
+quotient; when such a statement is applied to the paper, the triple is $(A_f,A,W)$, with Kummer dual $(V^D,T^D,W^D)$. This is the
+paper's own usage (Section 4.2), and every application below names the triple.
+\item \emph{Three duals} (Appendix B, convention B-C4). For a $\Zl$-module $M$: the \emph{linear dual} $M^\vee=\Hom_{\Zl}(M,\Zl)$; the
+\emph{Kummer} (or Cartier) \emph{dual} $M^D=\Hom_{\Zl}(M,\Zl(1))=M^\vee(1)$; for a compact or discrete $\ell$-primary module $X$, the
+\emph{Pontryagin dual} $X^*=\Hom_{\mathrm{cont}}(X,\Qlmod)$. The symbol ${}^*$ never means a linear dual here. For the paper's objects
+$T^D=\Hom(A,\Zl(1))$, not $\Hom(T_\ell E,\Zl(1))$.
+\item \emph{Frobenius} (B-C2, B-C3). $\Frob_p$ is an \emph{arithmetic} Frobenius at $p$, and $\Frob_p^{-1}$ the \emph{geometric} one. Group
+theory and cohomology use $\Frob_p$: conjugation on $H^1(I_p,-)$, unramified classes $M^{I_p}/(\Frob_p-1)M^{I_p}$, the Tate matrices of Lemma
+lem:tamfactor, the tame relation $\Frob\,t\,\Frob^{-1}=t^q$. Local $L$-factors use the geometric Frobenius: for $p\ne\ell$ and a
+representation $M$ of $G_{\Q_p}$ on a finite-dimensional $\Ql$-space,
+\[
+L_p(M,s)=\det\bigl(1-\Frob_p^{-1}p^{-s}\bigm|M^{I_p}\bigr)^{-1}.
+\]
+We do not write $\Phi_p$ for the geometric Frobenius, because component groups occur in this chapter; $c_p=[E(\Q_p):E_0(\Q_p)]$ is the
+Tamagawa number and $\Phig_p$ the geometric component group.
+\item \emph{Twists and Hodge-Tate weights} (B-C5). $\Zl(1)=\varprojlim\mu_{\ell^k}$, $M(n)=M\otimes\Zl(1)^{\otimes n}$. The Hodge-Tate weight of $\Ql(1)$
+is $+1$; so $V_\ell E$ has weights $\{0,1\}$, $A_f$ has $\{-1,0,1\}$ and $V^D=A_f(1)$ has $\{0,1,2\}$. Every formula below that depends on this
+sign says so.
+\item \emph{Cohomology} (\Cref{ch:cohomology}). Continuous cochain cohomology; $H^i(K,M)=H^i(G_K,M)$, $H^i(\R,M)=H^i(\Gal(\C/\R),M)$;
+$G_{\Q,S}$ is the Galois group of the maximal extension of $\Q$ unramified outside a finite set $S$ of places containing $\ell$ and
+$\infty$. ``Length'' is $\Zl$-length; $\Fitt_{\Zl}(X)=\ell^{\len X}\Zl$ for a finite $\Zl$-module $X$, and $v_\ell(\ell^a\Zl)=a$ (B-C10).
+\item \emph{Tate data} (B-C14). At a prime $q\ne\ell$ with $v_q(j_E)<0$: $q_E\in\Q_q^\times$ is the Tate parameter (never $u$), $\nu=v_q(q_E)=-v_q(j_E)$
+(equal to $n=n_q=v_q(\Delta_E)$ at a multiplicative prime), $u=q_Eq^{-\nu}\in\Z_q^\times$ its unit part, $\bar u\in\F_q^\times$ its reduction, $c(u)$ the
+class of $\bar u$ in $\F_q^\times/(\F_q^\times)^{\ell^{v}}$ with $v=v_\ell(q-1)$, and $v_\ell(c(u))$ the largest $k\le v$ with $\bar u\in(\F_q^\times)^{\ell^k}$ (so the paper's
+``$v_\ell(0)$'' reads $v$). The paper writes $c$ for this class in Lemma lem:tamfactor and $c(u)$ in Section sec:tam; $c_q$ is always the
+Tamagawa number. $\varepsilon$ is the unramified character of $G_{\Q_q}$ with $\varepsilon(\Frob_q)=a_q(E)$ at a multiplicative prime.
+\item \emph{Characters} (B-C6). $\chi_\ell$ is the $\ell$-adic cyclotomic character and $\bar\chi_\ell$ its reduction; $\chi_d$ is the quadratic character
+of $\Q(\sqrt d)$ for a fundamental discriminant $d$ ($\chi_{-3}$, $\chi_{-4}$, and $\chi_{q^*}$ of conductor $q$); $\bar\chi_3=\chi_{-3}$.
+\end{enumerate}
+\end{convention}
+
+\begin{warning}[three duals]\label{warn:blochkato:three-duals}
+$M^\vee=\Hom(M,\Zl)$ is linear (Bloch-Kato and Fontaine-Perrin-Riou write $V^*$ for it); $M^D=\Hom(M,\Zl(1))$ is the paper's ${}^D$; $X^*=\Hom(X,\Qlmod)$
+is the paper's ${}^*$. Tate local duality pairs $H^1(\Q_p,W)$ with $H^1(\Q_p,T^D)$, and the only Pontryagin duals in Lemma lem:dfg21 are
+duals of finite groups, which have the same length (\Cref{ch:modules}).
+\end{warning}
+
+\begin{warning}[two Frobenii]\label{warn:blochkato:two-frobenii}
+In cohomology the choice of Frobenius is invisible up to $\ell$-adic units: $(\Frob-1)X=(\Frob^{-1}-1)X$ for any $\Frob$-stable $X$, and
+$\det(1-\Frob\mid X)$, $\det(1-\Frob^{-1}\mid X)$ differ by the unit $\det(-\Frob^{-1}\mid X)$ on a lattice $X$. As rational numbers they differ: at a
+multiplicative prime $\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=1-p^{-2}$, while $\det(1-\Frob_p\mid(V^D)^{I_p})=1-p^2$. Only the first is $L_p(A_f,1)^{-1}$.
+\end{warning}
+
+The paper's sentences and the results of this chapter that prove them are matched in the following table; the section
+\emph{Where the paper uses this chapter} at the head of the chapter lists the same correspondence by result.
+
+\begin{center}\small
+\begin{tabular}{p{0.52\textwidth}p{0.4\textwidth}}
+\toprule
+paper & this chapter\\
+\midrule
+Section 1.2: the definition of $\Tam_p(M)$, ``at a prime of good reduction it is $0$'' & \Cref{def:blochkato:tamagawa}, \Cref{prop:blochkato:tam-basic}\\
+Section 1.2, Section 4.2: the Bloch-Kato Selmer group, $H^1_\Sigma$ & \Cref{def:blochkato:selmer}, \Cref{def:blochkato:sigma-selmer}, \Cref{def:blochkato:adjoint-selmer}\\
+Section 4.2: $T^D=\Hom(A,\Zl(1))\simeq A(1)$; $\ad M_{f,\lambda}=\ad T$ & \Cref{prop:blochkato:adjoint-self-dual}\\
+Theorem thm:dfg27 & \Cref{thm:blochkato:dfg27}\\
+Lemma lem:dfg21 and the paragraph after it & \Cref{lem:blochkato:dfg21}, \Cref{prop:blochkato:local-unramified}, \Cref{lem:blochkato:no-local-invariants}\\
+Lemma lem:fpr & \Cref{thm:blochkato:fpr-local}, \Cref{prop:blochkato:tam-dual}, \Cref{lem:blochkato:euler-integral}\\
+Lemma lem:h0 (Selmer form) & \Cref{prop:blochkato:h0-selmer}\\
+Lemma lem:tamfactor & \Cref{lem:blochkato:tamfactor}, \Cref{prop:blochkato:tam-potmult}\\
+Lemma lem:tamadd, Corollary cor:explicit & \Cref{thm:blochkato:tam-additive}, \Cref{cor:blochkato:explicit-identity}\\
+proof of Theorem thm:main (the Selmer bookkeeping) & \Cref{cor:blochkato:length-identity}, \Cref{thm:blochkato:selmer-identity}\\
+Remark rem:ko(1) & \Cref{cor:blochkato:tamfactor-consequences}\\
+Remark rem:ns, Open question 2, the term $h_\ell(E)$ & \Cref{prop:blochkato:rem-ns}, \Cref{rem:blochkato:conj-euler-h}, \Cref{rem:blochkato:open-question-2}\\
+Section sec:tam & \Cref{ex:blochkato:sec-tam}, \Cref{rem:blochkato:what-sec-tam-tests}\\
+Open question 3 & \Cref{thm:blochkato:tam-additive}, \Cref{rem:blochkato:open-question-3}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section[\texorpdfstring{$\ell$}{l}-adic representations and duals]{\texorpdfstring{$\ell$}{l}-adic representations, lattices, twists and duals}\label{sec:blochkato:representations}
+
+This section sets up the coefficient modules of all the cohomology in the paper: an $\ell$-adic representation $V$, a stable lattice
+$T$, the discrete module $W=V/T$, their Tate twists and their three duals, and, for the adjoint, the identification $T^D\simeq A(1)$ that the
+paper makes in Section 4.2 ``via the trace form''. It ends with the global invariants of $A_f$, $W$ and $V^D$, which enter Theorem
+thm:dfg27 and Lemma lem:h0.
+
+\begin{definition}[$\ell$-adic representations]\label{def:blochkato:l-adic-rep}
+Let $K$ be a field with absolute Galois group $G_K$. An \emph{$\ell$-adic representation} of $G_K$ is a finite-dimensional $\Ql$-vector space $V$
+with a continuous homomorphism $\rho_V\colon G_K\to\GL(V)$. A \emph{lattice} in $V$ is a finitely generated $\Zl$-submodule $T$ that spans $V$
+(so $T\simeq\Zl^{\dim V}$); it is \emph{stable} if $\rho_V(G_K)T=T$. Given a stable lattice we put $W=V/T=T\otimes\Qlmod$, a discrete
+$\ell$-primary $G_K$-module.
+\end{definition}
+
+\begin{proposition}[lattices]\label{prop:blochkato:lattices}
+Let $V$ be an $\ell$-adic representation of $G_K$.
+\begin{enumerate}[label=(\roman*)]
+\item $V$ has a stable lattice.
+\item For a stable lattice $T$ the sequence $0\to T\to V\to W\to0$ is exact, $W\simeq(\Qlmod)^{\dim V}$ as a group, and $W[\ell^k]=\ell^{-k}T/T\simeq T/\ell^kT$ as
+$G_K$-modules; the projection $V\to W$ has a continuous set-theoretic section.
+\item Any two lattices $T,T'$ are commensurable: $\ell^aT\subseteq T'\subseteq\ell^{-a}T$ for some $a\ge0$. If $T$ is stable and $T/\ell T$ is an
+irreducible $\Fl[G_K]$-module, every stable lattice is $\ell^bT$ for some $b\in\Z$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Let $T_0$ be any lattice. $\GL(T_0)$ is open in $\GL(V)$, so $H=\rho_V^{-1}(\GL(T_0))$ is an open subgroup of the compact group $G_K$ and has
+finite index. If $g_1,\dots,g_r$ are coset representatives of $G_K/H$, then $T=\sum_i\rho_V(g_i)T_0$ is a finite sum of lattices, hence a lattice,
+and it is stable because $gg_iH=g_{\pi(i)}H$ for a permutation $\pi$. (ii) Exactness is the definition of $W$; $T\simeq\Zl^d$ gives $W\simeq(\Qlmod)^d$, and
+$x\mapsto\ell^{-k}x$ identifies $T/\ell^kT$ with $W[\ell^k]=\ell^{-k}T/T$ equivariantly. A section is given by choosing, in a basis of $T$, the representatives
+of $\Qlmod$ of the form $\sum_{i<0}a_i\ell^i$ with $0\le a_i<\ell$; it is continuous because $W$ is discrete (see \Cref{ch:cohomology} for the use of
+such sections in the long exact sequence of continuous cohomology). (iii) Both lattices are finitely generated and span $V$, so each is
+contained in a multiple of the other. If $T'$ is stable, replace it by $\ell^bT'$ with $b$ minimal such that $\ell^bT'\subseteq T$; then $\ell^bT'\not\subseteq\ell T$,
+so its image in $T/\ell T$ is a nonzero stable subspace, hence all of $T/\ell T$, and $\ell^bT'+\ell T=T$ gives $\ell^bT'=T$ by Nakayama's lemma
+(\Cref{ch:modules}).
+\end{proof}
+
+\begin{definition}[Tate twists]\label{def:blochkato:twists}
+$\Zl(1)=\varprojlim_k\mu_{\ell^k}$ (transition maps $\zeta\mapsto\zeta^\ell$), on which $G_K$ acts through the cyclotomic character $\chi_\ell$; $\Ql(1)=\Zl(1)\otimes\Ql$;
+$\Zl(n)=\Zl(1)^{\otimes n}$ for $n\ge0$ and $\Zl(-1)=\Hom(\Zl(1),\Zl)$, $\Zl(n)=\Zl(-1)^{\otimes(-n)}$ for $n<0$. For a $\Zl[G_K]$-module $M$,
+$M(n)=M\otimes_{\Zl}\Zl(n)$, so $g$ acts on $M(n)$ as $\chi_\ell(g)^n$ times its action on $M$.
+\end{definition}
+
+\begin{proposition}[twists]\label{prop:blochkato:twists}
+\begin{enumerate}[label=(\roman*)]
+\item \sloppy $M(n)(m)=M(n+m)$ and $\Hom(M(n),N)\simeq\Hom(M,N)(-n)$, equivariantly.
+\item Let $K=\Q_p$ with $p\ne\ell$. The inertia group $I_p$ acts trivially on $\Zl(1)$ and $\Frob_p$ acts on it by $p$. Hence $M(n)^{I_p}=M^{I_p}(n)$, and the
+eigenvalues of $\Frob_p$ (resp. $\Frob_p^{-1}$) on $M(n)^{I_p}\otimes\Ql$ are those on $M^{I_p}\otimes\Ql$ multiplied by $p^n$ (resp. $p^{-n}$).
+\item The Weil pairing gives $\wedge^2T_\ell E\simeq\Zl(1)$, hence $\det\rho=\chi_\ell$, $(T_\ell E)^\vee\simeq T_\ell E(-1)$ and $(T_\ell E)^D\simeq T_\ell E$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Both are the formulas for $\chi_\ell^n\chi_\ell^m=\chi_\ell^{n+m}$ and for $(g\phi)(x)=g\phi(g^{-1}x)$. (ii) $\Q_p(\mu_{\ell^\infty})/\Q_p$ is unramified for $p\ne\ell$, and the
+arithmetic Frobenius raises roots of unity of order prime to $p$ to the $p$-th power, so $\chi_\ell(\Frob_p)=p$ (\Cref{ch:local}). As $I_p$ acts trivially on
+$\Zl(n)$, $M(n)^{I_p}=M^{I_p}\otimes\Zl(n)$, and $\Frob_p$ acts as $p^n$ times its action on $M^{I_p}$. (iii) The Weil pairing $T\times T\to\Zl(1)$ is perfect,
+alternating and equivariant (\Cref{ch:ellcurves}); it identifies $\wedge^2T$ with $\Zl(1)$, so $\det\rho=\chi_\ell$, and $x\mapsto e(x,\cdot)$ is an isomorphism
+$T\to\Hom(T,\Zl(1))=T^D=T^\vee(1)$; twisting by $-1$ gives $T^\vee\simeq T(-1)$.
+\end{proof}
+
+A twist rescales every Frobenius eigenvalue at $p$ by the same power of $p$, in the way that multiplying a field by a character of the
+scaling group changes its weight without changing its shape.
+
+\begin{definition}[Kummer duals]\label{def:blochkato:duals}
+For a lattice $T$ in an $\ell$-adic representation $V$ put $V^D=\Hom_{\Ql}(V,\Ql(1))=V^\vee(1)$, $T^D=\Hom_{\Zl}(T,\Zl(1))=T^\vee(1)$, a stable lattice in $V^D$,
+and $W^D=V^D/T^D$. For a compact or discrete $\ell$-primary module $X$, $X^*=\Hom_{\mathrm{cont}}(X,\Qlmod)$ is its Pontryagin dual.
+\end{definition}
+
+\begin{proposition}[Kummer duality]\label{prop:blochkato:duals}
+Let $T$ be a stable lattice in $V$ and $W=V/T$.
+\begin{enumerate}[label=(\roman*)]
+\item $W^D\simeq\Hom_{\Zl}(T,\Qlmod(1))=\Hom(T,\mu_{\ell^\infty})$ and $T^D\simeq\Hom_{\mathrm{cont}}(W,\mu_{\ell^\infty})$; the evaluation pairings $T\times W^D\to\mu_{\ell^\infty}$ and
+$W\times T^D\to\mu_{\ell^\infty}$ are perfect and $G_K$-equivariant.
+\item $(T^D)^D=T$, $(V^D)^D=V$ and $(W^D)^D=W$ (the last in the sense $V^D{}^D/T^D{}^D$).
+\item For a finite $\Zl$-module $X$, $X^*$ is finite of the same length as $X$.
+\item Bloch and Kato and Fontaine and Perrin-Riou write $V^*(1)$ for $V^D$; Diamond, Flach and Guo write $T^D$, $V^D$, $W^D$ exactly as the paper.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\sloppy (i) $T$ is free, so $\Hom(T,-)$ is exact: applying it to $0\to\Zl(1)\to\Ql(1)\to\Qlmod(1)\to0$ gives $W^D=\Hom(T,\Ql(1))/\Hom(T,\Zl(1))\simeq\Hom(T,\Qlmod(1))$. Next,
+$\Hom_{\mathrm{cont}}(T\otimes\Qlmod,\mu_{\ell^\infty})=\Hom(T,\Hom(\Qlmod,\mu_{\ell^\infty}))=\Hom(T,\Zl(1))$, as $\Hom(\Qlmod,\Qlmod)=\Zl$. Perfectness is
+Pontryagin duality between $T$ and $T\otimes\Qlmod$ (\Cref{ch:modules}), twisted by $\Zl(1)$; equivariance holds because all the maps are built from
+evaluation. The general statement is in \Cref{ch:galcoh}. (ii) $\Hom(\Hom(T,\Zl(1)),\Zl(1))=T$ for $T$ free of finite rank. (iii) is \Cref{ch:modules}. (iv) is
+a matter of notation \cite[Section 3]{BlochKato}, \cite{FPR94}, \cite[Section 2.1]{DFG04}.
+\end{proof}
+
+\begin{proposition}[the adjoint is self-dual]\label{prop:blochkato:adjoint-self-dual}
+Let $T$ be a free $\Zl$-module of rank $2$ with a continuous action of a group $G$, $A=\ad T$ the trace-zero endomorphisms with $g\cdot x=\rho(g)x\rho(g)^{-1}$.
+\begin{enumerate}[label=(\roman*)]
+\item If $\ell$ is odd, the trace form $(x,y)\mapsto\tr(xy)$ is a perfect $G$-invariant pairing on $A$ (Gram matrix with determinant $-2$ in the basis $e,h,f$), so
+$A\simeq A^\vee$ and
+\[
+T^D=\Hom(A,\Zl(1))\simeq A(1),\qquad V^D\simeq A_f(1),\qquad W^D\simeq\ad T(1)\otimes\Qlmod .
+\]
+For $\ell=2$ the image of $A$ in $A^\vee$ has index $2$.
+\item $\ad(T\otimes\chi)=\ad T$ for a character $\chi\colon G\to\Zl^\times$, $\ad(\ell^bT)=\ad T$ inside $\ad V$, and $x\mapsto x^\vee$ (the dual map) is a $G$-isomorphism
+$\ad T\to\ad(T^\vee)$. In particular $\ad T(n)=\ad T$ as modules for $n\in\Z$ (the twist of the lattice, not of the adjoint).
+\item Consequently: $\ad M_{f,\lambda}\simeq\ad T_\ell E$ for the lattice $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)\simeq(T_\ell E)^\vee\simeq T_\ell E(-1)$ of Diamond, Flach and Guo; and for a
+quadratic twist $E'$ of $E$ (or any twist of $E$ over $\Q_q$ by a character of $G_{\Q_q}$) $\ad T_\ell E'\simeq\ad T_\ell E$ as $G_{\Q_q}$-modules.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) is \Cref{ch:reps} (the trace form and $\Hom(A,\Zl(\chi))\simeq A(\chi)$ for $\ell$ odd); the Gram matrix in the basis $e=\sm0100$, $h=\sm100{-1}$, $f=\sm0010$ is
+\[
+\begin{pmatrix}0&0&1\\0&2&0\\1&0&0\end{pmatrix},
+\]
+of determinant $-2$, a unit of $\Zl$ exactly when $\ell$ is odd, and its cokernel has order $2$ for $\ell=2$. Twisting the isomorphism $A\to A^\vee$ by $\Zl(1)$
+gives $A(1)\simeq A^\vee(1)=T^D$; tensoring with $\Ql$ and $\Qlmod$ gives the other two. (ii) $\chi(g)$ is a scalar, so conjugation by $\chi(g)\rho(g)$ equals
+conjugation by $\rho(g)$; $\End(\ell^bT)=\End(T)$ inside $\End(V)$; and for $x\in\End(T)$ the dual map $x^\vee\in\End(T^\vee)$ satisfies
+$(\rho(g)x\rho(g)^{-1})^\vee=\rho^\vee(g)x^\vee\rho^\vee(g)^{-1}$ with $\rho^\vee(g)=(\rho(g)^{-1})^\vee$, and $\tr x^\vee=\tr x$ (\Cref{ch:reps}, the invariance of the adjoint).
+(iii) The identification $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)$ is the paper's Proposition prop:pullback (\Cref{ch:moddeg}), and $H^1(E,\Zl)=(T_\ell E)^\vee\simeq T_\ell E(-1)$ by
+\Cref{prop:blochkato:twists}(iii); apply (ii) twice. A twist $\rho\otimes\chi$ has the same adjoint by (ii).
+\end{proof}
+
+\begin{paperlink}
+Section 4.2 writes ``$T^D=\operatorname{Hom}(A,\Z_\ell(1))\simeq A(1)$ (via the trace form)'': this is (i), and it is one of the places where $\ell$ odd is
+used. In the same paragraph the paper says that, by Proposition prop:pullback, $\varphi_E^*$ identifies the lattice $M_{f,\lambda}$ of Diamond,
+Flach and Guo with $H^1(E,\Zl)\simeq T_\ell E(-1)$, so that its adjoint is $\ad T$: this is (iii). The original version said instead that $M_{f,\lambda}$ and $T_\ell E$ are homothetic;
+they are not (one is the dual of the other), but their adjoints agree, which is all that is used. The step at the primes of type
+$\kod{I}_n^*$ in the proof of Theorem thm:main and the statement of Lemma lem:tamfactor at additive potentially multiplicative primes use the
+last assertion of (iii).
+\end{paperlink}
+
+\begin{definition}[geometric representations]\label{def:blochkato:geometric}
+An $\ell$-adic representation of $G_\Q$ is \emph{geometric} (Fontaine and Mazur) if it is unramified outside a finite set of primes and its restriction
+to $G_{\Q_\ell}$ is de Rham (\Cref{def:blochkato:period-rings}).
+\end{definition}
+
+\begin{proposition}[geometricity and purity]\label{prop:blochkato:purity}
+\begin{enumerate}[label=(\roman*)]
+\item $V_\ell E$, $\Ql(n)$, and every representation obtained from them by direct sums, tensor products, duals and subquotients ($A_f$, $V^D=A_f(1)$,
+$\Sym V$) are geometric.
+\item For $p\nmid N\ell$ the eigenvalues of $\Frob_p$ on $V_\ell E$ have complex absolute value $p^{1/2}$, those on $A_f$ absolute value $1$, and those on
+$V^D=A_f(1)$ absolute value $p$ (and $p^{-1}$ for $\Frob_p^{-1}$).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $V_\ell E$ is unramified outside $N\ell$ (\Cref{ch:galrep}) and de Rham at $\ell$ (a theorem of Faltings; for good reduction at $\ell$ it is crystalline,
+\Cref{thm:blochkato:crystalline-good-reduction}); $\Ql(n)$ is unramified outside $\ell$ and crystalline; and de Rham representations are stable under the
+listed operations (\Cref{prop:blochkato:crystalline-closure} and \cite{Berger}). We do not prove the theorem of Faltings; see \cite{Berger}. (ii) The
+eigenvalues of $\Frob_p$ on $V_\ell E$ are the roots $\alpha,\beta$ of $X^2-a_pX+p$, and $|\alpha|=|\beta|=p^{1/2}$ by Hasse's bound (\Cref{ch:ellcurves}). On $A_f$ they
+are $\alpha/\beta,1,\beta/\alpha$ (\Cref{ch:galrep}), of absolute value $1$, and \Cref{prop:blochkato:twists}(ii) multiplies them by $p$ on $A_f(1)$.
+\end{proof}
+
+\begin{proposition}[global invariants]\label{prop:blochkato:global-invariants}
+Let $\ell$ be odd.
+\begin{enumerate}[label=(\roman*)]
+\item If $\bar\rho$ is absolutely irreducible, $H^0(\Q,A_f)=0$ and $H^0(\Q,W)=0$.
+\item For every $E$, $H^0(\Q,V^D)=0$.
+\item If $\bar\rho$ is irreducible, $H^0(\Q,W^D)$ is finite and cyclic, of length $h_\ell(E)$; $h_\ell(E)=0$ for $\ell\ge5$ and $h_3(E)\le1$
+(\Cref{prop:blochkato:h0-selmer}).
+\item The $G_\Q$-modules $A_f$, $A_f(1)=V^D$ and $A_f(-1)$ are pairwise non-isomorphic.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $W[\ell]=A/\ell A=\ad(T/\ell T)$ (trace-zero matrices modulo $\ell$, as $\ell$ is odd). By Schur's lemma an endomorphism of $T/\ell T$ commuting with the
+absolutely irreducible $\bar\rho(G_\Q)$ is a scalar $a$, and its trace $2a$ vanishes only for $a=0$. So $H^0(\Q,W)[\ell]=0$, and $H^0(\Q,W)=0$ because a nonzero
+element of an $\ell$-primary group has a multiple of order $\ell$. If $0\ne x\in H^0(\Q,A_f)$, scale it into $A\smallsetminus\ell A$; its image in $A/\ell A$ is a nonzero
+invariant, a contradiction. (ii) $V^D$ is unramified at a prime $p\nmid N\ell$, and an invariant vector would be fixed by $\Frob_p$; but no eigenvalue of $\Frob_p$ on
+$V^D$ equals $1$, by \Cref{prop:blochkato:purity}(ii). (iii) is the paper's Lemma lem:h0, proved in \Cref{ch:galrep} and restated in
+\Cref{prop:blochkato:h0-selmer}. (iv) At a prime $p\nmid N\ell$ the eigenvalues of $\Frob_p$ on the three modules have absolute values $1$, $p$ and $p^{-1}$, so their
+characteristic polynomials differ.
+\end{proof}
+
+By (iv), only $A_f(1)$ carries the local data (Tamagawa factors at $T^D$, Euler factors at $s=1$) that enter Lemma lem:fpr; this is why
+the paper writes $T^D$ and not $A$ in the local terms of Lemma lem:dfg21, and why the identity $\Tam_p(T^D)=\Tam_p(A)$ needs a proof
+(\Cref{prop:blochkato:tam-dual}).
+
+\section[Local behaviour at \texorpdfstring{$p\ne\ell$}{p not l}]{Local behaviour at \texorpdfstring{$p\ne\ell$}{p not l}: invariants, Euler factors, weights}\label{sec:blochkato:local}
+
+This section collects what the Selmer bookkeeping needs about the restriction of $A_f$ and $V^D$ to $G_{\Q_p}$ for a prime $p\ne\ell$: the Frobenius
+dictionary for $L$-factors, the table of inertia invariants and Euler factors by reduction type, the vanishing of $H^0(\Q_p,V^D)$, and the integrality
+of $L_p(A_f,1)^{-1}$. The paper uses these in the paragraph after Lemma lem:dfg21 and in Lemma lem:fpr. The local representations themselves are
+\Cref{ch:local}'s and \Cref{ch:galrep}'s; the values $e_\ell(E,p)$ are \Cref{ch:lfunctions}'s.
+
+\begin{proposition}[the Frobenius dictionary]\label{prop:blochkato:frobenius-dictionary}
+Let $p\ne\ell$, $F=\Frob_p$, and let $M$ be a finite-dimensional representation of $G_{\Q_p}$ over $\Ql$.
+\begin{enumerate}[label=(\alph*)]
+\item $L_p(M(1),s)=L_p(M,s+1)$. If $L$-factors were defined with $F$ instead of $F^{-1}$, one would get $L_p(M,s-1)$ on the right.
+\item For any $\Zl[F]$-module $X$ on which $F$ is invertible, $(F-1)X=(F^{-1}-1)X$.
+\item Let $X$ be a free $\Zl$-module of finite rank $d$ with an automorphism $F$ such that $\det(1-F^{-1}\mid X)\ne0$. Then $F-1$ is injective on $X$ and
+\[
+\#\,X/(F-1)X=\ell^{v_\ell(\det(1-F^{-1}\mid X))}=\ell^{v_\ell(\det(1-F\mid X))}.
+\]
+\item On $V_\ell E$ at a good prime $p\ne\ell$, $\det(1-F^{-1}p^{-s}\mid V_\ell E)^{-1}=L_p(E,s+1)$, while $\det(1-F^{-1}p^{-s}\mid(V_\ell E)^\vee)^{-1}=L_p(E,s)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) $M(1)^{I_p}=M^{I_p}(1)$ and $F^{-1}$ acts on it as $p^{-1}F^{-1}$ (\Cref{prop:blochkato:twists}(ii)), so $\det(1-F^{-1}p^{-s}\mid M(1)^{I_p})=\det(1-F^{-1}p^{-(s+1)}\mid M^{I_p})$.
+With $F$ the factor $p$ would appear instead: $\det(1-Fp^{-s}\mid M(1)^{I_p})=\det(1-Fp^{-(s-1)}\mid M^{I_p})$. (b) $F^{-1}-1=-F^{-1}(F-1)$ and $F^{-1}$ is an
+automorphism of $X$. (c) $F-1=F(1-F^{-1})$, so $\det(F-1)=\det F\cdot\det(1-F^{-1})\ne0$, and $\det F\in\Zl^\times$ because $F$ is an automorphism of $X$. The
+cokernel of an injective endomorphism $\phi$ of $\Zl^d$ has order $\ell^{v_\ell(\det\phi)}$ (Smith normal form, \Cref{ch:modules}). Similarly $1-F=-F(1-F^{-1})$. (d) The
+eigenvalues of $F$ on $V_\ell E$ are $\alpha,\beta$ with $\alpha+\beta=a_p$, $\alpha\beta=p$, so those of $F^{-1}$ are $\alpha^{-1},\beta^{-1}$, with sum $a_p/p$ and product
+$1/p$, and $(1-\alpha^{-1}X)(1-\beta^{-1}X)=1-a_pp^{-1}X+p^{-1}X^2$; at $X=p^{-s}$ this is $1-a_pp^{-(s+1)}+p\cdot p^{-2(s+1)}=L_p(E,s+1)^{-1}$. On the dual the
+geometric Frobenius has eigenvalues $\alpha,\beta$ and gives $1-a_pp^{-s}+p^{1-2s}$ (\Cref{ch:local}, Appendix B, B-C3).
+\end{proof}
+
+\begin{paperlink}
+The paper's Section 1.1 now defines ``$L_p(A_f,s)=\det(1-\Frob_p^{-1}p^{-s}\mid A_f^{I_p})^{-1}$ is the true local factor, defined with the geometric
+Frobenius as in \cite[\S1.1.1]{DFG04}'', and Lemma lem:fpr writes ``$L_p(A_f,1)^{-1}=L_p(A_f(1),0)^{-1}$'', which is (a) and holds only with the
+geometric Frobenius. The paragraph after Lemma lem:dfg21 writes $(V^D)^{I_p}/(\Frob_p-1)$, an arithmetic expression, next to
+$\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}$, a geometric one; (b) and (c) show that the two are compatible. The original version wrote
+$\Frob_p$ in the definition of $L_p(A_f,s)$; with the arithmetic Frobenius the multiplicative factor at $s=1$ would be $1-p^2$, not $1-p^{-2}$.
+\end{paperlink}
+
+\begin{proposition}[the adjoint at $p\ne\ell$]\label{prop:blochkato:local-adjoint}
+Let $p\ne\ell$. The inertia invariants of $A_f$ and of $V^D=A_f(1)$, the eigenvalues of the geometric Frobenius $\Frob_p^{-1}$ on them, and
+$L_p(A_f,1)^{-1}=\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})$ are as follows ($\alpha,\beta$ the roots of $X^2-a_pX+p$ at a good prime; $a=a_p(E')$ for a quadratic twist $E'$ of
+$E$ with good reduction at $p$ in the row $\kod{I}_0^*$):
+\begin{center}\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llllll}
+\toprule
+reduction at $p$ & $\delta_p$ & $\dim A_f^{I_p}$ & $\Frob_p^{-1}$ on $A_f^{I_p}$ & $\Frob_p^{-1}$ on $(V^D)^{I_p}$ & $L_p(A_f,1)^{-1}$\\
+\midrule
+good & $2$ & $3$ & $\frac\alpha\beta,1,\frac\beta\alpha$ & $\frac{\alpha}{\beta p},\frac1p,\frac{\beta}{\alpha p}$ & $(1-\frac{\alpha}{\beta p})(1-\frac1p)(1-\frac{\beta}{\alpha p})$\\
+multiplicative & $1$ & $1$ & $p^{-1}$ & $p^{-2}$ & $1-p^{-2}$\\
+additive, $v_p(j)<0$ & $0$ & $1$ & $p^{-1}$ & $p^{-2}$ & $1-p^{-2}$\\
+$\rho(I_p)=\{\pm1\}$ & $0$ & $3$ & as for $E'$ & as for $E'$ & $\frac{p-1}p\cdot\frac{(p+1)^2-a^2}{p^2}$\\
+$\rho(I_p)$ cyclic of order $3,4,6$ & $0$ & $1$ & $c$ & $c\,p^{-1}$ & $1-c\,p^{-1}$\\
+$\rho(I_p)$ non-abelian & $0$ & $0$ & none & none & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Here $c=\pm1$ is the eigenvalue of Frobenius (either one) on the line $(A_f)^{I_p}$. For $p\ge5$: the row $\{\pm1\}$ is the type $\kod{I}_0^*$; the cyclic row
+is the types $\kod{II},\kod{II}^*,\kod{IV},\kod{IV}^*$ with $c=\chi_{-3}(p)$ and the types $\kod{III},\kod{III}^*$ with $c=\chi_{-4}(p)$; the non-abelian row does not
+occur. For $p=2$ the types $\kod{IV},\kod{IV}^*$ are in the cyclic row with $c=\chi_{-3}(2)=-1$. At $p=2,3$ the Kodaira type does not determine the row in
+general.
+\end{proposition}
+
+\begin{proof}
+This is the table of \Cref{ch:local} (the adjoint $L$-factors of the local shapes) and of the paper's Lemma lem:euler and Proposition prop:shapes, whose
+proofs are in \Cref{ch:galrep} (the images of inertia) and \Cref{ch:lfunctions} (the factors); we recall the reasons. At a good prime $A_f$ is unramified
+and \Cref{prop:blochkato:purity}(ii) gives the eigenvalues; the product formula is
+$(1-\frac\alpha{\beta p})(1-\frac\beta{\alpha p})=1-\frac{\alpha^2+\beta^2}{p^2}+\frac1{p^2}=\frac{(p+1)^2-a_p^2}{p^2}$. At a potentially multiplicative prime, over $\Q_p$, $\rho$ is a
+twist by a character (unramified, $\varepsilon$, if the reduction is multiplicative; ramified quadratic if it is additive) of the representation of a Tate curve,
+$\sm{\chi_\ell}{\kappa}{0}{1}$, so by \Cref{prop:blochkato:adjoint-self-dual}(ii) $A_f$ is the adjoint of the Tate representation; inertia acts through
+$\sm1{*}01$ with $*\ne0$, the invariants are the line of $e=e_1\otimes e_2^\vee$, and $\Frob_p$ acts on $e$ by $\chi_\ell(\Frob_p)=p$ (the upper-left entry divided by the
+lower-right one), so $\Frob_p^{-1}$ acts by $p^{-1}$, and by $p^{-2}$ on $e\otimes\Zl(1)$. In the potentially good cases $\rho(I_p)$ is finite (\Cref{ch:galrep}); for
+$\rho(I_p)=\{\pm1\}$ the adjoint is unramified and equal to that of the twist $E'$ of good reduction; for a cyclic image generated by $g$ with eigenvalues
+$\zeta^{\pm1}$, $\zeta\ne\zeta^{-1}$, the trace-zero commutant of $g$ is the line spanned by $g-g^{-1}$, and Frobenius, which normalises $\langle g\rangle$, conjugates $g$
+to $g^{\pm1}$, so it acts on the line by a sign $c$, the same for $\Frob_p$ and $\Frob_p^{-1}$; for $p\ge5$ the tame relation identifies $c$ with $\chi_{-3}(p)$ or
+$\chi_{-4}(p)$ (\Cref{ch:galrep}); for a non-abelian image $\bar\rho$ restricted to inertia is absolutely irreducible and the commutant consists of scalars. In each
+case the factor is $\prod(1-\lambda p^{-1})$ over the eigenvalues $\lambda$ of $\Frob_p^{-1}$ on $A_f^{I_p}$, that is, $\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})$ by
+\Cref{prop:blochkato:frobenius-dictionary}(a).
+\end{proof}
+
+\begin{lemma}[local invariants]\label{lem:blochkato:no-local-invariants}
+Let $p\ne\ell$.
+\begin{enumerate}[label=(\roman*)]
+\item $H^0(\Q_p,V^D)=0$, and $\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}$ is a nonzero rational number.
+\item $H^0(\Q_p,A_f)$ is the subspace of $A_f^{I_p}$ fixed by Frobenius. It is $0$ at multiplicative primes, at additive potentially multiplicative primes, in
+the cyclic row with $c=-1$ and in the non-abelian row; it is a line at good primes and in the cyclic row with $c=+1$; in the row $\{\pm1\}$ it contains the line
+of the eigenvalue $1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) By the table every eigenvalue of $\Frob_p^{-1}$ on $(V^D)^{I_p}$ has complex absolute value $p^{-1}$ or $p^{-2}$, so none is $1$; hence $\Frob_p$ fixes no nonzero
+vector of $(V^D)^{I_p}$, that is, $H^0(\Q_p,V^D)=((V^D)^{I_p})^{\Frob_p=1}=0$, and the determinant is nonzero. It is rational by the last column of the table
+($\alpha\beta=p$, $\alpha+\beta=a_p\in\Z$). (ii) $H^0(\Q_p,A_f)=(A_f^{I_p})^{\Frob_p=1}$; read off the table. At a good prime $\alpha/\beta\ne1$, since $\alpha=\beta$ would give $a_p^2=4p$,
+which is impossible for an integer $a_p$; so the eigenvalue $1$ has multiplicity one.
+\end{proof}
+
+\begin{warning}\label{warn:blochkato:local-h0-af}
+$H^0(\Q_p,A_f)\ne0$ does occur at bad primes: at every prime with $\rho(I_p)=\{\pm1\}$ (type $\kod{I}_0^*$ for $p\ge5$), and at a prime of type $\kod{III}$ with
+$p\equiv1\pmod4$. There $H^1(\Q_p,T^D)$ is infinite (\Cref{cor:blochkato:local-finiteness}). Only (i) enters the paper's argument.
+\end{warning}
+
+\begin{corollary}[local finiteness]\label{cor:blochkato:local-finiteness}
+Let $p\ne\ell$.
+\begin{enumerate}[label=(\roman*)]
+\item $H^1(\Q_p,T^D)$ is a finitely generated $\Zl$-module of rank $\dim H^0(\Q_p,A_f)$.
+\item If $H^0(\Q_p,A_f)=0$ (multiplicative and additive potentially multiplicative primes, the cyclic row with $c=-1$, the non-abelian row), then $H^1(\Q_p,T^D)$
+is finite, and $H^1(\Q_p,W)\simeq H^1(\Q_p,T^D)^*$ is finite.
+\item In all cases $H^1(\Q_p,T^D)_{\mathrm{tor}}$ is finite.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+$H^1(\Q_p,T^D)$ is finitely generated over $\Zl$ and $H^1(\Q_p,T^D)\otimes\Ql=H^1(\Q_p,V^D)$ (\Cref{ch:galcoh}, the cohomology of $T$, $V$, $W$). For $p\ne\ell$ the local Euler
+characteristic of a $\Ql$-representation is $0$, so $\dim H^1(\Q_p,V^D)=\dim H^0(\Q_p,V^D)+\dim H^2(\Q_p,V^D)$, and Tate local duality gives
+$H^2(\Q_p,V^D)\simeq H^0(\Q_p,(V^D)^D)^\vee=H^0(\Q_p,A_f)^\vee$ (\Cref{ch:galcoh}). With \Cref{lem:blochkato:no-local-invariants}(i) this is (i). In (ii) a finitely
+generated $\Zl$-module of rank $0$ is finite, and Tate local duality for the pair $(W,T^D)$ (\Cref{ch:galcoh}) gives the second statement. (iii) The torsion
+of a finitely generated $\Zl$-module is finite.
+\end{proof}
+
+\begin{lemma}[integrality of the Euler factor]\label{lem:blochkato:euler-integral}
+Let $p\ne\ell$ and $X=T^D$. Then $X^{I_p}=X\cap(V^D)^{I_p}$ is a $\Frob_p$-stable lattice in $(V^D)^{I_p}$,
+\[
+L_p(A_f,1)^{-1}=\det(1-\Frob_p^{-1}\mid X^{I_p})\in\Z_{(\ell)}\cap\Q^\times,\qquad\#\,X^{I_p}/(\Frob_p-1)X^{I_p}=\ell^{\,v_\ell(L_p(A_f,1)^{-1})}.
+\]
+The valuation is $v_\ell(p^2-1)$ at multiplicative and at additive potentially multiplicative primes, and $e_\ell(E,p)$ at every additive prime.
+\end{lemma}
+
+\begin{proof}
+$X^{I_p}$ is the intersection of a lattice with a subspace, hence a lattice in $(V^D)^{I_p}$ (it is saturated in $X$ and spans the subspace, since every vector has a
+multiple in $X$); it is $\Frob_p$-stable because $I_p$ is normal in $G_{\Q_p}$. So $\Frob_p^{-1}$ has a characteristic polynomial with coefficients in $\Zl$ on it, and the
+determinant lies in $\Zl$; it is rational and nonzero by \Cref{lem:blochkato:no-local-invariants}(i), hence in $\Zl\cap\Q^\times=\Z_{(\ell)}\cap\Q^\times$. The order of the
+cokernel is \Cref{prop:blochkato:frobenius-dictionary}(c). At a multiplicative or additive potentially multiplicative prime the factor is $1-p^{-2}$, of valuation
+$v_\ell(p^2-1)$. At an additive prime the naive factor is $1$, so $v_\ell(L_p(A_f,1)^{-1})$ is $e_\ell(E,p)$ by Definition def:terms (\Cref{ch:lfunctions}).
+\end{proof}
+
+\begin{paperlink}
+Lemma lem:fpr: ``$L_p(A_f,1)^{-1}=L_p(A_f(1),0)^{-1}$ is a nonzero rational number which is an $\ell$-adic integer, of valuation $e_\ell(E,p)$ at an additive
+prime and $v_\ell(1-p^{-2})$ at a multiplicative one''. The first equality is \Cref{prop:blochkato:frobenius-dictionary}(a); the rest is
+\Cref{lem:blochkato:no-local-invariants}(i) and \Cref{lem:blochkato:euler-integral}. The paragraph after Lemma lem:dfg21 says ``for the same reason
+$H^0(\Q_p,V^D)=0$'' (\Cref{lem:blochkato:no-local-invariants}(i)) and ``So $H^1_f(\Q_p,T^D)$ is the torsion of $H^1(\Q_p,T^D)$, a finite group''
+(\Cref{cor:blochkato:local-finiteness}(iii) and \Cref{prop:blochkato:local-unramified}(v) below). It does not say that $H^1(\Q_p,T^D)$ is finite, which would be
+false at the primes of \Cref{warn:blochkato:local-h0-af}.
+\end{paperlink}
+
+\section[The representation at \texorpdfstring{$\ell$}{l}]{The representation at \texorpdfstring{$\ell$}{l}: \texorpdfstring{$p$}{p}-adic Hodge theory as a black box}\label{sec:blochkato:hodge}
+
+Nothing in the paper's own proofs uses $p$-adic Hodge theory directly. It enters in two places only: in the definition of the Bloch-Kato local
+condition at $\ell$, which is part of the definition of $H^1_f(\Q,W)$ and of $H^1_\Sigma(\Q,W)$ in Section 1.2 and Section 4.2, and in the hypotheses
+and proofs of the theorems of Diamond, Flach and Guo that the paper imports. This section states what is needed, with references; every item is
+stated, not proved, and the reader may treat $H^1_f(\Q_\ell,-)$ as a black box with the properties of \Cref{prop:blochkato:dimension-formula} and
+\Cref{prop:blochkato:local-duality-f}.
+
+\begin{definition}[period rings and admissible representations]\label{def:blochkato:period-rings}
+Fontaine constructs topological $\Ql$-algebras $\BdR\supset\Bst\supset\Bcris$ with continuous actions of $G_{\Q_\ell}$, with the following structure:
+$\BdR$ is the fraction field of a complete discrete valuation ring with residue field $\C_\ell$ and a uniformiser $t$ on which $G_{\Q_\ell}$ acts by $\chi_\ell$, and it
+carries the filtration $\mathrm{Fil}^i\BdR=t^i\BdR^+$ with $\mathrm{gr}^i\BdR\simeq\C_\ell(i)$; $\Bcris$ and $\Bst$ carry a Frobenius $\varphi$, and $\Bst$ a monodromy operator
+$N$ with $N\varphi=\ell\varphi N$ and $\Bcris=\Bst^{N=0}$; and $\BdR^{G_{\Q_\ell}}=\Bst^{G_{\Q_\ell}}=\Bcris^{G_{\Q_\ell}}=\Ql$. For an $\ell$-adic representation $V$ of $G_{\Q_\ell}$ and
+$\bullet\in\{\mathrm{dR},\mathrm{st},\mathrm{cris}\}$ put $D_\bullet(V)=(B_\bullet\otimes_{\Ql}V)^{G_{\Q_\ell}}$; then $\dim_{\Ql}D_\bullet(V)\le\dim V$, and $V$ is called \emph{de Rham},
+\emph{semistable} or \emph{crystalline} when equality holds for $\bullet=\mathrm{dR}$, $\mathrm{st}$, $\mathrm{cris}$. Crystalline implies semistable implies de Rham. $\DdR(V)$ is a
+filtered vector space; the \emph{Hodge-Tate weights} of a de Rham $V$ are the integers $-i$ with $\mathrm{gr}^i\DdR(V)\ne0$, counted with multiplicity, so that
+$\Ql(1)$, with $\DdR(\Ql(1))=t^{-1}\Ql$, has the weight $+1$ (\Cref{conv:blochkato:setup}(d)). We do not prove these facts; see Fontaine \cite{Fontaine} and
+Berger's survey \cite{Berger}.
+\end{definition}
+
+\begin{theorem}[good reduction and crystalline representations]\label{thm:blochkato:crystalline-good-reduction}
+Let $B$ be an abelian variety over $\Q_\ell$. Then $V_\ell B$ is crystalline if and only if $B$ has good reduction, and semistable if and only if $B$ has
+semistable reduction. If $E/\Q$ has good reduction at $\ell$, then $V_\ell E$ is crystalline with Hodge-Tate weights $0,1$, and the crystalline Frobenius on
+$\Dcris((V_\ell E)^\vee)$ has characteristic polynomial $X^2-a_\ell X+\ell$.
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this. The direct implications are theorems of Fontaine and of Faltings, and the converse for crystalline representations is due to
+Coleman and Iovita \cite{ColemanIovita99}; see Berger \cite{Berger} for an introduction. The statement for $E$ is the one recorded in \Cref{ch:galrep}
+(good reduction at $\ell$) and in \Cref{ch:modgalrep}.
+\end{proof}
+
+\begin{proposition}[stability]\label{prop:blochkato:crystalline-closure}
+Crystalline (resp. de Rham) representations of $G_{\Q_\ell}$ are stable under direct sums, tensor products, duals, subquotients and Tate twists, and $\Dcris$
+(resp. $\DdR$) is compatible with these operations. Consequently, if $\ell\nmid N$, the representations $A_f$, $V^D=A_f(1)$ and $(V_\ell E)^\vee$ are crystalline,
+with Hodge-Tate weights $\{-1,0,1\}$, $\{0,1,2\}$ and $\{-1,0\}$.
+\end{proposition}
+
+\begin{proof}
+The formal properties are stated with references (\cite{Fontaine}, \cite[Section 2]{Berger}); we do not prove them. The consequences: $V_\ell E$ is crystalline
+with weights $\{0,1\}$ (\Cref{thm:blochkato:crystalline-good-reduction}), so its dual has weights $\{-1,0\}$ and $V_\ell E\otimes(V_\ell E)^\vee=\End(V_\ell E)$ has weights
+$\{-1,0,0,1\}$; $A_f$ is the complement of the scalars $\Ql\cdot1$ (weight $0$), a direct summand because $2$ is invertible ($x=\tfrac12\tr(x)+(x-\tfrac12\tr(x))$),
+so it has weights $\{-1,0,1\}$; and twisting by $\Ql(1)$ adds $1$.
+\end{proof}
+
+\begin{theorem}[Fontaine and Laffaille]\label{thm:blochkato:fontaine-laffaille}
+Let $\ell$ be odd and $a\le b$ integers with $b-a\le\ell-2$. The functor of Fontaine and Laffaille is an exact, fully faithful functor from the category of
+strongly divisible filtered Dieudonn\'e modules over $\Zl$ with filtration jumps in $[a,b]$ to the category of $\Zl$-lattices in crystalline representations of $G_{\Q_\ell}$,
+whose essential image consists of the stable lattices in crystalline representations with Hodge-Tate weights in $[-b,-a]$ (up to the sign convention); it is
+compatible with subquotients and with reduction modulo $\ell^k$. For $V_\ell E$, $\ell\nmid N$, the weights $\{0,1\}$ lie in an interval of length $1\le\ell-2$ for every odd
+$\ell$, and the theory describes $T_\ell E$ and the finite flat group schemes $\mathcal E[\ell^k]$ of \Cref{ch:galrep}.
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this; see Fontaine and Laffaille \cite{FontaineLaffaille}, and \cite[Section 4]{BlochKato} and \cite[Sections 1 and 2]{DFG04} for the use made of
+it in the Bloch-Kato and Diamond-Flach-Guo theories.
+\end{proof}
+
+\begin{remark}[the case $\ell=3$]\label{rem:blochkato:ell-three}
+The adjoint has weights $\{-1,0,1\}$, an interval of length $2$, which exceeds $\ell-2=1$ when $\ell=3$. So \Cref{thm:blochkato:fontaine-laffaille} cannot be
+applied to $A$ directly at $\ell=3$. The paper states, after Theorem thm:dfg37, that the theorem of Diamond, Flach and Guo ``covers $\ell=3$ in weight $2$:
+$S_f$ excludes only the primes dividing $2N$ and the induced case''; their integral local condition at $\ell$ is built from objects of weights in an
+interval of length $1$. The book follows the paper here; the hypotheses of Diamond, Flach and Guo are discussed in \Cref{ch:congruence}.
+\end{remark}
+
+\begin{proposition}[local dimensions at $\ell$]\label{prop:blochkato:dimension-formula}
+Let $V$ be a de Rham representation of $G_{\Q_\ell}$. With the sign convention of \Cref{conv:blochkato:setup}(d),
+\[
+\dim_{\Ql}H^1_f(\Q_\ell,V)=\dim H^0(\Q_\ell,V)+\dim\DdR(V)/\mathrm{Fil}^0\DdR(V),
+\]
+and $\dim\DdR(V)/\mathrm{Fil}^0\DdR(V)$ is the number of positive Hodge-Tate weights of $V$. Examples: $H^1_f(\Q_\ell,\Ql)=H^1_{\ur}(\Q_\ell,\Ql)$ and
+$H^1_f(\Q_\ell,\Ql(1))=\widehat{\Z_\ell^\times}\otimes\Ql$ (the Kummer classes of units) both have dimension $1$. If $\ell\nmid N$, then $H^0(\Q_\ell,V^D)=0$,
+\[
+\dim H^1_f(\Q_\ell,A_f)=\dim H^0(\Q_\ell,A_f)+1,\qquad\dim H^1_f(\Q_\ell,V^D)=2,
+\]
+and the sum of the two is $\dim H^1(\Q_\ell,A_f)$, as the duality of \Cref{prop:blochkato:local-duality-f} requires.
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+The dimension formula is due to Bloch and Kato \cite[Section 3]{BlochKato}; see also \cite{Berger} and Rubin \cite[Section 1.3]{Rubin}. We do not prove it. For
+$\ell\nmid N$: $A_f$ has exactly one positive weight, and $V^D$ has two. An invariant vector of $V^D$ would give a line in $\Dcris(V^D)$ on which $\varphi=1$;
+but the eigenvalues of $\varphi$ on $\Dcris(V^D)=\Dcris(A_f)\otimes\Dcris(\Ql(1))$ are $\ell^{-1}$ times those on $\Dcris(A_f)$, which are of the form
+$\alpha/\beta,1,\beta/\alpha$ with $\alpha\beta=\ell$ and $|\alpha|=|\beta|=\ell^{1/2}$ (\Cref{thm:blochkato:crystalline-good-reduction}), so none is $1$. Finally Tate's local
+Euler characteristic formula at $\ell$ gives $\dim H^1(\Q_\ell,A_f)=\dim H^0(\Q_\ell,A_f)+\dim H^2(\Q_\ell,A_f)+3$, and $H^2(\Q_\ell,A_f)$ is dual to $H^0(\Q_\ell,V^D)=0$
+(\Cref{ch:galcoh}); so $\dim H^1(\Q_\ell,A_f)=\dim H^0(\Q_\ell,A_f)+3$.
+\end{proof}
+
+For $A_f$ the weights are symmetric about $0$, so the count ``one positive weight'' does not depend on the sign convention; for $V^D$ it does, and
+with the opposite convention the formula is stated with negative weights. This is the only place where the sign matters below.
+
+\section{Bloch-Kato local conditions}\label{sec:blochkato:conditions}
+
+This section defines the local conditions $H^1_f(\Q_p,-)$ of Bloch and Kato on $V$, $T$ and $W$, computes them at $p\ne\ell$, and records their duality.
+The paper uses them in Section 1.2 (``the Bloch-Kato Selmer group''), in the statement of Lemma lem:dfg21 (``$H^1_f(\Q_p,T^D)=\iota^{-1}H^1_f(\Q_p,V^D)$'') and
+in the paragraph after it; the difference between the Bloch-Kato and the unramified conditions on $W$, worked out in \Cref{ex:blochkato:ur-versus-f}, is the
+origin of Tamagawa factors.
+
+\begin{definition}[Bloch-Kato local conditions]\label{def:blochkato:local-conditions}
+Let $V$ be an $\ell$-adic representation of $G_{\Q_p}$.
+\begin{enumerate}[label=(\roman*)]
+\item For $p\ne\ell$: $H^1_f(\Q_p,V)=H^1_{\ur}(\Q_p,V)=\ker\bigl(H^1(\Q_p,V)\to H^1(I_p,V)\bigr)$.
+\item \sloppy For $p=\ell$: $H^1_e(\Q_\ell,V)=\ker\bigl(H^1(\Q_\ell,V)\to H^1(\Q_\ell,\Bcris^{\varphi=1}\otimes V)\bigr)$, $H^1_f(\Q_\ell,V)=\ker\bigl(H^1(\Q_\ell,V)\to H^1(\Q_\ell,\Bcris\otimes V)\bigr)$ and
+$H^1_g(\Q_\ell,V)=\ker\bigl(H^1(\Q_\ell,V)\to H^1(\Q_\ell,\BdR\otimes V)\bigr)$; so $H^1_e\subseteq H^1_f\subseteq H^1_g$, and $H^1_f(\Q_\ell,V)$ classifies the extensions
+$0\to V\to X\to\Ql\to0$ with $X$ crystalline when $V$ is crystalline.
+\item At the real place: $H^1_f(\R,V)=0$, which is all of $H^1(\R,V)$ (a group killed by $2$ and a $\Ql$-vector space).
+\end{enumerate}
+Only $H^1_f$ is used in the paper; $H^1_e$ and $H^1_g$ are recorded for orientation \cite[Section 3]{BlochKato}.
+\end{definition}
+
+\begin{definition}[propagation]\label{def:blochkato:propagation}
+\sloppy Let $T$ be a $G_{\Q_p}$-stable lattice in $V$, $W=V/T$, and $\iota\colon H^1(\Q_p,T)\to H^1(\Q_p,V)$, $\pi\colon H^1(\Q_p,V)\to H^1(\Q_p,W)$ the maps induced by
+$T\subset V\to W$. Put
+\[
+H^1_f(\Q_p,T)=\iota^{-1}\bigl(H^1_f(\Q_p,V)\bigr),\qquad H^1_f(\Q_p,W)=\pi\bigl(H^1_f(\Q_p,V)\bigr),
+\]
+and likewise $H^1_f(\Q_p,T^D)$, $H^1_f(\Q_p,W^D)$ from $H^1_f(\Q_p,V^D)$.
+\end{definition}
+
+\begin{proposition}[propagated conditions]\label{prop:blochkato:propagation}
+In the situation of \Cref{def:blochkato:propagation}:
+\begin{enumerate}[label=(\alph*)]
+\item $\ker\iota=H^1(\Q_p,T)_{\mathrm{tor}}$, it is the image of $H^0(\Q_p,W)$ under the connecting map, and $H^1_f(\Q_p,T)\supseteq H^1(\Q_p,T)_{\mathrm{tor}}$;
+\item \sloppy $\iota(H^1_f(\Q_p,T))$ is a lattice in $H^1_f(\Q_p,V)$, so $H^1_f(\Q_p,T)/H^1(\Q_p,T)_{\mathrm{tor}}$ is free of rank $\dim H^1_f(\Q_p,V)$;
+\item $H^1_f(\Q_p,W)\simeq H^1_f(\Q_p,V)/\iota H^1_f(\Q_p,T)\simeq(\Qlmod)^{\dim H^1_f(\Q_p,V)}$ is divisible, and it is $0$ exactly when $H^1_f(\Q_p,V)=0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The long exact sequence of $0\to T\to V\to W\to0$ (\Cref{ch:galcoh}) gives $H^0(\Q_p,W)\to H^1(\Q_p,T)\xrightarrow{\iota}H^1(\Q_p,V)\xrightarrow{\pi}H^1(\Q_p,W)$, and $H^1(\Q_p,T)$ is
+finitely generated with $H^1(\Q_p,T)\otimes\Ql=H^1(\Q_p,V)$. (a) The kernel of $\iota$ is the image of the torsion group $H^0(\Q_p,W)$, so it consists of torsion
+elements; conversely a torsion element maps to a torsion element of a $\Ql$-vector space, which is $0$. The inclusion holds since $0\in H^1_f(\Q_p,V)$. (b) $\iota H^1(\Q_p,T)$ is a
+lattice $L$ in $H^1(\Q_p,V)$; for a subspace $U$, $L\cap U$ is finitely generated and spans $U$ (every $u\in U$ has a multiple in $L$), so it is a lattice in $U$, and
+$\iota H^1_f(\Q_p,T)=L\cap H^1_f(\Q_p,V)$. (c) The kernel of $\pi$ is $\iota H^1(\Q_p,T)=L$, so $\pi$ restricted to $U=H^1_f(\Q_p,V)$ has kernel $L\cap U$, a lattice, and
+$U/(L\cap U)\simeq(\Qlmod)^{\dim U}$.
+\end{proof}
+
+\begin{proposition}[the conditions at $p\ne\ell$]\label{prop:blochkato:local-unramified}
+Let $p\ne\ell$, $G=G_{\Q_p}$, $I=I_p$, $F=\Frob_p$, and let $T$ be a stable lattice in $V$, $W=V/T$.
+\begin{enumerate}[label=(\roman*)]
+\item $H^1_f(\Q_p,V)\simeq V^I/(F-1)V^I$, of dimension $\dim H^0(\Q_p,V)$.
+\item \sloppy The sequence $0\to H^1_{\ur}(\Q_p,T)\to H^1(\Q_p,T)\xrightarrow{\operatorname{res}}H^1(I,T)^{G/I}\to0$ is exact, with $H^1_{\ur}(\Q_p,T)\simeq T^I/(F-1)T^I$; the same holds
+for $W$.
+\item $H^1_f(\Q_p,T)=\operatorname{res}^{-1}\bigl(H^1(I,T)_{\mathrm{tor}}\bigr)$, and
+\[
+H^1_f(\Q_p,T)/H^1_{\ur}(\Q_p,T)\;\simeq\;\bigl(H^1(I,T)_{\mathrm{tor}}\bigr)^{G/I}.
+\]
+\item $H^1_f(\Q_p,W)$ is the maximal divisible subgroup of $H^1_{\ur}(\Q_p,W)=W^I/(F-1)W^I$.
+\item If $H^0(\Q_p,V)=0$, then $H^1_f(\Q_p,V)=0$, $H^1_f(\Q_p,W)=0$ and $H^1_f(\Q_p,T)=H^1(\Q_p,T)_{\mathrm{tor}}$, a finite group. If moreover $H^0(\Q_p,V^D)=0$, then
+$H^1(\Q_p,T)$ is finite and $H^1_f(\Q_p,T)=H^1(\Q_p,T)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) and (ii) are \Cref{ch:galcoh} (unramified cohomology): inflation identifies $H^1_{\ur}(\Q_p,M)$ with $H^1(G/I,M^I)=M^I/(F-1)M^I$, $G/I\simeq\widehat\Z$ being
+procyclic, and the inflation-restriction sequence ends with $H^2(G/I,M^I)$, which vanishes for these coefficients (\Cref{ch:cohomology}). For $V$, $F-1$ is an
+endomorphism of the finite-dimensional space $V^I$, so its kernel $H^0(\Q_p,V)=(V^I)^{F=1}$ and its cokernel have the same dimension.
+
+(iii) Let $\iota_I\colon H^1(I,T)\to H^1(I,V)$. Restriction commutes with $\iota$, so $c\in H^1(\Q_p,T)$ lies in $H^1_f(\Q_p,T)$ if and only if $\iota_I(\operatorname{res}c)=0$. As in
+\Cref{prop:blochkato:propagation}(a), the kernel of $\iota_I$ is the image of $W^I$ under the connecting map, a torsion group, and it contains every torsion
+element, $H^1(I,V)$ being a $\Ql$-vector space; so $\ker\iota_I=H^1(I,T)_{\mathrm{tor}}$. By (ii) $\operatorname{res}$ maps $H^1(\Q_p,T)$ onto $H^1(I,T)^{G/I}$ with kernel $H^1_{\ur}(\Q_p,T)$,
+so $H^1_f(\Q_p,T)/H^1_{\ur}(\Q_p,T)\simeq H^1(I,T)^{G/I}\cap H^1(I,T)_{\mathrm{tor}}=(H^1(I,T)_{\mathrm{tor}})^{G/I}$.
+
+(iv) $\pi$ commutes with inflation, so $H^1_f(\Q_p,W)=\pi(H^1_{\ur}(\Q_p,V))$ is the image of $V^I$ in $W^I/(F-1)W^I$. Let $D\subseteq W^I$ be the image of $V^I$, that is,
+$V^I/T^I$ (note $T^I=T\cap V^I$), a divisible group of corank $\dim V^I$. It is the maximal divisible subgroup of $W^I$: $W^I$ is cofinitely generated (its $\ell$-torsion lies
+in the finite $W[\ell]$), so $(W^I)_{\mathrm{div}}\simeq(\Qlmod)^r$, and its Tate module is an $I$-invariant submodule of the Tate module $T$ of $W$, hence lies in $T^I$, so
+$r\le\operatorname{rank}T^I=\dim V^I$; thus $(W^I)_{\mathrm{div}}=D$ and $W^I/D$ is finite. The image of $D$ in $H^1_{\ur}(\Q_p,W)=W^I/(F-1)W^I$ is divisible with finite cokernel (a quotient
+of $W^I/D$), so it is the maximal divisible subgroup: a divisible subgroup maps to a divisible subgroup of a finite group, which is $0$.
+
+(v) By (i) $H^1_f(\Q_p,V)=0$; then $H^1_f(\Q_p,W)=\pi(0)=0$ and $H^1_f(\Q_p,T)=\ker\iota=H^1(\Q_p,T)_{\mathrm{tor}}$, finite because $H^1(\Q_p,T)$ is finitely generated. If also
+$H^0(\Q_p,V^D)=0$, then $\dim H^1(\Q_p,V)=\dim H^0(\Q_p,V)+\dim H^0(\Q_p,V^D)=0$ (local Euler characteristic and duality, as in the proof of
+\Cref{cor:blochkato:local-finiteness}), so $H^1(\Q_p,T)$ is torsion, hence finite and equal to $H^1_f(\Q_p,T)$.
+\end{proof}
+
+\begin{paperlink}
+The paragraph after Lemma lem:dfg21: ``For $p\in\Sigma$ the group $H^1_f(\Q_p,V^D)=H^1_{\mathrm{ur}}(\Q_p,V^D)=(V^D)^{I_p}/(\Frob_p-1)$ vanishes, because
+$\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}\ne0$''. This is (i) applied to $V^D$, with \Cref{lem:blochkato:no-local-invariants}(i) and
+\Cref{prop:blochkato:frobenius-dictionary}(c) for the nonvanishing. Then (v), for the lattice $T^D$, is ``$H^1_f(\Q_p,T^D)$ is the torsion of $H^1(\Q_p,T^D)$''.
+\end{paperlink}
+
+\begin{proposition}[duality of the Bloch-Kato conditions]\label{prop:blochkato:local-duality-f}
+Let $V$ be an $\ell$-adic representation of $G_{\Q_v}$, $T\subset V$ a stable lattice, $W=V/T$. Under the cup-product pairing
+$H^1(\Q_v,V)\times H^1(\Q_v,V^D)\to H^2(\Q_v,\Ql(1))=\Ql$ the subspaces $H^1_f(\Q_v,V)$ and $H^1_f(\Q_v,V^D)$ are exact annihilators of each other, for every place $v$
+(for $v=\ell$ when $V$ is de Rham). Under the perfect pairing $H^1(\Q_v,W)\times H^1(\Q_v,T^D)\to\Qlmod$ the subgroups $H^1_f(\Q_v,W)$ and $H^1_f(\Q_v,T^D)$ are exact
+annihilators of each other; hence
+\[
+H^1(\Q_v,W)/H^1_f(\Q_v,W)\;\simeq\;H^1_f(\Q_v,T^D)^*.
+\]
+\end{proposition}
+
+\begin{proof}
+For $v=p\ne\ell$ both conditions are the unramified ones, and the exact orthogonality of $H^1_{\ur}(\Q_p,V)$ and $H^1_{\ur}(\Q_p,V^D)$ is \Cref{ch:galcoh} (the cup product
+of two inflated classes is inflated from $H^2(\widehat\Z,\Ql(1))=0$, and $\dim H^1_{\ur}(V)+\dim H^1_{\ur}(V^D)=\dim H^0(V)+\dim H^0(V^D)=\dim H^1(\Q_p,V)$). For $v=\ell$ this is
+\cite[Section 3]{BlochKato}, which we do not prove. For $v=\infty$ all the groups vanish ($\ell$ odd). The integral statement follows from the rational one for
+propagated conditions (\Cref{ch:galcoh}, propagation of local conditions): if $y\in H^1_f(\Q_v,T^D)$ and $x\in H^1_f(\Q_v,V)$, then
+$\langle\pi x,y\rangle=\langle x,\iota y\rangle\bmod\Zl=0$; conversely, if $y$ annihilates $\pi H^1_f(\Q_v,V)$, then $\langle\ell^{-k}x,\iota y\rangle\in\Zl$ for all $k$, so $\langle x,\iota y\rangle=0$ for
+all $x\in H^1_f(\Q_v,V)$ and $\iota y\in H^1_f(\Q_v,V^D)$; the pairing between $H^1(\Q_v,W)$ and $H^1(\Q_v,T^D)$ is perfect (Tate local duality, \Cref{ch:galcoh}), and for a perfect
+pairing between a discrete and a compact group the quotient by a subgroup is dual to its annihilator.
+\end{proof}
+
+\begin{example}[unramified is not $f$ for $W$]\label{ex:blochkato:ur-versus-f}
+Let $E$ have split multiplicative reduction at $p\ne\ell$ with $\ell\mid n=n_p$, and take $V=V_\ell E$, $T=T_\ell E$, $W=E[\ell^\infty]$. In the basis of the Tate shape
+(\Cref{ch:galrep}) inertia acts through $t$ with $te_1=e_1$, $te_2=e_2+n'e_1$, $v_\ell(n')=v_\ell(n)$, and $\Frob_p$ by $\sm{p}{c'}{0}{1}$. Then $V^{I_p}=\Ql e_1$, on which $\Frob_p$ acts by
+$p\ne1$, so $H^0(\Q_p,V)=0$, $H^1_f(\Q_p,V)=0$ and $H^1_f(\Q_p,W)=0$ (\Cref{prop:blochkato:local-unramified}(v)). On the other hand $x e_1+ye_2\bmod T$ is fixed by $t$ iff
+$yn'e_1\in T$, so
+\[
+W^{I_p}=(\Qlmod)e_1\oplus(\ell^{-v_\ell(n)}\Zl/\Zl)e_2,\qquad(\Frob_p-1)(xe_1+ye_2)=\bigl((p-1)x+c'y\bigr)e_1,
+\]
+and since $(p-1)\Qlmod=\Qlmod$, $(\Frob_p-1)W^{I_p}=(\Qlmod)e_1$ and $H^1_{\ur}(\Q_p,W)\simeq\Z/\ell^{v_\ell(n)}$. This is the $\ell$-part of the component group $\Z/n$, on which
+Frobenius acts trivially in the split case. The Kummer condition at $p\ne\ell$ in the classical Selmer group is $E(\Q_p)\otimes\Qlmod=0$ (\Cref{ex:blochkato:classical-selmer}),
+which is the Bloch-Kato condition, not the unramified one; the difference is the Tamagawa phenomenon of \Cref{sec:blochkato:tamagawa}. For the adjoint at a
+multiplicative prime $q$, $H^1_f(\Q_q,W)=0$ always (\Cref{lem:blochkato:no-local-invariants}(ii)), while $H^1_{\ur}(\Q_q,W)=0$ when $\ell\nmid n_q$ (\Cref{ex:blochkato:ex-mult}).
+\end{example}
+
+\section[Global Selmer groups]{Global Bloch-Kato Selmer groups and the \texorpdfstring{$\Sigma$}{Sigma}-imprimitive Selmer group}\label{sec:blochkato:selmer}
+
+This section defines the Selmer groups of Theorem thm:main: the Bloch-Kato Selmer group $H^1_f(\Q,W)$ (Section 1.2 of the paper) and the
+$\Sigma$-imprimitive group $H^1_\Sigma(\Q,W)$ of Diamond, Flach and Guo (Section 4.2), proves their basic finiteness properties, and records the Euler
+characteristic count that makes the two vanishing statements of Theorem thm:dfg27 equivalent.
+
+\begin{definition}[Bloch-Kato Selmer groups]\label{def:blochkato:selmer}
+Let $V$ be a geometric representation of $G_\Q$, $T$ a stable lattice, $W=V/T$, and let $M$ be one of $V$, $T$, $W$, $V^D$, $T^D$, $W^D$. The \emph{Bloch-Kato Selmer group}
+is
+\[
+H^1_f(\Q,M)=\bigl\{c\in H^1(\Q,M):\ \operatorname{loc}_v(c)\in H^1_f(\Q_v,M)\text{ for every place }v\bigr\},
+\]
+with the local conditions of \Cref{def:blochkato:local-conditions} and \Cref{def:blochkato:propagation}.
+\end{definition}
+
+\begin{lemma}[finite level]\label{lem:blochkato:selmer-S}
+Let $S$ be a finite set of places containing $\ell$, $\infty$ and the primes at which $V$ is ramified. For $p\notin S$, $H^1_f(\Q_p,M)=H^1_{\ur}(\Q_p,M)$ for each of the six
+modules, and $H^1_f(\Q,M)$ is the subgroup of $H^1(G_{\Q,S},M)$ defined by the conditions at the places of $S$.
+\end{lemma}
+
+\begin{proof}
+For $V$ this is the definition. If $T$ is unramified at $p$, then $H^1(I_p,T)=\Hom_{\mathrm{cont}}(I_p,T)$ is torsion-free (a homomorphism into the pro-$\ell$ group $T$ factors
+through the maximal pro-$\ell$ quotient $\Zl(1)$ of $I_p$, and $\Hom(\Zl(1),T)\simeq T(-1)$), so \Cref{prop:blochkato:local-unramified}(iii) gives $H^1_f=H^1_{\ur}$. If $W$ is
+unramified at $p$, $H^1_{\ur}(\Q_p,W)=W/(F-1)W$ is a quotient of a divisible group, hence divisible, and equals $H^1_f(\Q_p,W)$ by
+\Cref{prop:blochkato:local-unramified}(iv). Finally, a class of $H^1(\Q,M)$ that is unramified at every $p\notin S$ is inflated from $G_{\Q,S}$: by inflation-restriction
+its restriction to the kernel $H$ of $G_\Q\to G_{\Q,S}$ is a homomorphism $H\to M$ that kills every inertia group at a prime outside $S$, and these inertia groups
+generate $H$ as a closed normal subgroup (the fixed field of the subgroup they generate is unramified outside $S$).
+\end{proof}
+
+\begin{proposition}[relations]\label{prop:blochkato:selmer-relations}
+In the situation of \Cref{def:blochkato:selmer}:
+\begin{enumerate}[label=(\roman*)]
+\item \sloppy $H^1_f(\Q,T)$ is the preimage of $H^1_f(\Q,V)$ under $\iota\colon H^1(G_{\Q,S},T)\to H^1(G_{\Q,S},V)$, and $H^1_f(\Q,T)_{\mathrm{tor}}=H^1(G_{\Q,S},T)_{\mathrm{tor}}=\ker\iota$ is the
+image of $H^0(\Q,W)$.
+\item $H^1_f(\Q,W)$ is a cofinitely generated $\Zl$-module.
+\item The maximal divisible subgroup of $H^1_f(\Q,W)$ is $\pi\bigl(H^1_f(\Q,V)\bigr)$; so the corank of $H^1_f(\Q,W)$ is $\dim H^1_f(\Q,V)$, and $H^1_f(\Q,W)$ is finite if
+and only if $H^1_f(\Q,V)=0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We use from \Cref{ch:galcoh} that $H^i(G_{\Q,S},M)$ is finite for finite $M$ and finitely generated over $\Zl$ for $M=T$, and the same for $\Q_p$. (i) The local
+condition on $T$ is the preimage of the one on $V$, place by place; and the argument of \Cref{prop:blochkato:propagation}(a) applies to $G_{\Q,S}$; torsion classes
+satisfy every local condition because they lie in $\ker\iota$. (ii) $H^1_f(\Q,W)[\ell]$ lies in $H^1(G_{\Q,S},W)[\ell]$, which is a quotient of the finite group
+$H^1(G_{\Q,S},W[\ell])$ (from $0\to W[\ell]\to W\xrightarrow{\ell}W\to0$, $W$ being divisible); a discrete $\ell$-primary module with finite $\ell$-torsion is cofinitely generated
+(\Cref{ch:modules}). (iii) $D_0=\pi(H^1_f(\Q,V))$ lies in $H^1_f(\Q,W)$ (the local conditions on $W$ are the images of those on $V$) and is divisible of corank
+$\dim H^1_f(\Q,V)$ (its kernel $\iota H^1_f(\Q,T)$ is a lattice, as in \Cref{prop:blochkato:propagation}). Conversely let $D$ be the maximal divisible subgroup of
+$X=H^1_f(\Q,W)$. The cokernel of $\pi\colon H^1(G_{\Q,S},V)\to H^1(G_{\Q,S},W)$ injects into the finitely generated $\Zl$-module $H^2(G_{\Q,S},T)$, which has no nonzero divisible
+subgroup; so $D\subseteq\pi(H^1(G_{\Q,S},V))$. Let $Y=\{y\in H^1(G_{\Q,S},V):\pi(y)\in X\}$ and $\lambda\colon H^1(G_{\Q,S},V)\to Q=\bigoplus_{p\in S}H^1(\Q_p,V)/H^1_f(\Q_p,V)$ the
+localisation. For $y\in Y$ and $p\in S$, $\pi_p(\operatorname{loc}_py)\in H^1_f(\Q_p,W)=\pi_p(H^1_f(\Q_p,V))$, so $\operatorname{loc}_py\in H^1_f(\Q_p,V)+\iota_pH^1(\Q_p,T)$. Hence $\lambda(Y)$ lies in
+the image $\Lambda$ of $\bigoplus_p\iota_pH^1(\Q_p,T)$, a finitely generated $\Zl$-submodule of $Q$. Choose a complement $C$ of $\ker\lambda=H^1_f(\Q,V)$ in $H^1(G_{\Q,S},V)$;
+$\lambda|_C$ is injective, so $M_0=C\cap\lambda^{-1}(\Lambda)$ is finitely generated, and $Y\subseteq H^1_f(\Q,V)+M_0$. Then $X\cap\pi(H^1(G_{\Q,S},V))=\pi(Y)\subseteq D_0+\pi(M_0)$, and $\pi(M_0)$ is
+finitely generated and torsion, hence finite. So $D\subseteq D_0+\pi(M_0)$, and the image of $D$ in the finite group $(D_0+\pi(M_0))/D_0$ is divisible, hence $0$: $D\subseteq D_0$.
+\end{proof}
+
+\begin{definition}[the $\Sigma$-imprimitive Selmer group]\label{def:blochkato:sigma-selmer}
+For a finite set $\Sigma$ of primes not containing $\ell$, and $\ell$ odd,
+\[
+H^1_\Sigma(\Q,W)=\bigl\{c\in H^1(\Q,W):\ \operatorname{loc}_\ell c\in H^1_f(\Q_\ell,W),\ \operatorname{loc}_pc\in H^1_{\ur}(\Q_p,W)\text{ for }p\notin\Sigma\cup\{\ell\}\bigr\},
+\]
+with no condition at the primes of $\Sigma$ (none is needed at $\infty$, where $H^1(\R,W)=0$). If $\Sigma$ contains every prime $p\ne\ell$ at which $W$ is ramified, then
+$H^1_{\ur}(\Q_p,W)=H^1_f(\Q_p,W)$ for $p\notin\Sigma\cup\{\ell\}$ (\Cref{lem:blochkato:selmer-S}), so $H^1_\Sigma(\Q,W)\supseteq H^1_f(\Q,W)$ is ``Bloch-Kato outside $\Sigma$, nothing on
+$\Sigma$''.
+\end{definition}
+
+For the paper $\Sigma$ is the set of primes dividing $N$. It may contain primes at which $W$ is unramified, namely the primes with $\rho(I_p)=\{\pm1\}$ (type
+$\kod{I}_0^*$ for $p\ge5$); dropping the condition there is harmless.
+
+\begin{proposition}[finiteness of $H^1_\Sigma$]\label{prop:blochkato:sigma-finite}
+Let $\Sigma$ be as in \Cref{def:blochkato:sigma-selmer}, containing the primes $p\ne\ell$ at which $W$ is ramified, and suppose $H^1_f(\Q,V)=0$ and $H^0(\Q_p,V^D)=0$ for every
+$p\in\Sigma$. Then $H^1_\Sigma(\Q,W)$ is finite: the sequence
+\[
+0\to H^1_f(\Q,W)\to H^1_\Sigma(\Q,W)\to\bigoplus_{p\in\Sigma}H^1(\Q_p,W)/H^1_f(\Q_p,W)\simeq\bigoplus_{p\in\Sigma}H^1_f(\Q_p,T^D)^*
+\]
+is exact and its outer terms are finite.
+\end{proposition}
+
+\begin{proof}
+The kernel of the localisation map consists of the classes satisfying the Bloch-Kato condition at every place (at $p\notin\Sigma\cup\{\ell\}$ by \Cref{lem:blochkato:selmer-S},
+at $\infty$ trivially), that is, $H^1_f(\Q,W)$, finite by \Cref{prop:blochkato:selmer-relations}(iii). The isomorphism is \Cref{prop:blochkato:local-duality-f}. For $p\in\Sigma$,
+$H^1_f(\Q_p,V^D)=0$ by \Cref{prop:blochkato:local-unramified}(i), so $H^1_f(\Q_p,T^D)=H^1(\Q_p,T^D)_{\mathrm{tor}}$ is finite (\Cref{prop:blochkato:local-unramified}(v)).
+\end{proof}
+
+\begin{example}[the classical Selmer group]\label{ex:blochkato:classical-selmer}
+Take $V=V_\ell E$, $T=T_\ell E$, $W=E[\ell^\infty]$, $\ell$ odd. At $p\ne\ell$: $E(\Q_p)$ has an open subgroup of finite index isomorphic to $\Z_p$, which is $\ell$-divisible, so
+$E(\Q_p)\otimes\Qlmod=0$; and $H^0(\Q_p,V)=0$ because $E(\Q_p)[\ell^\infty]$ is finite, so $H^1_f(\Q_p,W)=0$ by \Cref{prop:blochkato:local-unramified}(v). At $\ell$ the image of the
+Kummer map $E(\Q_\ell)\otimes\Qlmod\to H^1(\Q_\ell,W)$ is $H^1_f(\Q_\ell,W)$, by a theorem of Bloch and Kato \cite[Section 3]{BlochKato}, which we do not prove. Hence
+$H^1_f(\Q,E[\ell^\infty])=\Sel_{\ell^\infty}(E/\Q)$, the classical Selmer group of \Cref{ch:galcoh}. The Tamagawa numbers $c_p$ do not appear in the Selmer group itself:
+they appear in the comparison with relaxed conditions (\Cref{ex:blochkato:ur-versus-f}, \Cref{sec:blochkato:comparison}).
+\end{example}
+
+\begin{definition}[the paper's Selmer groups]\label{def:blochkato:adjoint-selmer}
+Let $\ell$ be odd. The \emph{adjoint Bloch-Kato Selmer group} is $H^1_f(\Q,W)$ for $W=\ad T\otimes\Qlmod$ (\Cref{def:blochkato:selmer} for the triple $(A_f,A,W)$), and
+$H^1_\Sigma(\Q,W)$ is \Cref{def:blochkato:sigma-selmer} with $\Sigma$ the set of primes dividing $N$. Their duals involve $W^D\simeq\ad T(1)\otimes\Qlmod$
+(\Cref{prop:blochkato:adjoint-self-dual}), $T^D$ and $V^D$.
+\end{definition}
+
+The Selmer group with $\Ql$ coefficients $H^1_f(\Q,A_f)$ vanishes under the hypothesis of Theorem thm:main (\Cref{thm:blochkato:dfg27}), so the length in
+(eq:identity) is that of $H^1_f(\Q,W)$ with discrete coefficients; the revised abstract writes $\len_{\Zl}H^1_f(\Q,\ad T_\ell E\otimes\Q_\ell/\Z_\ell)$, while the original
+spoke of the Selmer group ``of $\ad V_\ell E$''.
+
+\begin{proposition}[Euler characteristic]\label{prop:blochkato:euler-characteristic}
+Let $V$ be a geometric representation of $G_\Q$. Then
+\begin{multline*}
+\dim H^1_f(\Q,V)-\dim H^1_f(\Q,V^D)\\
+=\dim H^0(\Q,V)-\dim H^0(\Q,V^D)+\sum_v\bigl(\dim H^1_f(\Q_v,V)-\dim H^0(\Q_v,V)\bigr),
+\end{multline*}
+the sum over all places, almost all terms being $0$. For $V=A_f$ with $\ell\nmid N$ the terms are:
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+term & value & reason\\
+\midrule
+$\dim H^0(\Q,A_f)-\dim H^0(\Q,V^D)$ & $0-0$ & \Cref{prop:blochkato:global-invariants} ($\bar\rho$ abs.\ irreducible)\\
+$v=p\ne\ell$ & $0$ & \Cref{prop:blochkato:local-unramified}(i)\\
+$v=\ell$ & $+1$ & \Cref{prop:blochkato:dimension-formula}\\
+$v=\infty$ & $-\dim A_f^{c=1}=-1$ & $c$ has eigenvalues $1,-1,-1$ on $A_f$\\
+\bottomrule
+\end{tabular}
+\end{center}
+So $\dim H^1_f(\Q,A_f)=\dim H^1_f(\Q,V^D)$; in particular $H^1_f(\Q,A_f)=0$ if and only if $H^1_f(\Q,V^D)=0$.
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+The general formula is the $\Ql$ form of the formula of Greenberg and Wiles, which \Cref{ch:galcoh} proves for finite modules: apply it to $T/\ell^kT$ with the
+conditions induced from $H^1_f(\Q_v,V)$ (preimages and images, which are mutually dual by \Cref{prop:blochkato:local-duality-f}) and compare the growth in $k$ of the
+two sides, using \Cref{prop:blochkato:propagation} and \Cref{prop:blochkato:selmer-relations}; see \cite{FPR94} and \cite[Section 1.7]{Rubin}. For the table: complex
+conjugation $c$ acts on $V_\ell E$ with eigenvalues $1,-1$ (\Cref{ch:galrep}), so in a basis where $\rho(c)=\operatorname{diag}(1,-1)$ it fixes $h$ and negates $e$ and $f$; and at
+$\infty$, $H^1_f(\R,A_f)=0$ and $H^0(\R,A_f)=A_f^{c=1}$.
+\end{proof}
+
+\begin{paperlink}
+Theorem thm:dfg27 states ``$H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$ (and the same for $A\otimes\Q_\ell$)''. The parenthesis is the other half of the equivalence just proved,
+and Remark rem:ns uses the same equivalence: ``The vanishing of $H^1_f(\Q,V^D)$, equivalently of $H^1_f(\Q,\ad V_3E)$, is not known for these curves''.
+\end{paperlink}
+
+\section{Tamagawa factors}\label{sec:blochkato:tamagawa}
+
+This section defines the Tamagawa factor of Fontaine and Perrin-Riou at a prime $p\ne\ell$, proves its index description and its basic
+properties, and proves the paper's Lemma lem:fpr: the local term $H^1_f(\Q_p,T^D)$ of Lemma lem:dfg21 has Fitting ideal $L_p(A_f,1)^{-1}\Tam_p(T^D)$, and
+$\Tam_p(T^D)=\Tam_p(A)$. It also checks that for $T_\ell E$ the Tamagawa factor is the $\ell$-part of the Tamagawa number $c_p$, as the name promises. The
+paper uses the definition in Section 1.2 and the lemma in the proof of Theorem thm:main and in Remark rem:ns. A Tamagawa factor is the size of a local
+defect counted by torsion in a first cohomology group, much as the index of a sublattice measures a ratio of volumes.
+
+\begin{definition}[Tamagawa factor]\label{def:blochkato:tamagawa}
+Let $p\ne\ell$ and let $M$ be a free $\Zl$-module of finite rank with a continuous action of $G_{\Q_p}$. The group $G_{\Q_p}/I_p$ acts on $H^1(I_p,M)$ by
+$(\sigma\cdot c)(i)=\sigma\,c(\sigma^{-1}i\sigma)$ (\Cref{ch:cohomology}), and preserves its torsion subgroup. The \emph{Tamagawa factor} of $M$ at $p$ is
+\[
+\Tam_p(M)=\Fitt_{\Zl}\Bigl(\bigl(H^1(I_p,M)_{\mathrm{tor}}\bigr)^{G_{\Q_p}}\Bigr),
+\]
+the Fitting ideal of the $G_{\Q_p}$-invariants of the torsion of $H^1(I_p,M)$. It is a nonzero ideal $\ell^a\Zl$, with $a=\len\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$, and we write
+$v_\ell(\Tam_p(M))=a$.
+\end{definition}
+
+That the ideal is nonzero: $H^1(I_p,M)$ is a finitely generated $\Zl$-module (\Cref{ch:cohomology}: $I_p$ acts on the pro-$\ell$ module $M$ through a quotient that is an
+extension of $\Zl(1)$ by a finite group, the wild inertia and the prime-to-$\ell$ part of tame inertia contributing nothing), so its torsion is finite, and so are its
+invariants; the Fitting ideal of a finite $\Zl$-module $X$ is $\ell^{\len X}\Zl$ (\Cref{ch:modules}).
+
+\begin{paperlink}
+\sloppy Section 1.2 of the revised paper defines ``$\Tam_p(M)=\Fitt_{\Z_\ell}\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$, an ideal of $\Z_\ell$ \cite[p.~708]{DFG04},
+\cite[I.4.2.2]{FPR94}''. The original version wrote $\Fitt_{\Z_\ell}\bigl(H^1(I_p,M)_{\mathrm{tor}}\bigr)^{G_{\Q_p}}$, with the invariants outside the Fitting ideal, which has no
+meaning (an ideal of $\Zl$ has no Galois action); the computation in Lemma lem:tamfactor has always used the invariants inside.
+\end{paperlink}
+
+\begin{proposition}[the index description]\label{prop:blochkato:tam-index}
+For $p\ne\ell$ and $M$ as in \Cref{def:blochkato:tamagawa},
+\[
+\ell^{v_\ell(\Tam_p(M))}=\#\bigl(H^1(I_p,M)_{\mathrm{tor}}\bigr)^{G_{\Q_p}}=\bigl[H^1_f(\Q_p,M):H^1_{\ur}(\Q_p,M)\bigr].
+\]
+\end{proposition}
+
+\begin{proof}
+\Cref{prop:blochkato:local-unramified}(iii), with $T=M$.
+\end{proof}
+
+So the Tamagawa factor measures how much larger the Bloch-Kato condition on the lattice is than the naive unramified condition. For $W$ the inclusion
+goes the other way (\Cref{prop:blochkato:local-unramified}(iv)); both reflect the same finite group.
+
+\begin{proposition}[basic properties]\label{prop:blochkato:tam-basic}
+Let $p\ne\ell$.
+\begin{enumerate}[label=(\roman*)]
+\item If $I_p$ acts trivially on $M$, then $\Tam_p(M)=\Zl$.
+\item If $I_p$ acts on $M$ through a finite quotient of order prime to $\ell$, then $\Tam_p(M)=\Zl$.
+\item $\Tam_p(M)$ depends only on the isomorphism class of the $G_{\Q_p}$-module $M$; in particular $\Tam_p(\ell^bM)=\Tam_p(M)$ for a lattice $M$ in a representation.
+\item $\Tam_p(\ad T)=\Tam_p(\ad(T\otimes\chi))$ for every character $\chi$ of $G_{\Q_p}$ with values in $\Zl^\times$.
+\end{enumerate}
+In particular $\Tam_p(\ad T_\ell E)=\Zl$ at every prime $p\nmid N\ell$, and at every prime with $\rho(I_p)=\{\pm1\}$.
+\end{proposition}
+
+\begin{proof}
+(i) $H^1(I_p,M)=\Hom_{\mathrm{cont}}(I_p,M)$, and a continuous homomorphism into the pro-$\ell$ group $M$ factors through the maximal pro-$\ell$ quotient of $I_p$, which is $\Zl(1)$
+for $p\ne\ell$ (\Cref{ch:local}); so $H^1(I_p,M)\simeq\Hom(\Zl(1),M)=M(-1)$ is torsion-free. (ii) is the case $\#\Delta$ prime to $\ell$ of \Cref{lem:blochkato:finite-inertia-image}
+below: the torsion is $H^1(\Delta,M)$, killed by $\#\Delta$, which is a unit. (iii) The definition uses only the module. (iv) The two modules are equal
+(\Cref{prop:blochkato:adjoint-self-dual}(ii)). For the last sentence: at a good prime $\ad T$ is unramified, and if $\rho(I_p)=\{\pm1\}$ then $I_p$ acts trivially on $\ad T$.
+\end{proof}
+
+\begin{theorem}[Fontaine and Perrin-Riou at $p\ne\ell$]\label{thm:blochkato:fpr-local}
+Let $p\ne\ell$ and let $X$ be a free $\Zl$-module of finite rank with a continuous action of $G_{\Q_p}$ such that $H^0(\Q_p,X\otimes\Ql)=0$. Then $H^1_f(\Q_p,X)=H^1(\Q_p,X)_{\mathrm{tor}}$ is
+finite, there is an exact sequence
+\[
+0\to X^{I_p}/(\Frob_p-1)X^{I_p}\to H^1(\Q_p,X)_{\mathrm{tor}}\to\bigl(H^1(I_p,X)_{\mathrm{tor}}\bigr)^{G_{\Q_p}}\to0,
+\]
+and
+\begin{gather*}
+\Fitt_{\Zl}H^1_f(\Q_p,X)=\det\bigl(1-\Frob_p^{-1}\bigm|X^{I_p}\bigr)\cdot\Tam_p(X),\\
+\len H^1_f(\Q_p,X)=v_\ell\det\bigl(1-\Frob_p^{-1}\bigm|X^{I_p}\bigr)+v_\ell(\Tam_p(X)).
+\end{gather*}
+Moreover $H^1(\Q_p,X)_{\mathrm{tor}}\simeq H^0(\Q_p,X\otimes\Qlmod)$. For the paper's $X=T^D$ and every $p\ne\ell$:
+\begin{gather*}
+\Fitt_{\Zl}H^1_f(\Q_p,T^D)=L_p(A_f,1)^{-1}\cdot\Tam_p(T^D),\\
+\len H^1_f(\Q_p,T^D)=\len H^0(\Q_p,W^D)=v_\ell\bigl(L_p(A_f,1)^{-1}\bigr)+v_\ell\bigl(\Tam_p(T^D)\bigr).
+\end{gather*}
+\end{theorem}
+
+\begin{proof}
+Write $G=G_{\Q_p}$, $I=I_p$, $F=\Frob_p$, $U=X\otimes\Ql$.
+
+\emph{Step 1 (the unramified part is finite).} $H^0(\Q_p,U)=(U^I)^{F=1}=0$, so $1$ is not an eigenvalue of $F$, nor of $F^{-1}$, on $U^I$, and $\det(1-F^{-1}\mid X^I)\ne0$. By
+\Cref{prop:blochkato:frobenius-dictionary}(c) the group $X^I/(F-1)X^I$ is finite of order $\ell^{v_\ell\det(1-F^{-1}\mid X^I)}$; its Fitting ideal is generated by
+$\det(1-F^{-1}\mid X^I)$.
+
+\emph{Step 2 (inflation-restriction).} By \Cref{prop:blochkato:local-unramified}(ii) the sequence $0\to X^I/(F-1)X^I\to H^1(\Q_p,X)\to H^1(I,X)^{G/I}\to0$ is exact.
+
+\emph{Step 3 (torsion).} Taking torsion subgroups keeps it exact. Exactness at the left and in the middle is clear (the left term is finite, hence torsion). For
+surjectivity, let $y\in(H^1(I,X)^{G/I})_{\mathrm{tor}}$, say $\ell^ky=0$, and lift it to $x\in H^1(\Q_p,X)$. Then $\ell^kx$ lies in the finite left term, so $\ell^{k+m}x=0$ for some $m$,
+and $x$ is torsion. Finally $(H^1(I,X)^{G/I})_{\mathrm{tor}}=(H^1(I,X)_{\mathrm{tor}})^{G/I}$.
+
+\emph{Step 4 (Fitting ideals).} Lengths are additive in short exact sequences of finite $\Zl$-modules, and $\Fitt(Y)=\ell^{\len Y}\Zl$ for finite $Y$ (\Cref{ch:modules}). So
+$\Fitt H^1(\Q_p,X)_{\mathrm{tor}}=\det(1-F^{-1}\mid X^I)\cdot\Tam_p(X)$.
+
+\emph{Step 5 (the Bloch-Kato condition).} By \Cref{prop:blochkato:local-unramified}(v), $H^1_f(\Q_p,X)=H^1(\Q_p,X)_{\mathrm{tor}}$. The isomorphism with $H^0(\Q_p,X\otimes\Qlmod)$ is the
+connecting map of $0\to X\to U\to X\otimes\Qlmod\to0$, injective because $H^0(\Q_p,U)=0$, with image $\ker\iota$ (\Cref{prop:blochkato:propagation}(a)).
+
+For $X=T^D$: $H^0(\Q_p,V^D)=0$ and $\det(1-F^{-1}\mid(T^D)^I)=L_p(A_f,1)^{-1}$ by \Cref{lem:blochkato:no-local-invariants} and \Cref{lem:blochkato:euler-integral}.
+\end{proof}
+
+\begin{proposition}[$\Tam_p(T^D)=\Tam_p(A)$]\label{prop:blochkato:tam-dual}
+\sloppy Let $\ell$ be odd, $p\ne\ell$, $A=\ad T_\ell E$ and $T^D=\Hom(A,\Zl(1))\simeq A(1)$. Then $\Tam_p(T^D)=\Tam_p(A)$. More precisely, $H^1(I_p,A(1))=H^1(I_p,A)(1)$ as $\Zl$-modules
+with $G_{\Q_p}/I_p$-action, so the two torsion subgroups are the same group with Frobenius actions differing by the factor $p$; and:
+\begin{enumerate}[label=(\alph*)]
+\item if the reduction at $p$ is good or potentially good, both torsion subgroups are $0$;
+\item if the reduction at $p$ is potentially multiplicative, with the notation of \Cref{lem:blochkato:tamfactor} (and \Cref{prop:blochkato:tam-potmult}), both invariant
+modules are isomorphic to $\Z/\ell^{v}\oplus\Z/\ell^{m}$ with $v=v_\ell(\nu)$ and $m=\min(v,v_\ell(p-1),v_\ell(c'))$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+$I_p$ acts trivially on $\Zl(1)$, so $A(1)=A\otimes\Zl(1)$ is the same $I_p$-module as $A$ tensored with a free rank-one module with trivial $I_p$-action; cochains and
+cohomology commute with $\otimes\Zl(1)$, and $\Frob_p$ acts on $\Zl(1)$ by $p$. (a) At good and potentially good primes $H^1(I_p,A)_{\mathrm{tor}}=0$ by \Cref{prop:blochkato:tam-basic}
+and \Cref{thm:blochkato:tam-additive}, so both factors are trivial. (b) By \Cref{lem:blochkato:tamfactor} (applied, at an additive potentially multiplicative prime, to the
+Tate shape of \Cref{prop:blochkato:tam-potmult}), $H^1(I_p,A)_{\mathrm{tor}}=(\Z/\ell^v)\bar e\oplus(\Z/\ell^v)\bar h$ with $\Frob_p$ acting by $p^{-1}\Ad\rho(\Frob_p)$, so on the twist it acts by
+$\Ad\rho(\Frob_p)$: $\bar e\mapsto p\bar e$, $\bar h\mapsto\bar h-2\varepsilon c'\bar e$. Thus $x\bar e+y\bar h$ is fixed iff $(p-1)x-2\varepsilon c'y\equiv0\pmod{\ell^v}$, the kernel of the linear form
+$\phi(x,y)=(p-1)x-2\varepsilon c'y$ on $(\Z/\ell^v)^2$. The image of $\phi$ is the ideal generated by $p-1$ and $c'$ in $\Z/\ell^v$ ($2\varepsilon$ is a unit), of order $\ell^{v-m}$, so the kernel
+has order $\ell^{2v-(v-m)}=\ell^{v+m}$. Its structure: if $m=v_\ell(p-1)\le v_\ell(c')$ (and $m<v$), write $\phi=\ell^m\phi'$ with $\phi'(x,y)=ux-wy$, $u$ a unit; the kernel is
+$\{(x,y):ux\equiv wy\pmod{\ell^{v-m}}\}$, and $y$ is free in $\Z/\ell^v$ while $x$ is determined modulo $\ell^{v-m}$, giving $\Z/\ell^v\oplus\Z/\ell^m$; the case $m=v_\ell(c')<v_\ell(p-1)$ is
+symmetric, and if $m=v$ the form is $0$. The invariants for $A$ itself are $\{x\bar e+y\bar h:(p-1)y\equiv0,\ c'y\equiv0\}=\Z/\ell^v\oplus\Z/\ell^m$ (\Cref{lem:blochkato:tamfactor}).
+\end{proof}
+
+The general statement $\Tam_p(T^D)=\Tam_p(A)$ is \cite[(57)]{DFG04}, which the paper cites in Lemma lem:fpr; for the adjoint of an elliptic curve the proposition proves
+it in every case that occurs. As a check, an exhaustive computation over $\ell\in\{3,5\}$, $v\in\{0,1,2\}$, all primes $p<120$ with $p\ne\ell$, $\varepsilon=\pm1$ and
+$c'\in\{0,\dots,\ell^3-1\}$ ($26{,}448$ parameter choices) found both invariant modules of order $\ell^{v+\min(v,v_\ell(p-1),v_\ell(c'))}$ in every case.
+
+\begin{proposition}[the Tamagawa factor of $T_\ell E$]\label{prop:blochkato:tam-of-E}
+For $p\ne\ell$, $v_\ell(\Tam_p(T_\ell E))=v_\ell(c_p)$, the valuation of the Tamagawa number $c_p=[E(\Q_p):E_0(\Q_p)]$.
+\end{proposition}
+
+\begin{proof}
+Let $T=T_\ell E$, $V$, $W=E[\ell^\infty]$, $I=I_p$. As in the proof of \Cref{prop:blochkato:local-unramified}(iii), the connecting map identifies $W^I/(W^I)_{\mathrm{div}}$ with
+$H^1(I,T)_{\mathrm{tor}}=\ker(H^1(I,T)\to H^1(I,V))$, equivariantly for $G_{\Q_p}/I$ (the image of $V^I$ in $W^I$ is $(W^I)_{\mathrm{div}}$, as shown there). Now $W^I=E(\Q_p^{\ur})[\ell^\infty]$, and
+by \Cref{ch:reduction} the group $E(\Q_p^{\ur})$ is an extension of $\Phig_p=\Phi_p(\Fbar_p)$ by $E_0(\Q_p^{\ur})$, which is an extension of the group of nonsingular points of the
+reduction over $\Fbar_p$ (an elliptic curve, $\mathbb G_m$ or $\mathbb G_a$) by a pro-$p$ group; so $E_0(\Q_p^{\ur})$ is $\ell$-divisible and its $\ell$-power torsion is divisible
+($(\Qlmod)^2$, $\mu_{\ell^\infty}$ or $0$). Hence $0\to E_0(\Q_p^{\ur})[\ell^\infty]\to W^I\to\Phig_p[\ell^\infty]\to0$ is exact (\Cref{ch:galrep}, inertia invariants and component
+groups), the first term is $(W^I)_{\mathrm{div}}$ (a divisible subgroup with finite quotient), and $H^1(I,T)_{\mathrm{tor}}\simeq\Phig_p[\ell^\infty]$ as Frobenius modules. The
+Frobenius invariants of $\Phig_p$ are $\Phi_p(\F_p)$, of order $c_p$.
+\end{proof}
+
+At a multiplicative prime this is also the last step of the proof of \Cref{lem:blochkato:tamfactor}: $H^1(I,T)_{\mathrm{tor}}=(\Z/\ell^{v_\ell(n)})\bar e_1$ with Frobenius acting by $\varepsilon$, so
+$v_\ell(\Tam_p(T))=v_\ell(n)$ if the reduction is split and $0$ if it is nonsplit. On all curves of Cremona's tables of conductor below $3{,}000$ ($17{,}834$ curves), at every
+multiplicative prime $q$ and $\ell\in\{3,5,7\}$, $\ell\ne q$ ($101{,}336$ pairs), $v_\ell(c_q)$ is $v_\ell(n_q)$ if $a_q=1$ and $0$ if $a_q=-1$, as it should be. At a prime $p\ne3$ of type $\kod{IV}$ or
+$\kod{IV}^*$ with $\ell=3$, $H^1(I,T)_{\mathrm{tor}}=H^1(C_3,T)\simeq\F_3$ (\Cref{prop:blochkato:ad-free-c3}), and the proposition says that Frobenius acts on it trivially exactly when
+$3\mid c_p$ (for example \curve{50a1} at $p=5$, type $\kod{IV}$, $c_5=3$).
+
+\section[Lemma lem:tamfactor]{The Tamagawa factor of \texorpdfstring{$\ad T$}{ad T} at a multiplicative prime: Lemma lem:tamfactor}\label{sec:blochkato:tamfactor}
+
+This section proves the paper's Lemma lem:tamfactor in full, with every step the paper compresses expanded, and extends it to the additive potentially
+multiplicative primes, $q=2$ included. The lemma is the source of the terms $t_\ell(E,q)$ in (eq:thm) and of the refinement tested in Section sec:tam. The
+inputs are: the Tate shape of $\rho|_{G_{\Q_q}}$ (\Cref{ch:galrep}), the tame relation (\Cref{ch:local}), the cohomology of procyclic groups (\Cref{ch:cohomology}),
+and the identification of the Frobenius value of the Kummer cocycle of $q_E$ with the class of $\bar u$ (\Cref{ch:galcoh}).
+
+\begin{convention}[Tate data]\label{conv:blochkato:tate-data}
+Let $q\ne\ell$ be a prime of multiplicative reduction, $n=n_q$, $G=G_{\Q_q}$, $I=I_q$, and $\Frob$ an arithmetic Frobenius in $G$. We use:
+\begin{enumerate}[label=(\alph*)]
+\item (\Cref{ch:galrep}, the Tate shape) a $\Zl$-basis $e_1,e_2$ of $T$ in which $\rho(g)=\sm{\chi_\ell(g)\varepsilon(g)}{\varepsilon(g)\kappa(g)}{0}{\varepsilon(g)}$ for $g\in G$, where $\kappa$ is a Kummer
+cocycle of $q_E$ with values in $\Zl(1)\simeq\Zl$ (the corner is $\varepsilon\kappa$, not $\kappa$: only $\varepsilon\kappa$ satisfies the cocycle relation for these matrices when $\varepsilon\ne1$);
+\item (\Cref{ch:local}) $\kappa|_I=n\,t_\ell$ with $t_\ell$ the tame character, so a topological generator $t$ of the pro-$\ell$ tame quotient of $I$ acts by $te_1=e_1$,
+$te_2=e_2+n'e_1$ with $v_\ell(n')=v_\ell(n)$, and the kernel of $I\to\langle t\rangle\simeq\Zl$ has no nontrivial pro-$\ell$ quotient;
+\item (\Cref{ch:local}) the tame relation $\Frob\,t\,\Frob^{-1}=t^q$, equivalently $\Frob^{-1}t\,\Frob=t^{q^{-1}}$ with $q^{-1}\in\Zl^\times$;
+\item (\Cref{ch:galcoh}) $\kappa=n\kappa_q+\kappa_u$ for $q_E=q^nu$, with $\kappa_u$ unramified, and the canonical splitting $H^1(\Q_q,\Zl(1))=\Zl\kappa_q\oplus H^1_{\ur}(\Q_q,\Zl(1))$ given by the
+uniformiser $q$;
+\item (\Cref{ch:galcoh}) $H^1_{\ur}(\Q_q,\Zl(1))=H^1(G/I,\Zl(1))=\Zl(1)/(q-1)\simeq\F_q^\times\otimes\Zl$, under which the class of $\kappa_u$ is the class of $\bar u$.
+\end{enumerate}
+We write $\rho(\Frob)=\sm{\varepsilon q}{c'}{0}{\varepsilon}$ with $\varepsilon=\varepsilon(\Frob)=a_q(E)$ and $c'=\varepsilon\kappa(\Frob)$.
+\end{convention}
+
+\begin{lemma}[the Tamagawa factor at a multiplicative prime]\label{lem:blochkato:tamfactor}
+Let $q$ be a prime of multiplicative reduction, $n=n_q=v_q(\Delta_E)$, $\ell$ an odd prime different from $q$, $M=\ad T$, and $q_E$, $u$, $c(u)$ as in
+\Cref{conv:blochkato:setup}(f). Then $H^1(I_q,M)_{\mathrm{tor}}\simeq(\Z/\ell^{v_\ell(n)})^2$ and
+\[
+v_\ell\bigl(\Tam_q(\ad T)\bigr)=v_\ell(n)+\min\bigl(v_\ell(n),\,v_\ell(q-1),\,v_\ell(c(u))\bigr).
+\]
+In particular $v_\ell(\Tam_q(\ad T))\ge t_\ell(E,q)=v_\ell(n)$, with equality unless $q\equiv1\pmod\ell$, $\ell\mid n$ and $\bar u$ is an $\ell$-th power in $\F_q^\times$.
+\end{lemma}
+
+\begin{proof}
+\emph{Step 1 (the shape on inertia).} By \Cref{conv:blochkato:tate-data}(a), (b), $I$ acts on $T$ through $\langle t\rangle$, with $t=\sm1{n'}01$ in the basis $e_1,e_2$ ($\varepsilon$ is trivial on
+$I$).
+
+\emph{Step 2 (reduction to a procyclic group).} Let $K$ be the kernel of $I\to\langle t\rangle$. It acts trivially on $M$, and $H^1(K,M)=\Hom_{\mathrm{cont}}(K,M)=0$ because $K$ has no
+nontrivial pro-$\ell$ quotient and $M$ is pro-$\ell$. By inflation-restriction (\Cref{ch:cohomology}), $H^1(I,M')=H^1(\langle t\rangle,M')$ for every finitely generated
+$\Zl$-module $M'$ with this action, and for the procyclic group $\langle t\rangle\simeq\Zl$, $c\mapsto c(t)$ identifies $H^1(\langle t\rangle,M')$ with $M'/(t-1)M'$ (\Cref{ch:cohomology}).
+
+\emph{Step 3 (the computation).} In the basis $e=e_1\otimes e_2^\vee=\sm0100$, $h=e_1\otimes e_1^\vee-e_2\otimes e_2^\vee=\sm100{-1}$, $f=e_2\otimes e_1^\vee=\sm0010$ of $M$, conjugation by $t$
+gives
+\[
+tet^{-1}=e,\qquad tht^{-1}=h-2n'e,\qquad tft^{-1}=f+n'h-n'^2e,
+\]
+so $(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$. As $2$ is a unit, $(t-1)M$ contains $n'e$ and then $n'h$, and it is contained in $n'(\Zl e\oplus\Zl h)$; so
+$(t-1)M=n'(\Zl e\oplus\Zl h)$ and
+\[
+H^1(I,M)=(\Zl/n')\bar e\oplus(\Zl/n')\bar h\oplus\Zl\bar f,\qquad H^1(I,M)_{\mathrm{tor}}\simeq(\Z/\ell^{v_\ell(n)})^2 .
+\]
+
+\emph{Step 4 (the Frobenius action).} For a cocycle $c$ on $\langle t\rangle$ and $a\in\Zl$, $c(t^a)\equiv a\,c(t)$ modulo $(t-1)M$ (for $a\in\N$, $c(t^a)=(1+t+\dots+t^{a-1})c(t)$, and
+the general case follows by continuity). Hence, by \Cref{conv:blochkato:tate-data}(c),
+\[
+(\Frob\cdot c)(t)=\rho(\Frob)\,c(\Frob^{-1}t\,\Frob)\,\rho(\Frob)^{-1}=\Ad\rho(\Frob)\,c(t^{q^{-1}})\equiv q^{-1}\Ad\rho(\Frob)\,c(t)
+\]
+modulo $(t-1)M$:
+the \emph{arithmetic} Frobenius acts on $M/(t-1)M$ as $q^{-1}\Ad\rho(\Frob)$. With $\rho(\Frob)=\sm{\varepsilon q}{c'}{0}{\varepsilon}$ one computes $\rho(\Frob)e\rho(\Frob)^{-1}=qe$ and
+$\rho(\Frob)h\rho(\Frob)^{-1}=h-2\varepsilon c'e$ (the inverse is $\sm{\varepsilon q^{-1}}{-c'q^{-1}}{0}{\varepsilon}$, as $\varepsilon^2=1$). So on the torsion
+\[
+\bar e\mapsto\bar e,\qquad\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e),
+\]
+and $x\bar e+y\bar h$ is fixed iff $q^{-1}y\equiv y$ and $2\varepsilon c'q^{-1}y\equiv0$ modulo $\ell^{v_\ell(n)}$, that is, iff $(q-1)y\equiv0$ and $c'y\equiv0\pmod{\ell^{v_\ell(n)}}$. The solutions
+are $\ell^{v_\ell(n)}$ values of $x$ and the $y\in(\Z/\ell^{v_\ell(n)})[\ell^{\min(v_\ell(q-1),v_\ell(c'))}]$, a cyclic group of order $\ell^{\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))}$ (\Cref{ch:groups}):
+\[
+\bigl(H^1(I,M)_{\mathrm{tor}}\bigr)^{G}\simeq\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),\,v_\ell(q-1),\,v_\ell(c'))}.
+\]
+
+\emph{Step 5 (the class $c'$).} The number $c'=\varepsilon\kappa(\Frob)$ is a cocycle value, not a class. Replacing $\Frob$ by $\Frob\,t^a$ replaces $\rho(\Frob)$ by
+$\rho(\Frob)\sm1{an'}01$, whose corner is $c'+\varepsilon q\,a n'$; replacing $\kappa$ by a cohomologous cocycle $\kappa+(g-1)z$ changes $\kappa(\Frob)$ by $(q-1)z$. So $c'$ is well
+defined only modulo the ideal $(n,q-1)\Zl=\ell^{\min(v_\ell(n),v_\ell(q-1))}\Zl$, and $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ is unchanged by either change (ultrametric
+inequality). By \Cref{ch:galcoh} (the identification of $c'$): for the lift $\Frob_0$ fixing a compatible system of $\ell$-power roots of $q$, $\kappa_q(\Frob_0)=0$, so
+$c'=\varepsilon\kappa_u(\Frob_0)$, and the class of $\kappa_u(\Frob_0)$ in $\Zl(1)/(q-1)\simeq\F_q^\times\otimes\Zl\simeq\Z/\ell^{v_\ell(q-1)}$ is the class of $\bar u$. An element of the cyclic group
+$\F_q^\times/(\F_q^\times)^{\ell^{v_\ell(q-1)}}$ lies in the subgroup of $\ell^k$-th powers ($k\le v_\ell(q-1)$) iff, under any isomorphism with $\Z/\ell^{v_\ell(q-1)}$, it is divisible by
+$\ell^k$. Hence $\min(v_\ell(q-1),v_\ell(c'))=v_\ell(c(u))$ in the sense of \Cref{conv:blochkato:setup}(f), for every choice of lift and cocycle.
+
+\emph{Step 6 (conclusion).} By \Cref{def:blochkato:tamagawa} and Steps 4, 5, $v_\ell(\Tam_q(\ad T))$ is the length $v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))$. The excess
+$\min(\dots)$ is positive iff $\ell\mid n$, $\ell\mid q-1$ and $\bar u\in(\F_q^\times)^\ell$. As a check, the same steps for $M=T$ give $(t-1)T=n'\Zl e_1$, $H^1(I,T)_{\mathrm{tor}}=(\Z/\ell^{v_\ell(n)})\bar e_1$, and
+$\Frob$ acts by $q^{-1}\cdot\varepsilon q=\varepsilon$; the invariants have length $v_\ell(n)$ if $\varepsilon=1$ and $0$ if $\varepsilon=-1$ ($\ell$ odd), the $\ell$-part of $c_q$ (\Cref{prop:blochkato:tam-of-E}).
+\end{proof}
+
+\begin{paperlink}
+The proof of Lemma lem:tamfactor in the paper is Steps 1 to 6 in compressed form. Three points are corrected or made precise above, and the revised
+version of the paper has adopted all three. The corner of the matrices is $\varepsilon\kappa$ (Step 1; the original wrote $\kappa$). The Frobenius in the matrices is
+arithmetic (Step 4; the paper now says so). The original identified $c'$ with ``the image of $\kappa$ in $H^1(G/I,\Z_\ell(1)^I)$ \dots, well defined modulo $q-1$''; the image
+exists only through the splitting attached to the uniformiser $q$, $c'$ equals $\varepsilon$ times that image only for the lift $\Frob_0$, and the indeterminacy is
+$(n,q-1)$ (Step 5). The revised proof reads: ``it is $\varepsilon$ times the class of $u$ for the Frobenius lift fixing a compatible system of $\ell$-power roots of $q$, and in
+general it is well defined only modulo $\ell^{\min(v_\ell(n),v_\ell(q-1))}$''. None of this changes the formula. The identification of $\Tam_q$ with the Fitting ideal of the
+invariants of the torsion is \Cref{def:blochkato:tamagawa}.
+\end{paperlink}
+
+\begin{corollary}[consequences]\label{cor:blochkato:tamfactor-consequences}
+In the situation of \Cref{lem:blochkato:tamfactor}:
+\begin{enumerate}[label=(\roman*)]
+\item $v_\ell(\Tam_q(\ad T))-t_\ell(E,q)=\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))\in\{0,1,\dots,v_\ell(n)\}$;
+\item the excess is positive iff $\ell\mid n$, $q\equiv1\pmod\ell$ and $\bar u\in(\F_q^\times)^\ell$; it is $0$ for $q=2$;
+\item (Remark rem:ko(1)) at such a prime $v_\ell(\Tam_q)\ge t_\ell(E,q)+1$, and the excess exceeds $1$ only if $\ell^2\mid n$, $\ell^2\mid q-1$ and $\bar u\in(\F_q^\times)^{\ell^2}$;
+\item the excess does not depend on whether the reduction is split.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(i) to (iii) are read off the formula; $v_\ell(2-1)=0$. (iv) The formula involves only $n$, $q$ and $\bar u$; $\varepsilon$ entered Step 4 only through the unit $2\varepsilon$.
+\end{proof}
+
+\begin{paperlink}
+Remark rem:ko(1) says that at a potentially multiplicative prime $q\equiv1\pmod\ell$ with $\ell\mid n$ whose Tate parameter has an $\ell$-th power as unit part,
+Lemma lem:tamfactor gives $v_\ell(\Tam_q)\ge t_\ell(E,q)+1$, and that (eq:identity) raises the bound accordingly. This is (iii), and \Cref{prop:blochkato:tam-potmult} covers the potentially
+multiplicative primes. The revised abstract now says ``by at least one'' and includes the condition $\ell\mid n_q$; the original abstract said ``by one'' and omitted
+$\ell\mid n_q$, without which the excess is $0$ whatever the unit part.
+\end{paperlink}
+
+\begin{proposition}[potentially multiplicative additive primes]\label{prop:blochkato:tam-potmult}
+Let $q\ne\ell$ ($q=2$ allowed) be a prime of additive, potentially multiplicative reduction, $\nu=-v_q(j_E)$, $q_E$ the Tate parameter (determined by $j(q_E)=j_E$), and
+$u=q_Eq^{-\nu}$. Then
+\[
+v_\ell\bigl(\Tam_q(\ad T)\bigr)=v_\ell(\nu)+\min\bigl(v_\ell(\nu),v_\ell(q-1),v_\ell(c(u))\bigr)\ \ge\ t_\ell(E,q).
+\]
+\end{proposition}
+
+\begin{proof}
+Over $\Q_q$, $E$ is the twist of the Tate curve $E_{q_E}$ by a ramified quadratic character $\chi$ of $G_{\Q_q}$ (\Cref{ch:reduction}, \Cref{ch:galrep}), so $T_\ell E\simeq T_\ell E_{q_E}\otimes\chi$
+and $\ad T_\ell E\simeq\ad T_\ell E_{q_E}$ as $G_{\Q_q}$-modules (\Cref{prop:blochkato:adjoint-self-dual}(ii)). The Tate curve $E_{q_E}$ has split multiplicative reduction with
+$v_q(\Delta)=v_q(q_E)=\nu$ and Tate parameter $q_E$, and the proof of \Cref{lem:blochkato:tamfactor} uses only the $G_{\Q_q}$-module $\ad T$ in its Tate shape (with $\varepsilon=1$); so the formula
+holds with $n=\nu$. At $q=2$, $v_\ell(q-1)=0$ and the value is $t_\ell(E,2)=v_\ell(-v_2(j_E))$.
+\end{proof}
+
+For odd $q$ one may instead twist globally, by $\chi_{q^*}$, as the original proof of Theorem thm:main did with the curve $E_{\{p\}}$ of Lemma lem:twist; for $q=2$ that lemma
+does not apply, and the local twist is needed. The revised paper states the formula at additive potentially multiplicative primes in Lemma lem:tamfactor itself,
+with the local argument. At $q=2$ the index of a Kodaira symbol $\kod{I}_m^*$ need not be $-v_2(j)$, and the reduction may be potentially good (\Cref{ch:reduction}); the
+proposition uses $\nu=-v_2(j_E)$.
+
+\begin{example}[Tate data and Tamagawa factors]\label{ex:blochkato:tamfactor-examples}
+The table lists, for some curves and primes $q$ of potentially multiplicative reduction, the Kodaira type, $\nu$, the reduction $\bar u$ of the unit part of the Tate
+parameter, $\ell$, $v=v_\ell(q-1)$, $k=v_\ell(c(u))$, the resulting $v_\ell(\Tam_q(\ad T))$, and $t_\ell=v_\ell(\nu)$. The unit part was computed from $j_E$: since $q_E=j_E^{-1}+744j_E^{-2}+\cdots$
+with integer coefficients and $v_q(j_E^{-1})=\nu\ge1$, $\bar u$ is the reduction of $j_E^{-1}q^{-\nu}$; for \curve{11a1} and \curve{791a1} this agrees with PARI's
+\texttt{ellinit(E,O(q\^{}20)).tate}.
+\begin{center}\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrrrrr}
+\toprule
+curve, $q$ & type & $\nu$ & $\bar u$ & $\ell$ & $v$ & $k$ & $v_\ell(\Tam_q(\ad T))$ & $t_\ell$\\
+\midrule
+\curve{11a1}, $11$ & $\kod{I}_5$ & $5$ & $10$ & $5$ & $1$ & $1$ & $2$ & $1$\\
+\curve{14a1}, $7$ & $\kod{I}_3$ & $3$ & $6$ & $3$ & $1$ & $1$ & $2$ & $1$\\
+\curve{539c1}, $7$ & $\kod{I}_3^*$ & $3$ & $5$ & $3$ & $1$ & $0$ & $1$ & $1$\\
+\curve{791a1}, $7$ & $\kod{I}_3$ & $3$ & $6$ & $3$ & $1$ & $1$ & $2$ & $1$\\
+\curve{791a1}, $113$ & $\kod{I}_2$ & $2$ & $106$ & $3$ & $0$ & $0$ & $0$ & $0$\\
+\curve{1184f1}, $37$ & $\kod{I}_3$ & $3$ & $36$ & $3$ & $2$ & $2$ & $2$ & $1$\\
+\curve{1748e1}, $19$ & $\kod{I}_6$ & $6$ & $12$ & $3$ & $2$ & $1$ & $2$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For \curve{11a1} at $\ell=5$ and \curve{14a1} at $\ell=3$ the residual representation is reducible: the lemma applies (it is local and needs no irreducibility), but Theorem
+thm:main does not; \curve{14a1} has $\degphi=1$. \curve{539c1} has the same $j$-invariant, hence the same Tate parameter at $7$, as its twist \curve{77c1}; $5$ is not a cube
+modulo $7$. In \curve{1184f1} the cap $v_\ell(\nu)=1$ binds although $\bar u=-1$ is a ninth power modulo $37$; in \curve{1748e1}, $12$ is a cube but not a ninth power modulo
+$19$. The curves \curve{791a1}, \curve{1184f1}, \curve{1748e1} have $3\nmid N$, $E[3]$ irreducible, mod $3$ image not \texttt{3Ns}, and no CM; they reappear in
+\Cref{ex:blochkato:selmer-examples}.
+\end{example}
+
+\section[Additive primes and Open question 3]{Tamagawa factors at additive primes, and Open question 3}\label{sec:blochkato:additive}
+
+The original version of the paper left the Tamagawa factors of $\ad T$ at the additive primes uncomputed (``$v_\ell(\Tam_p(\ad T))\ge0$ at an additive prime'') and
+asked for them in Open question 3. This section computes them: they are trivial at every potentially good additive prime, for every odd $\ell$, and given by
+\Cref{prop:blochkato:tam-potmult} at the potentially multiplicative ones. The revised paper contains the first statement as Lemma lem:tamadd and the resulting
+explicit identity as Corollary cor:explicit.
+
+\begin{lemma}[finite inertia image]\label{lem:blochkato:finite-inertia-image}
+Let $q\ne\ell$ and let $M$ be a free $\Zl$-module of finite rank on which $I=I_q$ acts continuously through a finite quotient $\Delta=I/K$. Then inflation identifies
+$H^1(\Delta,M)$ with $H^1(I,M)_{\mathrm{tor}}$, and $H^1(I,M)/H^1(\Delta,M)$ embeds in $\Hom(K,M)^\Delta\subseteq M(-1)$, which is torsion-free.
+\end{lemma}
+
+\begin{proof}
+Inflation-restriction (\Cref{ch:cohomology}) gives $0\to H^1(\Delta,M)\to H^1(I,M)\to\Hom_{\mathrm{cont}}(K,M)^\Delta$. The group $K$ is the inertia group of a finite extension of $\Q_q^{\ur}$, and
+a continuous homomorphism from $K$ to the pro-$\ell$ group $M$ factors through the maximal pro-$\ell$ abelian quotient of $K$, which is $\Zl(1)$ as $q\ne\ell$ (\Cref{ch:local}); so
+$\Hom(K,M)\simeq M(-1)$ is torsion-free. $H^1(\Delta,M)$ is killed by $\#\Delta$, hence torsion, and it is therefore the whole torsion subgroup.
+\end{proof}
+
+\begin{proposition}[the adjoint lattice is free over $\Z_3\lbrack C_3\rbrack$]\label{prop:blochkato:ad-free-c3}
+Let $\sigma\in\GL_2(\Z_3)$ have order $3$, $T=\Z_3^2$ with $\sigma$ acting, and $P=\langle\sigma\rangle$. Then $\ad T$, with $P$ acting by conjugation, is a free $\Z_3[P]$-module of rank one; hence
+$H^1(P,\ad T)=0$. By contrast $H^1(P,T)\simeq\F_3$.
+\end{proposition}
+
+\begin{proof}
+The eigenvalues of $\sigma$ are cube roots of unity; as $\Q_3$ contains no primitive cube root of unity, the characteristic polynomial, which has coefficients in $\Z_3$, is
+$(X-1)^2$ or $X^2+X+1$, and $(X-1)^2$ would make the semisimple element $\sigma$ (it has finite order) equal to $1$. So $\Z_3[\sigma]\simeq\Z_3[X]/(X^2+X+1)\simeq\Z_3[\zeta_3]$, a
+discrete valuation ring with uniformiser $1-\zeta_3$ (\Cref{ch:ant}), and $T$, torsion-free of $\Z_3$-rank $2$, is free of rank one over it. Choosing a generator $e_1$ and the
+basis $e_1,\sigma e_1$ gives $\sigma=\sm0{-1}1{-1}$. In the basis $e,h,f$ of $\ad T$,
+\[
+e=\sm0100,\qquad\sigma e\sigma^{-1}=\sm00{-1}0=-f,\qquad\sigma^2e\sigma^{-2}=\sm{-1}1{-1}1=e-h-f,
+\]
+and the matrix of coordinates $\begin{psmallmatrix}1&0&1\\0&0&-1\\0&-1&-1\end{psmallmatrix}$ has determinant $-1$. So $e,\sigma e,\sigma^2e$ is a $\Z_3$-basis and $\ad T=\Z_3[P]\,e\simeq\Z_3[P]$. For a cyclic
+group, $H^1(P,\Z_3[P])=\ker N/(\sigma-1)\Z_3[P]=0$, where $N=1+\sigma+\sigma^2$. On $T$, $N=0$ (as $\sigma^2+\sigma+1=0$), so $H^1(P,T)=T/(\sigma-1)T\simeq\Z_3[\zeta_3]/(1-\zeta_3)\simeq\F_3$.
+\end{proof}
+
+\begin{sloppypar}Conceptually: modulo $3$, $\sigma$ is a nontrivial unipotent on $T/3T$, and $\ad(T/3T)\simeq\Sym(T/3T)\otimes\det^{-1}$ is the symmetric square of a $2\times2$ Jordan block, a single
+$3\times3$ Jordan block in characteristic $3$, that is, the regular module $\F_3[C_3]$; Nakayama's lemma lifts this to $\Z_3$. The coordinates above were also checked in PARI.\end{sloppypar}
+
+\begin{theorem}[Tamagawa factors at additive primes]\label{thm:blochkato:tam-additive}
+Let $\ell$ be odd, $q\ne\ell$ a prime of additive reduction of $E$, and $A=\ad T_\ell E$.
+\begin{enumerate}[label=(\roman*)]
+\item If the reduction at $q$ is potentially good, then $H^1(I_q,A)_{\mathrm{tor}}=0$, so $\Tam_q(A)=\Tam_q(A(1))=\Zl$.
+\item If it is potentially multiplicative, $\Tam_q(A)$ is given by \Cref{prop:blochkato:tam-potmult}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(ii) is \Cref{prop:blochkato:tam-potmult}. (i) The image $\rho(I_q)$ is finite and its elements have characteristic polynomials in $\Z[X]$ (Serre and Tate; \Cref{ch:galrep}), so
+their orders lie in $\{1,2,3,4,6\}$. Let $\Delta$ be the image of $I_q$ in $\Aut(A)$, that is, $\rho(I_q)/(\rho(I_q)\cap\{\pm1\})$. By \Cref{lem:blochkato:finite-inertia-image},
+$H^1(I_q,A)_{\mathrm{tor}}=H^1(\Delta,A)$, which is killed by $\#\Delta$, a product of powers of $2$ and $3$. If $\ell\ge5$ it is $0$. Let $\ell=3$. Restriction followed by corestriction is
+multiplication by the index, so the $3$-primary group $H^1(\Delta,A)$ injects into $H^1(P,A)$ for a Sylow $3$-subgroup $P$ of $\Delta$ (\Cref{ch:cohomology}). A Sylow $3$-subgroup $P'$ of
+$\rho(I_q)$ maps isomorphically onto $P$ (the kernel $\{\pm1\}$ has order prime to $3$). $P'$ has exponent $3$; if it had order at least $9$ it would contain a subgroup $C_3\times C_3$
+(a group of order $9$ is abelian), whose elements, being commuting and of finite order, are simultaneously diagonalisable over $\C$ inside $\SL_2$ ($\det\rho=\chi_\ell$ is trivial
+on $I_q$), hence of the form $\operatorname{diag}(a,a^{-1})$ with $a^3=1$, a group of order $3$; a contradiction. So $P$ is trivial or generated by the image of an element $\sigma$ of order
+$3$, and $H^1(P,A)=0$ by \Cref{prop:blochkato:ad-free-c3}. Finally $H^1(I_q,A(1))=H^1(I_q,A)(1)$ (\Cref{prop:blochkato:tam-dual}).
+\end{proof}
+
+So $\Tam_q(\ad T)$ is trivial at every potentially good additive prime, of every Kodaira type, at every $q\ne\ell$ including $q=2,3$, even for $\ell=3$ at the types $\kod{II}$,
+$\kod{II}^*$, $\kod{IV}$, $\kod{IV}^*$, where $\Tam_q(T)$ can be divisible by $3$ (\Cref{prop:blochkato:tam-of-E}).
+
+\begin{paperlink}
+Lemma lem:tamadd of the revised paper is (i), with the same proof: inflation-restriction through the finite image of inertia, element orders $1,2,3,4,6$, and the
+freeness of $\ad T$ over $\Z_3[P]$ shown by the same three coordinate vectors. The original proof of Theorem thm:main said only ``$v_\ell(\Tam_p(\ad T))\ge0$'' at the
+additive primes.
+\end{paperlink}
+
+\begin{corollary}[the explicit identity]\label{cor:blochkato:explicit-identity}
+Let $\ell$ be odd, $\ell\nmid N$. Then
+\[
+\sum_{q\mid N}v_\ell\bigl(\Tam_q(\ad T)\bigr)=\sum_{q:\,v_q(j_E)<0}\Bigl(t_\ell(E,q)+\min\bigl(t_\ell(E,q),v_\ell(q-1),v_\ell(c(u_q))\bigr)\Bigr),
+\]
+with $u_q$ the unit part of the Tate parameter at $q$. Consequently, under the hypothesis of Theorem thm:main ($E$ optimal, $\ell\notin S_f$), (eq:identity) reads
+\begin{multline*}
+v_\ell(\degphi)=\len H^1_f(\Q,W)+\sum_{q\mid N}e_\ell(E,q)\\
++\sum_{q:\,v_q(j_E)<0}\Bigl(t_\ell(E,q)+\min\bigl(t_\ell(E,q),v_\ell(q-1),v_\ell(c(u_q))\bigr)\Bigr).
+\end{multline*}
+\end{corollary}
+
+\begin{proof}
+The first identity: \Cref{lem:blochkato:tamfactor} at the multiplicative primes, \Cref{prop:blochkato:tam-potmult} at the additive potentially multiplicative ones, and
+\Cref{thm:blochkato:tam-additive}(i) at the potentially good additive primes; $t_\ell(E,q)=v_\ell(\nu_q)$. The second: Theorem thm:main, whose proof is assembled in
+\Cref{ch:congruence} from \Cref{thm:blochkato:selmer-identity} below and the congruence-ideal theorems, with the equality of (eq:identity) for the optimal curve proved in
+\Cref{ch:moddeg} (Proposition prop:pullback).
+\end{proof}
+
+This is the paper's Corollary cor:explicit. The excess of $v_\ell(\degphi)$ over the explicit local bound is the length of the adjoint Bloch-Kato Selmer group. What
+remains of Open question 3 is that Selmer group.
+
+\begin{remark}[the excess on the tables]\label{rem:blochkato:open-question-3}
+We computed the excess $v_\ell(\degphi)-\bigl[\sum_qe_\ell(E,q)+\sum_{v_q(j)<0}\bigl(t_\ell+\min(t_\ell,v_\ell(q-1),v_\ell(c(u_q)))\bigr)\bigr]$ on the optimal curves of Cremona's tables of
+conductor below $10{,}000$ without complex multiplication, with $\ell\nmid N$, $E[\ell]$ irreducible and, for $\ell=3$, mod $3$ image not \texttt{3Ns} (the optimal curve is the one
+listed in Cremona's \texttt{degphi} file; irreducibility and the image are read from \texttt{galrep}; $e_\ell$ from PARI's \texttt{lfunsympow}, as in the paper's \texttt{rule}):
+\begin{center}\small
+\begin{tabular}{lrrrrrr}
+\toprule
+$\ell$ & curves & excess $0$ & $1$ & $2$ & $3$ & $\ge4$\\
+\midrule
+$3$ & $13{,}203$ & $8{,}688$ & $3{,}288$ & $942$ & $248$ & $37$\\
+$5$ & $23{,}361$ & $19{,}019$ & $3{,}993$ & $328$ & $19$ & $2$\\
+$7$ & $28{,}134$ & $25{,}133$ & $2{,}888$ & $111$ & $2$ & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The excess is never negative. By \Cref{cor:blochkato:explicit-identity} it is $\len H^1_f(\Q,W)$; so the adjoint Selmer group vanishes for $65.8\%$ of these curves at $\ell=3$,
+$81.4\%$ at $\ell=5$ and $89.3\%$ at $\ell=7$. The Tamagawa factor at $q=\ell$ is not defined by \Cref{def:blochkato:tamagawa} (it needs $p$-adic Hodge theory) and belongs to Open
+question 1 (\Cref{ch:congruence}).
+\end{remark}
+
+\section[Lemma lem:dfg21]{The comparison of Selmer groups: Lemma lem:dfg21 and \texorpdfstring{$H^0(\Q,W^D)$}{H0(Q,WD)}}\label{sec:blochkato:comparison}
+
+This section proves the paper's Lemma lem:dfg21 (Lemma 2.1 of Diamond, Flach and Guo) by specialising the abstract comparison of Selmer structures of
+\Cref{ch:galcoh} to the Bloch-Kato conditions, identifies its last term with $H^0(\Q,W^D)$ (Lemma lem:h0), and derives the length identity that the proof of
+Theorem thm:main and Remark rem:ns use. It also states Theorem thm:dfg27, which supplies the hypothesis of the lemma.
+
+\begin{definition}[the exceptional set]\label{def:blochkato:exceptional-set}
+For $f=f_E$ (weight $2$, trivial character, rational coefficients) the \emph{exceptional set} of Diamond, Flach and Guo, as the paper reads \cite[(31)]{DFG04}, is
+\[
+S_f=\bigl\{\ell:\ \ell\mid2N,\ \text{or}\ \bar\rho_{E,\ell}|_{\Gal(\Qbar/\Q(\sqrt{\ell^*}))}\ \text{is not absolutely irreducible}\bigr\}.
+\]
+The hypothesis of Theorem thm:main is $\ell\notin S_f$.
+\end{definition}
+
+For $\ell\nmid2N$ the following are equivalent (the paper's Proposition prop:Sf, proved in \Cref{ch:galrep}): $\ell\notin S_f$; $E[\ell]$ is irreducible and $h_\ell(E)=0$; $E[\ell]$
+is irreducible and, if $\ell=3$, the mod $3$ image is not $N_s(\F_3)$. In particular for $\ell\ge5$ the condition on $\Q(\sqrt{\ell^*})$ is automatic once $E[\ell]$ is irreducible.
+
+\begin{theorem}[Diamond, Flach and Guo, Theorem 2.7]\label{thm:blochkato:dfg27}
+If $\ell\notin S_f$, then $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$ and $H^0(\Q,A_f)=H^1_f(\Q,A_f)=0$.
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+This is \cite[Theorem 2.7]{DFG04}, the paper's Theorem thm:dfg27; we do not prove it. The $H^0$ statements hold for every $E$ with $\bar\rho$ absolutely irreducible
+(\Cref{prop:blochkato:global-invariants}). The content is the vanishing of the adjoint Selmer group with $\Ql$ coefficients, which comes from the Taylor-Wiles method:
+the identification of a universal deformation ring with a Hecke algebra forces the tangent space $H^1_f(\Q,A_f)$ to vanish. One way to see the implication, given the
+other theorem of Diamond, Flach and Guo that the paper uses (Theorem thm:dfg37, \Cref{ch:congruence}): it says that $H^1_\Sigma(\Q,W)$ is finite, so $H^1_f(\Q,W)\subseteq H^1_\Sigma(\Q,W)$
+is finite, so $H^1_f(\Q,A_f)=0$ (\Cref{prop:blochkato:selmer-relations}(iii)), so $H^1_f(\Q,V^D)=0$ (\Cref{prop:blochkato:euler-characteristic}).
+\end{proof}
+
+\begin{proposition}[Lemma lem:h0 in Selmer form]\label{prop:blochkato:h0-selmer}
+Let $\ell$ be odd and $\bar\rho$ irreducible (equivalently, absolutely irreducible: complex conjugation has distinct eigenvalues $\pm1$).
+\begin{enumerate}[label=(\roman*)]
+\item If $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$, then $H^1_f(\Q,T^D)=H^1(\Q,T^D)_{\mathrm{tor}}$, and the connecting map is an isomorphism $H^0(\Q,W^D)\xrightarrow{\sim}H^1_f(\Q,T^D)$.
+\item (Lemma lem:h0, \Cref{ch:galrep}) $H^0(\Q,W^D)=H^0(\Q,\ad T(1)\otimes\Qlmod)$ is finite and cyclic, of length $h_\ell(E)$, the largest $k$ with $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$.
+Moreover $h_\ell(E)=0$ for $\ell\ge5$, and $h_3(E)\le1$ with equality iff $\bar\rho_{E,3}\simeq\bar\rho_{E,3}\otimes\chi_{-3}$, iff the image of $\bar\rho_{E,3}$ is conjugate to $N_s(\F_3)$. This
+holds for every $E$, with or without complex multiplication, and whether or not $\ell\mid N$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) By \Cref{prop:blochkato:selmer-relations}(i) for the lattice $T^D$, $H^1_f(\Q,T^D)=\iota^{-1}(H^1_f(\Q,V^D))=\ker\iota=H^1(G_{\Q,S},T^D)_{\mathrm{tor}}$, the image of $H^0(\Q,W^D)$ under the
+connecting map; the connecting map is injective because $H^0(\Q,V^D)=0$. (ii) is proved in \Cref{ch:galrep}. In brief: the $\ell$-torsion of $H^0(\Q,W^D)$ is the space of
+$G_\Q$-maps $\bar\rho\to\bar\rho\otimes\bar\chi_\ell$, of dimension at most one by Schur's lemma; an element of exact order $\ell^k$ is an isomorphism $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$ by
+Nakayama's lemma; taking determinants gives $\chi_\ell^2\equiv1\pmod{\ell^k}$ on $G_\Q$, and as $\chi_\ell(G_\Q)=\Zl^\times\ni2$ this forces $k=0$ for $\ell\ge5$ and $k\le1$ for $\ell=3$; and
+$\bar\chi_3=\chi_{-3}$.
+\end{proof}
+
+\begin{paperlink}
+Lemma lem:h0 in the revised paper states (ii) and proves it by the determinant argument. The original version asserted finiteness ``for $E$ without complex
+multiplication'', by an argument with $a_p=0$ at inert primes that confused the cyclotomic $\chi_\ell$ with the quadratic $\chi_{\ell^*}$; it also stated the criterion for
+$h_\ell(E)>0$ with $\chi_{\ell^*}$ instead of $\bar\chi_\ell$. The two agree only for $\ell=3$. Conjecture conj:euler defines $h_\ell(E)$ as the length of
+$H^0(\Q,\ad T(1)\otimes\Q_\ell/\Z_\ell)$, which is $\len H^1_f(\Q,T^D)$ by (i) whenever $H^1_f(\Q,V^D)=0$.
+\end{paperlink}
+
+\begin{lemma}[Diamond, Flach and Guo, Lemma 2.1]\label{lem:blochkato:dfg21}
+Let $\ell$ be odd. Suppose $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$, and let $\Sigma$ be a nonempty finite set of primes, $\ell\notin\Sigma$, containing every prime $p\ne\ell$ at which $W$ is
+ramified. Then there is an exact sequence
+\[
+0\to H^1_f(\Q,W)\to H^1_\Sigma(\Q,W)\to\bigoplus_{p\in\Sigma\cup\{\infty\}}H^1_f(\Q_p,T^D)^*\to H^0(\Q,W^D)^*\to0,
+\]
+in which the term at $\infty$ is $0$ and, for $p\in\Sigma$, $H^1_f(\Q_p,T^D)=H^1(\Q_p,T^D)_{\mathrm{tor}}\simeq H^0(\Q_p,W^D)$ is finite.
+\end{lemma}
+
+\begin{proof}
+\Cref{ch:galcoh} proves the following (its abstract form of the lemma): let $T$ be unramified outside a finite set $S$ of places containing $\ell$, $\infty$ and $\Sigma$, and let
+$(L_v)_v$ be local conditions on $V$ with $L_v=H^1_{\ur}(\Q_v,V)$ for $v\notin S$ and $L_v^\perp=L^D_v$ for every $v$, where $(L^D_v)$ are conditions on $V^D$; propagate them to
+$W$ and to $T^D$ (preimages and images), and let $\mathcal L^\Sigma$ be the structure on $W$ obtained by dropping the condition at the primes of $\Sigma$. Assume (a) the Selmer
+group of $V^D$ for $(L^D_v)$ vanishes, and (b) $H^0(\Q_p,V^D)=0$ for some $p\in\Sigma$. Then
+\[
+0\to H^1_{\mathcal L}(\Q,W)\to H^1_{\mathcal L^\Sigma}(\Q,W)\to\bigoplus_{p\in\Sigma\cup\{\infty\}}(L^D_{T^D,p})^*\to H^0(\Q,W^D)^*\to0
+\]
+is exact, with $L^D_{T^D,p}$ the propagated condition on $T^D$ at $p$. We apply this to the triple $(A_f,A,W)$ with $L_v=H^1_f(\Q_v,A_f)$ and $L^D_v=H^1_f(\Q_v,V^D)$, and check
+each point.
+\begin{itemize}
+\item $L_v=H^1_{\ur}$ for $v\notin S$: \Cref{def:blochkato:local-conditions}(i).
+\item $L_v^\perp=L^D_v$ at every place: \Cref{prop:blochkato:local-duality-f} ($v=p\ne\ell$: unramified orthogonality; $v=\ell$: Bloch and Kato, $A_f$ being crystalline for $\ell\nmid N$,
+\Cref{prop:blochkato:crystalline-closure}, and in general de Rham; $v=\infty$: all groups vanish).
+\item The propagated structures are the Bloch-Kato conditions on $W$ and $T^D$ (\Cref{def:blochkato:propagation}), so $H^1_{\mathcal L}(\Q,W)=H^1_f(\Q,W)$ and $L^D_{T^D,p}=H^1_f(\Q_p,T^D)$.
+\item $\mathcal L^\Sigma$ is the structure of $H^1_\Sigma$: no condition on $\Sigma$, Bloch-Kato at $\ell$, and at $p\notin\Sigma\cup\{\ell\}$ the Bloch-Kato condition, which is the unramified one because
+$W$ is unramified there (\Cref{lem:blochkato:selmer-S}); at $\infty$ there is nothing to impose.
+\item (a) is the hypothesis $H^1_f(\Q,V^D)=0$.
+\item (b) holds at every $p\in\Sigma$ (\Cref{lem:blochkato:no-local-invariants}(i)), and $\Sigma\ne\emptyset$.
+\end{itemize}
+The term at $\infty$ is $H^1(\R,T^D)^*=0$, a group killed by $2$ and by a power of $\ell$. The description of the local terms is \Cref{prop:blochkato:local-unramified}(v) and
+\Cref{thm:blochkato:fpr-local}.
+\end{proof}
+
+What each hypothesis does, in the abstract proof of \Cref{ch:galcoh}: $H^1_f(\Q,V^D)=0$ makes the dual Selmer group $H^1_f(\Q,T^D)$ torsion, hence equal to
+$H^0(\Q,W^D)$ (\Cref{prop:blochkato:h0-selmer}(i)); $\Sigma\ne\emptyset$ with $H^0(\Q_p,V^D)=0$ at some $p\in\Sigma$ makes the strict dual Selmer group (classes of $H^1_f(\Q,T^D)$ that vanish
+at $\Sigma$) zero, because the local connecting map $H^0(\Q_p,W^D)\to H^1(\Q_p,T^D)$ is then injective, and this gives the surjection onto $H^0(\Q,W^D)^*$; and $\ell$ odd kills
+the archimedean terms. The paper's hypothesis $H^0(\Q,V^D)=0$ is implied by (b), as the paragraph after Lemma lem:dfg21 observes: there it is automatic, and only
+$H^1_f(\Q,V^D)=0$ needs Theorem thm:dfg27.
+
+\begin{corollary}[the length identity]\label{cor:blochkato:length-identity}
+Under the hypotheses of \Cref{lem:blochkato:dfg21} for the paper's objects, with $\Sigma$ the set of primes dividing $N$ and $\bar\rho$ irreducible, all terms are finite and
+\[
+\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\Bigl(v_\ell\bigl(L_p(A_f,1)^{-1}\bigr)+v_\ell\bigl(\Tam_p(\ad T)\bigr)\Bigr)-h_\ell(E).
+\]
+\end{corollary}
+
+\begin{proof}
+By \Cref{prop:blochkato:euler-characteristic}, $H^1_f(\Q,V^D)=0$ gives $H^1_f(\Q,A_f)=0$, so $H^1_f(\Q,W)$ is finite (\Cref{prop:blochkato:selmer-relations}(iii)); the local terms are
+finite (\Cref{thm:blochkato:fpr-local}), and $H^0(\Q,W^D)$ is finite (\Cref{prop:blochkato:h0-selmer}(ii)). So $H^1_\Sigma(\Q,W)$ is finite, and in an exact sequence of finite
+$\Zl$-modules the alternating sum of lengths is $0$ (\Cref{ch:cohomology}); Pontryagin duality preserves lengths. The local lengths are
+$v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(T^D))$ (\Cref{thm:blochkato:fpr-local}), with $\Tam_p(T^D)=\Tam_p(\ad T)$ (\Cref{prop:blochkato:tam-dual}), and $\len H^0(\Q,W^D)=h_\ell(E)$.
+\end{proof}
+
+\begin{paperlink}
+The proof of Theorem thm:main contains the display
+``$\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\len H^1_f(\Q_p,T^D)$'' (with $H^0(\Q,W^D)=0$), and then says that by Lemma lem:fpr each local term is
+$v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(A))$; Remark rem:ns contains the display with $-h_\ell(E)$. Both are
+\Cref{cor:blochkato:length-identity}.
+\end{paperlink}
+
+\section[The Selmer half of Theorem thm:main]{The Selmer half of the proof of Theorem thm:main}\label{sec:blochkato:theorem}
+
+This section states and proves the part of Theorem thm:main that is about Selmer groups: the identity between the lengths of $H^1_\Sigma(\Q,W)$ and $H^1_f(\Q,W)$ with
+every local term made explicit. \Cref{ch:congruence} combines it with the congruence-ideal theorems of Diamond, Flach and Guo and with the identification of the
+congruence ideal with the modular degree (\Cref{ch:moddeg}) to prove Theorem thm:main.
+
+\begin{theorem}[the Selmer identity]\label{thm:blochkato:selmer-identity}
+Let $E/\Q$ be an elliptic curve of conductor $N$, $\ell\notin S_f$, and $\Sigma$ the set of primes dividing $N$. Then $H^1_f(\Q,W)$ and $H^1_\Sigma(\Q,W)$ are finite and
+\begin{multline*}
+\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{q\mid N}v_\ell\bigl(L_q(A_f,1)^{-1}\bigr)\\
++\sum_{q:\,v_q(j_E)<0}\Bigl(t_\ell(E,q)+\min\bigl(t_\ell(E,q),v_\ell(q-1),v_\ell(c(u_q))\bigr)\Bigr).
+\end{multline*}
+Here $v_\ell(L_q(A_f,1)^{-1})=v_\ell(q^2-1)$ at the potentially multiplicative primes and $e_\ell(E,q)$ at the potentially good additive primes. Optimality of $E$ is not used.
+\end{theorem}
+
+\begin{proof}
+$\ell\notin S_f$ means $\ell\nmid2N$ and $\bar\rho$ absolutely irreducible over $\Q(\sqrt{\ell^*})$, hence over $\Q$. $\Sigma\ne\emptyset$ because no elliptic curve over $\Q$ has good reduction
+everywhere (\Cref{ch:reduction}), and $W$ is unramified outside $\Sigma\cup\{\ell\}$. By \Cref{thm:blochkato:dfg27} the hypotheses of \Cref{lem:blochkato:dfg21} hold. By
+\Cref{prop:blochkato:h0-selmer}(ii) and the equivalences after \Cref{def:blochkato:exceptional-set}, $h_\ell(E)=0$. \Cref{cor:blochkato:length-identity} gives the identity with
+$\sum_{p\in\Sigma}v_\ell(\Tam_p(\ad T))$, which \Cref{cor:blochkato:explicit-identity} (its first part, which is proved in this chapter) makes explicit. The values of the Euler terms
+are \Cref{lem:blochkato:euler-integral}.
+\end{proof}
+
+\begin{remark}[the assembly, in \Cref{ch:congruence}]\label{rem:blochkato:assembly}
+For the optimal curve and $\ell\notin S_f$: $v_\ell(\degphi)=v_\lambda(\eta^\emptyset_{f,\lambda})$ (Proposition prop:pullback and Lemma lem:hecke, \Cref{ch:moddeg}; an equality with no
+multiplicity-one hypothesis); $v_\lambda(\eta^\Sigma_{f,\lambda})=v_\lambda(\eta^\emptyset_{f,\lambda})+\sum_{p\in\Sigma}v_\ell(L^{\nv}_p(A_f,1)^{-1})$ (Theorem thm:dfg14); and $v_\lambda(\eta^\Sigma_{f,\lambda})=\len H^1_\Sigma(\Q,W)$
+(Theorem thm:dfg37). With \Cref{thm:blochkato:selmer-identity}, the naive factors cancel the true ones at the multiplicative primes ($\delta_p=1$), and at the additive primes
+($\delta_p=0$) the naive factor is $1$, so the surviving Euler terms are $\sum_qe_\ell(E,q)$ (Definition def:terms). The result is (eq:identity), with equality, and (eq:thm)
+follows from $\len H^1_f(\Q,W)\ge0$ and $\min(\dots)\ge0$, including the primes of type $\kod{I}_n^*$ at $q=2$ (\Cref{prop:blochkato:tam-potmult}). These steps are proved in
+\Cref{ch:congruence}; they are recalled here only to show where \Cref{thm:blochkato:selmer-identity} enters.
+\end{remark}
+
+\begin{paperlink}
+The proof of Theorem thm:main, from the sentence that invokes Theorem thm:dfg27 for the hypotheses of Lemma lem:dfg21 to the display of $v_\ell(\degphi)$, is \Cref{thm:blochkato:selmer-identity}. The final step, at the potentially multiplicative primes of additive
+reduction, uses \Cref{prop:blochkato:tam-potmult}: the revised paper applies Lemma lem:tamfactor to the local twist, as here; the original applied it to the global twist
+$E_{\{p\}}$ of Lemma lem:twist, which does not exist at $p=2$.
+\end{paperlink}
+
+\begin{example}[four curves at $\ell=3$]\label{ex:blochkato:selmer-examples}
+For the following optimal curves, $3\nmid N$, $E[3]$ is irreducible, the mod $3$ image is not \texttt{3Ns}, and $E$ has no CM, so $3\notin S_f$. The explicit local bound is
+$\sum_qe_3(E,q)+\sum_{v_q(j)<0}\bigl(t_3+\min(t_3,v_3(q-1),v_3(c(u_q)))\bigr)$; by \Cref{cor:blochkato:explicit-identity} the Selmer length is $v_3(\degphi)$ minus it.
+\begin{center}\small
+\begin{tabular}{lllrrr}
+\toprule
+curve & local data & & bound & $\degphi$ & $\len H^1_f(\Q,W)$\\
+\midrule
+\curve{121a1} & $\kod{II}$ at $11$, $e_3=v_3(12)=1$ & & $1$ & $6$ & $0$\\
+\curve{791a1} & $\kod{I}_3$ at $7$ ($2$), $\kod{I}_2$ at $113$ ($0$) & & $2$ & $144$ & $0$\\
+\curve{1184f1} & $\kod{III}^*$ at $2$ ($0$), $\kod{I}_3$ at $37$ ($2$) & & $2$ & $1728$ & $1$\\
+\curve{1748e1} & $\kod{IV}$ at $2$ ($e_3=1$), $\kod{I}_6$ at $19$ ($2$), $\kod{I}_1$ at $23$ ($0$) & & $3$ & $3240$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For \curve{791a1} the bound (eq:thm) is $1$, and the Tamagawa excess at $7$ is needed for equality. The numbers in parentheses are the Tamagawa contributions
+(\Cref{ex:blochkato:tamfactor-examples}).
+\end{example}
+
+\section[Beyond the hypothesis]{Beyond the hypothesis: Remark rem:ns, \texorpdfstring{$h_\ell(E)$}{h(E)}, Open question 2}\label{sec:blochkato:beyond}
+
+When $\ell=3$ and the mod $3$ image is $N_s(\F_3)$, the hypothesis $\ell\notin S_f$ fails, $H^0(\Q,W^D)$ is not zero, and the paper's Remark rem:ns records what the
+exact sequence of Lemma lem:dfg21 then says. This section makes the conditional statement precise, identifies the correction term $h_\ell(E)$ of Conjecture
+conj:euler, and states what is missing for Open question 2.
+
+\begin{proposition}[Remark rem:ns]\label{prop:blochkato:rem-ns}
+Let $\ell=3$, $3\nmid N$, and suppose the image of $\bar\rho_{E,3}$ is conjugate to $N_s(\F_3)$. Then $H^0(\Q,V^D)=0$, $h_3(E)=1$, and, \emph{if} $H^1_f(\Q,V^D)=0$ (equivalently
+$H^1_f(\Q,\ad V_3E)=0$), the groups $H^1_f(\Q,W)$ and $H^1_\Sigma(\Q,W)$ are finite and
+\[
+\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\Bigl(v_3\bigl(L_p(A_f,1)^{-1}\bigr)+v_3\bigl(\Tam_p(\ad T)\bigr)\Bigr)-1 .
+\]
+\end{proposition}
+
+\begin{proof}
+$\bar\rho$ is irreducible (the image $N_s(\F_3)$ fixes no line), $H^0(\Q,V^D)=0$ (\Cref{prop:blochkato:global-invariants}(ii)), $h_3(E)=1$ (\Cref{prop:blochkato:h0-selmer}(ii)), and
+$\Sigma\ne\emptyset$. The equivalence is \Cref{prop:blochkato:euler-characteristic}. Under the condition, \Cref{lem:blochkato:dfg21} and \Cref{cor:blochkato:length-identity} apply.
+\end{proof}
+
+Theorem thm:dfg27 does not supply the vanishing of $H^1_f(\Q,V^D)$ here, since $3\in S_f$; the proposition states it as a hypothesis, as Remark rem:ns of the revised
+paper does (``we assume it here''). It is predicted by the Bloch-Kato conjecture (\Cref{conj:blochkato:tnc}), since $L(\ad f,1)\ne0$; we know of no proof for these
+curves and have not searched the literature after Diamond, Flach and Guo for one. Section 1.3 of the revised paper also states the condition.
+
+\begin{remark}[the correction term of Conjecture conj:euler]\label{rem:blochkato:conj-euler-h}
+In Conjecture conj:euler the correction is $h_\ell(E)=\len H^0(\Q,\ad T(1)\otimes\Qlmod)$: by \Cref{prop:blochkato:h0-selmer} it is $0$ for $\ell\ge5$ and is $1$ exactly for the curves
+with mod $3$ image $N_s(\F_3)$, for every conductor. It is the term $H^0(\Q,W^D)^*$ of \Cref{lem:blochkato:dfg21}, and it enters \Cref{prop:blochkato:rem-ns} with the sign $-1$,
+the sign with which it appears in (eq:rule). The paper's function \texttt{ns3(E)} (two quadratic factors of the $3$-division polynomial) computes it (\Cref{ch:galrep}).
+Example: \curve{726a1} $=[1,1,0,-35,-51]$, with $3\mid N$, so outside every theorem; its $3$-division polynomial factors as $(x^2-x-74)(3x^2+8x+20)$, so $h_3=1$; it has
+type $\kod{III}$ at $11$ with $e_3=v_3(12)=1$, $\degphi=144$, and the paper's \texttt{rule(E,3)} and \texttt{rule(E,3,1)} both return $[2,2]$: in the second the type
+$\kod{III}$ term and the correction cancel.
+\end{remark}
+
+\begin{remark}[Open question 2]\label{rem:blochkato:open-question-2}
+Open question 2 asks to prove the corrected identity of Remark rem:ns for the curves with image $N_s(\F_3)$, that is, to establish $H^1_f(\Q,\ad V_3E)=0$ and
+$v_\lambda(\eta^\Sigma_{f,\lambda})=\len H^1_\Sigma(\Q,W)$ in this dihedral case. On the Selmer side \Cref{prop:blochkato:rem-ns} shows what the identity would give and that the
+only missing input is $H^1_f(\Q,A_f)=0$; on the congruence side the missing input is a Taylor-Wiles theorem for a residual representation induced from $\Q(\sqrt{-3})$
+(\Cref{ch:congruence}). The data of Section sec:anomaly (failures of (eq:thm) by exactly one, never more) are consistent with the identity with $-h_3(E)$.
+\end{remark}
+
+\section[Section sec:tam]{Section sec:tam: testing the Tamagawa factors on the tables}\label{sec:blochkato:sectam}
+
+The paper's Section sec:tam tests the refinement of (eq:thm) by the Tamagawa excess of \Cref{cor:blochkato:tamfactor-consequences}. This section reproduces the test for
+conductors below $10{,}000$ and says what it does and does not test.
+
+\begin{example}[the test]\label{ex:blochkato:sec-tam}
+The population: optimal curves without CM satisfying the hypothesis of Theorem thm:main ($\ell\nmid N$, $E[\ell]$ irreducible, image not \texttt{3Ns} at $\ell=3$) that have a
+potentially multiplicative prime $q\equiv1\pmod\ell$ with $\ell\mid\nu_q$. For each, compare $v_\ell(\degphi)$ with the bound $\sum_qe_\ell+\sum_qt_\ell$ of (eq:thm) and with the
+refined bound that adds the Tamagawa excesses. The paper's population is the working set (conductors up to $500{,}000$) with primes of type $\kod{I}_n$ only; ours is
+conductors below $10{,}000$ with primes of type $\kod{I}_n$ or $\kod{I}_n^*$ (\Cref{prop:blochkato:tam-potmult}):
+\begin{center}\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+source & $\ell$ & curves & positive excess & equality, bound (eq:thm) & equality, refined bound\\
+\midrule
+paper & $3$ & $46{,}222$ & $12{,}095$ & $20{,}822$ ($45.0\%$) & $28{,}007$ ($60.6\%$)\\
+paper & $5$ & $10{,}940$ & $1{,}646$ & $7{,}333$ ($67.0\%$) & $8{,}610$ ($78.7\%$)\\
+here & $3$ & $1{,}050$ & $186$ & $596$ ($56.8\%$) & $714$ ($68.0\%$)\\
+here & $5$ & $252$ & $24$ & $203$ ($80.6\%$) & $220$ ($87.3\%$)\\
+here & $7$ & $18$ & $1$ & $17$ & $18$\\
+\bottomrule
+\end{tabular}
+\end{center}
+No curve violates the refined inequality, in these populations or in the full populations of \Cref{rem:blochkato:open-question-3} ($13{,}203$, $23{,}361$ and $28{,}134$ curves). The
+rates are not comparable with the paper's (smaller conductors; $\kod{I}_n^*$ primes included); the revised paper also reports our figures at $\ell=3,5$.
+\end{example}
+
+\begin{remark}[what Section sec:tam tests]\label{rem:blochkato:what-sec-tam-tests}
+Given \Cref{thm:blochkato:selmer-identity} and its assembly with the equality $v_\ell(\degphi)=v_\lambda(\eta^\emptyset_{f,\lambda})$ (\Cref{ch:moddeg}, \Cref{ch:congruence}), a violation of the
+refined inequality is impossible, and the proportion of equality is the proportion of curves with $H^1_f(\Q,W)=0$. So Section sec:tam is a consistency check of the
+Tamagawa term of (eq:identity) and of the computation of Tate parameters, not an independent test of a conjecture. The revised paper's phrasing (``the extra
+divisibility of the modular degree predicted by the Tamagawa factor of the adjoint is always present, the Selmer length accounting for the rest'') says this; the
+original said that the extra divisibility occurs ``exactly where the Tamagawa factor of the adjoint exceeds $\ell^{t_\ell}$'', which is too strong, since extra
+divisibility also comes from the Selmer group.
+\end{remark}
+
+\section[The Tamagawa number conjecture]{The Tamagawa number conjecture and the adjoint motive}\label{sec:blochkato:motive}
+
+This section places Theorem thm:main in the framework of Bloch and Kato. Nothing here is used in a proof. The adjoint motive of $f$, its $L$-function, the shape of the
+Tamagawa number conjecture, the theorem of Diamond, Flach and Guo that proves it for the adjoint at $\ell\notin S_f$, and Flach's earlier finiteness theorem are stated with
+references, and a labelled heuristic explains why (eq:identity) is the conjecture read through the modular degree.
+
+\begin{definition}[the adjoint motive]\label{def:blochkato:adjoint-motive}
+Let $f$ be a weight-$2$ newform with rational coefficients. The \emph{adjoint motive} $\ad M_f$ is the motive with $\ell$-adic realisations $A_f=\ad V_\ell(f)\simeq\Sym V_\ell(f)\otimes\det^{-1}$
+(\Cref{ch:reps}), and Betti and de Rham realisations built from those of $M_f$ in the same way; it is pure of weight $0$ with Hodge numbers $h^{1,-1}=h^{0,0}=h^{-1,1}=1$, and
+\[
+L(\ad f,s)=\prod_pL_p(A_f,s)=L(\Sym f,s+1),
+\]
+with the true Euler factors (at $p=\ell$ computed through $\Dcris$, or with $V_{\ell'}$ for a prime $\ell'\ne p$) and the normalisation $L_p(\Sym f,s)=L_p(A_f,s-1)$ of
+Appendix B, B-C7. The point $s=1$ is critical in the sense of Deligne \cite{Deligne79}, and $L(\ad f,1)\ne0$.
+\end{definition}
+
+The last assertion follows from \Cref{ch:lfunctions}: the formula $\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ of Rankin and Shimura, quoted in the paper's Remark rem:degree, shows
+$L^{\nv}(\ad f,1)>0$, and $L(\ad f,1)$ differs from it by the nonzero factors $L_q(A_f,1)/L^{\nv}_q(A_f,1)$ (\Cref{lem:blochkato:no-local-invariants}). For the critical value and the
+Hodge numbers see \cite{Deligne79} and \cite[Section 1]{DFG04}; for the symmetric square, Shimura \cite{Shimura76} and Gelbart and Jacquet \cite{GelbartJacquet}.
+
+\begin{conjecture}[Bloch and Kato, in outline]\label{conj:blochkato:tnc}
+Let $M$ be a motive over $\Q$ whose $L$-function is critical and nonzero at $s=0$, $\ell$ a prime, $T$ a stable lattice in the $\ell$-adic realisation of $M$, $W_M=T\otimes\Qlmod$ and
+$W_M^D=T^D\otimes\Qlmod$. Then, for a suitably normalised period $\Omega(M)$,
+\[
+\frac{L(M,0)}{\Omega(M)}\ \sim_\ell\ \frac{\prod_{p\ne\ell}\#\bigl(\Zl/\Tam_p(T)\bigr)\cdot\#H^1_f(\Q,W_M^D)}{\#H^0(\Q,W_M)\cdot\#H^0(\Q,W_M^D)},
+\]
+where $\sim_\ell$ means equality up to an $\ell$-adic unit, and the contributions of $\ell$ and $\infty$ are absorbed in $\Omega(M)$ (the Tamagawa measure of Bloch and Kato).
+\end{conjecture}
+
+This is a schematic form of the conjecture of Bloch and Kato \cite[Section 5]{BlochKato}, in the formulation of Fontaine and Perrin-Riou \cite{FPR94}; the precise
+normalisations of the period and of the terms at $\ell$ differ between these sources and \cite[Section 2]{DFG04}, and we do not reconcile them. The book never uses the
+conjecture in a proof. For $M=\ad M_f(1)$, whose realisation is $A_f(1)=V^D$ with lattice $T^D$, one has $L(M,0)=L(\ad f,1)$, $W_M=W^D$ and $W_M^D=W$; so the right side is
+\[
+\frac{\prod_p\#(\Zl/\Tam_p(T^D))\cdot\#H^1_f(\Q,W)}{\#H^0(\Q,W^D)\cdot\#H^0(\Q,W)}:
+\]
+the adjoint Selmer group of Theorem thm:main, the Tamagawa factors of Lemma lem:fpr, and $h_\ell(E)$ in the denominator, with the same sign as in Remark rem:ns.
+
+\begin{example}[Birch and Swinnerton-Dyer]\label{ex:blochkato:bsd}
+For $M=h^1(E)(1)$, with realisation $V_\ell E$ and $L(M,0)=L(E,1)$, \Cref{conj:blochkato:tnc} is the $\ell$-part of the formula of Birch and Swinnerton-Dyer in rank $0$:
+\begin{center}\small
+\begin{tabular}{ll}
+\toprule
+term of \Cref{conj:blochkato:tnc} & term of the BSD formula\\
+\midrule
+$\Omega(M)$ & the real period $\Omega_E$\\
+$\#(\Zl/\Tam_p(T_\ell E))$ & $\ell$-part of $c_p$ (\Cref{prop:blochkato:tam-of-E})\\
+$\#H^1_f(\Q,W_M^D)$, $W_M^D\simeq E[\ell^\infty]$ & $\#\Sha(E/\Q)[\ell^\infty]$ (rank $0$; \Cref{ex:blochkato:classical-selmer})\\
+$\#H^0(\Q,W_M)\cdot\#H^0(\Q,W_M^D)$ & $\#E(\Q)[\ell^\infty]^2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Here $T^D\simeq T$ by the Weil pairing (\Cref{prop:blochkato:twists}(iii)). This is orientation only; see \cite[Section 6]{BlochKato} and \Cref{ch:ellcurves}.
+\end{example}
+
+\begin{theorem}[Diamond, Flach and Guo, Theorem 0.1]\label{thm:blochkato:dfg-01}
+Let $f$ be a newform (of weight $k\ge2$) and $\lambda$ a prime of its coefficient field not in the exceptional set $S_f$. Then the $\lambda$-part of the Tamagawa number conjecture
+of Bloch and Kato holds for the adjoint motive of $f$ at the critical point $s=1$ \cite[Theorem 0.1]{DFG04}.
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this; it is the theorem the paper cites when it says that its hypothesis ``is the one under which Diamond, Flach and Guo prove the Tamagawa
+number conjecture for the adjoint motive of $f$''. The exact normalisation of the period is in \cite[Section 1]{DFG04}. The proof combines the identification of
+the congruence ideal with the special value (Hida, and the Rankin-Shimura method), Theorem thm:dfg37, Theorem thm:dfg14, and the local computations of Lemma
+lem:fpr; \Cref{ch:congruence} gives the parts the paper uses.
+\end{proof}
+
+\begin{theorem}[Diamond, Flach and Guo, Theorem 0.2]\label{thm:blochkato:dfg-02}
+If $\ell\notin S_f$ and $\Sigma$ is a finite set of primes, $\ell\notin\Sigma$, outside which $M_{f,\lambda}$ is minimally ramified (for $f=f_E$: any $\Sigma$ containing the primes dividing $N$),
+then $H^1_\Sigma(\Q,W)$ is finite of length $v_\lambda(\eta^\Sigma_{f,\lambda})$.
+\end{theorem}
+
+\begin{proof}[Reference]
+This is the paper's Theorem thm:dfg37, which the paper says is ``the form given as Theorem 0.2'' of \cite{DFG04}. We do not prove it; the statement, the meaning of
+``minimally ramified'' and the outline of the Taylor-Wiles argument are in \Cref{ch:congruence}. It is recalled here only so that \Cref{thm:blochkato:selmer-identity} can be
+read against it.
+\end{proof}
+
+\begin{theorem}[Flach, in outline]\label{thm:blochkato:flach}
+Let $E/\Q$ be modular. For every prime $\ell$ outside an explicit finite set of exceptional primes (which contains the primes dividing $6N$ and those for which $\bar\rho_{E,\ell}$ is not
+surjective, among others), the Bloch-Kato Selmer group of $\Sym T_\ell E\otimes\Qlmod$ is finite, and it is annihilated by an explicit integer built from the modular
+degree \cite{Flach92}.
+\end{theorem}
+
+\begin{proof}[Reference]
+We do not prove this, and we do not reproduce the exact list of exceptional primes or the annihilator; see \cite{Flach92}. Note that $\Sym V_\ell E\simeq A_f(1)=V^D$ (since
+$\ad V\simeq\Sym V\otimes\det^{-1}$ and $\det=\chi_\ell$), so Flach's group is $H^1_f(\Q,W^D)$ in the paper's notation; when $\bar\rho$ is absolutely irreducible its finiteness is
+equivalent to $H^1_f(\Q,V^D)=0$ (\Cref{prop:blochkato:selmer-relations}(iii)), hence to $H^1_f(\Q,A_f)=0$ (\Cref{prop:blochkato:euler-characteristic}), hence to the finiteness of
+$H^1_f(\Q,W)$.
+\end{proof}
+
+\begin{paperlink}
+Section 1 of the paper: ``Flach's finiteness theorem for the symmetric square \cite{Flach92} is the first place where the modular degree meets the Selmer group
+of $\Sym f$''.
+\end{paperlink}
+
+\begin{remark}[the modular degree as an adjoint $L$-value: a heuristic]\label{rem:blochkato:degree-as-l-value}
+The following is a heuristic, not a proof. By the formula of Zagier and Watkins, $\degphi\cdot\operatorname{vol}(\Lambda_E)=4\pi^2c_E^2\langle f,f\rangle$ (\Cref{ch:moddeg}); by the
+Rankin-Shimura method $\langle f,f\rangle$ is $L^{\nv}(\Sym f,2)=L^{\nv}(\ad f,1)$ times explicit factors (\Cref{ch:lfunctions}). The paper's Remark rem:degree turns this into
+$v_\ell(\degphi)=v_\ell(B_E)+\sum_qe_\ell(E,q)$ for $\ell\nmid N$, with $B_E=c_E^2N\,L(\ad f,1)/(2\pi\operatorname{vol}(\Lambda_E))$, so the ratio of the naive to the true local factors produces the
+terms $e_\ell(E,q)$. If one reads $2\pi\operatorname{vol}(\Lambda_E)/(c_E^2N)$ as the period $\Omega(\ad M_f(1))$, then \Cref{conj:blochkato:tnc}, proved by \Cref{thm:blochkato:dfg-01}, predicts
+$v_\ell(B_E)=\len H^1_f(\Q,W)+\sum_qv_\ell(\Tam_q(\ad T))$, which is (eq:identity). Theorem thm:main proves this identity through congruence ideals instead of $L$-values, so the
+identification of the periods is never needed; whether this reading of the period agrees with the normalisation of \cite[Section 1]{DFG04} we have not checked.
+\end{remark}
+
+\section{Exercises}\label{sec:blochkato:exercises}
+
+\begin{exercise}[the two Frobenii]\label{ex:blochkato:ex-frobenius}
+Let $p\ne\ell$. Compute $\det(1-\Frob_p^{-1}p^{-s}\mid\Ql(1))^{-1}$ and $\det(1-\Frob_pp^{-s}\mid\Ql(1))^{-1}$. At a prime of multiplicative reduction, show that the geometric
+Frobenius gives $\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=1-p^{-2}$, which is the paper's $L_p(A_f,1)^{-1}=L_p(A_f(1),0)^{-1}$, while the arithmetic one gives $1-p^2$, a number with the
+same $\ell$-adic valuation.
+\emph{Answer:} $(1-p^{-1-s})^{-1}$ and $(1-p^{1-s})^{-1}$; on $(V^D)^{I_p}=\Ql e\otimes\Ql(1)$ the arithmetic Frobenius acts by $p\cdot p=p^2$; and $1-p^2=-p^2(1-p^{-2})$.
+\end{exercise}
+
+\begin{exercise}[the trace form at $\ell=2$]\label{ex:blochkato:ex-gram}
+Compute the Gram matrix of the trace form of $\ad T$ in the basis $e,h,f$. Show that for $\ell=2$ the map $A\to A^\vee$, $x\mapsto\tr(x\,\cdot)$, is injective with cokernel of order $2$,
+and find an element of $A^\vee$ not in its image.
+\emph{Hint:} the dual basis vector $h^\vee$ is $\tfrac12\tr(h\,\cdot)$.
+\end{exercise}
+
+\begin{exercise}[local ranks]\label{ex:blochkato:ex-local-ranks}
+\sloppy For each row of the table of \Cref{prop:blochkato:local-adjoint}, find $\dim H^0(\Q_p,V^D)$, $\dim H^0(\Q_p,A_f)$ and, granting the local Euler characteristic formula, the
+$\Zl$-rank of $H^1(\Q_p,T^D)$. Which bad primes have $H^1(\Q_p,T^D)$ infinite? Check in each case the paper's statement that $H^1_f(\Q_p,T^D)$ is the torsion of $H^1(\Q_p,T^D)$.
+\emph{Answer:} $H^0(\Q_p,V^D)=0$ always; the rank is $1$ in the row $\{\pm1\}$ (the eigenvalue $1$ has multiplicity one, as at a good prime) and in the cyclic row with $c=+1$, and
+$0$ otherwise. The statement holds in all rows by \Cref{prop:blochkato:local-unramified}(v).
+\end{exercise}
+
+\begin{exercise}[multiplicative primes]\label{ex:blochkato:ex-mult}
+Let $q$ be a prime of multiplicative reduction, $\ell\ne q$ odd, and $W=\ad T\otimes\Qlmod$. Show that $H^1_f(\Q_q,W)=0$; that $W^{I_q}=(\Qlmod)\,e$ if $\ell\nmid n_q$, so that
+$H^1_{\ur}(\Q_q,W)=0$; and that if $\ell\mid n_q$, $W^{I_q}$ contains $\ell^{-v}\Zl h/\Zl h$ modulo $(\Qlmod)e$, with $v=v_\ell(n_q)$. For $W=E[\ell^\infty]$ with split reduction and $\ell\mid n_q$, show
+$H^1_{\ur}(\Q_q,W)\simeq\Z/\ell^{v}$ while $H^1_f(\Q_q,W)=0$.
+\emph{Hint:} for $x=ae+bh+cf$, $(t-1)x=-(2n'b+n'^2c)e+n'c\,h$; and multiplication by $q-1\ne0$ is surjective on $\Qlmod$. Compare \Cref{ex:blochkato:ur-versus-f}.
+\end{exercise}
+
+\begin{exercise}[the lemma for \curve{14a1}]\label{ex:blochkato:ex-14a1}
+The curve \curve{14a1} $=[1,0,1,4,-6]$ has split multiplicative reduction at $7$ with $n_7=3$, and the unit part of its Tate parameter reduces to $6\equiv-1\pmod7$. Check the
+paper's statement $H^1(I_q,\ad T)_{\mathrm{tor}}\simeq(\Z/\ell^{v_\ell(n)})^2$ for $q=7$, $\ell=3$; compute the Frobenius invariants and show $v_3(\Tam_7(\ad T))=2$. Explain why $\degphi=1$ is no
+contradiction with (eq:identity).
+\emph{Answer:} $-1=3^3$ in $\F_7$ is a cube and $v_3(6)=1$, so the minimum is $1$. The curve has $E[3]$ reducible (its torsion is $\Z/6$), so Theorem thm:main does not apply,
+while \Cref{lem:blochkato:tamfactor} needs no irreducibility.
+\end{exercise}
+
+\begin{exercise}[the indeterminacy of $c'$]\label{ex:blochkato:ex-cprime}
+In the situation of \Cref{conv:blochkato:tate-data}, show directly that changing the Frobenius lift by $t^a$ and the cocycle $\kappa$ by a coboundary changes $c'$ by an element of
+$(n,q-1)\Zl$, and give an example with $\ell\mid n$, $\ell\mid q-1$ in which the change is not a multiple of $q-1$. Show that $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ does not change. Why does
+``the image of $\kappa$ in $H^1(G/I,\Zl(1))$'' make sense for $\Q_q$ but not for a ramified extension of $\Q_q$ without a choice?
+\emph{Hint:} the change under $t^a$ is $\varepsilon qan'$; take $v_\ell(n)<v_\ell(q-1)$. A uniformiser is needed to split $H^1(K,\Zl(1))=\widehat{K^\times}$ into a unit part and a valuation
+part, and $q$ is a canonical uniformiser of $\Q_q$ only.
+\end{exercise}
+
+\begin{exercise}[$\Tam(T)$ and $c_q$]\label{ex:blochkato:ex-tam-T}
+Check the last sentence of the proof of Lemma lem:tamfactor (``the same computation for $M=T$ gives \dots the $\ell$-part of the Tamagawa number $c_q(E)$'') for \curve{11a1} at $q=11$,
+$\ell=5$ (split, $n=5$, $c_{11}=5$) and for \curve{14a1} at $q=2$, $\ell=3$ (nonsplit, $n=6$, $c_2=2$).
+\emph{Answer:} $(\Z/5)\bar e_1$ with Frobenius acting by $\varepsilon=1$: invariants of order $5$; $(\Z/3)\bar e_1$ with Frobenius acting by $-1$: invariants $0$, and $3\nmid c_2$.
+\end{exercise}
+
+\begin{exercise}[$\Tam(A(1))=\Tam(A)$ by hand]\label{ex:blochkato:ex-tam-dual}
+\sloppy Let $v\ge0$, $\gamma,\delta\in\Z/\ell^v$, and $m=\min(v,v_\ell(\gamma),v_\ell(\delta))$. Show that both $\{(x,y):\gamma y=\delta y=0\}$ and $\{(x,y):\gamma x-\delta y=0\}$ in $(\Z/\ell^v)^2$ are isomorphic to
+$\Z/\ell^v\oplus\Z/\ell^m$. Deduce the structure statement of \Cref{prop:blochkato:tam-dual}(b), and show that the two invariant modules are in general different subgroups of
+$(\Z/\ell^v)\bar e\oplus(\Z/\ell^v)\bar h$.
+\emph{Hint:} reduce to $\gamma=\ell^m$ or $\delta=\ell^m$ by a unit change of variables (Smith form of a $1\times2$ matrix).
+\end{exercise}
+
+\begin{exercise}[type $\kod{IV}$ at $\ell=3$]\label{ex:blochkato:ex-c3}
+Let $\sigma=\sm0{-1}1{-1}$. Verify the three coordinate vectors of \Cref{prop:blochkato:ad-free-c3}, and show that $H^1(\langle\sigma\rangle,T)\simeq\F_3$ while
+$H^1(\langle\sigma\rangle,\ad T)=0$. The curve \curve{50a1} $=[1,0,1,-1,-2]$ has type $\kod{IV}$ at $5$ and $c_5=3$: deduce from \Cref{prop:blochkato:tam-of-E} that Frobenius acts
+trivially on $H^1(I_5,T_3E)_{\mathrm{tor}}\simeq\F_3$, so $v_3(\Tam_5(T_3E))=1$, while $\Tam_5(\ad T_3E)=\Z_3$.
+\end{exercise}
+
+\begin{exercise}[the refined bound for \curve{791a1}]\label{ex:blochkato:ex-791}
+The curve \curve{791a1} $=[1,0,1,-31,117]$ has conductor $7\cdot113$, type $\kod{I}_3$ at $7$ and $\kod{I}_2$ at $113$, and $\degphi=144$. Show that the unit part of its Tate parameter
+at $7$ reduces to a cube in $\F_7^\times$, so $v_3(\Tam_7(\ad T))=2$; that the bound (eq:thm) at $\ell=3$ is $1$ and the refined bound is $2=v_3(144)$; and conclude, granting
+Theorem thm:main, that $H^1_f(\Q,\ad T_3E\otimes\Q_3/\Z_3)=0$.
+\emph{Hint:} the unit part is the reduction of $j_E^{-1}7^3$; it is $6=-1$.
+\end{exercise}
+
+\begin{exercise}[an Euler term]\label{ex:blochkato:ex-121}
+For \curve{121a1} at $p=11$ (type $\kod{II}$) and $\ell=3$, check the paper's statement in Lemma lem:fpr that $L_p(A_f,1)^{-1}$ is an $\ell$-adic integer of valuation $e_\ell(E,p)$.
+\emph{Answer:} $\chi_{-3}(11)=-1$, so $L_{11}(A_f,1)^{-1}=1+\tfrac1{11}=\tfrac{12}{11}$, of $3$-adic valuation $1$.
+\end{exercise}
+
+\begin{exercise}[the right end of Lemma lem:dfg21]\label{ex:blochkato:ex-surj}
+Prove that the last map of the sequence of \Cref{lem:blochkato:dfg21} is surjective, using the abstract sequence of \Cref{ch:galcoh} and the injectivity of
+$H^0(\Q_p,W^D)\to H^1(\Q_p,T^D)$ for $p\in\Sigma$. Then consider $\ell=3$ and $T=\Z_3(\chi_{-3})$ (the character $\chi_{-3}$ on $\Z_3$): show $H^0(\Q,W^D)\simeq\Z/3$ for $W^D=\mu_{3^\infty}\otimes\chi_{-3}$, and
+explain why the sequence cannot be exact with $\Sigma=\emptyset$ and the Bloch-Kato conditions.
+\emph{Hint:} $\chi_3^{\mathrm{cyc}}\chi_{-3}\equiv1\pmod3$ but not modulo $9$; with $\Sigma=\emptyset$ the middle map would be the identity of $H^1_f(\Q,W)$, and the sequence would force $H^0(\Q,W^D)=0$.
+\end{exercise}
+
+\begin{exercise}[$h_\ell(E)$]\label{ex:blochkato:ex-h0}
+Show by the determinant argument that $H^0(\Q,W^D)=0$ for $\ell\ge5$ and has order at most $3$ for $\ell=3$, for every $E$ with $\bar\rho$ irreducible. For \curve{726a1}, use the factorisation
+of its $3$-division polynomial to show $h_3=1$. Why is the original argument, which used $a_p=0$ at the primes inert in $\Q(\sqrt{\ell^*})$, not the right one?
+\emph{Hint:} $\rho\simeq\rho\otimes\chi_\ell$ would give $pa_p=a_p$ at good $p$; the relevant twist is by the cyclotomic character, not by the quadratic character $\chi_{\ell^*}$.
+\end{exercise}
+
+\begin{exercise}[the Euler characteristic]\label{ex:blochkato:ex-euler}
+Verify the four rows of the table of \Cref{prop:blochkato:euler-characteristic} and deduce $H^1_f(\Q,A_f)=0\iff H^1_f(\Q,V^D)=0$. Then apply the general formula to $V^D$ instead of $A_f$
+and check that it gives the same equivalence. Where is the sign convention for Hodge-Tate weights used?
+\emph{Hint:} for $V^D$ the term at $\ell$ is $\dim H^1_f(\Q_\ell,V^D)-0=2$ and the term at $\infty$ is $-\dim(V^D)^{c=1}=-2$ ($c$ acts on $\Zl(1)$ by $-1$).
+\end{exercise}
+
+\begin{exercise}[Section sec:tam on a small range]\label{ex:blochkato:ex-small-range}
+Using the expansion $q_E=j^{-1}+744j^{-2}+\cdots$ to obtain the unit parts, reproduce the test of \Cref{ex:blochkato:sec-tam} for conductors at most $2{,}000$ and $\ell=3$: among the
+$2{,}158$ optimal non-CM curves with $3\nmid N$, $E[3]$ irreducible and image not \texttt{3Ns}, find the $128$ with a potentially multiplicative prime $q\equiv1\pmod3$, $3\mid\nu_q$; check that
+equality rises from $87$ to $102$ curves, and that $19$ have a positive Tamagawa excess.
+\end{exercise}
+
+\begin{exercise}[the conjecture and the identity]\label{ex:blochkato:ex-bsd}
+(Harder.) Show that \Cref{conj:blochkato:tnc} for $M=h^1(E)(1)$ reproduces the local and torsion terms of the Birch and Swinnerton-Dyer formula in rank $0$, and that for $M=\ad M_f(1)$
+each term on the right corresponds to a term of (eq:identity) or of Remark rem:ns. Where does $h_\ell(E)$ appear, and why does $H^0(\Q,W)$ not appear in (eq:identity)?
+\emph{Hint:} \Cref{ex:blochkato:bsd}; \Cref{prop:blochkato:global-invariants}(i).
+\end{exercise}
+
+\section{Notes and references}\label{sec:blochkato:notes}
+
+\paragraph{Sources followed.} The Bloch-Kato local conditions, Selmer groups and the conjecture are from Bloch and Kato \cite{BlochKato} (Sections 3, 5 and 6) and
+the reformulation of Fontaine and Perrin-Riou \cite{FPR94}; the propagation of local conditions and the comparison sequences follow Rubin \cite{Rubin} (Chapter 1) and
+are proved, for this book, in \Cref{ch:galcoh}; local and global duality are in Milne \cite{MilneADT}, Neukirch, Schmidt and Wingberg \cite{NSW}, Tate \cite{TateDuality},
+Greenberg \cite{Greenberg89} and Wiles \cite{Wiles95}. $p$-adic Hodge theory is quoted from Fontaine \cite{Fontaine}, Fontaine and Laffaille \cite{FontaineLaffaille},
+Coleman and Iovita \cite{ColemanIovita99} and Berger's survey \cite{Berger}. The adjoint motive and the theorems on it are those of Diamond, Flach and Guo \cite{DFG04} and Flach
+\cite{Flach92}; critical values are Deligne's \cite{Deligne79}; the symmetric square is due to Shimura \cite{Shimura76} and Gelbart and Jacquet \cite{GelbartJacquet}. The
+structure of $E(\Q_p^{\ur})$ used in \Cref{prop:blochkato:tam-of-E} is in Silverman \cite{SilvermanATAEC} (Chapter IV) and Grothendieck \cite{SGA7}; the images of inertia
+are due to Serre and Tate \cite{SerreTate68} and Kraus \cite{Kraus90}.
+
+\paragraph{Theorem numbers.} We cite theorem numbers only where the paper cites them: \cite[Theorems 0.1, 2.7, 3.7, Lemma 2.1, (31), (57), p.~708]{DFG04} and
+\cite[I.4.2.2]{FPR94}. All other references are to sections, and the section numbers given for Bloch and Kato (Sections 3 to 6), Rubin (Sections 1.3 and 1.7), Berger
+(Section 2) and Silverman (Chapter IV) are pointers we have not checked against the printed texts. In particular we have not verified the numbers under which the
+dimension formula of \Cref{prop:blochkato:dimension-formula}, the duality of \Cref{prop:blochkato:local-duality-f} at $\ell$ and the identification of the Kummer image at
+$\ell$ (\Cref{ex:blochkato:classical-selmer}) appear in \cite{BlochKato}, nor the exact hypotheses of \cite{Flach92} (\Cref{thm:blochkato:flach} is stated in outline for that reason).
+
+\paragraph{History.} Bloch and Kato formulated their conjecture in 1990 \cite{BlochKato}; Fontaine and Perrin-Riou recast it in terms of Galois cohomology and defined
+the local Tamagawa factors used here \cite{FPR94}. Flach proved the first finiteness theorem for the Selmer group of the symmetric square in 1992 \cite{Flach92}, and
+Diamond, Flach and Guo proved the $\ell$-part of the conjecture for adjoint motives of modular forms in 2004 \cite{DFG04}, using the Taylor-Wiles method.
+
+\paragraph{What the book adds.} \Cref{prop:blochkato:tam-dual} proves $\Tam_p(T^D)=\Tam_p(A)$ for the adjoint of an elliptic curve in every case, where the paper cites \cite[(57)]{DFG04};
+\Cref{prop:blochkato:tam-of-E} gives a proof that $\Tam_p(T_\ell E)$ is the $\ell$-part of $c_p$ at every $p\ne\ell$; \Cref{prop:blochkato:selmer-relations}(iii) and
+\Cref{prop:blochkato:euler-characteristic} make explicit the step from Theorem thm:dfg27 to the finiteness of $H^1_f(\Q,W)$ and the equivalence used in Remark rem:ns. Lemma
+lem:tamadd and Corollary cor:explicit, which answer the first half of the original Open question 3, are in the revised paper; \Cref{thm:blochkato:tam-additive} proves them
+with the same argument.
+
+\paragraph{Computations.} All numbers were computed with PARI/GP 2.17.2 \cite{PARI} through \texttt{cypari2}, on Cremona's files \texttt{allcurves}, \texttt{degphi} and
+\texttt{galrep} \cite{ecdata} for conductors below $10{,}000$. Curves with CM were recognised by their $j$-invariant among the $13$ rational CM $j$-invariants and removed. The
+optimal curve of a class is the one listed in \texttt{degphi}; irreducibility of $E[\ell]$ means that \texttt{galrep} lists no label $\ell\mathrm B$ or $\ell\mathrm{Cs}$; the image \texttt{3Ns} is
+read from \texttt{galrep}. The terms $e_\ell(E,q)$ were computed from \texttt{lfuneuler(lfunsympow(E,2),q)} exactly as in the paper's function \texttt{rule}; the unit parts of the
+Tate parameters as the reduction of $j_E^{-1}q^{v_q(j_E)}$, checked against \texttt{ellinit(E,O(q\^{}20)).tate} on \curve{11a1} and \curve{791a1}; $v_\ell(c(u))$ by testing
+$\bar u^{(q-1)/\ell^k}=1$. The counts are those of \Cref{rem:blochkato:open-question-3} ($13{,}203$, $23{,}361$, $28{,}134$ curves), \Cref{ex:blochkato:sec-tam} and
+\Cref{ex:blochkato:ex-small-range}; the check of \Cref{prop:blochkato:tam-dual} ($26{,}448$ parameter choices) and of $v_\ell(c_q)$ ($101{,}336$ pairs on the $17{,}834$ curves of conductor
+below $3{,}000$) are described after \Cref{prop:blochkato:tam-dual} and \Cref{prop:blochkato:tam-of-E}; the coordinates of \Cref{prop:blochkato:ad-free-c3} and the outputs of
+\texttt{rule} for \curve{121a1}, \curve{726a1}, \curve{791a1} ($[1,1]$, $[2,2]$, $[2,1]$) were recomputed. Nothing beyond conductor $10{,}000$ was checked.

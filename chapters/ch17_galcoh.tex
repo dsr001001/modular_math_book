@@ -1,4 +1,5 @@
 \chapter{Galois cohomology, local and global, and Selmer groups}\label{ch:galcoh}
+\chaptermark{Galois cohomology and Selmer groups}
 
 \Cref{ch:cohomology} built the machinery of group cohomology: cochains, inflation and restriction, continuous cohomology of profinite groups, procyclic groups and
 the group-theoretic core of Lemma lem:tamfactor. This chapter specialises it to Galois groups of fields, local and global, and develops the arithmetic the paper uses:
@@ -18,6 +19,7 @@ Throughout, $\ell$ is a prime different from the characteristic, $T$ a free $\Z_
 $W=T\otimes\Q_\ell/\Z_\ell$, $\iota\colon H^1(-,T)\to H^1(-,V)$, $\pi\colon H^1(-,V)\to H^1(-,W)$; $\Frob$ is an arithmetic Frobenius and $\Phi=\Frob^{-1}$; ${}^*$ is the Pontryagin dual and ${}^D$
 the Kummer dual.
 
+\begin{sloppypar}
 \begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
 \item \textbf{Conventions.} $H^n(K,M)=H^n(G_K,M)$, continuous cochains, coefficients of type (D), (C), (V); $\Frob$ arithmetic in all cohomology, $\Phi$ only in $L$-factors,
 $L_p(V,s)=\det(1-\Phi p^{-s}\mid V^{I_p})^{-1}$; the Kummer connecting map is $a\mapsto[\sigma\mapsto\sigma(\alpha)/\alpha]$, $\alpha^n=a$, with no sign.
@@ -139,6 +141,7 @@ $H^0(\Q_p,V^D)=0$ for one $p\in\Sigma$, then $0\to H^1_{\mathcal L}(\Q,W)\to H^1
 \item \textbf{What \Cref{ch:blochkato} adds.} The Bloch-Kato conditions and their orthogonality at $\ell$, Theorem thm:dfg27, Lemma lem:fpr, and the value of the Euler factor.
 \Cref{rem:galcoh:handover-ch18}.
 \end{enumerate}
+\end{sloppypar}
 
 \section*{Where the paper uses this chapter}
 
@@ -147,7 +150,7 @@ $H^0(\Q_p,V^D)=0$ for one $p\in\Sigma$, then $0\to H^1_{\mathcal L}(\Q,W)\to H^1
 (\Cref{thm:galcoh:kummer-ladic,prop:galcoh:kummer-local}); the splitting $\Z_\ell\kappa_q\oplus H^1_{\mathrm{ur}}$ and the class of the unit part
 (\Cref{prop:galcoh:unit-classes,prop:galcoh:unramified-value,prop:galcoh:canonical-splitting}); the value $c'$ and its indeterminacy (\Cref{thm:galcoh:tate-kummer-class}); the
 assembled formula (\Cref{cor:galcoh:tamfactor}, with \Cref{ch:cohomology,ch:blochkato}); its check with $M=T$ (\Cref{prop:galcoh:ec-local-image}(iv)).
-\item \emph{Lemma lem:tamagawa-exp}: ``By Kummer theory over $\Q_q^{\mathrm{ur}}$'' (\Cref{prop:galcoh:kummer-class}, \Cref{rem:galcoh:tamagawa-exp-cohomological}).
+\item \emph{Lemma lem:tamagawa-exp}: ``By Kummer theory over $\Q_q^{\mathrm{ur}}$'' (\Cref{prop:galcoh:kummer-class,rem:galcoh:tamagawa-exp-cohomological}).
 \item \emph{The paragraph after Lemma lem:dfg21}: $H^1_{\mathrm{ur}}(\Q_p,V^D)=(V^D)^{I_p}/(\Frob_p-1)$ and its vanishing (\Cref{prop:galcoh:unramified-computed},
 \Cref{warn:galcoh:frobenius}); ``$H^1_f(\Q_p,T^D)$ is the torsion of $H^1(\Q_p,T^D)$, a finite group'' (\Cref{prop:galcoh:tvw}, \Cref{cor:galcoh:ur-vanishing}); ``$H^1(\R,T^D)$ is
 killed by $2$'' (\Cref{prop:galcoh:real-place}).
@@ -265,9 +268,10 @@ $\Cor\circ\delta_L=\delta_K\circ\Nm_{L/K}$.
 (i) Exactness at the left and in the middle is clear. For $a\in\overline K^\times$ the polynomial $X^n-a$ has derivative $nX^{n-1}$, which is prime to $X^n-a$ because $n$
 is invertible in $K$ and $a\ne0$; so $X^n-a$ is separable and has a root in the separable closure $\overline K$, and $x\mapsto x^n$ is surjective. The long exact sequence
 (\Cref{ch:cohomology}) begins
-\[
-1\to\mu_n(K)\to K^\times\xrightarrow{\ n\ }K^\times\xrightarrow{\ \delta\ }H^1(K,\mu_n)\to H^1(K,\overline K^\times)\xrightarrow{\ n\ }H^1(K,\overline K^\times)\to H^2(K,\mu_n)\to H^2(K,\overline K^\times)\xrightarrow{\ n\ }H^2(K,\overline K^\times).
-\]
+\begin{multline*}
+1\to\mu_n(K)\to K^\times\xrightarrow{\ n\ }K^\times\xrightarrow{\ \delta\ }H^1(K,\mu_n)\to H^1(K,\overline K^\times)\\
+\xrightarrow{\ n\ }H^1(K,\overline K^\times)\to H^2(K,\mu_n)\to H^2(K,\overline K^\times)\xrightarrow{\ n\ }H^2(K,\overline K^\times).
+\end{multline*}
 By \Cref{thm:galcoh:hilbert90}(iii) the fifth term is zero, so $\delta$ induces an isomorphism $K^\times/(K^\times)^n\simeq H^1(K,\mu_n)$. By
 \Cref{conv:galcoh:signs} the class $\delta(a)$ is represented by $\sigma\mapsto\sigma(\alpha)/\alpha$ for any lift $\alpha$ of $a$, that is, any $n$-th root of $a$ in
 $\overline K$. (ii) The same sequence, with $H^1(K,\overline K^\times)=0$, identifies $H^2(K,\mu_n)$ with the kernel of multiplication by $n$ on $H^2(K,\overline K^\times)$.
@@ -392,9 +396,10 @@ is made in \Cref{ch:blochkato}.
 \begin{proposition}[Kummer duality for lattices]\label{prop:galcoh:kummer-duals}
 \begin{enumerate}[label=(\roman*)]
 \item The evaluation pairings
-\[
-T\times T^D\to\Z_\ell(1),\quad V\times V^D\to\Q_\ell(1),\quad W\times T^D\to\Q_\ell/\Z_\ell(1),\quad T\times W^D\to\Q_\ell/\Z_\ell(1),\quad M\times M^D\to\mu
-\]
+\begin{gather*}
+T\times T^D\to\Z_\ell(1),\qquad V\times V^D\to\Q_\ell(1),\qquad M\times M^D\to\mu,\\
+W\times T^D\to\Q_\ell/\Z_\ell(1),\qquad T\times W^D\to\Q_\ell/\Z_\ell(1)
+\end{gather*}
 are $G$-equivariant and perfect: each module is identified with the continuous homomorphisms from the other into the target.
 \item $W^D\simeq\Hom(T,\Q_\ell/\Z_\ell(1))=T^*(1)$, and for each $k$, $W[\ell^k]^D=(T/\ell^kT)^D\simeq T^D/\ell^kT^D\simeq W^D[\ell^k]$.
 \item $(T^D)^D=T$ canonically; $W^D$ is the Kummer dual of $T$ and $T^D$ that of $W$ in the sense of (i).
@@ -433,9 +438,10 @@ a finite group. If $H^0(G,V)=0$, then $H^0(G,W)$ is finite and $\delta\colon H^0
 \item (Divisible part of $H^1(G,W)$.) The sequence $0\to H^1(G,T)\otimes\Q_\ell/\Z_\ell\to H^1(G,W)\to H^2(G,T)_{\tors}\to0$ is exact; the first term is the image of
 $\pi$ and equals $H^1(G,W)_{\mathrm{div}}$. So $H^1(G,W)$ is cofinitely generated, of corank $\rank_{\Z_\ell}H^1(G,T)=\dim_{\Q_\ell}H^1(G,V)$.
 \item (Finite levels.) For $n\ge1$ and $k\ge1$ the sequences
-\[
-0\to H^{n-1}(G,T)/\ell^k\to H^{n-1}(G,T/\ell^kT)\to H^n(G,T)[\ell^k]\to0,\qquad 0\to H^{n-1}(G,W)/\ell^k\to H^n(G,W[\ell^k])\to H^n(G,W)[\ell^k]\to0
-\]
+\begin{gather*}
+0\to H^{n-1}(G,T)/\ell^k\to H^{n-1}(G,T/\ell^kT)\to H^n(G,T)[\ell^k]\to0,\\
+0\to H^{n-1}(G,W)/\ell^k\to H^n(G,W[\ell^k])\to H^n(G,W)[\ell^k]\to0
+\end{gather*}
 are exact.
 \end{enumerate}
 \end{proposition}
@@ -532,7 +538,7 @@ torsion dies.
 
 \noindent Numerical instances (with $v_3(6)=1$, $v_3(18)=2$, $v_5(10)=1$, $v_3(4)=0$): $H^1(\Q_7,\Z_3(1))\simeq\Z_3\times\Z/3$; $H^1(\Q_{19},\Z_3(1))\simeq\Z_3\times\Z/9$;
 $H^1(\Q_{11},\Z_5(1))\simeq\Z_5\times\Z/5$; $H^1(\Q_5,\Z_3(1))\simeq\Z_3$, every unit of $\Z_5$ being a cube.
-\section{Local Galois cohomology: finiteness, Euler characteristic, Tate local duality}\label{sec:galcoh:local}
+\section[Local Galois cohomology]{Local Galois cohomology: finiteness, Euler characteristic, Tate local duality}\label{sec:galcoh:local}
 
 The three theorems of this section are the deep input of the chapter, and they are stated with references. Finiteness is behind the words ``a finite group''
 in the paragraph after Lemma lem:dfg21; Tate local duality is what makes the dual terms $H^1_f(\Q_p,T^D)^*$ of Lemma lem:dfg21 the right objects (through
@@ -583,9 +589,10 @@ is a perfect pairing of finite groups. It is natural in $M$, compatible with res
 $(-1)^i$.
 \item ($\ell$-adic forms.) For $T$ as in \Cref{conv:galcoh:duals} with a continuous action of $G_K$ and $0\le i\le2$, the cup products with the pairings of
 \Cref{prop:galcoh:kummer-duals}(i) give perfect pairings
-\[
-H^i(K,W)\times H^{2-i}(K,T^D)\to\Q_\ell/\Z_\ell,\qquad H^i(K,T)\times H^{2-i}(K,W^D)\to\Q_\ell/\Z_\ell,\qquad H^i(K,V)\times H^{2-i}(K,V^D)\to\Q_\ell ;
-\]
+\begin{gather*}
+H^i(K,W)\times H^{2-i}(K,T^D)\to\Q_\ell/\Z_\ell,\qquad H^i(K,T)\times H^{2-i}(K,W^D)\to\Q_\ell/\Z_\ell,\\
+H^i(K,V)\times H^{2-i}(K,V^D)\to\Q_\ell ;
+\end{gather*}
 the first two identify the discrete group with the Pontryagin dual of the finitely generated one, the third is a perfect pairing of finite-dimensional
 $\Q_\ell$-vector spaces.
 \item (Compatibility.) For $x\in H^1(K,V)$ and $y\in H^1(K,T^D)$, $\langle\pi x,y\rangle_{W,T^D}=\langle x,\iota y\rangle_{V,V^D}\bmod\Z_\ell$; symmetrically with the roles of
@@ -727,13 +734,14 @@ Let $p\ne\ell$.
 \end{theorem}
 
 \begin{proof}
-(i) \emph{Orthogonality.} Let $x=\Inf(a)$ and $y=\Inf(b)$ with $a\in H^1(G/I,M^I)$, $b\in H^1(G/I,(M^D)^I)$. The cup product commutes with inflation
+(i) \emph{Orthogonality.} Let $x=\Inf(a)$ and $y=\Inf(b)$, where $a\in H^1(G/I,M^I)$ and $b\in H^1(G/I,(M^D)^I)$. The cup product commutes with inflation
 (\Cref{ch:cohomology}), so $x\cup y$ is the inflation of $a\cup b$, and its image under $M\otimes M^D\to\mu_{\ell^\infty}$ is the inflation of a class in
 $H^2(G/I,\mu_{\ell^\infty}^I)$. That group is zero ($G/I\simeq\hat\Z$ and $\mu_{\ell^\infty}^I=\mu_{\ell^\infty}$ is discrete torsion), so $\langle x,y\rangle=0$.
 \emph{Counting.} By \Cref{prop:galcoh:unramified-computed}(ii), \Cref{cor:galcoh:local-duality-consequences}(i) and \Cref{thm:galcoh:local-euler} (with $p\nmid\#M$),
-\[
-\#\Hur(\Q_p,M)\cdot\#\Hur(\Q_p,M^D)=\#H^0(\Q_p,M)\cdot\#H^0(\Q_p,M^D)=\#H^0(\Q_p,M)\cdot\#H^2(\Q_p,M)=\#H^1(\Q_p,M).
-\]
+\begin{align*}
+\#\Hur(\Q_p,M)\cdot\#\Hur(\Q_p,M^D)&=\#H^0(\Q_p,M)\cdot\#H^0(\Q_p,M^D)\\
+&=\#H^0(\Q_p,M)\cdot\#H^2(\Q_p,M)=\#H^1(\Q_p,M).
+\end{align*}
 As the pairing is perfect, the annihilator of $\Hur(\Q_p,M)$ has order $\#H^1(\Q_p,M)/\#\Hur(\Q_p,M)=\#\Hur(\Q_p,M^D)$; it contains $\Hur(\Q_p,M^D)$, so it equals it, and
 symmetrically.
 (ii) The orthogonality argument is the same, with $H^2(\hat\Z,\Q_\ell(1))=0$. By \Cref{prop:galcoh:unramified-computed}(iii) and
@@ -908,7 +916,11 @@ For $K=\Q_q$ the prime $q$ is a canonical uniformiser and $\Q_q^\times=q^{\Z}\ti
 \[
 H^1(\Q_q,\Z_\ell(1))=\Z_\ell\,[\kappa_q]\;\oplus\;\Hur(\Q_q,\Z_\ell(1))
 \]
-canonically, and there is a canonical retraction $\operatorname{pr}_{\ur}\colon H^1(\Q_q,\Z_\ell(1))\to\Hur(\Q_q,\Z_\ell(1))=H^1(G/I,\Z_\ell(1)^I)$ with
+canonically, and there is a canonical retraction
+\[
+\operatorname{pr}_{\ur}\colon H^1(\Q_q,\Z_\ell(1))\to\Hur(\Q_q,\Z_\ell(1))=H^1(G/I,\Z_\ell(1)^I)
+\]
+with
 $\operatorname{pr}_{\ur}[\kappa_x]=[\kappa_{xq^{-v_q(x)}}]$: it sends the class of $x$ to the class of its unit part.
 \end{proposition}
 
@@ -1008,7 +1020,7 @@ prime, so no term $e_3$). The last row is at $\ell=5$. The Tate parameters were 
 \texttt{elllocalred}, the degrees with \texttt{ellmoddegree} and checked against Cremona's \texttt{degphi} file, and the mod $\ell$ images read from Cremona's
 \texttt{galrep} file.
 \begin{center}
-\begin{tabular}{lccccccc}
+\small\begin{tabular}{lccccccc}
 curve, $q$&$a_q$&$n$&$\bar u$&$\bar u$ a cube?&extra&bound&$v_3(\degphi)$\\\hline
 \curve{77c1}, $7$&$-1$&$3$&$5$&no&$0$&$1$&$1$ ($\degphi=6$)\\
 \curve{791a1}, $7$&$-1$&$3$&$6$&yes&$1$&$2$&$2$ ($\degphi=144$)\\
@@ -1145,9 +1157,12 @@ the paper performs at the end of the proof of Lemma lem:tamfactor.
 Let $E/K$ be an elliptic curve and $n$ prime to $\operatorname{char}K$. The sequence $0\to E[n]\to E(\overline K)\xrightarrow{[n]}E(\overline K)\to0$ is an exact sequence of
 discrete $G_K$-modules, and its long exact sequence gives the \emph{Kummer map}
 \[
-\delta\colon E(K)/nE(K)\hookrightarrow H^1(K,E[n]),\qquad\delta(P)=[\sigma\mapsto\sigma Q-Q]\quad(nQ=P),
+\delta\colon E(K)/nE(K)\hookrightarrow H^1(K,E[n]),\qquad\delta(P)=[\sigma\mapsto\sigma Q-Q]\ \text{ with }nQ=P,
 \]
-and the exact sequence $0\to E(K)/nE(K)\to H^1(K,E[n])\to H^1(K,E)[n]\to0$, where $H^1(K,E)=H^1(K,E(\overline K))$.
+and the exact sequence
+\[
+0\to E(K)/nE(K)\to H^1(K,E[n])\to H^1(K,E)[n]\to0,\qquad H^1(K,E):=H^1(K,E(\overline K)).
+\]
 \end{proposition}
 
 \begin{proof}
@@ -1195,10 +1210,10 @@ and the gap between it and $\Hur(\Q_p,T)$ is measured by the same Tamagawa numbe
 
 \begin{definition}[the $n$-Selmer group and Sha]\label{def:galcoh:selmer-sha}
 For $E/\Q$ and $n\ge1$,
-\[
-\Sel_n(E/\Q)=\bigl\{c\in H^1(\Q,E[n]):\Res_vc\in\delta_v\bigl(E(\Q_v)/nE(\Q_v)\bigr)\text{ for all }v\bigr\},\qquad
+\begin{gather*}
+\Sel_n(E/\Q)=\bigl\{c\in H^1(\Q,E[n]):\Res_vc\in\delta_v\bigl(E(\Q_v)/nE(\Q_v)\bigr)\text{ for all }v\bigr\},\\
 \Sha(E/\Q)=\ker\Bigl(H^1(\Q,E)\to\prod_vH^1(\Q_v,E)\Bigr),
-\]
+\end{gather*}
 where $\delta_v$ is the Kummer map of $E/\Q_v$.
 \end{definition}
 
@@ -1255,9 +1270,10 @@ From now on $\ell$ is odd, so that every local condition at $\infty$ is $0=H^1(\
 Let $M$ be a $G_\Q$-module unramified outside a finite set $S$ of places (containing $\infty$ and $\ell$), of one of the following kinds: finite of $\ell$-power order; $W$,
 discrete and cofinitely generated; or $T$, of type (C). A \emph{Selmer structure} $\mathcal L$ on $M$ is a family of subgroups $\mathcal L_v\subseteq H^1(\Q_v,M)$, one for each place
 $v$, closed when $M$ is of type (C), such that $\mathcal L_v=\Hur(\Q_v,M)$ for all $v$ outside a finite set $S_{\mathcal L}\supseteq S$. Its \emph{Selmer group} is
-\[
-H^1_{\mathcal L}(\Q,M)=\bigl\{c\in H^1(\Q,M):\Res_vc\in\mathcal L_v\text{ for all }v\bigr\}=\ker\Bigl(H^1(G_{\Q,S_{\mathcal L}},M)\to\bigoplus_{v\in S_{\mathcal L}}H^1(\Q_v,M)/\mathcal L_v\Bigr),
-\]
+\begin{align*}
+H^1_{\mathcal L}(\Q,M)&=\bigl\{c\in H^1(\Q,M):\Res_vc\in\mathcal L_v\text{ for all }v\bigr\}\\
+&=\ker\Bigl(H^1(G_{\Q,S_{\mathcal L}},M)\to\bigoplus_{v\in S_{\mathcal L}}H^1(\Q_v,M)/\mathcal L_v\Bigr),
+\end{align*}
 the equality by \Cref{prop:galcoh:unramified-almost-everywhere}(i). We write $\mathcal L\subseteq\mathcal L'$ if $\mathcal L_v\subseteq\mathcal L'_v$ for all $v$.
 \end{definition}
 
@@ -1331,7 +1347,7 @@ $H^1_f(\Q_p,T^D)=\iota^{-1}H^1_f(\Q_p,V^D)$, the dual structure on $T^D$ in the 
 the hypothesis of \Cref{prop:galcoh:selmer-l-adic}(ii) for $T^D$; that proposition then says that the Selmer group $H^1_f(\Q,T^D)$ is $H^0(\Q,W^D)$, the group whose dual is the
 last term of the lemma.
 \end{paperlink}
-\section{Global duality: Poitou-Tate and the formula of Greenberg and Wiles}\label{sec:galcoh:global-duality}
+\section[Global duality]{Global duality: Poitou-Tate and the formula of Greenberg and Wiles}\label{sec:galcoh:global-duality}
 
 Global duality relates a Selmer group to the Selmer group of the dual structure on the Kummer dual. In the paper it enters only through Lemma lem:dfg21, the
 exact sequence of Diamond, Flach and Guo, which is a comparison of two Selmer structures; this section states the Poitou-Tate sequence and the formula of Greenberg
@@ -1342,7 +1358,8 @@ piece of class field theory over $\Q$. Throughout, $\ell$ is odd, $M$ is finite 
 Let $M$ be unramified outside $S$, with $\infty,\ell\in S$, and $G_S=G_{\Q,S}$. There is an exact sequence
 \[
 \begin{array}{l}
-0\to H^0(G_S,M)\to\bigoplus_{v\in S}\hat H^0(\Q_v,M)\to H^2(G_S,M^D)^*\to H^1(G_S,M)\to\bigoplus_{v\in S}H^1(\Q_v,M)\to H^1(G_S,M^D)^*\\[2pt]
+0\to H^0(G_S,M)\to\bigoplus_{v\in S}\hat H^0(\Q_v,M)\to H^2(G_S,M^D)^*\\[2pt]
+\qquad\to H^1(G_S,M)\to\bigoplus_{v\in S}H^1(\Q_v,M)\to H^1(G_S,M^D)^*\\[2pt]
 \qquad\to H^2(G_S,M)\to\bigoplus_{v\in S}H^2(\Q_v,M)\to H^0(G_S,M^D)^*\to0,
 \end{array}
 \]
@@ -1416,7 +1433,7 @@ Divide the formula of \Cref{thm:galcoh:greenberg-wiles} for $\mathcal L'$ by the
 
 \noindent This is the numerical shadow of the exact sequence of \Cref{thm:galcoh:comparison}; applied at each finite level to a structure and its relaxation at $\Sigma$,
 and passed to the limit, it gives the length identity in the proof of Theorem thm:main.
-\section{Comparing Selmer structures; the abstract form of Lemma 2.1 of Diamond, Flach and Guo}\label{sec:galcoh:comparison}
+\section[Comparing Selmer structures]{Comparing Selmer structures; the abstract form of Lemma 2.1 of Diamond, Flach and Guo}\label{sec:galcoh:comparison}
 
 This section proves the exact sequence that compares the Selmer groups of two structures $\mathcal L\subseteq\mathcal L'$, first for finite modules and then for the pair
 $(W,T^D)$, and specialises it to the relaxation of a structure at a finite set $\Sigma$. The result, \Cref{thm:galcoh:relaxing-sigma}, is Lemma lem:dfg21 of the paper
@@ -1500,7 +1517,10 @@ set of primes $p\ne\ell$.
 \[
 0\to H^1_{\mathcal L}(\Q,W)\to H^1_{\mathcal L^\Sigma}(\Q,W)\to\bigoplus_{p\in\Sigma}\bigl(\mathcal L^*_p\bigr)^*\to H^1_{\mathcal L^*}(\Q,T^D)^*\to H^1_{(\mathcal L^*)_\Sigma}(\Q,T^D)^*\to0 .
 \]
-\item Assume (a) $H^1_{L_{V^D}}(\Q,V^D)=0$. Then $H^1_{\mathcal L^*}(\Q,T^D)=H^1(G_{\Q,S},T^D)_{\tors}\simeq H^0(\Q,W^D)/H^0(\Q,W^D)_{\mathrm{div}}$.
+\item Assume (a) $H^1_{L_{V^D}}(\Q,V^D)=0$. Then
+\[
+H^1_{\mathcal L^*}(\Q,T^D)=H^1(G_{\Q,S},T^D)_{\tors}\simeq H^0(\Q,W^D)/H^0(\Q,W^D)_{\mathrm{div}}.
+\]
 \item Assume (a) and (b) $H^0(\Q_p,V^D)=0$ for at least one $p\in\Sigma$. Then $H^0(\Q,V^D)=0$, $H^0(\Q,W^D)$ is finite, $H^1_{(\mathcal L^*)_\Sigma}(\Q,T^D)=0$, and there is an exact
 sequence
 \[
