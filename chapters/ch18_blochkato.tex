@@ -743,8 +743,8 @@ $H^1(\Q_p,T)$ is finite and $H^1_f(\Q_p,T)=H^1(\Q_p,T)$.
 procyclic, and the five-term inflation-restriction sequence gives the exactness of (ii) up to the last map. For the discrete module $W$ the sequence is
 \Cref{ch:cohomology}'s, and $\operatorname{res}$ is onto $H^1(I,W)^{G/I}$ because the next term $H^2(G/I,W^I)$ vanishes ($\widehat\Z$ has cohomological dimension $1$ on torsion
 modules). For the compact module $T$ and for $V$ we use the extension of the five-term sequence to compact and $\Ql$ coefficients when the quotient is isomorphic
-to $\widehat\Z$, proved in \Cref{ch:cohomology}, and the surjectivity of $H^1(\Q_p,M)\to H^1(I,M)^{G/I}$ for such $M$ at $p\ne\ell$, proved in \Cref{ch:galcoh}; this is the only
-place where it enters, and it is used only at $p\ne\ell$. For $V$, $F-1$ is an endomorphism of the finite-dimensional space $V^I$, so its kernel
+to $\widehat\Z$, proved in \Cref{ch:cohomology}, and the surjectivity of $H^1(\Q_p,M)\to H^1(I,M)^{G/I}$ for such $M$ at $p\ne\ell$, proved in \Cref{ch:galcoh}. Every later use of this surjectivity
+((iii) below, Step 2 of \Cref{thm:blochkato:fpr-local}) goes through (ii), at $p\ne\ell$ only. For $V$, $F-1$ is an endomorphism of the finite-dimensional space $V^I$, so its kernel
 $H^0(\Q_p,V)=(V^I)^{F=1}$ and its cokernel have the same dimension.
 
 (iii) Let $\iota_I\colon H^1(I,T)\to H^1(I,V)$. Restriction commutes with $\iota$, so $c\in H^1(\Q_p,T)$ lies in $H^1_f(\Q_p,T)$ if and only if $\iota_I(\operatorname{res}c)=0$. As in
@@ -1137,9 +1137,10 @@ H^1(I,M)=(\Zl/n')\bar e\oplus(\Zl/n')\bar h\oplus\Zl\bar f,\qquad H^1(I,M)_{\mat
 \]
 By the tame relation $\Frob^{-1}t\,\Frob=t^{q^{-1}}$ and $c(t^a)\equiv a\,c(t)$ modulo $(t-1)M$, the \emph{arithmetic} Frobenius acts on $M/(t-1)M$ as $q^{-1}\Ad\rho(\Frob)$,
 that is, on the torsion by $\bar e\mapsto\bar e$ and $\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e)$; and
-\[
-\bigl(H^1(I,M)_{\mathrm{tor}}\bigr)^{G}=\{x\bar e+y\bar h:\ (q-1)y\equiv c'y\equiv0\pmod{\ell^{v_\ell(n)}}\}\simeq\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),\,v_\ell(q-1),\,v_\ell(c'))}.
-\]
+\begin{multline*}
+\bigl(H^1(I,M)_{\mathrm{tor}}\bigr)^{G}=\{x\bar e+y\bar h:\ (q-1)y\equiv c'y\equiv0\pmod{\ell^{v_\ell(n)}}\}\\
+\simeq\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),\,v_\ell(q-1),\,v_\ell(c'))}.
+\end{multline*}
 
 \emph{Step 5 (the class $c'$).} The number $c'=\varepsilon\kappa(\Frob)$ is a cocycle value, not a class: changing the Frobenius lift or the cocycle changes it by an element
 of $(n,q-1)\Zl$, which does not change $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$, and for the lift fixing a compatible system of $\ell$-power roots of $q$ its class modulo $q-1$
@@ -1769,7 +1770,7 @@ Let $\sigma=\sm0{-1}1{-1}$ and $\tau=-\sigma$, of order $6$ (the image of inerti
 $H^1(\langle\tau\rangle,\ad T)=0$ for $T=\Z_3^2$, and compare with the Tamagawa numbers $c_q=1$ at these types. The curve \curve{50a1} $=[1,0,1,-1,-2]$ has type $\kod{IV}$ at $5$ and $c_5=3$: deduce from \Cref{prop:blochkato:tam-of-E} that Frobenius acts
 trivially on $H^1(I_5,T_3E)_{\mathrm{tor}}\simeq\F_3$, so $v_3(\Tam_5(T_3E))=1$, while $\Tam_5(\ad T_3E)=\Z_3$.
 \emph{Answer:} $\tau$ has characteristic polynomial $X^2-X+1$ and $\tau^6=1\ne\tau$, so the norm $1+\tau+\dots+\tau^5$ is $0$ on $T$ and $H^1(\langle\tau\rangle,T)=T/(\tau-1)T$, of order
-$\abs{\det(\tau-1)}_3^{-1}=\abs{1-1+1}_3^{-1}=1$. On $\ad T$, $\tau$ acts as $\sigma$; the subgroup $\langle\tau^3\rangle=\{\pm1\}$ acts trivially and $\Hom(\{\pm1\},\ad T)=0$, so inflation-restriction
+$3^{v_3(\det(\tau-1))}=1$, since $\det(\tau-1)=1-1+1=1$. On $\ad T$, $\tau$ acts as $\sigma$; the subgroup $\langle\tau^3\rangle=\{\pm1\}$ acts trivially and $\Hom(\{\pm1\},\ad T)=0$, so inflation-restriction
 gives $H^1(\langle\tau\rangle,\ad T)=H^1(\langle\sigma\rangle,\ad T)=0$ (\Cref{prop:blochkato:ad-free-c3}).
 \end{exercise}
 
