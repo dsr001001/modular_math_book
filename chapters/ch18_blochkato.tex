@@ -1065,8 +1065,8 @@ symmetric, and if $m=a$ the form is $0$. The invariants for $A$ itself are $\{x\
 \end{proof}
 
 The general statement $\Tam_p(T^D)=\Tam_p(A)$ is \cite[(57)]{DFG04}, which the paper cites in Lemma lem:fpr; for the adjoint of an elliptic curve the proposition proves
-it in every case that occurs. As a check, an exhaustive computation over $\ell\in\{3,5\}$, $v\in\{0,1,2\}$, all primes $p<120$ with $p\ne\ell$, $\varepsilon=\pm1$ and
-$c'\in\{0,\dots,\ell^3-1\}$ ($26{,}448$ parameter choices) found both invariant modules of order $\ell^{v+\min(v,v_\ell(p-1),v_\ell(c'))}$ in every case.
+it in every case that occurs. As a check, an exhaustive computation over $\ell\in\{3,5\}$, $a\in\{0,1,2\}$, all primes $p<120$ with $p\ne\ell$, $\varepsilon=\pm1$ and
+$c'\in\{0,\dots,\ell^3-1\}$ ($26{,}448$ parameter choices) found both invariant modules of order $\ell^{a+\min(a,v_\ell(p-1),v_\ell(c'))}$ in every case.
 
 \begin{proposition}[the Tamagawa factor of $T_\ell E$]\label{prop:blochkato:tam-of-E}
 For $p\ne\ell$, $v_\ell(\Tam_p(T_\ell E))=v_\ell(c_p)$, the valuation of the Tamagawa number $c_p=[E(\Q_p):E_0(\Q_p)]$.
@@ -1075,9 +1075,12 @@ For $p\ne\ell$, $v_\ell(\Tam_p(T_\ell E))=v_\ell(c_p)$, the valuation of the Tam
 \begin{proof}
 Let $T=T_\ell E$, $V$, $W=E[\ell^\infty]$, $I=I_p$. As in the proof of \Cref{prop:blochkato:local-unramified}(iii), the connecting map identifies $W^I/(W^I)_{\mathrm{div}}$ with
 $H^1(I,T)_{\mathrm{tor}}=\ker(H^1(I,T)\to H^1(I,V))$, equivariantly for $G_{\Q_p}/I$ (the image of $V^I$ in $W^I$ is $(W^I)_{\mathrm{div}}$, as shown there). Now $W^I=E(\Q_p^{\ur})[\ell^\infty]$, and
-by \Cref{ch:reduction} the group $E(\Q_p^{\ur})$ is an extension of $\Phig_p=\Phi_p(\Fbar_p)$ by $E_0(\Q_p^{\ur})$, which is an extension of the group of nonsingular points of the
-reduction over $\Fbar_p$ (an elliptic curve, $\mathbb G_m$ or $\mathbb G_a$) by a pro-$p$ group; so $E_0(\Q_p^{\ur})$ is $\ell$-divisible and its $\ell$-power torsion is divisible
-($(\Qlmod)^2$, $\mu_{\ell^\infty}$ or $0$). Hence $0\to E_0(\Q_p^{\ur})[\ell^\infty]\to W^I\to\Phig_p[\ell^\infty]\to0$ is exact (\Cref{ch:galrep}, inertia invariants and component
+by \Cref{ch:reduction} the group $E(\Q_p^{\ur})$ is an extension of $\Phig_p=\Phi_p(\Fbar_p)$ by $E_0(\Q_p^{\ur})$, which is an extension of the group $\tilde E_{\mathrm{ns}}(\Fbar_p)$ of
+nonsingular points of the reduction (an elliptic curve, $\mathbb G_m$ or $\mathbb G_a$ over $\Fbar_p$) by the kernel of reduction $E_1(\Q_p^{\ur})$. The field $\Q_p^{\ur}$ is not
+complete, but it is the union of the finite unramified extensions $K$ of $\Q_p$, and each $E_1(K)$ is a pro-$p$ group (the formal group over the maximal ideal of
+$\mathcal O_K$), hence uniquely $\ell$-divisible; so $E_1(\Q_p^{\ur})$ is uniquely $\ell$-divisible. The reduction map $E_0(K)\to\tilde E_{\mathrm{ns}}(\F_K)$ is onto for each $K$
+(Hensel's lemma), and $\tilde E_{\mathrm{ns}}(\Fbar_p)$ is $\ell$-divisible; so $E_0(\Q_p^{\ur})$ is $\ell$-divisible, and its $\ell$-power torsion maps isomorphically onto that of
+$\tilde E_{\mathrm{ns}}(\Fbar_p)$, a divisible group ($(\Qlmod)^2$, $\mu_{\ell^\infty}$ or $0$). Hence $0\to E_0(\Q_p^{\ur})[\ell^\infty]\to W^I\to\Phig_p[\ell^\infty]\to0$ is exact (\Cref{ch:galrep}, inertia invariants and component
 groups), the first term is $(W^I)_{\mathrm{div}}$ (a divisible subgroup with finite quotient), and $H^1(I,T)_{\mathrm{tor}}\simeq\Phig_p[\ell^\infty]$ as Frobenius modules. The
 Frobenius invariants of $\Phig_p$ are $\Phi_p(\F_p)$, of order $c_p$.
 \end{proof}
@@ -1091,9 +1094,11 @@ $3\mid c_p$ (for example \curve{50a1} at $p=5$, type $\kod{IV}$, $c_5=3$).
 \section[Lemma lem:tamfactor]{The Tamagawa factor of \texorpdfstring{$\ad T$}{ad T} at a multiplicative prime: Lemma lem:tamfactor}\label{sec:blochkato:tamfactor}
 
 This section proves the paper's Lemma lem:tamfactor in full, with every step the paper compresses expanded, and extends it to the additive potentially
-multiplicative primes, $q=2$ included. The lemma is the source of the terms $t_\ell(E,q)$ in (eq:thm) and of the refinement tested in Section sec:tam. The
-inputs are: the Tate shape of $\rho|_{G_{\Q_q}}$ (\Cref{ch:galrep}), the tame relation (\Cref{ch:local}), the cohomology of procyclic groups (\Cref{ch:cohomology}),
-and the identification of the Frobenius value of the Kummer cocycle of $q_E$ with the class of $\bar u$ (\Cref{ch:galcoh}).
+multiplicative primes, $q=2$ included. The lemma is the source of the terms $t_\ell(E,q)$ in (eq:thm) and of the refinement tested in Section sec:tam. The work is
+divided between three chapters: \Cref{ch:cohomology} computes the group cohomology of the Tate shape (the model computation: $H^1(I,\ad T)$, its torsion, the Frobenius
+action and the invariants, for arbitrary corner values $n'$ and $c'$); \Cref{ch:galcoh} identifies $c'$ through the Kummer cocycle of $q_E$ and its indeterminacy
+$(n,q-1)$; this chapter is the home of the lemma itself: the identification with the Tamagawa factor, the assembly, and the additive potentially multiplicative case.
+The other two chapters state their results as corollaries pointing here.
 
 \begin{convention}[Tate data]\label{conv:blochkato:tate-data}
 Let $q\ne\ell$ be a prime of multiplicative reduction, $n=n_q$, $G=G_{\Q_q}$, $I=I_q$, and $\Frob$ an arithmetic Frobenius in $G$. We use:
@@ -1123,59 +1128,40 @@ In particular $v_\ell(\Tam_q(\ad T))\ge t_\ell(E,q)=v_\ell(n)$, with equality un
 \emph{Step 1 (the shape on inertia).} By \Cref{conv:blochkato:tate-data}(a), (b), $I$ acts on $T$ through $\langle t\rangle$, with $t=\sm1{n'}01$ in the basis $e_1,e_2$ ($\varepsilon$ is trivial on
 $I$).
 
-\emph{Step 2 (reduction to a procyclic group).} Let $K$ be the kernel of $I\to\langle t\rangle$. It acts trivially on $M$, and $H^1(K,M)=\Hom_{\mathrm{cont}}(K,M)=0$ because $K$ has no
-nontrivial pro-$\ell$ quotient and $M$ is pro-$\ell$. By inflation-restriction (\Cref{ch:cohomology}), $H^1(I,M')=H^1(\langle t\rangle,M')$ for every finitely generated
-$\Zl$-module $M'$ with this action, and for the procyclic group $\langle t\rangle\simeq\Zl$, $c\mapsto c(t)$ identifies $H^1(\langle t\rangle,M')$ with $M'/(t-1)M'$ (\Cref{ch:cohomology}).
-
-\emph{Step 3 (the computation).} In the basis $e=e_1\otimes e_2^\vee=\sm0100$, $h=e_1\otimes e_1^\vee-e_2\otimes e_2^\vee=\sm100{-1}$, $f=e_2\otimes e_1^\vee=\sm0010$ of $M$, conjugation by $t$
-gives
-\[
-tet^{-1}=e,\qquad tht^{-1}=h-2n'e,\qquad tft^{-1}=f+n'h-n'^2e,
-\]
-so $(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$. As $2$ is a unit, $(t-1)M$ contains $n'e$ and then $n'h$, and it is contained in $n'(\Zl e\oplus\Zl h)$; so
-$(t-1)M=n'(\Zl e\oplus\Zl h)$ and
+\emph{Steps 2 to 4 (the group cohomology).} These are the model computation of \Cref{ch:cohomology}, which we quote for the matrices of
+\Cref{conv:blochkato:tate-data}, where $v_\ell(n')=v_\ell(n)$. The kernel $K$ of $I\to\langle t\rangle$ has no nontrivial pro-$\ell$ quotient, so inflation-restriction gives
+$H^1(I,M)=H^1(\langle t\rangle,M)=M/(t-1)M$. In the basis $e=e_1\otimes e_2^\vee=\sm0100$, $h=e_1\otimes e_1^\vee-e_2\otimes e_2^\vee=\sm100{-1}$, $f=e_2\otimes e_1^\vee=\sm0010$ of $M$ one has
+$(t-1)M=n'(\Zl e\oplus\Zl h)$ ($\ell$ odd), so
 \[
 H^1(I,M)=(\Zl/n')\bar e\oplus(\Zl/n')\bar h\oplus\Zl\bar f,\qquad H^1(I,M)_{\mathrm{tor}}\simeq(\Z/\ell^{v_\ell(n)})^2 .
 \]
-
-\emph{Step 4 (the Frobenius action).} For a cocycle $c$ on $\langle t\rangle$ and $a\in\Zl$, $c(t^a)\equiv a\,c(t)$ modulo $(t-1)M$ (for $a\in\N$, $c(t^a)=(1+t+\dots+t^{a-1})c(t)$, and
-the general case follows by continuity). Hence, by \Cref{conv:blochkato:tate-data}(c),
+By the tame relation $\Frob^{-1}t\,\Frob=t^{q^{-1}}$ and $c(t^a)\equiv a\,c(t)$ modulo $(t-1)M$, the \emph{arithmetic} Frobenius acts on $M/(t-1)M$ as $q^{-1}\Ad\rho(\Frob)$,
+that is, on the torsion by $\bar e\mapsto\bar e$ and $\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e)$; and
 \[
-(\Frob\cdot c)(t)=\rho(\Frob)\,c(\Frob^{-1}t\,\Frob)\,\rho(\Frob)^{-1}=\Ad\rho(\Frob)\,c(t^{q^{-1}})\equiv q^{-1}\Ad\rho(\Frob)\,c(t)
-\]
-modulo $(t-1)M$:
-the \emph{arithmetic} Frobenius acts on $M/(t-1)M$ as $q^{-1}\Ad\rho(\Frob)$. With $\rho(\Frob)=\sm{\varepsilon q}{c'}{0}{\varepsilon}$ one computes $\rho(\Frob)e\rho(\Frob)^{-1}=qe$ and
-$\rho(\Frob)h\rho(\Frob)^{-1}=h-2\varepsilon c'e$ (the inverse is $\sm{\varepsilon q^{-1}}{-c'q^{-1}}{0}{\varepsilon}$, as $\varepsilon^2=1$). So on the torsion
-\[
-\bar e\mapsto\bar e,\qquad\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e),
-\]
-and $x\bar e+y\bar h$ is fixed iff $q^{-1}y\equiv y$ and $2\varepsilon c'q^{-1}y\equiv0$ modulo $\ell^{v_\ell(n)}$, that is, iff $(q-1)y\equiv0$ and $c'y\equiv0\pmod{\ell^{v_\ell(n)}}$. The solutions
-are $\ell^{v_\ell(n)}$ values of $x$ and the $y\in(\Z/\ell^{v_\ell(n)})[\ell^{\min(v_\ell(q-1),v_\ell(c'))}]$, a cyclic group of order $\ell^{\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))}$ (\Cref{ch:groups}):
-\[
-\bigl(H^1(I,M)_{\mathrm{tor}}\bigr)^{G}\simeq\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),\,v_\ell(q-1),\,v_\ell(c'))}.
+\bigl(H^1(I,M)_{\mathrm{tor}}\bigr)^{G}=\{x\bar e+y\bar h:\ (q-1)y\equiv c'y\equiv0\pmod{\ell^{v_\ell(n)}}\}\simeq\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),\,v_\ell(q-1),\,v_\ell(c'))}.
 \]
 
-\emph{Step 5 (the class $c'$).} The number $c'=\varepsilon\kappa(\Frob)$ is a cocycle value, not a class. Replacing $\Frob$ by $\Frob\,t^a$ replaces $\rho(\Frob)$ by
-$\rho(\Frob)\sm1{an'}01$, whose corner is $c'+\varepsilon q\,a n'$; replacing $\kappa$ by a cohomologous cocycle $\kappa+(g-1)z$ changes $\kappa(\Frob)$ by $(q-1)z$. So $c'$ is well
-defined only modulo the ideal $(n,q-1)\Zl=\ell^{\min(v_\ell(n),v_\ell(q-1))}\Zl$, and $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ is unchanged by either change (ultrametric
-inequality). By \Cref{ch:galcoh} (the identification of $c'$): for the lift $\Frob_0$ fixing a compatible system of $\ell$-power roots of $q$, $\kappa_q(\Frob_0)=0$, so
-$c'=\varepsilon\kappa_u(\Frob_0)$, and the class of $\kappa_u(\Frob_0)$ in $\Zl(1)/(q-1)\simeq\F_q^\times\otimes\Zl\simeq\Z/\ell^{v_\ell(q-1)}$ is the class of $\bar u$. An element of the cyclic group
-$\F_q^\times/(\F_q^\times)^{\ell^{v_\ell(q-1)}}$ lies in the subgroup of $\ell^k$-th powers ($k\le v_\ell(q-1)$) iff, under any isomorphism with $\Z/\ell^{v_\ell(q-1)}$, it is divisible by
-$\ell^k$. Hence, for $\Frob_0$, $\min(v_\ell(q-1),v_\ell(c'))=v_\ell(c(u))$ in the sense of \Cref{conv:blochkato:setup}(f), and therefore
-$\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))=\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))$ for every choice of lift and cocycle.
+\emph{Step 5 (the class $c'$).} The number $c'=\varepsilon\kappa(\Frob)$ is a cocycle value, not a class: changing the Frobenius lift or the cocycle changes it by an element
+of $(n,q-1)\Zl$, which does not change $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$, and for the lift fixing a compatible system of $\ell$-power roots of $q$ its class modulo $q-1$
+is $\varepsilon$ times the class of $\bar u$. Hence $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))=\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))$ for every choice. This is the theorem of
+\Cref{ch:galcoh} on the corner of $\rho(\Frob)$ at a multiplicative prime, with \Cref{conv:blochkato:setup}(f) for the meaning of $v_\ell(c(u))$; that theorem is local (it uses
+only the $G_{\Q_q}$-module $T$ in its Tate shape and the Kummer cocycle of $q_E$), which matters in \Cref{prop:blochkato:tam-potmult}.
 
-\emph{Step 6 (conclusion).} By \Cref{def:blochkato:tamagawa} and Steps 4, 5, $v_\ell(\Tam_q(\ad T))$ is the length $v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))$. The excess
-$\min(\dots)$ is positive iff $\ell\mid n$, $\ell\mid q-1$ and $\bar u\in(\F_q^\times)^\ell$. As a check, the same steps for $M=T$ give $(t-1)T=n'\Zl e_1$, $H^1(I,T)_{\mathrm{tor}}=(\Z/\ell^{v_\ell(n)})\bar e_1$, and
-$\Frob$ acts by $q^{-1}\cdot\varepsilon q=\varepsilon$; the invariants have length $v_\ell(n)$ if $\varepsilon=1$ and $0$ if $\varepsilon=-1$ ($\ell$ odd), the $\ell$-part of $c_q$ (\Cref{prop:blochkato:tam-of-E}).
+\emph{Step 6 (conclusion).} By \Cref{def:blochkato:tamagawa}, $\Tam_q(\ad T)$ is the Fitting ideal of the finite module of Steps 2 to 4, whose length is the sum of the
+exponents; with Step 5, $v_\ell(\Tam_q(\ad T))=v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))$. The excess $\min(\dots)$ is positive iff $\ell\mid n$, $\ell\mid q-1$ and
+$\bar u\in(\F_q^\times)^\ell$. As a check, the model computation for $M=T$ (\Cref{ch:cohomology}) gives $H^1(I,T)_{\mathrm{tor}}=(\Z/\ell^{v_\ell(n)})\bar e_1$ with $\Frob$ acting by
+$q^{-1}\cdot\varepsilon q=\varepsilon$; the invariants have length $v_\ell(n)$ if $\varepsilon=1$ and $0$ if $\varepsilon=-1$ ($\ell$ odd), the $\ell$-part of $c_q$ (\Cref{prop:blochkato:tam-of-E}).
 \end{proof}
 
 \begin{paperlink}
 The proof of Lemma lem:tamfactor in the paper is Steps 1 to 6 in compressed form. Three points are corrected or made precise above, and the revised
 version of the paper has adopted all three. The corner of the matrices is $\varepsilon\kappa$ (Step 1; the original wrote $\kappa$). The Frobenius in the matrices is
-arithmetic (Step 4; the paper now says so). The original identified $c'$ with ``the image of $\kappa$ in $H^1(G/I,\Z_\ell(1)^I)$ \dots, well defined modulo $q-1$''; the image
-exists only through the splitting attached to the uniformiser $q$, $c'$ equals $\varepsilon$ times that image only for the lift $\Frob_0$, and the indeterminacy is
+arithmetic (Steps 2 to 4; the paper now says so). The original identified $c'$ with ``the image of $\kappa$ in $H^1(G/I,\Z_\ell(1)^I)$ \dots, well defined modulo $q-1$''; the image
+exists only through the splitting attached to the uniformiser $q$, $c'$ equals $\varepsilon$ times that image only for the lift fixing a compatible system of $\ell$-power roots of $q$, and the indeterminacy is
 $(n,q-1)$ (Step 5). The revised proof reads: ``it is $\varepsilon$ times the class of $u$ for the Frobenius lift fixing a compatible system of $\ell$-power roots of $q$, and in
-general it is well defined only modulo $\ell^{\min(v_\ell(n),v_\ell(q-1))}$''. None of this changes the formula. The identification of $\Tam_q$ with the Fitting ideal of the
+general it is well defined only modulo $\ell^{\min(v_\ell(n),v_\ell(q-1))}$''. None of this changes the formula. One wording slip remains in the revised proof: it
+says ``so $\Frob$ acts on $M/(t-1)M$ as $q^{-1}\rho(\Frob)$''; the action on $M=\ad T$ is $q^{-1}\Ad\rho(\Frob)$, conjugation by $\rho(\Frob)$, as in Steps 2 to 4, and the
+paper's next sentence (``the adjoint action sends $e$ to $qe$'') computes with the adjoint action, so the result is unaffected. The identification of $\Tam_q$ with the Fitting ideal of the
 invariants of the torsion is \Cref{def:blochkato:tamagawa}.
 \end{paperlink}
 
@@ -1190,7 +1176,7 @@ In the situation of \Cref{lem:blochkato:tamfactor}:
 \end{corollary}
 
 \begin{proof}
-(i) to (iii) are read off the formula; $v_\ell(2-1)=0$. (iv) The formula involves only $n$, $q$ and $\bar u$; $\varepsilon$ entered Step 4 only through the unit $2\varepsilon$.
+(i) to (iii) are read off the formula; $v_\ell(2-1)=0$. (iv) The formula involves only $n$, $q$ and $\bar u$; $\varepsilon$ entered Steps 2 to 4 only through the unit $2\varepsilon$.
 \end{proof}
 
 \begin{paperlink}
@@ -1211,8 +1197,9 @@ v_\ell\bigl(\Tam_q(\ad T)\bigr)=v_\ell(\nu)+\min\bigl(v_\ell(\nu),v_\ell(q-1),v_
 \begin{proof}
 Over $\Q_q$, $E$ is the twist of the Tate curve $E_{q_E}$ by a ramified quadratic character $\chi$ of $G_{\Q_q}$ (\Cref{ch:reduction}, \Cref{ch:galrep}), so $T_\ell E\simeq T_\ell E_{q_E}\otimes\chi$
 and $\ad T_\ell E\simeq\ad T_\ell E_{q_E}$ as $G_{\Q_q}$-modules (\Cref{prop:blochkato:adjoint-self-dual}(ii)). The Tate curve $E_{q_E}$ has split multiplicative reduction with
-$v_q(\Delta)=v_q(q_E)=\nu$ and Tate parameter $q_E$, and the proof of \Cref{lem:blochkato:tamfactor} uses only the $G_{\Q_q}$-module $\ad T$ in its Tate shape (with $\varepsilon=1$); so the formula
-holds with $n=\nu$. At $q=2$, $v_\ell(q-1)=0$ and the value is $t_\ell(E,2)=v_\ell(-v_2(j_E))$.
+$v_q(\Delta)=v_q(q_E)=\nu$ and Tate parameter $q_E$, and the proof of \Cref{lem:blochkato:tamfactor} uses only the $G_{\Q_q}$-module $\ad T$ in its Tate shape (with $\varepsilon=1$). The
+results of \Cref{ch:cohomology,ch:galcoh} quoted in Steps 2 to 5 are stated there for a curve over $\Q$, but their proofs are local: they use only the Tate shape of the
+$G_{\Q_q}$-module and the Kummer cocycle of the Tate parameter. So they apply verbatim to the Tate curve $E_{q_E}$ over $\Q_q$, and the formula holds with $n=\nu$. At $q=2$, $v_\ell(q-1)=0$ and the value is $t_\ell(E,2)=v_\ell(-v_2(j_E))$.
 \end{proof}
 
 For odd $q$ one may instead twist globally, by $\chi_{q^*}$, as the original proof of Theorem thm:main did with the curve $E_{\{p\}}$ of Lemma lem:twist; for $q=2$ that lemma
@@ -1403,7 +1390,9 @@ $\bar\chi_3=\chi_{-3}$.
 \end{proof}
 
 \begin{paperlink}
-Lemma lem:h0 in the revised paper states (ii) and proves it by the determinant argument. The original version asserted finiteness ``for $E$ without complex
+Lemma lem:h0 in the revised paper states (ii) with the criterion over $\Q(\sqrt{-3})$ (``if and only if $\bar\rho_{E,3}$ is not absolutely irreducible on
+$\Gal(\overline\Q/\Q(\sqrt{-3}))$'') and proves it by the determinant argument; the equivalence with the image being $N_s(\F_3)$ is the paper's Proposition prop:ns
+(\Cref{ch:galrep}). The original version asserted finiteness ``for $E$ without complex
 multiplication'', by an argument with $a_p=0$ at inert primes that confused the cyclotomic $\chi_\ell$ with the quadratic $\chi_{\ell^*}$; it also stated the criterion for
 $h_\ell(E)>0$ with $\chi_{\ell^*}$ instead of $\bar\chi_\ell$. The two agree only for $\ell=3$. Conjecture conj:euler defines $h_\ell(E)$ as the length of
 $H^0(\Q,\ad T(1)\otimes\Q_\ell/\Z_\ell)$, which is $\len H^1_f(\Q,T^D)$ by (i) whenever $H^1_f(\Q,V^D)=0$.
@@ -1442,6 +1431,13 @@ The term at $\infty$ is $H^1(\R,T^D)^*=0$, a group killed by $2$ and by a power 
 \Cref{thm:blochkato:fpr-local}.
 \end{proof}
 
+\begin{paperlink}
+The paper's Lemma lem:dfg21 does not state $\ell\notin\Sigma$. It is needed: $H^1_\Sigma(\Q,W)$ keeps the Bloch-Kato condition at $\ell$, and the paragraph after the lemma
+(``For $p\in\Sigma$ the group $H^1_f(\Q_p,V^D)=H^1_{\mathrm{ur}}(\Q_p,V^D)=(V^D)^{I_p}/(\Frob_p-1)$ vanishes'') is false at $p=\ell$, where $H^1_f(\Q_\ell,V^D)$ is not the
+unramified group and has dimension $2$ when $\ell\nmid N$ (\Cref{prop:blochkato:dimension-formula}). In the paper's application $\Sigma$ is the set of primes dividing $N$ and
+$\ell\nmid N$, so nothing is affected; the lemma above includes the hypothesis.
+\end{paperlink}
+
 What each hypothesis does, in the abstract proof of \Cref{ch:galcoh}: $H^1_f(\Q,V^D)=0$ makes the dual Selmer group $H^1_f(\Q,T^D)$ torsion, hence equal to
 $H^0(\Q,W^D)$ (\Cref{prop:blochkato:h0-selmer}(i)); $\Sigma\ne\emptyset$ with $H^0(\Q_p,V^D)=0$ at some $p\in\Sigma$ makes the strict dual Selmer group (classes of $H^1_f(\Q,T^D)$ that vanish
 at $\Sigma$) zero, because the local connecting map $H^0(\Q_p,W^D)\to H^1(\Q_p,T^D)$ is then injective, and this gives the surjection onto $H^0(\Q,W^D)^*$; and $\ell$ odd kills
@@ -1456,10 +1452,12 @@ Under the hypotheses of \Cref{lem:blochkato:dfg21} for the paper's objects, with
 \end{corollary}
 
 \begin{proof}
-By \Cref{prop:blochkato:euler-characteristic}, $H^1_f(\Q,V^D)=0$ gives $H^1_f(\Q,A_f)=0$, so $H^1_f(\Q,W)$ is finite (\Cref{prop:blochkato:selmer-relations}(iii)); the local terms are
-finite (\Cref{thm:blochkato:fpr-local}), and $H^0(\Q,W^D)$ is finite (\Cref{prop:blochkato:h0-selmer}(ii)). So $H^1_\Sigma(\Q,W)$ is finite, and in an exact sequence of finite
-$\Zl$-modules the alternating sum of lengths is $0$ (\Cref{ch:cohomology}); Pontryagin duality preserves lengths. The local lengths are
-$v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(T^D))$ (\Cref{thm:blochkato:fpr-local}), with $\Tam_p(T^D)=\Tam_p(\ad T)$ (\Cref{prop:blochkato:tam-dual}), and $\len H^0(\Q,W^D)=h_\ell(E)$.
+The abstract length identity is \Cref{ch:galcoh}'s corollary to its comparison theorem: under the hypotheses checked in the proof of \Cref{lem:blochkato:dfg21},
+$\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\len H^1_f(\Q_p,T^D)-\len H^0(\Q,W^D)$, with all terms finite as soon as $H^1_f(\Q,W)$ is finite. What this chapter adds is
+the identification of the terms. Finiteness of $H^1_f(\Q,W)$: $H^1_f(\Q,V^D)=0$ gives $H^1_f(\Q,A_f)=0$ by \Cref{prop:blochkato:euler-characteristic} ($\ell\nmid N$ as
+$\Sigma$ is the set of primes dividing $N$ and $\ell\notin\Sigma$; $\bar\rho$ irreducible, hence absolutely irreducible), so $H^1_f(\Q,W)$ is finite by
+\Cref{prop:blochkato:selmer-relations}(iii). The local lengths are $v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(T^D))$ (\Cref{thm:blochkato:fpr-local}, with the value of the Euler factor
+from \Cref{ch:lfunctions}), with $\Tam_p(T^D)=\Tam_p(\ad T)$ (\Cref{prop:blochkato:tam-dual}); and $\len H^0(\Q,W^D)=h_\ell(E)$ (\Cref{prop:blochkato:h0-selmer}(ii)).
 \end{proof}
 
 \begin{paperlink}
@@ -1486,7 +1484,8 @@ Here $v_\ell(L_q(A_f,1)^{-1})=v_\ell(q^2-1)$ at the potentially multiplicative p
 
 \begin{proof}
 $\ell\notin S_f$ means $\ell\nmid2N$ and $\bar\rho$ absolutely irreducible over $\Q(\sqrt{\ell^*})$, hence over $\Q$. $\Sigma\ne\emptyset$ because no elliptic curve over $\Q$ has good reduction
-everywhere (\Cref{ch:reduction}), and $W$ is unramified outside $\Sigma\cup\{\ell\}$. By \Cref{thm:blochkato:dfg27} the hypotheses of \Cref{lem:blochkato:dfg21} hold. By
+everywhere (\Cref{ch:reduction}), and $W$ is unramified outside $\Sigma\cup\{\ell\}$. By \Cref{thm:blochkato:dfg27} the hypotheses of \Cref{lem:blochkato:dfg21} hold, and
+$H^1_f(\Q,A_f)=0$ directly, so the finiteness of $H^1_f(\Q,W)$ (\Cref{prop:blochkato:selmer-relations}(iii)) does not need \Cref{prop:blochkato:euler-characteristic} here. By
 \Cref{prop:blochkato:h0-selmer}(ii) and the equivalences after \Cref{def:blochkato:exceptional-set}, $h_\ell(E)=0$. \Cref{cor:blochkato:length-identity} gives the identity with
 $\sum_{p\in\Sigma}v_\ell(\Tam_p(\ad T))$, which \Cref{cor:blochkato:explicit-identity} (its first part, which is proved in this chapter) makes explicit. The values of the Euler terms
 are \Cref{lem:blochkato:euler-integral}.
@@ -1729,8 +1728,8 @@ $0$ otherwise. The statement holds in all rows by \Cref{prop:blochkato:local-unr
 
 \begin{exercise}[multiplicative primes]\label{ex:blochkato:ex-mult}
 Let $q$ be a prime of multiplicative reduction, $\ell\ne q$ odd, and $W=\ad T\otimes\Qlmod$. Show that $H^1_f(\Q_q,W)=0$; that $W^{I_q}=(\Qlmod)\,e$ if $\ell\nmid n_q$, so that
-$H^1_{\ur}(\Q_q,W)=0$; and that if $\ell\mid n_q$, $W^{I_q}$ contains $\ell^{-v}\Zl h/\Zl h$ modulo $(\Qlmod)e$, with $v=v_\ell(n_q)$. For $W=E[\ell^\infty]$ with split reduction and $\ell\mid n_q$, show
-$H^1_{\ur}(\Q_q,W)\simeq\Z/\ell^{v}$ while $H^1_f(\Q_q,W)=0$.
+$H^1_{\ur}(\Q_q,W)=0$; and that if $\ell\mid n_q$, $W^{I_q}$ contains $\ell^{-a}\Zl h/\Zl h$ modulo $(\Qlmod)e$, with $a=v_\ell(n_q)$. For $W=E[\ell^\infty]$ with split reduction and $\ell\mid n_q$, show
+$H^1_{\ur}(\Q_q,W)\simeq\Z/\ell^{a}$ while $H^1_f(\Q_q,W)=0$.
 \emph{Hint:} for $x=ae+bh+cf$, $(t-1)x=-(2n'b+n'^2c)e+n'c\,h$; and multiplication by $q-1\ne0$ is surjective on $\Qlmod$. Compare \Cref{ex:blochkato:ur-versus-f}.
 \end{exercise}
 
@@ -1743,11 +1742,12 @@ while \Cref{lem:blochkato:tamfactor} needs no irreducibility.
 \end{exercise}
 
 \begin{exercise}[the indeterminacy of $c'$]\label{ex:blochkato:ex-cprime}
-In the situation of \Cref{conv:blochkato:tate-data}, show directly that changing the Frobenius lift by $t^a$ and the cocycle $\kappa$ by a coboundary changes $c'$ by an element of
-$(n,q-1)\Zl$, and give an example with $\ell\mid n$, $\ell\mid q-1$ in which the change is not a multiple of $q-1$. Show that $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$ does not change. Why does
-``the image of $\kappa$ in $H^1(G/I,\Zl(1))$'' make sense for $\Q_q$ but not for a ramified extension of $\Q_q$ without a choice?
-\emph{Hint:} the change under $t^a$ is $\varepsilon qan'$; take $v_\ell(n)<v_\ell(q-1)$. A uniformiser is needed to split $H^1(K,\Zl(1))=\widehat{K^\times}$ into a unit part and a valuation
-part, and $q$ is a canonical uniformiser of $\Q_q$ only.
+In the situation of \Cref{conv:blochkato:tate-data}, take $\ell=3$, $q=19$ and $n=6$ (as for \curve{1748e1} at $19$). Find a change of Frobenius lift that changes $c'$ by an
+element of valuation exactly $1$, so that the class of $c'$ modulo $q-1$ is not well defined, and check that $\min(v_3(n),v_3(q-1),v_3(c'))$ does not change. Then let $K/\Q_q$ be
+ramified of degree $e$ with uniformiser $\varpi$: show that replacing $\varpi$ by $\varpi w$ ($w$ a unit) changes the unramified projection of the Kummer class of $q_E$ by the class of
+$w^{-v_K(q_E)}$, so that ``the image of $\kappa$ in $H^1(G_K/I_K,\Zl(1))$'' depends on a choice.
+\emph{Answer:} the change under $\Frob\mapsto\Frob\,t^a$ is $\varepsilon qan'$, of valuation $v_3(n)=1$ for $a=1$, while $v_3(q-1)=2$; the minimum is capped by $v_3(n)=1$ either way.
+Over $K$, $q_E=\varpi^{k}u_K=(\varpi w)^{k}(w^{-k}u_K)$ with $k=v_K(q_E)$, so the unit part changes by $w^{-k}$.
 \end{exercise}
 
 \begin{exercise}[$\Tam(T)$ and $c_q$]\label{ex:blochkato:ex-tam-T}
@@ -1756,24 +1756,28 @@ $\ell=5$ (split, $n=5$, $c_{11}=5$) and for \curve{14a1} at $q=2$, $\ell=3$ (non
 \emph{Answer:} $(\Z/5)\bar e_1$ with Frobenius acting by $\varepsilon=1$: invariants of order $5$; $(\Z/3)\bar e_1$ with Frobenius acting by $-1$: invariants $0$, and $3\nmid c_2$.
 \end{exercise}
 
-\begin{exercise}[$\Tam(A(1))=\Tam(A)$ by hand]\label{ex:blochkato:ex-tam-dual}
-\sloppy Let $v\ge0$, $\gamma,\delta\in\Z/\ell^v$, and $m=\min(v,v_\ell(\gamma),v_\ell(\delta))$. Show that both $\{(x,y):\gamma y=\delta y=0\}$ and $\{(x,y):\gamma x-\delta y=0\}$ in $(\Z/\ell^v)^2$ are isomorphic to
-$\Z/\ell^v\oplus\Z/\ell^m$. Deduce the structure statement of \Cref{prop:blochkato:tam-dual}(b), and show that the two invariant modules are in general different subgroups of
-$(\Z/\ell^v)\bar e\oplus(\Z/\ell^v)\bar h$.
-\emph{Hint:} reduce to $\gamma=\ell^m$ or $\delta=\ell^m$ by a unit change of variables (Smith form of a $1\times2$ matrix).
+\begin{exercise}[$\Tam(A(1))=\Tam(A)$ at $\ell=5$]\label{ex:blochkato:ex-tam-dual}
+Let $\ell=5$ and $q$ a prime of split multiplicative reduction with $25\mid n_q$. (a) For $q=101$ (so $25\mid q-1$) and $\bar u$ a $25$-th power in $\F_{101}^\times$, show that the excess of
+\Cref{lem:blochkato:tamfactor} is $2$ and $v_5(\Tam_q(\ad T))=4$, and that the invariant modules for $A$ and for $A(1)$ in $(\Z/25)\bar e\oplus(\Z/25)\bar h$ coincide. (b) For $q=11$ and
+$c'=5$, list both invariant modules and show that they are isomorphic to $\Z/25\oplus\Z/5$ but are different subgroups.
+\emph{Answer:} (a) $\min(2,2,2)=2$; as $25\mid q-1$, the conditions $(q-1)y\equiv0$, $c'y\equiv0$ for $A$ and $(q-1)x-2c'y\equiv0$ for $A(1)$ both reduce to $c'y\equiv0\pmod{25}$, which holds for all $y$.
+(b) For $A$: $10y\equiv5y\equiv0$, that is $5\mid y$. For $A(1)$: $10x-10y\equiv0\pmod{25}$, that is $x\equiv y\pmod5$; the element $\bar e+\bar h$ lies in the second and not in the first.
 \end{exercise}
 
-\begin{exercise}[type $\kod{IV}$ at $\ell=3$]\label{ex:blochkato:ex-c3}
-Let $\sigma=\sm0{-1}1{-1}$. Verify the three coordinate vectors of \Cref{prop:blochkato:ad-free-c3}, and show that $H^1(\langle\sigma\rangle,T)\simeq\F_3$ while
-$H^1(\langle\sigma\rangle,\ad T)=0$. The curve \curve{50a1} $=[1,0,1,-1,-2]$ has type $\kod{IV}$ at $5$ and $c_5=3$: deduce from \Cref{prop:blochkato:tam-of-E} that Frobenius acts
+\begin{exercise}[inertia of order $6$, and type $\kod{IV}$, at $\ell=3$]\label{ex:blochkato:ex-c3}
+Let $\sigma=\sm0{-1}1{-1}$ and $\tau=-\sigma$, of order $6$ (the image of inertia at the types $\kod{II}$, $\kod{II}^*$ for $q\ge5$). Show that $H^1(\langle\tau\rangle,T)=0$ and
+$H^1(\langle\tau\rangle,\ad T)=0$ for $T=\Z_3^2$, and compare with the Tamagawa numbers $c_q=1$ at these types. The curve \curve{50a1} $=[1,0,1,-1,-2]$ has type $\kod{IV}$ at $5$ and $c_5=3$: deduce from \Cref{prop:blochkato:tam-of-E} that Frobenius acts
 trivially on $H^1(I_5,T_3E)_{\mathrm{tor}}\simeq\F_3$, so $v_3(\Tam_5(T_3E))=1$, while $\Tam_5(\ad T_3E)=\Z_3$.
+\emph{Answer:} $\tau$ has characteristic polynomial $X^2-X+1$ and $\tau^6=1\ne\tau$, so the norm $1+\tau+\dots+\tau^5$ is $0$ on $T$ and $H^1(\langle\tau\rangle,T)=T/(\tau-1)T$, of order
+$\abs{\det(\tau-1)}_3^{-1}=\abs{1-1+1}_3^{-1}=1$. On $\ad T$, $\tau$ acts as $\sigma$; the subgroup $\langle\tau^3\rangle=\{\pm1\}$ acts trivially and $\Hom(\{\pm1\},\ad T)=0$, so inflation-restriction
+gives $H^1(\langle\tau\rangle,\ad T)=H^1(\langle\sigma\rangle,\ad T)=0$ (\Cref{prop:blochkato:ad-free-c3}).
 \end{exercise}
 
 \begin{exercise}[the refined bound for \curve{791a1}]\label{ex:blochkato:ex-791}
 The curve \curve{791a1} $=[1,0,1,-31,117]$ has conductor $7\cdot113$, type $\kod{I}_3$ at $7$ and $\kod{I}_2$ at $113$, and $\degphi=144$. Show that the unit part of its Tate parameter
 at $7$ reduces to a cube in $\F_7^\times$, so $v_3(\Tam_7(\ad T))=2$; that the bound (eq:thm) at $\ell=3$ is $1$ and the refined bound is $2=v_3(144)$; and conclude, granting
 Theorem thm:main, that $H^1_f(\Q,\ad T_3E\otimes\Q_3/\Z_3)=0$.
-\emph{Hint:} the unit part is the reduction of $j_E^{-1}7^3$; it is $6=-1$.
+\emph{Hint:} the unit part is the reduction of $j_E^{-1}7^{-3}=(j_E7^3)^{-1}$; it is $6=-1$.
 \end{exercise}
 
 \begin{exercise}[an Euler term]\label{ex:blochkato:ex-121}

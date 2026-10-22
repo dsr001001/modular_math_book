@@ -113,7 +113,7 @@ $K$ acting trivially; dictionary with $G_{\Q_q}$, $I_q$, $\ad T_\ell E$. \emph{(
 \item \textbf{Frobenius on $H^1$ of inertia.} $G$ acting on $M$ by $\rho_M$: $H^1(I,M)\simeq M/(t-1)M$; $\overline\Frob$ acts by $q^{-1}\rho_M(\Frob)$ (for $M=\ad T$:
 $q^{-1}\Ad\rho(\Frob)$), well defined since $\rho_M(\Frob)(t-1)M\subseteq(t-1)M$, independent of the lift;
 $(H^1(I,M)_{\mathrm{tor}})^{G/I}=\{\bar m\in(M/(t-1)M)_{\mathrm{tor}}:\rho_M(\Frob)\bar m=q\bar m\}$. \emph{(proved here)} \Cref{prop:cohomology:frob-h1}.
-\item \textbf{The Tate shape.} For $\rho(t)=\sm1{n'}01$, $\rho(\Frob)=\sm{\varepsilon q}{c'}0\varepsilon$ on $\ad T$ (basis $e,h,f$): $(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$; $\Frob\cdot e=qe$,
+\item \textbf{The Tate shape.} For $\rho(t)=\sm1{n'}01$, $\rho(\Frob)=\sm{\varepsilon q}{c'}0\varepsilon$ on $T$, and $\Ad\rho$ on $\ad T$ (basis $e,h,f$): $(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$; $\Frob\cdot e=qe$,
 $\Frob\cdot h=h-2\varepsilon c'e$, $\Frob\cdot f=q^{-1}(f+\varepsilon c'h-c'^2e)$. \emph{(proved here)} \Cref{lem:cohomology:tate-shape}.
 \item \textbf{The model computation.} $\ell$ odd, $w=v_\ell(n')$ (the paper's $v$ is $v_\ell(q-1)$): $(t-1)\ad T=n'(\Zl e\oplus\Zl h)$; $H^1(I,\ad T)=(\Zl/n')^2\oplus\Zl$, torsion $(\Z/\ell^w)^2$; $\overline\Frob$: $\bar e\mapsto\bar e$,
 $\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e)$; invariants $\simeq\Z/\ell^w\oplus\Z/\ell^m$, $m=\min(w,v_\ell(q-1),v_\ell(c'))$, length $w+m$; $m$ depends on $c'$ only modulo $(n',q-1)$, the
@@ -1370,6 +1370,61 @@ $M/(F-1)M$ can be nonzero (\Cref{ex:cohomology:zp-not-zl}).
 The hypothesis of the paper, ``every $\Z_\ell$-module $M'$ of finite type with this action'', is the first case: $\Gamma=I/K\simeq\Zl$, $M'$ of type (C).
 \end{warning}
 
+The procyclic computations also give the five-term inflation-restriction sequence for compact and $\Ql$-coefficients in the one case the book needs,
+$G_{\Q_p}\to G_{\Q_p}/I_p\simeq\widehat\Z$: \Cref{thm:cohomology:inf-res}(b) was stated only for discrete coefficients. The proof uses that $\widehat\Z$ is free on one
+generator, so that $G\to G/H$ splits.
+
+\begin{proposition}[inflation-restriction over $\widehat\Z$]\label{prop:cohomology:inf-res-zhat}
+Let $G$ be profinite, $H\trianglelefteq G$ closed with $G/H\simeq\widehat\Z$, and $M$ of type (D) (discrete torsion), (C) or (V).
+\begin{enumerate}[label=(\roman*)]
+\item $\Res\colon H^1(G,M)\to H^1(H,M)^{G/H}$ is surjective, so
+\[
+0\to H^1(G/H,M^H)\xrightarrow{\Inf}H^1(G,M)\xrightarrow{\Res}H^1(H,M)^{G/H}\to0
+\]
+is exact.
+\item (Given \Cref{thm:cohomology:procyclic-discrete} and \Cref{thm:cohomology:procyclic-compact}(iii) for $n=2$, stated.) $H^2(G/H,M^H)=0$, so the five-term sequence of
+\Cref{thm:cohomology:inf-res}(b) holds for $M$, with $\operatorname{tg}=0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Exactness on the left and in the middle is \Cref{thm:cohomology:inf-res}(a) with \Cref{rem:cohomology:inf-res-continuous}. \emph{A splitting.} Choose $F\in G$ mapping to the
+generator $1$ of $G/H=\widehat\Z$, and let $\Gamma_0$ be the closure of $\langle F\rangle$. By \Cref{lem:cohomology:procyclic}(i) there is a continuous surjection
+$\widehat\Z\to\Gamma_0$, $1\mapsto F$; composed with $\Gamma_0\to G/H$ it is a continuous endomorphism of $\widehat\Z$ fixing $1$, hence the identity (it fixes the dense subgroup
+$\Z$). So $\Gamma_0\to G/H$ is an isomorphism, $H\cap\Gamma_0=1$, $G=H\Gamma_0$, and $(h,\gamma)\mapsto h\gamma$ is a continuous bijection $H\times\Gamma_0\to G$ of compact
+Hausdorff spaces, hence a homeomorphism.
+
+\emph{Extending a cocycle.} Let $c\in Z^1(H,M)$ have $G/H$-invariant class. Then $F\cdot c-c=d^0m$ for some $m\in M$, that is $Fc(F^{-1}hF)-c(h)=hm-m$ for $h\in H$; replacing $h$
+by $FhF^{-1}$,
+\[
+\gamma\,c(h)-c(\gamma h\gamma^{-1})=(\gamma h\gamma^{-1}-1)\,\tilde c(\gamma)\qquad(h\in H)\tag{$*$}
+\]
+holds for $\gamma=F$ and $\tilde c(F)=m$. Let $\tilde c\colon\Gamma_0\to M$ be the continuous cocycle with $\tilde c(F)=m$: it exists by \Cref{thm:cohomology:procyclic-compact}(ii) for
+types (C), (V) and by \Cref{thm:cohomology:procyclic-discrete} for type (D), since $\Gamma_0\simeq\widehat\Z$. The set of $\gamma\in\Gamma_0$ satisfying $(*)$ for all $h$ is closed
+(both sides are continuous in $\gamma$, and $M$ is Hausdorff) and stable under products: if $(*)$ holds for $\gamma$ and $\delta$, then
+\[
+\gamma\delta\,c(h)-c(\gamma\delta h\delta^{-1}\gamma^{-1})=\gamma(\delta h\delta^{-1}-1)\tilde c(\delta)+(\gamma\delta h\delta^{-1}\gamma^{-1}-1)\tilde c(\gamma)
+=(\gamma\delta h\delta^{-1}\gamma^{-1}-1)\bigl(\tilde c(\gamma)+\gamma\tilde c(\delta)\bigr),
+\]
+which is $(*)$ for $\gamma\delta$ since $\tilde c(\gamma\delta)=\tilde c(\gamma)+\gamma\tilde c(\delta)$. It contains $F$, hence every $F^k$, $k\ge1$, hence their closure, which is $\Gamma_0$
+($F^{-1}$ is the limit of $F^{k!-1}$, since $F^{k!}\to1$ in the profinite group $\Gamma_0$). Now define $c^\sharp(h\gamma)=c(h)+h\tilde c(\gamma)$ for $h\in H$, $\gamma\in\Gamma_0$. It is
+continuous by the homeomorphism above, and it restricts to $c$ on $H$. For the cocycle identity, write $h_1\gamma_1h_2\gamma_2=h_1(\gamma_1h_2\gamma_1^{-1})\cdot\gamma_1\gamma_2$; then
+\[
+c^\sharp(h_1\gamma_1h_2\gamma_2)-c^\sharp(h_1\gamma_1)-h_1\gamma_1c^\sharp(h_2\gamma_2)
+=h_1\Bigl(c(\gamma_1h_2\gamma_1^{-1})+(\gamma_1h_2\gamma_1^{-1}-1)\tilde c(\gamma_1)-\gamma_1c(h_2)\Bigr),
+\]
+after expanding $\tilde c(\gamma_1\gamma_2)=\tilde c(\gamma_1)+\gamma_1\tilde c(\gamma_2)$ and cancelling the terms $h_1\gamma_1h_2\tilde c(\gamma_2)$; the bracket is $0$ by $(*)$ for $\gamma_1$. So
+$c^\sharp\in Z^1_{\mathrm{cont}}(G,M)$ and $\Res[c^\sharp]=[c]$.
+
+(ii) $M^H$ is of the same type as $M$ (\Cref{rem:cohomology:inf-res-continuous}; a submodule of a discrete torsion module is discrete torsion), and
+$H^2(\widehat\Z,M^H)=0$ by the cited results. With $H^2(G/H,M^H)=0$ the five-term sequence reduces to (i) followed by $0\to0\to H^2(G,M)$.
+\end{proof}
+
+\begin{remark}\label{rem:cohomology:inf-res-zhat-use}
+For $G=G_{\Q_p}$ and $H=I_p$ this is the exact sequence $0\to\Hur(\Q_p,M)\to H^1(\Q_p,M)\to H^1(I_p,M)^{G_{\Q_p}/I_p}\to0$ for $M$ of type (C) or (V), at every prime $p$ (the
+proof does not use $p\ne\ell$). Part (i) is proved here without any stated input; \Cref{ch:galcoh} reaches the same surjectivity through part (ii).
+\end{remark}
+
 \section[The model computation]{The model computation: inertia, Frobenius and the torsion of $H^1(I,\ad T)$}\label{sec:cohomology:model}
 
 This section is the group cohomology of Lemma lem:tamfactor, done line by line. We isolate the abstract setting (a profinite group with a normal subgroup
@@ -1386,15 +1441,21 @@ topologically generated by the image of an element $t\in I$; we fix the isomorph
 $\pi(t^aK)=a$, $a\in\Zl$;
 \item an element $\Frob\in G$ whose image topologically generates $G/I\simeq\widehat\Z$;
 \item \sloppy a positive integer $q$ prime to $\ell$ with $\Frob\,t\,\Frob^{-1}\equiv t^q\pmod K$, equivalently $\Frob^{-1}t\,\Frob\equiv t^{q^{-1}}\pmod K$ with $q^{-1}\in\Zl^\times$;
-\item a finitely generated $\Zl$-module $M$ with a continuous action $\rho\colon G\to\Aut_{\Zl}(M)$ that is trivial on $K$.
+\item a finitely generated $\Zl$-module $M$ with a continuous action $\rho_M\colon G\to\Aut_{\Zl}(M)$ that is trivial on $K$.
 \end{itemize}
+We write $\rho_M$, not $\rho$, because in the application $\rho$ is the two-dimensional representation on $T$ and $M$ is often $\ad T$, on which $g$ acts by
+$\rho_M(g)=\Ad\rho(g)\colon x\mapsto\rho(g)x\rho(g)^{-1}$; for $M=T$, $\rho_M=\rho$. On the cohomology we keep the dot notation $\sigma\cdot c$ of
+\Cref{prop:cohomology:conjugation}, and inside $M$ we also write $tm$ for $\rho_M(t)m$.
 The two forms of the relation are equivalent: conjugation by $\Frob^{-1}$ is a continuous automorphism $\alpha$ of $I/K\simeq\Zl$, hence multiplication by a unit;
 the first form says $\alpha^{-1}(t)=t^q$, so $\alpha$ is multiplication by $q^{-1}$.
 
 \emph{Dictionary with the paper.} $G=G_{\Q_q}$ for a prime $q\ne\ell$, $I=I_q$, $K=\ker(t_\ell\colon I_q\to\Zl(1))$ (of order prime to $\ell$ by \Cref{prop:cohomology:tame-inertia}), $t$
-a lift of a generator of $\Zl(1)$, $\Frob$ a lift of the arithmetic Frobenius; the relation is the tame relation of \Cref{ch:local}. The module is $M=\ad T$ or
-$M=T$, $T=T_\ell E$, for $E$ with (potentially) multiplicative reduction at $q$; the action of $I_q$ on these is unipotent in a suitable basis, hence has
-pro-$\ell$ image and is trivial on $K$ (\Cref{ch:galrep}; this is a hypothesis of the model, not proved here). The source of the definition of $\Tam_q$ that
+a lift of a generator of $\Zl(1)$, $\Frob$ a lift of the arithmetic Frobenius; the relation is the tame relation of \Cref{ch:local}. With $T=T_\ell E$, the module is
+$M=\ad T$ for $E$ with multiplicative or potentially multiplicative reduction at $q$, and $M=T$ only for multiplicative reduction. In these cases the action of $I_q$ on
+$M$ is unipotent in a suitable basis, hence has pro-$\ell$ image and is trivial on $K$ (\Cref{ch:galrep}; this is a hypothesis of the model, not proved here). At an
+additive potentially multiplicative prime $T$ itself does not qualify: $E$ is a twist of a Tate curve by a ramified quadratic character, which is nontrivial on $I_q$ and,
+for $\ell$ odd, nontrivial on $K$ (its restriction to $I_q$ has order $2$, prime to $\ell$, so it does not factor through the pro-$\ell$ quotient $I_q/K$); it cancels in
+$\ad T$. The source of the definition of $\Tam_q$ that
 uses this computation is \cite[I.4.2.2]{FPR94}, as recalled in \cite[p.~708]{DFG04}.
 \end{construction}
 
@@ -1402,14 +1463,14 @@ uses this computation is \cite[I.4.2.2]{FPR94}, as recalled in \cite[p.~708]{DFG
 In the model setting:
 \begin{enumerate}[label=(\alph*)]
 \item $\Inf\colon H^1(I/K,M)\to H^1(I,M)$ is an isomorphism, and $[c]\mapsto c(t)\bmod(t-1)M$ is an isomorphism $H^1(I,M)\simeq M/(t-1)M$.
-\item $\rho(\Frob)\bigl((t-1)M\bigr)\subseteq(t-1)M$, and under the isomorphism of (a) the conjugation action of $G/I$ on $H^1(I,M)$ is given by
+\item $\rho_M(\Frob)\bigl((t-1)M\bigr)\subseteq(t-1)M$, and under the isomorphism of (a) the conjugation action of $G/I$ on $H^1(I,M)$ is given by
 \[
-\overline{\Frob}\cdot\bar m=q^{-1}\rho(\Frob)\,\bar m ;
+\overline{\Frob}\cdot\bar m=q^{-1}\rho_M(\Frob)\,\bar m ;
 \]
-this does not depend on the lift $\Frob$ of the generator of $G/I$.
+this does not depend on the lift $\Frob$ of the generator of $G/I$. For $M=\ad T$ the operator is $q^{-1}\Ad\rho(\Frob)$.
 \item $H^1(I,M)_{\mathrm{tor}}=(M/(t-1)M)_{\mathrm{tor}}$ is finite and $G/I$-stable, and
 \[
-\bigl(H^1(I,M)_{\mathrm{tor}}\bigr)^{G/I}=\bigl\{\bar m\in(M/(t-1)M)_{\mathrm{tor}}:\ \rho(\Frob)\bar m=q\,\bar m\bigr\}.
+\bigl(H^1(I,M)_{\mathrm{tor}}\bigr)^{G/I}=\bigl\{\bar m\in(M/(t-1)M)_{\mathrm{tor}}:\ \rho_M(\Frob)\bar m=q\,\bar m\bigr\}.
 \]
 \end{enumerate}
 \end{proposition}
@@ -1418,29 +1479,32 @@ this does not depend on the lift $\Frob$ of the generator of $G/I$.
 (a) $K$ acts trivially and $K^{(\ell)}=1$ (\Cref{lem:cohomology:pro-l}(i)), so \Cref{cor:cohomology:pro-l-quotient}(a) gives the first isomorphism, and
 \Cref{thm:cohomology:procyclic-compact} for $\Gamma=I/K\simeq\Zl$ the second; the composite is $[c]\mapsto c(t)$, as in the proof of \Cref{prop:cohomology:tame-inertia}(ii).
 
-(b) Since $K$ acts trivially, $\rho(\Frob)\rho(t)\rho(\Frob)^{-1}=\rho(\Frob\,t\,\Frob^{-1})=\rho(t)^q$, so
+(b) Since $K$ acts trivially, $\rho_M(\Frob)\rho_M(t)\rho_M(\Frob)^{-1}=\rho_M(\Frob\,t\,\Frob^{-1})=\rho_M(t)^q$, so
 \[
-\rho(\Frob)(t-1)=(\rho(t)^q-1)\rho(\Frob)=(t-1)(1+t+\dots+t^{q-1})\rho(\Frob),
+\rho_M(\Frob)(t-1)=(\rho_M(t)^q-1)\rho_M(\Frob)=(t-1)(1+t+\dots+t^{q-1})\rho_M(\Frob),
 \]
-and $\rho(\Frob)(t-1)M\subseteq(t-1)M$. (We do not need, and do not claim, equality.) Let $c$ be a cocycle on $I$ inflated from $I/K$. By
-\Cref{prop:cohomology:conjugation}, $(\Frob\cdot c)(i)=\rho(\Frob)\,c(\Frob^{-1}i\,\Frob)$, again inflated from $I/K$ since $K$ is normal in $G$. At $i=t$:
+and $\rho_M(\Frob)(t-1)M\subseteq(t-1)M$. (We do not need, and do not claim, equality.) Let $c$ be a cocycle on $I$ inflated from $I/K$. By
+\Cref{prop:cohomology:conjugation}, $(\Frob\cdot c)(i)=\rho_M(\Frob)\,c(\Frob^{-1}i\,\Frob)$, again inflated from $I/K$ since $K$ is normal in $G$. At $i=t$:
 $\Frob^{-1}t\,\Frob\equiv t^{q^{-1}}\pmod K$, so by \Cref{lem:cohomology:powers}(ii), applied to $\Gamma=I/K$ with $\pi(t)=1$,
 \[
-(\Frob\cdot c)(t)=\rho(\Frob)\,c(t^{q^{-1}})\equiv\rho(\Frob)\bigl(q^{-1}c(t)+x\bigr),\qquad x\in(t-1)M,
+(\Frob\cdot c)(t)=\rho_M(\Frob)\,c(t^{q^{-1}})\equiv\rho_M(\Frob)\bigl(q^{-1}c(t)+x\bigr),\qquad x\in(t-1)M,
 \]
-and $\rho(\Frob)x\in(t-1)M$. So $\Frob\cdot[c]$ corresponds to $q^{-1}\rho(\Frob)c(t)$ modulo $(t-1)M$. By \Cref{prop:cohomology:conjugation}(ii), $I$ acts trivially on
+and $\rho_M(\Frob)x\in(t-1)M$. So $\Frob\cdot[c]$ corresponds to $q^{-1}\rho_M(\Frob)c(t)$ modulo $(t-1)M$. By \Cref{prop:cohomology:conjugation}(ii), $I$ acts trivially on
 $H^1(I,M)$, so the action of $\Frob i$ ($i\in I$) is that of $\Frob$.
 
 (c) The isomorphism of (a) is $\Zl$-linear, so it identifies the torsion submodules; $(M/(t-1)M)_{\mathrm{tor}}$ is finite because $M/(t-1)M$ is finitely generated. The
 action of $G/I$ is $\Zl$-linear, so it preserves the torsion. It remains to see that invariance under $G/I$ is invariance under $\Frob$. The same computation as
-in (b) applies to any $\sigma\in G$: conjugation by $\sigma^{-1}$ acts on $I/K\simeq\Zl$ by multiplication by a unit $a(\sigma)$, and $\sigma$ acts on $M/(t-1)M$ by
-$a(\sigma)\rho(\sigma)$. Since $\sigma\mapsto a(\sigma)\in\Zl^\times$ and $\rho$ are continuous, the stabiliser of an element of the Hausdorff space $M/(t-1)M$ is a
+in (b) applies to any $\sigma\in G$: conjugation by $\sigma^{-1}$ acts on $I/K\simeq\Zl$ by multiplication by a unit $a(\sigma)$, so $\sigma t\sigma^{-1}\equiv t^{b}\pmod K$ with
+$b=a(\sigma)^{-1}\in\Zl^\times$, and $\rho_M(\sigma)(t-1)=(\rho_M(t)^b-1)\rho_M(\sigma)$. Here $(\rho_M(t)^b-1)M\subseteq(t-1)M$: for $b\in\Z$ the polynomial $X^b-1$ is divisible by
+$X-1$ (for $b<0$ use $X^b-1=-X^b(X^{-b}-1)$); for $b\in\Zl$ take integers $b_j\to b$, so that $\rho_M(t)^{b_j}m\to\rho_M(t)^bm$ by continuity of the action of $I/K\simeq\Zl$, and use
+that $(t-1)M$ is closed (\Cref{lem:cohomology:powers}(ii)). So $\rho_M(\sigma)(t-1)M\subseteq(t-1)M$, and as in (b), $\sigma$ acts on $M/(t-1)M$ by
+$a(\sigma)\rho_M(\sigma)$. Since $\sigma\mapsto a(\sigma)\in\Zl^\times$ and $\rho_M$ are continuous, the stabiliser of an element of the Hausdorff space $M/(t-1)M$ is a
 closed subgroup of $G$. If it contains $\Frob$ it contains $I$ (which acts trivially) and the closure of the group generated by $I$ and $\Frob$, which is $G$
-because $\Frob$ generates $G/I$ topologically. Finally $q^{-1}\rho(\Frob)\bar m=\bar m$ if and only if $\rho(\Frob)\bar m=q\bar m$.
+because $\Frob$ generates $G/I$ topologically. Finally $q^{-1}\rho_M(\Frob)\bar m=\bar m$ if and only if $\rho_M(\Frob)\bar m=q\bar m$.
 \end{proof}
 
 \begin{remark}[the other convention]\label{rem:cohomology:other-convention}
-Some texts let $\sigma$ act by $c\mapsto\sigma^{-1}c(\sigma\,\cdot\,\sigma^{-1})$. With that convention the computation of (b) gives $q\,\rho(\Frob)^{-1}$ instead of $q^{-1}\rho(\Frob)$.
+Some texts let $\sigma$ act by $c\mapsto\sigma^{-1}c(\sigma\,\cdot\,\sigma^{-1})$. With that convention the computation of (b) gives $q\,\rho_M(\Frob)^{-1}$ instead of $q^{-1}\rho_M(\Frob)$.
 The invariants are the same, since one operator is the inverse of the other; the formulas are not. We use the paper's convention throughout.
 \end{remark}
 
@@ -1455,7 +1519,7 @@ $\varepsilon=\varepsilon(\Frob)$ and $c'=b(\Frob)$, so that
 \[
 \rho(t)=\Mtwo{1}{n'}{0}{1},\qquad \rho(\Frob)=\Mtwo{\varepsilon q}{c'}{0}{\varepsilon}.
 \]
-Let $M=\ad T$, with $g$ acting by $x\mapsto\rho(g)x\rho(g)^{-1}$, and basis $e=E_{12}$, $h=E_{11}-E_{22}$, $f=E_{21}$. Then
+Let $M=\ad T$, with $g$ acting by $\rho_M(g)=\Ad\rho(g)\colon x\mapsto\rho(g)x\rho(g)^{-1}$ (written $g\cdot x$), and basis $e=E_{12}$, $h=E_{11}-E_{22}$, $f=E_{21}$. Then
 \begin{align*}
 (t-1)e&=0, & (t-1)h&=-2n'e, & (t-1)f&=n'h-n'^2e,\\
 \Frob\cdot e&=qe, & \Frob\cdot h&=h-2\varepsilon c'e, & \Frob\cdot f&=q^{-1}\bigl(f+\varepsilon c'h-c'^2e\bigr).
@@ -1474,7 +1538,8 @@ $(t-1)^2f=n'(t-1)h=-2n'^2e$ and $(t-1)^3f=0$. The symbolic computation was also 
 \end{proof}
 
 \begin{proposition}[the model computation]\label{prop:cohomology:model}
-Let $\ell$ be odd, $M=\ad T$ as in \Cref{lem:cohomology:tate-shape}, and $w=v_\ell(n')$.
+Let $\ell$ be odd, $M=\ad T$ as in \Cref{lem:cohomology:tate-shape}, and $w=v_\ell(n')$. (We write $w$, not $v$, because in the statement of the paper's Lemma
+lem:tamfactor $v$ denotes $v_\ell(q-1)$.)
 \begin{enumerate}[label=(\alph*)]
 \item $(t-1)M=n'(\Zl e\oplus\Zl h)$, so
 \begin{gather*}
@@ -1500,7 +1565,7 @@ $(H^1(I,T)_{\mathrm{tor}})^{G/I}$ is $(\Z/\ell^w)\bar e_1$ if $\varepsilon=1$ an
 is $n'(\Zl e+\Zl(h-n'e))=n'(\Zl e\oplus\Zl h)$. Since $e,h,f$ is a basis, $M/(t-1)M=(\Zl/n')\bar e\oplus(\Zl/n')\bar h\oplus\Zl\bar f$, and $\Zl/n'\Zl=\Z/\ell^w$ (if $w=0$ it is $0$).
 \Cref{prop:cohomology:frob-h1}(a) identifies this with $H^1(I,M)$.
 
-(b) By \Cref{prop:cohomology:frob-h1}(b), $\overline\Frob$ acts by $q^{-1}\rho(\Frob)$; by \Cref{lem:cohomology:tate-shape}, $q^{-1}\Frob\cdot e=e$ and $q^{-1}\Frob\cdot h=q^{-1}(h-2\varepsilon c'e)$.
+(b) By \Cref{prop:cohomology:frob-h1}(b), $\overline\Frob$ acts by $q^{-1}\Ad\rho(\Frob)$, that is $x\mapsto q^{-1}\,\Frob\cdot x$; by \Cref{lem:cohomology:tate-shape}, $q^{-1}\Frob\cdot e=e$ and $q^{-1}\Frob\cdot h=q^{-1}(h-2\varepsilon c'e)$.
 
 (c) $\overline\Frob(x\bar e+y\bar h)-(x\bar e+y\bar h)=-2\varepsilon c'q^{-1}y\,\bar e+(q^{-1}-1)y\,\bar h$. This vanishes if and only if $c'y\equiv0$ and $(q-1)y\equiv0\pmod{\ell^w}$, because
 $2$, $\varepsilon$, $q$ are units and $\bar e,\bar h$ are independent generators of $(\Z/\ell^w)^2$. By \Cref{prop:cohomology:frob-h1}(c) these are the $G/I$-invariants. The
@@ -1512,7 +1577,7 @@ $\rho(\Frob\,t^a)=\rho(\Frob)\rho(t)^a=\sm{\varepsilon q}{c'}{0}{\varepsilon}\sm
 \Cref{prop:cohomology:corner}(ii), the corner becomes $b+r(\chi\varepsilon-\varepsilon)$, whose value at $\Frob$ is $c'+\varepsilon r(q-1)$; on $I$ it is unchanged, so $n'$ is unchanged.
 In both cases the change is a multiple of $n'$ or of $q-1$, hence lies in $(n',q-1)\Zl=\ell^\mu\Zl$.
 
-(e) By \Cref{lem:cohomology:tate-shape}, $(t-1)T=n'\Zl e_1$, which gives $H^1(I,T)$ by \Cref{prop:cohomology:frob-h1}(a). The action is $q^{-1}\rho(\Frob)\bar e_1=q^{-1}\varepsilon q\bar e_1$.
+(e) By \Cref{lem:cohomology:tate-shape}, $(t-1)T=n'\Zl e_1$, which gives $H^1(I,T)$ by \Cref{prop:cohomology:frob-h1}(a). Here $\rho_M=\rho$, and the action is $q^{-1}\rho(\Frob)\bar e_1=q^{-1}\varepsilon q\bar e_1$.
 If $\varepsilon=-1$ the invariants are the $x$ with $2x\equiv0\pmod{\ell^w}$, which is $x\equiv0$ for $\ell$ odd.
 \end{proof}
 
@@ -1524,7 +1589,8 @@ $\ell^w\Zl$ or $\Zl$ (as $\varepsilon=1$ or $-1$) for $M=T$. For $G=G_{\Q_q}$ th
 v_\ell\bigl(\Tam_q(\ad T)\bigr)=v_\ell(n')+\min\bigl(v_\ell(n'),v_\ell(q-1),v_\ell(c')\bigr),
 \]
 which is the formula of Lemma lem:tamfactor once $v_\ell(n')=v_\ell(n)$ (\Cref{ch:local,ch:galrep}) and $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))=\min(v_\ell(n),v_\ell(q-1),v_\ell(c))$ for the
-paper's class $c$ of the unit part of the Tate parameter (\Cref{ch:galcoh}).
+paper's class $c$ of the unit part of the Tate parameter (\Cref{ch:galcoh}). Lemma lem:tamfactor itself is assembled in \Cref{ch:blochkato}; the Kummer
+identification of $c'$ and its indeterminacy modulo $(n,q-1)$ are proved in \Cref{ch:galcoh}.
 \end{corollary}
 
 \begin{proof}
@@ -1555,7 +1621,8 @@ $H^1(I,M)=(\Z_\ell/n')\bar e\oplus(\Z_\ell/n')\bar h\oplus\Z_\ell\bar f$ and its
 \item ``The group $G/I$ acts on $H^1(I,M)$ by $(\sigma\cdot c)(i)=\sigma c(\sigma^{-1}i\sigma)$'': \Cref{prop:cohomology:conjugation}.
 \item ``for the arithmetic Frobenius $\Frob$, $\Frob^{-1}t\Frob=t^{q^{-1}}$ and $c(t^k)\equiv k\,c(t)$ modulo $(t-1)M$, so $\Frob$ acts on $M/(t-1)M$ as $q^{-1}\rho(\Frob)$'': the
 relation is \Cref{constr:cohomology:model} (from \Cref{ch:local}), the congruence is \Cref{lem:cohomology:powers}(ii) with $k=q^{-1}\in\Zl$, the conclusion is
-\Cref{prop:cohomology:frob-h1}(b).
+\Cref{prop:cohomology:frob-h1}(b). Here the paper's $\rho$ is the representation on $T$, so on $M=\ad T$ its $q^{-1}\rho(\Frob)$ is a slip for the conjugation
+$q^{-1}\Ad\rho(\Frob)$, which is what its next sentence (``the adjoint action'') computes.
 \item ``the adjoint action sends $e$ to $qe$ and $h$ to $h-2c'\varepsilon e$, so on the torsion $\bar e\mapsto\bar e$ and $\bar h\mapsto q^{-1}(\bar h-2c'\varepsilon\bar e)$'':
 \Cref{lem:cohomology:tate-shape} and \Cref{prop:cohomology:model}(b).
 \item ``The fixed points are the $x\bar e+y\bar h$ with $(q-1)y\equiv0$ and $c'y\equiv0\pmod{\ell^{v_\ell(n)}}$'': \Cref{prop:cohomology:model}(c), where
@@ -1566,7 +1633,7 @@ multiple of $q-1$)'': \Cref{prop:cohomology:model}(d).
 \end{itemize}
 The remaining steps (that $\kappa|_I$ is $n$ times the tame character, the splitting $\kappa=n\kappa_q+\kappa_u$, and the value of $c'$) are Kummer theory and are proved in
 \Cref{ch:galcoh}; the assembly is in \Cref{ch:blochkato}. In the paper's sentence the invariants are taken in $(\Z/\ell^{v_\ell(n)})^2$, the torsion, as the definition of
-$\Tam$ requires; with this reading every step above is correct, and no correction to the paper arises from this chapter.
+$\Tam$ requires; with this reading, and with $\Ad\rho(\Frob)$ for $\rho(\Frob)$ in the fourth quoted sentence, every step above is correct.
 \end{paperlink}
 
 \section{Cup products, Pontryagin duality and lengths}\label{sec:cohomology:cup}
@@ -1729,8 +1796,9 @@ $\ad T(1)$, in accordance with the paragraph after Lemma lem:dfg21.
 \begin{exercise}\label{ex:cohomology:z4}
 (a) Show that $H^2(\Z/2,\Z/2)\simeq\Z/2$ (trivial action). (b) For the extension $0\to2\Z/4\Z\to\Z/4\Z\to\Z/2\Z\to0$ and the section $s(0)=0$, $s(1)=1$, compute the cocycle
 $\psi$ of \Cref{thm:cohomology:h2-ext} and show it is not a coboundary. (c) Which extension corresponds to $0$?
-\emph{Answer.} (a) \Cref{thm:cohomology:cyclic}(ii): $M^G/NM=(\Z/2)/2(\Z/2)$. (b) $\psi(1,1)=s(1)+s(1)-s(0)=2$, the nonzero element, and $\psi$ vanishes elsewhere; a coboundary
-$d^1\varphi(1,1)=2\varphi(1)-\varphi(0)=0$ in $\Z/2$, so $\psi$ is not one. (c) $\Z/2\times\Z/2$.
+\emph{Answer.} (a) \Cref{thm:cohomology:cyclic}(ii): $M^G/NM=(\Z/2)/2(\Z/2)$. (b) $\psi(1,1)=s(1)+s(1)-s(0)=2$, the nonzero element, and $\psi$ vanishes elsewhere. For a coboundary,
+$(d^1\varphi)(0,0)=\varphi(0)$ and $(d^1\varphi)(1,1)=2\varphi(1)-\varphi(0)=\varphi(0)$ in $\Z/2$, so a coboundary takes equal values at $(0,0)$ and $(1,1)$; as
+$\psi(0,0)=0\ne\psi(1,1)$, $\psi$ is not one. (c) $\Z/2\times\Z/2$.
 \end{exercise}
 
 \begin{exercise}\label{ex:cohomology:tvw}
@@ -1847,4 +1915,4 @@ which the paper needs.
 The definition of the Tamagawa factor as the Fitting ideal of the $G_{\Q_p}$-invariants of the torsion of $H^1(I_p,M)$, which \Cref{sec:cohomology:model} computes, is
 Fontaine and Perrin-Riou's \cite[I.4.2.2]{FPR94}, as recalled by Diamond, Flach and Guo \cite[p.~708]{DFG04}. The shape of the Tate representation is
 \cite[Chapter V]{SilvermanATAEC} and \cite[Theorem 3.1(e)]{DDT}; the corner $\varepsilon\kappa$ is the revised paper's. The conjugation action is the paper's
-$(\sigma\cdot c)(i)=\sigma c(\sigma^{-1}i\sigma)$; with the other common convention the Frobenius acts on $H^1(I,M)$ by $q\rho(\Frob)^{-1}$ (\Cref{rem:cohomology:other-convention}).
+$(\sigma\cdot c)(i)=\sigma c(\sigma^{-1}i\sigma)$; with the other common convention the Frobenius acts on $H^1(I,M)$ by $q\rho_M(\Frob)^{-1}$ (\Cref{rem:cohomology:other-convention}).
