@@ -472,6 +472,11 @@ Counts: **A: 12** strengthenings, **B: 10** errors, **C: 14** gaps, **D: 17** ex
 * **F7 (Chapter 13; correction; point 94).** rem:afterquant (2): "open" is contradicted; r_E divides
   eta^Hecke(g^S) as integers, so Step 1 is an equality under thm:quant's hypotheses. E5 upgraded to settled.
 
+* **F8 (Chapter 19; correction; point 95).** rem:wild: 1,143 and 2,283 are all-curve counts; over optimal non-CM curves
+  534 and 1,308; "of shape (ii)" is automatic.
+* **F9 (Chapter 18; expository; points 96, 97).** lem:tamfactor proof: q^{-1}Ad rho(Frob), not q^{-1}rho(Frob); lem:dfg21
+  needs "l not in Sigma" for the paragraph after it.
+
 ## Re-verification log
 
 | curve | what was checked | result |

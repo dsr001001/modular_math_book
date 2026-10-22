@@ -1177,7 +1177,8 @@ above that disagrees with them.
 | **Chapter 13** | **written**: 1,852 lines, 48 pages, 0 overfull, lint clean; review (1 blocking, 5 major, 9 minor), fix (new prop:hecke:congruence-module, cor:hecke:rE-divides); check (1 minor, fixed by the orchestrator) |
 | **Chapter 14** | **written**: 1,680 lines, 46 pages, 0 overfull, lint clean; review (1 blocking, 3 major, 9 minor), fix, check (1 major, 1 minor), second fix by the orchestrator |
 | **Chapter 15** | **written**: 1,856 lines, 48 pages, 0 overfull, lint clean; review (2 major, 11 minor), fix, check (3 minor), second fix by the orchestrator |
-| Chapters 16 to 22, Appendix B, preface update | not yet written |
+| **Chapters 16 to 19 (Part V)** | **written**: 1,918, 1,808, 1,855, 1,591 lines; 46, 44, 46, 41 pages; compile, lint clean. Pipeline: all four drafted first, then ONE planned review each (with cross-chapter checks), then one fix pass under binding division-of-labour decisions; build and lint verified by the orchestrator (no second review) |
+| Chapters 20 to 22, Appendix B, preface update | not yet written |
 
 **What the pilot taught.**
 * Length: 2,344 lines against a plan average of about 2,200 per chapter; the outline is a good predictor.

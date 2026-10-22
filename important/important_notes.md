@@ -1262,6 +1262,23 @@ an equality under the hypotheses of thm:quant, whether or not l is in S_f. Level
 is upgraded from medium to settled. Suggested wording: "Step 1 is an equality under the hypotheses of the theorem: iota
 maps f^perp into the T-stable complement of g^S, so r_E divides the generator of eta^Hecke(g^S)."
 
+### 95. Remark rem:wild: the counts 1,143 and 2,283 are over all curves, not optimal non-CM curves (correction; high confidence)
+"Among optimal non-CM curves of conductor below 10,000, every cubic factor at 2 (1,143) and at 3 (2,283) is of shape (ii)."
+The counts are over all 64,687 curves; over optimal non-CM curves they are 534 and 1,308 (recomputed twice, Chapter 19
+writer and reviewer, lfunsympow). Also, "of shape (ii)" is automatic by prop:shapes (the only cubic shape); the empirical
+content is that each cubic equals the twist formula of (ii) for an independently found twist of good reduction. Similarly
+58% (2,340 of 4,037) is the share over optimal curves, 61% (5,935 of 9,667) over all curves. Suggested wording: "Among all
+curves of conductor below 10,000, every cubic factor at 2 (1,143) and at 3 (2,283) equals the formula of (ii) for a twist
+of good reduction found independently (534 and 1,308 among the optimal non-CM curves)."
+
+### 96. Lemma lem:tamfactor, proof: "Frob acts on M/(t-1)M as q^{-1}rho(Frob)" (expository; medium-high confidence)
+On M = ad T the action is by conjugation, q^{-1} Ad rho(Frob); the paper's next sentence ("the adjoint action sends e to
+qe") computes the right one. The result is unaffected. Found by the Chapter 18 reviewer.
+
+### 97. Lemma lem:dfg21 lacks the hypothesis l not in Sigma (minor; high confidence)
+The paragraph after the lemma ("For p in Sigma, H^1_f(Q_p,V^D) = H^1_ur(...) vanishes") fails at p = l, where
+dim H^1_f(Q_l,V^D) = 2. Harmless in the application (l does not divide N). Add "with l not in Sigma". The book states it.
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
@@ -1464,3 +1481,18 @@ maps f^perp into the T-stable complement of g^S, so r_E divides the generator of
 * Chapter 15 supplies rhobar_m for maximal ideals (Deligne-Serre, Carayol 94) and defines Eisenstein (reducible over T/m).
 * Chapter 20 must state and prove v_l(r_E) = v_l(eta^Hecke(g^S)) under thm:quant's hypotheses, citing Chapter 13.
   note_v2 writes chi_{q*}; only the original writes chi_q.
+
+### B40. Items from writing Part V (Chapters 16 to 19)
+* Division of labour: Chapter 16 proves the group cohomology of lem:tamfactor (prop:cohomology:model), Chapter 17 the Kummer
+  identification of c' and the (n, q-1) indeterminacy (thm:galcoh:tate-kummer-class), Chapter 18 is the home of the lemma.
+  Chapter 19 (prop:lfunctions:fpr-L-part) is the home of the L-part of lem:fpr at every p != l; Chapter 18 cites it.
+  Chapter 13 has the every-level naive Petersson formula; Chapter 19 adds the true-L form.
+* Five-term inflation-restriction: type (D) in general; types (C), (V) when G/H = Zhat (prop:cohomology:inf-res-zhat, Res
+  onto proved, tg = 0 given stated H^2 vanishing). Chapter 17 proves H^1(Q_p,M) -> H^1(I,M)^{G/I} onto for (C), (V) at p != l.
+  H^1(I_q,M) finitely generated for any type (C) M: prop:cohomology:tame-inertia(iv).
+* Chapter 16 notation: w = v_l(n') (the paper's v is v_l(q-1)); rho_M for the action on M (Ad rho on ad T).
+* Greenberg-Wiles is stated, not proved (Chapter 17). The Euler-characteristic proposition of Chapter 18 needs rhobar
+  absolutely irreducible (or Faltings). Unverified and flagged: DFG04 coverage of l = 3 in weight 2; Flach's hypotheses and
+  annihilator (Langer97 as secondary source); several theorem numbers.
+* Warning: the I_n^* rows of the L-factor table DO depend on the choice of Frobenius (A_f^{I_q} is the line of e).
+* 11a1 Selmer example in Chapter 17 still "grants Sha[5] = 0" (no verified reference found).
