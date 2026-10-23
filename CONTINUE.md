@@ -30,7 +30,8 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Chapters 12 to 15 (Part IV) | done: lean pipeline by hand | `chapters/ch12_modforms.tex` to `ch15_modgalrep.tex` |
 | Chapters 16 to 19 (Part V) | done: draft all, one review each, one fix pass | `chapters/ch16_cohomology.tex` to `ch19_lfunctions.tex` |
 | Chapters 20, 22, Appendix B | done: draft, one review each, one fix pass | `chapters/ch20_congruence.tex`, `ch22_computation.tex`, `chB_notation.tex` |
-| Remaining | step 4: full-book build and the cross-chapter list (note B41); step 5: verify flagged sources if the user supplies them; step 6: Chapter 21 (the paper) LAST, from the finished book and the complete findings list; step 7: preface, final build | `chapters/` |
+| Full-book pass (step 4) | done: full book builds (1,045 pages, Chapter 21 a placeholder), no undefined references, no duplicate labels or BibTeX warnings, 12 overfull boxes only in the preface; all 21 cross-chapter items fixed | `important/fullbook_pass_list.txt` |
+| Remaining | step 5: verify flagged sources if the user supplies them; step 6: Chapter 21 (the paper) LAST, from the finished book and the complete findings list; step 7: preface, final build | `chapters/` |
 
 The original paper is `note_Oct10_7pm.tex`. Labels in the revised paper are the same.
 
