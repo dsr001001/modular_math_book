@@ -1588,3 +1588,4 @@ the genus-one levels to Ligozat, Ogg and Joly; it never mentions CM or j at leve
   CM statement); Langer97 Theorem B (semistable, p >= 3, p | N: finiteness of S(Q,A) only); Pasten JNT 254 (2024)
   214-335 confirmed. Paper_11a1 (Paniagua Ramirez 2026) is unrefereed and not a proof of Sha(11a1)[5] = 0: Chapter 17
   keeps "granting". Ligozat75 (CM at 27) still unchecked.
+* Period comparison (DFG Thm 2.10 vs 2 pi vol/(c_E^2 N)): agrees up to the factor w_E N (an l-adic unit off S_f); derived in Chapter 18 rem:blochkato:degree-as-l-value; checked to 20 digits on 11a1, 37a1, 121a1, 121d1.

@@ -932,8 +932,12 @@ This is a reading, not a proof. Let $\ell\nmid2N$ with $\ell\notin S_f$. The pap
 v_\ell(\degphi)=\len H^1_f(\Q,W)+\sum_{q\mid N}v_\ell\bigl(\Tam_q(\ad T)\bigr)+\sum_{q\mid N}e_\ell(E,q),\qquad W=\ad T\otimes\Q_\ell/\Z_\ell.
 \]
 Subtracting \Cref{cor:lfunctions:degree-formula}(iii) gives $v_\ell(B_E)=\len H^1_f(\Q,W)+\sum_qv_\ell(\Tam_q(\ad T))$: the $\ell$-part of a Bloch-Kato formula for the true value $L(\ad f,1)$,
-with the period $2\pi\vol(\Lambda_E)/(c_E^2N)$. This has the shape of the theorem of Diamond, Flach and Guo \cite[Theorem 0.1]{DFG04} (\Cref{ch:blochkato}); we have not checked
-that their period (Deligne's period, computed in their Theorem 2.10 from their Lemma 2.12) agrees with ours up to an $\ell$-adic unit, so the reading proves nothing by itself. It explains the paper's sentence ``the primes at which the
+with the period $2\pi\vol(\Lambda_E)/(c_E^2N)$. This is the theorem of Diamond, Flach and Guo \cite[Theorem 0.1]{DFG04} read in the book's normalisation: their period of
+$\ad M_f(1)$ (Deligne's period, computed in their Section 2.3 from their Lemmas 2.9, 2.11 and 2.12, and measured against their integral structure) is $w_EN\cdot2\pi\vol(\Lambda_E)/(c_E^2N)$
+up to an $\ell$-adic unit for $\ell\notin S_f$, and up to sign with the integral normalisation by $\varphi_E^*H^1(E,\Z)$. In the derivation (\Cref{ch:blochkato}) the $\frac12$ of their pairing
+cancels the $\frac12$ of the projection to the $F_\infty$-eigenspaces, $\degphi$ cancels between the Petersson norm and the congruence ideal $\eta^\emptyset_{f,\lambda}$ (\Cref{ch:congruence}), and the
+only discrepancy left is the factor $w_EN=\varepsilon(M_f)$, a unit at every $\ell\nmid N$; numerically the ratio is $w_EN$ to $20$ digits for \curve{11a1}, \curve{37a1}, \curve{121a1} and \curve{121d1}.
+The reading is not an independent proof, since their proof of Theorem 0.1 goes through their Theorem 3.7, as Theorem thm:main does. It explains the paper's sentence ``the primes at which the
 naive and the true adjoint $L$-functions differ are exactly the primes at which the modular degree acquires extra local divisibility, that the amount is the
 valuation of the omitted factor'': the Petersson norm sees $L^{\nv}$, Bloch-Kato sees $L$, and the ratio is the product of the omitted factors.
 \end{remark}

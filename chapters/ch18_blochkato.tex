@@ -1636,7 +1636,8 @@ where $\sim_\ell$ means equality up to an $\ell$-adic unit, and the contribution
 \end{conjecture}
 
 This is a schematic form of the conjecture of Bloch and Kato \cite[Section 5]{BlochKato}, in the formulation of Fontaine and Perrin-Riou \cite{FPR94}; the precise
-normalisations of the period and of the terms at $\ell$ differ between these sources and \cite[Section 2]{DFG04}, and we do not reconcile them. The book never uses the
+normalisations of the period and of the terms at $\ell$ differ between these sources and \cite[Section 2]{DFG04}, and we do not reconcile them in general; for $M=\ad M_f(1)$ in weight $2$,
+\Cref{rem:blochkato:degree-as-l-value} computes the period of \cite[Section 2.3]{DFG04} against the book's normalisation. The book never uses the
 conjecture in a proof. For $M=\ad M_f(1)$, whose realisation is $A_f(1)=V^D$ with lattice $T^D$, one has $L(M,0)=L(\ad f,1)$, $W_M=W^D$ and $W_M^D=W$; so the right side is
 \[
 \frac{\prod_{p\ne\ell}\#(\Zl/\Tam_p(T^D))\cdot\#H^1_f(\Q,W)}{\#H^0(\Q,W^D)\cdot\#H^0(\Q,W)}:
@@ -1667,7 +1668,8 @@ of Bloch and Kato holds for $A_f$ and $A_f(1)$, that is, for $L(A_f,s)$ at $s=0$
 
 \begin{proof}[Reference]
 We do not prove this; it is the theorem the paper cites when it says that its hypothesis ``is the one under which Diamond, Flach and Guo prove the Tamagawa
-number conjecture for the adjoint motive of $f$''. The period is Deligne's period, computed in \cite[Section 2.3, Theorem 2.10]{DFG04} (the integral structures it uses are those of their Section 1),
+number conjecture for the adjoint motive of $f$''. The period is Deligne's period, computed in \cite[Section 2.3, Theorem 2.10]{DFG04} (the integral structures it uses are those of their Section 1; in weight $2$ it is
+$w_EN\cdot2\pi\operatorname{vol}(\Lambda_E)/(c_E^2N)$ up to an $\ell$-adic unit, \Cref{rem:blochkato:degree-as-l-value}),
 and the conjecture is formulated in \cite[Section 2.4, Conjecture 2.14]{DFG04}; the theorem is their Theorem 2.15. The proof combines the identification of
 the congruence ideal with the special value (Hida's form of the Rankin-Shimura method, their Lemma 2.12), Theorem thm:dfg37, Theorem thm:dfg14, the triviality of the
 Tamagawa factor at $\ell$ (their Proposition 2.16) and the local computations of Lemma lem:fpr; \Cref{ch:congruence} gives the parts the paper uses.
@@ -1711,14 +1713,81 @@ Section 1 of the paper: ``Flach's finiteness theorem for the symmetric square \c
 of $\Sym f$''.
 \end{paperlink}
 
-\begin{remark}[the modular degree as an adjoint $L$-value: a heuristic]\label{rem:blochkato:degree-as-l-value}
-The following is a heuristic, not a proof. By the formula of Zagier and Watkins, $\degphi\cdot\operatorname{vol}(\Lambda_E)=4\pi^2c_E^2\langle f,f\rangle$ (\Cref{ch:moddeg}); by the
-Rankin-Shimura method $\langle f,f\rangle$ is $L^{\nv}(\Sym f,2)=L^{\nv}(\ad f,1)$ times explicit factors (\Cref{ch:lfunctions}). The paper's Remark rem:degree turns this into
+\begin{remark}[the modular degree as an adjoint $L$-value: Deligne's period]\label{rem:blochkato:degree-as-l-value}
+By the formula of Zagier and Watkins, $\degphi\cdot\operatorname{vol}(\Lambda_E)=4\pi^2c_E^2\langle f,f\rangle$, with the unnormalised Petersson product on $\Gamma_0(N)$ (\Cref{ch:moddeg}); by the
+Rankin-Shimura method $\langle f,f\rangle=N\,L^{\nv}(\ad f,1)/(8\pi^3)$ (\Cref{ch:lfunctions}). The paper's Remark rem:degree turns this into
 $v_\ell(\degphi)=v_\ell(B_E)+\sum_qe_\ell(E,q)$ for $\ell\nmid N$, with $B_E=c_E^2N\,L(\ad f,1)/(2\pi\operatorname{vol}(\Lambda_E))$, so the ratio of the naive to the true local factors produces the
-terms $e_\ell(E,q)$. If one reads $2\pi\operatorname{vol}(\Lambda_E)/(c_E^2N)$ as the period $\Omega(\ad M_f(1))$, then \Cref{conj:blochkato:tnc}, proved by \Cref{thm:blochkato:dfg-01}, predicts
-$v_\ell(B_E)=\len H^1_f(\Q,W)+\sum_qv_\ell(\Tam_q(\ad T))$, which is (eq:identity). Theorem thm:main proves this identity through congruence ideals instead of $L$-values, so the
-identification of the periods is never needed; whether this reading of the period agrees, up to an $\ell$-adic unit, with Deligne's period as Diamond, Flach and Guo compute it
-\cite[Section 2.3, Theorem 2.10]{DFG04} (through their Lemma 2.12 and the periods of $M_f\otimes M_{\psi^{-1}}$ and $M_{\psi^{-1}}$) we have not checked.
+terms $e_\ell(E,q)$. We show that $2\pi\operatorname{vol}(\Lambda_E)/(c_E^2N)$ is, up to the factor $w_EN$, Deligne's period of $\ad M_f(1)$ measured against the integral structure of Diamond, Flach
+and Guo. This is a derivation from formulas of \cite{DFG04} that we quote (their numbers checked against the published text), not a proof from first principles. Their $B_f=A_f(1)$ is our
+$\ad M_f(1)$. We specialise their Sections 1.5, 2.3 and 2.4 to weight $k=2$, trivial character and coefficient field $\Q$: their parity index (the element of $\{0,1\}$ congruent to $k$
+modulo $2$, called $\eta$ there; it is not a congruence ideal) is $0$, so $i^{k-0}=-1$; $(k-2)!=(k-1)!=1$; the Dirichlet structure $M_\psi$ is $\Q$ with $b_{\mathrm{dR}}=1$ and epsilon
+factor $1$; and every prime dividing $2N$ lies in $S_f$ (\Cref{def:blochkato:exceptional-set}).
+\begin{enumerate}[label=(\alph*)]
+\item \emph{The epsilon factor.} Their functional equation (48), written with $\Lambda(f,s)=(2\pi)^{-s}\Gamma(s)L(f,s)$, compared with $N^{s/2}\Lambda(f,s)=w_EN^{(2-s)/2}\Lambda(f,2-s)$
+(\Cref{ch:lfunctions}), gives $\varepsilon(M_f)=w_EN$, where $w_E=-\varepsilon_N(f)$. Their Lemma 2.11 then says that the operator $W$ of their (13) acts on $f$ by
+$i^2\varepsilon(M_f)/N=-w_E=\varepsilon_N(f)$: $W$ is the Fricke involution, and their pairing (16) is the pairing $\hat\delta_!$ of \Cref{ch:congruence}.
+\item \emph{The Petersson products.} Their $(g,h)_\Gamma=(-2i)^{-1}\int_{\Gamma\backslash\HH}g\bar h\,d\tau\wedge d\bar\tau$ is $\int_{\Gamma\backslash\HH}g\bar h\,dx\,dy$ in weight $2$, since
+$d\tau\wedge d\bar\tau=-2i\,dx\wedge dy$. Since $-1\in\Gamma_0(N)$, while $-1\in\Gamma_1(N)$ only for $N\le2$, the covering $\Gamma_1(N)\backslash\HH\to\Gamma_0(N)\backslash\HH$ has degree
+$\varphi(N)\delta(N)/2$, with their $\delta(N)=2$ for $N\le2$ and $1$ otherwise; so $(f,f)_{\Gamma_1(N)}=\frac12\varphi(N)\delta(N)\langle f,f\rangle$. Their Lemma 2.12 in weight $2$,
+$(f,f)_{\Gamma_1(N)}=\delta(N)N\varphi(N)L^{\nv}(A_f,1)/(16\pi^3)$, is therefore exactly $\langle f,f\rangle=N\,L^{\nv}(\ad f,1)/(8\pi^3)$, and their naive factors (Section 1.7.2) are ours
+factor by factor.
+\item \emph{Deligne's period of $A_f$.} Their de Rham class $f$ is $2\pi if\,d\tau$ (the trivialisation (4)), and $H^2_B$ of the modular curve is $(2\pi i)^{-1}\Z$ (Section 1.1.3); hence the
+factor $(k-2)!(4\pi)^{k-1}=4\pi=\abs{2\pi i}^2\cdot\abs{-2i}/\abs{2\pi i}$ (up to sign) in their comparison (10) of the de Rham pairing with $(\,,)_{\Gamma(N')}$. Their pairing at level $N$ is the one at an auxiliary
+level $N'$ divided by $[U:U_{N'}]=\varphi(N')\varphi(N)\delta(N)[\bar\Gamma_1(N):\bar\Gamma(N')]$ (their (11) and (53)), which is twice the degree of $X(N')\to X_0(N)$ because $-1\in\Gamma_0(N)$. With
+(a), their (44) and (51) to (53) give
+\[
+\bigl\langle f,c^+(A_f)(f\otimes F_\infty)\bigr\rangle=\frac{4\pi\,(f,f)_{\Gamma_1(N)}}{\varphi(N)\delta(N)}\,(-w_E)\,\iota=-2\pi w_E\langle f,f\rangle\,\iota=-\frac{w_EN\,L^{\nv}(\ad f,1)}{4\pi^2}\,\iota,
+\]
+which is the identity displayed at the start of their proof of Theorem 2.10, for $k=2$.
+\item \emph{The twist.} By their Lemma 2.9, $c^+(B_f)=-2\pi^2\,\mathrm{tw}(c^+(A_f))$; here $-2\pi^2=(2\pi i)^2/2$, the $\frac12$ coming from the projection to the $F_\infty$-eigenspaces. Hence, with the
+formula of Zagier and Watkins,
+\begin{align*}
+\bigl\langle f,c^+(B_f)(f\otimes(2\pi i)^2\otimes\iota^2)\bigr\rangle&=4\pi^3w_E\langle f,f\rangle\,\iota\\
+&=\frac{w_EN}2\,L^{\nv}(\ad f,1)\,\iota=\frac{w_E\degphi}2\cdot\frac{2\pi\operatorname{vol}(\Lambda_E)}{c_E^2}\,\iota.
+\end{align*}
+This agrees with their Theorem 2.10 and (43), using their (38) in weight $2$, $L(A_f,0)=\varepsilon(A_f)L(A_f,1)/(2\pi^2)$.
+\item \emph{The integral structure.} Let $\ell\notin S_f$ and let $e$ generate $\operatorname{Hom}_{\Zl}(\theta(B_{f,\lambda}),\omega_B)$, the lattice of their (58). The argument in their proof of
+Theorem 2.15 (written there for $M_f^\Sigma$; it applies verbatim to $\Sigma=\emptyset$) gives $\Zl\,\langle f,e(f\otimes(2\pi i)^2\otimes\iota^2)\rangle=\eta^\emptyset_{f,\lambda}\,\iota$. By
+\Cref{ch:congruence}, $\hat\delta_!$ is $\frac12\langle x,w_N^*y\rangle$ on $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)$, whose values form the ideal $\frac12\degphi\,\Zl=\degphi\,\Zl=\eta^\emptyset_{f,\lambda}$. So
+Deligne's period relative to their integral structure, $\Omega_{\mathrm{DFG}}=c^+(B_f)/e$, satisfies
+\[
+\Omega_{\mathrm{DFG}}\in\Zl^\times\cdot\frac{w_EN\,L^{\nv}(\ad f,1)}{\degphi}=\Zl^\times\cdot w_E\,\frac{2\pi\operatorname{vol}(\Lambda_E)}{c_E^2}=\Zl^\times\cdot w_EN\cdot\frac{2\pi\operatorname{vol}(\Lambda_E)}{c_E^2N}.
+\]
+If $e$ is normalised by the $\Z$-lattice $\varphi_E^*H^1(E,\Z)$ with the pairing $\frac12\langle x,w_N^*y\rangle$, the unit is $\pm1$: the $\frac12$ of (d) cancels the $\frac12$ of the pairing, and
+$\degphi$ cancels between the Petersson norm and $\eta^\emptyset$. The only discrepancy with the book's normalisation $2\pi\operatorname{vol}(\Lambda_E)/(c_E^2N)$ is therefore the factor $w_EN$,
+a unit at every $\ell\nmid N$; no power of $2$ or $\pi$ is left over.
+\item \emph{The conjecture.} For $\ell\notin S_f$, their Conjecture 2.14 for $M=B_f$, proved as their Theorem 2.15 (\Cref{thm:blochkato:dfg-01}), says that
+\[
+\Zl\cdot\frac{L(B_f,0)}{\Omega_{\mathrm{DFG}}}=\frac{\Fitt\bigl(\Sha(A_{f,\lambda})\bigr)\cdot\Tam(B_{f,\lambda})}{\Fitt H^0(\Q,B_{f,\lambda}\otimes\Ql/\Zl)\cdot\Fitt H^0(\Q,A_{f,\lambda}\otimes\Ql/\Zl)}.
+\]
+The groups $H^0$ vanish, the factors at $\ell$ and $\infty$ are trivial
+(their Proposition 2.16; $\ell$ is odd), $\Sha(A_{f,\lambda})=H^1_f(\Q,W)$ because $H^1_f(\Q,A_f)=0$ (\Cref{thm:blochkato:dfg27}), and $\Tam_p(B_{f,\lambda})=\Tam_p(A_{f,\lambda})$ by their
+(57). As $L(B_f,0)=L(\ad f,1)$ and $L(\ad f,1)/\Omega_{\mathrm{DFG}}\in\Zl^\times\cdot B_E$, this is
+\[
+v_\ell(B_E)=\len H^1_f(\Q,W)+\sum_{q\mid N}v_\ell\bigl(\Tam_q(\ad T)\bigr),
+\]
+which, with $v_\ell(\degphi)=v_\ell(B_E)+\sum_qe_\ell(E,q)$, is (eq:identity). It is not an independent proof: their proof of Theorem 2.15 reduces to their Theorem 3.7, the paper's
+Theorem thm:dfg37, as Theorem thm:main does.
+\item \emph{Numbers} (PARI/GP 2.17.2: \texttt{ellmoddegree}, \texttt{E.area}, \texttt{mspetersson} on the basis of the $f$-part of the integral modular symbols returned by
+\texttt{msfromell}, $\langle f,f\rangle=\mu(N)\cdot$\texttt{mfpetersson}, $L(\ad f,1)$ from \texttt{lfunsympow}; $c_E=1$ for these optimal curves). The intersection matrix of the $f$-part is
+$\pm\degphi\bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$, and $\Omega_{\mathrm{DFG}}=w_EN\,L^{\nv}(\ad f,1)/\degphi$ divided by $2\pi\operatorname{vol}(\Lambda_E)/N$ is $w_EN$ to $20$
+digits, in each row ($L=L(\ad f,1)$, $L^{\nv}=L^{\nv}(\ad f,1)$; last column: the odd $\ell\nmid N$ in $S_f$):
+\begin{center}\small
+\begin{tabular}{lrrrrrl}
+\toprule
+curve & $w_EN$ & $\degphi$ & $L/L^{\nv}$ & $B_E$ & $L/\Omega_{\mathrm{DFG}}$ & $S_f$\\
+\midrule
+\curve{11a1} & $11$ & $1$ & $1$ & $1$ & $1/11$ & $5$\\
+\curve{37a1} & $-37$ & $2$ & $1$ & $2$ & $-2/37$ & none\\
+\curve{121a1} & $121$ & $6$ & $11/12$ & $11/2$ & $1/22$ & none\\
+\curve{121d1} & $121$ & $24$ & $121/120$ & $121/5$ & $1/5$ & $5$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For every odd $\ell\nmid N$ outside $S_f$, $v_\ell(L(\ad f,1)/\Omega_{\mathrm{DFG}})\ge0$, and adding $\sum_qe_\ell(E,q)=v_\ell(L^{\nv}(\ad f,1)/L(\ad f,1))$ gives $v_\ell(\degphi)$: $0$ in every row
+except $\ell=3$ for \curve{121a1} and \curve{121d1}, where $e_3(E,11)=1=v_3(6)=v_3(24)$. At $\ell=5$, \curve{121d1} has $v_5(B_E)=-1$, impossible for the right side of the conjecture; $5\in S_f$
+there ($E[5]$ is reducible), so nothing is predicted.
+\end{enumerate}
 \end{remark}
 
 \section{Exercises}\label{sec:blochkato:exercises}
@@ -1845,7 +1914,8 @@ structure of $E(\Q_p^{\ur})$ used in \Cref{prop:blochkato:tam-of-E} is in Silver
 are due to Serre and Tate \cite{SerreTate68} and Kraus \cite{Kraus90}.
 
 \paragraph{Theorem numbers.} We cite theorem numbers where the paper cites them: \cite[Theorems 0.1, 2.7, 3.7, Lemma 2.1, (31), (57), p.~708]{DFG04}, all
-checked against the published text (as are the further items of \cite{DFG04} named in the reference proofs above: Theorems 2.10, 2.15, Lemma 2.12, Proposition 2.16, Conjecture 2.14), and
+checked against the published text (as are the further items of \cite{DFG04} named in the reference proofs and remarks above: Theorems 2.10, 2.15, Lemmas 2.9, 2.11, 2.12,
+Proposition 2.16, Conjecture 2.14 and their equations (10), (13), (16), (38), (43), (44), (48), (51) to (53), (57), (58)), and
 \cite[I.4.2.2]{FPR94}. All other references are to sections, and the section numbers given for Bloch and Kato (Sections 3 to 6), Rubin (Sections 1.3 and 1.7), Berger
 (Section 2) and Silverman (Chapter IV) are pointers we have not checked against the printed texts. In particular we have not verified the numbers under which the
 dimension formula of \Cref{prop:blochkato:dimension-formula}, the duality of \Cref{prop:blochkato:local-duality-f} at $\ell$ and the identification of the Kummer image at
