@@ -1266,7 +1266,8 @@ the tool for forms not attached to an optimal quotient, such as the depleted for
 \begin{remark}[the identification with the objects of Diamond, Flach and Guo]\label{rem:moddeg:dfg-normalisation}
 \Cref{thm:moddeg:degree-is-eta} is a theorem about the ideal of values of $\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Zl)[I_f]$. That this ideal is the $\eta^\emptyset_{f,\lambda}$ of \cite{DFG04} rests on five
 points, which Section 4.1 of the paper asserts. Point (2) is proved below and point (5) in \Cref{ch:modules}; \Cref{ch:congruence} sketches the comparison of integral
-structures in (1), and reads the normalisation in (3), the kernel lattice in (4) and the self-adjointness of the Hecke operators from \cite{DFG04} as cited, without re-checking them.
+structures in (1), and checks the normalisation in (3), the kernel lattice in (4) and the self-adjointness of the Hecke operators against the published text of \cite{DFG04}
+(Sections 1.5.2, 1.5.3, 1.6.1, 1.6.2, 1.8.2 there).
 \begin{enumerate}[label=(\arabic*)]
 \item \emph{Which curve.} The integral structure $M(N,1)_{!,\lambda}$ of \cite{DFG04} is defined through a modular curve of full level; the paper says that it ``contains the pull-back of
 $H^1(X_0(M^\Sigma),\Z_\ell)$ with finite index'' and that after localisation at a non-Eisenstein $\mf m$ ``we take it \dots to agree with $H^1(X_0(M^\Sigma),\Z_\ell)_{\mathfrak m}$'', the cokernel being
@@ -1277,11 +1278,13 @@ of cusps, the exact sequence $H^0(S)\to H^1_c(Y)\to H^1(X)\to H^1(S)=0$ makes $H
 $H^1(D,D\setminus\{P\})=0$ over small discs $D$ around the cusps; so the image of $H^1_c(Y)\to H^1(Y)$ is $H^1(X)$. And $H^1(\Gamma_0(N),\Zl)=\Hom(\Gamma_0(N),\Zl)$ kills the elements of finite order
 ($\Zl$ is torsion-free), and $\Gamma_0(N)$ modulo the normal subgroup they generate is $\pi_1(Y_0(N))$ (Armstrong's theorem on quotients by groups with fixed points), so
 $\Hom(\Gamma_0(N),\Zl)=\Hom(\pi_1(Y_0(N)),\Zl)=H^1(Y_0(N),\Zl)$.
-\item \emph{The operator.} $[UwU]\omega$ is $w_N^*$ with no scalar in weight $2$ and trivial character, and the cup product of \cite{DFG04} differs from the book's by the factor $\frac12$ the paper
-records; this is harmless for odd $\ell$.
-\item \emph{Kernel, not projection.} $M_{f,\lambda}$ is the kernel lattice $L[\wp]$, as the paper says, and not the image of $L$ under the projection to the $f$-component (the dual lattice,
+\item \emph{The operator.} $[UwU]_\omega$ is $w_N^*$ with no scalar in weight $2$ and trivial character (in \cite[Section 1.5.3]{DFG04} it ``coincides with $\psi(-1_\infty)N^{k-2}[Uw^{-1}U]_\omega$''),
+and the cup product of \cite{DFG04}, divided by the index $[U:U_N]$ in their Section 1.5.2, differs from the book's by the factor $\frac12$ the paper records; this is harmless for odd $\ell$.
+\item \emph{Kernel, not projection.} $M_{f,\lambda}$ is the kernel lattice $L[\wp]$, as the paper says and as \cite{DFG04} define it ($\mathcal M_f=\mathcal M(N,\psi)_![I_f]$ in their Section 1.6.2,
+where $\mathcal M[I]$ is the kernel of $(x_1,\dots,x_r)\colon\mathcal M\to\mathcal M^r$ for generators $x_i$ of $I$, Section 1.1.2), and not the image of $L$ under the projection to the $f$-component (the dual lattice,
 which would change the ideal of values by the congruence ideal).
-\item \emph{Values versus Gram.} $\eta$ is the ideal of values, equivalently the square root of the Gram determinant (\Cref{ch:modules}), as the paper says.
+\item \emph{Values versus Gram.} $\eta$ is the ideal of values, equivalently the square root of the Gram determinant (\Cref{ch:modules}), as the paper says; in \cite[Section 1.7.3]{DFG04}
+$\eta^\Sigma_f$ is defined by the image of $\wedge^2\mathcal M_{f^\Sigma}$ under the pairing.
 \end{enumerate}
 If (3) or (5) differed by a unit nothing would change; if (1) or (4) differed, the paper's own description of $\eta$ in Section 4.1 would need correcting, independently of
 \Cref{thm:moddeg:degree-is-eta}.
@@ -1468,7 +1471,7 @@ identity of $X_0(11)$ and the statement is that the cusp $0$ has order $5$ (\Cre
 \end{example}
 
 \begin{remark}[the Eisenstein case in the paper]\label{rem:moddeg:eisenstein-and-the-paper}
-Ihara's lemma, the saturation statements of the same type behind part (c) of Proposition 1.4 of \cite{DFG04} (\Cref{ch:congruence}), multiplicity one (\Cref{thm:moddeg:multiplicity-one}) and the identification of the integral structure of \cite{DFG04} with $H^1(X_0(N),\Zl)$
+Ihara's lemma, the homothety of lattices behind part (c) of Proposition 1.4 of \cite{DFG04} (\Cref{ch:congruence}), multiplicity one (\Cref{thm:moddeg:multiplicity-one}) and the identification of the integral structure of \cite{DFG04} with $H^1(X_0(N),\Zl)$
 (\Cref{rem:moddeg:dfg-normalisation}) all need $\bar\rho$ irreducible; \Cref{prop:moddeg:mf-is-pullback} does not. Conjecture conj:eis bounds the deficit by the $\ell$-part of the torsion, and
 \Cref{ch:ellcurves} proves that its bound $D\le2$ at $\ell=3$ follows from the first (Proposition prop:no9 of the paper). \Cref{prop:moddeg:image-of-zero} links rational torsion with the
 cuspidal subgroup: $\varphi_E(0)$ is a rational torsion point, the image of the cuspidal class $[(0)-(\infty)]$, and it often generates $E(\Q)_{\tors}$. This is a heuristic for Open question 4, not an
@@ -1715,7 +1718,7 @@ Table 1 as the paper cites them; numbers not verified) and discuss the $abc$ con
 \Cref{ex:moddeg:99a1-and-726a1} were computed for this book by the algorithm described there; they agree with the paper's values for \curve{99a1}, \curve{726a1} and \curve{539d1}.
 
 \emph{The congruence ideal of Diamond, Flach and Guo.} \Cref{prop:moddeg:mf-is-pullback,lem:moddeg:wn-on-mf,thm:moddeg:degree-is-eta} are the book's version of the paper's Proposition prop:pullback; the
-argument is the projection formula (compare \cite{Zagier85} and \cite{ARS12}, whose arguments we have not compared in detail). The objects of \cite{DFG04} (Sections 1.5.3, 1.6.1, 1.6.2, 1.7.3, equations (13), (14), as the paper cites them) are
+argument is the projection formula (compare \cite{Zagier85} and \cite{ARS12}, whose arguments we have not compared in detail). The objects of \cite{DFG04} (Sections 1.5.3, 1.6.1, 1.6.2, 1.7.3, equations (13), (14), as the paper cites them; checked against the published text in \Cref{ch:congruence}) are
 compared with $H^1(X_0(N),\Zl)$ in \Cref{ch:congruence}; \Cref{rem:moddeg:dfg-normalisation} lists what that comparison involves. Lemma lem:ddt417 is \cite[Lemma 4.17]{DDT}, inequality half.
 
 \emph{Multiplicity one, Gorenstein, Eisenstein.} Mazur \cite{Mazur77} (Chapter II) for prime level and the Eisenstein ideal; Ribet \cite{Ribet90} (Section 5, unverified) for multiplicity one in general;

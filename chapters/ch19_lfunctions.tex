@@ -885,8 +885,9 @@ So the paper's sentence, in its original form ``$\langle f,f\rangle$ is the spec
 precise form: up to $N/(8\pi^3)$ and the omitted factors at the \emph{additive} primes only; the multiplicative primes contribute nothing beyond the factor $N$. For
 square-free $N$ there is no correction. \Cref{ch:hecke} states and proves the first (naive) equality at every level, and the true value for square-free $N$; the
 second and third equalities, with the correction $\prod_{p^2\mid N}P_p(p^{-2})$ at the additive primes, are what this chapter adds. The values for fifteen curves are in \Cref{ex:lfunctions:petersson-table}. Diamond, Flach and Guo
-\cite[Lemma 2.12]{DFG04} express the Petersson norm through the naive $L$-value, as the revised paper says (``$\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ at every level''); we have
-not compared their constant with ours, and the proof above does not use their lemma.
+\cite[Lemma 2.12]{DFG04} express the Petersson norm through the naive $L$-value, as the revised paper says (``$\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ at every level''). Their constant agrees
+with ours: their lemma is $(f,f)_{\Gamma_1(N)}=(k-1)!\,\delta(N)N\varphi(N)L^{\nv}(A_f,1)/(4^k\pi^{k+1})$ for the unnormalised product, with $\delta(N)=1$ for $N>2$ and $2$ for $N\le2$, and
+$[\bar\Gamma_0(N):\bar\Gamma_1(N)]=\delta(N)\varphi(N)/2$ turns it, for $k=2$, into $N\,L^{\nv}(A_f,1)/(8\pi^3)$ on $\Gamma_0(N)$ (\Cref{ch:congruence}). The proof above does not use their lemma.
 
 \begin{corollary}[the degree formula]\label{cor:lfunctions:degree-formula}
 \begin{enumerate}[label=(\roman*)]
@@ -931,7 +932,7 @@ v_\ell(\degphi)=\len H^1_f(\Q,W)+\sum_{q\mid N}v_\ell\bigl(\Tam_q(\ad T)\bigr)+\
 \]
 Subtracting \Cref{cor:lfunctions:degree-formula}(iii) gives $v_\ell(B_E)=\len H^1_f(\Q,W)+\sum_qv_\ell(\Tam_q(\ad T))$: the $\ell$-part of a Bloch-Kato formula for the true value $L(\ad f,1)$,
 with the period $2\pi\vol(\Lambda_E)/(c_E^2N)$. This has the shape of the theorem of Diamond, Flach and Guo \cite[Theorem 0.1]{DFG04} (\Cref{ch:blochkato}); we have not checked
-that their period agrees with ours up to an $\ell$-adic unit, so the reading proves nothing by itself. It explains the paper's sentence ``the primes at which the
+that their period (Deligne's period, computed in their Theorem 2.10 from their Lemma 2.12) agrees with ours up to an $\ell$-adic unit, so the reading proves nothing by itself. It explains the paper's sentence ``the primes at which the
 naive and the true adjoint $L$-functions differ are exactly the primes at which the modular degree acquires extra local divisibility, that the amount is the
 valuation of the omitted factor'': the Petersson norm sees $L^{\nv}$, Bloch-Kato sees $L$, and the ratio is the product of the omitted factors.
 \end{remark}

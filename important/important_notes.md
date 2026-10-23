@@ -1312,6 +1312,17 @@ sec:iso: "for every value of v_l(q^2-1) up to 6": at l = 3 the value 0 occurs on
 smallest prime factor is 3 in 63% ... and divides N in 52%" is ambiguous; below 10,000: 58.7%, and 47.5% (smallest prime
 factor of the quotient divides N) or 51.8% (some prime factor divides N).
 
+### 103. Section 1.5: Ribet-Takahashi needs E semistable (low severity; high confidence)
+note_v2 line 159 omits that both RT97 and Takahashi01 assume N square-free; the exact product formula is proved only for
+isolated isogeny classes (Takahashi01 Cor. 3.5); otherwise up to reducible primes (RT97 Thm 1 with M not prime;
+Takahashi01 Thms 3.2(c), 2.7). The local factor n_q = v_q(Delta) is right (RT97 p. 11111). Add "for semistable E".
+
+### 104. DFG04 citations in note_v2: wording points (checked against the published paper)
+[UwU]\omega should be [UwU]_\omega with w in prod_{p|N} GL_2(Z_p) (DFG Sections 1.5.3, (13), (14)); thm:dfg14's l not in
+Sigma is a standing assumption of DFG Section 1.7.3 (supports point 99); self-adjointness is stated explicitly for the
+pairing (25), Section 1.8.2 (the note's "Sections 1.6.1, 1.8.2" is acceptable); "covers l = 3" is correct; for Thm 0.1 at
+l = 3 with a_3 not 0 mod 3 DFG use Perrin-Riou plus Colmez (Prop. 2.16), Theorems 2.7 and 3.7 do not need it.
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
@@ -1546,3 +1557,14 @@ factor of the quotient divides N) or 51.8% (some prime factor divides N).
 * Full-book pass list: scratchpad step5_crosschapter.txt items 1 to 21 (chA chi_q; Ch15 pi_p/pi_f and thm:dfg14 needs l
   not in Sigma; internal-planning references in Ch2 to Ch11; epsilon, omega, Omega, M_tors clashes; Ch13 l = 2 superseded;
   Ch14/15 Ihara attribution and DFG04 comparison wording; Iverson bracket undefined).
+
+### B42. Step 5: sources verified (user supplied DFG04, RT97, Takahashi01)
+* DFG04 Prop. 1.4(c) is proved by homothety plus primitivity through the integral comparison (p. 687), not Ihara-type
+  saturation; Chapter 20's sketch now follows DFG. S_f is Section 0.2 and display (31), p. 695; l = 3 in weight 2 covered
+  (statement and proof); Thms 0.1, 0.2 = 2.15, 3.7; Lemma 2.12 constants give N L^nv/(8 pi^3); period comparison with
+  2 pi vol/(c_E^2 N) still unchecked; arXiv long-version numbering unchecked.
+* Ribet-Takahashi stated exactly in Chapter 14 (thm:moddeg:ribet-takahashi): semistable E; E_D is the J_0^D(M)-optimal
+  curve (generally not the X_0(N)-optimal one); local factor n_q. Takahashi01 is J. Number Theory 90 (2001) 74-88.
+* Still unverified: Flach92 hypotheses and annihilator; Carayol94 theorem number; Deligne-Serre Lemme 6.11; Pollack-Weston;
+  Pasten's journal data; Lenstra95 pages; Lyndon48; Kenku vs Ligozat; Weibel and other theorem-number pointers; a reference
+  for Sha(11a1)[5] = 0.

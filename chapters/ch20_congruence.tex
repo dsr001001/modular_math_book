@@ -15,7 +15,7 @@ The chapter assembles; it does not re-derive what other chapters prove. Its own 
 the equality $v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ in Step 1 of the proof of Theorem thm:quant, which the paper's Remark rem:afterquant (2) calls open
 (\Cref{lem:congruence:quant-step1}). The deep theorems (the Taylor-Wiles method, the theorems of Diamond, Flach and Guo, Hida's theorem, the formula of
 Kim and Ota) are stated precisely, with an outline of their proofs and the references; for part (c) of the proposition of Diamond, Flach and Guo we sketch the
-deduction from parts (a) and (b), given saturation statements for degeneracy maps that we cite (\Cref{thm:congruence:dfg14}).
+deduction from parts (a) and (b) along the lines of their published proof, given the integral comparison isomorphism of their integral structures, which we cite (\Cref{thm:congruence:dfg14}).
 
 \section*{Core results at a glance}
 
@@ -56,13 +56,13 @@ $d\,v(\eta)\ge v(\Delta)$, with equality if $L$ is free over $\T$. \emph{(proved
 $\mf m$-component, Gram determinant $(\eta^\Sigma_{f,\lambda})^2$; for $\Sigma=\emptyset$ and optimal $E$, $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)\simeq T_\ell E(-1)$. \emph{(proved here, given \Cref{ch:moddeg} and
 \Cref{prop:congruence:integral-structure})} \Cref{def:congruence:eta-sigma}, \Cref{prop:congruence:eta-sigma}.
 \item \textbf{Lemma lem:hecke.} For optimal $E$, $\ell$ odd, $\ell\nmid N$, $E[\ell]$ irreducible: $v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda})$, with no freeness hypothesis. \emph{(proved here, given
-\cite[Theorem 2.2]{ARS12}, \Cref{ch:moddeg} and \Cref{prop:congruence:integral-structure}; the identification with the ideal of \cite{DFG04} rests on items of \cite{DFG04} read as cited)}
+\cite[Theorem 2.2]{ARS12}, \Cref{ch:moddeg} and \Cref{prop:congruence:integral-structure}; the definitions of \cite{DFG04} it uses are checked against the published text)}
 \Cref{thm:congruence:lem-hecke}; values \Cref{ex:congruence:eta-values}.
 \item \textbf{Remark rem:free.} Multiplicity one gives $H^1(X_0(N),\Zl)_{\mf m}\simeq\T_{\mf m}^2$; no longer needed for Theorems thm:main and thm:quant. \emph{(stated; proved in \Cref{ch:moddeg} given multiplicity one)}
 \Cref{rem:congruence:rem-free}.
 \item \textbf{The map $\gamma$} (definition): $\gamma=\sum_m\epsilon_m\phi_m$, $\gamma(f)=f^\Sigma$. \Cref{def:congruence:gamma}.
 \item \textbf{Theorem thm:dfg14} (Diamond, Flach and Guo, Proposition 1.4). For $\ell\nmid2M$, $\ell\notin\Sigma$: $\gamma^t\gamma=u\prod_pL^{\nv}_p(A_f,1)^{-1}$ on $M_f$; if $\bar\rho_f$ is irreducible,
-$\eta^\Sigma_{f,\lambda}=\eta^\emptyset_{f,\lambda}\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}$; false for $\ell\in\Sigma$ (\curve{11a1}, $\ell=3$). \emph{(proof sketched here, (c) given (a), (b) and two cited saturation statements;
+$\eta^\Sigma_{f,\lambda}=\eta^\emptyset_{f,\lambda}\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}$; false for $\ell\in\Sigma$ (\curve{11a1}, $\ell=3$). \emph{(proof sketched here, (c) given (a), (b) and the cited integral comparison isomorphism, as in \cite[Proposition 1.4]{DFG04};
 reference)} \Cref{thm:congruence:dfg14}, \Cref{rem:congruence:dfg14-status}.
 \item \textbf{The three cases.} $L^{\nv}_p(A_f,1)^{-1}$ is $1$ (additive), $\frac{p-1}p\cdot\frac{(p+1)^2-a_p^2}{p^2}$ (good; Wiles's factor), $1-p^{-2}$ (multiplicative). \emph{(proved here)} \Cref{prop:congruence:three-cases};
 interpretation \Cref{rem:congruence:factors-count}; Ihara and the Eisenstein case \Cref{rem:congruence:ihara}; refined structures \Cref{rem:congruence:refined-structures}.
@@ -76,8 +76,8 @@ primes. \Cref{def:congruence:selmer-sigma}.
 \item \textbf{Theorem 0.2 of Diamond, Flach and Guo} (quoted): the same for $\Sigma\supseteq\set{p\mid N}$, $\lambda\nmid\Sigma$. \emph{(stated; checked against \cite{DFG04})} \Cref{thm:congruence:dfg02}.
 \item \textbf{Theorem thm:dfg27.} For $\ell\notin S_f$: $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0=H^0(\Q,A_f)=H^1_f(\Q,A_f)$. \emph{(stated; reference)} \Cref{thm:congruence:dfg27}.
 \item \textbf{Theorem 0.1 of Diamond, Flach and Guo} (quoted): the $\lambda$-part of the Bloch-Kato conjecture for $A_f$ and $A_f(1)$, $\lambda\notin S_f$. \emph{(stated; checked against \cite{DFG04})} \Cref{thm:congruence:dfg01}.
-\item \textbf{$\ell=3$.} As published, the theorems cover $\ell=3$ in weight $2$ ($S_f$ excludes only $\lambda\mid2N$ and the induced case); the mechanism of the proof at $\ell=3$ is reported, not re-checked. \emph{(checked
-in part)} \Cref{rem:congruence:ell-three}.
+\item \textbf{$\ell=3$.} As published, the theorems cover $\ell=3$ in weight $2$ ($S_f$ excludes only $\lambda\mid2N$ and the induced case); the proof treats $\ell=3$ explicitly (Fontaine-Laffaille theory for $M_{f,\lambda}$, Section 1.8, Proposition 2.16). \emph{(checked
+against \cite{DFG04})} \Cref{rem:congruence:ell-three}.
 \item \textbf{Deformation rings} (definition) and Mazur's theorem: the ring $R_\Sigma$ exists, and the Pontryagin dual of its cotangent module at a point $\rho$ is the Selmer group $H^1_\Sigma(\Q,\ad M_\rho\otimes K/\mathcal O)$. \emph{(proof sketched here; \cite{DDT})} \Cref{def:congruence:deformation-ring},
 \Cref{thm:congruence:deformation-ring}.
 \item \textbf{The Hecke side} (definition): $\T_\Sigma$ and $R_\Sigma\onto\T_\Sigma$. \Cref{def:congruence:hecke-side}.
@@ -407,7 +407,10 @@ Hida's theorem detects congruence primes; it does not compute the exact power. F
 modular degree is a period ratio (the formula of Zagier and Watkins, \Cref{ch:moddeg}), and \Cref{thm:congruence:main} identifies its $\ell$-adic valuation with the length of a
 Selmer group plus local terms. The paper cites \cite[Lemma 2.12]{DFG04} for the formula of the Petersson norm on $\Gamma_1(N)$ as a naive $L$-value, which Diamond,
 Flach and Guo deduce from Hida's Rankin-Shimura computation; in the book's normalisation (unnormalised product on $\Gamma_0(N)$) it is the formula recalled in the proof
-above, proved in \Cref{ch:lfunctions}. We have not re-checked the constants of the $\Gamma_1(N)$ version against \cite{DFG04}; the book uses only its own normalisation.
+above, proved in \Cref{ch:lfunctions}. The constants agree. \cite[Lemma 2.12]{DFG04} gives $(f,f)_{\Gamma_1(N)}=(k-1)!\,\delta(N)\,N\,\varphi(N)\,L^{\nv}(A_f,1)/(4^k\pi^{k+1})$, with
+$\delta(N)=1$ for $N>2$ and $\delta(N)=2$ for $N\le2$, for the product $(g,h)_\Gamma=(-2i)^{-1}\int_{\Gamma\backslash\HH}g\bar h\,y^{k-2}\,dz\wedge d\bar z=\int_{\Gamma\backslash\HH}g\bar h\,y^k\,d\mu$ of their Section 1.5.1, which is
+unnormalised. As $[\bar\Gamma_0(N):\bar\Gamma_1(N)]=\delta(N)\varphi(N)/2$, the product on $\Gamma_0(N)$ is $2/(\delta(N)\varphi(N))$ times theirs, and for $k=2$ and trivial character their formula becomes
+$\langle f,f\rangle=N\,L^{\nv}(A_f,1)/(8\pi^3)=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ at every level.
 \end{remark}
 
 \begin{remark}[the three ideals of this chapter, at once]\label{rem:congruence:two-ideals}
@@ -600,8 +603,9 @@ valuations.
 \begin{proof}
 (i) The degree of a finite map of curves multiplies the fundamental class in $H^2$ by the degree, so the cup product of pulled-back classes is $\deg(Y_{N'}\to Y_0(M))$ times the
 cup product on $Y_0(M)$. The group $U_0(M)/U_{N'}$ acts on $Y_{N'}$ over $Y_0(M)$ through its quotient by the image of $\pm1$, because $-1\in\GL_2(\Q)$ acts trivially on the upper and
-lower half planes; so the degree is half the index, and $c=\frac12$. We have not compared the normalisation of $[UwU]_\omega$ with $w_M^*$ beyond the statement for weight $2$ and trivial character
-recalled in \Cref{def:congruence:dfg-pairing}, as the paper describes it. (ii) This is the corollary on $\hat\delta_!$ in \Cref{ch:moddeg}: the transpose of the correspondence $t$ is $w_Mtw_M$,
+lower half planes; so the degree is half the index, and $c=\frac12$. The division by the index is that of \cite[Section 1.5.2]{DFG04} (``normalizing by dividing by $[U:U_N]$''). In \cite[Section 1.5.3]{DFG04}, $w$ is the
+element with entries $\sm0{-1}M0$ of $\prod_{p\mid M}\GL_2(\Z_p)$, and $[UwU]_\omega$ ``coincides with $\psi(-1_\infty)N^{k-2}[Uw^{-1}U]_\omega$'' (their $N$ is our $M$); for $k=2$ and $\psi=1$
+there is no scalar, and $[UwU]_\omega$ is the involution induced by the global matrix $\sm0{-1}M0$, which lies in $w\prod_{p\nmid M}\GL_2(\Z_p)$, that is, by $w_M$. (ii) This is the corollary on $\hat\delta_!$ in \Cref{ch:moddeg}: the transpose of the correspondence $t$ is $w_Mtw_M$,
 so $(t^*)^\dagger=w_M^*t^*w_M^*$ for the cup product, whence $\langle tx,w_M^*y\rangle=\langle x,w_M^*ty\rangle$; $w_M^*$ is an involution adjoint to itself, and the cup product is alternating and perfect
 on a smooth projective curve (Poincar\'e duality, \Cref{ch:curves}), so $\langle x,w_M^*y\rangle$ is perfect, and alternating because $\langle x,w_M^*x\rangle=-\langle w_M^*x,x\rangle=-\langle w_M^*x,w_M^{*2}x\rangle$ $=-\langle x,w_M^*x\rangle$, as $w_M^*$
 preserves the cup product, so $2\langle x,w_M^*x\rangle=0$. The statement on components is \Cref{prop:congruence:hecke-local}(iv).
@@ -649,9 +653,9 @@ Let $E$ be $X_0(N)$-optimal, $f=f_E$, $\ell$ an odd prime with $\ell\nmid N$ and
 v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda}).
 \]
 No freeness or multiplicity-one hypothesis is needed. The first equality, and the fact that the ideal of values of $\langle x,w_N^*y\rangle$ on $\varphi_E^*H^1(E,\Zl)$ is
-$\degphi\,\Zl$, are proved (given the cited theorem of Agashe, Ribet and Stein); the identification of that ideal with the ideal $\eta^\emptyset_{f,\lambda}$ of \cite{DFG04} rests on items of \cite{DFG04} that the book reads as cited, not
-re-checked (\Cref{rem:congruence:imported-table}): the normalisation of $[UwU]_\omega$ (\Cref{def:congruence:dfg-pairing}), the kernel lattice of Sections 1.1.2 and 1.6.2 (\Cref{def:congruence:eta-sigma}),
-the self-adjointness of the Hecke operators, and the comparison of integral structures, which is sketched (\Cref{prop:congruence:integral-structure}).
+$\degphi\,\Zl$, are proved (given the cited theorem of Agashe, Ribet and Stein); the identification of that ideal with the ideal $\eta^\emptyset_{f,\lambda}$ of \cite{DFG04} uses the normalisation of $[UwU]_\omega$ (\Cref{def:congruence:dfg-pairing}, \Cref{prop:congruence:dfg-pairing}), the kernel lattice of
+\cite[Sections 1.1.2, 1.6.2]{DFG04} (\Cref{def:congruence:eta-sigma}) and the definition of $\eta^\Sigma_f$ in \cite[Section 1.7.3]{DFG04}, all checked against the published text
+(\Cref{rem:congruence:imported-table}), and the comparison of integral structures, which is sketched (\Cref{prop:congruence:integral-structure}).
 \end{theorem}
 
 \begin{proof}
@@ -692,11 +696,11 @@ this is Theorem thm:quant read backwards (\Cref{thm:congruence:quant}).
 This section treats the paper's Theorem thm:dfg14, \cite[Proposition 1.4(c)]{DFG04}: adding a prime $p$ to $\Sigma$ multiplies the naive congruence ideal by the naive Euler
 factor $L^{\nv}_p(A_f,1)^{-1}$. The paper uses it twice: in the proof of Theorem thm:main, to pass from level $N$ to $\Sigma=\set{p\mid N}$, and in Step 3 of the proof of Theorem
 thm:quant, to pass from the newform $g=f_{E_S}$ at level $N_S$ to its depletion at level $N$. We state it, explain the three cases of the paragraph after it, and show
-how part (c) follows from parts (a) and (b) given saturation statements of Ihara type for the degeneracy maps, which we cite.
+how part (c) follows from parts (a) and (b), following the published proof: homothety of lattices, and primitivity of $f^\Sigma$ read through the integral comparison isomorphism.
 
 \begin{definition}[the map $\gamma$]\label{def:congruence:gamma}
 Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ and $\Sigma$ a finite set of primes. For $m\mid M^\Sigma/M=\prod_{p\in\Sigma}p^{\delta_p}$ let $\epsilon_m\colon H^1(X_0(M))\to H^1(X_0(M^\Sigma))$ be the
-pull-back along the degeneracy map $z\mapsto mz$ (on forms, $h\mapsto h(mz)$, up to the normalisation of \cite[Section 1.7.3]{DFG04}), and let $\phi_m$ be the endomorphism of the
+pull-back along the degeneracy map $z\mapsto mz$ (on forms, $h\mapsto h(mz)$; \cite[Section 1.7.3]{DFG04} normalise $\epsilon_m$ by the factor $m^{1-k}=m^{-1}$, a unit when $\ell\nmid m$), and let $\phi_m$ be the endomorphism of the
 cohomology at level $M$ which is multiplicative in coprime $m$ with $\phi_1=1$, $\phi_p=-T_p$ and $\phi_{p^2}=p$. Put
 \[
 \gamma=\sum_{m\mid M^\Sigma/M}\epsilon_m\phi_m,
@@ -722,7 +726,7 @@ $M_{f^\Sigma}$.
 (a) The maps $\epsilon_m$ are injective on the $f$-isotypic part with images the $f(mz)$-parts of the old space (multiplicity one, \Cref{ch:hecke}), and $\gamma$ maps the $f$-part onto the
 line of the depletion and its conjugate, by the $q$-expansion formula; it commutes with $G_\Q$ because the degeneracy maps are defined over $\Q$.
 
-(b) This is a double-coset computation (Diamond, Flach and Guo refer to \cite[Chapter 2]{Wiles95} and \cite[Section 4]{DDT}); we sketch it in the case of one good prime $p$. The
+(b) This is a double-coset computation (Diamond, Flach and Guo refer to \cite[Chapter 2]{Wiles95} and to page 121 of the 1995 printing of \cite{DDT} in \emph{Current Developments in Mathematics}); we sketch it in the case of one good prime $p$. The
 pairings $\hat\delta_!(\epsilon_ix,\epsilon_jy)$ for $i,j\in\set{1,p,p^2}$ are the cup products at level $M$ of $x$ with $y$ transformed by the composites $\epsilon_i^t\epsilon_j$, which are
 Hecke operators at level $M$ ($\epsilon_1^t\epsilon_1$ is the degree $(p+1)p$ of the covering, $\epsilon_1^t\epsilon_p$ is $T_p$, and so on); on $M_f$ each acts by a scalar polynomial in $a_p$ and $p$, and
 expanding $\gamma^t\gamma=\sum_{i,j}\phi_i^t\epsilon_i^t\epsilon_j\phi_j$ gives a scalar, which equals $p\,(p-1)((p+1)^2-a_p^2)/p^3$ up to the normalisations of the $\epsilon_m$, that is $u$ times Wiles's factor.
@@ -732,16 +736,15 @@ follows since every factor is nonzero (\Cref{prop:congruence:three-cases}). We d
 (c) The lattices $\gamma(M_{f,\lambda})$ and $M_{f^\Sigma,\lambda}$ are $G_\Q$-stable lattices in the same two-dimensional representation, by (a), and $\gamma(M_{f,\lambda})\subseteq M_{f^\Sigma,\lambda}$ because
 $\gamma$ preserves integral cohomology ($p\ne\ell$ for $p\in\Sigma$, so the normalising factors of the $\epsilon_m$ are units) and maps the $f$-eigenspace into the $f^\Sigma$-eigenspace by (a), and
 $M_{f^\Sigma,\lambda}$ is the intersection of that eigenspace with the integral cohomology. As $\bar\rho_f$ is irreducible, every
-$G_\Q$-stable lattice in it is homothetic to a given one (\Cref{ch:modgalrep}, lattices), so $\gamma(M_{f,\lambda})=\ell^nM_{f^\Sigma,\lambda}$ for some $n\ge0$. To get $n=0$ one needs
-$\gamma(M_{f,\lambda})$ to be saturated in the cohomology at level $M^\Sigma$, that is, $\gamma$ injective modulo $\ell$ on $M_{f,\lambda}$. Since $\phi_1=1$, this follows, one prime of $\Sigma$ at a
-time, from two saturation statements for the degeneracy maps on a non-Eisenstein component $\mf m$ at level $M'$ (with $M'$ running through the intermediate levels):
-\begin{enumerate}[label=(S\arabic*)]
-\item for $p\nmid M'\ell$, the map $H^1(X_0(M'),\F_\ell)^3_{\mf m}\to H^1(X_0(M'p^2),\F_\ell)$ given by the three degeneracy maps $z\mapsto z,pz,p^2z$ is injective;
-\item for $p\,\|\,M'$, $p\ne\ell$, the map $H^1(X_0(M'),\F_\ell)^2_{\mf m}\to H^1(X_0(M'p),\F_\ell)$ given by the two degeneracy maps $z\mapsto z,pz$ is injective.
-\end{enumerate}
-Neither is proved in this book. Ihara's lemma as stated in \Cref{ch:modgalrep} is the case of two maps from level $M'$ to $M'p$ with $p\nmid M'\ell$; (S1) and (S2) are statements of the same
-type, which we cite as inputs and have not verified in the literature. We have also not checked whether the proof in \cite[Section 1.7.3]{DFG04} goes through (S1) and (S2). Granting them,
-$n=0$. Now for $x,y\in M_{f,\lambda}$,
+$G_\Q$-stable lattice in it is homothetic to a given one (\Cref{ch:modgalrep}, lattices), so $\gamma(M_{f,\lambda})=\ell^nM_{f^\Sigma,\lambda}$ for some $n\ge0$. Diamond, Flach and Guo
+get $n=0$ from the de Rham side, not from a statement about the degeneracy maps modulo $\ell$; their proof reads: ``If $\bar{\mathcal M}_{f,\lambda}$ is irreducible, then the image of
+$\mathcal M_{f,\lambda}$ must be of the form $\lambda^n\mathcal M_{f^\Sigma,\lambda}$ for some $n\geqslant0$; since $\gamma_{\mathrm{dR}}(f)=f^\Sigma$, we see that $n=0$.'' The input is the integral comparison
+isomorphism that is part of their integral structures at $\lambda$ \cite[Sections 1.1.2, 1.2.5]{DFG04}, which we cite and do not prove (it is the theory of Fontaine and Laffaille \cite{FontaineLaffaille}
+applied to the modular curve, which has good reduction at $\ell\nmid M^\Sigma$): $M_{f,\lambda}$ and $M_{f^\Sigma,\lambda}$ are the images under the fully faithful Fontaine-Laffaille functor of
+filtered modules $D_f$ and $D_{f^\Sigma}$ whose step $\mathrm{Fil}^1$ is $\Zl f$, respectively $\Zl f^\Sigma$ (for a normalised eigenform the first filtration step of the de Rham realisation is spanned by
+the form, \cite[(15)]{DFG04}), and $\gamma$ is a morphism of these structures. If $\gamma(M_{f,\lambda})=\ell^nM_{f^\Sigma,\lambda}$, full faithfulness gives an isomorphism $D_f\to\ell^nD_{f^\Sigma}$ of filtered
+modules, which maps $\mathrm{Fil}^1D_f=\Zl f$ onto $\ell^n\Zl f^\Sigma$; as it maps $f$ to $\gamma(f)=f^\Sigma$, $n=0$. (Saturation statements of the type of Ihara's lemma for the degeneracy maps
+modulo $\ell$ would give another route; the published proof does not use them, and neither does the book.) Now for $x,y\in M_{f,\lambda}$,
 \[
 \hat\delta_!(\gamma x,\gamma y)=\hat\delta_!(x,\gamma^t\gamma y)=u\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}\,\hat\delta_!(x,y),
 \]
@@ -757,8 +760,10 @@ L^{\nv}_3(A_f,1)^{-1}=\frac23\cdot\frac{16-1}{9}=\frac{2\cdot15}{27}=\frac{10}9,
 \]
 (recomputed with PARI/GP, also from the Euler factor $(1+2X-6X^2-27X^3)^{-1}$ of the symmetric square at $3$, evaluated at $X=3^{-2}$). As $\eta^\emptyset_{f,3}=\degphi\,\Z_3=\Z_3$
 (\Cref{ex:congruence:eta-values}), the right side of (c) would be $3^{-2}\Z_3$, which is not contained in $\Z_3$; but however $\eta^{\{3\}}_{f,3}$ is read at the level $M^\Sigma=99$, which $3$ divides (for instance as the
-ideal of values of $\langle x,w_{99}^*y\rangle$ on $H^1(X_0(99),\Z_3)[\ker\theta_{f^\Sigma}]$), it is an ideal of values of an integral pairing on an integral lattice, so it lies in $\Z_3$. Every use in the paper has $\ell\notin\Sigma$ ($\Sigma=\set{p\mid N}$ with $\ell\nmid N$, and $\Sigma=S$ with $\ell\nmid N$), so we state the theorem with $\ell\notin\Sigma$. The form of (b) printed above, with the unit $u$, is reported from a reading of the
-published text made when the chapter was planned and was not re-checked; the book uses only (c).
+ideal of values of $\langle x,w_{99}^*y\rangle$ on $H^1(X_0(99),\Z_3)[\ker\theta_{f^\Sigma}]$), it is an ideal of values of an integral pairing on an integral lattice, so it lies in $\Z_3$. Every use in the paper has $\ell\notin\Sigma$ ($\Sigma=\set{p\mid N}$ with $\ell\nmid N$, and $\Sigma=S$ with $\ell\nmid N$), so we state the theorem with $\ell\notin\Sigma$. In \cite{DFG04} the hypothesis is a standing assumption: in their Section 1.7.3, $\Sigma$ is a finite
+subset of $S=S_{\mathbf f}(K)\setminus\set\lambda$, the finite primes of $K$ other than $\lambda$. Part (b) is as printed: \cite[Proposition 1.4(b)]{DFG04} reads
+$\gamma^t\circ\gamma=\phi_{N^\Sigma/N_f}\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}$ on $M_f$, with $\phi_p=-T_p$ and $\phi_{p^2}=\psi(p)p^{k-1}$, so for weight $2$ and trivial character $\phi_{N^\Sigma/N_f}$ acts on $M_f$ by $u$;
+the proof of their Theorem 2.15 records that this element, $\prod_{\delta_p=1}(-a_p)\prod_{\delta_p=2}\psi(p)p^{k-1}$, is a unit at $\lambda$. The book uses only (c).
 \end{remark}
 
 \begin{proposition}[the three cases]\label{prop:congruence:three-cases}
@@ -791,8 +796,9 @@ paragraph after Theorem thm:dfg14 (``adding a good prime $p$ multiplies the idea
 \end{remark}
 
 \begin{remark}[Ihara's lemma and the Eisenstein case]\label{rem:congruence:ihara}
-Irreducibility of $\bar\rho_f$ enters part (c) twice: in the homothety of lattices, and in the saturation statements (S1), (S2) of the proof, of the type of Ihara's lemma, which say
-that the degeneracy maps are injective modulo $\ell$ on non-Eisenstein components. In the Eisenstein case the factor relating $\eta^\Sigma$ and $\eta^\emptyset$ can differ from the Euler factor by a non-unit; the paper's Conjecture conj:eis and
+In the proof of part (c), as in \cite{DFG04}, irreducibility of $\bar\rho_f$ enters through the homothety of lattices: without it $\gamma(M_{f,\lambda})$ need not be a multiple of
+$M_{f^\Sigma,\lambda}$, and the primitivity argument no longer fixes the index. (In the book it also enters through the comparison of integral structures at a non-Eisenstein $\mf m$,
+\Cref{prop:congruence:integral-structure}.) Ihara's lemma, the injectivity of degeneracy maps modulo $\ell$ on non-Eisenstein components, is not used. In the Eisenstein case the factor relating $\eta^\Sigma$ and $\eta^\emptyset$ can differ from the Euler factor by a non-unit; the paper's Conjecture conj:eis and
 Section sec:eis concern that case, which lies outside every theorem of the paper.
 \end{remark}
 
@@ -814,7 +820,7 @@ about the case $\ell=3$, which \Cref{ch:blochkato} left open. The proofs are by 
 \begin{definition}[the exceptional set]\label{def:congruence:exceptional-set}
 Let $f$ be a newform of weight $k\ge2$ and level $N$ with coefficients in $K$. Diamond, Flach and Guo define $S_f$ as the set of finite primes $\lambda$ of $K$ such that either $\lambda\mid Nk!$, or the
 residual representation $M_{f,\lambda}/\lambda M_{f,\lambda}$ is not absolutely irreducible when restricted to $G_F$, where $F=\Q(\sqrt{(-1)^{(\ell-1)/2}\ell})$ and $\lambda\mid\ell$ \cite[Section 0.2]{DFG04}; the
-paper cites the definition as \cite[(31)]{DFG04}, a display number not re-checked. For $k=2$ and $K=\Q$: $\ell\in S_f$ iff $\ell\mid2N$ or $\bar\rho|_{\Gal(\Qbar/\Q(\sqrt{\ell^*}))}$ is not absolutely irreducible.
+definition is repeated as the display \cite[(31)]{DFG04} at the start of their Section 2 (p.~695), which is the number the paper cites. For $k=2$ and $K=\Q$: $\ell\in S_f$ iff $\ell\mid2N$ or $\bar\rho|_{\Gal(\Qbar/\Q(\sqrt{\ell^*}))}$ is not absolutely irreducible.
 \end{definition}
 
 \begin{proposition}[the paper's Proposition prop:Sf]\label{prop:congruence:exceptional-set}
@@ -836,13 +842,14 @@ unramified at every $p\notin\Sigma\cup\set{\ell}$ (that is, lie in $H^1_{\ur}(\Q
 
 If $\Sigma$ contains every prime $p\ne\ell$ at which $W$ is ramified, then at $p\notin\Sigma\cup\set{\ell}$ the module $W$ is unramified, $W^{I_p}=W$ is divisible, and $H^1_{\ur}(\Q_p,W)=H^1_f(\Q_p,W)$
 (\Cref{ch:blochkato}); so $H^1_\Sigma(\Q,W)$ is also the group with the Bloch-Kato conditions outside $\Sigma$, and $H^1_f(\Q,W)\subseteq H^1_\Sigma(\Q,W)$. Diamond, Flach and Guo write the unramified condition
-in general because $H^1_{\ur}(\Q_p,W)$ need not be divisible at a ramified prime (\Cref{ex:congruence:ex-hur}). They define the condition at $\ell$ through Fontaine-Laffaille theory,
-as the extensions that lie in the essential image of the Fontaine-Laffaille functor, and compare it with the Bloch-Kato condition.
+in general because $H^1_{\ur}(\Q_p,W)$ need not be divisible at a ramified prime (\Cref{ex:congruence:ex-hur}). At $\ell$ the condition is the Bloch-Kato one; for the finite modules $W_n=W[\lambda^n]$ they define it through Fontaine-Laffaille theory,
+as the extensions that lie in the essential image of the Fontaine-Laffaille functor, and \cite[Proposition 2.2]{DFG04} shows that the direct limit over $n$ is the Bloch-Kato condition.
 
 \begin{definition}[minimal ramification]\label{def:congruence:minimally-ramified}
 Let $\rho_0\colon G_\Q\to\GL_2(k)$ be a residual representation and $p\ne\ell$. A lift $\rho$ of $\rho_0$ (to $\mathcal O$, or to an artinian $\mathcal O$-algebra $A$) is \emph{minimally ramified at $p$} if
-$\rho(I_p)$ maps isomorphically onto $\rho_0(I_p)$ when $\ell\nmid\#\rho_0(I_p)$, and if the coinvariants $M/M^{I_p}$ of the module $M$ of $\rho$ are free of rank one over $A$ (for $\rho$ over $\mathcal O$: $\dim(M\otimes K)^{I_p}=1$)
-when $\ell\mid\#\rho_0(I_p)$ \cite[Section 3.1]{DFG04}. $M_{f,\lambda}$ is \emph{minimally ramified outside $\Sigma$} if it is so at every prime $p\notin\Sigma\cup\set{\ell}$.
+$\rho(I_p)\simeq\rho_0(I_p)$ (reduction is an isomorphism on the images of inertia) when $\#\rho_0(I_p)\ne\ell$, and if the quotient $M/M^{I_p}$ of the module $M$ of $\rho$ by its inertia invariants is free of rank one over $A$
+(for $\rho$ over $\mathcal O$: $\dim(M\otimes K)^{I_p}=1$) when $\#\rho_0(I_p)=\ell$ \cite[Section 3.1, p.~715, and p.~717]{DFG04}. (The case distinction of \cite{DFG04} is $\#\rho_0(I_p)=\ell$ or not, not
+whether $\ell$ divides $\#\rho_0(I_p)$.) $M_{f,\lambda}$ is \emph{minimally ramified outside $\Sigma$} if it is so at every prime $p\notin\Sigma\cup\set{\ell}$.
 \end{definition}
 
 If $\Sigma$ contains every prime $p\ne\ell$ at which $\rho_f$ is ramified, then $M_{f,\lambda}$ is minimally ramified outside $\Sigma$: at $p\notin\Sigma\cup\set{\ell}$, $\rho_f(I_p)=1=\rho_0(I_p)$. For $f=f_E$ and
@@ -858,7 +865,8 @@ ramified outside $\Sigma$. Then $H^1_\Sigma(\Q,A_{f,\lambda}\otimes K_\lambda/\m
 \end{theorem}
 
 \begin{proof}[Reference]
-We do not prove this; see \cite[Section 3]{DFG04} and the outline in Section \ref{sec:congruence:taylor-wiles}. For $f=f_E$ the module $A_{f,\lambda}=\ad M_{f,\lambda}$ is $\ad T_\ell E$ by
+We do not prove this; it is \cite[Theorem 3.7]{DFG04} (p.~723; checked: the hypotheses are $\lambda\notin S_f$ and $M_{f,\lambda}$ minimally ramified outside $\Sigma$, $\ell\notin\Sigma$, and
+$\eta^\Sigma_f$ is the ideal ``defined before Proposition 1.4''); see \cite[Section 3]{DFG04} and the outline in Section \ref{sec:congruence:taylor-wiles}. For $f=f_E$ the module $A_{f,\lambda}=\ad M_{f,\lambda}$ is $\ad T_\ell E$ by
 \Cref{prop:congruence:eta-sigma}(iii), and $\Sigma=\set{p\mid N}$ satisfies the hypothesis by the remark after \Cref{def:congruence:minimally-ramified}.
 \end{proof}
 
@@ -878,8 +886,9 @@ If $\ell\notin S_f$, then $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$, and the same holds for 
 \end{theorem}
 
 \begin{proof}[Reference]
-We do not prove this; see \cite[Section 2]{DFG04}, where it is stated for $A_f$ and $B_f=A_f(1)$, and \Cref{ch:blochkato}, which states it and sketches its derivation: $H^1_f(\Q,A_f)=0$ because the
-divisible part of $H^1_f(\Q,W)$ lies in the finite group $H^1_\Sigma(\Q,W)$ of \Cref{thm:congruence:dfg37}, and the vanishing for $V^D$ follows from the Euler characteristic formula.
+We do not prove this; it is \cite[Theorem 2.7]{DFG04} (p.~699, checked), stated there for $A_f$ and $B_f=A_f(1)$ together with $\operatorname{ord}_{s=0}L(A_f,s)=\operatorname{ord}_{s=0}L(B_f,s)=0$.
+\Cref{ch:blochkato} states it and sketches the derivation, which is the published proof: the $H^0$ vanish by absolute irreducibility, $\dim H^1_f(\Q,A_f)=\dim H^1_f(\Q,B_f)$ by the Euler characteristic
+formula of Fontaine and Perrin-Riou, and $H^1_f(\Q,A_f)=0$ because the divisible part of $H^1_f(\Q,W)$ lies in the finite group $H^1_\Sigma(\Q,W)$ of \Cref{thm:congruence:dfg37}.
 Only $H^1_f(\Q,V^D)=0$ is needed in the paper; $H^0(\Q,V^D)=0$ holds for every $E$ (\Cref{ch:blochkato}).
 \end{proof}
 
@@ -889,8 +898,10 @@ Only $H^1_f(\Q,V^D)=0$ is needed in the paper; $H^0(\Q,V^D)=0$ holds for every $
 \end{theorem}
 
 \begin{proof}[Reference]
-We do not prove this; see \cite[Section 2]{DFG04}. Its proof takes $\Sigma=\set{p\mid N}$ and combines \Cref{thm:congruence:dfg14}, the comparison of $H^1_\Sigma$ with $H^1_f$ (the paper's Lemma
-lem:dfg21), the local formula of Fontaine and Perrin-Riou (the paper's Lemma lem:fpr) and \Cref{thm:congruence:dfg37}, with the Petersson norm and the periods in place of the modular degree:
+We do not prove this; see \cite[Sections 2.3, 2.4]{DFG04}. Its proof (that of their Theorem 2.15, pp.~709 to 711) takes for $\Sigma$ a nonempty set of primes $p\ne\ell$ containing those
+where $M_\lambda$ is ramified, and combines \Cref{thm:congruence:dfg14} (with the unit $u$), the comparison of $H^1_\Sigma$ with $H^1_f$ (their Lemma 2.1, the paper's Lemma lem:dfg21), the local formula of
+Fontaine and Perrin-Riou (the paper's Lemma lem:fpr) with \cite[(57)]{DFG04}, the triviality of the Tamagawa factor at $\ell$ \cite[Proposition 2.16]{DFG04} and \Cref{thm:congruence:dfg37}, with the
+Petersson norm (\cite[Lemma 2.12]{DFG04}) and Deligne's period \cite[Theorem 2.10]{DFG04} in place of the modular degree:
 it is the same assembly as the proof of Theorem thm:main (\Cref{thm:congruence:main}). The statement of the conjecture is in \Cref{ch:blochkato}.
 \end{proof}
 
@@ -900,10 +911,21 @@ how Diamond, Flach and Guo treat that case. What has been checked against the pu
 $Nk!$'' such that the residual representation is absolutely irreducible over $\Q(\sqrt{(-1)^{(\ell-1)/2}\ell})$; the definition of $S_f$ in the introduction excludes only $\lambda\mid Nk!$ and the
 non-absolutely-irreducible case; and Theorems 0.1 and 0.2, quoted above, are stated for every $\lambda\notin S_f$. For $k=2$, $Nk!=2N$, so as \emph{statements} these theorems include $\ell=3$ whenever
 $3\nmid N$ and $\bar\rho|_{\Gal(\Qbar/\Q(\sqrt{-3}))}$ is absolutely irreducible; this is what the paper means by ``It covers $\ell=3$ in weight $2$: $S_f$ excludes only the primes dividing $2N$ and the induced case''.
-How the proof avoids the obstruction at $\ell=3$ is, according to a reading of the published text made when this chapter was planned but not re-checked at the time of writing:
-Fontaine-Laffaille theory is applied to $M_{f,\lambda}$ itself (Hodge-Tate weights $0,1$, an interval of length $1\le\ell-2$), and the local condition at $\ell$ for the adjoint is defined through
-extensions of such short objects, which are compared with the Bloch-Kato condition for every $\ell>2$; the Taylor-Wiles set-up asks for Serre weight $2\le k\le\ell-1$, which holds for $k=2$,
-$\ell=3$. The book therefore treats Theorem thm:main at $\ell=3$ (with $3\nmid N$ and image not $\Ns$) as a theorem, with this caveat on the depth of the check.
+How the proof treats $\ell=3$ has also been checked against the published text.
+\begin{enumerate}[label=(\arabic*)]
+\item Fontaine-Laffaille theory is applied to $M_{f,\lambda}$, not to the adjoint. A crystalline representation is \emph{short} if $\mathrm{Fil}^0D=D$, $\mathrm{Fil}^\ell D=0$ and no nonzero quotient
+$V'$ has $V'\otimes\Ql(\ell-1)$ unramified \cite[Section 1.1.2]{DFG04}, and $M_{f,\lambda\text{-crys}}$ is an object of the relevant category ``if $\ell\nmid N$ and $\ell>k$'' (p.~713), which holds for
+$k=2$, $\ell=3$. Section 1.7.1 of \cite{DFG04} records the obstruction of \Cref{ch:blochkato}: the adjoint gives such an object only after twisting ``if $\ell-1>2(k-1)$'', which fails for $k=2$, $\ell=3$.
+\item The local condition at $\ell$ for $W=\Hom(V_1,V_2)\otimes\Qlmod$ with $V_1,V_2$ short is defined at finite level by extensions in the essential image of the Fontaine-Laffaille functor and
+compared with the Bloch-Kato condition in \cite[Proposition 2.2]{DFG04}; the dimension count of \cite[Corollary 2.3]{DFG04} needs only $\ell>2$.
+\item The refined integral structures assume that $\bar\rho$ is irreducible and, ``if $3\in\lambda$'', absolutely irreducible on $G_{\Q(\mu_3)}$ \cite[Section 1.8]{DFG04}; this is the condition $3\notin S_f$.
+\item The Taylor-Wiles axioms ask for absolute irreducibility over the quadratic subfield of $\Q(\mu_\ell)$ and Serre weight $2\le k\le\ell-1$ \cite[Section 3.1]{DFG04}, which holds for $k=2$, $\ell=3$.
+\item The case $\ell=k+1$ needs one extra input, in the triviality of the Tamagawa factor at $\ell$ for $A_f(1)$ \cite[Proposition 2.16]{DFG04}: when $a_\ell\equiv0\pmod\lambda$ their Lemma 2.17 suffices;
+in the ordinary case ($a_\ell\not\equiv0\pmod\lambda$ and $\ell=k+1$) they appeal to Perrin-Riou's results on her conjecture $C_{EP}(V)$ for ordinary representations, with Colmez's proof of the
+reciprocity law $\mathrm{Rec}(V)$. This enters only Theorem 0.1, not Theorems 2.7 and 3.7, which are what Theorem thm:main uses.
+\end{enumerate}
+In the same direction, \cite[Lemma 2.5]{DFG04} (an irreducible residual representation is absolutely irreducible over $F$) assumes $\lambda\nmid N(2k-1)(2k-3)k!$, which for $k=2$ excludes
+$\ell=3$: this is the room for the image $\Ns$. The book therefore treats Theorem thm:main at $\ell=3$ (with $3\nmid N$ and image not $\Ns$) as a theorem.
 \end{remark}
 
 \section{The Taylor-Wiles method in outline}\label{sec:congruence:taylor-wiles}
@@ -1076,7 +1098,7 @@ hypothesis & used in & without it\\
 $E$ optimal & Step 1 & for another curve of the class the parametrisation has degree $\deg\psi\cdot\degphi$; harmless for $v_\ell$ when $E[\ell]$ is irreducible (\Cref{ch:moddeg})\\
 $\ell\nmid N$ & Steps 1, 3, 4 & Agashe-Ribet-Stein fails at $\ell^2\mid N$ (\curve{99a1}); Fontaine-Laffaille and the integral structures need $\ell\nmid N$; Lemma lem:fpr needs $q\ne\ell$\\
 $\ell$ odd & Steps 1, 4 & the factor $\frac12$ in $\hat\delta_!$; the term at $\infty$; self-duality of $\ad T$\\
-$E[\ell]$ irreducible & Steps 1, 2 & non-Eisenstein $\mf m$; homothety of lattices; the saturation statements in \Cref{thm:congruence:dfg14}(c)\\
+$E[\ell]$ irreducible & Steps 1, 2 & non-Eisenstein $\mf m$; homothety of lattices, also in \Cref{thm:congruence:dfg14}(c)\\
 irreducible over $\Q(\sqrt{\ell^*})$ & Steps 3, 4 & Taylor-Wiles (\Cref{rem:congruence:where-hypothesis}); $h_\ell(E)=0$ and $H^1_f(\Q,V^D)=0$\\
 multiplicity one & nowhere & \Cref{rem:congruence:rem-free}\\
 \bottomrule
@@ -1411,26 +1433,25 @@ This section lists, for reference, every statement of \cite{DFG04} that the pape
 \Cref{ch:blochkato,ch:lfunctions} point to for the status of these citations.
 
 \begin{remark}[the citations of Diamond, Flach and Guo]\label{rem:congruence:imported-table}
-In the column ``status'', \emph{checked} means compared with the published text \cite{DFG04} for this chapter; \emph{as cited} means that the statement is used in the form in which the paper
-cites it, with its content summarised from a reading of the published text made when this chapter was planned, not repeated at the time of writing.
+Every entry was compared with the published text \cite{DFG04} for this chapter; the column ``where'' gives the page of the journal, and the content column what the check found.
 \begin{center}\small
 \begin{tabular}{p{0.19\textwidth}p{0.36\textwidth}p{0.2\textwidth}p{0.13\textwidth}}
 \toprule
-citation & content (book's notation) & paper's use & status\\
+citation & content (book's notation) & paper's use & where\\
 \midrule
-Theorem 0.1 (= Theorem 2.15) & $\lambda$-part of Bloch-Kato for $A_f$, $A_f(1)$, $\lambda\notin S_f$ & Section 1.2 & checked\\
-Theorem 0.2 (= Theorem 3.7) & $\len H^1_\Sigma=v_\lambda(\eta^\Sigma_f)$, $\Sigma\supseteq\set{p\mid N}$, $\lambda\notin S_f$, $\lambda\nmid\Sigma$ & thm:dfg37 & checked\\
-definition of $S_f$ (Section 0.2; the paper's (31), not re-checked) & $\lambda\mid Nk!$ or residually not absolutely irreducible over $\Q(\sqrt{\ell^*})$ & Section 4.2 & checked (Section 0.2)\\
-Theorem 3.7 & as Theorem 0.2, with ``minimally ramified outside $\Sigma$'' & thm:dfg37 & as cited\\
-Proposition 1.4(c) & $\eta^\Sigma=\eta^\emptyset\prod L^{\nv}_p(A_f,1)^{-1}$, $\bar\rho$ irreducible & thm:dfg14 & as cited\\
-Theorem 2.7 & $H^0=H^1_f=0$ for $A_f$ and $A_f(1)$ & thm:dfg27 & as cited\\
-Lemma 2.1 & the exact sequence of Lemma lem:dfg21 & lem:dfg21 & as cited\\
-Lemma 2.12 & Petersson norm as naive adjoint $L$-value & Section 1 & as cited\\
-(57), p.~708 & $\Tam_p(M)=\Tam_p(M^D)$; definition of $\Tam_p$ & lem:fpr, Section 1.2 & as cited\\
-Sections 1.5.3, 1.6.2, 1.7.2, 1.7.3; (13), (14) & $\hat\delta_!$, $M_f$, $\delta_p$, $L^{\nv}_p$, $\eta^\Sigma_f$ & Section 4.1 & as cited; $\eta^\Sigma_f$ ``defined in Section 1.7.3'' checked\\
-Sections 1.6.1, 1.8.2 & Hecke operators self-adjoint & Section 4.1 & as cited\\
-Section 2.1 & $H^1_f$ and $H^1_\Sigma$ & Section 4.2 & as cited\\
-Lemma 1.8, Corollary 1.9 & Eisenstein kernels and cokernels & Section 4.1 & as cited\\
+Theorem 0.1 (= Theorem 2.15) & $\lambda$-part of Bloch-Kato for $A_f$, $A_f(1)$, $\lambda\notin S_f$ & Section 1.2 & pp.~666, 709\\
+Theorem 0.2 (= Theorem 3.7) & $\len H^1_\Sigma=v_\lambda(\eta^\Sigma_f)$, $\Sigma\supseteq\set{p\mid N}$, $\lambda\notin S_f$, $\lambda\nmid\Sigma$ & thm:dfg37 & p.~666\\
+definition of $S_f$ (Section 0.2 and display (31)) & $\lambda\mid Nk!$ or residually not absolutely irreducible over $\Q(\sqrt{\ell^*})$ & Section 4.2 & pp.~666, 695\\
+Theorem 3.7 & as Theorem 0.2, with ``minimally ramified outside $\Sigma$'', $\ell\notin\Sigma$ & thm:dfg37 & p.~723\\
+Proposition 1.4(c) & $\eta^\Sigma=\eta^\emptyset\prod L^{\nv}_p(A_f,1)^{-1}$ if $\bar{\mathcal M}_{f,\lambda}$ is irreducible; proved by homothety and $\gamma_{\mathrm{dR}}(f)=f^\Sigma$ & thm:dfg14 & p.~687\\
+Theorem 2.7 & $H^0=H^1_f=0$ for $A_f$ and $A_f(1)$ & thm:dfg27 & p.~699\\
+Lemma 2.1 & the exact sequence of Lemma lem:dfg21, for $\Sigma$ nonempty & lem:dfg21 & p.~696\\
+Lemma 2.12 & $(f,f)_{\Gamma_1(N)}$ as a naive adjoint $L$-value; $N/(8\pi^3)$ on $\Gamma_0(N)$ for $k=2$ & Section 1 & p.~706\\
+(57), p.~708 & $\Tam_p(M)=\Tam_p(M^D)$; definition of $\Tam_p$ & lem:fpr, Section 1.2 & p.~708\\
+Sections 1.5.3, 1.6.2, 1.7.2, 1.7.3; (13), (14) & $\hat\delta_!$ through $[UwU]_\omega$, $M_f=M(N,\psi)_![I_f]$, $\delta_p$, $L^{\nv}_p$, $\eta^\Sigma_f$ & Section 4.1 & pp.~682 to 687\\
+Sections 1.6.1, 1.8.2 & Hecke action compatible with $\hat\delta_!$ (Proposition 1.3); self-adjoint for the pairing (25) & Section 4.1 & pp.~682, 689\\
+Section 2.1 & $H^1_f$ and $H^1_\Sigma$ & Section 4.2 & p.~695\\
+Lemma 1.8, Corollary 1.9 & $H^1_c\to H^1$ an isomorphism after localising at a non-Eisenstein $\mf m$ & Section 4.1 & pp.~690, 691\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -1547,10 +1568,9 @@ paper \cite{Lenstra95} proves the numerical criterion in the form of \Cref{thm:c
 \cite[Lemma 4.17]{DDT}, as the paper cites it; we have not compared the numbering with the published text of \cite{DDT}, and the book proves only the part the paper states. Wiles's
 numerical criterion is in \cite[Appendix]{Wiles95} and \cite[Section 5]{DDT}; the theorem number sometimes quoted for it in \cite{DDT} is not verified here.
 
-\emph{Diamond, Flach and Guo.} The paper cites the published version \cite{DFG04}; so does the book. We checked against it the abstract, the definition of $S_f$ in the introduction, the
-statements of Theorems 0.1 and 0.2 with their identifications ``(= Theorem 2.15)'' and ``(= Theorem 3.7)'', and the sentence that $\eta^\Sigma_f$ is ``defined in Section 1.7.3''. The other
-numbered items (Proposition 1.4, Theorem 2.7, Lemmas 2.1 and 2.12, the displays (13), (14), (31), (57), and the sections listed in \Cref{rem:congruence:imported-table}) are cited as the paper
-cites them; their summaries here follow a reading of the published text made when the chapter was planned. The longer version \cite{DFG04long} (``August 2001, with minor update December
+\emph{Diamond, Flach and Guo.} The paper cites the published version \cite{DFG04}; so does the book. Every item of it that the paper or the book cites (the abstract, the definition of $S_f$ in
+Section 0.2 and as display (31), Theorems 0.1, 0.2, 2.7, 2.15, 3.7, Propositions 1.4, 2.2 and 2.16, Lemmas 1.8, 2.1, 2.5 and 2.12, Corollary 1.9, the displays (13), (14), (15), (57), the definition
+of minimal ramification and the sections listed in \Cref{rem:congruence:imported-table}) was checked against the published text for this chapter, with the page numbers given there. The longer version \cite{DFG04long} (``August 2001, with minor update December
 2025'') contains the foundational details omitted from the published paper, with different numbering. The Taylor-Wiles method is \cite{Wiles95,TaylorWiles}; \cite{Diamond96} gives the freeness
 of the cohomology and the version without the Gorenstein hypothesis; \cite{DDT} (Chapters 2 to 5) is the standard account, and we followed its organisation in
 Section \ref{sec:congruence:taylor-wiles}. Level raising and Ihara's lemma are \cite{Ribet84,Ribet90} and \cite{DiamondTaylor94}; Fontaine-Laffaille theory is \cite{FontaineLaffaille}, and the

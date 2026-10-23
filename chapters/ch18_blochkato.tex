@@ -650,8 +650,9 @@ applied to $A$ directly at $\ell=3$. The paper states, after Theorem thm:dfg37, 
 $S_f$ excludes only the primes dividing $2N$ and the induced case''. At the level of statements this is
 checked in \Cref{ch:congruence} against the published text: the exceptional set $S_f$ of \cite{DFG04} excludes only $\lambda\mid Nk!$ (for $k=2$, $\lambda\mid2N$) and the case where the
 residual representation is not absolutely irreducible over $\Q(\sqrt{\ell^*})$, and the main theorems are stated for every $\lambda\notin S_f$, so they include $\ell=3$ when $3\nmid N$ and
-$\bar\rho|_{G_{\Q(\sqrt{-3})}}$ is absolutely irreducible. How the proof sets up the integral local condition at $\ell$ for the adjoint when $\ell=3$ (\Cref{ch:congruence} reports Fontaine-Laffaille
-theory applied to $M_{f,\lambda}$ itself, of Hodge-Tate weights $0,1$) has not been re-checked against the source in this book.
+$\bar\rho|_{G_{\Q(\sqrt{-3})}}$ is absolutely irreducible. The proof has also been checked there: Diamond, Flach and Guo apply Fontaine-Laffaille theory to $M_{f,\lambda}$ itself, of Hodge-Tate weights $0,1$, and define the
+local condition at $\ell$ for the adjoint through extensions of such objects (their Section 1.7.1 notes that the adjoint itself would need $\ell-1>2(k-1)$); the one extra input at $\ell=k+1=3$ is
+in the Tamagawa factor at $\ell$ for $A_f(1)$, which enters Theorem 0.1 but not the theorems the paper uses (\Cref{ch:congruence}).
 \end{remark}
 
 \begin{proposition}[local dimensions at $\ell$]\label{prop:blochkato:dimension-formula}
@@ -1353,7 +1354,7 @@ This section proves the paper's Lemma lem:dfg21 (Lemma 2.1 of Diamond, Flach and
 Theorem thm:main and Remark rem:ns use. It also states Theorem thm:dfg27, which supplies the hypothesis of the lemma.
 
 \begin{definition}[the exceptional set]\label{def:blochkato:exceptional-set}
-For $f=f_E$ (weight $2$, trivial character, rational coefficients) the \emph{exceptional set} of Diamond, Flach and Guo, as the paper reads \cite[(31)]{DFG04}, is
+For $f=f_E$ (weight $2$, trivial character, rational coefficients) the \emph{exceptional set} of Diamond, Flach and Guo \cite[Section 0.2 and (31)]{DFG04} (there: $\lambda\mid Nk!$, or the residual representation is not absolutely irreducible on $G_F$, $F=\Q(\sqrt{\ell^*})$) is
 \[
 S_f=\bigl\{\ell:\ \ell\mid2N,\ \text{or}\ \bar\rho_{E,\ell}|_{\Gal(\Qbar/\Q(\sqrt{\ell^*}))}\ \text{is not absolutely irreducible}\bigr\}.
 \]
@@ -1370,8 +1371,8 @@ If $\ell\notin S_f$, then $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$ and $H^0(\Q,A_f)=H^1_f(\
 \begin{proof}[Sketch of proof]
 This is \cite[Theorem 2.7]{DFG04}, the paper's Theorem thm:dfg27; we do not prove it. The $H^0$ statements hold for every $E$ with $\bar\rho$ absolutely irreducible
 (\Cref{prop:blochkato:global-invariants}). The content is the vanishing of the adjoint Selmer group with $\Ql$ coefficients, which comes from the Taylor-Wiles method:
-the identification of a universal deformation ring with a Hecke algebra forces the tangent space $H^1_f(\Q,A_f)$ to vanish. One way to see the implication, given the
-other theorem of Diamond, Flach and Guo that the paper uses (Theorem thm:dfg37, \Cref{ch:congruence}): it says that $H^1_\Sigma(\Q,W)$ is finite, so $H^1_f(\Q,W)\subseteq H^1_\Sigma(\Q,W)$
+the identification of a universal deformation ring with a Hecke algebra forces the tangent space $H^1_f(\Q,A_f)$ to vanish. The published proof (\cite{DFG04}, pp.~699 to 700, checked) derives it from the
+other theorem of Diamond, Flach and Guo that the paper uses, as follows (Theorem thm:dfg37, \Cref{ch:congruence}): it says that $H^1_\Sigma(\Q,W)$ is finite, so $H^1_f(\Q,W)\subseteq H^1_\Sigma(\Q,W)$
 is finite, so $H^1_f(\Q,A_f)=0$ (\Cref{prop:blochkato:selmer-relations}(iii)), so $H^1_f(\Q,V^D)=0$ (\Cref{prop:blochkato:euler-characteristic}).
 \end{proof}
 
@@ -1660,14 +1661,15 @@ Here $T^D\simeq T$ by the Weil pairing (\Cref{prop:blochkato:twists}(iii)). This
 
 \begin{theorem}[Diamond, Flach and Guo, Theorem 0.1]\label{thm:blochkato:dfg-01}
 Let $f$ be a newform (of weight $k\ge2$) and $\lambda$ a prime of its coefficient field not in the exceptional set $S_f$. Then the $\lambda$-part of the Tamagawa number conjecture
-of Bloch and Kato holds for the adjoint motive of $f$ at the critical point $s=1$ \cite[Theorem 0.1]{DFG04}.
+of Bloch and Kato holds for $A_f$ and $A_f(1)$, that is, for $L(A_f,s)$ at $s=0$ and at the critical point $s=1$ \cite[Theorem 0.1]{DFG04}.
 \end{theorem}
 
 \begin{proof}[Reference]
 We do not prove this; it is the theorem the paper cites when it says that its hypothesis ``is the one under which Diamond, Flach and Guo prove the Tamagawa
-number conjecture for the adjoint motive of $f$''. The exact normalisation of the period is in \cite[Section 1]{DFG04}. The proof combines the identification of
-the congruence ideal with the special value (Hida, and the Rankin-Shimura method), Theorem thm:dfg37, Theorem thm:dfg14, and the local computations of Lemma
-lem:fpr; \Cref{ch:congruence} gives the parts the paper uses.
+number conjecture for the adjoint motive of $f$''. The period is Deligne's period, computed in \cite[Section 2.3, Theorem 2.10]{DFG04} (the integral structures it uses are those of their Section 1),
+and the conjecture is formulated in \cite[Section 2.4, Conjecture 2.14]{DFG04}; the theorem is their Theorem 2.15. The proof combines the identification of
+the congruence ideal with the special value (Hida's form of the Rankin-Shimura method, their Lemma 2.12), Theorem thm:dfg37, Theorem thm:dfg14, the triviality of the
+Tamagawa factor at $\ell$ (their Proposition 2.16) and the local computations of Lemma lem:fpr; \Cref{ch:congruence} gives the parts the paper uses.
 \end{proof}
 
 \begin{theorem}[Diamond, Flach and Guo, Theorem 0.2]\label{thm:blochkato:dfg-02}
@@ -1676,7 +1678,8 @@ then $H^1_\Sigma(\Q,W)$ is finite of length $v_\lambda(\eta^\Sigma_{f,\lambda})$
 \end{theorem}
 
 \begin{proof}[Reference]
-This is the paper's Theorem thm:dfg37, which the paper says is ``the form given as Theorem 0.2'' of \cite{DFG04}. We do not prove it; the statement, the meaning of
+This is the paper's Theorem thm:dfg37, which the paper says is ``the form given as Theorem 0.2'' of \cite{DFG04}. As stated here, with minimal ramification outside $\Sigma$,
+it is \cite[Theorem 3.7]{DFG04}; their Theorem 0.2 is the case in which $\Sigma$ contains the primes dividing $N$ (checked). We do not prove it; the statement, the meaning of
 ``minimally ramified'' and the outline of the Taylor-Wiles argument are in \Cref{ch:congruence}. It is recalled here only so that \Cref{thm:blochkato:selmer-identity} can be
 read against it.
 \end{proof}
@@ -1705,7 +1708,8 @@ Rankin-Shimura method $\langle f,f\rangle$ is $L^{\nv}(\Sym f,2)=L^{\nv}(\ad f,1
 $v_\ell(\degphi)=v_\ell(B_E)+\sum_qe_\ell(E,q)$ for $\ell\nmid N$, with $B_E=c_E^2N\,L(\ad f,1)/(2\pi\operatorname{vol}(\Lambda_E))$, so the ratio of the naive to the true local factors produces the
 terms $e_\ell(E,q)$. If one reads $2\pi\operatorname{vol}(\Lambda_E)/(c_E^2N)$ as the period $\Omega(\ad M_f(1))$, then \Cref{conj:blochkato:tnc}, proved by \Cref{thm:blochkato:dfg-01}, predicts
 $v_\ell(B_E)=\len H^1_f(\Q,W)+\sum_qv_\ell(\Tam_q(\ad T))$, which is (eq:identity). Theorem thm:main proves this identity through congruence ideals instead of $L$-values, so the
-identification of the periods is never needed; whether this reading of the period agrees with the normalisation of \cite[Section 1]{DFG04} we have not checked.
+identification of the periods is never needed; whether this reading of the period agrees, up to an $\ell$-adic unit, with Deligne's period as Diamond, Flach and Guo compute it
+\cite[Section 2.3, Theorem 2.10]{DFG04} (through their Lemma 2.12 and the periods of $M_f\otimes M_{\psi^{-1}}$ and $M_{\psi^{-1}}$) we have not checked.
 \end{remark}
 
 \section{Exercises}\label{sec:blochkato:exercises}
@@ -1831,7 +1835,8 @@ Coleman and Iovita \cite{ColemanIovita99} and Berger's survey \cite{Berger}. The
 structure of $E(\Q_p^{\ur})$ used in \Cref{prop:blochkato:tam-of-E} is in Silverman \cite{SilvermanATAEC} (Chapter IV) and Grothendieck \cite{SGA7}; the images of inertia
 are due to Serre and Tate \cite{SerreTate68} and Kraus \cite{Kraus90}.
 
-\paragraph{Theorem numbers.} We cite theorem numbers only where the paper cites them: \cite[Theorems 0.1, 2.7, 3.7, Lemma 2.1, (31), (57), p.~708]{DFG04} and
+\paragraph{Theorem numbers.} We cite theorem numbers where the paper cites them: \cite[Theorems 0.1, 2.7, 3.7, Lemma 2.1, (31), (57), p.~708]{DFG04}, all
+checked against the published text (as are the further items of \cite{DFG04} named in the reference proofs above: Theorems 2.10, 2.15, Lemma 2.12, Proposition 2.16, Conjecture 2.14), and
 \cite[I.4.2.2]{FPR94}. All other references are to sections, and the section numbers given for Bloch and Kato (Sections 3 to 6), Rubin (Sections 1.3 and 1.7), Berger
 (Section 2) and Silverman (Chapter IV) are pointers we have not checked against the printed texts. In particular we have not verified the numbers under which the
 dimension formula of \Cref{prop:blochkato:dimension-formula}, the duality of \Cref{prop:blochkato:local-duality-f} at $\ell$ and the identification of the Kummer image at

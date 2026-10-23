@@ -482,6 +482,9 @@ Counts: **A: 12** strengthenings, **B: 10** errors, **C: 14** gaps, **D: 17** ex
 * **F11 (Chapter 22; correction and observation; points 100 to 102).** sec:anomaly: 36 vs 24 is due to t_3(E,3), not w_3;
   twist relation at q = l for Open question 1; sec:iso and sec:sharp wording.
 
+* **F12 (step 5; points 103, 104).** Ribet-Takahashi in Section 1.5 needs "for semistable E"; DFG04 wording points
+  ([UwU]_omega; l not in Sigma is DFG's standing assumption).
+
 ## Re-verification log
 
 | curve | what was checked | result |

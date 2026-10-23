@@ -1086,9 +1086,10 @@ set of primes with $\ell\notin\Sigma$. Let $M^\Sigma=M\prod_{p\in\Sigma}p^{\delt
 \]
 \end{theorem}
 
-We do not prove this here; it is \cite[Proposition 1.4(c)]{DFG04}, as the paper cites it, and \Cref{ch:congruence} sketches the proof (the degeneracy maps, with
-cited saturation statements of the type of Ihara's lemma that are not covered by \Cref{lem:modgalrep:ihara}). The paper does not state the hypothesis
-$\ell\notin\Sigma$; without it the statement is false (for $f=f_{\text{11a}}$, $\ell=3$, $\Sigma=\set3$ the right side is $3^{-2}\Z_3$, which is not integral; see \Cref{ch:congruence}), and
+We do not prove this here; it is \cite[Proposition 1.4(c)]{DFG04} (checked against the published text), and \Cref{ch:congruence} sketches the proof as Diamond, Flach and Guo give it
+(the degeneracy maps, the homothety of $G_\Q$-stable lattices when $\bar\rho_f$ is irreducible, and the primitivity $\gamma(f)=f^\Sigma$ read through the integral comparison isomorphism; Ihara's
+lemma is not used). The paper does not state the hypothesis
+$\ell\notin\Sigma$; without it the statement is false (for $f=f_{\text{11a}}$, $\ell=3$, $\Sigma=\set3$ the right side is $3^{-2}\Z_3$, which is not integral; see \Cref{ch:congruence}; in \cite{DFG04} it is a standing assumption of Section 1.7.3), and
 every use in the paper has $\ell\notin\Sigma$. By \Cref{prop:modgalrep:level-raising-factor} and \Cref{cor:modgalrep:delta-naive}, adding to $\Sigma$ a prime with $\delta_p=0$ changes neither the level nor
 the ideal, a good prime contributes $\frac{p-1}p\cdot\frac{(p+1)^2-a_p^2}{p^2}$, and a multiplicative prime $1-p^{-2}$. The reading for this chapter: $f^\Sigma$ is ``$f$ with its level
 raised at $\Sigma$'' (at a good $p$ it is the eigenform of level $Mp^2$ in the span of $f(z)$, $f(pz)$, $f(p^2z)$ with $U_p$-eigenvalue $0$), and the change of the
@@ -1108,8 +1109,8 @@ injective.
 
 This follows from Ribet's form of the lemma: the kernel of $J_0(N)^2\to J_0(Nq)$, $(x,y)\mapsto\alpha_1^*x+\alpha_q^*y$, is the Shimura subgroup $\mathcal S_N$ embedded
 antidiagonally, and only Eisenstein maximal ideals are in the support of $\mathcal S_N$. We prove neither statement; see Ribet \cite{Ribet84} and Diamond and Taylor \cite{DiamondTaylor94} (Ihara's original argument uses the congruence
-subgroup property of $\SL_2(\Z[1/q])$). It is an input of \Cref{thm:modgalrep:level-raising}(ii); the proof of part (c) of Theorem thm:dfg14 sketched in \Cref{ch:congruence} needs saturation statements of the same type for
-the three degeneracy maps to level $M'p^2$ and for the two maps from a level divisible by $p$, which this lemma does not cover.
+subgroup property of $\SL_2(\Z[1/q])$). It is an input of \Cref{thm:modgalrep:level-raising}(ii). The proof of part (c) of Theorem thm:dfg14 sketched in \Cref{ch:congruence}, which follows the published proof of
+Diamond, Flach and Guo, does not use it.
 
 \begin{example}[level raising for $f_{11a}$ and $f_{20a}$]\label{ex:modgalrep:level-raising}
 (Computed with PARI/GP on the new subspace of level $11q$, resp.\ $20q$: each newform given by \texttt{mfeigenbasis}, with coefficient field from
