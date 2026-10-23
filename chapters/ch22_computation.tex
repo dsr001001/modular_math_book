@@ -1529,7 +1529,7 @@ $\ell=3$ ($72$ against $1$). When moreover $\ell\nmid N$ and $E[\ell]$ is irredu
 and all $6{,}701$ of case (b), as Theorem thm:quant predicts (\Cref{ch:congruence}). \Cref{ch:congruence} counts in another unit, pairs (curve, $\ell$) with the twist by all
 odd primes of type $\kod{I}_0^*$ or $\kod{I}_n^*$ at once, $\ell\in\{3,5,7,11,13\}$, $\ell\nmid N$ and $E[\ell]$ irreducible: $25{,}477$ such pairs ($15{,}607$ with $3$ in
 the twisting set, $8$ with $\ell=3$ and image $\Ns$), with the difference equal to the sum of the Euler terms in every one, and $14{,}880$ pairs of case (c)
-($42$ with image $\Ns$ at $\ell=3$), all with equal valuations; the numbers of pairs are recounted here from the same records. The paper (D, working set): $157{,}938$ and $292{,}580$ pairs, ``with no exception,
+($42$ with image $\Ns$ at $\ell=3$), all with equal valuations; the numbers of pairs were recounted here from the book's records, the equalities are checked there. The paper (D, working set): $157{,}938$ and $292{,}580$ pairs, ``with no exception,
 with equality in every pair of case (c)''; its revised text also notes the strict inequalities in case (a). The original version's ``strict inequality
 only in case (b)'' is contradicted already below $10{,}000$.
 \end{example}
@@ -1547,10 +1547,10 @@ $\ell=3,5,7,11,13$; $4{,}251$ of them with $E[\ell]$ irreducible);
 \item if $E$ has type $\kod{I}_0^*$ at $\ell$ and $E[\ell]$ is irreducible, the difference is $v_\ell\bigl((\ell+1)^2-a_\ell(E^{(\ell)})^2\bigr)$ in all $1{,}915$ cases (it fails in $13$ of
 the cases with $E[\ell]$ reducible, for instance \curve{126a1} at $\ell=3$ and \curve{275b1} at $\ell=5$).
 \end{enumerate}
-In (b) and (c) the difference is what the numerator form of the table of Section 1 (the last column of the table of Lemma lem:euler),
+In (b) and (c) the difference is what the numerator form of the $e_\ell$ column of the table of Section 1 (to which Lemma lem:euler refers),
 $v_\ell(q^2-1)$ and $v_\ell(q-1)+v_\ell\bigl((q+1)^2-a'^2\bigr)$, gives at $q=\ell$ ($v_\ell(\ell^2-1)=0$ and $v_\ell(\ell-1)=0$); the rational forms
-$1-q^{-2}$ and $(q-1)((q+1)^2-a'^2)/q^3$ would give negative valuations at $q=\ell$. The counts are over the curves whose twist has conductor below
-$10{,}000$; in (a) it is not, since at $q\ne\ell$ a potentially good pair has difference $0$ (\Cref{ex:computation:repro-twist}). At $\ell\ge5$, (a) suggests a
+$1-q^{-2}$ and $(q-1)((q+1)^2-a'^2)/q^3$ would give negative valuations at $q=\ell$. In (a) it is not, since at $q\ne\ell$ a potentially good pair has difference $0$
+(\Cref{ex:computation:repro-twist}). All counts are over the curves whose twist has conductor below $10{,}000$, so that its degree is in the tables. At $\ell\ge5$, (a) suggests a
 weight $1$ for the types $\kod{II}^*$, $\kod{III}^*$, $\kod{IV}^*$ at $q=\ell$, which the paper does not use (``at $q=\ell\ge5$ no term is needed''); added to (eq:rule), it gives no
 violation below $10{,}000$ at $\ell=5,7,11,13$ and is attained by most of these curves. These are observations made on the whole of the book's range at
 once, with no hold-out, and no explanation is offered here; they bear on the paper's first open question, which asks for the weights at
@@ -1904,9 +1904,14 @@ does not apply only because of the image.)
 \end{exercise}
 
 \begin{exercise}\label{exer:computation:eis}
-Reproduce the list of the $14$ Eisenstein curves at $\ell=3$ below $10{,}000$ with deficit $D=2$ (\Cref{ex:computation:repro-eis}), and compute $D$ for
-\curve{14a1} by hand from its types ($\kod{I}_6$ at $2$, $\kod{I}_3$ at $7$) and $\degphi=1$. Then use \texttt{elltors} to confirm the torsion orders, and check that
-none of the $49$ optimal curves with image \texttt{3Cs.1.1} has a point of order $9$.
+Redo the Eisenstein analysis of \Cref{ex:computation:repro-eis} at $\ell=5$. Among the optimal curves without CM below conductor $10{,}000$ with $E[5]$ reducible,
+compute the deficit $D=B^{\mathrm{main}}_5-v_5(\degphi)$; show from the data that $D\le1$, list the curves with $D=1$ and conductor below $300$, and check with
+\texttt{elltors} that each has a rational point of order $5$. How many of the Eisenstein curves at $5$ with a rational point of order $5$ have $D=1$? Find one
+below conductor $300$ with a point of order $5$ and $D=0$, and explain why the torsion bound of Conjecture conj:eis allows but does not force a deficit.
+(Answer: $534$ Eisenstein curves at $5$, $53$ with $D=1$ and none with $D\ge2$; below $300$: \curve{11a1}, \curve{38b1}, \curve{50b1}, \curve{57c1}, \curve{58b1},
+\curve{66c1}, \curve{75c1}, \curve{110a1}, \curve{118b1}, \curve{158c1}, \curve{186b1}, \curve{203a1}, \curve{246b1}, \curve{286d1}, all with torsion $\Z/5$ except
+\curve{66c1} ($\Z/10$); $53$ of the $137$ curves with a point of order $5$ have $D=1$ ($50$ with torsion $\Z/5$, $3$ with $\Z/10$); \curve{123a1} and \curve{155a1}
+have $B^{\mathrm{main}}_5=1$ and $\degphi=20$, so $D=0$. The conjecture is an upper bound on $D$.)
 \end{exercise}
 
 \begin{exercise}[the protocol at $\ell=5$]\label{exer:computation:toy5}
@@ -1917,9 +1922,11 @@ $0$ for $\kod{II}$, $\kod{III}$, $\kod{IV}$, $\kod{I}_0^*$; the same on the hold
 \end{exercise}
 
 \begin{exercise}\label{exer:computation:oddpart}
-Compute the odd-part statistic of \Cref{ex:computation:odd-part} on $N<5000$ and on $5000\le N<10000$, and explain why the paper's $1.85\%$ on $N\le300000$ is
-so much smaller than $17.1\%$. (Answer: $25.5\%$ and $10.4\%$; as $N$ grows, degrees grow and the part of $\degphi$ not explained by local terms, the
-Selmer group and the Petersson norm, is less and less often trivial.)
+Restrict the odd-part statistic of \Cref{ex:computation:odd-part} to $\ell\in\{3,5\}$: on the same $33{,}137$ curves, how often does the $\{3,5\}$-part of $\degphi$ equal
+$3^{B^{\mathrm{tw}}_3}5^{B^{\mathrm{tw}}_5}$, and how often does each factor alone match? Do it on $N<5000$ and on $5000\le N<10000$, and compare with the $17.1\%$ of the full
+odd part. Which prime loses equality faster as $N$ grows, and why is the product of the two rates a poor guide to the joint rate? (Answer: joint
+$43.1\%$ and $33.5\%$ ($37.7\%$ on the union); at $3$ alone $56.2\%$ and $47.5\%$ ($51.4\%$), at $5$ alone $79.4\%$ and $73.5\%$ ($76.1\%$). The rate at $3$ falls faster;
+the products $44.6\%$ and $34.9\%$ are close to the joint rates here, but nothing forces this: $v_3$ and $v_5$ of one degree need not behave independently.)
 \end{exercise}
 
 \section{Notes and references}\label{sec:computation:notes}
