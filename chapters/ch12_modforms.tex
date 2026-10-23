@@ -94,8 +94,8 @@ image is the $\ell$-integral forms; congruences modulo $m$ or $\lambda$ are deci
 \item \textbf{Atkin-Lehner matrices} (definition): $W_d=\sm{dx}y{Nz}{dw}$, $\det W_d=d$, for $d\,\|\,N$. \Cref{def:modforms:atkin-lehner}.
 \item \textbf{Atkin-Lehner involutions.} The matrix $W_d$ normalises $\Gamma_0(N)$, $W_d^2\in d\Gamma_0(N)$, $W_dW_{d'}\in\gcd(d,d')\mathcal W_{d*d'}$, where $\mathcal W_e$ is the set of Atkin-Lehner matrices for $e\,\|\,N$ and $d*d'=dd'/\gcd(d,d')^2$; commuting holomorphic involutions $w_d$ of $X_0(N)$ and of
 $M_k(\Gamma_0(N))$ ($k$ even); $w_N\colon z\mapsto-1/(Nz)$; $w_d^*\omega_f=\omega_{f|_2W_d}$. \emph{(proved here; the statement on $X_0(N)$ given the charts of \Cref{thm:modforms:y0-riemann-surface}(ii) and \Cref{thm:modforms:x0-compact})} \Cref{prop:modforms:atkin-lehner}.
-\item \textbf{Atkin-Lehner and pairings.} $w_d$ is a self-adjoint isometric involution of $S_k(\Gamma_0(N))$; $\dim S_2^+=g(X_0(N)/w_N)$; $w_N^*$ preserves the cup product and acts by $\varepsilon$ on
-$\omega_f$, $\overline{\omega_f}$ when $f|_2W_N=\varepsilon f$. \emph{(proved here, given \Cref{ch:curves})} \Cref{prop:modforms:atkin-lehner-petersson}.
+\item \textbf{Atkin-Lehner and pairings.} $w_d$ is a self-adjoint isometric involution of $S_k(\Gamma_0(N))$; $\dim S_2^+=g(X_0(N)/w_N)$; $w_N^*$ preserves the cup product and acts by $\varepsilon_N(f)$ on
+$\omega_f$, $\overline{\omega_f}$ when $f|_2W_N=\varepsilon_N(f)f$. \emph{(proved here, given \Cref{ch:curves})} \Cref{prop:modforms:atkin-lehner-petersson}.
 \item \textbf{Atkin-Lehner and cusps.} $w_N$ maps cusps of denominator invariant $c$ to $N/c$; for $N$ squarefree the $w_e$ act simply transitively on the cusps. \emph{(proved here)}
 \Cref{prop:modforms:atkin-lehner-cusps}.
 \end{enumerate}
@@ -1212,9 +1212,9 @@ $(f_{11}|_2W_{11})(z)=11\cdot(11z)^{-2}f_{11}(-1/(11z))=-f_{11}(z)$.
 \cite[Section 8.8]{DiamondShurman}, section number not verified). We checked $a_n(f_{11})=a_n(\curve{11a1})$ for all $n\le2000$ with PARI's \texttt{ellan}.
 \end{proof}
 
-Two remarks on (iii). The fixed point of $w_{11}$ is $z_0=i/\sqrt{11}$, and there the identity $f|_2W_{11}=\varepsilon f$ reads $-f(z_0)=\varepsilon f(z_0)$; so $\varepsilon=+1$ would force $f(z_0)=0$.
-Numerically $f_{11}(i/\sqrt{11})=0.10287776677\ldots\ne0$, which confirms $\varepsilon=-1$ independently of the $\eta$-transformation law; PARI's \texttt{mfatkineigenvalues} also gives
-$-1$. Second, the sign agrees with \Cref{ex:modforms:atkin-lehner-q-expansions}(c): $a_{11}(f_{11})=1=-\varepsilon$.
+Two remarks on (iii). The fixed point of $w_{11}$ is $z_0=i/\sqrt{11}$, and there the identity $f|_2W_{11}=\varepsilon_{11}(f)f$ reads $-f(z_0)=\varepsilon_{11}(f)f(z_0)$; so $\varepsilon_{11}(f)=+1$ would force $f(z_0)=0$.
+Numerically $f_{11}(i/\sqrt{11})=0.10287776677\ldots\ne0$, which confirms $\varepsilon_{11}(f)=-1$ independently of the $\eta$-transformation law; PARI's \texttt{mfatkineigenvalues} also gives
+$-1$. Second, the sign agrees with \Cref{ex:modforms:atkin-lehner-q-expansions}(c): $a_{11}(f_{11})=1=-\varepsilon_{11}(f)$.
 
 The first coefficients are
 \[
@@ -1629,7 +1629,7 @@ Let $k$ be even and $d\,\|\,N$.
 orthogonal direct sum of its $\pm1$-eigenspaces $S_k(\Gamma_0(N))^\pm$, and the $w_d$ are simultaneously diagonalisable.
 \item For $k=2$, $\dim S_2(\Gamma_0(N))^+$ (for $w_N$) is the genus of the quotient curve $X_0(N)/w_N$.
 \item $w_N$ is an involutive automorphism of the compact Riemann surface $X_0(N)$, so $w_N^*$ preserves the cup product on $H^1(X_0(N),\Z)$ and $(w_N^*)^2=1$. If
-$f\in S_2(\Gamma_0(N))$ and $f|_2W_N=\varepsilon f$ with $\varepsilon=\pm1$, then $w_N^*$ acts by $\varepsilon$ on $\omega_f$, on $\overline{\omega_f}$, and on the real plane of $H^1(X_0(N),\R)$ spanned by
+$f\in S_2(\Gamma_0(N))$ and $f|_2W_N=\varepsilon_N(f)f$ with $\varepsilon_N(f)=\pm1$, then $w_N^*$ acts by $\varepsilon_N(f)$ on $\omega_f$, on $\overline{\omega_f}$, and on the real plane of $H^1(X_0(N),\R)$ spanned by
 $\operatorname{Re}\omega_f$ and $\operatorname{Im}\omega_f$.
 \end{enumerate}
 \end{proposition}
@@ -1642,7 +1642,7 @@ degree $2$ (stated; \cite[Chapter III, Section 3]{Miranda}, section not verified
 injective, and an invariant holomorphic differential descends, by the local computation in the proof of \Cref{thm:modforms:weight-two-differentials} with $e=2$ at the fixed points
 of $w_N$. By (vi) of \Cref{prop:modforms:atkin-lehner} the invariant differentials are the $\omega_f$ with $f\in S_2(\Gamma_0(N))^+$, and $\dim H^0(X^+,\Omega^1)=g(X^+)$ (\Cref{ch:curves}).
 (iii) An automorphism of a compact Riemann surface preserves the orientation, so it preserves the integral of a $2$-form and hence the cup product (\Cref{ch:curves}). By
-\Cref{prop:modforms:atkin-lehner}(vi), $w_N^*\omega_f=\omega_{f|_2W_N}=\varepsilon\omega_f$; conjugating, $w_N^*\overline{\omega_f}=\varepsilon\overline{\omega_f}$ as $\varepsilon$ is real; and the real and imaginary parts are
+\Cref{prop:modforms:atkin-lehner}(vi), $w_N^*\omega_f=\omega_{f|_2W_N}=\varepsilon_N(f)\omega_f$; conjugating, $w_N^*\overline{\omega_f}=\varepsilon_N(f)\overline{\omega_f}$ as $\varepsilon_N(f)$ is real; and the real and imaginary parts are
 combinations of $\omega_f$ and $\overline{\omega_f}$ with real coefficients. By \Cref{ch:curves}, $H^1(X_0(N),\C)=H^0(\Omega^1)\oplus\overline{H^0(\Omega^1)}$, so these classes live in $H^1$.
 \end{proof}
 
@@ -1818,11 +1818,11 @@ $0\leftrightarrow\infty$, $\frac12\leftrightarrow\frac1{10}$, $\frac14\leftright
 \end{exercise}
 
 \begin{exercise}\label{ex:modforms:ex-al-p2}
-Let $h\in S_2(\Gamma_0(M))$ with $h|_2W_M=\varepsilon h$, $p\nmid M$ prime, and $N=Mp^2$. Show that in the basis $h(z),h(pz),h(p^2z)$ the operator $w_N$ has the matrix
-$\begin{psmallmatrix}0&0&\varepsilon p^{-2}\\0&\varepsilon&0\\\varepsilon p^2&0&0\end{psmallmatrix}$, and find its eigenvectors. For $h=f_{11}$, $p=2$, which combinations of $f_{11}(z),f_{11}(2z),f_{11}(4z)$ lie in
+Let $h\in S_2(\Gamma_0(M))$ with $h|_2W_M=\varepsilon_M(h)h$, $p\nmid M$ prime, and $N=Mp^2$. Show that in the basis $h(z),h(pz),h(p^2z)$ the operator $w_N$ has the matrix
+$\varepsilon_M(h)\begin{psmallmatrix}0&0&p^{-2}\\0&1&0\\p^2&0&0\end{psmallmatrix}$, and find its eigenvectors. For $h=f_{11}$, $p=2$, which combinations of $f_{11}(z),f_{11}(2z),f_{11}(4z)$ lie in
 $S_2(\Gamma_0(44))^+$?
-\emph{Hint:} $W_N=W_M\sm{p^2}001$, $\sm p001W_N=p\,W_M\sm p001$, $\sm{p^2}001W_N=p^2W_M$. The eigenvectors are $h(pz)$ (eigenvalue $\varepsilon$) and $h\pm p^2h(p^2z)$ (eigenvalues $\pm\varepsilon$).
-For $f_{11}$ ($\varepsilon=-1$) only $f_{11}(z)-4f_{11}(4z)$.
+\emph{Hint:} $W_N=W_M\sm{p^2}001$, $\sm p001W_N=p\,W_M\sm p001$, $\sm{p^2}001W_N=p^2W_M$. The eigenvectors are $h(pz)$ (eigenvalue $\varepsilon_M(h)$) and $h\pm p^2h(p^2z)$ (eigenvalues $\pm\varepsilon_M(h)$).
+For $f_{11}$ ($\varepsilon_{11}(f_{11})=-1$) only $f_{11}(z)-4f_{11}(4z)$.
 \end{exercise}
 
 \begin{exercise}\label{ex:modforms:ex-fixed-points}

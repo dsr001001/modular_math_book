@@ -72,7 +72,7 @@ statement on $\Hom$: stated; reference)} \Cref{thm:modules:localisation}.
 $k\times k$ minors, so the $(d_i)$ are unique. \emph{(proved here)} \Cref{thm:modules:smith}.
 \item \textbf{Structure theorem.} Over a principal ideal domain, $M\simeq R^r\oplus\bigoplus R/(d_i)$ ($d_1\mid\cdots\mid d_s$ non-units) $\simeq R^r\oplus\bigoplus R/(p_j^{a_j})$, with $r$, the $(d_i)$ and the
 multiset of $(p_j^{a_j})$ unique. \emph{(proved here)} \Cref{thm:modules:structure-pid}.
-\item \textbf{Torsion.} $M_{\tors}=\ker(M\to M\otimes K)$; over a principal ideal domain finitely generated torsion-free modules are free and $M\simeq M_{\tors}\oplus M/M_{\tors}$; if
+\item \textbf{Torsion.} $M_{\mathrm{tor}}=\ker(M\to M\otimes K)$; over a principal ideal domain finitely generated torsion-free modules are free and $M\simeq M_{\mathrm{tor}}\oplus M/M_{\mathrm{tor}}$; if
 $R\subseteq R'$ with $R'$ a principal ideal domain free of rank $e$ over $R$, a finitely generated $R'$-module that is torsion-free of $R$-rank $n$ is $R'$-free of rank $n/e$
 (so $T_3E$ is free of rank one over $\Z_3[\zeta_3]$ in Lemma lem:IV). \emph{(proved here)} \Cref{def:modules:torsion}, \Cref{prop:modules:torsion}.
 \item \textbf{Saturation.} For $L$ in a lattice $M$ over a principal ideal domain: $M/L$ torsion-free iff $L=M\cap KL$ iff $L$ is a direct summand iff (over $\mathcal O$)
@@ -92,7 +92,7 @@ except the equivalence with integral closure: stated; reference)} \Cref{thm:modu
 \item \textbf{Modules over a discrete valuation ring.} $M\simeq\mathcal O^r\oplus\bigoplus_{i\le s}\mathcal O/\varpi^{a_i}$ uniquely; torsion-free implies free; $\dim_kM/\varpi M=r+s$, $\dim_kM[\varpi]=s$;
 formulas for $M[\varpi^k]$, $M/\varpi^kM$; cyclic iff $r+s\le1$; $L$ saturated iff $L\cap\varpi M=\varpi L$. \emph{(proved here)} \Cref{prop:modules:dvr-modules}.
 \item \textbf{The ring $\Zl$.} $\Zl=\varprojlim\Z/\ell^n$ is a discrete valuation ring with uniformiser $\ell$ and residue field $\Fl$; $\Zl/\ell^n=\Z/\ell^n$; integers prime to $\ell$ are units,
-so a $\Zl$-module killed by such an integer is $0$; $\Ql=\Zl[1/\ell]$ and $\Q\cap\Zl=\Z_{(\ell)}$; $\Zl$ is flat over $\Z$ and $A\otimes\Zl=\Zl^r\oplus A_{\tors}[\ell^\infty]$; finitely generated $\Zl$-modules
+so a $\Zl$-module killed by such an integer is $0$; $\Ql=\Zl[1/\ell]$ and $\Q\cap\Zl=\Z_{(\ell)}$; $\Zl$ is flat over $\Z$ and $A\otimes\Zl=\Zl^r\oplus A_{\mathrm{tor}}[\ell^\infty]$; finitely generated $\Zl$-modules
 are complete; completions of Noetherian rings are flat. \emph{(proved here, except the statement on completions: stated; reference)} \Cref{thm:modules:zl}.
 \item \textbf{Baer's criterion.} Over a principal ideal domain divisible modules are injective, and $\Hom(-,D)$ is exact. \emph{(proved here)} \Cref{lem:modules:baer}.
 \item \textbf{The module $\Qlmod$.} $\Qlmod=\Z[1/\ell]/\Z=(\Q/\Z)[\ell^\infty]=\varinjlim\Z/\ell^k$; divisible, with $(\Qlmod)[\ell^k]\simeq\Z/\ell^k$ its only proper submodules;
@@ -186,7 +186,7 @@ $\rank L=d\rank\T$, then $L\simeq\T^d$ and $\T$ is Gorenstein. \emph{(proved her
 \section*{Where the paper uses this chapter}
 
 \begin{itemize}
-\item \textbf{Section 1.2} (the Tamagawa factor $\Tam_p(M)=\Fitt_{\Zl}\bigl((H^1(I_p,M)_{\tors})^{G_{\Q_p}}\bigr)$): Fitting ideals and $\Fitt=\ell^{\mathrm{length}}$
+\item \textbf{Section 1.2} (the Tamagawa factor $\Tam_p(M)=\Fitt_{\Zl}\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$): Fitting ideals and $\Fitt=\ell^{\mathrm{length}}$
 (\Cref{def:modules:fitting,thm:modules:fitting-dvr}).
 \item \textbf{Lemma lem:tamfactor} (the Tamagawa factor at a multiplicative prime): the structure $H^1(I,M)=(\Zl/n')^2\oplus\Zl$ and its torsion
 (\Cref{thm:modules:structure-pid}); the Fitting ideal of $\Z/\ell^v\oplus\Z/\ell^m$ (\Cref{thm:modules:fitting-dvr}, \Cref{pl:modules:tamagawa}).
@@ -945,8 +945,8 @@ the Jordan form.
 the basis of the relations by $U$ and the basis of $R^n$ by $V^{-1}$, so $M\simeq R^n/\text{(row space of }UAV)$. For
 $UAV=\operatorname{diag}(d_1,\dots,d_s,0,\dots)$ this is $\bigoplus_{i\le s}R/(d_i)\oplus R^{n-s}$; drop the summands with $d_i$ a unit. (ii) follows from
 (i) by the Chinese remainder theorem $R/(d)\simeq\bigoplus_pR/(p^{v_p(d)})$ (\Cref{ch:rings}).
-\emph{Uniqueness.} The torsion submodule $M_{\tors}$ (\Cref{def:modules:torsion}) is intrinsic, and $M/M_{\tors}\simeq R^r$, so
-$r=\dim_K(M\otimes K)$ is determined. For a prime $p$ the $p$-primary part $M(p)=M_{\tors}[p^\infty]$ is intrinsic and is the sum of
+\emph{Uniqueness.} The torsion submodule $M_{\mathrm{tor}}$ (\Cref{def:modules:torsion}) is intrinsic, and $M/M_{\mathrm{tor}}\simeq R^r$, so
+$r=\dim_K(M\otimes K)$ is determined. For a prime $p$ the $p$-primary part $M(p)=M_{\mathrm{tor}}[p^\infty]$ is intrinsic and is the sum of
 the summands $R/(p^{a_j})$ with $p_j=p$ (up to units). Since $p^kR/(p^a)\big/p^{k+1}R/(p^a)$ is $R/(p)$ if $k<a$ and $0$ otherwise,
 $\dim_{R/(p)}\bigl(p^kM(p)/p^{k+1}M(p)\bigr)=\#\{j:p_j=p,\ a_j>k\}$, and these numbers determine the exponents $a_j$ belonging to $p$. So the
 elementary divisors are unique, and the invariant factors, which are recovered from them ($d_s$ is the product of the largest prime
@@ -960,14 +960,14 @@ divisors are $2,2,4$ and $3,3$, that is, it is $\Z/2\oplus\Z/2\oplus\Z/4\oplus\Z
 
 \begin{definition}[torsion]\label{def:modules:torsion}
 Let $R$ be a domain with fraction field $K$. An element $m\in M$ is \emph{torsion} if $rm=0$ for some $r\ne0$. The torsion elements
-form a submodule $M_{\tors}$; $M$ is \emph{torsion-free} if $M_{\tors}=0$ and \emph{torsion} if $M_{\tors}=M$. The \emph{rank} of $M$ is
+form a submodule $M_{\mathrm{tor}}$; $M$ is \emph{torsion-free} if $M_{\mathrm{tor}}=0$ and \emph{torsion} if $M_{\mathrm{tor}}=M$. The \emph{rank} of $M$ is
 $\rank M=\dim_K(M\otimes_RK)$.
 \end{definition}
 
 \begin{proposition}\label{prop:modules:torsion}
 \begin{enumerate}[label=(\roman*)]
-\item $M_{\tors}$ is the kernel of $M\to M\otimes_RK$, $m\mapsto m\otimes1$, and $M/M_{\tors}$ is torsion-free.
-\item Over a principal ideal domain a finitely generated torsion-free module is free, and $M\simeq M_{\tors}\oplus M/M_{\tors}$ for every
+\item $M_{\mathrm{tor}}$ is the kernel of $M\to M\otimes_RK$, $m\mapsto m\otimes1$, and $M/M_{\mathrm{tor}}$ is torsion-free.
+\item Over a principal ideal domain a finitely generated torsion-free module is free, and $M\simeq M_{\mathrm{tor}}\oplus M/M_{\mathrm{tor}}$ for every
 finitely generated $M$ (the splitting is not canonical).
 \item Let $R\subseteq R'$ be domains with $R'$ a principal ideal domain that is free of rank $e$ as an $R$-module. A finitely generated
 $R'$-module $X$ that is torsion-free over $R$, of $R$-rank $n$, is free over $R'$ of rank $n/e$. For instance, $\Z_3[\zeta_3]$ is free of
@@ -976,10 +976,10 @@ rank $2$ over $\Z_3$, with basis $1,\zeta_3$.
 \end{proposition}
 
 \begin{proof}
-(i) $M\otimes K=S^{-1}M$ with $S=R\setminus\{0\}$ (\Cref{thm:modules:localisation}(ii)), and $m/1=0$ iff $um=0$ for some $u\ne0$. If $rm\in M_{\tors}$
-with $r\ne0$, then $r'rm=0$ with $r'\ne0$, so $m\in M_{\tors}$.
-(ii) By \Cref{thm:modules:structure-pid}, a finitely generated torsion-free module has no summands $R/(d_i)$; and $M/M_{\tors}$ is free, so
-$M\onto M/M_{\tors}$ splits (\Cref{prop:modules:projective}).
+(i) $M\otimes K=S^{-1}M$ with $S=R\setminus\{0\}$ (\Cref{thm:modules:localisation}(ii)), and $m/1=0$ iff $um=0$ for some $u\ne0$. If $rm\in M_{\mathrm{tor}}$
+with $r\ne0$, then $r'rm=0$ with $r'\ne0$, so $m\in M_{\mathrm{tor}}$.
+(ii) By \Cref{thm:modules:structure-pid}, a finitely generated torsion-free module has no summands $R/(d_i)$; and $M/M_{\mathrm{tor}}$ is free, so
+$M\onto M/M_{\mathrm{tor}}$ splits (\Cref{prop:modules:projective}).
 (iii) First, $X$ is torsion-free over $R'$. Let $0\ne r'\in R'$ and let $\mu$ be multiplication by $r'$ on $R'\simeq R^e$; it is
 injective ($R'$ is a domain), so $\delta=\det\mu\ne0$ (it is injective on $R'\otimes K\simeq K^e$, hence invertible there). By
 Cayley-Hamilton, $\mu^e+c_1\mu^{e-1}+\cdots+c_e=0$ with $c_e=\pm\delta$, so $\delta=r'y$ for some $y\in R'$. If $r'x=0$ then $\delta x=0$ with
@@ -1004,7 +1004,7 @@ Let $M$ be a lattice and $L\subseteq M$ a submodule.
 \begin{enumerate}[label=(\roman*)]
 \item The following are equivalent: (a) $L$ is saturated; (b) $L=M\cap KL$; (c) $L$ is a direct summand of $M$; and, when
 $R=\mathcal O$ is a discrete valuation ring, (d) $L\cap\varpi M=\varpi L$, that is, $L/\varpi L\to M/\varpi M$ is injective.
-\item $\operatorname{sat}(L)$ is the smallest saturated submodule containing $L$; it has the same rank as $L$, and $\operatorname{sat}(L)/L=(M/L)_{\tors}$. If
+\item $\operatorname{sat}(L)$ is the smallest saturated submodule containing $L$; it has the same rank as $L$, and $\operatorname{sat}(L)/L=(M/L)_{\mathrm{tor}}$. If
 $L\subseteq N\subseteq M$ with $N$ saturated and $N/L$ torsion, then $N=\operatorname{sat}(L)$.
 \item The following are saturated: kernels of homomorphisms $M\to N$ with $N$ torsion-free; $M\cap W$ for a $K$-subspace
 $W\subseteq M\otimes K$; $M[\mf a]$ for any action of a ring $\T$ on $M$ and any ideal $\mf a\subseteq\T$; and orthogonals for a pairing
@@ -1185,7 +1185,7 @@ residue field $\Fl$ (via $x\mapsto x_1$) and ideals $\ell^k\Zl$, and its valuati
 \item $\Z\to\Zl$, $n\mapsto(n\bmod\ell^k)_k$, is injective; $\Z_{(\ell)}\subseteq\Zl$; and $x\mapsto x_n$ induces $\Zl/\ell^n\Zl\simeq\Z/\ell^n$. An integer prime to
 $\ell$ is a unit of $\Zl$, so a $\Zl$-module killed by an integer prime to $\ell$ is $0$.
 \item $\Ql:=\Frac(\Zl)=\Zl[1/\ell]$, and $\Q\cap\Zl=\Z_{(\ell)}$ inside $\Ql$.
-\item $\Zl$ is flat over $\Z$. For a finitely generated abelian group $A\simeq\Z^r\oplus A_{\tors}$, $A\otimes_\Z\Zl\simeq\Zl^r\oplus A_{\tors}[\ell^\infty]$; for finite
+\item $\Zl$ is flat over $\Z$. For a finitely generated abelian group $A\simeq\Z^r\oplus A_{\mathrm{tor}}$, $A\otimes_\Z\Zl\simeq\Zl^r\oplus A_{\mathrm{tor}}[\ell^\infty]$; for finite
 $A$, $\#(A\otimes\Zl)=\ell^{v_\ell(\#A)}$, the $\ell$-part of $\#A$.
 \item Every finitely generated $\Zl$-module $M$ is complete: $M\to\varprojlim_nM/\ell^nM$ is an isomorphism.
 \item More generally, for a Noetherian ring $R$ and an ideal $I$, the $I$-adic completion $\hat R=\varprojlim R/I^n$ is Noetherian and
@@ -1295,7 +1295,7 @@ $\ell$-adic integer'' means an element of $\Q\cap\Zl=\Z_{(\ell)}$ (\Cref{thm:mod
 
 The paper measures its finite modules in two ways. Selmer groups and $H^0$ are measured by their length over $\Zl$
 (Theorem thm:main, Theorem thm:dfg37, Remark rem:ns, Lemma lem:h0). Tamagawa factors are \emph{Fitting ideals}: Section 1.2 defines
-$\Tam_p(M)=\Fitt_{\Zl}\bigl((H^1(I_p,M)_{\tors})^{G_{\Q_p}}\bigr)$, and Lemma lem:fpr reads $\Fitt_{\Zl}H^1_f(\Q_p,T^D)=L_p(A_f,1)^{-1}\Tam_p(T^D)$. The main
+$\Tam_p(M)=\Fitt_{\Zl}\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$, and Lemma lem:fpr reads $\Fitt_{\Zl}H^1_f(\Q_p,T^D)=L_p(A_f,1)^{-1}\Tam_p(T^D)$. The main
 result of this section, \Cref{thm:modules:fitting-dvr}, says that over a discrete valuation ring the two measurements agree:
 $\Fitt=\varpi^{\len}$. It is the reason why the paper can add valuations of Tamagawa factors to lengths of Selmer groups. The
 Jordan-Holder theorem is proved here for modules over any ring; \Cref{ch:reps} uses it for composition factors of representations.
@@ -1515,7 +1515,7 @@ smaller than the annihilator, as \Cref{prop:modules:fitting-properties}(iv) allo
 \end{example}
 
 \begin{paperlink}\label{pl:modules:tamagawa}
-Section 1.2 defines $\Tam_p(M)=\Fitt_{\Zl}\bigl((H^1(I_p,M)_{\tors})^{G_{\Q_p}}\bigr)$, the Fitting ideal \emph{of the invariants} (Appendix B, convention
+Section 1.2 defines $\Tam_p(M)=\Fitt_{\Zl}\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$, the Fitting ideal \emph{of the invariants} (Appendix B, convention
 B-C10). This is a finite $\Zl$-module, so by
 \Cref{thm:modules:fitting-dvr}(ii) $v_\ell(\Tam_p(M))$ is its length. In Lemma lem:tamfactor the invariants are the $x\bar e+y\bar h$ in
 $(\Z/\ell^{v_\ell(n)})\bar e\oplus(\Z/\ell^{v_\ell(n)})\bar h$ with $(q-1)y\equiv0$ and $c'y\equiv0$, a module isomorphic to $\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))}$, of
@@ -1857,7 +1857,7 @@ $S/(S[\mf a]\oplus S[\mf b])\simeq\Hom_R(\T/(\mf a+\mf b),K/R)$; for $R=\Z$ or $
 \begin{proof}
 (i) It is an $R$-isomorphism because the pairing is perfect, and $\T$-linear: $\langle ts,u\rangle=\langle s,tu\rangle=(t\langle s,-\rangle)(u)$.
 (ii) $s\in S[\mf a]$ iff $\langle as,u\rangle=\langle s,au\rangle=0$ for all $a\in\mf a$, $u\in\T$, iff $\langle s,-\rangle$ vanishes on the ideal $\mf a$. Such functionals are
-$\Hom_R(\T/\mf a,R)=\Hom_R((\T/\mf a)/\tors,R)$, of rank $\rank(\T/\mf a)$; saturation is \Cref{prop:modules:saturated}(iii).
+$\Hom_R(\T/\mf a,R)=\Hom_R((\T/\mf a)/(\T/\mf a)_{\mathrm{tor}},R)$, of rank $\rank(\T/\mf a)$; saturation is \Cref{prop:modules:saturated}(iii).
 (iii) The cokernel of $\T\to\T/\mf a\times\T/\mf b$ is $\T/(\mf a+\mf b)$, and the two lattices have the same rank by hypothesis, so it is torsion. Apply
 \Cref{prop:modules:dual-inclusion} to this injection of lattices: $(\T/\mf a\times\T/\mf b)^\vee\into\T^\vee$, with cokernel $\Hom(\T/(\mf a+\mf b),K/R)$. Under (i)
 and (ii) the image of $(\T/\mf a)^\vee\oplus(\T/\mf b)^\vee$ in $\T^\vee$ is $S[\mf a]+S[\mf b]$; this sum is direct because the source is a direct sum and the map is injective.
@@ -2369,7 +2369,7 @@ $\T_r$ self-adjoint), $L[\wp]=I^2$ has basis $(u,0)$, $(0,u)$ with $u=(\varpi^r,
 proof of Theorem thm:quant. Finally, when $\eta=0$ the inequality is empty, and if moreover $L\simeq\T^r$, then $I\subseteq\wp$ gives $I\cdot I=0$, so the pairing vanishes on
 $L[\wp]=I^r$ ($\langle\sum a_ie_i,\sum b_je_j\rangle=\sum\langle b_ja_ie_i,e_j\rangle=0$) and $\Delta=0$: the hypothesis $\Delta\ne0$ excludes this case.
 
-\emph{The paper's proof.} The Commentary on this lemma required by decision D1 (the paper counts orders over a finite residue field, the
+\emph{The paper's proof.} The Commentary on this lemma (the paper counts orders over a finite residue field, the
 book states lengths over any discrete valuation ring) is given with its proof in \Cref{ch:congruence}. Two remarks concern steps proved here.
 The converse inclusion ``if $y\perp L[\wp]$ then \dots\ $ty=0$'' shows only that the single element $t$ kills $y$; this suffices because $I=\mathcal Ot$
 (\Cref{prop:modules:congruence-ideal}(iii)), which the paper does not say, and \Cref{prop:modules:ddt-ingredients}(iii) uses every $s\in I$ instead. In

@@ -854,7 +854,7 @@ paper (``a newform on $\Gamma_0(M)$ with $p^2\mid M$ has $a_p=0$ \cite[Theorem 3
 \begin{proof}
 (i) For $p\nmid N$, $w_NT_pw_N^{-1}=[\Gamma\sm p001\Gamma]_k=T_p$ by the computation in the proof of \Cref{prop:hecke:Up-adjoint}(i) and \Cref{prop:hecke:coset-decomposition}(ii); so $w_N$ commutes
 with $\T^{(N)}$. By \Cref{prop:hecke:old-new}(iii) $w_Nf$ lies in $S_k^{\mathrm{new}}(N)$, in the eigenspace of $\T^{(N)}$ for the system of $f$, which is $\C f$ by \Cref{thm:hecke:atkin-lehner}(ii). So
-$w_Nf=\varepsilon f$, and $\varepsilon^2=1$ because $w_N$ is an involution. (ii) $a_p\langle f,f\rangle=\langle U_pf,f\rangle=\langle f,w_NU_pw_Nf\rangle=\langle f,\varepsilon^2a_pf\rangle=\bar a_p\langle f,f\rangle$ by \Cref{prop:hecke:Up-adjoint}(i). The
+$w_Nf=\varepsilon_N(f) f$, and $\varepsilon_N(f)^2=1$ because $w_N$ is an involution. (ii) $a_p\langle f,f\rangle=\langle U_pf,f\rangle=\langle f,w_NU_pw_Nf\rangle=\langle f,\varepsilon_N(f)^2a_pf\rangle=\bar a_p\langle f,f\rangle$ by \Cref{prop:hecke:Up-adjoint}(i). The
 $a_p$, $p\nmid N$, are real by \Cref{thm:hecke:self-adjoint}, and the recursion and multiplicativity (\Cref{prop:hecke:eigenforms}(ii)) give the rest. (iv) is the comparison of
 \Cref{ch:moddeg} (modularity, $a_p(f_E)=a_p(E)$ at all $p$) with the values of $a_p(E)$ at bad primes in \Cref{ch:ellcurves}.
 \end{proof}
@@ -1210,10 +1210,10 @@ then $m(1-e)t=0$, so $(1-e)t=0$ and $t\in J$.
 \emph{Step 3: the index.} By \Cref{cor:hecke:pairing-consequences}(iii), $S[I]=\Z f_\pi=\Z g$. The ideal $J$ kills $g^c\supseteq\Lambda$; conversely, if $x\in S$ and $Jx=0$, then $me\,x=0$, so $ex=0$ and
 $x\in S\cap\ker e=\Lambda$. So $S[J]=\Lambda$. Step 2 gives the hypotheses of \Cref{cor:hecke:pairing-consequences}(iv), which yields $[S:\Z g\oplus\Lambda]=\#\T/(I+J)=r_\pi$.
 
-\emph{Step 4: the congruences.} The map $\varepsilon\colon S/(\Z g\oplus\Lambda)\to\Q g/\Z g$, $x\mapsto ex$, is well defined ($e$ fixes $g$, kills $\Lambda$ and maps $S$ into $S_\Q\cap\C g=\Q g$) and
+\emph{Step 4: the congruences.} The map $\bar e\colon S/(\Z g\oplus\Lambda)\to\Q g/\Z g$, $x\mapsto ex$, is well defined ($e$ fixes $g$, kills $\Lambda$ and maps $S$ into $S_\Q\cap\C g=\Q g$) and
 injective (if $ex=cg$ with $c\in\Z$, then $e(x-cg)=0$, so $x-cg\in\Lambda$). So $S/(\Z g\oplus\Lambda)$ is isomorphic to a subgroup of order $r_\pi$ of $\Q g/\Z g\simeq\Q/\Z$, and the only such
 subgroup is $r_\pi^{-1}\Z g/\Z g$. If $g\equiv h\pmod m$ with $h\in\Lambda$, then $x=(g-h)/m\in S$ and $ex=g/m$, whose class has order $m$ and lies in $r_\pi^{-1}\Z g/\Z g$; so $m\mid r_\pi$.
-Conversely, choose $x\in S$ with $\varepsilon(x)$ the class of $g/r_\pi$; replacing $x$ by $x-cg$ for a suitable $c\in\Z$ we may assume $ex=g/r_\pi$. Then $h_0=g-r_\pi x$ lies in $S$ and $eh_0=0$,
+Conversely, choose $x\in S$ with $\bar e(x)$ the class of $g/r_\pi$; replacing $x$ by $x-cg$ for a suitable $c\in\Z$ we may assume $ex=g/r_\pi$. Then $h_0=g-r_\pi x$ lies in $S$ and $eh_0=0$,
 so $h_0\in\Lambda$, and $g-h_0=r_\pi x$: a congruence modulo $r_\pi$, hence modulo every divisor $m$ of $r_\pi$.
 
 \emph{Step 5: (iii).} By flatness of $\Zl$ over $\Z$, $\ker\pi_\ell=I\otimes\Zl$, and Step 2 run in $\T_\ell\subseteq\Ql e\times(\T'\otimes\Ql)$ shows $\Ann_{\T_\ell}(\ker\pi_\ell)=\T_\ell\cap\Ql e$. As $\T/J$ is
@@ -1496,7 +1496,7 @@ v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S)),
 \]
 whether or not $\ell\in S_f$. So, under those hypotheses, Step 1 is an equality whether or not $\ell\in S_f$, and the question that the remark calls open has a positive answer. This chapter proves the divisibility; the equality, with the paper's Step 1 proved in full, is stated and proved in \Cref{ch:congruence}. At level $539$ the
 two modules are those of $(\text{77c})^{\{7\}}$ and $(\text{11a})^{\{7\}}$, of orders $288=r(\curve{539c1})$ and $504=r(\curve{539d1})$ (\Cref{ex:hecke:twist-pairs}): the corollary explains why
-$r_E$ divides them; the equality there at $\ell=2$ and $\ell=7$, outside the hypotheses of Theorem thm:quant, is observed, not proved by either argument.
+$r_E$ divides them. The equality there at $\ell=2$, outside the hypotheses of Theorem thm:quant, is also proved in \Cref{ch:congruence}, where Step 1 is shown to be an equality at every prime $\ell$ outside $S=\{7\}$, with no further hypothesis on $\ell$; only the equality at $\ell=7\in S$ is observed, not proved.
 \end{remark}
 
 \section{The $L$-function of a newform; Rankin-Selberg}\label{sec:hecke:lfunctions}

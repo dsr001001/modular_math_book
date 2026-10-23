@@ -50,9 +50,9 @@ $E[\ell]$ is reducible. \emph{(definition)} \Cref{def:modgalrep:eisenstein}.
 \item \textbf{Local Langlands for $\GL_2(\Q_p)$.} A bijection $\pi\mapsto\operatorname{rec}(\pi)$ to two-dimensional Frobenius-semisimple Weil-Deligne representations, compatible with
 twists, preserving conductors and matching principal series, twists of Steinberg and supercuspidals with sums of characters, $\Sp(2)\otimes\mu$ and irreducible
 representations. \emph{(stated; reference)} \Cref{thm:modgalrep:local-langlands}.
-\item \textbf{Local components.} $\pi_f=\bigotimes'\pi_v$; $\pi_p$ has trivial central character and conductor exponent $v_p(N)$. \emph{(definition; facts stated with references)}
+\item \textbf{Local components.} $\Pi_f=\bigotimes'\Pi_v$; $\Pi_p$ has trivial central character and conductor exponent $v_p(N)$. \emph{(definition; facts stated with references)}
 \Cref{def:modgalrep:local-component}.
-\item \textbf{Carayol.} For $p\ne\ell$: $\WD_p(f)$ corresponds to $\pi_p$ and is independent of $\ell$; $a(\rho_{f,\lambda}|_{G_{\Q_p}})=v_p(N)$, so the conductor of $\rho_{f,\lambda}$ is $N$
+\item \textbf{Carayol.} For $p\ne\ell$: $\WD_p(f)$ corresponds to $\Pi_p$ and is independent of $\ell$; $a(\rho_{f,\lambda}|_{G_{\Q_p}})=v_p(N)$, so the conductor of $\rho_{f,\lambda}$ is $N$
 ($\ell\nmid N$); $L_p(f,s)=L(V_\lambda(f)|_{G_{\Q_p}},s-1)$. \emph{(stated; reference)} \Cref{thm:modgalrep:carayol}.
 \item \textbf{Local types.} Exactly one of (U), (St), (RSt), (RPS), (SC) holds at $p\ne\ell$; $\delta_p=2,1,0$ for $p\nmid N$, $p\,\|\,N$, $p^2\mid N$; $a_p=0$ and $V^{I_p}=0$ if $p^2\mid N$; in case
 (St), $\rho|_{G_{\Q_p}}\simeq\sm{\varepsilon\chi_\ell}{*}{0}{\varepsilon}$ on every stable lattice with $\varepsilon(\Frob_p)=a_p=\pm1$, the reduction is non-split with a unique stable line when
@@ -89,7 +89,7 @@ and $N(\bar\rho)\mid N'$. \emph{(proved here, given \Cref{thm:modgalrep:optimal-
 proved here; sufficiency stated, reference)} \Cref{thm:modgalrep:level-raising}.
 \item \textbf{The level-raising factor.} $(1-\frac\alpha{\beta p})(1-\frac1p)(1-\frac\beta{\alpha p})=\frac{p-1}p\cdot\frac{(p+1)^2-a_p^2}{p^2}=L_p(A_f,1)^{-1}$ at good $p$; $1-p^{-2}$ at $p\,\|\,N$. \emph{(proved here)}
 \Cref{prop:modgalrep:level-raising-factor}.
-\item \textbf{Theorem thm:dfg14.} For $f$ a newform on $\Gamma_0(M)$ with rational coefficients, $\ell\nmid2M$, $\bar\rho_f$ irreducible:
+\item \textbf{Theorem thm:dfg14.} For $f$ a newform on $\Gamma_0(M)$ with rational coefficients, $\ell\nmid2M$, $\bar\rho_f$ irreducible, $\Sigma$ finite with $\ell\notin\Sigma$:
 $\eta^\Sigma_{f,\lambda}=\eta^\emptyset_{f,\lambda}\prod_{p\in\Sigma}L_p^{\nv}(A_f,1)^{-1}$. \emph{(stated; proof idea in \Cref{ch:congruence})}
 \Cref{thm:modgalrep:dfg14}.
 \item \textbf{Ihara's lemma.} For $q\nmid N\ell$ and $\mathfrak m$ non-Eisenstein (\Cref{def:modgalrep:eisenstein}), $H^1(X_0(N),\F_\ell)^2_{\mathfrak m}\to H^1(X_0(Nq),\F_\ell)$, $(x,y)\mapsto\alpha_1^*x+\alpha_q^*y$, is
@@ -171,7 +171,7 @@ For an elliptic curve $E/\Q$ of conductor $N$, $f_E$ is its newform (modularity,
 the operators $U_p=T_p$ for $p\mid N$ included; $\T_\ell=\T\otimes\Zl$. The \emph{eigencharacter} of $f$ is $\phi_f\colon\T\to\mathcal{O}_f$, $T_n\mapsto a_n(f)$ (upright
 $\phi$; a curly $\varphi$ is always a map of curves, such as the modular parametrisation $\varphi_E$). $J_f=J_0(N)/I_fJ_0(N)$, $I_f=\ker\phi_f$, is
 Shimura's abelian variety attached to $f$; the letter $A_f$ is reserved for the paper's adjoint $\ad V$.
-\item \emph{Frobenius.} $\Frob_p$ is an \emph{arithmetic} Frobenius at $p$ and $\Frob_p^{-1}$ (or $\Phi$, at the prime of a local field) the geometric one.
+\item \emph{Frobenius.} $\Frob_p$ is an \emph{arithmetic} Frobenius at $p$ and $\Frob_p^{-1}$ the geometric one.
 $\chi_\ell(\Frob_p)=p$ for $p\ne\ell$. Local $L$-factors use the geometric Frobenius: $L(M,s)=\det(1-\Frob_p^{-1}p^{-s}\mid M^{I_p})^{-1}$ for a representation $M$ of
 $G_{\Q_p}$ over a field of characteristic $0$, $p\ne\ell$ (\Cref{ch:local}).
 \item \emph{Normalisation of $\rho_{f,\lambda}$.} The representation $\rho_{f,\lambda}$ on $V_\lambda(f)$ is normalised by $\det(X-\rho_{f,\lambda}(\Frob_p))=X^2-a_p(f)X+p$ for $p\nmid N\ell$
@@ -307,8 +307,8 @@ For every newform $f$ of weight $2$ with trivial character and every $\lambda$, 
 Suppose that $\rho_{f,\lambda}\otimes\overline K_{f,\lambda}$ has a stable line, with character $\psi_1$ and quotient character $\psi_2$; both are continuous characters
 $G_\Q\to\overline\Q_\ell^\times$ unramified outside $N\ell$, with $\psi_1\psi_2=\chi_\ell$. They are subquotients of $V_\ell(J_f)$, which is Hodge-Tate with weights $0$
 and $1$ (Faltings; Tate for abelian varieties with good reduction), so they are Hodge-Tate, and an abelian Hodge-Tate character of $G_\Q$ is
-of the form $\varepsilon\chi_\ell^k$ with $\varepsilon$ of finite order and $k\in\Z$ (Serre \cite{SerreAbelian}). As $\psi_1\psi_2=\chi_\ell$, the exponents are $\{0,1\}$:
-$\{\psi_1,\psi_2\}=\{\varepsilon_1,\varepsilon_2\chi_\ell\}$. Then $a_p(f)=\varepsilon_1(p)+\varepsilon_2(p)p$ for all $p\nmid N\ell$ outside the conductors of the $\varepsilon_i$, an identity between
+of the form $\theta\chi_\ell^k$ with $\theta$ of finite order and $k\in\Z$ (Serre \cite{SerreAbelian}). As $\psi_1\psi_2=\chi_\ell$, the exponents are $\{0,1\}$:
+$\{\psi_1,\psi_2\}=\{\theta_1,\theta_2\chi_\ell\}$. Then $a_p(f)=\theta_1(p)+\theta_2(p)p$ for all $p\nmid N\ell$ outside the conductors of the $\theta_i$, an identity between
 algebraic numbers, so under every complex embedding $\abs{a_p(f)}\ge p-1>2\sqrt p$ for $p\ge7$. This contradicts the bound $\abs{a_p(f)}\le2\sqrt p$ of
 Eichler, Shimura and Weil (\Cref{ch:modforms}). For the general case (any weight and character) see Ribet \cite{Ribet77}.
 \end{proof}
@@ -520,18 +520,18 @@ $\rho_{f,\lambda}$. The book needs no choice: conductors and types are invariant
 directly on the Galois side (\Cref{thm:modgalrep:carayol}(iii)). The automorphic names below are labels and enter no proof.
 
 \begin{definition}[local components]\label{def:modgalrep:local-component}
-A newform $f$ of weight $2$ on $\Gamma_0(N)$ generates a cuspidal automorphic representation $\pi_f=\bigotimes'_v\pi_v$ of $\GL_2(\A_\Q)$ (Jacquet and Langlands
-\cite{JacquetLanglands70}). Its factor $\pi_p$ is the \emph{local component of $f$ at $p$}. It has trivial central character and conductor exponent
-$a(\pi_p)=v_p(N)$ (Casselman \cite{Casselman73}), and the eigenvalue $a_p(f)$ is determined by $\pi_p$ (it is, after normalisation, the eigenvalue of the
+A newform $f$ of weight $2$ on $\Gamma_0(N)$ generates a cuspidal automorphic representation $\Pi_f=\bigotimes'_v\Pi_v$ of $\GL_2(\A_\Q)$ (Jacquet and Langlands
+\cite{JacquetLanglands70}). Its factor $\Pi_p$ is the \emph{local component of $f$ at $p$}. It has trivial central character and conductor exponent
+$a(\Pi_p)=v_p(N)$ (Casselman \cite{Casselman73}), and the eigenvalue $a_p(f)$ is determined by $\Pi_p$ (it is, after normalisation, the eigenvalue of the
 Hecke operator at $p$ on the newvector). We say that $f$ has \emph{type} (U), (St), (RSt), (RPS) or (SC) at $p$ according to the rows of
-\Cref{thm:modgalrep:local-types}; Loeffler and Weinstein \cite{LoefflerWeinstein12} explain how to compute $\pi_p$ in practice.
+\Cref{thm:modgalrep:local-types}; Loeffler and Weinstein \cite{LoefflerWeinstein12} explain how to compute $\Pi_p$ in practice.
 \end{definition}
 
 \begin{theorem}[local-global compatibility at $p\ne\ell$; Langlands, Deligne, Carayol]\label{thm:modgalrep:carayol}
 Let $f$ be a newform of weight $2$ on $\Gamma_0(N)$, $p$ a prime and $\lambda\mid\ell$ with $\ell\ne p$; let $V=V_\lambda(f)|_{G_{\Q_p}}$.
 \begin{enumerate}[label=(\roman*)]
-\item $\WD_p(f)$ corresponds to $\pi_p$ under \Cref{thm:modgalrep:local-langlands} (in the normalisation of the source). In particular $\WD_p(f)$, viewed
-over $\C$, does not depend on $\ell\ne p$ or on $\lambda$, and its type is that of $\pi_p$.
+\item $\WD_p(f)$ corresponds to $\Pi_p$ under \Cref{thm:modgalrep:local-langlands} (in the normalisation of the source). In particular $\WD_p(f)$, viewed
+over $\C$, does not depend on $\ell\ne p$ or on $\lambda$, and its type is that of $\Pi_p$.
 \item The conductor exponent of $V$ is $a(V)=v_p(N)$. Hence the conductor of $\rho_{f,\lambda}$ is $N$ when $\ell\nmid N$, and its prime-to-$\ell$ part is that of
 $N$ in general.
 \item $L_p(f,s)=L(V,s-1)=\det(1-\Frob_p^{-1}p^{1-s}\mid V^{I_p})^{-1}$, where $L_p(f,s)$ is the Euler factor of \Cref{prop:modgalrep:newforms-recap}(v). Equivalently:
@@ -553,7 +553,7 @@ Let $f$ be a newform of weight $2$ on $\Gamma_0(N)$, $p\ne\ell$, $V=V_\lambda(f)
 \begin{center}\small
 \begin{tabular}{@{}lcp{4.4cm}p{2.5cm}cp{2.1cm}@{}}
 \toprule
-type & $v_p(N)$ & $\WD_p(f)$ & $\pi_p$ & $\delta_p$ & $a_p(f)$\\
+type & $v_p(N)$ & $\WD_p(f)$ & $\Pi_p$ & $\delta_p$ & $a_p(f)$\\
 \midrule
 (U) & $0$ & $\mu_1\oplus\mu_2$ unramified, $\mu_1\mu_2=\norm{\cdot}$ & unramified principal series & $2$ & $\mu_1(\Frob)+\mu_2(\Frob)$\\
 (St) & $1$ & $\Sp(2)\otimes\mu$, $\mu$ unramified, $\mu^2=1$ & unramified twist of $\St$ & $1$ & $\mu(\Frob_p)=\pm1$\\
@@ -1079,15 +1079,17 @@ levels of Diamond and Taylor \cite{DiamondTaylor94}.
 
 \begin{theorem}[Diamond, Flach and Guo; the paper's Theorem thm:dfg14]\label{thm:modgalrep:dfg14}
 Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ with rational coefficients, $\lambda=\ell$ a prime not dividing $2M$ with $\bar\rho_f$ irreducible, and $\Sigma$ a finite
-set of primes. Let $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$, $f^\Sigma$ the $\Sigma$-depleted eigenform of level $M^\Sigma$, and $\eta^\Sigma_{f,\lambda}$ the congruence ideal of
+set of primes with $\ell\notin\Sigma$. Let $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$, $f^\Sigma$ the $\Sigma$-depleted eigenform of level $M^\Sigma$, and $\eta^\Sigma_{f,\lambda}$ the congruence ideal of
 \cite{DFG04} attached to $f^\Sigma$ (defined in \Cref{ch:congruence}). Then
 \[
 \eta^\Sigma_{f,\lambda}=\eta^\emptyset_{f,\lambda}\prod_{p\in\Sigma}L_p^{\nv}(A_f,1)^{-1}.
 \]
 \end{theorem}
 
-We do not prove this here; it is \cite[Proposition 1.4(c)]{DFG04}, as the paper cites it, and \Cref{ch:congruence} explains the proof (Ihara's lemma
-and the degeneracy maps). By \Cref{prop:modgalrep:level-raising-factor} and \Cref{cor:modgalrep:delta-naive}, adding to $\Sigma$ a prime with $\delta_p=0$ changes neither the level nor
+We do not prove this here; it is \cite[Proposition 1.4(c)]{DFG04}, as the paper cites it, and \Cref{ch:congruence} sketches the proof (the degeneracy maps, with
+cited saturation statements of the type of Ihara's lemma that are not covered by \Cref{lem:modgalrep:ihara}). The paper does not state the hypothesis
+$\ell\notin\Sigma$; without it the statement is false (for $f=f_{\text{11a}}$, $\ell=3$, $\Sigma=\set3$ the right side is $3^{-2}\Z_3$, which is not integral; see \Cref{ch:congruence}), and
+every use in the paper has $\ell\notin\Sigma$. By \Cref{prop:modgalrep:level-raising-factor} and \Cref{cor:modgalrep:delta-naive}, adding to $\Sigma$ a prime with $\delta_p=0$ changes neither the level nor
 the ideal, a good prime contributes $\frac{p-1}p\cdot\frac{(p+1)^2-a_p^2}{p^2}$, and a multiplicative prime $1-p^{-2}$. The reading for this chapter: $f^\Sigma$ is ``$f$ with its level
 raised at $\Sigma$'' (at a good $p$ it is the eigenform of level $Mp^2$ in the span of $f(z)$, $f(pz)$, $f(p^2z)$ with $U_p$-eigenvalue $0$), and the change of the
 congruence ideal is the level-raising factor.
@@ -1106,7 +1108,8 @@ injective.
 
 This follows from Ribet's form of the lemma: the kernel of $J_0(N)^2\to J_0(Nq)$, $(x,y)\mapsto\alpha_1^*x+\alpha_q^*y$, is the Shimura subgroup $\mathcal S_N$ embedded
 antidiagonally, and only Eisenstein maximal ideals are in the support of $\mathcal S_N$. We prove neither statement; see Ribet \cite{Ribet84} and Diamond and Taylor \cite{DiamondTaylor94} (Ihara's original argument uses the congruence
-subgroup property of $\SL_2(\Z[1/q])$). It is the input of \Cref{thm:modgalrep:level-raising}(ii) and of Theorem thm:dfg14 (\Cref{ch:congruence}).
+subgroup property of $\SL_2(\Z[1/q])$). It is an input of \Cref{thm:modgalrep:level-raising}(ii); the proof of part (c) of Theorem thm:dfg14 sketched in \Cref{ch:congruence} needs saturation statements of the same type for
+the three degeneracy maps to level $M'p^2$ and for the two maps from a level divisible by $p$, which this lemma does not cover.
 
 \begin{example}[level raising for $f_{11a}$ and $f_{20a}$]\label{ex:modgalrep:level-raising}
 (Computed with PARI/GP on the new subspace of level $11q$, resp.\ $20q$: each newform given by \texttt{mfeigenbasis}, with coefficient field from

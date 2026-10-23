@@ -156,8 +156,8 @@ parts.
 
 \begin{theorem}[the Riemann integral (stated; reference)]\label{thm:prereq:riemann}
 \begin{enumerate}[label=(\alph*)]
-\item Continuous functions on $[a,b]$ are integrable; so are monotone functions, and bounded
-functions with finitely many discontinuities.
+\item Every continuous function on $[a,b]$ is integrable, and so is every monotone function and
+every bounded function with finitely many discontinuities.
 \item The integral is linear and monotone, $\abs{\int_a^bf}\le\int_a^b\abs{f}$, and
 $\int_a^b=\int_a^c+\int_c^b$.
 \item (Fundamental theorem of calculus) If $f$ is continuous on $[a,b]$, then $F(x)=\int_a^xf$ is
@@ -183,9 +183,10 @@ converges.
 \end{definition}
 
 \begin{theorem}[improper integrals (stated; reference)]\label{thm:prereq:improper}
+\leavevmode
 \begin{enumerate}[label=(\alph*)]
-\item (Comparison) If $\abs f\le g$ on $[a,\infty)$ and $\int_a^\infty g$ converges, then
-$\int_a^\infty f$ converges absolutely; absolutely convergent improper integrals converge.
+\item (Comparison) Suppose that $\abs f\le g$ on $[a,\infty)$ and that $\int_a^\infty g$ converges. Then
+$\int_a^\infty f$ converges absolutely; and absolutely convergent improper integrals converge.
 \item $\int_1^\infty t^{-\sigma}\,dt$ converges if and only if $\sigma>1$;
 $\int_0^1t^{\sigma-1}\,dt$ converges if and only if $\sigma>0$; $\int_0^\infty e^{-ct}t^m\,dt$
 converges for every $c>0$ and $m>-1$.
@@ -371,8 +372,9 @@ form} on a complex space is linear in the first variable and conjugate-linear in
 \end{definition}
 
 \begin{theorem}[Gram matrices under change of basis (stated; reference)]\label{thm:prereq:gram}
+\leavevmode
 \begin{enumerate}[label=(\alph*)]
-\item If $e'=eP$ and $f'=fQ$, the Gram matrix in the new bases is $G'=P^{\mathsf T}GQ$. For $V=W$
+\item If the bases change as $e'=eP$ and $f'=fQ$, then the Gram matrix in the new bases is $G'=P^{\mathsf T}GQ$. For $V=W$
 and a single change of basis, $G'=P^{\mathsf T}GP$ and $\det G'=(\det P)^2\det G$. So the
 determinant of the Gram matrix of a bilinear form on $V$ is well defined up to multiplication by
 the square of a unit: of $k^\times$ over a field, of the unit group over a ring. Its $\ell$-adic
@@ -626,7 +628,7 @@ $-d/c\mapsto\infty$ and $\infty\mapsto a/c$ (and $\infty\mapsto\infty$ if $c=0$)
 
 \begin{theorem}[Mobius transformations (stated; reference)]\label{thm:prereq:mobius}
 \begin{enumerate}[label=(\alph*)]
-\item The Mobius transformations form a group under composition, and
+\item Under composition the Mobius transformations form a group, and the map
 $\sm abcd\mapsto\bigl(z\mapsto\frac{az+b}{cz+d}\bigr)$ is a surjective homomorphism from
 $\GL_2(\C)$ onto it with kernel the scalar matrices; so the group is
 $\PGL_2(\C)=\GL_2(\C)/\C^\times=\SL_2(\C)/\{\pm1\}$.
@@ -671,8 +673,9 @@ fundamental domains, cusps, elliptic points, the Petersson inner product via (d)
 \emph{Reference:} \cite[Chapter 3, Section 3]{Ahlfors79}; \cite[Chapter 1]{DiamondShurman}.
 
 \begin{theorem}[the exponential and the logarithm (stated; reference)]\label{thm:prereq:exp}
+\leavevmode
 \begin{enumerate}[label=(\alph*)]
-\item $\exp(z)=\sum z^n/n!$ is entire, $\exp(z+w)=\exp z\exp w$, $\exp'=\exp$,
+\item The function $\exp(z)=\sum_{n\ge0}z^n/n!$ is entire, $\exp(z+w)=\exp z\exp w$, $\exp'=\exp$,
 $\abs{\exp(x+iy)}=e^x$, and $\exp\colon\C\to\C^\times$ is surjective with kernel $2\pi i\Z$.
 \item The map $z\mapsto q=e^{2\pi iz}$ sends $\HH$ onto the punctured disc $0<\abs q<1$, with
 $q(z)=q(z')$ if and only if $z-z'\in\Z$, and $\abs q=e^{-2\pi\operatorname{Im}z}\to0$ as
@@ -718,9 +721,10 @@ $\prod_p(1+b_p)$ is holomorphic and nonvanishing where no factor vanishes.
 \emph{Reference:} \cite[Chapter 5, Section 2]{Ahlfors79}; \cite[Chapter 5]{SteinShakarchi03}.
 
 \begin{theorem}[the Gamma function, complex form (stated; reference)]\label{thm:prereq:gamma}
+\leavevmode
 \begin{enumerate}[label=(\alph*)]
-\item $\Gamma(s)=\int_0^\infty e^{-t}t^{s-1}\,dt$ converges absolutely and locally uniformly for
-$\operatorname{Re}s>0$ and is holomorphic there.
+\item The integral $\Gamma(s)=\int_0^\infty e^{-t}t^{s-1}\,dt$ converges absolutely and locally
+uniformly for $\operatorname{Re}s>0$, and $\Gamma$ is holomorphic there.
 \item (Functional equation) $\Gamma(s+1)=s\,\Gamma(s)$. Used backwards, it extends $\Gamma$ to a
 meromorphic function on $\C$ whose only singularities are simple poles at $s=0,-1,-2,\dots$, with
 residue $(-1)^n/n!$ at $s=-n$. $\Gamma$ has no zeros, so $1/\Gamma$ is entire.
@@ -754,7 +758,7 @@ and the one by which Riemann continued $\zeta(s)$ using the theta function. For 
 the Mellin transform is the Fourier transform of \cite[Chapter 13]{RHB06} in the variable $\log t$.
 \end{remark}
 
-\section{Group theory and representation theory as in Riley, Hobson and Bence}\label{sec:prereq:groups}
+\section[Group theory and representation theory]{Group theory and representation theory as in Riley, Hobson and Bence}\label{sec:prereq:groups}
 
 This section is what \Cref{ch:groups} and \Cref{ch:reps} assume and then rebuild with proofs.
 The reader has met it in \cite[Chapters 28 and 29]{RHB06}, over $\C$ and for finite groups; the
@@ -863,7 +867,7 @@ on $T$, its semisimplification does not, and when the reduction is irreducible a
 are homothetic (Ribet's lemma).
 Finally, the word ``character'' in the book almost always means a degree-one representation of a
 group, usually a profinite one (the cyclotomic character $\chil$, the quadratic characters
-$\chi_{-3}$, $\chi_{-4}$, $\chi_q$, Dirichlet characters), not a trace function; \Cref{ch:reps} says
+$\chi_{-3}$, $\chi_{-4}$, $\chi_{q^*}$, Dirichlet characters), not a trace function; \Cref{ch:reps} says
 ``the character of $\rho$'' when the trace is meant.
 \end{remark}
 

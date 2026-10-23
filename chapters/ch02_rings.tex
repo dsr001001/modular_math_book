@@ -156,7 +156,7 @@ character of order $2$ and conductor $q$; the same for $\ell^*$; $3^*=-3$, $5^*=
 characters with values in another field, $\omega_\ell$). \Cref{def:rings:dirichlet}.
 \item \textbf{Basic properties.} Complete multiplicativity, periodicity, values in $\mu_{\varphi(n)}$, $\bar\chi=\chi^{-1}$, $\chi(-1)=\pm1$;
 $X(n)\simeq(\Z/n)^\times$ non-canonically. \emph{(proved here)} \Cref{prop:rings:dirichlet}.
-\item \textbf{Orthogonality.} $\sum_a\chi(a)=\varphi(n)[\chi=\chi_0]$, $\sum_\chi\chi(a)=\varphi(n)[a\equiv1]$; the characters are an orthonormal basis
+\item \textbf{Orthogonality.} $\sum_a\chi(a)=\varphi(n)[\chi=\chi_0]$, $\sum_\chi\chi(a)=\varphi(n)[a\equiv1]$, where the Iverson bracket $[P]$ is $1$ if the statement $P$ holds and $0$ otherwise; the characters are an orthonormal basis
 of the functions on $(\Z/n)^\times$. \emph{(proved here)} \Cref{thm:rings:orthogonality}.
 \item \textbf{Conductor} (definition: $\chi$ defined modulo $d$, conductor $f_\chi$, primitive character). \Cref{def:rings:conductor}.
 \item \textbf{Conductors.} If $\chi$ is defined modulo $d_1$ and $d_2$, it is defined modulo $\gcd(d_1,d_2)$; the conductor divides every
@@ -181,7 +181,7 @@ $\Q$ is not complete for $\abs\cdot_p$. \emph{(proved here)} \Cref{prop:rings:pa
 \item \textbf{Ostrowski's theorem.} Every nontrivial absolute value on $\Q$ is equivalent to $\abs\cdot_\infty$ or to exactly one
 $\abs\cdot_p$. \emph{(stated; reference)} \Cref{thm:rings:ostrowski}.
 \item \textbf{$\ell$-integrality.} For primes $q\ne\ell$, $q$ is an $\ell$-adic unit, $P(q^{-k})\in\Z_{(\ell)}$ for $P\in\Z[X]$, and
-$v_\ell(\frac{q-1}q)=v_\ell(q-1)$, for $\varepsilon=\pm1$ $v_\ell(1-\varepsilon q^{-1})=v_\ell(q-\varepsilon)$, $v_\ell(1-q^{-2})=v_\ell(q-1)+v_\ell(q+1)$. \emph{(proved here)}
+$v_\ell(\frac{q-1}q)=v_\ell(q-1)$, $v_\ell(1\mp q^{-1})=v_\ell(q\mp1)$ for either sign, $v_\ell(1-q^{-2})=v_\ell(q-1)+v_\ell(q+1)$. \emph{(proved here)}
 \Cref{lem:rings:ell-integral}.
 \item \textbf{The $\kod{I}_0^*$ identity.} If $\alpha\beta=q$, $\alpha+\beta=a$, then
 $(1-\frac\alpha{\beta q})(1-\frac1q)(1-\frac\beta{\alpha q})=\frac{q-1}q\cdot\frac{(q+1)^2-a^2}{q^2}$, and $(q+1)^2-a^2\ge(q-1)^2$ if $a^2\le4q$.
@@ -277,8 +277,7 @@ fundamental the Kronecker symbol $\bigl(\frac D\cdot\bigr)$ is always written ou
 character modulo $12$ that agrees with $\chi_{-3}$ at odd integers, whereas under B-C6(b) the symbol $\chi_{-12}$ would mean $\chi_{-3}$ itself, of conductor
 $3$; the chapter does not use the symbol $\chi_{-12}$. The letter $D$ denotes a discriminant; as in the paper, $D=\prod_{q\in S}q$ is also the conductor of $\chi_S$
 (the absolute value of the fundamental discriminant $\prod_{q\in S}q^*$). For an odd prime $q$
-put $q^*=(-1)^{(q-1)/2}q$; the quadratic character of conductor $q$ is $\chi_{q^*}$, never $\chi_q$ (decision D3 of the plan of
-this book). Thus $\chi_{-7}$, $\chi_{-11}$ are the characters of conductor $7$, $11$, while $\chi_5$, $\chi_{13}$ have conductor $5$, $13$.
+put $q^*=(-1)^{(q-1)/2}q$; the quadratic character of conductor $q$ is $\chi_{q^*}$, never $\chi_q$. Thus $\chi_{-7}$, $\chi_{-11}$ are the characters of conductor $7$, $11$, while $\chi_5$, $\chi_{13}$ have conductor $5$, $13$.
 A prime-letter subscript ($\chi_\ell$, $\chi_p$) is reserved for the cyclotomic character ($\chi_D$, $\chi_S$, $\chi_{q^*}$ name quadratic
 characters): $\chi_\ell$ is the $\ell$-adic cyclotomic character of
 \Cref{ch:galois}, $\bar\chi_\ell$ its reduction, written $\chi_3^{\mathrm{cyc}}$, $\bar\chi_3^{\mathrm{cyc}}$ at the prime $3$; and
@@ -1939,9 +1938,9 @@ Let $q\ne\ell$ be primes.
 \item $v_\ell(q^k)=0$ for all $k\in\Z$: $q$ is a unit of $\Z_{(\ell)}$ (an "$\ell$-adic unit").
 \item For $P\in\Z[X]$ of degree at most $d$ and $k\ge0$, $P(q^{-k})\in\Z_{(\ell)}$, and $v_\ell(P(q^{-k}))=v_\ell\bigl(q^{kd}P(q^{-k})\bigr)$ is the valuation of the integer
 $q^{kd}P(q^{-k})$; it is finite iff $P(q^{-k})\ne0$.
-\item For $\varepsilon=\pm1$ and $a\in\Z$:
+\item For $a\in\Z$ and either choice of sign:
 \begin{gather*}
-v_\ell\Bigl(\frac{q-1}q\Bigr)=v_\ell(q-1),\qquad v_\ell(1-\varepsilon q^{-1})=v_\ell(q-\varepsilon),\\
+v_\ell\Bigl(\frac{q-1}q\Bigr)=v_\ell(q-1),\qquad v_\ell(1\mp q^{-1})=v_\ell(q\mp1),\\
 v_\ell(1-q^{-2})=v_\ell(q^2-1)=v_\ell(q-1)+v_\ell(q+1),
 \end{gather*}
 \[
@@ -2169,7 +2168,7 @@ Ostrowski's theorem (\Cref{thm:rings:ostrowski}) is proved in Section 3. The ari
 Euler factors of the adjoint $L$-function is Lemma lem:euler of the paper, treated in \Cref{ch:lfunctions,ch:paper}. Curve data were computed
 with PARI/GP \cite{PARI} and Cremona's tables \cite{Cremona97}.
 
-Compared with the outline of this chapter, the following were proved in full rather than sketched or stated: the existence of
+The following are proved in full here although a statement with a reference would have sufficed: the existence of
 maximal ideals (from Zorn's lemma), the unique factorisation of $R[x]$ over a UFD, the primitivity of $\chi_D$ for fundamental $D$
 (\Cref{cor:rings:fundamental-primitive}) and the Gauss sum of an imprimitive character. Only Ostrowski's theorem and the sign of the
 quadratic Gauss sum are stated without proof, and neither is used. No theorem numbers of the sources are cited. The chapter and section numbers above are given as pointers to the relevant part of

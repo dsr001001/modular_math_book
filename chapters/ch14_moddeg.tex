@@ -1166,15 +1166,15 @@ and $w_N^*$ acts on $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)$ by $\varepsilon_N(f)$.
 \end{lemma}
 
 \begin{proof}
-Put $\varepsilon=\varepsilon_N(f)$ and $h(P)=\varphi_E(w_NP)-\varphi_E(0)$. Then $h$ is a morphism over $\Q$ (\Cref{thm:moddeg:x0-over-q}(ii)) with $h(\infty)=\varphi_E(0)-\varphi_E(0)=O$, as
+Write $\varepsilon_N=\varepsilon_N(f)$ and put $h(P)=\varphi_E(w_NP)-\varphi_E(0)$. Then $h$ is a morphism over $\Q$ (\Cref{thm:moddeg:x0-over-q}(ii)) with $h(\infty)=\varphi_E(0)-\varphi_E(0)=O$, as
 $w_N(\infty)=0$. The differential $\omega_E$ is translation invariant, so
 \[
-h^*\omega_E=w_N^*\varphi_E^*\omega_E=c_E\cdot2\pi i\,(f|_2W_N)(z)\,dz=\varepsilon\,c_E\cdot2\pi if(z)\,dz=\varepsilon\,\varphi_E^*\omega_E=(\varepsilon\varphi_E)^*\omega_E,
+h^*\omega_E=w_N^*\varphi_E^*\omega_E=c_E\cdot2\pi i\,(f|_2W_N)(z)\,dz=\varepsilon_N\,c_E\cdot2\pi if(z)\,dz=\varepsilon_N\,\varphi_E^*\omega_E=(\varepsilon_N\varphi_E)^*\omega_E,
 \]
-using \Cref{conv:moddeg:setup}(C1) and $[-1]^*\omega_E=-\omega_E$. The homomorphisms $h_*$ and $(\varepsilon\varphi_E)_*\colon J_0(N)\to E$ are induced on $J_0(N)(\C)=S_2^\vee/H_1$ by the transposes of the
-pullbacks of $\omega_E$ (\Cref{ch:curves}, functoriality of the Jacobian), which agree; so $h_*=(\varepsilon\varphi_E)_*$ and $h=h_*\circ\iota=\varepsilon\varphi_E$. On $H^1$, translations act trivially
-(they are homotopic to the identity) and $[\varepsilon]^*=\varepsilon$, so $w_N^*\varphi_E^*=(\varphi_E\circ w_N)^*=\varepsilon\varphi_E^*$, first on $H^1(E,\Z)$ and then on $H^1(E,\Zl)$; with
-\Cref{prop:moddeg:mf-is-pullback}(c) this is the action on $M_{f,\lambda}$. Finally $\hat\delta_!(x,y)=\langle x,w_N^*y\rangle=\varepsilon\langle x,y\rangle$.
+using \Cref{conv:moddeg:setup}(C1) and $[-1]^*\omega_E=-\omega_E$. The homomorphisms $h_*$ and $(\varepsilon_N\varphi_E)_*\colon J_0(N)\to E$ are induced on $J_0(N)(\C)=S_2^\vee/H_1$ by the transposes of the
+pullbacks of $\omega_E$ (\Cref{ch:curves}, functoriality of the Jacobian), which agree; so $h_*=(\varepsilon_N\varphi_E)_*$ and $h=h_*\circ\iota=\varepsilon_N\varphi_E$. On $H^1$, translations act trivially
+(they are homotopic to the identity) and $[\varepsilon_N]^*=\varepsilon_N$, so $w_N^*\varphi_E^*=(\varphi_E\circ w_N)^*=\varepsilon_N\varphi_E^*$, first on $H^1(E,\Z)$ and then on $H^1(E,\Zl)$; with
+\Cref{prop:moddeg:mf-is-pullback}(c) this is the action on $M_{f,\lambda}$. Finally $\hat\delta_!(x,y)=\langle x,w_N^*y\rangle=\varepsilon_N\langle x,y\rangle$.
 \end{proof}
 
 This proof does not use the description of $M_{f,\lambda}\otimes\C$ as a plane; \Cref{prop:moddeg:f-lattice}(iii) gives a second proof.
@@ -1262,7 +1262,8 @@ the tool for forms not attached to an optimal quotient, such as the depleted for
 
 \begin{remark}[the identification with the objects of Diamond, Flach and Guo]\label{rem:moddeg:dfg-normalisation}
 \Cref{thm:moddeg:degree-is-eta} is a theorem about the ideal of values of $\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Zl)[I_f]$. That this ideal is the $\eta^\emptyset_{f,\lambda}$ of \cite{DFG04} rests on five
-points, which Section 4.1 of the paper asserts and \Cref{ch:congruence} compares with the text of \cite{DFG04}.
+points, which Section 4.1 of the paper asserts. Point (2) is proved below and point (5) in \Cref{ch:modules}; \Cref{ch:congruence} sketches the comparison of integral
+structures in (1), and reads the normalisation in (3), the kernel lattice in (4) and the self-adjointness of the Hecke operators from \cite{DFG04} as cited, without re-checking them.
 \begin{enumerate}[label=(\arabic*)]
 \item \emph{Which curve.} The integral structure $M(N,1)_{!,\lambda}$ of \cite{DFG04} is defined through a modular curve of full level; the paper says that it ``contains the pull-back of
 $H^1(X_0(M^\Sigma),\Z_\ell)$ with finite index'' and that after localisation at a non-Eisenstein $\mf m$ ``we take it \dots to agree with $H^1(X_0(M^\Sigma),\Z_\ell)_{\mathfrak m}$'', the cokernel being
@@ -1464,7 +1465,7 @@ identity of $X_0(11)$ and the statement is that the cusp $0$ has order $5$ (\Cre
 \end{example}
 
 \begin{remark}[the Eisenstein case in the paper]\label{rem:moddeg:eisenstein-and-the-paper}
-Ihara's lemma and Proposition 1.4 of \cite{DFG04}, multiplicity one (\Cref{thm:moddeg:multiplicity-one}) and the identification of the integral structure of \cite{DFG04} with $H^1(X_0(N),\Zl)$
+Ihara's lemma, the saturation statements of the same type behind part (c) of Proposition 1.4 of \cite{DFG04} (\Cref{ch:congruence}), multiplicity one (\Cref{thm:moddeg:multiplicity-one}) and the identification of the integral structure of \cite{DFG04} with $H^1(X_0(N),\Zl)$
 (\Cref{rem:moddeg:dfg-normalisation}) all need $\bar\rho$ irreducible; \Cref{prop:moddeg:mf-is-pullback} does not. Conjecture conj:eis bounds the deficit by the $\ell$-part of the torsion, and
 \Cref{ch:ellcurves} proves that its bound $D\le2$ at $\ell=3$ follows from the first (Proposition prop:no9 of the paper). \Cref{prop:moddeg:image-of-zero} links rational torsion with the
 cuspidal subgroup: $\varphi_E(0)$ is a rational torsion point, the image of the cuspidal class $[(0)-(\infty)]$, and it often generates $E(\Q)_{\tors}$. This is a heuristic for Open question 4, not an
@@ -1574,7 +1575,7 @@ check by counting points on $y^2+y=x^3-x^2-10x-20$. \emph{Answer.} $5,5,5,10,10$
 \begin{exercise}\label{ex:moddeg:ex-37-lvalue}
 Let $\varphi\colon X_0(37)\to X_0(37)/w_{37}=\curve{37a1}$ be the optimal parametrisation (\Cref{ex:moddeg:37}). (a) Show $\varphi\circ w_{37}=\varphi$ and deduce from \Cref{lem:moddeg:wn-on-mf} that
 $\varepsilon_{37}(f_{37a})=+1$ and $\varphi(0)=O$. (b) Deduce from \Cref{prop:moddeg:image-of-zero} that $c_EL(\curve{37a1},1)\in\Z\Omega$. (c) The functional equation of $L(f,s)$ has sign $-\varepsilon_N(f)$
-(\Cref{ch:hecke,ch:lfunctions}); conclude $L(\curve{37a1},1)=0$. \emph{Hint for (a).} $w_{37}(\infty)=0$, and $\varphi\circ w_{37}=\varepsilon\varphi+\varphi(0)$ with $\varphi\circ w_{37}=\varphi$ forces $\varepsilon=1$ and
+(\Cref{ch:hecke,ch:lfunctions}); conclude $L(\curve{37a1},1)=0$. \emph{Hint for (a).} $w_{37}(\infty)=0$, and $\varphi\circ w_{37}=\varepsilon_{37}\varphi+\varphi(0)$ with $\varphi\circ w_{37}=\varphi$ forces $\varepsilon_{37}=1$ and
 $\varphi(0)=O$ (compare the pullbacks of $\omega_E$).
 \end{exercise}
 

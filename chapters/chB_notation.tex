@@ -129,7 +129,7 @@ needed because the paper's $\Phi_q$ is a component group. \emph{Binds:} \Cref{ch
 \Cref{ch:galrep}, \Cref{ch:moddeg} to \Cref{ch:computation}. \emph{In the chapters:} the geometric Frobenius is written $\Phi$,
 $\Phi_p$ in \Cref{ch:local} ($\Phi$ alone), \Cref{ch:galcoh} and \Cref{ch:lfunctions} (no component groups there), and
 $\Frob_p^{-1}$ in \Cref{ch:galois,ch:ant,ch:curves,ch:ellcurves,ch:reduction,ch:galrep,ch:modgalrep,ch:cohomology,ch:blochkato}
-and in \Cref{ch:paper} (planned); \Cref{ch:modgalrep} also allows $\Phi$ for the geometric Frobenius at the prime of a local field. \Cref{ch:reps}, which has no Galois groups, writes an abstract arithmetic Frobenius $F$ with
+and in \Cref{ch:paper} (planned). \Cref{ch:reps}, which has no Galois groups, writes an abstract arithmetic Frobenius $F$ with
 $FgF^{-1}=g^q$ on an inertia image and $F^{-1}$ for the geometric one. \Cref{ch:curves} writes $\pi_r\colon C\to C^{[r]}$ for the
 $r$-power Frobenius morphism onto the Frobenius twist $C^{[r]}$. \emph{Where proved:} the tame relation in \Cref{ch:local};
 $L_p(M(1),s)=L_p(M,s+1)$ in \Cref{ch:local}; the Artin map in \Cref{ch:ant,ch:local}; Eichler-Shimura in \Cref{ch:moddeg}.
@@ -573,7 +573,7 @@ $E_\lambda$ & finite extension of $\Ql$ (coefficient field) & \Cref{ch:galois} &
 $\Zl$, $\Ql$, $\Qlmod$ & $\ell$-adic integers, $\ell$-adic numbers, the divisible group & \Cref{ch:modules} & \\
 $\len$, $\len_R$, $\#X$ & length ($\len=\len_{\Zl}$); order, $\#X=\ell^{\len X}$ & \Cref{ch:modules} & \hyperref[conv:notation:bc10]{B-C10}\\
 $\Fitt_R(M)$ & Fitting ideal & \Cref{ch:modules} & \hyperref[conv:notation:bc10]{B-C10}\\
-$\Ann_R(M)$, $M[\mathfrak a]$, $M[\ell^\infty]$, $M_{\mathrm{tor}}$ & annihilator, $\mathfrak a$-torsion, $\ell$-primary part, torsion & \Cref{ch:modules} & \\
+$\Ann_R(M)$, $M[\mathfrak a]$, $M[\ell^\infty]$, $M_{\mathrm{tor}}$ & annihilator, $\mathfrak a$-torsion, $\ell$-primary part, torsion & \Cref{ch:modules} & Mordell-Weil $E(\Q)_{\mathrm{tors}}$\\
 saturated & $L\subseteq M$ with $M/L$ torsion-free & \Cref{ch:modules} & \\
 $S^\perp$, ${}^\perp S$ & right and left orthogonal for a pairing & \Cref{ch:modules} & $f^\perp$\\
 $G$ (Gram matrix), $\Delta$ (Gram determinant) & $(\langle e_i,f_j\rangle)$; $\det G$, in Lemma lem:ddt417 of $L[\wp]$ & \Cref{ch:modules} & $\Delta$ discriminant, \Cref{sec:notation:letters}\\
@@ -673,7 +673,7 @@ $\epsilon(r,\psi,dx)$ & local epsilon factor & \Cref{ch:local} & $\varepsilon$ c
 $\Q_p^\times=p^\Z\times\mu_{p-1}\times(1+p\Zp)$ & structure of $\Q_p^\times$ ($p$ odd) & \Cref{ch:local} & \\
 $\omega$, $\omega_2$ & fundamental characters of levels $1$ and $2$ at $\ell$ & \Cref{ch:galrep} & periods $\omega_1,\omega_2$, \hyperref[conv:notation:bc15]{B-C15(b)}\\
 $\varpi'$ & $\zeta_\ell-1$, a uniformiser of $\Q_\ell(\zeta_\ell)$ & \Cref{ch:galrep} & \\
-$\pi_p$ (automorphic) & local component of $f$ at $p$, $\pi_f=\bigotimes'\pi_v$ & \Cref{ch:modgalrep} & Frobenius $\pi_p$, quotient map $\pi_f$, \Cref{sec:notation:letters}\\
+$\Pi_p$, $\Pi_f$ & local component of $f$ at $p$; the automorphic representation $\Pi_f=\bigotimes'\Pi_v$ & \Cref{ch:modgalrep} & not $\pi_p$ (Frobenius), not $\pi_f$ (quotient map), \Cref{sec:notation:letters}\\
 $\Dcris$, $\Bcris$, $\BdR$, $\Bst$ & Fontaine's period rings and functor & \Cref{ch:blochkato} & \\
 \end{longtable}\endgroup
 
@@ -785,16 +785,16 @@ $L(f,s)$, $\Lambda(f,s)$ & $L$-function of a newform, completed & \Cref{ch:hecke
 $\alpha_p$, $\beta_p$, $\mu_p$ & roots of $X^2-a_p(h)X+p$; chosen $U_p$-eigenvalue (Lemma lem:old) & \Cref{ch:hecke,ch:modgalrep} & \hyperref[conv:notation:bc3]{B-C3(e)}\\
 $J_0(N)$, $J_1(N)$ & Jacobians of $X_0(N)$, $X_1(N)$ & \Cref{ch:moddeg} & \\
 $t^*$, $t_*$ & the two actions of $t\in\T$ (on $H^1$, on $H_1$) & \Cref{ch:moddeg} & \hyperref[conv:notation:bc4]{B-C4(e)}\\
-$J_f$, $\pi_f$, $E_f$ & $J_0(N)/I_fJ_0(N)$, the quotient map; the optimal curve for rational $f$ & \Cref{ch:moddeg} & \hyperref[conv:notation:bc12]{B-C12(c)}; $\pi_f$ automorphic\\
+$J_f$, $\pi_f$, $E_f$ & $J_0(N)/I_fJ_0(N)$, the quotient map; the optimal curve for rational $f$ & \Cref{ch:moddeg} & \hyperref[conv:notation:bc12]{B-C12(c)}; automorphic $\Pi_f$\\
 $\varphi_E$, $\degphi$ & modular parametrisation, modular degree & \Cref{ch:moddeg} & \hyperref[conv:notation:bc13]{B-C13(b)}\\
-$E_0$ & the optimal curve of the class & \Cref{ch:modgalrep} & $E_0(K)$\\
+$E_0$ & the optimal curve of the class ($E_f$ of \Cref{ch:moddeg}) & \Cref{ch:modgalrep} & $E_0(K)$\\
 $c_\varphi$, $c_E$ & Manin constants, $c_E>0$ & \Cref{ch:moddeg} & \hyperref[conv:notation:bc9]{B-C9}\\
 $\hat\delta_!$ & $\langle x,w_Ny\rangle$ on $H^1(X_0(N),\Zl)$ & \Cref{ch:moddeg} & \hyperref[conv:notation:bc13]{B-C13(f)}\\
 $M_{f,\lambda}$, $M_{f^\Sigma,\lambda}$ & $H^1(X_0(M^\Sigma),\Zl)[\ker\phi_{f^\Sigma}]$, of rank two & \Cref{ch:moddeg} & \hyperref[conv:notation:bc12]{B-C12(b)}, \hyperref[conv:notation:bc13]{B-C13(f)}\\
 $\mathfrak m$ & maximal ideal of $\T\otimes\Zl$ attached to $(f,\ell)$; Eisenstein if $\bar\rho_{\mathfrak m}$ is reducible & \Cref{ch:moddeg,ch:modgalrep} & $\mathfrak m_K$\\
 $I_{\mathrm{Eis}}$, $C_N$, $\mathcal S_N$ & Eisenstein ideal, cuspidal subgroup, Shimura subgroup & \Cref{ch:moddeg} & $\Sigma$\\
 $\delta_D$, $D$ & degree of the Shimura curve parametrisation; quaternion discriminant & \Cref{ch:moddeg} & $D$, \Cref{sec:notation:letters}\\
-$t_q$ & Tamagawa exponent (Kim-Ota): the largest $t$ with $\rho\bmod\ell^t$ unramified at $q$ & \Cref{ch:modgalrep} & $=t_\ell(E,q)$ at multiplicative $q$\\
+$t_q$ & Tamagawa exponent (Kim-Ota): the largest $t$ with $\rho\bmod\ell^t$ unramified at $q$ & \Cref{ch:modgalrep} & $=t_\ell(E,q)$ at multiplicative $q$; Kim and Ota's $t_f(q)$\\
 \end{longtable}\endgroup
 
 \subsection{Cohomology, Selmer groups, Tamagawa factors}\label{sec:notation:index-cohomology}
@@ -861,6 +861,7 @@ $\mathcal C(\pi)$, $\mathrm{Cot}(\pi)$ & congruence module $\T_{\mathcal O}/(\wp
 $d$, $\Delta$, $Q$ & rank of $L[\wp]$, its Gram determinant, $L/(L[\wp]\oplus L[I])$ & \Cref{ch:modules,ch:congruence} & $\Delta$ discriminant\\
 $\eta^\Sigma_{f,\lambda}$, $\eta^\emptyset_{f,\lambda}$ & naive $\Sigma$-finite congruence ideal of Diamond, Flach and Guo; at level $N$ & \Cref{ch:modgalrep,ch:congruence} & $\eta(z)$\\
 $\eta^{\mathrm{Hecke}}$ & congruence ideal in the Hecke algebra (of $g^S$ in Theorem thm:quant) & \Cref{ch:hecke,ch:congruence} & \\
+$\eta_f$, $\eta^{\mathrm{Hecke}}_f$, $\eta_f(N)$ & one ideal, $\phi_f(\Ann_\T\ker\phi_f)=r_E\Z$ for rational $f$: the names in \Cref{ch:moddeg}, in \Cref{ch:congruence}, and Kim and Ota's (\Cref{ch:modgalrep}) & \Cref{ch:moddeg,ch:congruence} & $\eta^\Sigma_{f,\lambda}$\\
 $M(M,1)_{!,\lambda}$ & the integral structure of Diamond, Flach and Guo at level $M$ (in the paper $M=M^\Sigma$), $=H^1(X_0(M),\Zl)$ on non-Eisenstein components & \Cref{ch:congruence} & \\
 $R_\Sigma$, $\T_\Sigma$ & deformation ring, Hecke algebra of Taylor-Wiles & \Cref{ch:modgalrep,ch:congruence} & \\
 $g$, $g^S$, $N_S^S$ & $f_{E_S}$, its $S$-depletion, $N_S\prod_{q\in S}q^{\delta_q(g)}=N$ (the paper's $N_S^\Sigma$ with $\Sigma=S$) & \Cref{ch:modgalrep,ch:congruence} & genus $g$\\
@@ -873,7 +874,7 @@ $g$, $g^S$, $N_S^S$ & $f_{E_S}$, its $S$-depletion, $N_S\prod_{q\in S}q^{\delta_
 \toprule symbol & meaning & defined in & see also\\ \midrule\endhead
 \bottomrule\endlastfoot
 $D$ (Conjecture conj:eis) & deficit $\sum_qv_\ell(\#\Phig_q)-v_\ell(\degphi)$ & \Cref{ch:computation}; \Cref{ch:paper} (planned) & $D$, \Cref{sec:notation:letters}\\
-$[\,\cdot\,]$ & Iverson bracket ($1$ if true, $0$ if false); used in \Cref{ch:rings,ch:computation} & \Cref{ch:paper} (planned) & \\
+$[\,\cdot\,]$ & Iverson bracket ($1$ if true, $0$ if false); used from \Cref{ch:rings} on, notably in \Cref{ch:reduction,ch:computation} & \Cref{ch:rings} & \\
 (eq:main), (eq:twist), (eq:rule), (eq:identity), (eq:thm) & the paper's displayed statements, cited by these names & \Cref{ch:paper} (planned) & \\
 $E[3]\simeq\Z/3\oplus\mu_3$ & the image 3Cs.1.1 (not ``the split Cartan image'') & \Cref{ch:galrep,ch:ellcurves} & \\
 working set, hold-out, extension, out-of-table & the paper's four ranges of conductors & \Cref{ch:computation}; \Cref{ch:paper} (planned) & \\
@@ -1035,7 +1036,7 @@ argument & \Cref{ch:hecke,ch:curves}; $\varphi(n)$ in \Cref{ch:groups,ch:rings,c
 $\Phi$ & geometric Frobenius; component groups $\Phi_q(\cdot)$; cyclotomic polynomials $\Phi_n$; a composite isogeny
 $\Phi_m=\varphi_m\circ\cdots\circ\varphi_1$ (local); the modular polynomial $\Phi_p(X,Y)$; the minimal polynomial $\Phi(X)$ of $j_N$ (local) & B-C2(b),
 B-C11(b); \Cref{ch:galrep,ch:moddeg,ch:modforms}\\
-$\pi$ & see B-C15(a); the real number; $\pi_p$ the local component of $f$ and $\pi_f=\bigotimes'\pi_v$ in \Cref{ch:modgalrep} & \Cref{ch:ant,ch:modules,ch:moddeg,ch:modgalrep}\\
+$\pi$ & see B-C15(a); the real number; the automorphic local component of $f$ is $\Pi_p$ and $\Pi_f=\bigotimes'\Pi_v$ (\Cref{ch:modgalrep}), never $\pi_p$, $\pi_f$ & \Cref{ch:ant,ch:modules,ch:moddeg,ch:modgalrep}\\
 $\psi$ & see B-C15(m); additive character in $\epsilon(r,\psi,dx)$ & \Cref{ch:reps,ch:ellcurves,ch:local}\\
 $q$ & see B-C1 & all\\
 $r$ & the congruence number $r_E$ and $r_\pi$; the conductor $r$ of a twisting character; the entry of a change of coordinates $(u,r,s,t)$;
