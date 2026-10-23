@@ -15,13 +15,19 @@ mktexlsr > /dev/null 2>&1
 pip install -q cypari2 || pip install -q --break-system-packages cypari2
 python3 -c "import cypari2; p=cypari2.Pari(); print('PARI', p('default(version)'))"
 mkdir -p data/ecdata
-for d in allcurves allbsd allisog alllabels degphi galrep; do
-  f="data/ecdata/$d.00000-09999"
-  [ -s "$f" ] && continue
+# Pinned to the ecdata commit the paper and the book use (Chapter 22); checksums in tools/ecdata.sha256.
+COMMIT=25cec5ecfec8b9f016eb1631ac633194c2bed39f
+fetch() {  # fetch <repo path> <local file>
+  [ -s "$2" ] && return
   for wait in 0 2 4 8 16 32; do
     sleep $wait
-    curl -sS -f -m 60 -o "$f" "https://raw.githubusercontent.com/JohnCremona/ecdata/master/$d/$d.00000-09999" && break
+    curl -sS -f -m 120 -o "$2" "https://raw.githubusercontent.com/JohnCremona/ecdata/$COMMIT/$1" && break
   done
-  [ -s "$f" ] && echo "downloaded $f" || echo "FAILED $f"
+  [ -s "$2" ] && echo "downloaded $2" || echo "FAILED $2"
+}
+for d in allcurves allbsd allisog alllabels degphi galrep alldegphi curvedata classdata opt_man; do
+  fetch "$d/$d.00000-09999" "data/ecdata/$d.00000-09999"
 done
+fetch "docs/file-format.txt" "data/ecdata/file-format.txt"
+(cd data/ecdata && sha256sum -c --quiet ../../tools/ecdata.sha256) && echo "ecdata checksums OK" || echo "ecdata CHECKSUM MISMATCH"
 echo "smoke test:"; tools/build_chapter.sh A | tail -1
