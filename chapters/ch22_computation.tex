@@ -5,20 +5,23 @@ The paper's theorems are proved; its conjectures, its sharpness claims and a doz
 Cremona's tables, organised by a protocol of working sets and hold-outs. This chapter makes that side of the paper as checkable as the other. It
 teaches PARI/GP and the \texttt{ecdata} files from zero, with exactly the functions the paper uses; reads the paper's appendix code line by line and
 proves what it computes; runs it on the running examples; explains the protocol and judges the statistics, including the calibration argument
-of Section sec:sharp; and reproduces every table of the paper on all optimal curves of conductor below $10{,}000$, from the very data commit the paper
-names, with scripts that run in minutes. Along the way it records the places where the paper's data sentences need correcting.
+of Section sec:sharp; and reproduces every table of the paper that the data of this range allow on all optimal curves of conductor below $10{,}000$, from the
+very data commit the paper names, with scripts that run in minutes. Along the way it records the places where the paper's data sentences need correcting.
 
 \section*{Core results at a glance}
 
 Throughout, $E$ is an optimal curve given by Cremona's minimal model, $\ell$ an odd prime, $q$ a bad prime, $v=v_\ell(\degphi)$; outputs are those of PARI/GP
 2.17.2 through \texttt{cypari2} 2.2.4, and ``below $10{,}000$'' means the $38{,}042$ optimal curves of conductor at most $9{,}999$ in the files of \texttt{ecdata}
 commit \texttt{25cec5e}. Items tagged \emph{(proved here, by computation)} are established by the computation printed or described in the item, and
-rely on PARI computing what its documentation says.
+rely on PARI computing what its documentation says. Because this chapter is computational, its card uses five further tags:
+\emph{(convention)} and \emph{(definition)} for a choice of notation, units or populations, and for a description of a software output or file format;
+\emph{(construction)} for code printed in the chapter; \emph{(a reading of the paper's text)} for a classification that interprets the paper's sentences
+and could be overturned by its author; \emph{(an observation, by computation; no proof)} for a regularity seen in the data and not explained.
 
 \begin{enumerate}[label=\textbf{\thechapter.\arabic*}]
 \item \textbf{Versions and data.} PARI/GP 2.17.2 via \texttt{cypari2} 2.2.4 (the paper: 2.15, and 2.17.2 for its checks below $10{,}000$); the six files
 \texttt{allcurves}, \texttt{allbsd}, \texttt{allisog}, \texttt{alllabels}, \texttt{degphi}, \texttt{galrep} for conductors $0$ to $9{,}999$, identical (SHA-256) with commit
-\texttt{25cec5e} of \texttt{ecdata}, the paper's. \emph{(convention)} \Cref{conv:computation:versions,conv:computation:checklist}.
+\texttt{25cec5e} of \texttt{ecdata}, the paper's; four further files of that commit for cross-checks. \emph{(convention)} \Cref{conv:computation:versions,conv:computation:checklist}.
 \item \textbf{The five bounds.} $B^{\mathrm{nc}}_\ell=\sum_{q\ne\ell}e_\ell(E,q)+\sum_qt_\ell(E,q)+[\ell=3]w_3(E)$; $B^{\mathrm{rule}}_\ell=B^{\mathrm{nc}}_\ell-h_\ell(E)$ (the right side of (eq:rule));
 $B^{\mathrm{III}}_\ell$ is $B^{\mathrm{nc}}_\ell$ without the $e_\ell$ of the types $\kod{III}$, $\kod{III}^*$ at $q\ne\ell$; $B^{\mathrm{main}}_\ell=\sum_qv_\ell(\#\Phig_q)$; $B^{\mathrm{tw}}_\ell=\sum_qw_\ell(E,q)$.
 Violation: $v<b$; equality: $v=b>0$; excess $v-b$; rates among $b>0$. \emph{(convention)} \Cref{conv:computation:bounds}.
@@ -44,7 +47,7 @@ $q\ge5$). \emph{(proved here, by computation)} \Cref{ex:computation:euler-by-han
 $\bar u=10$ for \curve{11a1} at $11$, $5$ for \curve{77c1} and \curve{539c1} at $7$, $6$ for \curve{791a1} at $7$, $8$ for \curve{1577a1} at $19$; wrong at $q=2$ when $v_2(j)=-1$
 (PARI 2.17.2; checked on \curve{208a1}). \emph{(proved here, by computation)} \Cref{ex:computation:tate-parameter}.
 \item \textbf{\texttt{ns3} and \texttt{galrep}.} For \curve{726a1}, $\psi_3=(x^2-x-74)(3x^2+8x+20)$. Among the $37{,}853$ non-CM optimal curves below $10{,}000$, \texttt{ns3} $=1$ exactly on the
-$90$ labelled \texttt{3Ns}; among the CM ones on $13$ curves with $j\in\{-32768,8000\}$, unlabelled in \texttt{galrep}. \emph{(proved here, by computation)}
+$90$ labelled \texttt{3Ns}; among the CM ones on $13$ curves with $j\in\{-32768,8000\}$, with no $3$-adic label in \texttt{galrep}. \emph{(proved here, by computation)}
 \Cref{ex:computation:mod3-image}.
 \item \textbf{Lemma lem:twist against PARI.} All $85{,}848$ pairs (optimal curve below $10{,}000$, odd bad $q$) agree with Lemma lem:twist(i), (ii); the exchanges at $q=3$
 hold in all $5{,}122$ pairs. \emph{(proved here, by computation)} \Cref{ex:computation:twists}.
@@ -82,8 +85,8 @@ curves below $10{,}000$. PARI does not compute $r_E$. \emph{(methods stated, ref
 $\kod{II}$ to $\kod{IV}^*$, $\kod{I}_n^*$ or $\kod{I}_n$ with $3\mid n$, and for $73\%$ to $76\%$ for the other types; pooled rates mix ranges. \emph{(proved here, by computation)}
 \Cref{ex:computation:base-rates,rem:computation:simpson}.
 \item \textbf{The protocol.} The four ranges; the status of each statement: (eq:main), Conjecture conj:eis blind-tested on the hold-out; (eq:twist) blind-tested if
-fixed before the hold-out counts of (eq:main) were seen; the Euler terms blind-tested only on the out-of-table curves; the weights $w_3$, the correction
-$h_3$ and the III-free form never blind-tested. \emph{(a reading of the paper's text)}
+fixed before the hold-out counts of (eq:main) were seen; the Euler terms blind-tested only on the out-of-table curves; the weights $w_3$ only on the out-of-table curves, and only if these
+contain curves with $3\mid N$ and potentially good reduction at $3$ (not stated); the correction $h_3$ and the III-free form never blind-tested. \emph{(a reading of the paper's text)}
 \Cref{rem:computation:protocol,rem:computation:test-status,rem:computation:what-is-tested,pl:computation:protocol}.
 \item \textbf{Multiple comparisons.} $m$ false candidates surviving with probabilities $\pi$, $\pi'$ leave about $m\pi$ and $m\pi\pi'$; the risk sits in the choice of
 form; features read off the data are validated only by other data. \emph{(proved here)} \Cref{rem:computation:multiple-comparisons}.
@@ -100,7 +103,8 @@ $14{,}177$, permutation mean $7{,}638$; $0$ observed; $v=0$ for $59.7\%$ of boun
 $\ell=3,\dots,13$; the odd part of $\degphi$ equals the product of the twist bounds for $17.1\%$ of $33{,}137$ curves, and the quotient is always an integer.
 \emph{(proved here, by computation)} \Cref{ex:computation:sharpness,ex:computation:odd-part}.
 \item \textbf{The tables in small.} Below $10{,}000$: no violation of (eq:rule), of the III-free form, of (eq:main), of (eq:twist) or of Conjecture conj:eis at
-$\ell=3,5,7,11,13$; the $36$ failures without the correction are $\Ns$ curves, by exactly one ($24$ if (eq:thm) is read literally); the minima of Section sec:iso
+$\ell=3,5,7,11,13$; the $36$ failures without the correction are $\Ns$ curves, by exactly one; (eq:thm) as written, with the terms $t_3(E,3)$, gives the same $36$, and $24$ if
+the terms at $q=3$ are dropped; the minima of Section sec:iso
 equal $e_\ell$ cell by cell; the Tamagawa refinement has no exception ($1{,}050$ and $252$ curves at $\ell=3,5$, as in the paper); strict twist inequalities in
 cases (a) and (b). \emph{(proved here, by computation)}
 \Cref{ex:computation:repro-uniform,ex:computation:repro-counts,ex:computation:repro-ns,ex:computation:repro-iso,ex:computation:repro-tam,ex:computation:repro-eis,ex:computation:repro-twist,ex:computation:repro-further,rem:computation:comparison}.
@@ -152,7 +156,8 @@ with exactly the functions the paper uses, and Cremona's tables in the form of t
 says under stated conditions, and runs it on the running examples, including the cases where it gives an answer that is not the paper's
 quantity (Sections \ref{sec:computation:rule} to \ref{sec:computation:moddeg}). It explains the paper's protocol and judges its statistics:
 which statement was blind-tested and which only confirmed, what the calibration argument shows and what it does not
-(Sections \ref{sec:computation:populations} to \ref{sec:computation:calibration}). And it reproduces every table of the paper in small, on all
+(Sections \ref{sec:computation:populations} to \ref{sec:computation:calibration}). And it reproduces in small every table of the paper that the data of this range allow (not the table of
+out-of-table curves, whose curves are not published, and of the table of isolated types only the rows at $q=3$), on all
 $38{,}042$ optimal curves of conductor below $10{,}000$, with scripts the reader can rerun in minutes (Sections \ref{sec:computation:repro}
 and \ref{sec:computation:reproducibility}).
 
@@ -170,9 +175,12 @@ Linux; no stand-alone \texttt{gp} binary was used. Every GP function printed her
 \item \emph{Data.} Six files of the \texttt{ecdata} repository \cite{ecdata} for conductors $0$ to $9{,}999$:
 \texttt{allcurves}, \texttt{allbsd}, \texttt{allisog}, \texttt{alllabels}, \texttt{degphi}, \texttt{galrep} (each with the suffix
 \texttt{.00000-09999}). Their SHA-256 sums are listed in \Cref{conv:computation:checklist}; they agree with the files of commit
-\texttt{25cec5e} of the repository (full hash \texttt{25cec5ecfec8b9f016eb1631ac633194c2bed39f}, dated 4 February 2026), the commit the
+\texttt{25cec5e} of the repository (full hash \texttt{25cec5ecfec8b9f016eb1631ac633194c2bed39f}), the commit the
 paper names. Four further files of the same commit and range (\texttt{alldegphi}, \texttt{curvedata}, \texttt{classdata},
-\texttt{opt\_man}) were used for the cross-checks of \Cref{ex:computation:curvedata}.
+\texttt{opt\_man}) and the repository's \texttt{docs/\allowbreak file-format.txt} were used for the cross-checks of \Cref{ex:computation:curvedata}.
+All eleven files are fetched from that commit, by its full hash, into the directory \texttt{data/ecdata} of the book's source repository by the
+script \texttt{tools/setup\_env.sh}, which checks them against the SHA-256 sums of \texttt{tools/ecdata.sha256}; the directory itself is not
+under version control.
 \item \emph{Outputs.} A listing that shows output shows it exactly as PARI 2.17.2 prints it; inputs are preceded by \texttt{?} as in a
 \texttt{gp} session. Where PARI 2.15 might behave differently we say so (\Cref{warn:computation:rule-pitfalls}(f)); we have not run 2.15.
 \item \emph{Models and labels.} Curves are given by Cremona's reduced global minimal models $[a_1,a_2,a_3,a_4,a_6]$ and named by Cremona's
@@ -197,9 +205,10 @@ B^{\mathrm{tw}}_\ell(E)&=\sum_{q\mid N}w_\ell(E,q),
 \end{align*}
 and let $B^{\mathrm{III}}_\ell(E)$ be $B^{\mathrm{nc}}_\ell(E)$ with the terms $e_\ell(E,q)$ of the primes $q\ne\ell$ of type $\kod{III}$ or $\kod{III}^*$ left out.
 So $B^{\mathrm{rule}}$ is the right side of (eq:rule), $B^{\mathrm{nc}}$ the same with no correction (``all types, no correction''), $B^{\mathrm{III}}$ the
-``III-free'' form, $B^{\mathrm{main}}$ and $B^{\mathrm{tw}}$ the right sides of (eq:main) and (eq:twist). The right side of (eq:thm) is
-$B^{\mathrm{thm}}_\ell(E)=\sum_{q\ne\ell}\bigl(e_\ell(E,q)+t_\ell(E,q)\bigr)$; it equals $B^{\mathrm{nc}}_\ell(E)$ when $\ell\nmid N$, and may be smaller when
-$\ell\mid N$. For a bound $b$: a \emph{violation} is $v<b$; an \emph{equality} is $v=b$ with $b>0$; the \emph{excess} is $v-b$. Rates of
+``III-free'' form, $B^{\mathrm{main}}$ and $B^{\mathrm{tw}}$ the right sides of (eq:main) and (eq:twist). The right side of (eq:thm), $\sum_{q\mid N}e_\ell(E,q)+\sum_{q\mid N}t_\ell(E,q)$ with $e_\ell(E,q)$ defined for $q\ne\ell$ only and $t_\ell(E,q)$ at every bad $q$,
+$q=\ell$ included (Definition def:terms), is
+$B^{\mathrm{thm}}_\ell(E)=\sum_{q\mid N,\,q\ne\ell}e_\ell(E,q)+\sum_{q\mid N}t_\ell(E,q)=B^{\mathrm{nc}}_\ell(E)-[\ell=3]\,w_3(E)$; it equals $B^{\mathrm{nc}}_\ell(E)$ when $\ell\nmid N$
+or $\ell\ge5$. For a bound $b$: a \emph{violation} is $v<b$; an \emph{equality} is $v=b$ with $b>0$; the \emph{excess} is $v-b$. Rates of
 violation and of equality, and mean excesses, are always taken among the curves with $b>0$, as in the paper.
 \end{convention}
 
@@ -285,6 +294,8 @@ On \curve{121a1} $=[1,1,1,-30,-76]$ and \curve{726a1} $=[1,1,0,-35,-51]$ (PARI/G
 [1, 1, 1, -30, -76]
 ? [E.b2, E.c4, E.c6, E.disc, E.j]
 [5, 1441, 54703, -121, -24729001]
+? vector(13, i, E[i])
+[1, 1, 1, -30, -76, 5, -59, -303, -1249, 1441, 54703, -121, -24729001]
 ? ellan(E, 12)
 [1, -1, 2, -1, 1, -2, 2, 3, 1, -1, 0, -2]
 ? ellap(E, 2)
@@ -298,7 +309,9 @@ On \curve{121a1} $=[1,1,1,-30,-76]$ and \curve{726a1} $=[1,1,0,-35,-51]$ (PARI/G
 [1, 5, 5; 5, 1, 25; 5, 25, 1]
 \end{lstlisting}
 The member functions \texttt{E.a1}, \dots, \texttt{E.j} return the Weierstrass data of \Cref{ch:ellcurves}; for \curve{121a1}, $\Delta=-121=-11^2$ and
-$j=-24729001$. The vector \texttt{ellan(E, 12)} lists $a_1,\dots,a_{12}$; $a_{11}=0$ because the reduction at $11$ is additive. For
+$j=-24729001$. The first thirteen components of the vector \texttt{ellinit(E)} are, in this order, $a_1,a_2,a_3,a_4,a_6,b_2,b_4,b_6,b_8,c_4,c_6,\Delta,j$
+(\texttt{E[1]} to \texttt{E[13]}; here $b_4=-59$, $b_6=-303$, $b_8=-1249$); the further components depend on the base field and the version, so the
+member functions are the safe way to read them. The vector \texttt{ellan(E, 12)} lists $a_1,\dots,a_{12}$; $a_{11}=0$ because the reduction at $11$ is additive. For
 \curve{726a1}, \texttt{elltors} returns the order of $E(\Q)_{\mathrm{tors}}$, its structure and a generator: $\Z/2$, generated by $(6,-3)$.
 The second component of \texttt{ellisomat} is the matrix of isogeny degrees between the curves of the class: the class of \curve{726a1}
 has two curves joined by a $2$-isogeny, and that of \curve{11a1} three curves joined by $5$-isogenies, with the degree-$25$ isogeny between
@@ -326,8 +339,9 @@ leading coefficient, and drops the content, sign included: \texttt{factor(3*x\^{
 (\Cref{ch:modforms}): \texttt{mfsturm([539, 2])} is $112$. On a space created by \texttt{mfinit} it returns a smaller number adapted to that
 space: \texttt{mfsturm(mfinit([539, 2]))} is $88$ and, for the cuspidal space, \texttt{mfsturm(mfinit([539, 2], 1))} is $50$. The smaller numbers
 are not valid bounds for the integrality of an arbitrary rational combination of $q$-expansions; used as truncation points in the
-congruence-module computation of \Cref{ch:moddeg} at level $539$, the bound $50$ gives the wrong modules ($1440$ and $2520$ instead of
-$288$ and $504$, as found while writing \Cref{ch:congruence}). For congruences and integrality, use $k\mu(N)/12$.
+congruence-module computation of \Cref{ch:moddeg} at level $539$, they give wrong modules that depend on the truncation: for the four forms of
+\Cref{ch:congruence}, the coefficients $a_1,\dots,a_{50}$ give the orders $1152$, $2016$, $5760$, $10080$, and $a_1,\dots,a_{51}$ give $288$, $504$, $1440$, $2520$,
+while Sturm's bound $112$ gives the correct $288$, $504$, $288$, $504$ (\Cref{ch:congruence}). For congruences and integrality, use $k\mu(N)/12$.
 \end{enumerate}
 \end{warning}
 \section{Invariants of a curve in PARI}\label{sec:computation:invariants}
@@ -471,7 +485,7 @@ but not a ninth power, so $k=1<2=v_3(18)$. These are the examples of \Cref{ch:ga
 Tate pairing on torsion points and has nothing to do with the Tate parameter. Second, \texttt{ellinit(E, q)} with an integer prime $q$
 reduces $E$ modulo $q$: at the bad prime $7$ of \curve{77c1} it returns \texttt{[]}, and at a good prime the curve over $\F_q$, never the curve over
 $\Q_q$, which needs the precision \texttt{O(q\^{}k)}. Third, at $q=2$ PARI 2.17.2 returns a wrong parameter when $v_2(j)=-1$
-(\Cref{ch:reduction}: the output is $q_E^5$ instead of $q_E$; for \curve{208a1} $=[0,-1,0,8,-16]$, of type $\kod{I}_1^*$ at $2$, PARI returns a parameter of
+(\Cref{ch:reduction}: the output is $q_E^5$ instead of $q_E$; for \curve{208a1} $=[0,-1,0,8,-16]$, of type $\kod{I}_5^*$ at $2$ (code $-9$) with $v_2(j)=-1$, PARI returns a parameter of
 valuation $5$, equal to the fifth power of the one obtained from $j$); there one inverts the series $j=\mathsf q^{-1}+744+196884\mathsf q+\cdots$ of \Cref{ch:reduction} instead. The paper's
 Tamagawa test never needs $q=2$, since $q\equiv1\pmod\ell$ fails for $q=2$ and every odd $\ell$; the $t_\ell$ terms use only $v_q(j)$.
 \end{example}
@@ -498,8 +512,9 @@ an irreducible polynomial'', so it can be used only when $\psi_3$ is irreducible
 conductor $10{,}000$, \texttt{ns3(E)} $=1$ exactly for the $90$ curves whose \texttt{galrep} entry contains \texttt{3Ns}, with no mismatch either way.
 Among the $189$ optimal CM curves, \texttt{ns3} is $1$ for $13$: \curve{121b1}, \curve{256a1}, \curve{256d1}, \curve{1089e1}, \curve{1936f1}, \curve{2304c1},
 \curve{2304k1}, \curve{3025a1}, \curve{5929a1}, \curve{6400f1}, \curve{6400r1}, \curve{7744a1}, \curve{7744s1}, all with $j=-32768$ or $8000$ (the last session line is
-\curve{121b1}). Their image is $N_s(\F_3)$, but \texttt{galrep} gives them no label: Cremona's file omits the images forced by complex
-multiplication (\Cref{ch:galrep}). This is why CM is decided by $j$ (\Cref{conv:computation:populations}).
+\curve{121b1}). Their image is $N_s(\F_3)$, but \texttt{galrep} gives them no $3$-adic label: Cremona's file omits the normaliser-of-Cartan images
+forced by complex multiplication (\Cref{ch:galrep}), while it does list reducible images of CM curves, for instance \texttt{11B.1.3} for \curve{121b1}
+and \texttt{3Cs.1.1} for \curve{27a1}; $97$ of the $189$ optimal CM curves have at least one label. This is why CM is decided by $j$ (\Cref{conv:computation:populations}).
 \end{example}
 
 \begin{example}[quadratic twists, and the check of Lemma lem:twist]\label{ex:computation:twists}
@@ -549,7 +564,9 @@ $c_E=1$ in all of Cremona's tables, it is $\degphi$; on another curve of the cla
 \end{lstlisting}
 \item \texttt{ellweilcurve(E)} returns $[vE,vS]$: minimal models of the curves of the class (in the order of \texttt{ellisomat}) and, for each,
 the Smith invariants of its lattice of modular symbols inside the lattice of the newform; the strong Weil (optimal) curve is the one with
-invariants $[c_E,c_E]$, $c_E$ its Manin constant \cite{PARIusers}. Called on \curve{11a3} it lists \curve{11a3}, \curve{11a1}, \curve{11a2}, and the entry
+invariants $[c_E,c_E]$, $c_E$ its Manin constant: the documentation of 2.17.2 says ``the strong Weil curve amongst the curves isogenous to $E$ is the one
+whose Smith invariants are $[c,c]$, where $c$ is the Manin constant, conjecturally equal to $1$'', and illustrates it on \curve{11a3} with $[1,1]$
+\cite{PARIusers}. Called on \curve{11a3} it lists \curve{11a3}, \curve{11a1}, \curve{11a2}, and the entry
 $[1,1]$ marks \curve{11a1}; called on \curve{990h1} it lists \curve{990h1}, \curve{990h3}, \curve{990h2}, \curve{990h4}, and $[1,1]$ marks \curve{990h3}. This is how PARI
 identifies the optimal curve for moderate conductors.
 \item The method is Watkins's \cite{Watkins02}: compute $L(\Sym f,2)$ with the true bad factors, deduce the Petersson norm, and divide by the
@@ -559,7 +576,8 @@ increasing stack size}'' when it enlarges the stack.
 two-core machine that was running the full check of \Cref{ex:computation:moddeg-check} at the same time. With the default stack
 (\Cref{rem:computation:install}) \texttt{ellmoddegree} succeeds on \curve{9999m1} ($\degphi=5632$) but overflows on the curves of largest degree below
 $10{,}000$: \curve{9510e1} ($\degphi=100{,}254{,}000$) succeeds with a $16$ MB stack, \curve{9690m1} ($68{,}217{,}600$) needs more than $16$ MB and succeeds
-with $32$ MB, and \curve{7910b1} ($31{,}272{,}384$) overflows the default and succeeds with $32$ MB. This agrees with the paper's appendix: ``The
+with $32$ MB, and \curve{7910b1} ($31{,}272{,}384$) overflows the default and succeeds with $16$ MB; so of these only \curve{9690m1}
+needs more than $16$ MB (each run in a fresh process). This agrees with the paper's appendix: ``The
 function \texttt{ellmoddegree} needs about $32$ MB of stack with PARI 2.17 for conductors in the thousands (with PARI 2.15 and larger
 conductors, \texttt{parisizemax} of a few hundred megabytes).''
 \item \emph{Checks.} \texttt{ellmoddegree} agrees with \texttt{degphi} on all $38{,}042$ optimal curves below $10{,}000$
@@ -694,8 +712,8 @@ subgroup) or ``$\ell$Cs'' (contained in a split Cartan subgroup), and the prime 
 \texttt{3B.1.1} (a rational point of order $3$, image in a Borel subgroup, $E[3]$ not split). Among the $37{,}853$ optimal curves without CM below
 $10{,}000$ the $3$-adic labels occur as follows: \texttt{3B.1.1} $1{,}858$, \texttt{3B} $1{,}567$, \texttt{3B.1.2} $503$, \texttt{3Nn} $170$, \texttt{3Ns} $90$,
 \texttt{3Cs.1.1} $49$, \texttt{3Cs} $25$. These are counts of optimal curves; counts over all curves of the tables, as in \Cref{ch:galrep}, are larger.
-\item \texttt{galrep} omits the images forced by complex multiplication (\Cref{ex:computation:mod3-image}); CM curves are therefore recognised
-by $j$, never by the absence of labels.
+\item \texttt{galrep} omits the normaliser-of-Cartan images forced by complex multiplication, though it lists reducible images of CM curves
+(\Cref{ex:computation:mod3-image}); CM curves are therefore recognised by $j$, never by the labels.
 \end{enumerate}
 \end{convention}
 
@@ -883,9 +901,9 @@ $e_3=v_3(12/11)=1$, kept only with \texttt{iii}. So $B^{\mathrm{III}}_3=2$, $B^{
 \Cref{ex:computation:mod3-image}) and $B^{\mathrm{rule}}_3=2$; and $\degphi=144=2^43^2$. The appendix: ``for 726a1, a curve with image $\Ns$ and type
 $\mathrm{III}$ at $11$, \texttt{rule(E,3)} and \texttt{rule(E,3,1)} both return \texttt{[2, 2]}, the type $\mathrm{III}$ term and the correction
 cancelling.'' Without the correction the bound $B^{\mathrm{nc}}_3=3$ fails by exactly one, and the failure involves the prime $2\equiv-1\pmod3$ with
-$t_3(E,2)=1$, as Section sec:anomaly says of every such failure. The curve has $3\mid N$, so it is outside Theorem thm:main in any case; and if
-(eq:thm) is read literally, with terms at $q\ne3$ only, its bound is $B^{\mathrm{thm}}_3=1+1=2$ and there is no violation
-(\Cref{ex:computation:repro-ns}). The congruence number $r_E=1584=11\cdot144$ (\Cref{ch:moddeg}) is not computed by \texttt{rule}.
+$t_3(E,2)=1$, as Section sec:anomaly says of every such failure. The curve has $3\mid N$, so it is outside Theorem thm:main in any case. The right side of (eq:thm) as written includes $t_3(E,3)$: it is
+$B^{\mathrm{thm}}_3=t_3(E,2)+t_3(E,3)+e_3(E,11)=1+1+1=3$, again a violation by one; only if the terms at $q=3$ are dropped is the bound $2$ and the
+violation gone (\Cref{ex:computation:repro-ns}). The congruence number $r_E=1584=11\cdot144$ (\Cref{ch:moddeg}) is not computed by \texttt{rule}.
 \end{example}
 
 \begin{example}[\curve{539c1}]\label{ex:computation:539c1}
@@ -1063,7 +1081,7 @@ one newform several times. For $E[\ell]$ irreducible, $v_\ell$ of the degree and
 \emph{Two data corrections on the populations.} (a) Section sec:forms: ``The hypothesis of Theorem thm:main fails on the working set for the $1{,}170$
 curves with image $\Ns$ at $\ell=3$ \dots; by Proposition prop:Sf there are no other failures among the curves with $E[\ell]$ irreducible''. This holds
 for the population without CM. A CM curve with $j=-32768$ or $8000$ and $3\nmid N$ has image $N_s(\F_3)$ and fails the hypothesis at $\ell=3$ too, and
-\texttt{galrep} gives it no label: below conductor $10{,}000$ there are $20$ such curves in the tables, $10$ of them optimal. The sentence needs
+\texttt{galrep} gives it no $3$-adic label: below conductor $10{,}000$ there are $20$ such curves in the tables, $10$ of them optimal. The sentence needs
 ``without CM'', as Table tab:counts already has. (b) Section sec:boundary, after Proposition prop:ns-structure: ``Among the $90$ optimal curves with
 image $\Ns$ of conductor below $10{,}000$ ($28$ of them with $3\mid N$), $74$ have such a prime $p\ge5$ \dots\ and $16$ have it only at $p=2$''. The $90$,
 $74$ and $16$ are right for the optimal curves without CM (\Cref{ex:computation:repro-ns}), but $44$ of the $90$ have $3\mid N$ ($14$ with $3\,\|\,N$, $6$
@@ -1154,7 +1172,7 @@ Conjecture conj:euler, Euler terms & working set (minima by type) & out-of-table
 weights $w_3$ & working set (minima at $q=3$) & out-of-table, only if it contains curves with $3\mid N$ and potentially good reduction at $3$ & hold-out, extension & ``empirical'' (Section sec:wild)\\
 correction $h_3$ & from the exceptions & none & all ranges & ``fitted on, and only confirmed by, data already seen''; $h_3=1$ on $\Ns$ curves is a theorem, the repaired inequality is not\\
 III-free form & after the $\Ns$ exceptions & none & all ranges & chosen so as to have no exceptions\\
-Tamagawa refinement & from Lemma lem:tamfactor & working set, as a prediction & & tests the Tamagawa term of (eq:identity)\\
+Tamagawa refinement & from Lemma lem:tamfactor & not stated & & a prediction of a theorem; the order of formulation and computation is not stated; tests the Tamagawa term of (eq:identity)\\
 Lemmas lem:euler, lem:twist; Prop.\ prop:forms; $h_3=1$ & & & & theorems: the data check computations\\
 \bottomrule
 \end{tabular}
@@ -1277,8 +1295,11 @@ $\ell=5,7,11,13$ (union of the ranges) $\hat E=5{,}901$, $3{,}476$, $1{,}187$, $
 \begin{enumerate}[label=(\alph*)]
 \item \emph{Stratified.} Split the curves into $16$ strata by conductor (bins of width $2500$) and by the number of prime factors of $N$, capped at $4$, and
 take $\hat F$ from the bound-$0$ curves of each stratum: $\hat E=14{,}177$.
-\item \emph{Permutation.} Shuffle $v$ among all the curves of each stratum, bound $0$ and positive together, and recount: over $200$ shuffles (Python's
-\texttt{random.seed(0)}) the number of violations has mean $7{,}638$, sample standard deviation $49.3$, minimum $7{,}517$ and maximum $7{,}779$.
+\item \emph{Permutation.} Shuffle $v$ among all the curves of each stratum, bound $0$ and positive together, and recount: over $200$ shuffles the number of
+violations has mean $7{,}638$, standard deviation $49.3$ (sample, divisor $199$; $49.2$ with divisor $200$), minimum $7{,}517$ and maximum $7{,}779$. To reproduce
+these exactly one needs, besides Python's \texttt{random.seed(0)} set once before the $200$ shuffles, the order of the curves (that of the lines of
+\texttt{degphi}) and the order of the strata (that of their first curve in this list); in each shuffle the list of $v$ of each stratum is shuffled with
+\texttt{random.shuffle}, stratum by stratum in that order.
 \end{enumerate}
 The reference population changes the expected count by a factor of two and the conclusion not at all. The factor of two has a visible cause:
 $v=0$ for $59.7\%$ of the bound-$0$ curves but only for $23.9\%$ of all curves, a difference that \Cref{prop:computation:null-model}(iii) says should not exist
@@ -1317,10 +1338,10 @@ $\ell$; decided here from the row of the optimal curve in the \texttt{allisog} m
 product over odd $\ell$. Below conductor $10{,}000$ there are $33{,}137$ such curves. The quotient (odd part of $\degphi$)$/\prod_\ell\ell^{B^{\mathrm{tw}}_\ell}$ is always an
 integer, which is (eq:twist) at every odd $\ell$ at once; it is $1$ for $5{,}675$ curves ($17.1\%$; $25.5\%$ of $14{,}666$ curves on $N<5000$ and $10.4\%$ of
 $18{,}471$ on $5000\le N<10000$). The most common quotients are $3$ ($5{,}926$ curves), $1$, $5$ ($2{,}978$), $9$ ($2{,}532$), $15$ ($2{,}024$), $7$ ($1{,}918$), $21$
-($1{,}088$) and $11$ ($967$). Among the nontrivial quotients, the smallest prime factor is $3$ in $58.7\%$ of the cases and divides $N$ in $47.5\%$. The paper (working
+($1{,}088$) and $11$ ($967$). Among the nontrivial quotients, the smallest prime factor is $3$ in $58.7\%$ of the cases ($27{,}462$ curves). The paper (working
 set, $1{,}226{,}216$ curves): equality in $1.85\%$ (``the proportion is range dependent: it is $17.1\%$ below conductor $10{,}000$''), quotients ``most often $9$, $3$,
-$15$, $45$, $27$ or $21$'', ``its smallest prime factor is $3$ in $63\%$ of the cases and divides $N$ in $52\%$''. We read the last phrase as ``the smallest prime factor
-of the quotient divides $N$''. The local terms account for a sharp part of $\degphi$ and for less and less of the rest as $N$ grows; the rest is the
+$15$, $45$, $27$ or $21$'', ``its smallest prime factor is $3$ in $63\%$ of the cases and divides $N$ in $52\%$''. The text does not decide what ``divides $N$'' refers to. If it is
+the smallest prime factor of the quotient, the book's share is $47.5\%$; if it is some prime factor of the quotient, $51.8\%$. The local terms account for a sharp part of $\degphi$ and for less and less of the rest as $N$ grows; the rest is the
 adjoint Selmer group together with the size of the Petersson norm (\Cref{ch:lfunctions}).
 \end{example}
 \section{Reproducing the paper's tables below conductor \texorpdfstring{$10{,}000$}{10,000}}\label{sec:computation:repro}
@@ -1370,8 +1391,8 @@ For each range and $\ell$: the curves with $B^{\mathrm{main}}_\ell>0$, violation
 population: its size, the curves with $B^{\mathrm{main}}_\ell>0$, those with a positive deficit $D=B^{\mathrm{main}}_\ell-v$, the violations of the torsion bound
 $D\le v_\ell(\#E(\Q)_{\mathrm{tors}})+[\ell=3,\,E[3]\simeq\Z/3\oplus\mu_3]$ and of the class bound ($D\le$ the number of curves of the class with a rational point of order
 $\ell$), and the curves with $D=2$.
-\begin{center}\scriptsize\setlength{\tabcolsep}{3pt}
-\setlength{\tabcolsep}{2.5pt}\begin{tabular}{llrrrrrrrrrrrr}
+\begin{center}\scriptsize\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{llrrrrrrrrrrrr}
 \toprule
 range & $\ell$ & main $>0$ & viol. & eq. & twist $>0$ & viol. & eq. & Eis. & main $>0$ & $D>0$ & viol. & viol.\ (class) & $D=2$\\
 \midrule
@@ -1417,12 +1438,15 @@ $\kod{III}$ or $\kod{III}^*$ with $e_3\ge1$ ($22$ and $52$ on the two ranges) an
 have $3\mid N$. Proposition prop:ns-structure (proved in \Cref{ch:galrep}) explains the first two observations; the data check them.
 
 \emph{Which inequality.} Section sec:anomaly says that Table tab:ns ``records what happens to the inequality (eq:thm), with all types included and no
-correction''. The book counts violations of $B^{\mathrm{nc}}_3$, the rule with every term and no correction. Read literally, (eq:thm) has terms at $q\ne\ell$ only; with
-that reading there are $24$ violators below $10{,}000$ ($8$ and $16$ on the two ranges) instead of $36$, and still no curve without image $\Ns$ violates.
-The revised paper records the two counts (``below conductor $10{,}000$ the two readings give $36$ and $24$ violations'') and attributes the difference
-to ``whether the weights at $q=3$ are included''. In fact, below $10{,}000$ all twelve curves counted by one reading and not the other (\curve{726a1},
-\curve{726f1}, \curve{2178b1}, \curve{2178h1}, \curve{3840h1}, \curve{3840k1}, \curve{3840o1}, \curve{3840r1}, \curve{5070h1}, \curve{5070p1}, \curve{5808y1}, \curve{5808z1})
-differ by the Tamagawa term $t_3(E,3)=1$ of a type $\kod{I}_n$ or $\kod{I}_n^*$ at $3$, and none by a weight $w_3$. The paper (D): $364$, $68$, $43$ and $0$ violations on its four ranges,
+correction''. The book counts violations of $B^{\mathrm{nc}}_3$, the rule with every term and no correction. Read as written, (eq:thm) has the Euler terms at $q\ne\ell$
+and the terms $t_\ell(E,q)$ at every bad $q$, $q=\ell$ included, since Definition def:terms defines $t_\ell$ there; its right side is
+$B^{\mathrm{thm}}_3=B^{\mathrm{nc}}_3-w_3$ (\Cref{conv:computation:bounds}), and it has the same $36$ violators ($16$ and $20$ on the two ranges): dropping the
+weights $w_3$ changes nothing. Only if the terms at $q=3$ are dropped altogether, $t_3(E,3)$ included, are there $24$ violators ($8$ and $16$), and still no
+curve without image $\Ns$ violates. The revised paper records the two counts (``below conductor $10{,}000$ the two readings give $36$ and $24$ violations'')
+and attributes the difference to ``whether the weights at $q=3$ are included''. In fact, below $10{,}000$ all twelve curves counted by one reading and
+not the other (\curve{726a1}, \curve{726f1}, \curve{2178b1}, \curve{2178h1}, \curve{3840h1}, \curve{3840k1}, \curve{3840o1}, \curve{3840r1}, \curve{5070h1}, \curve{5070p1},
+\curve{5808y1}, \curve{5808z1}) differ by the Tamagawa term $t_3(E,3)=1$ of a type $\kod{I}_n$ (codes $7$, $10$) or $\kod{I}_n^*$ (code $-7$) at $3$, and none by a
+weight $w_3$; (eq:thm) as printed gives $36$. The paper (D): $364$, $68$, $43$ and $0$ violations on its four ranges,
 $31\%$, $23\%$, $18\%$ of the $\Ns$ curves. The falling rate with $N$ is visible inside the book's range already ($53\%$, then $33\%$).
 \end{example}
 
@@ -1502,7 +1526,10 @@ triples of case (a), in $1{,}308$ of case (b) and in none of case (c). Examples 
 \curve{75b1} against \curve{15a1} ($6$ against $1$), \curve{150c1} against \curve{30a1} ($48$ against $2$), \curve{539c1} against \curve{77c1} ($288$ against $6$),
 \curve{980i1} against \curve{140b1} ($2880$ against $60$); in case (b), \curve{275b1} against \curve{11a1} at $\ell=7$ ($28$ against $1$) and \curve{539d1} against \curve{11a1} at
 $\ell=3$ ($72$ against $1$). When moreover $\ell\nmid N$ and $E[\ell]$ is irreducible, the difference equals the Euler term $e_\ell(E,q)$ in all $19{,}691$ triples of case (a)
-and all $6{,}701$ of case (b), as Theorem thm:quant predicts (\Cref{ch:congruence}). The paper (D, working set): $157{,}938$ and $292{,}580$ pairs, ``with no exception,
+and all $6{,}701$ of case (b), as Theorem thm:quant predicts (\Cref{ch:congruence}). \Cref{ch:congruence} counts in another unit, pairs (curve, $\ell$) with the twist by all
+odd primes of type $\kod{I}_0^*$ or $\kod{I}_n^*$ at once, $\ell\in\{3,5,7,11,13\}$, $\ell\nmid N$ and $E[\ell]$ irreducible: $25{,}477$ such pairs ($15{,}607$ with $3$ in
+the twisting set, $8$ with $\ell=3$ and image $\Ns$), with the difference equal to the sum of the Euler terms in every one, and $14{,}880$ pairs of case (c)
+($42$ with image $\Ns$ at $\ell=3$), all with equal valuations; the numbers of pairs are recounted here from the same records. The paper (D, working set): $157{,}938$ and $292{,}580$ pairs, ``with no exception,
 with equality in every pair of case (c)''; its revised text also notes the strict inequalities in case (a). The original version's ``strict inequality
 only in case (b)'' is contradicted already below $10{,}000$.
 \end{example}
@@ -1516,12 +1543,14 @@ compare $v_\ell(\degphi)$ with $v_\ell$ of the degree of the optimal curve of th
 \begin{enumerate}[label=(\alph*)]
 \item if $E$ has type $\kod{II}^*$, $\kod{III}^*$ or $\kod{IV}^*$ at $\ell$, the difference is exactly $1$ in all $4{,}412$ cases ($2{,}141$, $1{,}210$, $659$, $239$, $163$ at
 $\ell=3,5,7,11,13$; $4{,}251$ of them with $E[\ell]$ irreducible);
-\item if $E$ has type $\kod{I}_n^*$ at $\ell$, the difference is $0$ in all cases at $\ell=3,5,7$;
+\item if $E$ has type $\kod{I}_n^*$ at $\ell$, the difference is $0$ in all cases at $\ell=3,5,7,11,13$ ($3{,}639$, $1{,}360$, $677$, $240$, $173$);
 \item if $E$ has type $\kod{I}_0^*$ at $\ell$ and $E[\ell]$ is irreducible, the difference is $v_\ell\bigl((\ell+1)^2-a_\ell(E^{(\ell)})^2\bigr)$ in all $1{,}915$ cases (it fails in $13$ of
 the cases with $E[\ell]$ reducible, for instance \curve{126a1} at $\ell=3$ and \curve{275b1} at $\ell=5$).
 \end{enumerate}
-In (b) and (c) the difference is what the formula for $e_\ell(E,q)$ of Lemma lem:euler gives when $q$ is replaced by $\ell$ ($v_\ell(\ell^2-1)=0$, and
-$v_\ell(\ell-1)=0$); in (a) it is not, since at $q\ne\ell$ a potentially good pair has difference $0$ (\Cref{ex:computation:repro-twist}). At $\ell\ge5$, (a) suggests a
+In (b) and (c) the difference is what the numerator form of the table of Section 1 (the last column of the table of Lemma lem:euler),
+$v_\ell(q^2-1)$ and $v_\ell(q-1)+v_\ell\bigl((q+1)^2-a'^2\bigr)$, gives at $q=\ell$ ($v_\ell(\ell^2-1)=0$ and $v_\ell(\ell-1)=0$); the rational forms
+$1-q^{-2}$ and $(q-1)((q+1)^2-a'^2)/q^3$ would give negative valuations at $q=\ell$. The counts are over the curves whose twist has conductor below
+$10{,}000$; in (a) it is not, since at $q\ne\ell$ a potentially good pair has difference $0$ (\Cref{ex:computation:repro-twist}). At $\ell\ge5$, (a) suggests a
 weight $1$ for the types $\kod{II}^*$, $\kod{III}^*$, $\kod{IV}^*$ at $q=\ell$, which the paper does not use (``at $q=\ell\ge5$ no term is needed''); added to (eq:rule), it gives no
 violation below $10{,}000$ at $\ell=5,7,11,13$ and is attained by most of these curves. These are observations made on the whole of the book's range at
 once, with no hold-out, and no explanation is offered here; they bear on the paper's first open question, which asks for the weights at
@@ -1540,7 +1569,7 @@ factor at $2$ is $1+2X$ for every one of them; Lemma lem:IV shows that it must b
 $v_2(\degphi)\ge\sum_{q\,\|\,N}v_2(n_q)+\#\{q:\ \text{type }\kod{III},\kod{III}^*,\kod{I}_0^*\text{ or }\kod{I}_n^*\}$ holds with no exception, while counting $\kod{I}_0^*$ with weight $2$ fails
 $6$ times (\curve{99d1}, \curve{931b1}, \curve{2299d1}, \curve{2475h1}, \curve{5819a1}, \curve{5931b1}), as the paper's $123$, $26$ and $20$ exceptions on its ranges lead one to expect.
 \item The optimal CM curves of odd modular degree are \curve{27a1}, \curve{32a1}, \curve{36a1}, \curve{49a1} (degree $1$) and \curve{243b1} (degree $9$); \curve{27a1} and
-\curve{243b1} have torsion $\Z/3$ and conductor neither prime nor with rational $2$-torsion, so they fall under the CM case of the theorem of Calegari and Emerton
+\curve{243b1} have torsion $\Z/3$, no rational point of order $2$ and non-prime conductor, so they fall under the CM case of the theorem of Calegari and Emerton
 quoted in Section sec:two (\Cref{ch:moddeg} states it).
 \end{enumerate}
 \end{example}
@@ -1709,7 +1738,7 @@ def bounds(E, l):
         q, k = p['q'], p['k']
         if k >= 5 or (k <= -5 and q != 2): tw += vl(nidx(k), l)
         elif l == 3 and (abs(k) == 4 or (abs(k) == 2 and q != 2)): tw += 1
-    thm = sum(e + t for q, _, e, w, t in T1 if q != l)
+    thm = sum(e + t for _, _, e, w, t in T1)       # e = 0 at q = l: (eq:thm) as written
     return dict(rule=nc - h, nc=nc, iii=sum(e + w + t for _, _, e, w, t in T0),
                 main=main, tw=tw, thm=thm)
 \end{lstlisting}
@@ -1727,7 +1756,7 @@ def calib(P, l):
     Eeq = sum(F[b] / n0 for b, vv in pos)                            # expected equalities
     return Ehat, sd, Eeq, sum(vv < b for b, vv in pos), sum(vv == b for b, vv in pos)
 \end{lstlisting}
-The stratified version applies \texttt{calib} in each stratum; the permutation version shuffles $v$ within strata with \texttt{random.seed(0)}.
+The stratified version applies \texttt{calib} in each stratum; the permutation version shuffles $v$ within strata with \texttt{random.seed(0)}, in the orders stated in \Cref{ex:computation:calibration-small}(b).
 \item \texttt{tam.py} computes \Cref{ex:computation:repro-tam}, calling \texttt{ellinit(E, O(q\^{}30)).tate} at each qualifying prime (through the twist
 by $q^*$ at a prime of type $\kod{I}_n^*$) and testing $\bar u^{(q-1)/\ell^k}=1$.
 \item \texttt{moddeg\_check.py} compares \texttt{ellmoddegree} with \texttt{degphi} line by line (\Cref{ex:computation:moddeg-check}), and
@@ -1740,7 +1769,7 @@ Applied to the book's runs:
 \begin{enumerate}[label=(\arabic*)]
 \item \emph{Pin the data.} The commit of \texttt{ecdata} (first line) and the SHA-256 sums of the files read:
 \begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-commit 25cec5ecfec8b9f016eb1631ac633194c2bed39f  (4 February 2026)
+commit 25cec5ecfec8b9f016eb1631ac633194c2bed39f
 b078b5226d276fbc64289833abfd8430e3f5969c657bc32f94db546e8f96e8fd  allbsd.00000-09999
 259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968  allcurves.00000-09999
 9e033f1d092509f280d23e2f2666577c96af9593911568ca9e9678c2e35b1d82  allisog.00000-09999
@@ -1751,10 +1780,13 @@ bc06d9bd10dbba36ddb84ad2fc407d2a71c8c89f22361befae8eda08aa18a377  alllabels.0000
 b42836e901ac75874d13207faef0bdc47a3799571937b1099df56c57897e8040  curvedata.00000-09999
 f1b7d7c310eb897ed4aad4da3e809b754e95be837cc4c1b404e1ed104b913223  classdata.00000-09999
 11e4ebd69dbef2c6d9fce35c989d374f64a179e9d6ec13b5916cf453acd9298a  opt_man.00000-09999
+1d523b06ba4920e27026224dc35f9d2c433432b645e26712a3f3defb45d42e29  file-format.txt
 \end{lstlisting}
-The first six are the files of the counts; they were obtained independently of the repository and agree byte for byte with the commit.
+The first six are the files of the counts, the next four those of the cross-checks, the last the repository's description of the formats. All
+eleven are fetched from the commit by \texttt{tools/setup\_env.sh} into \texttt{data/ecdata} (not under version control) and checked against
+these sums, listed in \texttt{tools/ecdata.sha256}. The commit is identified by its hash; we do not record its date.
 \item \emph{Record the software and the settings.} PARI/GP 2.17.2, \texttt{cypari2} 2.2.4, Python 3.13; \texttt{parisize} $6.4\cdot10^7$ and \texttt{parisizemax} $2\cdot10^9$
-bytes unless stated; random seed $0$ for the permutations.
+bytes unless stated; random seed $0$ for the permutations, with the orders of curves and strata of \Cref{ex:computation:calibration-small}(b).
 \item \emph{Separate data, code and results}, and write results as plain files with the counts (the JSON records), not only as summaries.
 \item \emph{Rerun from a clean copy} and compare the counts.
 \item \emph{Cross-check independently.} Here: the GP loop against the Python bounds; \texttt{ellmoddegree} against \texttt{degphi}; \texttt{ns3} against
@@ -1920,6 +1952,7 @@ and were not reproduced. Not checked: PARI 2.15; the paper's repository; the out
 without CM ($534$ and $1{,}308$), and its $58\%$ is a share among optimal curves ($61\%$ over all curves) (\Cref{ex:computation:wild-two}). Section sec:boundary:
 $44$, not $28$, of the $90$ optimal $\Ns$ curves have $3\mid N$, and $13$ optimal CM curves with image $N_s(\F_3)$ are left out. Section sec:forms: the
 $1{,}170$ failures of the hypothesis at $\ell=3$ are those without CM; $20$ CM curves below $10{,}000$ also fail ($10$ optimal)
-(\Cref{sec:computation:populations}). Section sec:anomaly: the two counts $36$ and $24$ differ by the terms $t_3(E,3)$ at $q=3$, not by the weights $w_3$
+(\Cref{sec:computation:populations}). Section sec:anomaly: its parenthesis should read ``For the curves with $3\mid N$ the count depends on whether the terms at $q=3$ are
+included (the term $t_3(E,3)$; the weights $w_3$ change nothing): below conductor $10{,}000$, $36$ with them, as (eq:thm) is written, and $24$ without''
 (\Cref{ex:computation:repro-ns}). The text of Section sec:data leaves two questions of protocol open (\Cref{rem:computation:test-status}).
 \end{sloppypar}
