@@ -13,8 +13,8 @@ Diamond, Flach and Guo (Proposition prop:pullback of the paper, proved here with
 last description the chapter rederives the divisibility $\degphi\mid r_E$ of Agashe, Ribet and Stein at every prime, and explains why the
 equality can fail at primes $p$ with $p^2\mid N$ (the curve \curve{99a1}). The deep inputs (the $\Q$-structure of $X_0(N)$, the
 Eichler-Shimura relation, modularity, multiplicity one, the theorems of Mazur and of Calegari and Emerton) are stated precisely with
-references; the comparison of Ribet and Takahashi with Shimura curves is recorded in a remark, in the form in which it is summarised in
-the literature, with its unverified points marked.
+references; the comparison of Ribet and Takahashi with Shimura curves is stated exactly, with its theorem numbers in the sources, and its
+$\ell$-adic form is derived from it.
 
 \section*{Core results at a glance}
 
@@ -111,9 +111,12 @@ finiteness of $C_N$ stated)} \Cref{prop:moddeg:manin-drinfeld}.
 stated)} \Cref{prop:moddeg:shimura-subgroup}.
 \item \textbf{The image of $0$.} $\varphi_E(0)\in E(\Q)_{\tors}$ and $\varphi_E(0)\equiv c_EL(E,1)\pmod{\Lambda_E}$; its order is the denominator of $c_EL(E,1)/\Omega$. \emph{(proved here, given the Mellin transform of
 \Cref{ch:lfunctions})} \Cref{prop:moddeg:image-of-zero}.
-\item \textbf{Shimura curves.} $X_0^D(M)$, its Jacobian isogenous to the $D$-new quotient of $J_0(DM)$; $\delta_D=\deg\varphi_{E,D}$. \emph{(definition; stated)} \Cref{def:moddeg:shimura-curve}.
-\item \textbf{Ribet-Takahashi.} For $E$ semistable, $N=DM$ (with a further condition on $M$), $E[\ell]$ irreducible: $v_\ell(\degphi)=v_\ell(\delta_D)+\sum_{q\mid D}v_\ell(n_q)$, $n_q=v_q(\Delta_E)$.
-\emph{(remark; recorded after the paper's and Pasten's summaries; exact hypotheses and theorem numbers not verified against the sources)} \Cref{rem:moddeg:ribet-takahashi}.
+\item \textbf{Shimura curves.} $X_0^D(M)$, its Jacobian isogenous to the $D$-new quotient of $J_0(DM)$; for $N=DM$ square-free, $E_D$ is the curve of the isogeny class that is an optimal quotient of $J_0^D(M)$ (in general not the $X_0(N)$-optimal one) and
+$\delta_D=\deg(\varphi_{E,D}\colon X_0^D(M)\to E_D)$. \emph{(definition; stated)} \Cref{def:moddeg:shimura-curve}.
+\item \textbf{Ribet-Takahashi.} For $N=dpqm$ square-free, $d$ with an even number of prime factors: $\delta^d(pqm)/\delta^{dpq}(m)=n_p(E_2)n_q(E_1)/i_q^2$, $n_r=v_r(\Delta)=\#\Phig_r$ (not the Tamagawa
+number), $i_q$ the order of the image of $\Phig_q(J_0^d(pqm))\to\Phig_q(E_1)$; if $E$ is alone in its isogeny class, $\degphi/\delta_D=\prod_{r\mid D}n_r$; if $E[\ell]$ is irreducible (any $\ell$),
+$v_\ell(\degphi)=v_\ell(\delta_D)+\sum_{r\mid D}v_\ell(n_r)$. \emph{(stated; \cite[Theorems 1, 2]{RibetTakahashi97}, \cite[Theorem 3.2, Corollary 3.5]{Takahashi01}; the $\ell$-adic form sketched here)}
+\Cref{thm:moddeg:ribet-takahashi}; sources, error term and example \curve{57c1} in \Cref{rem:moddeg:ribet-takahashi}.
 \item \textbf{Watkins's conjecture.} $2^{\rank E(\Q)}\mid\degphi$; true for all $38{,}042$ optimal curves of conductor below $10{,}000$. \emph{(conjecture; data checked)} \Cref{conj:moddeg:watkins}.
 \item \textbf{Calegari-Emerton.} Odd $\degphi$ implies at most two odd bad primes, even analytic rank, and a rational $2$-torsion point, or prime conductor with supersingular reduction at $2$ and $E(\R)$
 connected, or CM with $N\in\{27,32,49,243\}$. \emph{(stated; reference; data checked)} \Cref{thm:moddeg:calegari-emerton}.
@@ -129,7 +132,7 @@ the sentence on the choice of curve when $E[\ell]$ is irreducible (\Cref{prop:mo
 (\Cref{thm:moddeg:zagier-watkins}); Agashe, Ribet and Stein and the congruence number $r_E$
 (\Cref{def:moddeg:congruence-number,thm:moddeg:ars,cor:moddeg:ars-divisibility}).
 \item \textbf{Section 1.5 (History).} The parametrisations by Shimura curves of Ribet and Takahashi
-(\Cref{def:moddeg:shimura-curve,rem:moddeg:ribet-takahashi}).
+(\Cref{def:moddeg:shimura-curve,thm:moddeg:ribet-takahashi,rem:moddeg:ribet-takahashi}).
 \item \textbf{Section sec:proof (proof of Theorem thm:qual).} The congruence number and Lemma lem:crit (\Cref{lem:moddeg:crit}, proved in
 \Cref{ch:modgalrep}); ``it suffices to prove $\ell\mid r$'' (\Cref{thm:moddeg:ars}); the remark on \curve{99a1} and \curve{726a1}
 (\Cref{ex:moddeg:99a1-and-726a1,ex:moddeg:99-at-3}).
@@ -1487,32 +1490,76 @@ paper's data rest. This section states what is used, with data checks.
 \begin{definition}[Shimura curves; stated]\label{def:moddeg:shimura-curve}
 Let $D>1$ be a product of an even number of distinct primes and $M\ge1$ prime to $D$. The \emph{Shimura curve} $X_0^D(M)$ is the curve attached to an Eichler order of level $M$ in the indefinite
 quaternion algebra over $\Q$ of discriminant $D$; it is a smooth projective curve over $\Q$ without cusps. By the Jacquet-Langlands correspondence, in Ribet's form \cite{Ribet90}, its Jacobian
-$J_0^D(M)$ is isogenous over $\Q$, compatibly with the Hecke operators $T_p$, $p\nmid DM$, to the $D$-new quotient of $J_0(DM)$. For $E$ of conductor $N=DM$ with $D\,\|\,N$ there is an optimal
-parametrisation $\varphi_{E,D}\colon X_0^D(M)\to E$, defined through the Jacobian (a base point being chosen; the degree does not depend on it); its degree is written $\delta_D$.
+$J_0^D(M)$ is isogenous over $\Q$, compatibly with the Hecke operators $T_p$, $p\nmid DM$, to the $D$-new quotient of $J_0(DM)$. Now let $E$ be semistable of conductor $N=DM$ (so $N$ is
+square-free, the setting of \cite{RibetTakahashi97,Takahashi01}). Among the curves isogenous to $E$ there is exactly one, written $E_D$, which is an optimal quotient of $J_0^D(M)$, that is, the
+target of a surjection $\xi_D\colon J_0^D(M)\to E_D$ with connected kernel, unique up to sign. The composite of $\xi_D$ with its dual $E_D\to J_0^D(M)$ is multiplication by a positive
+integer $\delta_D$ (written $\delta^D(M)$ in the sources), the degree of the parametrisation $\varphi_{E,D}\colon X_0^D(M)\to J_0^D(M)\to E_D$ (a base point being chosen; the degree does not
+depend on it). For $D=1$, $E_1$ is the $X_0(N)$-optimal curve and $\delta_1=\deg\varphi_{E_1}$. In general $E_D$ is not the $X_0(N)$-optimal curve: Takahashi notes ``(This $E$ generally differs
+from $E$ in the optimal quotient $J_0(N)\to E$.)'' \cite[p.~75]{Takahashi01}.
 \end{definition}
 
-\begin{remark}[the comparison of Ribet and Takahashi; recorded, not verified]\label{rem:moddeg:ribet-takahashi}
-Let $E$ be optimal of conductor $N=DM$ as in \Cref{def:moddeg:shimura-curve}, and for $q\mid D$ let $n_q=v_q(\Delta_E)$, the valuation of the minimal discriminant; at a
-multiplicative prime this is the order $\#\Phig_q$ of the geometric component group. Ribet and Takahashi \cite{RibetTakahashi97,Takahashi01} compare $\degphi$ with $\delta_D$.
-Pasten \cite[Section 1]{Pasten} summarises their result, for $M$ square-free and not a prime, as
+\begin{theorem}[Ribet and Takahashi; Takahashi; stated]\label{thm:moddeg:ribet-takahashi}
+Let $E$ be the $X_0(N)$-optimal curve in an isogeny class of semistable elliptic curves over $\Q$ of conductor $N$. For a prime $r\mid N$ and a curve $E'$ isogenous to $E$ write
+$n_r(E')=v_r(\Delta_{E'})=\#\Phig_r(E')$, and $n_r=n_r(E)$.
+\begin{enumerate}[label=(\roman*)]
+\item Let $N=dpqm$ with $p\ne q$ primes and $d$ a product of an even number of primes ($d=1$ allowed). Let $E_1=E_d$ and $\delta^d(pqm)$ be the optimal quotient of $J=J_0^d(pqm)$ and its degree,
+and $E_2=E_{dpq}$ and $\delta^{dpq}(m)$ those of $J_0^{dpq}(m)$ (\Cref{def:moddeg:shimura-curve}). Let $i_q$ be the order of the image of the map $\Phig_q(J)\to\Phig_q(E_1)$ induced by the optimal
+quotient. Then $i_q$ divides $n_q(E_1)$ and $n_p(E_2)$, and
 \[
-\frac{\degphi}{\delta_D}=\gamma\cdot\prod_{q\mid D}n_q,
+\frac{\delta^d(pqm)}{\delta^{dpq}(m)}=\frac{n_p(E_2)\,n_q(E_1)}{i_q^{2}}.
 \]
-with $\gamma$ a rational number, possibly depending on all the data, supported only at primes $\ell$ at which $E[\ell]$ is reducible ($M$ square-free makes $N$ square-free and $E$ semistable); Section 6 of
-\cite{Pasten} refines the formula so as to control $\gamma$. In that form, for every prime $\ell$ with $E[\ell]$ irreducible,
+\item If $E$ is the only curve in its isogeny class, then $\degphi/\delta_D=\prod_{r\mid D}n_r$ for every divisor $D$ of $N$ with an even number of prime factors.
+\item If $\ell$ is a prime with $E[\ell]$ irreducible ($\ell=2$ and $\ell\mid N$ are allowed), then $\ell\nmid i_q$ in (i), and for every divisor $D$ of $N$ with an even number of prime factors
 \[
-v_\ell(\degphi)=v_\ell(\delta_D)+\sum_{q\mid D}v_\ell(n_q),\qquad\text{so}\qquad v_\ell(\degphi)\ge\sum_{q\mid D}v_\ell(n_q)=\sum_{q\mid D}t_\ell(E,q),
+v_\ell(\degphi)=v_\ell(\delta_D)+\sum_{r\mid D}v_\ell(n_r).
 \]
-the last equality being $t_\ell(E,q)=v_\ell(n_q)$ at a multiplicative prime (Lemma lem:tamagawa-exp of the paper). The paper's own summary, in Section 1.5, is that they
-``compared $\degphi$ with the degree of a parametrisation by a Shimura curve and found the product of the $n_q$ over the primes of the quaternion discriminant, up to primes
-where $E[\ell]$ is reducible''.
+\end{enumerate}
+\end{theorem}
 
-What has \emph{not} been checked against \cite{RibetTakahashi97,Takahashi01}: the exact hypotheses (the condition on $M$, which we take from Pasten's summary; whether $\ell=2$ or
-$\ell\mid N$ is excluded; the normalisation of $\varphi_{E,D}$ and of the optimal curve on the Shimura side), the theorem numbers, and the form of the local factor. On the last
-point, the two summaries agree on $n_q=v_q(\Delta_E)$, the geometric component group, and not the Tamagawa number $c_q$, which differs from it at the nonsplit primes; but this
-is a secondary reading. The reader who needs the comparison as a theorem should take it from the sources. The idea of the proof: Ribet's exact sequence relating the character
-groups of the tori of $J_0(N)$ at a prime of $D$ and of $J_0^D(M)$ at another prime \cite{Ribet90}, with the component groups as cokernels of the monodromy pairings. The
-inequality is the multiplicative part of (eq:main) at the primes of $D$; the paper's Theorem thm:main contains it, under its own hypotheses on $\ell$, for every multiplicative prime, as a theorem.
+We do not prove (i) and (ii). Part (i) is \cite[Theorems 1 and 2]{RibetTakahashi97} (pages 11111 and 11112) in the sharpened form of \cite[Theorem 3.2]{Takahashi01} (page 82), whose part (c) reads
+``$\delta/\delta'=(c'_p/i_q)\cdot j_q$. In particular, $\delta'$ divides $\delta$.'', together with $j_q=c_q/i_q$ for the order $j_q$ of the cokernel of the same map (proof of
+\cite[Theorem 2.3]{Takahashi01}, page 80); divisibility of $n_p(E_2)$ by $i_q$ is \cite[Theorem 3.2(b)]{Takahashi01}. Part (ii) is \cite[Corollary 3.5]{Takahashi01} (page 83). In both sources
+$c_r$ is our $n_r$, not the Tamagawa number: Ribet and Takahashi write ``Note that $c_p$, for instance, may be viewed as the order of the group of components of the fiber at $p$ of the
+N\'eron model for $A$.'' \cite[page 11111]{RibetTakahashi97}, and Takahashi defines $c_r$ as the number of connected components of the fibre at $r$, that is $\ord_r(\Delta)$
+\cite[pages 75 and 76]{Takahashi01}. The Tamagawa number $c_r=\#\Phig_r(\F_r)$ of this book differs from $n_r$ at nonsplit primes (\Cref{ch:reduction}): for \curve{57c2},
+$n_{19}=5$ (PARI \texttt{elllocalred}) while its Tamagawa number at $19$ is $1$, and Takahashi's Table I lists $c'_{19}=5$ for this curve.
+
+\begin{proof}[Sketch of proof of (iii) from (i)]
+If $E'[\ell]$ is irreducible for one curve of the class, it is irreducible for all \cite[page 11113]{RibetTakahashi97}, and any two curves of the class are then linked by an isogeny of degree
+prime to $\ell$, which induces isomorphisms of the $\ell$-primary parts of the component groups; so $v_\ell(n_r(E'))=v_\ell(n_r)$ for every $E'$ in the class and every $r\mid N$
+\cite[page 11111]{RibetTakahashi97}. In (i) the prime $q$ divides the level $pqm$ of $J$, and \cite[Theorem 2.7]{Takahashi01} gives $\ord_\ell(j_q)=\ord_\ell(n_q(E_1))$; since $i_qj_q=n_q(E_1)$,
+$\ell\nmid i_q$. Hence (i) gives $v_\ell(\delta^d(pqm))-v_\ell(\delta^{dpq}(m))=v_\ell(n_p)+v_\ell(n_q)$. Write $D=p_1q_1\cdots p_kq_k$ and apply this with $d=p_1q_1\cdots p_{j-1}q_{j-1}$,
+$(p,q)=(p_j,q_j)$ and $m=N/(p_1q_1\cdots p_jq_j)$ for $j=1,\dots,k$; the sum telescopes from $\delta^1(N)=\degphi$ to $\delta^D(N/D)=\delta_D$.
+\end{proof}
+
+\begin{remark}[the sources, the hypotheses and the error term]\label{rem:moddeg:ribet-takahashi}
+\emph{History and hypotheses.} For an isogeny class with one element, Bertolini and Darmon showed that the conjecture of Birch and Swinnerton-Dyer implies $\degphi/\delta_D=\prod_{r\mid D}n_r$ in $\Q^\times/(\Q^\times)^2$, and asked
+whether it holds in $\Q^\times$ \cite[page 76]{Takahashi01}. Ribet and Takahashi \cite[Theorem 1]{RibetTakahashi97} prove the one-step formula in the shape
+$\delta^{pqD}(M)=\delta^D(pqM)\,\mathcal E(D,p,q,M)^2/(c'_pc_q)$, with an ``error term'' $\mathcal E(D,p,q,M)$ that is a positive divisor of $c'_pc_q$; they show that every prime $\ell$ dividing it has
+$A[\ell]$ reducible under the further hypothesis that $M$ is square-free but not a prime (the case of prime $M$ is excluded in their footnote), and their Theorem 2 identifies it as the product of
+the order of the image of the map on component groups at $q$ and the order of the cokernel of the map at $p$. Takahashi proves that the map on component groups at a prime of the
+discriminant is surjective \cite[Theorem 2.4]{Takahashi01}, a consequence of a result of Bertolini and Darmon, so that the error term is $i_q$, and removes the condition on $M$: ``In this paper,
+we present a proof of $(*)$ which works for any $D$ and $M$.'' \cite[page 76]{Takahashi01}, $(*)$ being the formula of (ii). The standing hypothesis of both sources is that $N$ is
+square-free; in (iii) no condition on $\ell$ other than the irreducibility of $E[\ell]$ enters. Pasten \cite[Section 1]{Pasten} summarises the formula in the form of \cite{RibetTakahashi97}, with
+$M$ square-free and not a prime, and refines it in his Section 6 (a secondary pointer, not compared with the sources here).
+
+\emph{The error term.} Put $\gamma_D=\degphi/(\delta_D\prod_{r\mid D}n_r)\in\Q^\times$. By (iii), $v_\ell(\gamma_D)=0$ whenever $E[\ell]$ is irreducible: $\gamma_D$ is supported on the primes
+$\ell$ at which $E[\ell]$ is reducible. By (i) it is a product of the factors $i_q^{-2}$ and of ratios $n_r(E')/n_r$ for curves $E'$ isogenous to $E$. Ribet and Takahashi remark that the error
+term is not necessarily divisible by all the primes $\ell$ for which $A[\ell]$ is reducible \cite[page 11111]{RibetTakahashi97}. Example (\cite[Section 4, Example 1 and Table I]{Takahashi01},
+with $N=57$): for \curve{57c1}, $\degphi=12$, $n_3=10$, $n_{19}=1$, the curve $E_{57}$ is \curve{57c2}, $\delta_{57}=6$ and $i_3=5$; so $\gamma_{57}=12/(6\cdot10)=1/5$, and $E[5]$ is
+reducible (\curve{57c1} has a rational $5$-isogeny to \curve{57c2}). For the isolated curve \curve{57a1}, $\degphi=4$, $n_3=2$, $n_{19}=1$, and (ii) gives $\delta_{57}=2$, as computed in
+\cite[page 11111]{RibetTakahashi97}. (The values of $\degphi$ are those of \texttt{degphi} \cite{ecdata}, the $n_r$ those of PARI's \texttt{elllocalred}; $\delta_{57}$ and $i_3$ are taken from the sources.)
+
+\emph{Use in the paper.} For $E[\ell]$ irreducible and $N$ square-free, (iii) gives
+$v_\ell(\degphi)\ge\sum_{r\mid D}v_\ell(n_r)=\sum_{r\mid D}t_\ell(E,r)$, the last equality being $t_\ell(E,r)=v_\ell(n_r)$ at a multiplicative prime (Lemma lem:tamagawa-exp of the paper). This is
+the multiplicative part of (eq:main) at the primes of $D$, an even number of them; the paper's Theorem thm:main contains it, under its own hypotheses on $\ell$, for every multiplicative prime. The
+paper's own summary, in Section 1.5, is that they ``compared $\degphi$ with the degree of a parametrisation by a Shimura curve and found the product of the $n_q$ over the primes of the quaternion
+discriminant, up to primes where $E[\ell]$ is reducible''; this matches (iii), with the hypothesis that $N$ be square-free left implicit.
+
+\emph{The idea of the proof.} Proposition 1 of \cite{RibetTakahashi97} (Proposition 3.1 of \cite{Takahashi01}) is an exact sequence $0\to\mathcal X_p(J')\to\mathcal X_q(J)\to\mathcal X_q(J'')^2\to0$
+of character groups of the tori of the reductions, with $J=J_0^d(pqm)$, $J'=J_0^{dpq}(m)$, $J''=J_0^d(qm)$, compatible with the Hecke operators and the monodromy pairings; for $d=1$ it is
+\cite[Theorem 4.1]{Ribet90}, as both sources cite it. Grothendieck's exact sequence $0\to\mathcal X\to\Hom(\mathcal X,\Z)\to\Phi\to0$ expresses each component group as the cokernel of the
+monodromy pairing, and comparing the $f$-isotypic lines on the two sides gives (i).
 \end{remark}
 
 \begin{conjecture}[Watkins]\label{conj:moddeg:watkins}
@@ -1548,7 +1595,7 @@ has the sessions.
 
 \begin{paperlink}\label{pl:moddeg:two}
 Section 1 of the paper: ``The modular degree is computable \cite{Cremona97,Watkins02}'' is \Cref{rem:moddeg:computing-the-degree}; Section sec:two quotes Watkins's conjecture
-(\Cref{conj:moddeg:watkins}) and the theorem of Calegari and Emerton (\Cref{thm:moddeg:calegari-emerton}); Section 1.5 summarises Ribet and Takahashi (\Cref{rem:moddeg:ribet-takahashi}).
+(\Cref{conj:moddeg:watkins}) and the theorem of Calegari and Emerton (\Cref{thm:moddeg:calegari-emerton}); Section 1.5 summarises Ribet and Takahashi (\Cref{thm:moddeg:ribet-takahashi,rem:moddeg:ribet-takahashi}).
 \end{paperlink}
 
 \section{Exercises}\label{sec:moddeg:exercises}
@@ -1675,6 +1722,6 @@ compared with $H^1(X_0(N),\Zl)$ in \Cref{ch:congruence}; \Cref{rem:moddeg:dfg-no
 Ribet and Stein \cite{RibetStein} (Theorem 3.5 as the paper cites it) for $J_1(N)$; Tilouine \cite{Tilouine97}, Wiles \cite[Chapter 2]{Wiles95} and \cite[Section 4]{DDT} for the Gorenstein property; Ling and Oesterl\'e
 \cite{LingOesterle} and Ribet \cite{Ribet88} for the Shimura subgroup. The proof of \Cref{thm:moddeg:gorenstein} from multiplicity one is \Cref{ch:modules}'s freeness criterion.
 
-\emph{Modularity, Shimura curves, the prime $2$.} Modularity: \cite{Wiles95,TaylorWiles,BCDT}, with Carayol \cite{Carayol86} for the level. Shimura curves and the degree comparison: \cite{Ribet90,RibetTakahashi97,Takahashi01,Pasten}; \Cref{rem:moddeg:ribet-takahashi} follows the summaries of the paper (Section 1.5) and of Pasten (Section 1 of \cite{Pasten}); its hypotheses and the theorem
-numbers of \cite{RibetTakahashi97,Takahashi01} were not verified. Watkins's conjecture \cite{Watkins02} and the results of \cite{Dummigan06,CalegariEmerton09,Yazdani11,CaroPasten22,HatleyKundu,BKP}; \Cref{thm:moddeg:calegari-emerton} is quoted from the revised paper and the arXiv version of \cite{CalegariEmerton09}. The data checks of
+\emph{Modularity, Shimura curves, the prime $2$.} Modularity: \cite{Wiles95,TaylorWiles,BCDT}, with Carayol \cite{Carayol86} for the level. Shimura curves and the degree comparison: \cite{Ribet90,RibetTakahashi97,Takahashi01,Pasten}; \Cref{thm:moddeg:ribet-takahashi} was checked against \cite{RibetTakahashi97} (Theorems 1 and 2, Propositions 1 to 3) and \cite{Takahashi01}
+(Theorems 2.3, 2.4, 2.7, 3.2, Corollaries 3.4, 3.5, Table I); Pasten's summary (Section 1 of \cite{Pasten}) is a secondary pointer that we have not compared with them. Watkins's conjecture \cite{Watkins02} and the results of \cite{Dummigan06,CalegariEmerton09,Yazdani11,CaroPasten22,HatleyKundu,BKP}; \Cref{thm:moddeg:calegari-emerton} is quoted from the revised paper and the arXiv version of \cite{CalegariEmerton09}. The data checks of
 \Cref{conj:moddeg:watkins,thm:moddeg:calegari-emerton} use all $38{,}042$ optimal curves of conductor below $10{,}000$.
