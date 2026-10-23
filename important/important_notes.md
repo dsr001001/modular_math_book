@@ -1323,6 +1323,16 @@ Sigma is a standing assumption of DFG Section 1.7.3 (supports point 99); self-ad
 pairing (25), Section 1.8.2 (the note's "Sections 1.6.1, 1.8.2" is acceptable); "covers l = 3" is correct; for Thm 0.1 at
 l = 3 with a_3 not 0 mod 3 DFG use Perrin-Riou plus Colmez (Prop. 2.16), Theorems 2.7 and 3.7 do not need it.
 
+### 105. Section 1.5: Pollack-Weston summary omits hypothesis CR (minor; high confidence)
+note_v2 line 159 says the Pollack-Weston identity is "proved for weight 2 and square-free level when rhobar is ramified at
+two primes at least". Their Theorem 6.11 (arXiv math/0610694v1, p. 22) also needs CR (Section 1, p. 2): rhobar surjective
+and ramified at every prime of qb that is +-1 mod l; l odd, l not dividing N. Add "and under their hypothesis CR".
+
+### 106. prop:no9: Kenku 1982 does not state the CM fact (refines point 93; high confidence)
+Checked against Kenku, J. Number Theory 15 (1982): Theorem 1 lists 27 among the N with Y_0(N)(Q) nonempty and credits
+the genus-one levels to Ligozat, Ogg and Joly; it never mentions CM or j at level 27. Cite Ligozat75 for "a rational cyclic
+27-isogeny forces CM (disc -27)" and Kenku Theorem 1 only for the list of N.
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
@@ -1574,3 +1584,7 @@ l = 3 with a_3 not 0 mod 3 DFG use Perrin-Riou plus Colmez (Prop. 2.16), Theorem
   rhobar_m over T/m; Deligne-Serre Lemme 6.11 (p. 522) is the lifting lemma (checked). Cremona Table 4 p. 314: 11a1 S = 1
   (analytic); errata do not touch Table 4; Sha(11a1)[5] = 0 still granted (needs a 5-isogeny descent). Langer97 not seen.
   Remaining unverified: Pollack-Weston, Pasten journal data, Lenstra95 pages, Lyndon48, Kenku vs Ligozat, period comparison.
+* Third batch: Pollack-Weston Thm 6.11 (arXiv v1, CR hypothesis; Compositio volume/pages unchecked); Kenku Thms 1, 2 (no
+  CM statement); Langer97 Theorem B (semistable, p >= 3, p | N: finiteness of S(Q,A) only); Pasten JNT 254 (2024)
+  214-335 confirmed. Paper_11a1 (Paniagua Ramirez 2026) is unrefereed and not a proof of Sha(11a1)[5] = 0: Chapter 17
+  keeps "granting". Ligozat75 (CM at 27) still unchecked.

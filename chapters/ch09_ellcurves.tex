@@ -1662,7 +1662,7 @@ least degree of a cyclic isogeny over $\Q$ between them.
 (i) Reflexive by $[1]$, transitive by composition, symmetric by the dual isogeny, defined over $\Q$ (\Cref{thm:ellcurves:dual}). (ii) $V_\ell E\simeq V_\ell E'$ is
 \Cref{prop:ellcurves:rho}(iii); traces of Frobenius give the $a_p$ (\Cref{thm:ellcurves:frobQ}). For the rank: $\varphi\colon E(\Q)\to E'(\Q)$ and $\hat\varphi$ compose to $[\deg\varphi]$, which has finite
 kernel, so $\rank E(\Q)\le\rank E'(\Q)$, and symmetrically. The conductor depends only on $V_\ell E$ as a representation of the local Galois groups (\Cref{ch:reduction,ch:galrep}); we do not
-prove this here. The examples of \Cref{sec:ellcurves:labels} show the differences. (iii) We do not prove this; see \cite{Faltings83}. (iv) We do not prove this; see \cite{Kenku}.
+prove this here. The examples of \Cref{sec:ellcurves:labels} show the differences. (iii) We do not prove this; see \cite{Faltings83}. (iv) We do not prove this; see \cite[Theorem 2]{Kenku}.
 \end{proof}
 
 \noindent Examples (Cremona's \texttt{allisog} file; rows and columns ordered by curve number): \curve{11a} has matrix $\left(\begin{smallmatrix}1&5&5\\5&1&25\\5&25&1\end{smallmatrix}\right)$;
@@ -1700,7 +1700,7 @@ Let $E/\Q$.
 \end{theorem}
 
 \noindent We do not prove this. Part (i) is Mazur's theorem \cite{Mazur78}; (ii) and (iii) combine it with Kenku's determinations of the rational points of $X_0(N)$ for the
-remaining $N$ \cite{Kenku79,Kenku80a,Kenku80b,Kenku81}, and the case $N=27$, where $X_0(27)$ has genus one, is Ligozat's determination of the rational points of the modular curves of genus one \cite{Ligozat75}. A summary table is in \cite{LozanoRobledo13} (we have not checked its numbering). In Cremona's tables the cyclic $27$-isogeny joins \curve{27a2} and \curve{27a4}, both with
+remaining $N$ \cite{Kenku79,Kenku80a,Kenku80b,Kenku81}, and the case $N=27$, where $X_0(27)$ has genus one, is Ligozat's determination of the rational points of the modular curves of genus one \cite{Ligozat75}. The complete list (ii) is \cite[Theorem 1]{Kenku}, which attributes the levels of genus one to Ligozat, Ogg and Joly; Kenku does not discuss complex multiplication, so (iii) is not in that paper. A summary table is in \cite{LozanoRobledo13} (we have not checked its numbering). In Cremona's tables the cyclic $27$-isogeny joins \curve{27a2} and \curve{27a4}, both with
 $j=-12288000=-2^{15}\cdot3\cdot5^3$ (\Cref{thm:ellcurves:13j}), and the isogeny degrees occurring below conductor $10{,}000$ are $1$ to $16$, $18$, $19$, $21$, $25$, $27$, $37$, $43$ and $67$.
 
 \begin{proposition}[the structure $\Z/\ell\oplus\mu_\ell$]\label{prop:ellcurves:zlmul}
@@ -1766,8 +1766,9 @@ order $9$ (\curve{54b3}, \curve{714i1}, \curve{1482l1}, \curve{1554n1}, \curve{1
 \begin{paperlink}\label{pl:ellcurves:eis}
 \Cref{prop:ellcurves:no27} is the paper's Proposition prop:no9, with every step expanded; it turns the bound ``$D\le2$ for $\ell=3$'' of Conjecture conj:eis into a consequence of the first bound
 $D\le v_\ell(\#E(\Q)_{\mathrm{tors}})+[E[3]\simeq\Z/3\oplus\mu_3]$, and gives ``$D\le1$ for $\ell\ge5$'' in the same way. The paper cites \cite{Ligozat75} and \cite{Kenku} for the fact that a rational cyclic
-$27$-isogeny forces complex multiplication (\Cref{thm:ellcurves:mazurkenku}(iii)). The primary source is Ligozat's study of $X_0(27)$, a curve of genus one;
-\cite{Kenku} is Kenku's later paper on the number of curves in an isogeny class, not the source of this case. In Section sec:eis, ``a rational $\ell$-isogeny'' and ``Borel type'' refer to \Cref{prop:ellcurves:isogline},
+$27$-isogeny forces complex multiplication (\Cref{thm:ellcurves:mazurkenku}(iii)). The source is Ligozat's study of $X_0(27)$, a curve of genus one.
+\cite{Kenku} is Kenku's paper on the number of curves in an isogeny class; its Theorem 1 lists $27$ among the levels $N$ with $Y_0(N)(\Q)\ne\emptyset$ and credits the levels of genus one to
+Ligozat, Ogg and Joly, but it says nothing about complex multiplication, so it supports only the existence of the rational point, not the fact cited. In Section sec:eis, ``a rational $\ell$-isogeny'' and ``Borel type'' refer to \Cref{prop:ellcurves:isogline},
 and the condition $E[3]\simeq\Z/3\oplus\mu_3$, which the paper identifies with the image \texttt{3Cs.1.1} (the subgroup of order $2$ of a split Cartan subgroup fixing a nonzero vector), is
 \Cref{prop:ellcurves:zlmul}(ii).
 The second bound of Conjecture conj:eis counts the curves of the isogeny class with a rational point of order $\ell$; in the class \curve{11a} at $\ell=5$ these are \curve{11a1} and \curve{11a3}.
@@ -2213,7 +2214,7 @@ polynomials of \cite[Exercise 3.7]{SilvermanAEC} and \cite[Chapter 3]{Washington
 \cite[Chapter III]{Cremona97}; the AGM algorithm is \cite[Section 3.7]{Cremona97} and \cite[Section 7.4]{Cohen93}. Section \ref{sec:ellcurves:finite} follows \cite[Chapter V]{SilvermanAEC}; the
 proof of Hasse's theorem by the positivity of the degree is Silverman's. Section \ref{sec:ellcurves:overQ} follows \cite[Chapters VII and VIII]{SilvermanAEC} for torsion and Mordell-Weil;
 the torsion theorem is \cite{Mazur77}, the prime-degree isogeny theorem \cite{Mazur78}, and the remaining cyclic isogenies are in Kenku's papers \cite{Kenku79,Kenku80a,Kenku80b,Kenku81}; the
-bound on the size of isogeny classes is \cite{Kenku}; the isogeny theorem is \cite{Faltings83}. V\'elu's formulas are \cite{Velu71}. Section \ref{sec:ellcurves:twists} follows
+complete list of cyclic degrees is \cite[Theorem 1]{Kenku} and the bound on the size of isogeny classes \cite[Theorem 2]{Kenku} (both checked against the published text); the isogeny theorem is \cite{Faltings83}. V\'elu's formulas are \cite{Velu71}. Section \ref{sec:ellcurves:twists} follows
 \cite[Section X.2 and X.5]{SilvermanAEC}; Section \ref{sec:ellcurves:Lfunction} follows \cite[Appendix C, Section 16]{SilvermanAEC} and \cite[Chapter II]{Cremona97}. Other textbook accounts:
 \cite{Husemoller}, \cite{Knapp}, \cite{MilneEC}; for the Galois representations, \cite[Chapter I]{SerreAbelian}.
 

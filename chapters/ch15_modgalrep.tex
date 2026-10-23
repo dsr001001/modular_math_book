@@ -120,8 +120,8 @@ every $q\in S$; $\iota(f_{E_S})=f_E$; $g^S$ lies at level $N_S\prod q^{\delta_q}
 \emph{(stated; proved in \Cref{ch:congruence})} \Cref{thm:modgalrep:quant}.
 \item \textbf{Tamagawa exponent.} $t_q$ is the largest $t$ with $\rho\bmod\lambda^t$ unramified at $q$. \emph{(definition)} \Cref{def:modgalrep:tamagawa-exponent}.
 \item \textbf{$t_q$ for $f_E$.} At $q\,\|\,N$, $t_q=v_\ell(n_q)=t_\ell(E,q)$. \emph{(proved in \Cref{ch:galrep}; recalled)} \Cref{prop:modgalrep:tamagawa-exponent}.
-\item \textbf{Pollack and Weston.} Moving $q$ into the new part changes the congruence ideal by $\lambda^{t_q}$ (weight $2$, square-free level, $\bar\rho$ ramified at two primes or more).
-\emph{(stated as the paper summarises it; reference)} \Cref{thm:modgalrep:pollack-weston}.
+\item \textbf{Pollack and Weston.} $\ord_\lambda\eta_f(aq,b)=t_q+\ord_\lambda\eta_f(a,qb)$ for $f$ of weight $2$ and square-free level $N=aqb$ prime to $\ell$, if $\bar\rho$ is
+surjective, ramified at two primes or more and at every $r\mid qb$ with $r\equiv\pm1\pmod\ell$ (their hypothesis CR). \emph{(stated; reference)} \Cref{thm:modgalrep:pollack-weston}.
 \item \textbf{Kim and Ota.} $\ord_\lambda\eta_f(N)=\ord_\lambda\eta_f(N^+,N^-)+\sum_{q\mid N^-}t_f(q)$ under their hypotheses \emph{(stated; reference)}; hence $v_\ell(r_E)\ge\sum_{q\mid N^-}t_\ell(E,q)$
 \emph{(proved here)}. \Cref{thm:modgalrep:kim-ota}.
 \end{enumerate}
@@ -1645,11 +1645,22 @@ the comparison exactly, with these theorem numbers checked against the sources, 
 \end{remark}
 
 \begin{theorem}[Pollack and Weston]\label{thm:modgalrep:pollack-weston}
-Pollack and Weston \cite{PollackWeston11} conjectured that moving a prime $q$ into the ``new'' part of the level changes the congruence ideal by exactly
-$\lambda^{t_q}$, and proved it for forms of weight $2$ and square-free level when $\bar\rho$ is ramified at two primes at least.
+Let $\ell$ be an odd prime, $f$ a newform of weight $2$, trivial character and square-free level $N=aqb$ prime to $\ell$, with $q$ prime, and $\lambda\mid\ell$. For $N=N_1N_2$ let
+$\eta_f(N_1,N_2)$ be the congruence ideal of $f$ in the Hecke algebra acting on the cusp forms of level $N$ that are new at every prime dividing $N_2$. Assume that $\bar\rho=\bar\rho_{f,\lambda}$
+is surjective, that $\bar\rho$ is ramified at every prime $r\mid qb$ with $r\equiv\pm1\pmod\ell$, and that $\bar\rho$ is ramified at two primes at least. Then
+\[
+\ord_\lambda\eta_f(aq,b)=t_q+\ord_\lambda\eta_f(a,qb):
+\]
+moving $q$ into the ``new'' part of the level changes the congruence ideal by exactly $\lambda^{t_q}$.
 \end{theorem}
 
-We do not prove this. The statement is the paper's summary in Section 1.5; we have not checked the hypotheses against \cite{PollackWeston11}.
+We do not prove this. It is \cite[Theorem 6.11]{PollackWeston11}, checked against the arXiv version (version 1 of
+\texttt{math/0610694}), whose numbering we cite (we have not compared it with the
+published version). There $p$ is our $\ell$, the assumptions on $\bar\rho$ other than the two ramified primes are their hypothesis CR for the pair $(\bar\rho_f,bq)$ (Section 1:
+$\bar\rho$ surjective, and ramified at every prime dividing $bq$ that is $\equiv\pm1\pmod p$), and the level is prime to $p$ by their standing assumptions (Notation). The identity
+for all $f$ of weight $2$ and square-free level, with no hypothesis on $\bar\rho$, is the formula they propose in Section 6.6 and in display (2) of their introduction (it is not
+numbered as a conjecture; their Conjecture 6.1 is the anticyclotomic main conjecture). Their Definition 3.3 of the Tamagawa exponent is \Cref{def:modgalrep:tamagawa-exponent}.
+The paper's summary (Section 1.5) mentions only the condition on two ramified primes; the surjectivity and the condition at the primes $r\equiv\pm1\pmod\ell$ are also needed.
 
 \begin{theorem}[Kim and Ota]\label{thm:modgalrep:kim-ota}
 Let $N=N^+N^-$ with $N^-$ square-free, $\ell\ge5$, $\ell\nmid N$, $\ell\notin S_f$, and $\bar\rho$ ramified at every $q\mid N^-$ with $q\equiv\pm1\pmod\ell$. Then
@@ -1826,7 +1837,7 @@ level lowering is due to Mazur \cite{Mazur77}, Ribet \cite{Ribet90,Ribet91}, Car
 representation was studied by Livn\'e \cite{Livne89}; level raising is Ribet's \cite{Ribet84}, in the general form of Diamond and Taylor \cite{DiamondTaylor94}. The
 congruence criterion goes back to Ribet \cite{Ribet83} and the perfect pairing to Ribet and to Abbes and Ullmo \cite{AU96}; Agashe, Ribet and Stein \cite{ARS12}
 relate the congruence number to the modular degree. Twists of newforms are in Atkin and Li \cite{AtkinLi78}. The congruence ideal at higher level is
-in Diamond, Flach and Guo \cite{DFG04}; Kim and Ota \cite{KimOta}, Pollack and Weston \cite{PollackWeston11}, and Pasten \cite{Pasten} are quoted as the paper summarises them;
+in Diamond, Flach and Guo \cite{DFG04}; Kim and Ota \cite{KimOta} and Pasten \cite{Pasten} are quoted as the paper summarises them; Pollack and Weston \cite[Theorem 6.11]{PollackWeston11} was checked against its arXiv version;
 Ribet and Takahashi \cite{RibetTakahashi97} and Takahashi \cite{Takahashi01} were checked against the sources in \Cref{ch:moddeg}. The Taylor-Wiles method is \cite{Wiles95,TaylorWiles}, surveyed in \cite{DDT}.
 
 \paragraph{Theorem numbers.} The numbers printed are those the paper itself cites: \cite[Theorems 3.1(e), 3.15]{DDT}, \cite[Theorem 2.2]{Ribet83},
@@ -1834,7 +1845,7 @@ Ribet and Takahashi \cite{RibetTakahashi97} and Takahashi \cite{Takahashi01} wer
 \cite[Theorem 1.1, Definition 2.12]{KimOta}. ``Theorem 7.14'' of \cite{Shimura71} is an unverified pointer from the edition we know. The lifting lemma \cite[Lemme 6.11]{DeligneSerre74},
 the descent lemma \cite[Lemme 6.13]{DeligneSerre74} and \cite[Th\'eor\`eme 2]{Carayol94} were checked against the published texts. All other references are cited by
 chapter, section or as a whole; we have not verified the numbering of the main theorems of \cite{Carayol86}, \cite{Ribet84}, \cite{Ribet90} or \cite{DiamondTaylor94},
-nor the precise hypotheses of \cite{Ribet84}, \cite{Carayol89} (\Cref{rem:modgalrep:carayol-lemma}) and \cite{PollackWeston11}; the statements given here are those the
+nor the precise hypotheses of \cite{Ribet84} and \cite{Carayol89} (\Cref{rem:modgalrep:carayol-lemma}); the statements given here are those the
 paper uses, or special cases of the published ones.
 
 \paragraph{Normalisations.} Two normalisations of the local Langlands correspondence for $\GL_2$ are in use, and some sources attach to a newform the

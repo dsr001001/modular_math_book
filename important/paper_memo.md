@@ -485,6 +485,8 @@ Counts: **A: 12** strengthenings, **B: 10** errors, **C: 14** gaps, **D: 17** ex
 * **F12 (step 5; points 103, 104).** Ribet-Takahashi in Section 1.5 needs "for semistable E"; DFG04 wording points
   ([UwU]_omega; l not in Sigma is DFG's standing assumption).
 
+* **F13 (step 5; points 105, 106).** Section 1.5 Pollack-Weston needs CR; prop:no9 should cite Ligozat75 for CM at 27.
+
 ## Re-verification log
 
 | curve | what was checked | result |
