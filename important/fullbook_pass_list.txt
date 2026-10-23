@@ -1,0 +1,25 @@
+For the full-book pass (step 5), from the Appendix B writer:
+1 chA_prereq.tex ~866: chi_q -> chi_{q^*} (B-C6(c)).
+2 Ch15 pi_p, pi_f for automorphic local components (~53-55, 524-525) clash with pi_p Frobenius endomorphism (~291) and pi_f quotient map J_0(N)->J_f (Ch14/15).
+3 Ch2 ~280 convention box: "decision D3 of the plan of this book" = internal reference; remove.
+4 Ch3 M_tors vs M_tor elsewhere (cosmetic).
+5 varepsilon outside B-C15(k): Ch2 sign (~184, 1942); Ch12 bare varepsilon for w_N sign (~97-98, 1215) and analytic (~779); Ch15 ~34 nebentypus.
+6 Ch4 omega(x,y)=det bilinear form (local; recorded).
+7 Ch7 Omega coefficient field vs Ch20 Omega(pi).
+8 Appendix B rows for Ch20/21/22 marked (planned): recheck.
+9 Ch13 rem:hecke:commentary-step1: l = 2 equality at level 539 is now PROVED in Ch20 (lem:congruence:quant-step1, every l not in S); point Ch13 there.
+10 Ch18 rem:blochkato:ell-three: Ch20 checked DFG04 statement-level coverage of l = 3; align wording.
+From the Appendix B review (exact locations):
+11 chA:866 chi_q. ch15:53,55 pi_p, pi_f automorphic vs ch15:291 pi_p Frobenius; ch14:57,186,698 pi_p Frobenius, 670,716 pi_f quotient.
+12 Internal-planning references: ch02:280 (D3), ch02:2172 ("outline of this chapter"), ch06:205 (D3), ch10:1808 (D3), ch08:1837 (D5), ch04:608 (B2), ch03:2372, ch05:2088, ch11:1748 (D1). Remove all.
+13 varepsilon: ch02:1942 local sign; ch12:97, 1215-1216 bare Atkin-Lehner sign; ch13:855-857, ch14:1172-1176 bare epsilon for eps_N(f); ch15:34,317,566,569 nebentypus; ch20:914 dual numbers (O/varpi^n)[epsilon].
+14 ch04:151,326,338,1245 omega bilinear form; ch07:154,156,1554 Omega coefficient field; ch03:75,189,948 \tors vs \mathrm{tor}.
+15 Hecke congruence ideal: eta_f (ch14:81-83), eta_f(N) (ch15:125,1647), eta^Hecke_f (ch20:36); ch15 t_f(q) vs t_q (121). Optimal curve E_f (ch14) vs E_0 (ch15).
+16 ch15:174 allows Phi for geometric Frobenius (B-C2 lists ch15 as Frob^{-1}).
+From the Chapter 20 review:
+17 ch13 rem:hecke:commentary-step1 ~l.1499: "observed, not proved by either argument" at l = 2: now proved in ch:congruence (Step 1 equality at every l not in S); only l = 7 (in S) observed.
+18 ch14 rem:moddeg:dfg-normalisation: says ch:congruence compares five identification points with DFG04; Ch20 leaves [UwU]_omega, kernel lattice, self-adjointness 'as cited'. Soften.
+From the Chapter 20 fix:
+19 ch15 thm:modgalrep:dfg14 and its card: add "l not in Sigma" (false otherwise: 11a, l=3, Sigma={3}).
+20 ch15 (~l.1089) and ch14 (~l.1467) attribute dfg14(c) to Ihara's lemma; Ch20 now sketches (c) given cited saturation inputs (S1),(S2) not in the book's Ihara lemma. Reword.
+21 Iverson bracket [P] used in ch:rings and ch:computation; define it (ch22 or App B) since ch:paper is later.

@@ -477,6 +477,11 @@ Counts: **A: 12** strengthenings, **B: 10** errors, **C: 14** gaps, **D: 17** ex
 * **F9 (Chapter 18; expository; points 96, 97).** lem:tamfactor proof: q^{-1}Ad rho(Frob), not q^{-1}rho(Frob); lem:dfg21
   needs "l not in Sigma" for the paragraph after it.
 
+* **F10 (Chapter 20; correction; points 98, 99).** Step 1 of thm:quant is an equality at every l not in S
+  (rem:afterquant (2) and Open question 6 answered); thm:dfg14 needs "l not in Sigma" (false otherwise: 11a, l = 3).
+* **F11 (Chapter 22; correction and observation; points 100 to 102).** sec:anomaly: 36 vs 24 is due to t_3(E,3), not w_3;
+  twist relation at q = l for Open question 1; sec:iso and sec:sharp wording.
+
 ## Re-verification log
 
 | curve | what was checked | result |

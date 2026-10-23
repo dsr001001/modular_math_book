@@ -1279,6 +1279,39 @@ qe") computes the right one. The result is unaffected. Found by the Chapter 18 r
 The paragraph after the lemma ("For p in Sigma, H^1_f(Q_p,V^D) = H^1_ur(...) vanishes") fails at p = l, where
 dim H^1_f(Q_l,V^D) = 2. Harmless in the application (l does not divide N). Add "with l not in Sigma". The book states it.
 
+### 98. Step 1 of thm:quant is an equality at EVERY prime l not in S (extends point 94; high confidence)
+Chapter 20 (lem:congruence:quant-step1), confirmed by an adversarial review: r_E | r_pi as integers (Chapter 13) and the
+paper's own Step 1 argument uses only l != q for q in S (not l odd, l not dividing N, E[l] irreducible or l not in S_f).
+So rem:afterquant (2) and the first item of Open question 6 are answered for every l not in S. Level 539: modules 288,
+504, 288, 504 (true Sturm bound 112); the l = 2 equality is proved; only the 7-parts (7 in S) are observed. Suggested
+wording: "Step 1 is an equality at every prime l not in S"; remove the item from Open question 6.
+
+### 99. Theorem thm:dfg14 (Section 4.1) is false for l in Sigma (correction; high confidence)
+f = 11a, l = 3, Sigma = {3}: a_3 = -1, L^nv_3(A_f,1)^{-1} = 10/9, v_3 = -2; with eta^empty = Z_3 the right side is
+3^{-2}Z_3, not contained in Z_3, while eta^Sigma is an ideal of Z_3. Add "l not in Sigma" (every use has it). Recomputed
+with PARI (Chapter 20 fixer; symmetric-square Euler factor at 3 cross-check).
+
+### 100. Section sec:anomaly: the 36 vs 24 split is due to t_3(E,3), not the weights w_3 (correction; high confidence)
+The revised parenthetical says the count depends on "whether the weights at q=3 are included". Including or omitting w_3
+changes no count below 10,000. The 12 differing curves (726a1, 726f1, 2178b1, 2178h1, 3840h1, 3840k1, 3840o1, 3840r1,
+5070h1, 5070p1, 5808y1, 5808z1) differ by t_3(E,3) = 1 at a type I_n or I_n^* at 3. As printed, (eq:thm) includes
+t_l(E,l) and gives 36 (726a1: bound 3, violated by one). Fix: "... depends on whether the terms at q=3 are included (the
+term t_3(E,3); the weights w_3 change nothing): below conductor 10,000, 36 with them, as (eq:thm) is written, and 24
+without." (Memo C11 had "q=l terms"; the revision changed it to "weights".)
+
+### 101. Open question 1 (weights at q = l): a twist relation on the data below 10,000 (observation; data high confidence)
+Non-blind, optimal non-CM curves below 10,000, l in {3,5,7,11,13}: type II*, III*, IV* at l gives v_l(deg) exactly one
+more than the optimal curve of the twist by chi_{l*} (4,412 cases; 4,251 with E[l] irreducible); type I_n^* at l gives
+difference 0 at all five l; type I0* gives v_l((l+1)^2 - a_l(twist)^2) in all 1,915 cases with E[l] irreducible (fails in
+13 reducible ones, e.g. 126a1, 275b1). A weight 1 for II*, III*, IV* at q = l >= 5 added to (eq:rule) gives no violation
+below 10,000 and is usually attained (1,008/1,191; 595/643; 234/239; 160/163). The paper's "at q = l >= 5 no term is
+needed" is true but not sharp. Meaning open. Found in Chapter 22, confirmed by its reviewer.
+
+### 102. Expository points from Chapter 22 (minor)
+sec:iso: "for every value of v_l(q^2-1) up to 6": at l = 3 the value 0 occurs only through q = l = 3. sec:sharp: "its
+smallest prime factor is 3 in 63% ... and divides N in 52%" is ambiguous; below 10,000: 58.7%, and 47.5% (smallest prime
+factor of the quotient divides N) or 51.8% (some prime factor divides N).
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
@@ -1496,3 +1529,20 @@ dim H^1_f(Q_l,V^D) = 2. Harmless in the application (l does not divide N). Add "
   annihilator (Langer97 as secondary source); several theorem numbers.
 * Warning: the I_n^* rows of the L-factor table DO depend on the choice of Frobenius (A_f^{I_q} is the line of e).
 * 11a1 Selmer example in Chapter 17 still "grants Sha[5] = 0" (no verified reference found).
+
+### B41. Items from writing Part VI (Chapters 20, 22, Appendix B)
+* Chapter 20 writes C(pi), Cot(pi) for congruence and cotangent modules, Omega^pm_f for periods; Frob_p^{-1} geometric.
+* thm:dfg14(c) is sketched, given saturation inputs (S1) three degeneracy maps M' -> M'p^2, (S2) two maps M' -> M'p with
+  p || M', cited and unverified; the book's Ihara lemma (Chapter 15) covers neither. DFG04 items read "as cited":
+  [UwU]_omega normalisation, kernel lattice, self-adjointness, Prop 1.4, Thm 2.7, Lemmas 2.1, 2.12, (31), (57); Theorems
+  0.1 and 0.2 and S_f (Section 0.2) were compared with the published text; DFG04 at l = 3 checked at statement level only.
+* PARI: mfsturm([539,2]) = 112, on mfinit spaces 88 or 50 (too small for integrality); use k mu(N)/12.
+* Chapter 22: B^thm is the literal (eq:thm) bound = B^nc - [l=3] w_3 (36 violators); ellinit components E[1..13] =
+  a1..a6, b2..b8, c4, c6, Delta, j; 7910b1 needs 16 MB, 9690m1 more; ellweilcurve: strong Weil curve has Smith invariants
+  [c,c] (PARI docs). data/ecdata (git-ignored) holds 10 ecdata files plus file-format.txt from commit 25cec5e, fetched by
+  tools/setup_env.sh and checked against tools/ecdata.sha256.
+* Appendix B: W^D is notation for V^D/T^D (not the Kummer dual of W); Euler varphi(n) is an exception to B-C13(b);
+  epsilon is unramified only at multiplicative primes.
+* Full-book pass list: scratchpad step5_crosschapter.txt items 1 to 21 (chA chi_q; Ch15 pi_p/pi_f and thm:dfg14 needs l
+  not in Sigma; internal-planning references in Ch2 to Ch11; epsilon, omega, Omega, M_tors clashes; Ch13 l = 2 superseded;
+  Ch14/15 Ihara attribution and DFG04 comparison wording; Iverson bracket undefined).

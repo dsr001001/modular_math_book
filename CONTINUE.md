@@ -11,7 +11,7 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Outlines of all 22 chapters and Appendix B | done, reviewed for consistency | `outlines/chNN_slug.md`, `outlines/chB_notation.md` |
 | Plan and outlines as one PDF | done (649 pages) | `docs/book_plan.pdf`, rebuilt by `tools/build_plan_pdf.sh` |
 | Bibliography | done, verified, 203 entries, no duplicates | `refs.bib` (shared), `bib/chNN.bib` (single-chapter) |
-| Findings about the paper | 97 points plus book-internal notes (B1 to B40) | `important/important_notes.md` (full record) |
+| Findings about the paper | 102 points plus book-internal notes (B1 to B41) | `important/important_notes.md` (full record) |
 | Memo for the paper's author | done | `important/paper_memo.md` (final, reconciled) |
 | Revised paper with the stronger results | done (32 pages), needs the author's review | `paper/note_v2.tex`, `docs/note_v2.pdf`, change log `paper/CHANGES_v2.md` |
 | Preface | written (needs a final update) | `frontmatter/preface.tex` |
@@ -29,7 +29,8 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Chapter 11 (galrep) | done: lean pipeline by hand, review (7 major, 9 minor), check (5 minor); 2,050 lines, 48 pages | `chapters/ch11_galrep.tex` |
 | Chapters 12 to 15 (Part IV) | done: lean pipeline by hand | `chapters/ch12_modforms.tex` to `ch15_modgalrep.tex` |
 | Chapters 16 to 19 (Part V) | done: draft all, one review each, one fix pass | `chapters/ch16_cohomology.tex` to `ch19_lfunctions.tex` |
-| Other chapters, Appendix B | **not yet written**; Parts I to V are complete; next is Part VI, Chapters 20 to 22 (Chapter 20 must prove the equality v_l(r_E) = v_l(eta^Hecke(g^S)), see B39) | `chapters/` |
+| Chapters 20, 22, Appendix B | done: draft, one review each, one fix pass | `chapters/ch20_congruence.tex`, `ch22_computation.tex`, `chB_notation.tex` |
+| Remaining | step 4: full-book build and the cross-chapter list (note B41); step 5: verify flagged sources if the user supplies them; step 6: Chapter 21 (the paper) LAST, from the finished book and the complete findings list; step 7: preface, final build | `chapters/` |
 
 The original paper is `note_Oct10_7pm.tex`. Labels in the revised paper are the same.
 
