@@ -1568,3 +1568,9 @@ l = 3 with a_3 not 0 mod 3 DFG use Perrin-Riou plus Colmez (Prop. 2.16), Theorem
 * Still unverified: Flach92 hypotheses and annihilator; Carayol94 theorem number; Deligne-Serre Lemme 6.11; Pollack-Weston;
   Pasten's journal data; Lenstra95 pages; Lyndon48; Kenku vs Ligozat; Weibel and other theorem-number pointers; a reference
   for Sha(11a1)[5] = 0.
+* Second batch (user supplied Flach92, Carayol94, Deligne-Serre74, Cremona Table 4 and errata): Flach Theorem 1 (p. 308)
+  assumes E minimal among quadratic twists, p >= 5 good, rhobar surjective; deg(phi) kills Sha(Q, A(2)) and (Prop. 1.1)
+  S(Q, A(1)); stated exactly in Chapters 18, 19. Carayol94 Theoreme 2 (Section 1.2) and Deligne-Serre Lemme 6.13 realise
+  rhobar_m over T/m; Deligne-Serre Lemme 6.11 (p. 522) is the lifting lemma (checked). Cremona Table 4 p. 314: 11a1 S = 1
+  (analytic); errata do not touch Table 4; Sha(11a1)[5] = 0 still granted (needs a 5-isogeny descent). Langer97 not seen.
+  Remaining unverified: Pollack-Weston, Pasten journal data, Lenstra95 pages, Lyndon48, Kenku vs Ligozat, period comparison.

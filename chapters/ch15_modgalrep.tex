@@ -444,7 +444,10 @@ $\theta_\ell$ with values in its ring of integers $\mathcal{O}$, $\lambda$ the p
 generalised eigenspace for the character $\theta\otimes\Qbar$ is nonzero (as in Step 1 of the proof of \Cref{lem:modgalrep:crit}), and commuting operators on a nonzero space
 over an algebraically closed field have a common eigenvector $g$. By \Cref{prop:modgalrep:newforms-recap}(i), $a_1(g)\ne0$; normalised, $a_n(g)=a_1(T_ng)=\theta(T_n)$. By
 \Cref{prop:modgalrep:newforms-recap}(iv), $g$ lies in the generalised eigenspace $V_h$ of the $T_p$, $p\nmid N$, for the eigenvalues $\theta(T_p)$, where $h$ is the newform with
-$a_p(h)=\theta(T_p)$. This is the lifting lemma of Deligne and Serre \cite[Lemme 6.11]{DeligneSerre74} (the number is an unverified pointer).
+$a_p(h)=\theta(T_p)$. This is the lifting lemma of Deligne and Serre \cite[Lemme 6.11]{DeligneSerre74} (checked): for a free module of finite type $M$ over a discrete valuation ring $\mathcal O$
+and a set of pairwise commuting endomorphisms with a common (nonzero) eigenvector in $M/\mathfrak m_{\mathcal O}M$, there are a discrete valuation ring $\mathcal O'\supseteq\mathcal O$ with fraction field
+finite over that of $\mathcal O$ and maximal ideal meeting $\mathcal O$ in $\mathfrak m_{\mathcal O}$, and a nonzero common eigenvector in $\mathcal O'\otimes_{\mathcal O}M$ whose eigenvalues reduce to the given
+ones; Deligne and Serre stress that the eigenvalues lift, not the eigenvectors. They apply it in their 6.10 to the Hecke operators on modular forms with integral coefficients.
 
 (ii) Enlarge $\mathcal{O}$ to contain $K_h$ and let $\bar\rho=\bar\rho_{h,\lambda}^{\mathrm{ss}}$ over $k_\lambda$ (\Cref{prop:modgalrep:lattices}(i)); it is unramified outside $M\ell$, and
 $\det(X-\bar\rho(\Frob_p))\equiv X^2-\theta(T_p)X+p\pmod\lambda$ for $p\nmid N\ell$, a polynomial with coefficients in the image of $k_{\mathfrak m}$. The map $\sigma\mapsto\det(X-\bar\rho(\sigma))$ is
@@ -455,8 +458,10 @@ If $\bar\rho\otimes\Fbar_\ell\simeq\psi_1\oplus\psi_2$ is a sum of characters, i
 quadratic extension $k'$ of $k_{\mathfrak m}$ and $\psi_2=\psi_1^F$; let $\bar\rho_{\mathfrak m}$ be $k'$, viewed as a two-dimensional $k_{\mathfrak m}$-space, with $\sigma$ acting by multiplication by $\psi_1(\sigma)$. It is
 irreducible, and over $\Fbar_\ell$ the eigenvalues of $\sigma$ are $\psi_1(\sigma)$ and $\psi_1(\sigma)^F$, so $\bar\rho_{\mathfrak m}\otimes\Fbar_\ell\simeq\psi_1\oplus\psi_2$. If $\bar\rho\otimes\Fbar_\ell$ is absolutely
 irreducible, a representation over $\Fbar_\ell$ whose characteristic polynomials have coefficients in the finite field $k_{\mathfrak m}$ is realised over $k_{\mathfrak m}$, because the Brauer
-group of a finite field is trivial (Wedderburn); see Carayol \cite{Carayol94} (the theorem on representations whose traces lie in a subring; we have not checked its
-number). In each case $\bar\rho_{\mathfrak m}$ is semisimple and continuous (it has the same kernel as $\bar\rho\otimes\Fbar_\ell$). Uniqueness and the isomorphism with $\bar\rho_{h,\lambda}^{\mathrm{ss}}$
+group of a finite field is trivial (Wedderburn); see Carayol \cite[Th\'eor\`eme 2, Section 1.2]{Carayol94} (checked: a representation over a semi-local extension $A'$ of a
+henselian local ring $A$ whose residue field has trivial Brauer group, with traces in $A$ and absolutely irreducible residual representations, is realised over $A$; here
+$A=k_{\mathfrak m}$, $A'$ a finite extension of it). Both cases are also covered at once by \cite[Lemme 6.13]{DeligneSerre74} (checked): a semisimple representation over a finite field
+$k'$ is realised over any subfield $k$ containing the coefficients of all its characteristic polynomials. In each case $\bar\rho_{\mathfrak m}$ is semisimple and continuous (it has the same kernel as $\bar\rho\otimes\Fbar_\ell$). Uniqueness and the isomorphism with $\bar\rho_{h,\lambda}^{\mathrm{ss}}$
 over $k_\lambda$ are Brauer-Nesbitt again, the characteristic polynomials being known on the dense set of Frobenius elements, hence everywhere; for $\ell$ odd,
 $2<\ell$ and equal traces suffice (\Cref{ch:reps}). The determinant is $\bar\chi_\ell$ because both are continuous and agree on $\Frob_p$, $p\nmid N\ell$.
 
@@ -1809,8 +1814,8 @@ $\rho\bmod5^t$ unramified at $11$ on $T_5(\curve{11a1})$ and on $T_5(\curve{11a3
 
 \paragraph{Sources followed.} The construction of $\rho_{f,\lambda}$ in weight $2$ follows Shimura \cite[Chapter 7]{Shimura71} and Diamond and Shurman
 \cite[Chapter 9]{DiamondShurman}, with the integral and residual facts as in Diamond and Im \cite{DiamondIm} and Darmon, Diamond and Taylor
-\cite{DDT}; the residual representation of a maximal ideal of $\T$ rests on the lifting lemma of Deligne and Serre \cite{DeligneSerre74} and, for its field of
-definition, on Carayol \cite{Carayol94}; the general construction is Deligne's \cite{Deligne}, and irreducibility in general is Ribet's \cite{Ribet77}. The automorphic representation
+\cite{DDT}; the residual representation of a maximal ideal of $\T$ rests on the lifting lemma of Deligne and Serre \cite[Lemme 6.11]{DeligneSerre74} and, for its field of
+definition, on their Lemme 6.13 and on Carayol \cite{Carayol94}; the general construction is Deligne's \cite{Deligne}, and irreducibility in general is Ribet's \cite{Ribet77}. The automorphic representation
 of a newform is from Jacquet and Langlands \cite{JacquetLanglands70}, conductors of representations of $\GL_2(\Q_p)$ from Casselman \cite{Casselman73}, the local Langlands
 correspondence from Bushnell and Henniart \cite{BushnellHenniart06}, and local-global compatibility from Langlands \cite{Langlands73}, Deligne
 \cite{Deligne73} and Carayol \cite{Carayol86}; Rohrlich \cite{Rohrlich94} is the reference for Weil-Deligne representations of elliptic curves, and
@@ -1826,8 +1831,8 @@ Ribet and Takahashi \cite{RibetTakahashi97} and Takahashi \cite{Takahashi01} wer
 
 \paragraph{Theorem numbers.} The numbers printed are those the paper itself cites: \cite[Theorems 3.1(e), 3.15]{DDT}, \cite[Theorem 2.2]{Ribet83},
 \cite[Lemma 2.1]{AU96}, \cite[Theorem 3]{AtkinLehner70}, \cite[Theorem 3.1]{AtkinLi78}, \cite[Theorem 2.2]{ARS12}, \cite[Section 2]{Edixhoven92}, \cite[Proposition 1.4(c)]{DFG04},
-\cite[Theorem 1.1, Definition 2.12]{KimOta}. ``Theorem 7.14'' of \cite{Shimura71} is an unverified pointer from the edition we know, and so is ``Lemme 6.11'' of
-\cite{DeligneSerre74} for the lifting lemma; the theorem of \cite{Carayol94} on representations with traces in a subring is cited without a number. All other references are cited by
+\cite[Theorem 1.1, Definition 2.12]{KimOta}. ``Theorem 7.14'' of \cite{Shimura71} is an unverified pointer from the edition we know. The lifting lemma \cite[Lemme 6.11]{DeligneSerre74},
+the descent lemma \cite[Lemme 6.13]{DeligneSerre74} and \cite[Th\'eor\`eme 2]{Carayol94} were checked against the published texts. All other references are cited by
 chapter, section or as a whole; we have not verified the numbering of the main theorems of \cite{Carayol86}, \cite{Ribet84}, \cite{Ribet90} or \cite{DiamondTaylor94},
 nor the precise hypotheses of \cite{Ribet84}, \cite{Carayol89} (\Cref{rem:modgalrep:carayol-lemma}) and \cite{PollackWeston11}; the statements given here are those the
 paper uses, or special cases of the published ones.

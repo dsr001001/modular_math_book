@@ -1276,7 +1276,11 @@ It injects into $\Sel_n(E/\Q)$ by \Cref{prop:galcoh:selmer-sha}.
 is finitely generated.
 
 \begin{example}[\curve{11a1} and $n=5$]\label{ex:galcoh:selmer-11a1}
-For $E=\curve{11a1}$, Cremona's \texttt{allbsd} file gives rank $0$, $E(\Q)\simeq\Z/5$, Tamagawa product $5$ and analytic order of $\Sha$ equal to $1$; granting $\Sha[5]=0$,
+For $E=\curve{11a1}$, Cremona's \texttt{allbsd} file gives rank $0$, $E(\Q)\simeq\Z/5$, Tamagawa product $5$ and analytic order of $\Sha$ equal to $1$. The same value
+is printed in \cite[Table 4]{Cremona97} (row 11A, column $S$), where for rank $0$, $S=L(E,1)\,\#E(\Q)_{\mathrm{tors}}^2/(\Omega\prod_pc_p)$, with $\Omega$ Cremona's real period ($L(E,1)/\Omega=1/5$ in that row), is defined as the number that the Birch and
+Swinnerton-Dyer conjecture predicts to be $\#\Sha$; for rank $0$ it is exact, but it is a statement about $L(E,1)$, not a proof about $\Sha$, and the table does not claim
+otherwise. That $\Sha$ is finite for a curve of analytic rank $0$ is a theorem of Kolyvagin \cite{Kolyvagin90} (with the modularity of $E$ and Gross and Zagier), but neither the table nor that finiteness gives $\Sha[5]=0$; here $\bar\rho_{E,5}$ is
+reducible ($E$ has a rational point of order $5$), and a proof needs a separate argument, for instance a descent by the $5$-isogenies of the class, which we do not give. Granting $\Sha[5]=0$,
 $\Sel_5(E/\Q)\simeq E(\Q)/5E(\Q)\simeq\Z/5$. Over $\Q_{11}$, $E[5]\subset E(\Q_{11})$ (\Cref{ex:galcoh:local-orders}(c)), so the local condition at $11$ is a subgroup of order
 $\#E(\Q_{11})[5]=25$ (\Cref{prop:galcoh:ec-local-image}(i)) of $H^1(\Q_{11},E[5])$, which has order $625$ (\Cref{ex:galcoh:local-orders}(c)). It is not the unramified subgroup, although that has order $25$
 too. Indeed $E$ is a Tate curve over $\Q_{11}$ ($a_{11}=1$), $E(\Q_{11})\simeq\Q_{11}^\times/q_E^{\Z}$, and as $q_E$ is a fifth power,

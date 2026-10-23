@@ -143,8 +143,9 @@ reference)} \Cref{conj:blochkato:tnc}.
 \item \textbf{Diamond, Flach and Guo, Theorem 0.1.} For $\lambda\notin S_f$ the $\lambda$-part of the conjecture holds for the adjoint motive at $s=1$. \emph{(stated; reference)} \Cref{thm:blochkato:dfg-01}.
 \item \textbf{Diamond, Flach and Guo, Theorem 0.2 (thm:dfg37).} For $\ell\notin S_f$, $H^1_\Sigma(\Q,W)$ is finite of length $v_\lambda(\eta^\Sigma_{f,\lambda})$. \emph{(stated; reference; see \Cref{ch:congruence})}
 \Cref{thm:blochkato:dfg-02}.
-\item \textbf{Flach.} For $\ell$ outside an explicit finite set the Bloch-Kato Selmer group of $\Sym T_\ell E\otimes\Qlmod$ ($=W^D$) is finite, annihilated by an integer built from $\degphi$. \emph{(stated in
-outline; reference)} \Cref{thm:blochkato:flach}.
+\item \textbf{Flach.} If the conductor of $E$ is minimal among its quadratic twists, $\ell\ge5$ is a prime of good reduction and $\bar\rho_{E,\ell}$ is surjective, then the degree of
+any modular parametrisation $X_0(N)\to E$ annihilates $H^1_f(\Q,W^D)$ ($W^D\simeq\Sym T_\ell E\otimes\Qlmod$) and $H^1_f(\Q,W)$; both are finite. \emph{(stated; reference)}
+\Cref{thm:blochkato:flach}.
 \end{enumerate}
 
 \section*{Where the paper uses this chapter}
@@ -1684,15 +1685,23 @@ it is \cite[Theorem 3.7]{DFG04}; their Theorem 0.2 is the case in which $\Sigma$
 read against it.
 \end{proof}
 
-\begin{theorem}[Flach, in outline]\label{thm:blochkato:flach}
-Let $E/\Q$ be modular. For every prime $\ell$ outside an explicit finite set of exceptional primes (which contains the primes dividing $6N$ and those for which $\bar\rho_{E,\ell}$ is not
-surjective, among others), the Bloch-Kato Selmer group of $\Sym T_\ell E\otimes\Qlmod$ is finite, and it is annihilated by an explicit integer built from the modular
-degree \cite{Flach92}.
+\begin{theorem}[Flach]\label{thm:blochkato:flach}
+Let $E/\Q$ be an elliptic curve of conductor $N$ whose conductor is minimal among its quadratic twists, and let $\varphi\colon X_0(N)\to E$ be a modular parametrisation (of any
+degree). Let $\ell\ge5$ be a prime at which $E$ has good reduction and such that $\bar\rho_{E,\ell}\colon G_\Q\to\GL_2(\F_\ell)$ is surjective. Then $\deg\varphi$ annihilates the
+Bloch-Kato Selmer groups $H^1_f(\Q,W^D)$, where $W^D\simeq\Sym T_\ell E\otimes\Qlmod$, and $H^1_f(\Q,W)$; in particular both are finite. For the optimal curve one may take
+$\deg\varphi=\degphi$.
 \end{theorem}
 
 \begin{proof}[Reference]
-We do not prove this, and we do not reproduce the exact list of exceptional primes or the annihilator; see \cite{Flach92}. Note that $\Sym V_\ell E\simeq A_f(1)=V^D$ (since
-$\ad V\simeq\Sym V\otimes\det^{-1}$ and $\det=\chi_\ell$), so Flach's group is $H^1_f(\Q,W^D)$ in the paper's notation; when $\bar\rho$ is absolutely irreducible its finiteness is
+We do not prove this; see \cite[Theorem 1 and the Remarks after it, p.~308; Propositions 1.1 and 2.2]{Flach92} (checked against the published text). Flach writes $p$ for our
+$\ell$, $V=\Sym H^1(E_{\overline\Q},\Ql)$ with its natural lattice $\Sym H^1(E_{\overline\Q},\Zl)$, and $A$ for the quotient (his $A$, not ours). His Theorem 1 has exactly the
+two hypotheses above and states that $\deg\varphi$ annihilates $\Sha(\Q,A(2))$, the cotorsion quotient of his Selmer group $S(\Q,A(2))$; the first Remark after it says that
+the proof gives $\deg\varphi\cdot S(\Q,A(2))=0$, and the two groups are equal (p.~326). The statement for $A(1)$ is his Proposition 1.1 (p.~310), whose hypothesis, the
+existence of suitable classes $c(l)$, is supplied by his Proposition 2.2 (p.~318). His $S(\Q,-)$ is defined by the local conditions of Bloch and Kato (his Section 1). That the
+conductor of $E$ is minimal among its quadratic twists is a standing assumption stated just before Theorem 1: the Selmer groups do not change under a quadratic twist,
+while $\deg\varphi$ does. Since $H^1(E_{\overline\Q},\Zl)\simeq T_\ell E(-1)$, his $A(2)$ is $\Sym T_\ell E\otimes\Qlmod$ and his $A(1)$ is $\Sym T_\ell E(-1)\otimes\Qlmod\simeq W$. Note that
+$\Sym V_\ell E\simeq A_f(1)=V^D$ (since $\ad V\simeq\Sym V\otimes\det^{-1}$ and $\det=\chi_\ell$), so Theorem 1 of \cite{Flach92} is about $H^1_f(\Q,W^D)$ in the paper's notation; when
+$\bar\rho$ is absolutely irreducible its finiteness is
 equivalent to $H^1_f(\Q,V^D)=0$ (\Cref{prop:blochkato:selmer-relations}(iii)), hence to $H^1_f(\Q,A_f)=0$ (\Cref{prop:blochkato:euler-characteristic}), hence to the finiteness of
 $H^1_f(\Q,W)$.
 \end{proof}
@@ -1840,7 +1849,8 @@ checked against the published text (as are the further items of \cite{DFG04} nam
 \cite[I.4.2.2]{FPR94}. All other references are to sections, and the section numbers given for Bloch and Kato (Sections 3 to 6), Rubin (Sections 1.3 and 1.7), Berger
 (Section 2) and Silverman (Chapter IV) are pointers we have not checked against the printed texts. In particular we have not verified the numbers under which the
 dimension formula of \Cref{prop:blochkato:dimension-formula}, the duality of \Cref{prop:blochkato:local-duality-f} at $\ell$ and the identification of the Kummer image at
-$\ell$ (\Cref{ex:blochkato:classical-selmer}) appear in \cite{BlochKato}, nor the exact hypotheses of \cite{Flach92} (\Cref{thm:blochkato:flach} is stated in outline for that reason).
+$\ell$ (\Cref{ex:blochkato:classical-selmer}) appear in \cite{BlochKato}. The statement of \Cref{thm:blochkato:flach} and the items \cite[Theorem 1, Propositions 1.1, 2.2]{Flach92} were
+checked against the published text.
 
 \paragraph{History.} Bloch and Kato formulated their conjecture in 1990 \cite{BlochKato}; Fontaine and Perrin-Riou recast it in terms of Galois cohomology and defined
 the local Tamagawa factors used here \cite{FPR94}. Flach proved the first finiteness theorem for the Selmer group of the symmetric square in 1992 \cite{Flach92}, and

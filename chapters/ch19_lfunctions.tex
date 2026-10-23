@@ -93,8 +93,9 @@ contribute a correction. \emph{(the first equality is \Cref{ch:hecke}'s, where t
 \]
 satisfies $\degphi=B_E\prod_{q^2\mid N}L_q(A_f,1)^{-1}$, and $v_\ell(\degphi)=v_\ell(B_E)+\sum_{q\mid N}e_\ell(E,q)$ for every $\ell\nmid N$, unconditionally. \emph{(proved here, given
 \Cref{ch:hecke,ch:moddeg})} \Cref{cor:lfunctions:degree-formula}.
-\item \textbf{Flach's theorem.} For $p\ge5$ of good reduction with $\bar\rho_{E,p}$ surjective, the Selmer group of the symmetric square of $E$ with $\Q_p/\Z_p$
-coefficients is finite. \emph{(stated; reference)} \Cref{thm:lfunctions:flach}.
+\item \textbf{Flach's theorem.} If the conductor of $E$ is minimal among its quadratic twists, $p\ge5$ is a prime of good reduction and $\bar\rho_{E,p}$ is surjective, the degree
+of any modular parametrisation $X_0(N)\to E$ annihilates the Bloch-Kato Selmer groups of the symmetric square of $E$ with $\Q_p/\Z_p$ coefficients (Tate twists $1$ and $2$),
+which are therefore finite. \emph{(stated; reference)} \Cref{thm:lfunctions:flach}.
 \item \textbf{The local terms.} For a bad $q\ne\ell$: $e_\ell(E,q)=v_\ell(L_q(A_f,1)^{-1}/L_q^{\nv}(A_f,1)^{-1})$, which is $v_\ell(P_q(q^{-2})/(1-a_q^2q^{-2}))$; for every bad $q$:
 $t_\ell(E,q)=v_\ell(-v_q(j_E))$ if $v_q(j_E)<0$, else $0$. \emph{(definition; the paper's Definition def:terms)} \Cref{def:lfunctions:terms}.
 $e_\ell(E,q)\ge0$, $=0$ at multiplicative $q$, $=v_\ell(P_q(q^{-2}))$ at additive $q$; $t_\ell(E,q)=v_\ell(n)$ for $\mathrm I_n$ at any $q$ and $\mathrm I_n^*$ at odd $q$.
@@ -938,16 +939,23 @@ valuation of the omitted factor'': the Petersson norm sees $L^{\nv}$, Bloch-Kato
 \end{remark}
 
 \begin{theorem}[Flach]\label{thm:lfunctions:flach}
-Let $E/\Q$ be an elliptic curve (modular, as every $E/\Q$ is) and $p\ge5$ a prime at which $E$ has good reduction and such that $\bar\rho_{E,p}\colon G_\Q\to\GL_2(\F_p)$ is
-surjective. Then the Bloch-Kato Selmer group of the symmetric square of $E$ with coefficients $\Q_p/\Z_p$, $H^1_f(\Q,\Sym H^1(E_{\overline\Q},\Q_p/\Z_p)(1))$, is finite.
+Let $E/\Q$ be an elliptic curve (modular, as every $E/\Q$ is) of conductor $N$, minimal among its quadratic twists, and let $\varphi\colon X_0(N)\to E$ be a modular
+parametrisation. Let $p\ge5$ be a prime at which $E$ has good reduction and such that $\bar\rho_{E,p}\colon G_\Q\to\GL_2(\F_p)$ is surjective, and put
+$\mathcal W=\Sym H^1(E_{\overline\Q},\Z_p)\otimes\Q_p/\Z_p$. Then $\deg\varphi$ annihilates the Bloch-Kato Selmer groups $H^1_f(\Q,\mathcal W(1))$ and $H^1_f(\Q,\mathcal W(2))$; in
+particular both are finite.
 \end{theorem}
 
-We do not prove this; see \cite{Flach92}. The hypotheses above are those under which Flach's theorem is usually recalled, and they agree with the secondary
-account in the introduction of \cite{Langer97} ($p\ge5$, good reduction at $p$, $\rho_{E,p}$ surjective, which for $p\ge5$ is equivalent to the surjectivity of $\bar\rho_{E,p}$ by a lemma of Serre), which extends the finiteness to some primes dividing the
-conductor; we have not checked them, or the explicit annihilator, against the original, which bounds the Selmer group in terms of the degree of the modular parametrisation. Since $\Sym V^\vee(1)\simeq A_f$ (\Cref{prop:lfunctions:ad-sym}(i), with $V=V_pE$), and the isomorphism $\Sym W'\simeq\ad W'\otimes\det W'$ holds for lattices when $2$ is
-invertible (\Cref{ch:reps}), the group is the $H^1_f(\Q,W)$ of \Cref{rem:lfunctions:bloch-kato-reading} with $\ell=p$. The proof
-constructs classes in the cohomology of $\Sym$ from elements of $K_2$ (more precisely $H^3_{\mathcal M}$) of $X_0(N)\times X_0(N)$ supported on modular curves, and runs a
-Kolyvagin-type argument; these are the ancestors of the Beilinson-Flach elements. The paper cites it as ``the first place where the modular degree meets
+We do not prove this; see \cite[Theorem 1 and the Remarks after it, p.~308; Propositions 1.1 and 2.2]{Flach92}, checked against the published text. Flach's Theorem 1 has
+exactly the two hypotheses above (he writes $A$ for our $\mathcal W$) and states that $\deg\varphi$ annihilates $\Sha(\Q,\mathcal W(2))$, the cotorsion quotient of his Selmer
+group $S(\Q,\mathcal W(2))$; the first Remark after it and p.~326 give the same for $S(\Q,\mathcal W(2))$ itself, and his Proposition 1.1 (p.~310), whose hypothesis his Proposition 2.2
+(p.~318) supplies, gives $\deg\varphi\cdot S(\Q,\mathcal W(1))=0$. Minimality among quadratic twists is his standing assumption, stated just before Theorem 1 (the Selmer groups
+are unchanged by a quadratic twist, $\deg\varphi$ is not), and he remarks that under the surjectivity hypothesis the statement is unchanged by a $\Q$-isogeny. For the optimal
+curve one may take $\deg\varphi=\degphi$. Langer \cite{Langer97} extends the finiteness to some primes dividing the conductor (a pointer we have not checked). Since
+$\Sym V^\vee(1)\simeq A_f$ (\Cref{prop:lfunctions:ad-sym}(i), with $V=V_pE$), and the isomorphism $\Sym W'\simeq\ad W'\otimes\det W'$ holds for lattices when $2$ is
+invertible (\Cref{ch:reps}), the group $H^1_f(\Q,\mathcal W(1))$ is the $H^1_f(\Q,W)$ of \Cref{rem:lfunctions:bloch-kato-reading} with $\ell=p$, and $H^1_f(\Q,\mathcal W(2))$ is the
+Selmer group of $\Sym T_pE\otimes\Q_p/\Z_p$. The proof constructs classes in $H^1(X_0(N)\times X_0(N),\mathcal K_2)$ (Zariski cohomology of the sheaf $\mathcal K_2$) from functions on the
+curves $X_0(Nl)$, $l\nmid N$ prime, mapped to $X_0(N)\times X_0(N)$ (Flach's Proposition 2.1), and runs Kolyvagin's argument (``there will be no Euler system in our proof'',
+p.~308); these classes are the ancestors of the Beilinson-Flach elements. The paper cites it as ``the first place where the modular degree meets
 the Selmer group of $\Sym f$'', and does not use it. Its precise statement in Selmer language belongs to \Cref{ch:blochkato}.
 
 \section{The local terms and Lemma lem:euler}\label{sec:lfunctions:local-terms}
@@ -1576,8 +1584,8 @@ are computed by Rohrlich \cite{Rohrlich94}. Modularity is \cite{Wiles95,TaylorWi
 $\frac12$; Gelbart and Jacquet \cite{GelbartJacquet} constructed the lift $\Ad(\pi)$ to $\GL_3$, from which the analytic properties of the true $L(\ad f,s)$ follow. The local
 factors of the symmetric square at the primes of potentially good reduction were computed by Coates and Schmidt \cite{CoatesSchmidt87}, and Watkins \cite{Watkins02}
 describes how the bad factors are found in practice; we have not checked their normalisations against \Cref{rem:lfunctions:normalisations}. Deligne's conjecture is
-\cite{Deligne79}; Sturm \cite{Sturm80} and Zagier \cite{Zagier85} treat the critical values of the symmetric square. Flach's finiteness theorem is \cite{Flach92}; its
-hypotheses in \Cref{thm:lfunctions:flach} are as usually recalled and as in the secondary account of Langer \cite{Langer97}, not checked against the original. The Bloch-Kato conjecture is \cite{BlochKato}, and the theorem of
+\cite{Deligne79}; Sturm \cite{Sturm80} and Zagier \cite{Zagier85} treat the critical values of the symmetric square. Flach's finiteness theorem is \cite[Theorem 1]{Flach92}; its
+hypotheses and annihilator in \Cref{thm:lfunctions:flach} were checked against the original (Theorem 1, Propositions 1.1 and 2.2 there). The Bloch-Kato conjecture is \cite{BlochKato}, and the theorem of
 Diamond, Flach and Guo is \cite{DFG04} (\Cref{ch:blochkato,ch:congruence}).
 
 \emph{Rankin-Selberg.} The method is due to Rankin \cite{Rankin39} and Selberg \cite{Selberg40}; Shimura \cite{Shimura76} treats the special values. The exact relation of
