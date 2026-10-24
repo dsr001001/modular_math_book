@@ -1334,7 +1334,7 @@ the genus-one levels to Ligozat, Ogg and Joly; it never mentions CM or j at leve
 27-isogeny forces CM (disc -27)" and Kenku Theorem 1 only for the list of N.
 
 ### 107. Abstract: "the bound for the deficit in the Eisenstein case at l=3 [is] proved" overstates (high confidence)
-Only D <= 2 given the first bound of conj:eis is proved (prop:no9); Sections 1.4 and 6.10 say it correctly.
+Only D <= 2 given the first bound of conj:eis is proved (prop:no9); Sections 1.5, 1.6 and 6.10 say it correctly.
 
 ### 108. lem:hecke introduces m, unused since the revision (trivial; high confidence)
 
@@ -1345,6 +1345,11 @@ cor:explicit and sec:tam already write c(u), c(u_q); use c(u) in the lemma too.
 
 ### 111. sec:data protocol: blind status of w_3 unknown (medium-high confidence)
 The paper does not say whether the out-of-table set contains curves with 3 | N and potentially good reduction at 3.
+
+### 112. Abstract: scope of eq:rule omits "non-CM, E[l] irreducible" (high confidence)
+"With that correction term the inequality holds with no exception ... for every curve of conductor at most 500000 that
+the tables determine to be optimal" omits the hypotheses of conj:euler; Eisenstein curves violate the rule (11a1 at l = 5:
+rule = [0,1]; 539a1, 98a1 at l = 3: [0,1]; recomputed). Insert "with E[l] irreducible and without complex multiplication".
 
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
