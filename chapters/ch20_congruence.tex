@@ -201,10 +201,11 @@ Remark rem:afterquant & \Cref{lem:congruence:quant-step1}, \Cref{rem:congruence:
 \end{center}
 
 It may help to see the whole proof of Theorem thm:main before its parts. With $\Sigma$ the set of primes dividing $N$, it is a chain of four equalities of $\ell$-adic valuations,
-\[
-v_\ell(\degphi)\ \overset{(1)}=\ v_\ell(\eta^\emptyset_{f,\ell})\ \overset{(2)}=\ v_\ell(\eta^\Sigma_{f,\ell})-\sum_{q\in\Sigma}v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr)\ \overset{(3)}=\ \len H^1_\Sigma(\Q,W)-\sum_{q\in\Sigma}v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr),
-\]
-followed by a purely Galois-cohomological step (4) that rewrites $\len H^1_\Sigma(\Q,W)$ as $\len H^1_f(\Q,W)$ plus local terms. Equality (1) says that the modular degree is a congruence ideal (Section
+\begin{align*}
+v_\ell(\degphi)&\overset{(1)}=v_\ell(\eta^\emptyset_{f,\ell})\overset{(2)}=v_\ell(\eta^\Sigma_{f,\ell})-\sum_{q\in\Sigma}v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr)\\
+&\overset{(3)}=\len H^1_\Sigma(\Q,W)-\sum_{q\in\Sigma}v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr),
+\end{align*}
+followed by a purely Galois-cohomological step (4) that rewrites the length of $H^1_\Sigma(\Q,W)$ as that of $H^1_f(\Q,W)$ plus local terms. Equality (1) says that the modular degree is a congruence ideal (Section
 \ref{sec:congruence:dfg-lattices}); (2) says how that ideal grows when the level is raised by depletion (Section \ref{sec:congruence:dfg14}); (3) is the theorem of Diamond, Flach and Guo that a congruence ideal
 measures a Selmer group (Sections \ref{sec:congruence:dfg-theorems} and \ref{sec:congruence:taylor-wiles}); and (4) is \Cref{ch:blochkato}. The sections below follow this order, after two sections of algebra that
 make the words ``congruence ideal'' precise. Theorem thm:quant (Section \ref{sec:congruence:quant}) runs a similar chain at a different pair of levels.
@@ -392,10 +393,11 @@ we do not repeat it. For the display: the forms killed by $\wp$ are $\Z f$ and t
 perfect pairing $S\times\T\to\Z$ with $\T$ acting compatibly, ideals $\mf a,\mf b$ with $\mf a\cap\mf b=0$, $\T/\mf a$ and $\T/\mf b$ torsion-free of complementary ranks, one has
 $S/(S[\mf a]\oplus S[\mf b])\simeq(\T/(\mf a+\mf b))^*$ (\Cref{ch:modules}, the duality between an algebra and a module). Take $\mf a=\wp$, $\mf b=I$; $\wp\cap I=0$ by
 \Cref{prop:congruence:newform-ideal} and \Cref{prop:congruence:congruence-module}(ii), $\T/\wp\simeq\Z$ has rank $1$ and $\T/I$ embeds in $\T'$, of rank $\rank\T-1$. (Concretely: by the proof of
-\Cref{prop:congruence:congruence-module}, $I=\T\cap\Q e_\pi$ with $e_\pi$ the idempotent of the factor $\Q$; so $t\mapsto(1-e_\pi)t$ maps $\T$ to $\T'$ with kernel $\T\cap\Q e_\pi=I$, and $\T/I$ is a
-subgroup of the free group $\T'\cap(1-e_\pi)(\T\otimes\Q)$-lattice spanned by the image, torsion-free of rank $\rank\T-1$.) In words: a form in $S$ is determined by the values $a_1(t\,\cdot)$, a form
-killed by $\wp$ is one whose functional factors through $\T/\wp$, a form killed by $I$ one whose functional factors through $\T/I$, and the forms of $S$ that split are those whose functional on $\T$
-extends from the image of $\T$ in $\T/\wp\times\T/I$; the obstruction to extending is measured by the cokernel $\T/(\wp+I)$ of $\T\to\T/\wp\times\T/I$.
+\Cref{prop:congruence:congruence-module}, $I=\T\cap\Q e_\pi$ with $e_\pi$ the idempotent of the factor $\Q$, so $t\mapsto(1-e_\pi)t$ maps $\T$ into the factor $\T'$ of $\T\otimes\Q$ with kernel exactly
+$I$; hence $\T/I$ is a finitely generated subgroup of a $\Q$-vector space of dimension $\rank\T-1$ which spans it, torsion-free of that rank.) In words: the pairing identifies a form $h\in S$ with the
+functional $t\mapsto a_1(th)$ on $\T$; $h$ is killed by $\wp$ iff its functional factors through $\T/\wp$, and killed by $I$ iff it factors through $\T/I$. Since $\wp\cap I=0$, $\T$ embeds in
+$\T/\wp\times\T/I$ with cokernel $\T/(\wp+I)$, and $S[\wp]\oplus S[I]$ is the set of functionals on $\T$ that extend to this larger lattice. The quotient $S/(S[\wp]\oplus S[I])$ is therefore the
+cokernel of the restriction $\Hom(\T/\wp\times\T/I,\Z)\to\Hom(\T,\Z)$, which is $\operatorname{Ext}^1(\T/(\wp+I),\Z)\simeq\Hom(\T/(\wp+I),\Q/\Z)$ by the long exact sequence of $\Hom(-,\Z)$.
 \end{proof}
 
 \begin{paperlink}
@@ -1122,7 +1124,8 @@ The term at $\infty$ vanishes because $H^1(\R,T^D)$ is killed by $2$ and $\ell$ 
 \emph{Step 5 (cancellation of the naive factors; Definition def:terms).} Substituting Step 3 into Step 2 and then Step 4 into the result,
 \begin{align*}
 v_\ell(\degphi)&=\len H^1_\Sigma(\Q,W)-\sum_{q\in\Sigma}v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr)\\
-&=\len H^1_f(\Q,W)+\sum_{q\in\Sigma}v_\ell\bigl(\Tam_q(\ad T)\bigr)+\sum_{q\in\Sigma}\Bigl(v_\ell\bigl(L_q(A_f,1)^{-1}\bigr)-v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr)\Bigr).
+&=\len H^1_f(\Q,W)+\sum_{q\in\Sigma}v_\ell\bigl(\Tam_q(\ad T)\bigr)\\
+&\qquad+\sum_{q\in\Sigma}\Bigl(v_\ell\bigl(L_q(A_f,1)^{-1}\bigr)-v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr)\Bigr).
 \end{align*}
 The true Euler factor enters through the Selmer side (Step 4) and the naive one through the Hecke side (Step 2), so what survives is their ratio. With $\Sigma=\set{q\mid N}$ this reads
 \[
