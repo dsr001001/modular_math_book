@@ -1,0 +1,1321 @@
+\chapter{Prerequisites: what we assume and where to look}\label{ch:prereq}
+
+This appendix lists, as precise statements without proofs, what the book assumes from the reader's
+first courses: real analysis, linear algebra, complex analysis, the group theory, representation
+theory and probability of Riley, Hobson and Bence \cite{RHB06}, and elementary statistics. Each
+item is a card: a definition, or a theorem tagged \emph{(stated; reference)}, followed by the
+chapter of the book where it is first needed and a reference where a proof can be found. Nothing
+here is proved; the proofs are in the textbooks of \Cref{sec:prereq:books}. A reader who recognises
+every card can skip the appendix. A reader who does not recognise one should read the corresponding
+part of the reference before the chapter of the book that needs it.
+
+The book assumes nothing beyond this appendix. In particular it does not assume abstract algebra
+beyond the group theory of \Cref{sec:prereq:groups}: rings, fields, modules, Galois theory and
+everything after them are built from the beginning in \Cref{ch:rings}, \Cref{ch:modules} and
+\Cref{ch:galois}. Two warnings apply throughout. First, the reader's courses did linear algebra over
+$\R$ and $\C$; every statement of \Cref{sec:prereq:linear} holds over an arbitrary field $k$ unless
+the field is named, and the book uses them over $\F_q$, $\Q_\ell$, $\Q$ and finite extensions of
+these. Second, the word ``character'' has two meanings in the book, RHB's (the trace function of a
+representation) and the number-theoretic one (a one-dimensional representation, such as a Dirichlet
+character or the cyclotomic character $\chil$); \Cref{sec:prereq:groups} says which is which.
+
+\section{Real analysis}\label{sec:prereq:real}
+
+This section is used from \Cref{ch:modules} on, where the ring $\Zl$ is constructed by the recipe
+that constructs $\R$ from $\Q$, and in earnest in \Cref{ch:ellcurves}, \Cref{ch:modforms} and
+\Cref{ch:lfunctions}, where lattice sums, $q$-expansions and Dirichlet series must be shown to
+converge.
+
+\begin{definition}[the real numbers; convergence]\label{def:prereq:completeness}
+$\R$ is an ordered field with the \emph{least upper bound property}: every nonempty subset of $\R$
+that is bounded above has a least upper bound (supremum) in $\R$. A sequence $(x_n)$ of real or
+complex numbers \emph{converges} to $x$ if for every $\eps>0$ there is $N$ with $\abs{x_n-x}<\eps$
+for all $n\ge N$; it is \emph{Cauchy} if for every $\eps>0$ there is $N$ with $\abs{x_m-x_n}<\eps$
+for all $m,n\ge N$.
+\end{definition}
+
+\begin{theorem}[consequences of completeness (stated; reference)]\label{thm:prereq:completeness}
+\begin{enumerate}[label=(\alph*)]
+\item Every bounded monotone sequence of real numbers converges.
+\item (Bolzano-Weierstrass) Every bounded sequence in $\R$ or $\C$ has a convergent subsequence.
+\item (Cauchy criterion) A sequence in $\R$ or $\C$ converges if and only if it is Cauchy. In the
+language of metric spaces: $\R$, $\C$ and $\R^n$ with the Euclidean distance are complete.
+\item $\Q$ is not complete: a Cauchy sequence of rationals need not have a rational limit. $\R$ is,
+up to isomorphism, the completion of $\Q$: the set of Cauchy sequences of rationals modulo the
+sequences converging to $0$, with the operations performed termwise.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:modules} and \Cref{ch:local}, where $\Zl$ and $\Q_p$ are
+built from $\Z$ and $\Q$ by (d) with the $p$-adic absolute value in place of the usual one.
+\emph{Reference:} \cite[Chapters 1 and 3, Theorem 3.11]{Rudin76}.
+
+\emph{Two Cauchy sequences.} The decimal truncations $x_1=1.4$, $x_2=1.41$, $x_3=1.414,\dots$ of
+$\sqrt2$ form a Cauchy sequence of rationals: for $m,n\ge N$ both $x_m$ and $x_n$ lie in the
+interval $[x_N,x_N+10^{-N}]$, so $\abs{x_m-x_n}\le10^{-N}$. Its limit $x$ in $\R$ satisfies
+$x^2=\lim x_n^2=2$, so the sequence has no limit in $\Q$; this is (d) in its simplest form. The
+same recipe with another absolute value gives a different completion. Let $\abs{x}_3=3^{-v_3(x)}$,
+where $v_3(x)$ is the exponent of $3$ in the rational number $x$, and let
+$s_n=1+3+\dots+3^n=(3^{n+1}-1)/2$. For $m>n$ the difference $s_m-s_n$ is divisible by $3^{n+1}$, so
+$\abs{s_m-s_n}_3\le3^{-n-1}$ and $(s_n)$ is Cauchy for $\abs{\cdot}_3$. In this case the limit is
+even rational: $s_n+\tfrac12=3^{n+1}/2$ has $\abs{s_n+\tfrac12}_3=3^{-n-1}\to0$, so
+$1+3+9+\dots=-\tfrac12$ is a true statement $3$-adically. Completing $\Q$ for $\abs{\cdot}_3$ gives
+$\Q_3$; \Cref{ch:local} does this for every prime.
+
+\begin{definition}[series]\label{def:prereq:series}
+A series $\sum_{n\ge1}a_n$ of complex numbers \emph{converges} to $s$ if its partial sums
+$\sum_{n\le N}a_n$ converge to $s$; it \emph{converges absolutely} if $\sum\abs{a_n}$ converges.
+\end{definition}
+
+\begin{theorem}[series (stated; reference)]\label{thm:prereq:series}
+\begin{enumerate}[label=(\alph*)]
+\item An absolutely convergent series converges, and $\abs{\sum a_n}\le\sum\abs{a_n}$.
+\item (Comparison) If $\abs{a_n}\le b_n$ for all large $n$ and $\sum b_n$ converges, then
+$\sum a_n$ converges absolutely.
+\item (Ratio and root tests) If $\limsup\abs{a_{n+1}/a_n}<1$, or if $\limsup\abs{a_n}^{1/n}<1$,
+then $\sum a_n$ converges absolutely; if $\limsup\abs{a_n}^{1/n}>1$ it diverges.
+\item (Rearrangement) Every rearrangement of an absolutely convergent series converges absolutely
+to the same sum.
+\item (Double series) If the sums $\sum\abs{a_{m,n}}$ over finite sets of pairs $(m,n)$ are bounded,
+then $\sum a_{m,n}$ taken in any order converges absolutely to the same value, which equals both
+iterated sums $\sum_m\sum_n a_{m,n}$ and $\sum_n\sum_m a_{m,n}$. The same holds for sums indexed
+by any countable set, such as the nonzero elements of a lattice in $\C$.
+\item (Cauchy product) If $\sum a_n$ and $\sum b_n$ converge absolutely, then
+$\sum_n\bigl(\sum_{k=0}^n a_kb_{n-k}\bigr)$ converges absolutely to the product of the two sums.
+\item $\sum_{n\ge1}n^{-\sigma}$ converges for real $\sigma>1$ and diverges for $\sigma\le1$; for a
+lattice $\Lambda\subset\C$, $\sum_{0\ne\omega\in\Lambda}\abs{\omega}^{-\sigma}$ converges if and
+only if $\sigma>2$.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:ellcurves} (the Weierstrass $\wp$-function and the Eisenstein
+series $G_{2k}(\Lambda)=\sum'\omega^{-2k}$ are lattice sums, absolutely convergent for $2k\ge3$ by
+(g) and summed in any order by (e)); \Cref{ch:lfunctions} (Dirichlet series and Euler products).
+\emph{Reference:} \cite[Chapter 3]{Rudin76}; \cite[Chapter 8]{Apostol74}.
+
+\emph{Why the lattice sum converges exactly for $\sigma>2$.} The second half of (g) reduces to the
+first by counting lattice points. Let $\Lambda=\Z\omega_1+\Z\omega_2$ with $\omega_1,\omega_2$
+linearly independent over $\R$. For an integer $r\ge1$, the points $m\omega_1+n\omega_2$ with
+$\max(\abs m,\abs n)=r$ form the boundary of a square of lattice points, and there are
+$(2r+1)^2-(2r-1)^2=8r$ of them. The function $(x,y)\mapsto\abs{x\omega_1+y\omega_2}$ is continuous
+and nowhere zero (by linear independence) on the compact set $\max(\abs x,\abs y)=1$, so by
+\Cref{thm:prereq:compact}(b) it has a minimum $c>0$ and a maximum $C$ there; by homogeneity every
+point of the $r$-th square satisfies $cr\le\abs\omega\le Cr$. The contribution of the $r$-th square
+to $\sum'\abs\omega^{-\sigma}$ therefore lies between $8C^{-\sigma}r^{1-\sigma}$ and
+$8c^{-\sigma}r^{1-\sigma}$, and the whole sum converges if and only if $\sum_rr^{1-\sigma}$ does,
+that is, if and only if $\sigma-1>1$. The terms are positive, so by (e) the order of summation does
+not matter. In particular $G_{2k}(\Lambda)$ converges absolutely for $2k\ge4$, while the sum for
+$G_2$ does not converge absolutely.
+
+\begin{definition}[uniform convergence]\label{def:prereq:uniform}
+Let $S$ be a set and $f_n,f\colon S\to\C$. Then $f_n\to f$ \emph{uniformly on $S$} if
+$\sup_{x\in S}\abs{f_n(x)-f(x)}\to0$. A series $\sum f_n$ converges uniformly if its partial sums do.
+For functions on an open subset $U$ of $\C$ or $\R^n$, \emph{locally uniform} convergence means
+uniform convergence on every compact subset of $U$.
+\end{definition}
+
+\begin{theorem}[uniform convergence (stated; reference)]\label{thm:prereq:uniform}
+\begin{enumerate}[label=(\alph*)]
+\item A uniform limit of continuous functions on a metric space is continuous.
+\item (Weierstrass $M$-test) If $\abs{f_n(x)}\le M_n$ for all $x\in S$ and $\sum M_n<\infty$, then
+$\sum f_n$ converges absolutely and uniformly on $S$.
+\item If $f_n\to f$ uniformly on $[a,b]$ and each $f_n$ is Riemann integrable, then $f$ is Riemann
+integrable and $\int_a^bf_n\to\int_a^bf$; a uniformly convergent series may be integrated term by
+term.
+\item If the $f_n$ are differentiable on $[a,b]$, $f_n(x_0)$ converges for one point $x_0$, and
+$f_n'$ converges uniformly, then $f_n$ converges uniformly to a differentiable $f$ with
+$f'=\lim f_n'$. For holomorphic functions the much stronger \Cref{thm:prereq:weierstrass} holds.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:ellcurves}; \Cref{ch:modforms} ($q$-expansions and
+Eisenstein series converge locally uniformly on the upper half plane, by (b) on each compact set);
+\Cref{ch:lfunctions}. \emph{Reference:} \cite[Chapter 7, Theorems 7.10 and 7.12]{Rudin76}.
+
+\emph{The $M$-test for a $q$-expansion.} Suppose $\abs{a_n}\le Cn^k$ for all $n\ge1$ and put
+$f(z)=\sum_{n\ge1}a_ne^{2\pi inz}$ on the upper half plane. A compact set $K$ in the upper half plane
+has $\operatorname{Im}z\ge y_0$ on $K$ for some $y_0>0$ (the continuous function $\operatorname{Im}z$
+attains a positive minimum on $K$, \Cref{thm:prereq:compact}(b)). On $K$,
+$\abs{a_ne^{2\pi inz}}=\abs{a_n}e^{-2\pi n\operatorname{Im}z}\le Cn^ke^{-2\pi ny_0}=M_n$, and
+$\sum M_n$ converges by the ratio test, since $M_{n+1}/M_n=(1+1/n)^ke^{-2\pi y_0}\to e^{-2\pi y_0}<1$.
+So by (b) the series converges absolutely and uniformly on $K$: it converges locally uniformly on the
+upper half plane, and \Cref{thm:prereq:weierstrass} then makes $f$ holomorphic. This is the argument
+used, without further comment, for every $q$-expansion in the book.
+
+\begin{definition}[power series]\label{def:prereq:power}
+A power series is $\sum_{n\ge0}c_n(z-a)^n$ with $c_n,a\in\C$. Its \emph{radius of convergence} is
+$R=1/\limsup\abs{c_n}^{1/n}\in[0,\infty]$.
+\end{definition}
+
+\begin{theorem}[power series (stated; reference)]\label{thm:prereq:power}
+\begin{enumerate}[label=(\alph*)]
+\item The series converges absolutely for $\abs{z-a}<R$, diverges for $\abs{z-a}>R$, and converges
+uniformly on every closed disc $\abs{z-a}\le r$ with $r<R$.
+\item Its sum $f$ is complex differentiable on the open disc of radius $R$, with derivative the
+term-by-term derivative $\sum nc_n(z-a)^{n-1}$, which has the same radius of convergence.
+\item The coefficients are determined by $f$: $c_n=f^{(n)}(a)/n!$. Two power series centred at
+$a$ whose sums agree on a sequence of points $z_k\ne a$ converging to $a$ have the same
+coefficients.
+\item $\sum z^n/n!$ has $R=\infty$; $\sum z^n$ has $R=1$ and sum $1/(1-z)$.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:modforms} (a $q$-expansion $\sum a_nq^n$ is a power series
+in $q=e^{2\pi iz}$, $\abs{q}<1$). \emph{Warning:} the $p$-adic expansions $\sum a_np^n$ of
+\Cref{ch:local} converge for a different absolute value, in which $\abs{p^n}\to0$; the analogy with
+power series is useful, the theorems above do not transfer. \emph{Reference:} \cite[Chapter 3,
+Theorem 3.39, and Chapter 8]{Rudin76}.
+
+\emph{Example.} If $\abs{c_n}\le Cn^k$, then $\abs{c_n}^{1/n}\le C^{1/n}n^{k/n}\to1$, so the radius of
+convergence is at least $1$: coefficients of polynomial growth, such as those of every $q$-expansion
+in the book, always give a power series in $q$ converging on $\abs q<1$. The bound $1$ can be
+attained: $\sum_{n\ge1}nq^n$ has radius exactly $1$, and differentiating $\sum q^n=1/(1-q)$ term by
+term by (b) and multiplying by $q$ gives its sum $q/(1-q)^2$.
+
+\begin{definition}[compactness]\label{def:prereq:compact}
+A subset $K$ of $\R^n$ or $\C$ is \emph{compact} if every cover of $K$ by open sets has a finite
+subcover; equivalently (Heine-Borel) if it is closed and bounded; equivalently if every sequence
+in $K$ has a subsequence converging to a point of $K$.
+\end{definition}
+
+\begin{theorem}[continuity and compactness (stated; reference)]\label{thm:prereq:compact}
+Let $K$ be compact and $f$ continuous on $K$.
+\begin{enumerate}[label=(\alph*)]
+\item $f(K)$ is compact.
+\item If $f$ is real valued, it attains its maximum and its minimum on $K$.
+\item $f$ is uniformly continuous on $K$.
+\item A continuous bijection from a compact space onto a metric space is a homeomorphism.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:curves} (a holomorphic function on a compact connected
+Riemann surface is constant: (b) applied to $\abs{f}$ with the maximum modulus principle);
+\Cref{ch:modforms} (fundamental domains, the compactification of $Y_0(N)$ by the cusps).
+\emph{Reference:} \cite[Theorems 2.41, 4.14, 4.16 and 4.19]{Rudin76}.
+
+\emph{How (b) is used on a Riemann surface.} Let $X$ be a compact connected Riemann surface and $f$
+holomorphic on $X$. The continuous function $\abs f$ attains its maximum at some point $P$ by (b),
+which holds for continuous real functions on any compact space. In a coordinate chart around $P$,
+$f$ is a holomorphic function of one variable whose modulus has a local maximum, so it is constant
+near $P$ by the maximum modulus principle (\Cref{thm:prereq:cauchy}(e)). The set of points of $X$
+near which $f$ is identically $f(P)$ is open by definition, nonempty, and closed by the identity
+theorem (\Cref{thm:prereq:cauchy}(d), applied in charts); since $X$ is connected it is all of $X$.
+\Cref{ch:curves} gives the details.
+
+\begin{definition}[the Riemann integral]\label{def:prereq:riemann}
+For a bounded $f\colon[a,b]\to\R$ and a partition $a=x_0<\dots<x_n=b$, the upper and lower sums are
+$\sum(x_i-x_{i-1})\sup_{[x_{i-1},x_i]}f$ and $\sum(x_i-x_{i-1})\inf_{[x_{i-1},x_i]}f$. The function
+is \emph{Riemann integrable} if the infimum of the upper sums equals the supremum of the lower sums,
+and $\int_a^bf$ is the common value. Complex-valued functions are integrated by real and imaginary
+parts.
+\end{definition}
+
+\begin{theorem}[the Riemann integral (stated; reference)]\label{thm:prereq:riemann}
+\begin{enumerate}[label=(\alph*)]
+\item Every continuous function on $[a,b]$ is integrable, and so is every monotone function and
+every bounded function with finitely many discontinuities.
+\item The integral is linear and monotone, $\abs{\int_a^bf}\le\int_a^b\abs{f}$, and
+$\int_a^b=\int_a^c+\int_c^b$.
+\item (Fundamental theorem of calculus) If $f$ is continuous on $[a,b]$, then $F(x)=\int_a^xf$ is
+differentiable with $F'=f$; if $F$ is differentiable on $[a,b]$ and $F'$ is integrable, then
+$\int_a^bF'=F(b)-F(a)$.
+\item Integration by parts and the substitution rule hold for $C^1$ functions.
+\item For a $C^1$ curve $\gamma\colon[a,b]\to\C$ and $f$ continuous on its image, the line integral
+is $\int_\gamma f(z)\,dz=\int_a^bf(\gamma(t))\gamma'(t)\,dt$; it does not depend on the
+parametrisation of $\gamma$ and changes sign when the orientation is reversed.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:curves} (line integrals define Cauchy's theorem and the
+periods of a differential); \Cref{ch:ellcurves} (the periods of an elliptic curve over $\C$ are
+integrals of $dx/y$ over closed paths); \Cref{ch:modforms} (the Petersson inner product is a double
+integral over a fundamental domain). \emph{Reference:} \cite[Chapter 6, Theorems 6.8, 6.20 and
+6.21]{Rudin76}.
+
+\emph{The basic line integral.} Parametrise the unit circle by $\gamma(t)=e^{it}$, $0\le t\le2\pi$,
+so $\gamma'(t)=ie^{it}$. For an integer $n$, (e) gives
+\[
+\int_{\abs z=1}z^n\,dz=\int_0^{2\pi}e^{int}\,ie^{it}\,dt=i\int_0^{2\pi}e^{i(n+1)t}\,dt
+=\begin{cases}2\pi i&n=-1,\\0&n\ne-1,\end{cases}
+\]
+since $e^{i(n+1)t}$ has an antiderivative $e^{i(n+1)t}/(i(n+1))$ of period $2\pi$ when $n\ne-1$.
+This one computation is behind the coefficient formula for Laurent series and the residue theorem
+of \Cref{sec:prereq:complex}: integrating a Laurent series term by term around a circle keeps only
+the coefficient of $z^{-1}$.
+
+\begin{definition}[improper integrals]\label{def:prereq:improper}
+$\int_a^\infty f=\lim_{b\to\infty}\int_a^bf$ when the limit exists; for $f$ unbounded near $0$,
+$\int_0^1f=\lim_{\eps\to0^+}\int_\eps^1f$; $\int_0^\infty$ is the sum of $\int_0^1$ and
+$\int_1^\infty$. The integral \emph{converges absolutely} if the corresponding integral of $\abs f$
+converges.
+\end{definition}
+
+\begin{theorem}[improper integrals (stated; reference)]\label{thm:prereq:improper}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item (Comparison) Suppose that $\abs f\le g$ on $[a,\infty)$ and that $\int_a^\infty g$ converges. Then
+$\int_a^\infty f$ converges absolutely; and absolutely convergent improper integrals converge.
+\item $\int_1^\infty t^{-\sigma}\,dt$ converges if and only if $\sigma>1$;
+$\int_0^1t^{\sigma-1}\,dt$ converges if and only if $\sigma>0$; $\int_0^\infty e^{-ct}t^m\,dt$
+converges for every $c>0$ and $m>-1$.
+\item (Parameters) If $f(t,s)$ is continuous on $[a,\infty)\times K$ with $K$ compact, and
+$\abs{f(t,s)}\le g(t)$ with $\int_a^\infty g<\infty$, then $s\mapsto\int_a^\infty f(t,s)\,dt$ is
+continuous on $K$; if moreover $\partial f/\partial s$ exists, is continuous and is dominated in the
+same way, the integral may be differentiated under the integral sign.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}[the Gamma function]\label{def:prereq:gamma}
+For real $s>0$, $\Gamma(s)=\int_0^\infty e^{-t}t^{s-1}\,dt$. The integral converges absolutely: near
+$0$ by \Cref{thm:prereq:improper}(b), and near $\infty$ because $e^{-t}t^{s-1}\le t^{-2}$ for
+large $t$.
+\end{definition}
+
+\begin{theorem}[the Gamma function, real form (stated; reference)]\label{thm:prereq:gammareal}
+\begin{enumerate}[label=(\alph*)]
+\item $\Gamma(s+1)=s\,\Gamma(s)$ for $s>0$ (integration by parts).
+\item $\Gamma(1)=1$, hence $\Gamma(n+1)=n!$ for integers $n\ge0$; $\Gamma(1/2)=\sqrt\pi$.
+\item For $n\ge1$ and $s>0$, $\int_0^\infty e^{-nt}t^{s-1}\,dt=n^{-s}\Gamma(s)$ (substitute
+$t\mapsto t/n$).
+\item $\Gamma$ is continuous and positive on $(0,\infty)$, and $\log\Gamma$ is convex there.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:lfunctions} (the completed $L$-function
+$\Lambda(E,s)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(E,s)$ and the Mellin transform of
+\Cref{rem:prereq:mellin}); the complex form is \Cref{thm:prereq:gamma}. \emph{Reference:}
+\cite[Chapter 8]{Rudin76}; \cite[Chapter 18]{RHB06}.
+
+\emph{The computations behind (a) and (b), and behind the definition.} The bound
+$e^{-t}t^{s-1}\le t^{-2}$ for large $t$ in \Cref{def:prereq:gamma} holds because
+$t^{s+1}e^{-t}\to0$: choose an integer $m>s+1$; then $e^t\ge t^m/m!$ gives
+$t^{s+1}e^{-t}\le m!\,t^{s+1-m}\to0$. For (a), integrate by parts on $[\eps,b]$:
+\[
+\int_\eps^be^{-t}t^s\,dt=\bigl[-e^{-t}t^s\bigr]_\eps^b+s\int_\eps^be^{-t}t^{s-1}\,dt,
+\]
+and the boundary terms $e^{-\eps}\eps^s$ and $e^{-b}b^s$ tend to $0$ as $\eps\to0^+$ (because $s>0$)
+and $b\to\infty$. For (b), $\Gamma(1)=\int_0^\infty e^{-t}\,dt=1$, and induction on (a) gives
+$\Gamma(n+1)=n\,\Gamma(n)=\dots=n!$. The substitution $t=u^2$, $dt=2u\,du$, turns $\Gamma(1/2)$ into
+$2\int_0^\infty e^{-u^2}\,du=\int_{-\infty}^\infty e^{-u^2}\,du$, which is $\sqrt\pi$ (the
+Gaussian integral, computed by squaring it and passing to polar coordinates).
+
+With the analytic background in place, the next section turns to linear algebra, which the book
+uses far more heavily and over fields the reader's courses did not consider.
+
+\section{Linear algebra}\label{sec:prereq:linear}
+
+This section is used from \Cref{ch:groups} on. Throughout, $k$ is a field and all vector spaces are
+finite-dimensional over $k$; the reader's courses did $k=\R$ and $k=\C$, and the book uses
+$k=\F_q$, $\Ql$, $\Q$ and their finite extensions, and the same constructions over the rings $\Z$
+and $\Zl$ (\Cref{ch:modules} says what survives over a ring).
+
+\begin{definition}[vector spaces, bases, dimension]\label{def:prereq:vs}
+A \emph{vector space} over $k$ is an abelian group $V$ with a scalar multiplication $k\times V\to V$
+satisfying the usual axioms. A family $(v_i)$ is \emph{linearly independent} if
+$\sum a_iv_i=0$ forces all $a_i=0$, \emph{spanning} if every vector is a linear combination of it,
+and a \emph{basis} if both. A \emph{linear map} $T\colon V\to W$ satisfies $T(av+bw)=aTv+bTw$; its
+kernel and image are subspaces; $\End(V)$ is the ring of linear maps $V\to V$ and $\GL(V)$ its
+group of units.
+\end{definition}
+
+\begin{theorem}[bases and dimension (stated; reference)]\label{thm:prereq:dimension}
+\begin{enumerate}[label=(\alph*)]
+\item Every finitely generated vector space has a basis, and any two bases have the same number of
+elements, the \emph{dimension} $\dim V$. Over a finite field $\F_q$, a space of dimension $n$ has
+$q^n$ elements.
+\item Every linearly independent family extends to a basis; every spanning family contains a basis.
+\item For a subspace $U\subseteq V$: $\dim U\le\dim V$, with equality if and only if $U=V$, and
+$\dim V=\dim U+\dim(V/U)$.
+\item (Rank-nullity) For a linear map $T\colon V\to W$, $\dim V=\dim\ker T+\dim\im T$. In
+particular an injective, or a surjective, linear map between spaces of the same dimension is an
+isomorphism.
+\item $\dim(U+U')+\dim(U\cap U')=\dim U+\dim U'$ for subspaces $U,U'$ of $V$.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:groups} (the lines of $\F_q^2$: there are $q+1$ of them,
+the points of $\PP^1(\F_q)$); \Cref{ch:reps}. \emph{Reference:} \cite[Chapters 2 and 3]{Axler15};
+\cite[Chapter 11]{DummitFoote}.
+
+\emph{Counting lines.} A line (one-dimensional subspace) of $\F_q^2$ is spanned by any of its
+nonzero vectors, and it contains $q-1$ of them by (a). Two distinct lines meet only in $0$, so the
+$q^2-1$ nonzero vectors of $\F_q^2$ fall into $(q^2-1)/(q-1)=q+1$ lines. For $q=3$ these are the four
+lines spanned by $(1,0)$, $(0,1)$, $(1,1)$, $(1,2)$.
+
+\begin{definition}[matrices of linear maps; change of basis]\label{def:prereq:matrices}
+Given bases $e=(e_1,\dots,e_n)$ of $V$ and $f=(f_1,\dots,f_m)$ of $W$, the \emph{matrix} of
+$T\colon V\to W$ is the $m\times n$ matrix $A$ whose $j$-th column holds the coordinates of $Te_j$
+in the basis $f$. Composition of maps corresponds to the product of matrices. If $e'=eP$ is another
+basis of $V$ (the columns of the invertible $P$ are the coordinates of the $e'_j$ in $e$) and
+$f'=fQ$ another basis of $W$, the matrix of $T$ in the new bases is $Q^{-1}AP$; for an
+endomorphism and a single change of basis it is $P^{-1}AP$. The \emph{trace} of a square matrix
+is the sum of its diagonal entries.
+\end{definition}
+
+The convention in \Cref{def:prereq:matrices} matters: books that record the old basis in terms of
+the new one write $PAP^{-1}$ instead, with $P$ replaced by its inverse. A check of the book's
+convention: in $V=k^2$ with the standard basis $e$, let $T$ have matrix $A=\sm1002$, and take the
+new basis $e'_1=e_1$, $e'_2=e_1+e_2$, so $P=\sm1101$. Then
+\[
+P^{-1}AP=\begin{pmatrix}1&-1\\0&1\end{pmatrix}\begin{pmatrix}1&1\\0&2\end{pmatrix}
+=\begin{pmatrix}1&-1\\0&2\end{pmatrix},
+\]
+and indeed $Te'_1=e_1=e'_1$ and $Te'_2=e_1+2e_2=-e'_1+2e'_2$, whose coordinates $(1,0)$ and
+$(-1,2)$ are the columns found.
+
+\begin{theorem}[determinants (stated; reference)]\label{thm:prereq:det}
+The determinant $\det\colon\Mat_n(k)\to k$ is the unique function of the columns that is
+multilinear, alternating, and takes the value $1$ at the identity matrix.
+\begin{enumerate}[label=(\alph*)]
+\item $\det(AB)=\det A\det B$ and $\det A^{\mathsf T}=\det A$.
+\item $A$ is invertible if and only if $\det A\ne0$; then $A^{-1}=(\det A)^{-1}\operatorname{adj}A$,
+where $\operatorname{adj}A$ is the transpose of the matrix of cofactors. Over a commutative ring the
+same formula shows that $A$ is invertible if and only if $\det A$ is a unit.
+\item The determinant of a block upper triangular matrix is the product of the determinants of
+the diagonal blocks.
+\item $\det(P^{-1}AP)=\det A$ and $\tr(P^{-1}AP)=\tr A$ (as $\tr(AB)=\tr(BA)$), so $\det T$ and
+$\tr T$ are defined for an endomorphism $T$ independently of the basis.
+\item $\det$ and $\tr$ are compatible with extension of the field: the determinant of $A$ viewed
+over a larger field is the same element of $k$.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:groups} ($\GL_2(\F_q)$, $\SL_2(\F_q)$ and their orders,
+which are computed there); \Cref{ch:ellcurves} (the determinant of the Galois action on $E[m]$ is
+the cyclotomic character, via the Weil pairing). \emph{Reference:} \cite[Chapter 10]{Axler15};
+\cite[Chapter XIII]{Lang}.
+
+\emph{Invertibility over a ring.} The ring version of (b) is the one the book uses over $\Z$ and
+$\Zl$. The matrix $\sm2001$ has determinant $2$; its inverse $\sm{1/2}001$ has entries in $\Q$ and
+in $\Zl$ for every odd $\ell$, where $2$ is a unit, but not in $\Z$ or $\Z_2$. So the same matrix is
+in $\GL_2(\Z_3)$ and not in $\GL_2(\Z)$ or $\GL_2(\Z_2)$. By contrast $\sm2111$ has determinant $1$,
+and its inverse $\sm1{-1}{-1}2$ has integer entries.
+
+\begin{definition}[eigenvalues; characteristic and minimal polynomials]\label{def:prereq:eigen}
+Let $T\in\End(V)$, $n=\dim V$. A scalar $\lambda\in k$ is an \emph{eigenvalue} of $T$ if
+$\ker(T-\lambda)\ne0$; the nonzero elements of this kernel are the \emph{eigenvectors} and the
+kernel is the \emph{eigenspace}. The \emph{characteristic polynomial} is
+$\chi_T(X)=\det(X\cdot1-A)\in k[X]$ for any matrix $A$ of $T$; it is monic of degree $n$ and does
+not depend on the basis. The \emph{minimal polynomial} $\mu_T$ is the monic polynomial of least
+degree with $\mu_T(T)=0$.
+\end{definition}
+
+\begin{theorem}[eigenvalues (stated; reference)]\label{thm:prereq:eigen}
+\begin{enumerate}[label=(\alph*)]
+\item The eigenvalues of $T$ in $k$ are exactly the roots of $\chi_T$ in $k$.
+\item $\chi_T(X)=X^n-(\tr T)X^{n-1}+\dots+(-1)^n\det T$; for $n=2$,
+$\chi_T(X)=X^2-(\tr T)X+\det T$.
+\item Over a field containing all the roots of $\chi_T$ (for instance an algebraic closure of $k$),
+$\tr T$ is the sum and $\det T$ the product of the roots, counted with multiplicity; the
+eigenvalues of $T^m$, and of $p(T)$ for a polynomial $p$, are the $m$-th powers, respectively the
+values $p(\lambda)$, of the eigenvalues $\lambda$, with multiplicity.
+\item (Cayley-Hamilton) $\chi_T(T)=0$. Consequently $\mu_T$ divides $\chi_T$; every polynomial
+$p$ with $p(T)=0$ is a multiple of $\mu_T$; and $\mu_T$ and $\chi_T$ have the same irreducible
+factors in $k[X]$, hence the same roots in an algebraic closure.
+\item Eigenvectors belonging to distinct eigenvalues are linearly independent.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:groups} (elements of $\GL_2(\F_3)$ of trace $0$ and
+determinant $-1$); \Cref{ch:galrep} (the characteristic polynomial $X^2-a_pX+p$ of Frobenius on
+$\Tl E$). \emph{Reference:} \cite[Chapters 5 and 8]{Axler15}; \cite[Chapter XIV]{Lang};
+\cite[Section 12.2]{DummitFoote}.
+
+\emph{One matrix over several fields.} The paper's matrix $J=\sm01{-1}0$ has trace $0$ and
+determinant $1$, so $\chi_J=X^2+1$ by (b), and $J^2=-1$ by Cayley-Hamilton. Whether $J$ has
+eigenvalues depends on the field. Over $\R$ it has none; over $\C$ it has $\pm i$. Over $\F_p$ with
+$p$ odd it has eigenvalues exactly when $-1$ is a square modulo $p$: over $\F_5$ they are $2$ and $3$
+($2^2=4=-1$), while over $\F_3$ the squares are $0$ and $1$, so there are none, and one must pass to
+$\F_9=\F_3(i)$ to find $\pm i$. Over $\F_2$, $\chi_J=X^2+1=(X+1)^2$ has the double root $1$, but
+$J=\sm0110\ne1$, so by \Cref{thm:prereq:jordan}(c) $J$ is conjugate to $\sm1101$ and is not
+diagonalisable. \Cref{rem:prereq:changes} returns to the case of $\F_3$.
+
+\begin{theorem}[diagonalisation and generalised eigenspaces (stated; reference)]\label{thm:prereq:diag}
+Let $T\in\End(V)$, $n=\dim V$.
+\begin{enumerate}[label=(\alph*)]
+\item $T$ is \emph{diagonalisable} over $k$ (that is, $V$ has a basis of eigenvectors) if and only
+if $\mu_T$ is a product of distinct linear factors in $k[X]$, if and only if $V$ is the direct sum
+of the eigenspaces. In particular $T$ is diagonalisable if $\chi_T$ has $n$ distinct roots in $k$.
+\item Suppose $k$ contains all the roots of $\chi_T$. Then $V=\bigoplus_\lambda V_\lambda$ with
+$V_\lambda=\ker(T-\lambda)^n$ the \emph{generalised eigenspace}, each $V_\lambda$ is $T$-stable,
+$\dim V_\lambda$ is the multiplicity of $\lambda$ as a root of $\chi_T$, and $T$ is diagonalisable
+if and only if every $V_\lambda$ is the eigenspace $\ker(T-\lambda)$.
+\item (Commuting operators) A family of pairwise commuting diagonalisable endomorphisms of $V$ is
+simultaneously diagonalisable: $V$ has a basis of common eigenvectors. More generally, if $k$ is
+algebraically closed, a family of pairwise commuting endomorphisms has a common eigenvector, and $V$
+is the direct sum of the common generalised eigenspaces, each stable under the whole family.
+\item $T$ is called \emph{semisimple} if it is diagonalisable over an algebraic closure of $k$,
+\emph{nilpotent} if $T^m=0$ for some $m$, and \emph{unipotent} if $T-1$ is nilpotent. An
+endomorphism of finite order $m$, with $m$ not divisible by the characteristic of $k$, is
+semisimple with eigenvalues $m$-th roots of unity, because $\mu_T$ divides $X^m-1$, which has
+distinct roots.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:reps} (cyclic groups of order prime to the characteristic act
+semisimply; groups of order divisible by the characteristic need not); \Cref{ch:hecke} (the Hecke
+operators commute; the $T_n$ with $(n,N)=1$ are simultaneously diagonalisable on $S_2(\Gamma_0(N))$,
+the $U_p$ need not be, and the generalised eigenspaces of the Hecke algebra are the objects of the
+paper's Theorem thm:twist); \Cref{ch:modules} (generalised eigenspaces over a discrete valuation
+ring). \emph{Reference:} \cite[Chapters 5 and 8]{Axler15}; \cite[Chapter XIV]{Lang}.
+
+\emph{The hypothesis in (d) cannot be dropped.} Over $\F_\ell$ the matrix $u=\sm1101$ satisfies
+$u^m=\sm1m01$, so it has order exactly $\ell$, the characteristic. Its minimal polynomial is
+$(X-1)^2$ (as $u\ne1$ and $(u-1)^2=0$), which is not a product of distinct linear factors, so $u$ is
+not diagonalisable over any field of characteristic $\ell$, although it has finite order. The
+argument of (d) breaks exactly where expected: $X^\ell-1=(X-1)^\ell$ in characteristic $\ell$ has a
+repeated root. Over $\Q$ the same matrix has infinite order. This $u$ is the shape of the inertia
+action at a prime of type $\kod{IV}$ on $E[3]$ (\Cref{ch:galrep}).
+
+\begin{theorem}[Jordan normal form (stated; reference)]\label{thm:prereq:jordan}
+Suppose $k$ contains all the roots of $\chi_T$. Then $V$ has a basis in which the matrix of $T$ is
+block diagonal with \emph{Jordan blocks} $J_m(\lambda)$: the $m\times m$ matrix with $\lambda$ on
+the diagonal, $1$ just above the diagonal and $0$ elsewhere. The multiset of blocks is uniquely
+determined by $T$, and $T$ is diagonalisable if and only if every block has size $1$. Consequences
+for $\dim V=2$:
+\begin{enumerate}[label=(\alph*)]
+\item A unipotent $T\ne1$ is conjugate to $\sm1101$; its fixed space $\ker(T-1)$ is a line,
+$(T-1)^2=0$, and over $k=\F_\ell$ it has order $\ell$. Likewise $-T$ (``minus a unipotent'') is
+conjugate to $\sm{-1}{-1}0{-1}$ and has no nonzero fixed vector when the characteristic is odd.
+\item If $\chi_T=(X-\lambda)(X-\mu)$ with $\lambda\ne\mu$ in $k$, then $T$ is diagonalisable with
+eigenvalues $\lambda,\mu$.
+\item If $\chi_T=(X-\lambda)^2$, then either $T=\lambda$ or $T$ is conjugate to $\sm\lambda10\lambda$.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:groups} (unipotent elements of $\GL_2(\F_q)$ and the Borel
+subgroup); \Cref{ch:reps}; \Cref{ch:galrep} (the image of inertia at a prime of type $\kod{IV}$ is
+a nontrivial unipotent of order $3$ on $E[3]$, with a line of fixed points: the paper's Lemma
+lem:IV and Remark rem:types); \Cref{ch:hecke} ($U_p$ with the repeated eigenvalue $0$ is a Jordan
+block, not a scalar). \emph{Reference:} \cite[Chapter 8]{Axler15}; \cite[Section 12.3]{DummitFoote}.
+
+\emph{The fixed vectors in (a), computed.} For $T=\sm1101$ and $v=(v_1,v_2)$ one has
+$(T-1)v=(v_2,0)$, so $\ker(T-1)$ is the line spanned by $e_1$. The matrix $-T$ fixes $v$ if and only
+if $(T+1)v=0$; but $T+1=\sm2102$ has determinant $4$, which is nonzero when the characteristic is
+odd, so then $-T$ fixes only $0$. In characteristic $2$, $-T=T$ and the line of fixed points
+returns.
+
+\begin{definition}[bilinear forms; Gram matrices]\label{def:prereq:bilinear}
+A \emph{bilinear form} on $V\times W$ is a map $B\colon V\times W\to k$ linear in each variable.
+Its \emph{Gram matrix} with respect to bases $e$ of $V$ and $f$ of $W$ is $G=(B(e_i,f_j))$. The form
+is \emph{perfect} (or nondegenerate) if $v\mapsto B(v,\cdot)$ is an isomorphism $V\to W^*=\Hom(W,k)$
+and $w\mapsto B(\cdot,w)$ is an isomorphism $W\to V^*$; when $\dim V=\dim W$ each condition is
+equivalent to $\det G\ne0$. For $V=W$ the form is \emph{symmetric} if $B(v,w)=B(w,v)$ and
+\emph{alternating} if $B(v,v)=0$ for all $v$, which implies $B(v,w)=-B(w,v)$. A \emph{sesquilinear
+form} on a complex space is linear in the first variable and conjugate-linear in the second, and
+\emph{Hermitian} if $B(w,v)=\overline{B(v,w)}$.
+\end{definition}
+
+\begin{theorem}[Gram matrices under change of basis (stated; reference)]\label{thm:prereq:gram}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item If the bases change as $e'=eP$ and $f'=fQ$, then the Gram matrix in the new bases is $G'=P^{\mathsf T}GQ$. For $V=W$
+and a single change of basis, $G'=P^{\mathsf T}GP$ and $\det G'=(\det P)^2\det G$. So the
+determinant of the Gram matrix of a bilinear form on $V$ is well defined up to multiplication by
+the square of a unit: of $k^\times$ over a field, of the unit group over a ring. Its $\ell$-adic
+valuation, for a form on a free $\Zl$-module, is therefore an invariant of the form.
+\item An alternating form on a two-dimensional space with basis $e_1,e_2$ is
+$B(v,w)=a\det(v\mid w)$ with $a=B(e_1,e_2)$; its Gram matrix is $\sm0a{-a}0$ and its Gram
+determinant is $a^2$, a square. More generally the Gram determinant of an alternating form on a
+space of even dimension $2m$ is the square of a polynomial in the entries (the Pfaffian), and an
+alternating form on a space of odd dimension is degenerate.
+\item A symmetric bilinear form over a field of characteristic not $2$ has an orthogonal basis
+(a basis in which $G$ is diagonal).
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:modules} (perfect pairings over $\Zl$; the Gram determinant
+of a saturated sublattice and the order of the cokernel of $L\to\Hom(L,\mathcal O)$);
+\Cref{ch:curves} (the cup product on $H^1$ of a curve is perfect and alternating);
+\Cref{ch:congruence} (the pairing $\hat\delta_!$ restricted to the rank-two lattice $M_{f,\lambda}$
+has Gram determinant $(\eta^\Sigma_{f,\lambda})^2$ up to a unit, by (b)). \emph{Reference:}
+\cite[Chapter XV]{Lang}; \cite{Halmos74}.
+
+\emph{Where (a) and (b) come from.} Write $e'_i=\sum_kP_{ki}e_k$ and $f'_j=\sum_lQ_{lj}f_l$. Bilinearity
+gives $B(e'_i,f'_j)=\sum_{k,l}P_{ki}B(e_k,f_l)Q_{lj}=(P^{\mathsf T}GQ)_{ij}$, which is (a), and
+$\det G'=\det P\det G\det Q$ by \Cref{thm:prereq:det}(a). For (b), an alternating form has
+$B(e_1,e_1)=B(e_2,e_2)=0$ and $B(e_2,e_1)=-B(e_1,e_2)=-a$, so for $v=v_1e_1+v_2e_2$ and
+$w=w_1e_1+w_2e_2$,
+\[
+B(v,w)=v_1w_2\,a+v_2w_1\,(-a)=a\,(v_1w_2-v_2w_1)=a\det(v\mid w).
+\]
+For example, the alternating form on $\Z_3^2$ with $a=3$ has Gram determinant $9$, of $3$-adic
+valuation $2$, and no change of basis over $\Z_3$ can change that valuation, because $\det P$ is then
+a unit of $\Z_3$.
+
+\begin{paperlink}\label{pl:prereq:gram}
+The paper's Lemma lem:ddt417 is stated for a free $\mathcal O$-module $L$ with a perfect bilinear
+pairing for which the algebra $\T$ is self-adjoint, and $L[\wp]$ free of rank $d$ with Gram
+determinant $\Delta$; its proof uses that the cokernel of $L[\wp]\to\Hom(L[\wp],\mathcal O)$ has
+order $\#\mathcal O/\Delta$. In the application (Lemma lem:hecke and Step 2 of the proof of Theorem
+thm:quant) $d=2$, the pairing is alternating, and $\Delta=(\eta)^2$ up to a unit by
+\Cref{thm:prereq:gram}(b).
+
+The cokernel statement is linear algebra over the discrete valuation ring $\mathcal O$. In a basis of
+the free module $L[\wp]$ and the dual basis of $\Hom(L[\wp],\mathcal O)$, the map
+$v\mapsto B(v,\cdot)$ has as matrix the transpose $G^{\mathsf T}$ of the Gram matrix, so its
+cokernel is $\mathcal O^d/G^{\mathsf T}\mathcal O^d$. By the Smith normal form (proved in
+\Cref{ch:modules}) this is $\bigoplus_i\mathcal O/d_i$ with $d_1\cdots d_d=\det G$ up to a unit, of
+order $\prod\#(\mathcal O/d_i)=\#\mathcal O/\Delta$. In the rank-two alternating case no Smith form
+is needed: the Gram matrix is $\sm0\eta{-\eta}0$, its image is $\eta\mathcal O^2$, and the cokernel
+is $(\mathcal O/\eta)^2$, of order $(\#\mathcal O/\eta)^2=\#\mathcal O/\eta^2$.
+\end{paperlink}
+
+\begin{definition}[inner products; adjoints]\label{def:prereq:inner}
+An \emph{inner product} on a real vector space is a symmetric bilinear form with
+$\langle v,v\rangle>0$ for $v\ne0$; on a complex vector space it is a Hermitian sesquilinear form
+with the same positivity. It defines the norm $\norm v=\langle v,v\rangle^{1/2}$, orthogonality,
+and the \emph{orthogonal complement} $U^\perp=\{v:\langle v,u\rangle=0\text{ for all }u\in U\}$ of
+a subspace $U$. More generally, for a perfect bilinear form $B$ on $V$ (over any field, with no
+positivity), the \emph{$B$-adjoint} of $T\in\End(V)$ is the unique $T^\dagger$ with
+$B(Tv,w)=B(v,T^\dagger w)$ for all $v,w$, and $T$ is \emph{$B$-self-adjoint} if $T^\dagger=T$.
+\end{definition}
+
+\begin{theorem}[inner product spaces (stated; reference)]\label{thm:prereq:inner}
+Let $V$ be a finite-dimensional real or complex inner product space.
+\begin{enumerate}[label=(\alph*)]
+\item (Cauchy-Schwarz) $\abs{\langle v,w\rangle}\le\norm v\norm w$. $V$ has an orthonormal basis
+(Gram-Schmidt).
+\item For a subspace $U$: $V=U\oplus U^\perp$, $(U^\perp)^\perp=U$ and $\dim U^\perp=\dim V-\dim U$.
+\item Every $T\in\End(V)$ has a unique adjoint $T^*$ with $\langle Tv,w\rangle=\langle v,T^*w\rangle$;
+its matrix in an orthonormal basis is the conjugate transpose of that of $T$; $(ST)^*=T^*S^*$; and a
+subspace $U$ is $T$-stable if and only if $U^\perp$ is $T^*$-stable.
+\item (Spectral theorem) If $T=T^*$, then $V$ has an orthonormal basis of eigenvectors of $T$ and
+all eigenvalues are real; over $\C$ the same conclusion, with complex eigenvalues, holds for normal
+$T$ ($TT^*=T^*T$).
+\item A family of pairwise commuting self-adjoint (or normal) operators has a common orthonormal
+basis of eigenvectors.
+\item For a perfect bilinear form $B$ and a $B$-self-adjoint $T$, the $B$-orthogonal complement of
+a $T$-stable subspace is $T$-stable, and $T$ need not be diagonalisable.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:modforms} and \Cref{ch:hecke} (the Petersson inner product;
+the $T_n$ with $(n,N)=1$ are self-adjoint for it, hence $S_2(\Gamma_0(N))$ has a basis of eigenforms
+by (e); $U_p$ is not self-adjoint; $f^\perp$ is Hecke-stable by (c) because $f$ is an eigenvector of
+the adjoints too); \Cref{ch:modules} (adjoints with respect to a pairing); \Cref{ch:moddeg} (the
+adjoint of $T_n$ for the cup product is $w_NT_nw_N$); \Cref{ch:congruence}. \emph{Reference:}
+\cite[Chapters 6 and 7]{Axler15}; \cite{Halmos74}.
+
+\emph{Item (f), and why it is weaker than (d).} If $U$ is $T$-stable, $w$ lies in the
+$B$-orthogonal complement of $U$ and $u\in U$, then $B(u,Tw)=B(Tu,w)=0$ because $Tu\in U$; so $Tw$ is
+again orthogonal to $U$. What fails without positivity is the rest of the proof of the spectral
+theorem, and the failure is real. Writing $B(v,w)=v^{\mathsf T}Gw$, a matrix $T$ is $B$-self-adjoint
+if and only if $T^{\mathsf T}G=GT$. Take $G=\sm0110$, a perfect symmetric form over any field, and
+$T=\sm1101$. Then
+\[
+T^{\mathsf T}G=\begin{pmatrix}1&0\\1&1\end{pmatrix}\begin{pmatrix}0&1\\1&0\end{pmatrix}
+=\begin{pmatrix}0&1\\1&1\end{pmatrix}=\begin{pmatrix}0&1\\1&0\end{pmatrix}\begin{pmatrix}1&1\\0&1\end{pmatrix}=GT,
+\]
+so $T$ is $B$-self-adjoint, and it is not diagonalisable. The line $ke_1$ is $T$-stable and is its
+own $B$-orthogonal complement ($B(e_1,e_1)=0$), so the complement does not split it off.
+
+\begin{definition}[dual spaces]\label{def:prereq:dual}
+The \emph{dual} of $V$ is $V^*=\Hom_k(V,k)$. A basis $e_1,\dots,e_n$ of $V$ has the \emph{dual
+basis} $e_1^*,\dots,e_n^*$ of $V^*$ with $e_i^*(e_j)=1$ if $i=j$ and $0$ otherwise. The
+\emph{transpose} of $T\colon V\to W$ is $T^*\colon W^*\to V^*$, $\varphi\mapsto\varphi\circ T$. The
+\emph{annihilator} of a subspace $U\subseteq V$ is $U^0=\{\varphi\in V^*:\varphi(U)=0\}$.
+\end{definition}
+
+\begin{theorem}[duality (stated; reference)]\label{thm:prereq:dual}
+\begin{enumerate}[label=(\alph*)]
+\item $\dim V^*=\dim V$, and the map $V\to V^{**}$, $v\mapsto(\varphi\mapsto\varphi(v))$, is an
+isomorphism.
+\item $\dim U^0=\dim V-\dim U$, $(U^0)^0=U$ under (a), $(V/U)^*=U^0$ and $U^*=V^*/U^0$.
+\item The matrix of $T^*$ in the dual bases is the transpose of the matrix of $T$;
+$\ker T^*=(\im T)^0$ and $\im T^*=(\ker T)^0$.
+\item A perfect bilinear form $B\colon V\times W\to k$ identifies $W$ with $V^*$ and $V$ with $W^*$;
+under this identification the $B$-adjoint of \Cref{def:prereq:inner} is the transpose.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:modules} ($\Hom(L,\mathcal O)$ for a lattice $L$; Pontryagin
+duality is the analogue for torsion modules); \Cref{ch:reps} (the contragredient representation
+$V^*$); \Cref{ch:curves} ($H^1$ and $H_1$ of a curve are dual). \emph{Reference:}
+\cite[Chapter 3]{Axler15}; \cite{Halmos74}.
+
+\begin{definition}[tensor products]\label{def:prereq:tensor}
+The \emph{tensor product} $V\otimes_kW$ is a vector space with a bilinear map
+$V\times W\to V\otimes W$, $(v,w)\mapsto v\otimes w$, that is universal: every bilinear map
+$V\times W\to U$ factors as a unique linear map $V\otimes W\to U$ composed with it. It exists and is
+unique up to unique isomorphism. The \emph{symmetric square} $\Sym V$ is the quotient of
+$V\otimes V$ by the span of the $v\otimes w-w\otimes v$, and the \emph{exterior square}
+$\bigwedge^2V$ the quotient by the span of the $v\otimes v$.
+\end{definition}
+
+\begin{theorem}[tensor products (stated; reference)]\label{thm:prereq:tensor}
+\begin{enumerate}[label=(\alph*)]
+\item If $(e_i)$ is a basis of $V$ and $(f_j)$ a basis of $W$, then $(e_i\otimes f_j)$ is a basis
+of $V\otimes W$; so $\dim(V\otimes W)=\dim V\cdot\dim W$. Every element of $V\otimes W$ is a finite
+sum of elementary tensors, not in general a single one.
+\item $\Hom(V,W)\iso V^*\otimes W$ via $(\varphi\otimes w)(v)=\varphi(v)w$. In particular
+$\End(V)\iso V^*\otimes V$, and under this isomorphism the trace $\End(V)\to k$ is the contraction
+$\varphi\otimes v\mapsto\varphi(v)$.
+\item (Extension of scalars) For a field extension $k'/k$, $V_{k'}=V\otimes_kk'$ is a $k'$-vector
+space with the same basis; a linear map $T$ extends to $T_{k'}$ with the same matrix, the same
+characteristic and minimal polynomials, and the same trace and determinant.
+\item (Functoriality) Linear maps $S\colon V\to V'$ and $T\colon W\to W'$ induce
+$S\otimes T\colon V\otimes W\to V'\otimes W'$ with $(S\otimes T)(v\otimes w)=Sv\otimes Tw$; for
+endomorphisms, $\tr(S\otimes T)=\tr S\cdot\tr T$, and over a field containing the eigenvalues
+$\lambda_i$ of $S$ and $\mu_j$ of $T$ the eigenvalues of $S\otimes T$ are the products
+$\lambda_i\mu_j$, with multiplicity.
+\item $\dim\Sym V=n(n+1)/2$ and $\dim\bigwedge^2V=n(n-1)/2$ for $n=\dim V$. For $n=2$: $\Sym V$ has
+dimension $3$, $\bigwedge^2V$ has dimension $1$ and $T$ acts on it by $\det T$; if $T$ has
+eigenvalues $\lambda,\mu$ then it has eigenvalues $\lambda^2,\lambda\mu,\mu^2$ on $\Sym V$, and
+$\lambda/\mu$, $1$, $1$, $\mu/\lambda$ on $V^*\otimes V=\End(V)$ (conjugation action), hence
+$\lambda/\mu$, $1$, $\mu/\lambda$ on the trace-zero part when $\lambda\mu\ne0$.
+\item The same definition, with ``bilinear'' meaning $R$-bilinear, gives the tensor product of
+modules over a commutative ring $R$; (a) holds for free modules, (b) for finitely generated free
+modules, and (d) in general. The modules $T\otimes_{\Zl}\Qlmod$ of the paper are of this kind.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:reps} (tensor products of representations, the twist
+$\rho\otimes\chi$ by a character, the adjoint representation $\End(V)=V^*\otimes V$ and its
+trace-zero part $\ad\rho$, the identity $\ad\rho=\Sym\rho\otimes\det\rho^{-1}$ for
+two-dimensional $\rho$); \Cref{ch:modules} (tensor products of modules); \Cref{ch:lfunctions}
+(the eigenvalues $\alpha/\beta$, $1$, $\beta/\alpha$ of Frobenius on $\ad V$ at a good prime are
+(e)); \Cref{ch:blochkato}. \emph{Reference:} \cite[Chapter XVI]{Lang};
+\cite[Sections 10.4 and 11.5]{DummitFoote}; \cite{Halmos74}.
+
+\emph{The eigenvalues in (e), computed.} Suppose $T$ is invertible with an eigenbasis $v_1,v_2$,
+$Tv_1=\lambda v_1$, $Tv_2=\mu v_2$ (for a $T$ that is not diagonalisable, the same computation in a
+triangular basis gives triangular matrices with the same diagonal entries). On $V^*\otimes V=\End(V)$, $T$ acts by
+conjugation, $X\mapsto TXT^{-1}$: this is the convention that $T$ acts on $V^*$ by the transpose of
+$T^{-1}$ (the contragredient), so that the pairing $V^*\times V\to k$ is preserved. Let $E_{ij}$ be
+the map $v_j\mapsto v_i$, $v_{j'}\mapsto0$ for $j'\ne j$. Then
+$TE_{ij}T^{-1}v_j=TE_{ij}(\lambda_j^{-1}v_j)=(\lambda_i/\lambda_j)v_i$, where $\lambda_1=\lambda$ and
+$\lambda_2=\mu$, so $E_{12}$, $E_{21}$, $E_{11}$, $E_{22}$ are eigenvectors with eigenvalues
+$\lambda/\mu$, $\mu/\lambda$, $1$, $1$. The trace-zero part is spanned by $E_{12}$, $E_{21}$ and
+$E_{11}-E_{22}$, with eigenvalues $\lambda/\mu$, $\mu/\lambda$, $1$. On $\Sym V$, the images of
+$v_1\otimes v_1$, $v_1\otimes v_2$, $v_2\otimes v_2$ form a basis with eigenvalues $\lambda^2$,
+$\lambda\mu$, $\mu^2$. Dividing these by $\det T=\lambda\mu$ gives $\lambda/\mu$, $1$, $\mu/\lambda$
+again, which is the identity $\ad\rho=\Sym\rho\otimes\det\rho^{-1}$ seen on eigenvalues. For
+Frobenius at a good prime $p$, with $\alpha\beta=p$, the eigenvalues on the trace-zero part are
+$\alpha/\beta=\alpha^2/p$, $1$, $\beta/\alpha=\beta^2/p$.
+
+\begin{theorem}[the trace form (stated; reference)]\label{thm:prereq:traceform}
+On $\Mat_n(k)$ the \emph{trace form} $(A,B)\mapsto\tr(AB)$ is a symmetric bilinear form, invariant
+under conjugation ($\tr(gAg^{-1}\cdot gBg^{-1})=\tr(AB)$), and perfect: its Gram matrix with
+respect to the elementary matrices $E_{ij}$ is a permutation matrix. On the trace-zero matrices
+$\mathfrak{sl}_2(k)=\{A\in\Mat_2(k):\tr A=0\}$, with the basis
+\[
+e=\sm0100,\qquad h=\sm100{-1},\qquad f=\sm0010,
+\]
+one has $\tr(ef)=1$, $\tr(hh)=2$, and $\tr(ee)=\tr(ff)=\tr(eh)=\tr(fh)=0$; the Gram matrix with
+respect to $(e,h,f)$ is
+\[
+\begin{pmatrix}0&0&1\\0&2&0\\1&0&0\end{pmatrix},\qquad\text{of determinant }-2.
+\]
+Hence the trace form on $\mathfrak{sl}_2$ is perfect over every field of characteristic not $2$,
+and perfect on the free $\Zl$-module $\mathfrak{sl}_2(\Zl)$ for every odd prime $\ell$ (the
+determinant $-2$ is a unit of $\Zl$); over $\F_2$ it is degenerate, $h$ being in its radical.
+For $A\in\mathfrak{sl}_2(k)$ one has $\tr(A^2)=-2\det A$, and in general $\tr(A^2)=(\tr A)^2-2\det A$
+for $A\in\Mat_2(k)$.
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:reps} (the trace form makes $\ad\rho$ isomorphic to its own
+dual when $2$ is invertible); \Cref{ch:blochkato} (for $A=\ad T$ and $\ell$ odd,
+$T^D=\Hom(A,\Zl(1))\iso A(1)$ via the trace form, which the paper uses in Section 4.2);
+\Cref{ch:modules}. \emph{Reference:} \cite[Chapter XV]{Lang}; the computation above is a direct
+check.
+
+\emph{The direct check, written out.} Multiplying the basis matrices: $ef=\sm1000$ and
+$fe=\sm0001$, so $\tr(ef)=1$; $h^2=1$, so $\tr(hh)=2$; $e^2=f^2=0$; $eh=\sm0{-1}00=-e$ and
+$fh=\sm0010=f$, both of trace $0$. Expanding the Gram determinant along its first row gives
+$1\cdot(0\cdot0-2\cdot1)=-2$. Modulo $2$ the middle row of the Gram matrix becomes $0$, which says
+that $h$ pairs to $0$ with every element: it lies in the radical. The last identity is
+Cayley-Hamilton: $A^2-(\tr A)A+(\det A)\cdot1=0$, and taking traces (with $\tr1=2$) gives
+$\tr(A^2)=(\tr A)^2-2\det A$.
+
+This ends the linear algebra. The next section collects the complex analysis, which enters through
+Riemann surfaces, the Weierstrass $\wp$-function, modular forms and $L$-functions.
+
+\section{Complex analysis}\label{sec:prereq:complex}
+
+This section is used from \Cref{ch:curves} on (Riemann surfaces, orders of meromorphic functions),
+in \Cref{ch:ellcurves} (the Weierstrass $\wp$-function), in \Cref{ch:modforms} (the upper half
+plane, $q$-expansions, the $\eta$-function) and in \Cref{ch:lfunctions} (Euler products, the Gamma
+function, the Mellin transform). Throughout, $U$ is an open subset of $\C$.
+
+\begin{definition}[holomorphic and meromorphic functions]\label{def:prereq:holo}
+$f\colon U\to\C$ is \emph{holomorphic} if it is complex differentiable at every point of $U$;
+\emph{entire} if holomorphic on $\C$; \emph{meromorphic} on $U$ if holomorphic on $U$ minus a
+discrete set of points at each of which it has a pole (\Cref{thm:prereq:laurent}). A $C^1$ function
+$u+iv$ is holomorphic if and only if $u_x=v_y$ and $u_y=-v_x$ (Cauchy-Riemann).
+\end{definition}
+
+\begin{theorem}[Cauchy; Taylor (stated; reference)]\label{thm:prereq:cauchy}
+\begin{enumerate}[label=(\alph*)]
+\item (Cauchy's theorem) If $f$ is holomorphic on $U$ and $\gamma$ is a closed piecewise $C^1$
+curve in $U$ that can be contracted to a point inside $U$ (always the case when $U$ is a disc or is
+simply connected), then $\int_\gamma f(z)\,dz=0$.
+\item (Cauchy's integral formula) If $f$ is holomorphic on an open set containing the closed disc
+$\abs{z-a}\le r$, then for $\abs{z-a}<r$ and all $n\ge0$,
+$f^{(n)}(z)=\frac{n!}{2\pi i}\int_{\abs{w-a}=r}\frac{f(w)}{(w-z)^{n+1}}\,dw$.
+\item (Taylor) If $f$ is holomorphic on the disc $\abs{z-a}<R$, then
+$f(z)=\sum_{n\ge0}\frac{f^{(n)}(a)}{n!}(z-a)^n$ on that disc. Holomorphic functions are infinitely
+differentiable, and (Morera) a continuous $f$ with $\int_{\partial\Delta}f=0$ for every triangle
+$\Delta\subset U$ is holomorphic.
+\item (Identity theorem) If $U$ is connected and $f,g$ holomorphic on $U$ agree on a set with an
+accumulation point in $U$, then $f=g$. The zeros of a nonconstant holomorphic function on a
+connected $U$ are isolated, and each has a finite \emph{order} $\ord_af$, the least $n$ with
+$f^{(n)}(a)\ne0$; then $f(z)=(z-a)^{\ord_af}g(z)$ with $g$ holomorphic and $g(a)\ne0$.
+\item (Liouville) A bounded entire function is constant. (Maximum modulus) If $U$ is connected and
+$\abs f$ has a local maximum in $U$, then $f$ is constant.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:curves}. \emph{Reference:} \cite[Chapter 4]{Ahlfors79};
+\cite[Chapters 2 and 3]{SteinShakarchi03}.
+
+\begin{theorem}[Laurent series; poles and residues (stated; reference)]\label{thm:prereq:laurent}
+If $f$ is holomorphic on the annulus $r<\abs{z-a}<R$, then
+\[
+f(z)=\sum_{n\in\Z}c_n(z-a)^n,\qquad c_n=\frac1{2\pi i}\int_{\abs{w-a}=s}f(w)(w-a)^{-n-1}\,dw
+\quad(r<s<R),
+\]
+the series converging absolutely and locally uniformly on the annulus, and the $c_n$ are unique.
+When $r=0$ (an \emph{isolated singularity} at $a$) exactly one of the following holds: $c_n=0$ for
+all $n<0$ and $f$ extends holomorphically to $a$ (\emph{removable}; equivalently $f$ is bounded
+near $a$); there is $m\ge1$ with $c_{-m}\ne0$ and $c_n=0$ for $n<-m$ (a \emph{pole of order $m$};
+equivalently $\abs{f(z)}\to\infty$ as $z\to a$); or neither (\emph{essential}). In the first two
+cases $\ord_af$ is the least $n$ with $c_n\ne0$ (negative at a pole), and
+$\ord_a(fg)=\ord_af+\ord_ag$, $\ord_a(f+g)\ge\min(\ord_af,\ord_ag)$. The \emph{residue} is
+$\operatorname{Res}_af=c_{-1}$; at a simple pole it is $\lim_{z\to a}(z-a)f(z)$. The meromorphic
+functions on a connected $U$ form a field.
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:curves} (the order of a meromorphic function at a point of a
+Riemann surface, and the divisor of a function); \Cref{ch:modforms} (the $q$-expansion at a cusp is
+a Laurent series in $q$; a cusp form has no terms of order $\le0$). \emph{Reference:}
+\cite[Chapter 5, Section 1]{Ahlfors79}; \cite[Chapter 3]{SteinShakarchi03}.
+
+\emph{Example.} The coefficient formula is the line integral computed after
+\Cref{thm:prereq:riemann}: integrating $\sum_mc_m(w-a)^{m-n-1}$ term by term around the circle
+(allowed by the uniform convergence there) keeps only $m=n$. For a concrete Laurent series, take
+$f(z)=1/(z(z-1))$ on $0<\abs z<1$. Expanding $1/(z-1)=-\sum_{n\ge0}z^n$ gives
+$f(z)=-z^{-1}-1-z-z^2-\cdots$, so $f$ has a simple pole at $0$, $\ord_0f=-1$, and
+$\operatorname{Res}_0f=-1$, in agreement with $\lim_{z\to0}zf(z)=\lim_{z\to0}1/(z-1)=-1$.
+
+\begin{theorem}[the residue theorem (stated; reference)]\label{thm:prereq:residue}
+Let $f$ be holomorphic on $U$ except at isolated points $a_1,\dots,a_k$, and let $\gamma$ be a
+closed piecewise $C^1$ curve in $U$, not passing through any $a_j$, contractible in $U$. Then
+\[
+\frac1{2\pi i}\int_\gamma f(z)\,dz=\sum_jn(\gamma,a_j)\operatorname{Res}_{a_j}f,
+\]
+where $n(\gamma,a)$ is the winding number of $\gamma$ about $a$ ($1$ for a simple closed curve
+traversed counterclockwise with $a$ inside, $0$ with $a$ outside). (Argument principle) If $f$ is
+meromorphic on $U$ and has no zeros or poles on a simple closed curve $\gamma$, then
+$\frac1{2\pi i}\int_\gamma f'/f$ equals the number of zeros minus the number of poles inside
+$\gamma$, counted with multiplicity, that is, $\sum_a\ord_af$ over the points inside.
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:curves} (a meromorphic function on a compact Riemann surface
+has as many zeros as poles: the degree of a principal divisor is $0$); \Cref{ch:modforms} (the
+valence formula is the argument principle on a fundamental domain). \emph{Reference:}
+\cite[Chapter 4, Section 5]{Ahlfors79}; \cite[Chapter 3]{SteinShakarchi03}.
+
+\begin{theorem}[Weierstrass: uniform limits of holomorphic functions (stated; reference)]\label{thm:prereq:weierstrass}
+If $f_n$ are holomorphic on $U$ and $f_n\to f$ uniformly on every compact subset of $U$, then $f$
+is holomorphic on $U$ and $f_n^{(k)}\to f^{(k)}$ uniformly on every compact subset, for every
+$k\ge1$. Consequently a series $\sum f_n$ of holomorphic functions that converges locally uniformly
+(for instance by the $M$-test on each compact set) has a holomorphic sum and may be differentiated
+term by term.
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:ellcurves} ($\wp(z)=z^{-2}+\sum'\bigl((z-\omega)^{-2}-\omega^{-2}\bigr)$
+is meromorphic with double poles at the lattice points); \Cref{ch:modforms} (Eisenstein series and
+$q$-expansions define holomorphic functions on the upper half plane); \Cref{ch:lfunctions} (a
+Dirichlet series is holomorphic in its half-plane of absolute convergence). \emph{Reference:}
+\cite[Chapter 5, Section 1]{Ahlfors79}; \cite[Chapter 2]{SteinShakarchi03}.
+
+\emph{The estimate for $\wp$.} The subtraction of $\omega^{-2}$ is what makes the series converge.
+Combining the fractions,
+\[
+\frac1{(z-\omega)^2}-\frac1{\omega^2}=\frac{\omega^2-(z-\omega)^2}{\omega^2(z-\omega)^2}
+=\frac{2z\omega-z^2}{\omega^2(z-\omega)^2}.
+\]
+Fix $r>0$. For $\abs z\le r$ and $\abs\omega\ge2r$ one has $\abs{z-\omega}\ge\abs\omega/2$ and
+$\abs{2z\omega-z^2}\le2r\abs\omega+r^2\le\tfrac52r\abs\omega$, so the term has modulus at most
+$\tfrac52r\abs\omega\cdot4/\abs\omega^4=10r\abs\omega^{-3}$. The lattice sum of $\abs\omega^{-3}$
+converges by \Cref{thm:prereq:series}(g), so the $M$-test gives uniform convergence on the disc
+$\abs z\le r$ of the sum over $\abs\omega\ge2r$; the finitely many remaining terms are meromorphic
+with double poles at the lattice points. Without the subtraction the terms would be of size
+$\abs\omega^{-2}$, and the lattice sum of these diverges.
+
+\begin{definition}[the Riemann sphere; Mobius transformations]\label{def:prereq:mobius}
+The \emph{Riemann sphere} is $\widehat\C=\C\cup\{\infty\}$, with the neighbourhoods of $\infty$
+the complements of compact subsets of $\C$ and the coordinate $w=1/z$ near $\infty$; a function is
+holomorphic or meromorphic at $\infty$ if $f(1/w)$ is so at $w=0$. A \emph{Mobius transformation}
+is $z\mapsto(az+b)/(cz+d)$ with $a,b,c,d\in\C$ and $ad-bc\ne0$, extended to $\widehat\C$ by
+$-d/c\mapsto\infty$ and $\infty\mapsto a/c$ (and $\infty\mapsto\infty$ if $c=0$).
+\end{definition}
+
+\begin{theorem}[Mobius transformations (stated; reference)]\label{thm:prereq:mobius}
+\begin{enumerate}[label=(\alph*)]
+\item Under composition the Mobius transformations form a group, and the map
+$\sm abcd\mapsto\bigl(z\mapsto\frac{az+b}{cz+d}\bigr)$ is a surjective homomorphism from
+$\GL_2(\C)$ onto it with kernel the scalar matrices; so the group is
+$\PGL_2(\C)=\GL_2(\C)/\C^\times=\SL_2(\C)/\{\pm1\}$.
+\item The action on $\widehat\C$ is sharply triply transitive: for any two triples of distinct
+points there is exactly one Mobius transformation taking the first to the second.
+\item Mobius transformations map the family of circles and lines in $\C$ (lines being the circles
+through $\infty$) to itself.
+\item A Mobius transformation $g\ne1$ with matrix in $\SL_2(\C)$ has two fixed points on
+$\widehat\C$ if $(\tr g)^2\ne4$ and one if $(\tr g)^2=4$.
+\item The meromorphic functions on $\widehat\C$ are exactly the rational functions, and the
+biholomorphic maps $\widehat\C\to\widehat\C$ are exactly the Mobius transformations.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:curves} ($\PP^1(\C)=\widehat\C$ is the first compact Riemann
+surface; the degree of a rational function); \Cref{ch:modforms} (the action of $\SL_2(\Z)$ on the
+cusps $\PP^1(\Q)=\Q\cup\{\infty\}$). \emph{Reference:} \cite[Chapter 3, Section 3]{Ahlfors79};
+\cite[Chapter 8]{SteinShakarchi03}.
+
+\emph{Where the trace in (d) comes from.} A finite $z$ is fixed by $g=\sm abcd$ if and only if
+$az+b=z(cz+d)$, that is, $cz^2+(d-a)z-b=0$. If $c\ne0$, then $\infty\mapsto a/c$ is not fixed, and
+the quadratic has discriminant
+\[
+(d-a)^2+4bc=(a+d)^2-4(ad-bc)=(\tr g)^2-4,
+\]
+so there are two fixed points or one according as $(\tr g)^2\ne4$ or $=4$. If $c=0$, then $\infty$ is
+fixed, $ad=1$, and the remaining equation $(d-a)z=b$ has one solution when $a\ne d$, which is when
+$(\tr g)^2-4=(a-d)^2\ne0$; when $a=d=\pm1$, $g$ is the translation $z\mapsto z+b/a$ with $b\ne0$, and
+$\infty$ is its only fixed point.
+
+\begin{theorem}[the upper half plane (stated; reference)]\label{thm:prereq:halfplane}
+Let $\HH=\{z\in\C:\operatorname{Im}z>0\}$ and, for $g=\sm abcd\in\SL_2(\R)$, $gz=(az+b)/(cz+d)$.
+\begin{enumerate}[label=(\alph*)]
+\item $\operatorname{Im}(gz)=\operatorname{Im}(z)/\abs{cz+d}^2$, so $g$ maps $\HH$ to itself,
+$(gh)z=g(hz)$, and $\SL_2(\R)$ acts on $\HH$; the kernel of the action is $\{\pm1\}$. More
+generally $\GL_2(\R)^+$, the matrices of positive determinant, acts by the same formula, with
+$\operatorname{Im}(gz)=\det(g)\operatorname{Im}(z)/\abs{cz+d}^2$.
+\item The action is transitive, and the stabiliser of $i$ is
+$\mathrm{SO}_2(\R)=\{\sm{\cos\theta}{\sin\theta}{-\sin\theta}{\cos\theta}\}$.
+\item Every biholomorphic map $\HH\to\HH$ is $z\mapsto gz$ for some $g\in\SL_2(\R)$, unique up to
+sign: $\Aut(\HH)=\mathrm{PSL}_2(\R)$. The Cayley map $z\mapsto(z-i)/(z+i)$ is a biholomorphic map of
+$\HH$ onto the unit disc.
+\item $\frac{d}{dz}(gz)=(cz+d)^{-2}$, and the measure $dx\,dy/y^2$ on $\HH$ ($z=x+iy$) is invariant
+under $\SL_2(\R)$.
+\item An element $g\ne\pm1$ of $\SL_2(\R)$ is \emph{elliptic} if $\abs{\tr g}<2$ (one fixed point in
+$\HH$), \emph{parabolic} if $\abs{\tr g}=2$ (one fixed point, in $\R\cup\{\infty\}$), and
+\emph{hyperbolic} if $\abs{\tr g}>2$ (two fixed points in $\R\cup\{\infty\}$). The group also acts
+on $\R\cup\{\infty\}$, and $\SL_2(\Z)$ acts on $\Q\cup\{\infty\}$.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:ellcurves} (lattices in $\C$ up to homothety correspond to
+the points of $\SL_2(\Z)\backslash\HH$); \Cref{ch:modforms} (everything: the modular group,
+fundamental domains, cusps, elliptic points, the Petersson inner product via (d)).
+\emph{Reference:} \cite[Chapter 3, Section 3]{Ahlfors79}; \cite[Chapter 1]{DiamondShurman}.
+
+\emph{The computations behind (a), (d) and (e).} For (a), multiply numerator and denominator by
+$\overline{cz+d}$:
+\[
+gz=\frac{(az+b)(c\bar z+d)}{\abs{cz+d}^2}
+=\frac{ac\abs z^2+adz+bc\bar z+bd}{\abs{cz+d}^2},
+\]
+and with $a,b,c,d$ real the imaginary part of the numerator is $(ad-bc)\operatorname{Im}z$. For (d),
+the quotient rule gives $\frac d{dz}(gz)=\bigl(a(cz+d)-c(az+b)\bigr)/(cz+d)^2=(ad-bc)/(cz+d)^2$. A
+holomorphic map multiplies areas by $\abs{g'(z)}^2=\abs{cz+d}^{-4}$, and by (a) $1/y^2$ is multiplied
+by $\abs{cz+d}^4$, so $dx\,dy/y^2$ is unchanged. For (e), the fixed points of a real $g$ with $c\ne0$
+are the roots of the real quadratic above, of discriminant $(\tr g)^2-4$: when $\abs{\tr g}<2$ they
+are a pair of complex conjugates, exactly one of them in $\HH$, and otherwise they are real.
+
+\begin{theorem}[the exponential and the logarithm (stated; reference)]\label{thm:prereq:exp}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item The function $\exp(z)=\sum_{n\ge0}z^n/n!$ is entire, $\exp(z+w)=\exp z\exp w$, $\exp'=\exp$,
+$\abs{\exp(x+iy)}=e^x$, and $\exp\colon\C\to\C^\times$ is surjective with kernel $2\pi i\Z$.
+\item The map $z\mapsto q=e^{2\pi iz}$ sends $\HH$ onto the punctured disc $0<\abs q<1$, with
+$q(z)=q(z')$ if and only if $z-z'\in\Z$, and $\abs q=e^{-2\pi\operatorname{Im}z}\to0$ as
+$\operatorname{Im}z\to\infty$. Consequently a holomorphic $f$ on $\HH$ with $f(z+1)=f(z)$ is
+$f(z)=F(q)$ for a unique holomorphic $F$ on the punctured disc, and by \Cref{thm:prereq:laurent}
+\[
+f(z)=\sum_{n\in\Z}a_nq^n,\qquad a_n=\int_0^1f(x+iy)\,e^{-2\pi in(x+iy)}\,dx\quad\text{for any }y>0,
+\]
+converging absolutely and locally uniformly on $\HH$: this is the \emph{$q$-expansion}, or Fourier
+expansion, of $f$, and ``holomorphic at $\infty$'' means $a_n=0$ for $n<0$.
+\item On a simply connected open set not containing $0$ there is a holomorphic branch of the
+logarithm, unique up to adding a multiple of $2\pi i$; the principal branch on
+$\C\setminus(-\infty,0]$ is $\operatorname{Log}(re^{i\theta})=\log r+i\theta$ with $-\pi<\theta<\pi$,
+and $z^s=\exp(s\operatorname{Log}z)$ for $s\in\C$. For a positive integer $n$ and $s\in\C$,
+$n^{-s}=\exp(-s\log n)$ with the real logarithm, and $\abs{n^{-s}}=n^{-\operatorname{Re}s}$.
+\item $q^{1/24}=e^{2\pi iz/24}$ is a well-defined holomorphic function on $\HH$ (a function of
+$z$, not of $q$); it is the factor in front of the $\eta$-function.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:modforms}; \Cref{ch:lfunctions} (Dirichlet series).
+\emph{Reference:} \cite[Chapter 2, Section 3]{Ahlfors79}; \cite[Chapter 1]{DiamondShurman}.
+
+\emph{The coefficient formula in (b).} On the horizontal segment $z=x+iy$, $0\le x\le1$, the series
+$\sum_ma_me^{2\pi imz}$ converges uniformly (the segment is compact), so it may be multiplied by
+$e^{-2\pi inz}$ and integrated term by term (\Cref{thm:prereq:uniform}(c)):
+\[
+\int_0^1f(x+iy)e^{-2\pi in(x+iy)}\,dx=\sum_ma_me^{-2\pi(m-n)y}\int_0^1e^{2\pi i(m-n)x}\,dx=a_n,
+\]
+because the last integral is $1$ for $m=n$ and $0$ otherwise. The answer does not depend on $y$, as
+the theorem says.
+
+\begin{theorem}[infinite products (stated; reference)]\label{thm:prereq:products}
+\begin{enumerate}[label=(\alph*)]
+\item If $\sum\abs{a_n}<\infty$, then the partial products of $\prod_{n\ge1}(1+a_n)$ converge, the
+limit is $0$ if and only if some factor is $0$, and the limit does not depend on the order of the
+factors. (One says the product converges absolutely.)
+\item If the $a_n$ are holomorphic on $U$ and $\sum\abs{a_n}$ converges uniformly on every compact
+subset of $U$, then $P=\prod(1+a_n)$ is holomorphic on $U$, $P(z_0)=0$ if and only if some
+$1+a_n(z_0)=0$, $\ord_{z_0}P=\sum_n\ord_{z_0}(1+a_n)$, and where $P\ne0$ its logarithmic derivative
+is $P'/P=\sum a_n'/(1+a_n)$.
+\item For $\abs q<1$ the product $\prod_{n\ge1}(1-q^n)$ converges absolutely, uniformly on
+$\abs q\le r<1$, to a nonvanishing holomorphic function of $q$; so
+$\eta(z)=q^{1/24}\prod_{n\ge1}(1-q^n)$, $q=e^{2\pi iz}$, is holomorphic and nonvanishing on $\HH$.
+\item For $\operatorname{Re}s>1$, $\prod_p(1-p^{-s})^{-1}$ over the primes converges absolutely,
+uniformly on $\operatorname{Re}s\ge1+\delta$ for every $\delta>0$, and equals $\sum_{n\ge1}n^{-s}$
+(Euler). More generally, if $\sum_p\abs{b_p}$ converges uniformly on compact sets then
+$\prod_p(1+b_p)$ is holomorphic and nonvanishing where no factor vanishes.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:modforms} (the form of \curve{11a1} is $\eta(z)^2\eta(11z)^2$);
+\Cref{ch:lfunctions} (Euler products of $L(E,s)$, $L(\ad f,s)$ and $L(\Sym f,s)$).
+\emph{Reference:} \cite[Chapter 5, Section 2]{Ahlfors79}; \cite[Chapter 5]{SteinShakarchi03}.
+
+\emph{The form of \curve{11a1} as a $q$-series.} By (c), $\eta(z)^2\eta(11z)^2$ is holomorphic on
+$\HH$, and the fractional powers of $q$ combine to an integral one: $\eta(11z)$ has the factor
+$e^{2\pi i\cdot11z/24}$, so the product has the factor $q^{2/24}q^{22/24}=q$, and
+\begin{align*}
+\eta(z)^2\eta(11z)^2&=q\prod_{n\ge1}(1-q^n)^2(1-q^{11n})^2\\
+&=q-2q^2-q^3+2q^4+q^5+2q^6-2q^7-2q^9-2q^{10}+q^{11}-2q^{12}+\cdots.
+\end{align*}
+These twelve coefficients agree with the numbers $a_n$ of the curve $y^2+y=x^3-x^2-10x-20$ (Cremona
+label \curve{11a1}) for $n\le12$, as computed with PARI/GP; \Cref{ch:modforms} explains why they agree
+for every $n$.
+
+\emph{Why Euler's product equals the sum in (d).} Let $\sigma=\operatorname{Re}s>1$ and $x\ge2$. Each
+factor is a geometric series, $(1-p^{-s})^{-1}=\sum_{k\ge0}p^{-ks}$, absolutely convergent because
+$\abs{p^{-s}}=p^{-\sigma}<1$. The product of the finitely many factors with $p\le x$ may be expanded
+and rearranged by \Cref{thm:prereq:series}(e) and (f), and by unique factorisation each $n$ whose
+prime factors are all at most $x$ appears exactly once:
+\[
+\prod_{p\le x}(1-p^{-s})^{-1}=\sum_{n:\ p\mid n\Rightarrow p\le x}n^{-s}.
+\]
+Every $n\le x$ occurs on the right, so the difference from $\sum_{n\ge1}n^{-s}$ is at most
+$\sum_{n>x}n^{-\sigma}$, which tends to $0$ as $x\to\infty$ by \Cref{thm:prereq:series}(g).
+
+\begin{theorem}[the Gamma function, complex form (stated; reference)]\label{thm:prereq:gamma}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item The integral $\Gamma(s)=\int_0^\infty e^{-t}t^{s-1}\,dt$ converges absolutely and locally
+uniformly for $\operatorname{Re}s>0$, and $\Gamma$ is holomorphic there.
+\item (Functional equation) $\Gamma(s+1)=s\,\Gamma(s)$. Used backwards, it extends $\Gamma$ to a
+meromorphic function on $\C$ whose only singularities are simple poles at $s=0,-1,-2,\dots$, with
+residue $(-1)^n/n!$ at $s=-n$. $\Gamma$ has no zeros, so $1/\Gamma$ is entire.
+\item $\Gamma(s)\Gamma(1-s)=\pi/\sin(\pi s)$; $\Gamma(1/2)=\sqrt\pi$;
+$\Gamma(s)\Gamma(s+\tfrac12)=2^{1-2s}\sqrt\pi\,\Gamma(2s)$ (Legendre's duplication formula).
+\item (Stirling) In every sector $\abs{\arg s}\le\pi-\delta$,
+$\Gamma(s)\sim\sqrt{2\pi}\,s^{s-1/2}e^{-s}$ as $\abs s\to\infty$; on a vertical line,
+$\abs{\Gamma(\sigma+it)}\sim\sqrt{2\pi}\,\abs t^{\sigma-1/2}e^{-\pi\abs t/2}$ as $\abs t\to\infty$.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:lfunctions} (the Gamma factors of $\Lambda(E,s)$ and of the
+completed symmetric square $L$-function; the poles of $\Gamma$ account for the trivial zeros).
+\emph{Reference:} \cite[Chapter 5, Section 2]{Ahlfors79}; \cite[Chapter 6]{SteinShakarchi03}.
+
+\emph{Two checks on the statements.} The residues in (b) follow from the functional equation used
+$n+1$ times: $\Gamma(s)=\Gamma(s+n+1)/\bigl(s(s+1)\cdots(s+n)\bigr)$ for $\operatorname{Re}s>-n-1$
+away from the poles, and at $s=-n$ the factor $s+n$ vanishes while the others give
+\[
+\operatorname{Res}_{s=-n}\Gamma=\frac{\Gamma(1)}{(-n)(-n+1)\cdots(-1)}=\frac{(-1)^n}{n!}.
+\]
+The vertical-line form of (d) can be checked exactly at $\sigma=1$. By (b) and (c),
+$\Gamma(1+it)\Gamma(1-it)=it\,\Gamma(it)\Gamma(1-it)=it\pi/\sin(\pi it)=\pi t/\sinh(\pi t)$, and
+$\Gamma(1-it)=\overline{\Gamma(1+it)}$ because $\Gamma$ is real on the real axis. Hence
+$\abs{\Gamma(1+it)}^2=\pi t/\sinh(\pi t)\sim2\pi\abs te^{-\pi\abs t}$, which is the square of
+$\sqrt{2\pi}\,\abs t^{1/2}e^{-\pi\abs t/2}$, as (d) predicts.
+
+\begin{remark}[the Mellin transform]\label{rem:prereq:mellin}
+For $\phi\colon(0,\infty)\to\C$, the \emph{Mellin transform} is
+$(\mc M\phi)(s)=\int_0^\infty\phi(t)\,t^{s}\,\frac{dt}{t}$, defined on the vertical strip where the
+integral converges absolutely and holomorphic there by \Cref{thm:prereq:improper}(c). By
+definition $\Gamma(s)=\mc M(e^{-t})(s)$ for $\operatorname{Re}s>0$, and the substitution
+$t\mapsto t/n$ gives $\mc M(e^{-nt})(s)=n^{-s}\Gamma(s)$. Hence, if
+$f(iy)=\sum_{n\ge1}a_ne^{-2\pi ny}$ with coefficients of polynomial growth, then for
+$\operatorname{Re}s$ large, interchanging sum and integral by absolute convergence,
+\[
+\int_0^\infty f(iy)\,y^{s}\,\frac{dy}{y}=(2\pi)^{-s}\Gamma(s)\sum_{n\ge1}a_nn^{-s}.
+\]
+In detail: the substitution $y=u/(2\pi n)$ gives
+$\int_0^\infty e^{-2\pi ny}y^{s}\,dy/y=(2\pi n)^{-s}\int_0^\infty e^{-u}u^{s}\,du/u=(2\pi n)^{-s}\Gamma(s)$
+(the measure $dy/y$ is unchanged by scaling, which is why the Mellin transform is written with it).
+The interchange of sum and integral is justified because the sum of the integrals of the absolute
+values is finite: with $\sigma=\operatorname{Re}s$ and $\abs{a_n}\le Cn^k$, it equals
+$\sum_n\abs{a_n}(2\pi n)^{-\sigma}\Gamma(\sigma)\le C(2\pi)^{-\sigma}\Gamma(\sigma)\sum_nn^{k-\sigma}$,
+finite for $\sigma>k+1$ by \Cref{thm:prereq:series}(g); this is the meaning of ``$\operatorname{Re}s$
+large''.
+The Mellin transform of a cusp form along the imaginary axis is its $L$-function completed by the
+Gamma factor; the transformation law of $f$ under $z\mapsto-1/(Nz)$ becomes, through the
+substitution $y\mapsto1/(Ny)$, the functional equation of $\Lambda(f,s)$, and the rapid decay of
+$f(iy)$ at both ends gives the analytic continuation. This is the mechanism of \Cref{ch:lfunctions},
+and the one by which Riemann continued $\zeta(s)$ using the theta function. For the physics reader:
+the Mellin transform is the Fourier transform of \cite[Chapter 13]{RHB06} in the variable $\log t$.
+\end{remark}
+
+\section[Group theory and representation theory]{Group theory and representation theory as in Riley, Hobson and Bence}\label{sec:prereq:groups}
+
+This section is what \Cref{ch:groups} and \Cref{ch:reps} assume and then rebuild with proofs.
+The reader has met it in \cite[Chapters 28 and 29]{RHB06}, over $\C$ and for finite groups; the
+remark at the end says what changes in the book.
+
+\begin{definition}[groups]\label{def:prereq:groups}
+A \emph{group} is a set with an associative multiplication, an identity and inverses; it is
+\emph{abelian} if the multiplication is commutative, and its \emph{order} is its number of
+elements. A \emph{subgroup} is a subset closed under multiplication and inverses; the
+\emph{order of an element} $g$ is the order of the cyclic subgroup $\langle g\rangle$ it generates.
+A (left) \emph{coset} of $H$ is a set $gH$; the \emph{index} $[G:H]$ is the number of cosets. $H$ is
+\emph{normal} if $gHg^{-1}=H$ for all $g$; then the cosets form the \emph{quotient group} $G/H$. A
+\emph{homomorphism} $\varphi\colon G\to G'$ satisfies $\varphi(gh)=\varphi(g)\varphi(h)$; its
+\emph{kernel} is $\varphi^{-1}(1)$. Two elements are \emph{conjugate} if $h=gxg^{-1}$ for some $g$;
+the \emph{conjugacy classes} partition $G$; the \emph{centraliser} $C_G(x)$ is the subgroup of
+elements commuting with $x$.
+\end{definition}
+
+\begin{theorem}[finite groups (stated; reference)]\label{thm:prereq:groups}
+\begin{enumerate}[label=(\alph*)]
+\item (Lagrange) The order of a subgroup divides the order of the group; hence the order of every
+element divides $\#G$, and $g^{\#G}=1$.
+\item The kernel of a homomorphism is a normal subgroup, the image is a subgroup, and
+$G/\ker\varphi\iso\im\varphi$.
+\item The conjugacy class of $x$ has $\#G/\#C_G(x)$ elements.
+\item A group of prime order is cyclic; a cyclic group of order $n$ is isomorphic to $\Z/n\Z$ and
+has exactly one subgroup of each order dividing $n$.
+\item The examples to keep in mind: $\Z/n\Z$; the symmetric groups $S_n$; the dihedral group $D_n$
+of order $2n$ (the symmetries of a regular $n$-gon); the quaternion group
+$Q_8=\{\pm1,\pm i,\pm j,\pm k\}$; the matrix groups $\GL_n(\R)$, $\GL_n(\C)$, $\mathrm O(n)$,
+$\mathrm{SO}(n)$, $\mathrm U(n)$, $\mathrm{SU}(n)$.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:groups}, which proves all of this and continues with group
+actions, Sylow's theorems, semidirect products, finite abelian groups, profinite groups and the
+groups $\GL_2(\F_q)$, which RHB does not treat. \emph{Reference:} \cite[Chapter 28]{RHB06};
+\cite[Chapters 1 to 3]{DummitFoote}.
+
+\emph{Example.} In $S_3$ the centraliser of the transposition $(12)$ is $\{1,(12)\}$, since $(12)$
+commutes with neither $(13)$, $(23)$ nor the $3$-cycles; so by (c) its conjugacy class has $6/2=3$
+elements, the three transpositions. The centraliser of $(123)$ is the cyclic group
+$\langle(123)\rangle$ of order $3$, and its class $\{(123),(132)\}$ has $2$ elements. With the class
+$\{1\}$ this accounts for all $1+3+2=6$ elements.
+
+\begin{definition}[representations and characters over $\C$]\label{def:prereq:reps}
+A \emph{representation} of $G$ of degree $n$ over $\C$ is a homomorphism $D\colon G\to\GL_n(\C)$
+(RHB's ``matrix representation''); equivalently, an action of $G$ by linear maps on an
+$n$-dimensional complex vector space $V$, a basis of $V$ turning one into the other. Two
+representations are \emph{equivalent} if $D'=P^{-1}DP$ for an invertible $P$ (the same action in
+another basis). A subspace $U\subseteq V$ is \emph{invariant} if $gU\subseteq U$ for all $g$; $V$ is
+\emph{irreducible} if it has no invariant subspace other than $0$ and $V$, and \emph{completely
+reducible} (or \emph{semisimple}) if it is a direct sum of irreducible invariant subspaces. The
+\emph{character} of $D$ is $\chi_D(g)=\tr D(g)$: a class function with $\chi_D(1)=n$ and, for $G$
+finite, $\chi_D(g^{-1})=\overline{\chi_D(g)}$. Direct sums and tensor products of representations
+have characters the sum and the product. The \emph{regular representation} is $V=\C[G]$, with basis
+$(e_h)_{h\in G}$ and $g\cdot e_h=e_{gh}$; its character is $\#G$ at $g=1$ and $0$ elsewhere.
+\end{definition}
+
+\begin{theorem}[representations of finite groups over $\C$ (stated; reference)]\label{thm:prereq:reps}
+Let $G$ be finite.
+\begin{enumerate}[label=(\alph*)]
+\item (Maschke) Every representation over $\C$, or over any field whose characteristic does not
+divide $\#G$, is completely reducible: every invariant subspace has an invariant complement.
+\item (Schur) A $G$-equivariant linear map between irreducible representations is $0$ or an
+isomorphism, and the $G$-equivariant endomorphisms of an irreducible complex representation are the
+scalars.
+\item (Orthogonality) For irreducible characters $\chi,\chi'$,
+$\frac1{\#G}\sum_{g\in G}\chi(g)\overline{\chi'(g)}$ is $1$ if $\chi=\chi'$ and $0$ otherwise. The
+irreducible characters form an orthonormal basis of the space of class functions, so their number
+is the number of conjugacy classes; and $\sum_\chi\chi(1)^2=\#G$.
+\item A complex representation is determined up to equivalence by its character; the multiplicity
+of the irreducible $\chi$ in a representation of character $\psi$ is
+$\frac1{\#G}\sum_g\psi(g)\overline{\chi(g)}$; a representation is irreducible if and only if
+$\frac1{\#G}\sum_g\abs{\chi(g)}^2=1$. The regular representation contains each irreducible
+representation with multiplicity equal to its degree.
+\item (Column orthogonality) $\sum_\chi\chi(g)\overline{\chi(h)}$ is $\#C_G(g)$ if $g$ and $h$
+are conjugate and $0$ otherwise.
+\item If $G$ is abelian, every irreducible complex representation has degree $1$; the degree-one
+representations (``characters'' in the second sense) of $G$ form a group isomorphic to $G$, and for
+$G=\Z/n\Z$ they are $k\mapsto e^{2\pi ijk/n}$, $0\le j<n$. The degree of an irreducible
+representation of any finite $G$ divides $\#G$.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:reps}. \emph{Reference:} \cite[Chapter 29]{RHB06};
+\cite[Part I]{SerreLinearReps}; \cite[Chapter 18]{DummitFoote}.
+
+\emph{Example: $S_3$.} There are three conjugacy classes (the example after \Cref{thm:prereq:groups}),
+hence three irreducible characters by (c): the trivial character, the sign, and the character $\chi$
+of the two-dimensional representation on $\{x\in\C^3:x_1+x_2+x_3=0\}$ by permuting coordinates, with
+values $2$, $0$, $-1$ on the classes of $1$, the transpositions and the $3$-cycles. The check of
+(c) for $\chi$, weighting each class by its size, is $\frac16(1\cdot2^2+3\cdot0^2+2\cdot(-1)^2)=1$,
+so $\chi$ is irreducible by (d), and $1^2+1^2+2^2=6=\#S_3$. The regular representation is the sum of
+the trivial representation, the sign and two copies of $\chi$.
+
+\begin{remark}[what changes in the book]\label{rem:prereq:changes}
+Four things change when the paper's representations arrive, all in \Cref{ch:reps}.
+(1) \emph{The field.} The representations of the paper live over $\F_\ell$, $\Zl$, $\Ql$, their
+algebraic closures, and rings of integers of number fields. When the characteristic $\ell$ divides
+the order of the group, as it does for $\GL_2(\F_3)$ in characteristic $3$ and for an inertia group
+acting on $E[\ell]$ through a unipotent element of order $\ell$, Maschke's theorem fails: an
+invariant subspace need not have an invariant complement, and a representation need not be
+semisimple. For instance $\Z/3\Z$ acting on $\F_3^2$ through $u=\sm1101$ fixes the line $\F_3e_1$,
+and this line has no invariant complement: a complement would be a second invariant line, hence a
+second line of eigenvectors of $u$, but the only eigenvalue is $1$ and its eigenspace is $\F_3e_1$
+(the computation after \Cref{thm:prereq:jordan}). The invariants are then the composition factors
+(Jordan-Holder), not direct summands, and a character determines only the semisimplification. The
+right statement is Brauer-Nesbitt: two semisimple representations with the same characteristic
+polynomial of $\rho(g)$ for every $g$ are isomorphic; the traces determine the characteristic
+polynomials in characteristic $0$ or when the characteristic exceeds the dimension, but not in
+general. An example of the failure: over $\F_3$, let $\Z/2\Z$ act on $\F_3^3$ trivially, and on
+another copy of $\F_3^3$ by $-1$. Both are semisimple ($2$ is prime to $3$), and their traces are
+$3=0$ and $3=0$ at the identity and $3=0$ and $-3=0$ at the generator, so the traces agree everywhere;
+but the characteristic polynomials of the generator are $(X-1)^3$ and $(X+1)^3$, and the
+representations are not isomorphic.
+(2) \emph{Irreducible versus absolutely irreducible.} Over a field that is not algebraically closed
+an irreducible representation can become reducible after extending scalars, and Schur's lemma in
+the form ``equivariant endomorphisms are scalars'' holds only for absolutely irreducible ones. The
+paper's example: the cyclic group of order $4$ generated by $\sm01{-1}0$ acts irreducibly on
+$\F_3^2$ ($X^2+1$ has no root in $\F_3$) but reducibly on $\F_9^2$, as $\psi\oplus\psi^{-1}$ for a
+character $\psi$ of order $4$. This is why the hypothesis of the paper's main theorem says
+``absolutely irreducible''.
+(3) \emph{The group.} The Galois groups $\GQ$, $\GQp$, $I_p$ are infinite profinite groups, their
+representations are required to be continuous, and the finite theory is applied through finite
+quotients.
+(4) \emph{Lattices.} A representation on a $\Ql$-vector space $V$ with a stable $\Zl$-lattice $T$
+can be reduced modulo $\ell$ to a representation on $T/\ell T$ over $\F_\ell$; the reduction depends
+on $T$, its semisimplification does not, and when the reduction is irreducible all stable lattices
+are homothetic (Ribet's lemma).
+Finally, the word ``character'' in the book almost always means a degree-one representation of a
+group, usually a profinite one (the cyclotomic character $\chil$, the quadratic characters
+$\chi_{-3}$, $\chi_{-4}$, $\chi_{q^*}$, Dirichlet characters), not a trace function; \Cref{ch:reps} says
+``the character of $\rho$'' when the trace is meant.
+\end{remark}
+
+\section{Elementary probability and statistics}\label{sec:prereq:stats}
+
+This section is used only in \Cref{ch:computation}, which explains the paper's data protocol
+(Section sec:data of the paper) and its calibration argument (Section sec:sharp). The reader's
+course in statistics is more than enough; the cards fix the vocabulary.
+
+\begin{definition}[finite probability spaces; base rates]\label{def:prereq:prob}
+A \emph{finite probability space} is a finite set $\Omega$ with a function $P\colon\Omega\to[0,1]$
+of total sum $1$; an \emph{event} is a subset $A\subseteq\Omega$, with $P(A)=\sum_{\omega\in A}P(\omega)$;
+a \emph{random variable} is a function $X\colon\Omega\to\R$, with \emph{expectation}
+$E[X]=\sum_\omega X(\omega)P(\omega)$ and \emph{variance} $\operatorname{Var}X=E[(X-E[X])^2]$. The
+\emph{indicator} $1_A$ of an event has $E[1_A]=P(A)$. Events $A,B$ are \emph{independent} if
+$P(A\cap B)=P(A)P(B)$, and the \emph{conditional probability} is $P(A\mid B)=P(A\cap B)/P(B)$. When
+$\Omega$ is a population with the uniform distribution $P(\omega)=1/\#\Omega$, $P(A)=\#A/\#\Omega$
+is the \emph{proportion} of $A$ in the population, also called the \emph{base rate} of the
+attribute $A$, and $E[X]$ is the population mean of $X$. If $A$ and $B$ were independent, the
+proportion of $A$ within $B$ would equal the base rate of $A$; comparing the two is the simplest
+test of association.
+\end{definition}
+
+\begin{theorem}[expectation (stated; reference)]\label{thm:prereq:expectation}
+\begin{enumerate}[label=(\alph*)]
+\item (Linearity) $E[aX+bY]=aE[X]+bE[Y]$, with no assumption of independence. In particular the
+expected number of events among $A_1,\dots,A_n$ that occur is $\sum_iP(A_i)$, whether or not the
+$A_i$ are independent.
+\item For independent $X,Y$: $E[XY]=E[X]E[Y]$ and $\operatorname{Var}(X+Y)=\operatorname{Var}X+\operatorname{Var}Y$.
+\item (Markov, Chebyshev) For $X\ge0$ and $t>0$, $P(X\ge t)\le E[X]/t$; for any $X$,
+$P(\abs{X-E[X]}\ge t)\le\operatorname{Var}X/t^2$.
+\item (Law of large numbers) If $X_1,\dots,X_n$ are independent with the same distribution, of mean
+$m$ and finite variance, then $P(\abs{(X_1+\dots+X_n)/n-m}\ge\eps)\to0$ as $n\to\infty$, for every
+$\eps>0$.
+\end{enumerate}
+\end{theorem}
+\noindent\emph{First needed:} \Cref{ch:computation}. \emph{Reference:} \cite[Chapters I, V and
+IX]{Feller68}; \cite[Chapter 30]{RHB06}.
+
+\emph{How (d) follows from (b) and (c).} Let $S_n=X_1+\dots+X_n$ and $v=\operatorname{Var}X_1$. By (a)
+$E[S_n/n]=m$, and by (b), applied repeatedly, $\operatorname{Var}S_n=nv$, so
+$\operatorname{Var}(S_n/n)=v/n$. Chebyshev's inequality then gives
+$P(\abs{S_n/n-m}\ge\eps)\le v/(n\eps^2)\to0$. (Repeated use of (b) needs $X_1+\dots+X_{j}$ and
+$X_{j+1}$ to be independent, which holds when the $X_i$ are independent as a family.)
+
+\begin{definition}[hypothesis tests]\label{def:prereq:test}
+A \emph{hypothesis test} consists of a \emph{null hypothesis} $H_0$, a precise probabilistic model
+for the data (for instance: two attributes are independent); a \emph{test statistic} $T$, a number
+computed from the data; and a \emph{rejection rule}, fixed before the data are examined, of the form
+``reject $H_0$ if $T\in R$'', where $R$ is chosen so that $P_{H_0}(T\in R)\le\alpha$ for a
+prescribed \emph{significance level} $\alpha$. The \emph{$p$-value} of an observed value $t$ is
+$P_{H_0}(T\text{ at least as extreme as }t)$. Rejecting $H_0$ says that the data would be very
+unlikely under $H_0$; it does not say that a particular alternative is true, and it says nothing at
+all if the rule was chosen after looking at the data.
+\end{definition}
+
+\begin{example}[the paper's calibration argument]\label{ex:prereq:calibration}
+The population is the set of working-set curves ($N\le300000$) with $E[3]$ irreducible and without
+complex multiplication. Among the $366151$ of them for which the right-hand side of the paper's
+rule (its inequality eq:rule) is $0$, the base rate of $v_3(\degphi)=0$ is $53.2\%$. Take as null
+hypothesis that $v_3(\degphi)$ is independent of the local data. Then a curve whose bound is $b$
+would have $v_3(\degphi)<b$ with the probability that a bound-$0$ curve has $v_3(\degphi)<b$, and
+summing these probabilities over the $867578$ working-set curves with a positive bound gives, by
+\Cref{thm:prereq:expectation}(a), an expected number of about $605000$ violations. In symbols: let
+$p_0(b)$ be the proportion of bound-$0$ curves with $v_3(\degphi)<b$, and let $A_C$ be the event that
+the curve $C$ violates its bound $b(C)$. Under the null hypothesis $P(A_C)=p_0(b(C))$, and the
+expected number of violations is
+\[
+\sum_{C:\ b(C)>0}p_0\bigl(b(C)\bigr),
+\]
+whatever the dependence between the events $A_C$; linearity of expectation needs no independence. The observed
+number is $0$. The force of the argument lies in the comparison of these two numbers, not in a
+$p$-value (which would be astronomically small): the inequality is not an artefact of most modular
+degrees being divisible by $3$. What the argument does not show is that the inequality holds beyond
+the data; that is the business of the theorem under its hypotheses and of the conjecture outside
+them. The equality rates ($57.5\%$ at $\ell=3$) and the mean excess ($0.63$) that the paper reports
+are descriptive statistics, proportions and means in the population, not tests.
+\end{example}
+
+\begin{definition}[hold-out sets; pre-registration]\label{def:prereq:holdout}
+When a data set is searched for a relation among many candidates, some candidate will fit the data
+by chance, and the more thorough the search the more surely (the problem of \emph{multiple
+comparisons}); a relation found on a data set therefore cannot be tested on the same data. The
+remedy is to split the data, before the search, into a \emph{working set}, used for the search and
+for everything else, and a \emph{hold-out set}, which is not examined; to write down the statement
+and the test, with its rejection rule, before looking at the hold-out (\emph{pre-registration}); and
+then to test once. A statement that passes such a test has been \emph{blind-tested}. A statement
+formulated after the hold-out has been used can only be \emph{confirmed} on it, which is weaker,
+and a fresh hold-out is needed to blind-test it.
+\end{definition}
+
+\emph{How large the effect of multiple comparisons is.} Suppose $20$ candidate relations, all
+false, are each tested at significance level $\alpha=0.05$, with independent data. By
+\Cref{thm:prereq:expectation}(a) the expected number of false rejections is $20\cdot0.05=1$, and by
+independence the probability that at least one candidate is rejected, and so looks like a
+discovery, is $1-0.95^{20}\approx0.64$. A search over thousands of candidates makes a chance fit
+practically certain. Testing the survivor on the same data says nothing; testing it on a hold-out
+that played no part in the search restores the meaning of $\alpha$.
+
+\begin{paperlink}\label{pl:prereq:protocol}
+The paper's ranges are the working set ($N\le300000$), the hold-out ($300000<N\le400000$), the
+extension ($400000<N\le500000$) and the out-of-table curves ($500000<N\le4\cdot10^6$). The
+component-group inequality (eq:main) and Conjecture conj:eis were found on the working set, written
+down, tested once on the hold-out, then on the extension, and nothing was adjusted afterwards; the
+twist-symmetrised form (eq:twist) was likewise tested once on the hold-out and the extension. The
+Euler-factor rule (Conjecture conj:euler) was formulated last, after the hold-out and the extension
+had been used, so for it they are a confirmation and the out-of-table curves, generated before the
+rule was formulated, are the blind test. \Cref{ch:computation} explains each range and each count
+of the paper's tables. \emph{Reference:} \cite{Wasserman04}; \cite[Chapter 31]{RHB06}.
+\end{paperlink}
+
+\section{Where to look}\label{sec:prereq:books}
+
+\emph{Real analysis.} Rudin \cite{Rudin76} is the reference used above and contains everything in
+\Cref{sec:prereq:real} with proofs; Apostol \cite{Apostol74} treats double series, improper
+integrals and the Gamma function in more detail. RHB \cite[Chapter 4]{RHB06} covers series and
+convergence tests at the level of a first course.
+
+\emph{Complex analysis.} Ahlfors \cite{Ahlfors79} and Stein-Shakarchi \cite{SteinShakarchi03} both
+contain all of \Cref{sec:prereq:complex}; the second has a chapter on the Gamma and zeta functions
+and one on the upper half plane. The first chapter of Diamond-Shurman \cite{DiamondShurman} does the
+upper half plane, the action of $\SL_2(\Z)$ and $q$-expansions in exactly the form
+\Cref{ch:modforms} needs. RHB \cite[Chapters 24 and 25]{RHB06} covers residues and contour
+integration.
+
+\emph{Linear algebra.} Axler \cite{Axler15} (over $\R$ and $\C$, with the spectral theorem and
+generalised eigenvectors done carefully) and Halmos \cite{Halmos74} (bilinear forms, duality,
+tensor products, in a coordinate-free way) between them contain \Cref{sec:prereq:linear} over
+$\R$ and $\C$. For arbitrary fields, and for the same constructions over rings, use Lang
+\cite[Chapters XIII to XVI]{Lang} or Dummit-Foote \cite[Chapters 11 and 12, and Section
+10.4]{DummitFoote}. RHB \cite[Chapter 8]{RHB06} is the reader's starting point.
+
+\emph{Groups and representations.} RHB \cite[Chapters 28 and 29]{RHB06} is what we assume. Serre
+\cite{SerreLinearReps} is the standard reference: Part I for characteristic $0$, Part III for the
+modular theory that \Cref{ch:reps} needs. Dummit-Foote \cite[Chapters 18 and 19]{DummitFoote} and
+Lang \cite[Chapter XVIII]{Lang} cover the same ground, and \cite[Chapters 1 to 6]{DummitFoote} is
+the book's own reference for the group theory of \Cref{ch:groups}.
+
+\emph{Probability and statistics.} RHB \cite[Chapters 30 and 31]{RHB06} is what we assume. Feller
+\cite{Feller68} is the classical text on discrete probability; Wasserman \cite{Wasserman04} is a
+concise account of statistical inference, including hypothesis tests and multiple comparisons, at
+the level needed to read \Cref{ch:computation}.
+
+\emph{After this appendix.} The book's own references for the material it builds are named in the
+``Notes and references'' section of each chapter; the ones used most are Lang \cite{Lang} and
+Dummit-Foote \cite{DummitFoote} for algebra, Atiyah-Macdonald \cite{AtiyahMacdonald} for
+commutative algebra, Serre \cite{SerreLocalFields} and Neukirch \cite{Neukirch} for local fields and
+number fields, Silverman \cite{SilvermanAEC,SilvermanATAEC} for elliptic curves, and
+Diamond-Shurman \cite{DiamondShurman} for modular forms.
