@@ -1135,8 +1135,10 @@ newform; here it is $g$, and $h$ is the matrix $\operatorname{diag}(1,-1)$.)
 \begin{paperlink}
 Lemma lem:old, the case $p=\ell$: ``By the theorems of Deligne and Fontaine describing $\bar\rho_f|_{D_\ell}$ and $\bar\rho_h|_{D_\ell}$
 \cite[\S2]{Edixhoven92}, the residue class of $a_\ell$ is determined by the restriction to $D_\ell$: it is $0$ when that restriction is irreducible,
-and otherwise the eigenvalue of Frobenius on the unramified quotient.'' This is \Cref{thm:galrep:deligne-fontaine}(iii); the uniqueness of the
-unramified quotient, which the paper leaves implicit, holds because the other character restricts to $\omega\ne1$ on inertia. Example:
+and otherwise the eigenvalue of Frobenius on the unramified quotient.'' This is \Cref{thm:galrep:deligne-fontaine}(iii). The paper then says why that quotient is
+well defined: ``the two characters of the semisimplification restrict to $I_\ell$ as $\bar\chi_\ell$ and $1$, and $\bar\chi_\ell|_{I_\ell}\ne1$ since $\ell$ is odd, so the
+unramified quotient is the module of $I_\ell$-coinvariants''. In the notation of this chapter $\bar\chi_\ell|_{I_\ell}=\omega$, the fundamental character of level $1$, which is
+nontrivial because it has order $\ell-1\ge2$. Example:
 $\bar\rho_{\curve{121c1},3}\simeq\bar\rho_{\curve{11a1},3}$ (\Cref{ex:galrep:serre-conductor-examples}), both curves are ordinary at $3$, and indeed
 $a_3(\curve{121c1})=2\equiv-1=a_3(\curve{11a1})\pmod3$.
 \end{paperlink}
@@ -1813,7 +1815,8 @@ with $R=\{2\}$. Our recomputation above agrees with all these counts.
 \begin{paperlink}
 The paper's Proposition prop:ns-structure has the content of \Cref{prop:galrep:ns-structure}, with the parts in another order: its (iv) is (i)
 here; its (i) is (ii) here, where the clause on type $\kod{I}_n^*$ at $p\ge5$ is the case $v_p(j)=-n$ of the clause on $v_p(j)<0$; its (ii) and (iii) are (iii) and
-(iv) here; and its (v) to (vii) are (v) to (vii) here.
+(iv) here; and its (v) to (vii) are (v) to (vii) here. The paper's proof takes its (iv) second, after its (i): ``We prove (iv) next, because (ii) uses the fields $K_1$ and $K_2$ it
+describes.'' Putting that part first here reflects the same dependence.
 \end{paperlink}
 
 \begin{corollary}[$S_f$ for elliptic curves]\label{cor:galrep:Sf}

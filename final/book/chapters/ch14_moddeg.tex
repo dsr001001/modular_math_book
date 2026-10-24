@@ -581,8 +581,8 @@ $(\mathcal C^t)^*$. This is why $f$ is an eigenvector of the adjoints of the $T_
 In Section 4.1 of the paper the pairing $\hat\delta_!$ ``is perfect and alternating on $H^1(X_0(M^\Sigma),\Z_\ell)$, and the Hecke operators, $U_p$ included, are self-adjoint for it,
 because $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup product (this is what the composition with $w$ is for; see \cite[\S\S1.6.1, 1.8.2]{DFG04} and \cite[\S4.4]{DDT})''.
 This is \Cref{thm:moddeg:transpose}(iii) and \Cref{cor:moddeg:delta-hat}(ii) at level $M^\Sigma$. The paper's $\hat\delta_!$ is that of \cite{DFG04}, which on classes from
-$X_0(M^\Sigma)$ the paper describes as ``$\frac12$ times the cup product on $X_0(M^\Sigma)$ composed with $w_{M^\Sigma}$''; the book's $\hat\delta_!$ (Appendix B, B-C13(f)) omits
-the factor $\frac12$, a unit for odd $\ell$, so the two have the same ideal of values on every sublattice. The sentence of the paragraph after Lemma lem:hecke, ``the
+$X_0(M^\Sigma)$ the paper describes as ``$\frac u2$ times the cup product on $X_0(M^\Sigma)$ composed with $w_{M^\Sigma}$, for an $\ell$-adic unit $u$, so for odd $\ell$ only a unit separates the two'';
+the book's $\hat\delta_!$ (Appendix B, B-C13(f)) omits the factor $\frac u2$, a unit for odd $\ell$, so the two have the same ideal of values on every sublattice (\Cref{rem:moddeg:dfg-normalisation}(3)). The sentence of the paragraph after Lemma lem:hecke, ``the
 idempotent $e_{\mathfrak m}$ is self-adjoint for $\hat\delta_!$, so $H^1(X_0(N),\Z_\ell)$ splits orthogonally into its local components and the pairing is perfect on each'', is
 \Cref{cor:moddeg:delta-hat}(iii).
 \end{paperlink}
@@ -1336,7 +1336,7 @@ Let $E$ be optimal and $\ell$ any prime. For $a,b\in H^1(E,\Zl)$,
 \]
 Hence the ideal of values of $\hat\delta_!$ on $M_{f,\lambda}\times M_{f,\lambda}$ is $\degphi\cdot\Zl$, and the Gram determinant of $\hat\delta_!$ in a basis of $M_{f,\lambda}$ is $(\degphi)^2$ up to a unit of $\Zl$.
 The same holds over $\Z$: the ideal of values of $\hat\delta_!$ on $H^1(X_0(N),\Z)[I_f]$ is $\degphi\cdot\Z$. Consequently, if the ideal $\eta^\emptyset_{f,\lambda}$ of Diamond, Flach and Guo is the
-ideal of values of $\hat\delta_!$ (or of $\frac12\hat\delta_!$) on $M_{f,\lambda}$, as Section 4.1 of the paper describes it for $\ell\nmid2N$ with $\bar\rho$ irreducible, then
+ideal of values of $\hat\delta_!$ (or of $\frac u2\hat\delta_!$, $u$ an $\ell$-adic unit) on $M_{f,\lambda}$, as Section 4.1 of the paper describes it for $\ell\nmid2N$, then
 $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$, with no multiplicity-one or Gorenstein hypothesis.
 \end{theorem}
 
@@ -1344,7 +1344,7 @@ $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$, with no multiplicity-on
 By \Cref{lem:moddeg:wn-on-mf} and the projection formula (\Cref{prop:moddeg:degree-descriptions}(iv)),
 $\hat\delta_!(\varphi_E^*a,\varphi_E^*b)=\varepsilon_N(f)\langle\varphi_E^*a,\varphi_E^*b\rangle_{X_0(N)}=\varepsilon_N(f)\degphi\langle a,b\rangle_E$. The cup product on $H^1(E,\Zl)$ is perfect and alternating of rank two, so its
 ideal of values is $\Zl$ and its Gram determinant a unit (\Cref{ch:curves}); multiplying by the unit $\varepsilon_N(f)$ and by $\degphi$ gives ideal of values $\degphi\Zl$ and Gram determinant
-$(\degphi)^2$ times a unit. By \Cref{prop:moddeg:mf-is-pullback}(c), $\varphi_E^*H^1(E,\Zl)$ is all of $M_{f,\lambda}$. The argument over $\Z$ is the same. The last sentence: $\frac12$ is a unit for odd
+$(\degphi)^2$ times a unit. By \Cref{prop:moddeg:mf-is-pullback}(c), $\varphi_E^*H^1(E,\Zl)$ is all of $M_{f,\lambda}$. The argument over $\Z$ is the same. The last sentence: $\frac u2$ is a unit for odd
 $\ell$.
 \end{proof}
 
@@ -1365,8 +1365,10 @@ given Proposition prop:integral, $M_{f,\lambda}=\varphi^*H^1(E,\Z_\ell)$, and'' 
 odd $\ell$; the book also states the ideal of values over $\Z$ (on $H^1(X_0(N),\Z)[I_f]$ it is $\degphi\,\Z$) and at $\ell=2$ for $\langle x,w_N^*y\rangle$, both immediate from the displayed
 identity. The two proofs differ in one step: the book derives the action of $w_N$ from the identity of maps $\varphi_E\circ w_N=\varepsilon_N(f)\varphi_E+\varphi_E(0)$, the paper from the fact that
 the plane is also the eigenspace of the $T_n$, $(n,N)=1$, which commute with $w_N$ (\Cref{prop:moddeg:f-lattice}(i), (iii)). The Galois structure $M_{f,\lambda}\simeq T_\ell E(-1)$, which the paper
-states in the paragraph after the proof, is part (d) of \Cref{prop:moddeg:mf-is-pullback}. The hypotheses $\ell\nmid2N$ and $\bar\rho$ irreducible enter only the identification of
-$H^1(X_0(N),\Zl)$ with the integral structure of \cite{DFG04}, the paper's Proposition prop:integral (\Cref{rem:moddeg:dfg-normalisation}).
+states in the paragraph after the proof, is part (d) of \Cref{prop:moddeg:mf-is-pullback}. The identification of $H^1(X_0(N),\Zl)$ with the integral structure of \cite{DFG04}, the paper's Proposition prop:integral,
+holds for every prime $\ell$ with no localisation (\Cref{rem:moddeg:dfg-normalisation}(1)); the hypothesis $\ell\nmid2N$ enters through the standing assumption of Section 4.1 of the paper and
+the normalisation of $\hat\delta_!$ (\Cref{rem:moddeg:dfg-normalisation}(3)), and the irreducibility of $\bar\rho$ is not used in this step: it is a hypothesis of the results of \cite{DFG04}
+that the paper applies to $\eta^\emptyset_{f,\lambda}$ afterwards, such as their Proposition 1.4(c).
 
 \begin{corollary}[the divisibility of Agashe, Ribet and Stein at every prime]\label{cor:moddeg:ars-divisibility}
 Let $E$ be optimal. For every prime $\ell$, $v_\ell(\degphi)\le v_\ell(r_E)$; that is, $\degphi\mid r_E$. Equality holds at $\ell$ if $H^1(X_0(N),\Zl)_{\mf m}$ is free over $\T_{\mf m}$ for $\mf m=\mf m_{f,\ell}$.
@@ -1398,8 +1400,8 @@ Let $E$ be optimal and $\ell$ a prime.
 \begin{enumerate}[label=(\roman*)]
 \item $v_\ell(\degphi)=v_\ell(\text{ideal of values of }\hat\delta_!\text{ on }M_{f,\lambda})\le v_\ell(r_E)$, with no further hypothesis.
 \item If $\ell^2\nmid N$, then $v_\ell(\degphi)=v_\ell(r_E)$ (\Cref{thm:moddeg:ars}).
-\item If $\ell\nmid2N$ and $\bar\rho_{E,\ell}$ is irreducible, then, with the integral structure of \cite{DFG04} identified with $H^1(X_0(N),\Zl)$ after localisation at $\mf m_{f,\ell}$ as in Section 4.1
-of the paper (\Cref{rem:moddeg:dfg-normalisation}),
+\item If $\ell\nmid2N$ and $\bar\rho_{E,\ell}$ is irreducible, then, with the integral structure of \cite{DFG04} identified with $H^1(X_0(N),\Zl)$ by the paper's Proposition prop:integral
+(\Cref{rem:moddeg:dfg-normalisation}),
 \[
 v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda}).
 \]
@@ -1420,14 +1422,21 @@ the tool for forms not attached to an optimal quotient, such as the depleted for
 
 \begin{remark}[the identification with the objects of Diamond, Flach and Guo]\label{rem:moddeg:dfg-normalisation}
 \Cref{thm:moddeg:degree-is-eta} is a theorem about the ideal of values of $\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Zl)[I_f]$. That this ideal is the $\eta^\emptyset_{f,\lambda}$ of \cite{DFG04} rests on five
-points, which Section 4.1 of the paper asserts. Point (2) is proved below and point (5) in \Cref{ch:modules}; \Cref{ch:congruence} sketches the comparison of integral
-structures in (1), and checks the normalisation in (3), the kernel lattice in (4) and the self-adjointness of the Hecke operators against the published text of \cite{DFG04}
-(Sections 1.5.2, 1.5.3, 1.6.1, 1.6.2, 1.8.2 there).
+points, which Section 4.1 of the paper establishes. Point (1) is the paper's Proposition prop:integral, which the paper proves and \Cref{ch:congruence} proves in full
+(\Cref{prop:congruence:integral-structure}); point (2) is proved below and point (5) in \Cref{ch:modules}; \Cref{ch:congruence} checks the normalisation in (3), the kernel lattice in (4) and the
+self-adjointness of the Hecke operators against the published text of \cite{DFG04} (Sections 1.5.2, 1.5.3, 1.6.1, 1.6.2, 1.8.2 there).
 \begin{enumerate}[label=(\arabic*)]
-\item \emph{Which curve.} The integral structure $M(N,1)_{!,\lambda}$ of \cite{DFG04} is defined through a modular curve of full level; the paper's Proposition prop:integral states that pull-back
-``maps $H^1(X_0(M^\Sigma),\Z_\ell)$, compatibly with the Hecke operators, onto a sublattice of finite index of $M(M^\Sigma,1)_{!,\lambda}$'' and that the two agree after localisation at every
-non-Eisenstein $\mf m$, the cokernel being Eisenstein; the paper gives a sketch of proof and uses the proposition as an input. This matters: pulling back along a covering of degree $n$ multiplies the cup product by $n$ (\Cref{ch:curves}), so if the comparison failed at a non-Eisenstein $\mf m$ the
-ideal of values could change by a non-unit. For $X_1(N)\to X_0(N)$ the relevant obstruction is the Shimura subgroup (\Cref{def:moddeg:shimura-subgroup}, \Cref{ex:moddeg:ex-shimura}).
+\item \emph{Which curve.} The integral structure $M(N,1)_{!,\lambda}$ of \cite{DFG04} is defined through a modular curve of full level. The paper's Proposition prop:integral: ``Pull-back along the
+covering of $X_0(M^\Sigma)$ by the modular curve of full level identifies $H^1(X_0(M^\Sigma),\Z)$ with the Betti lattice $M(M^\Sigma,1)_{!,B}$ of \cite[\S1.4.2]{DFG04}, compatibly with the Hecke
+operators, $U_p$ included; in particular $M(M^\Sigma,1)_{!,\lambda}=H^1(X_0(M^\Sigma),\Z_\ell)$, with no localisation.'' It holds for every prime $\ell$, with no hypothesis on $\bar\rho$. The
+proof has four steps: compact support makes the invariants of the full-level cover equal to the cohomology of $Y_0(M^\Sigma)$ (Hochschild-Serre, and the equivariant Leray spectral sequence of
+the quotient map, whose $\mathcal R^1$ vanishes because a finite group has no nonzero homomorphism to $\Z$); the image of $H^1_c(Y_0)$ in $H^1(Y_0)$ is $H^1(X_0)$, which is point (2); Hecke
+equivariance is checked over $\C$; and the $\lambda$-adic structure is the Betti one tensored with $\Zl$. The point matters because pulling back along a covering of degree $n$ multiplies the
+cup product by $n$ (\Cref{ch:curves}): a lattice strictly between $\pi^*H^1(X_0(N),\Zl)$ and its saturation would change the ideal of values by a non-unit. Compact support is what excludes this.
+With ordinary cohomology the invariants can be larger than the pull-back; in the paper's words, ``$H^1(Y(N),\Z_\ell)^G/\pi^*H^1(Y_0(M),\Z_\ell)$ is the group of characters $\Gamma_0(M)\to\Q_\ell/\Z_\ell$
+of $\ell$-power order that factor through $G$, namely $\gamma\mapsto\psi(d\bmod p)$ for primes $p\mid M$ with $\ell\mid p-1$; for $M=11$ and $\ell=5$ it is the unramified covering
+$X_1(11)\to X_0(11)$''. For $X_1(N)\to X_0(N)$ this excess is measured by the Shimura subgroup (\Cref{def:moddeg:shimura-subgroup}, \Cref{ex:moddeg:ex-shimura}); it plays no part in the
+comparison of integral structures.
 \item \emph{Interior cohomology.} For constant coefficients, the image of $H^1_c(Y_0(N),\Zl)$ in $H^1(Y_0(N),\Zl)$ is $H^1(X_0(N),\Zl)$, and $H^1(\Gamma_0(N),\Zl)=H^1(Y_0(N),\Zl)$. Proof: with $S$ the set
 of cusps, the exact sequence $H^0(S)\to H^1_c(Y)\to H^1(X)\to H^1(S)=0$ makes $H^1_c(Y)\to H^1(X)$ onto, and $H^1(X)\to H^1(Y)$ is injective because $H^1(X,Y)$ is, by excision, a sum of
 $H^1(D,D\setminus\{P\})=0$ over small discs $D$ around the cusps; so the image of $H^1_c(Y)\to H^1(Y)$ is $H^1(X)$. And $H^1(\Gamma_0(N),\Zl)=\Hom(\Gamma_0(N),\Zl)$ kills the elements of finite order

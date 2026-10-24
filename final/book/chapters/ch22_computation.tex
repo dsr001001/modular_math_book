@@ -59,7 +59,8 @@ per-prime Kodaira symbols or Tamagawa numbers, the repository's \texttt{curvedat
 \item \textbf{Cross-checks with \texttt{curvedata}, \texttt{opt\_man}, \texttt{alldegphi}.} Kodaira codes, $c_p$, $f_p$ agree with \texttt{ellglobalred} on all $64{,}687$
 curves; exactly one optimal curve per class, the one of \texttt{degphi}, with Manin constant $1$. \emph{(proved here, by computation)} \Cref{ex:computation:curvedata}.
 \item \textbf{Optimality.} Curve number $1$ is optimal in every class below $10{,}000$ except \curve{990h}, whose optimal curve is \curve{990h3}; for $E[\ell]$ irreducible,
-$v_\ell$ of the degree does not depend on the curve of the class. \emph{(proved here, by computation; the second statement stated, reference \Cref{ch:moddeg})}
+$v_\ell$ of the degree does not depend on the curve of the class, nor, at $\ell=3$, does $w_3$ ($1{,}295$ classes checked below $10{,}000$; it varies in $828$ classes with a $3$-isogeny).
+\emph{(proved here, by computation; the second statement stated, reference \Cref{ch:moddeg,ch:ellcurves})}
 \Cref{rem:computation:optimality-data}.
 \item \textbf{Labels.} Cremona and LMFDB labels (\curve{11a1} $=$ \texttt{11.a2}); Sutherland's labels, reducible iff $\ell$B or $\ell$Cs; counts of the $3$-adic labels
 among non-CM optimal curves below $10{,}000$. \emph{(convention)} \Cref{conv:computation:labels}.
@@ -725,10 +726,15 @@ $38{,}042$ equations of \texttt{degphi}, exactly one is not curve number $1$ of 
 \texttt{rule} gives \texttt{[3, 3]} and \texttt{[4, 3]} at $\ell=3$ (\Cref{warn:computation:rule-pitfalls}).
 \item The paper: ``Optimality is determined in the tables for every class of conductor at most $400000$ and for $359{,}009$ further classes
 up to $500000$'' (Section sec:data). What ``determined'' means, and how Cremona certifies it, is in \Cref{ch:moddeg}. For $E[\ell]$ irreducible
-the choice of curve in a class does not affect $v_\ell$ of the degree, by (iv), nor the terms $e_\ell$, $t_\ell$, $h_\ell$; but the weight $w_3$ is not
-proved to be the same for all curves of a class (\Cref{ch:ellcurves}). The paper says so for its extension range: ``for a class whose optimal curve is
-not determined, the right side of (eq:rule) at $\ell=3$ depends on the class invariance of $w_3$, which is not proved and fails in the presence of a
-$3$-isogeny''.
+the choice of curve in a class does not affect $v_\ell$ of the degree, by (iv), nor the terms $e_\ell$, $t_\ell$, $h_\ell$; and for $E[3]$ irreducible the
+weight $w_3$ is the same for all curves of the class, because the Kodaira type at $3$ is (\Cref{pl:ellcurves:optimal}). The paper uses this for its
+extension range: ``for a class whose optimal curve is not determined, the right side of (eq:rule) at $\ell=3$ is nevertheless the same for every curve
+of the class''. Indeed ``when $E[3]$ is irreducible the class has no $3$-isogeny, so every isogeny in it is a composite of isogenies of prime degree
+$p\ne3$, and an isogeny of prime degree $p$ preserves the Kodaira type at a prime $q\ne p$ of potentially good reduction'' \cite[Theorem 5.4(1)]{DokDok15},
+applied with $q=3$. With a $3$-isogeny, where (eq:rule) does not apply at $\ell=3$, the weight can vary. On the book's data, below conductor
+$10{,}000$, among the classes with $3\mid N$, at least two curves and potentially good reduction at $3$, the Kodaira type at $3$ is constant on all
+$1{,}295$ classes without a $3$-isogeny; on the $1{,}293$ classes with one, the type varies in $1{,}078$ and $w_3$ in $828$, the paper's count (for
+\curve{54a} the types are $\kod{IV}^*$, $\kod{II}^*$, $\kod{II}$). \emph{(Proved here, by computation, from \texttt{allisog} and \texttt{ellglobalred}.)}
 \item \texttt{ellweilcurve} identifies the optimal curve inside PARI for moderate conductors (\Cref{rem:computation:ellmoddegree}(ii)), and
 \texttt{opt\_man} records it (\Cref{ex:computation:curvedata}).
 \item When $E[\ell]$ is irreducible, every isogeny in the class has degree prime to $\ell$, so $v_\ell$ of the degree of the minimal
@@ -794,8 +800,9 @@ rule(E, l, {iii = 0}) =
   if(iii && l == 3, b -= ns3(E));                        \\ the correction term h_3
   [valuation(ellmoddegree(E), l), b]; }
 ns3(E) = my(F = factor(elldivpol(E, 3))); (#F[,1] == 2 && poldegree(F[1,1]) == 2);
+\\ psi_3 has degree 4 and is squarefree, so two factors, one quadratic, means two quadratics
 \end{lstlisting}
-The fifteen lines contain no double hyphen. They are loaded with \texttt{read("euler\_rule.gp")} in \texttt{gp}, or with
+The sixteen lines contain no double hyphen. They are loaded with \texttt{read("euler\_rule.gp")} in \texttt{gp}, or with
 \texttt{pari('read("euler\_rule.gp")')} in Python (\Cref{warn:computation:pitfalls}(g)). The appendix adds: ``Here \texttt{K[i][2]} is
 PARI's Kodaira code: $n+4$ for $\mathrm{I}_n$ and $-(n+4)$ for $\mathrm{I}_n^*$ when $n\ge1$, $1$ for $\mathrm{I}_0$ and $-1$ for $\mathrm{I}_0^*$, $\pm2$ for
 $\mathrm{II}/\mathrm{II}^*$, $\pm3$ for $\mathrm{III}/\mathrm{III}^*$, $\pm4$ for $\mathrm{IV}/\mathrm{IV}^*$. The function \texttt{rule(E,l)} leaves the type
@@ -830,7 +837,8 @@ $h_\ell(E)=0$ for $\ell\ge5$ (\Cref{ch:galrep}).
 \item Line 14 returns the pair $[v_\ell(\texttt{ellmoddegree(E)}),\ b]$. \texttt{ellmoddegree} is by far the slowest step
 (\Cref{rem:computation:ellmoddegree}(iv)).
 \item Line 15. \texttt{ns3(E)} factors $\psi_3$ and returns $1$ if the factorisation has exactly two distinct irreducible factors, the first of
-degree $2$, and $0$ otherwise.
+degree $2$, and $0$ otherwise. Line 16 is a comment giving the reason why this test detects the pattern $2+2$: $\psi_3$ has degree $4$ and no
+repeated factor, so two factors, one of them quadratic, means two quadratics; \Cref{prop:computation:rule-correct}(ii) proves both facts.
 \end{enumerate}
 \end{remark}
 
@@ -1129,7 +1137,7 @@ Conjecture conj:euler and Conjecture conj:eis; a reducible $E[\ell]$ moves a cur
 different statement; and in the hypothesis population, where Theorem thm:main applies, the data check a theorem rather than test a conjecture.
 \item Only one curve per class is counted because $v_\ell(\degphi)$ is attached to the optimal curve; counting every curve of a class would count
 one newform several times. For $E[\ell]$ irreducible, $v_\ell$ of the degree and the terms $e_\ell$, $t_\ell$, $h_\ell$ are invariants of the class
-(\Cref{ch:moddeg,ch:ellcurves}); the weight $w_3$ is only observed to be one.
+(\Cref{ch:moddeg,ch:ellcurves}), and at $\ell=3$ so is the weight $w_3$ (\Cref{rem:computation:optimality-data}(ii)).
 \end{enumerate}
 \end{definition}
 
@@ -1206,7 +1214,7 @@ In the paper it is the protocol paragraph of Section sec:data, with Sections sec
 \begin{remark}[the four ranges]\label{rem:computation:protocol}
 The paper's ranges (\Cref{conv:computation:populations}) are: the working set, $N\le300000$, where every class has determined optimality; the
 hold-out, $300000<N\le400000$, the same; the extension, $400000<N\le500000$, where optimality is determined for $359{,}009$ classes only (for the other classes
-the bound at $\ell=3$ depends on the class invariance of $w_3$, \Cref{rem:computation:optimality-data}); and the out-of-table curves: $893$ curves (the abstract)
+the bound at $\ell=3$ is the same for every curve of the class, since $w_3$ is a class invariant when $E[3]$ is irreducible, \Cref{rem:computation:optimality-data}); and the out-of-table curves: $893$ curves (the abstract)
 with $500000<N\le4\cdot10^6$; ``we generated curves with prescribed local types'' (``families with a type $\mathrm{IV}$ or $\mathrm{IV}^*$ prime, with two
 or three type $\mathrm{II}$ primes, with mixed types, and random curves''), kept when the isogeny class is trivial ``so that the curve is optimal and
 $E[\ell]$ is irreducible for every $\ell$'', not CM, and with modular degrees computed by \texttt{ellmoddegree} (Section sec:oot). The vocabulary

@@ -504,8 +504,9 @@ for the set $S$. A parenthesised superscript is reserved for \emph{twists} of cu
 ($\zeta^{(N)}$, $\T^{(N)}$), for the \emph{level} of a Hecke operator when two levels are in play ($T_p^{(M)}$, $U_p^{(Mp)}$), and for the
 components $\chi^{(p)}$ of a Dirichlet character; it never denotes depletion. The Frobenius twist of a curve is $C^{[r]}$.
 \item $W_N=\sm0{-1}N0$, $w_N$ the involution of $X_0(N)$ and the operator $f\mapsto f|_kW_N$; $\varepsilon_N(f)=\pm1$ its eigenvalue on a newform.
-$\hat\delta_!$ (always with the subscript) is the pairing $\langle x,w_Ny\rangle$ on $H^1(X_0(N),\Zl)$ (DFG04's $\hat\delta_!$ in weight $2$, trivial
-character); $M_{f,\lambda}=H^1(X_0(N),\Zl)[\ker\phi_f]$ (with $\lambda=\ell$ for rational $f$); $\eta^\Sigma_{f,\lambda}$ its ideal of values on
+$\hat\delta_!$ (always with the subscript) is the pairing $\langle x,w_Ny\rangle$ on $H^1(X_0(N),\Zl)$. For odd $\ell$ it is DFG04's $\hat\delta_!$
+in weight $2$, trivial character, up to an $\ell$-adic unit: on classes pulled back from $X_0(N)$ theirs is $\frac u2\langle x,w_Ny\rangle$ with $u$ an
+$\ell$-adic unit (the paragraph after the paper's Proposition prop:integral). $M_{f,\lambda}=H^1(X_0(N),\Zl)[\ker\phi_f]$ (with $\lambda=\ell$ for rational $f$); $\eta^\Sigma_{f,\lambda}$ its ideal of values on
 $M_{f^\Sigma,\lambda}$.
 \end{enumerate}
 \end{convention}
@@ -856,7 +857,7 @@ $d$, $\Delta$, $Q$ & rank of $L[\wp]$, its Gram determinant, $L/(L[\wp]\oplus L[
 $\eta^\Sigma_{f,\lambda}$, $\eta^\emptyset_{f,\lambda}$ & naive $\Sigma$-finite congruence ideal of Diamond, Flach and Guo; at level $N$ & \Cref{ch:modgalrep,ch:congruence} & $\eta(z)$\\
 $\eta^{\mathrm{Hecke}}$ & congruence ideal in the Hecke algebra (of $g^S$ in Theorem thm:quant) & \Cref{ch:hecke,ch:congruence} & \\
 $\eta_f$, $\eta^{\mathrm{Hecke}}_f$, $\eta_f(N)$ & one ideal, $\phi_f(\Ann_\T\ker\phi_f)=r_E\Z$ for rational $f$: the names in \Cref{ch:moddeg}, in \Cref{ch:congruence}, and Kim and Ota's (\Cref{ch:modgalrep}) & \Cref{ch:moddeg,ch:congruence} & $\eta^\Sigma_{f,\lambda}$\\
-$M(M,1)_{!,\lambda}$ & the integral structure of Diamond, Flach and Guo at level $M$ (in the paper $M=M^\Sigma$), $=H^1(X_0(M),\Zl)$ on non-Eisenstein components & \Cref{ch:congruence} & \\
+$M(M,1)_{!,\lambda}$ & the integral structure of Diamond, Flach and Guo at level $M$ (in the paper $M=M^\Sigma$), $=H^1(X_0(M),\Zl)$ with no localisation (Proposition prop:integral) & \Cref{ch:congruence} & \\
 $R_\Sigma$, $\T_\Sigma$ & deformation ring, Hecke algebra of Taylor-Wiles & \Cref{ch:modgalrep,ch:congruence} & \\
 $g$, $g^S$, $N_S^S$ & $f_{E_S}$, its $S$-depletion, $N_S\prod_{q\in S}q^{\delta_q(g)}=N$ & \Cref{ch:modgalrep,ch:congruence} & genus $g$\\
 \end{longtable}\endgroup
