@@ -200,6 +200,19 @@ At a good prime $p\ne\ell$ the arithmetic Frobenius has eigenvalues $\alpha,\bet
 $V_\ell E^\vee=H^1(E_{\overline\Q},\Q_\ell)$; on $\ad V$ both have $\alpha/\beta,1,\beta/\alpha$ (Appendix B, B-C3).
 \end{convention}
 
+The displayed consequences are short computations, and they show where the choice of $\Phi_p$ matters. Let $p\ne\ell$. The group $G_{\Q_p}$ acts on
+$\Q_\ell(1)$ through the cyclotomic character $\chi_\ell$, which is unramified at $p$, and $\chi_\ell(\Frob_p)=p$ because $\Frob_p$ raises roots of unity of order prime to $p$ to
+the $p$-th power. So $\Q_\ell(1)^{I_p}=\Q_\ell(1)$, the geometric Frobenius acts on it by $p^{-1}$, and $\det(1-\Phi_pp^{-s})=1-p^{-1-s}$. For a general $M$, the twist
+$M(n)=M\otimes\Q_\ell(1)^{\otimes n}$ has the same inertia invariants as $M$ (the twisting character is unramified), and each eigenvalue $\mu$ of $\Phi_p$ on $M^{I_p}$ becomes
+$\mu p^{-n}$; since $1-\mu p^{-n}p^{-s}=1-\mu p^{-(s+n)}$, the factor of $M(n)$ at $s$ is the factor of $M$ at $s+n$. At a good prime $p$ the eigenvalues of $\Phi_p$ on $V_\ell E^\vee$
+are $\alpha,\beta$, so
+\[
+\det(1-\Phi_pX\mid V_\ell E^\vee)=1-(\alpha+\beta)X+\alpha\beta X^2=1-a_pX+pX^2,
+\]
+which at $X=p^{-s}$ is $L_p(E,s)^{-1}$ of \Cref{def:lfunctions:LE}; and the Weil pairing $V_\ell E\times V_\ell E\to\Q_\ell(1)$ gives $V_\ell E\simeq V_\ell E^\vee(1)$, whence
+$L_p(V_\ell E,s)=L_p(V_\ell E^\vee,s+1)=L_p(E,s+1)$. (The bad primes are \Cref{prop:lfunctions:LE}.) So $L(E,s)$ is the $L$-function of the \emph{dual} $V_\ell E^\vee$, the
+first $\ell$-adic cohomology of $E$, and not of the Tate module itself; with the Tate module one gets the same function shifted by one.
+
 \begin{warning}[the two Frobenii in the paper]\label{warn:lfunctions:two-frobenii}
 The revised paper says in Section 1.1 that $L_p(A_f,s)=\det(1-\Frob_p^{-1}p^{-s}\mid A_f^{I_p})^{-1}$ ``is the true local factor, defined with the geometric Frobenius as in
 \cite[\S1.1.1]{DFG04}'', and that ``The matrices in the proof of Lemma~lem:tamfactor are those of the arithmetic Frobenius''. Both are needed. The table of
@@ -229,6 +242,16 @@ $L^{\nv}(\Sym f,s)=L^{\nv}(\ad f,s-1)$ (\Cref{def:lfunctions:naive}).
 \end{enumerate}
 The objects and the normalisations used by the sources are compared in \Cref{rem:lfunctions:normalisations}.
 \end{convention}
+
+Why so many normalisations? The adjoint $A_f$ has weight $0$ (its good Frobenius eigenvalues $\alpha/\beta,1,\beta/\alpha$ have absolute value $1$), which makes it the natural
+object for Galois cohomology and for Bloch-Kato; the symmetric square of $V^\vee$ has weight $2$ (eigenvalues $\alpha^2,p,\beta^2$), which is the classical normalisation of
+Shimura and of PARI. The two differ by the twist $\Q_\ell(-1)$, that is by the shift $s\mapsto s-1$. A concrete case: for \curve{11a1} and $p=2$ one has $a_2=-2$, so
+$\alpha+\beta=-2$, $\alpha\beta=2$ and $\alpha^2+\beta^2=a_2^2-2p=0$; then (\Cref{prop:lfunctions:good-factor})
+\[
+P_2(X)=(1-2X)(1-0\cdot X+4X^2)=(1-2X)(1+4X^2),\qquad L_2(A_f,1)^{-1}=P_2(\tfrac14)=\tfrac12\cdot\tfrac54=\tfrac58,
+\]
+and PARI's \texttt{1/lfuneuler(lfunsympow(E,2),2)} for $E=\curve{11a1}$ is indeed $1-2x+4x^2-8x^3$. The naive normalisation (d) differs from the true one only in which bad
+factors are kept, and the Rankin series (e) is a different Dirichlet series altogether (\Cref{prop:lfunctions:rankin-series}).
 
 \section{Dirichlet series and Euler products}\label{sec:lfunctions:dirichlet}
 
@@ -279,16 +302,28 @@ $s$, the sum is nonzero at $s$. If moreover $\sum_ka_{p^k}X^k=P_p(X)^{-1}$ with 
 \end{proposition}
 
 \begin{proof}
-Each factor is a subseries of $\sum a_nn^{-s}$, so it converges absolutely. For $x\ge2$ let $\Pi(x)$ be the finite product over $p\le x$. Expanding it
-(\Cref{prop:lfunctions:dirichlet-series}(iv), by induction) and using multiplicativity and unique factorisation, $\Pi(x)=\sum_{n\in S(x)}a_nn^{-s}$, where $S(x)$ is the set
-of integers all of whose prime factors are at most $x$. Every $n\le x$ lies in $S(x)$, so
+Each factor is a subseries of $\sum a_nn^{-s}$, so it converges absolutely. For $x\ge2$ let $\Pi(x)$ be the finite product over $p\le x$, say over $p_1,\dots,p_r$. A product
+of finitely many absolutely convergent series can be multiplied out term by term and the terms summed in any order (\Cref{prop:lfunctions:dirichlet-series}(iv), by
+induction on $r$), so
+\[
+\Pi(x)=\sum_{k_1,\dots,k_r\ge0}a_{p_1^{k_1}}\cdots a_{p_r^{k_r}}\,\bigl(p_1^{k_1}\cdots p_r^{k_r}\bigr)^{-s}=\sum_{k_1,\dots,k_r\ge0}a_{p_1^{k_1}\cdots p_r^{k_r}}\bigl(p_1^{k_1}\cdots p_r^{k_r}\bigr)^{-s},
+\]
+the second equality because the prime powers $p_i^{k_i}$ are pairwise coprime and $a$ is multiplicative. By unique factorisation each integer $n$ whose prime factors are
+all at most $x$ arises from exactly one tuple $(k_1,\dots,k_r)$; so $\Pi(x)=\sum_{n\in S(x)}a_nn^{-s}$, where $S(x)$ is the set of integers all of whose prime factors are at
+most $x$. Every $n\le x$ lies in $S(x)$, so the difference between the full series and $\Pi(x)$ is a sum over integers $n>x$, and
 \[
 \Bigl\lvert\sum_{n\ge1}a_nn^{-s}-\Pi(x)\Bigr\rvert\le\sum_{n>x}\abs{a_n}n^{-\sigma}\longrightarrow0\qquad(x\to\infty).
 \]
 For the absolute convergence, $\sum_p\lvert\sum_{k\ge1}a_{p^k}p^{-ks}\rvert\le\sum_{n\ge2}\abs{a_n}n^{-\sigma}<\infty$, the prime powers being distinct integers. A product
-$\prod(1+u_p)$ with $\sum\abs{u_p}<\infty$ and every $1+u_p\ne0$ has a nonzero limit: for $p$ large $\abs{u_p}\le\frac12$, the series $\sum\log(1+u_p)$ (principal branch)
-converges absolutely because $\abs{\log(1+u)}\le2\abs u$ for $\abs u\le\frac12$, and the tail of the product is the exponential of its sum.
+$\prod(1+u_p)$ with $\sum\abs{u_p}<\infty$ and every $1+u_p\ne0$ has a nonzero limit: for $p$ larger than some $p_0$, $\abs{u_p}\le\frac12$, the series $\sum_{p>p_0}\log(1+u_p)$ (principal branch)
+converges absolutely because $\abs{\log(1+u)}=\abs{\sum_{k\ge1}(-1)^{k+1}u^k/k}\le\abs u\sum_{k\ge0}2^{-k}=2\abs u$ for $\abs u\le\frac12$, and the partial products over $p_0<p\le x$ are the
+exponentials of its partial sums, so they converge to $\exp$ of the full sum, which is not $0$. The finitely many factors with $p\le p_0$ are nonzero by hypothesis, so the whole
+product, which equals the sum, is nonzero.
 \end{proof}
+
+The hypothesis that \emph{every} factor is nonzero cannot be dropped from the last assertion, and the absolute convergence cannot be dropped from the first: at $s=0$ the
+product $\prod_p(1-p^{-s})^{-1}$ has every factor infinite, while $\zeta(0)=-\frac12$ (Exercise~\ref{ex:lfunctions:ex-theta}); an Euler product says nothing outside its region of
+absolute convergence.
 
 The four examples of the chapter: $\zeta(s)=\sum n^{-s}$ and $L(s,\chi)$ have Euler products of degree $1$ (\Cref{thm:lfunctions:zeta,thm:lfunctions:dirichlet-L});
 $L(f,s)$ has one of degree $2$ (\Cref{ch:hecke}); $L(\ad f,s)$ and $L(\Sym f,s)$ have Euler products of degree $3$ by definition (Section~\ref{sec:lfunctions:adjoint}),
