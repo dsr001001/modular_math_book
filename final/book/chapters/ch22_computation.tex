@@ -112,7 +112,7 @@ cases (a) and (b). \emph{(proved here, by computation)}
 \item \textbf{A twist relation at $q=\ell$.} Below $10{,}000$, for $\ell\le13$: a curve of type $\kod{II}^*$, $\kod{III}^*$ or $\kod{IV}^*$ at $\ell$ has $v_\ell$ of its degree exactly one more than its
 twist by $\chi_{\ell^*}$ ($4{,}412$ cases); type $\kod{I}_n^*$ gives $0$; type $\kod{I}_0^*$ gives $v_\ell((\ell+1)^2-a_\ell^2)$ when $E[\ell]$ is irreducible. \emph{(an observation, by
 computation; no proof)} \Cref{ex:computation:twist-at-ell}.
-\item \textbf{Reproducibility.} The paper's repository (described, not used); the book's scripts \texttt{sessions.gp}, \texttt{table\_small.gp} and the Python
+\item \textbf{Reproducibility.} The paper's repository (its scripts and result files, with which the printed tables were compared; nothing in it was rerun); the book's scripts \texttt{sessions.gp}, \texttt{table\_small.gp} and the Python
 scripts; a checklist: pin the data, record versions, separate data and results, rerun, cross-check, state what was not checked. \emph{(construction;
 convention)} \Cref{rem:computation:paper-repository,con:computation:sessions,con:computation:table-small,rem:computation:book-scripts,conv:computation:checklist}.
 \end{enumerate}
@@ -158,7 +158,7 @@ says under stated conditions, and runs it on the running examples, including the
 quantity (Sections \ref{sec:computation:rule} to \ref{sec:computation:moddeg}). It explains the paper's protocol and judges its statistics:
 which statement was blind-tested and which only confirmed, what the calibration argument shows and what it does not
 (Sections \ref{sec:computation:populations} to \ref{sec:computation:calibration}). And it reproduces in small every table of the paper that the data of this range allow (not the table of
-out-of-table curves, whose curves are not published, and of the table of isolated types only the rows at $q=3$), on all
+out-of-table curves, whose curves lie outside Cremona's tables and are listed only in the paper's repository, and of the table of isolated types only the rows at $q=3$), on all
 $38{,}042$ optimal curves of conductor below $10{,}000$, with scripts the reader can rerun in minutes (Sections \ref{sec:computation:repro}
 and \ref{sec:computation:reproducibility}).
 
@@ -1445,8 +1445,8 @@ adjoint Selmer group together with the size of the Petersson norm (\Cref{ch:lfun
 \section{Reproducing the paper's tables below conductor \texorpdfstring{$10{,}000$}{10,000}}\label{sec:computation:repro}
 
 This section reproduces, on all $38{,}042$ optimal curves of conductor below $10{,}000$, every table and every count of the paper's Section sec:data
-that the data of this range allow. The paper's table files are not part of the paper's text, so the paper's numbers quoted here are only those
-that its text states; they concern its large ranges and are marked as the paper's. The book's counts are reproductions on data that were not
+that the data of this range allow. The paper's numbers quoted here are taken from its text and from its printed tables (read row by row in
+\Cref{ch:paper}); they concern its large ranges and are marked as the paper's. The book's counts are reproductions on data that were not
 blind (\Cref{sec:computation:intro}). All counts are over the base population at $\ell$ (\Cref{conv:computation:populations}) unless another is named.
 
 \begin{example}[Table tab:uniform in small]\label{ex:computation:repro-uniform}
@@ -1693,7 +1693,30 @@ symmetric-square Euler factors, \texttt{scripts/step10\_rule.py} and \texttt{scr
 (``correction term, image statistics''), \texttt{scripts/step12\_tamagawa.py} for the Tamagawa factors, \texttt{scripts/conj\_check.py} for the two
 corollary forms, \texttt{scripts/euler\_rule.gp} for the functions of \Cref{con:computation:rule-listing}, and \texttt{twist\_lemma\_check.gp}; it adds
 that ``each runs on the full tables in minutes to hours'' and that ``The pipeline was rerun from a clean clone and reproduced every count of Table
-tab:counts.'' This book has not used the repository: the description above is the appendix's, and the scripts below are the book's own.
+tab:counts.''
+
+The repository exists, and its directory \texttt{ecmine} (branch \texttt{ccr-f42a94ab-alw7cu}, commit \texttt{f57c783}) holds these scripts, the result files and,
+in \texttt{paper/tables}, the six table files that the paper prints. The tables are written by scripts from result files. Tables tab:uniform and tab:ns come from
+\texttt{scripts/step11\_tw\_boundary.py}, which also writes \texttt{results/step11\_summary.csv} and \texttt{results/step11\_ns3.csv};
+\texttt{scripts/step10\_rule.py} writes \texttt{results/step10\_rule\_\{work,holdout,ext,oot\}\_summary.csv}, the rule without the correction, and
+\texttt{scripts/step10\_make\_table.py} builds from them an older layout of Table tab:uniform with the III-free rule in the main columns, which is not the printed one.
+Tables tab:counts, tab:isolated and tab:oot come from \texttt{scripts/make\_tables.py}, the first from \texttt{results/check\_\{work,holdout,ext,oot\}\_summary.csv}
+(written by \texttt{scripts/conj\_check.py}), the second from \texttt{results/step6\_u1\_fit\_work.txt} (untwisted rows) and per-curve files
+\texttt{results/step7\_twist2\_*.parquet} (twisted rows), the third from \texttt{results/oot\_table.parquet}, which \texttt{scripts/oot\_convert.py} builds from
+\texttt{results/oot\_1.tsv} and \texttt{results/oot\_2.tsv}. Table tab:iso was copied, as the repository's notes say, from \texttt{results/step9\_euler\_l3.txt}.
+
+For this book the printed tables were compared with these files, by reading them; no script of the repository was run, and no large-range count was
+recomputed. This is a consistency check of the tables against the repository's output files, not a reproduction. The result: the six files in
+\texttt{paper/tables} agree character for character with the tables printed in the paper. Every entry of Table tab:uniform agrees with
+\texttt{results/step11\_summary.csv}, whose rates are rounded to four decimals (two of them, $0.9155$ and $0.5395$, lie on a rounding boundary and are printed
+$91.6\%$ and $54.0\%$); its columns of curves, positive bounds, violations without $h$ and the III-free counts agree with \texttt{results/step10\_rule\_*\_summary.csv} as well. All eighteen rows of
+Table tab:counts agree with \texttt{results/check\_*\_summary.csv}, and all four rows of Table tab:ns with \texttt{results/step11\_ns3.csv}, which also records,
+in a column the table does not print, that each of the $364$, $68$ and $43$ failing curves has a potentially multiplicative prime $p\equiv2\pmod3$ with $3\mid v_p(j_E)$,
+the paper's observation on $t_3(E,p)\ge1$. Every cell of Table tab:iso agrees with \texttt{results/step9\_euler\_l3.txt}. The five untwisted rows of
+Table tab:isolated agree with \texttt{results/step6\_u1\_fit\_work.txt}; its four twisted rows could not be compared, because the per-curve \texttt{.parquet}
+files are excluded from the repository by its \texttt{.gitignore}. Table tab:oot was recounted from \texttt{results/oot\_1.tsv} and \texttt{results/oot\_2.tsv}
+($1{,}261$ lines, $893$ curves after removing repeated curves as \texttt{oot\_convert.py} does), and every family's count, largest conductor and median time
+agrees. The scripts below are the book's own.
 \end{remark}
 
 \begin{construction}[the script \texttt{sessions.gp}]\label{con:computation:sessions}
@@ -1888,8 +1911,9 @@ bytes unless stated; random seed $0$ for the permutations, with the orders of cu
 \item \emph{Rerun from a clean copy} and compare the counts.
 \item \emph{Cross-check independently.} Here: the GP loop against the Python bounds; \texttt{ellmoddegree} against \texttt{degphi}; \texttt{ns3} against
 \texttt{galrep}; PARI's Euler factors against Lemma lem:euler; \texttt{ellglobalred} against \texttt{curvedata}; optimality flags against \texttt{degphi}.
-\item \emph{State what was not checked.} Here: everything above conductor $10{,}000$; the paper's out-of-table curves, which are not published in the
-paper; PARI 2.15; the contents of the paper's repository.
+\item \emph{State what was not checked.} Here: everything above conductor $10{,}000$, where the paper's printed tables were only compared with the result
+files of its repository (\Cref{rem:computation:paper-repository}); the paper's out-of-table curves, whose modular degrees were not recomputed; PARI 2.15; the
+scripts of the paper's repository, none of which was run.
 \end{enumerate}
 \end{convention}
 
@@ -2050,7 +2074,9 @@ reader's background. Chapter titles are cited from memory and are pointers we ha
 \emph{What was verified, and how.} Every number marked as the book's was produced with PARI/GP 2.17.2 through \texttt{cypari2} 2.2.4 and Python 3.13 on
 Linux, from the files of commit \texttt{25cec5e} of \texttt{ecdata} listed in \Cref{conv:computation:checklist}; the printed GP code was loaded with
 \texttt{read} and run as printed, and every printed output was copied from the run. The paper's numbers for its large ranges are quoted from its text
-and were not reproduced. Not checked: PARI 2.15; the paper's repository; the out-of-table curves; anything above conductor $10{,}000$.
+and its printed tables and were not reproduced; the printed tables were compared with the result files of the paper's repository, a consistency check of
+the tables against those files, not a recomputation (\Cref{rem:computation:paper-repository}). Not checked: PARI 2.15; the scripts of the paper's repository,
+which were not run; the out-of-table curves; anything above conductor $10{,}000$.
 
 \emph{Questions of protocol.} The text of Section sec:data leaves two questions of protocol open: whether the modular degrees of the out-of-table
 curves were examined while the terms at $2$ and $3$ were being fixed, and whether (eq:twist) was written down before the hold-out counts of (eq:main) were

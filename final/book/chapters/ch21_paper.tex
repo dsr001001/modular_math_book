@@ -153,8 +153,7 @@ ingredient, and then the expansion of the paper's argument, with guidance where 
 remark says so. Sentences of the paper are quoted verbatim, between quotation marks, with the paper's own symbols; everything else is paraphrase.
 
 \paragraph{What the tour does not claim.} The paper's large-range counts (conductor up to $500000$ and the curves outside the tables) were not
-recomputed for this book, and the paper's tables are not typeset in its source (each is a placeholder pointing to the repository of its appendix), so the
-tour describes them from their captions and from the numbers in the text. The book's own computations cover conductor below $10{,}000$ ($38{,}042$ optimal curves,
+recomputed for this book; the tour reads the paper's tables from their printed rows and quotes their entries as printed. The book's own computations cover conductor below $10{,}000$ ($38{,}042$ optimal curves,
 Cremona's files \cite{ecdata}, PARI/GP \cite{PARI} version 2.17.2 through the Python interface \texttt{cypari2}); they are always labelled as the book's, with their
 range, and they were made with the paper in hand, so they are checks, not blind tests. A theorem number of another author's paper is said to be \emph{verified}
 only when it was compared with the published text; otherwise it is given \emph{as cited} by the paper.
@@ -1472,9 +1471,9 @@ $S_f$; the equality of Step 3 would need a Taylor-Wiles argument for a residuall
 
 \section[Paper 6: the computations]{Section 6 of the paper: the computations}\label{sec:paper:data}
 
-This section reads the paper's Section 6, subsection by subsection. The paper's tables are placeholders in its source, pointing to the repository of its
-appendix, so the tour describes them from their captions and from the numbers in the text, and never quotes a table entry; the one table typeset in full,
-Table tab:excess, was read with Corollary cor:explicit. Every count below is the paper's unless it is labelled as the book's, and the book's counts (conductor below
+This section reads the paper's Section 6, subsection by subsection. Its six data tables (Tables tab:uniform, tab:iso, tab:counts, tab:ns, tab:isolated and
+tab:oot) are read from their printed rows: for each, what the columns mean, which rows carry the paper's claims, and whether the rows agree with the text; table
+entries are copied exactly as printed. Table tab:excess was read with Corollary cor:explicit. Every count below is the paper's unless it is labelled as the book's, and the book's counts (conductor below
 $10{,}000$) are checks made with the statements known, not blind tests. How to rerun everything is \Cref{ch:computation}; here we say what each statement means and what it
 tests.
 
@@ -1508,9 +1507,19 @@ the book. The other terms of (eq:rule) are invariant under isogenies of degree p
 PARI/GP 2.15 for the large ranges and 2.17.2 for the checks below $10{,}000$, and it records that 2.17.2 returns $q_E^5$ in place of $q_E$ for \texttt{ellinit(E, O(2\^{}k)).tate} when
 $v_2(j_E)=-1$; no count is affected, as the Tate parameter at $2$ enters none (\Cref{ch:reduction,ch:computation}).
 
-\paragraph{6.2 The rule on whole ranges (Table tab:uniform).} The caption describes, for each range and $\ell\in\{3,5,7,11,13\}$: the curves with $E[\ell]$ irreducible, not CM, with a positive
-bound in (eq:rule); violations (none); the equality rate; violations when $h_\ell$ is dropped (all $\Ns$ curves at $\ell=3$); and the ``III-free'' rule (the type $\kod{III}$, $\kod{III}^*$ terms left out,
-no correction). That the III-free rule needs no correction is explained by \Cref{prop:paper:ns-structure}: every $\Ns$ curve has a prime of $R$, whose term $e_3\ge1$ is a type $\kod{III}$ term at
+\paragraph{6.2 The rule on whole ranges (Table tab:uniform).} The table has twenty rows, one for each of the four ranges (working set, hold-out, extension, out
+of table) and each $\ell\in\{3,5,7,11,13\}$. How to read the columns: ``curves'' is the population, the optimal curves of the range with $E[\ell]$ irreducible and
+not CM (so it depends on $\ell$); ``(eq:rule) $>0$'' counts those with a positive bound; ``viol.'' the violations of (eq:rule); ``equality'' the share of the
+curves with a positive bound at which $v_\ell(\degphi)$ equals the bound; ``viol.\ without $h$'' the violations once the correction $h_\ell$ is dropped; and the
+last column gives the same three numbers (positive bounds, violations, equality) for the ``III-free'' rule, with the type $\kod{III}$, $\kod{III}^*$ terms left out and no
+correction. The first row reads: working set, $\ell=3$, $1{,}233{,}729$ curves, $867{,}578$ with a positive bound, $0$ violations, equality $57.5\%$, $364$ violations without
+$h$, III-free $861{,}074$ / $0$ / $56.8\%$. Two columns carry the paper's claims. The column ``viol.'' is $0$ in all twenty rows. The column ``viol.\ without $h$'' is $0$
+at every $\ell\ge5$ and reads $364$, $68$, $43$ and $0$ at $\ell=3$ on the four ranges, the failing curves of Table tab:ns (6.7 below); the III-free column has $0$
+violations in every row. The equality column is the sharpness of Section sec:sharp: on the working set $57.5\%$, $75.6\%$, $84.1\%$, $91.6\%$ and $92.4\%$ at
+$\ell=3,5,7,11,13$; at $\ell=3$ it reads $57.5\%$, $54.6\%$, $54.0\%$ and $52.5\%$ on the four ranges, the last for the $828$ out-of-table curves with a positive bound. The
+III-free rule bounds fewer curves ($861{,}074$ against $867{,}578$ on the working set at $\ell=3$) and is attained slightly less often: leaving out the type $\kod{III}$ terms costs
+a little sharpness and removes the need for a correction. These rows agree with the text, which quotes $867{,}578$, the five equality rates and the $52.5\%$ of $828$.
+That the III-free rule needs no correction is explained by \Cref{prop:paper:ns-structure}: every $\Ns$ curve has a prime of $R$, whose term $e_3\ge1$ is a type $\kod{III}$ term at
 every $p\ge5$. Book's range ($\ell=3$): in the base population of $33{,}851$ optimal non-CM curves below $10{,}000$ with $E[3]$ irreducible, of which $20{,}317$ have a positive bound, there is no
 violation of (eq:rule) or of the III-free rule (\Cref{ch:computation}).
 
@@ -1529,19 +1538,58 @@ extra term, no exception, equality rising from $45.0\%$ to $60.6\%$; at $\ell=5$
 so a violation is impossible and the equality rate is the proportion of curves with $H^1_f(\Q,W)=0$; the test checks the Tamagawa term of the identity, as the paper says. At $q=2$ the
 extra term vanishes ($v_\ell(2-1)=0$), which is why the Tate parameter at $2$ is never needed.
 
-\paragraph{6.5 Each term in isolation (Table tab:iso).} Rows are Kodaira types, columns the value of $e_\ell(E,q)$, entries the minimum of $v_\ell(\degphi)$ (number of curves), over curves with a
-single additive prime $q\ge5$ and no multiplicative $\ell$-contribution. Every minimum equals $e_\ell$, and for $\kod{I}_n^*$ the excess has minimum $v_\ell(n)$; the book found the same pattern cell
+\paragraph{6.5 Each term in isolation (Table tab:iso).} The table is printed for $\ell=3$ on the working set. Rows are the Kodaira types $\kod{II}$, $\kod{II}^*$, $\kod{IV}$, $\kod{IV}^*$, $\kod{III}$,
+$\kod{III}^*$, $\kod{I}_0^*$, $\kod{I}_n^*$ of the one additive prime $q\ge5$; the column pairs are $e=e_3(E,q)=1,2,3,4$, and in each pair ``min'' is the minimum of $v_3(\degphi)$ over the cell and ``$n$''
+its number of curves (curves with $E[3]$ irreducible and no multiplicative $3$-contribution). The claim is carried by the ``min'' columns: in every printed cell the
+minimum equals $e$, that is $1$, $2$, $3$, $4$ along each row ($\kod{III}$ and $\kod{III}^*$ have no curve at $e=4$, and the cell is printed as a dash). The ``$n$'' columns say how much each cell weighs:
+the largest are $\kod{I}_n^*$ at $e=1$ ($30{,}497$ curves), $\kod{II}$ at $e=1$ ($8{,}327$) and $\kod{IV}^*$ at $e=1$ ($8{,}221$); the cells at $e=4$ are small ($\kod{II}$ and $\kod{IV}^*$: $2$;
+$\kod{II}^*$ and $\kod{IV}$: $1$; $\kod{I}_0^*$: $247$; $\kod{I}_n^*$: $13$). The rows come in pairs: $\kod{II}$ and $\kod{IV}^*$ have $821$, $59$, $2$ curves at $e=2,3,4$ and $8{,}327$, $8{,}221$ at
+$e=1$; $\kod{II}^*$ and $\kod{IV}$ have $296$, $12$, $1$ and $4{,}184$, $4{,}290$; $\kod{III}$ and $\kod{III}^*$ have $1{,}271$, $76$, $9$ in both. These are the pairs exchanged by the twist at $q$ in
+Lemma lem:twist(ii), which keeps the conductor exponent at $q\ge5$ (a reading of the book; the paper does not comment on it). What the table does not print, the
+text supplies: the cells with $e=0$ ($\kod{III}$: $5{,}534$ curves, $\kod{I}_0^*$: $5{,}394$), the $\kod{I}_0^*$ cells up to $e=6$, the values at $\ell=5,7$ (``The same holds at $\ell=5$ and $7$'', in the
+caption) and, for $\kod{I}_n^*$, that the excess over $e_\ell$ has minimum $v_\ell(n)$; the printed cells agree with the text's ``In every cell, for $\ell=3,5,7$, the minimum equals
+$e_\ell$''. The book found the same pattern cell
 by cell below $10{,}000$ (\Cref{ch:computation}). Multiplicative primes alone show no Euler term, for every value of $v_\ell(q^2-1)$ up to $6$; at $\ell=3$ the value $0$ occurs only for $q=\ell=3$, as
 the paper notes, since $3\mid q^2-1$ for every other $q$. This is the data side of the paper's thesis: the naive factor at a multiplicative prime is the true one, so nothing is omitted. The
-two-prime observation ($9\mid\degphi$ for all $2{,}502$ curves with two odd primes of type $\kod{II}$ or $\kod{II}^*$) is consistent with the additivity of the $e_3$ terms.
+two-prime observation ($9\mid\degphi$ for all $2{,}502$ curves with two odd primes of type $\kod{II}$ or $\kod{II}^*$; it is the entry $2$ ($2{,}502$) of Table tab:isolated, 6.8 below) is consistent with the additivity of the $e_3$ terms.
 
-\paragraph{6.6 The two corollary forms (Table tab:counts).} Positive bounds and violations (none) of (eq:main) and (eq:twist), equality rates, and the Eisenstein column. With
+\paragraph{6.6 The two corollary forms (Table tab:counts).} The table has eighteen rows: $\ell=3,5,7,11,13$ on the working set ($N\le300000$), the hold-out
+($300000<N\le400000$) and the extension ($400000<N\le500000$), and $\ell=3,5,7$ out of table ($500000<N\le4\cdot10^6$). How to read the columns: ``curves'' is the size of the
+range, the same for every $\ell$ ($1{,}311{,}066$, $429{,}936$, $359{,}009$, $893$; it is not the population of Table tab:uniform, which keeps only the curves with $E[\ell]$
+irreducible and not CM); ``(eq:main) $>0$'' and ``(eq:twist) $>0$'' count the curves with $E[\ell]$ irreducible, not CM, with a positive right-hand side; the next two columns are
+the violations; the last column gives the Eisenstein curves with a positive bound in (eq:main) and the violations of Conjecture conj:eis. The claim is carried by the three
+violation columns, which are $0$ in all eighteen rows. The first row: $1{,}311{,}066$ curves, $598{,}833$ with (eq:main) $>0$, $705{,}563$ with (eq:twist) $>0$, $0$, $0$, and
+$67{,}845$ / $0$. The twisted form bounds more curves than (eq:main) in every row (out of table at $\ell=7$: $1$ against $0$), and the rule bounds more still ($867{,}578$ in
+Table tab:uniform). The Eisenstein column on the working set reads $67{,}845$, $4{,}454$, $759$, $0$, $26$ at $\ell=3,\dots,13$, and $0$ / $0$ out of table. The equality rates
+of the two forms ($39.4\%$, $71.1\%$, $81.2\%$, $91.5\%$ for (eq:twist) at $\ell=3,5,7,13$, and $36.9\%$, $69.7\%$, $80.4\%$, $91.2\%$ for (eq:main)) are in the text, not in the
+table. The rows agree with the text: ``There are none'' for the violations, ``$867{,}578$ curves instead of $705{,}563$ at $\ell=3$'', and the $67{,}845$ Eisenstein curves of
+Section sec:eis. With
 \Cref{prop:paper:forms} the absence of violations under the hypothesis of Theorem thm:main is a theorem; the data test the forms outside it, chiefly at the curves with $\ell\mid N$. The
 paragraph lists the failures of the hypothesis on the working set: the $1{,}170$ non-CM curves with image $\Ns$ at $\ell=3$ and the curves with $\ell\mid N$; by Proposition prop:Sf there are no
 others among the non-CM curves with $E[\ell]$ irreducible. Its parenthesis on the CM curves with $j\in\{-32768,8000\}$, which also have image $N_s(\F_3)$ and fail at $\ell=3$ when $3\nmid N$
 ($20$ below $10{,}000$) and which the \texttt{galrep} file leaves unlabelled, matches \Cref{ch:galrep}.
 
-\paragraph{6.7 The boundary: the $\Ns$ curves (Table tab:ns).} The paper: $364$, $68$, $43$ and $0$ violations of (eq:thm), with all types and no correction, on the four ranges, all at $\ell=3$ and
+\paragraph{6.7 The boundary: the $\Ns$ curves (Table tab:ns).} The table has one row per range. How to read the columns: ``$\Ns$'' is the number of optimal
+non-CM curves with mod $3$ image $\Ns$ and $E[3]$ irreducible; ``with III term'' those with a positive type $\kod{III}$ term; ``failing'' those violating (eq:thm) with all types
+and no correction, with their share; ``others failing'' the curves without image $\Ns$ that violate it; ``$h_3=1$'' the $\Ns$ curves with $h_3(E)=1$; the next column the
+residues modulo $12$ of the type $\kod{III}$ primes of the failing curves, or $q=2$; and ``shortfall $1$'' the failing curves that miss the bound by exactly one. The rows:
+\begin{center}\footnotesize
+\begin{tabular}{lrrrrrrr}
+\toprule
+set & $\Ns$ & III term & failing & others & $h_3=1$ & $q\equiv1$ / $11\ (12)$ / $q=2$ & shortfall $1$\\
+\midrule
+working set & 1,170 & 1,170 & 364 (31\%) & 0 & 1,170 of 1,170 & 140 / 160 / 72 & 364 of 364\\
+hold-out & 290 & 290 & 68 (23\%) & 0 & 290 of 290 & 34 / 30 / 4 & 68 of 68\\
+extension & 237 & 237 & 43 (18\%) & 0 & 237 of 237 & 16 / 25 / 2 & 43 of 43\\
+out of table & 0 & 0 & 0 (0\%) & 0 & 0 of 0 & 0 / 0 / 0 & 0 of 0\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every column carries a claim: ``III term'' equals ``$\Ns$'' (every $\Ns$ curve has a positive type $\kod{III}$ term); ``others'' is $0$ (only $\Ns$ curves fail, which is what
+``viol.\ without $h$'' of Table tab:uniform counts); ``$h_3=1$'' is the whole population (Lemma lem:h0, a theorem); and the shortfall is always $1$, so the correction
+$h_3=1$ is exactly enough. The residue column counts primes, not curves: on the working set $140+160+72=372$ exceeds the $364$ failing curves, so some failing
+curves have two such primes. The table lists only the classes $1$ and $11$ modulo $12$ at $q\ge5$, and Proposition prop:ns-structure shows that no other class can occur ($p\equiv\pm1\pmod{12}$).
+The rows agree with the text. The paper: $364$, $68$, $43$ and $0$ violations of (eq:thm), with all types and no correction, on the four ranges, all at $\ell=3$ and
 all at $\Ns$ curves; every $\Ns$ curve has a type $\kod{III}$ prime with positive $e_3$; the inequality fails for $31\%$, $23\%$, $18\%$ of them, always by one; each violation involves a prime
 $p\equiv-1\pmod3$ with $t_3(E,p)\ge1$, which the paper marks as ``an observation, not proved''. Proposition prop:ns-structure explains part of it (every potentially multiplicative $p\ne3$ of
 an $\Ns$ curve has $t_3\ge1$). For the curves with $3\mid N$ the count depends on the term $t_3(E,3)$: below $10{,}000$, $36$ violations with it, as (eq:thm) is written, and $24$ without, the
@@ -1550,7 +1598,22 @@ twelve curves that differ (\curve{726a1}, \curve{726f1}, \curve{2178b1}, \curve{
 $2$, $\kod{I}_3$ at $3$, $\kod{III}$ at $11$, $\degphi=144$: the bound of (eq:thm) as written is $1+1+1=3>2$, by one, through $p=2\equiv-1\pmod3$ with $t_3(E,2)=1$; without $t_3(E,3)$ it is $2$
 (\Cref{ex:paper:726a1} treats \curve{3840h1}). The value $h_3(E)=1$ for every $\Ns$ curve is \Cref{lem:paper:h0}, a theorem.
 
-\paragraph{6.8 The wild primes (Table tab:isolated).} The table isolates the additive types at $\ell=3$ with the weights of (eq:twist). Its explanation is Definition def:terms with PARI's
+\paragraph{6.8 The wild primes (Table tab:isolated).} The table isolates the additive types at $\ell=3$ on the working set. Each entry is the minimum of $v_3(\degphi)$ with the
+number of curves in parentheses. The header reads ``weight 1, 2, 3'' for every row, but the caption gives it two meanings: in the five untwisted rows ($\kod{IV}$, $\kod{IV}^*$,
+$\kod{III}$, $\kod{III}^*$, $\kod{I}_0^*$, at any $q$) it is the number of primes of that type, all additive primes having that type; in the four twisted rows it is the total weight of
+(eq:twist) from the primes named. The rows:
+\begin{itemize}
+\item untwisted: $\kod{IV}$: $1$ ($25{,}414$), $2$ ($969$), $3$ ($11$); $\kod{IV}^*$: $1$ ($30{,}168$), $2$ ($2{,}268$), $3$ ($45$); $\kod{III}$: $0$ ($34{,}904$), $0$ ($2{,}208$), $0$ ($34$); $\kod{III}^*$: $0$ ($25{,}574$),
+$0$ ($1{,}307$), $0$ ($29$); $\kod{I}_0^*$: $0$ ($42{,}924$), $0$ ($3{,}093$), $0$ ($53$);
+\item twisted, odd $q$: $\kod{II}$, $\kod{II}^*$: $1$ ($56{,}509$), $2$ ($2{,}502$), $3$ ($12$); $\kod{I}_n^*$ with weight $v_3(n)$: $1$ ($28{,}175$), $2$ ($3{,}453$), $3$ ($89$);
+\item twisted, $q=2$: $\kod{II}$, $\kod{II}^*$: $0$ ($44{,}672$), with no curve of weight $2$ or $3$ (a dash in the table); $\kod{I}_n^*$ with weight $v_3(n)$: $0$ ($21{,}176$), $1$ ($5{,}329$), $1$ ($342$).
+\end{itemize}
+Reading guidance. Where the minimum equals the column number ($\kod{IV}$, $\kod{IV}^*$ and both odd-$q$ twisted rows), each prime, or each unit of weight, forces one factor $3$ in
+$\degphi$, as the terms of (eq:twist) say. The rows with minimum $0$ ($\kod{III}$, $\kod{III}^*$, $\kod{I}_0^*$) carry no forced factor when the curves are grouped by the number of
+primes; their term is the Euler term $e_3$, which can vanish, and Table tab:iso shows the minimum $e$ once the curves are grouped by $e$. The paper's claims about the
+prime $2$ are in the last two rows: types $\kod{II}$, $\kod{II}^*$ at $2$ force nothing, and a type $\kod{I}_n^*$ at $2$ forces nothing when $3\,\|\,n$ and only one factor $3$ when $9\mid n$
+or $27\mid n$, where the odd-$q$ weights would give $2$ and $3$. The rows agree with the text: ``$v_3(\degphi)=0$ for $14{,}182$ of the $44{,}672$ curves whose only candidate is
+such a prime'' (the $14{,}182$ is in the text only), ``although with $9\mid n$ the minimum is $1$'', and the $2{,}502$ curves of Section sec:iso. Its explanation is Definition def:terms with PARI's
 factor, the factor having one of the four shapes of \Cref{prop:paper:shapes}: a type $\kod{II}$ or $\kod{II}^*$ at $2$ \emph{usually} has $P_2=1$ (among the optimal non-CM curves below
 $10{,}000$, $1{,}092$ of the $1{,}537$ with type $\kod{II}$ at $2$ and $514$ of the $779$ with type $\kod{II}^*$; \Cref{ch:computation}); a type $\kod{IV}$ or $\kod{IV}^*$ at $2$ has $e_3=1$ by Lemma lem:IV;
 and at $q=2$ the right invariant of a type $\kod{I}_n^*$ is $-v_2(j)$, not the index $n$. The weights $w_3$ at $q=3$ are the observed minima ($1$ for $\kod{II},\kod{IV},\kod{III}^*$; $2$ for
@@ -1567,7 +1630,12 @@ $q=\ell$. Nothing here is proved, the observations were made on the whole range 
 
 \paragraph{6.9 Out of table (Table tab:oot).} $893$ curves with prescribed local types and $500000<N\le4\cdot10^6$, kept when the isogeny class is trivial (then the curve is optimal and $E[\ell]$ is
 irreducible for every $\ell$, since a rational $\ell$-subgroup would give an isogeny; \Cref{ch:ellcurves}) and not CM. Conjecture conj:euler and both forms hold for all of them, with equality in
-(eq:rule) for $52.5\%$ of the $828$ with a positive bound at $\ell=3$. These are the blind test of the Euler terms of the rule, and only of them, as the paper says.
+(eq:rule) for $52.5\%$ of the $828$ with a positive bound at $\ell=3$. The table itself gives, per family of prescribed types, the number of curves, the largest conductor
+and the median time in seconds to compute one modular degree with \texttt{ellmoddegree}: $\kod{II},\kod{II}$: $98$, $3{,}968{,}800$, $0.4$; $\kod{II},\kod{II},\kod{II}$: $1$, $2{,}832{,}200$, $0.2$;
+$\kod{IV}$: $334$, $3{,}988{,}012$, $1.1$; $\kod{IV}^*$: $104$, $3{,}994{,}600$, $4.9$; ``IVmixed'' (the text's ``mixed types''): $266$, $3{,}983{,}504$, $1.3$; random: $90$, $2{,}710{,}716$, $32.1$; all: $893$,
+$3{,}994{,}600$, $1.5$. Reading guidance: the table describes the sample, not the test; the results on these curves are the last rows of Tables tab:uniform and tab:counts
+(``out of table''), and the last row of Table tab:ns records that none of them has image $\Ns$. The families add up to $893$, the largest conductor is below $4\cdot10^6$, and
+the cost column shows why the sample is small: a random curve costs about twenty times the median. These rows agree with the text. These are the blind test of the Euler terms of the rule, and only of them, as the paper says.
 
 \paragraph{6.10 The Eisenstein case.} At $\ell=3$ on the working set, $75{,}430$ optimal non-CM curves with a rational $3$-isogeny, $2{,}777$ with $D>0$, $D=2$ for $22$: seventeen with $E[3]\simeq\Z/3\oplus\mu_3$
 (image 3Cs.1.1, the subgroup of order $2$ of the split Cartan subgroup that fixes a point) and five with a point of order $9$ (image 3B.1.1). The seventeen have torsion $\Z/3$ or $\Z/6$ (for
@@ -1663,7 +1731,9 @@ $1$ for $\kod{I}_0$ and $-1$ for $\kod{I}_0^*$, $\pm2$, $\pm3$, $\pm4$ for $\kod
 2.17.2) of \texttt{rule} on the paper's and the book's example curves are in Section~\ref{sec:paper:verifications}; on \curve{726a1} both modes return \texttt{[2, 2]}, the type $\kod{III}$ term at $11$ and the
 correction cancelling, as the paper says.
 
-\paragraph{Reproducibility and the statement on AI.} The repository and the scripts named in the appendix were not inspected for this book; the book's own reproduction is in
+\paragraph{Reproducibility and the statement on AI.} The repository named in the appendix holds the scripts it names and the result files from which the six
+data tables are generated; the book compared the printed tables with those files (\Cref{ch:computation}, in its section on reproducibility) but did not rerun the large-range computations. The
+book's own reproduction is in
 \Cref{ch:computation} (Lemma lem:twist checked on twists of the book's range, Lemma lem:euler on $67{,}745$ pairs, \texttt{ellmoddegree} against Cremona's \texttt{degphi} on all $38{,}042$ optimal curves below
 $10{,}000$, no mismatch). The statement on the use of an AI system is part of the paper; Section~\ref{sec:paper:reading} summarises it.
 
@@ -1923,8 +1993,9 @@ the module, so the Selmer groups coincide; the degrees differ by the omitted fac
 
 \section{Notes and references}\label{sec:paper:notes}
 
-\paragraph{What was read.} The paper in full, as it accompanies this book. Its tables of Section 6, other than Table tab:excess, are
-placeholders pointing to the repository of its appendix; they are described here from their captions and the text. The repository was not inspected.
+\paragraph{What was read.} The paper in full, as it accompanies this book, including the printed rows of its tables; the entries quoted in
+Section~\ref{sec:paper:data} are copied from them. The repository named in its appendix was read for the result files behind the six data tables
+(\Cref{ch:computation}, in its section on reproducibility); its large-range computations were not rerun.
 
 \paragraph{Sources for the imported statements.} The theorems of Diamond, Flach and Guo are cited from the published version \cite{DFG04}; their numbers were compared with it (\Cref{ch:congruence}),
 and a later arXiv version (arXiv:2512.02348) numbers them differently. Agashe-Ribet-Stein \cite{ARS12}, Ribet-Takahashi \cite{RibetTakahashi97} and Takahashi \cite{Takahashi01}, Pollack-Weston
