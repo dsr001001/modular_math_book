@@ -1333,6 +1333,19 @@ Checked against Kenku, J. Number Theory 15 (1982): Theorem 1 lists 27 among the 
 the genus-one levels to Ligozat, Ogg and Joly; it never mentions CM or j at level 27. Cite Ligozat75 for "a rational cyclic
 27-isogeny forces CM (disc -27)" and Kenku Theorem 1 only for the list of N.
 
+### 107. Abstract: "the bound for the deficit in the Eisenstein case at l=3 [is] proved" overstates (high confidence)
+Only D <= 2 given the first bound of conj:eis is proved (prop:no9); Sections 1.4 and 6.10 say it correctly.
+
+### 108. lem:hecke introduces m, unused since the revision (trivial; high confidence)
+
+### 109. Paragraph after thm:twist: E_q undefined; should be E^{(q)} (trivial; high confidence)
+
+### 110. lem:tamfactor statement: bare c clashes with the Tamagawa number c_q (minor; high confidence)
+cor:explicit and sec:tam already write c(u), c(u_q); use c(u) in the lemma too.
+
+### 111. sec:data protocol: blind status of w_3 unknown (medium-high confidence)
+The paper does not say whether the out-of-table set contains curves with 3 | N and potentially good reduction at 3.
+
 ### B28. Items from writing Chapter 10
 * Cremona's ecdata files used here have no per-prime Kodaira symbols or Tamagawa numbers (only the product in allbsd);
   the paper's Section sec:data sentence should be checked against the full ecdata repository (Chapter 22).
