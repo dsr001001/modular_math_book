@@ -3,8 +3,4 @@ data/pari/
 data/*.parquet
 __pycache__/
 results/*.parquet
-paper/*.aux
-paper/*.bbl
-paper/*.blg
-paper/*.log
-paper/*.out
+logs/

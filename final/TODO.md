@@ -54,3 +54,11 @@ Optional clarity edits suggested for the note (not errors):
 - in Section sec:dfgthm, say explicitly that the local group used is the torsion of H^1(Q_q,T^D), finite under H^0(Q_q,V^D)=0;
 - before the local table, state the normalisations X = q^{-s}, P_q, and that the naive denominator is 1 at additive primes;
 - for the Ns case, label separately: proved (h_3 = 1), conditional (on H^1_f(Q,V^D) = 0), and empirical (weights at q = l = 3).
+
+## 7. Pipeline (final/pipeline, copied from mcptrial/ecmine at f57c783; mcptrial left untouched)
+Done: paths fixed, repro_run.sh hardened (fails on any error or count mismatch), reproduce_tables.sh added, README/PROVENANCE/ENVIRONMENT/requirements, self-test (passes here), MANIFEST.sha256. The README slip of item 3 is corrected in this copy.
+Still to do:
+- Run scripts/repro_run.sh and scripts/reproduce_tables.sh end to end on a machine with gp (PARI/GP 2.15 or later) and the 1.2 GB download; commit the logs. Not done in this session (no gp binary, disk).
+- The note's appendix says "The pipeline was rerun from a clean clone and reproduced every count of Table tab:counts." The record does not support "every": repro_check2.log (6 Oct 19:13-19:21) matched the checker summaries of that time, but the checker summaries behind the printed tab:counts were regenerated at 19:29 (commit 4b64dc7, eq:twist columns), and the out-of-table rows were not part of the clean-clone run. Either rerun (first item) or reword to what the logs show.
+- tab:excess (conductor < 10,000) is produced by the book's own scripts (Chapter 22), not by any script in final/pipeline.
+- Package versions of the original runs were not recorded; requirements.txt gives the versions that work here.

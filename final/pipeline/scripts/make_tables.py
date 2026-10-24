@@ -2,12 +2,12 @@
 Inputs: results/check_{work,holdout,ext,oot}_summary.csv (scripts/conj_check.py), results/step6_u1_fit_work.txt,
 results/step7_twist2_{work,holdout,ext}_l{l}.parquet (scripts/step7_twist2.py), results/oot_table.parquet."""
 import pandas as pd, os, re
-os.makedirs("paper/tables", exist_ok=True)
+os.makedirs("tables", exist_ok=True)
 sets = [("work", r"working set, $N \le 300000$"), ("holdout", r"hold-out, $300000 < N \le 400000$"), ("ext", r"extension, $400000 < N \le 500000$"), ("oot", r"out of table, $500000 < N \le 4\cdot 10^6$")]
 S = {k: pd.read_csv(f"results/check_{k}_summary.csv") for k, _ in sets if os.path.exists(f"results/check_{k}_summary.csv")}
 def n(x): return f"{int(x):,}"
 # Table 1: curves per set, positive bounds and violations of Conjectures 1-3 by prime
-with open("paper/tables/counts.tex", "w") as f:
+with open("tables/counts.tex", "w") as f:
     f.write(r"\begin{tabular}{llrrrrrr}" "\n" r"\hline" "\n")
     f.write(r"set & $\ell$ & curves & \eqref{eq:main} $>0$ & \eqref{eq:twist} $>0$ & viol.\ \eqref{eq:main} & viol.\ \eqref{eq:twist} & Eis.\ $>0$ / viol. \\" "\n" r"\hline" "\n")
     for k, name in sets:
@@ -38,7 +38,7 @@ tw_rows = [("II, II$^*$ at odd $q$", lambda k: zero & (d3.ii_odd == k) & (d3.ins
            ("$\\mathrm{I}_n^*$ at odd $q$, weight $v_3(n)$", lambda k: zero & (d3.ins_odd == k) & (d3.ii_odd == 0) & (d3.ii_2 == 0) & (d3.ins_2 == 0)),
            ("II, II$^*$ at $q=2$", lambda k: zero & (d3.ii_2 == k) & (d3.ii_odd == 0) & (d3.ins_odd == 0) & (d3.ins_2 == 0)),
            ("$\\mathrm{I}_n^*$ at $q=2$, weight $v_3(n)$", lambda k: zero & (d3.ins_2 == k) & (d3.ii_odd == 0) & (d3.ins_odd == 0) & (d3.ii_2 == 0))]
-with open("paper/tables/isolated3.tex", "w") as f:
+with open("tables/isolated3.tex", "w") as f:
     f.write(r"\begin{tabular}{lccc}" "\n" r"\hline" "\n" r"type & weight 1 & weight 2 & weight 3 \\" "\n" r"\hline" "\n")
     for ty in ["IV", "IV*", "III", "III*", "I0*"]:
         cells = []
@@ -51,7 +51,7 @@ with open("paper/tables/isolated3.tex", "w") as f:
         f.write(name + " & " + " & ".join(cell(fn(k)) for k in (1, 2, 3)) + " \\\\\n")
     f.write(r"\hline" "\n" r"\end{tabular}" "\n")
 # Table 3: the twisted primes, every odd l, all three ranges (from the step 7 per-curve files)
-with open("paper/tables/twist.tex", "w") as f:
+with open("tables/twist.tex", "w") as f:
     f.write(r"\begin{tabular}{llrrrr}" "\n" r"\hline" "\n")
     f.write(r"set & $\ell$ & odd twisted weight $>0$ & viol.\ \eqref{eq:twist} & twisted prime $2$ & viol.\ if $2$ counted \\" "\n" r"\hline" "\n")
     for k, name in sets[:3]:
@@ -66,9 +66,9 @@ with open("paper/tables/twist.tex", "w") as f:
 # Table 4: out-of-table families
 if os.path.exists("results/oot_table.parquet"):
     t = pd.read_parquet("results/oot_table.parquet")
-    with open("paper/tables/oot.tex", "w") as f:
+    with open("tables/oot.tex", "w") as f:
         f.write(r"\begin{tabular}{lrrr}" "\n" r"\hline" "\n" r"family & curves & largest conductor & median seconds per degree \\" "\n" r"\hline" "\n")
         for fam, g in t.groupby("family"):
             f.write(f"{fam} & {len(g):,} & {int(g.N.max()):,} & {g.seconds.median():.1f} \\\\\n")
         f.write(f"all & {len(t):,} & {int(t.N.max()):,} & {t.seconds.median():.1f} \\\\\n" r"\hline" "\n" r"\end{tabular}" "\n")
-print("tables written:", sorted(os.listdir("paper/tables")))
+print("tables written:", sorted(os.listdir("tables")))

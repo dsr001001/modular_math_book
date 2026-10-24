@@ -5,7 +5,7 @@ compute: the rule with the III terms and the correction term [image = 3Ns] (Conj
 and equality rate; the 3Ns statistics (every exception has image 3Ns; failure rates; the length h of
 H^0(Q, ad^0 rho(1) (x) Q_3/Z_3) read off the traces); the residue classes mod 12 of the III primes of the exceptions;
 the type IV/IV* at 2 count for Proposition 1.4. Writes results/step11_summary.csv, results/step11_ns3.csv,
-paper/tables/euler_uniform.tex and paper/tables/ns3.tex."""
+tables/euler_uniform.tex and tables/ns3.tex."""
 import re, glob, pandas as pd, numpy as np, cypari2
 from collections import Counter
 pari = cypari2.Pari(); pari.allocatemem(400_000_000)
@@ -95,12 +95,12 @@ for tag, name in SETS:
         expv = sum(float(cdf[cdf.index <= bb - 1].max()) if (cdf.index <= bb - 1).any() else 0.0 for bb in b[b > 0])
         print(f"calibration l=3 corrected rule: bound-0 curves {len(zero)}, frac V=0 {float((zero.V==0).mean()):.3f}, positive {len(posc)}, expected violations if independent {expv:,.0f}, mean excess {float((posc.V - b[b>0]).mean()):.2f}")
 unif[-1] = "\\bottomrule"
-with open("paper/tables/euler_uniform.tex", "w") as fh:
+with open("tables/euler_uniform.tex", "w") as fh:
     fh.write("\\begin{tabular}{llrrrrrr}\n\\toprule\nset & $\\ell$ & curves & \\eqref{eq:rule} $>0$ & viol. & equality & viol.\\ without $h$ & III-free: $>0$ / viol. / equality\\\\\n\\midrule\n")
     fh.write("\n".join(unif) + "\n\\end{tabular}\n")
 pd.DataFrame(summary).to_csv("results/step11_summary.csv", index=False)
 ns = pd.DataFrame(ns3rows); ns.to_csv("results/step11_ns3.csv", index=False)
-with open("paper/tables/ns3.tex", "w") as fh:
+with open("tables/ns3.tex", "w") as fh:
     fh.write("\\begin{tabular}{lrrrrrrr}\n\\toprule\nset & $\\Ns$ & with III term & failing & others failing & $h_3=1$ & $q\\equiv1$ / $11\\ (12)$ / $q=2$ & shortfall $1$\\\\\n\\midrule\n")
     for _, r in ns.iterrows():
         nm = dict(SETS)[r.set]

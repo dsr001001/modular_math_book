@@ -1,8 +1,11 @@
-"""Build paper/tables/euler_uniform.tex from results/step10_rule_{tag}_summary.csv.
+"""Build tables/euler_uniform.tex from results/step10_rule_{tag}_summary.csv.
 
 Columns: set, l, curves, rule>0 (III terms dropped at every prime), violations,
 equality rate; violations with the III terms added at every prime; and the
 variant without the weights at q = l (>0 / violations / equality rate).
+
+This is an older layout. The printed Table tab:uniform of ../paper/note.tex is written to the same file by
+scripts/step11_tw_boundary.py; running this script afterwards overwrites it with the older layout.
 """
 import pandas as pd
 
@@ -25,8 +28,8 @@ for tag, name in SETS:
     rows.append("\\midrule")
 rows[-1] = "\\bottomrule"
 
-with open("paper/tables/euler_uniform.tex", "w") as fh:
+with open("tables/euler_uniform.tex", "w") as fh:
     fh.write("\\begin{tabular}{llrrrrrr}\n\\toprule\n")
     fh.write("set & $\\ell$ & curves & \\eqref{eq:rule} $>0$ & viol. & equality & viol.\\ $+\\mathrm{III}$ & no $q=\\ell$: $>0$ / viol. / equality\\\\\n\\midrule\n")
     fh.write("\n".join(rows) + "\n\\end{tabular}\n")
-print(open("paper/tables/euler_uniform.tex").read())
+print(open("tables/euler_uniform.tex").read())

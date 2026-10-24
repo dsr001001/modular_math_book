@@ -1,0 +1,11 @@
+# Python dependencies of scripts/ (Python >= 3.11, as required by pandas 3).
+# The original runs used pandas 3; other package versions of those runs were not recorded.
+# The versions in the comments are the ones under which scripts/selftest.py and the out-of-table branch of
+# scripts/reproduce_tables.sh were run on 2026-10-24 (see ENVIRONMENT.md).
+numpy            # 2.5.3
+pandas>=3.0      # 3.0.5
+pyarrow          # 26.0.0 (parquet I/O)
+cypari2          # 2.2.4, with PARI 2.17.2
+scipy            # 1.18.1; only scripts/step5_cells.py
+# Optional, only for scripts/step5.py --gbt (gradient-boosting control of the exploratory search):
+# scikit-learn

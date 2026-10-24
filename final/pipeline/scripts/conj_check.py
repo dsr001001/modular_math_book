@@ -1,4 +1,4 @@
-"""Consolidated checker for the statements of paper/note.tex (Conjectures 1, 2, 3 and the observation at l = 2).
+"""Consolidated checker for the statements of ../paper/note.tex (Conjectures 1, 2, 3 and the observation at l = 2).
 
 Input: a table of X_0(N)-optimal curves with columns
    label, N, moddeg, kodaira (PARI codes as a bracketed list, primes in increasing order),
