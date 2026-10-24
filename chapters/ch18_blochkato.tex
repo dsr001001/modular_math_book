@@ -1130,6 +1130,12 @@ connecting map of $0\to X\to U\to X\otimes\Qlmod\to0$, injective because $H^0(\Q
 For $X=T^D$: $H^0(\Q_p,V^D)=0$ and $\det(1-F^{-1}\mid(T^D)^I)=L_p(A_f,1)^{-1}$ by \Cref{lem:blochkato:no-local-invariants} and \Cref{lem:blochkato:euler-integral}.
 \end{proof}
 
+A first example. Let $p$ be a prime of multiplicative reduction with $\ell\nmid n_p$, and $X=T^D=A(1)$. The invariants $X^{I_p}$ are the line $\Zl e\otimes\Zl(1)$ (proof of
+\Cref{prop:blochkato:local-adjoint}), on which $\Frob_p$ acts by $p\cdot p=p^2$; so the unramified part is $\Zl/(p^2-1)$, of length $v_\ell(p^2-1)=v_\ell(1-p^{-2})$. The Tamagawa
+part is trivial, since $H^1(I_p,A)_{\mathrm{tor}}\simeq(\Z/\ell^{v_\ell(n_p)})^2=0$ (\Cref{lem:blochkato:tamfactor}). Hence $\len H^1_f(\Q_p,T^D)=v_\ell(p^2-1)$. For \curve{11a1} at
+$p=11$ and $\ell=3$ ($n_{11}=5$): $H^1_f(\Q_{11},T^D)\simeq\Z_3/120\Z_3\simeq\Z/3$. When $\ell\mid n_p$ the Tamagawa part is no longer trivial, and computing it is the subject of
+\Cref{sec:blochkato:tamfactor}.
+
 \begin{proposition}[$\Tam_p(T^D)=\Tam_p(A)$]\label{prop:blochkato:tam-dual}
 \sloppy Let $\ell$ be odd, $p\ne\ell$, $A=\ad T_\ell E$ and $T^D=\Hom(A,\Zl(1))\simeq A(1)$. Then $\Tam_p(T^D)=\Tam_p(A)$. More precisely, $H^1(I_p,A(1))=H^1(I_p,A)(1)$ as $\Zl$-modules
 with $G_{\Q_p}/I_p$-action, so the two torsion subgroups are the same group with Frobenius actions differing by the factor $p$; and:
@@ -1218,13 +1224,27 @@ $I$).
 
 \emph{Steps 2 to 4 (the group cohomology).} These are the model computation of \Cref{ch:cohomology}, which we quote for the matrices of
 \Cref{conv:blochkato:tate-data}, where $v_\ell(n')=v_\ell(n)$. The kernel $K$ of $I\to\langle t\rangle$ has no nontrivial pro-$\ell$ quotient, so inflation-restriction gives
-$H^1(I,M)=H^1(\langle t\rangle,M)=M/(t-1)M$. In the basis $e=e_1\otimes e_2^\vee=\sm0100$, $h=e_1\otimes e_1^\vee-e_2\otimes e_2^\vee=\sm100{-1}$, $f=e_2\otimes e_1^\vee=\sm0010$ of $M$ one has
-$(t-1)M=n'(\Zl e\oplus\Zl h)$ ($\ell$ odd), so
+$H^1(I,M)=H^1(\langle t\rangle,M)=M/(t-1)M$; here a class is determined by the value $c(t)$ of a cocycle, read in $M/(t-1)M$, as for any procyclic group
+(\Cref{ch:cohomology}). In the basis $e=e_1\otimes e_2^\vee=\sm0100$, $h=e_1\otimes e_1^\vee-e_2\otimes e_2^\vee=\sm100{-1}$, $f=e_2\otimes e_1^\vee=\sm0010$ of $M$, conjugation by
+$t=\sm1{n'}01$ gives
+\[
+tet^{-1}=e,\qquad tht^{-1}=h-2n'e,\qquad tft^{-1}=f+n'h-n'^2e,
+\]
+so $(t-1)(ae+bh+cf)=-(2n'b+n'^2c)e+n'c\,h$. The image is spanned by $2n'e$ and $n'h-n'^2e$; as $2$ is a unit ($\ell$ odd) and $n'^2e\in n'\Zl e$, it is
+$(t-1)M=n'(\Zl e\oplus\Zl h)$, so
 \[
 H^1(I,M)=(\Zl/n')\bar e\oplus(\Zl/n')\bar h\oplus\Zl\bar f,\qquad H^1(I,M)_{\mathrm{tor}}\simeq(\Z/\ell^{v_\ell(n)})^2 .
 \]
 By the tame relation $\Frob^{-1}t\,\Frob=t^{q^{-1}}$ and $c(t^a)\equiv a\,c(t)$ modulo $(t-1)M$, the \emph{arithmetic} Frobenius acts on $M/(t-1)M$ as $q^{-1}\Ad\rho(\Frob)$,
-that is, on the torsion by $\bar e\mapsto\bar e$ and $\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e)$; and
+that is, on the torsion by $\bar e\mapsto\bar e$ and $\bar h\mapsto q^{-1}(\bar h-2\varepsilon c'\bar e)$. In detail: the cocycle relation gives
+$c(t^a)=(1+t+\dots+t^{a-1})c(t)\equiv a\,c(t)$ modulo $(t-1)M$ for integers $a\ge1$, and by continuity for every $a\in\Zl$; with the action of \Cref{def:blochkato:tamagawa},
+\[
+(\Frob\cdot c)(t)=\Frob\,c(\Frob^{-1}t\,\Frob)=\Frob\,c(t^{q^{-1}})\equiv q^{-1}\,\Frob\,c(t).
+\]
+Conjugation by $g=\rho(\Frob)=\sm{\varepsilon q}{c'}0\varepsilon$ sends $e\mapsto qe$ (the ratio $\varepsilon q/\varepsilon$ of the diagonal entries) and $h\mapsto h-2\varepsilon c'e$ (multiply
+out, using $\varepsilon^2=1$). So $x\bar e+y\bar h$ goes to $x\bar e+q^{-1}y\bar h-2q^{-1}\varepsilon c'y\,\bar e$, and it is fixed if and only if $(q^{-1}-1)y\equiv0$ and
+$2q^{-1}\varepsilon c'y\equiv0$ modulo $\ell^{v_\ell(n)}$; as $q$ and $2\varepsilon$ are units, this is $(q-1)y\equiv c'y\equiv0$. The coordinate $x$ is free, and the admissible $y$ form the
+subgroup of $\Z/\ell^{v_\ell(n)}$ of elements divisible by $\ell^{v_\ell(n)-m}$ with $m=\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$, a cyclic group of order $\ell^m$. Hence
 \begin{multline*}
 \bigl(H^1(I,M)_{\mathrm{tor}}\bigr)^{G}=\{x\bar e+y\bar h:\ (q-1)y\equiv c'y\equiv0\pmod{\ell^{v_\ell(n)}}\}\\
 \simeq\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),\,v_\ell(q-1),\,v_\ell(c'))}.
@@ -1316,6 +1336,10 @@ curve, $q$ & type & $\nu$ & $\bar u$ & $\ell$ & $v$ & $k$ & $v_\ell(\Tam_q(\ad T
 \bottomrule
 \end{tabular}
 \end{center}
+The first row in detail. For \curve{11a1}, $j_E=-2^{12}\cdot31^3/11^5$, so $\nu=5$ and $\bar u$ is the reduction of $j_E^{-1}11^{-5}=-1/(2^{12}\cdot31^3)$ modulo $11$. Since
+$2^{12}=2^{10}\cdot4\equiv4$ and $31^3\equiv9^3=729\equiv3$, the denominator is $\equiv12\equiv1$, and $\bar u=-1\equiv10$. With $\ell=5$: $v=v_5(10)=1$, and the fifth powers in $\F_{11}^\times$ (cyclic of
+order $10$) form the subgroup $\{\pm1\}$, which contains $10$; so $k=1$, the excess is $\min(v_5(5),1,1)=1$, and $v_5(\Tam_{11}(\ad T))=1+1=2$. In the same way, for
+\curve{1748e1} at $19$: $\F_{19}^\times$ is cyclic of order $18$, the cubes are the elements with $x^6=1$ and the ninth powers those with $x^2=1$; $12^6\equiv1$ but $12^2\equiv11$, so $k=1$.
 For \curve{11a1} at $\ell=5$ and \curve{14a1} at $\ell=3$ the residual representation is reducible: the lemma applies (it is local and needs no irreducibility), but Theorem
 thm:main does not; \curve{14a1} has $\degphi=1$. \curve{539c1} has the same $j$-invariant, hence the same Tate parameter at $7$, as its twist \curve{77c1}; $5$ is not a cube
 modulo $7$. In \curve{1184f1} the cap $v_\ell(\nu)=1$ binds although $\bar u=-1$ is a ninth power modulo $37$; in \curve{1748e1}, $12$ is a cube but not a ninth power modulo
@@ -1355,7 +1379,8 @@ basis $e_1,\sigma e_1$ gives $\sigma=\sm0{-1}1{-1}$. In the basis $e,h,f$ of $\a
 e=\sm0100,\qquad\sigma e\sigma^{-1}=\sm00{-1}0=-f,\qquad\sigma^2e\sigma^{-2}=\sm{-1}1{-1}1=e-h-f,
 \]
 and the matrix of coordinates $\begin{psmallmatrix}1&0&1\\0&0&-1\\0&-1&-1\end{psmallmatrix}$ has determinant $-1$. So $e,\sigma e,\sigma^2e$ is a $\Z_3$-basis and $\ad T=\Z_3[P]\,e\simeq\Z_3[P]$. For a cyclic
-group, $H^1(P,\Z_3[P])=\ker N/(\sigma-1)\Z_3[P]=0$, where $N=1+\sigma+\sigma^2$. On $T$, $N=0$ (as $\sigma^2+\sigma+1=0$), so $H^1(P,T)=T/(\sigma-1)T\simeq\Z_3[\zeta_3]/(1-\zeta_3)\simeq\F_3$.
+group, $H^1(P,\Z_3[P])=\ker N/(\sigma-1)\Z_3[P]=0$, where $N=1+\sigma+\sigma^2$: for $x=a+b\sigma+c\sigma^2$ one has $Nx=(a+b+c)N$, so $\ker N=\{a+b+c=0\}$, and such an $x$
+equals $(\sigma-1)\bigl(b+c(1+\sigma)\bigr)$. On $T$, $N=0$ (as $\sigma^2+\sigma+1=0$), so $H^1(P,T)=T/(\sigma-1)T\simeq\Z_3[\zeta_3]/(1-\zeta_3)\simeq\F_3$.
 \end{proof}
 
 \begin{sloppypar}Conceptually: modulo $3$, $\sigma$ is a nontrivial unipotent on $T/3T$, and $\ad(T/3T)\simeq\Sym(T/3T)\otimes\det^{-1}$ is the symmetric square of a $2\times2$ Jordan block, a single
@@ -1612,6 +1637,15 @@ curve & local data & & bound & $\degphi$ & $\len H^1_f(\Q,W)$\\
 \end{center}
 For \curve{791a1} the bound (eq:thm) is $1$, and the Tamagawa excess at $7$ is needed for equality. The numbers in parentheses are the Tamagawa contributions
 (\Cref{ex:blochkato:tamfactor-examples}).
+
+The same data give the $\Sigma$-imprimitive group. For \curve{791a1}, $\Sigma=\{7,113\}$, both primes multiplicative, with $v_3(7^2-1)=v_3(48)=1$ and
+$v_3(113^2-1)=v_3(2^5\cdot3\cdot7\cdot19)=1$; so \Cref{thm:blochkato:selmer-identity} gives
+\[
+\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+(1+1)+(2+0)=0+4=4,
+\]
+the value $\len H^1_f(\Q,W)=0$ being the one in the table (it uses Theorem thm:main). By Theorem thm:dfg37 this is $v_3(\eta^\Sigma_{f,\lambda})$; it is consistent with the
+assembly of \Cref{rem:blochkato:assembly}, where $v_3(\eta^\Sigma_{f,\lambda})=v_3(\degphi)+\sum_{p\in\Sigma}v_3(L^{\nv}_p(A_f,1)^{-1})=2+2$, the naive and true factors agreeing at
+multiplicative primes.
 \end{example}
 
 \section[Beyond the hypothesis]{Beyond the hypothesis: Remark rem:ns, \texorpdfstring{$h_\ell(E)$}{h(E)}, Open question 2}\label{sec:blochkato:beyond}
@@ -1885,7 +1919,8 @@ same $\ell$-adic valuation.
 \begin{exercise}[the trace form at $\ell=2$]\label{ex:blochkato:ex-gram}
 Compute the Gram matrix of the trace form of $\ad T$ in the basis $e,h,f$. Show that for $\ell=2$ the map $A\to A^\vee$, $x\mapsto\tr(x\,\cdot)$, is injective with cokernel of order $2$,
 and find an element of $A^\vee$ not in its image.
-\emph{Hint:} the dual basis vector $h^\vee$ is $\tfrac12\tr(h\,\cdot)$.
+\emph{Hint:} the dual basis vector $h^\vee$ is $\tfrac12\tr(h\,\cdot)$. \emph{Answer:} the Gram matrix is the one in the proof of \Cref{prop:blochkato:adjoint-self-dual};
+$\tr(e\,\cdot)=f^\vee$, $\tr(f\,\cdot)=e^\vee$ and $\tr(h\,\cdot)=2h^\vee$, so the image is $\Z_2e^\vee\oplus2\Z_2h^\vee\oplus\Z_2f^\vee$, of index $2$, and $h^\vee$ is not in it.
 \end{exercise}
 
 \begin{exercise}[local ranks]\label{ex:blochkato:ex-local-ranks}

@@ -356,6 +356,9 @@ The abstract of the paper: ``$\varphi_E\colon X_0(N)\to E$ its modular parametri
 Proposition prop:no9 are rational points of $Y_0(\ell)$ and $Y_0(27)$ (\Cref{prop:moddeg:rational-points}).
 \end{paperlink}
 
+The curve is now defined over $\Q$, with rational cusps $\infty$ and $0$. What it still lacks is the structure that links it to modular forms beyond the
+identification $S_2=H^0(X_0(N),\Omega^1)$: the Hecke operators, which so far act only on $q$-expansions. The next section realises them geometrically.
+
 \section{Hecke correspondences and their adjoints}\label{sec:moddeg:hecke}
 
 The Hecke operators of \Cref{ch:hecke} act on $q$-expansions. To act on $J_0(N)$, on $H_1(X_0(N),\Z)$ and on $H^1(X_0(N),\Zl)$, as Section 4.1 of the paper and
@@ -583,6 +586,9 @@ idempotent $e_{\mf m}$ is self-adjoint for $\hat\delta_!$, so $H^1(X_0(N),\Z_\el
 \Cref{cor:moddeg:delta-hat}(iii).
 \end{paperlink}
 
+So far everything has been said in terms of $H^1$ and $H_1$ of the Riemann surface. The modular parametrisation, however, is a map to an elliptic curve, and the
+natural home of maps from a curve to elliptic curves is its Jacobian; the next section brings it in and sorts out which Hecke action lives where.
+
 \section{The Jacobian \texorpdfstring{$J_0(N)$}{J0(N)}, its homology and the \texorpdfstring{$f$}{f}-lattice}\label{sec:moddeg:jacobian}
 
 The modular parametrisation factors through the Jacobian $J_0(N)$, optimality is a statement about the kernel of $J_0(N)\to E$, Remark rem:free speaks of $J_0(N)[\mf m]$
@@ -723,6 +729,9 @@ plane is also the eigenspace of the anemic algebra (\Cref{prop:moddeg:f-lattice}
 Hecke modules uses Poincar\'e duality composed with $w_N$, which is not Galois equivariant; freeness transfers nevertheless'' is \Cref{prop:moddeg:tate-module-vs-h1}(ii), (iii):
 $\Psi$ is Galois-equivariant after a Tate twist.
 \end{paperlink}
+
+The lattice $M_{f,\lambda}$ has been defined purely in terms of Hecke operators. To connect it with an elliptic curve one needs a curve whose $H^1$ is $V_f$: this is
+Shimura's quotient, and the bridge between its Frobenius traces and the coefficients of $f$ is the congruence relation.
 
 \section{Eichler-Shimura and modularity}\label{sec:moddeg:eichler-shimura}
 
@@ -982,6 +991,9 @@ complex multiplication, $j=110592/37$), of degree $m^2$. As $2=m^2\degphi$, $m=\
 tables.
 \end{example}
 
+The modular degree has now been described algebraically (degrees, kernels, lattices). The next section gives the analytic description that the paper quotes and
+that PARI uses to compute it, and isolates the one constant on which that description depends.
+
 \section{The Manin constant and the formula of Zagier and Watkins}\label{sec:moddeg:manin}
 
 The paper's introduction says: ``Up to explicit factors $\degphi$ is $\langle f,f\rangle$ divided by the area of the period lattice of $E$ (Zagier \cite{Zagier85}, Watkins
@@ -1113,6 +1125,9 @@ Remark rem:degree: ``By the formula of Zagier and Watkins \cite{Zagier85,Watkins
 and the Manin constant $c_E>0$ in the numerator'' is \Cref{thm:moddeg:zagier-watkins} for $\varphi=\varphi_E$. The remark's check ``With $c_E=1$ the first formula reproduces $\degphi$ to $30$
 digits for 11a1, 121a1, 539d1, 1232l1 and 726a1'' is of the same kind as \Cref{ex:moddeg:zw-numerics}.
 \end{paperlink}
+
+The formula of Zagier and Watkins says how large $\degphi$ is; it says nothing about which primes divide it. For that the paper uses congruences between $f$ and
+the other forms of level $N$, the subject of the next section.
 
 \section[The congruence number and Agashe-Ribet-Stein]{The congruence number and the theorem of Agashe, Ribet and Stein}\label{sec:moddeg:congruence}
 
@@ -1249,6 +1264,9 @@ conductor $9\cdot11$, with modular degree $4$ and congruence number $12$; likewi
 $r_E=504=7\cdot72$, with $7^2\mid539$.'' All three pairs are recomputed in \Cref{ex:moddeg:99a1-and-726a1}. The opening of Section sec:proof (``By \cite[Theorem 2.2]{ARS12}, $\deg\varphi_{E_0}$ divides
 $r$ and $v_p(\deg\varphi_{E_0})=v_p(r)$ for every prime $p$ with $p^2\nmid N$; as $\ell\nmid N$ it suffices to prove $\ell\mid r$'') uses \Cref{thm:moddeg:ars} at $p=\ell$, where $\ell^2\nmid N$.
 \end{paperlink}
+
+The theorem of Agashe, Ribet and Stein compares $\degphi$, a geometric quantity, with $r_E$, a quantity about $q$-expansions. The next section explains the
+comparison from the cohomological side, where $\degphi$ turns out to be exactly the congruence ideal attached to the pairing $\hat\delta_!$.
 
 \section{The modular degree as a congruence ideal}\label{sec:moddeg:degree-eta}
 
@@ -1760,7 +1778,9 @@ $w_{22}$ are $U=\sm{-2}1{-2}0$ and $W=\sm0{-1/2}{-2}0$. (b) Show that $\T=\Z[U_2
 
 \begin{exercise}\label{ex:moddeg:ex-counts}
 Using \Cref{thm:moddeg:eichler-shimura}(iii) and $X_0(11)=\curve{11a1}$, predict $\#\curve{11a1}(\Fp)$ for $p=2,3,5,7,13$ from $f_{11}=q-2q^2-q^3+2q^4+q^5+2q^6-2q^7-2q^9-2q^{10}+q^{11}-2q^{12}+4q^{13}+\cdots$, and
-check by counting points on $y^2+y=x^3-x^2-10x-20$. \emph{Answer.} $5,5,5,10,10$.
+check by counting points on $y^2+y=x^3-x^2-10x-20$. \emph{Answer.} $5,5,5,10,10$, from $p+1-a_p$ with $a_p=-2,-1,1,-2,4$: $3+2$, $4+1$, $6-1$, $8+2$, $14-4$.
+All five are divisible by $5$, as they must be for $p\ne5,11$: the rational $5$-torsion of \curve{11a1} injects into $\tilde E(\Fp)$, torsion of order prime to $p$ injecting under
+good reduction (\Cref{ch:reduction}).
 \end{exercise}
 
 \begin{exercise}\label{ex:moddeg:ex-37-lvalue}
