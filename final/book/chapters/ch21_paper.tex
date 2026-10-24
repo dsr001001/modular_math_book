@@ -59,7 +59,7 @@ $\kod{I}_n^*$ ($\ell\mid n$, $q$ odd): then $\ell\mid\deg\varphi_{E_0}$. \emph{(
 $M(M^\Sigma,1)_{!,\lambda}=H^1(X_0(M^\Sigma),\Zl)$, with no localisation. \emph{(proved here; expanded proof in \Cref{ch:congruence}.)} \Cref{prop:paper:integral}.
 \item \textbf{Theorem thm:dfg14} (Diamond, Flach and Guo, Proposition 1.4(c)). For $\ell\nmid2M$, $\ell\notin\Sigma$, $\bar\rho_f$ irreducible: $\eta^\Sigma=\eta^\emptyset\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}$. \emph{(stated; reference.)}
 \Cref{thm:paper:dfg14}.
-\item \textbf{Proposition prop:pullback.} For optimal $E$: $\varphi^*H^1(E,\Zl)=H^1(X_0(N),\Zl)[I_f]$, $\langle\varphi^*a,w_N^*\varphi^*b\rangle=\varepsilon_N\degphi\langle a,b\rangle$; for $\ell\nmid2N$, $\bar\rho$ irreducible,
+\item \textbf{Proposition prop:pullback.} For optimal $E$: $\varphi^*H^1(E,\Zl)=H^1(X_0(N),\Zl)[I_f]$, $\langle\varphi^*a,w_N^*\varphi^*b\rangle=\varepsilon_N\degphi\langle a,b\rangle$; for $\ell\nmid2N$,
 $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$. \emph{(proved here, given \Cref{ch:moddeg} and Proposition prop:integral.)} \Cref{prop:paper:pullback}.
 \item \textbf{Lemma lem:ddt417.} $d\,v(\eta)\ge v(\Delta)$, with equality if $L$ is free over $\T$. \emph{(proved here, given \Cref{ch:modules}.)} \Cref{lem:paper:ddt417}.
 \item \textbf{Lemma lem:hecke.} $v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda})$ for $E$ optimal, $\ell\nmid2N$, $\bar\rho$ irreducible; no freeness. \emph{(proved here, given \cite{ARS12} and
@@ -800,7 +800,8 @@ the span of $h(p^jz)$, $0\le j\le e_p$, by $U_ph(p^jz)=h(p^{j-1}z)$ ($j\ge1$) an
 $X^2-a_p(h)X+p$, with $0$ if $e_p\ge2$ ($p\nmid M$), or $a_p(h)$ with $0$ if $e_p\ge1$ ($p\mid M$); each has an eigenvector (the $p$-stabilisations and the depleted forms), though
 $U_p$ is not semisimple when $0$ is repeated. As the local spaces tensor together and $\T$ is commutative, any choice of one eigenvalue $\mu_p$ per $p\mid N/M$ gives a
 common eigenform $g$; one checks $a_p(g)\equiv a_p(f)$ prime by prime, and then for all $n$ by multiplicativity and the Hecke recursions. The five cases: $p\nmid\ell N$
-(hypothesis); $p=\ell$ (both forms have level prime to $\ell$ and weight $2$; $a_\ell\bmod\lambda$ is read off $\bar\rho|_{D_\ell}$, $0$ if irreducible, the unramified eigenvalue otherwise);
+(hypothesis); $p=\ell$ (both forms have level prime to $\ell$ and weight $2$; $a_\ell\bmod\lambda$ is read off $\bar\rho|_{D_\ell}$, $0$ if irreducible, the eigenvalue of Frobenius on the unramified quotient otherwise, a quotient that is well defined because the characters of the semisimplification restrict to $I_\ell$ as $\bar\chi_\ell$ and $1$, and
+$\bar\chi_\ell|_{I_\ell}\ne1$ as $\ell$ is odd, so that it is the module of $I_\ell$-coinvariants);
 $p^2\mid N$ ($a_p(f)=0$; $a_p(h)=0$ if $v_p(M)=v_p(N)$ \cite[Theorem 3]{AtkinLehner70}, else $0$ is an available eigenvalue); $p\,\|\,N$ with $\bar\rho$ unramified ($p\nmid M$ by hypothesis,
 $\bar\rho(\Frob_p)$ has eigenvalues $a_p(f)p$ and $a_p(f)$, so one of $\alpha_p,\beta_p$ is congruent to $a_p(f)$); $p\,\|\,N$ with $\bar\rho$ ramified ($p\mid M$, and two non-split extensions
 of characters match their unique stable lines, so $a_p(h)\equiv a_p(f)$). In the first case the paper adds: ``$\bar\rho_h\simeq\bar\rho$
@@ -890,7 +891,7 @@ Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ with rational coefficients, 
 $f^\Sigma=\sum_{(n,\Sigma)=1}a_n(f)q^n$, an eigenform of the full Hecke algebra of level $M^\Sigma$ with $U_pf^\Sigma=0$ for $p\in\Sigma$. The integral structure $M(M^\Sigma,1)_{!,\lambda}$ is the image of
 the $U_0(M^\Sigma)$-invariants of the compactly supported cohomology of a modular curve of full level in its cohomology \cite[Sections 1.2, 1.4]{DFG04}. The kernel lattice
 $M_{f^\Sigma,\lambda}$ is the subgroup killed by the kernel of the eigencharacter of $f^\Sigma$ on the full Hecke algebra. The pairing $\hat\delta_!$ is the cup product composed with
-$[UwU]_\omega$, which in weight $2$ with trivial character is the Atkin-Lehner involution $w_{M^\Sigma}$; on classes pulled back from $X_0(M^\Sigma)$ it is $\frac12\langle x,w^*_{M^\Sigma}y\rangle$.
+$[UwU]_\omega$, which in weight $2$ with trivial character is the Atkin-Lehner involution $w_{M^\Sigma}$; on classes pulled back from $X_0(M^\Sigma)$ it is $\frac u2\langle x,w^*_{M^\Sigma}y\rangle$ for an $\ell$-adic unit $u$.
 The naive $\Sigma$-finite congruence ideal $\eta^\Sigma_{f,\lambda}\subseteq\Zl$ is the ideal of values of $\hat\delta_!$ on $M_{f^\Sigma,\lambda}$, the image of $\wedge^2M_{f^\Sigma,\lambda}$; equivalently the Gram
 determinant on a basis is $(\eta^\Sigma_{f,\lambda})^2$ up to a unit.
 \end{definition}
@@ -900,25 +901,66 @@ displays (13), (14)); the cup product, $w_N$ and the Hecke adjoints in \Cref{ch:
 determinant is the square of a generator of its ideal of values (\Cref{ch:modules}).
 
 \begin{proposition}[the paper's Proposition prop:integral]\label{prop:paper:integral}
-Let $\ell\nmid2M^\Sigma$. Pull-back along the covering of the modular curve of full level maps $H^1(X_0(M^\Sigma),\Zl)$, compatibly with the Hecke operators, onto a
-sublattice of finite index of $M(M^\Sigma,1)_{!,\lambda}$, and for every maximal ideal $\mf m$ of the Hecke algebra tensored with $\Zl$ that is not Eisenstein (its residual
-representation is irreducible), $M(M^\Sigma,1)_{!,\lambda,\mf m}=H^1(X_0(M^\Sigma),\Zl)_{\mf m}$.
+Let $\ell$ be a prime. Pull-back along the covering of $X_0(M^\Sigma)$ by the modular curve of full level identifies $H^1(X_0(M^\Sigma),\Z)$ with the Betti lattice
+$M(M^\Sigma,1)_{!,B}$ of \cite[Section 1.4.2]{DFG04}, compatibly with the Hecke operators, $U_p$ included; in particular $M(M^\Sigma,1)_{!,\lambda}=H^1(X_0(M^\Sigma),\Zl)$, with no
+localisation.
 \end{proposition}
 
-\noindent\emph{Where.} Sketched in \Cref{ch:congruence}, as in the paper. The sketch: the image of compactly supported cohomology in cohomology of $Y_0(M^\Sigma)$ is
-$H^1(X_0(M^\Sigma),\Zl)$; pull-back to the finite covering lands in the $U_0(M^\Sigma)$-invariants, commutes with the Hecke correspondences, and is injective with finite
-cokernel after $\otimes\Ql$, push-forward composed with pull-back being multiplication by the degree; by inflation-restriction for the covering group the cokernel is a
-subquotient of homomorphisms from that group to $\Qlmod$, so it comes from abelian unramified subcoverings, on which the $T_p$, $p$ prime to the level, act through
-an Eisenstein ideal \cite{LingOesterle,Ribet88}; localisation at a non-Eisenstein $\mf m$ kills it. When $\ell$ does not divide the order of the covering group, a transfer
-argument gives the result directly, as in \cite[Lemma 1.8, Corollary 1.9]{DFG04}.
+\noindent\emph{Where proved.} In the paper, in four steps; the book's expanded proof is the comparison proposition of \Cref{ch:congruence}, which
+also explains equivariant cohomology with compact support, the Hochschild-Serre spectral sequence and the equivariant Leray spectral sequence that the paper uses
+without comment. Riemann surfaces, their compactly supported cohomology and the cup product: \Cref{ch:curves}; the Eichler-Shimura isomorphism and the Hecke
+action on $H^1(X_0(N),\Z)$: \Cref{ch:moddeg}; group cohomology of finite groups: \Cref{ch:cohomology}.
 
-\emph{Reading remark.} The proposition is an input, not a theorem of the paper: the paper says that the Eisenstein property of the cokernel ``is proved in the cited
-sources for the Shimura covering; for general congruence coverings we have only the argument just sketched, and we use the proposition as an input''. The book is in
-the same position. Proposition prop:pullback (last sentence), Lemma lem:hecke, Step 1 of the proof of Theorem thm:main and Step 2 of Theorem thm:quant rest on it,
-and the paper lists it among the inputs of Theorem thm:main.
+\begin{proof}[The paper's proof, read]
+Write $M$ for $M^\Sigma$ and $U=U_0(M)$. In weight $2$ with trivial character the coefficient sheaf of \cite[Section 1.2.2]{DFG04} is the constant sheaf $\Z$. The paper
+chooses an auxiliary $N\ge3$ with $M\mid N$ and every prime factor of $N$ in the set $S$ of \cite[Section 1.4.1]{DFG04}, for instance $N=4M$. Then $U_N\subseteq U$, and by
+\cite[Section 1.4.1]{DFG04} $M(M,1)_{?,B}=H^1_?(Y(N),\Z)^G$ for $?\in\{c,\mathrm{tf}\}$, where $Y(N)$ is the analytic modular curve of full level $N$, a disjoint union of copies of
+$\Gamma(N)\backslash\mathcal H$ indexed by $(\Z/N\Z)^\times$, and $G=U/U_N$, a finite group acting through its image in $\GL_2(\Z/N\Z)$; the lattice $M(M,1)_{!,B}$ is the image of the
+compactly supported invariants in the torsion-free invariants, and nothing depends on $N$ \cite[Lemma 1.1]{DFG04}. Since $\det U=\widehat\Z^\times$, $G$ permutes the
+components transitively, the stabiliser of one component acts on it through the image of $\Gamma_0(M)$, and the quotient map $\pi\colon Y(N)\to Y(N)/G=Y_0(M)$ is a finite map
+onto the coarse curve; point stabilisers are finite.
+
+(1) \emph{Compact support and invariants.} $\pi^*\colon H^1_c(Y_0(M),\Z)\to H^1_c(Y(N),\Z)^G$ is an isomorphism. The paper passes through the $G$-equivariant cohomology with
+compact support $H^\bullet_{G,c}(Y(N),\Z)$ and two spectral sequences converging to it. In the Hochschild-Serre spectral sequence
+$H^p(G,H^q_c(Y(N),\Z))\Rightarrow H^{p+q}_{G,c}(Y(N),\Z)$ the row $q=0$ is zero, because each component is a connected non-compact surface, so $H^0_c(Y(N),\Z)=0$; in degree $1$
+only $E_2^{0,1}=H^1_c(Y(N),\Z)^G$ survives. In the equivariant Leray spectral sequence of $\pi$, $H^p_c(Y_0(M),\mathcal R^q)\Rightarrow H^{p+q}_{G,c}(Y(N),\Z)$, the stalk of $\mathcal R^q$ at $y$ is
+$H^q(G_x,\Z)$ for a point $x$ over $y$ (Shapiro's lemma); so $\mathcal R^0=\Z$ and $\mathcal R^1=0$, because $H^1(C,\Z)=\Hom(C,\Z)=0$ for a finite group $C$. In degree $1$ only
+$H^1_c(Y_0(M),\Z)$ survives. The composite of the two edge isomorphisms is $\pi^*$.
+
+(2) \emph{The image.} Under these identifications DFG's map from compactly supported to torsion-free invariants is the forgetful map $H^1_c(Y(N),\Z)^G\to H^1(Y(N),\Z)^G$; as $\pi$ is
+proper, its image is $\pi^*$ of the image of $H^1_c(Y_0(M),\Z)\to H^1(Y_0(M),\Z)$. Since $Y_0(M)$ is the compact surface $X_0(M)$ minus finitely many cusps, $H^1_c(Y_0(M),\Z)\to H^1(X_0(M),\Z)$ is
+onto and $H^1(X_0(M),\Z)\to H^1(Y_0(M),\Z)$ is injective, so that image is $H^1(X_0(M),\Z)$. Finally $\pi^*$ is injective on the torsion-free group $H^1(Y_0(M),\Z)$, since $\pi_*\pi^*$ is
+multiplication by $\deg\pi$.
+
+(3) \emph{Hecke operators.} Both lattices are torsion-free and $\pi^*$ is injective, so equivariance may be checked after $\otimes\C$. There DFG's operators act on
+$\operatorname{Fil}^1M(M,1)_{!,\mathrm{dR}}\otimes\C=S_2(\Gamma_0(M))$ as the classical $T_p$, and as $U_p$ for $p\mid M$ \cite[Proposition 1.3]{DFG04}, commuting with complex conjugation; $\pi^*$ is
+compatible with DFG's comparison isomorphism and with the Eichler-Shimura isomorphism, both being pull-back of $f(\tau)\,d\tau$.
+
+(4) \emph{The $\lambda$-adic structure.} $\Zl\otimes M_{?,B}\simeq M_{?,\ell}$ for every prime $\ell$ \cite[Section 1.2.3]{DFG04}, and invariants under a finite group and images commute
+with the flat base change $\Z\to\Zl$; so $M(M,1)_{!,\lambda}=\Zl\otimes M(M,1)_{!,B}=H^1(X_0(M),\Zl)$.
+\end{proof}
+
+\noindent\emph{Reading guidance.} Step (1) is the one to master, and its point is compact support. Both vanishing statements are elementary: $H^0_c$ of a connected
+non-compact surface is $0$ (a compactly supported locally constant function on it is $0$), and a finite group has no nonzero homomorphism to $\Z$. Together they say that
+taking $G$-invariants of $H^1_c$ loses nothing and that the finite stabilisers (the elliptic points) contribute nothing in degree $1$. Step (2) is the familiar
+description of $H^1(X_0(M),\Z)$ as the interior cohomology of $Y_0(M)$ (\Cref{ch:moddeg}). Steps (3) and (4) are bookkeeping: equivariance between torsion-free lattices can
+be tested over $\C$, and Betti-to-$\ell$-adic comparison is a base change. The statement holds for every prime $\ell$, $\ell=2$ and $\ell\mid M^\Sigma$ included; the
+hypothesis $\ell\nmid2M^\Sigma$ of the surrounding text is needed for the pairing, not for the comparison.
+
+\emph{Reading remark} (the paper's Remark after the proposition). ``Compact support is what makes the comparison integral'': with ordinary cohomology the analogue
+of step (1) fails, because $H^0(Y(N),\Z)\ne0$. The paper identifies the cokernel: $H^1(Y(N),\Zl)^G/\pi^*H^1(Y_0(M),\Zl)$ is the group of characters $\Gamma_0(M)\to\Qlmod$ of $\ell$-power order that
+factor through $G$, namely $\gamma\mapsto\psi(d\bmod p)$ for primes $p\mid M$ with $\ell\mid p-1$; ``for $M=11$ and $\ell=5$ it is the unramified covering $X_1(11)\to X_0(11)$''. These
+characters cut out abelian unramified subcoverings such as the Shimura covering, on which the Hecke operators act through an Eisenstein ideal
+\cite{LingOesterle,Ribet88}; the proof does not pass through them, since the compactly supported lattice never sees this cokernel. Proposition prop:pullback (last
+sentence), Lemma lem:hecke, Step 1 of the proof of Theorem thm:main and Step 2 of Theorem thm:quant use the proposition.
 
 \paragraph{The pairing.} The operator in $\hat\delta_!$ is $[UwU]_\omega$, attached to $w=\sm0{-1}{M^\Sigma}0$ \cite[Section 1.5.3, (13), (14)]{DFG04}; in weight $2$ with
-trivial character it is the Atkin-Lehner involution with no scalar factor. Self-adjointness of the Hecke operators, $U_p$ included, for $\hat\delta_!$ comes from
+trivial character it is the Atkin-Lehner involution with no scalar factor. On classes pulled back from $X_0(M^\Sigma)$, $\hat\delta_!$ is $\frac u2$ times the cup product
+on $X_0(M^\Sigma)$ composed with $w_{M^\Sigma}$, for an $\ell$-adic unit $u$, ``so for odd $\ell$ only a unit separates the two''. The paper's justification: for a sufficiently small
+level $U'\subseteq U_0(M^\Sigma)$ with $\det U'=\widehat\Z^\times$, such as $U_0(M^\Sigma)\cap U_1(4)$, the normalised pairing $\bar\delta$ of \cite[Section 1.5.2]{DFG04} is Poincar\'e duality on $X_{U'}$
+up to an $\ell$-adic unit when $\ell\nmid2M^\Sigma$; it is normalised by dividing by the index, so on $U_0(M^\Sigma)$-invariants it is $[U_0(M^\Sigma):U']^{-1}$ times its value on
+$U'$-invariants; and the covering $X_{U'}\to X_0(M^\Sigma)$ has degree $[U_0(M^\Sigma):U']/2$, because $-1$ acts trivially. By the projection formula the two factors combine to $\frac12$,
+up to the unit $u$. Only the ideal of values of the pairing enters the congruence ideal, so the unit $u$ never matters. Self-adjointness of the Hecke operators, $U_p$ included, for $\hat\delta_!$ comes from
 $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ being the adjoint of $T_n$ for the cup product (\cite[Section 1.8.2, (25)]{DFG04}; \Cref{ch:moddeg}). This is the reason for composing with $w$: the
 plain cup product is alternating and perfect, but the $U_p$ are not self-adjoint for it.
 
@@ -939,8 +981,8 @@ ideal of $\Zl$ (\Cref{ex:paper:dfg14-ell} gives a second instance). In \cite[Sec
 \begin{proposition}[the paper's Proposition prop:pullback]\label{prop:paper:pullback}
 Let $E$ be $X_0(N)$-optimal with newform $f$, $\varphi=\varphi_E$, $I_f=\ker\phi_f$, and $\ell$ any prime. Then $\varphi^*\colon H^1(E,\Zl)\to H^1(X_0(N),\Zl)$ is injective with image the kernel lattice
 $H^1(X_0(N),\Zl)[I_f]$, and $\langle\varphi^*a,w_N^*\varphi^*b\rangle_{X_0(N)}=\varepsilon_N(f)\,\degphi\,\langle a,b\rangle_E$, with $\varepsilon_N(f)=\pm1$ the eigenvalue of $w_N$ on $f$. For $\ell$ odd the ideal of values of
-$\frac12\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Zl)[I_f]$ is $\degphi\,\Zl$ and its Gram determinant is $(\degphi)^2$ up to a unit. If $\ell\nmid2N$ and $\bar\rho_{E,\ell}$ is irreducible, then, given
-\Cref{prop:paper:integral}, $M_{f,\lambda}=\varphi^*H^1(E,\Zl)$ and $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$.
+$\frac12\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Zl)[I_f]$ is $\degphi\,\Zl$ and its Gram determinant is $(\degphi)^2$ up to a unit. If $\ell\nmid2N$, then
+$M_{f,\lambda}=\varphi^*H^1(E,\Zl)$ and $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$.
 \end{proposition}
 
 \noindent\emph{Where proved.} \Cref{ch:moddeg} (the image and the projection formula), \Cref{ch:curves} (cup product, pullback and degree), \Cref{ch:congruence} (the
@@ -958,13 +1000,14 @@ class of $H^2$ by $\degphi$, so $\langle\varphi^*a,\varphi^*b\rangle_{X_0(N)}=\d
 plane is also the eigenspace of the $T_n$ with $(n,N)=1$ for the eigenvalues $a_n(f)$, and $w_N$ commutes with those $T_n$; it does not commute with the $U_p$, $p\mid N$, which is why the
 argument passes through the $T_n$ with $(n,N)=1$, as the paper does. On the plane $w_N$ acts by
 $\varepsilon_N(f)=\pm1$, which gives the displayed formula. (5) \emph{Values.} The cup product on $H^1(E,\Z)$ is unimodular, so the ideal of values of $\frac12\langle x,w_N^*y\rangle$ on the
-image is $\degphi\Zl$ ($\frac12$ and $\varepsilon_N$ are units), and the Gram determinant is its square. (6) \emph{DFG's ideal.} If $\ell\nmid2N$ and $\bar\rho$ is irreducible, the maximal ideal
-$\mf m$ of $(f,\ell)$ is not Eisenstein, $M_{f,\lambda}$ lies in the $\mf m$-component, where DFG's integral structure is $H^1(X_0(N),\Zl)_{\mf m}$ (\Cref{prop:paper:integral}) and
-$\hat\delta_!=\frac12\langle x,w_N^*y\rangle$; so $\eta^\emptyset_{f,\lambda}=\degphi\Zl$.
+image is $\degphi\Zl$ ($\frac12$ and $\varepsilon_N$ are units), and the Gram determinant is its square. (6) \emph{DFG's ideal.} If $\ell\nmid2N$, DFG's integral structure is $H^1(X_0(N),\Zl)$, Hecke equivariantly with the $U_p$ included
+(\Cref{prop:paper:integral}), so $M_{f,\lambda}=H^1(X_0(N),\Zl)[I_f]=\varphi^*H^1(E,\Zl)$ by (2); and $\hat\delta_!$ is $\frac u2\langle x,w_N^*y\rangle$ with $u$ an $\ell$-adic unit (the paragraph on the
+pairing above). By (5), with the unit $u$ changing nothing, $\eta^\emptyset_{f,\lambda}=\degphi\Zl$.
 \end{proof}
 
-\noindent\emph{Reading guidance.} The proposition is the heart of the identification of $\degphi$ with a congruence ideal, and it uses neither multiplicity one
-nor, for its first part, irreducibility; only the last sentence uses Proposition prop:integral. The consequence the paper draws after the proof,
+\noindent\emph{Reading guidance.} The proposition is the heart of the identification of $\degphi$ with a congruence ideal, and it uses no multiplicity-one
+hypothesis, and no irreducibility of $\bar\rho$: the paper notes that ``for the first part no irreducibility'' is used, and the last sentence needs none either,
+because \Cref{prop:paper:integral} holds without localisation. Only the last sentence uses Proposition prop:integral. The consequence the paper draws after the proof,
 $M_{f,\lambda}=H^1(E,\Zl)=\Hom(T_\ell E,\Zl)\simeq T_\ell E(-1)$ by Galois equivariance of $\varphi^*$ in \'etale cohomology, so that its adjoint is $\ad T_\ell E$, is what lets
 the Selmer groups of \cite{DFG04} be read as Selmer groups of $\ad T_\ell E$: $M_{f,\lambda}$ lives in the dual representation, of determinant $\chi_\ell^{-1}$, but the adjoint
 does not see duals or twists (\Cref{conv:paper:duals}).
@@ -1015,7 +1058,7 @@ strict ($2>0$) and $H^1(X_0(99),\Z_3)_{\mf m}$ is not free (\Cref{ch:moddeg}).
 \begin{remark}[the paper's Remark rem:free]\label{rem:paper:free}
 For $\ell\nmid2N$ and $\bar\rho$ irreducible, $J_0(N)[\mf m]$ is two-dimensional (\cite[Theorem 3.5]{RibetStein} for $J_1(N)$, as cited; the exceptional Serre weight $\ell$ does not occur
 in weight $2$ with $\ell\nmid N$; the kernel of the pullback $J_0(N)\to J_1(N)$ is the Shimura subgroup, which is Eisenstein; the references \cite{LingOesterle,Ribet88} for
-it are the book's, the paper citing them in Section 4.1, for the integral structure); then $\T_{\mf m}$ is Gorenstein and the Tate module
+it are the book's); then $\T_{\mf m}$ is Gorenstein and the Tate module
 is free of rank two \cite{Tilouine97}. The identification of $T_\ell J_0(N)$ with $H^1(X_0(N),\Zl)$ uses Poincar\'e duality composed with $w_N$, not Galois equivariant, but freeness
 transfers. After \Cref{prop:paper:pullback} this is not used by Theorems thm:main or thm:quant; it gives a second proof of $v_\ell(r_E)=v_\ell(\degphi)$ in this range and explains
 why the Hecke and the cohomological congruence ideals agree there (\Cref{ch:moddeg}).
@@ -1286,8 +1329,7 @@ Use the set-up above; $\ell\notin S$ as $\ell\nmid N$, so $\ell\ne3$ when $3\in 
 factors of $\T_\ell$ lie in $\ker\pi$, and the annihilator decomposes along the idempotents.
 
 \emph{Step 2 (Hecke versus cohomological ideal).} \Cref{lem:paper:ddt417} with $L=H^1(X_0(N),\Zl)_{\mf m}$ (the pairing of \Cref{def:paper:dfg-objects} is perfect on the $\mf m$-component, $e_{\mf m}$ being
-self-adjoint) and $\pi$: $L[\wp]=M_{g^S,\lambda}$ has rank $2$ and Gram determinant $(\eta^S_{g,\lambda})^2$ ($\mf m$ is not Eisenstein, as $\bar\rho_g=\bar\rho\otimes\chi_S$ is irreducible, and
-\Cref{prop:paper:integral} applies). Hence $v_\ell(\eta^{\mathrm{Hecke}}(g^S))\ge v_\lambda(\eta^S_{g,\lambda})$, with no freeness hypothesis.
+self-adjoint) and $\pi$: $L[\wp]=M_{g^S,\lambda}$ has rank $2$ and Gram determinant $(\eta^S_{g,\lambda})^2$ (\Cref{prop:paper:integral}; it lies in the $\mf m$-component, as the paper says). Hence $v_\ell(\eta^{\mathrm{Hecke}}(g^S))\ge v_\lambda(\eta^S_{g,\lambda})$, with no freeness hypothesis.
 
 \emph{Step 3 (Diamond, Flach and Guo).} \Cref{thm:paper:dfg14} for $g$ ($\bar\rho\otimes\chi_S$ irreducible, $\ell\nmid2N_S$, $\ell\notin S$): $v_\lambda(\eta^S_{g,\lambda})=v_\lambda(\eta^\emptyset_{g,\lambda})+\sum_{q\in S}v_\ell(L^{\nv}_q(A_g,1)^{-1})$.
 Since $A_g=A_f$ and $\delta_q(g)\ge1$, the naive factor of $g$ at $q$ is the true factor, the one that $f$ (with $a_q(f)=0$) omits: the sum is $\sum_{q\in S}e_\ell(E,q)$ (values from
@@ -1378,7 +1420,7 @@ $v_p(j)<0$, on $I_p$ the representation is $\chi(\sigma)\sm1{n\theta(\sigma)}01$
 takes a unit value, this is a unipotent of order $3$ mod $3$ unless $3\mid n$. Type $\kod{IV}$, $\kod{IV}^*$ at $p\ne3$ gives $\bar\rho(I_p)$ of order $3$ (\Cref{lem:paper:IV}); type $\kod{II}$, $\kod{II}^*$ at
 $p\ge5$ gives $\rho(I_p)$ cyclic of order $6$ (Kraus), injecting mod $3$. Neither fits in $C_4$.
 
-(iv) is proved before (ii), which uses it. The splitting field of $\psi_3$ is cut out by the kernel of the action on lines, $\bar\rho^{-1}(\{\pm1\})$, with group $N_s(\F_3)/\{\pm1\}\simeq(\Z/2)^2$;
+(iv) is proved before (ii), as the paper signposts: ``We prove (iv) next, because (ii) uses the fields $K_1$ and $K_2$ it describes.'' The splitting field of $\psi_3$ is cut out by the kernel of the action on lines, $\bar\rho^{-1}(\{\pm1\})$, with group $N_s(\F_3)/\{\pm1\}\simeq(\Z/2)^2$;
 its quadratic subfields are the fixed fields of the three index-two subgroups containing $-1$: $C_4$ (fixed field $\Q(\sqrt{-3})$, the determinant), $C_s$ (the stabiliser of the
 Cartan lines) and $\{\pm1,\pm w\}$ (the stabiliser of the other two lines).
 
@@ -1457,9 +1499,12 @@ Lemmas lem:euler, lem:twist, Proposition prop:forms, $h_3=1$ & theorems; the dat
 \end{center}
 
 Two further points in the protocol paragraph deserve attention. On the extension range, optimality is determined only for the $359{,}009$ named classes, and for the
-others the right side of (eq:rule) at $\ell=3$ depends on the class invariance of $w_3$, which ``is not proved and fails in the presence of a $3$-isogeny''; the paper's count
-below $10{,}000$ ($w_3$ constant on all $1{,}295$ classes without a $3$-isogeny, varying in $828$ of the $1{,}293$ with one, for instance \curve{54a}, of types $\kod{IV}^*$, $\kod{II}^*$, $\kod{II}$ at $3$)
-was reproduced for the book. The other terms of (eq:rule) are invariant under isogenies of degree prime to $\ell$ (\Cref{ch:ellcurves}). And the PARI versions: the paper used
+others the paper shows that the right side of (eq:rule) at $\ell=3$ is the same for every curve of the class. ``Indeed, when $E[3]$ is irreducible the class has no
+$3$-isogeny, so every isogeny in it is a composite of isogenies of prime degree $p\ne3$, and an isogeny of prime degree $p$ preserves the Kodaira type at a prime $q\ne p$ of
+potentially good reduction'' \cite[Theorem 5.4(1)]{DokDok15}; so $w_3$, read off the type at $q=3$ when the reduction there is potentially good, is constant on the class
+(\Cref{ch:ellcurves}). With a $3$-isogeny, where (eq:rule) does not apply at $\ell=3$, $w_3$ can vary; the paper's count below $10{,}000$ ($w_3$ constant on all $1{,}295$
+classes without a $3$-isogeny, ``as it must be'', varying in $828$ of the $1{,}293$ with one, for instance \curve{54a}, of types $\kod{IV}^*$, $\kod{II}^*$, $\kod{II}$ at $3$) was reproduced for
+the book. The other terms of (eq:rule) are invariant under isogenies of degree prime to $\ell$ (\Cref{ch:ellcurves}). And the PARI versions: the paper used
 PARI/GP 2.15 for the large ranges and 2.17.2 for the checks below $10{,}000$, and it records that 2.17.2 returns $q_E^5$ in place of $q_E$ for \texttt{ellinit(E, O(2\^{}k)).tate} when
 $v_2(j_E)=-1$; no count is affected, as the Tate parameter at $2$ enters none (\Cref{ch:reduction,ch:computation}).
 
@@ -1605,7 +1650,8 @@ rule(E, l, {iii = 0}) =
 ns3(E) = my(F = factor(elldivpol(E, 3))); (#F[,1] == 2 && poldegree(F[1,1]) == 2);
 \end{lstlisting}
 
-\paragraph{What it computes.} (The program is copied from the paper, comments omitted.) $P$ is the list of bad primes and $k$ PARI's Kodaira code at $q$. For $q\ne\ell$, $F=1/\texttt{lfuneuler}(S,q)$
+\paragraph{What it computes.} (The program is copied from the paper, comments omitted; the paper's comment line after \texttt{ns3} explains the test: $\psi_3$ has degree $4$ and is squarefree, so
+two factors, one of them quadratic, means two quadratics.) $P$ is the list of bad primes and $k$ PARI's Kodaira code at $q$. For $q\ne\ell$, $F=1/\texttt{lfuneuler}(S,q)$
 is $P_q(x)$ (for \curve{121a1}, \texttt{lfuneuler(S, 11)} is $1/(11x+1)$), $r=P_q(q^{-2})=L_q(A_f,1)^{-1}$, divided at a multiplicative prime ($k\ge5$) by the naive factor $1-q^{-2}$; so $e=e_\ell(E,q)$,
 except that the type $\kod{III}$ terms ($|k|=3$) are left out unless \texttt{iii} is set. At $q=\ell=3$ the code puts $e=w_3(E)$ (codes $4,2,-3$ give $1$; $-4,-2$ give $2$; others $0$), even when
 \texttt{iii} is not set. $t=t_\ell(E,q)$ at every bad $q$, $q=\ell$ included. With \texttt{iii} set and $\ell=3$, $\texttt{ns3}(E)$ is subtracted; it is $1$ exactly when $\psi_3$ is a product of two
@@ -1642,7 +1688,7 @@ input & used in\\
 {[}\cite{Ribet83,AU96}: the perfect pairing] & Lemma lem:crit $\to$ Lemma lem:old, Theorem thm:twist, Theorem thm:quant Step 1\\
 {[}\cite{Edixhoven92,AtkinLehner70}; \cite[Theorem 3.1(e)]{DDT}; Chebotarev; Brauer-Nesbitt] & Lemma lem:old $\to$ Theorem thm:qual\\
 {[}\cite[Theorem 3.15]{DDT}]; [\cite[Theorem 2.2]{ARS12}] & Theorem thm:qual\\
-projection formula; Proposition prop:integral (sketched) & Proposition prop:pullback $\to$ Lemma lem:hecke $\to$ Theorem thm:main Step 1, Theorem thm:quant Step 4\\
+{[}\cite[Sections 1.2, 1.4]{DFG04}; Hochschild-Serre; equivariant Leray] $\to$ Proposition prop:integral; projection formula & Proposition prop:pullback $\to$ Lemma lem:hecke $\to$ Theorem thm:main Step 1, Theorem thm:quant Step 4\\
 {[}\cite[Lemma 4.17]{DDT}] = Lemma lem:ddt417 & Theorem thm:quant Step 2 (and the second route to Lemma lem:hecke, Remark rem:free)\\
 {[}\cite[Proposition 1.4(c)]{DFG04}] = Theorem thm:dfg14 & Theorem thm:main Step 2, Theorem thm:quant Step 3\\
 {[}\cite[Theorem 3.7]{DFG04}] = Theorem thm:dfg37 & Theorem thm:main Step 3\\
