@@ -1359,16 +1359,18 @@ agree on $M_{f,\lambda}$ and take the values $2\Zl$ there; for $\ell=2$ the cup 
 $\phi_f\colon\T\to\Z$ of $f$ on the full Hecke algebra, and $\ell$ a prime. Then $\varphi^*\colon H^1(E,\Z_\ell)\to H^1(X_0(N),\Z_\ell)$ is injective, with image the kernel lattice
 $H^1(X_0(N),\Z_\ell)[I_f]$, and'' $\langle\varphi^*a,\,w_N^*\varphi^*b\rangle_{X_0(N)}=\varepsilon_N(f)\,\degphi\,\langle a,b\rangle_E$ for $a,b\in H^1(E,\Z_\ell)$ (displayed there), ``where $\langle\ ,\ \rangle$
 denotes the cup product and $\varepsilon_N(f)=\pm1$ the eigenvalue of $w_N$ on $f$. In particular, for $\ell$ odd, the ideal of values of
-$\frac12\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Z_\ell)[I_f]$ is $\degphi\,\Z_\ell$, and its Gram determinant is $(\degphi)^2$ up to a unit. If $\ell\nmid2N$ and $\bar\rho_{E,\ell}$ is irreducible, then,
-given Proposition prop:integral, $M_{f,\lambda}=\varphi^*H^1(E,\Z_\ell)$, and'' $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$ (displayed). The book's
+$\frac12\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Z_\ell)[I_f]$ is $\degphi\,\Z_\ell$, and its Gram determinant is $(\degphi)^2$ up to a unit. If $\ell\nmid2N$, then $M_{f,\lambda}=\varphi^*H^1(E,\Z_\ell)$, and''
+$v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$ (displayed). The book's
 \Cref{prop:moddeg:mf-is-pullback,lem:moddeg:wn-on-mf,thm:moddeg:degree-is-eta} prove this. The paper's ``In particular'' sentence is phrased for $\frac12\langle x,w_N^*y\rangle$ and so restricted to
 odd $\ell$; the book also states the ideal of values over $\Z$ (on $H^1(X_0(N),\Z)[I_f]$ it is $\degphi\,\Z$) and at $\ell=2$ for $\langle x,w_N^*y\rangle$, both immediate from the displayed
 identity. The two proofs differ in one step: the book derives the action of $w_N$ from the identity of maps $\varphi_E\circ w_N=\varepsilon_N(f)\varphi_E+\varphi_E(0)$, the paper from the fact that
 the plane is also the eigenspace of the $T_n$, $(n,N)=1$, which commute with $w_N$ (\Cref{prop:moddeg:f-lattice}(i), (iii)). The Galois structure $M_{f,\lambda}\simeq T_\ell E(-1)$, which the paper
-states in the paragraph after the proof, is part (d) of \Cref{prop:moddeg:mf-is-pullback}. The identification of $H^1(X_0(N),\Zl)$ with the integral structure of \cite{DFG04}, the paper's Proposition prop:integral,
-holds for every prime $\ell$ with no localisation (\Cref{rem:moddeg:dfg-normalisation}(1)); the hypothesis $\ell\nmid2N$ enters through the standing assumption of Section 4.1 of the paper and
-the normalisation of $\hat\delta_!$ (\Cref{rem:moddeg:dfg-normalisation}(3)), and the irreducibility of $\bar\rho$ is not used in this step: it is a hypothesis of the results of \cite{DFG04}
-that the paper applies to $\eta^\emptyset_{f,\lambda}$ afterwards, such as their Proposition 1.4(c).
+states in the paragraph after the proof, is part (d) of \Cref{prop:moddeg:mf-is-pullback}. The last sentence of the paper's proof: ``if $\ell\nmid2N$, the integral structure of \cite{DFG04} is
+$H^1(X_0(N),\Z_\ell)$ (Proposition prop:integral), so $M_{f,\lambda}=H^1(X_0(N),\Z_\ell)[I_f]=\varphi^*H^1(E,\Z_\ell)$, and $\hat\delta_!$ is $\frac u2\langle x,w_N^*y\rangle$ with $u$ an
+$\ell$-adic unit''. The identification of $H^1(X_0(N),\Zl)$ with the integral structure of \cite{DFG04} holds for every prime $\ell$ with no localisation (\Cref{rem:moddeg:dfg-normalisation}(1));
+the hypothesis $\ell\nmid2N$ enters through the standing assumption of Section 4.1 of the paper and the normalisation of $\hat\delta_!$ (\Cref{rem:moddeg:dfg-normalisation}(3)), and no
+hypothesis on $\bar\rho$ is needed, in the paper's statement or in \Cref{thm:moddeg:degree-is-eta}. Irreducibility of $\bar\rho$ enters only later, in the results of \cite{DFG04} that the paper applies
+to $\eta^\emptyset_{f,\lambda}$, such as their Proposition 1.4(c).
 
 \begin{corollary}[the divisibility of Agashe, Ribet and Stein at every prime]\label{cor:moddeg:ars-divisibility}
 Let $E$ be optimal. For every prime $\ell$, $v_\ell(\degphi)\le v_\ell(r_E)$; that is, $\degphi\mid r_E$. Equality holds at $\ell$ if $H^1(X_0(N),\Zl)_{\mf m}$ is free over $\T_{\mf m}$ for $\mf m=\mf m_{f,\ell}$.
@@ -1412,7 +1414,7 @@ v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda}).
 (i) is \Cref{thm:moddeg:degree-is-eta} and \Cref{cor:moddeg:ars-divisibility}; (ii) is \Cref{thm:moddeg:ars}; (iii) combines (ii) with the last sentence of \Cref{thm:moddeg:degree-is-eta}.
 \end{proof}
 
-\noindent\emph{Commentary.} The paper states: ``Let $E$ be $X_0(N)$-optimal and $\ell$ an odd prime with $\ell\nmid 2N$ and $\bar\rho$ irreducible. Then $v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda})$.'' This is (iii). The book adds (i) and (ii), which hold at every prime: (i) says that the
+\noindent\emph{Commentary.} The paper states: ``Let $E$ be $X_0(N)$-optimal and $\ell$ an odd prime with $\ell\nmid 2N$ and $\bar\rho$ irreducible. Then $v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda})$.'' This is (iii); its proof uses only $\ell\nmid2N$, so the hypothesis that $\bar\rho$ is irreducible, kept in (iii) to match the paper's statement, is not used. The book adds (i) and (ii), which hold at every prime: (i) says that the
 cohomological side of the identity needs no hypothesis on $\ell$ or $\bar\rho$, and it gives a proof of the inequality $v_\ell(\degphi)\le v_\ell(r_E)$ at every prime that does not go
 through \cite{ARS12}; the divisibility itself is part of \cite[Theorem 2.2]{ARS12} as the paper cites it, so the new content is the route, not the statement. The paragraph after the lemma in the paper notes that Lemma lem:ddt417 alone gives only $v_\ell(r_E)\ge v_\lambda(\eta^\emptyset_{f,\lambda})$, with
 equality under freeness. Consequences for the paper, assembled in \Cref{ch:congruence}: the identity (eq:identity) of
@@ -1423,7 +1425,7 @@ the tool for forms not attached to an optimal quotient, such as the depleted for
 \begin{remark}[the identification with the objects of Diamond, Flach and Guo]\label{rem:moddeg:dfg-normalisation}
 \Cref{thm:moddeg:degree-is-eta} is a theorem about the ideal of values of $\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Zl)[I_f]$. That this ideal is the $\eta^\emptyset_{f,\lambda}$ of \cite{DFG04} rests on five
 points, which Section 4.1 of the paper establishes. Point (1) is the paper's Proposition prop:integral, which the paper proves and \Cref{ch:congruence} proves in full
-(\Cref{prop:congruence:integral-structure}); point (2) is proved below and point (5) in \Cref{ch:modules}; \Cref{ch:congruence} checks the normalisation in (3), the kernel lattice in (4) and the
+(the proposition comparing the integral structure with $H^1(X_0(M),\Zl)$ there); point (2) is proved below and point (5) in \Cref{ch:modules}; \Cref{ch:congruence} checks the normalisation in (3), the kernel lattice in (4) and the
 self-adjointness of the Hecke operators against the published text of \cite{DFG04} (Sections 1.5.2, 1.5.3, 1.6.1, 1.6.2, 1.8.2 there).
 \begin{enumerate}[label=(\arabic*)]
 \item \emph{Which curve.} The integral structure $M(N,1)_{!,\lambda}$ of \cite{DFG04} is defined through a modular curve of full level. The paper's Proposition prop:integral: ``Pull-back along the
