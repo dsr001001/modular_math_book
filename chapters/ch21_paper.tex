@@ -534,7 +534,9 @@ twist) and $\kod{I}_n^*$ with $\ell\mid n$: those are the rows where, after a tw
 \section[Paper 2: twists and Euler factors]{Section 2 of the paper, part 2: twists and the omitted Euler factors}\label{sec:paper:twists-euler}
 
 This section reads Lemma lem:twist, Lemma lem:euler (the table), Proposition prop:shapes (the four shapes of $P_q$ at every bad prime) and Remark
-rem:wild. These give the values of $e_\ell(E,q)$ everywhere.
+rem:wild. These give the values of $e_\ell(E,q)$ everywhere. The method is the one of Step 5 of Lemma lem:IV, applied type by type: find the image of inertia, compute the
+inertia invariants of $\ad V$ (the trace-zero endomorphisms commuting with that image), and read off how Frobenius acts on them. The quadratic twist enters because it does
+not change $\ad V$, so a type that twists to a good or multiplicative one has the Euler factor of the twisted curve.
 
 \begin{lemma}[the paper's Lemma lem:twist, with the exchanges at $q=3$]\label{lem:paper:twist}
 Let $q$ be odd, $\chi=\chi_{q^*}$, $E^{(q)}$ the twist of $E$ by $\chi$.
@@ -557,7 +559,7 @@ unchanged, and $f_3$ can exceed $2$ (wild ramification).
 change (\Cref{ch:reduction}). (ii) A minimal model with invariants $c_4,c_6,\Delta$ twists to a model with $(q^*)^2c_4$, $(q^*)^3c_6$, $(q^*)^6\Delta$ and the same $j$. If $v_q(j)<0$, the
 type is $\kod{I}_n$ or $\kod{I}_n^*$ with $n=-v_q(j)$ according as the reduction is multiplicative or not, and a ramified quadratic twist exchanges the two (over $\Q_q$ the curve is a
 Tate curve or its ramified twist, \Cref{ch:reduction}). For $\kod{I}_0\leftrightarrow\kod{I}_0^*$: a model $y^2=x^3+a_2x^2+a_4x+a_6$ with good reduction twists to
-$y^2=x^3+q^*a_2x^2+(q^*)^2a_4x+(q^*)^3a_6$; Tate's algorithm, after dividing out the powers of $q$, looks at $T^3+\epsilon a_2T^2+a_4T+\epsilon a_6$, $\epsilon=q^*/q=\pm1$, whose roots are $\epsilon$
+$y^2=x^3+q^*a_2x^2+(q^*)^2a_4x+(q^*)^3a_6$; Tate's algorithm, after dividing out the powers of $q$ (substitute $x=qT$ and divide the cubic by $q^3$, using $q^*=\epsilon q$ and $\epsilon^2=1$), looks at $T^3+\epsilon a_2T^2+a_4T+\epsilon a_6$, $\epsilon=q^*/q=\pm1$, whose roots are $\epsilon$
 times those of $x^3+a_2x^2+a_4x+a_6$, distinct modulo $q$; distinct roots is the criterion for $\kod{I}_0^*$; conversely a type $\kod{I}_0^*$ model at odd $q$ has this shape and
 twists to a good one. For $q\ge5$ and potentially good reduction the type is read off $v_q(\Delta_{\min})\in\{0,2,3,4,6,8,9,10\}$; twisting adds $6$, and subtracting $12$ when the
 result is at least $12$ gives the minimal model: $2\leftrightarrow8$, $3\leftrightarrow9$, $4\leftrightarrow10$. The conductor exponents are the tame ones, $\dim V-\dim V^{I_q}$, since $V_\ell E^{(q)}=V_\ell E\otimes\chi$ with $\chi$
@@ -634,9 +636,9 @@ then $e_\ell(E,q)=v_\ell(q-c)$; (iv) $1$ if the reduction is potentially good an
 
 \begin{proof}[Expanded proof]
 The cases are exhaustive: if $v_q(j)<0$ we are in (i); otherwise $\rho(I_q)$ is a finite subgroup of $\SL_2(\Zl)$ ($\det=\chi_\ell$ is trivial on $I_q$) whose elements have
-characteristic polynomials in $\Z[X]$ independent of $\ell$ \cite[Section 2]{SerreTate68}, so their orders are in $\{1,2,3,4,6\}$. (An element $g$ of finite order $m$ is diagonalisable over
-$\Qlbar$ with root-of-unity eigenvalues $\zeta,\zeta^{-1}$, of the same order, and $m$ is that order. A primitive $m$-th root of unity has degree $\varphi(m)$ over $\Q$, and $\zeta$ is a root of the
-characteristic polynomial, of degree $2$ in $\Z[X]$; so $\varphi(m)\le2$, and $m\in\{1,2,3,4,6\}$.) A finite abelian subgroup of $\SL_2$ over a field of
+characteristic polynomials in $\Z[X]$ independent of $\ell$ \cite[Section 2]{SerreTate68}, so their orders are in $\{1,2,3,4,6\}$. (An element $g$ of finite order $m$ and determinant $1$ is diagonalisable over
+$\overline\Q_\ell$ with eigenvalues $\zeta,\zeta^{-1}$, and $m$ is the order of the root of unity $\zeta$. The cyclotomic polynomial $\Phi_m$, the minimal polynomial of $\zeta$ over $\Q$, divides the
+characteristic polynomial of $g$, of degree $2$ in $\Z[X]$; so $\deg\Phi_m\le2$, which holds exactly for $m\in\{1,2,3,4,6\}$.) A finite abelian subgroup of $\SL_2$ over a field of
 characteristic $0$ is cyclic (simultaneously diagonalisable over the algebraic closure, and $\mathrm{diag}(x,x^{-1})\mapsto x$ embeds it in the multiplicative group). Order $1$ is good
 reduction; order $2$ is $\{\pm1\}$, case (ii); orders $3,4,6$ are case (iii); otherwise (iv).
 
@@ -676,7 +678,9 @@ $58\%$ ($2{,}340$ of $4{,}037$) is the share among optimal curves, $61\%$ ($5{,}
 \section[Paper 2: Tamagawa factors]{Section 2 of the paper, part 3: the Tamagawa factors of the adjoint}\label{sec:paper:tamagawa}
 
 This section reads Lemma lem:tamfactor (potentially multiplicative primes) and Lemma lem:tamadd (potentially good additive primes). With them every term
-of (eq:identity) other than the Selmer length is explicit (Corollary cor:explicit).
+of (eq:identity) other than the Selmer length is explicit (Corollary cor:explicit). Both proofs compute $H^1(I_q,\ad T)$ from the image of inertia found in the previous two
+sections: at a potentially multiplicative prime inertia acts through a unipotent, and its first cohomology is the coinvariants, which have torsion; at a potentially good prime it
+acts through a finite group of order dividing $24$, whose cohomology is killed by that order and vanishes at $\ell\ge5$ for that reason, and at $\ell=3$ for a structural one.
 
 \begin{lemma}[the paper's Lemma lem:tamfactor]\label{lem:paper:tamfactor}
 Let $q$ be a prime of multiplicative reduction, $n=n_q$, $\ell$ odd, $\ell\ne q$, $M=\ad T$. Let $q_E$ be the Tate parameter, $u=q_Eq^{-n}\in\Z_q^\times$, and $c(u)$ the class of the
@@ -710,7 +714,9 @@ adjoint action in the next sentence; erratum~\ref{err:paper:ad-frob}.)
 
 (5) \emph{The fixed points.} Write $\rho(\Frob)=\sm{\eps q}{c'}0{\eps}$, $\eps=\eps(\Frob)=\pm1$, $c'=\eps\kappa(\Frob)$. Conjugation sends $e\mapsto qe$ and $h\mapsto h-2c'\eps e$; so on the torsion
 $\bar e\mapsto\bar e$ and $\bar h\mapsto q^{-1}(\bar h-2c'\eps\bar e)$. The element $x\bar e+y\bar h$ is fixed iff $(q-1)y\equiv0$ and $c'y\equiv0$ modulo $\ell^{v_\ell(n)}$ (compare the $\bar h$ and $\bar e$
-coefficients, using that $q$, $2$, $\eps$ are units). There are $\ell^{v_\ell(n)}$ choices of $x$ and $\ell^{\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))}$ of $y$. The Fitting ideal of a finite $\Zl$-module of order
+coefficients, using that $q$, $2$, $\eps$ are units: the image of $x\bar e+y\bar h$ is $(x-2c'\eps q^{-1}y)\bar e+q^{-1}y\bar h$). There are $\ell^{v_\ell(n)}$ choices of $x$ and $\ell^{\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))}$ of $y$.
+(Count in $\Z/\ell^m$, $m=v_\ell(n)$: for $a=v_\ell(q-1)$ and $b=v_\ell(c')$, the conditions $\ell^ay\equiv0$ and $\ell^by\equiv0$ modulo $\ell^m$ say $v_\ell(y)\ge m-\min(a,b)$, and the number of such $y$ is
+$\ell^{\min(m,a,b)}$.) The Fitting ideal of a finite $\Zl$-module of order
 $\ell^m$ is $\ell^m\Zl$ (\Cref{ch:modules}), and $\Tam_q(M)$ is that Fitting ideal \cite[I.4.2.2]{FPR94}, recalled in \cite[p.~708]{DFG04}.
 
 (6) \emph{The value of $c'$.} $q$ being a uniformiser, $H^1(\Q_q,\Zl(1))=\Zl\kappa_q\oplus H^1_{\ur}$, and $\kappa=n\kappa_q+\kappa_u$ with $\kappa_u$ inflated from the class of $u$ in
@@ -787,7 +793,12 @@ for the Petersson product; for $p\mid N$, $U_p^\dagger=w_NU_pw_N^{-1}$ and $f$ i
 complement of a line stable under all $T_n$ and all $T_n^\dagger$ is $\T$-stable (the paper's ``because $f$ is an eigenvector of the adjoints of the $T_n$ as well''). Hence
 $I=\T\cap(0\times\T')$, $J=\T\cap(\Q\times0)$, $I\cap J=0$, and $\T/(I+J)\simeq\Z/\phi_f(J)$, of order $r'$ say ($r'$ is finite because $\phi_f(J)\ne0$: $J\otimes\Q=\Q\times0$). (2) Under the perfect
 pairing $(g,t)\mapsto a_1(tg)$ the forms killed by $I$ are $\Z f$ and those killed by $J$ are $L=f^\perp\cap S_2(\Gamma_0(N);\Z)$. (3) Dualising $\T\into\T/I\times\T/J$, with cokernel
-$\T/(I+J)$, gives $[S_2(\Gamma_0(N);\Z):\Z f\oplus L]=r'$. (4) The quotient embeds in $\Q f/\Z f$ by projection along $f^\perp$, so it is cyclic, generated by a form $h$ with projection
+$\T/(I+J)$, gives $[S_2(\Gamma_0(N);\Z):\Z f\oplus L]=r'$. In detail: the sequence $0\to\T\to\T/I\times\T/J\to\T/(I+J)\to0$, $t\mapsto(t,t)$, $(a,b)\mapsto a-b$, is exact because $I\cap J=0$.
+Apply $\Hom(-,\Z)$. The groups $\T/I\simeq\Z$ and $\T/J$ are free ($I$ and $J$ are saturated in $\T$, being intersections of $\T$ with subspaces of $\T\otimes\Q$), and $\Hom(\T/(I+J),\Z)=0$, so
+\[
+0\to\Hom(\T/I,\Z)\oplus\Hom(\T/J,\Z)\to\Hom(\T,\Z)\to\Ext^1(\T/(I+J),\Z)\to0,
+\]
+and $\Ext^1(\Z/r',\Z)\simeq\Z/r'$. Under the perfect pairing, $\Hom(\T,\Z)$ is $S_2(\Gamma_0(N);\Z)$ and $\Hom(\T/I,\Z)$, $\Hom(\T/J,\Z)$ are the forms killed by $I$ and by $J$, that is $\Z f$ and $L$ by (2). (4) The quotient embeds in $\Q f/\Z f$ by projection along $f^\perp$, so it is cyclic, generated by a form $h$ with projection
 $f/r'$; $r'h=f+g_0$ with $g_0\in L$ gives a congruence modulo $r'$, so $r'\le r_E$; conversely $f\equiv g_1\pmod{r_E}$ with $g_1\in L$ makes $(f-g_1)/r_E$ integral, of order $r_E$ in the
 quotient, so $r_E\mid r'$. (5) $\phi_g$ kills $J$ ($g\in f^\perp$) and $\phi_g\equiv\phi_f\pmod\lambda$, so $I+J$ lies in the kernel of $\T\to\mc O/\lambda$, a maximal ideal of residue characteristic
 $\ell$, and $\ell\mid r_E$. (6) Every step holds over $\Zl$, the pairing being perfect after $\otimes\Zl$. \emph{Verdict:} correct.
@@ -890,7 +901,8 @@ needing only $\ell^2\nmid N$, and gives \curve{99a1} ($N=9\cdot11$, $\degphi=4$,
 This section reads the paper's Section 4.1: the objects of Diamond, Flach and Guo for weight $2$, their formula for the variation of the congruence ideal
 with $\Sigma$ (Theorem thm:dfg14), the identification of the congruence ideal at level $N$ with the modular degree (Proposition prop:pullback, new in the
 revision), the commutative algebra lemma (Lemma lem:ddt417), Lemma lem:hecke and Remark rem:free. This is Step 1 of the proof of Theorem thm:main and the
-place where the revision removed the multiplicity-one hypothesis.
+place where the revision removed the multiplicity-one hypothesis. Section 3 used congruences one at a time, to show that $\ell$ divides $r_E$; from here on the paper measures
+the whole congruence module, as an ideal $\eta$ of $\Zl$, because that is the quantity that Diamond, Flach and Guo relate to a Selmer group.
 
 \begin{definition}[the objects of Diamond, Flach and Guo in weight $2$; Section 4.1]\label{def:paper:dfg-objects}
 Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ with rational coefficients, $\lambda=\ell\nmid2M$, $\Sigma$ a finite set of primes, $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$ and
@@ -987,7 +999,8 @@ is not the reason: the full Hecke algebra can have nilpotents ($U_2$ at level $8
 (4) $Q=L/(L[\wp]\oplus L[I])$ is killed by $\eta$: for $x\in L$, $tx\in L[\wp]$ (as $\wp I=0$) and $(\pi(t)-t)x\in L[I]$ (for $s\in I$, $s(\pi(t)-t)\in I\cap\wp=0$), and their sum is $\pi(t)x$.
 (5) $L[\wp]^\perp=L[I]$: if $y\in L[I]$, $x\in L[\wp]$, then $\pi(t)\langle x,y\rangle=\langle tx,y\rangle=\langle x,ty\rangle=0$. Conversely, if $y\perp L[\wp]$, then for every $z$, $\langle ty,z\rangle=\langle y,tz\rangle=0$ as
 $tz\in L[\wp]$; so $ty=0$, and by (2) $Iy=0$.
-(6) $L[\wp]$ is saturated, so the pairing maps $L$ onto $\Hom(L[\wp],\mc O)$ with kernel $L[\wp]^\perp=L[I]$; hence $Q$ is the cokernel of $L[\wp]\to\Hom(L[\wp],\mc O)$, of length $v(\Delta)$. $Q$ is
+(6) $L[\wp]$ is saturated, so the pairing maps $L$ onto $\Hom(L[\wp],\mc O)$ with kernel $L[\wp]^\perp=L[I]$; hence $Q$ is the cokernel of $L[\wp]\to\Hom(L[\wp],\mc O)$, $x\mapsto\langle x,\cdot\rangle$. In a basis of $L[\wp]$ and the dual basis this map has the Gram matrix as its matrix, and the
+cokernel of a square matrix over a discrete valuation ring with nonzero determinant has length the valuation of the determinant (Smith normal form, \Cref{ch:modules}): length $v(\Delta)$. $Q$ is
 generated by $d$ elements (a quotient of $\Hom(L[\wp],\mc O)\simeq\mc O^d$) and killed by $\eta$, so its length is at most $d\,v(\eta)$.
 (7) If $L\simeq\T^d$, then $Q\simeq(\T/(\wp+I))^d\simeq(\mc O/\eta)^d$, of length $d\,v(\eta)$.
 \end{proof}
@@ -1108,9 +1121,11 @@ of $\bar\rho_{E,3}$ is conjugate to $N_s(\F_3)$. This holds with or without comp
 
 \begin{proof}[Expanded proof]
 (1) $\bar\rho$ is absolutely irreducible. (2) $H^0(\Q,W^D)[\ell^k]=H^0(\Q,\ad(T/\ell^k)(1))$, the trace-zero $G_\Q$-maps $T/\ell^k\to(T/\ell^k)(1)$; every $G_\Q$-map $\phi$ has trace $0$, since
-$\tr\phi=\chi_\ell(g)\tr\phi$ for all $g$ and $1-\chi_\ell(c)=2$ is a unit for complex conjugation $c$. (3) For $k=1$ these are the maps $\bar\rho\to\bar\rho\otimes\bar\chi_\ell$, at most a line by Schur.
+$\tr\phi=\chi_\ell(g)\tr\phi$ for all $g$ (equivariance says $\phi\rho(g)=\chi_\ell(g)\rho(g)\phi$, so $\phi=\chi_\ell(g)\rho(g)\phi\rho(g)^{-1}$, and the trace is invariant under conjugation) and
+$1-\chi_\ell(c)=2$ is a unit for complex conjugation $c$. (3) For $k=1$ these are the maps $\bar\rho\to\bar\rho\otimes\bar\chi_\ell$, at most a line by Schur.
 So the $\ell$-torsion of the submodule $H^0(\Q,W^D)$ of $(\Qlmod)^3$ has rank at most one, and $H^0(\Q,W^D)$ is finite cyclic or isomorphic to $\Qlmod$. (4) An element of exact
 order $\ell^k$ is a map $\phi\colon T/\ell^k\to(T/\ell^k)(1)$ nonzero mod $\ell$, hence an isomorphism mod $\ell$ (Schur), hence an isomorphism (Nakayama); conversely. (5) Determinants:
+taking determinants in $\phi\rho(g)\phi^{-1}=\chi_\ell(g)\rho(g)$ modulo $\ell^k$ gives $\det\rho(g)=\chi_\ell(g)^2\det\rho(g)$, and $\det\rho(g)=\chi_\ell(g)$ is a unit, so
 $\chi_\ell(g)^2\equiv1\pmod{\ell^k}$ for all $g$. Since $\chi_\ell(G_\Q)=\Zl^\times\ni2$ and $4\not\equiv1$ modulo $\ell$ for $\ell\ge5$ and modulo $9$, $k=0$ for $\ell\ge5$ and $k\le1$ for $\ell=3$; in
 particular the $\Qlmod$ alternative of (3) is excluded and the group is finite. (6) At $\ell=3$, $\bar\chi_3^{\mathrm{cyc}}=\chi_{-3}$. If $\phi\colon\bar\rho\to\bar\rho\otimes\chi_{-3}$ is an isomorphism, it
 commutes with $\bar\rho(G_K)$, $K=\Q(\sqrt{-3})$, and is not scalar, so $\bar\rho|_{G_K}$ is not absolutely irreducible; conversely a $G_K$-stable line over $\Fbar_3$ with character $\psi$ gives, by
@@ -1296,6 +1311,12 @@ to Step 1 only; Steps 2 and 3 use Lemma lem:ddt417 and \cite[Proposition 1.4(c)]
 \noindent\emph{Verdict:} strengthened (Step 1 is an equality at every $\ell\notin S$); (i) and (ii) correct as stated in the revision, where $q$ ranges over the odd primes (the first
 version had $q\ge5$, and stated the equality only under multiplicity one at both levels).
 
+\emph{A worked instance.} \curve{539c1} has type $\kod{I}_3^*$ at $7$ and $\kod{I}_2$ at $11$, $\degphi=288=2^5\cdot3^2$, and surjective mod $3$ image (Cremona's \texttt{galrep} lists only $2\mathrm B$),
+so $3\nmid2N$, $E[3]$ is irreducible and $3\notin S_f$ (\Cref{prop:paper:Sf}). Here $S=\{7\}$, $E_S$ is the twist by $\chi_{-7}$, which lies in the class \curve{77c} (type $\kod{I}_3$ at $7$), and
+$\deg\varphi_{\curve{77c1}}=6$. The table gives $e_3(E,7)=v_3(7^2-1)=v_3(48)=1$. Part (ii) predicts $v_3(288)=v_3(6)+1=2$, which is right. The inequality of (i) needs none of the Selmer
+theorems, only Theorem thm:dfg14: the depleted form $g^S$ of the newform of \curve{77c1} lives at level $539$, and depleting at the multiplicative prime $7$ multiplies the congruence ideal by
+the naive factor $1-7^{-2}$, whose $3$-part is $3$.
+
 \paragraph{Remark rem:afterquant, items (1) and (3).} (1) Theorem thm:quant is the twist-and-lower argument read the other way: the level is raised from $N_S$ to $N$ at the price of
 the level-raising Euler factor; for $\ell=3$ a single $\kod{I}_n^*$ prime (necessarily $q\ge5$, since $3\nmid N$) forces $3\mid\degphi$ because $3\mid q^2-1$, and so does an $\kod{I}_0^*$ prime with
 $q\equiv1\pmod3$ (the term $v_3(q-1)$); this needs $E[3]$ irreducible, the standing hypothesis of the theorem. (3) For the potentially good types the twist does not lower the level, $f$ is
@@ -1320,7 +1341,8 @@ descent of isomorphisms in \Cref{ch:reps}; the division polynomial in \Cref{ch:e
 (1) $\det\bar\rho_{E,3}=\chi_{-3}$ (Weil pairing), which cuts out $\Q(\sqrt{-3})$; so the image of $G_{\Q(\sqrt{-3})}$ is $H\cap\SL_2(\F_3)$, $H$ the image of $\bar\rho$. (2) $H$ has surjective
 determinant, acts irreducibly on $\F_3^2$, and contains $\bar\rho(c)$ of determinant $-1$ and trace $0$. Inspection of the subgroups of $\GL_2(\F_3)$ (\Cref{ch:groups}) leaves $\GL_2(\F_3)$
 (order $48$), $N_{ns}(\F_3)$ (order $16$) and $N_s(\F_3)$ (order $8$); the nonsplit Cartan subgroup $\F_9^\times$ is excluded, its elements of determinant $-1$ having order $8$ and nonzero
-trace. Complex multiplication plays no role (the paper's statement has dropped the first version's ``without complex multiplication'', and cites \cite{Zywina15} only for context).
+trace. (Why $\bar\rho(c)$ has trace $0$: $c^2=1$ and $\det\bar\rho(c)=-1$, so $\bar\rho(c)$ has eigenvalues $1$ and $-1$. In $\F_9^\times$, acting on $\F_9\simeq\F_3^2$ by multiplication, the determinant
+is the norm $x\mapsto x^{1+3}=x^4$; $x^4=-1$ means $x$ has order $8$; then $x^2$ has order $4$, so $x^2\ne-1$, and the trace $x+x^3=x(1+x^2)$ is nonzero.) Complex multiplication plays no role (the paper's statement has dropped the first version's ``without complex multiplication'', and cites \cite{Zywina15} only for context).
 (3) The determinant-one subgroups are $\SL_2(\F_3)$, $Q_8$ and $C_4=\langle J\rangle$, $J=\sm01{-1}0$. (4) The first two act absolutely irreducibly: a subgroup of $\GL_2(\Fbar_3)$ fixing a line lies
 in a Borel subgroup, whose commutator subgroup is unipotent, so abelian of exponent $3$; the commutator subgroups $\{\pm1\}$ of $Q_8$ and $Q_8$ of $\SL_2(\F_3)$ are not. (The first
 version's reason, ``they are non-abelian and act faithfully'', is not enough: a Borel subgroup is both.) (5) $C_4$ is abelian; $J$ has characteristic polynomial $X^2+1$, irreducible over $\F_3$, so the
@@ -1947,6 +1969,9 @@ In general the two conditions are $(q-1)y\equiv0,\ c'y\equiv0$ and $(q-1)x\equiv
 Let $G$ be a group, $\chi,\eps\colon G\to\Zl^\times$ characters with $\eps^2=1$, and $c\colon G\to\Zl$ a function. (a) Show that $g\mapsto\sm{\chi\eps(g)}{c(g)}0{\eps(g)}$ is a homomorphism iff
 $c(gh)=\chi\eps(g)c(h)+c(g)\eps(h)$. (b) If $\kappa$ satisfies $\kappa(gh)=\chi(g)\kappa(h)+\kappa(g)$, show that $c=\eps\kappa$ satisfies (a), and that $c=\kappa$ does not unless $(\eps(g)-1)\chi(g)\kappa(h)+(\eps(h)-1)\kappa(g)=0$
 for all $g,h$. (c) Deduce the description of the nonsplit Tate curve used in \Cref{lem:paper:tamfactor}.
+\emph{Hint.} (a) The diagonal entries of the product of the matrices for $g$ and $h$ are $\chi\eps(gh)$ and $\eps(gh)$; the upper right entry is $\chi\eps(g)c(h)+c(g)\eps(h)$. (b) Multiply the
+cocycle relation for $\kappa$ by $\eps(gh)=\eps(g)\eps(h)$. For $c=\kappa$, subtract the relation for $\kappa$ from the one required in (a). (c) The nonsplit curve is the Tate curve twisted by the
+unramified quadratic character $\eps$; its representation is $\sm{\chi_\ell}{\kappa}01\otimes\eps$.
 \end{exercise}
 
 \begin{exercise}\label{ex:paper:ddt-toy}
@@ -1960,6 +1985,10 @@ basis $(1,1)$, $(\ell^r,0)$ of $\T$ the Gram matrix is $\sm011{\ell^r}$, of dete
 \begin{exercise}\label{ex:paper:gram}
 (a) Show that an alternating form on $\mc O^2$ has Gram matrix $\sm0a{-a}0$ in every basis, so its Gram determinant is $a^2$ and its ideal of values is $a\mc O$. (b) Deduce from the projection formula
 that the Gram determinant of $\frac12\langle x,w_N^*y\rangle$ on $\varphi_E^*H^1(E,\Zl)$ is $(\degphi)^2$ up to a unit, for $\ell$ odd. (c) For \curve{11a1}, where $X_0(11)\to E$ has degree $1$, check this directly.
+\emph{Hint.} (a) $\langle x,x\rangle=0$ for all $x$ forces zero diagonal entries and $\langle e_2,e_1\rangle=-\langle e_1,e_2\rangle$; a change of basis by $P$ multiplies $a$ by $\det P$, a unit; and
+$\langle x,y\rangle=a\det(x,y)$ takes every value in $a\mc O$. (b) On the image $w_N^*$ acts by $\varepsilon_N(f)=\pm1$, so the form is $\frac{\varepsilon_N(f)}2\degphi$ times the pullback of the
+unimodular cup product of $E$; it is alternating, and (a) applies with $a=\pm\frac12\degphi$. (c) The parametrisation is an isomorphism, so $\varphi_E^*$ is an isomorphism of lattices carrying one
+unimodular cup product to the other; the Gram determinant is $1=1^2$.
 \end{exercise}
 
 \begin{exercise}\label{ex:paper:726a1}
@@ -1976,6 +2005,10 @@ multiplicative.
 Let $p$ be a good prime, $a_{p^k}$ the coefficients of $f$, $\alpha+\beta=a_p$, $\alpha\beta=p$, $X=p^{-s}$. (a) Using $a_{p^k}=(\alpha^{k+1}-\beta^{k+1})/(\alpha-\beta)$, prove
 $\sum_ka_{p^k}^2X^k=(1+pX)/((1-\alpha^2X)(1-pX)(1-\beta^2X))$ and $\sum_ka_{p^{2k}}X^k=(1+pX)/((1-\alpha^2X)(1-\beta^2X))$. (b) Deduce $\sum_na_n^2n^{-s}=\zeta^{(N)}(s-1)L^{\nv}(\Sym f,s)/\zeta^{(N)}(2s-2)$, checking the
 multiplicative and additive primes separately.
+\emph{Hint.} (a) $(\alpha-\beta)^2a_{p^k}^2=\alpha^{2k+2}-2p^{k+1}+\beta^{2k+2}$; summing geometric series,
+$(\alpha-\beta)^2\sum_ka_{p^k}^2X^k=\frac{\alpha^2}{1-\alpha^2X}-\frac{2p}{1-pX}+\frac{\beta^2}{1-\beta^2X}$; put everything over the common denominator and use $\alpha\beta=p$. For the second series,
+$(\alpha-\beta)a_{p^{2k}}=\alpha^{2k+1}-\beta^{2k+1}$ and $\alpha(1-\beta^2X)-\beta(1-\alpha^2X)=(\alpha-\beta)(1+pX)$. (If $\alpha=\beta$, argue by continuity in the coefficients.) (b) At a good prime the
+local factors of $\zeta^{(N)}(s-1)$ and $\zeta^{(N)}(2s-2)$ are $(1-pX)^{-1}$ and $(1-p^2X^2)^{-1}$; at $p\mid N$ they are $1$, and $a_{p^k}=a_p^k$ with $a_p\in\{0,\pm1\}$.
 \end{exercise}
 
 \begin{exercise}\label{ex:paper:deficits}

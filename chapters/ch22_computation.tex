@@ -459,7 +459,9 @@ $q\ge5$ at which this differs from PARI's factor. For \curve{539d1} $=[0,1,1,-16
 ? eulercheck(E)
 []
 \end{lstlisting}
-So $e_3(E,7)=v_3(360/343)=2$: $(7-1)\bigl(64-4\bigr)/7^3=360/343$. \emph{Check.} On all $67{,}745$ pairs (optimal curve of conductor below $10{,}000$, bad prime
+So $e_3(E,7)=v_3(360/343)=2$: $(7-1)\bigl(64-4\bigr)/7^3=360/343$. The other rows of the table are as easy to test by hand. For \curve{121a1} at $11$
+(type $\kod{II}$, $11\equiv2\pmod3$, so $\chi_{-3}(11)=-1$) the table gives $1-\chi_{-3}(11)/11=12/11$, and PARI's $P_{11}(X)=1+11X$ of \Cref{rem:computation:lfunsympow}
+gives $P_{11}(11^{-2})=1+11/121=12/11$; at a multiplicative prime the table's $1-q^{-2}$ is PARI's $1-X$ at $X=q^{-2}$. \emph{Check.} On all $67{,}745$ pairs (optimal curve of conductor below $10{,}000$, bad prime
 $q\ge5$) the two values agree: $58{,}860$ pairs of type $\kod{I}_n$, $2{,}709$ of type $\kod{I}_n^*$, $3{,}588$ of types $\kod{II}$, $\kod{II}^*$, $\kod{IV}$, $\kod{IV}^*$,
 $1{,}676$ of types $\kod{III}$, $\kod{III}^*$ and $912$ of type $\kod{I}_0^*$, with no mismatch. This is the reader's version of the paper's sentence ``In each
 case the values were confirmed against PARI's \texttt{lfunsympow} on every curve of the tables'' (proof of Lemma lem:euler); \Cref{ch:lfunctions}
@@ -630,6 +632,9 @@ parameters with \texttt{ellinit} over $\Q_q$, and fifteen modular degrees spanni
 (\Cref{def:computation:ellglobalred,rem:computation:lfunsympow,ex:computation:tate-parameter,rem:computation:ellmoddegree}); below
 conductor $10{,}000$ every one of them has been run on every optimal curve.
 \end{paperlink}
+
+The functions of this section act on one curve at a time; the paper's counts run over hundreds of thousands. The next section describes where
+the curves, their optimal models and their degrees come from, so that a loop over the tables can feed these functions.
 \section{Cremona's tables and the \texttt{ecdata} files}\label{sec:computation:ecdata}
 
 The paper's data are Cremona's tables of elliptic curves over $\Q$ \cite{Cremona97}, in the form of the \texttt{ecdata} repository
@@ -759,6 +764,9 @@ below conductor $10{,}000$ are computed from the paper's own data. Section 1.4 r
 recomputes the types with PARI, and \Cref{ex:computation:curvedata}(a) shows that, below conductor $10{,}000$, the repository's own
 \texttt{curvedata} agrees.
 \end{paperlink}
+
+With the functions of \Cref{sec:computation:invariants} and the files of this section, everything is in place to read the one piece of code the
+paper prints, which combines the two.
 \section{The paper's function \texttt{rule(E, l, iii)}, line by line}\label{sec:computation:rule}
 
 The paper's appendix prints two GP functions, \texttt{rule} and \texttt{ns3}, which check one curve against (eq:rule). This section prints them
@@ -902,6 +910,9 @@ the two examples. Optimality is what makes the first entry $v_\ell(\degphi)$; ir
 $\ell=3$; at $\ell\ge5$ irreducibility is needed not for the computation but for any statement of the paper to apply.
 \end{paperlink}
 
+The proposition says what \texttt{rule} computes in general; the next section watches it compute, prime by prime, on the curves that the paper
+and the earlier chapters use as running examples, including the ones on which its output is not the paper's quantity.
+
 \section{Worked sessions}\label{sec:computation:sessions}
 
 Each session below gives the input, the exact output of PARI/GP 2.17.2, the per-prime breakdown printed by \texttt{rule\_terms(E, l, iii)}
@@ -918,7 +929,9 @@ these are the examples of the appendix, the Example of Section sec:proof, the Re
 ? rule_terms(E, 3)
 [[11, 2, 11*x + 1, 12/11, 1, 0, 0]]
 \end{lstlisting}
-The only bad prime is $11$, of type $\kod{II}$ (code $2$), with $P_{11}(X)=1+11X$ and $e_3(E,11)=v_3(12/11)=1$; $t_3=0$ since $v_{11}(j)=1\ge0$. So the bound is
+The only bad prime is $11$, of type $\kod{II}$ (code $2$), with $P_{11}(X)=1+11X$ and $e_3(E,11)=v_3(12/11)=1$; $t_3=0$ since $j=-11\cdot131^3$ (\texttt{factor(E.j)}),
+so $v_{11}(j)=1\ge0$. The row of \texttt{rule\_terms} reads accordingly: $q=11$, code $2$, $P_{11}(X)$, $P_{11}(11^{-2})$, then $e=1$, $w=0$ (as $11\ne\ell$),
+$t=0$. So the bound is
 $1$, and $\degphi=6=2\cdot3$ attains it. The paper's appendix: ``For example \texttt{rule(ellinit([1,1,1,-30,-76]), 3)} (the curve 121a1)
 returns \texttt{[1, 1]}''. Here $B^{\mathrm{main}}_3=0$ ($\#\Phig_{11}=1$ for type $\kod{II}$) while $B^{\mathrm{tw}}_3=1$: this curve is the simplest case where (eq:twist)
 is stronger than (eq:main).
@@ -1011,9 +1024,10 @@ $r_E=12$ (\Cref{ch:moddeg}): the gap at $3$ between $r_E$ and $\degphi$ is allow
 ? factor(-8*x^3 + 4*x^2 - 2*x + 1)
 [2*x - 1, 1; 4*x^2 + 1, 1]
 \end{lstlisting}
-\curve{336f1} $=[0,1,0,-1,2]$ has type $\kod{II}$ at $2$ and nevertheless $P_2=1+2X$, $e_3(E,2)=1$, bound $1$, $\degphi=24$. \curve{1232l1} $=[0,0,0,32,-16]$ has type $\kod{II}^*$ at
-$2$ and the cubic $P_2=(1-2X)(1+2X)^2$, $e_3(E,2)=v_3(9/8)=2$, bound $2$, $\degphi=288$: the prime $2$ alone attains the bound. \curve{592c1} $=[0,0,0,-16,-16]$ has
-type $\kod{II}^*$ at $2$, $P_2=(1-2X)(1+4X^2)$, $e_5(E,2)=v_5(5/8)=1$, bound $1$ at $\ell=5$, $\degphi=80=2^4\cdot5$: the prime $2$ contributes at $\ell=5$. At $2$ the
+\curve{336f1} $=[0,1,0,-1,2]$ has type $\kod{II}$ at $2$ and nevertheless $P_2=1+2X$, so $P_2(2^{-2})=1+\frac24=\frac32$ and $e_3(E,2)=1$, bound $1$, $\degphi=24$. \curve{1232l1} $=[0,0,0,32,-16]$ has type $\kod{II}^*$ at
+$2$ and the cubic $P_2=(1-2X)(1+2X)^2$, so $P_2(\frac14)=\frac12\cdot\bigl(\frac32\bigr)^2=\frac98$ and $e_3(E,2)=v_3(9/8)=2$, bound $2$, $\degphi=288$: the prime $2$ alone attains the bound. (The prime $2$ is additive, so $a_2=0$ and there is no naive factor to divide by. PARI's factorisation lists $2x-1$, which is $-(1-2X)$:
+the product of the listed factors is $-P_2$, the sign being part of the content that \texttt{factor} drops, \Cref{warn:computation:pitfalls}(f).) \curve{592c1} $=[0,0,0,-16,-16]$ has
+type $\kod{II}^*$ at $2$, $P_2=(1-2X)(1+4X^2)$, so $P_2(\frac14)=\frac12\cdot\frac54=\frac58$ and $e_5(E,2)=v_5(5/8)=1$, bound $1$ at $\ell=5$, $\degphi=80=2^4\cdot5$: the prime $2$ contributes at $\ell=5$. At $2$ the
 Kodaira type does not determine $P_2$; the four possible shapes are proved in \Cref{ch:lfunctions} (Proposition prop:shapes). Among the optimal
 curves without CM below conductor $10{,}000$, type $\kod{II}$ at $2$ gives $P_2=1$ for $1{,}092$ curves, $1+2X$ for $371$ and a cubic for $74$; type $\kod{II}^*$
 gives $514$, $74$ and $191$. \emph{A data correction.} Remark rem:wild says: ``Among optimal non-CM curves of conductor below $10{,}000$, every cubic factor
@@ -1051,6 +1065,9 @@ exponent (Section sec:tam):
 ? [rule(E, 3), ellmoddegree(E), ellglobalred(E)[4][,1]~]
 [[2, 1], 720, [19, 83]]
 \end{lstlisting}
+In each case both bad primes are multiplicative, so every Euler term is $0$, and the second entry of \texttt{rule} is the Tamagawa term alone:
+$v_3(3)=1$ from the prime of type $\kod{I}_3$ and $v_3(2)=0$ from the other, of type $\kod{I}_2$. Lemma lem:tamfactor applies at the first prime, which is
+$\equiv1\pmod3$, and the first entry shows whether the extra term is needed.
 \curve{791a1} at $7$: $n=3$, $\bar u=6$ is a cube (\Cref{ex:computation:tate-parameter}), the extra term is $\min(1,1,1)=1$, so the refined bound is $1+1=2=v_3(144)$:
 attained. \curve{77c1} at $7$: $\bar u=5$ is not a cube, the extra term is $0$, and the bound $1$ is attained by $\degphi=6$. \curve{1577a1} at $19$: $\bar u=8$ is a
 cube but not a ninth power, $v_3(18)=2$, the extra term is $\min(1,2,1)=1$, and the refined bound $2=v_3(720)$ is attained. The cohomology is in
@@ -1172,7 +1189,10 @@ two small ranges, $75.1\%$ and $68.0\%$, weighted by their numbers of positive b
 $(6{,}392+8{,}028)/(8{,}510+11{,}807)=14{,}420/20{,}317=71.0\%$. The pooled rate is pulled towards the range with more bounded curves. A comparison of the paper's $57.5\%$ on
 $N\le300000$ with the book's $71.0\%$ says nothing about a difference in the arithmetic of the curves; it says that the ranges differ, and the
 trend is visible inside the book's range already. When the composition of the population changes with the range (more bad primes, larger
-degrees), a pooled rate can even move in the opposite direction to every one of its parts (Simpson's paradox). The fair comparison is like with
+degrees), a pooled rate can even move in the opposite direction to every one of its parts (Simpson's paradox). A made-up illustration with
+two strata: population $A$ has $100$ curves in a stratum with equality rate $90\%$ and $900$ in a stratum with rate $50\%$, so its pooled rate is
+$(90+450)/1000=54\%$; population $B$ has $900$ curves in the first stratum at $80\%$ and $100$ in the second at $40\%$, pooled
+$(720+40)/1000=76\%$. Population $B$ is worse in each stratum and better pooled, only because it has more curves in the easy stratum. The fair comparison is like with
 like: the same statement, the same population, the same range. The paper's equality rate on its out-of-table curves, $52.5\%$ of the $828$
 curves with a positive bound at $\ell=3$ (Section sec:oot), is a rate on a population built by a different procedure (\Cref{rem:computation:protocol}).
 \end{remark}
@@ -1230,7 +1250,11 @@ the out-of-table curves as a blind test of (eq:twist).''
 \begin{remark}[what a blind test of an inequality establishes]\label{rem:computation:what-is-tested}
 A single violation refutes a universal inequality. Zero violations on $n$ fresh curves is evidence whose weight depends on two things: how many
 violations would have been expected if the statement were unrelated to the degree (the calibration of \Cref{sec:computation:calibration}), and
-whether the fresh curves exercise the statement. The out-of-table families were built around the types $\kod{IV}$, $\kod{IV}^*$, two or three $\kod{II}$ primes,
+whether the fresh curves exercise the statement. A rough measure of the first: if a false statement were violated independently by each fresh
+curve with probability $p$, the chance of seeing no violation on $n$ curves would be $(1-p)^n\le e^{-np}$; with $p=0.01$ and the paper's $n=893$
+out-of-table curves this is $0.99^{893}\approx1.3\cdot10^{-4}$, while with $p=0.001$ it is about $0.41$. So the same zero count is strong evidence
+against a statement that would fail often and weak evidence against one that would fail rarely, and the calibration is what says which case one
+is in. The out-of-table families were built around the types $\kod{IV}$, $\kod{IV}^*$, two or three $\kod{II}$ primes,
 mixed types and random curves; they contain no $\Ns$ curve, so they cannot test the correction term, and they test the $\kod{III}$ terms only if such
 primes occur among them. ``Nothing was adjusted after the hold-out test'' means that no term, weight or population filter of (eq:main) and
 Conjecture conj:eis was changed after their hold-out counts were seen; it does not cover the statements formulated later.
@@ -1242,8 +1266,10 @@ Conjecture conj:eis was changed after their hold-out counts were seen; it does n
 relation'' and then ``the conjectures and their successive refinements'': from the Tamagawa number to $\Phig_q$, to the twist-symmetrised
 weights, to the Euler factors, to the weights $w_3$, to the correction term.
 \item If $m$ false candidate statements each survive a working-set check with probability $\pi$, about $m\pi$ survive; a hold-out check with
-survival probability $\pi'$ for a false statement leaves about $m\pi\pi'$. This is the whole case for holding data back
-(\Cref{exer:computation:multiple}).
+survival probability $\pi'$ for a false statement leaves about $m\pi\pi'$. The word ``about'' means ``in expectation'': the number of survivors is a
+sum of $m$ indicators, each of expectation $\pi$, so its expectation is $m\pi$ by linearity, with no independence needed; a false candidate survives both
+checks with probability $\pi\pi'$ when the two checks are independent, which is what a hold-out disjoint from the working set is meant to secure. This is
+the whole case for holding data back (\Cref{exer:computation:multiple}).
 \item For a universal inequality, $\pi'$ is tiny when the calibration says that thousands of violations would be expected if the bound were
 unrelated to the degree (\Cref{sec:computation:calibration}). The risk of multiple comparisons therefore sits mostly in the \emph{choice of form}
 (which weights, which correction, which population filter), where the working set was used repeatedly, and not in the bare existence of a
@@ -1257,7 +1283,10 @@ multiple-comparisons problem \cite[chapter on multiple testing]{Wasserman04} and
 \begin{example}[the protocol in miniature]\label{ex:computation:toy-protocol}
 Freeze the small working set $N<5000$. Following the paper's recipe for $w_3$ (Section sec:wild), take the curves of the base population at $\ell=3$
 with $3\mid N$, potentially good reduction at $3$, and no other contribution ($e_3(E,q)=0$ at every bad $q\ne3$, $\kod{III}$ terms included, and $t_3(E,q)=0$
-at every bad $q$), and read off the minimum of $v_3(\degphi)$ by the type at $3$:
+at every bad $q$), and read off the minimum of $v_3(\degphi)$ by the type at $3$. The filter ``no other contribution'' is what makes the minimum
+meaningful: on these curves every term of $B^{\mathrm{nc}}_3$ other than $w_3(E)$ vanishes, so a weight $w$ for a type is consistent with the data exactly
+when $v_3(\degphi)\ge w$ on all of them, and the largest consistent weight is the minimum. On curves with other contributions the minimum would
+mix the weight with the other terms.
 \begin{center}\small
 \begin{tabular}{lccccccc}
 \toprule
@@ -1279,6 +1308,9 @@ The protocol paragraph of Section sec:data and the AI statement (``a frozen snap
 one-time tests, and a list of tests fixed before any was run''). \Cref{rem:computation:test-status} classifies the statements; its two
 qualifications are questions to the author, not errors.
 \end{paperlink}
+
+A blind test with zero violations is only as informative as the number of violations one would have expected without the statement being true.
+The next section computes that number.
 \section{The calibration argument}\label{sec:computation:calibration}
 
 Section sec:sharp of the paper answers an obvious objection: if $3$ divides most modular degrees anyway, zero violations of a lower bound at $\ell=3$
@@ -1334,14 +1366,14 @@ In the base population at $\ell=3$ below conductor $10{,}000$ ($33{,}851$ curves
 $8{,}084$ ($59.7\%$), $4{,}079$, $1{,}081$, $251$, $33$, $5$, $1$ of them; $20{,}317$ have a positive bound ($1$: $13{,}553$; $2$: $5{,}534$; $3$: $1{,}109$; $4$: $112$; $5$: $9$).
 The plug-in expectation is $\hat E=14{,}275$ violations ($70.3\%$ of the bounded curves), with standard deviation $61.5$ under independence; observed:
 $0$. In detail, the empirical law of $v$ on the $13{,}534$ bound-$0$ curves gives
-\[
-\hat F(v<1)=\tfrac{8084}{13534}\approx0.597,\quad \hat F(v<2)=\tfrac{12163}{13534}\approx0.899,\quad \hat F(v<3)=\tfrac{13244}{13534}\approx0.979,\quad
-\hat F(v<4)\approx0.997,\quad \hat F(v<5)\approx0.9996,
-\]
+\begin{gather*}
+\hat F(v<1)=\tfrac{8084}{13534}\approx0.597,\quad \hat F(v<2)=\tfrac{12163}{13534}\approx0.899,\quad \hat F(v<3)=\tfrac{13244}{13534}\approx0.979,\\
+\hat F(v<4)=\tfrac{13495}{13534}\approx0.997,\quad \hat F(v<5)=\tfrac{13528}{13534}\approx0.9996,
+\end{gather*}
 and \Cref{prop:computation:null-model}(i) weights these by the numbers of curves with bound $1,\dots,5$: the contributions are about $8{,}095.3$,
 $4{,}973.4$, $1{,}085.2$, $111.7$ and $9.0$, of total $14{,}274.7$. More than half of the expectation comes from the curves of bound $1$, which a bound unrelated to
 the degree would get wrong whenever $v=0$. The standard deviation is $\bigl(\sum_Ep_E(1-p_E)\bigr)^{1/2}$ with $p_E=\hat F(v<b(E))$, by
-\Cref{prop:computation:null-model}(ii); it is small because most $p_E$ are close to $0.6$ or to $1$ and the count is large, and the observed $0$ lies about
+\Cref{prop:computation:null-model}(ii); it is below $\sqrt{\hat E}\approx119.5$, as (ii) says it must be, and the observed $0$ lies about
 $14{,}275/61.5\approx232$ standard deviations below the expectation. By range, with $\hat F$ taken in each range: $\hat E=6{,}091$ on $N<5000$ ($\hat F(v=0)=0.630$) and $8{,}119$ on $5000\le N<10000$ ($\hat F(v=0)=0.566$). At
 $\ell=5,7,11,13$ (union of the ranges) $\hat E=5{,}901$, $3{,}476$, $1{,}187$, $698$; observed $0$ each time. Two other reference populations, at $\ell=3$:
 \begin{enumerate}[label=(\alph*)]
@@ -1391,7 +1423,9 @@ mean excess at $\ell=3$ is $0.63$.'' The ordering by $\ell$ is the same; the lev
 The paper's last statistic concerns the optimal curves without CM and with no isogeny of odd degree (so that $E[\ell]$ is irreducible for every odd
 $\ell$; decided here from the row of the optimal curve in the \texttt{allisog} matrix): how often the odd part of $\degphi$ equals $\prod_\ell\ell^{B^{\mathrm{tw}}_\ell(E)}$, the
 product over odd $\ell$. Below conductor $10{,}000$ there are $33{,}137$ such curves. The quotient (odd part of $\degphi$)$/\prod_\ell\ell^{B^{\mathrm{tw}}_\ell}$ is always an
-integer, which is (eq:twist) at every odd $\ell$ at once; it is $1$ for $5{,}675$ curves ($17.1\%$; $25.5\%$ of $14{,}666$ curves on $N<5000$ and $10.4\%$ of
+integer, which is (eq:twist) at every odd $\ell$ at once: the quotient is an integer exactly when $v_\ell(\degphi)\ge B^{\mathrm{tw}}_\ell(E)$ for every odd
+$\ell$, and since $B^{\mathrm{tw}}_\ell(E)=0$ unless $\ell=3$ or $\ell$ divides some index $n$ of a type $\kod{I}_n$ or $\kod{I}_n^*$, only finitely many $\ell$ are
+involved, but they include primes above $13$ that the tables of \Cref{sec:computation:repro} do not examine. The quotient is $1$ for $5{,}675$ curves ($17.1\%$; $25.5\%$ of $14{,}666$ curves on $N<5000$ and $10.4\%$ of
 $18{,}471$ on $5000\le N<10000$). The most common quotients are $3$ ($5{,}926$ curves), $1$, $5$ ($2{,}978$), $9$ ($2{,}532$), $15$ ($2{,}024$), $7$ ($1{,}918$), $21$
 ($1{,}088$) and $11$ ($967$). Among the nontrivial quotients, the smallest prime factor is $3$ in $58.7\%$ of the cases ($27{,}462$ curves). The paper (working
 set, $1{,}226{,}216$ curves): equality in $1.85\%$ (``the proportion is range dependent: it is $17.1\%$ below conductor $10{,}000$''), quotients ``most often $9$, $3$,

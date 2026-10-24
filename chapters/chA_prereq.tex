@@ -418,7 +418,7 @@ $p$ odd it has eigenvalues exactly when $-1$ is a square modulo $p$: over $\F_5$
 ($2^2=4=-1$), while over $\F_3$ the squares are $0$ and $1$, so there are none, and one must pass to
 $\F_9=\F_3(i)$ to find $\pm i$. Over $\F_2$, $\chi_J=X^2+1=(X+1)^2$ has the double root $1$, but
 $J=\sm0110\ne1$, so by \Cref{thm:prereq:jordan}(c) $J$ is conjugate to $\sm1101$ and is not
-diagonalisable. Remark \ref{rem:prereq:changes} returns to the case of $\F_3$.
+diagonalisable. \Cref{rem:prereq:changes} returns to the case of $\F_3$.
 
 \begin{theorem}[diagonalisation and generalised eigenspaces (stated; reference)]\label{thm:prereq:diag}
 Let $T\in\End(V)$, $n=\dim V$.
@@ -537,6 +537,15 @@ determinant $\Delta$; its proof uses that the cokernel of $L[\wp]\to\Hom(L[\wp],
 order $\#\mathcal O/\Delta$. In the application (Lemma lem:hecke and Step 2 of the proof of Theorem
 thm:quant) $d=2$, the pairing is alternating, and $\Delta=(\eta)^2$ up to a unit by
 \Cref{thm:prereq:gram}(b).
+
+The cokernel statement is linear algebra over the discrete valuation ring $\mathcal O$. In a basis of
+the free module $L[\wp]$ and the dual basis of $\Hom(L[\wp],\mathcal O)$, the map
+$v\mapsto B(v,\cdot)$ has as matrix the transpose $G^{\mathsf T}$ of the Gram matrix, so its
+cokernel is $\mathcal O^d/G^{\mathsf T}\mathcal O^d$. By the Smith normal form (proved in
+\Cref{ch:modules}) this is $\bigoplus_i\mathcal O/d_i$ with $d_1\cdots d_d=\det G$ up to a unit, of
+order $\prod\#(\mathcal O/d_i)=\#\mathcal O/\Delta$. In the rank-two alternating case no Smith form
+is needed: the Gram matrix is $\sm0\eta{-\eta}0$, its image is $\eta\mathcal O^2$, and the cokernel
+is $(\mathcal O/\eta)^2$, of order $(\#\mathcal O/\eta)^2=\#\mathcal O/\eta^2$.
 \end{paperlink}
 
 \begin{definition}[inner products; adjoints]\label{def:prereq:inner}
@@ -573,6 +582,19 @@ by (e); $U_p$ is not self-adjoint; $f^\perp$ is Hecke-stable by (c) because $f$ 
 the adjoints too); \Cref{ch:modules} (adjoints with respect to a pairing); \Cref{ch:moddeg} (the
 adjoint of $T_n$ for the cup product is $w_NT_nw_N$); \Cref{ch:congruence}. \emph{Reference:}
 \cite[Chapters 6 and 7]{Axler15}; \cite{Halmos74}.
+
+\emph{Item (f), and why it is weaker than (d).} If $U$ is $T$-stable, $w$ lies in the
+$B$-orthogonal complement of $U$ and $u\in U$, then $B(u,Tw)=B(Tu,w)=0$ because $Tu\in U$; so $Tw$ is
+again orthogonal to $U$. What fails without positivity is the rest of the proof of the spectral
+theorem, and the failure is real. Writing $B(v,w)=v^{\mathsf T}Gw$, a matrix $T$ is $B$-self-adjoint
+if and only if $T^{\mathsf T}G=GT$. Take $G=\sm0110$, a perfect symmetric form over any field, and
+$T=\sm1101$. Then
+\[
+T^{\mathsf T}G=\begin{pmatrix}1&0\\1&1\end{pmatrix}\begin{pmatrix}0&1\\1&0\end{pmatrix}
+=\begin{pmatrix}0&1\\1&1\end{pmatrix}=\begin{pmatrix}0&1\\1&0\end{pmatrix}\begin{pmatrix}1&1\\0&1\end{pmatrix}=GT,
+\]
+so $T$ is $B$-self-adjoint, and it is not diagonalisable. The line $ke_1$ is $T$-stable and is its
+own $B$-orthogonal complement ($B(e_1,e_1)=0$), so the complement does not split it off.
 
 \begin{definition}[dual spaces]\label{def:prereq:dual}
 The \emph{dual} of $V$ is $V^*=\Hom_k(V,k)$. A basis $e_1,\dots,e_n$ of $V$ has the \emph{dual
@@ -640,6 +662,22 @@ two-dimensional $\rho$); \Cref{ch:modules} (tensor products of modules); \Cref{c
 (e)); \Cref{ch:blochkato}. \emph{Reference:} \cite[Chapter XVI]{Lang};
 \cite[Sections 10.4 and 11.5]{DummitFoote}; \cite{Halmos74}.
 
+\emph{The eigenvalues in (e), computed.} Suppose $T$ is invertible with an eigenbasis $v_1,v_2$,
+$Tv_1=\lambda v_1$, $Tv_2=\mu v_2$ (for a $T$ that is not diagonalisable, the same computation in a
+triangular basis gives triangular matrices with the same diagonal entries). On $V^*\otimes V=\End(V)$, $T$ acts by
+conjugation, $X\mapsto TXT^{-1}$: this is the convention that $T$ acts on $V^*$ by the transpose of
+$T^{-1}$ (the contragredient), so that the pairing $V^*\times V\to k$ is preserved. Let $E_{ij}$ be
+the map $v_j\mapsto v_i$, $v_{j'}\mapsto0$ for $j'\ne j$. Then
+$TE_{ij}T^{-1}v_j=TE_{ij}(\lambda_j^{-1}v_j)=(\lambda_i/\lambda_j)v_i$, where $\lambda_1=\lambda$ and
+$\lambda_2=\mu$, so $E_{12}$, $E_{21}$, $E_{11}$, $E_{22}$ are eigenvectors with eigenvalues
+$\lambda/\mu$, $\mu/\lambda$, $1$, $1$. The trace-zero part is spanned by $E_{12}$, $E_{21}$ and
+$E_{11}-E_{22}$, with eigenvalues $\lambda/\mu$, $\mu/\lambda$, $1$. On $\Sym V$, the images of
+$v_1\otimes v_1$, $v_1\otimes v_2$, $v_2\otimes v_2$ form a basis with eigenvalues $\lambda^2$,
+$\lambda\mu$, $\mu^2$. Dividing these by $\det T=\lambda\mu$ gives $\lambda/\mu$, $1$, $\mu/\lambda$
+again, which is the identity $\ad\rho=\Sym\rho\otimes\det\rho^{-1}$ seen on eigenvalues. For
+Frobenius at a good prime $p$, with $\alpha\beta=p$, the eigenvalues on the trace-zero part are
+$\alpha/\beta=\alpha^2/p$, $1$, $\beta/\alpha=\beta^2/p$.
+
 \begin{theorem}[the trace form (stated; reference)]\label{thm:prereq:traceform}
 On $\Mat_n(k)$ the \emph{trace form} $(A,B)\mapsto\tr(AB)$ is a symmetric bilinear form, invariant
 under conjugation ($\tr(gAg^{-1}\cdot gBg^{-1})=\tr(AB)$), and perfect: its Gram matrix with
@@ -664,6 +702,17 @@ dual when $2$ is invertible); \Cref{ch:blochkato} (for $A=\ad T$ and $\ell$ odd,
 $T^D=\Hom(A,\Zl(1))\iso A(1)$ via the trace form, which the paper uses in Section 4.2);
 \Cref{ch:modules}. \emph{Reference:} \cite[Chapter XV]{Lang}; the computation above is a direct
 check.
+
+\emph{The direct check, written out.} Multiplying the basis matrices: $ef=\sm1000$ and
+$fe=\sm0001$, so $\tr(ef)=1$; $h^2=1$, so $\tr(hh)=2$; $e^2=f^2=0$; $eh=\sm0{-1}00=-e$ and
+$fh=\sm0010=f$, both of trace $0$. Expanding the Gram determinant along its first row gives
+$1\cdot(0\cdot0-2\cdot1)=-2$. Modulo $2$ the middle row of the Gram matrix becomes $0$, which says
+that $h$ pairs to $0$ with every element: it lies in the radical. The last identity is
+Cayley-Hamilton: $A^2-(\tr A)A+(\det A)\cdot1=0$, and taking traces (with $\tr1=2$) gives
+$\tr(A^2)=(\tr A)^2-2\det A$.
+
+This ends the linear algebra. The next section collects the complex analysis, which enters through
+Riemann surfaces, the Weierstrass $\wp$-function, modular forms and $L$-functions.
 
 \section{Complex analysis}\label{sec:prereq:complex}
 
@@ -723,6 +772,13 @@ Riemann surface, and the divisor of a function); \Cref{ch:modforms} (the $q$-exp
 a Laurent series in $q$; a cusp form has no terms of order $\le0$). \emph{Reference:}
 \cite[Chapter 5, Section 1]{Ahlfors79}; \cite[Chapter 3]{SteinShakarchi03}.
 
+\emph{Example.} The coefficient formula is the line integral computed after
+\Cref{thm:prereq:riemann}: integrating $\sum_mc_m(w-a)^{m-n-1}$ term by term around the circle
+(allowed by the uniform convergence there) keeps only $m=n$. For a concrete Laurent series, take
+$f(z)=1/(z(z-1))$ on $0<\abs z<1$. Expanding $1/(z-1)=-\sum_{n\ge0}z^n$ gives
+$f(z)=-z^{-1}-1-z-z^2-\cdots$, so $f$ has a simple pole at $0$, $\ord_0f=-1$, and
+$\operatorname{Res}_0f=-1$, in agreement with $\lim_{z\to0}zf(z)=\lim_{z\to0}1/(z-1)=-1$.
+
 \begin{theorem}[the residue theorem (stated; reference)]\label{thm:prereq:residue}
 Let $f$ be holomorphic on $U$ except at isolated points $a_1,\dots,a_k$, and let $\gamma$ be a
 closed piecewise $C^1$ curve in $U$, not passing through any $a_j$, contractible in $U$. Then
@@ -753,6 +809,20 @@ $q$-expansions define holomorphic functions on the upper half plane); \Cref{ch:l
 Dirichlet series is holomorphic in its half-plane of absolute convergence). \emph{Reference:}
 \cite[Chapter 5, Section 1]{Ahlfors79}; \cite[Chapter 2]{SteinShakarchi03}.
 
+\emph{The estimate for $\wp$.} The subtraction of $\omega^{-2}$ is what makes the series converge.
+Combining the fractions,
+\[
+\frac1{(z-\omega)^2}-\frac1{\omega^2}=\frac{\omega^2-(z-\omega)^2}{\omega^2(z-\omega)^2}
+=\frac{2z\omega-z^2}{\omega^2(z-\omega)^2}.
+\]
+Fix $r>0$. For $\abs z\le r$ and $\abs\omega\ge2r$ one has $\abs{z-\omega}\ge\abs\omega/2$ and
+$\abs{2z\omega-z^2}\le2r\abs\omega+r^2\le\tfrac52r\abs\omega$, so the term has modulus at most
+$\tfrac52r\abs\omega\cdot4/\abs\omega^4=10r\abs\omega^{-3}$. The lattice sum of $\abs\omega^{-3}$
+converges by \Cref{thm:prereq:series}(g), so the $M$-test gives uniform convergence on the disc
+$\abs z\le r$ of the sum over $\abs\omega\ge2r$; the finitely many remaining terms are meromorphic
+with double poles at the lattice points. Without the subtraction the terms would be of size
+$\abs\omega^{-2}$, and the lattice sum of these diverges.
+
 \begin{definition}[the Riemann sphere; Mobius transformations]\label{def:prereq:mobius}
 The \emph{Riemann sphere} is $\widehat\C=\C\cup\{\infty\}$, with the neighbourhoods of $\infty$
 the complements of compact subsets of $\C$ and the coordinate $w=1/z$ near $\infty$; a function is
@@ -782,6 +852,17 @@ surface; the degree of a rational function); \Cref{ch:modforms} (the action of $
 cusps $\PP^1(\Q)=\Q\cup\{\infty\}$). \emph{Reference:} \cite[Chapter 3, Section 3]{Ahlfors79};
 \cite[Chapter 8]{SteinShakarchi03}.
 
+\emph{Where the trace in (d) comes from.} A finite $z$ is fixed by $g=\sm abcd$ if and only if
+$az+b=z(cz+d)$, that is, $cz^2+(d-a)z-b=0$. If $c\ne0$, then $\infty\mapsto a/c$ is not fixed, and
+the quadratic has discriminant
+\[
+(d-a)^2+4bc=(a+d)^2-4(ad-bc)=(\tr g)^2-4,
+\]
+so there are two fixed points or one according as $(\tr g)^2\ne4$ or $=4$. If $c=0$, then $\infty$ is
+fixed, $ad=1$, and the remaining equation $(d-a)z=b$ has one solution when $a\ne d$, which is when
+$(\tr g)^2-4=(a-d)^2\ne0$; when $a=d=\pm1$, $g$ is the translation $z\mapsto z+b/a$ with $b\ne0$, and
+$\infty$ is its only fixed point.
+
 \begin{theorem}[the upper half plane (stated; reference)]\label{thm:prereq:halfplane}
 Let $\HH=\{z\in\C:\operatorname{Im}z>0\}$ and, for $g=\sm abcd\in\SL_2(\R)$, $gz=(az+b)/(cz+d)$.
 \begin{enumerate}[label=(\alph*)]
@@ -806,6 +887,19 @@ on $\R\cup\{\infty\}$, and $\SL_2(\Z)$ acts on $\Q\cup\{\infty\}$.
 the points of $\SL_2(\Z)\backslash\HH$); \Cref{ch:modforms} (everything: the modular group,
 fundamental domains, cusps, elliptic points, the Petersson inner product via (d)).
 \emph{Reference:} \cite[Chapter 3, Section 3]{Ahlfors79}; \cite[Chapter 1]{DiamondShurman}.
+
+\emph{The computations behind (a), (d) and (e).} For (a), multiply numerator and denominator by
+$\overline{cz+d}$:
+\[
+gz=\frac{(az+b)(c\bar z+d)}{\abs{cz+d}^2}
+=\frac{ac\abs z^2+adz+bc\bar z+bd}{\abs{cz+d}^2},
+\]
+and with $a,b,c,d$ real the imaginary part of the numerator is $(ad-bc)\operatorname{Im}z$. For (d),
+the quotient rule gives $\frac d{dz}(gz)=\bigl(a(cz+d)-c(az+b)\bigr)/(cz+d)^2=(ad-bc)/(cz+d)^2$. A
+holomorphic map multiplies areas by $\abs{g'(z)}^2=\abs{cz+d}^{-4}$, and by (a) $1/y^2$ is multiplied
+by $\abs{cz+d}^4$, so $dx\,dy/y^2$ is unchanged. For (e), the fixed points of a real $g$ with $c\ne0$
+are the roots of the real quadratic above, of discriminant $(\tr g)^2-4$: when $\abs{\tr g}<2$ they
+are a pair of complex conjugates, exactly one of them in $\HH$, and otherwise they are real.
 
 \begin{theorem}[the exponential and the logarithm (stated; reference)]\label{thm:prereq:exp}
 \leavevmode
@@ -833,6 +927,15 @@ $z$, not of $q$); it is the factor in front of the $\eta$-function.
 \noindent\emph{First needed:} \Cref{ch:modforms}; \Cref{ch:lfunctions} (Dirichlet series).
 \emph{Reference:} \cite[Chapter 2, Section 3]{Ahlfors79}; \cite[Chapter 1]{DiamondShurman}.
 
+\emph{The coefficient formula in (b).} On the horizontal segment $z=x+iy$, $0\le x\le1$, the series
+$\sum_ma_me^{2\pi imz}$ converges uniformly (the segment is compact), so it may be multiplied by
+$e^{-2\pi inz}$ and integrated term by term (\Cref{thm:prereq:uniform}(c)):
+\[
+\int_0^1f(x+iy)e^{-2\pi in(x+iy)}\,dx=\sum_ma_me^{-2\pi(m-n)y}\int_0^1e^{2\pi i(m-n)x}\,dx=a_n,
+\]
+because the last integral is $1$ for $m=n$ and $0$ otherwise. The answer does not depend on $y$, as
+the theorem says.
+
 \begin{theorem}[infinite products (stated; reference)]\label{thm:prereq:products}
 \begin{enumerate}[label=(\alph*)]
 \item If $\sum\abs{a_n}<\infty$, then the partial products of $\prod_{n\ge1}(1+a_n)$ converge, the
@@ -855,6 +958,28 @@ $\prod_p(1+b_p)$ is holomorphic and nonvanishing where no factor vanishes.
 \Cref{ch:lfunctions} (Euler products of $L(E,s)$, $L(\ad f,s)$ and $L(\Sym f,s)$).
 \emph{Reference:} \cite[Chapter 5, Section 2]{Ahlfors79}; \cite[Chapter 5]{SteinShakarchi03}.
 
+\emph{The form of \curve{11a1} as a $q$-series.} By (c), $\eta(z)^2\eta(11z)^2$ is holomorphic on
+$\HH$, and the fractional powers of $q$ combine to an integral one: $\eta(11z)$ has the factor
+$e^{2\pi i\cdot11z/24}$, so the product has the factor $q^{2/24}q^{22/24}=q$, and
+\[
+\eta(z)^2\eta(11z)^2=q\prod_{n\ge1}(1-q^n)^2(1-q^{11n})^2
+=q-2q^2-q^3+2q^4+q^5+2q^6-2q^7-2q^9-2q^{10}+q^{11}-2q^{12}+\cdots.
+\]
+These twelve coefficients agree with the numbers $a_n$ of the curve $y^2+y=x^3-x^2-10x-20$ (Cremona
+label \curve{11a1}) for $n\le12$, as computed with PARI/GP; \Cref{ch:modforms} explains why they agree
+for every $n$.
+
+\emph{Why Euler's product equals the sum in (d).} Let $\sigma=\operatorname{Re}s>1$ and $x\ge2$. Each
+factor is a geometric series, $(1-p^{-s})^{-1}=\sum_{k\ge0}p^{-ks}$, absolutely convergent because
+$\abs{p^{-s}}=p^{-\sigma}<1$. The product of the finitely many factors with $p\le x$ may be expanded
+and rearranged by \Cref{thm:prereq:series}(e) and (f), and by unique factorisation each $n$ whose
+prime factors are all at most $x$ appears exactly once:
+\[
+\prod_{p\le x}(1-p^{-s})^{-1}=\sum_{n:\ p\mid n\Rightarrow p\le x}n^{-s}.
+\]
+Every $n\le x$ occurs on the right, so the difference from $\sum_{n\ge1}n^{-s}$ is at most
+$\sum_{n>x}n^{-\sigma}$, which tends to $0$ as $x\to\infty$ by \Cref{thm:prereq:series}(g).
+
 \begin{theorem}[the Gamma function, complex form (stated; reference)]\label{thm:prereq:gamma}
 \leavevmode
 \begin{enumerate}[label=(\alph*)]
@@ -874,6 +999,18 @@ $\abs{\Gamma(\sigma+it)}\sim\sqrt{2\pi}\,\abs t^{\sigma-1/2}e^{-\pi\abs t/2}$ as
 completed symmetric square $L$-function; the poles of $\Gamma$ account for the trivial zeros).
 \emph{Reference:} \cite[Chapter 5, Section 2]{Ahlfors79}; \cite[Chapter 6]{SteinShakarchi03}.
 
+\emph{Two checks on the statements.} The residues in (b) follow from the functional equation used
+$n+1$ times: $\Gamma(s)=\Gamma(s+n+1)/\bigl(s(s+1)\cdots(s+n)\bigr)$ for $\operatorname{Re}s>-n-1$
+away from the poles, and at $s=-n$ the factor $s+n$ vanishes while the others give
+\[
+\operatorname{Res}_{s=-n}\Gamma=\frac{\Gamma(1)}{(-n)(-n+1)\cdots(-1)}=\frac{(-1)^n}{n!}.
+\]
+The vertical-line form of (d) can be checked exactly at $\sigma=1$. By (b) and (c),
+$\Gamma(1+it)\Gamma(1-it)=it\,\Gamma(it)\Gamma(1-it)=it\pi/\sin(\pi it)=\pi t/\sinh(\pi t)$, and
+$\Gamma(1-it)=\overline{\Gamma(1+it)}$ because $\Gamma$ is real on the real axis. Hence
+$\abs{\Gamma(1+it)}^2=\pi t/\sinh(\pi t)\sim2\pi\abs te^{-\pi\abs t}$, which is the square of
+$\sqrt{2\pi}\,\abs t^{1/2}e^{-\pi\abs t/2}$, as (d) predicts.
+
 \begin{remark}[the Mellin transform]\label{rem:prereq:mellin}
 For $\phi\colon(0,\infty)\to\C$, the \emph{Mellin transform} is
 $(\mc M\phi)(s)=\int_0^\infty\phi(t)\,t^{s}\,\frac{dt}{t}$, defined on the vertical strip where the
@@ -885,6 +1022,14 @@ $\operatorname{Re}s$ large, interchanging sum and integral by absolute convergen
 \[
 \int_0^\infty f(iy)\,y^{s}\,\frac{dy}{y}=(2\pi)^{-s}\Gamma(s)\sum_{n\ge1}a_nn^{-s}.
 \]
+In detail: the substitution $y=u/(2\pi n)$ gives
+$\int_0^\infty e^{-2\pi ny}y^{s}\,dy/y=(2\pi n)^{-s}\int_0^\infty e^{-u}u^{s}\,du/u=(2\pi n)^{-s}\Gamma(s)$
+(the measure $dy/y$ is unchanged by scaling, which is why the Mellin transform is written with it).
+The interchange of sum and integral is justified because the sum of the integrals of the absolute
+values is finite: with $\sigma=\operatorname{Re}s$ and $\abs{a_n}\le Cn^k$, it equals
+$\sum_n\abs{a_n}(2\pi n)^{-\sigma}\Gamma(\sigma)\le C(2\pi)^{-\sigma}\Gamma(\sigma)\sum_nn^{k-\sigma}$,
+finite for $\sigma>k+1$ by \Cref{thm:prereq:series}(g); this is the meaning of ``$\operatorname{Re}s$
+large''.
 The Mellin transform of a cusp form along the imaginary axis is its $L$-function completed by the
 Gamma factor; the transformation law of $f$ under $z\mapsto-1/(Nz)$ becomes, through the
 substitution $y\mapsto1/(Ny)$, the functional equation of $\Lambda(f,s)$, and the rapid decay of
@@ -932,6 +1077,12 @@ actions, Sylow's theorems, semidirect products, finite abelian groups, profinite
 groups $\GL_2(\F_q)$, which RHB does not treat. \emph{Reference:} \cite[Chapter 28]{RHB06};
 \cite[Chapters 1 to 3]{DummitFoote}.
 
+\emph{Example.} In $S_3$ the centraliser of the transposition $(12)$ is $\{1,(12)\}$, since $(12)$
+commutes with neither $(13)$, $(23)$ nor the $3$-cycles; so by (c) its conjugacy class has $6/2=3$
+elements, the three transpositions. The centraliser of $(123)$ is the cyclic group
+$\langle(123)\rangle$ of order $3$, and its class $\{(123),(132)\}$ has $2$ elements. With the class
+$\{1\}$ this accounts for all $1+3+2=6$ elements.
+
 \begin{definition}[representations and characters over $\C$]\label{def:prereq:reps}
 A \emph{representation} of $G$ of degree $n$ over $\C$ is a homomorphism $D\colon G\to\GL_n(\C)$
 (RHB's ``matrix representation''); equivalently, an action of $G$ by linear maps on an
@@ -973,6 +1124,14 @@ representation of any finite $G$ divides $\#G$.
 \end{theorem}
 \noindent\emph{First needed:} \Cref{ch:reps}. \emph{Reference:} \cite[Chapter 29]{RHB06};
 \cite[Part I]{SerreLinearReps}; \cite[Chapter 18]{DummitFoote}.
+
+\emph{Example: $S_3$.} There are three conjugacy classes (the example after \Cref{thm:prereq:groups}),
+hence three irreducible characters by (c): the trivial character, the sign, and the character $\chi$
+of the two-dimensional representation on $\{x\in\C^3:x_1+x_2+x_3=0\}$ by permuting coordinates, with
+values $2$, $0$, $-1$ on the classes of $1$, the transpositions and the $3$-cycles. The check of
+(c) for $\chi$, weighting each class by its size, is $\frac16(1\cdot2^2+3\cdot0^2+2\cdot(-1)^2)=1$,
+so $\chi$ is irreducible by (d), and $1^2+1^2+2^2=6=\#S_3$. The regular representation is the sum of
+the trivial representation, the sign and two copies of $\chi$.
 
 \begin{remark}[what changes in the book]\label{rem:prereq:changes}
 Four things change when the paper's representations arrive, all in \Cref{ch:reps}.
