@@ -961,10 +961,10 @@ $\prod_p(1+b_p)$ is holomorphic and nonvanishing where no factor vanishes.
 \emph{The form of \curve{11a1} as a $q$-series.} By (c), $\eta(z)^2\eta(11z)^2$ is holomorphic on
 $\HH$, and the fractional powers of $q$ combine to an integral one: $\eta(11z)$ has the factor
 $e^{2\pi i\cdot11z/24}$, so the product has the factor $q^{2/24}q^{22/24}=q$, and
-\[
-\eta(z)^2\eta(11z)^2=q\prod_{n\ge1}(1-q^n)^2(1-q^{11n})^2
-=q-2q^2-q^3+2q^4+q^5+2q^6-2q^7-2q^9-2q^{10}+q^{11}-2q^{12}+\cdots.
-\]
+\begin{align*}
+\eta(z)^2\eta(11z)^2&=q\prod_{n\ge1}(1-q^n)^2(1-q^{11n})^2\\
+&=q-2q^2-q^3+2q^4+q^5+2q^6-2q^7-2q^9-2q^{10}+q^{11}-2q^{12}+\cdots.
+\end{align*}
 These twelve coefficients agree with the numbers $a_n$ of the curve $y^2+y=x^3-x^2-10x-20$ (Cremona
 label \curve{11a1}) for $n\le12$, as computed with PARI/GP; \Cref{ch:modforms} explains why they agree
 for every $n$.
@@ -1140,11 +1140,19 @@ algebraic closures, and rings of integers of number fields. When the characteris
 the order of the group, as it does for $\GL_2(\F_3)$ in characteristic $3$ and for an inertia group
 acting on $E[\ell]$ through a unipotent element of order $\ell$, Maschke's theorem fails: an
 invariant subspace need not have an invariant complement, and a representation need not be
-semisimple. The invariants are then the composition factors (Jordan-Holder), not direct summands,
-and a character determines only the semisimplification. The right statement is Brauer-Nesbitt: two
-semisimple representations with the same characteristic polynomial of $\rho(g)$ for every $g$ are
-isomorphic; the traces determine the characteristic polynomials in characteristic $0$ or when the
-characteristic exceeds the dimension, but not in general.
+semisimple. For instance $\Z/3\Z$ acting on $\F_3^2$ through $u=\sm1101$ fixes the line $\F_3e_1$,
+and this line has no invariant complement: a complement would be a second invariant line, hence a
+second line of eigenvectors of $u$, but the only eigenvalue is $1$ and its eigenspace is $\F_3e_1$
+(the computation after \Cref{thm:prereq:jordan}). The invariants are then the composition factors
+(Jordan-Holder), not direct summands, and a character determines only the semisimplification. The
+right statement is Brauer-Nesbitt: two semisimple representations with the same characteristic
+polynomial of $\rho(g)$ for every $g$ are isomorphic; the traces determine the characteristic
+polynomials in characteristic $0$ or when the characteristic exceeds the dimension, but not in
+general. An example of the failure: over $\F_3$, let $\Z/2\Z$ act on $\F_3^3$ trivially, and on
+another copy of $\F_3^3$ by $-1$. Both are semisimple ($2$ is prime to $3$), and their traces are
+$3=0$ and $3=0$ at the identity and $3=0$ and $-3=0$ at the generator, so the traces agree everywhere;
+but the characteristic polynomials of the generator are $(X-1)^3$ and $(X+1)^3$, and the
+representations are not isomorphic.
 (2) \emph{Irreducible versus absolutely irreducible.} Over a field that is not algebraically closed
 an irreducible representation can become reducible after extending scalars, and Schur's lemma in
 the form ``equivariant endomorphisms are scalars'' holds only for absolutely irreducible ones. The
@@ -1201,6 +1209,12 @@ $\eps>0$.
 \noindent\emph{First needed:} \Cref{ch:computation}. \emph{Reference:} \cite[Chapters I, V and
 IX]{Feller68}; \cite[Chapter 30]{RHB06}.
 
+\emph{How (d) follows from (b) and (c).} Let $S_n=X_1+\dots+X_n$ and $v=\operatorname{Var}X_1$. By (a)
+$E[S_n/n]=m$, and by (b), applied repeatedly, $\operatorname{Var}S_n=nv$, so
+$\operatorname{Var}(S_n/n)=v/n$. Chebyshev's inequality then gives
+$P(\abs{S_n/n-m}\ge\eps)\le v/(n\eps^2)\to0$. (Repeated use of (b) needs $X_1+\dots+X_{j}$ and
+$X_{j+1}$ to be independent, which holds when the $X_i$ are independent as a family.)
+
 \begin{definition}[hypothesis tests]\label{def:prereq:test}
 A \emph{hypothesis test} consists of a \emph{null hypothesis} $H_0$, a precise probabilistic model
 for the data (for instance: two attributes are independent); a \emph{test statistic} $T$, a number
@@ -1219,7 +1233,14 @@ rule (its inequality eq:rule) is $0$, the base rate of $v_3(\degphi)=0$ is $53.2
 hypothesis that $v_3(\degphi)$ is independent of the local data. Then a curve whose bound is $b$
 would have $v_3(\degphi)<b$ with the probability that a bound-$0$ curve has $v_3(\degphi)<b$, and
 summing these probabilities over the $867578$ working-set curves with a positive bound gives, by
-\Cref{thm:prereq:expectation}(a), an expected number of about $605000$ violations. The observed
+\Cref{thm:prereq:expectation}(a), an expected number of about $605000$ violations. In symbols: let
+$p_0(b)$ be the proportion of bound-$0$ curves with $v_3(\degphi)<b$, and let $A_C$ be the event that
+the curve $C$ violates its bound $b(C)$. Under the null hypothesis $P(A_C)=p_0(b(C))$, and the
+expected number of violations is
+\[
+\sum_{C:\ b(C)>0}p_0\bigl(b(C)\bigr),
+\]
+whatever the dependence between the events $A_C$; linearity of expectation needs no independence. The observed
 number is $0$. The force of the argument lies in the comparison of these two numbers, not in a
 $p$-value (which would be astronomically small): the inequality is not an artefact of most modular
 degrees being divisible by $3$. What the argument does not show is that the inequality holds beyond
@@ -1239,6 +1260,14 @@ then to test once. A statement that passes such a test has been \emph{blind-test
 formulated after the hold-out has been used can only be \emph{confirmed} on it, which is weaker,
 and a fresh hold-out is needed to blind-test it.
 \end{definition}
+
+\emph{How large the effect of multiple comparisons is.} Suppose $20$ candidate relations, all
+false, are each tested at significance level $\alpha=0.05$, with independent data. By
+\Cref{thm:prereq:expectation}(a) the expected number of false rejections is $20\cdot0.05=1$, and by
+independence the probability that at least one candidate is rejected, and so looks like a
+discovery, is $1-0.95^{20}\approx0.64$. A search over thousands of candidates makes a chance fit
+practically certain. Testing the survivor on the same data says nothing; testing it on a hold-out
+that played no part in the search restores the meaning of $\alpha$.
 
 \begin{paperlink}\label{pl:prereq:protocol}
 The paper's ranges are the working set ($N\le300000$), the hold-out ($300000<N\le400000$), the
