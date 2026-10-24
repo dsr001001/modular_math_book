@@ -1178,7 +1178,7 @@ $2g-\tr g$ (Exercise~\ref{ex:lfunctions:ex-commutant}). For $g=\sigma$, with $\s
 the commutant is the same, so the sign disappears in $\ad$. For $g=\tau$, $\tr\tau=0$ and the line is spanned by $\tau$ itself. Here
 $\End_{I_q}(T)=\Z_\ell[\sigma]\simeq\Z_\ell\otimes\Z[\zeta_3]$ and $\End_{I_q}(V)=\Q_\ell\otimes\Q(\zeta_3)$, which is a field only for $\ell\not\equiv1\pmod3$; likewise
 $\Q_\ell[\tau]\simeq\Q_\ell\otimes\Q(i)$, a field only for $\ell\not\equiv1\pmod4$. In particular $\tau$ is diagonalisable over $\Q_\ell$ only when $\ell\equiv1\pmod4$, so the
-invariant line must be described as the line of $\tau$, not of ``the diagonal element''. For the unipotent shapes the invariants are the line of $e$
+invariant line must be described as the line of $\tau$, not through a diagonal form. For the unipotent shapes the invariants are the line of $e$
 (\Cref{prop:lfunctions:multiplicative}). For $\{\pm1\}$ they are all of $A_f$.
 
 \emph{Step 3: the Frobenius.} The arithmetic Frobenius normalises $\rho(I_q)$ and acts on tame inertia by $g\mapsto g^q$: $\rho(\Frob_q)g\rho(\Frob_q)^{-1}=g^q$ for $g$ in a tame image
@@ -1209,9 +1209,8 @@ equal to the table ($\mathrm I_n$: $102{,}309$; $\mathrm I_n^*$: $6{,}224$; $\ma
 $\mathrm{III}^*$: $1{,}394$ each; $\mathrm{IV}$: $760$; $\mathrm{IV}^*$: $1{,}575$), with no exception.
 
 \begin{paperlink}
-Lemma lem:euler and the table of Section 1 are \Cref{lem:lfunctions:euler}. The proof in the revised paper writes ``inside $\operatorname{End}_{I_q}(T)=\Z_\ell[\sigma]\simeq\Z_\ell\otimes\Z[\zeta_3]$ (not a field
-when $\ell\equiv1\pmod3$)'' and ``the invariant line of $\ad V$ is spanned by $\tau$ itself, which has trace $0$ (it is diagonalisable only over $\Q_\ell(i)$)''; the original
-version wrote $\Z_\ell[\zeta_3]\simeq\operatorname{End}_{I_q}(V)$ and ``the diagonal element'', which Step 2 corrects. ``Frobenius centralises $\sigma$ if $q\equiv1\pmod3$ and inverts it if
+Lemma lem:euler and the table of Section 1 are \Cref{lem:lfunctions:euler}. The proof in the paper writes ``inside $\operatorname{End}_{I_q}(T)=\Z_\ell[\sigma]\simeq\Z_\ell\otimes\Z[\zeta_3]$ (not a field
+when $\ell\equiv1\pmod3$)'' and ``the invariant line of $\ad V$ is spanned by $\tau$ itself, which has trace $0$ (it is diagonalisable only over $\Q_\ell(i)$)'' (Step 2). ``Frobenius centralises $\sigma$ if $q\equiv1\pmod3$ and inverts it if
 $q\equiv2$, for either choice of Frobenius'' is Step 3. The abstract's list of omitted factors is the last column.
 \end{paperlink}
 
@@ -1227,7 +1226,7 @@ $e_7=v_7(4\cdot35)=1$, $\degphi=28$).
 
 \begin{paperlink}
 Proposition prop:forms (proof): ``At $q\ge5$ of type $\mathrm{II},\mathrm{II}^*,\mathrm{IV},\mathrm{IV}^*$ and $\ell=3$, $e_3(E,q)=v_3(q-\chi_{-3}(q))\ge1=w_3(E,q)$ since $q\equiv\chi_{-3}(q)\pmod3$'' is the
-first case of \Cref{rem:lfunctions:euler-values}. Remark rem:afterquant (1), ``a prime of type $\mathrm I_0^*$ with $q\equiv1\pmod3$ does too'', is the case $v_3(q-1)\ge1$ of the
+first case of \Cref{rem:lfunctions:euler-values}. Remark rem:afterquant (1), ``a prime of type $\mathrm{I}_0^*$ with $q\equiv1\pmod3$ does too'', is the case $v_3(q-1)\ge1$ of the
 $\mathrm I_0^*$ row.
 \end{paperlink}
 
@@ -1254,8 +1253,7 @@ $e_\ell$ together with (i). (iv) $j(E^\chi)=j(E)$.
 
 \begin{example}[the twist of \curve{11a1} by $\chi_{-11}$]\label{ex:lfunctions:twist-11}
 \curve{11a1} has type $\mathrm I_5$ at $11$ and $e_3(E,11)=0$. Its twist by $\chi_{-11}$ is \curve{121d2}, of type $\mathrm I_5^*$ at $11$, with $P_{11}=1-X$ (the same factor) and
-$e_3=v_3(1-11^{-2})=v_3(120/121)=1$; $t_5=v_5(5)=1$ for both. The original version of the paper said in Definition def:terms ``Both terms are invariant under
-quadratic twist.'', which is false for $e_\ell$; the revised version says ``The term $t_\ell$ is invariant under quadratic twist, and $e_\ell(E,q)$ under quadratic twists
+$e_3=v_3(1-11^{-2})=v_3(120/121)=1$; $t_5=v_5(5)=1$ for both. Definition def:terms says ``The term $t_\ell$ is invariant under quadratic twist, and $e_\ell(E,q)$ under quadratic twists
 unramified at $q$; a twist ramified at $q$ can change $e_\ell(E,q)$'', with this example, which is \Cref{prop:lfunctions:twists}(ii), (iii), (iv).
 \end{example}
 
@@ -1317,7 +1315,7 @@ because $q$ is additive for $E$.
 The paragraph after Theorem thm:dfg14: ``Only the primes with $\delta_p\ge1$ contribute: adding an additive prime to $\Sigma$ changes neither the level nor the ideal'' is (i) for
 $p^2\mid N$. In the proof of Theorem thm:main, the congruence ideal $\eta^\Sigma$ carries the naive factors at the multiplicative primes of $\Sigma$, the Bloch-Kato side carries the
 true factors at every prime of $\Sigma$ (Lemma lem:fpr), and (ii) is the cancellation that leaves $\sum e_\ell(E,p)$. Theorem thm:quant, Step 3, is (iii). Remark rem:afterquant (3),
-``there the quadratic twist does not lower the level, $f$ is its own depletion, and Theorem thm:dfg14 gives no factor'', is (i) for $p^2\mid N$ at the potentially good types,
+``there the quadratic twist does not lower the level, $f$ is its own depletion, and Theorem~thm:dfg14 gives no factor'', is (i) for $p^2\mid N$ at the potentially good types,
 where no twist makes $\delta_q\ge1$ (\Cref{prop:lfunctions:twists}(iii)). Theorem thm:dfg14 itself is \Cref{ch:congruence}'s.
 \end{paperlink}
 
@@ -1416,7 +1414,7 @@ $\degphi=80=2^4\cdot5$: the prime $2$ contributes at $\ell=5$. \curve{336f1} has
 or $\mathrm{IV}^*$ at $2$ is case (c) with $c=-1$ ($4{,}750$ pairs), as the proposition proves.
 
 \begin{paperlink}
-Proposition prop:shapes of the revised paper states (i) to (iv) for $\ell$ odd; its proof is the argument above, with ``Every quadratic character of $G_{\Q_q}$ is the restriction of a
+Proposition prop:shapes states (i) to (iv) for $\ell$ odd; its proof is the argument above, with ``Every quadratic character of $G_{\Q_q}$ is the restriction of a
 quadratic Dirichlet character $\chi'$ (for $q$ odd a product of $\chi_{q^*}$ and a character unramified at $q$; for $q=2$ a product of $\chi_{-4}$, $\chi_8$ and $\chi_5$)''.
 \end{paperlink}
 
@@ -1426,27 +1424,20 @@ reduction with the explicit choices of $d$, gives the value of $c$ for types $\m
 states the four shapes and the formulas for $e_\ell$ in each case; nothing in the paper's arguments changes.
 \end{remark}
 
-\begin{remark}[the status of Remark rem:wild]\label{rem:lfunctions:wild-status}
-The original version of Remark rem:wild said: ``At $q=2,3$ the Kodaira type does not determine $L_q(A_f,s)$, but PARI does, and Definition~def:terms applies verbatim: for
-instance a type $\mathrm{IV}$ at $2$ has $P_2(X)=1+2X$ and $e_3=v_3(1+\tfrac12)=1$, a type $\mathrm{II}$ at $2$ has $P_2=1$ and $e_3=0$, and a type $\mathrm I_n^*$ at $2$ has potentially good
-reduction in about half of the cases, with a cubic $P_2$ and $t_\ell=0$.'' Sentence by sentence:
+\begin{remark}[reading Remark rem:wild]\label{rem:lfunctions:wild-status}
+Remark rem:wild opens: ``At $q=2,3$ the Kodaira type does not determine $P_q$, but PARI does, and Definition~def:terms applies verbatim.'' In the terms of this section:
 \begin{enumerate}[label=(\roman*)]
-\item ``the Kodaira type does not determine $L_q(A_f,s)$'' is true (the table above); what determines it is the image of inertia and $c$ or $a'$
-(\Cref{prop:lfunctions:all-shapes}).
-\item ``a type $\mathrm{IV}$ at $2$ has $P_2(X)=1+2X$'' is a theorem (\Cref{prop:lfunctions:all-shapes}(c); \Cref{ch:galrep}), not only an observation.
-\item ``a type $\mathrm{II}$ at $2$ has $P_2=1$ and $e_3=0$'' is false in general: all three shapes $1$, $1+2X$ and cubic occur for types $\mathrm{II}$ and $\mathrm{II}^*$ at $2$; \curve{336f1} and
-\curve{1232l1} are counterexamples.
-\item ``a type $\mathrm I_n^*$ at $2$ has potentially good reduction in about half of the cases, with a cubic $P_2$'': below conductor $10{,}000$, $5{,}935$ of the $9{,}667$ pairs ($61\%$)
-are potentially good over all curves ($2{,}340$ of $4{,}037$, $58\%$, over the optimal curves), and among the potentially good ones the cubic occurs only $716$ times ($P_2=1$
-for $5{,}073$, $1+2X$ for $146$); in all $716$ the twist has $a'=\pm1$, so by \Cref{prop:lfunctions:all-shapes} this factor contributes nothing at odd $\ell$. ``$t_\ell=0$'' is right.
+\item The Kodaira type does not determine $P_q$ (the table above); what determines it is the image of inertia and $c$ or $a'$ (\Cref{prop:lfunctions:all-shapes}).
+\item That a type $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$ always has $P_2(X)=1+2X$ is a theorem (\Cref{prop:lfunctions:all-shapes}(c); \Cref{ch:galrep}; the paper's Lemma lem:IV).
+\item For types $\mathrm{II}$ and $\mathrm{II}^*$ at $2$ all three shapes $1$, $1+2X$ and cubic occur; \curve{336f1} and \curve{1232l1}, the paper's examples, show the last two.
+\item For a type $\mathrm I_n^*$ at $2$: below conductor $10{,}000$, $5{,}935$ of the $9{,}667$ pairs ($61\%$) are potentially good over all curves ($2{,}340$ of $4{,}037$, $58\%$, over
+the optimal curves), and among the potentially good ones the cubic occurs only $716$ times ($P_2=1$ for $5{,}073$, $1+2X$ for $146$); in all $716$ the twist has $a'=\pm1$, so by
+\Cref{prop:lfunctions:all-shapes} this factor contributes nothing at odd $\ell$. Then $t_\ell=0$.
 \end{enumerate}
-The revised Remark rem:wild replaces (iii) and (iv) by the classification of Proposition prop:shapes, the examples \curve{336f1}, \curve{1232l1}, \curve{592c1}, and ``A type $\mathrm I_n^*$ at
-$2$ has potentially good reduction in a little over half of the cases ($58\%$ below conductor $10{,}000$), usually with $P_2=1$, and then $t_\ell=0$''; the $58\%$ is the share
-over optimal curves. It adds: ``Among optimal non-CM curves of conductor below $10{,}000$, every cubic factor at $2$ ($1{,}143$) and at $3$ ($2{,}283$) is of shape (ii).'' The
-counts $1{,}143$ and $2{,}283$ are those over all $64{,}687$ curves; over the optimal non-CM curves they are $534$ and $1{,}308$. Moreover ``of shape (ii)'' has no empirical content as stated: a cubic $P_q$ is
-of shape (ii) for every curve, by Proposition prop:shapes (\Cref{prop:lfunctions:all-shapes}), so the statement holds in both populations as a theorem. What the
-computation checks is that each cubic returned by PARI equals $(1-qX)(1-(a'^2-2q)X+q^2X^2)$ with $a'$ computed independently from a quadratic twist of good reduction
-(\Cref{rem:lfunctions:pari}); that agreement is the empirical point. The last sentence of the remark, ``At $q=\ell$ the Euler factor is not the relevant quantity, and the weights $w_3$ of
+That a cubic $P_q$ has shape (ii) holds for every curve, by Proposition prop:shapes (\Cref{prop:lfunctions:all-shapes}), as the paper notes (``that a cubic factor has shape (ii) is
+automatic, (ii) being the only cubic shape''). What the computation checks is that each cubic returned by PARI equals $(1-qX)(1-(a'^2-2q)X+q^2X^2)$ with $a'$ computed independently
+from a quadratic twist of good reduction (\Cref{rem:lfunctions:pari}): $1{,}143$ cubics at $2$ and $2{,}283$ at $3$ over all $64{,}687$ curves, $534$ and $1{,}308$ over the optimal
+non-CM curves. The last sentence of the remark, ``At $q=\ell$ the Euler factor is not the relevant quantity, and the weights $w_3$ of
 Conjecture~conj:euler are empirical'', is consistent with \Cref{def:lfunctions:terms}, which defines $e_\ell$ only for $q\ne\ell$, while $t_\ell$ is used at $q=\ell$ as well.
 \end{remark}
 
@@ -1712,7 +1703,7 @@ Diamond, Flach and Guo is \cite{DFG04} (\Cref{ch:blochkato,ch:congruence}).
 
 \emph{Rankin-Selberg.} The method is due to Rankin \cite{Rankin39} and Selberg \cite{Selberg40}; Shimura \cite{Shimura76} treats the special values. The exact relation of
 \Cref{prop:lfunctions:rankin-series}, with no correction at the bad primes, and the resulting \Cref{thm:lfunctions:petersson-sym2} at every level are elementary
-consequences of the local computation (the naive equality at every level is \Cref{ch:hecke}'s); the revised paper states the latter in Remark rem:degree, citing \cite{Rankin39,Shimura76} and \cite[Lemma 2.12]{DFG04}. The degree formula
+consequences of the local computation (the naive equality at every level is \Cref{ch:hecke}'s); the paper states the latter in Remark rem:degree, citing \cite{Rankin39,Shimura76} and \cite[Lemma 2.12]{DFG04}. The degree formula
 combines it with the formula of Zagier \cite{Zagier85} and Watkins \cite{Watkins02} (\Cref{ch:moddeg}).
 
 \emph{The local factors at the bad primes.} Lemma lem:euler at $q\ge5$ rests on the images of inertia of Serre and Tate \cite{SerreTate68} and Kraus \cite{Kraus90}

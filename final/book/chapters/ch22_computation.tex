@@ -6,7 +6,7 @@ Cremona's tables, organised by a protocol of working sets and hold-outs. This ch
 teaches PARI/GP and the \texttt{ecdata} files from zero, with exactly the functions the paper uses; reads the paper's appendix code line by line and
 proves what it computes; runs it on the running examples; explains the protocol and judges the statistics, including the calibration argument
 of Section sec:sharp; and reproduces every table of the paper that the data of this range allow on all optimal curves of conductor below $10{,}000$, from the
-very data commit the paper names, with scripts that run in minutes. Along the way it records the places where the paper's data sentences need correcting.
+very data commit the paper names, with scripts that run in minutes.
 
 \section*{Core results at a glance}
 
@@ -85,8 +85,8 @@ curves below $10{,}000$. PARI does not compute $r_E$. \emph{(methods stated, ref
 $\kod{II}$ to $\kod{IV}^*$, $\kod{I}_n^*$ or $\kod{I}_n$ with $3\mid n$, and for $73\%$ to $76\%$ for the other types; pooled rates mix ranges. \emph{(proved here, by computation)}
 \Cref{ex:computation:base-rates,rem:computation:simpson}.
 \item \textbf{The protocol.} The four ranges; the status of each statement: (eq:main), Conjecture conj:eis blind-tested on the hold-out; (eq:twist) blind-tested if
-fixed before the hold-out counts of (eq:main) were seen; the Euler terms blind-tested only on the out-of-table curves; the weights $w_3$ only on the out-of-table curves, and only if these
-contain curves with $3\mid N$ and potentially good reduction at $3$ (not stated); the correction $h_3$ and the III-free form never blind-tested. \emph{(a reading of the paper's text)}
+fixed before the hold-out counts of (eq:main) were seen; the Euler terms blind-tested only on the out-of-table curves; the weights $w_3$, the correction $h_3$ and the III-free
+form never blind-tested. \emph{(a reading of the paper's text)}
 \Cref{rem:computation:protocol,rem:computation:test-status,rem:computation:what-is-tested,pl:computation:protocol}.
 \item \textbf{Multiple comparisons.} $m$ false candidates surviving with probabilities $\pi$, $\pi'$ leave about $m\pi$ and $m\pi\pi'$; the risk sits in the choice of
 form; features read off the data are validated only by other data. \emph{(proved here)} \Cref{rem:computation:multiple-comparisons}.
@@ -127,7 +127,7 @@ function returns and how $P_q(q^{-2})$ and $e_\ell(E,q)$ are read off; \Cref{ex:
 \item Section 1.4 (component groups; optimality): \Cref{def:computation:ellglobalred,conv:computation:code-idioms,rem:computation:optimality-data}.
 \item Lemma lem:euler (``In each case the values were confirmed against PARI's \texttt{lfunsympow} on every curve of the tables''): \Cref{ex:computation:euler-by-hand}.
 \item Lemma lem:twist and the appendix's \texttt{twist\_lemma\_check.gp}: \Cref{ex:computation:twists}.
-\item Remark rem:wild and Proposition prop:shapes at $q=2,3$: \Cref{ex:computation:wild-two}, with the population of the counts corrected.
+\item Remark rem:wild and Proposition prop:shapes at $q=2,3$: \Cref{ex:computation:wild-two}.
 \item Proposition prop:ns (the $3$-division polynomial) and the function \texttt{ns3}: \Cref{ex:computation:mod3-image}, \Cref{prop:computation:rule-correct}(ii).
 \item Proposition prop:forms (``PARI's factor at $2$ is $1+2X$ for every one of them''): \Cref{ex:computation:repro-further}(c).
 \item Lemma lem:tamfactor and Section sec:tam (the Tate parameter): \Cref{ex:computation:tate-parameter,ex:computation:tamagawa-session,ex:computation:repro-tam}.
@@ -168,8 +168,8 @@ counts are reproductions, not tests.
 
 \begin{convention}[software, data and outputs]\label{conv:computation:versions}
 \begin{enumerate}[label=(\alph*)]
-\item \emph{Software.} The paper used PARI/GP 2.15 \cite{PARI} on its large ranges and PARI/GP 2.17.2 \cite{PARI217} for the checks of its
-revised version below conductor $10{,}000$ (Section sec:data). Every output printed in this chapter was produced with PARI/GP 2.17.2
+\item \emph{Software.} The paper used PARI/GP 2.15 \cite{PARI} on its large ranges and PARI/GP 2.17.2 \cite{PARI217} for its checks below
+conductor $10{,}000$ (Section sec:data). Every output printed in this chapter was produced with PARI/GP 2.17.2
 (\texttt{version()} returns \texttt{[2, 17, 2]}) through the Python interface \texttt{cypari2} 2.2.4 \cite{cypari2}, under Python 3.13 on
 Linux; no stand-alone \texttt{gp} binary was used. Every GP function printed here was loaded with \texttt{read} and run as printed.
 \item \emph{Data.} Six files of the \texttt{ecdata} repository \cite{ecdata} for conductors $0$ to $9{,}999$:
@@ -627,8 +627,8 @@ of \texttt{alldegphi} divided by the square of the Manin constant of \texttt{opt
 \begin{paperlink}\label{pl:computation:invariants}
 Section sec:data: ``The Kodaira types and discriminant exponents at the bad primes were recomputed with PARI/GP 2.15 \cite{PARI} from the
 $a$-invariants, the Euler factors of $\Sym f$ at every bad prime were computed with \texttt{lfunsympow} and \texttt{lfuneuler}, the Tate
-parameters with \texttt{ellinit} over $\Q_q$, and fifteen modular degrees spanning the configurations were recomputed with
-\texttt{ellmoddegree}, all agreeing with the tables.'' Each of these computations is one of the items above
+parameters with \texttt{ellinit} over $\Q_q$'' (with a parenthesis on $q=2$, \Cref{ex:computation:tate-parameter}), ``and fifteen modular degrees
+spanning the configurations were recomputed with \texttt{ellmoddegree}, all agreeing with the tables.'' Each of these computations is one of the items above
 (\Cref{def:computation:ellglobalred,rem:computation:lfunsympow,ex:computation:tate-parameter,rem:computation:ellmoddegree}); below
 conductor $10{,}000$ every one of them has been run on every optimal curve.
 \end{paperlink}

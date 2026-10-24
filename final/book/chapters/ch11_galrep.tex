@@ -428,7 +428,7 @@ curve ($5^2+5=30=5^3-5^2-10\cdot5-20$), and PARI gives $5P=O$ with $P\ne O$, so 
 This section relates the action of inertia on the torsion of $E$ to the reduction of $E$. The criterion of N\'eron, Ogg and
 Shafarevich says when inertia acts trivially; the component-group lemma computes the invariants of inertia on $E[\ell^k]$ at every bad
 prime; the theorem of Serre and Tate describes the image of inertia at a prime of potentially good reduction. The paper uses all
-three: $\delta_p$ in Section 1.1, ``potentially good'' and ``finite image'' in Lemma lem:IV, ``$\bar\rho_h$ unramified'' in Lemma lem:old, the
+three: $\delta_p$ in Section 1.1, ``potentially good'' and the finiteness of $\rho_{E,3}(I_q)$ in Lemma lem:IV, the unramifiedness of $\bar\rho_h$ in Lemma lem:old, the
 sentence ``$N(\bar\sigma)$ is prime to every prime at which $\bar\sigma$ is unramified'' in the optimal-level paragraph, and the remark before
 Lemma lem:IV (``At an additive prime $q\ne\ell$ the inertia invariants of the torsion are those of the component group'').
 
@@ -652,7 +652,7 @@ Lemma lem:old, the cases $p\,\|\,N$: ``$\rho_{E,\ell}|_{D_p}$ is an extension of
 $\varepsilon(\Frob_p)=a_p(f)=\pm1$ \cite[Theorem 3.1(e)]{DDT}''; and ``A non-split extension of two characters has a unique stable line''. These are
 \Cref{thm:galrep:tate-shape} and its part (iii) (and, modulo $\ell$, \Cref{lem:galrep:tamagawa-exp}(iii)). In the proof of Lemma lem:tamfactor
 the paper uses the matrix of the arithmetic Frobenius, with corner $\varepsilon\kappa$; the factor $1-q^{-1-s}$ of the table of Section 1 comes from
-the geometric Frobenius acting by $q^{-1}$ on $(\ad V)^{I_q}$, (v). The two conventions are each right in their place; the paper's revised
+the geometric Frobenius acting by $q^{-1}$ on $(\ad V)^{I_q}$, (v). The two conventions are each right in their place; the paper's
 Section 1.1 says so (``The matrices in the proof of Lemma~lem:tamfactor are those of the arithmetic Frobenius'').
 \end{paperlink}
 
@@ -782,8 +782,8 @@ is the theorem of Ogg and Saito, stated there.
 This section supplies the Kodaira-type column of the shapes table of \Cref{ch:local}: for each additive potentially good type it gives
 the image of inertia on $T$, its invariants on $\ad V$ and the action of Frobenius on them, and the reduction modulo $3$ with its invariants
 and Serre exponent. It proves the paper's Lemma lem:IV (at every prime $q\ne3$) and Remark rem:types, and gives the inertia half of Lemma
-lem:euler; the $L$-factors and the terms $e_\ell(E,q)$ are then computed in \Cref{ch:lfunctions}. The type $\kod{IV}$ at $2$, which the original
-version of the paper left as an exception in Proposition prop:forms, is a theorem (\Cref{cor:galrep:IV-at-2}).
+lem:euler; the $L$-factors and the terms $e_\ell(E,q)$ are then computed in \Cref{ch:lfunctions}. The type $\kod{IV}$ at $2$ is covered as well
+(\Cref{cor:galrep:IV-at-2}).
 
 \begin{theorem}[inertia at additive potentially good primes, $q\ge5$]\label{thm:galrep:additive-shapes}
 Let $q\ge5$, $\ell\ne q$, and let $E$ have additive potentially good reduction at $q$. Then $\rho(I_q)=\langle g\rangle$ is cyclic, $g\in\SL_2(\Zl)$, and, with
@@ -913,9 +913,8 @@ with a fixed line. The Serre exponent is $2-1=1$.
 \end{proof}
 
 \begin{paperlink}
-The revised paper states Lemma lem:IV for every $q\ne3$; the original version stated it for $q\ge5$ only, and left the
-types $\kod{IV}$, $\kod{IV}^*$ at $2$ as an exception in Proposition prop:forms, checked only numerically. The component-group argument, which
-\Cref{ch:reduction} also gives for the inertia statement at $2$, makes the exception disappear. At $q=3$ the types $\kod{IV}$, $\kod{IV}^*$ are
+The paper states Lemma lem:IV for every $q\ne3$, $q=2$ included. What makes $q=2$ accessible is the component-group argument,
+which \Cref{ch:reduction} also gives for the inertia statement at $2$; Kraus's formula, used in the second proof above, is available only for $q\ge5$. At $q=3$ the types $\kod{IV}$, $\kod{IV}^*$ are
 wildly ramified (\Cref{ch:reduction}), and the lemma does not apply: an image of order $3$ at $q=3$ is not tame. Theorem thm:qual (a) uses
 part (ii): ``By Lemma~lem:IV the Serre conductor $M=N(\bar\rho)$ has exponent exactly $1$ at $q$, so $M\mid N/q$.''
 \end{paperlink}
@@ -945,9 +944,9 @@ $3$-torsion points, an image of $I_2$ on $E[3]$ of order $3$ with an inertia-fix
 \curve{52a1}, \curve{140b1} and \curve{980i1}, \texttt{lfuneuler(lfunsympow(E,2),2)} returns $1/(1+2X)$, that is, $P_2(X)=1+2X$.
 
 \begin{paperlink}
-Proposition prop:forms of the revised paper has no exception, and the paragraph after its proof reads: ``The previous version excepted the types
-$\mathrm{IV}$, $\mathrm{IV}^*$ at $2$ and checked $e_3(E,2)\ge1$ on the $92{,}812$ such curves of the working set, where PARI's factor at $2$ is
-$1+2X$ for every one of them; Lemma~lem:IV shows that it must be.'' This is \Cref{cor:galrep:IV-at-2}. The same corollary is what lets case
+The proof of Proposition prop:forms treats the types $\kod{IV}$, $\kod{IV}^*$ at $2$ by Lemma lem:IV (``of type $\mathrm{IV},\mathrm{IV}^*$ and
+$\ell=3$, $w_3(E,2)=1=e_3(E,2)$ by Lemma~lem:IV''), and the paragraph after the proof reads: ``On the $92{,}812$ working-set curves with type
+$\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$, PARI's factor at $2$ is $1+2X$ for every one of them, as Lemma~lem:IV requires.'' This is \Cref{cor:galrep:IV-at-2}. The same corollary is what lets case
 (a) of Theorem thm:qual hold at $q=2$: the Serre exponent of $\bar\rho_{E,3}$ at $2$ is $1$ while $4\,\|\,N$, so the level drops at $2$ exactly as at a prime
 $q\ge5$; the paper's Example, case (a) at $q=2$, is \curve{52a1} (\Cref{ex:galrep:level-lowering}).
 \end{paperlink}
@@ -1000,11 +999,10 @@ ramification indices of $q$ in the fields $\Q(P)$, $P\in E[3]$, equals the order
 rows with $\dim E[3]^{I_q}\ge1$.
 
 \begin{paperlink}
-The revised paper's Remark rem:types: ``For all these types $E[3]^{I_q}=0$ and the Serre conductor of $\bar\rho_{E,3}$ has exponent $2$ at $q$. The
+The paper's Remark rem:types: ``For all these types $E[3]^{I_q}=0$ and the Serre conductor of $\bar\rho_{E,3}$ has exponent $2$ at $q$. The
 twist by $\chi_{q^*}$ lowers that exponent for $\mathrm{I}_0^*$, $\mathrm{I}_n^*$, $\mathrm{II}$, $\mathrm{II}^*$; it lowers the conductor of $E$
-only for $\mathrm{I}_0^*$ and $\mathrm{I}_n^*$.'' This is (a) and (b) of \Cref{prop:galrep:mod3-inertia}. The original version applied the first
-sentence only to ``the last two cases'' ($\kod{II}$, $\kod{II}^*$ and $\kod{I}_n^*$), omitted $\kod{I}_0^*$, and said the twist lowers ``the conductor exponent'', which
-is right for $\bar\rho_{E,3}$ and wrong for $E$ in the case $\kod{II}\leftrightarrow\kod{IV}^*$. Among the additive rows, Theorem thm:qual treats exactly those in
+only for $\mathrm{I}_0^*$ and $\mathrm{I}_n^*$.'' This is (a) and (b) of \Cref{prop:galrep:mod3-inertia}. The remark distinguishes the two exponents: in the case
+$\kod{II}\leftrightarrow\kod{IV}^*$ the twist lowers the Serre exponent of $\bar\rho_{E,3}$ but not the conductor exponent of $E$. Among the additive rows, Theorem thm:qual treats exactly those in
 which, without the twist or with the twist by $\chi_{q^*}$, the Serre exponent at $q$ is strictly smaller than the conductor exponent at $q$ of the
 corresponding curve ($E$, respectively $E^{(q)}$): $\kod{IV}$, $\kod{IV}^*$ without the twist ($1<2$, case (a)); $\kod{II}$, $\kod{II}^*$ with it ($1<2$, case
 (b)); and $\kod{I}_n^*$ with $3\mid n$ with it ($0<1$, case (c) at $\ell=3$). In the rows $\kod{I}_0^*$ ($0=0$ after the twist), $\kod{I}_n^*$ with $3\nmid n$ ($1=1$)
@@ -1039,7 +1037,7 @@ Proposition prop:Sf: a twist by $\chi_{\ell^*}$ can preserve $\bar\rho$ only whe
 Let $\ell\nmid N$ and let $\mathcal E$ be the N\'eron model of $E$ over $\Zl$, an elliptic curve over $\Zl$.
 \begin{enumerate}[label=(\roman*)]
 \item For every $k\ge1$, $\mathcal E[\ell^k]$ is a finite flat group scheme over $\Zl$ of order $\ell^{2k}$ whose generic fibre is $E[\ell^k]$; so $\bar\rho|_{D_\ell}$ is
-\emph{finite} (flat), which is what ``good at $\ell$'' means in the optimal-level theorem \cite[Theorem 3.15]{DDT}.
+\emph{finite} (flat), which is what ``good'' means in the optimal-level theorem \cite[Theorem 3.15]{DDT}.
 \item $V|_{G_{\Q_\ell}}$ is crystalline with Hodge-Tate weights $0$ and $1$, and the crystalline Frobenius on $\Dcris(V^\vee)$ has characteristic polynomial
 $X^2-a_\ell X+\ell$.
 \item If $\bar\rho$ is irreducible, its Serre weight is $k(\bar\rho)=2$.
@@ -1509,7 +1507,7 @@ together with explicit families of $j$-invariants (rational functions on modular
 
 We do not prove this; see Zywina \cite[Section 1]{Zywina15}. At $\ell=13$ the list in \cite{Zywina15} depended on the rational points of certain modular
 curves, which later work determined; we give no reference for that. The book needs only $\ell=3$, which \Cref{thm:galrep:mod3-images} proves directly
-and for CM curves as well; the paper cites \cite{Zywina15} for the three irreducible images at $\ell=3$.
+and for CM curves as well; the paper cites \cite{Zywina15} for the three irreducible images at $\ell=3$ and derives them directly.
 
 \begin{remark}[computing images]\label{rem:galrep:computing-images}
 (a) At $\ell=3$ the image is determined by $\psi_3$: its factorisation pattern, the Galois group of an irreducible quartic factor, and, for each
@@ -1542,8 +1540,7 @@ indices, and $E[3]^{I_q}\ne0$ iff some prime above $q$ in some $\Q(P)$ is unrami
 \begin{paperlink}
 Section sec:data: ``The mod $3$ images of the tables were checked against the factorisation of the $3$-division polynomial (Proposition~prop:ns) on every curve for which it mattered.'' The appendix's
 \texttt{ns3}: ``\texttt{ns3(E) = my(F = factor(elldivpol(E, 3))); (\#F[,1] == 2 \&\& poldegree(F[1,1]) == 2);}''. Both rest on
-\Cref{thm:galrep:mod3-images}. Section sec:eis calls \texttt{3Cs.1.1} ``the subgroup of order $2$ of the split Cartan subgroup that fixes a point'',
-which is correct (the original version called it ``the split Cartan image'').
+\Cref{thm:galrep:mod3-images}. Section sec:eis calls \texttt{3Cs.1.1} ``the subgroup of order $2$ of the split Cartan subgroup that fixes a point''.
 \end{paperlink}
 
 \section[Absolute irreducibility over \texorpdfstring{$\Q(\sqrt{\ell^*})$}{Q(sqrt l*)}]{Absolute irreducibility over \texorpdfstring{$\Q(\sqrt{\ell^*})$}{Q(sqrt l*)}, Proposition prop:ns and Lemma lem:h0}\label{sec:galrep:lstar}
@@ -1610,12 +1607,11 @@ other quadratic fields: for instance \curve{608b1} (\texttt{5Ns}) from $\Q(i)$, 
 (\texttt{7Ns}) from $\Q(\sqrt{-3})$.
 
 \begin{paperlink}
-\emph{Commentary.} The revised paper states this as Proposition prop:Sf: ``Let $\ell$ be an odd prime with $\ell\nmid N$ and $E[\ell]$ irreducible. If
+The paper states this as Proposition prop:Sf: ``Let $\ell$ be an odd prime with $\ell\nmid N$ and $E[\ell]$ irreducible. If
 $\ell\ge5$, then $\ell\notin S_f$. If $\ell=3$, then $3\in S_f$ if and only if the image of $\bar\rho_{E,3}$ is conjugate to $N_s(\F_3)$, and then $E$ is ordinary at
-$3$.'' Its proof is the argument of \Cref{cor:galrep:ordinary}(ii). The original version did not contain it: its abstract imposed the
-condition on $\Q(\sqrt{\ell^*})$ for every $\ell$, and its Section sec:forms spoke of ``the curves whose mod $\ell$ representation is induced from
-$\Q(\sqrt{\ell^*})$ with $\ell\ge5$'' as a separate class; by \Cref{thm:galrep:lstar-automatic} all such curves have $\ell\mid N$. In the revised abstract the
-condition reads ``(for $\ell\ge5$ this only asks that $E[\ell]$ be irreducible)''.
+$3$.'' Its proof is the argument of \Cref{cor:galrep:ordinary}(ii). Accordingly the paper's abstract reads ``(for $\ell\ge5$ this only asks that
+$E[\ell]$ be irreducible)'', and Section sec:forms records that there are no other failures of the hypothesis among the non-CM curves with
+$E[\ell]$ irreducible, ``the curves whose mod $\ell$ representation is induced from $\Q(\sqrt{\ell^*})$ with $\ell\ge5$ all having $\ell\mid N$''.
 \end{paperlink}
 
 \begin{proposition}[the paper's Proposition prop:ns]\label{prop:galrep:ns}
@@ -1671,11 +1667,10 @@ $a_{17}=6$, $a_{23}=6$, $a_{29}=-6$, $a_{41}=-6$, $a_{47}=6$, $a_{53}=-12$, $a_{
 \end{example}
 
 \begin{paperlink}
-The paper's proof of Proposition prop:ns, in the revised version, contains steps (1) to (8) in compressed form: ``The first two act absolutely
+The paper's proof of Proposition prop:ns contains steps (1) to (8) in compressed form: ``The first two act absolutely
 irreducibly on $\F_3^2$: a subgroup of $\GL_2(\overline\F_3)$ fixing a line lies in a Borel subgroup, so its commutator subgroup is abelian of exponent $3$,
-whereas the commutator subgroups $\{\pm1\}$ of $Q_8$ and $Q_8$ of $\SL_2(\F_3)$ are not.'' The original version had ``non-abelian and act
-faithfully'' in place of the commutator argument, required no complex multiplication (unused), and wrote the induction over $\F_3$ instead of $\F_9$.
-The restriction to $\Gal(\Qbar/\Q(\sqrt{-3}))$ in the \texttt{3Ns} case is irreducible over $\F_3$; it is wrong to call it reducible.
+whereas the commutator subgroups $\{\pm1\}$ of $Q_8$ and $Q_8$ of $\SL_2(\F_3)$ are not.'' Being non-abelian and acting faithfully would not suffice, as step (4) notes. The restriction to $\Gal(\Qbar/\Q(\sqrt{-3}))$ in the
+\texttt{3Ns} case is irreducible over $\F_3$ and becomes reducible only over $\F_9$, where the induction of (ii) takes place.
 \end{paperlink}
 
 \begin{lemma}[the paper's Lemma lem:h0]\label{lem:galrep:h0}
