@@ -8,6 +8,10 @@
   the tables as printed, a self-test, a checksum manifest and a hardened reproduction script. Start with
   `pipeline/README.md`. Data: Cremona's `ecdata` tables at a pinned commit, downloaded by the scripts (1.2 GB, not
   committed).
+* `claims/`: a machine-readable ledger of the paper's claims (`claims.csv`, `claims.yaml`): for each numbered
+  statement, table and named example, its status (proved, imported, conjectural, empirical, computed), where the book
+  treats it, the script and output behind it, and the level of computational evidence; `claims/scripts/check_claims.py`
+  validates it against the paper, the book and the pipeline.
 * `TODO.md`: open items for the author (not part of the book or the paper).
 
 The working copies at the repository root (`paper/`, `chapters/`, `important/`) keep the full history of the review.
