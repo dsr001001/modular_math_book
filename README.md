@@ -6,7 +6,7 @@ reading the research note
 
 > *Local factors of the adjoint L-function and the l-adic valuations of the modular degree*
 
-(the paper is not part of this repository). Each chapter opens with a "Core results at a glance" card so
+(the final versions of the paper, the book and the computational pipeline are in `final/`; see `final/README.md`). Each chapter opens with a "Core results at a glance" card so
 that an expert can use the book as a refresher.
 
 * `PLAN.md`: the master plan (audience, table of contents, chapter scopes, paper-to-chapter map, writing
