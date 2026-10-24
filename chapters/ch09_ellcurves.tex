@@ -429,7 +429,7 @@ j=1728\,\frac{4A^3}{4A^3+27B^2};
 \]
 thus $j=0$ iff $A=0$, and $j=1728$ iff $B=0$. If $AB\ne0$ ($j\ne0,1728$) the conditions are $u^4=u^6=1$, which mean $u^2=u^6/u^4=1$; if $B=0$ ($j=1728$),
 $u^4=1$; if $A=0$ ($j=0$), $u^6=1$. Distinct $u$ give distinct maps, since $u=u^3/u^2$ is read off the map. So $\Aut_{\bar K}(E)\simeq\mu_n(\bar K)$ with $n=2,4,6$. Since
-$\operatorname{char}K\nmid n$, the polynomial $X^n-1$ is separable and $\mu_n(\bar K)$ has $n$ elements; a finite subgroup of $\bar K^\times$ is cyclic (\Cref{ch:rings}). The formula for $[-1]$ is the substitution $(u,r,s,t)=(-1,0,-a_1,-a_3)$, which sends $(x,y)$ to the other point
+$\operatorname{char}K\nmid n$, the polynomial $X^n-1$ is separable and $\mu_n(\bar K)$ has $n$ elements; a finite subgroup of $\bar K^\times$ is cyclic (\Cref{ch:groups}). The formula for $[-1]$ is the substitution $(u,r,s,t)=(-1,0,-a_1,-a_3)$, which sends $(x,y)$ to the other point
 with the same $x$.
 \end{proof}
 
@@ -667,6 +667,10 @@ $x=4-1-4-0=-1$ and $y=2-2=0$.
 torsion points cannot have (\Cref{prop:ellcurves:torsred}); its canonical height is $0.3025\ldots>0$.
 \end{enumerate}
 \end{example}
+
+\noindent The group law makes the maps $[m]$ and, more generally, maps of curves preserving $O$ into the natural morphisms between elliptic curves. Two facts from this
+section drive the next one: $E(\bar K)\to\Pic^0(E)$ is a group isomorphism (so kernels and pullbacks of divisors can be computed with \Cref{cor:ellcurves:principal}), and
+$[m]^*\omega=m\omega$ (so $[m]$ is separable when $\operatorname{char}K\nmid m$, and $E[m]$ can be counted).
 \section{Isogenies}\label{sec:ellcurves:isogenies}
 
 The paper works with isogeny classes: the $X_0(N)$-optimal curve is one curve of a class, a rational $\ell$-isogeny is the Eisenstein
@@ -1402,7 +1406,7 @@ $g_2(\Lambda)=-4A$ and $g_3(\Lambda)=-4B$.
 \end{theorem}
 
 \begin{proof}
-(i) $\Theta$ is holomorphic (in the chart $(x/y,1/y)$ near $O$ it sends $0$ to $(0,0)$ holomorphically) and lands in $E_\Lambda$ by \Cref{thm:ellcurves:wp}(iii). It is bijective: $O$ has the single
+(i) $\Theta$ is holomorphic (in the chart $(x/y,1/y)$ near $O$ it is $z\mapsto(\wp/\wp',1/\wp')=(-z/2+O(z^5),-z^3/2+O(z^7))$, holomorphic and sending $0$ to $(0,0)$) and lands in $E_\Lambda$ by \Cref{thm:ellcurves:wp}(iii). It is bijective: $O$ has the single
 preimage $0$, and for an affine point $(x_0,y_0)$ the function $\wp-x_0$ has exactly two zeros $\pm z_0$ modulo $\Lambda$ (counted with multiplicity, as in the proof of
 \Cref{thm:ellcurves:wp}(iv)); since $\wp'(-z_0)=-\wp'(z_0)$ and $\wp'(z_0)^2=y_0^2$, exactly one of $z_0,-z_0$ maps to $(x_0,y_0)$, and if $z_0\equiv-z_0$ then $y_0=\wp'(z_0)=0$. A holomorphic
 bijection of compact Riemann surfaces is biholomorphic (\Cref{ch:curves}). Group law: let $z_1,z_2\in\C$ with $\Theta(z_1)$, $\Theta(z_2)$ affine, distinct and not opposite, and let $y=\lambda x+\nu$
@@ -1938,6 +1942,12 @@ type $\kod{I}_0^*$ prime, Theorems thm:twist and thm:quant twist by $\chi_S$, an
 section defines twists for a general Weierstrass model, computes their invariants, proves $\rho_{E^{(d)},\ell}\simeq\rho_{E,\ell}\otimes\chi_d$ and $a_p(E^{(d)})=\chi_d(p)a_p(E)$, and settles which of
 the two possible twists the paper means. The effect of twisting on Kodaira types and conductors (Lemma lem:twist (i), (ii)) is proved in \Cref{ch:reduction}.
 
+The idea is simple. The curves $y^2=f(x)$ and $dy^2=f(x)$ become isomorphic over $K(\sqrt d)$, by $y\mapsto y/\sqrt d$, but this isomorphism is not defined over $K$:
+an automorphism $\sigma$ with $\sigma(\sqrt d)=-\sqrt d$ changes it by the automorphism $[-1]$. So the two curves have the same geometry (the same $j$) but Galois acts on
+their points differently, through an extra sign $\chi_d(\sigma)$, and every arithmetic quantity built from the Galois action (the $a_p$, the representation $\rho_{E,\ell}$) is
+multiplied by $\chi_d$. Over a finite field $\F_p$, with $d$ a non-square, this is the count of \Cref{prop:ellcurves:twistFq}: an $x$ with $f(x)$ a nonzero square gives two points on one curve and none
+on the other.
+
 \begin{definition}[quadratic twists]\label{def:ellcurves:twist}
 Let $\operatorname{char}K\ne2$ and $d\in K^\times$.
 \begin{enumerate}[label=(\alph*)]
@@ -1992,11 +2002,21 @@ are in general different curves, the twist by $q$ being ramified at $2$ as well.
 (i) For $y^2=x^3+Ax^2+Bx+C$, $b_2=4A$, $b_4=2B$, $b_6=4C$, $b_8=4AC-B^2$. Replacing $(A,B,C)$ by $(dA,d^2B,d^3C)$ multiplies $b_i$ by $d^{i/2}$ for $i=2,4,6,8$; since $c_4$, $c_6$, $\Delta$
 are homogeneous of weights $4$, $6$, $12$ in this grading, they are multiplied by $d^2$, $d^3$, $d^6$, and $j$ is unchanged. For the integral model, the same computation with
 $(A,B,C)=(db_2,8d^2b_4,16d^3b_6)$ gives $2^4d^2c_4$, $2^6d^3c_6$, $2^{12}d^6\Delta$ (checked by machine); this is the change of coordinates with $u=1/2$ applied to $d^2c_4$, $d^3c_6$, $d^6\Delta$.
-(ii) Take short models (\Cref{lem:ellcurves:identities}(iii)), which have invariants $6^4c_4$, $6^6c_6$; the quotient defining $d$ is unchanged by such rescalings, and by changes of
-coordinates, which multiply it by $u^2$. As $j\ne0,1728$, $c_4,c_6,c_4',c_6'\ne0$, and $j=j'$ is equivalent to $c_6^2/c_4^3=c_6'^2/c_4'^3$. Then $d^2c_4=c_6'^2c_4^3/(c_6^2c_4'^2)=c_4'$ and
+(ii) First, the class of $d$ modulo squares does not depend on the models: a change of coordinates of $E'$ with parameter $u$ replaces $(c_4',c_6')$ by
+$(u^{-4}c_4',u^{-6}c_6')$ and so multiplies $d$ by $u^{-2}$, and similarly for $E$ (it multiplies $d$ by $u^2$); by \Cref{prop:ellcurves:twistbasic}(i) a square factor does not
+change $E^{(d)}$ up to isomorphism. So we may take short models (\Cref{lem:ellcurves:identities}(iii)), which have invariants $6^4c_4$, $6^6c_6$ (and likewise for $E'$); passing to them
+for both curves does not change the quotient defining $d$ at all. As $j\ne0,1728$, $c_4,c_6,c_4',c_6'\ne0$, and $j=j'$ is equivalent to $c_6^2/c_4^3=c_6'^2/c_4'^3$. Then $d^2c_4=c_6'^2c_4^3/(c_6^2c_4'^2)=c_4'$ and
 $d^3c_6=d^2c_4\cdot dc_6/c_4=c_4'\cdot c_6'/c_4'=c_6'$. By (i), $E^{(d)}$ has the same $c_4$, $c_6$ as $E'$, hence the same short model. (iii) $q=-q^*$ when $q\equiv3\pmod4$, and $E^{(-q^*)}\simeq(E^{(q^*)})^{(-1)}$
 by \Cref{prop:ellcurves:twistbasic}(i). By (i) the twist by $-1$ multiplies $c_6$ by $-1$; the field $\Q(\sqrt{-1})$ is ramified at $2$. The last statement is (i) with $v_q(q^*)=v_q(q)=1$.
 \end{proof}
+
+\noindent An example of (ii): \curve{980i1} and \curve{140b1} have the same $j=2^{19}3^3/(5\cdot7^5)$ (\Cref{ex:ellcurves:running-invariants}), with
+$(c_4,c_6)=(-75264,62826624)$ and $(-1536,-183168)$. The recipe gives
+\[
+d=\frac{(-183168)(-75264)}{62826624\cdot(-1536)}=-\frac{183168\cdot49}{62826624}=-\frac17,
+\]
+using $75264=49\cdot1536$ and $62826624=7\cdot8975232=7\cdot183168\cdot49$. So $\curve{140b1}\simeq\curve{980i1}^{(-1/7)}\simeq\curve{980i1}^{(-7)}$, as $-1/7=-7\cdot(1/7)^2$; this is the
+identification used in \Cref{warn:ellcurves:twists}(b).
 
 \begin{theorem}[the Galois representation of a twist]\label{thm:ellcurves:twistgal}
 Let $\operatorname{char}K\ne2$, $d\in K^\times$ and $\ell\ne\operatorname{char}K$. Then $\psi$ of \Cref{prop:ellcurves:twistbasic}(ii) induces a $G_K$-isomorphism $T_\ell E^{(d)}\simeq T_\ell E\otimes\chi_d$; that is,
@@ -2021,7 +2041,8 @@ a_p(E^{(d)})=\chi_d(p)\,a_p(E),\qquad\chi_d(p)=\Bigl(\frac Dp\Bigr).
 Good reduction of $E^{(d)}$ at $p$: $E$ and $E^{(d)}$ become isomorphic over the extension $\Q_p(\sqrt d)$, unramified at $p$, and good reduction is invariant under unramified extension
 (\Cref{ch:reduction}). By \Cref{thm:ellcurves:twistgal} and \Cref{thm:ellcurves:frobQ}, for $\ell\ne p$, $a_p(E^{(d)})=\tr(\rho_{E,\ell}\otimes\chi_d)(\Frob_p)=\chi_d(\Frob_p)a_p(E)$, and $\chi_d(\Frob_p)=\bigl(\frac Dp\bigr)$
 (\Cref{conv:ellcurves:conventions}(d)). An elementary proof when $p$ is odd and $p\nmid d\Delta$: with $E\colon y^2=f(x)$ and $E^{(d)}\colon y^2=d^3f(x/d)$, \Cref{prop:ellcurves:twistFq} gives
-$a_p(E^{(d)})=-\sum_x\eta(d^3f(x/d))=-\eta(d)\sum_{x'}\eta(f(x'))=\eta(d)a_p(E)$, and $\eta(d)=\bigl(\frac dp\bigr)=\bigl(\frac Dp\bigr)$.
+$a_p(E^{(d)})=-\sum_x\eta(d^3f(x/d))=-\eta(d)\sum_{x'}\eta(f(x'))=\eta(d)a_p(E)$: here $\eta(d^3)=\eta(d)^3=\eta(d)$, and $x'=x/d$ runs over $\F_p$ as $x$ does. Finally
+$\eta(d)=\bigl(\frac dp\bigr)=\bigl(\frac Dp\bigr)$, since $d/D$ is the square of a rational number whose numerator and denominator are prime to $p$ (as $p\nmid dD$).
 \end{proof}
 
 \noindent Checked for every good $p<400$, $p=2$ included where allowed: \curve{121d1} against \curve{11a3}, \curve{121d2} against \curve{11a1} (with $\chi_{-11}$); \curve{121c2} against \curve{121a1}
@@ -2126,6 +2147,9 @@ it is the theorem of Wiles, Taylor-Wiles and Breuil, Conrad, Diamond and Taylor 
 \end{proof}
 
 \noindent For \curve{11a1}, $a_1,\dots,a_{13}=1,-2,-1,2,1,2,-2,0,-2,-2,1,-2,4$; for instance $a_4=a_2^2-2=2$, $a_8=a_2a_4-2a_2=0$, $a_9=a_3^2-3=-2$, and $a_{11}=1$ ($11$ is split multiplicative).
+The composite indices come from multiplicativity: $a_6=a_2a_3=2$, $a_{10}=a_2a_5=-2$, $a_{12}=a_4a_3=-2$. The local factor at $2$ is
+$(1+2\cdot2^{-s}+2^{1-2s})^{-1}=\sum_ka_{2^k}2^{-ks}$, and the recursion $a_{2^{k+1}}=-2a_{2^k}-2a_{2^{k-1}}$ continues $1,-2,2,0,-4,8,-8,0,\dots$; the bound of (i) reads
+$\abs{a_{2^k}}\le(k+1)2^{k/2}$, here $\abs{a_{16}}=4\le5\cdot4$.
 
 \section{Labels and the running examples}\label{sec:ellcurves:labels}
 

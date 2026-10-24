@@ -572,9 +572,10 @@ by additivity.
 Let $C$ be the smooth cubic $y^2=h(x)=(x-e_1)(x-e_2)(x-e_3)$, $e_i$ distinct, $\operatorname{char}k\ne2$, $O=[0:1:0]$ and $T_i=(e_i,0)$. The orders
 needed are computed in the remarks after \Cref{thm:curves:smooth-dvr} and in the proof of \Cref{prop:curves:differentials}(iv) below: $y$ is a uniformiser at
 each $T_i$, $\ord_O y=-3$, $\ord_O x=-2$, and at an affine point with $y\ne0$ the function $x-a$ is a uniformiser. Hence
-\[
-\operatorname{div}(y)=(T_1)+(T_2)+(T_3)-3(O),\qquad \operatorname{div}(x-e_1)=2(T_1)-2(O),\qquad \operatorname{div}(x-a)=(P)+(P')-2(O),
-\]
+\begin{gather*}
+\operatorname{div}(y)=(T_1)+(T_2)+(T_3)-3(O),\qquad \operatorname{div}(x-e_1)=2(T_1)-2(O),\\
+\operatorname{div}(x-a)=(P)+(P')-2(O),
+\end{gather*}
 the last for $a$ not a root of $h$, with $P,P'=(a,\pm b)$ and $b^2=h(a)\ne0$. All three have degree zero, as \Cref{prop:curves:principal}(ii) requires, and
 the degrees of the zero divisors, $3$ and $2$, are the field degrees $[\bar k(C):\bar k(y)]$ and $[\bar k(C):\bar k(x)]$ (the second because $y$ satisfies a
 quadratic equation over $\bar k(x)$ and is not in $\bar k(x)$, $h$ not being a square). Note also $\operatorname{div}(y^2)=2\operatorname{div}(y)=\sum_i\operatorname{div}(x-e_i)$,
@@ -600,7 +601,9 @@ induces $\deg\colon\Pic(C)\to\Z$, with kernel $\Pic^0(C)=\Div^0(C)/\operatorname
 (ii) $\sigma$ preserves degrees and, by \Cref{prop:curves:principal}(iii), principal divisors.
 (iii) Let $D\in\Div^0_k(C)$ with $D=\operatorname{div}(f)$ for some $f\in\bar k(C)^\times$. Choose a finite Galois extension $L/k$ containing the coefficients of
 $f$. For $\sigma\in G_k$, $\operatorname{div}(\sigma f)=\sigma D=D$, so $\sigma f=c_\sigma f$ with $c_\sigma\in\bar k^\times$ by \Cref{prop:curves:principal}(i); in fact $c_\sigma\in L^\times$ and
-$c_\sigma$ depends only on $\sigma|_L$. From $\sigma\tau f=\sigma(c_\tau)c_\sigma f$ we get $c_{\sigma\tau}=\sigma(c_\tau)c_\sigma$: a $1$-cocycle of $\Gal(L/k)$ with values in $L^\times$. By
+$c_\sigma$ depends only on $\sigma|_L$. Indeed, $\sigma f$ is computed by applying $\sigma|_L$ to the coefficients of $f$, which lie in $L$, so it depends only on
+$\sigma|_L$ and again has coefficients in $L$ ($L/k$ being Galois). So $c_\sigma=\sigma f/f$ is a constant lying in $L(C)$, and the constants in $L(C)$ are the
+elements of $L$, since $L$ is algebraically closed in $L(C)$ (\Cref{def:curves:function-field}, applied over $L$). From $\sigma\tau f=\sigma(c_\tau)c_\sigma f$ we get $c_{\sigma\tau}=\sigma(c_\tau)c_\sigma$: a $1$-cocycle of $\Gal(L/k)$ with values in $L^\times$. By
 Hilbert's Theorem 90 (\Cref{ch:galois}) there is $b\in L^\times$ with $c_\sigma=\sigma(b)/b$; then $f/b$ is fixed by $G_k$, so lies in $k(C)$
 (\Cref{prop:curves:galois-action}(ii)), and $D=\operatorname{div}(f/b)$. This is injectivity. Surjectivity when $C(k)\ne\emptyset$ uses the vanishing of an
 obstruction in the Brauer group of $k$; we do not prove it, see \cite[Section 1]{MilneJacobian86} (section number not verified) and
@@ -2067,6 +2070,7 @@ with a single preimage. A morphism of degree one is an isomorphism (\Cref{cor:cu
 \begin{exercise}\label{ex:curves:ex-degrees}
 The optimal curves \curve{37a1} and \curve{99a1} have modular degrees $2$ and $4$ (Cremona's tables), and $g(X_0(37))=2$, $g(X_0(99))=9$. Compute the total ramification of their modular
 parametrisations. Show that for every optimal $E$ of conductor $N$, $\deg\varphi_E=1$ forces $g(X_0(N))=1$, and that $g(X_0(N))\ge2$ forces $\deg\varphi_E\ge2$.
+(Answers: $2$ and $16$; we checked the genera with \texttt{mfdim} and the degrees with \texttt{ellmoddegree}.)
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-basis-change}
@@ -2084,6 +2088,8 @@ paper's lattice $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)$ is ``homothetic to the dua
 \begin{exercise}\label{ex:curves:ex-zeta3}
 Let $E=\C/\Z[\zeta_3]$ and $\psi(z)=\zeta_3z$. Write the matrix of $\psi^*$ on $H^1(E,\Z)$ in the basis dual to $1$, $\zeta_3$, and of its adjoint for the cup product. Show that $\psi^*$ is an
 isometry with $(\psi^*)^\dagger=(\psi^*)^2$ and that $\psi^*+(\psi^*)^\dagger=-1$. Which elements of $\Z[\psi^*]$ are self-adjoint?
+\emph{Hint.} With $z=s+t\zeta_3$ and $\zeta_3^2=-1-\zeta_3$, $\psi(z)=-t+(s-t)\zeta_3$, so $\psi^*ds=-dt$ and $\psi^*dt=ds-dt$. Use the formula $G^{-1}P^{\mathsf T}G$ of
+\Cref{ex:curves:correspondence-examples}(c). (Answer to the last question: only the integers.)
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-twist-counter}
@@ -2096,11 +2102,13 @@ $w=\operatorname{diag}(1,-1)$, an involution, show that $w$ is not an isometry a
 Let $H=\Z^4$ with basis $a_1^\vee,a_2^\vee,b_1^\vee,b_2^\vee$ and the symplectic cup product of \Cref{thm:curves:cup-product}, and $M$ the span of $u=a_1^\vee$ and $v=nb_1^\vee+b_2^\vee$. Show
 that $M$ is saturated, that the pairing on $M$ has ideal of values $n\Z$, compute $M^\perp$ and show $[H:M\oplus M^\perp]=n^2$, as \Cref{prop:curves:degree-cup-product}(iv) predicts for
 $M=\varphi^*H^1(E,\Z)$ when $g(X)=2$. Do the same for $M'=\Z u\oplus\Z\cdot2v$ and compare with the non-saturated case.
+(Answers: $M^\perp=\Z(a_1^\vee-na_2^\vee)\oplus\Z b_2^\vee$; for $M'$ the ideal of values is $2n\Z$, $M'^\perp=M^\perp$, and the index is $2n^2$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-component}
 Let $V=\C^2$, $\Lambda=\Z[i]^2$, $W=\C$, $M=\Z[i]$ and $A(z_1,z_2)=2z_1+(1+i)z_2$. Show that $A$ induces a surjective homomorphism $\pi$ of complex tori, compute $A(\Lambda)$ and show that
 $\ker\pi$ has two connected components. Replace $A$ by $z_1+(1+i)z_2$ and show that the kernel becomes connected.
+\emph{Hint.} $2=-i(1+i)^2$, so $A(\Lambda)=(1+i)\Z[i]$, of index $2$ in $\Z[i]$; apply \Cref{lem:curves:tori}(a).
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-frobenius}
@@ -2112,7 +2120,7 @@ and explain why \Cref{thm:curves:riemann-hurwitz} does not apply to it.
 \begin{exercise}\label{ex:curves:ex-residue}
 (a) On $\PP^1$ compute all residues of $\omega=dz/(z^3-z)$, including at $\infty$, check \Cref{thm:curves:residue}, and deduce the partial fraction decomposition of $1/(z^3-z)$. (b) Show that on a
 compact Riemann surface no meromorphic $1$-form has a single simple pole and no other pole. (c) On a Weierstrass cubic, show that $x\,dx/(2y+a_1x+a_3)$ has a double pole at $O$ and no other pole,
-and deduce that its residue at $O$ is $0$.
+and deduce that its residue at $O$ is $0$. (Answer to (a): the residues are $-1$ at $0$, $\frac12$ at $\pm1$ and $0$ at $\infty$.)
 \end{exercise}
 
 \section{Notes and references}\label{sec:curves:notes}

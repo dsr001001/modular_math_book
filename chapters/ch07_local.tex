@@ -2210,12 +2210,14 @@ $65=13\cdot5$ is not, as $3\nmid v_{13}(65)$.)
 \begin{exercise}\label{ex:local:ex-11a1}
 Let $E=\curve{11a1}$, which has split multiplicative reduction at $11$ with $n_{11}=v_{11}(\Delta_E)=5$. Using \Cref{thm:local:kummer-inertia}(v) and
 \Cref{ex:local:tate-shape-wd}, show that $I_{11}$ acts trivially on $E[5]$ but not on $E[25]$ (the paper's Lemma lem:tamagawa-exp). Using \Cref{ex:local:powers-examples}(c),
-show more: $E[5]\simeq\Z/5\oplus\mu_5$ as a $G_{\Q_{11}}$-module.
+show more: $E[5]\simeq\Z/5\oplus\mu_5$ as a $G_{\Q_{11}}$-module. (Hint: $E[\ell^k]$ is an extension of $\Z/\ell^k$ by $\mu_{\ell^k}$ whose class is $\kappa_{q_E}\bmod\ell^k$;
+$q_E$ is a fifth power in $\Q_{11}$, so by \Cref{prop:local:kummer-qp}(i) the cocycle modulo $5$ is a coboundary, and the extension splits.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-tame-level}
 Redo \Cref{ex:local:tame-explicit} for $(q,\ell,k)=(5,3,2)$ and $(11,3,2)$: give the order of $\Gal(\Q_q(\mu_9,q^{1/9})/\Q_q)$, and compute $\Frob\,t\,\Frob^{-1}$ and
 $\Frob^{-1}t\,\Frob$ as powers of $t$. Then show directly, in the affine model, that $\Phi\,t\,\Phi^{-1}=t^{q'}$ for the geometric Frobenius $\Phi=\Frob^{-1}$.
+(Answers: $5$ and $11\equiv2$ both have order $6$ modulo $9$, so both groups have order $54$; for $q=5$, $t^5$ and $t^2$; for $q=11$, $t^2$ and $t^5$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-14a1}
@@ -2238,11 +2240,14 @@ $q=7$, $\ell=3$ and $x=7^3u$ with $u\equiv3\pmod7$, compute this minimum. (Answe
 Let $q$ be odd, $K=\Q_q(\sqrt{q^*})$ and $\ell\ne q$. (a) Show that $I_K$ has index $2$ in $I_q$ and that $t_{\ell,\Q_q}|_{I_K}=2t_{\ell,K}$. (b) For $\rho$ the Tate shape of
 \Cref{ex:local:tate-shape-wd} with $x\in\Q_q^\times$, $a=v_q(x)$, show that $\rho\bmod\ell^k$ is unramified on $G_K$ iff $\ell^k\mid2a$. (c) Conclude that the criterion of
 Lemma lem:tamagawa-exp is insensitive to this ramified base change for $\ell$ odd but not for $\ell=2$, in contrast with the unramified base change of its proof.
+(Hints: (a) \Cref{prop:local:unram-basechange} and \Cref{thm:local:tame-character}(v) with $e=2$. (b) On $I_K$, $\kappa_x=a\,t_{\ell,\Q_q}=2a\,t_{\ell,K}$, and $t_{\ell,K}$ is
+surjective. (c) For $\ell$ odd, $\ell^k\mid2a$ iff $\ell^k\mid a$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-sym2}
 Let $\rho$ be the Tate shape of \Cref{ex:local:tate-shape-wd} with $a\ne0$ and $\varepsilon=1$. Show that $\WD(\Sym\rho)\simeq\Sp(3)$, and compute $L(\Sym V,s)$, $\dim(\Sym V)^{I_K}$
-and $a(\Sym V)$. Check your answer against $\Sym V\simeq\ad V\otimes\det V$ and \Cref{prop:local:steinberg-shape}(iii).
+and $a(\Sym V)$. Check your answer against $\Sym V\simeq\ad V\otimes\det V$ and \Cref{prop:local:steinberg-shape}(iii). (Answer: $L(\Sym V,s)=(1-q^{-2-s})^{-1}$,
+$\dim(\Sym V)^{I_K}=1$, $a(\Sym V)=2$; indeed $\det V=\chi_\ell$ corresponds to $\norm{\cdot}$, and $\Sp(3)\otimes\norm{\cdot}^{-1}\otimes\norm{\cdot}=\Sp(3)$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-twist-conductor}
@@ -2253,33 +2258,45 @@ conductors of its quadratic twists by $\chi_{-4}$, $\chi_8$, $\chi_{-3}$ and $\c
 \begin{exercise}\label{ex:local:ex-121d2}
 $\curve{11a1}$ has type $\mathrm{I}_5$ at $11$, and its twist by $\chi_{-11}$ is $\curve{121d2}$, of type $\mathrm{I}_5^*$ at $11$. Using
 \Cref{thm:local:shapes-table}, compute $L_{11}(A_f,1)^{-1}$ and the naive factor for both curves, and $e_3(E,11)$, $e_5(E,11)$. Explain why the true factor is
-invariant under the twist and the naive one is not (Definition def:terms).
+invariant under the twist and the naive one is not (Definition def:terms). (Answer: $L_{11}(A_f,1)^{-1}=1-11^{-2}=\frac{120}{121}$ for both curves (rows
+$3$ and $4$); the naive factor is $\frac{120}{121}$ for \curve{11a1} ($\delta_{11}=1$) and $1$ for \curve{121d2} ($\delta_{11}=0$); $e_3=e_5=0$ for \curve{11a1}
+and $e_3=v_3(120)=1$, $e_5=v_5(120)=1$ for \curve{121d2}. PARI's \texttt{elllocalred} confirms the Kodaira type $\mathrm{I}_5^*$ of \curve{121d2} at $11$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-e3}
 For a prime $q\ne3$ at which $\rho(I_q)$ is cyclic of order $3$, $e_3(E,q)=v_3(q-\chi_{-3}(q))$ (\Cref{prop:local:tame-cyclic-shape}). Find all such $q<60$ with
-$e_3(E,q)\ge2$, and the largest value of $e_3$ among them.
+$e_3(E,q)\ge2$, and the largest value of $e_3$ among them. (Answer: $e_3\ge2$ iff $q\equiv\pm1\pmod9$; for $q<60$ these are $17$, $19$, $37$, $53$, with
+$e_3=2,2,2,3$; the largest is $e_3=3$ at $q=53$, as $53+1=2\cdot3^3$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-zeta9}
 Let $L=\Q_3(\zeta_9)$, $G=\Gal(L/\Q_3)\simeq(\Z/9)^\times$. (a) Using $v_L(\zeta^{a-1}-1)=3^{v_3(a-1)}$ for $a\not\equiv1\pmod9$, show that $G_0=G$, $G_1=G_2$ is the subgroup of
 order $3$, and $G_3=1$. (b) Compute the Swan and Artin conductors of the characters of $G$ of orders $2$, $3$ and $6$, and compare with the conductors of the
-Dirichlet characters modulo $9$. (c) Which of them is $\chi_{-3}$?
+Dirichlet characters modulo $9$. (c) Which of them is $\chi_{-3}$? (Answer: (b) the character of order $2$ is trivial on $G_1$, so it is tame with
+$\operatorname{sw}=0$, $a=1$; those of orders $3$ and $6$ are nontrivial on $G_1=G_2$ and trivial on $G_3$, so $\operatorname{sw}=\frac36+\frac36=1$ and $a=2$; the
+conductors $3$ and $9$ of the Dirichlet characters agree. (c) The one of order $2$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-order4}
 Suppose $\rho(I_q)=\langle\tau\rangle$ is cyclic of order $4$ with $\det\rho|_{I_q}=1$ and $q\equiv3\pmod4$. Show that $\tr\rho(\Frob)=0$ for every Frobenius lift, that $\rho(\Frob)^2$
-commutes with $\tau$, and that $V\otimes\Omega(i)$ is irreducible as a representation of $G_{\Q_q}$.
+commutes with $\tau$, and that $V\otimes\Omega(i)$ is irreducible as a representation of $G_{\Q_q}$. (Hint: $\rho(\Frob)$ conjugates $\tau$ to $\tau^q=\tau^{-1}$, so
+it exchanges the $i$- and $(-i)$-eigenlines of $\tau$; a $G_{\Q_q}$-stable line would be an eigenline of $\tau$ fixed by $\rho(\Frob)$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-ell-equals-p}
 (a) Show that for $\ell\ne p$ every continuous character $G_K\to\Q_\ell^\times$ has finite image on $I_K$. (b) Show that the cyclotomic character $\chi_p$ of
-$G_{\Q_p}$ has infinite image on $I_p$, and explain which step of the proof of \Cref{thm:local:grothendieck} fails for $\ell=p$.
+$G_{\Q_p}$ has infinite image on $I_p$, and explain which step of the proof of \Cref{thm:local:grothendieck} fails for $\ell=p$. (Hints: (a) the target is
+abelian, so $\psi(\Frob\sigma\Frob^{-1})=\psi(\sigma)$. Let $U\subseteq I_K$ be the open subgroup mapping into the torsion-free pro-$\ell$ part of $\Z_\ell^\times$
+($1+\ell\Z_\ell$, or $1+4\Z_2$); $U$ is normal in $G_K$, and $\psi|_U$ factors through $t_\ell$ (\Cref{cor:local:open-inertia}), so the tame relation gives
+$\psi(\sigma)^q=\psi(\sigma)$ on $U$. Hence $\psi(U)$ is torsion free and killed by $q-1$, so trivial. (b) $\chi_p(I_p)=\Z_p^\times$ (\Cref{prop:local:cyclotomic-local}(ii)); the step that fails is the
+factorisation through $t_\ell$, as $I_p$ has the huge pro-$p$ quotient $P_p$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-krasner}
 (a) For $p$ odd, show that $\Q_p(\sqrt{p+p^3})=\Q_p(\sqrt p)$, once by Hensel's lemma and once by \Cref{lem:local:krasner}(i). (b) Show that $\Q_2(\sqrt{10})\ne\Q_2(\sqrt2)$
-although $\abs{\sqrt{10}-\sqrt2}_2=\abs{\sqrt2-(-\sqrt2)}_2$: the strict inequality in Krasner's lemma cannot be relaxed.
+although $\abs{\sqrt{10}-\sqrt2}_2=\abs{\sqrt2-(-\sqrt2)}_2$: the strict inequality in Krasner's lemma cannot be relaxed. (Hints: (a) $(p+p^3)/p=1+p^2$ is a square
+in $\Z_p$; and choosing the sign with $\sqrt{p+p^3}/\sqrt p\equiv1\pmod p$, $\abs{\sqrt{p+p^3}-\sqrt p}_p=\abs{p^3}_p/\abs{\sqrt{p+p^3}+\sqrt p}_p=p^{-5/2}$,
+less than $\abs{\sqrt p-(-\sqrt p)}_p=p^{-1/2}$. (b) $10/2=5$ is not a square in $\Q_2$.)
 \end{exercise}
 
 \section{Notes and references}\label{sec:local:notes}

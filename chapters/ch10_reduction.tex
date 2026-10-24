@@ -1143,8 +1143,8 @@ $\kod{I}_n$ with $n=v(\Delta)$; then $v(B)=0$ too, since $4A^3\equiv-27B^2$. Oth
 singular point is already at $(0,0)$ and $b_2=0$, so we pass to Step 3.
 \begin{itemize}
 \item Step 3: $\varpi^2\nmid a_6$ means $v(B)=1$: type $\kod{II}$; then $v(27B^2)=2<3\le v(4A^3)$, so $v(\Delta)=2$.
-\item Step 4: $\varpi^3\nmid b_8=-A^2$ means $v(A)=1$ (with $v(B)\ge2$): type $\kod{III}$, $v(\Delta)=\min(3v(A),2v(B))=3$, as
-$2v(B)\ge4$. (Throughout, $v(\Delta)=v(4A^3+27B^2)$, which equals $\min(3v(A),2v(B))$ whenever $3v(A)\ne2v(B)$.)
+\item Step 4: $\varpi^3\nmid b_8=-A^2$ means $v(A)=1$ (with $v(B)\ge2$): type $\kod{III}$, and
+$v(\Delta)=\min(3v(A),2v(B))=3$, as $2v(B)\ge4$. (Throughout, $v(\Delta)=v(4A^3+27B^2)$, which equals $\min(3v(A),2v(B))$ whenever $3v(A)\ne2v(B)$.)
 \item Step 5: $\varpi^3\nmid b_6=4B$ means $v(B)=2$ (with $v(A)\ge2$): type $\kod{IV}$, $v(\Delta)=4$, as $3v(A)\ge6>4$.
 \item Step 6: now $v(A)\ge2$, $v(B)\ge3$, and the conditions of Step 6 hold without change. $P(T)=T^3+aT+b$ with
 $a=A/\varpi^2$, $b=B/\varpi^3$, whose discriminant is $-(4a^3+27b^2)=\Delta/(16\varpi^6)$ up to a unit. So $\tilde P$ has distinct
@@ -1525,10 +1525,10 @@ $-\sm1001=-1$, which fixes no nonzero vector. This contradicts $E[3]^{I_2}\ne0$.
 (ii) By \Cref{thm:reduction:serre-tate} the image $\rho_3(I_2)$ is a finite subgroup of $\SL_2(\Z_3)$. Reduction modulo $3$ is
 injective on it: if $g=1+3^kA$ with $k\ge1$ and $A\not\equiv0\pmod3$ had finite order, a power of it would have prime order $r$
 and the same shape (with possibly larger $k$), and the binomial theorem (valid as $1$ and $A$ commute) gives
-\[
-g^r=1+r3^kA+\tbinom r2 3^{2k}A^2+\cdots\equiv1+r3^kA\pmod{3^{k+1}}\quad(r\ne3),\qquad
+\begin{gather*}
+g^r=1+r3^kA+\tbinom r2 3^{2k}A^2+\cdots\equiv1+r3^kA\pmod{3^{k+1}}\quad(r\ne3),\\
 g^3=1+3^{k+1}A+3^{2k+1}A^2+3^{3k}A^3\equiv1+3^{k+1}A\pmod{3^{k+2}},
-\]
+\end{gather*}
 using $2k\ge k+1$, $2k+1\ge k+2$ and $3k\ge k+2$ for $k\ge1$. As $r$ is then a unit and $A\not\equiv0\pmod 3$, neither power is
 $1$, a contradiction. The image modulo $3$ is nontrivial (otherwise $\rho_3(I_2)=1$ and the reduction would be good) and fixes
 the line $E[3]^{I_2}$ pointwise. In a basis $(v,w)$ of $E[3]$ with $v$ spanning that line, its elements are
@@ -1622,14 +1622,15 @@ $E_{\mathsf q}(L)\simeq L^\times/\mathsf q^{\Z}$ for every algebraic extension $
 (i) $s_k(\mathsf q)=\sum_{n\ge1}\sigma_k(n)\mathsf q^n$ with $\sigma_k(n)=\sum_{d\mid n}d^k$, so $s_k\in\mathsf q\Z[[\mathsf q]]$. For $a_6$ it suffices that
 $5d^3+7d^5\equiv0\pmod{12}$ for every integer $d$: modulo $3$, $d^3(5+7d^2)\equiv d^3\cdot12\equiv0$ if $3\nmid d$, and trivially $d^3\equiv0$ if $3\mid d$; modulo $4$, if $d$ is
 odd then $d^2\equiv1$ and $5+7=12$, and if $d$ is even then $8\mid d^3$. Power series with integer coefficients converge
-at $\mathsf q$ with $v(\mathsf q)>0$. For the model, $b_2=1$, $b_4=2a_4$, $b_6=4a_6$, so $c_4=1-48a_4=1+240s_3$ and
-$c_6=-1+72a_4-864a_6=-1+504s_5$. These are $E_4$ and $-E_6$, the normalised Eisenstein series of weights $4$ and $6$ in the
-variable $\mathsf q$ (\Cref{ch:modforms}). In detail: $a_1=1$, $a_2=a_3=0$ give $b_2=a_1^2+4a_2=1$, $b_4=a_1a_3+2a_4=2a_4$,
-$b_6=a_3^2+4a_6=4a_6$; then $c_4=b_2^2-24b_4=1-48a_4=1+240s_3$, and
+at $\mathsf q$ with $v(\mathsf q)>0$. For the model, $a_1=1$ and $a_2=a_3=0$ give $b_2=a_1^2+4a_2=1$,
+$b_4=a_1a_3+2a_4=2a_4$, $b_6=a_3^2+4a_6=4a_6$; then $c_4=b_2^2-24b_4=1-48a_4=1+240s_3$, and
 \[
-c_6=-b_2^3+36b_2b_4-216b_6=-1+72a_4-864a_6=-1-360s_3+72(5s_3+7s_5)=-1+504s_5 ,
+c_6=-b_2^3+36b_2b_4-216b_6=-1+72a_4-864a_6=-1-360s_3+72(5s_3+7s_5)=-1+504s_5 ;
 \]
-which is where the denominator $12$ in $a_6$ comes from. The classical identity $E_4^3-E_6^2=1728\,\mathsf q\prod(1-\mathsf q^n)^{24}$ of power series with
+$a_4=-5s_3$ is chosen to make $c_4=1+240s_3$, and then $a_6=-(5s_3+7s_5)/12$ is chosen so that the $s_3$ terms cancel in
+$c_6$, leaving $-1+504s_5$. So $c_4$ and $c_6$
+are $E_4$ and $-E_6$, the normalised Eisenstein series of weights $4$ and $6$ in the variable $\mathsf q$ (\Cref{ch:modforms}),
+and the classical identity $E_4^3-E_6^2=1728\,\mathsf q\prod(1-\mathsf q^n)^{24}$ of power series with
 integer coefficients gives $\Delta$; $j=c_4^3/\Delta$ follows, and its coefficients are those of the $q$-expansion of the
 modular function $j$ (computed with PARI). As $v(\Delta)=v(\mathsf q)$ is finite, $\Delta\ne0$.
 
@@ -1790,10 +1791,13 @@ odd and $2$ for $n$ even.
 
 \begin{proof}
 (i) By \Cref{thm:reduction:tate-uniformisation}, $E\simeq E_{q_E}$, and $E(K)\simeq K^\times/q_E^{\Z}$ by \Cref{thm:reduction:tate-curve}(iii). Every
-class has a representative $w$ with $0\le v(w)<n$. Write $X(w,q_E)=\sum_{i\in\Z}X_i-2s_1(q_E)$ and $Y(w,q_E)=\sum_iY_i+s_1(q_E)$
+class has a representative $w$ with $0\le v(w)<n$, since multiplying by $q_E^{\pm1}$ changes $v(w)$ by $\pm n$. Write $X(w,q_E)=\sum_{i\in\Z}X_i-2s_1(q_E)$ and $Y(w,q_E)=\sum_iY_i+s_1(q_E)$
 termwise. For $i=-m\le-1$ one has $X_i=q_E^mw/(q_E^m-w)^2$ and $Y_i=q_E^mw^2/(q_E^m-w)^3$, and $s_1(q_E)\in\mathfrak m$. If $v(w)=0$ and
 $\bar w\ne1$, every term other than $X_0$, $Y_0$ lies in $\mathfrak m$, so $\phi(w)$ reduces to
-$\bigl(\bar w/(1-\bar w)^2,\ \bar w^2/(1-\bar w)^3\bigr)$, a point of $y^2+xy=x^3$ other than the node $(0,0)$. If $\bar w=1$, $X$ has a pole and
+$\bigl(\bar w/(1-\bar w)^2,\ \bar w^2/(1-\bar w)^3\bigr)$, a point of $y^2+xy=x^3$ other than the node $(0,0)$. (Directly:
+$y^2+xy=\bar w^4/(1-\bar w)^6+\bar w^3/(1-\bar w)^5=\bar w^3\bigl(\bar w+1-\bar w\bigr)/(1-\bar w)^6=x^3$. Its slope is
+$\lambda=y/x=\bar w/(1-\bar w)$; the tangents at the node are $y=0$ and $y=-x$, and the isomorphism of \Cref{prop:reduction:Ens}(ii)
+with $\alpha=0$, $\beta=-1$ sends the point to $\lambda/(\lambda+1)=\bar w$. So on units the reduction map is $w\mapsto\bar w\in k^\times$.) If $\bar w=1$, $X$ has a pole and
 $\phi(w)$ reduces to $\tilde O$. If $0<v(w)<n$, then $v(X_0)=v(w)$, $v(Y_0)=2v(w)$, $v(X_{-1})=v(Y_{-1})=n-v(w)$, and all the other terms have even larger
 valuation; all are positive, so $\phi(w)$ reduces to the node. Hence $E_0(K)$ is the image of $\mathcal O^\times q_E^{\Z}$, and
 $w\mapsto v(w)\bmod n$ gives $E(K)/E_0(K)\simeq\Z/n$.
@@ -1937,7 +1941,9 @@ by $q$, though only $q$-adic valuations are used below, and those are the same f
 
 (a) Here $v_q(j)<0$. By \Cref{thm:reduction:tate-uniformisation} the reduction type of a curve with $v_q(j)<0$ is determined by
 the square class of $\gamma=-c_4/c_6$: unramified for multiplicative, ramified for additive reduction. The twist multiplies $\gamma$
-by $(q^*)^{2}/(q^*)^{3}=1/q^*$, which moves an unramified class to a ramified one and back. So $E$ is multiplicative if and only if
+by $(q^*)^{2}/(q^*)^{3}=1/q^*$, which moves an unramified class to a ramified one and back: for odd $q$, $\Q_q(\sqrt\gamma)/\Q_q$
+is trivial or unramified exactly when $v_q(\gamma)$ is even (then $\gamma$ is a unit times a square), and ramified when it is odd,
+and $v_q(1/q^*)=-1$ changes the parity. So $E$ is multiplicative if and only if
 $E^{(q)}$ is additive. By \Cref{thm:reduction:potmult-additive}(i) the additive one has type $\kod{I}_\nu^*$, and the multiplicative
 one type $\kod{I}_\nu$, with the same $\nu=-v_q(j)$, as $j$ is unchanged. (The identification of the index of $\kod{I}_\nu^*$
 with $\nu$ uses Ogg's formula, through \Cref{thm:reduction:potmult-additive}.)
@@ -2027,7 +2033,11 @@ w_\ell(E,q)=\max\bigl(v_\ell(\#\Phig_q(E)),\,v_\ell(\#\Phig_q(E^{(q)}))\bigr)\ \
 
 \begin{proof}
 For odd $q$ use the exchanges of \Cref{lem:reduction:twist-ramified} and \Cref{prop:reduction:twist-at-3} and the orders of
-\Cref{tab:reduction:kodaira}. $\kod{I}_n\leftrightarrow\kod{I}_n^*$: $\max(v_\ell(n),v_\ell(4))=v_\ell(n)$, as $\ell$ is odd.
+\Cref{tab:reduction:kodaira}. These exchanges pair up all types at an odd $q$ ($\kod{I}_n^*$ with $\kod{I}_n$ for $n\ge0$, and the six remaining
+additive types among themselves), so the type of $E$ at a bad prime $q$ lies in exactly one of the pairs below, in one order or the
+other. The maximum is symmetric in $E$ and $E^{(q)}$, and so is the definition of $w_\ell$ on each pair with both members bad (it
+gives $v_\ell(n)$ to $\kod{I}_n$ and $\kod{I}_n^*$, and $[\ell=3]$ to $\kod{II}$, $\kod{IV}^*$, $\kod{IV}$, $\kod{II}^*$); for the pair
+$\kod{I}_0\leftrightarrow\kod{I}_0^*$ only the member of type $\kod{I}_0^*$ is bad at $q$, with $w_\ell=0$. $\kod{I}_n\leftrightarrow\kod{I}_n^*$: $\max(v_\ell(n),v_\ell(4))=v_\ell(n)$, as $\ell$ is odd.
 $\kod{I}_0\leftrightarrow\kod{I}_0^*$: $\max(0,v_\ell(4))=0$. $\kod{II}\leftrightarrow\kod{IV}^*$ and $\kod{IV}\leftrightarrow\kod{II}^*$:
 $\max(v_\ell(1),v_\ell(3))=[\ell=3]$. $\kod{III}\leftrightarrow\kod{III}^*$: $v_\ell(2)=0$. At $q=2$: $\kod{I}_n$ gives $v_\ell(n)$,
 $\kod{I}_n^*$ and $\kod{I}_0^*$ give $v_\ell(4)=0$, $\kod{IV}$ and $\kod{IV}^*$ give $v_\ell(3)=[\ell=3]$, the others $0$, which is the definition at
