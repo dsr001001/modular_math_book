@@ -214,11 +214,10 @@ $L_p(V_\ell E,s)=L_p(V_\ell E^\vee,s+1)=L_p(E,s+1)$. (The bad primes are \Cref{p
 first $\ell$-adic cohomology of $E$, and not of the Tate module itself; with the Tate module one gets the same function shifted by one.
 
 \begin{warning}[the two Frobenii in the paper]\label{warn:lfunctions:two-frobenii}
-The revised paper says in Section 1.1 that $L_p(A_f,s)=\det(1-\Frob_p^{-1}p^{-s}\mid A_f^{I_p})^{-1}$ ``is the true local factor, defined with the geometric Frobenius as in
+The paper says in Section 1.1 that $L_p(A_f,s)=\det(1-\Frob_p^{-1}p^{-s}\mid A_f^{I_p})^{-1}$ ``is the true local factor, defined with the geometric Frobenius as in
 \cite[\S1.1.1]{DFG04}'', and that ``The matrices in the proof of Lemma~lem:tamfactor are those of the arithmetic Frobenius''. Both are needed. The table of
 Section 1, Lemma lem:euler, PARI's factors and the identity $L_p(A_f,1)=L_p(A_f(1),0)$ of Lemma lem:fpr hold for $\Phi_p$ and fail for $\Frob_p$ at a
-multiplicative prime: there $\Frob_q$ acts on $A_f^{I_q}$ by $q$ and would give $1-q^{1-s}$ (\Cref{prop:lfunctions:multiplicative}). The original version of the paper
-wrote $\Frob_p$ in Section 1.1 and after Lemma lem:dfg21; it has to be read as the geometric Frobenius. The rows of the potentially good types
+multiplicative prime: there $\Frob_q$ acts on $A_f^{I_q}$ by $q$ and would give $1-q^{1-s}$ (\Cref{prop:lfunctions:multiplicative}). The rows of the potentially good types
 ($\mathrm{II}$, $\mathrm{II}^*$, $\mathrm{III}$, $\mathrm{III}^*$, $\mathrm{IV}$, $\mathrm{IV}^*$, $\mathrm I_0^*$) do not see the difference, because there the eigenvalues on $A_f^{I_q}$
 are stable under inversion; the rows $\mathrm I_n$ and $\mathrm I_n^*$ do, since for $\mathrm I_n^*$ too $A_f^{I_q}$ is the line of $e$ with $\Frob_q$ acting by $q$
 (\Cref{prop:lfunctions:local-factor}(iii)).
@@ -256,8 +255,8 @@ factors are kept, and the Rankin series (e) is a different Dirichlet series alto
 \section{Dirichlet series and Euler products}\label{sec:lfunctions:dirichlet}
 
 This section collects the analytic facts about Dirichlet series that every later section uses: where they converge, why they are determined by their
-values, and when they factor over the primes. In the paper they are behind every Euler product, from ``the Euler product of $\sum a_n(f)^2n^{-s}$'' in the
-original introduction to the polynomial $P_q(X)$ of Definition def:terms.
+values, and when they factor over the primes. In the paper they are behind every Euler product, from Shimura's series $\sum a_{n^2}(f)n^{-s}$ in the
+introduction to the polynomial $P_q(X)$ of Definition def:terms.
 
 \begin{definition}[Dirichlet series]\label{def:lfunctions:dirichlet-series}
 A \emph{Dirichlet series} is a series $D(s)=\sum_{n\ge1}a_nn^{-s}$ with $a_n\in\C$ and $s=\sigma+it\in\C$. Its \emph{abscissa of absolute convergence} is
@@ -949,11 +948,9 @@ $a_2=-2$, the coefficient of $2^{-s}$ is $a_2^2=4$ in the Rankin series and $\al
 \curve{20a1} and \curve{121a1} to within $4\cdot10^{-15}$ (the truncation error), with $L^{\nv}$ computed from \texttt{lfunsympow} and \texttt{lfuneuler}; the two local identities
 were also checked as power series to order $20$ for $(p,a_p)=(5,2),(7,-3),(11,0),(13,5)$.
 
-\begin{warning}[the Rankin series in the paper's introduction]\label{warn:lfunctions:rankin}
-The original version of the paper wrote, in Section 1: ``The $L$-function that appears there is the \emph{naive} one: the Euler product of $\sum a_n(f)^2n^{-s}$,
-which has the true local factor at the primes of good or multiplicative reduction and the trivial factor at the additive primes.'' By
-\Cref{prop:lfunctions:rankin-series}(A) the Euler product of $\sum a_n(f)^2n^{-s}$ is $\zeta^{(N)}(s-1)L^{\nv}(\Sym f,s)/\zeta^{(N)}(2s-2)$, not $L^{\nv}(\Sym f,s)$. The revised version
-replaces it by ``The $L$-function that appears there is the \emph{naive} one, $L^{\nv}(\Sym f,s)=\zeta^{(N)}(2s-2)\sum_{n\ge1}a_{n^2}(f)n^{-s}$ (Shimura \cite{Shimura75}), which has the
+\begin{warning}[the Rankin series is not the naive symmetric square]\label{warn:lfunctions:rankin}
+By \Cref{prop:lfunctions:rankin-series}(A) the Euler product of $\sum a_n(f)^2n^{-s}$ is $\zeta^{(N)}(s-1)L^{\nv}(\Sym f,s)/\zeta^{(N)}(2s-2)$, not $L^{\nv}(\Sym f,s)$. The paper's
+introduction accordingly writes ``The $L$-function that appears there is the \emph{naive} one, $L^{\nv}(\Sym f,s)=\zeta^{(N)}(2s-2)\sum_{n\ge1}a_{n^2}(f)n^{-s}$ (Shimura \cite{Shimura75}), which has the
 true local factor at the primes of good or multiplicative reduction and the trivial factor at the additive primes'', which is \Cref{prop:lfunctions:rankin-series}(B).
 Equivalently, with $L(f\times f,s)=\zeta^{(N)}(2s-2)\sum a_n^2n^{-s}$, one has $L^{\nv}(\Sym f,s)=L(f\times f,s)/\zeta^{(N)}(s-1)$; dividing by $\zeta^{(N)}(2s-2)$ instead would be wrong.
 \end{warning}
@@ -982,11 +979,10 @@ $p^{-s}$ which are finite and nonzero at $s=2$ (\Cref{prop:lfunctions:fpr-L-part
 $P_p(p^{-2})=L_p(A_f,1)^{-1}$.
 \end{proof}
 
-So the paper's sentence, in its original form ``$\langle f,f\rangle$ is the special value $L(\Sym f,2)$ up to the local factors at the bad primes'', holds in the
-precise form: up to $N/(8\pi^3)$ and the omitted factors at the \emph{additive} primes only; the multiplicative primes contribute nothing beyond the factor $N$. For
+So the true value $L(\Sym f,2)$ gives $\langle f,f\rangle$ up to $N/(8\pi^3)$ and the omitted factors at the \emph{additive} primes only; the multiplicative primes contribute nothing beyond the factor $N$. For
 square-free $N$ there is no correction. \Cref{ch:hecke} states and proves the first (naive) equality at every level, and the true value for square-free $N$; the
 second and third equalities, with the correction $\prod_{p^2\mid N}P_p(p^{-2})$ at the additive primes, are what this chapter adds. The values for fifteen curves are in \Cref{ex:lfunctions:petersson-table}. Diamond, Flach and Guo
-\cite[Lemma 2.12]{DFG04} express the Petersson norm through the naive $L$-value, as the revised paper says (``$\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ at every level''). Their constant agrees
+\cite[Lemma 2.12]{DFG04} express the Petersson norm through the naive $L$-value, as the paper says in Remark rem:degree (``$\langle f,f\rangle=N\,L^{\nv}(\Sym f,2)/(8\pi^3)$ at every level''). Their constant agrees
 with ours: their lemma is $(f,f)_{\Gamma_1(N)}=(k-1)!\,\delta(N)N\varphi(N)L^{\nv}(A_f,1)/(4^k\pi^{k+1})$ for the unnormalised product, with $\delta(N)=1$ for $N>2$ and $2$ for $N\le2$, and
 $[\bar\Gamma_0(N):\bar\Gamma_1(N)]=\delta(N)\varphi(N)/2$ turns it, for $k=2$, into $N\,L^{\nv}(A_f,1)/(8\pi^3)$ on $\Gamma_0(N)$ (\Cref{ch:congruence}). The proof above does not use their lemma.
 
@@ -1014,15 +1010,15 @@ $v_\ell(L_q(A_f,1)^{-1})=e_\ell(E,q)$, and at a multiplicative $q$, $e_\ell(E,q)
 The last sentence: (eq:thm) reads $v_\ell(\degphi)\ge\sum e_\ell+\sum t_\ell$.
 \end{proof}
 
-With $c_E=1$, (ii) reproduces $\degphi$ to at least $15$ digits on the curves of \Cref{ex:lfunctions:petersson-table,ex:lfunctions:examples}; the revised paper states the
-same formula as Remark rem:degree. The corollary is unconditional; it is the conceptual reason why the omitted factors appear in Theorem thm:main: the
+With $c_E=1$, (ii) reproduces $\degphi$ to at least $15$ digits on the curves of \Cref{ex:lfunctions:petersson-table,ex:lfunctions:examples}; the paper states the
+same formula in Remark rem:degree. The corollary is unconditional; it is the conceptual reason why the omitted factors appear in Theorem thm:main: the
 Petersson norm, hence $\degphi$, sees $L^{\nv}$, and the ratio $\degphi/B_E$ is exactly the product of the omitted factors. $v_\ell(B_E)$ can be negative when the
 hypotheses of Theorem thm:main fail: $B_E=343/5$ for \curve{539d1} and $121/5$ for \curve{121d1} ($E[5]$ reducible), $49/3$ for \curve{98a1} and $2/3$ for \curve{20a1}
 ($E[3]$ reducible), $11/3$ for \curve{121b1} (complex multiplication by $\Q(\sqrt{-11})$, mod $3$ image $N_s(\F_3)$) (\Cref{ex:lfunctions:examples}).
 
 \begin{paperlink}
-Remark rem:degree of the revised paper: ``$\degphi=\frac{c_E^2\,N\,L^{\nv}(\ad f,1)}{2\pi\operatorname{vol}(\Lambda_E)}=B_E\prod_{q^2\mid N}L_q(A_f,1)^{-1}$'' and ``$v_\ell(\degphi)=v_\ell(B_E)+\sum_{q\mid N}e_\ell(E,q)$
-for every $\ell\nmid N$, with no hypothesis'' are \Cref{cor:lfunctions:degree-formula}(ii), (iii). The original version said only that ``Up to explicit factors $\degphi$ is
+Remark rem:degree displays $\degphi=\frac{c_E^2\,N\,L^{\nv}(\ad f,1)}{2\pi\operatorname{vol}(\Lambda_E)}=B_E\prod_{q^2\mid N}L_q(A_f,1)^{-1}$ and states ``$v_\ell(\degphi)=v_\ell(B_E)+\sum_{q\mid N}e_\ell(E,q)$
+for every $\ell\nmid N$, with no hypothesis'' are \Cref{cor:lfunctions:degree-formula}(ii), (iii). The introduction says that ``Up to explicit factors $\degphi$ is
 $\langle f,f\rangle$ divided by the area of the period lattice of $E$''; the explicit factor is $4\pi^2c_E^2$ (\Cref{ch:moddeg}).
 \end{paperlink}
 

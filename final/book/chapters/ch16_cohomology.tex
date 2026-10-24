@@ -138,8 +138,8 @@ here; the rest stated)} \Cref{prop:cohomology:cup}.
 \begin{itemize}
 \item \textbf{Lemma lem:tamfactor} (the Tamagawa factor at a multiplicative prime), every group-cohomological step: the Tate shape as a cocycle
 (\Cref{prop:cohomology:corner}); ``by inflation-restriction $H^1(I,M')=H^1(\langle t\rangle,M')=M'/(t-1)M'$'' (\Cref{thm:cohomology:inf-res}, \Cref{cor:cohomology:pro-l-quotient},
-\Cref{prop:cohomology:tame-inertia}, \Cref{thm:cohomology:procyclic-compact}); the conjugation action of $G/I$ (\Cref{prop:cohomology:conjugation}); ``$c(t^k)\equiv k\,c(t)$''
-(\Cref{lem:cohomology:powers}); ``$\Frob$ acts on $M/(t-1)M$ as $q^{-1}\rho(\Frob)$'', where $q^{-1}\Ad\rho(\Frob)$ is meant (\Cref{prop:cohomology:frob-h1}, \Cref{pl:cohomology:tamfactor}); the explicit $(t-1)M$, the invariants and their
+\Cref{prop:cohomology:tame-inertia}, \Cref{thm:cohomology:procyclic-compact}); the conjugation action of $G/I$ (\Cref{prop:cohomology:conjugation}); ``$z(t^k)\equiv k\,z(t)$''
+(\Cref{lem:cohomology:powers}); ``$\Frob$ acts on $M/(t-1)M$ as $q^{-1}\Ad(\rho(\Frob))$'' (\Cref{prop:cohomology:frob-h1}, \Cref{pl:cohomology:tamfactor}); the explicit $(t-1)M$, the invariants and their
 Fitting ideal (\Cref{lem:cohomology:tate-shape}, \Cref{prop:cohomology:model}, \Cref{cor:cohomology:fitting}); $H^1(G/I,\Zl(1)^I)=\Zl(1)/(q-1)$
 (\Cref{ex:cohomology:procyclic-examples}). The paperlink \Cref{pl:cohomology:tamfactor} matches each sentence of the proof.
 \item \textbf{Section 1.2} (the definition $\Tam_p(M)=\Fitt_{\Zl}((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}})$) and \textbf{Lemma lem:fpr}: the object $(H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}$ is
@@ -178,7 +178,7 @@ For a prime $q\ne\ell$, $G_{\Q_q}/I_q=\Gal(\overline\F_q/\F_q)\simeq\widehat\Z$ 
 \[
 (\sigma\cdot c)(h_1,\dots,h_n)=\sigma\,c(\sigma^{-1}h_1\sigma,\dots,\sigma^{-1}h_n\sigma),
 \]
-verbatim the paper's formula ``$(\sigma\cdot c)(i)=\sigma c(\sigma^{-1}i\sigma)$'' in the proof of Lemma lem:tamfactor (\Cref{prop:cohomology:conjugation}).
+which for $n=1$, with the cocycle written $z$, is the paper's formula ``$(\sigma\cdot z)(i)=\sigma z(\sigma^{-1}i\sigma)$'' in the proof of Lemma lem:tamfactor (\Cref{prop:cohomology:conjugation}).
 \item The tame relation, proved in \Cref{ch:local} and imported here: for a prime $q\ne\ell$ and a topological generator $t$ of the pro-$\ell$ tame inertia
 quotient of $G_{\Q_q}$,
 \[
@@ -564,11 +564,11 @@ trivial, so the cocycle $\kappa|_I$ is a homomorphism by \Cref{prop:cohomology:h
 \end{proof}
 
 \begin{paperlink}\label{pl:cohomology:corner}
-The proof of Lemma lem:tamfactor in the revised paper writes the matrices of $G_{\Q_q}$ on $T_\ell E$ as
+The proof of Lemma lem:tamfactor writes the matrices of $G_{\Q_q}$ on $T_\ell E$ as
 $\sm{\chi_\ell\varepsilon}{\varepsilon\kappa}{0}{\varepsilon}$ ``with $\varepsilon$ unramified of order at most $2$ and $\kappa$ the Kummer cocycle of $q_E$'', and adds that
 ``$\varepsilon\kappa$, not $\kappa$, satisfies the cocycle relation for the twisted matrices''. \Cref{prop:cohomology:corner}(i) and (v) make this precise: the
 corner divided by the lower character, $\varepsilon\kappa/\varepsilon=\kappa$, is the cocycle, with values in $\Zl(1)$, and its restriction to inertia is a
-homomorphism. (With the corner written $\kappa$, as in the original version, the cocycle would be $\kappa/\varepsilon=\varepsilon\kappa$.) The uniqueness of the stable line in a non-split
+homomorphism. The uniqueness of the stable line in a non-split
 extension, used in Lemma lem:old, is proved in \Cref{ch:reps}; (iii) above is its cohomological form. That $\kappa$ is a Kummer cocycle is
 \Cref{ch:galcoh}'s.
 \end{paperlink}
@@ -656,9 +656,8 @@ largest level $k$ at which a primitive vector of $T/\ell^kT$ is invariant.
 
 \begin{paperlink}\label{pl:cohomology:h0}
 \sloppy In the proof of Lemma lem:h0: ``The $\ell^k$-torsion of $H^0(\Q,W^D)$ is $H^0(\Q,\ad(T/\ell^k)(1))$'' is \Cref{lem:cohomology:h0-torsion}(b) for the lattice
-$\ad T(1)$, since $W^D=\ad T(1)\otimes\Qlmod$. The next step, that $H^0(\Q,W^D)$ ``a submodule of $(\Q_\ell/\Z_\ell)^3$ with $\ell$-torsion of rank at most one, is
-cyclic'', is (e): such a module is finite cyclic or isomorphic to $\Qlmod$, and the paper's determinant argument, which shows that every element has
-order at most $\ell$, excludes $\Qlmod$. The identification of the length with ``the largest $k$ such that $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$''
+$\ad T(1)$, since $W^D=\ad T(1)\otimes\Qlmod$. The next step, that $H^0(\Q,W^D)$ ``a submodule of $(\Q_\ell/\Z_\ell)^3$ with $\ell$-torsion of rank at most one, is finite cyclic or isomorphic to $\Q_\ell/\Z_\ell$'', is (e), and the
+paper's determinant argument excludes $\Qlmod$. The identification of the length with ``the largest $k$ such that $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$''
 is (d): an element of exact order $\ell^k$ is an invariant map $T/\ell^k\to(T/\ell^k)(1)$ not divisible by $\ell$. The lemma itself is proved in \Cref{ch:galrep}.
 \end{paperlink}
 
@@ -1722,8 +1721,8 @@ $\ell^w\Zl$ or $\Zl$ (as $\varepsilon=1$ or $-1$) for $M=T$. For $G=G_{\Q_q}$ th
 \[
 v_\ell\bigl(\Tam_q(\ad T)\bigr)=v_\ell(n')+\min\bigl(v_\ell(n'),v_\ell(q-1),v_\ell(c')\bigr),
 \]
-which is the formula of Lemma lem:tamfactor once $v_\ell(n')=v_\ell(n)$ (\Cref{ch:local,ch:galrep}) and $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))=\min(v_\ell(n),v_\ell(q-1),v_\ell(c))$ for the
-paper's class $c$ of the unit part of the Tate parameter (\Cref{ch:galcoh}). Lemma lem:tamfactor itself is assembled in \Cref{ch:blochkato}; the Kummer
+which is the formula of Lemma lem:tamfactor once $v_\ell(n')=v_\ell(n)$ (\Cref{ch:local,ch:galrep}) and $\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))=\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))$ for the
+paper's class $c(u)$ of the unit part $u$ of the Tate parameter (\Cref{ch:galcoh}). Lemma lem:tamfactor itself is assembled in \Cref{ch:blochkato}; the Kummer
 identification of $c'$ and its indeterminacy modulo $(n,q-1)$ are proved in \Cref{ch:galcoh}.
 \end{corollary}
 
@@ -1744,7 +1743,7 @@ split and $1$ or $2$ for nonsplit multiplicative reduction (\Cref{ch:reduction})
 \end{remark}
 
 \begin{paperlink}\label{pl:cohomology:tamfactor}
-The proof of Lemma lem:tamfactor in the revised paper, sentence by sentence (quotations verbatim, from the proof):
+The proof of Lemma lem:tamfactor, sentence by sentence (quotations verbatim, from the proof):
 \begin{itemize}
 \item ``the kernel of $I\to\langle t\rangle$ has trivial pro-$\ell$ quotient, so by inflation-restriction $H^1(I,M')=H^1(\langle t\rangle,M')=M'/(t-1)M'$ for every
 $\Z_\ell$-module $M'$ of finite type with this action'': \Cref{cor:cohomology:pro-l-quotient}(a) (which is \Cref{thm:cohomology:inf-res}(d) with
@@ -1752,11 +1751,10 @@ $\Z_\ell$-module $M'$ of finite type with this action'': \Cref{cor:cohomology:pr
 \item ``$(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$, and as $2$ is a unit, $(t-1)M=n'(\Z_\ell e\oplus\Z_\ell h)$; so
 $H^1(I,M)=(\Z_\ell/n')\bar e\oplus(\Z_\ell/n')\bar h\oplus\Z_\ell\bar f$ and its torsion is $(\Z/\ell^{v_\ell(n)})^2$'': \Cref{lem:cohomology:tate-shape} and
 \Cref{prop:cohomology:model}(a), with $v_\ell(n')=v_\ell(n)$.
-\item ``The group $G/I$ acts on $H^1(I,M)$ by $(\sigma\cdot c)(i)=\sigma c(\sigma^{-1}i\sigma)$'': \Cref{prop:cohomology:conjugation}.
-\item ``for the arithmetic Frobenius $\Frob$, $\Frob^{-1}t\Frob=t^{q^{-1}}$ and $c(t^k)\equiv k\,c(t)$ modulo $(t-1)M$, so $\Frob$ acts on $M/(t-1)M$ as $q^{-1}\rho(\Frob)$'': the
+\item ``The group $G/I$ acts on $H^1(I,M)$ by $(\sigma\cdot z)(i)=\sigma z(\sigma^{-1}i\sigma)$ for a cocycle $z$'': \Cref{prop:cohomology:conjugation}.
+\item ``for the arithmetic Frobenius $\Frob$, $\Frob^{-1}t\Frob=t^{q^{-1}}$ and $z(t^k)\equiv k\,z(t)$ modulo $(t-1)M$, so $\Frob$ acts on $M/(t-1)M$ as $q^{-1}\Ad(\rho(\Frob))$, that is, by conjugation by $\rho(\Frob)$ followed by multiplication by $q^{-1}$'': the
 relation is \Cref{constr:cohomology:model} (from \Cref{ch:local}), the congruence is \Cref{lem:cohomology:powers}(ii) with $k=q^{-1}\in\Zl$, the conclusion is
-\Cref{prop:cohomology:frob-h1}(b). Here the paper's $\rho$ is the representation on $T$, so on $M=\ad T$ its $q^{-1}\rho(\Frob)$ is a slip for the conjugation
-$q^{-1}\Ad\rho(\Frob)$, which is what its next sentence (``the adjoint action'') computes.
+\Cref{prop:cohomology:frob-h1}(b). Here $\rho$ is the representation on $T$, and $\Ad(\rho(\Frob))$ is its conjugation action on $M=\ad T$.
 \item ``the adjoint action sends $e$ to $qe$ and $h$ to $h-2c'\varepsilon e$, so on the torsion $\bar e\mapsto\bar e$ and $\bar h\mapsto q^{-1}(\bar h-2c'\varepsilon\bar e)$'':
 \Cref{lem:cohomology:tate-shape} and \Cref{prop:cohomology:model}(b).
 \item ``The fixed points are the $x\bar e+y\bar h$ with $(q-1)y\equiv0$ and $c'y\equiv0\pmod{\ell^{v_\ell(n)}}$'': \Cref{prop:cohomology:model}(c), where
@@ -1766,8 +1764,7 @@ multiple of $q-1$)'': \Cref{prop:cohomology:model}(d).
 \item ``As a check, the same computation for $M=T$ gives $(\Z/\ell^{v_\ell(n)})\bar e_1$ with $\Frob$ acting by $\varepsilon$'': \Cref{prop:cohomology:model}(e).
 \end{itemize}
 The remaining steps (that $\kappa|_I$ is $n$ times the tame character, the splitting $\kappa=n\kappa_q+\kappa_u$, and the value of $c'$) are Kummer theory and are proved in
-\Cref{ch:galcoh}; the assembly is in \Cref{ch:blochkato}. In the paper's sentence the invariants are taken in $(\Z/\ell^{v_\ell(n)})^2$, the torsion, as the definition of
-$\Tam$ requires; with this reading, and with $\Ad\rho(\Frob)$ for $\rho(\Frob)$ in the fourth quoted sentence, every step above is correct.
+\Cref{ch:galcoh}; the assembly is in \Cref{ch:blochkato}. The invariants are taken in the torsion $(\Z/\ell^{v_\ell(n)})^2$, as the definition of $\Tam$ requires.
 \end{paperlink}
 
 \section{Cup products, Pontryagin duality and lengths}\label{sec:cohomology:cup}
@@ -2055,5 +2052,5 @@ which the paper needs.
 
 The definition of the Tamagawa factor as the Fitting ideal of the $G_{\Q_p}$-invariants of the torsion of $H^1(I_p,M)$, which \Cref{sec:cohomology:model} computes, is
 Fontaine and Perrin-Riou's \cite[I.4.2.2]{FPR94}, as recalled by Diamond, Flach and Guo \cite[p.~708]{DFG04}. The shape of the Tate representation is
-\cite[Chapter V]{SilvermanATAEC} and \cite[Theorem 3.1(e)]{DDT}; the corner $\varepsilon\kappa$ is the revised paper's. The conjugation action is the paper's
-$(\sigma\cdot c)(i)=\sigma c(\sigma^{-1}i\sigma)$; with the other common convention the Frobenius acts on $H^1(I,M)$ by $q\rho_M(\Frob)^{-1}$ (\Cref{rem:cohomology:other-convention}).
+\cite[Chapter V]{SilvermanATAEC} and \cite[Theorem 3.1(e)]{DDT}; the corner $\varepsilon\kappa$ is the paper's. The conjugation action is the paper's
+$(\sigma\cdot z)(i)=\sigma z(\sigma^{-1}i\sigma)$; with the other common convention the Frobenius acts on $H^1(I,M)$ by $q\rho_M(\Frob)^{-1}$ (\Cref{rem:cohomology:other-convention}).

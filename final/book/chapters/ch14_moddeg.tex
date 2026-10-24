@@ -583,7 +583,7 @@ because $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup p
 This is \Cref{thm:moddeg:transpose}(iii) and \Cref{cor:moddeg:delta-hat}(ii) at level $M^\Sigma$. The paper's $\hat\delta_!$ is that of \cite{DFG04}, which on classes from
 $X_0(M^\Sigma)$ the paper describes as ``$\frac12$ times the cup product on $X_0(M^\Sigma)$ composed with $w_{M^\Sigma}$''; the book's $\hat\delta_!$ (Appendix B, B-C13(f)) omits
 the factor $\frac12$, a unit for odd $\ell$, so the two have the same ideal of values on every sublattice. The sentence of the paragraph after Lemma lem:hecke, ``the
-idempotent $e_{\mf m}$ is self-adjoint for $\hat\delta_!$, so $H^1(X_0(N),\Z_\ell)$ splits orthogonally into its local components and the pairing is perfect on each'', is
+idempotent $e_{\mathfrak m}$ is self-adjoint for $\hat\delta_!$, so $H^1(X_0(N),\Z_\ell)$ splits orthogonally into its local components and the pairing is perfect on each'', is
 \Cref{cor:moddeg:delta-hat}(iii).
 \end{paperlink}
 
@@ -721,12 +721,12 @@ $G_\Q$, so the kernel of $I_f$ is $G_\Q$-stable.
 \end{proof}
 
 \begin{paperlink}\label{pl:moddeg:f-lattice}
-Section 4.1 of the paper defines $M_{f^\Sigma,\lambda}$ as ``the kernel on it of the kernel of the eigencharacter of $f^\Sigma$ on the full Hecke algebra, $U_p$ included''; with
+Section 4.1 of the paper defines $M_{f^\Sigma,\lambda}$ as ``the kernel on $M(M^\Sigma,1)_{!,\lambda}$ of the kernel of the eigencharacter of $f^\Sigma$ on the full Hecke algebra, $U_p$ included''; with
 $\Sigma=\emptyset$ and $H^1(X_0(N),\Zl)$ in place of the integral structure of Diamond, Flach and Guo this is \Cref{def:moddeg:f-lattice}. In the proof of
-Proposition prop:pullback the paper says that $H^1(X_0(N),\Z_\ell)[I_f]$, ``a saturated lattice, is its intersection with $H^1(X_0(N),\Z_\ell)$'', the plane being the complex
-plane $\C f\,dz\oplus\C\overline{f\,dz}$: read with the $\Q$-form $V_f$ of that plane, as in \Cref{prop:moddeg:f-lattice}(ii). It also says ``The involution $w_N$ commutes with the
-$T_n$, $(n,N)=1$, so it preserves the plane'': the plane is defined by the full algebra, $U_p$ included, with which $w_N$ does not commute, and the inference holds because the
-plane is also the eigenspace of the anemic algebra (\Cref{prop:moddeg:f-lattice}(i), (iii)). Remark rem:free: ``The identification of $T_\ell J_0(N)$ with $H^1(X_0(N),\Z_\ell)$ as
+Proposition prop:pullback the paper notes that the plane $\C f\,dz\oplus\C\overline{f\,dz}$ ``is defined over $\Q$: $H^1(X_0(N),\Q)[I_f]$ is a two-dimensional $\Q$-form of it, and by flatness
+$H^1(X_0(N),\Z_\ell)[I_f]=H^1(X_0(N),\Z)[I_f]\otimes\Z_\ell$ is a saturated lattice of rank two in $H^1(X_0(N),\Q_\ell)[I_f]$'': this is \Cref{prop:moddeg:f-lattice}(ii), with $V_f$ the $\Q$-form.
+It also says ``By multiplicity one for newforms the plane is also the eigenspace of the $T_n$, $(n,N)=1$, for the eigenvalues $a_n(f)$, and $w_N$ commutes with these $T_n$ (not with the $U_p$,
+$p\mid N$)'': this is \Cref{prop:moddeg:f-lattice}(i), (iii). Remark rem:free: ``The identification of $T_\ell J_0(N)$ with $H^1(X_0(N),\Z_\ell)$ as
 Hecke modules uses Poincar\'e duality composed with $w_N$, which is not Galois equivariant; freeness transfers nevertheless'' is \Cref{prop:moddeg:tate-module-vs-h1}(ii), (iii):
 $\Psi$ is Galois-equivariant after a Tate twist.
 \end{paperlink}
@@ -1355,21 +1355,18 @@ Two checks. At level $11$, $\varphi_E$ is the identity, $\degphi=1$ and $\vareps
 agree on $M_{f,\lambda}$ and take the values $2\Zl$ there; for $\ell=2$ the cup product of the unimodular lattice $H^1(X_0(37),\Z_2)$ vanishes modulo $2$ on the saturated sublattice $M_{f,\lambda}$, and by
 \Cref{cor:moddeg:ars-divisibility} this forces $2\mid r_E$, which is the congruence $f_{37a}\equiv f_{37b}\pmod2$ (\Cref{ex:moddeg:ex-level37-hecke}).
 
-\noindent\emph{Commentary.} The revised paper states this as Proposition prop:pullback: ``Let $E$ be $X_0(N)$-optimal with newform $f$, $\varphi=\varphi_E$, $I_f$ the kernel of the eigencharacter
+\noindent\emph{Commentary.} The paper states this as Proposition prop:pullback: ``Let $E$ be $X_0(N)$-optimal with newform $f$, $\varphi=\varphi_E$, $I_f$ the kernel of the eigencharacter
 $\phi_f\colon\T\to\Z$ of $f$ on the full Hecke algebra, and $\ell$ a prime. Then $\varphi^*\colon H^1(E,\Z_\ell)\to H^1(X_0(N),\Z_\ell)$ is injective, with image the kernel lattice
-$H^1(X_0(N),\Z_\ell)[I_f]$, and $\langle\varphi^*a,\,w_N^*\varphi^*b\rangle_{X_0(N)}=\varepsilon_N(f)\,\degphi\,\langle a,b\rangle_E$ \dots In particular, for $\ell$ odd, the ideal of values of
-$\frac12\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Z_\ell)[I_f]$ is $\degphi\,\Z_\ell$, and its Gram determinant is $(\degphi)^2$ up to a unit. If $\ell\nmid2N$ and $\bar\rho_{E,\ell}$ is irreducible, then
-$M_{f,\lambda}=\varphi^*H^1(E,\Z_\ell)$, and $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$.'' (The omitted words are ``$(a,b\in H^1(E,\Z_\ell))$, where $\langle\ ,\ \rangle$ denotes the cup product and $\varepsilon_N(f)=\pm1$ the eigenvalue of $w_N$ on $f$.'') The book's
-\Cref{prop:moddeg:mf-is-pullback,lem:moddeg:wn-on-mf,thm:moddeg:degree-is-eta} prove this, with these differences. (1) The paper's first two sentences are already stated for every prime
-$\ell$, integrally over $\Z_\ell$, for the pairing $\langle x,w_N^*y\rangle$ with no factor $\frac12$; only its ``In particular'' sentence on the ideal of values and the Gram determinant is
-restricted to odd $\ell$, because it is phrased for $\frac12\langle x,w_N^*y\rangle$. What the book adds is the statement over $\Z$ (the ideal of values on $H^1(X_0(N),\Z)[I_f]$ is
-$\degphi\,\Z$) and the ideal of values at $\ell=2$ for $\langle x,w_N^*y\rangle$, both immediate from the displayed identity; (2) the
-action of $w_N$ is derived from the identity of maps $\varphi_E\circ w_N=\varepsilon_N(f)\varphi_E+\varphi_E(0)$, which replaces the paper's argument ``The involution $w_N$ commutes with the $T_n$,
-$(n,N)=1$, so it preserves the plane'' (that argument needs the plane to be the eigenspace of the anemic algebra, \Cref{prop:moddeg:f-lattice}(i), (iii)); (3) the step ``$H^1(X_0(N),\Z_\ell)[I_f]$,
-a saturated lattice, is its intersection with $H^1(X_0(N),\Z_\ell)$'' is replaced by the comparison of two saturated sublattices of $H^1(X_0(N),\Z)$ of rank two, one containing the other
-(the paper intersects a complex plane with a $\Zl$-lattice, which share no ambient space; the $\Q$-form $V_f$ of \Cref{prop:moddeg:f-lattice} is what is meant); (4) the Galois structure
-$M_{f,\lambda}\simeq T_\ell E(-1)$, which the paper states in the paragraph after the proof, is part (d) of \Cref{prop:moddeg:mf-is-pullback}. The hypotheses $\ell\nmid2N$ and $\bar\rho$ irreducible
-enter only the identification of $H^1(X_0(N),\Zl)$ with the integral structure of \cite{DFG04} (\Cref{rem:moddeg:dfg-normalisation}).
+$H^1(X_0(N),\Z_\ell)[I_f]$, and'' $\langle\varphi^*a,\,w_N^*\varphi^*b\rangle_{X_0(N)}=\varepsilon_N(f)\,\degphi\,\langle a,b\rangle_E$ for $a,b\in H^1(E,\Z_\ell)$ (displayed there), ``where $\langle\ ,\ \rangle$
+denotes the cup product and $\varepsilon_N(f)=\pm1$ the eigenvalue of $w_N$ on $f$. In particular, for $\ell$ odd, the ideal of values of
+$\frac12\langle x,w_N^*y\rangle$ on $H^1(X_0(N),\Z_\ell)[I_f]$ is $\degphi\,\Z_\ell$, and its Gram determinant is $(\degphi)^2$ up to a unit. If $\ell\nmid2N$ and $\bar\rho_{E,\ell}$ is irreducible, then,
+given Proposition prop:integral, $M_{f,\lambda}=\varphi^*H^1(E,\Z_\ell)$, and'' $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$ (displayed). The book's
+\Cref{prop:moddeg:mf-is-pullback,lem:moddeg:wn-on-mf,thm:moddeg:degree-is-eta} prove this. The paper's ``In particular'' sentence is phrased for $\frac12\langle x,w_N^*y\rangle$ and so restricted to
+odd $\ell$; the book also states the ideal of values over $\Z$ (on $H^1(X_0(N),\Z)[I_f]$ it is $\degphi\,\Z$) and at $\ell=2$ for $\langle x,w_N^*y\rangle$, both immediate from the displayed
+identity. The two proofs differ in one step: the book derives the action of $w_N$ from the identity of maps $\varphi_E\circ w_N=\varepsilon_N(f)\varphi_E+\varphi_E(0)$, the paper from the fact that
+the plane is also the eigenspace of the $T_n$, $(n,N)=1$, which commute with $w_N$ (\Cref{prop:moddeg:f-lattice}(i), (iii)). The Galois structure $M_{f,\lambda}\simeq T_\ell E(-1)$, which the paper
+states in the paragraph after the proof, is part (d) of \Cref{prop:moddeg:mf-is-pullback}. The hypotheses $\ell\nmid2N$ and $\bar\rho$ irreducible enter only the identification of
+$H^1(X_0(N),\Zl)$ with the integral structure of \cite{DFG04}, the paper's Proposition prop:integral (\Cref{rem:moddeg:dfg-normalisation}).
 
 \begin{corollary}[the divisibility of Agashe, Ribet and Stein at every prime]\label{cor:moddeg:ars-divisibility}
 Let $E$ be optimal. For every prime $\ell$, $v_\ell(\degphi)\le v_\ell(r_E)$; that is, $\degphi\mid r_E$. Equality holds at $\ell$ if $H^1(X_0(N),\Zl)_{\mf m}$ is free over $\T_{\mf m}$ for $\mf m=\mf m_{f,\ell}$.
@@ -1413,11 +1410,10 @@ v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda}).
 (i) is \Cref{thm:moddeg:degree-is-eta} and \Cref{cor:moddeg:ars-divisibility}; (ii) is \Cref{thm:moddeg:ars}; (iii) combines (ii) with the last sentence of \Cref{thm:moddeg:degree-is-eta}.
 \end{proof}
 
-\noindent\emph{Commentary.} The revised paper states: ``Let $E$ be $X_0(N)$-optimal, $\ell$ an odd prime with $\ell\nmid 2N$ and $\bar\rho$ irreducible, and $\mathfrak m$ the maximal ideal of
-$\T\otimes\Z_\ell$ containing $\ell$ and $\ker\phi_f$. Then $v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda})$.'' This is (iii). The book adds (i) and (ii), which hold at every prime: (i) says that the
+\noindent\emph{Commentary.} The paper states: ``Let $E$ be $X_0(N)$-optimal and $\ell$ an odd prime with $\ell\nmid 2N$ and $\bar\rho$ irreducible. Then $v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda})$.'' This is (iii). The book adds (i) and (ii), which hold at every prime: (i) says that the
 cohomological side of the identity needs no hypothesis on $\ell$ or $\bar\rho$, and it gives a proof of the inequality $v_\ell(\degphi)\le v_\ell(r_E)$ at every prime that does not go
-through \cite{ARS12}; the divisibility itself is part of \cite[Theorem 2.2]{ARS12} as the paper cites it, so the new content is the route, not the statement. The version of 10 October 2026 proved only $v_\ell(r_E)\ge v_\lambda(\eta^\emptyset_{f,\lambda})$, with
-equality under freeness; the paragraph after the lemma in the revised paper records this. Consequences for the paper, assembled in \Cref{ch:congruence}: the identity (eq:identity) of
+through \cite{ARS12}; the divisibility itself is part of \cite[Theorem 2.2]{ARS12} as the paper cites it, so the new content is the route, not the statement. The paragraph after the lemma in the paper notes that Lemma lem:ddt417 alone gives only $v_\ell(r_E)\ge v_\lambda(\eta^\emptyset_{f,\lambda})$, with
+equality under freeness. Consequences for the paper, assembled in \Cref{ch:congruence}: the identity (eq:identity) of
 Theorem thm:main holds with equality whenever $\ell\notin S_f$, with no multiplicity-one hypothesis; and in Step 4 of the proof of Theorem thm:quant, (iii) applied to the optimal curve
 of the class of the twist gives the comparison at level $N_S$ without freeness, so that the first inequality of Theorem thm:quant is an equality whenever $\ell\notin S_f$. Freeness is still
 the tool for forms not attached to an optimal quotient, such as the depleted form of Step 2 (\Cref{rem:moddeg:rem-free-after-39}).
@@ -1428,9 +1424,9 @@ points, which Section 4.1 of the paper asserts. Point (2) is proved below and po
 structures in (1), and checks the normalisation in (3), the kernel lattice in (4) and the self-adjointness of the Hecke operators against the published text of \cite{DFG04}
 (Sections 1.5.2, 1.5.3, 1.6.1, 1.6.2, 1.8.2 there).
 \begin{enumerate}[label=(\arabic*)]
-\item \emph{Which curve.} The integral structure $M(N,1)_{!,\lambda}$ of \cite{DFG04} is defined through a modular curve of full level; the paper says that it ``contains the pull-back of
-$H^1(X_0(M^\Sigma),\Z_\ell)$ with finite index'' and that after localisation at a non-Eisenstein $\mf m$ ``we take it \dots to agree with $H^1(X_0(M^\Sigma),\Z_\ell)_{\mathfrak m}$'', the cokernel being
-Eisenstein. This matters: pulling back along a covering of degree $n$ multiplies the cup product by $n$ (\Cref{ch:curves}), so if the comparison failed at a non-Eisenstein $\mf m$ the
+\item \emph{Which curve.} The integral structure $M(N,1)_{!,\lambda}$ of \cite{DFG04} is defined through a modular curve of full level; the paper's Proposition prop:integral states that pull-back
+``maps $H^1(X_0(M^\Sigma),\Z_\ell)$, compatibly with the Hecke operators, onto a sublattice of finite index of $M(M^\Sigma,1)_{!,\lambda}$'' and that the two agree after localisation at every
+non-Eisenstein $\mf m$, the cokernel being Eisenstein; the paper gives a sketch of proof and uses the proposition as an input. This matters: pulling back along a covering of degree $n$ multiplies the cup product by $n$ (\Cref{ch:curves}), so if the comparison failed at a non-Eisenstein $\mf m$ the
 ideal of values could change by a non-unit. For $X_1(N)\to X_0(N)$ the relevant obstruction is the Shimura subgroup (\Cref{def:moddeg:shimura-subgroup}, \Cref{ex:moddeg:ex-shimura}).
 \item \emph{Interior cohomology.} For constant coefficients, the image of $H^1_c(Y_0(N),\Zl)$ in $H^1(Y_0(N),\Zl)$ is $H^1(X_0(N),\Zl)$, and $H^1(\Gamma_0(N),\Zl)=H^1(Y_0(N),\Zl)$. Proof: with $S$ the set
 of cusps, the exact sequence $H^0(S)\to H^1_c(Y)\to H^1(X)\to H^1(S)=0$ makes $H^1_c(Y)\to H^1(X)$ onto, and $H^1(X)\to H^1(Y)$ is injective because $H^1(X,Y)$ is, by excision, a sum of
@@ -1460,7 +1456,7 @@ $\dim_{\F_3}J_0(99)[\mf m]\ge3$: multiplicity one fails at $\mf m$. Yet $\bar\rh
 \end{example}
 
 \begin{paperlink}\label{pl:moddeg:lem-hecke}
-The paragraph after Lemma lem:hecke in the revised paper: ``Without the hypotheses the inequality of Lemma lem:ddt417 can be strict: at 99a1 and $\ell=3$, where $3\mid N$,
+The paragraph after Lemma lem:hecke in the paper: ``Without the hypotheses the inequality of Lemma lem:ddt417 can be strict: at 99a1 and $\ell=3$, where $3\mid N$,
 $\degphi=4$ and $r_E=12$, so $H^1(X_0(99),\Z_3)_{\mathfrak m}$ is not free over $\T_{\mathfrak m}$.'' This is \Cref{ex:moddeg:99-at-3}. The same paragraph: ``the congruence ideal is computed in
 $\T_{\mathfrak m}$: the other local factors of $\T\otimes\Z_\ell$ lie in the kernel $\wp$'' is \Cref{prop:moddeg:congruence-ideal}(ii). Section 4.2 of the paper: ``by Proposition prop:pullback,
 $\varphi_E^*$ identifies the lattice $M_{f,\lambda}$ of \cite{DFG04} with $H^1(E,\Z_\ell)\simeq T_\ell E(-1)$, so its adjoint is $\ad T$'' is \Cref{prop:moddeg:mf-is-pullback}(d).
@@ -1468,8 +1464,8 @@ $\varphi_E^*$ identifies the lattice $M_{f,\lambda}$ of \cite{DFG04} with $H^1(E
 
 \section[Multiplicity one and the Gorenstein property]{Multiplicity one, the Gorenstein property and Remark rem:free}\label{sec:moddeg:mult-one}
 
-The paper's Remark rem:free explains when $H^1(X_0(N),\Zl)_{\mf m}$ is free over the localised Hecke algebra: multiplicity one makes $\T_{\mf m}$ Gorenstein and the module free of rank two. Since
-\Cref{thm:moddeg:degree-is-eta}, the paper's main theorems no longer need this; it remains the conceptual reason for the equality in the theorem of Agashe, Ribet and Stein at $\ell\nmid2N$, and the
+The paper's Remark rem:free explains when $H^1(X_0(N),\Zl)_{\mf m}$ is free over the localised Hecke algebra: multiplicity one makes $\T_{\mf m}$ Gorenstein and the module free of rank two. By
+\Cref{thm:moddeg:degree-is-eta} (the paper's Proposition prop:pullback), the paper's main theorems do not need this; it remains the conceptual reason for the equality in the theorem of Agashe, Ribet and Stein at $\ell\nmid2N$, and the
 tool for forms that are not attached to an optimal quotient. This section defines the maximal ideal attached to $(f,\ell)$, states multiplicity one, proves the Gorenstein property from it
 with \Cref{ch:modules}'s criterion, and says what Remark rem:free is still for.
 
@@ -1716,8 +1712,8 @@ reducible (\curve{57c1} has a rational $5$-isogeny to \curve{57c2}). For the iso
 \emph{Use in the paper.} For $E[\ell]$ irreducible and $N$ square-free, (iii) gives
 $v_\ell(\degphi)\ge\sum_{r\mid D}v_\ell(n_r)=\sum_{r\mid D}t_\ell(E,r)$, the last equality being $t_\ell(E,r)=v_\ell(n_r)$ at a multiplicative prime (Lemma lem:tamagawa-exp of the paper). This is
 the multiplicative part of (eq:main) at the primes of $D$, an even number of them; the paper's Theorem thm:main contains it, under its own hypotheses on $\ell$, for every multiplicative prime. The
-paper's own summary, in Section 1.5, is that they ``compared $\degphi$ with the degree of a parametrisation by a Shimura curve and found the product of the $n_q$ over the primes of the quaternion
-discriminant, up to primes where $E[\ell]$ is reducible''; this matches (iii), with the hypothesis that $N$ be square-free left implicit.
+paper's own summary, in Section 1.5, is that they ``compared, for semistable $E$, $\degphi$ with the degree of a parametrisation by a Shimura curve and found the product of the $n_q$ over the primes of the quaternion
+discriminant, exactly when $E$ is the only curve in its isogeny class and otherwise up to primes where $E[\ell]$ is reducible''; this matches (ii) and (iii).
 
 \emph{The idea of the proof.} Proposition 1 of \cite{RibetTakahashi97} (Proposition 3.1 of \cite{Takahashi01}) is an exact sequence $0\to\mathcal X_p(J')\to\mathcal X_q(J)\to\mathcal X_q(J'')^2\to0$
 of character groups of the tori of the reductions, with $J=J_0^d(pqm)$, $J'=J_0^{dpq}(m)$, $J''=J_0^d(qm)$, compatible with the Hecke operators and the monodromy pairings; for $d=1$ it is
@@ -1738,14 +1734,13 @@ Let $E/\Q$ be optimal of odd modular degree. Then $N$ has at most two odd prime 
 is supersingular at $2$ and $E(\R)$ is connected, or (c) $E$ has complex multiplication and $N\in\{27,32,49,243\}$.
 \end{theorem}
 
-We do not prove this. The statement is the one of Section sec:two of the revised paper: ``a curve of odd modular degree has at most two odd bad primes and even analytic rank, and either it has a
+We do not prove this. The statement is the one of Section sec:two of the paper: ``a curve of odd modular degree has at most two odd bad primes and even analytic rank, and either it has a
 rational $2$-torsion point, or its conductor is prime, it is supersingular at $2$ and $E(\R)$ is connected, or it has complex multiplication and $N\in\{27,32,49,243\}$'', from
 \cite{CalegariEmerton09} (as Theorem 1.1 of the arXiv version; the published numbering was not checked). Data (\texttt{degphi}, \texttt{allcurves}, and PARI for $a_2$, the discriminant and $j$): $103$
 optimal curves of conductor below $10{,}000$ have odd modular degree, and all satisfy the theorem; $55$ have a rational point of order $2$, $46$ have prime conductor, no rational point of order $2$,
 $a_2$ even and negative discriminant, and two, \curve{27a1} ($\degphi=1$) and \curve{243b1} ($\degphi=9$), both with $j=0$ and torsion $\Z/3$, are covered only by (c). The odd-degree optimal curves of
 conductor below $100$ are \curve{11a1}, \curve{14a1}, \curve{15a1}, \curve{17a1}, \curve{19a1}, \curve{20a1}, \curve{21a1}, \curve{24a1}, \curve{27a1}, \curve{32a1}, \curve{33a1}, \curve{36a1}, \curve{46a1}, \curve{49a1},
-\curve{52a1}, \curve{57b1}, \curve{67a1}, \curve{73a1}, \curve{89b1}. The version of 10 October 2026 omitted case (c) and the conditions in (b); \curve{27a1} and \curve{243b1} were counterexamples to that
-paraphrase.
+\curve{52a1}, \curve{57b1}, \curve{67a1}, \curve{73a1}, \curve{89b1}.
 
 \begin{remark}[computing the modular degree]\label{rem:moddeg:computing-the-degree}
 Three methods. (a) Zagier's \cite{Zagier85}: compute $\varphi_{E*}$ on $H_1(X_0(N),\Z)$ from modular symbols and read $\degphi$ off the index of \Cref{prop:moddeg:degree-descriptions}(iv), the cup product
@@ -1888,5 +1883,5 @@ Ribet and Stein \cite{RibetStein} (Theorem 3.5 as the paper cites it) for $J_1(N
 \cite{LingOesterle} and Ribet \cite{Ribet88} for the Shimura subgroup. The proof of \Cref{thm:moddeg:gorenstein} from multiplicity one is \Cref{ch:modules}'s freeness criterion.
 
 \emph{Modularity, Shimura curves, the prime $2$.} Modularity: \cite{Wiles95,TaylorWiles,BCDT}, with Carayol \cite{Carayol86} for the level. Shimura curves and the degree comparison: \cite{Ribet90,RibetTakahashi97,Takahashi01,Pasten}; \Cref{thm:moddeg:ribet-takahashi} was checked against \cite{RibetTakahashi97} (Theorems 1 and 2, Propositions 1 to 3) and \cite{Takahashi01}
-(Theorems 2.3, 2.4, 2.7, 3.2, Corollaries 3.4, 3.5, Table I); Pasten's summary (Section 1 of \cite{Pasten}) is a secondary pointer that we have not compared with them. Watkins's conjecture \cite{Watkins02} and the results of \cite{Dummigan06,CalegariEmerton09,Yazdani11,CaroPasten22,HatleyKundu,BKP}; \Cref{thm:moddeg:calegari-emerton} is quoted from the revised paper and the arXiv version of \cite{CalegariEmerton09}. The data checks of
+(Theorems 2.3, 2.4, 2.7, 3.2, Corollaries 3.4, 3.5, Table I); Pasten's summary (Section 1 of \cite{Pasten}) is a secondary pointer that we have not compared with them. Watkins's conjecture \cite{Watkins02} and the results of \cite{Dummigan06,CalegariEmerton09,Yazdani11,CaroPasten22,HatleyKundu,BKP}; \Cref{thm:moddeg:calegari-emerton} is quoted from the paper and the arXiv version of \cite{CalegariEmerton09}. The data checks of
 \Cref{conj:moddeg:watkins,thm:moddeg:calegari-emerton} use all $38{,}042$ optimal curves of conductor below $10{,}000$.

@@ -197,7 +197,7 @@ with corner $\varepsilon\kappa$, the check with $c_q$): \Cref{prop:reduction:spl
 \Cref{ch:blochkato}.
 \item \textbf{Lemma lem:IV and Remark rem:types} ($E[3]^{I_q}$ a line or $0$, Kraus's defect, the case $q=2$):
 \Cref{prop:reduction:component-invariants}, \Cref{thm:reduction:serre-tate}, \Cref{thm:reduction:kraus}, \Cref{cor:reduction:IV-at-2}.
-\item \textbf{Proposition prop:shapes and Lemma lem:tamadd} of the revised paper (the image of inertia at a potentially good prime is finite,
+\item \textbf{Proposition prop:shapes and Lemma lem:tamadd} (the image of inertia at a potentially good prime is finite,
 its elements have orders $1,2,3,4,6$, it is cyclic for $q\ge5$; a potentially multiplicative curve is a quadratic twist of a Tate curve):
 \Cref{thm:reduction:serre-tate}, \Cref{thm:reduction:kraus}, \Cref{thm:reduction:tate-uniformisation}, \Cref{prop:reduction:inertia-at-2}.
 \item \textbf{Remark rem:wild, Section sec:wild, Proposition prop:forms}: \Cref{thm:reduction:tame-additive}, \Cref{cor:reduction:IV-at-2},
@@ -662,7 +662,7 @@ trivially, and it maps isomorphically onto $E(\Q_{11})/E_0(\Q_{11})$, a group of
 Section 1.1 of the paper: $\delta_p=\dim V^{I_p}$ is $2$ at a good prime because $I_p$ acts trivially on $T_\ell E$
 (\Cref{cor:reduction:torsion-injects}(ii)); the values $1$ and $0$ at multiplicative and additive primes come
 from \Cref{prop:reduction:tate-torsion} and \Cref{prop:reduction:conductor-values}. Section 1.4: the Tamagawa
-number is $c_q=[E(\Q_q):E_0(\Q_q)]$.
+number $c_q=\#\Phi_q(\F_q)$, which is $[E(\Q_q):E_0(\Q_q)]$ (\Cref{prop:reduction:component-group}).
 \end{paperlink}
 
 \section{Potentially good and potentially multiplicative reduction}\label{sec:reduction:potential}
@@ -759,7 +759,7 @@ $q=2$ is not.
 
 \begin{paperlink}
 Definition def:terms: $t_\ell(E,q)=v_\ell(-v_q(j_E))$ if $v_q(j_E)<0$ and $0$ otherwise, ``the $\ell$-part of the
-valuation of the Tate parameter at a potentially multiplicative prime''. Lemma lem:euler: ``the inertia group acts
+valuation of the Tate parameter at a potentially multiplicative prime''. Lemma lem:euler: ``The inertia group acts
 on $V$ through a finite cyclic quotient when the reduction is potentially good, and through a quadratic character
 times a unipotent when it is potentially multiplicative'' (\Cref{thm:reduction:serre-tate},
 \Cref{thm:reduction:tate-uniformisation}). Remark rem:wild: a symbol $\kod{I}_n^*$ at $2$ can be potentially good
@@ -934,7 +934,7 @@ it is a line.
 \end{proof}
 
 \begin{paperlink}
-The paragraph before Lemma lem:IV in the revised paper states (i) with the proof above (``the snake lemma for
+The paragraph before Lemma lem:IV in the paper states (i) with the proof above (``the snake lemma for
 multiplication by $\ell^k$ gives the isomorphism'', citing \cite[Section 1]{SerreTate68}). Lemma lem:IV: ``$E[3]^{I_q}$
 is a line'' is (iii) for $\kod{IV}$, $\kod{IV}^*$. Remark rem:types: ``$E[3]^{I_q}=0$'' for the other additive types is
 (iii). Lemma lem:tamfactor, the final check with $M=T$: the paper's module $(\Z/\ell^{v_\ell(n)})\bar e_1$ (the torsion of
@@ -1302,8 +1302,7 @@ module at a potentially good prime: through a finite group $G_{\mathrm{ss}}$, wh
 $12/\gcd(v(\Delta),12)$ when $p\ge5$. The paper uses the conductor exponents in Lemma lem:twist and Theorem thm:qual,
 the defect in Lemma lem:IV, Remark rem:types and Lemma lem:euler, and the wild primes in Remark rem:wild and
 Section sec:wild. The section ends with the theorem that types $\kod{IV}$ and $\kod{IV}^*$ at $2$ are tame with inertia
-image cyclic of order $3$ (\Cref{cor:reduction:IV-at-2}), which removes the exception that the original version of
-the paper made in Proposition prop:forms.
+image cyclic of order $3$ (\Cref{cor:reduction:IV-at-2}), which the paper uses in Lemma lem:IV and Proposition prop:forms.
 
 \begin{convention}[wild part and defect]\label{conv:reduction:sw}
 The Swan conductor (wild part of the conductor) is written $\operatorname{sw}$, as in \Cref{ch:local}; the letter
@@ -1550,16 +1549,16 @@ $v_2(j)\ge0$ and $f_2=2$, and the four roots of the $3$-division polynomial gene
 indices $1,3,3,3$, as (ii) predicts (\Cref{prop:reduction:inertia-at-2}).
 
 \begin{paperlink}
-Lemma lem:IV of the revised paper is stated for every $q\ne3$; its proof is the argument above (component group, then
-injectivity of reduction on finite subgroups of $\GL_2(\Z_3)$). For $q\ge5$, Kraus's formula gives the order $3$ directly: the revised
-paper notes after the lemma that ``for $q\ge5$ the order $3$ is also the semistability defect $12/\gcd(v_q(\Delta_E),12)$ of
-Kraus'' (the original version wrote ``for $v_q(\Delta_E)\in\{4,8\}$ this is $3$''). The Galois-representation consequences, including the Serre conductor
+Lemma lem:IV of the paper is stated for every $q\ne3$; its proof is the argument above (component group, then
+injectivity of reduction on finite subgroups of $\GL_2(\Z_3)$). For $q\ge5$, Kraus's formula gives the order $3$ directly: the
+paper notes after the lemma: ``For $q\ge5$ the order $3$ is also the semistability defect $12/\gcd(v_q(\Delta_E),12)$ of
+Kraus''. The Galois-representation consequences, including the Serre conductor
 exponent $1$ of $\bar\rho_{E,3}$ at $q$, are proved in \Cref{ch:galrep}. With (ii) and (iv), the computation of Lemma lem:euler
 for $\kod{II},\kod{II}^*,\kod{IV},\kod{IV}^*$ applies verbatim at $q=2$: the trace-zero endomorphisms commuting with $\sigma$ form
 the line spanned by $2\sigma+1$, Frobenius inverts $\sigma$ and so acts on that line by $-1=\chi_{-3}(2)$, so
 $L_2(A_f,s)^{-1}=1+2^{-s}$, $P_2(X)=1+2X$ and $e_\ell(E,2)=v_\ell(3/2)$, which is $1$ for $\ell=3$ and $0$ for $\ell\ge5$
-(\Cref{ch:lfunctions}). This is why Proposition prop:forms holds with no exception (the original version excepted these
-types and checked $e_3(E,2)\ge1$ on $92{,}812$ curves), why Remark rem:wild can say that a type $\kod{IV}$ or $\kod{IV}^*$ at $2$
+(\Cref{ch:lfunctions}). This is why Proposition prop:forms holds with no exception at $q=2$ (the paper also reports PARI's factor $1+2X$ at $2$ on the
+$92{,}812$ working-set curves of these types), why Remark rem:wild can say that a type $\kod{IV}$ or $\kod{IV}^*$ at $2$
 ``always has $P_2(X)=1+2X$'', and why case (a) of Theorem thm:qual holds at $q=2$.
 \end{paperlink}
 
@@ -1766,7 +1765,8 @@ $c(gh)=\chi_\ell\varepsilon(g)c(h)+c(g)\varepsilon(h)$ for these matrices; $\kap
 
 \begin{warning}\label{warn:reduction:epskappa}
 In the nonsplit and the additive potentially multiplicative cases the corner of the matrix is $\varepsilon\kappa$, not $\kappa$. The
-proof of Lemma lem:tamfactor in the original version of the paper wrote $\kappa$; the revised version writes $\varepsilon\kappa$. In the nonsplit
+proof of Lemma lem:tamfactor in the paper says so: ``$\varepsilon\kappa$, not $\kappa$, satisfies the cocycle relation for the twisted
+matrices''. In the nonsplit
 multiplicative case (the setting of Lemma lem:tamfactor) $\varepsilon$ is unramified, so nothing in the conclusion changes: $\varepsilon$ is
 trivial on inertia and only changes the Frobenius entry by a sign. In the additive potentially multiplicative case $\varepsilon$ is the
 ramified character of \Cref{thm:reduction:tate-uniformisation}(iii), so it is not trivial on inertia; there the paper does not
@@ -1880,7 +1880,7 @@ curve, prime & type & $a_q$ & $\nu$ & $\bar u\bmod q$ & remark\\
 \end{center}
 For instance $q_{E}=10\cdot11^5+2\cdot11^6+6\cdot11^7+\cdots$ for \curve{11a1}. The values of $t_\ell$: $t_5(\curve{11a1},11)=1$;
 $t_3(\curve{539c1},7)=t_3(\curve{77c1},7)=v_3(3)=1$; $t_5(\curve{980i1},7)=1$; $t_3(\curve{726a1},2)=v_3(6)=1$. At $q=3$, \curve{726a1} has
-$v_3(\nu)=1$, which the appendix's \texttt{rule} counts as $t_3(E,3)$; the revised Definition def:terms defines $t_\ell(E,q)$ for every
+$v_3(\nu)=1$, which the appendix's \texttt{rule} counts as $t_3(E,3)$; Definition def:terms defines $t_\ell(E,q)$ for every
 bad $q$, including $q=\ell$.
 \end{example}
 
@@ -1980,12 +1980,11 @@ potentially good additive cases with $q\ge5$ other than $\kod{I}_0^*$, and the s
 every other bad prime.
 
 \begin{warning}\label{warn:reduction:q-versus-qstar}
-The paper's proof of Lemma lem:twist (ii) in its original version wrote the invariants of the twist as $q^2c_4$, $q^3c_6$, $q^6\Delta$,
-which are those of the twist by $q$; the twist by $q^*$ has $(q^*)^2c_4$, $(q^*)^3c_6$, $(q^*)^6\Delta$. For $q\equiv3\pmod4$ the two are
+The twist by $q^*$ has invariants $(q^*)^2c_4$, $(q^*)^3c_6$, $(q^*)^6\Delta$, as in the paper's proof of Lemma lem:twist (ii); the
+invariants $q^2c_4$, $q^3c_6$, $q^6\Delta$ are those of the twist by $q$. For $q\equiv3\pmod4$ the two are
 different curves, differing by the twist by $-1$, which is ramified at $2$: the twist of \curve{121a1} by $-11$ is \curve{121c2}, of
-conductor $121$, while its twist by $11$ is \curve{1936k2}, of conductor $2^4\cdot11^2$ (type $\kod{I}_4^*$ at $2$). Likewise the phrase
-``the conductor exponents are the standard ones for $q$ odd (tame)'' is right for the exchanges of (a), (b), (c), and wrong for
-general additive reduction at $q=3$, which can be wild (\Cref{rem:reduction:wild-at-3}).
+conductor $121$, while its twist by $11$ is \curve{1936k2}, of conductor $2^4\cdot11^2$ (type $\kod{I}_4^*$ at $2$). Likewise the conductor exponents of the twist are the tame ones for the exchanges of (a), (b), (c),
+but not for general additive reduction at $q=3$, which can be wild (\Cref{rem:reduction:wild-at-3}, \Cref{prop:reduction:twist-at-3}).
 \end{warning}
 
 \begin{proposition}[the exchanges at $q=3$]\label{prop:reduction:twist-at-3}
@@ -2010,19 +2009,19 @@ $\kod{II}^*$. Since $m(E)\in\{1,2,3,7,8,9\}$ and $1\le m(E^{(3)})=m(E)\pm6\le9$,
 gives the exchanges.
 \end{proof}
 
-This answers, given Ogg's formula, the question left open in the revised paper (Open question 6) whether the exchanges of
-Lemma lem:twist (ii) hold at $q=3$. All $5{,}122$ such pairs below conductor $10{,}000$ (curves numbered $1$) behave as stated. Examples:
+The paper's proof of Lemma lem:twist (ii) treats $q=3$ by the same argument, with the formula of Ogg and Saito. All $5{,}122$ such pairs below conductor $10{,}000$ (curves numbered $1$) behave as stated. Examples:
 \curve{54b1} (type $\kod{II}$, $f_3=3$) and its twist \curve{54a1} (type $\kod{IV}^*$, $f_3=3$); \curve{27a1} ($\kod{IV}^*$) and \curve{27a3}
 ($\kod{II}$); \curve{36a1} ($\kod{III}$, $f_3=2$) and \curve{36a3} ($\kod{III}^*$).
 
 \begin{paperlink}
-Section 1.4 of the paper lists the exchanges ``the first and the last for every odd $q$, the three others for $q\ge5$'';
-\Cref{prop:reduction:twist-at-3} shows that the three others also hold at $q=3$. Lemma lem:euler (``$V=V'\otimes\chi_{q^*}$ with $V'$
+Section 1.4 of the paper lists the five exchanges, ``all five at every odd $q$; at $q=3$ the three middle exchanges keep the
+conductor exponent, which can exceed $2$'': these are \Cref{lem:reduction:twist-ramified} and \Cref{prop:reduction:twist-at-3}. Lemma lem:euler (``$V=V'\otimes\chi_{q^*}$ with $V'$
 Steinberg at $q$'' for $\kod{I}_n^*$, and unramified for $\kod{I}_0^*$) uses (a) and (b). Theorems thm:qual (b), (c) and thm:quant
 twist a type $\kod{II}$, $\kod{II}^*$, $\kod{I}_0^*$ or $\kod{I}_n^*$ prime to a type $\kod{IV}^*$, $\kod{IV}$, good or multiplicative one; Theorem
 thm:quant needs this at every odd $q$ in $S$, which (a) and (b) provide. The proof of Theorem thm:main uses the multiplicative twist at an
 $\kod{I}_n^*$ prime; at $q=2$, where \Cref{lem:reduction:twist-ramified} does not apply, the local statement
-\Cref{thm:reduction:tate-uniformisation} (a ramified quadratic twist of a Tate curve) is what is needed.
+\Cref{thm:reduction:tate-uniformisation} (a ramified quadratic twist of a Tate curve) is what is needed, as in the proof of Lemma
+lem:tamfactor.
 \end{paperlink}
 
 \begin{proposition}[the twist-symmetrised weight]\label{prop:reduction:twist-weight}
@@ -2047,8 +2046,6 @@ $\kod{I}_n^*$ and $\kod{I}_0^*$ give $v_\ell(4)=0$, $\kod{IV}$ and $\kod{IV}^*$ 
 $q=2$.
 \end{proof}
 
-The paper states the max formula for $q\ge5$ only; by \Cref{prop:reduction:twist-at-3} it holds at $q=3$ as well.
-
 \begin{example}[twist pairs]\label{ex:reduction:twist-pairs}
 Curve-level twists used in the paper, each identified by computing the twisted model, its minimal model and its label (all
 checked with PARI against Cremona's tables):
@@ -2070,7 +2067,7 @@ $E$ & type at $q$ & $d$ & $E^{(d)}$ & type at $q$ & other bad primes\\
 \end{center}
 In the row of \curve{980i1}, the type $\kod{IV}^*$ at $2$ is preserved because $-7\equiv1\pmod8$, so $\chi_{-7}$ is trivial on $G_{\Q_2}$. The last
 row is a wild twist at $2$, to which no rule of \Cref{lem:reduction:twist-ramified} applies. The first row also shows that
-$e_\ell(E,q)$ is not twist invariant (the revised paper corrects the last sentence of Definition def:terms accordingly; see \Cref{ch:paper}): \curve{11a1} has $e_3(E,11)=0$, while \curve{121d2} has $e_3(E,11)=v_3(11^2-1)=1$
+$e_\ell(E,q)$ is not invariant under twists ramified at $q$, as the paper notes after Definition def:terms with this pair: \curve{11a1} has $e_3(E,11)=0$, while \curve{121d2} has $e_3(E,11)=v_3(11^2-1)=1$
 (\Cref{ch:lfunctions}); the Tate parameters at $11$ coincide (\Cref{ex:reduction:tate-parameters}).
 \end{example}
 
@@ -2173,9 +2170,8 @@ case, as $\ad V$ is unchanged by a quadratic twist); $\Z/2$ gives the cubic $(1-
 $a=a_2(E')$, and $e_3(E,2)=v_3(9-a^2)$; $\Z/4$ gives $1\pm2X$; $Q_8$ and $\SL_2(\F_3)$ act absolutely irreducibly, so $(\ad V)^{I_2}=0$ and
 $P_2=1$. So a type $\kod{II}$ or $\kod{II}^*$ at $2$ can have $e_3(E,2)\in\{0,1,2\}$: \curve{336f1} has type $\kod{II}$ at $2$, $f_2=4$, pattern
 $(1,3,3,3)$, $P_2=1+2X$, $e_3(E,2)=1$ and $\degphi=24$; \curve{1232l1}, the twist of \curve{77a1} by $\chi_{-4}$ with $a_2(\curve{77a1})=0$, has
-type $\kod{II}^*$ at $2$, $f_2=4$, pattern $(1,1,1,1)$, $P_2=(1-2X)(1+2X)^2=1+2X-4X^2-8X^3$, $e_3(E,2)=2$ and $\degphi=288=2^5\cdot3^2$. The
-original version of Remark rem:wild said that ``a type $\kod{II}$ at $2$ has $P_2=1$ and $e_3=0$''; the revised version says ``usually'',
-with these two curves as counterexamples. A potentially good $\kod{I}_m^*$ at $2$ has the pattern $(4,4,4,4)$, hence $P_2=1$, in most cases
+type $\kod{II}^*$ at $2$, $f_2=4$, pattern $(1,1,1,1)$, $P_2=(1-2X)(1+2X)^2=1+2X-4X^2-8X^3$, $e_3(E,2)=2$ and $\degphi=288=2^5\cdot3^2$. Remark
+rem:wild of the paper says that a type $\kod{II}$ or $\kod{II}^*$ at $2$ ``usually has $P_2=1$'', with these two curves as the exceptions. A potentially good $\kod{I}_m^*$ at $2$ has the pattern $(4,4,4,4)$, hence $P_2=1$, in most cases
 (\Cref{tab:reduction:inertia2}).
 \end{paperlink}
 
@@ -2204,8 +2200,8 @@ pairs. The equal distributions are \Cref{prop:reduction:twist-at-3}: the twist b
 conductor, and exchanges these types.
 
 \begin{paperlink}
-This is why Lemma lem:IV excludes $q=3$ (at $3$ the types $\kod{IV}$, $\kod{IV}^*$ are wild, and the conclusion ``tamely ramified, Serre
-conductor exponent $1$'' fails), and why the weights $w_3$ at $q=\ell=3$ in Conjecture conj:euler are not explained by Lemma lem:euler. The
+This is why Lemma lem:IV excludes $q=3$ (at $3$ the types $\kod{IV}$, $\kod{IV}^*$ are wild, and the conclusion that
+$\bar\rho_{E,3}$ is tamely ramified with Serre conductor exponent $1$ at $q$ fails), and why the weights $w_3$ at $q=\ell=3$ in Conjecture conj:euler are not explained by Lemma lem:euler. The
 Remark after the Example of Section 3 of the paper mentions $q=3$ in cases (a) and (b) of Theorem thm:qual; there the obstruction is
 $q=\ell$, and the ramification at $3$ of the types $\kod{II}$, $\kod{IV}$ is also wild by (ii).
 \end{paperlink}
@@ -2214,7 +2210,7 @@ $q=\ell$, and the ramification at $3$ of the types $\kod{II}$, $\kod{IV}$ is als
 At $2$ a symbol $\kod{I}_m^*$ is potentially good in $5{,}935$ of the $9{,}667$ pairs below conductor $10{,}000$ ($61\%$; among curves
 numbered $1$ in their class, which below conductor $10{,}000$ are the optimal curves except in class \curve{990h} (whose optimal
 curve is \curve{990h3}; it is multiplicative at $2$, as $2\parallel990$, and so does not enter this count), $2{,}340$ of $4{,}037$, that is $58\%$, the
-figure quoted in the revised Remark rem:wild; the six curves with complex multiplication among them are all potentially good, so the
+figure quoted in Remark rem:wild of the paper; the six curves with complex multiplication among them are all potentially good, so the
 optimal non-CM curves give $2{,}334$ of $4{,}031$, again $58\%$). When it is
 potentially multiplicative, $t_\ell(E,2)=v_\ell(\nu)$ with $\nu=-v_2(j)=m-4$ or $m-8$ (\Cref{thm:reduction:potmult-additive}(ii)), so
 $v_\ell(m)$ is the wrong invariant: \curve{304b1} has type $\kod{I}_7^*$ and $\nu=3$, so $t_3(E,2)=1$ although $v_3(7)=0$; \curve{832c1} has
@@ -2223,10 +2219,8 @@ type $\kod{I}_9^*$ and $\nu=1$, so $t_3(E,2)=0$ although $v_3(9)=2$.
 
 \begin{paperlink}
 Definition def:terms: ``a symbol $\kod{I}_n^*$ at $q=2$ can have potentially good reduction, and then $t_\ell=0$''; Section sec:wild: ``the
-index $n$ of the symbol is not the valuation of the Tate parameter at $2$, which is why $n$ was not the right invariant''. In the proof of
-Theorem thm:main a potentially multiplicative prime $2$ is handled by \Cref{thm:reduction:tate-uniformisation} (a ramified quadratic
-twist of a Tate curve with $\nu=-v_2(j)$), not by Lemma lem:twist, which is for odd $q$ (the original proof of Theorem thm:main applied Lemma lem:twist there;
-see \Cref{ch:paper}).
+index $n$ of the symbol is not the valuation of the Tate parameter at $2$, which is why $n$ was not the right invariant''. An additive potentially multiplicative prime $2$ is handled by \Cref{thm:reduction:tate-uniformisation} (a ramified quadratic
+twist of a Tate curve with $\nu=-v_2(j)$), as in the proof of Lemma lem:tamfactor, not by Lemma lem:twist, which is for odd $q$.
 \end{paperlink}
 
 \section{Cremona's tables and PARI}\label{sec:reduction:tables}
@@ -2241,8 +2235,8 @@ in the normalisation of \Cref{thm:reduction:global-minimal}, the conductor, the 
 \texttt{allbsd} adds the product $\prod_pc_p$ of the Tamagawa numbers, the real period and the other quantities of the conjecture of Birch
 and Swinnerton-Dyer; other files give the isogeny matrices, the modular degrees (\texttt{degphi}) and the mod $\ell$ images. Section
 sec:data of the paper describes the \texttt{ecdata} repository as containing every curve ``with its Kodaira symbols, Tamagawa
-numbers, modular degree, isogeny class, torsion'' and mod $\ell$ images, and adds that ``the Kodaira types and discriminant exponents
-at the bad primes were recomputed with PARI/GP 2.15 from the $a$-invariants'' (its appendix calls \texttt{ellglobalred}). The files
+numbers, modular degree, isogeny class, torsion'' and mod $\ell$ images, and adds: ``The Kodaira types and discriminant exponents
+at the bad primes were recomputed with PARI/GP 2.15'' from the $a$-invariants (its appendix calls \texttt{ellglobalred}). The files
 used in this book (\texttt{allcurves}, \texttt{allbsd}, \texttt{allisog}, \texttt{alllabels}, \texttt{degphi}, \texttt{galrep},
 conductor below $10{,}000$) are a subset of that repository and, unlike the paper's description of the full repository, do not list
 the Kodaira symbols or the Tamagawa numbers prime by prime: here these are recomputed with Tate's algorithm (\texttt{ellglobalred}),
@@ -2333,13 +2327,14 @@ used in the Example of Section 3 of the paper (\Cref{ex:reduction:tate-running})
 \end{exercise}
 
 \begin{exercise}\label{exer:reduction:twist121}
-Check the paper's claim (Lemma lem:twist (ii)) that the twist of \curve{121a1} by $-11$ has type $\kod{IV}^*$ at $11$. Then show that its twist
+Check Lemma lem:twist (ii) of the paper on \curve{121a1}: its twist by $-11$ has type $\kod{IV}^*$ at $11$. Then show that its twist
 by $+11$ has additive reduction at $2$ (it is \curve{1936k2}, of type $\kod{I}_4^*$ at $2$ with $v_2(j)=0$), so that the twist by $q$ and the
 twist by $q^*$ really are different curves (\Cref{warn:reduction:q-versus-qstar}).
 \end{exercise}
 
 \begin{exercise}\label{exer:reduction:cubic}
-Check the paper's sentence ``the cubic $T^3+a_2T^2+a_4T+a_6$ of Tate's algorithm has distinct roots modulo $q$'' for the twist of
+Check the paper's argument for the case $n=0$ of Lemma lem:twist (ii) (the cubic of Tate's algorithm of the twist is
+$T^3+\epsilon a_2T^2+a_4T+\epsilon a_6$, with distinct roots modulo $q$) for the twist of
 \curve{11a3} by $-7$ (it is \curve{539d1}): compute a model $y^2=x^3+a_2x^2+a_4x+a_6$ of \curve{11a3}, the cubic of the twist with the sign
 $\epsilon=-1$, and its roots modulo $7$ (\Cref{prop:reduction:I0star-cubic}).
 \end{exercise}
@@ -2402,7 +2397,7 @@ Tate parameter, on \curve{304b1} and \curve{832c1}: compute $m$, $v_2(j)$, $f_2$
 \end{exercise}
 
 \begin{exercise}\label{exer:reduction:typeII2}
-Check the claim of the original version of the paper (Remark rem:wild) that ``a type $\kod{II}$ at $2$ has $P_2=1$'' against \curve{336f1} and
+Check Remark rem:wild of the paper, that a type $\kod{II}$ or $\kod{II}^*$ at $2$ ``usually has $P_2=1$'' but not always, on \curve{336f1} and
 the type $\kod{II}^*$ curve \curve{1232l1}, using PARI's \texttt{lfunsympow} and the dictionary of \Cref{prop:reduction:inertia-at-2}. Explain
 the answer through the inertia images ($\Z/6$, respectively $\Z/2$), and verify that $v_3(\degphi)=e_3(E,2)=2$ for \curve{1232l1}
 ($\degphi=288$).
@@ -2431,13 +2426,12 @@ symbols and wild ramification for twists of curves with multiplicative reduction
 \cite{Praveen26}.
 
 \paragraph{The types $\kod{IV}$, $\kod{IV}^*$ at $2$.} \Cref{cor:reduction:IV-at-2} has two independent proofs: the one given here,
-through the component group (\Cref{prop:reduction:component-invariants}), which is the proof of Lemma lem:IV in the revised paper; and
+through the component group (\Cref{prop:reduction:component-invariants}), which is the proof of Lemma lem:IV in the paper; and
 one through the conductor, from \Cref{thm:reduction:tame-additive}: $f_2=2$ forces $\operatorname{sw}=0$, so the image of inertia is a
-cyclic group of odd order dividing $24$, hence of order $3$. The original version of the paper left this case as an exception in Proposition
-prop:forms.
+cyclic group of odd order dividing $24$, hence of order $3$.
 
-\paragraph{The exchanges at $3$.} \Cref{prop:reduction:twist-at-3} is proved here from Ogg's formula; we have not found it stated in the
-literature in this form, though it can presumably be read off the tables of \cite{Papadopoulos93}.
+\paragraph{The exchanges at $3$.} \Cref{prop:reduction:twist-at-3} is proved here from Ogg's formula, as in the paper's proof of Lemma
+lem:twist (ii); we have not found it stated elsewhere in the literature in this form, though it can presumably be read off the tables of \cite{Papadopoulos93}.
 
 \paragraph{Computations.} All numbers in the chapter were computed with PARI/GP 2.17.2 \cite{PARI} through \texttt{cypari2}, on Cremona's
 tables \cite{ecdata} for conductor below $10{,}000$ ($64{,}687$ curves, $211{,}455$ pairs of a curve and a bad prime). The population checks

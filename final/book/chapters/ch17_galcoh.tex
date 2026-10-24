@@ -768,7 +768,7 @@ the displayed identity.
 \begin{warning}[the Frobenius convention]\label{warn:galcoh:frobenius}
 The \emph{vanishing} of $\Hur(\Q_p,V)$ and the \emph{order} of $\Hur(\Q_p,T)$ do not depend on whether one writes $\Frob$ or $\Phi$ (\Cref{prop:galcoh:unramified-computed}(iii),
 (iv)). The \emph{value} of the determinant does. Only $\det(1-\Phi\mid(V^D)^{I_p})$ equals $L_p(A_f,1)^{-1}$ (\Cref{conv:galcoh:frobenius}; \Cref{ex:galcoh:ur-examples}(d)
-shows the two values at a multiplicative prime). The revised paper writes the geometric Frobenius $\Frob_p^{-1}$ in this determinant, after Lemma lem:dfg21.
+shows the two values at a multiplicative prime). The paper writes the geometric Frobenius $\Frob_p^{-1}$ in this determinant, in the paragraph after Lemma lem:dfg21.
 \end{warning}
 
 \begin{proposition}[unramified classes and the action on $H^1(I,M)$]\label{prop:galcoh:ur-sequence}
@@ -907,16 +907,15 @@ $L_T$. $L_W=\pi(0)=0$.
 \end{proof}
 
 \begin{paperlink}\label{pl:galcoh:after-dfg21}
-The paragraph after Lemma lem:dfg21 in the revised paper reads: ``For $p\in\Sigma$ the group $H^1_f(\Q_p,V^D)=H^1_{\mathrm{ur}}(\Q_p,V^D)=(V^D)^{I_p}/(\Frob_p-1)$
+The paragraph after Lemma lem:dfg21 reads: ``For $p\in\Sigma$ the group $H^1_f(\Q_p,V^D)=H^1_{\mathrm{ur}}(\Q_p,V^D)=(V^D)^{I_p}/(\Frob_p-1)$
 vanishes, because $\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}\ne0$; for the same reason $H^0(\Q_p,V^D)=0$, \dots'', and, in the next sentence, ``So
 $H^1_f(\Q_p,T^D)$ is the torsion of $H^1(\Q_p,T^D)$, a finite group.'' In the book's terms: the equality $H^1_f=\Hur$ at $p\ne\ell$ is \Cref{ch:blochkato}; the
 equality with $(V^D)^{I_p}/(\Frob_p-1)$ is \Cref{prop:galcoh:unramified-computed}(i); the vanishing and the vanishing of $H^0(\Q_p,V^D)$ are
 \Cref{prop:galcoh:unramified-computed}(iii), applied to $V^D$, with the nonvanishing of $L_p(A_f,1)^{-1}$ supplied by \Cref{ch:lfunctions}; and the last sentence is
 \Cref{cor:galcoh:ur-vanishing} applied to $T^D$, since $H^1_f(\Q_p,T^D)$ is defined in Lemma lem:dfg21 as the propagated condition $\iota^{-1}H^1_f(\Q_p,V^D)$.
 \emph{Commentary.} The book proves slightly more than the paper states: $H^1_f(\Q_p,T^D)\simeq H^0(\Q_p,W^D)$, which is how \Cref{ch:blochkato} computes its length
-(Lemma lem:fpr). The determinant in the revised paper is written with $\Frob_p^{-1}$, the geometric Frobenius, as \Cref{warn:galcoh:frobenius} requires (the
-original version wrote $\Frob_p$, which gives $1-p^2$ instead of $1-p^{-2}$ at a multiplicative prime); the vanishing, and the finiteness of $H^1_f(\Q_p,T^D)$,
-hold in either convention.
+(Lemma lem:fpr). The determinant is written with $\Frob_p^{-1}$, the geometric Frobenius, as \Cref{warn:galcoh:frobenius} requires (with $\Frob_p$ it would be $1-p^2$
+instead of $1-p^{-2}$ at a multiplicative prime); the vanishing, and the finiteness of $H^1_f(\Q_p,T^D)$, hold in either convention.
 \end{paperlink}
 
 \begin{example}[unramified cohomology in the paper's situations]\label{ex:galcoh:ur-examples}
@@ -1037,7 +1036,7 @@ Kummer isomorphism (\Cref{thm:galcoh:kummer-ladic}) and \Cref{prop:galcoh:unit-c
 \begin{remark}
 Two cautions. First, the retraction is not functorial: inflation goes from $H^1(G/I,-)$ to $H^1(G,-)$, not the other way, and over a general finite extension $K$ of
 $\Q_q$ the analogous splitting depends on the choice of uniformiser (replacing $\varpi$ by $\varpi w$, $w$ a unit, changes $\operatorname{pr}_{\ur}[\kappa_\varpi]$ from $0$ to
-$-[\kappa_w]$, since $\varpi=\varpi'w^{-1}$; compare \Cref{ex:galcoh:ex-uniformiser}). Over $\Q_q$ the uniformiser $q$ is canonical, and the paper's phrase ``the image of $\kappa$ in $H^1(G/I,\Z_\ell(1)^I)$'' has the precise meaning
+$-[\kappa_w]$, since $\varpi=\varpi'w^{-1}$; compare \Cref{ex:galcoh:ex-uniformiser}). Over $\Q_q$ the uniformiser $q$ is canonical, and the unramified component of $[\kappa]$ in the paper's splitting $\Z_\ell\kappa_q\oplus H^1_{\mathrm{ur}}$ has the precise meaning
 $\operatorname{pr}_{\ur}[\kappa]$. Second, the value $\kappa(\Frob)$ of a cocycle at a Frobenius lift is a different object from the class $\operatorname{pr}_{\ur}[\kappa]$;
 \Cref{thm:galcoh:tate-kummer-class}(iii), (iv) compare them.
 \end{remark}
@@ -1105,15 +1104,14 @@ identification of $n'$ and $c'$: $v_\ell(n')=v_\ell(n)$ by \Cref{thm:galcoh:tate
 \Cref{ch:blochkato}; the corollary is the pointer from the two computations to that assembly.
 
 \begin{paperlink}\label{pl:galcoh:tamfactor}
-The end of the proof of Lemma lem:tamfactor in the revised paper reads: ``Finally, $q$ being a uniformiser of $\Q_q$, $H^1(\Q_q,\Z_\ell(1))$ splits as
+The end of the proof of Lemma lem:tamfactor reads: ``Finally, $q$ being a uniformiser of $\Q_q$, $H^1(\Q_q,\Z_\ell(1))$ splits as
 $\Z_\ell\kappa_q\oplus H^1_{\mathrm{ur}}$, and $\kappa=n\kappa_q+\kappa_u$, where $\kappa_u$ is unramified, inflated from the class of $u$ in
 $H^1(G/I,\Z_\ell(1))=\Z_\ell(1)/(q-1)\simeq\F_q^\times\otimes\Z_\ell$. The value $c'=\varepsilon\kappa(\Frob)$ is a cocycle value: it is $\varepsilon$ times the class of $u$ for the
 Frobenius lift fixing a compatible system of $\ell$-power roots of $q$, and in general it is well defined only modulo $\ell^{\min(v_\ell(n),v_\ell(q-1))}$ (changing the lift
 changes it by a multiple of $n'$, changing the cocycle by a multiple of $q-1$).'' The splitting is \Cref{prop:galcoh:canonical-splitting}; the decomposition and the
 inflation are \Cref{thm:galcoh:tate-kummer-class}(i) and \Cref{prop:galcoh:unramified-value}; the value at the special lift is part (iii), and the indeterminacy, the
 ideal $(n,q-1)\Z_\ell=\ell^{\min(v_\ell(n),v_\ell(q-1))}\Z_\ell$, is part (iv). ``The class of $u$'' means the class of its reduction $\bar u$, as the statement of the lemma
-says. The original version of the paper wrote $\kappa$ instead of $\varepsilon\kappa$ in the corner and ``well defined modulo $q-1$''; the revised wording is the one proved
-here. The check ``the same computation for $M=T$ gives $(\Z/\ell^{v_\ell(n)})\bar e_1$ with $\Frob$ acting by $\varepsilon$, that is, the $\ell$-part of the Tamagawa number
+says. The check ``the same computation for $M=T$ gives $(\Z/\ell^{v_\ell(n)})\bar e_1$ with $\Frob$ acting by $\varepsilon$, that is, the $\ell$-part of the Tamagawa number
 $c_q(E)$'' is \Cref{prop:galcoh:ec-local-image}(iv) below, in its cohomological form.
 \end{paperlink}
 
@@ -1729,7 +1727,7 @@ $\mathcal L=f$ on $W$, $\mathcal L^\Sigma$ the structure of $H^1_\Sigma(\Q,W)$, 
 follows. $L_{V,v}^\perp=L_{V^D,v}$: at $p\ne\ell$ this is \Cref{thm:galcoh:ur-orthogonal}(ii), at $\ell$ it is the theorem of Bloch and Kato (\Cref{ch:blochkato}), and at $\infty$ both
 are $0$. Hypothesis (a) is $H^1_f(\Q,V^D)=0$, Theorem thm:dfg27. Hypothesis (b) holds at every $p\in\Sigma$ by the paragraph after the lemma
 (\Cref{pl:galcoh:after-dfg21}): $\Hur(\Q_p,V^D)=0$, hence $H^0(\Q_p,V^D)=0$ by \Cref{prop:galcoh:unramified-computed}(iii). The paper's hypothesis $H^0(\Q,V^D)=0$ then
-follows, as the revised paper notes (``so the hypothesis $H^0(\Q,V^D)=0$ is automatic here''). In the paper's situation $L_{V^D,p}=0$ for $p\in\Sigma$, so
+follows, as the paper notes (``so the hypothesis $H^0(\Q,V^D)=0$ is automatic here''). In the paper's situation $L_{V^D,p}=0$ for $p\in\Sigma$, so
 $\mathcal L^*_p=H^1(\Q_p,T^D)_{\tors}\simeq H^0(\Q_p,W^D)$ (\Cref{cor:galcoh:ur-vanishing}). \emph{Commentary.} The paper states the lemma under the hypothesis
 $H^0(\Q,V^D)=H^1_f(\Q,V^D)=0$, quoting DFG04; the book proves the version with hypothesis (b) at one prime of $\Sigma$, which is what the derivation from global duality uses
 and what holds in the paper's application.
@@ -1819,8 +1817,8 @@ $\min(v_\ell(n),v_\ell(\#k_K-1),v_\ell(c_1))=\min(v_\ell(n),v_\ell(\#k_K-1),v_\e
 \begin{exercise}\label{ex:galcoh:ex-corner}
 Let $\varepsilon\colon G\to\{\pm1\}$ be a character, $\chi\colon G\to\Z_\ell^\times$ a character and $\kappa$ a cocycle with values in $\Z_\ell(\chi)$, so $\kappa(gh)=\kappa(g)+\chi(g)\kappa(h)$.
 Show that $g\mapsto\sm{\chi\varepsilon(g)}{\varepsilon\kappa(g)}0{\varepsilon(g)}$ is a homomorphism and that $g\mapsto\sm{\chi\varepsilon(g)}{\kappa(g)}0{\varepsilon(g)}$ is one only if $\kappa(gh)=\varepsilon(h)\kappa(g)+\chi(g)\varepsilon(g)\kappa(h)$
-for all $g,h$, which fails for a Kummer cocycle when $\varepsilon\ne1$. What changes in $c'$ if the paper's original matrix is used? \emph{Answer:} the upper right entry of the
-product is $\chi\varepsilon(g)\varepsilon\kappa(h)+\varepsilon\kappa(g)\varepsilon(h)=\varepsilon(gh)\kappa(gh)$; with the corrected matrix $c'$ is multiplied by $\varepsilon(\Frob)=\pm1$, which changes no valuation.
+for all $g,h$, which fails for a Kummer cocycle when $\varepsilon\ne1$. What changes in $c'$ if the matrix with corner $\kappa$ is used? \emph{Answer:} the upper right entry of the
+product is $\chi\varepsilon(g)\varepsilon\kappa(h)+\varepsilon\kappa(g)\varepsilon(h)=\varepsilon(gh)\kappa(gh)$; with the corner $\varepsilon\kappa$, $c'$ is multiplied by $\varepsilon(\Frob)=\pm1$, which changes no valuation.
 \end{exercise}
 
 \begin{exercise}\label{ex:galcoh:ex-pari-tate}
