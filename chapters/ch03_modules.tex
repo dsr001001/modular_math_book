@@ -1135,8 +1135,8 @@ $v(\det B)=\sum v(d_i)=\len\bigoplus\mathcal O/(d_i)$ by \Cref{prop:modules:leng
 \end{proof}
 
 For example, in $M=\Z^2$ the sublattice $L$ spanned by $(2,0)$ and $(1,3)$ has $B=\Mtwo2013$, $\det B=6$, and $\gcd$ of the entries $1$;
-so its invariant factors are $1,6$ (PARI: \texttt{matsnf([2,0;1,3])} returns \texttt{[6,1]}), and $\Z^2/L\simeq\Z/6$, cyclic, although $L$ has
-no basis vector divisible by $6$ in the standard basis. The theorem says that in a suitable basis $e_1,e_2$ of $\Z^2$ it is $\Z e_1\oplus\Z\,6e_2$.
+so its invariant factors are $1,6$ (PARI: \texttt{matsnf([2,0;1,3])} returns \texttt{[6,1]}), and $\Z^2/L\simeq\Z/6$ is cyclic. The theorem says that in a suitable basis $e_1,e_2$ of $\Z^2$ the lattice is $\Z e_1\oplus\Z\,6e_2$; one
+such basis is $e_1=(1,3)$, $e_2=(0,1)$, since $(2,0)=2e_1-6e_2$.
 
 \begin{proposition}[the dual of an inclusion of lattices]\label{prop:modules:dual-inclusion}
 Let $L\subseteq M$ be lattices of the same rank $n$, so $M/L$ is torsion. Then restriction $M^\vee\to L^\vee$ is injective and
@@ -1236,11 +1236,14 @@ $x=u\varpi^{v(x)}$ with $u\in\mathcal O^\times$; $\mathcal O^\times=\{v=0\}$; an
 $y_k=\varpi y_{k+1}$ ($\mathcal O$ is a domain), so $(y_0)\subseteq(y_1)\subseteq\cdots$; this chain stabilises, $y_{k+1}=uy_k$ for some $k$ and $u\in\mathcal O$, so
 $(1-\varpi u)y_k=0$, and $1-\varpi u$ is a unit (\Cref{prop:modules:local-ring}); hence $y_k=0$ and $x=0$. So every $x\ne0$ lies in $\mf m^k$ but not
 $\mf m^{k+1}$ for a unique $k$; then $x=\varpi^ku$ with $u\notin\mf m$, a unit. The exponent is unique: $\varpi^ku=\varpi^ju'$ with $k<j$ would give
-$u=\varpi^{j-k}u'\in\mf m$. Put $v(x)=k$ and $v(x/y)=v(x)-v(y)$; this is well defined and multiplicative, and
-$v(x+y)\ge\min(v(x),v(y))$ because $\varpi^{\min}$ divides both. A nonzero ideal $\mf a$ contains an element of least valuation $k$, and then
+$u=\varpi^{j-k}u'\in\mf m$. Put $v(x)=k$. On $\mathcal O\setminus\{0\}$ it is additive: $x=\varpi^au$, $y=\varpi^bu'$ give $xy=\varpi^{a+b}uu'$ with $uu'$
+a unit, so $v(xy)=v(x)+v(y)$. Extend by $v(x/y)=v(x)-v(y)$; this is well defined, since $x/y=x'/y'$ means $xy'=x'y$, whence
+$v(x)+v(y')=v(x')+v(y)$, and it is a homomorphism $K^\times\to\Z$, onto because $v(\varpi)=1$. Finally
+$v(x+y)\ge\min(v(x),v(y))$ because $\varpi^{\min}$ divides both (clear denominators first for elements of $K$). A nonzero ideal $\mf a$ contains an element of least valuation $k$, and then
 $\mf a=\varpi^k\mathcal O$. This proves (c), (d) and (b).
 (b)$\Rightarrow$(a): trivial. (c)$\Rightarrow$(a): $\mf m\ne\mf m^2$, since otherwise $\mf m=0$ by Nakayama ($\mf m$ is finitely generated); pick
-$\varpi\in\mf m\setminus\mf m^2$; then $\varpi\mathcal O=\mf m^k$ with $k=1$. (d)$\Rightarrow$(a): pick $\varpi$ with $v(\varpi)=1$. If $x\in\mf m$ then $v(x)\ge1$ (if
+$\varpi\in\mf m\setminus\mf m^2$; then $\varpi\mathcal O=\mf m^k$ for some $k$, and $k=1$: $k=0$ would make $\varpi$ a unit, and $k\ge2$ would put
+$\varpi$ in $\mf m^2$. (d)$\Rightarrow$(a): pick $\varpi$ with $v(\varpi)=1$. If $x\in\mf m$ then $v(x)\ge1$ (if
 $v(x)=0$ then $v(x^{-1})=0$ and $x^{-1}\in\mathcal O$), so $x/\varpi\in\mathcal O$.
 (e): we do not prove the equivalence with (e); see \cite[Proposition 9.2]{AtiyahMacdonald} (number not verified against the printed
 edition) or \cite[Chapter I, Section 2]{SerreLocalFields}. It is used only in \Cref{ch:ant}.
@@ -1278,8 +1281,13 @@ Let $M$ be a finitely generated $\mathcal O$-module.
 compute summand by summand. For the summand $\mathcal O$: $\mathcal O/\varpi\mathcal O=k$ and $\mathcal O[\varpi]=0$. For $\mathcal O/\varpi^a$: the quotient by $\varpi$ is $k$, the
 $\varpi$-torsion is $\varpi^{a-1}\mathcal O/\varpi^a\simeq k$, the $\varpi^k$-torsion is $\varpi^{\max(a-k,0)}\mathcal O/\varpi^a\simeq\mathcal O/\varpi^{\min(k,a)}$, and the quotient by $\varpi^k$
 is $\mathcal O/\varpi^{\min(k,a)}$. The minimal
-number of generators is \Cref{thm:modules:nakayama}(iii). (v) follows from (iii). (vi) is \Cref{prop:modules:saturated}(i)(d).
+number of generators is \Cref{thm:modules:nakayama}(iii). (v) By (iii) the minimal number of generators is $r+s$, so $M$ is cyclic iff
+$r+s\le1$; if $M$ is torsion then $r=0$, and $s=\dim_kM[\varpi]\le1$. (vi) is \Cref{prop:modules:saturated}(i)(d).
 \end{proof}
+
+For instance $M=\mathcal O/\varpi^2\oplus\mathcal O/\varpi$ has $r=0$, $s=2$: it needs two generators, $M[\varpi]=\varpi\mathcal O/\varpi^2\oplus\mathcal O/\varpi\simeq k^2$,
+and $M[\varpi^2]=M$, $M/\varpi M\simeq k^2$, in accordance with (iv). In general the two numbers $\dim_kM/\varpi M$ and $\dim_kM[\varpi]$ differ exactly by the
+rank $r$, so together they determine $r$ and the number $s$ of torsion summands, though not the exponents $a_i$.
 
 \begin{theorem}[the ring $\Zl$]\label{thm:modules:zl}
 Let $\Zl=\varprojlim_n\Z/\ell^n$, the ring of compatible sequences $x=(x_n)_{n\ge1}$, $x_n\in\Z/\ell^n$, $x_{n+1}\equiv x_n\pmod{\ell^n}$, with
@@ -1331,6 +1339,10 @@ $d\ne0$, choose $y\in D$ with $dy=f_0(dm)$ and put $f(n+rm)=f_0(n)+ry$. This is 
 $f_0(n)+ry=f_0(n)+sf_0(dm)=f_0(n+rm)=0$. This contradicts maximality, so $N_0=M$. Exactness of $\Hom(-,D)$: by \Cref{prop:modules:hom}(ii) only
 surjectivity of $\Hom(M,D)\to\Hom(N,D)$ for $N\subseteq M$ remains, and that is injectivity of $D$.
 \end{proof}
+
+The choice of $y$ is the only place where divisibility is used, and it cannot be avoided: $\Z$ is not divisible and not injective, since the
+map $2\Z\to\Z$, $2\mapsto1$, has no extension to $\Z$ (it would send $1$ to an integer $y$ with $2y=1$). Over $\Z$ the divisible groups $\Q$, $\Q/\Z$
+and $\Qlmod$ are injective, and these are the coefficient groups of duality.
 
 \begin{proposition}[the module $\Qlmod$]\label{prop:modules:qlzl}
 \begin{enumerate}[label=(\roman*)]
@@ -1467,6 +1479,13 @@ $\mf m^jM=\mf m^{j+1}M$ for some $j$, and $\mf m^jM=0$ by Nakayama.
 its $R$-length is $\dim_kk'=f$, which is finite as $k'$ is a quotient of the finitely generated $R$-module $R'$.
 \end{proof}
 
+For finite abelian groups the theorem is the statement that the prime factorisation of the order can be read off any composition
+series. In $\Z/12$ the chains $0\subset6\Z/12\subset2\Z/12\subset\Z/12$ and $0\subset4\Z/12\subset2\Z/12\subset\Z/12$ have factors $\Z/2,\Z/3,\Z/2$ and
+$\Z/3,\Z/2,\Z/2$: the same multiset, in a different order, and $\len_\Z(\Z/12)=3$, the number of prime factors of $12$ with multiplicity. Over $\Z_2$
+the same group becomes $\Z/12\otimes\Z_2\simeq\Z/4$ (\Cref{thm:modules:zl}(v)), of length $2=v_2(12)$: the length over $\Zl$ counts only the factors
+$\Z/\ell$. Part (v) is the reason for the factor $f$ when lengths over a ring $\mathcal O_\lambda$ with residue field $\F_{\ell^f}$ are compared with
+lengths over $\Zl$: the residue field $\F_{\ell^f}$, simple over $\mathcal O_\lambda$, has a composition series of length $f$ over $\Zl$.
+
 \begin{proposition}[length over a discrete valuation ring]\label{prop:modules:length-dvr}
 Let $\mathcal O$ be a discrete valuation ring.
 \begin{enumerate}[label=(\roman*)]
@@ -1502,8 +1521,15 @@ $\Ann_\T(\mf b)$ is the annihilator of $\mf b$ viewed as a $\T$-module. ``$M$ is
 \end{proposition}
 
 \begin{proof}
-(i), (ii), (iii) are immediate from the definitions and \Cref{prop:modules:hom}(i) (componentwise for $\T^r$). (iv) is
-\Cref{prop:modules:flat}(iii). (v) $\varpi^a$ kills $\mathcal O/\varpi^b$ iff $a\ge b$; and $\mathcal O$ is torsion-free.
+(i) $r$ kills $R/\mf a$ iff it kills the generator $1+\mf a$, iff $r\in\mf a$. An element kills $M\oplus N$ iff it kills both summands. It kills
+$M$ iff it kills each generator $m_i$, iff it lies in the kernel of $r\mapsto(rm_i)_i$.
+(ii) The first statement is \Cref{prop:modules:hom}(i). An element is killed by $\mf a$ and by $\mf b$ iff it is killed by every $a+b$, that is,
+by $\mf a+\mf b$. If $m$ is killed by $\mf a$ and $m'$ by $\mf b$, then $m+m'$ is killed by $\mf a\cap\mf b$, which lies in both. (Over a principal ideal
+domain the last inclusion is an equality for finitely generated $M$, as one checks on cyclic summands; in general it can be strict: for
+$R=k[x,y]$, $M=R/(x,y)^2$ with basis $1,x,y$, $\mf a=(x)$ and $\mf b=(y)$, one has $M[\mf a]=M[\mf b]=kx+ky$, while $\mf a\cap\mf b=(xy)$ kills all of $M$.)
+(iii) $\T[\mf a]$ and $\Ann_\T(\mf a)$ are both the set of $t\in\T$ with $at=0$ for all $a\in\mf a$. For $L=\T^r$, an element $(t_1,\dots,t_r)$ is killed by $\mf a$
+iff each coordinate is, so $L[\mf a]=\Ann_\T(\mf a)^r$; an isomorphism $L\simeq\T^r$ of $\T$-modules carries $L[\mf a]$ to $\T^r[\mf a]$.
+(iv) is \Cref{prop:modules:flat}(iii). (v) $\varpi^a$ kills $\mathcal O/\varpi^b$ iff $a\ge b$, so it kills the sum iff $a\ge\max_ib_i$; and $\mathcal O$ is torsion-free.
 \end{proof}
 
 \begin{definition}[Fitting ideals]\label{def:modules:fitting}
@@ -1513,6 +1539,14 @@ $n$-tuples of relations (the $n\times n$ matrices with these rows). If $R^m\xrig
 $\Fitt_R(M)$ is the ideal generated by the $n\times n$ minors of $A$ (and is $0$ if $m<n$); see \Cref{lem:modules:fitting-well-defined}. More generally
 $\Fitt_i(M)$ is generated by the $(n-i)\times(n-i)$ minors; we use only $\Fitt=\Fitt_0$.
 \end{definition}
+
+The Fitting ideal is an ideal-valued replacement for the order of a finite abelian group. For a finite abelian group with a square
+presentation matrix $A$, the order is $\abs{\det A}$ (\Cref{thm:modules:stacked-bases}), and $\Fitt_\Z(M)=(\det A)=\#M\cdot\Z$. Over a general
+ring there is no order to take, and a presentation need not be square, so one takes all maximal minors at once. The definition through
+determinants of $n$-tuples of relations, rather than through a fixed matrix, is what makes independence of the choices provable.
+A small check: $\Z/6$ with the single generator $1$ has relations $6\Z$, so $\Fitt=(6)$. With the two generators $x_1=2$, $x_2=3$, a pair
+$(a,b)$ is a relation iff $2a+3b\equiv0\pmod6$, iff $3\mid a$ and $2\mid b$; so the relations are generated by $(3,0)$ and $(0,2)$, and the
+ideal of $2\times2$ minors is again $(6)$, as \Cref{lem:modules:fitting-well-defined} guarantees.
 
 \begin{lemma}[the Fitting ideal is well defined]\label{lem:modules:fitting-well-defined}
 \begin{enumerate}[label=(\roman*)]
@@ -1555,9 +1589,10 @@ $M'=2M\simeq R/(2,x)$ and $M''=M/2M\simeq R/(2,x)$, one has $\Fitt(M)=(4,x)$ but
 (i) $R/\mf a$ has the generator $1$ with relations $\mf a$, and its $1\times1$ ``determinants'' generate $\mf a$. For $M=0$ use the generator $0$ with
 the relation $(1)$. $R^n$ with its basis has no nonzero relation.
 (ii) Use generators $x$ of $M$ and $y$ of $N$; $\operatorname{Rel}(x,y)=\operatorname{Rel}(x)\oplus\operatorname{Rel}(y)$ is generated by the rows of $\operatorname{diag}(A,B)$, with $A$ of size $m\times n$ and $B$ of
-size $m'\times n'$. Consider $n+n'$ of these rows, $j$ from the first block and $j'$ from the second. If $j>n$, the Laplace expansion along the first $j$
-rows involves only $j\times j$ minors of these rows that use one of the last $n'$ columns, which vanish there; so the determinant is $0$, and
-likewise if $j'>n'$. If $j=n$ and $j'=n'$ the determinant is the product of an $n\times n$ minor of $A$ and an $n'\times n'$ minor of $B$. So the ideal is
+size $m'\times n'$. Consider $n+n'$ of these rows, $j$ from the first block and $j'$ from the second, so $j+j'=n+n'$. If $j>n$, the $j$ rows from
+the first block are zero outside the first $n$ columns, and the Laplace expansion along these $j$ rows involves only $j\times j$ minors of them, each of which uses at least $j-n\ge1$ of the last $n'$
+columns, where these rows vanish; so every such minor, and the determinant, is $0$. Likewise if $j'>n'$; and since $j+j'=n+n'$, the only
+remaining case is $j=n$, $j'=n'$. If $j=n$ and $j'=n'$ the determinant is the product of an $n\times n$ minor of $A$ and an $n'\times n'$ minor of $B$. So the ideal is
 $\Fitt(M)\Fitt(N)$.
 (iii) Generators of $M$ map to generators of $N$, and relations among them in $M$ remain relations in $N$.
 (iv) Let $B$ be an $n\times n$ matrix of relations, so $B$ kills the column $x$ of generators; multiplying by the adjugate gives
@@ -1584,8 +1619,10 @@ and $\Fitt(N)\supseteq\Fitt(M)$ for every submodule or quotient $N$ of $M$.
 
 \begin{proof}
 (i) By \Cref{prop:modules:fitting-properties}(i), (ii). (ii) By (i), $\Fitt(\bigoplus\mathcal O/\varpi^{a_i})=\varpi^{\sum a_i}\mathcal O$, and $\sum a_i=\len M$
-(\Cref{prop:modules:length-dvr}). Over $\Zl$, $\#M=\ell^{\len M}$. (iii) Lengths are additive (\Cref{thm:modules:jordan-holder}(iii)), and submodules
-and quotients have smaller length. (iv) By (ii) and \Cref{prop:modules:annihilator}(v).
+(\Cref{prop:modules:length-dvr}). Over $\Zl$, $\#M=\ell^{\len M}$. (iii) For $0\to M'\to M\to M''\to0$ of finite length, additivity of length
+(\Cref{thm:modules:jordan-holder}(iii)) gives $\varpi^{\len M}=\varpi^{\len M'}\varpi^{\len M''}$, that is, $\Fitt(M)=\Fitt(M')\Fitt(M'')$ by (ii). A submodule or
+quotient $N$ of $M$ has $\len N\le\len M$, again by additivity, so $\Fitt(N)=\varpi^{\len N}\mathcal O\supseteq\varpi^{\len M}\mathcal O=\Fitt(M)$. (iv) By (ii),
+$\Fitt=\ell^2\Zl$ for both modules, as both have length $2$; the annihilators are given by \Cref{prop:modules:annihilator}(v).
 \end{proof}
 
 \begin{warning}\label{warn:modules:fitt-ann}
@@ -1661,13 +1698,20 @@ Pontryagin duality is the discrete Fourier transform on $A$.
 (i) $\Hom(\Z/n,\Q/\Z)\simeq(\Q/\Z)[n]=\frac1n\Z/\Z\simeq\Z/n$ by \Cref{prop:modules:hom}(i); and $A$ is a finite direct sum of cyclic groups
 (\Cref{ch:groups}), and $\Hom$ turns finite sums into sums. (ii) Injectivity: for $a\ne0$ of order $d$, the map $\langle a\rangle\to\Q/\Z$, $a\mapsto1/d$,
 extends to $A$ because $\Q/\Z$ is injective (\Cref{prop:modules:qlzl}(iv)); so some $\xi$ has $\xi(a)\ne0$. Both sides have order $\#A$ by (i).
-(iii) Exactness is the injectivity of $\Q/\Z$, and $\#A^*=\#A$ is (i). (iv) The exact sequence $0\to B\to A\to A/B\to0$ dualises to
+(iii) Exactness is the injectivity of $\Q/\Z$: $\Hom(-,\Q/\Z)$ is left exact by \Cref{prop:modules:hom}(ii), and surjectivity of $A^*\to B^*$ for
+$B\subseteq A$ is the statement that characters of $B$ extend to $A$ (\Cref{lem:modules:baer}). $\#A^*=\#A$ is (i). (iv) The exact sequence $0\to B\to A\to A/B\to0$ dualises to
 $0\to(A/B)^*\to A^*\to B^*\to0$, with the image of the first map equal to $B^\perp$. Hence $\#B^\perp=\#A/\#B$. Under $A=A^{**}$, $B\subseteq(B^\perp)^\perp$ and
 $\#(B^\perp)^\perp=\#A^*/\#B^\perp=\#B$, so $B=(B^\perp)^\perp$; and symmetrically for subgroups of $A^*$.
 (v) $A$ is killed by some $\ell^k$, so every homomorphism lands in $(\Q/\Z)[\ell^k]\subseteq(\Q/\Z)[\ell^\infty]=\Qlmod$ (\Cref{prop:modules:qlzl}(i)); it is
 $\Zl$-linear because $\Zl$ acts on a module killed by $\ell^k$ through $\Z/\ell^k$. Lengths agree because orders do
 (\Cref{prop:modules:length-dvr}(ii)). (vi) $x\mapsto e^{2\pi ix}$ is an isomorphism from $\Q/\Z$ onto the roots of unity in $\C^\times$.
 \end{proof}
+
+For $A=\Z/n$ the duality is explicit: the character $\xi_a$ with $\xi_a(1)=a/n+\Z$ corresponds to $a\in\Z/n$, and in the language of (vi) it is
+$x\mapsto e^{2\pi iax/n}$, the $a$-th Fourier mode. For the subgroup $B=d\Z/n\Z$ (with $d\mid n$), $B^\perp$ consists of the $\xi_a$ with $ad/n\in\Z$,
+that is, $a\in(n/d)\Z/n\Z$, a group of order $d=\#(A/B)$, as (iv) predicts. The isomorphism $A\simeq A^*$ depends on the choice of the generator,
+whereas the double duality $A\simeq A^{**}$ of (ii) is canonical and therefore compatible with any group action on $A$; only
+the canonical statements survive when $A$ carries a Galois action.
 
 \begin{theorem}[Pontryagin duality for $\Zl$-modules]\label{thm:modules:pontryagin-zl}
 Let $\mathcal C$ be the category of finitely generated $\Zl$-modules and $\mathcal D$ that of $\ell$-primary torsion $\Zl$-modules $W$ with $W[\ell]$ finite
@@ -1797,8 +1841,14 @@ $(L\otimes S)\times(M\otimes S)$ has Gram matrix the image of $G$, so it is perf
 \begin{proof}
 (i) In the dual basis $(f_j^\vee)$, $\alpha(e_i)=\sum_j\langle e_i,f_j\rangle f_j^\vee$, so $\alpha$ has matrix $G$ and $\beta$ has matrix $G^{\mathsf T}$, both of determinant $\det G$.
 \Cref{prop:modules:free}(iii), valid over any commutative ring, gives the first claim; over a domain $R$ with fraction field $K$, a square matrix is injective iff its determinant is nonzero (compute over
-$K$). (ii) $\langle e'_i,f'_j\rangle=\sum_{a,b}P_{ai}\langle e_a,f_b\rangle Q_{bj}$, and $\det P$, $\det Q$ are units. (iii) Clear.
+$K$). (ii) $\langle e'_i,f'_j\rangle=\sum_{a,b}P_{ai}\langle e_a,f_b\rangle Q_{bj}$, and $\det P$, $\det Q$ are units. (iii) The elements $e_i\otimes1$ and
+$f_j\otimes1$ are bases of $L\otimes S$ and $M\otimes S$ (\Cref{thm:modules:tensor}(iv)), and $\langle e_i\otimes1,f_j\otimes1\rangle$ is the image of $\langle e_i,f_j\rangle$
+in $S$. The determinant of the image matrix is the image of $\det G$, and a ring homomorphism maps units to units; apply (i) over $S$.
 \end{proof}
+
+The example in (i) is the typical way in which perfectness depends on the coefficients: the Gram determinant $2$ is a nonzero non-unit
+in $\Z$ and in $\Z_2$, and a unit in $\Zl$ for $\ell$ odd. Over $\Zl$ only $v_\ell(\Delta)$ matters, by (ii); this is the number that Lemma lem:ddt417
+compares with the congruence ideal.
 
 \begin{proposition}[orthogonals]\label{prop:modules:orthogonal}
 Let $\langle\ ,\ \rangle\colon L\times L\to R$ be a perfect pairing on a lattice of rank $n$, not necessarily symmetric.
@@ -1815,7 +1865,9 @@ ${}^\perp(N^\perp)=N=({}^\perp N)^\perp$ if $N$ is saturated.
 $N^\perp=\operatorname{sat}(N)^\perp$, and we may assume $N$ saturated, hence a direct summand (\Cref{prop:modules:saturated}). Then the map $L\to N^\vee$,
 $y\mapsto\langle-,y\rangle|_N$, is surjective: a functional on $N$ extends by $0$ on a complement to an element of $L^\vee$, which is $\langle-,y\rangle$ for some $y$ because
 $\beta$ is onto. Its kernel is $N^\perp$, so $\rank N^\perp=n-d$; likewise for ${}^\perp N$. Now ${}^\perp(N^\perp)\supseteq N$, both are saturated (by (i)), and both
-have rank $d$; a saturated module containing another of the same rank equals its saturation (\Cref{prop:modules:saturated}(ii)). (iii) Clear.
+have rank $d$; a saturated module containing another of the same rank equals its saturation (\Cref{prop:modules:saturated}(ii)). The
+same argument with the roles of the two arguments exchanged gives $({}^\perp N)^\perp=\operatorname{sat}(N)$. (iii) If $\langle x,y\rangle=\pm\langle y,x\rangle$,
+then $\langle s,y\rangle=0$ iff $\langle y,s\rangle=0$, so the two orthogonals of any subset coincide.
 \end{proof}
 
 \begin{theorem}[the Gram determinant of a saturated sublattice]\label{thm:modules:gram-cokernel}
@@ -1849,8 +1901,14 @@ torsion), so $y$ is right-orthogonal to everything, contradicting perfectness. S
 $\langle x,y\rangle^{\mathsf T}=\langle y,x\rangle$, which is perfect, and to the saturated $N=L'^\perp$: its Gram determinant is $\Delta^\perp$ (transposed), its right orthogonal
 for the transposed pairing is the left orthogonal ${}^\perp(L'^\perp)=L'$ (\Cref{prop:modules:orthogonal}(ii)), so $L/(L'^\perp\oplus L')$ has length
 $v(\Delta^\perp)$. It also has length $v(\Delta)$.
-(iv) $L'^\perp=\Zl e_2$ and the computation is immediate.
+(iv) $L'^\perp=\{y:\langle\ell e_1,y\rangle=\ell y_1=0\}=\Zl e_2$, so $L'\oplus L'^\perp=\ell\Zl e_1\oplus\Zl e_2$ and the quotient is $\Zl/\ell\Zl\simeq\Z/\ell$, of
+length $1$; while $\Delta=\langle\ell e_1,\ell e_1\rangle=\ell^2$ has valuation $2$. The proof of (ii) breaks at (i): the restriction map
+$\rho\colon L\to L'^\vee$ has image the functionals with $\ell e_1\mapsto\ell y_1$, which is $\ell L'^\vee$, not $L'^\vee$.
 \end{proof}
+
+In words: for a saturated $L'$, the pairing gives as much room as possible in the quotient $L/L'^\perp$, namely all of $L'^\vee$, and the failure
+of $L'\oplus L'^\perp$ to fill $L$ is then measured exactly by how far $L'$ is from being self-dual, which is what $\Delta$ measures. For a
+non-saturated $L'$ the Gram determinant also records the index of $L'$ in its saturation, twice (\Cref{ex:modules:ex-gram-index}(a)).
 
 \begin{example}\label{ex:modules:gram}
 On $\Z^2$ take the Gram matrix $\Mtwo9110$ (perfect: determinant $-1$) and $L'=\Z e_1$, saturated, with $\Delta=9$. Then
@@ -1935,6 +1993,16 @@ product of the two block determinants; so each block determinant is a unit.
 $[Ax,y]=\langle x,A^\dagger wy\rangle=\langle x,wAw^{-1}wy\rangle=[x,Ay]$. If $\langle\ ,\ \rangle$ is antisymmetric and $w^\dagger=w$, then
 $[y,x]=\langle y,wx\rangle=-\langle wx,y\rangle=-\langle x,w^\dagger y\rangle=-[x,y]$. An involution preserving the pairing satisfies $\langle wx,y\rangle=\langle w^2x,wy\rangle=\langle x,wy\rangle$.
 \end{proof}
+
+Why part (iv) is needed is already visible in rank two. Take the alternating pairing $\langle x,y\rangle=x_1y_2-x_2y_1$, whose Gram matrix is
+the matrix $J=\Mtwo01{-1}0$ of the paper. For $A=\Mtwo abcd$ the formula of (i) gives
+\[
+A^\dagger=J^{-1}A^{\mathsf T}J=\Mtwo d{-b}{-c}a=\operatorname{adj}(A),
+\]
+the adjugate (checked with PARI). So $A$ is self-adjoint iff $a=d$ and $2b=2c=0$, that is, over a ring in which $2$ is a nonzerodivisor, iff
+$A$ is a scalar. An alternating pairing therefore makes almost no operator self-adjoint; instead it satisfies $A^\dagger=\det(A)A^{-1}$ for invertible
+$A$. This is the situation of the cup product on $H^1(X_0(N))$, for which the adjoint of $T_n$ is not $T_n$ but $wT_nw^{-1}$; twisting by the
+Atkin-Lehner involution $w$, as in (iv), restores self-adjointness, and the twisted pairing is still alternating because $w^\dagger=w$.
 
 \begin{paperlink}\label{pl:modules:adjoint}
 Section 4.1: the cup product on $H^1(X_0(M^\Sigma),\Zl)$ is perfect and alternating, the Atkin-Lehner involution $w=w_{M^\Sigma}$ preserves it, and

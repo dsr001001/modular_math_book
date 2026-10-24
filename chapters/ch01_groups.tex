@@ -1755,8 +1755,10 @@ compact topological group; its analysis, as the completion of $\Z$ for the $p$-a
 $\Z/p^n$, and the inverses $x_n^{-1}$ are compatible (inverses are unique), giving $x^{-1}$; conversely $x_1$ is a unit if $x$ is.
 \item The kernel of $\Zp\to\Z/p^n$ is $p^n\Zp$. If $x_n=0$, then for every $k$ the element $x_{n+k}\in\Z/p^{n+k}$ is divisible by $p^n$, $x_{n+k}=p^ny_k$ with $y_k$ well defined
 in $\Z/p^k$, and the $y_k$ are compatible, so $x=p^ny$. The converse is clear.
-\item $\Zp$ is torsion-free. If $mx=0$ with $m\ge1$ and $v=v_p(m)$, then $mx_{n+v}=0$ in $\Z/p^{n+v}$, so $p^n\mid x_{n+v}$ (as $m/p^v$ is invertible), and $x_n=x_{n+v}\bmod p^n=0$
-for every $n$.
+\item $\Zp$ is torsion-free. If $mx=0$ with $m\ge1$ and $v=v_p(m)$, then $mx_{n+v}=0$ in $\Z/p^{n+v}$. Write $m=p^vm'$; as $m'$ is prime to $p$ it is invertible
+modulo $p^{n+v}$, so $p^vx_{n+v}=0$ in $\Z/p^{n+v}$, that is $p^{n+v}$ divides $p^v$ times a representative of $x_{n+v}$, so $p^n\mid x_{n+v}$. Hence $x_n=x_{n+v}\bmod p^n=0$
+for every $n$. (By contrast every element of each finite level $\Z/p^n$ is torsion; the point is that $x_n$ is forced to vanish by looking at the deeper
+level $n+v$.)
 \item The open subgroups of $\Zp$ are the $p^n\Zp$, $n\ge0$. By \Cref{prop:groups:profinite}(i),(ii) (proved below) an open subgroup $V$ contains some $p^n\Zp$ and corresponds to a subgroup of
 $\Zp/p^n\Zp\simeq\Z/p^n$, which is $p^k\Z/p^n$ for some $k\le n$ (\Cref{thm:groups:cyclic}(i)); so $V=p^k\Zp$.
 \item Let $\widehat\Z=\varprojlim_n\Z/n!$; every $\Z/m$ is a quotient of $\widehat\Z$ (as $m\mid n!$ for $n\ge m$). By \Cref{prop:groups:crtgroups} (in its ring form, \Cref{ch:rings})
@@ -1791,9 +1793,11 @@ say $g_m\in S_m$ for $m\le n$, with $1\in S_m$; it contains $U_n$ by the previou
 $gV\ne V$, so $V$ is closed; the cosets of $V$ form a disjoint open cover of the compact space $G$, so there are finitely many. Conversely, if $V$ is closed of finite
 index, its complement is a finite union of closed cosets, so $V$ is open. (iii) $\ker f=f^{-1}(1)$ is open, so it contains some $U_n$ by (i), and $f$ factors through
 $G/U_n$, which is isomorphic to $p_n(G)\le G_n$ by the first isomorphism theorem, and to $G_n$ if $p_n$ is surjective. (iv) Let $H\le G$ be closed and $H_n=p_n(H)$; the
-$H_n$ form an inverse system, and $h\mapsto(p_n(h))$ is a continuous injective homomorphism $H\to\varprojlim H_n$ (injective as $\bigcap U_n=1$). It is surjective: given
-compatible $(h_n)$ with $h_n=p_n(x_n)$, $x_n\in H$, the sets $C_n=H\cap x_nU_n$ are closed, nonempty and decreasing (compatibility gives $x_{n+1}U_n=x_nU_n$), so by
-compactness $\bigcap C_n\ne\emptyset$, and any $h$ in it maps to $(h_n)$. A continuous bijection from a compact space to a Hausdorff space is a homeomorphism, so
+$H_n$ form an inverse system (as $\pi_n(p_{n+1}(h))=p_n(h)$, $\pi_n$ maps $H_{n+1}$ into $H_n$), and $h\mapsto(p_n(h))$ is a continuous injective homomorphism
+$H\to\varprojlim H_n$ (injective as $\bigcap U_n=1$). It is surjective: let $(h_n)$ be compatible, and choose $x_n\in H$ with $h_n=p_n(x_n)$. The sets
+$C_n=H\cap x_nU_n$ are closed (a coset of the open subgroup $U_n$ is closed, its complement being a union of cosets) and nonempty ($x_n\in C_n$). They are
+decreasing: $p_n(x_{n+1})=\pi_n(p_{n+1}(x_{n+1}))=\pi_n(h_{n+1})=h_n=p_n(x_n)$, so $x_{n+1}\in x_nU_n$, and $x_{n+1}U_{n+1}\subseteq x_{n+1}U_n=x_nU_n$. A decreasing
+sequence of nonempty closed subsets of the compact space $G$ has nonempty intersection, and any $h\in\bigcap C_n$ satisfies $p_n(h)=p_n(x_n)=h_n$ for all $n$. A continuous bijection from a compact space to a Hausdorff space is a homeomorphism, so
 $H\simeq\varprojlim H_n$. For a closed normal $N$, the same argument applied to the finite groups $G/NU_n$ shows $G/N\simeq\varprojlim G/NU_n$; injectivity now needs $\bigcap_nNU_n=N$,
 which holds because $N$ is closed: if $g\notin N$, the closed sets $N\cap gU_n$ are decreasing with empty intersection (as $\bigcap_ngU_n=\{g\}$), so one of them is empty
 by compactness, that is, $g\notin NU_n$ for some $n$. The
@@ -1824,9 +1828,13 @@ $\ell^{4(n-1)}$. (iii) Let $g\in\Gamma(\ell)$, $g\ne I$, and write $g=I+\ell^kA$
 \[
 g^\ell=I+\ell^{k+1}A+\sum_{i=2}^{\ell-1}\binom\ell i\ell^{ki}A^i+\ell^{k\ell}A^\ell .
 \]
-For $2\le i\le\ell-1$ the term is divisible by $\ell^{1+2k}$, and $k\ell\ge k+2$ because $k(\ell-1)\ge2$ for $\ell\ge3$; so $g^\ell=I+\ell^{k+1}A_1$ with $A_1\equiv A\pmod\ell$.
-By induction $g^{\ell^s}=I+\ell^{k+s}A_s$ with $A_s\equiv A\not\equiv0\pmod\ell$. Now let $m\ge1$, $m=\ell^sm'$ with $\ell\nmid m'$, and $h=g^{\ell^s}$. Then
-$h^{m'}=I+m'\ell^{k+s}A_s+(\text{terms divisible by }\ell^{2(k+s)})\equiv I+m'\ell^{k+s}A_s\pmod{\ell^{k+s+1}}$, and $m'A_s\not\equiv0\pmod\ell$; so $g^m=h^{m'}\ne I$. Thus $g$
+(the binomial expansion is valid because $I$ commutes with $A$). For $2\le i\le\ell-1$ the prime $\ell$ divides $\binom\ell i$ and $ki\ge2k$, so the term is
+divisible by $\ell^{1+2k}$, and $1+2k\ge k+2$ as $k\ge1$. The last term is divisible by $\ell^{k\ell}$, and $k\ell\ge k+2$ because $k(\ell-1)\ge2$ for $\ell\ge3$. So all
+terms after $\ell^{k+1}A$ are divisible by $\ell^{k+2}$, and $g^\ell=I+\ell^{k+1}A_1$ with $A_1\equiv A\pmod\ell$. (For $\ell=2$ and $k=1$ the last term $\ell^{2k}A^2=4A^2$ is
+divisible by $\ell^{k+1}$ but not in general by $\ell^{k+2}$, and the argument breaks down, as it must since $-I=I+2(-I)$ has order $2$.) Since $A_1\not\equiv0\pmod\ell$, the same step applies to $g^\ell$ with $k+1$ in place of
+$k$; by induction $g^{\ell^s}=I+\ell^{k+s}A_s$ with $A_s\equiv A\not\equiv0\pmod\ell$. Now let $m\ge1$, $m=\ell^sm'$ with $\ell\nmid m'$, and $h=g^{\ell^s}$. Then
+$h^{m'}=I+m'\ell^{k+s}A_s+\sum_{i\ge2}\binom{m'}i\ell^{(k+s)i}A_s^i$, and every term of the sum is divisible by $\ell^{2(k+s)}$, hence by $\ell^{k+s+1}$; so
+$h^{m'}\equiv I+m'\ell^{k+s}A_s\pmod{\ell^{k+s+1}}$. As $m'A_s\not\equiv0\pmod\ell$, this is not $I$ modulo $\ell^{k+s+1}$, and $g^m=h^{m'}\ne I$. Thus $g$
 has infinite order. If $H\le\GL_2(\Z_\ell)$ is finite, $H\cap\Gamma(\ell)$ is a finite subgroup of a torsion-free group, hence trivial, and reduction is injective on $H$.
 Finally $-I=I+2(-I)$ has order $2$.
 \end{proof}
@@ -1867,15 +1875,23 @@ Show that $\#\GL_2(\Z/9)=3888$ and $\#\SL_2(\Z/9)=648$. (Use \Cref{prop:groups:g
 Compute the conjugacy classes of $D_4$ and of $Q_8$: both have five classes, of sizes $1,1,2,2,2$. Deduce from the formula $\#G=\sum_\chi\chi(1)^2$ for the
 degrees of the irreducible complex characters (Riley-Hobson-Bence, the chapter on representation theory; \Cref{ch:reps}) that both groups have four characters of degree $1$ and one of
 degree $2$, although they are not isomorphic.
+(Hint: in both groups the centre has order $2$ and every non-central element $g$ has centraliser of order $4$, the subgroup generated by $g$ and the centre;
+the number of degree-one characters is $\#(G/[G,G])=4$, and $8=4\cdot1^2+1\cdot2^2$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:groups:ex3}
 Prove that $C_8\times C_2$, $D_8$, $SD_{16}$, $Q_{16}$ and $M_{16}$ (\Cref{rem:groups:order16}) are pairwise non-isomorphic, by counting elements of each order.
+(Caution: counting alone does not separate $C_8\times C_2$ from $M_{16}$. In $C_8\times C_2$ the element $(a,b)$ has order the least common multiple of the orders
+of $a$ and $b$, which gives $1,3,4,8$ elements of orders $1,2,4,8$, the same as for $M_{16}$; these two are distinguished because $M_{16}$ is non-abelian.
+The other pairs are separated by the table of \Cref{rem:groups:order16}.)
 \end{exercise}
 
 \begin{exercise}\label{ex:groups:ex4}
 Find all subgroups of $SD_{16}$ and identify each up to isomorphism. (There are $15$: the trivial group, five of order $2$, five of order $4$ (three cyclic, two
-Klein), three of order $8$, and $SD_{16}$.) Which are normal?
+Klein), three of order $8$, and $SD_{16}$.) Which are normal? (Answer: seven: the trivial group, the centre $\langle a^4\rangle$, the cyclic group $\langle a^2\rangle$ of
+order $4$, the three subgroups of index $2$, and $SD_{16}$. The other eight have order $2$ or $4$ and contain some $a^mx$. Such a
+subgroup $K$ meets $\langle a\rangle$ in a subgroup of $\{1,a^4\}$, so it meets the coset $\langle a\rangle x$ in at most $a^mx$ and $a^{m+4}x$; conjugation by $a$ sends $a^mx$ to
+$a^{m-2}x$, which is neither, so $K$ is not normal.)
 \end{exercise}
 
 \begin{exercise}\label{ex:groups:ex5}
@@ -1891,6 +1907,7 @@ $N_{ns}(\F_3)$ is the quaternion group.
 \begin{exercise}\label{ex:groups:ex7}
 Check the paper's claim that $N_s(\F_3)$ has two orbits of size two on the four lines of $\F_3^2$ (the two lines of the Cartan subgroup and the two others), while
 $N_{ns}(\F_3)$ and $\GL_2(\F_3)$ are transitive. Find an element of $N_{ns}(\F_3)$ that maps $\infty$ to $1$.
+(One answer: $a=\sm1{-1}11\in C_{ns}(\F_3)$ sends $e_1$ to $\binom11$, that is $\infty\mapsto1$; its powers move $\infty$ through all four lines.)
 \end{exercise}
 
 \begin{exercise}\label{ex:groups:ex8}
@@ -1902,6 +1919,9 @@ conjugate to $C_{ns}(\F_3)$ (the label 3Cn), using that complex conjugation maps
 Show that every subgroup of $\GL_2(\F_3)$ of order $6$ stabilises a line. Classify these subgroups up to conjugacy: two classes isomorphic to $S_3$ (3B.1.1 and 3B.1.2)
 and one cyclic class, $\{\pm I\}\times\mathrm U$. Show that 3B.1.1 and 3B.1.2 are interchanged by $g\mapsto(g^{-1})^{\mathsf T}$, which is an automorphism of $\GL_2(\F_3)$ but not an
 inner one.
+(Hint: a subgroup of order $6$ contains an element of order $3$, so its Sylow $3$-subgroup $\mathrm U_L$ is normal in it, and the argument in the proof of
+\Cref{prop:groups:gl23subgroups} shows that it stabilises $L$. The map $g\mapsto(g^{-1})^{\mathsf T}$ is a homomorphism because both inversion and transposition reverse
+products. It is not inner: an inner automorphism maps a subgroup with a nonzero fixed vector to a conjugate subgroup, which again has one, whereas 3B.1.2 has none.)
 \end{exercise}
 
 \begin{exercise}\label{ex:groups:ex10}
@@ -1912,6 +1932,10 @@ with the sign of the induced permutation of the four lines.
 \begin{exercise}\label{ex:groups:ex11}
 Let $q$ be odd. Show that $N_{ns}(\F_q)\cap\SL_2(\F_q)$ has a unique element of order $2$, namely $-I$, and that its elements outside $C_{ns}(\F_q)$ have order $4$. (Use
 $(m_c\sigma)^2=N(c)I$.) For $q=3$ this recovers $Q_8$; what is the group for $q=5$?
+(Answer: a group of order $2(q+1)=12$ containing the cyclic group $C_{ns}(\F_5)\cap\SL_2(\F_5)\simeq C_6$ with index $2$, whose six other elements have order $4$ and
+square to $-I$. It has $1,1,2,6,2$ elements of orders $1,2,3,4,6$ (checked by enumeration); it is the dicyclic group $C_3\rtimes C_4$, in which a generator of $C_4$
+inverts $C_3$: among the five groups of order $12$ ($C_{12}$, $C_6\times C_2$, $A_4$, $D_6$ and this one; we do not prove the classification here) it is the only
+one with a unique involution and no element of order $12$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:groups:ex12}
@@ -1927,6 +1951,8 @@ Show that $I+3M_2(\Z_3)$ is torsion-free, and that $I+2M_2(\Z_2)$ contains eleme
 \begin{exercise}\label{ex:groups:ex14}
 Let $p\ne\ell$ be primes. Show that the image of a continuous homomorphism $\Z_p\to\GL_2(\F_\ell)$ is cyclic of $p$-power order, and deduce that it is trivial when
 $p\nmid\#\GL_2(\F_\ell)$. (This is a first instance of the tame inertia arguments of \Cref{ch:local}.)
+(Hint: the kernel is open, so contains some $p^n\Z_p$ by \Cref{ex:groups:zp}(d), and the image is a quotient of $\Z_p/p^n\Z_p\simeq\Z/p^n$; apply
+\Cref{prop:groups:profinite}(vi) for the last part, $\Z_p$ being pro-$p$.)
 \end{exercise}
 
 \section{Notes and references}\label{sec:groups:notes}
