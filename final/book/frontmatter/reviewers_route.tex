@@ -1,0 +1,147 @@
+\chapter*{A reviewer's route}
+\addcontentsline{toc}{chapter}{A reviewer's route}
+
+These pages are for a specialist who has been asked to referee the paper and wants the shortest path through it: the
+statement, the chain of the proof with the place where each link is proved, the joints to check in order, what is
+imported, and what the numbers rest on. \Cref{ch:paper} reads the paper section by section; \Cref{ch:congruence} holds the
+proofs of Section 4. Paper labels are quoted as text (Proposition prop:integral), as in the rest of the book.
+
+\section*{1. The statement}
+
+\emph{Hypotheses.} $E/\Q$ is the $X_0(N)$-optimal curve of its isogeny class, $f=f_E$; $\ell$ is an odd prime with
+$\ell\nmid2N$, and $\rhobar_{E,\ell}$ is absolutely irreducible on $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$, $\ell^*=(-1)^{(\ell-1)/2}\ell$;
+that is, $\ell\notin S_f$ in the notation of Diamond, Flach and Guo. For $\ell\nmid2N$ this says: $E[\ell]$ is irreducible
+and, if $\ell=3$, the mod $3$ image is not $N_s(\F_3)$ (Proposition prop:Sf). With $T=\Tl E$, Theorem thm:main states
+\begin{gather*}
+v_\ell(\degphi)=\len_{\Zl}\Hf(\Q,\ad T\otimes\Qlmod)+\sum_{q\mid N}v_\ell\bigl(\Tam_q(\ad T)\bigr)+\sum_{q\mid N}e_\ell(E,q),
+\tag{eq:identity}\\
+v_\ell(\degphi)\ \ge\ \sum_{q\mid N}e_\ell(E,q)+\sum_{q\mid N}t_\ell(E,q),\tag{eq:thm}
+\end{gather*}
+where $e_\ell(E,q)=v_\ell\bigl(P_q(q^{-2})/(1-a_q(E)^2q^{-2})\bigr)$ is the valuation of the Euler factor of $L(\ad f,s)$ at
+$s=1$ that the naive adjoint $L$-function omits (zero unless $q$ is additive), and $t_\ell(E,q)=v_\ell(-v_q(j_E))$ when
+$v_q(j_E)<0$, and $0$ otherwise (Definition def:terms). The second line follows from the first because the Selmer length is
+nonnegative and $v_\ell(\Tam_q(\ad T))\ge t_\ell(E,q)$ (Lemma lem:tamfactor). Conjecture conj:euler, which extends the
+inequality to $\ell\mid N$ and to the image $\Ns$, is not part of the theorem.
+
+\section*{2. The chain of the proof}
+
+The paper's proof of Theorem thm:main is the table at the start of its Section 4.3; the rows below follow it. ``Paper''
+means proved in the paper, ``book'' that the book gives a complete proof (expanding the paper's), ``imported'' that the
+statement is cited.
+
+\begin{center}\footnotesize
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}%
+>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}@{}}
+\toprule
+step & paper label & in the book & status\\
+\midrule
+$H^1(X_0(N),\Zl)$ is the integral structure of DFG, Hecke equivariantly, $U_p$ included & prop:integral &
+\Cref{ch:congruence} & paper; book (full proof)\\
+$v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$ (projection formula) & prop:pullback, lem:hecke &
+\Cref{ch:moddeg,ch:congruence} & paper; book; uses \cite[Theorem 2.2]{ARS12} for $r_E$\\
+$\eta^\Sigma=\eta^\emptyset\prod_{p\in\Sigma}L_p^{\nv}(A_f,1)^{-1}$ & thm:dfg14 & \Cref{ch:congruence} &
+imported, \cite[Proposition 1.4(c)]{DFG04}\\
+$\ell\notin S_f$ read for elliptic curves; $H^0(\Q,W^D)$ of length $h_\ell(E)$ & prop:Sf, lem:h0, prop:ns &
+\Cref{ch:galrep,ch:reps} & paper; book\\
+$v_\lambda(\eta^\Sigma)=\len\HSigma(\Q,W)$ & thm:dfg37 & \Cref{ch:congruence} (outline) &
+imported, \cite[Theorem 3.7]{DFG04}\\
+$H^0(\Q,V^D)=\Hf(\Q,V^D)=0$ & thm:dfg27 & \Cref{ch:blochkato,ch:congruence} & imported, \cite[Theorem 2.7]{DFG04}\\
+$\HSigma(\Q,W)$ against $\Hf(\Q,W)$ & lem:dfg21 & \Cref{ch:blochkato,ch:galcoh} &
+imported, \cite[Lemma 2.1]{DFG04}; the paragraph after it paper, book\\
+$\Fitt\Hf(\Q_p,T^D)=L_p(A_f,1)^{-1}\Tam_p(A)$ & lem:fpr & \Cref{ch:blochkato,ch:lfunctions} &
+imported, \cite[I.4.2.2]{FPR94}, \cite[(57)]{DFG04}; first identity also proved in book\\
+values of $e_\ell$; shapes of $P_q$ & def:terms, lem:euler, prop:shapes & \Cref{ch:lfunctions,ch:galrep,ch:reduction} &
+paper; book\\
+$\Tam_q(\ad T)$ at the bad primes & lem:tamfactor, lem:tamadd & \Cref{ch:blochkato,ch:galcoh} & paper; book\\
+the assembly & proof of thm:main, cor:explicit & \Cref{ch:congruence} & paper; book\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{3. The delicate joints, in order}
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+\item \emph{Proposition prop:integral.} This is the one input that the paper says is ``not a published statement in the
+form we need''; the paper proves it, and adds that ``it holds integrally, with no localisation.'' The proof identifies
+DFG's Betti lattice $M(M,1)_{!,B}$, defined as invariants of the cohomology of a modular curve of full level, with
+$H^1(X_0(M),\Z)$: compactly supported Hochschild-Serre and the equivariant Leray sequence of the finite quotient map (Step 1),
+the image of $H^1_c\to H^1$ (Step 2), Hecke operators checked over $\C$ (Step 3), base change to $\Zl$ (Step 4). To check: the
+reading of DFG's Sections 1.2 and 1.4.1 (Lemma 1.1, Proposition 1.3 for the Hecke action with $U_p$, display (5)), and the
+paragraph after the proposition, where the pairing $\hat\delta_!$ is $\frac u2$ times the cup product composed with $w_{M}$,
+$u$ an $\ell$-adic unit, by the statement before DFG's Lemma 1.2. Only the unit matters for odd $\ell$; the exact constant is
+not proved. \Cref{ch:congruence} gives the full proof; DFG's sections are cited there by section, as the paper cites them.
+\item \emph{The DFG hypothesis chain.} Theorem thm:dfg37 needs $\ell\notin S_f$ and $\Sigma$ the set of primes dividing $N$
+(minimal ramification outside $\Sigma$). Proposition 1.4(c) needs $\ell\notin\Sigma$ and $\rhobar$ irreducible; the paper
+shows by \curve{11a} at $\ell=3$ that $\ell\notin\Sigma$ cannot be dropped. Lemma 2.1 needs $H^0(\Q,V^D)=\Hf(\Q,V^D)=0$:
+the first is automatic, as $H^0(\Q_p,V^D)=0$ for $p\in\Sigma$; the second is Theorem 2.7; and its local terms are the torsion of
+$H^1(\Q_p,T^D)$ because $p\ne\ell$. The last term $H^0(\Q,W^D)^*$ of the sequence is dropped by Lemma lem:h0, which gives
+length $h_\ell(E)=0$ exactly when $\ell\notin S_f$. A referee should confirm that the four DFG statements are used in the
+published form and numbering (\Cref{ch:paper} lists which were compared with the published text).
+\item \emph{The local terms at $q=2,3$.} In (eq:identity) the terms at $2$ and $3$ are those of Definition def:terms with
+PARI's Euler factor; the paper states that \texttt{lfunsympow(E,2)} ``returns these factors at every prime, including $2$
+and $3$''. The identity needs only the definition; Proposition prop:shapes (four shapes of $P_q$ at every bad prime, proved
+from the image of inertia) makes them explicit, and Remark rem:wild gives the examples \curve{336f1}, \curve{1232l1},
+\curve{592c1}. The file \texttt{final/pipeline/samples/wild\_euler\_q23.csv} (with its \texttt{README.md} and log) records
+$P_q$, $P_q(q^{-2})$ and $e_\ell$ for $3{,}305$ rows at $q=2,3$ ($2{,}905$ curves: those named in the paper and the optimal
+non-CM curves with $N<2{,}000$ and $4\mid N$ or $9\mid N$), each matched to one of the four shapes, with no mismatch.
+\item \emph{The image $\Ns$ and $h_3$.} Theorem thm:main excludes these curves ($3\in S_f$). The paper's ``Status of the
+correction'' separates three things. Proved: $h_\ell(E)\le1$, with equality exactly when $\ell=3$ and the mod $3$ image is
+$N_s(\F_3)$ (Lemma lem:h0, Proposition prop:ns). Conditional: that the correction is the term $-h_\ell(E)$ that Lemma 2.1
+produces assumes $H^1_f(\Q,V^D)=0$, ``which is not known for these curves'', and that $v_\lambda(\eta^\Sigma_{f,\lambda})$ is
+still the Selmer length (Remark rem:ns). Empirical: the weights $w_3$ at $q=\ell=3$ and the shortfall pattern, a failure of
+(eq:thm) by exactly one on $364$, $68$ and $43$ curves of the three table ranges, all with image $\Ns$
+(\Cref{ch:galrep,ch:blochkato}).
+\item \emph{Theorem thm:quant, Step 2.} The proof is a chain of equalities with one inequality: Lemma lem:ddt417 (the
+inequality half of \cite[Lemma 4.17]{DDT}, proved in the paper) applied to $H^1(X_0(N),\Zl)_{\mf m}$ and the depleted form
+$g^S$ of the twist, giving $v_\ell(\eta^{\mathrm{Hecke}}(g^S))\ge v_\lambda(\eta^S_{g,\lambda})$; in the paper's words, ``the
+only inequality is Step 2''. To check: that $L[\wp]$ is the lattice $M_{g^S,\lambda}$ (Proposition prop:integral at level
+$N$), that the pairing is perfect on the $\mf m$-component ($e_{\mf m}$ self-adjoint), and that freeness is not used. The
+inequality needs only $E[\ell]$ irreducible and $\ell\nmid2N$; the equality uses Theorem thm:main for $E$ and $E'_S$
+(\Cref{ch:congruence}).
+\end{enumerate}
+
+\section*{4. Imported results}
+
+As the paper cites them, for Theorem thm:main and Theorem thm:quant:
+\cite[Proposition 1.4(c)]{DFG04};
+\cite[Theorem 3.7]{DFG04} (the form given as Theorem 0.2 there);
+\cite[Theorem 2.7]{DFG04};
+\cite[Lemma 2.1]{DFG04}, with $S_f$ from \cite[(31)]{DFG04};
+\cite[I.4.2.2]{FPR94}, as recalled in the proof of \cite[Theorem 2.15]{DFG04}, with $\Tam_p(T^D)=\Tam_p(A)$ from \cite[(57)]{DFG04};
+for Proposition prop:integral and the pairing, \cite[\S\S1.2, 1.4]{DFG04}, \cite[Lemma 1.1]{DFG04}, \cite[(5), Proposition 1.3]{DFG04} and
+\cite[\S1.5.2, before Lemma 1.2]{DFG04};
+\cite[Theorem 2.2]{ARS12} ($\degphi\mid r_E$, with equal $p$-parts for $p^2\nmid N$);
+\cite[Lemma 4.17]{DDT} (its inequality half is reproved);
+\cite[\S1]{Serre72} (inertia at $\ell$, in Proposition prop:Sf);
+\cite[\S2]{SerreTate68} and \cite{Kraus90} (inertia images at additive primes);
+Tate's algorithm \cite{Tate75}, \cite[IV.9]{SilvermanATAEC};
+and PARI's \texttt{lfunsympow} \cite{PARI} for the factors at $2$ and $3$. The status of each citation (compared with the
+published text, or as cited) is the last table of \Cref{ch:paper}.
+
+\section*{5. The computations}
+
+No computation enters the proof of Theorem thm:main or Theorem thm:quant. The data concern Conjectures conj:euler and
+conj:eis, the sharpness of the hypothesis, and checks of the local lemmas. They rest on three kinds of evidence.
+\begin{itemize}[leftmargin=*]
+\item \emph{Large ranges} (conductor up to $500000$, and the $893$ curves outside the tables): computed by the scripts in
+\texttt{final/pipeline}. The book did not rerun them. It compared the printed tables with the committed result files
+(\texttt{scripts/selftest.py}, output in \texttt{results/selftest.log}; \texttt{MANIFEST.sha256} fixes every file), which
+is a consistency check, not a reproduction; the four twisted rows of Table tab:isolated could not be compared, their source
+files not being committed. The full rerun from the pinned data is \texttt{scripts/repro\_run.sh} followed by
+\texttt{scripts/reproduce\_tables.sh}, described in the pipeline's \texttt{README.md}, which also describes the logs of the
+earlier clean-clone runs; a referee should read those logs before relying on the appendix's sentence on the clean clone.
+\item \emph{Conductor below $10{,}000$} ($38{,}042$ optimal curves): recomputed for the book with PARI/GP 2.17.2 from the
+same pinned commit, including Table tab:excess (\Cref{ch:blochkato}), the check of Lemma lem:euler against PARI's factors,
+and the counts of Sections sec:tam, sec:anomaly and sec:wild that fall in this range (\Cref{ch:computation}). These runs were
+made with the paper in hand: they are checks, not blind tests.
+\item \emph{Single curves}: the worked verifications of \Cref{ch:paper} and the function \texttt{rule} of the paper's
+appendix (\texttt{scripts/euler\_rule.gp}).
+\end{itemize}
+Which ranges were used to formulate each statement and which to test it is set out, statement by statement, in the
+protocol remarks of \Cref{ch:computation}, with the two qualifications stated there. Each computational claim of the paper,
+with the evidence behind it, is listed in the claim ledger in \texttt{final/claims/}.
+
+\section*{6. What has not been checked}
+
+The paper and this book were produced with an AI system under the author's direction, and neither has yet been read line
+by line by a human expert; the paper's statement on the use of an AI system and the acknowledgement in the preface say so.
