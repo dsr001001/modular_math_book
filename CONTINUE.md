@@ -32,7 +32,8 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Chapters 20, 22, Appendix B | done: draft, one review each, one fix pass | `chapters/ch20_congruence.tex`, `ch22_computation.tex`, `chB_notation.tex` |
 | Full-book pass (step 4) | done: full book builds (1,045 pages, Chapter 21 a placeholder), no undefined references, no duplicate labels or BibTeX warnings, 12 overfull boxes only in the preface; all 21 cross-chapter items fixed | `important/fullbook_pass_list.txt` |
 | Step 5 (sources) | done for DFG04, RT97, Takahashi01 (note B42); remaining flags listed there | `important/important_notes.md` |
-| Remaining | step 6: Chapter 21 (the paper) LAST, from the finished book and the complete findings list; step 7: preface, final build | `chapters/` |
+| Chapter 21 (the paper) | done: draft, one review, one fix pass; errata E1 to E38 | `chapters/ch21_paper.tex` |
+| Remaining | step 7: preface rewrite (12 overfull boxes there), final full build, records, full PDF | `frontmatter/preface.tex` |
 
 The original paper is `note_Oct10_7pm.tex`. Labels in the revised paper are the same.
 
