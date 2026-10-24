@@ -653,6 +653,11 @@ At a bad prime $\#\tilde E(\F_p)=\#\tilde E_{\mathrm{ns}}(\F_p)+1$, and $\tilde 
 for split multiplicative, nonsplit multiplicative, additive reduction, and the three lines of the definition are one formula: $L_p(E,s)^{-1}=1-a_pp^{-s}+\mathbf 1_{p\nmid N}\,p^{1-2s}$.
 \end{definition}
 
+For example, $E=\curve{11a1}$: $y^2+y=x^3-x^2-10x-20$. Modulo $2$ the equation is $y^2+y=x^3+x^2$; for $x=0$ and $x=1$ the right side is $0$, and $y^2+y=0$ has the two
+solutions $y=0,1$; with the point at infinity $\#\tilde E(\F_2)=5$ and $a_2=2+1-5=-2$, so $L_2(E,s)^{-1}=1+2\cdot2^{-s}+2^{1-2s}$. At $p=11$ the reduction is split
+multiplicative, $a_{11}=1$ and $L_{11}(E,s)^{-1}=1-11^{-s}$. The first few coefficients $a_2,a_3,a_5,a_7=-2,-1,1,-2$ (PARI's \texttt{ellap}) are those of the newform
+$\eta(z)^2\eta(11z)^2$ of \Cref{ch:hecke}, as \Cref{thm:lfunctions:LE-feq}(i) predicts.
+
 \begin{proposition}[$L(E,s)$ and $V_\ell E$]\label{prop:lfunctions:LE}
 \begin{enumerate}[label=(\roman*)]
 \item For every $p\ne\ell$, $L_p(E,s)$ equals $L_p(V_\ell E^\vee,s)$ and $L_p(V_\ell E,s-1)$, and $\delta_p$ is the degree of $L_p(E,s)^{-1}$ as a polynomial in $p^{-s}$.
@@ -723,6 +728,11 @@ $L_p(\Sym f,2)=L_p(A_f,1)$, so $P_p(p^{-2})=L_p(A_f,1)^{-1}$; it lies in $\Z[1/p
 eigenvalues $\alpha,\beta$ on $V^\vee$ (\Cref{conv:lfunctions:frobenius}), hence $\alpha^2,\alpha\beta,\beta^2$ on $\Sym V^\vee$.
 \end{proof}
 
+The isomorphism $\Sym W\simeq\ad W\otimes\det W$ used in (i) is easy to remember on eigenvalues: if $g$ has eigenvalues $a,b$ on $W$, it has $a^2,ab,b^2$ on $\Sym W$, and
+$\frac ab,1,\frac ba$ on $\ad W$, which multiplied by $\det g=ab$ give $a^2,ab,b^2$ again. This checks the characters only; the isomorphism itself, for every $g$ at once, is
+\Cref{ch:reps}. With $W=V^\vee$ and $g=\Phi_p$ at a good prime, $a,b=\alpha,\beta$ and $ab=p$: this is (iii), and it shows the shift by one in the simplest case, since
+$1-p\cdot\frac\alpha\beta X$ is $1-\alpha^2X$.
+
 \begin{proposition}[the factor at a good prime]\label{prop:lfunctions:good-factor}
 Let $p\nmid N$, $p\ne\ell$, $a=a_p(f)$, and $\alpha,\beta$ the roots of $X^2-aX+p$.
 \begin{enumerate}[label=(\roman*)]
@@ -752,6 +762,15 @@ $(p+1)^2-a^2\ge(p+1)^2-4p=(p-1)^2$.
 The factor in (ii) is the one that Wiles's level-raising and the paper's Theorem thm:dfg14 attach to a good prime added to $\Sigma$ \cite{DDT}, and the
 condition in (iii) on $a$ is Ribet's level-raising condition $a_p\equiv\pm(p+1)\pmod\ell$ (\Cref{ch:modgalrep}). The same formula with $a=a_q(E')$ is the omitted factor at a
 prime of type $\mathrm I_0^*$ (\Cref{lem:lfunctions:euler}).
+
+A numerical illustration of (ii) and (iii). For \curve{11a1}, with $a_2=-2$ and $a_3=-1$,
+\[
+L_2(A_f,1)^{-1}=\frac12\cdot\frac{9-4}4=\frac58,\qquad L_3(A_f,1)^{-1}=\frac23\cdot\frac{16-1}9=\frac{10}9 .
+\]
+The factor at $3$ has $v_5=1$ although $3\not\equiv1\pmod5$: here $a_3=-1\equiv3+1\pmod5$. This is no accident. \curve{11a1} has a rational point of order $5$, which injects
+into $\tilde E(\F_p)$ for every good $p\ne5$ (reduction is injective on torsion of order prime to $p$, \Cref{ch:ellcurves}); so $5\mid\#\tilde E(\F_p)=p+1-a_p$, that is
+$a_p\equiv p+1\pmod5$, and by (iii) \emph{every} good factor $L_p(A_f,1)^{-1}$ with $p\ne5$ is a $5$-adic non-unit (PARI confirms the congruence for all good $p<200$). This
+is the typical behaviour of a reducible residual representation $E[\ell]$, the case that the paper's main theorem excludes.
 
 \begin{paperlink}
 Section 1.1: ``In the normalisation of the symmetric square, $L_p(\Sym f,s)=L_p(A_f,s-1)$'' is \Cref{prop:lfunctions:ad-sym}(i); ``PARI's \texttt{lfunsympow(E,2)}
@@ -909,7 +928,12 @@ Absolute convergence: $\abs{a_n}\le d(n)\sqrt n$ (Hasse at primes, multiplicativ
 $a_n^2$ and $a_{n^2}$ are $O(n^{1+r})$ (\Cref{prop:lfunctions:dirichlet-series}(ii)). Both coefficient sequences are multiplicative, so both sides are Euler products
 (\Cref{prop:lfunctions:euler-product}) and it suffices to compare local factors. Write $\alpha,\beta$ for the roots of $X^2-a_pX+p$, so that
 $a_{p^k}=(\alpha^{k+1}-\beta^{k+1})/(\alpha-\beta)$ (\Cref{ch:hecke}; when $\alpha=\beta$ read the identities below by continuity). The first local identity is \Cref{ch:hecke} (the
-Rankin-Selberg theorem, part (ii)). For the second,
+Rankin-Selberg theorem, part (ii)); for completeness, squaring gives $a_{p^k}^2=(\alpha^{2k+2}-2p^{k+1}+\beta^{2k+2})/(\alpha-\beta)^2$, and summing three geometric series,
+\[
+\sum_ka_{p^k}^2X^k=\frac1{(\alpha-\beta)^2}\Bigl(\frac{\alpha^2}{1-\alpha^2X}-\frac{2p}{1-pX}+\frac{\beta^2}{1-\beta^2X}\Bigr)=\frac{1+pX}{(1-\alpha^2X)(1-pX)(1-\beta^2X)},
+\]
+the last step by bringing to a common denominator (the numerator is $(\alpha-\beta)^2(1+pX)$; this identity of rational functions was also checked symbolically with PARI).
+For the second,
 \begin{align*}
 \sum_ka_{p^{2k}}X^k&=\frac1{\alpha-\beta}\Bigl(\frac\alpha{1-\alpha^2X}-\frac\beta{1-\beta^2X}\Bigr)\\
 &=\frac{(\alpha-\beta)+\alpha\beta(\alpha-\beta)X}{(\alpha-\beta)(1-\alpha^2X)(1-\beta^2X)}=\frac{1+pX}{(1-\alpha^2X)(1-\beta^2X)},
@@ -947,7 +971,12 @@ The first equality, at every level $N$, is the Rankin-Selberg theorem of \Cref{c
 (the unfolding of $\abs f^2y^2E(z,s)$, due to Rankin \cite{Rankin39} and Selberg \cite{Selberg40}, is sketched there); we do not prove it again. In the notation of this
 chapter: $D(f,s)$ has a simple pole at $s=2$ with residue $\frac{48\pi}{\mu(N)}\langle f,f\rangle$ and is holomorphic elsewhere on $\operatorname{Re}s\ge2$, and
 $L^{\nv}(\Sym f,s)=D(f,s)\zeta^{(N)}(2s-2)/\zeta^{(N)}(s-1)$ (\Cref{prop:lfunctions:rankin-series}(A)), so $L^{\nv}(\Sym f,s)$ is holomorphic at $s=2$ and the residue of
-$\zeta^{(N)}(s-1)/\zeta^{(N)}(2s-2)$ there, $\frac{6N}{\pi^2\mu(N)}$ (\Cref{prop:lfunctions:partial-zeta}), converts one residue into the other. What this chapter adds is the true value. By
+$\zeta^{(N)}(s-1)/\zeta^{(N)}(2s-2)$ there, $\frac{6N}{\pi^2\mu(N)}$ (\Cref{prop:lfunctions:partial-zeta}), converts one residue into the other: near $s=2$,
+$D(f,s)=\frac{\zeta^{(N)}(s-1)}{\zeta^{(N)}(2s-2)}L^{\nv}(\Sym f,s)$ with $L^{\nv}(\Sym f,s)$ holomorphic, so comparing residues,
+\[
+L^{\nv}(\Sym f,2)=\frac{\operatorname{Res}_{s=2}D(f,s)}{\operatorname{Res}_{s=2}\zeta^{(N)}(s-1)/\zeta^{(N)}(2s-2)}=\frac{48\pi\langle f,f\rangle}{\mu(N)}\cdot\frac{\pi^2\mu(N)}{6N}=\frac{8\pi^3}N\langle f,f\rangle,
+\]
+the factor $\mu(N)$ cancelling. What this chapter adds is the true value. By
 \Cref{prop:lfunctions:naive}(ii) and \Cref{prop:lfunctions:ad-sym}, $L(\Sym f,s)$ is $L^{\nv}(\Sym f,s)$ times $\prod_{p^2\mid N}P_p(p^{-s})^{-1}$, a finite product of rational functions of
 $p^{-s}$ which are finite and nonzero at $s=2$ (\Cref{prop:lfunctions:fpr-L-part}); this gives holomorphy of $L(\Sym f,s)$ at $2$ and the second and third equalities, with
 $P_p(p^{-2})=L_p(A_f,1)^{-1}$.
@@ -1056,7 +1085,10 @@ e_\ell(E,q)=v_\ell\Bigl(\frac{L_q(A_f,1)^{-1}}{L_q^{\nv}(A_f,1)^{-1}}\Bigr)=v_\e
 \end{definition}
 
 The two expressions for $e_\ell$ agree by \Cref{prop:lfunctions:ad-sym}(ii) and \Cref{prop:lfunctions:naive}(i) at $s=1$. Note that $1-a_q^2q^{-2}$ is the naive factor at $s=1$ only
-because $q$ is bad; at a good prime the naive factor is the cubic of \Cref{prop:lfunctions:good-factor}. The term $t_\ell(E,q)$ is defined at every bad prime,
+because $q$ is bad; at a good prime the naive factor is the cubic of \Cref{prop:lfunctions:good-factor}. In words, $e_\ell(E,q)$ counts how many more powers of $\ell$ the true
+factor $L_q(A_f,1)^{-1}$ carries than the naive one, and \Cref{cor:lfunctions:degree-formula} will show that this is exactly the extra $\ell$-divisibility of $\degphi$ coming from
+$q$. The smallest example is \curve{121a1}, of type $\mathrm{II}$ at $11$: the naive factor is $1$ (since $a_{11}=0$), the true one is $P_{11}(11^{-2})=1+\frac1{11}=\frac{12}{11}$
+(\Cref{lem:lfunctions:euler}), and $e_3(E,11)=v_3(\frac{12}{11})=1$, while $\degphi=6$. The term $t_\ell(E,q)$ is defined at every bad prime,
 $q=\ell$ included, as the paper's appendix and (eq:rule) use it.
 
 \begin{proposition}[first properties of the local terms]\label{prop:lfunctions:terms}
@@ -1091,7 +1123,9 @@ Over $\Q_q$, $\rho\simeq\rho'\otimes\chi$ with $\chi$ a character of order at mo
 $\rho'(g)=\sm{\chi_\ell(g)\varepsilon(g)}{\varepsilon(g)\kappa(g)}0{\varepsilon(g)}$ with $\varepsilon$ unramified of order at most $2$ and $\kappa$ the Kummer cocycle of the Tate parameter
 (\Cref{ch:galrep}; Appendix B, B-C14). Twisting by a character does not change $\ad$: $\ad(\rho'\otimes\chi)=\ad\rho'$. On $\ad V$ with basis $e=e_1\otimes e_2^\vee$, $h$, $e_2\otimes e_1^\vee$,
 conjugation by $u=\sm1x01$ fixes $e$ and sends $h\mapsto h-2xe$ and $e_2\otimes e_1^\vee\mapsto e_2\otimes e_1^\vee+xh-x^2e$. On inertia $\varepsilon=\chi_\ell=1$ and $\kappa$ is $v_q(q_E)$ times the
-$\ell$-adic tame character, which is nonzero; so some $x\ne0$ occurs, and the invariants are the line of $e$ (characteristic $0$, so $2x\ne0$). For $g=\sm ab0d$,
+$\ell$-adic tame character, which is nonzero; so some $x\ne0$ occurs, and the invariants are the line of $e$ (characteristic $0$, so $2x\ne0$). Explicitly, in matrix terms
+$e$, $h$, $e_2\otimes e_1^\vee$ are $\sm0100$, $\sm100{-1}$, $\sm0010$, and $u\,(ae+bh+c\,e_2\otimes e_1^\vee)\,u^{-1}$ equals
+$(a-2xb-x^2c)e+(b+xc)h+c\,e_2\otimes e_1^\vee$; invariance forces $xc=0$, so $c=0$, and then $2xb=0$, so $b=0$. For $g=\sm ab0d$,
 $geg^{-1}=\frac ade$; with $g=\rho'(\Frob_q)$ this is $\chi_\ell(\Frob_q)=q$, the sign $\varepsilon(\Frob_q)$ cancelling. So $\Frob_q$ acts by $q$, $\Phi_q$ by $q^{-1}$, and
 $\det(1-\Phi_qq^{-s}\mid A_f^{I_q})=1-q^{-1-s}$; then $P_q(X)=L_q(A_f,s-1)^{-1}|_{q^{-s}=X}=1-X$. If the reduction is multiplicative, $a_q=\pm1$ and the naive factor at $s=1$ is
 $1-q^{-2}$, equal to the true one; if additive, $a_q=0$ and the naive factor is $1$. With $\Frob_q$: $1-q\,q^{-s}$.
@@ -1152,14 +1186,17 @@ invariant line must be described as the line of $\tau$, not of ``the diagonal el
 (\Cref{prop:lfunctions:multiplicative}). For $\{\pm1\}$ they are all of $A_f$.
 
 \emph{Step 3: the Frobenius.} The arithmetic Frobenius normalises $\rho(I_q)$ and acts on tame inertia by $g\mapsto g^q$: $\rho(\Frob_q)g\rho(\Frob_q)^{-1}=g^q$ for $g$ in a tame image
-(\Cref{ch:local}, the tame relation). For $g=\sigma$: $\sigma^q=\sigma$ if $q\equiv1\pmod3$ and $\sigma^q=\sigma^{-1}=\sigma^2$ if $q\equiv2\pmod3$, and $2\sigma^{-1}+1=2\sigma^2+1=-(2\sigma+1)$; so $\Frob_q$
-acts on $2\sigma+1$ by $\chi_{-3}(q)$. For $g=\tau$: $\tau^q=\tau$ or $\tau^{-1}=-\tau$ as $q\equiv1$ or $3\pmod4$; so $\Frob_q$ acts on $\tau$ by $\chi_{-4}(q)$. The eigenvalue is $\pm1$, so
+(\Cref{ch:local}, the tame relation). Since $\Frob_q$ acts on $\ad V$ by conjugation, it sends the invariant vector $2g-\tr g$ to $2g^q-\tr g$, the trace being
+conjugation-invariant. For $g=\sigma$: $\sigma^q$ depends only on $q\bmod3$, so $\sigma^q=\sigma$ if $q\equiv1\pmod3$ and $\sigma^q=\sigma^{-1}=\sigma^2$ if $q\equiv2\pmod3$, and
+$2\sigma^{-1}+1=2\sigma^2+1=2(-\sigma-1)+1=-(2\sigma+1)$ by $\sigma^2+\sigma+1=0$; so $\Frob_q$ acts on $2\sigma+1$ by $+1$ or $-1$ according as $q\equiv1$ or $2\pmod3$, that is by
+$\chi_{-3}(q)$ (the character of $\Q(\sqrt{-3})$, for which $\chi_{-3}(q)=1$ iff $q\equiv1\pmod3$). For $g=\tau$: $\tau^q=\tau$ or $\tau^{-1}=-\tau$ as $q\equiv1$ or $3\pmod4$; so $\Frob_q$ acts on $\tau$ by $\chi_{-4}(q)$. The eigenvalue is $\pm1$, so
 $\Phi_q=\Frob_q^{-1}$ acts by the same sign. For $\mathrm I_0^*$: $V\simeq V_\ell E'\otimes\chi_{q^*}$ with $V_\ell E'$ unramified at $q$ (\Cref{ch:reduction}, the paper's Lemma lem:twist(ii),
 valid at every odd $q$; Neron-Ogg-Shafarevich, \Cref{ch:galrep}), so $\ad V=\ad V_\ell E'$ is unramified with the eigenvalues $\alpha'/\beta',1,\beta'/\alpha'$ for either Frobenius
 (\Cref{prop:lfunctions:good-factor}). For $\mathrm I_n^*$: $V\simeq V'\otimes\chi_{q^*}$ with $V'$ multiplicative at $q$, and $\ad V=\ad V'$ (\Cref{prop:lfunctions:multiplicative}).
 
-\emph{Step 4: $P_q$.} By \Cref{prop:lfunctions:ad-sym}(i), $P_q(X)$ is $L_q(A_f,s)^{-1}$ with $q^{-s}$ replaced by $qX$; at $s=1$, $P_q(q^{-2})=L_q(A_f,1)^{-1}$. For $\mathrm I_0^*$ this is
-\Cref{prop:lfunctions:good-factor}(i), (ii) for $E'$.
+\emph{Step 4: $P_q$.} By \Cref{prop:lfunctions:ad-sym}(i), $P_q(X)$ is $L_q(A_f,s)^{-1}$ with $q^{-s}$ replaced by $qX$; at $s=1$, $P_q(q^{-2})=L_q(A_f,1)^{-1}$. For instance in the
+rows $\mathrm{II}$ to $\mathrm{IV}^*$, $1-\chi_{-3}(q)q^{-s}$ becomes $1-\chi_{-3}(q)qX$, whose value at $X=q^{-2}$ is $1-\chi_{-3}(q)q^{-1}$; in the rows $\mathrm I_n$, $\mathrm I_n^*$,
+$1-q^{-1}q^{-s}$ becomes $1-X$. For $\mathrm I_0^*$ this is \Cref{prop:lfunctions:good-factor}(i), (ii) for $E'$.
 
 \emph{Step 5: the valuations.} The naive factor is $1$ at the additive types ($a_q=0$) and $1-q^{-2}$ at $\mathrm I_n$ (\Cref{prop:lfunctions:naive}). So $e_\ell=0$ for $\mathrm I_n$, and
 for the additive types $e_\ell=v_\ell(P_q(q^{-2}))$: $v_\ell(1-q^{-2})=v_\ell(q^2-1)$; $v_\ell(1-cq^{-1})=v_\ell(q-c)$ for $c=\chi_{-3}(q),\chi_{-4}(q)$; and
@@ -1321,10 +1358,13 @@ unramified at $q$, and the reduction is additive, so $\delta_q=0$, $a_q=0$ and t
 
 \emph{The trichotomy.} Let $G=\rho(I_q)$, finite, in $\SL_2(\overline\Q_\ell)$. If $G$ fixes a line of $\overline\Q_\ell^2$ it is upper triangular in a suitable basis; a finite group of
 upper triangular matrices in characteristic $0$ meets the unipotent radical $\{\sm1x01\}$ trivially (a nontrivial unipotent has infinite order), so it injects into the
-diagonal torus and is abelian. Hence a non-abelian $G$ fixes no line: $V\otimes\overline\Q_\ell$ is an absolutely irreducible representation of $G$, its commutant is the scalars
-(Schur, \Cref{ch:reps}), and $A_f^{I_q}=0$, which is (d). A finite abelian subgroup of $\SL_2(\overline\Q_\ell)$ consists of commuting diagonalisable elements, hence is simultaneously
-diagonalisable and embeds in the group of roots of unity, so it is cyclic; its order is $1,2,3,4$ or $6$ because the characteristic polynomials of its elements have
-integer coefficients \cite[Section 2]{SerreTate68} (\Cref{ch:galrep}); order $1$ would mean good reduction. If $G\ne\{\pm1\}$, let $g$ generate it; $g$ has distinct eigenvalues
+diagonal torus and is abelian. (Explicitly, $\sm ab0d\mapsto(a,d)$ is a homomorphism whose kernel consists of unipotent matrices, so on a finite group it is injective, with
+abelian image.) Hence a non-abelian $G$ fixes no line: $V\otimes\overline\Q_\ell$ is an absolutely irreducible representation of $G$, its commutant is the scalars
+(Schur, \Cref{ch:reps}), and $A_f^{I_q}=0$, which is (d). A finite abelian subgroup of $\SL_2(\overline\Q_\ell)$ consists of commuting diagonalisable elements (an element of finite
+order $n$ is annihilated by $X^n-1$, which has distinct roots in characteristic $0$), hence is simultaneously diagonalisable. In a common eigenbasis each element is
+$\operatorname{diag}(\zeta,\zeta^{-1})$, and $g\mapsto\zeta$ is an injective homomorphism into the roots of unity; a finite group of roots of unity is cyclic. If $\zeta$ has
+order $n$, then $\zeta+\zeta^{-1}=\tr g$ is an integer, because the characteristic polynomials of the elements of $G$ have integer coefficients \cite[Section 2]{SerreTate68}
+(\Cref{ch:galrep}); so $\zeta$ is a root of $X^2-(\tr g)X+1\in\Z[X]$, its degree $\varphi_{\mathrm{Eu}}(n)$ over $\Q$ is at most $2$, and $n\in\{1,2,3,4,6\}$. Order $1$ would mean good reduction. If $G\ne\{\pm1\}$, let $g$ generate it; $g$ has distinct eigenvalues
 $\zeta^{\pm1}$, its commutant is $\overline\Q_\ell[g]$, of dimension $2$, and the trace-zero part is the line of $x=2g-\tr g$, defined over $\Q_\ell$; and
 $x^2=4g^2-4g\tr g+(\tr g)^2=(\tr g)^2-4$ by Cayley-Hamilton ($g^2=g\tr g-1$), a nonzero scalar because $g\ne\pm1$. The Frobenius normalises $I_q$, hence $G$, and so preserves the
 line of $x$: $\rho(\Frob_q)x\rho(\Frob_q)^{-1}=cx$; conjugation preserves $x^2$, so $c^2x^2=x^2$ and $c=\pm1$, the same for $\Phi_q$. Then $L_q(A_f,s)^{-1}=1-cq^{-s}$,
@@ -1498,6 +1538,14 @@ rows with $v_\ell(B_E)<0$ for an odd $\ell\nmid N$ are exactly those where the h
 reducible: they are isogenous to twists of \curve{11a1}), \curve{98a1} at $\ell=3$ ($E[3]$ reducible), and \curve{121b1} at $\ell=3$ (complex multiplication by $\Q(\sqrt{-11})$, mod $3$
 image $N_s(\F_3)$). The identity of \Cref{cor:lfunctions:degree-formula}(iii) holds in every row at every $\ell\nmid N$: for instance \curve{539d1} at $\ell=3$ has
 $v_3(72)=2=v_3(\frac{343}5)+e_3(E,7)$.
+
+How one row is computed, for \curve{539d1}. At $7$ the type is $\mathrm I_0^*$ and the twist by $\chi_{-7}$ is \curve{11a3}, with $a'=a_7(\curve{11a3})=-2$ (isogenous curves have the same $a_p$, and
+$a_7(\curve{11a1})=-2$). So $a'^2-2q=4-14=-10$ and $P_7(X)=(1-7X)(1+10X+49X^2)$. At $X=7^{-2}$,
+\[
+P_7(7^{-2})=\Bigl(1-\frac17\Bigr)\Bigl(1+\frac{10}{49}+\frac1{49}\Bigr)=\frac67\cdot\frac{60}{49}=\frac{360}{343},\qquad 360=2^3\cdot3^2\cdot5,
+\]
+which gives $e_3(E,7)=2$ and $e_5(E,7)=1$ (the formula $v_\ell(q-1)+v_\ell((q+1)^2-a'^2)$ with $q-1=6$ and $64-4=60$ says the same). The prime $11$ is multiplicative, with naive factor
+equal to the true one, and contributes nothing. Then $B_E=\degphi/P_7(7^{-2})=72\cdot\frac{343}{360}=\frac{343}5$.
 \end{example}
 
 \begin{example}[the Petersson norm]\label{ex:lfunctions:petersson-table}
