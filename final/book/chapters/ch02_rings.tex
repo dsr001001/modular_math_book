@@ -203,7 +203,7 @@ characters $\chi_{-3}$, $\chi_{-4}$ of the table: \Cref{prop:rings:paper-charact
 \item \textbf{Lemma lem:euler (the omitted factors at tame primes) and Lemma lem:IV.} "Frobenius centralises $\sigma$ if
 $q\equiv1\pmod3$ and inverts it if $q\equiv2$": \Cref{prop:rings:mu-in-fq}(v) and \Cref{prop:rings:paper-characters}(ii); the
 identity for type $\kod{I}_0^*$: \Cref{prop:rings:i0star-identity}; $e_\ell=v_\ell(1-q^{-2})=v_\ell(q^2-1)$: \Cref{lem:rings:ell-integral}.
-\item \textbf{Proposition prop:forms.} "$e_3(E,q)=v_3(q-\chi_{-3}(q))\ge1$ since $q\equiv\chi_{-3}(q)\pmod3$": \Cref{prop:rings:paper-characters}(i),
+\item \textbf{Proposition prop:forms.} "$e_3(E,q)=v_3(q-\chi_{-3}(q))\ge1=w_3(E,q)$ since $q\equiv\chi_{-3}(q)\pmod3$": \Cref{prop:rings:paper-characters}(i),
 \Cref{prop:rings:local-terms}(i).
 \item \textbf{Lemma lem:twist, Theorems thm:twist, thm:quant, thm:qual and Example ex:qual.} The character $\chi_{q^*}$ of
 conductor $q$, the field $\Q(\sqrt{q^*})$, the character $\chi_S$ of conductor $D=\prod_{q\in S}q$ and the vanishing of
@@ -214,7 +214,7 @@ reduction of the unit part $u$, and the reading of $v_\ell(c)$: \Cref{thm:rings:
 \item \textbf{Lemma lem:crit (congruence criterion), Lemma lem:hecke and Step 1 of the proof of Theorem thm:quant.}
 $\T/(I+J)\simeq\Z/\phi_f(J)$ is cyclic, the cokernel of $\T\subset\T/I\times\T/J$ is $\T/(I+J)$, the decomposition
 $\T\otimes\Q=\Q\times\T'$, and "$\ell$ divides $\#\T/(I+J)=r$": \Cref{thm:rings:isomorphism,prop:rings:two-ideals,prop:rings:idempotents,thm:rings:prime-maximal,prop:rings:residue-char}.
-\item \textbf{Lemma lem:fpr.} "$L_p(A_f,1)^{-1}$ is a nonzero rational number which is an $\ell$-adic integer":
+\item \textbf{Lemma lem:fpr.} "$L_p(A_f,1)^{-1}=L_p(A_f(1),0)^{-1}$ is a nonzero rational number which is an $\ell$-adic integer":
 \Cref{prop:rings:zp-local,lem:rings:ell-integral}.
 \item \textbf{Remark rem:wild.} $P_2(X)=1+2X$ gives $e_3=v_3(\frac32)=1$; the cubic factors at $2$: \Cref{ex:rings:paper-values}(e).
 \item \textbf{Section sec:anomaly.} The type $\mathrm{III}$ primes with $e_3>0$ are those with $q\equiv\pm1\pmod{12}$:
@@ -285,7 +285,7 @@ $\omega_\ell\colon a\mapsto a\bmod\ell\in\F_\ell^\times$ is the Dirichlet charac
 make the correspondence). Two further names are not of this kind: $\chi_0$ is the principal character modulo $n$, the standard
 name (the numeral $0$ is not a discriminant, so it does not collide with B-C6(b)); and the $p$-component of a character $\chi$, a character
 modulo a power of $p$, is written $\chi^{(p)}$ with a superscript (\Cref{prop:rings:conductor}(v)), never $\chi_p$, and members of a family of characters are
-written $\chi^{(i)}$ in the same way. The paper (revised version)
+written $\chi^{(i)}$ in the same way. The paper
 follows the same rules.
 \end{convention}
 
@@ -309,7 +309,7 @@ $\Z\subset\Q\subset\R\subset\C$; $\Z/n\Z$; the polynomial ring $R[x]$ (\Cref{sec
 componentwise operations, which has the zero divisors $(1,0)$ and $(0,1)$; the subring $\Z[i]=\{a+bi:a,b\in\Z\}$ of $\C$. If $A$
 is an abelian group, $\End_\Z(A)$ is a ring under addition and composition, in general non-commutative; a set of
 commuting endomorphisms generates a commutative subring. This is the shape of the Hecke algebra: the paper's $\T$ is
-"the subring of $\End_\C S_2(\Gamma_0(N))$ generated over $\Z$ by all $T_n$" (\Cref{ch:hecke}). The element $x$ of $\Z[x]/(x^2)$ is
+"the subring of $\operatorname{End}S_2(\Gamma_0(N))$ generated over $\Z$ by all $T_n$" (\Cref{ch:hecke}). The element $x$ of $\Z[x]/(x^2)$ is
 nilpotent; a domain has no nonzero nilpotents.
 \end{example}
 
@@ -502,7 +502,7 @@ $\phi_f(T_1)=a_1(f)=1$; by \Cref{thm:rings:isomorphism}(iii),
 \T/(I+J)\simeq\Z/\phi_f(J),
 \]
 and this is cyclic (\Cref{thm:rings:isomorphism}(iv)): "$\T/(I+J)$ is cyclic of order $r$; equivalently, $r$ generates the
-congruence ideal $\phi_f(J)$". By \Cref{prop:rings:two-ideals}(i), the inclusion $\T\subset\T/I\times\T/J$ has cokernel $\T/(I+J)$,
+congruence ideal $\phi_f(J)=\phi_f(\operatorname{Ann}_\T I)$". By \Cref{prop:rings:two-ideals}(i), the inclusion $\T\subset\T/I\times\T/J$ has cokernel $\T/(I+J)$,
 which is the sentence "Dualising the inclusion $\T\subset\T/I\times\T/J$, whose cokernel is $\T/(I+J)$" of the proof. The module
 version of the same sequence, $L[\wp]\oplus L[I]\subseteq L$ in Lemma lem:ddt417, is \Cref{ch:modules}. In Step 1 of the proof of
 Theorem thm:quant, and in Lemma lem:hecke, $\T\otimes\Z_\ell$ is a product of local rings cut out by idempotents
@@ -592,13 +592,13 @@ $\ell\Z$; it factors through $\Z/r$ iff $r\Z\subseteq\ell\Z$, i.e. iff $\ell\mid
 \end{proof}
 
 \begin{paperlink}\label{pl:rings:crit-last}
-The last step of the proof of Lemma lem:crit reads: "$\phi_g\equiv\phi_f\pmod\lambda$ on all of $\T$ \dots\ Thus $I+J$ lies in the
-kernel of $\T\to\mathcal O/\lambda$, a maximal ideal of residue characteristic $\ell$, and $\ell$ divides $\#\T/(I+J)=r$." Here the
+The last step of the proof of Lemma lem:crit reads: "Thus $I+J$ lies in the
+kernel of $\T\to\mathcal{O}/\lambda$, a maximal ideal of residue characteristic $\ell$, and $\ell$ divides $\#\T/(I+J)=r$." Here the
 map $\T\to\mathcal O/\lambda$ is $t\mapsto\phi_f(t)\bmod\lambda$; its image is a subring of the finite field $\mathcal O/\lambda$ (whose
 characteristic is $\ell$, as $\lambda\mid\ell$), so its kernel $\mathfrak m$ is maximal by \Cref{thm:rings:prime-maximal}(ii), of residue
 characteristic $\ell$. It contains $I=\ker\phi_f$, and $J$ because $\phi_g$ kills $J$ and $\phi_g\equiv\phi_f\pmod\lambda$. Since
 $\T/(I+J)\simeq\Z/r$ is finite (if $r\ne0$), \Cref{prop:rings:residue-char}(ii) gives $\ell\mid r$; equivalently, by (iii), $\Z/r$ maps to a field of
-characteristic $\ell$. The same reasoning is behind "after enlarging $\mathcal O$ and $\lambda$" in Lemma lem:old.
+characteristic $\ell$. The same reasoning is behind "after enlarging $\mathcal{O}$ and $\lambda$" in Lemma lem:old.
 \end{paperlink}
 
 \begin{theorem}\label{thm:rings:fractions}
@@ -661,8 +661,8 @@ In Lemma lem:fpr, "$L_p(A_f,1)^{-1}=L_p(A_f(1),0)^{-1}$ is a nonzero rational nu
 $\Z_{(\ell)}$ (\Cref{ch:modules,ch:local} replace $\Z_{(\ell)}$ by $\Z_\ell$, and $\Z_{(\ell)}=\Q\cap\Z_\ell$). Indeed $L_p(A_f,1)^{-1}=P_p(p^{-2})$ with $P_p\in\Z[X]$,
 a rational whose denominator is a power of $p\ne\ell$, and $p$ is a unit of $\Z_{(\ell)}$ by \Cref{prop:rings:zp-local}(i); see
 \Cref{lem:rings:ell-integral}. The same remark gives sense to Definition def:terms ($q$ is an $\ell$-adic unit, so
-$v_\ell(1-a_q^2q^{-2})$ and $v_\ell(P_q(q^{-2}))$ are valuations of elements of $\Z_{(\ell)}$). In Lemma lem:tamfactor, "the class of the
-reduction of $u$ in $\F_q^\times$" is the image of the unit $u=q_Eq^{-n}\in\Z_q^\times$ under the reduction map, of which
+$v_\ell(1-a_q^2q^{-2})$ and $v_\ell(P_q(q^{-2}))$ are valuations of elements of $\Z_{(\ell)}$). In Lemma lem:tamfactor, the class $c(u)$ of the
+reduction of $u$ is computed from the image of the unit $u=q_Eq^{-n}\in\Z_q^\times$ under the reduction map, of which
 \Cref{prop:rings:zp-local}(iii) is the rational version; \Cref{ch:local} gives the reduction $\Z_q\to\F_q$.
 \end{paperlink}
 
@@ -1170,7 +1170,7 @@ surjective, $(\Z/\ell^k)^\times=\{\pm1\}$ and $\ell^k=3$ by (ii). If $2$ is in t
 \end{proof}
 
 \begin{paperlink}\label{pl:rings:h0}
-Lemma lem:h0 (in the revised paper, following the correction recorded in the book's notes on the paper): an element of
+Lemma lem:h0: an element of
 exact order $\ell^k$ of $H^0(\Q,\ad T(1)\otimes\Q_\ell/\Z_\ell)$ gives an isomorphism $\rho\bmod\ell^k\simeq(\rho\otimes\chi_\ell)\bmod\ell^k$, and comparing
 determinants, $\chi_\ell(g)^2\equiv1\pmod{\ell^k}$ for all $g\in G_\Q$. The cyclotomic character maps $G_\Q$ onto $\Z_\ell^\times$ (\Cref{ch:galois}), hence onto
 $(\Z/\ell^k)^\times$; so \Cref{cor:rings:squares-one}(iii) gives $\ell^k\in\{1,3\}$: "Since $\chi_\ell(G_\Q)=\Z_\ell^\times$ contains $2$, and $4\not\equiv1$
@@ -1409,9 +1409,9 @@ ninth power.
 \end{example}
 
 \begin{paperlink}\label{pl:rings:tamfactor}
-Lemma lem:tamfactor states: "$c$ the class of the reduction of $u$ in $\F_q^\times/(\F_q^\times)^{\ell^v}$, $v=v_\ell(q-1)$, identified with an element of
-$\Z/\ell^v$ by the choice of a generator; $v_\ell(c)$ does not depend on that choice, $v_\ell(0)$ is read as $v$, and $v_\ell(c)\ge k$ if and only if
-the reduction of $u$ is an $\ell^k$-th power in $\F_q^\times$, for $k\le v$." This is \Cref{prop:rings:class-c}(i) to (iii) and (v), with \Cref{conv:rings:valuations}.
+Lemma lem:tamfactor states: "$c(u)$ the class of the reduction of $u$ in $\F_q^\times/(\F_q^\times)^{\ell^{v}}$, $v=v_\ell(q-1)$, identified with an element of
+$\Z/\ell^{v}$ by the choice of a generator; $v_\ell(c(u))$ does not depend on that choice, $v_\ell(0)$ is read as $v$, and $v_\ell(c(u))\ge k$ if and only if
+the reduction of $u$ is an $\ell^k$-th power in $\F_q^\times$, for $k\le v$." (The book writes $c$ for $c(u)$.) This is \Cref{prop:rings:class-c}(i) to (iii) and (v), with \Cref{conv:rings:valuations}.
 The "In particular" clause ("with equality unless $q\equiv1\pmod\ell$, $\ell\mid n$ and the reduction of $u$ is an $\ell$-th power") is (iv). Remark
 rem:ko(1) and Section sec:tam test exactly this condition on the tables; \Cref{ex:rings:powers} shows the three cases at $q=19$.
 Here $q$ is prime, so $\F_q=\Z/q\Z$ and "the class of $u$" is computed as a discrete logarithm of $u\bmod q$ to a primitive root.
@@ -1753,8 +1753,7 @@ is, by $\Q(\sqrt{q^*})$." The sign in $q^*$ is forced: by \Cref{prop:rings:qstar
 field $\Q(\sqrt q)$ has discriminant $4q$ and its character $\chi_{4q}$ is ramified at $2$ as well; the twist by it would in general change the reduction at
 $2$ and violate part (i) of the lemma. The same character appears in Theorem thm:main through $\ell^*$ (the field $\Q(\sqrt{\ell^*})\subset\Q(\zeta_\ell)$, by
 \Cref{prop:rings:quadratic-gauss-sum}(iii)), in Theorems thm:twist and thm:quant through $\chi_S=\prod_{q\in S}\chi_{q^*}$, and in Example ex:qual, where
-the twists of 121a1 and 539c1 are by $\chi_{-11}$ and $\chi_{-7}$ ($11^*=-11$, $7^*=-7$). The earlier version of the paper wrote $\chi_q$ for
-$\chi_{q^*}$; the revised version, like this book, does not.
+the twists of 121a1 and 539c1 are by $\chi_{-11}$ and $\chi_{-7}$ ($11^*=-11$, $7^*=-7$).
 \end{paperlink}
 
 \section[Dirichlet characters and Gauss sums]{Dirichlet characters, conductors and Gauss sums; the paper's characters}\label{sec:rings:dirichlet}
@@ -1972,8 +1971,7 @@ $q\equiv2\pmod3$, i.e. $q\equiv11\pmod{12}$.
 (a) $\chi_\ell$, with a letter subscript, is the $\ell$-adic cyclotomic character, not a quadratic character. At $\ell=3$ the two readings of "$\chi_3$"
 would collide: the quadratic $\chi_{-3}$ and the cyclotomic $\chi_3^{\mathrm{cyc}}$, which agree only modulo $3$ ($\bar\chi_3^{\mathrm{cyc}}=\chi_{-3}$, the Galois form of
 (iii) above). The book therefore never writes $\chi_3$, $\chi_7$ or $\chi_{11}$. (b) $\omega_\ell$ and $\bigl(\frac\cdot\ell\bigr)=\chi_{\ell^*}$ are different characters for
-$\ell\ge5$: the first has order $\ell-1$, the second order $2$. This is the point of the correction to Lemma lem:h0 and to the paper's
-Section 1.3: the relevant condition is $\bar\rho\simeq\bar\rho\otimes\bar\chi_\ell$, not $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$. (c) The character of a quadratic field $\Q(\sqrt d)$ is
+$\ell\ge5$: the first has order $\ell-1$, the second order $2$. This is why, in Lemma lem:h0 and in Section 1.3 of the paper, the relevant condition is $\bar\rho\simeq\bar\rho\otimes\bar\chi_\ell$, not $\bar\rho\simeq\bar\rho\otimes\chi_{\ell^*}$. (c) The character of a quadratic field $\Q(\sqrt d)$ is
 $\chi_D$ with $D$ the discriminant of the field: the character of $\Q(i)$ is $\chi_{-4}$ and that of $\Q(\sqrt2)$ is $\chi_8$ (Appendix B, B-C6(b), also writes
 them with the radicand as index; this chapter does not) (\Cref{ch:ant}). (d) Do not confuse the Kronecker
 symbol $\bigl(\frac D2\bigr)$ (lower entry $2$) with the Jacobi symbol $\bigl(\frac2D\bigr)$: $\chi_{-3}(2)=\bigl(\frac{-3}2\bigr)=-1$ because $-3\equiv5\pmod8$, consistent with $2\equiv-1\pmod3$.
@@ -1984,8 +1982,8 @@ The table of Section 1 uses $\chi_{-3}$ and $\chi_{-4}$ "the quadratic character
 are read from the table above. The proof of Proposition prop:forms says "$e_3(E,q)=v_3(q-\chi_{-3}(q))\ge1=w_3(E,q)$ since $q\equiv\chi_{-3}(q)\pmod3$":
 this is (i). Theorem thm:twist uses $\chi_S$ of conductor $D=\prod_{q\in S}q$ and, in its proof, that the twist map
 $\iota\colon h\mapsto\sum\chi_S(n)a_n(h)q^n$ kills the coefficients at the $n$ with $\gcd(n,D)>1$: \Cref{prop:rings:conductor}(vi) (here $q^n$ is the
-$q$-expansion variable, a different meaning of $q$). Section sec:anomaly observes that "the residue classes of the type $\mathrm{III}$
-primes of the violating curves are $q\equiv1$ and $q\equiv11\pmod{12}$": by (iv) these are exactly the classes with $e_3(E,q)>0$. Lemma lem:h0 and
+$q$-expansion variable, a different meaning of $q$). Section sec:anomaly observes: "The residue classes of the type $\mathrm{III}$
+primes of the violating curves are $q\equiv1$ and $q\equiv11\pmod{12}$ in comparable numbers"; by (iv) these are exactly the classes with $e_3(E,q)>0$. Lemma lem:h0 and
 Proposition prop:ns use $\bar\chi_3^{\mathrm{cyc}}=\chi_{-3}$, whose Dirichlet side is (iii). In Example ex:qual, $a_p(\text{121d})=\chi_{-11}(p)a_p(\text{11a})$ for
 $p\ne11$.
 \end{paperlink}
@@ -2158,14 +2156,14 @@ $\kod{II}^*$ at $2$) has $P_2=(1-2X)(1+4X^2)$, $P_2(\frac14)=\frac58$, $e_5=1$, 
 \item $\curve{539d1}$, type $\kod{I}_0^*$ at $7$; its twist by $\chi_{-7}$ is $E'=\curve{11a3}$, with good reduction at $7$ and $a_7(E')=-2$ (so $\#E'(\F_7)=10$). Then
 $e_3=v_3(6)+v_3(64-4)=1+1=2$, and $\degphi=72=2^3\cdot3^2$.
 \item $\curve{11a1}$ has type $\kod{I}_5$ at $11$ and $e_3=0$ there; its twist by $\chi_{-11}$ is $\curve{121d2}$, of type $\kod{I}_5^*$ at $11$, with $e_3=v_3(11^2-1)=v_3(120)=1$. So
-$e_\ell(E,q)$ is not invariant under a quadratic twist ramified at $q$, as Definition def:terms (revised) says.
+$e_\ell(E,q)$ is not invariant under a quadratic twist ramified at $q$, as Definition def:terms says.
 \end{enumerate}
 \end{example}
 
 \begin{paperlink}\label{pl:rings:terms}
-Definition def:terms:
+Definition def:terms sets
 \[
-\text{"}e_\ell(E,q)=v_\ell\bigl(L_q(A_f,1)^{-1}/L_q^{\nv}(A_f,1)^{-1}\bigr)=v_\ell\bigl(P_q(q^{-2})/(1-a_q(E)^2q^{-2})\bigr)\text{".}
+e_\ell(E,q)=v_\ell\bigl(L_q(A_f,1)^{-1}/L_q^{\nv}(A_f,1)^{-1}\bigr)=v_\ell\bigl(P_q(q^{-2})/(1-a_q(E)^2q^{-2})\bigr).
 \]
 By \Cref{lem:rings:ell-integral}(ii)
 both numerator and denominator lie in $\Z_{(\ell)}$, and the valuation of the quotient is the difference of their valuations. At a multiplicative prime
