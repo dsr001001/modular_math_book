@@ -510,7 +510,8 @@ degree $1$. For $\F_p(t)$, $t\notin\F_p(t)^p$ (compare degrees in $t$).
 (\Cref{thm:galois:algebraic-closure}(b)). Write $m_{\beta,K}=g(x^{p^e})$ as in (a) ($e=0$ in characteristic $0$). Then $\sigma(m_{\beta,K})=
 \sigma(g)(x^{p^e})$, and $\sigma(g)$ is separable because $\gcd(\sigma(g),\sigma(g)')=\sigma(\gcd(g,g'))=1$; by the argument of (a), $\sigma(m_{\beta,K})$
 has exactly $\deg g$ distinct roots, a number independent of $\sigma$. Taking $\sigma$ the inclusion, it is $[L:K]_s$. For general $L=K(\beta_1,\dots,\beta_s)$
-extend in steps. The formula follows by counting pairs (embedding of $K$, extension to $L$).
+extend in steps. For the formula: every $F$-embedding of $L$ restricts to an $F$-embedding of $K$, and each of the $[K:F]_s$ embeddings of $K$ has exactly
+$[L:K]_s$ extensions, so $\#\mathrm{Emb}_F(L,\Fbar)=[K:F]_s[L:K]_s$.
 
 (d) For $L=F(\alpha)$: $[L:F]_s$ is the number of distinct roots of $m_{\alpha,F}$, which is $\deg m_{\alpha,F}=[L:F]$ if $\alpha$ is separable and, by (a),
 $\deg g=[L:F]/p^e$ with $e\ge1$ otherwise. So $[F(\alpha):F]_s$ divides $[F(\alpha):F]$, with equality iff $\alpha$ is separable. In general write
@@ -633,8 +634,8 @@ $k(u)\subseteq L^G$ and $[L:L^G]=\#G=2$, the tower law gives $L^G=k(u)$, and (a)
 An algebraic extension $L/F$ is \emph{Galois} if it is normal and separable. Its \emph{Galois group} is $\Gal(L/F)=\Aut(L/F)$.
 \end{definition}
 
-The two conditions fail independently. $\Q(2^{1/3})/\Q$ is separable but not normal, and $\Aut(\Q(2^{1/3})/\Q)=\{1\}$, because an automorphism sends $2^{1/3}$ to a
-root of $x^3-2$ in the real field $\Q(2^{1/3})$, and $2^{1/3}$ is the only real root. $\F_p(t^{1/p})/\F_p(t)$ is normal (the only root of $x^p-t$ is $t^{1/p}$) but not
+The two conditions fail independently. The extension $\Q(2^{1/3})/\Q$ is separable but not normal, and the identity is its only automorphism: an
+automorphism sends $2^{1/3}$ to a root of $x^3-2$ in the real field $\Q(2^{1/3})$, and $2^{1/3}$ is the only real root. $\F_p(t^{1/p})/\F_p(t)$ is normal (the only root of $x^p-t$ is $t^{1/p}$) but not
 separable, and again its automorphism group is trivial. In both cases the automorphism group is too small to see the extension; the next theorem shows that being
 Galois is exactly the condition $\#\Aut(L/F)=[L:F]$.
 
@@ -959,6 +960,10 @@ $\prod_i\sigma_i(a)=(\prod_ka_k)^m$ and $\sum_i\sigma_i(a)=m\sum_ka_k$, which ar
 (d) $\Tr_{L/F}=\sum_i\sigma_i$ is a nontrivial combination of distinct embeddings, nonzero by \Cref{thm:galois:dedekind}.
 \end{proof}
 
+Two examples show both descriptions at work. For $L=\Q(\sqrt d)$ and $a=x+y\sqrt d$, the matrix of $m_a$ in the basis $1,\sqrt d$ is $\sm{x}{dy}{y}{x}$, so
+$\Nm(a)=x^2-dy^2=(x+y\sqrt d)(x-y\sqrt d)$ and $\Tr(a)=2x$. For $a=2^{1/3}\in\Q(2^{1/3})$, $m_a$ sends the basis $1,a,a^2$ to $a,a^2,2$; its matrix has determinant
+$2$ and trace $0$, and indeed the conjugates $a,\zeta_3a,\zeta_3^2a$ have product $2$ and sum $0$.
+
 \begin{theorem}[Hilbert's Theorem 90]\label{thm:galois:hilbert90}
 \begin{enumerate}[label=(\alph*)]
 \item Let $L/F$ be finite Galois with group $G$, and let $(a_\sigma)_{\sigma\in G}$ be elements of $L^\times$ with $a_{\sigma\tau}=a_\sigma\,\sigma(a_\tau)$ for all
@@ -973,8 +978,15 @@ $\sigma,\tau$. Then there is $c\in L^\times$ with $a_\sigma=\sigma(c)/c$ for all
 $\sigma\in G$, $\sigma(c_0)=\sum_\tau\sigma(a_\tau)\,\sigma\tau(\theta)=\sum_\tau a_\sigma^{-1}a_{\sigma\tau}\,\sigma\tau(\theta)=a_\sigma^{-1}c_0$. So $a_\sigma=c_0/\sigma(c_0)=
 \sigma(c)/c$ with $c=c_0^{-1}$.
 (b) If $b=c/\sigma(c)$, then $\Nm(b)=\Nm(c)/\Nm(\sigma c)=1$, the norm being the product over the group. Conversely, put $a_{\sigma^i}=b\,\sigma(b)\cdots\sigma^{i-1}(b)$
-for $0\le i<n$ ($a_1=1$). The cocycle relation $a_{\sigma^{i+j}}=a_{\sigma^i}\sigma^i(a_{\sigma^j})$ holds when $i+j<n$ by definition, and when $i+j\ge n$ because
-the product $b\sigma(b)\cdots\sigma^{i+j-1}(b)$ then contains the full norm $\prod_{k=0}^{n-1}\sigma^k(b)=1$ once. By (a), $b=a_\sigma=\sigma(d)/d$ for some $d$; put
+for $0\le i<n$ ($a_1=1$); this defines $a$ on all of $G$, each element being $\sigma^i$ for exactly one such $i$. For $0\le i,j<n$,
+\[
+a_{\sigma^i}\,\sigma^i(a_{\sigma^j})=\prod_{k=0}^{i-1}\sigma^k(b)\cdot\prod_{k=i}^{i+j-1}\sigma^k(b)=\prod_{k=0}^{i+j-1}\sigma^k(b).
+\]
+If $i+j<n$ this is $a_{\sigma^{i+j}}$ by definition. If $i+j\ge n$, then $\sigma^{i+j}=\sigma^{i+j-n}$ with $0\le i+j-n<n$, and as $\sigma^n=1$,
+\[
+\prod_{k=0}^{i+j-1}\sigma^k(b)=\prod_{k=0}^{n-1}\sigma^k(b)\cdot\prod_{k=0}^{i+j-n-1}\sigma^k(b)=\Nm_{L/F}(b)\,a_{\sigma^{i+j-n}}=a_{\sigma^{i+j}}.
+\]
+So the cocycle relation holds. By (a), $b=a_\sigma=\sigma(d)/d$ for some $d$; put
 $c=d^{-1}$.
 (c) If $b=c-\sigma(c)$, $\Tr(b)=0$. Conversely, choose $\theta$ with $\Tr\theta\ne0$ (\Cref{prop:galois:norm-trace}(d)), put $s_i=b+\sigma(b)+\dots+\sigma^i(b)$
 (so $s_{n-1}=\Tr b=0$ and $\sigma(s_i)=s_{i+1}-b$) and $c=(\Tr\theta)^{-1}\sum_{i=0}^{n-2}s_i\sigma^{i+1}(\theta)$. Then
@@ -984,6 +996,12 @@ $c=d^{-1}$.
 using $s_{n-1}=0$. Subtracting from $(\Tr\theta)c=s_0\sigma(\theta)+\sum_{j=1}^{n-2}s_j\sigma^{j+1}(\theta)$ and using $s_0=b$ gives $(\Tr\theta)(c-\sigma(c))=b\sum_{j=1}^n
 \sigma^j(\theta)=b\Tr\theta$.
 \end{proof}
+
+For $L=\Q(i)$ and $\sigma$ complex conjugation, (b) says that the points $x+iy$ with $x,y\in\Q$ on the circle $x^2+y^2=1$ are the quotients $c/\bar c$, $c=m+ni$
+with $m,n\in\Q$ not both zero; and $c/\bar c=c^2/(c\bar c)=\frac{m^2-n^2}{m^2+n^2}+\frac{2mn}{m^2+n^2}\,i$ is the classical parametrisation of Pythagorean triples
+($c=2+i$ gives $(3+4i)/5$). The shape of the condition in (a), $a_{\sigma\tau}=a_\sigma\,\sigma(a_\tau)$, depends on the convention that automorphisms compose as
+maps and act on the left (\Cref{conv:galois:fields}); the same shape recurs in the cocycles $b$ of \Cref{prop:galois:kummer-affine} and $\kappa_a$ of
+\Cref{prop:galois:l-adic-kummer}.
 
 \begin{proposition}[Kummer characters]\label{prop:galois:kummer-character}
 Let $n\ge1$, $\operatorname{char}F\nmid n$, and assume $\mu_n\subset F$ (so $\mu_n$ is cyclic of order $n$). Let $a\in F^\times$, $\alpha\in\Fbar$ with
@@ -1017,9 +1035,15 @@ $a^d=(\alpha^d)^n\in F^{\times n}$. Conversely, if $a^k=b^n$ with $b\in F^\times
 (b) With $\alpha^n=a$, $\beta^n=b$, $(\alpha\beta)^n=ab$ and $\sigma(\alpha\beta)/\alpha\beta=\chi_a(\sigma)\chi_b(\sigma)$. $\chi_a=1$ iff $\alpha\in F$ iff $a\in F^{\times n}$
 (if $a=b^n$, then $\alpha\in\mu_nb\subseteq F$).
 (c) $\alpha$ is a root of $x^d-\alpha^d\in F[x]$, of degree $d=[F(\alpha):F]$. So $x^n-a$ is irreducible iff $d=n$, iff the class of $a$ in the group $F^\times/F^{\times n}$
-of exponent $n$ has order exactly $n$, iff $a^{n/p}\notin F^{\times n}$ for every prime $p\mid n$. Finally $a^{n/p}\in F^{\times n}$ iff $a\in F^{\times p}$: if $a=b^p$,
+of exponent $n$ has order exactly $n$, iff $a^{n/p}\notin F^{\times n}$ for every prime $p\mid n$ (an element $x$ with $x^n=1$ has order exactly $n$ iff $x^{n/p}\ne1$ for every
+prime $p\mid n$, since every proper divisor of $n$ divides some $n/p$). Finally $a^{n/p}\in F^{\times n}$ iff $a\in F^{\times p}$: if $a=b^p$,
 $a^{n/p}=b^n$; if $a^{n/p}=b^n$, then $(a/b^p)^{n/p}=1$, so $a/b^p\in\mu_{n/p}=\{\zeta^p:\zeta\in\mu_n\}$ ($\mu_n$ being cyclic of order $n$), and $a$ is a $p$-th power.
 \end{proof}
+
+For $n=2$ the hypothesis $\mu_2=\{\pm1\}\subset F$ always holds (characteristic $\ne2$), $\chi_a$ is the quadratic character $\sigma\mapsto\sigma(\sqrt a)/\sqrt a$
+of $F(\sqrt a)$, and (c) says that $x^2-a$ is irreducible iff $a$ is not a square. For $n=3$, $F=\Q(\zeta_3)$ and $a=2$: $2$ is not a cube in $F$, because a cube
+root of $2$ has degree $3$ over $\Q$ ($x^3-2$ is irreducible) and cannot lie in a field of degree $2$. So $x^3-2$ is irreducible over $\Q(\zeta_3)$, $F(2^{1/3})$ is
+the field $L$ of \Cref{ex:galois:x3minus2}, and $\chi_2$ maps $\Gal(L/\Q(\zeta_3))=\langle\sigma\rangle$ isomorphically onto $\mu_3$, with $\chi_2(\sigma)=\zeta_3$.
 
 \begin{theorem}[Cyclic extensions]\label{thm:galois:kummer-cyclic}
 Let $\operatorname{char}F\nmid n$ and $\mu_n\subset F$. Every cyclic extension $L/F$ of degree $n$ is of the form $L=F(c)$ with $c^n\in F^\times$.
@@ -1027,8 +1051,8 @@ Let $\operatorname{char}F\nmid n$ and $\mu_n\subset F$. Every cyclic extension $
 
 \begin{proof}
 Let $\Gal(L/F)=\langle\sigma\rangle$ and $\zeta$ a primitive $n$-th root of unity. As $\zeta\in F$, $\Nm_{L/F}(\zeta^{-1})=\zeta^{-n}=1$, so by
-\Cref{thm:galois:hilbert90}(b) $\zeta^{-1}=c/\sigma(c)$ for some $c\in L^\times$: $\sigma(c)=\zeta c$. Then $\sigma^i(c)=\zeta^ic$, $0\le i<n$, are $n$ distinct conjugates
-of $c$, so $[F(c):F]=n$ and $F(c)=L$; and $\sigma(c^n)=c^n$, so $c^n\in F$.
+\Cref{thm:galois:hilbert90}(b) $\zeta^{-1}=c/\sigma(c)$ for some $c\in L^\times$: $\sigma(c)=\zeta c$. Then $\sigma^i(c)=\zeta^ic$, $0\le i<n$, are $n$ conjugates
+of $c$, distinct because $\zeta$ has order $n$ and $c\ne0$; all are roots of $m_{c,F}$, so $[F(c):F]\ge n=[L:F]$ and $F(c)=L$; and $\sigma(c^n)=c^n$, so $c^n\in F$.
 \end{proof}
 
 \begin{theorem}[Kummer theory]\label{thm:galois:kummer}
@@ -1069,6 +1093,11 @@ $F_{\Delta'}=F_\Delta$, so $[\Delta':F^{\times n}]=[\Delta:F^{\times n}]$ by (a)
 of order $d$ iff its dual $\Delta/F^{\times n}$ is.
 \end{proof}
 
+For example, let $F=\Q$, $n=2$ and $\Delta$ the group generated by $\Q^{\times2}$, $2$ and $3$. Then $\Delta/\Q^{\times2}$ consists of the classes of $1,2,3,6$,
+$F_\Delta=\Q(\sqrt2,\sqrt3)$, and the pairing identifies $\Gal(F_\Delta/\Q)\simeq V_4$ with the dual of $\Delta/\Q^{\times2}\simeq(\Z/2)^2$. The three subgroups of
+order $2$ of $\Delta/\Q^{\times2}$, generated by $2$, $3$ and $6$, correspond under (b) to the three quadratic subfields $\Q(\sqrt2)$, $\Q(\sqrt3)$, $\Q(\sqrt6)$
+found in \Cref{prop:galois:quadratic}(d).
+
 \begin{proposition}[The affine shape without roots of unity]\label{prop:galois:kummer-affine}
 Let $\operatorname{char}F\nmid n$, $a\in F^\times$, $\alpha^n=a$, $L=F(\mu_n,\alpha)$, and fix a primitive $n$-th root of unity $\zeta_n$. For $\sigma\in\Gal(L/F)$
 define $u(\sigma)\in(\Z/n)^\times$ and $b(\sigma)\in\Z/n$ by $\sigma(\zeta_n)=\zeta_n^{u(\sigma)}$ and $\sigma(\alpha)=\zeta_n^{b(\sigma)}\alpha$. Then
@@ -1084,8 +1113,12 @@ $u=1$) is the Kummer character $\chi_a$, read in $\Z/n$ through $\zeta_n$.
 $L$ is the splitting field of the separable $x^n-a$ (its roots $\zeta\alpha$ generate $\mu_n$ and $\alpha$), so it is Galois. We have
 $\sigma\tau(\zeta_n)=\sigma(\zeta_n^{u(\tau)})=\zeta_n^{u(\sigma)u(\tau)}$ and
 $\sigma\tau(\alpha)=\sigma(\zeta_n^{b(\tau)}\alpha)=\zeta_n^{u(\sigma)b(\tau)}\zeta_n^{b(\sigma)}\alpha$, which is the matrix product
-$\sm{u(\sigma)}{b(\sigma)}01\sm{u(\tau)}{b(\tau)}01$. The map is injective since $\sigma$ is determined by $\sigma(\zeta_n)$ and $\sigma(\alpha)$.
+$\sm{u(\sigma)}{b(\sigma)}01\sm{u(\tau)}{b(\tau)}01=\sm{u(\sigma)u(\tau)}{b(\sigma)+u(\sigma)b(\tau)}01$. The map is injective since $\sigma$ is determined
+by $\sigma(\zeta_n)$ and $\sigma(\alpha)$.
 \end{proof}
+
+The order of the factors reflects the convention $(\sigma\tau)(x)=\sigma(\tau(x))$: with automorphisms composed in the opposite order the same formulas would define
+an anti-homomorphism, and the cocycle relation would read $b(\sigma\tau)=b(\tau)+u(\tau)b(\sigma)$.
 
 For $x^3-2$ over $\Q$ (\Cref{ex:galois:x3minus2}) the Galois group has order $6$ and embeds in the affine group of order $6$, so
 $\Gal\simeq\Z/3\rtimes(\Z/3)^\times\simeq S_3$. The $\ell$-adic limit of this matrix, $\sm{\chi_\ell}{\kappa_a}01$, is \Cref{prop:galois:l-adic-kummer}; twisted by an
@@ -1120,6 +1153,11 @@ $(q-1)\Zl(1)=\ell^v\Zl(1)$ as $(q-1)/\ell^v\in\Zl^\times$. The projection to the
 component of $\kappa_u(\Frob_q)$ is $\alpha_v^{q-1}=u^{(q-1)/\ell^v}$ by (a). Finally, $\ell^k\Zl(1)/\ell^v\Zl(1)$ corresponds to $\mu_{\ell^{v-k}}=\mu_{\ell^v}^{\ell^k}$, and
 $u^{(q-1)/\ell^v}\in\mu_{\ell^{v-k}}$ iff $u^{(q-1)/\ell^k}=1$, iff $u\in(\F_q^\times)^{\ell^k}$ by (a).
 \end{proof}
+
+For $\ell=2$, $q$ odd and $k=1$, (a) is Euler's criterion: $u$ is a square in $\F_q$ iff $u^{(q-1)/2}=1$. A cubic example: $q=7$, $\ell=3$, so $v=1$ and
+$(q-1)/3=2$. Then $u\in\F_7^\times$ is a cube iff $u^2=1$, that is $u=\pm1$; indeed the cubes of $1,\dots,6$ are $1,1,6,1,6,6$. The class of $u=3$ is $3^2=2$, a
+primitive cube root of unity in $\F_7$; so $3$ is not a cube, $x^3-3$ is irreducible over $\F_7$ (\Cref{prop:galois:kummer-character}(c)), and $\Frob_7$ multiplies
+each cube root $\alpha$ of $3$ by $\alpha^6=3^2=2$.
 
 \begin{paperlink}
 Lemma lem:tamfactor defines $c$ as the class of the reduction $\bar u$ of the unit part $u=q_Eq^{-n}$ of the Tate parameter in
@@ -1193,6 +1231,11 @@ orbits are the same. Over $M$: $f$ is separable in $M[x]$, $\Omega/M$ is Galois,
 gives the factors over $M$.
 \end{proof}
 
+For example, let $f=(x^2-2)(x^2-3)$ over $\Q$. Its splitting field is $L=\Q(\sqrt2,\sqrt3)$ and $G_f\simeq V_4$ (\Cref{prop:galois:quadratic}(d)), with the two
+orbits $\{\pm\sqrt2\}$ and $\{\pm\sqrt3\}$ on $R$, the root sets of the two factors. Numbering the roots $\sqrt2,-\sqrt2,\sqrt3,-\sqrt3$, the image of $G_f$ in $S_4$ is
+$\langle(12),(34)\rangle$, the Klein group that is not normal in $S_4$; it reappears for $N_s(\F_3)$ in \Cref{prop:galois:quartic-on-lines}. Over $M=\Q(\sqrt2)$ the group
+shrinks to $\Gal(L/M)=\langle(34)\rangle$, and $f=(x-\sqrt2)(x+\sqrt2)(x^2-3)$ in $M[x]$, as (c) predicts.
+
 \begin{definition}[Discriminant]\label{def:galois:discriminant}
 Let $f=a\prod_{i=1}^n(x-r_i)$ with $a\ne0$ and roots $r_i$ in $\Fbar$. Put $\delta_f=\prod_{i<j}(r_i-r_j)$ (which depends on the numbering up to sign) and
 $\disc(f)=a^{2n-2}\delta_f^2$. For monic $g=\prod_i(x-r_i)$ and $h=\prod_j(x-s_j)$, the resultant is $\operatorname{res}(g,h)=\prod_{i,j}(r_i-s_j)$ (written
@@ -1218,7 +1261,7 @@ $\disc(x^n-a)=(-1)^{(n-1)(n-2)/2}n^na^{n-1}$; and for an odd prime $\ell$, $\dis
 \[
 \prod_if'(r_i)=a^n\prod_{i\ne j}(r_i-r_j)=a^n(-1)^{n(n-1)/2}\delta_f^2
 \]
-(each pair $i<j$ appears twice, once with a sign). Hence $a^{2n-2}\delta_f^2=(-1)^{n(n-1)/2}a^{n-2}\prod f'(r_i)$. It vanishes iff two roots coincide. It lies in $F$: if $f$ is separable, $\delta_f^2$ is fixed by
+(each pair $i<j$ contributes $(r_i-r_j)(r_j-r_i)=-(r_i-r_j)^2$, and there are $n(n-1)/2$ pairs). Hence $a^{2n-2}\delta_f^2=(-1)^{n(n-1)/2}a^{n-2}\prod f'(r_i)$. It vanishes iff two roots coincide. It lies in $F$: if $f$ is separable, $\delta_f^2$ is fixed by
 $G_f$ (by (b)), hence in $L^{G_f}=F$; in general $\disc(f)$ is the value at the coefficients of $f$ of a universal polynomial with integer coefficients (a symmetric
 polynomial in the roots, expressed through the elementary symmetric functions, which are $\pm$ the coefficients divided by $a$; the powers of $a$ clear the
 denominators), and we do not need the inseparable case.
@@ -1229,7 +1272,11 @@ $\delta_f\in F$ (fundamental theorem), iff $\disc f=(a^{n-1}\delta_f)^2$ is a sq
 of $G_f\cap A_n$, of index $1$ or $2$, contains $\delta_f$, and equals $F(\delta_f)$ by degrees. The last formula is (b) with $\sqrt{\disc f}=a^{n-1}\delta_f$.
 (d) The roots of $gh$ are those of $g$ and of $h$; the squared differences between roots of $g$ and roots of $h$ contribute $\prod_{i,j}(r_i-s_j)^2$.
 (e) The quadratic case is $(r_1-r_2)^2=(r_1+r_2)^2-4r_1r_2$. For $f=x^3+px+q$, by (a) $\disc f=-\prod_i(3r_i^2+p)$. With $e_1=\sum r_i=0$, $e_2=p$, $e_3=r_1r_2r_3=-q$:
-$\sum r_i^2=e_1^2-2e_2=-2p$, $\sum_{i<j}r_i^2r_j^2=e_2^2-2e_1e_3=p^2$, $\prod r_i^2=q^2$, so $\prod(3r_i^2+p)=27q^2+9p\cdot p^2+3p^2(-2p)+p^3=27q^2+4p^3$. For the general
+$\sum r_i^2=e_1^2-2e_2=-2p$, $\sum_{i<j}r_i^2r_j^2=e_2^2-2e_1e_3=p^2$, $\prod r_i^2=q^2$. Expanding the product of the three factors $3r_i^2+p$ by powers of $p$,
+\[
+\prod_i(3r_i^2+p)=27\prod_ir_i^2+9p\sum_{i<j}r_i^2r_j^2+3p^2\sum_ir_i^2+p^3,
+\]
+which is $27q^2+9p\cdot p^2+3p^2(-2p)+p^3=27q^2+4p^3$. For the general
 cubic $f=x^3+bx^2+cx+d$ over a field of characteristic $0$, the substitution $x\mapsto x-b/3$ does not change the differences of the roots and gives $f(x-b/3)=x^3+px+q$ with
 $p=c-b^2/3$ and $q=d-bc/3+2b^3/27$; expanding $-4p^3-27q^2$ gives $b^2c^2-4c^3-4b^3d-27d^2+18bcd$ (a routine expansion, which we also checked by computer algebra).
 This proves the formula over every field of characteristic $0$. For the generic monic cubic, $\prod_{i<j}(r_i-r_j)^2$ is a symmetric polynomial in the roots with integer
@@ -1283,7 +1330,10 @@ $C_4$ iff $f$ is reducible over $F(\sqrt{\disc f})$ (the criterion of Kappe and 
 \begin{proof}
 (a) With $e_1=-a$, $e_2=b$, $e_3=-c$, $e_4=d$ the elementary symmetric functions of the roots, direct expansion gives $\theta_1+\theta_2+\theta_3=e_2$,
 $\sum_{i<j}\theta_i\theta_j=e_1e_3-4e_4$ and $\theta_1\theta_2\theta_3=e_1^2e_4+e_3^2-4e_2e_4$ (each is a short computation; we also checked them by computer algebra),
-which is the formula. Next $\theta_1-\theta_2=(r_1-r_4)(r_2-r_3)$, $\theta_1-\theta_3=(r_1-r_3)(r_2-r_4)$, $\theta_2-\theta_3=(r_1-r_2)(r_3-r_4)$, whose product is $\pm\delta_f$;
+which is the formula. The first identity holds because each of the six products $r_ir_j$ occurs in exactly one $\theta_i$. For the second,
+$\theta_1\theta_2=(r_1r_2+r_3r_4)(r_1r_3+r_2r_4)=r_1^2r_2r_3+r_1r_2^2r_4+r_1r_3^2r_4+r_2r_3r_4^2$; the three products $\theta_i\theta_j$ together contain each of the
+twelve monomials $r_i^2r_jr_k$ ($j<k$, both different from $i$) exactly once, while $e_1e_3=\sum_ir_i\cdot\sum_{j<k<m}r_jr_kr_m$ contains each of them once and
+$r_1r_2r_3r_4$ four times. Next $\theta_1-\theta_2=(r_1-r_4)(r_2-r_3)$, $\theta_1-\theta_3=(r_1-r_3)(r_2-r_4)$, $\theta_2-\theta_3=(r_1-r_2)(r_3-r_4)$, whose product is $\pm\delta_f$;
 so $\disc R_f=\delta_f^2=\disc f$.
 (b) A permutation of the roots permutes the partitions; the kernel consists of the permutations preserving each partition, which is $V_4$, and the image has
 order $24/4=6$. By (a) the $\theta_i$ are distinct, so $\sigma\in G_f$ fixes $\theta_i$ iff it stabilises the $i$-th partition, and $\theta_i\in F$ iff all of $G_f$ does.
@@ -1454,8 +1504,10 @@ disconnected. The subgroups $\Gal(L/M)$ with $M\subseteq L$ finite over $F$ are 
 (a) For $\alpha\in L$, $m_{\alpha,F}$ is separable and splits in $L$ (normality), so its splitting field is a member of $\mathcal{K}$ containing $\alpha$. If
 $K_1,K_2\in\mathcal{K}$, then $K_1K_2\in\mathcal{K}$ (\Cref{prop:galois:translation}(b)). Each $\sigma\in\Gal(L/F)$ maps $K\in\mathcal{K}$ onto itself
 (\Cref{prop:galois:normal}(iii)), so $\sigma|_K\in\Gal(K/F)$, and the restrictions are compatible. The map is injective because $L$ is the union of the $K$.
-Surjective: a compatible family $(\sigma_K)$ defines a map $\sigma\colon L\to L$, $\sigma(x)=\sigma_K(x)$ for any $K\ni x$ (well defined by compatibility and
-directedness), which is a field automorphism over $F$ (its inverse is given by the family $(\sigma_K^{-1})$).
+Surjective: a compatible family $(\sigma_K)$ defines a map $\sigma\colon L\to L$, $\sigma(x)=\sigma_K(x)$ for any $K\ni x$. It is well defined: if $x\in K\cap K'$,
+choose $K''\in\mathcal{K}$ containing $K$ and $K'$; then $\sigma_K(x)=\sigma_{K''}(x)=\sigma_{K'}(x)$ by compatibility. It is a field homomorphism over $F$: for
+$x,y\in L$ choose one $K$ containing both, and $\sigma(x+y)=\sigma_K(x+y)=\sigma(x)+\sigma(y)$, and similarly for products. Its inverse is given by the family
+$(\sigma_K^{-1})$.
 (b) In $\varprojlim\Gal(K/F)$ with the topology induced by the product of discrete groups, a basis of neighbourhoods of $1$ is given by the kernels of the
 projections to finitely many factors $\Gal(K_1/F),\dots,\Gal(K_r/F)$; under (a) such a kernel is $\Gal(L/K_1\cdots K_r)$, and $K_1\cdots K_r\in\mathcal{K}$. So the
 two topologies agree, and the inverse limit of finite groups is profinite (\Cref{ch:groups}). If $M/F$ is finite, its normal closure $M'$ in $L$ is in $\mathcal{K}$
@@ -1488,7 +1540,7 @@ $m_{x,M}$ has degree $>1$, is separable and splits in $L$, so it has a root $y\n
 \Cref{prop:galois:polynomial-group}(b) some $\tau\in\Gal(K/M)$ has $\tau(x)=y$, and by \Cref{prop:galois:infinite}(c), applied to $L/M$, $\tau$ extends to an element of
 $\Gal(L/M)$, which moves $x$. So $L^{\Gal(L/M)}=M$.
 (b) $H\subseteq\Gal(L/L^H)$, which is closed by (a), so $\overline H\subseteq\Gal(L/L^H)$. Conversely, let $\sigma\in\Gal(L/L^H)$ and let $\sigma\Gal(L/K)$, $K\in\mathcal{K}$,
-be a basic neighbourhood of $\sigma$. Let $H_K\le\Gal(K/F)$ be the image of $H$ under restriction. Its fixed field in $K$ is $K\cap L^H$, which $\sigma$ fixes; so
+be a basic neighbourhood of $\sigma$. Let $H_K\le\Gal(K/F)$ be the image of $H$ under restriction. Its fixed field in $K$ is $K\cap L^H$ (an element $x\in K$ satisfies $h|_K(x)=h(x)$, so it is fixed by $H_K$ iff it is fixed by $H$), which $\sigma$ fixes; so
 $\sigma|_K\in\Gal(K/K^{H_K})=H_K$ by the finite fundamental theorem. Thus some $h\in H$ has $h|_K=\sigma|_K$, that is $h\in\sigma\Gal(L/K)$. Every neighbourhood of $\sigma$
 meets $H$, so $\sigma\in\overline H$.
 (c) follows from (a) and (b).
@@ -1618,6 +1670,11 @@ $a\mapsto(\zeta_{\ell^k}^{a})_k$ is an isomorphism $\Zl\to\Zl(1)$ (its component
 In the additive notation of \Cref{conv:galois:characters}(c), $\sigma\cdot z=\chi_\ell(\sigma)z$ for $z\in\Zl(1)$; so $\Frob_q$ acts on $\Zl(1)$ by $q$, which is the
 statement ``$\Frob$ acts on $\Zl(1)$ by $q$'' in the proof of Lemma lem:tamfactor (with $F=\Q_q$ and $\Frob$ acting through the residue field, \Cref{ch:local}).
 
+The module $\Zl(1)$ is isomorphic to $\Zl$ as a $\Zl$-module, but only after a compatible system of roots of unity has been chosen, and never as a $G_F$-module
+(unless $\chi_\ell$ is trivial): $G_F$ acts trivially on $\Zl$ and through $\chi_\ell$ on $\Zl(1)$. Over $\Q$, for instance, complex conjugation acts on $\Zl(1)$ by
+$-1$ (\Cref{prop:galois:complex-conjugation}(b)) and an arithmetic Frobenius at $p\ne\ell$ by $p$ (\Cref{thm:galois:frobenius}(c)). This is the whole content of the
+``$(1)$'' in the paper's $T(1)$ and $\ad T(1)$: the twist changes the Galois action, not the underlying module.
+
 \begin{proposition}[Complex conjugation]\label{prop:galois:complex-conjugation}
 Let $c\in G_\Q$ be the restriction to $\Qbar$ of complex conjugation (\Cref{conv:galois:fields}).
 \begin{enumerate}[label=(\alph*)]
@@ -1691,7 +1748,8 @@ $\Gal(F_\rho/F)\simeq G_F/\ker\rho$, and the continuous bijection $G_F/\ker\rho\
 (c) $\GL_n(\mathcal{O})$ is open in $\GL_n(E_\lambda)$, so $U=\rho^{-1}(\GL_n(\mathcal{O}))$, the stabiliser of $\mathcal{O}^n$, is an open subgroup, of finite index. Put
 $\Lambda=\sum_{gU\in G/U}\rho(g)\mathcal{O}^n$, a finite sum (well defined since $\rho(u)\mathcal{O}^n=\mathcal{O}^n$ for $u\in U$). It is a finitely generated
 $\mathcal{O}$-submodule of $E_\lambda^n$ containing $\mathcal{O}^n$ and stable under $G$; finitely generated and torsion-free over the principal ideal domain $\mathcal{O}$, it is
-free (\Cref{ch:modules}), of rank $n$ as it spans $E_\lambda^n$ and lies in $\varpi^{-m}\mathcal{O}^n$ for some $m$. In a basis of $\Lambda$ the matrices $\rho(g)$ lie in
+free (\Cref{ch:modules}), of rank $n$ as it contains $\mathcal{O}^n$ and lies in $\varpi^{-m}\mathcal{O}^n$ for some $m$ (the finitely many matrices $\rho(g)$, $gU\in G/U$, have entries with
+bounded denominators: choose $m$ with $\varpi^m\rho(g)\in\mathrm{M}_n(\mathcal{O})$ for all of them). In a basis of $\Lambda$ the matrices $\rho(g)$ lie in
 $\GL_n(\mathcal{O})$, and continuity is unchanged by the change of basis. The reduction is continuous by (b) and (a).
 (d) Let $\|\cdot\|$ be the operator norm and $W=\{A\in\GL_n(\C):\|A-1\|<1\}$. We claim that $W$ contains no subgroup other than $\{1\}$. Let $A$ generate a subgroup
 inside $W$. For an eigenvalue $\nu$ of $A$ and every $k\in\Z$, $\nu^k-1$ is an eigenvalue of $A^k-1$, so $|\nu^k-1|\le\|A^k-1\|<1$. Then $|\nu|=1$
@@ -1705,6 +1763,11 @@ is a subgroup inside $W$, so $\rho(U)=1$ and $\rho$ factors through the finite g
 continuous. A subrepresentation (or quotient) is given, in a basis adapted to it, by a block of the matrix. The semisimplification is the direct sum of the
 composition factors (Jordan-H\"older, \Cref{ch:modules} and \Cref{ch:reps}), which are subquotients.
 \end{proof}
+
+By (a), the characters $\chi_d$ and $\bar\chi_\ell$ are continuous, their kernels $G_{\Q(\sqrt d)}$ and $G_{\Q(\zeta_\ell)}$ being open; $\chi_\ell$ is continuous
+by \Cref{prop:galois:cyclotomic-character}(a). Continuity is a genuine condition: if $U$ is one of the subgroups of index $2$ of $\Gal(L/\Q)$ that are not open
+(\Cref{ex:galois:warnings}(2), $L$ the compositum of all quadratic fields), the composite $G_\Q\to\Gal(L/\Q)\to\Gal(L/\Q)/U\simeq\{\pm1\}$ is a homomorphism whose kernel
+is not open, hence not closed (a closed subgroup of finite index is open), so it is not of the form $G_K$ and the character cuts out no field.
 
 \begin{proposition}[Quadratic characters of $G_\Q$]\label{prop:galois:quadratic-characters}
 \begin{enumerate}[label=(\alph*)]
@@ -1747,8 +1810,10 @@ $\bar\rho\simeq\bar\rho\otimes\bar\chi_3=\bar\rho\otimes\chi_{-3}$.
 (b) Taking determinants of $P\rho(g)P^{-1}=\chi(g)\rho(g)$ gives $\det\rho(g)=\chi(g)^2\det\rho(g)$, and $\det\rho(g)$ is a unit. The rest is the trace-zero lemma of
 \Cref{ch:reps}: a $G$-map $\phi\colon\rho\to\rho\otimes\chi$ satisfies $(1-\chi(g))\tr\phi=0$, and $\Hom_G(\rho,\rho\otimes\chi)$ has dimension at most one with nonzero
 elements isomorphisms when $\rho$ is absolutely irreducible.
-(c) By (b) over the ring $\Z/\ell^k$ (the determinant argument works over any commutative ring), $\chi_\ell(g)^2\equiv1\pmod{\ell^k}$ for all $g$. By
-\Cref{prop:galois:cyclotomic-character}(b) there is $g$ with $\chi_\ell(g)=2$ ($2\in\Zl^\times$ as $\ell$ is odd), so $\ell^k\mid4-1=3$: $\ell=3$ and $k=1$. Finally
+(c) Let $P\in\GL_2(\Z/\ell^k)$ with $P\rho(g)P^{-1}\equiv\chi_\ell(g)\rho(g)\pmod{\ell^k}$ for all $g$. Taking determinants in $\Z/\ell^k$ gives
+$\det\rho(g)\equiv\chi_\ell(g)^2\det\rho(g)$, and $\det\rho(g)\in\Zl^\times$ is a unit modulo $\ell^k$; so $\chi_\ell(g)^2\equiv1\pmod{\ell^k}$ for all $g$. (This is the
+argument of (b), which works over any commutative ring.) By
+\Cref{prop:galois:cyclotomic-character}(b) there is $g$ with $\chi_\ell(g)=2$ ($2\in\Zl^\times$ as $\ell$ is odd), so $\ell^k\mid4-1=3$: $\ell=3$ and $k=1$. For $\ell=3$, $k=1$ there is no contradiction: $\bar\chi_3$ takes the values $\pm1$, whose squares are $1$. Finally
 $\bar\chi_3=\chi_{-3}$ by \Cref{prop:galois:sqrt-lstar}(c).
 \end{proof}
 
@@ -1808,6 +1873,13 @@ of $k'^2$ the value $\psi(h)$ is the upper left entry of the matrix of $\rho(h)$
 topology if $k$ is a finite extension of $\Q_\ell$). Conversely, $\Ind_H^G\psi$ for continuous $\psi$ is continuous: in the basis $\{v,sv\}$ its matrix entries are values of $\psi$ at
 $h$, $s^{-1}hs$ or products with $\psi(s^2)$, all continuous functions of $h\in H$ and $g\in G$ ($H$ being open and closed).
 \end{proof}
+
+The mechanism behind (i)$\Rightarrow$(iii)$\Rightarrow$(ii) is short enough to recall. Let $\bar kw$ be a line stable under $\rho(H)$, on which $H$ acts by $\psi$.
+For $h\in H$, $s^{-1}hs\in H$ ($H$ is normal, having index $2$), so $\rho(h)\rho(s)w=\rho(s)\rho(s^{-1}hs)w=\psi^s(h)\rho(s)w$: the line $\bar k\rho(s)w$ is stable under
+$H$, with character $\psi^s$. It differs from $\bar kw$, since otherwise $\bar kw$ would be stable under $H\cup sH=G$, against absolute irreducibility. In the basis
+$w,\rho(s)w$, every $\rho(h)$ is $\operatorname{diag}(\psi(h),\psi^s(h))$ and $\rho(s)=\sm0{\psi(s^2)}10$ swaps the two lines: this is the matrix form of
+$\Ind_H^G\psi$. The matrix $P=\operatorname{diag}(1,-1)$ commutes with the diagonal $\rho(h)$, and $P\rho(s)P^{-1}=-\rho(s)$; as $\chi(h)=1$ and $\chi(s)=-1$,
+$P\rho(g)P^{-1}=\chi(g)\rho(g)$ for all $g\in H\cup sH$, so $P$ is an isomorphism $\rho\otimes\bar k\to(\rho\otimes\chi)\otimes\bar k$, of trace $0$.
 
 \begin{paperlink}
 For $\bar\rho=\bar\rho_{E,\ell}$, irreducible, hence absolutely irreducible by \Cref{prop:galois:complex-conjugation}(d), and $K=\Q(\sqrt{\ell^*})$: condition (i) is the
@@ -1873,6 +1945,15 @@ $\sigma(\alpha_k)/\alpha_k=\chi_a(\sigma)$ by definition (\Cref{prop:galois:kumm
 by \Cref{prop:galois:kummer-character}(b).
 \end{proof}
 
+The Kummer representation also illustrates \Cref{prop:galois:reduction-ss}. Let $\ell$ be odd, $F=\Q$, $a=2$, and $\rho$ the representation of (a) on
+$\Lambda=\Zl e_1\oplus\Zl e_2$. The lattice $\Lambda'=\Zl e_1\oplus\Zl\,\ell e_2$ is also stable, since $\sigma(\ell e_2)=\ell e_2+\ell b(\sigma)e_1$; in the basis
+$e_1,\ell e_2$ the matrix is $\sm{\chi_\ell}{\ell b}01$, with reduction $\operatorname{diag}(\bar\chi_\ell,1)$, which is semisimple. On $\Lambda$ the reduction is
+$\sm{\bar\chi_\ell}{\bar b}01$, and $\bar b=b\bmod\ell$ is not identically zero on $G_{\Q(\zeta_\ell)}$ by (d), because $2$ is not an $\ell$-th power in $\Q(\zeta_\ell)$
+($x^\ell-2$ is Eisenstein, so an $\ell$-th root of $2$ has degree $\ell$ over $\Q$, which does not divide $\ell-1=[\Q(\zeta_\ell):\Q]$). An element of
+$G_{\Q(\zeta_\ell)}$ with $\bar b\ne0$ acts by a nontrivial unipotent matrix, whose only stable line is $\F_\ell e_1$; so the reduction on $\Lambda$ is not semisimple.
+Both reductions have semisimplification $\bar\chi_\ell\oplus1$, as the proposition says, but they are not isomorphic, and $\Lambda'$ is not homothetic to $\Lambda$;
+this does not contradict the last statement of the proposition because neither reduction is irreducible.
+
 \begin{paperlink}
 In the proof of Lemma lem:tamfactor, $F=\Q_q$ with $q\ne\ell$, $a=q_E$ is the Tate parameter, and over the unramified quadratic extension the action on $T_\ell E$ in the
 basis $e_1=(\zeta_{\ell^k})_k$, $e_2=(q_E^{1/\ell^k})_k$ is the matrix of (a) (\Cref{ch:reduction}); for the nonsplit curve it is twisted by the unramified character
@@ -1918,6 +1999,9 @@ We do not prove this here; see \Cref{ch:ant}, and \cite[Chapter I, Section 9]{Ne
 residue extension $(\mathcal{O}_K/\mathfrak P)/\F_p$ is cyclic generated by $\Frob_p$ (\Cref{thm:galois:finite-fields}), and $\Frob_{\mathfrak P}$ is the lift of that
 generator, which exists and is unique when $p$ is unramified. Note the convention (\Cref{conv:galois:frobenius}): $\Frob_p$ is arithmetic.
 
+For example, in $\Q(i)=\Q(\zeta_4)$ and for odd $p$, $\Frob_p=\sigma_p$ sends $i$ to $i^p$, which is $i$ for $p\equiv1\pmod4$ and $-i$ for $p\equiv3\pmod4$. By (a),
+$p$ splits completely in $\Q(i)$ exactly when $p\equiv1\pmod4$, and $\chi_{-4}(\Frob_p)=(-1)^{(p-1)/2}$, in accordance with (c).
+
 \begin{example}[Frobenius on the four lines]\label{ex:galois:frobenius-on-lines}
 Let $E/\Q$ have good reduction at a prime $p\ne3$ with $p\nmid\disc(\psi_3)$. Then $\bar\rho_{E,3}$ is unramified at $p$ and $\bar\rho_{E,3}(\Frob_p)$ has characteristic
 polynomial $X^2-a_pX+p\bmod3$ (\Cref{ch:ellcurves}, \Cref{ch:galrep}). By \Cref{thm:galois:frobenius}(e) and \Cref{prop:galois:quartic-on-lines}, the degrees of the
@@ -1945,6 +2029,10 @@ and its \emph{natural density} is $\lim_{x\to\infty}\#\{p\le x:p\in X\}/\#\{p\le
 additive on disjoint unions of sets that have densities. $X$ has \emph{density one} if its complement has density $0$. ``\emph{Almost all} $p$'' means all but finitely
 many. Unless stated otherwise, density means Dirichlet density.
 \end{definition}
+
+The sets of density one used in the paper are the simplest ones: for a fixed integer $N$, the primes $p\nmid N$ form a set of density one, its complement being
+finite. So a hypothesis ``for all $p$ in a set of density one'' in the corollaries below is satisfied as soon as the statement holds for all $p\nmid N$; the extra
+generality costs nothing and allows one to discard any set of density $0$.
 
 For the comparison of the two densities see \cite[Chapter VI, Section 4]{SerreCourse}; the normalisation uses $\sum_pp^{-s}\sim\log\frac1{s-1}$ as $s\to1^+$, which is
 proved there.
