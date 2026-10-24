@@ -576,6 +576,16 @@ $[\T:\sum_{n\le d}\Z T_n]$ & 1 & 1 & 1 & 1 & 1 & 5 & 3 & 2 & $\infty$ & $\infty$
 \end{tabular}
 \end{center}
 Here $\infty$ means that $T_1,\dots,T_d$ are linearly dependent. At level $23$, $\T=\Z[T_2]$ with $T_2^2+T_2-1=0$, the ring of integers of $\Q(\sqrt5)$ (\Cref{ch:ant}).
+
+Level $23$ can be done by hand. Row reduction of the $q$-expansions gives the echelon basis
+\[
+g_1=q-q^3-q^4-2q^6+2q^7-q^8+\cdots,\qquad g_2=q^2-2q^3-q^4+2q^5+q^6+2q^7-2q^8+\cdots
+\]
+(integral to $n=40$, far beyond Sturm's bound $4$). It is a $\Z$-basis of $S$: a form $g\in S$ equals $a_1(g)g_1+a_2(g)g_2$, because the difference lies in the
+two-dimensional space spanned by $g_1,g_2$ and has $a_1=a_2=0$. In this basis the pairing with $T_1,T_2$ is $\langle g_i,T_j\rangle=a_j(g_i)=\delta_{ij}$, the identity matrix, which
+proves directly that $\T=\Z T_1\oplus\Z T_2$. By \Cref{prop:hecke:Tp-q-expansion}, $a_n(T_2g)=a_{2n}(g)+2a_{n/2}(g)$, so $T_2g_1$ has $a_1=a_2(g_1)=0$ and $a_2=a_4(g_1)+2a_1(g_1)=1$,
+while $T_2g_2$ has $a_1=1$ and $a_2=a_4(g_2)+2a_1(g_2)=-1$. Hence $T_2g_1=g_2$, $T_2g_2=g_1-g_2$, the matrix of $T_2$ is $\sm011{-1}$ (columns the images), and its
+characteristic polynomial is $X^2+X-1$.
 \end{example}
 
 \begin{theorem}[eigenforms are homomorphisms]\label{thm:hecke:eigen-dictionary}
@@ -637,6 +647,14 @@ Let $\mathcal O$ be $\Z$, $\Z_{(\ell)}$, $\Zl$ or the completion $\mathcal O_\la
 \emph{congruence number} $r_f$ is the largest integer $r$ such that $f\equiv g\pmod r$ for some $g\in S_2(N;\Z)$ orthogonal to $f$ for the Petersson product. For an elliptic curve
 $E$ with newform $f_E$, $r_E=r_{f_E}$.
 \end{definition}
+
+Both notions measure how far the eigenform is from being alone in $\T$. The ideal $\ker\phi$ consists of the operators that act on the form by $0$, and $\Ann(\ker\phi)$ of
+the operators whose product with every such operator is $0$. If $\T$ were a product $\mathcal O\times\T'$ with $\phi$ the first projection, then $\ker\phi=0\times\T'$,
+$\Ann(\ker\phi)=\mathcal O\times0$ and $\eta(\phi)=\mathcal O$. A proper ideal $\eta(\phi)$ therefore measures the failure of $\T$ to split off the factor of $\phi$ integrally. A toy
+model: let $m\ge1$, $\T=\{(a,b)\in\Z^2:a\equiv b\pmod m\}$ and $\phi(a,b)=a$. Then $\ker\phi=\{(0,b):m\mid b\}$; an element $(a,b)$ kills it iff $b=0$, and $(a,0)\in\T$ iff $m\mid a$; so
+$\Ann(\ker\phi)=\{(a,0):m\mid a\}$ and $\eta(\phi)=m\Z$. Here $\T$ has the two homomorphisms $(a,b)\mapsto a$ and $(a,b)\mapsto b$ to $\Z$, which agree modulo $m$ on all of $\T$ and are
+glued exactly to that extent; congruence numbers measure the same gluing on the side of forms. That $r_f\Z=\eta(\phi_f)$ for a rational newform is the paper's Lemma lem:crit (see
+the paragraph after \Cref{prop:hecke:rf-finite}).
 
 \begin{proposition}\label{prop:hecke:rf-finite}
 For a newform $f\in S_2(N)$ with rational coefficients, $L=f^\perp\cap S_2(N;\Z)$ is saturated of rank $d-1$, $\Z f\oplus L$ has finite index in $S_2(N;\Z)$, and $r_f$ is finite: a
@@ -733,21 +751,39 @@ Let $p\mid N$.
 \end{proposition}
 
 \begin{proof}
-(i) With $W=W_N$, a direct computation gives $W\sm100pW^{-1}=\sm p001$, and $W$ normalises $\Gamma$ (\Cref{ch:modforms}). Hence $\Gamma\sm p001\Gamma=W(\Gamma\sm100p\Gamma)W^{-1}=\bigsqcup\Gamma W\alpha_iW^{-1}$, and
-$[\Gamma\sm p001\Gamma]_kg=\sum_ig|_kW\alpha_iW^{-1}=w_N^{-1}U_pw_Ng$ (with $w_Ng=g|_kW$). As $w_N^{-1}=w_N$ (\Cref{conv:hecke:standing}(f)), \Cref{prop:hecke:double-coset-adjoint} with $\alpha=\sm100p$,
+(i) With $W=W_N=\sm0{-1}N0$ and $W^{-1}=\frac1N\sm01{-N}0$,
+\[
+W\Mtwo100pW^{-1}=\Mtwo0{-p}N0\cdot\frac1N\Mtwo01{-N}0=\frac1N\Mtwo{pN}00N=\Mtwo p001,
+\]
+and $W$ normalises $\Gamma$ (\Cref{ch:modforms}). Let $\Gamma\sm100p\Gamma=\bigsqcup_i\Gamma\alpha_i$. Conjugating by $W$ and using $W\Gamma W^{-1}=\Gamma$ gives
+$\Gamma\sm p001\Gamma=W(\Gamma\sm100p\Gamma)W^{-1}=\bigsqcup_i\Gamma W\alpha_iW^{-1}$, so the $W\alpha_iW^{-1}$ are coset representatives for the double coset of $\sm p001$. Both double cosets
+have determinant $p$, hence the same prefactor $p^{k/2-1}$, and since the slash operator is a right action,
+\[
+[\Gamma\sm p001\Gamma]_kg=p^{k/2-1}\sum_i\bigl((g|_kW)|_k\alpha_i\bigr)|_kW^{-1}=w_N^{-1}U_pw_Ng\qquad(w_Ng=g|_kW).
+\] As $w_N^{-1}=w_N$ (\Cref{conv:hecke:standing}(f)), \Cref{prop:hecke:double-coset-adjoint} with $\alpha=\sm100p$,
 $\alpha'=\sm p001$ gives $U_p^\dagger=w_NU_pw_N$.
 
 (ii) By \Cref{lem:hecke:trace}, $\langle h(pz),h\rangle_{Mp}=\langle\Tr(h(pz)),h\rangle_M=p^{1-k}a_p(h)\langle h,h\rangle_M$ and $\langle h,h\rangle_{Mp}=(p+1)\langle h,h\rangle_M$ (the first equality is the complex conjugate of \Cref{lem:hecke:trace}(i)). For the second formula, $h(pz)=p^{-k/2}h|_k\alpha$ with $\alpha=\sm p001$, and
-$\alpha^{-1}\Gamma_0(M)\alpha$ contains $\Gamma_0(Mp)$ with the same index $p+1$ as $\Gamma_0(Mp)$ in $\Gamma_0(M)$ (the two groups have the same covolume); so
+$\alpha^{-1}\Gamma_0(M)\alpha$ contains $\Gamma_0(Mp)$ with the same index $p+1$ as $\Gamma_0(Mp)$ in $\Gamma_0(M)$. Indeed $\alpha^{-1}\sm abcd\alpha=\sm a{b/p}{pc}d$, so
+$\alpha^{-1}\Gamma_0(M)\alpha$ is the group of matrices $\sm x{y}{z}w$ of determinant $1$ with $x,w\in\Z$, $py\in\Z$ and $Mp\mid z$; it contains $\Gamma_0(Mp)$ (take $b=py$). For the index,
+$z\mapsto\alpha z$ is an isometry of $\HH$ for $d\mu$, so $\alpha^{-1}\Gamma_0(M)\alpha$ and $\Gamma_0(M)$ have fundamental domains of the same hyperbolic area, and the index of a subgroup
+is the ratio of these areas (all groups here contain $-1$); so
 $\langle h|_k\alpha,h|_k\alpha\rangle_{\Gamma_0(Mp)}=(p+1)\langle h|_k\alpha,h|_k\alpha\rangle_{\alpha^{-1}\Gamma_0(M)\alpha}=(p+1)\langle h,h\rangle_{\Gamma_0(M)}=\langle h,h\rangle_{\Gamma_0(Mp)}$, and the factor $p^{-k}$ comes from $(p^{-k/2})^2$.
 \end{proof}
 
 \begin{example}[level $22$]\label{ex:hecke:level-22}
 Take $h=f_{11}$, $p=2$, $N=22$, and the basis $f_{11}(z),f_{11}(2z)$ of $S_2(22)$. By \Cref{prop:hecke:Up-adjoint}(ii) with $a_2(f_{11})=-2$, the Gram matrix of the Petersson product is
-$\langle f_{11},f_{11}\rangle_{22}\cdot G$, $G=\sm1{-1/3}{-1/3}{1/4}$. The matrix of $U_2$ (columns: images of the basis vectors) is $A=\sm{-2}1{-2}0$, since $U_2f_{11}=-2f_{11}-2f_{11}(2z)$ and
-$U_2f_{11}(2z)=f_{11}$. With $\langle x,y\rangle=x^{\mathsf T}G\bar y$ in coordinates, the adjoint has matrix $G^{-1}A^{\mathsf T}G=\sm0{-1/2}4{-2}$. The involution $w_{22}$ exchanges the two lines:
+$\langle f_{11},f_{11}\rangle_{22}\cdot G$, $G=\sm1{-1/3}{-1/3}{1/4}$: the off-diagonal entry is $\frac{p^{1-k}a_p}{p+1}=\frac{2^{-1}\cdot(-2)}3=-\frac13$ and the lower diagonal entry is
+$p^{-k}=\frac14$. The matrix of $U_2$ (columns: images of the basis vectors) is $A=\sm{-2}1{-2}0$, since $U_2f_{11}=-2f_{11}-2f_{11}(2z)$ and
+$U_2f_{11}(2z)=f_{11}$ (\Cref{prop:hecke:Up-oldspan}(i) with $a_2=-2$, $p^{k-1}=2$). With $\langle x,y\rangle=x^{\mathsf T}G\bar y$ in coordinates, an operator with matrix $B$ is the adjoint of
+$A$ iff $x^{\mathsf T}A^{\mathsf T}G\bar y=x^{\mathsf T}G\bar B\bar y$ for all $x,y$, that is, $\bar B=G^{-1}A^{\mathsf T}G$; as $A$ and $G$ are real, the adjoint has matrix
+\[
+G^{-1}A^{\mathsf T}G=\frac{36}5\Mtwo{1/4}{1/3}{1/3}1\Mtwo{-4/3}{1/6}1{-1/3}=\Mtwo0{-1/2}4{-2}.
+\] The involution $w_{22}$ exchanges the two lines:
 $f_{11}|_2W_{22}=-2f_{11}(2z)$ and $f_{11}(2z)|_2W_{22}=-\frac12f_{11}$ (\Cref{ch:modforms}, from $\varepsilon_{11}(f_{11})=-1$), so $w_{22}$ has matrix $\sm0{-1/2}{-2}0$, and indeed
-$\sm0{-1/2}{-2}0\sm{-2}1{-2}0\sm0{-1/2}{-2}0=\sm0{-1/2}4{-2}$. Finally $AA^\dagger=\sm4{-1}01\ne\sm10{-4}4=A^\dagger A$: $U_2$ is not normal. (The Gram matrix was also computed with PARI's
+\[
+\Mtwo0{-1/2}{-2}0\Mtwo{-2}1{-2}0\Mtwo0{-1/2}{-2}0=\Mtwo0{-1/2}4{-2}.
+\] Finally $AA^\dagger=\sm4{-1}01\ne\sm10{-4}4=A^\dagger A$: $U_2$ is not normal. (The Gram matrix was also computed with PARI's
 \texttt{mfpetersson}, to $40$ digits.)
 \end{example}
 
@@ -757,8 +793,15 @@ eigenvector of $w_N$, then $f^\perp$ is $\T$-stable.
 \end{corollary}
 
 \begin{proof}
-For $g\in V^\perp$ and $v\in V$: $\langle T_ng,v\rangle=\langle g,T_n^\dagger v\rangle$ with $T_n^\dagger$ equal to $T_n$ ($(n,N)=1$) or to a product of $w_NU_pw_N$ and such $T_m$ (\Cref{thm:hecke:Tn},
-\Cref{thm:hecke:self-adjoint}, \Cref{prop:hecke:Up-adjoint}); in both cases $T_n^\dagger V\subseteq V$, so the product vanishes. Also $w_N$ is self-adjoint (\Cref{ch:modforms}).
+Since $\T$ is spanned by the $T_n$ (\Cref{prop:hecke:hecke-algebra}(ii)), it suffices to treat each $T_n$. Write $n=m\prod_{p\mid N}p^{r_p}$ with $(m,N)=1$; by \Cref{thm:hecke:Tn},
+$T_n=T_m\prod_{p\mid N}U_p^{r_p}$, a product of commuting operators. The adjoint of a product is the product of the adjoints in the reverse order, and here the order does not
+matter, so
+\[
+T_n^\dagger=T_m^\dagger\prod_{p\mid N}(U_p^\dagger)^{r_p}=T_m\prod_{p\mid N}(w_NU_pw_N)^{r_p}
+\]
+by \Cref{thm:hecke:self-adjoint} and \Cref{prop:hecke:Up-adjoint}(i). Each factor maps $V$ into $V$: $T_m$ and $U_p$ because $V$ is $\T$-stable, and $w_N$ by hypothesis. So
+$T_n^\dagger V\subseteq V$, and for $g\in V^\perp$ and $v\in V$, $\langle T_ng,v\rangle=\langle g,T_n^\dagger v\rangle=0$: $T_nV^\perp\subseteq V^\perp$. Also $w_N$ is self-adjoint (\Cref{ch:modforms}), so
+$\langle w_Ng,v\rangle=\langle g,w_Nv\rangle=0$. For the last statement take $V=\C f$, which is stable under $\T$ and $w_N$ by hypothesis.
 \end{proof}
 
 \begin{paperlink}\label{pl:hecke:adjoints}
@@ -795,8 +838,12 @@ $h\in S_k(N/p)$ for any $p\mid N/M$, or $p\mid d$ for some prime and $V_dh=V_p(V
 \end{proposition}
 
 \begin{proof}
-(i) $T_n$ is a polynomial in the $T_p$, $p\mid n$, each equal to $\mathcal U_p+p^{k-1}V_p$ at both levels, and these commute with $V_d$ for $(d,p)=1$ (\Cref{lem:hecke:UV}). (ii) A direct
-computation gives $\sm d001W_N=d\cdot W_M\sm e001$, and positive scalars act trivially in even weight; so $(h|_k\sm d001)|_kW_N=(h|_kW_M)|_k\sm e001$, and $h|_k\sm c001=c^{k/2}h(cz)$. Since $w_M$
+(i) $T_n$ is a polynomial in the $T_p$, $p\mid n$, each equal to $\mathcal U_p+p^{k-1}V_p$ at both levels, and these commute with $V_d$ for $(d,p)=1$ (\Cref{lem:hecke:UV}). (ii) Since $dMe=N$,
+\[
+\Mtwo d001W_N=\Mtwo d001\Mtwo0{-1}N0=\Mtwo0{-d}N0=d\Mtwo0{-1}{Me}0=d\cdot W_M\Mtwo e001,
+\]
+and the scalar matrix $d\cdot1$ acts trivially in even weight ($f|_k(d\cdot1)=d^kd^{-k}f$); so $(h|_k\sm d001)|_kW_N=(h|_kW_M)|_k\sm e001$. As $h|_k\sm c001=c^{k/2}h(cz)$ and
+$h(dz)=d^{-k/2}h|_k\sm d001$, this gives $(h(dz))|_kW_N=d^{-k/2}(h|_kW_M)|_k\sm e001=d^{-k/2}e^{k/2}(h|_kW_M)(ez)$. Since $w_M$
 is a bijection of $S_k(M)$, the image of $V_dS_k(M)$ is $V_eS_k(M)$. (iii) The old subspace is stable under $T_n$, $(n,N)=1$, by (i), and under $w_N$ by (ii). For $p\mid N$, $U_p=\mathcal U_p$ on
 $q$-expansions (\Cref{prop:hecke:Tp-q-expansion}); for $h\in S_k(M)$ and $d\mid N/M$: if $p\mid d$, $\mathcal U_pV_dh=V_{d/p}h$; if $p\nmid d$, $\mathcal U_pV_dh=V_d\mathcal U_ph$, and $\mathcal U_ph$ is $U_p^{(M)}h$ if $p\mid M$, or
 $T_p^{(M)}h-p^{k-1}V_ph$ if $p\nmid M$ (then $p\mid N/M$ and $V_{dp}h$ is again old, as $dp\mid N/M$). So the old subspace is $\T$-stable, and the new subspace, its orthogonal complement, is
@@ -936,7 +983,10 @@ $\dim S_2^{\mathrm{new}}(N)$ & 1 & 0 & 1 & 1 & 5 & 3 & 4 & 4 & 10 & 34 & 13 & 41
 \end{tabular}
 \end{center}
 For instance $S_2(121)$ is spanned by the four rational newforms of the classes 121a to 121d and the two oldforms $f_{11}(z)$, $f_{11}(11z)$; and $S_2(88)$ by the three newforms of
-level $88$, $f_{44}(z)$, $f_{44}(2z)$ and $f_{11}(2^jz)$, $0\le j\le3$ ($9=3+2+4$).
+level $88$, $f_{44}(z)$, $f_{44}(2z)$ and $f_{11}(2^jz)$, $0\le j\le3$ ($9=3+2+4$). The second formula of \Cref{cor:hecke:dimensions} can be checked by hand, using $\dim S_2(M)=0$
+for $M\le10$ and $\dim S_2(11)=1$. At $N=22$ only $M=11$ and $M=22$ contribute, and $\dim S_2^{\mathrm{new}}(22)=\beta(2)\cdot1+\beta(1)\cdot2=-2+2=0$: the space $S_2(22)$ is entirely
+old, spanned by $f_{11}(z)$ and $f_{11}(2z)$. At $N=121$, $\dim S_2^{\mathrm{new}}(121)=\beta(121)\dim S_2(1)+\beta(11)\dim S_2(11)+\beta(1)\dim S_2(121)=0-2+6=4$. At $N=44$, the divisors
+with nonzero contributions are $M=11,22,44$: $\beta(4)\cdot1+\beta(2)\cdot2+\beta(1)\cdot4=1-4+4=1$.
 \end{example}
 
 \section{$U_p$ on oldforms: stabilisation, depletion, non-semisimplicity}\label{sec:hecke:Up}
@@ -966,21 +1016,35 @@ eigenvalue $0$ has a single Jordan block, of size $e-1$, $e$ or $e+1$ respective
 \begin{proof}
 (i) $\mathcal U_pV_p=1$ (\Cref{lem:hecke:UV}) gives the first formula; $\mathcal U_ph=T_p^{(M)}h-p^{k-1}V_ph$ for $p\nmid M$ and $\mathcal U_ph=U_p^{(M)}h$ for $p\mid M$ (\Cref{prop:hecke:Tp-q-expansion}).
 (ii) By (i), $U_p^jh(p^ez)=h(p^{e-j}z)$ for $0\le j\le e$, so the iterates of $h(p^ez)$ span $V_{h,p,e}$: it is cyclic, and the minimal polynomial has degree $e+1$, hence equals the
-characteristic polynomial (\Cref{ch:modules}). In the basis $v_j=h(p^jz)$ the matrix is the shift $v_j\mapsto v_{j-1}$ with first column $(a_p,-p^{k-1},0,\dots)$ or $(a_p,0,\dots)$; expanding
-the determinant of $X-U_p$ along the first column gives the polynomials. (iii) For a cyclic operator every eigenvalue has a single Jordan block, so a one-dimensional
-eigenspace. The vectors are eigenvectors by (i): $U_p(h-\beta h(pz))=(a_p-\beta)h-p^{k-1}h(pz)=\alpha(h-\beta h(pz))$ as $\alpha+\beta=a_p$ and $\alpha\beta=p^{k-1}$; $U_p(h-a_ph(pz)+p^{k-1}h(p^2z))=a_ph-p^{k-1}h(pz)-a_ph+p^{k-1}h(pz)=0$;
-$U_p(h-a_ph(pz))=a_ph-a_ph=0$ when $p\mid M$. (iv) A cyclic operator is semisimple iff its minimal polynomial, here equal to the characteristic polynomial, is squarefree. (v) The
+characteristic polynomial (\Cref{ch:modules}). To find it, write $c=p^{k-1}$ and $v=h(p^ez)$, so $U_p^jv=h(p^{e-j}z)$ for $0\le j\le e$. One more application of (i) gives, for
+$p\nmid M$ and $e\ge1$,
+\[
+U_p^{e+1}v=U_ph=a_ph-c\,h(pz)=a_pU_p^ev-c\,U_p^{e-1}v,
+\]
+so $(U_p^{e+1}-a_pU_p^e+cU_p^{e-1})v=0$; the monic polynomial $X^{e-1}(X^2-a_pX+c)$ of degree $e+1$ kills the cyclic vector $v$, hence kills $V_{h,p,e}$ (it commutes with $U_p$), and
+being of the same degree as the minimal polynomial it is the minimal polynomial. For $p\mid M$, $U_p^{e+1}v=U_ph=a_pU_p^ev$ gives $X^e(X-a_p)$ in the same way. (In the basis
+$v_j=h(p^jz)$ the matrix is the shift $v_j\mapsto v_{j-1}$ with first column $(a_p,-p^{k-1},0,\dots)$ or $(a_p,0,\dots)$, a companion matrix.) (iii) For a cyclic operator every eigenvalue has a
+single Jordan block (a second block would make the minimal polynomial of smaller degree than the characteristic polynomial), so a one-dimensional
+eigenspace, and the size of the block is the multiplicity of the eigenvalue as a root of the characteristic polynomial. The vectors are eigenvectors by (i): $U_p(h-\beta h(pz))=(a_p-\beta)h-p^{k-1}h(pz)=\alpha(h-\beta h(pz))$ as $\alpha+\beta=a_p$ and $\alpha\beta=p^{k-1}$; $U_p(h-a_ph(pz)+p^{k-1}h(p^2z))=a_ph-p^{k-1}h(pz)-a_ph+p^{k-1}h(pz)=0$;
+$U_p(h-a_ph(pz))=a_ph-a_ph=0$ when $p\mid M$. (iv) A cyclic operator is semisimple iff its minimal polynomial, here equal to the characteristic polynomial, is squarefree. The root $0$ of $X^{e-1}(X^2-a_pX+p^{k-1})$
+has multiplicity $e-1$ (the quadratic factor has constant term $p^{k-1}\ne0$), that of $X^e(X-a_p)$ has multiplicity $e$ when $a_p\ne0$ ($p\,\|\,M$) and $e+1$ when $a_p=0$ ($p^2\mid M$);
+this gives the conditions and the block sizes, by (iii). (v) The
 $T_n$ with $(n,Mp)=1$ and the $U_{p'}$ with $p'\mid M$, $p'\ne p$, commute with $V_p$ (\Cref{lem:hecke:UV}, \Cref{prop:hecke:old-new}(i)), so they act on $V_{h,p,e}$ by the eigenvalues of $h$; each
 listed vector has $a_1=1$ since $h(p^jz)$, $j\ge1$, has $a_1=0$; and $T_{p^r}=U_p^r$ at a level divisible by $p$.
 \end{proof}
 
 \begin{example}[levels $22$, $44$, $88$, $121$]\label{ex:hecke:Up-matrices}
 For $h=f_{11}$ ($a_2=-2$, $a_{11}=1$) the matrices of $U_p$ on $V_{h,p,e}$, columns the images of $h(p^jz)$, are: at level $22$, $\sm{-2}1{-2}0$, characteristic polynomial $X^2+2X+2$,
-$\alpha,\beta=-1\pm i$; at level $44$, characteristic polynomial $X(X^2+2X+2)$, with $f_{11}^{\{2\}}=f_{11}+2f_{11}(2z)+2f_{11}(4z)$ spanning the kernel; at level $88$,
+$\alpha,\beta=-1\pm i$; at level $44$,
+\[
+\begin{pmatrix}-2&1&0\\-2&0&1\\0&0&0\end{pmatrix},
+\]
+characteristic polynomial $X(X^2+2X+2)$, with $f_{11}^{\{2\}}=f_{11}+2f_{11}(2z)+2f_{11}(4z)$ spanning the kernel (a vector $(x_0,x_1,x_2)$ is sent to
+$(-2x_0+x_1,\,-2x_0+x_2,\,0)$, which vanishes iff $x_1=x_2=2x_0$); at level $88$,
 \[
 \begin{pmatrix}-2&1&0&0\\-2&0&1&0\\0&0&0&1\\0&0&0&0\end{pmatrix},\qquad X^2(X^2+2X+2),
 \]
-with a Jordan block of size $2$ at $0$; at level $121$ ($p=11\,\|\,11$), $\sm1100$, characteristic polynomial $X(X-1)$, eigenvectors $f_{11}$ and $f_{11}-f_{11}(11z)$. On the whole space, PARI's
+with a Jordan block of size $2$ at $0$; at level $121$ ($p=11\,\|\,11$), $\sm1100$ ($U_{11}f_{11}=a_{11}f_{11}=f_{11}$ and $U_{11}f_{11}(11z)=f_{11}$), characteristic polynomial $X(X-1)$, eigenvectors $f_{11}$ and $f_{11}-f_{11}(11z)$. On the whole space, PARI's
 \texttt{mfheckemat} gives for $U_2$ on $S_2(22)$, $S_2(44)$, $S_2(88)$ the characteristic polynomials $X^2+2X+2$, $X^2(X^2+2X+2)$, $X^7(X^2+2X+2)$ and the minimal polynomials $X^2+2X+2$,
 $X(X^2+2X+2)$, $X^2(X^2+2X+2)$.
 \end{example}
@@ -1028,7 +1092,8 @@ large multiplicity of the eigenvalue $0$ does not by itself make $U_p$ non-semis
 is squarefree, because no single $V_{h,7,e}$ has a repeated root ($539=7^2\cdot11$, so $e\le2$ for $7\nmid M_h$, $e\le1$ for $7\,\|\,M_h$, $e=0$ for $7^2\mid M_h$). The paper's ``the eigenvalue $0$ with
 multiplicity one'' (Step 1 of the proof of Theorem thm:quant) is the algebraic multiplicity on the span of the $g(dz)$, not on all of $S_2(\Gamma_0(N))$. (iii) (Coleman-Edixhoven.) For a
 newform of weight $2$ and level prime to $p$, $\alpha_p\ne\beta_p$ \cite{ColemanEdixhoven}; so $U_p$ is semisimple on the $p$-old part of level $Mp$. For rational $a_p$ this is
-elementary: $\alpha_p=\beta_p$ would force $a_p^2=4p$.
+elementary: $\alpha_p=\beta_p$ means that the discriminant $a_p^2-4p$ of $X^2-a_pX+p$ vanishes, so $a_p^2=4p$, which is impossible for an integer $a_p$ because $4p$ is not a
+square ($v_p(4p)=1$ for odd $p$, and $v_2(8)=3$ for $p=2$).
 \end{remark}
 
 \begin{definition}[depletion and the level $M^\Sigma$]\label{def:hecke:depletion}
@@ -1076,7 +1141,10 @@ $e=\delta_p$. For an additive prime nothing is removed and nothing is added: thi
 \begin{example}[depleted forms]\label{ex:hecke:depleted}
 $f_{11}^{\{2\}}=f_{11}+2f_{11}(2z)+2f_{11}(4z)$, of level $44$ ($a_2=-2$; checked to $n=4000$); $f_{11}^{\{11\}}=f_{11}-f_{11}(11z)$, of level $121$ ($a_{11}=1$); for $f$ of class 121a, $\Sigma=\{11\}$:
 $f^\Sigma=f$, level $121$ ($\delta_{11}=0$); for $g$ of class 77c and $\Sigma=\{7\}$: $g^\Sigma=g-a_7(g)g(7z)=g+g(7z)$, level $539$; for $g=f_{11}$ and $\Sigma=\{7\}$: $g^\Sigma=g+2g(7z)+7g(49z)$, level $539$
-($a_7(f_{11})=-2$).
+($a_7(f_{11})=-2$). Each is read off from \Cref{prop:hecke:depletion}(ii). For $f_{11}$ at $p=2\nmid11$, $D_2=1-a_2V_2+2V_2^2=1+2V_2+2V_2^2$ and $M^{\{2\}}=11\cdot2^2$. At $p=11\,\|\,11$,
+$D_{11}=1-a_{11}V_{11}=1-V_{11}$ and $M^{\{11\}}=11\cdot11$. For 121a, $11^2\mid121$, so $D_{11}=1$ and nothing changes. For 77c at $7\,\|\,77$, $D_7=1-a_7V_7=1+V_7$ and
+$M^{\{7\}}=77\cdot7$. For $f_{11}$ at $7\nmid11$, $D_7=1+2V_7+7V_7^2$ and $M^{\{7\}}=11\cdot7^2$. As a check on the first one, the coefficient of $q^2$ in
+$f_{11}+2f_{11}(2z)+2f_{11}(4z)$ is $a_2+2a_1=-2+2=0$, and that of $q^4$ is $a_4+2a_2+2a_1=2-4+2=0$.
 \end{example}
 
 \begin{paperlink}\label{pl:hecke:section41}
@@ -1183,8 +1251,12 @@ lies in another generalised eigenspace. The Gram matrix of $f_{11}(z)$, $f_{11}(
 \[
 \begin{pmatrix}1&-1/3&1/24\\-1/3&1/4&-1/12\\1/24&-1/12&1/16\end{pmatrix}
 \]
-(PARI's \texttt{mfpetersson}, $40$ digits; the $2\times2$ block is \Cref{prop:hecke:Up-adjoint}(ii)), and with $g=(1,2,2)$ and $h=(1,-\beta,0)$ in these coordinates, $\langle g,h\rangle=\frac5{12}\langle f_{11},f_{11}\rangle_{44}$
-for both $\beta=-1\pm i$.
+(PARI's \texttt{mfpetersson}, $40$ digits; the $2\times2$ block is \Cref{prop:hecke:Up-adjoint}(ii)), and with $g=(1,2,2)$ and $h=(1,-\beta,0)$ in these coordinates,
+$\langle g,h\rangle=g^{\mathsf T}G\bar h$ with $\bar h=(1,-\bar\beta,0)$. Now $G\bar h=\bigl(1+\frac{\bar\beta}3,\,-\frac13-\frac{\bar\beta}4,\,\frac1{24}+\frac{\bar\beta}{12}\bigr)$, and
+\[
+g^{\mathsf T}G\bar h=\Bigl(1-\frac23+\frac1{12}\Bigr)+\bar\beta\Bigl(\frac13-\frac12+\frac16\Bigr)=\frac5{12}.
+\]
+So $\langle g,h\rangle=\frac5{12}\langle f_{11},f_{11}\rangle_{44}$ for both $\beta=-1\pm i$: the terms in $\beta$ cancel.
 \end{proof}
 
 \begin{paperlink}\label{pl:hecke:complements}
@@ -1414,7 +1486,10 @@ $q^2\mid M$ & \curve{539c1}, $\chi_{-7}$ & \curve{77c1} & level drops\\
 \bottomrule
 \end{tabular}
 \end{center}
-For all $n\le3000$ we also checked the coefficient identities
+The first rows can be seen in the first coefficients. From $a_2(\curve{11a1})=-2$, $a_3=-1$, and $\chi_{-11}(2)=-1$, $\chi_{-11}(3)=1$, the twist by $\chi_{-11}$ has
+$a_2=2$, $a_3=-1$, $a_{11}=0$, which are the coefficients of \curve{121d1}; by $\chi_{-7}$, with $\chi_{-7}(2)=1$, $\chi_{-7}(3)=-1$, it has $a_2=-2$, $a_3=1$, $a_7=0$, the
+coefficients of \curve{539d1} (PARI's \texttt{ellan}). The level in the first case is $11^2$ because $11\,\|\,11$ (case (ii)), and in the second $11\cdot7^2$ because $7\nmid11$ (case
+(i)). For all $n\le3000$ we also checked the coefficient identities
 \[
 a_n(\curve{121d1})=\chi_{-11}(n)a_n(\curve{11a1}),\qquad a_n(\curve{539d1})=\chi_{-7}(n)a_n(\curve{11a1}),
 \]
@@ -1540,6 +1615,9 @@ By multiplicativity (\Cref{prop:hecke:eigenforms}(ii)) and absolute convergence,
 \[
 L(f,s)=\prod_p\sum_{r\ge0}a_{p^r}p^{-rs}.
 \]
+In detail: for $x>0$ the finite product $\prod_{p\le x}\sum_ra_{p^r}p^{-rs}$ of absolutely convergent series can be multiplied out, and by unique factorisation and
+$a_{mn}=a_ma_n$ for coprime $m,n$ it equals $\sum_na_nn^{-s}$ over the $n$ all of whose prime factors are at most $x$; the difference from $L(f,s)$ is bounded by $\sum_{n>x}\abs{a_nn^{-s}}$,
+which tends to $0$ as $x\to\infty$.
 The series $\sum_ra_{p^r}X^r$ is the image under $\phi_f$ of $\sum_rT_{p^r}X^r$, which is $(1-a_pX+p^{k-1}X^2)^{-1}$ or $(1-a_pX)^{-1}$ by \Cref{thm:hecke:Tn}(v); put $X=p^{-s}$. The weight-$2$ factors use \Cref{prop:hecke:newform-local}(iii). For $f^\Sigma$, whose
 coefficients at $p\in\Sigma$ vanish, the factor at $p\in\Sigma$ is $1$, and the others are those of $f$. For $f\otimes\chi$, the coefficients $\chi(n)a_n$ are multiplicative, and
 \[
@@ -1556,15 +1634,31 @@ extends to an entire function, bounded in vertical strips, with $\Lambda(f,s)=i^
 \end{theorem}
 
 \begin{proof}[Sketch of proof]
-For $\operatorname{Re}s$ large, integrate $f(iy)=\sum a_ne^{-2\pi ny}$ termwise against $y^{s-1}$, using $\int_0^\infty e^{-2\pi ny}y^{s-1}dy=(2\pi n)^{-s}\Gamma(s)$. The relation $f|_kW_N=\varepsilon_Nf$ at $z=iy$ reads
+For $\operatorname{Re}s$ large, integrate $f(iy)=\sum a_ne^{-2\pi ny}$ termwise against $y^{s-1}$, using $\int_0^\infty e^{-2\pi ny}y^{s-1}dy=(2\pi n)^{-s}\Gamma(s)$ (substitute $t=2\pi ny$ in the
+integral defining $\Gamma(s)$); the interchange of sum and integral is justified by absolute convergence, and gives
+\[
+\int_0^\infty f(iy)y^{s-1}dy=(2\pi)^{-s}\Gamma(s)L(f,s).
+\]
+Next, $W_N(iy)=-1/(Niy)=i/(Ny)$ and
+\[
+(f|_kW_N)(iy)=N^{k/2}(Niy)^{-k}f\Bigl(\frac i{Ny}\Bigr)=N^{-k/2}i^{-k}y^{-k}f\Bigl(\frac i{Ny}\Bigr),
+\]
+so the relation $f|_kW_N=\varepsilon_Nf$ at $z=iy$ reads
 \[
 f\Bigl(\frac{i}{Ny}\Bigr)=\varepsilon_Ni^kN^{k/2}y^kf(iy).
-\] Split the integral at $y=1/\sqrt N$ and substitute $y\mapsto1/(Ny)$ on $(0,1/\sqrt N)$:
+\]
+Split the integral at $y=1/\sqrt N$, the fixed point of $y\mapsto1/(Ny)$. On $(0,1/\sqrt N)$ substitute $y=1/(Nt)$, $dy=-dt/(Nt^2)$, with $t$ running over $(1/\sqrt N,\infty)$:
+\[
+\int_0^{1/\sqrt N}f(iy)y^{s-1}dy=\int_{1/\sqrt N}^\infty\varepsilon_Ni^kN^{k/2}t^kf(it)\,(Nt)^{1-s}\,\frac{dt}{Nt^2}=\varepsilon_Ni^kN^{k/2-s}\int_{1/\sqrt N}^\infty f(it)t^{k-s-1}dt.
+\]
+Multiplying by $N^{s/2}$,
 \[
 \Lambda(f,s)=N^{s/2}\int_{1/\sqrt N}^\infty f(iy)y^{s-1}dy+i^k\varepsilon_NN^{(k-s)/2}\int_{1/\sqrt N}^\infty f(iy)y^{k-s-1}dy.
 \]
-Both integrals converge for all $s$, because $f(iy)$ decays exponentially as $y\to\infty$; this gives the continuation, the bound in vertical strips, and the symmetry $s\leftrightarrow k-s$ with
-the factor $i^k\varepsilon_N$ (apply the formula to $k-s$ and use $(i^k\varepsilon_N)^2=1$ for even $k$). This is the Mellin transform of RHB's integral transforms; see
+Both integrals converge for all $s$, because $f(iy)$ decays exponentially as $y\to\infty$ (its $q$-expansion starts at $n=1$), and they define entire functions of $s$, bounded in vertical
+strips since $\abs{y^{s-1}}=y^{\operatorname{Re}s-1}$. This gives the continuation and the bound. For the symmetry, write the display as $\Lambda(f,s)=A(s)+i^k\varepsilon_NA(k-s)$ with
+$A(s)=N^{s/2}\int_{1/\sqrt N}^\infty f(iy)y^{s-1}dy$. Then $i^k\varepsilon_N\Lambda(f,k-s)=i^k\varepsilon_NA(k-s)+(i^k\varepsilon_N)^2A(s)=\Lambda(f,s)$, as $(i^k\varepsilon_N)^2=1$ for even $k$. In
+weight $2$, $i^2=-1$ gives the sign $-\varepsilon_N$. This is the Mellin transform of RHB's integral transforms; see
 \cite[Section 5.10]{DiamondShurman}, \cite[Section 4.3]{Miyake}.
 \end{proof}
 
@@ -1606,18 +1700,29 @@ the integral of $\abs f^2y^kE(z,s)$ over $\Gamma_0(N)\backslash\HH$ to the strip
 \[
 \int_{\Gamma_0(N)\backslash\HH}\abs{f}^2y^kE(z,s)\,d\mu=\int_0^\infty\sum_n\abs{a_n}^2e^{-4\pi ny}y^{s+k-2}dy=\frac{\Gamma(s+k-1)}{(4\pi)^{s+k-1}}D(f,s+k-1).
 \]
-$E(z,s)$ continues meromorphically with a simple pole at $s=1$ of residue $1/\vol(\Gamma_0(N)\backslash\HH)=3/(\pi\mu(N))$, constant in $z$. Taking residues at $s=1$ gives (i)
-\cite{Rankin39}, \cite[Section 1]{Zagier85}, \cite{Shimura76}. (ii) Write $\alpha=\alpha_p$, $\beta=\beta_p$, $\alpha\beta=p$; then $a_{p^r}=(\alpha^{r+1}-\beta^{r+1})/(\alpha-\beta)$ (\Cref{rem:hecke:chebyshev}), and summing four
+$E(z,s)$ continues meromorphically with a simple pole at $s=1$ of residue $1/\vol(\Gamma_0(N)\backslash\HH)=3/(\pi\mu(N))$, constant in $z$ (the fundamental domain of $\SL_2(\Z)$ has area
+$\pi/3$, and that of $\Gamma_0(N)$ is $\mu(N)$ times larger). Taking residues at $s=1$ on both sides, the left side gives $\frac3{\pi\mu(N)}\int\abs f^2y^k\,d\mu=\frac3{\pi\mu(N)}\langle f,f\rangle$ and the right
+side $\frac{\Gamma(k)}{(4\pi)^k}\operatorname{Res}_{s=k}D(f,s)$; solving for the residue gives (i), and with $k=2$, $\frac{3(4\pi)^2}{\pi\Gamma(2)}=48\pi$ \cite{Rankin39}, \cite[Section 1]{Zagier85}, \cite{Shimura76}. (ii) Write $\alpha=\alpha_p$, $\beta=\beta_p$, $\alpha\beta=p$; then $a_{p^r}=(\alpha^{r+1}-\beta^{r+1})/(\alpha-\beta)$ (\Cref{rem:hecke:chebyshev}), so that
+$a_{p^r}^2=\bigl(\alpha^{2(r+1)}-2p^{r+1}+\beta^{2(r+1)}\bigr)/(\alpha-\beta)^2$, using $(\alpha\beta)^{r+1}=p^{r+1}$. Summing three
 geometric series,
 \[
-\sum_ra_{p^r}^2X^r=\frac1{(\alpha-\beta)^2}\Bigl(\frac{\alpha^2}{1-\alpha^2X}-\frac{2p}{1-pX}+\frac{\beta^2}{1-\beta^2X}\Bigr)=\frac{1+pX}{(1-\alpha^2X)(1-pX)(1-\beta^2X)},
+\sum_ra_{p^r}^2X^r=\frac1{(\alpha-\beta)^2}\Bigl(\frac{\alpha^2}{1-\alpha^2X}-\frac{2p}{1-pX}+\frac{\beta^2}{1-\beta^2X}\Bigr)=\frac{1+pX}{(1-\alpha^2X)(1-pX)(1-\beta^2X)}.
 \]
-an identity of rational functions checked by clearing denominators (it also holds when $\alpha=\beta$, by continuity). At $p\,\|\,N$, $a_{p^r}^2=1$; at $p^2\mid N$, $a_{p^r}=0$ for $r\ge1$. (iii) At a good $p$,
+For the second equality, put $A=\alpha^2$, $B=\beta^2$, so $AB=p^2$, and bring the bracket to the common denominator. Its numerator is
+\[
+A(1-pX)(1-BX)-2p(1-AX)(1-BX)+B(1-AX)(1-pX).
+\]
+The constant term is $A+B-2p=(\alpha-\beta)^2$; the coefficient of $X$ is $-A(p+B)-B(p+A)+2p(A+B)=p(A+B)-2AB=p(A+B-2p)=p(\alpha-\beta)^2$; and the coefficient of $X^2$ is
+$pAB-2pAB+pAB=0$. So the numerator is $(\alpha-\beta)^2(1+pX)$. (The identity also holds when $\alpha=\beta$, by continuity in $a_p$.) At $p\,\|\,N$, $a_{p^r}^2=1$; at $p^2\mid N$, $a_{p^r}=0$ for $r\ge1$. (iii) At a good $p$,
 $L_p(\Sym f,s)^{-1}=(1-\alpha^2p^{-s})(1-p^{1-s})(1-\beta^2p^{-s})$ (Appendix B), and $1+p^{1-s}=(1-p^{2-2s})/(1-p^{1-s})$ is the factor of $\zeta(s-1)/\zeta(2s-2)$; multiply over $p\nmid N$. By (ii) the
 local factor at $p\mid N$ is $(1-p^{-s})^{-1}$ if $p\,\|\,N$, which is $L_p(\Sym f,s)$ at a multiplicative prime (Appendix B), and $1$ if $p^2\mid N$, the naive factor at an additive prime; this
 gives the formula with $L^{\nv}$. The residue of $\zeta^{(N)}(s-1)$ at $s=2$ is $\prod_{p\mid N}(1-p^{-1})$ and
-$\zeta^{(N)}(2)=\frac{\pi^2}6\prod_{p\mid N}(1-p^{-2})$, so $\operatorname{Res}_{s=2}D=\frac6{\pi^2}\prod_{p\mid N}(1+p^{-1})^{-1}L^{\nv}(\Sym f,2)=\frac{6N}{\pi^2\mu(N)}L^{\nv}(\Sym f,2)$; compare with (i). For squarefree
-$N$ there are no additive primes.
+$\zeta^{(N)}(2)=\frac{\pi^2}6\prod_{p\mid N}(1-p^{-2})$; since $(1-p^{-1})/(1-p^{-2})=(1+p^{-1})^{-1}$ and $\prod_{p\mid N}(1+p^{-1})=\mu(N)/N$,
+\[
+\operatorname{Res}_{s=2}D=\frac6{\pi^2}\prod_{p\mid N}(1+p^{-1})^{-1}L^{\nv}(\Sym f,2)=\frac{6N}{\pi^2\mu(N)}L^{\nv}(\Sym f,2)
+\]
+(the residue of $\zeta^{(N)}(s-1)$ times the value at $s=2$ of the other factors). Comparing with $\operatorname{Res}_{s=2}D=\frac{48\pi}{\mu(N)}\langle f,f\rangle$ from (i)
+gives $\langle f,f\rangle=\frac{6N}{48\pi^3}L^{\nv}(\Sym f,2)=\frac{N\,L^{\nv}(\Sym f,2)}{8\pi^3}$. For squarefree $N$ there are no additive primes.
 \end{proof}
 
 \begin{example}[numerical checks]\label{ex:hecke:rankin-numerics}
@@ -1864,7 +1969,7 @@ homomorphisms (\Cref{thm:hecke:eigen-dictionary}) is the starting point of Mazur
 \cite[Lemma 2.12]{DFG04}; Zagier \cite{Zagier85} gives the computation for elliptic curves. Stein's book \cite{Stein} explains the algorithms, and PARI/GP \cite{PARI} implements them
 (\texttt{mfinit}, \texttt{mfheckemat}, \texttt{mfpetersson}, \texttt{mftwist}, \texttt{mfcoefs}); the curve data are Cremona's \cite{Cremona97}.
 
-Two results here go beyond what the paper states. \Cref{thm:hecke:newform-splitting} proves the decomposition $\T\otimes\Q=\Q\times\T'$ that the proof of Lemma lem:crit writes down, and shows
+Three results here go beyond what the paper states. \Cref{thm:hecke:newform-splitting} proves the decomposition $\T\otimes\Q=\Q\times\T'$ that the proof of Lemma lem:crit writes down, and shows
 that the $\T$-stability of $f^\perp$ needs no adjoints of the $U_p$. \Cref{prop:hecke:congruence-module} proves the conclusions of Lemma lem:crit for every rational eigencharacter of weight $2$ whose generalised eigenspace is a line,
 which is what Step 1 of the proof of Theorem thm:quant uses for $g^S$. \Cref{prop:hecke:twist-transport}(iii) gives the converse transport along $\iota$, and with it
 \Cref{cor:hecke:rE-divides} proves $r_E\mid\eta^{\mathrm{Hecke}}(g^S)$ at every prime; with the paper's Step 1 this makes Step 1 an equality under the hypotheses of Theorem thm:quant,
