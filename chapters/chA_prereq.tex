@@ -49,6 +49,18 @@ sequences converging to $0$, with the operations performed termwise.
 built from $\Z$ and $\Q$ by (d) with the $p$-adic absolute value in place of the usual one.
 \emph{Reference:} \cite[Chapters 1 and 3, Theorem 3.11]{Rudin76}.
 
+\emph{Two Cauchy sequences.} The decimal truncations $x_1=1.4$, $x_2=1.41$, $x_3=1.414,\dots$ of
+$\sqrt2$ form a Cauchy sequence of rationals: for $m,n\ge N$ both $x_m$ and $x_n$ lie in the
+interval $[x_N,x_N+10^{-N}]$, so $\abs{x_m-x_n}\le10^{-N}$. Its limit $x$ in $\R$ satisfies
+$x^2=\lim x_n^2=2$, so the sequence has no limit in $\Q$; this is (d) in its simplest form. The
+same recipe with another absolute value gives a different completion. Let $\abs{x}_3=3^{-v_3(x)}$,
+where $v_3(x)$ is the exponent of $3$ in the rational number $x$, and let
+$s_n=1+3+\dots+3^n=(3^{n+1}-1)/2$. For $m>n$ the difference $s_m-s_n$ is divisible by $3^{n+1}$, so
+$\abs{s_m-s_n}_3\le3^{-n-1}$ and $(s_n)$ is Cauchy for $\abs{\cdot}_3$. In this case the limit is
+even rational: $s_n+\tfrac12=3^{n+1}/2$ has $\abs{s_n+\tfrac12}_3=3^{-n-1}\to0$, so
+$1+3+9+\dots=-\tfrac12$ is a true statement $3$-adically. Completing $\Q$ for $\abs{\cdot}_3$ gives
+$\Q_3$; \Cref{ch:local} does this for every prime.
+
 \begin{definition}[series]\label{def:prereq:series}
 A series $\sum_{n\ge1}a_n$ of complex numbers \emph{converges} to $s$ if its partial sums
 $\sum_{n\le N}a_n$ converge to $s$; it \emph{converges absolutely} if $\sum\abs{a_n}$ converges.
@@ -79,6 +91,20 @@ series $G_{2k}(\Lambda)=\sum'\omega^{-2k}$ are lattice sums, absolutely converge
 (g) and summed in any order by (e)); \Cref{ch:lfunctions} (Dirichlet series and Euler products).
 \emph{Reference:} \cite[Chapter 3]{Rudin76}; \cite[Chapter 8]{Apostol74}.
 
+\emph{Why the lattice sum converges exactly for $\sigma>2$.} The second half of (g) reduces to the
+first by counting lattice points. Let $\Lambda=\Z\omega_1+\Z\omega_2$ with $\omega_1,\omega_2$
+linearly independent over $\R$. For an integer $r\ge1$, the points $m\omega_1+n\omega_2$ with
+$\max(\abs m,\abs n)=r$ form the boundary of a square of lattice points, and there are
+$(2r+1)^2-(2r-1)^2=8r$ of them. The function $(x,y)\mapsto\abs{x\omega_1+y\omega_2}$ is continuous
+and nowhere zero (by linear independence) on the compact set $\max(\abs x,\abs y)=1$, so by
+\Cref{thm:prereq:compact}(b) it has a minimum $c>0$ and a maximum $C$ there; by homogeneity every
+point of the $r$-th square satisfies $cr\le\abs\omega\le Cr$. The contribution of the $r$-th square
+to $\sum'\abs\omega^{-\sigma}$ therefore lies between $8C^{-\sigma}r^{1-\sigma}$ and
+$8c^{-\sigma}r^{1-\sigma}$, and the whole sum converges if and only if $\sum_rr^{1-\sigma}$ does,
+that is, if and only if $\sigma-1>1$. The terms are positive, so by (e) the order of summation does
+not matter. In particular $G_{2k}(\Lambda)$ converges absolutely for $2k\ge4$, while the sum for
+$G_2$ does not converge absolutely.
+
 \begin{definition}[uniform convergence]\label{def:prereq:uniform}
 Let $S$ be a set and $f_n,f\colon S\to\C$. Then $f_n\to f$ \emph{uniformly on $S$} if
 $\sup_{x\in S}\abs{f_n(x)-f(x)}\to0$. A series $\sum f_n$ converges uniformly if its partial sums do.
@@ -103,6 +129,16 @@ $f'=\lim f_n'$. For holomorphic functions the much stronger \Cref{thm:prereq:wei
 Eisenstein series converge locally uniformly on the upper half plane, by (b) on each compact set);
 \Cref{ch:lfunctions}. \emph{Reference:} \cite[Chapter 7, Theorems 7.10 and 7.12]{Rudin76}.
 
+\emph{The $M$-test for a $q$-expansion.} Suppose $\abs{a_n}\le Cn^k$ for all $n\ge1$ and put
+$f(z)=\sum_{n\ge1}a_ne^{2\pi inz}$ on the upper half plane. A compact set $K$ in the upper half plane
+has $\operatorname{Im}z\ge y_0$ on $K$ for some $y_0>0$ (the continuous function $\operatorname{Im}z$
+attains a positive minimum on $K$, \Cref{thm:prereq:compact}(b)). On $K$,
+$\abs{a_ne^{2\pi inz}}=\abs{a_n}e^{-2\pi n\operatorname{Im}z}\le Cn^ke^{-2\pi ny_0}=M_n$, and
+$\sum M_n$ converges by the ratio test, since $M_{n+1}/M_n=(1+1/n)^ke^{-2\pi y_0}\to e^{-2\pi y_0}<1$.
+So by (b) the series converges absolutely and uniformly on $K$: it converges locally uniformly on the
+upper half plane, and \Cref{thm:prereq:weierstrass} then makes $f$ holomorphic. This is the argument
+used, without further comment, for every $q$-expansion in the book.
+
 \begin{definition}[power series]\label{def:prereq:power}
 A power series is $\sum_{n\ge0}c_n(z-a)^n$ with $c_n,a\in\C$. Its \emph{radius of convergence} is
 $R=1/\limsup\abs{c_n}^{1/n}\in[0,\infty]$.
@@ -126,6 +162,12 @@ in $q=e^{2\pi iz}$, $\abs{q}<1$). \emph{Warning:} the $p$-adic expansions $\sum 
 power series is useful, the theorems above do not transfer. \emph{Reference:} \cite[Chapter 3,
 Theorem 3.39, and Chapter 8]{Rudin76}.
 
+\emph{Example.} If $\abs{c_n}\le Cn^k$, then $\abs{c_n}^{1/n}\le C^{1/n}n^{k/n}\to1$, so the radius of
+convergence is at least $1$: coefficients of polynomial growth, such as those of every $q$-expansion
+in the book, always give a power series in $q$ converging on $\abs q<1$. The bound $1$ can be
+attained: $\sum_{n\ge1}nq^n$ has radius exactly $1$, and differentiating $\sum q^n=1/(1-q)$ term by
+term by (b) and multiplying by $q$ gives its sum $q/(1-q)^2$.
+
 \begin{definition}[compactness]\label{def:prereq:compact}
 A subset $K$ of $\R^n$ or $\C$ is \emph{compact} if every cover of $K$ by open sets has a finite
 subcover; equivalently (Heine-Borel) if it is closed and bounded; equivalently if every sequence
@@ -145,6 +187,15 @@ Let $K$ be compact and $f$ continuous on $K$.
 Riemann surface is constant: (b) applied to $\abs{f}$ with the maximum modulus principle);
 \Cref{ch:modforms} (fundamental domains, the compactification of $Y_0(N)$ by the cusps).
 \emph{Reference:} \cite[Theorems 2.41, 4.14, 4.16 and 4.19]{Rudin76}.
+
+\emph{How (b) is used on a Riemann surface.} Let $X$ be a compact connected Riemann surface and $f$
+holomorphic on $X$. The continuous function $\abs f$ attains its maximum at some point $P$ by (b),
+which holds for continuous real functions on any compact space. In a coordinate chart around $P$,
+$f$ is a holomorphic function of one variable whose modulus has a local maximum, so it is constant
+near $P$ by the maximum modulus principle (\Cref{thm:prereq:cauchy}(e)). The set of points of $X$
+near which $f$ is identically $f(P)$ is open by definition, nonempty, and closed by the identity
+theorem (\Cref{thm:prereq:cauchy}(d), applied in charts); since $X$ is connected it is all of $X$.
+\Cref{ch:curves} gives the details.
 
 \begin{definition}[the Riemann integral]\label{def:prereq:riemann}
 For a bounded $f\colon[a,b]\to\R$ and a partition $a=x_0<\dots<x_n=b$, the upper and lower sums are
@@ -174,6 +225,17 @@ periods of a differential); \Cref{ch:ellcurves} (the periods of an elliptic curv
 integrals of $dx/y$ over closed paths); \Cref{ch:modforms} (the Petersson inner product is a double
 integral over a fundamental domain). \emph{Reference:} \cite[Chapter 6, Theorems 6.8, 6.20 and
 6.21]{Rudin76}.
+
+\emph{The basic line integral.} Parametrise the unit circle by $\gamma(t)=e^{it}$, $0\le t\le2\pi$,
+so $\gamma'(t)=ie^{it}$. For an integer $n$, (e) gives
+\[
+\int_{\abs z=1}z^n\,dz=\int_0^{2\pi}e^{int}\,ie^{it}\,dt=i\int_0^{2\pi}e^{i(n+1)t}\,dt
+=\begin{cases}2\pi i&n=-1,\\0&n\ne-1,\end{cases}
+\]
+since $e^{i(n+1)t}$ has an antiderivative $e^{i(n+1)t}/(i(n+1))$ of period $2\pi$ when $n\ne-1$.
+This one computation is behind the coefficient formula for Laurent series and the residue theorem
+of \Cref{sec:prereq:complex}: integrating a Laurent series term by term around a circle keeps only
+the coefficient of $z^{-1}$.
 
 \begin{definition}[improper integrals]\label{def:prereq:improper}
 $\int_a^\infty f=\lim_{b\to\infty}\int_a^bf$ when the limit exists; for $f$ unbounded near $0$,
@@ -217,6 +279,22 @@ $\Lambda(E,s)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(E,s)$ and the Mellin transform of
 \Cref{rem:prereq:mellin}); the complex form is \Cref{thm:prereq:gamma}. \emph{Reference:}
 \cite[Chapter 8]{Rudin76}; \cite[Chapter 18]{RHB06}.
 
+\emph{The computations behind (a) and (b), and behind the definition.} The bound
+$e^{-t}t^{s-1}\le t^{-2}$ for large $t$ in \Cref{def:prereq:gamma} holds because
+$t^{s+1}e^{-t}\to0$: choose an integer $m>s+1$; then $e^t\ge t^m/m!$ gives
+$t^{s+1}e^{-t}\le m!\,t^{s+1-m}\to0$. For (a), integrate by parts on $[\eps,b]$:
+\[
+\int_\eps^be^{-t}t^s\,dt=\bigl[-e^{-t}t^s\bigr]_\eps^b+s\int_\eps^be^{-t}t^{s-1}\,dt,
+\]
+and the boundary terms $e^{-\eps}\eps^s$ and $e^{-b}b^s$ tend to $0$ as $\eps\to0^+$ (because $s>0$)
+and $b\to\infty$. For (b), $\Gamma(1)=\int_0^\infty e^{-t}\,dt=1$, and induction on (a) gives
+$\Gamma(n+1)=n\,\Gamma(n)=\dots=n!$. The substitution $t=u^2$, $dt=2u\,du$, turns $\Gamma(1/2)$ into
+$2\int_0^\infty e^{-u^2}\,du=\int_{-\infty}^\infty e^{-u^2}\,du$, which is $\sqrt\pi$ (the
+Gaussian integral, computed by squaring it and passing to polar coordinates).
+
+With the analytic background in place, the next section turns to linear algebra, which the book
+uses far more heavily and over fields the reader's courses did not consider.
+
 \section{Linear algebra}\label{sec:prereq:linear}
 
 This section is used from \Cref{ch:groups} on. Throughout, $k$ is a field and all vector spaces are
@@ -251,6 +329,11 @@ isomorphism.
 the points of $\PP^1(\F_q)$); \Cref{ch:reps}. \emph{Reference:} \cite[Chapters 2 and 3]{Axler15};
 \cite[Chapter 11]{DummitFoote}.
 
+\emph{Counting lines.} A line (one-dimensional subspace) of $\F_q^2$ is spanned by any of its
+nonzero vectors, and it contains $q-1$ of them by (a). Two distinct lines meet only in $0$, so the
+$q^2-1$ nonzero vectors of $\F_q^2$ fall into $(q^2-1)/(q-1)=q+1$ lines. For $q=3$ these are the four
+lines spanned by $(1,0)$, $(0,1)$, $(1,1)$, $(1,2)$.
+
 \begin{definition}[matrices of linear maps; change of basis]\label{def:prereq:matrices}
 Given bases $e=(e_1,\dots,e_n)$ of $V$ and $f=(f_1,\dots,f_m)$ of $W$, the \emph{matrix} of
 $T\colon V\to W$ is the $m\times n$ matrix $A$ whose $j$-th column holds the coordinates of $Te_j$
@@ -260,6 +343,17 @@ $f'=fQ$ another basis of $W$, the matrix of $T$ in the new bases is $Q^{-1}AP$; 
 endomorphism and a single change of basis it is $P^{-1}AP$. The \emph{trace} of a square matrix
 is the sum of its diagonal entries.
 \end{definition}
+
+The convention in \Cref{def:prereq:matrices} matters: books that record the old basis in terms of
+the new one write $PAP^{-1}$ instead, with $P$ replaced by its inverse. A check of the book's
+convention: in $V=k^2$ with the standard basis $e$, let $T$ have matrix $A=\sm1002$, and take the
+new basis $e'_1=e_1$, $e'_2=e_1+e_2$, so $P=\sm1101$. Then
+\[
+P^{-1}AP=\begin{pmatrix}1&-1\\0&1\end{pmatrix}\begin{pmatrix}1&1\\0&2\end{pmatrix}
+=\begin{pmatrix}1&-1\\0&2\end{pmatrix},
+\]
+and indeed $Te'_1=e_1=e'_1$ and $Te'_2=e_1+2e_2=-e'_1+2e'_2$, whose coordinates $(1,0)$ and
+$(-1,2)$ are the columns found.
 
 \begin{theorem}[determinants (stated; reference)]\label{thm:prereq:det}
 The determinant $\det\colon\Mat_n(k)\to k$ is the unique function of the columns that is
@@ -281,6 +375,12 @@ over a larger field is the same element of $k$.
 which are computed there); \Cref{ch:ellcurves} (the determinant of the Galois action on $E[m]$ is
 the cyclotomic character, via the Weil pairing). \emph{Reference:} \cite[Chapter 10]{Axler15};
 \cite[Chapter XIII]{Lang}.
+
+\emph{Invertibility over a ring.} The ring version of (b) is the one the book uses over $\Z$ and
+$\Zl$. The matrix $\sm2001$ has determinant $2$; its inverse $\sm{1/2}001$ has entries in $\Q$ and
+in $\Zl$ for every odd $\ell$, where $2$ is a unit, but not in $\Z$ or $\Z_2$. So the same matrix is
+in $\GL_2(\Z_3)$ and not in $\GL_2(\Z)$ or $\GL_2(\Z_2)$. By contrast $\sm2111$ has determinant $1$,
+and its inverse $\sm1{-1}{-1}2$ has integer entries.
 
 \begin{definition}[eigenvalues; characteristic and minimal polynomials]\label{def:prereq:eigen}
 Let $T\in\End(V)$, $n=\dim V$. A scalar $\lambda\in k$ is an \emph{eigenvalue} of $T$ if
@@ -311,6 +411,15 @@ determinant $-1$); \Cref{ch:galrep} (the characteristic polynomial $X^2-a_pX+p$ 
 $\Tl E$). \emph{Reference:} \cite[Chapters 5 and 8]{Axler15}; \cite[Chapter XIV]{Lang};
 \cite[Section 12.2]{DummitFoote}.
 
+\emph{One matrix over several fields.} The paper's matrix $J=\sm01{-1}0$ has trace $0$ and
+determinant $1$, so $\chi_J=X^2+1$ by (b), and $J^2=-1$ by Cayley-Hamilton. Whether $J$ has
+eigenvalues depends on the field. Over $\R$ it has none; over $\C$ it has $\pm i$. Over $\F_p$ with
+$p$ odd it has eigenvalues exactly when $-1$ is a square modulo $p$: over $\F_5$ they are $2$ and $3$
+($2^2=4=-1$), while over $\F_3$ the squares are $0$ and $1$, so there are none, and one must pass to
+$\F_9=\F_3(i)$ to find $\pm i$. Over $\F_2$, $\chi_J=X^2+1=(X+1)^2$ has the double root $1$, but
+$J=\sm0110\ne1$, so by \Cref{thm:prereq:jordan}(c) $J$ is conjugate to $\sm1101$ and is not
+diagonalisable. Remark \ref{rem:prereq:changes} returns to the case of $\F_3$.
+
 \begin{theorem}[diagonalisation and generalised eigenspaces (stated; reference)]\label{thm:prereq:diag}
 Let $T\in\End(V)$, $n=\dim V$.
 \begin{enumerate}[label=(\alph*)]
@@ -339,6 +448,14 @@ the $U_p$ need not be, and the generalised eigenspaces of the Hecke algebra are 
 paper's Theorem thm:twist); \Cref{ch:modules} (generalised eigenspaces over a discrete valuation
 ring). \emph{Reference:} \cite[Chapters 5 and 8]{Axler15}; \cite[Chapter XIV]{Lang}.
 
+\emph{The hypothesis in (d) cannot be dropped.} Over $\F_\ell$ the matrix $u=\sm1101$ satisfies
+$u^m=\sm1m01$, so it has order exactly $\ell$, the characteristic. Its minimal polynomial is
+$(X-1)^2$ (as $u\ne1$ and $(u-1)^2=0$), which is not a product of distinct linear factors, so $u$ is
+not diagonalisable over any field of characteristic $\ell$, although it has finite order. The
+argument of (d) breaks exactly where expected: $X^\ell-1=(X-1)^\ell$ in characteristic $\ell$ has a
+repeated root. Over $\Q$ the same matrix has infinite order. This $u$ is the shape of the inertia
+action at a prime of type $\kod{IV}$ on $E[3]$ (\Cref{ch:galrep}).
+
 \begin{theorem}[Jordan normal form (stated; reference)]\label{thm:prereq:jordan}
 Suppose $k$ contains all the roots of $\chi_T$. Then $V$ has a basis in which the matrix of $T$ is
 block diagonal with \emph{Jordan blocks} $J_m(\lambda)$: the $m\times m$ matrix with $\lambda$ on
@@ -359,6 +476,12 @@ subgroup); \Cref{ch:reps}; \Cref{ch:galrep} (the image of inertia at a prime of 
 a nontrivial unipotent of order $3$ on $E[3]$, with a line of fixed points: the paper's Lemma
 lem:IV and Remark rem:types); \Cref{ch:hecke} ($U_p$ with the repeated eigenvalue $0$ is a Jordan
 block, not a scalar). \emph{Reference:} \cite[Chapter 8]{Axler15}; \cite[Section 12.3]{DummitFoote}.
+
+\emph{The fixed vectors in (a), computed.} For $T=\sm1101$ and $v=(v_1,v_2)$ one has
+$(T-1)v=(v_2,0)$, so $\ker(T-1)$ is the line spanned by $e_1$. The matrix $-T$ fixes $v$ if and only
+if $(T+1)v=0$; but $T+1=\sm2102$ has determinant $4$, which is nonzero when the characteristic is
+odd, so then $-T$ fixes only $0$. In characteristic $2$, $-T=T$ and the line of fixed points
+returns.
 
 \begin{definition}[bilinear forms; Gram matrices]\label{def:prereq:bilinear}
 A \emph{bilinear form} on $V\times W$ is a map $B\colon V\times W\to k$ linear in each variable.
@@ -394,6 +517,18 @@ of a saturated sublattice and the order of the cokernel of $L\to\Hom(L,\mathcal 
 \Cref{ch:congruence} (the pairing $\hat\delta_!$ restricted to the rank-two lattice $M_{f,\lambda}$
 has Gram determinant $(\eta^\Sigma_{f,\lambda})^2$ up to a unit, by (b)). \emph{Reference:}
 \cite[Chapter XV]{Lang}; \cite{Halmos74}.
+
+\emph{Where (a) and (b) come from.} Write $e'_i=\sum_kP_{ki}e_k$ and $f'_j=\sum_lQ_{lj}f_l$. Bilinearity
+gives $B(e'_i,f'_j)=\sum_{k,l}P_{ki}B(e_k,f_l)Q_{lj}=(P^{\mathsf T}GQ)_{ij}$, which is (a), and
+$\det G'=\det P\det G\det Q$ by \Cref{thm:prereq:det}(a). For (b), an alternating form has
+$B(e_1,e_1)=B(e_2,e_2)=0$ and $B(e_2,e_1)=-B(e_1,e_2)=-a$, so for $v=v_1e_1+v_2e_2$ and
+$w=w_1e_1+w_2e_2$,
+\[
+B(v,w)=v_1w_2\,a+v_2w_1\,(-a)=a\,(v_1w_2-v_2w_1)=a\det(v\mid w).
+\]
+For example, the alternating form on $\Z_3^2$ with $a=3$ has Gram determinant $9$, of $3$-adic
+valuation $2$, and no change of basis over $\Z_3$ can change that valuation, because $\det P$ is then
+a unit of $\Z_3$.
 
 \begin{paperlink}\label{pl:prereq:gram}
 The paper's Lemma lem:ddt417 is stated for a free $\mathcal O$-module $L$ with a perfect bilinear

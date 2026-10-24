@@ -212,6 +212,17 @@ or $\ell\ge5$. For a bound $b$: a \emph{violation} is $v<b$; an \emph{equality} 
 violation and of equality, and mean excesses, are always taken among the curves with $b>0$, as in the paper.
 \end{convention}
 
+The five bounds differ in which local information they use, and one curve shows them side by side. Take \curve{539c1} at $\ell=3$ (its
+session is \Cref{ex:computation:539c1}). Its bad primes are $7$, of type $\kod{I}_3^*$, and $11$, of type $\kod{I}_2$. At $7$ the Euler term is
+$e_3(E,7)=v_3(48/49)=1$ and, since $v_7(j)=-3$, the Tamagawa term is $t_3(E,7)=v_3(3)=1$; at $11$ the Euler term is $0$ (multiplicative reduction) and
+$t_3(E,11)=v_3(2)=0$. As $3\nmid N$, there is no weight $w_3$, and the mod $3$ image is not $\Ns$ (\texttt{ns3(E)} $=0$; the only \texttt{galrep} label is
+\texttt{2B}, so $E[3]$ is irreducible and $h_3(E)=0$). Hence $B^{\mathrm{nc}}_3=B^{\mathrm{rule}}_3=B^{\mathrm{thm}}_3=2$, and $B^{\mathrm{III}}_3=2$ since no prime
+has type $\kod{III}$ or $\kod{III}^*$. The component groups have orders $\#\Phig_7=4$ (every type $\kod{I}_n^*$) and $\#\Phig_{11}=2$, so $B^{\mathrm{main}}_3=0$; the
+twist-symmetrised weights are $w_3(E,7)=v_3(3)=1$ and $w_3(E,11)=v_3(2)=0$, so $B^{\mathrm{tw}}_3=1$. With $v=v_3(288)=2$ the curve satisfies all five
+bounds, with equality in the first four and excesses $2$ and $1$ over $B^{\mathrm{main}}_3$ and $B^{\mathrm{tw}}_3$. The order
+$B^{\mathrm{main}}_\ell\le B^{\mathrm{tw}}_\ell\le B^{\mathrm{nc}}_\ell$ seen here holds for every curve (\Cref{exer:computation:allbounds}); what (eq:rule) adds
+over (eq:main) on this curve is the Euler term at $7$ and the full Tamagawa term $v_3(n)$ in place of $v_3(\#\Phig_7)=0$.
+
 \begin{convention}[populations and ranges]\label{conv:computation:populations}
 \begin{enumerate}[label=(\alph*)]
 \item A curve has \emph{CM} if its $j$-invariant is one of the thirteen rational CM $j$-invariants $0$, $1728$, $-3375$, $8000$, $-32768$, $54000$,
@@ -408,7 +419,9 @@ test on $k$ & types selected & use\\
 \texttt{S = lfunsympow(E, 2)} is PARI's $L$-function object for $L(\Sym f,s)$, in the normalisation of \Cref{ch:lfunctions}, with the true local factors
 at every prime. \texttt{lfunparams(S)} returns the conductor of $L(\Sym f,s)$, the number $k$ of the functional equation $s\leftrightarrow k-s$, and
 the gamma shifts. \texttt{lfuneuler(S, q)} is the Euler factor at $q$ as a rational function of $X=q^{-s}$ (printed in the variable
-\texttt{x}): it is $1/P_q(X)$. Hence $P_q(q^{-2})=L_q(A_f,1)^{-1}$ is the exact rational \texttt{subst(1/lfuneuler(S, q), x, 1/q\^{}2)}, and
+\texttt{x}): it is $1/P_q(X)$. The point $X=q^{-2}$ is forced by the normalisation: in the book's conventions $L(\Sym f,s)=L(\ad f,s-1)$
+(\Cref{ch:lfunctions}), so the adjoint factor at $s=1$ is the symmetric-square factor at $s=2$, that is, at $X=q^{-2}$; a reader who substitutes
+$X=q^{-1}$ gets a different, meaningless number. Hence $P_q(q^{-2})=L_q(A_f,1)^{-1}$ is the exact rational \texttt{subst(1/lfuneuler(S, q), x, 1/q\^{}2)}, and
 $e_\ell(E,q)$ is the $\ell$-adic valuation of its quotient by $1-a_q^2q^{-2}$ (Definition def:terms). For \curve{121a1} (PARI/GP 2.17.2):
 \begin{lstlisting}[language=GP]
 ? S = lfunsympow(ellinit([1,1,1,-30,-76]), 2);
@@ -424,7 +437,9 @@ $e_\ell(E,q)$ is the $\ell$-adic valuation of its quotient by $1-a_q^2q^{-2}$ (D
 The conductor of $L(\Sym f,s)$ is $121$, the functional equation relates $s$ and $3-s$, and the gamma factor has shifts $0,0,1$. At the additive
 prime $11$ (type $\kod{II}$, $11\equiv2\pmod3$) the factor is $P_{11}(X)=1+11X$, the row $\kod{II}$ of the paper's table with $\chi_{-3}(11)=-1$, and
 $P_{11}(11^{-2})=12/11$, so $e_3(E,11)=1$. At the good prime $2$, with $a_2=-1$, $P_2(X)=1+X-2X^2-8X^3=(1-2X)(1+3X+4X^2)$, the factor
-$(1-\alpha^2X)(1-2X)(1-\beta^2X)$ with $\alpha+\beta=-1$, $\alpha\beta=2$. The bad factors are computed when \texttt{S} is created; creating
+$(1-\alpha^2X)(1-2X)(1-\beta^2X)$ with $\alpha+\beta=-1$, $\alpha\beta=2$: indeed $\alpha^2+\beta^2=(\alpha+\beta)^2-2\alpha\beta=1-4=-3$ and $\alpha^2\beta^2=4$, so
+$(1-\alpha^2X)(1-\beta^2X)=1+3X+4X^2$, and the middle factor is $1-\alpha\beta X=1-2X$. This is a useful check on the variable: the good factors are
+known in closed form, so a wrong reading of \texttt{x} shows up at once. The bad factors are computed when \texttt{S} is created; creating
 \texttt{S} and reading all bad factors took about $0.08$ milliseconds per curve on the first $3{,}000$ optimal curves of the tables. The
 general constructor \texttt{lfuncreate} is not needed. \texttt{lfun(S, 2)} is the value $L(\Sym f,2)$ that \texttt{ellmoddegree} uses.
 \end{remark}
@@ -481,7 +496,27 @@ For \curve{11a1} at $11$: $n=5$, $q_E=10\cdot11^5+2\cdot11^6+\cdots$, $\bar u=10
 $k=1$ at $\ell=5$. For \curve{77c1} $=[1,1,0,4,11]$ at $7$ (type $\kod{I}_3$, $a_7=-1$, nonsplit): $n=3$, $\bar u=5$, not a cube in $\F_7^\times$ (the cubes
 are $\pm1$), $k=0$. Its twist \curve{539c1} by $\chi_{-7}$ (type $\kod{I}_3^*$ at $7$) has the same $j$, hence the same Tate parameter: PARI returns
 the same series. For \curve{791a1} $=[1,0,1,-31,117]$ at $7$, $\bar u=6\equiv-1$ is a cube; for \curve{1577a1} $=[0,-1,1,30,-335]$ at $19$, $\bar u=8=2^3$ is a cube
-but not a ninth power, so $k=1<2=v_3(18)$. These are the examples of \Cref{ch:galcoh,ch:blochkato}. Three warnings. First, \texttt{elltatepairing} is the
+but not a ninth power, so $k=1<2=v_3(18)$. These are the examples of \Cref{ch:galcoh,ch:blochkato}.
+
+Why the test $\bar u^{(q-1)/\ell^k}=1$ decides whether $\bar u$ is an $\ell^k$-th power: $\F_q^\times$ is cyclic of order $m=q-1$; let $g$ generate it and write
+$\bar u=g^a$. If $\ell^k\mid m$, then $\bar u=(g^b)^{\ell^k}$ is solvable exactly when $a\equiv b\ell^k\pmod m$ is, that is, when $\ell^k\mid a$; and
+$\bar u^{m/\ell^k}=g^{am/\ell^k}=1$ exactly when $m\mid am/\ell^k$, that is, again when $\ell^k\mid a$. So the $\ell^k$-th powers are the $m/\ell^k$ roots of
+$u^{m/\ell^k}=1$: in $\F_{11}^\times$ the fifth powers are the roots of $u^2=1$, namely $\pm1$; in $\F_7^\times$ the cubes are $\pm1$; in $\F_{19}^\times$ the cubes are
+the six roots of $u^6=1$ and the ninth powers are $\pm1$. The tests behind the four values of $\bar u$ above (PARI/GP 2.17.2):
+\begin{lstlisting}[language=GP]
+? Mod(10,11)^2
+Mod(1, 11)
+? Mod(5,7)^2
+Mod(4, 7)
+? Mod(6,7)^2
+Mod(1, 7)
+? Mod(8,19)^6
+Mod(1, 19)
+? Mod(8,19)^2
+Mod(7, 19)
+\end{lstlisting}
+So $10$ is a fifth power modulo $11$, $5$ is not a cube modulo $7$ while $6$ is, and $8$ is a cube modulo $19$ but not a ninth power. The loop
+\texttt{while} in \texttt{tatedata} runs exactly these tests for $k=1,2,\dots$ until one fails or $k$ reaches $v_\ell(q-1)$. Three warnings. First, \texttt{elltatepairing} is the
 Tate pairing on torsion points and has nothing to do with the Tate parameter. Second, \texttt{ellinit(E, q)} with an integer prime $q$
 reduces $E$ modulo $q$: at the bad prime $7$ of \curve{77c1} it returns \texttt{[]}, and at a good prime the curve over $\F_q$, never the curve over
 $\Q_q$, which needs the precision \texttt{O(q\^{}k)}. Third, at $q=2$ PARI 2.17.2 returns a wrong parameter when $v_2(j)=-1$
@@ -815,11 +850,14 @@ handled by \texttt{valuation(0, q)} $=$ \texttt{+oo}. Lines 9 and 10 are the def
 for potentially good reduction at $3$, and the code gives $0$ to the potentially multiplicative types, which are not potentially good.
 
 (ii) PARI factors an integer polynomial into irreducible primitive factors and drops the content (\Cref{warn:computation:pitfalls}(f)), so the
-leading coefficient $3$ of $\psi_3$ produces no extra factor. Since $\psi_3$ has distinct roots, its factorisation has no repeated factor. If
+leading coefficient $3$ of $\psi_3$ produces no extra factor. The eight points of order $3$ fall into four pairs $\{P,-P\}$; the two points of a pair
+have the same $x$-coordinate, and points of different pairs have different ones, because a point of a Weierstrass curve is determined up to sign
+by its $x$-coordinate. So the four roots $x(P)$ of the quartic $\psi_3$ are distinct, and its factorisation has no repeated factor. If
 there are exactly two factors and the first has degree $2$, the other has degree $4-2=2$; conversely, a factorisation $2+2$ has exactly two
 factors and both have degree $2$, whatever order PARI lists them in. So \texttt{ns3(E)} $=1$ if and only if the pattern is $2+2$. If $E[3]$ is
-irreducible, $\psi_3$ has no rational root (a rational root gives a Galois-stable subgroup of order $3$, the $x$-coordinate determining the
-point up to sign), so the possible patterns are $4$ and $2+2$, and the pattern is $2+2$ exactly when the image is $N_s(\F_3)$ (Proposition prop:ns;
+irreducible, $\psi_3$ has no rational root. Indeed, if $x_0\in\Q$ is a root and $P$ a point of order $3$ with $x(P)=x_0$, then for every
+$\sigma\in G_\Q$ the point $\sigma(P)$ has order $3$ and $x$-coordinate $\sigma(x_0)=x_0$, so $\sigma(P)=\pm P$; the subgroup $\{0,P,-P\}$ of order $3$ is
+then Galois-stable and $E[3]$ is reducible. So the possible patterns are $4$ and $2+2$, and the pattern is $2+2$ exactly when the image is $N_s(\F_3)$ (Proposition prop:ns;
 \Cref{ch:galrep}). For $E[3]$ irreducible, $h_3(E)\le1$, with equality exactly when $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$, which happens exactly for image
 $N_s(\F_3)$, with or without CM (\Cref{ch:galrep}, where the strengthened Lemma lem:h0 and Proposition prop:ns are proved).
 
@@ -1130,7 +1168,8 @@ the weakest evidence: it is the shadow of the inequality on a coarse partition. 
 
 \begin{remark}[pooling]\label{rem:computation:simpson}
 Rates pooled over ranges or over types can mislead. The pooled equality rate at $\ell=3$ below $10{,}000$, $71.0\%$, is the average of the rates of the
-two small ranges, $75.1\%$ and $68.0\%$, weighted by their numbers of positive bounds, $8{,}510$ and $11{,}807$. A comparison of the paper's $57.5\%$ on
+two small ranges, $75.1\%$ and $68.0\%$, weighted by their numbers of positive bounds, $8{,}510$ and $11{,}807$: the equalities are $6{,}392$ and $8{,}028$, and
+$(6{,}392+8{,}028)/(8{,}510+11{,}807)=14{,}420/20{,}317=71.0\%$. The pooled rate is pulled towards the range with more bounded curves. A comparison of the paper's $57.5\%$ on
 $N\le300000$ with the book's $71.0\%$ says nothing about a difference in the arithmetic of the curves; it says that the ranges differ, and the
 trend is visible inside the book's range already. When the composition of the population changes with the range (more bad primes, larger
 degrees), a pooled rate can even move in the opposite direction to every one of its parts (Simpson's paradox). The fair comparison is like with
@@ -1265,10 +1304,14 @@ draw from the distribution of the recounts.
 
 \begin{proof}
 (i) $X=\sum_{b(E)>0}1_{\{v(E)<b(E)\}}$, and $E[1_{\{v(E)<b(E)\}}]=P(v(E)<b(E))=p_E$, since $b(E)$ is a fixed number and $v(E)$ has distribution $F$; linearity of expectation
-(\Cref{ch:prereq}) needs no independence. (ii) For independent indicators the variance of the sum is the sum of the variances $p_E(1-p_E)$, and this is at
-most $\sum p_E$. The event $X=0$ is the intersection of the independent events $v(E)\ge b(E)$, of probabilities $1-p_E\le e^{-p_E}$; multiply. Under pairwise
-independence the variance formula still holds (the covariances vanish), and $X=0$ implies $\abs{X-E[X]}\ge E[X]$, so Chebyshev's inequality gives
-$P(X=0)\le\operatorname{Var}X/E[X]^2\le E[X]/E[X]^2$. (iii) Every $v(E)$ has distribution $F$ whatever $b(E)$ is. If the values are exchangeable, the vector of
+(\Cref{ch:prereq}) needs no independence. (ii) Write $X=\sum_EI_E$ with $I_E=1_{\{v(E)<b(E)\}}$, the sum over the curves with $b(E)>0$. An indicator satisfies
+$I_E^2=I_E$, so $\operatorname{Var}I_E=E[I_E]-E[I_E]^2=p_E(1-p_E)$. In general $\operatorname{Var}X=\sum_E\operatorname{Var}I_E+\sum_{E\ne E'}\operatorname{Cov}(I_E,I_{E'})$; for
+independent (indeed for pairwise independent) indicators every covariance vanishes, so $\operatorname{Var}X=\sum_Ep_E(1-p_E)$, and this is at most
+$\sum_Ep_E=E[X]$ because $1-p_E\le1$. The event $X=0$ is the intersection of the events $v(E)\ge b(E)$, of probabilities $1-p_E$; under full independence its
+probability is the product $\prod_E(1-p_E)$. Since the exponential function is convex, its graph lies above its tangent line at $0$, so $1-p\le e^{-p}$
+for every real $p$; hence $\prod_E(1-p_E)\le\prod_Ee^{-p_E}=e^{-E[X]}$. Under pairwise independence only, the product formula is not available, but the
+variance formula is. If $X=0$ then $\abs{X-E[X]}=E[X]$, so Chebyshev's inequality $P(\abs{X-E[X]}\ge t)\le\operatorname{Var}X/t^2$ with $t=E[X]>0$ gives
+$P(X=0)\le\operatorname{Var}X/E[X]^2\le E[X]/E[X]^2=1/E[X]$. (iii) Every $v(E)$ has distribution $F$ whatever $b(E)$ is. If the values are exchangeable, the vector of
 values is equal in distribution to any permutation of it, and the recount after a random permutation has the same distribution as $X$.
 \end{proof}
 
@@ -1290,7 +1333,16 @@ across curves is an idealisation). That is why the paper, and \Cref{ch:prereq}, 
 In the base population at $\ell=3$ below conductor $10{,}000$ ($33{,}851$ curves, bound $B^{\mathrm{rule}}_3$): $13{,}534$ curves have bound $0$, with $v=0,1,2,3,4,5,6$ for
 $8{,}084$ ($59.7\%$), $4{,}079$, $1{,}081$, $251$, $33$, $5$, $1$ of them; $20{,}317$ have a positive bound ($1$: $13{,}553$; $2$: $5{,}534$; $3$: $1{,}109$; $4$: $112$; $5$: $9$).
 The plug-in expectation is $\hat E=14{,}275$ violations ($70.3\%$ of the bounded curves), with standard deviation $61.5$ under independence; observed:
-$0$. By range, with $\hat F$ taken in each range: $\hat E=6{,}091$ on $N<5000$ ($\hat F(v=0)=0.630$) and $8{,}119$ on $5000\le N<10000$ ($\hat F(v=0)=0.566$). At
+$0$. In detail, the empirical law of $v$ on the $13{,}534$ bound-$0$ curves gives
+\[
+\hat F(v<1)=\tfrac{8084}{13534}\approx0.597,\quad \hat F(v<2)=\tfrac{12163}{13534}\approx0.899,\quad \hat F(v<3)=\tfrac{13244}{13534}\approx0.979,\quad
+\hat F(v<4)\approx0.997,\quad \hat F(v<5)\approx0.9996,
+\]
+and \Cref{prop:computation:null-model}(i) weights these by the numbers of curves with bound $1,\dots,5$: the contributions are about $8{,}095.3$,
+$4{,}973.4$, $1{,}085.2$, $111.7$ and $9.0$, of total $14{,}274.7$. More than half of the expectation comes from the curves of bound $1$, which a bound unrelated to
+the degree would get wrong whenever $v=0$. The standard deviation is $\bigl(\sum_Ep_E(1-p_E)\bigr)^{1/2}$ with $p_E=\hat F(v<b(E))$, by
+\Cref{prop:computation:null-model}(ii); it is small because most $p_E$ are close to $0.6$ or to $1$ and the count is large, and the observed $0$ lies about
+$14{,}275/61.5\approx232$ standard deviations below the expectation. By range, with $\hat F$ taken in each range: $\hat E=6{,}091$ on $N<5000$ ($\hat F(v=0)=0.630$) and $8{,}119$ on $5000\le N<10000$ ($\hat F(v=0)=0.566$). At
 $\ell=5,7,11,13$ (union of the ranges) $\hat E=5{,}901$, $3{,}476$, $1{,}187$, $698$; observed $0$ each time. Two other reference populations, at $\ell=3$:
 \begin{enumerate}[label=(\alph*)]
 \item \emph{Stratified.} Split the curves into $16$ strata by conductor (bins of width $2500$) and by the number of prime factors of $N$, capped at $4$, and
@@ -1326,7 +1378,10 @@ The equality rates and the mean excess are descriptive statistics of the populat
 
 \begin{example}[sharpness against chance]\label{ex:computation:sharpness}
 Under the null of \Cref{prop:computation:null-model} the expected number of equalities among the $20{,}317$ bounded curves at $\ell=3$ below $10{,}000$ is
-$\sum\hat F(v=b(E))\approx4{,}548$; observed: $14{,}420$ ($71.0\%$). Over the union of the small ranges, the equality rates of (eq:rule) at $\ell=3,5,7,11,13$ are
+$\sum\hat F(v=b(E))\approx4{,}548$; observed: $14{,}420$ ($71.0\%$). With the law of $v$ on the bound-$0$ curves of
+\Cref{ex:computation:calibration-small}, the expected equalities are $13{,}553\cdot\frac{4079}{13534}+5{,}534\cdot\frac{1081}{13534}+1{,}109\cdot\frac{251}{13534}+112\cdot\frac{33}{13534}
++9\cdot\frac{5}{13534}\approx4{,}084.7+442.0+20.6+0.3+0.0=4{,}547.6$: under the null, a curve of bound $1$ attains its bound with probability $0.30$ and
+a curve of bound $2$ with probability $0.08$, while the data attain the bound more than three times as often overall. Over the union of the small ranges, the equality rates of (eq:rule) at $\ell=3,5,7,11,13$ are
 $71.0\%$, $84.5\%$, $90.7\%$, $96.5\%$, $96.0\%$, and the mean excesses $0.37$, $0.17$, $0.10$, $0.04$, $0.04$. The paper (working set): ``$v_\ell(\degphi)$ equals the
 right-hand side of (eq:rule) in $57.5\%$ of the cases at $\ell=3$, $75.6\%$ at $\ell=5$, $84.1\%$ at $\ell=7$, $91.6\%$ at $\ell=11$ and $92.4\%$ at $\ell=13$, and the
 mean excess at $\ell=3$ is $0.63$.'' The ordering by $\ell$ is the same; the levels differ with the range (\Cref{rem:computation:simpson}).

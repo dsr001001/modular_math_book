@@ -233,6 +233,15 @@ where $L^{\nv}_q(A_f,s)=L_q(A_f,s)$ if $\delta_q>0$ and $L^{\nv}_q(A_f,s)=1$ if 
 
 \noindent\emph{Where proved.} $L_q$ and $P_q$: \Cref{ch:lfunctions}; $v_q(j)$ and Kodaira types: \Cref{ch:reduction}; the Tate parameter: \Cref{ch:reduction}.
 
+\emph{Why these two terms.} The paper compares two objects. The modular degree is computed by the Petersson norm of $f$, and the Petersson norm sees the
+\emph{naive} adjoint $L$-value, in which the Euler factor at an additive prime is replaced by $1$ (Remark rem:degree, \Cref{prop:paper:degree}). The Selmer side of
+the theorem of Diamond, Flach and Guo sees the \emph{true} $L$-value. The term $e_\ell(E,q)$ is the $\ell$-part, at one prime, of the ratio between the two: it records what
+is lost at $q$ when the naive value replaces the true one. The term $t_\ell(E,q)$ has a different origin: when $v_q(j)<0$ the curve is, up to a twist, a Tate curve with
+parameter of valuation $n=-v_q(j)$, and $\ell^{t_\ell(E,q)}$ is the $\ell$-part of $n$, the $\ell$-part of the order of the component group of that Tate curve; it enters through
+the Tamagawa factor (Lemma lem:tamfactor below). A small example, with the values of Section~\ref{sec:paper:verifications}: \curve{726a1} has type $\kod{I}_6$ at $2$, $\kod{I}_3$
+at $3$ and $\kod{III}$ at $11$, with $P_{11}(X)=1+11X$. At $\ell=3$: $e_3(E,2)=0$ (multiplicative), $t_3(E,2)=v_3(6)=1$; $t_3(E,3)=v_3(3)=1$, while $e_3(E,3)$ is not defined
+($q=\ell$); and $e_3(E,11)=v_3(1+11\cdot11^{-2})=v_3(12/11)=1$, $t_3(E,11)=0$ ($v_{11}(j)\ge0$).
+
 \emph{Expansion.} (i) The second expression equals the first: $L^{\nv}_q(A_f,1)^{-1}$ is $1-a_q^2q^{-2}$ in every case, since $a_q=\pm1$ at a multiplicative prime, where
 the true factor is $1-q^{-2}$, and $a_q=0$ at an additive prime, where the naive factor is $1$; and $L_q(A_f,1)^{-1}=P_q(q^{-2})$ because $L_q(A_f,s)=L_q(\Sym f,s+1)$.
 (ii) $e_\ell(E,q)=0$ at a multiplicative prime (naive equals true), and $e_\ell(E,q)=v_\ell(P_q(q^{-2}))$ at an additive prime. (iii) $e_\ell(E,q)$ is a finite
@@ -267,6 +276,12 @@ The table is the content of Lemma lem:euler (\Cref{lem:paper:euler}). The senten
 odd $q\ne\ell$, the row $\mathrm{IV}$, $\mathrm{IV}^*$ at every $q\ne3,\ell$''. This is right but understates the first row, which Lemma lem:euler itself proves at every
 $q\ne\ell$, $q=2$ included (erratum~\ref{err:paper:rows}). The rows $\kod{II}$, $\kod{III}$ need $q\ge5$, where inertia acts tamely.
 
+The last column follows from the middle one and \Cref{def:paper:terms} by evaluating at $s=1$ and comparing with the naive factor. For $\kod{I}_n$ the naive factor is the
+true one, so $e_\ell=0$. In the other rows the reduction is additive, the naive factor is $1$, and $e_\ell$ is the valuation of the true factor at $s=1$: $v_\ell(1-q^{-2})=v_\ell(q^2-1)$
+for $\kod{I}_n^*$ ($q$ is an $\ell$-adic unit), $v_\ell(1-\chi q^{-1})=v_\ell(q-\chi)$ with $\chi=\chi_{-3}(q)$ or $\chi_{-4}(q)$ for the next two rows, and the $\kod{I}_0^*$ value is computed in the proof of
+Lemma lem:euler. One consequence is used repeatedly: $\chi_{-3}(q)$ is the Legendre symbol $(\frac q3)$, so $\chi_{-3}(q)\equiv q\pmod3$ and $3\mid q-\chi_{-3}(q)$; every prime $q\ge5$ of type $\kod{II}$,
+$\kod{II}^*$, $\kod{IV}$ or $\kod{IV}^*$ contributes at least $1$ at $\ell=3$. Likewise $\chi_{-4}(q)\equiv q\pmod4$, so $q-\chi_{-4}(q)$ is divisible by $4$, which matters only at $\ell=2$.
+
 \section[Paper 1.2, 1.3: theorem and conjecture]{Sections 1.2 and 1.3 of the paper: the theorem and the conjecture}\label{sec:paper:main-statements}
 
 This section reads the statement of the main theorem, the definition of the Tamagawa factor that enters it, and the conjecture that extends its
@@ -280,6 +295,14 @@ conjugation; it is an ideal $\ell^m\Zl$ and $v_\ell(\Tam_p(M))=m$. $H^1_f(\Q,W)$
 \noindent\emph{Where proved.} The definition and the identification with $c_p(E)$ for $M=T$: \Cref{ch:blochkato}; the conjugation action: \Cref{ch:cohomology}; the
 Bloch-Kato conditions: \Cref{ch:blochkato,ch:galcoh}. The first version printed $\Fitt_{\Zl}(H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}$, which reads as the invariants of an ideal;
 the revision moves the parenthesis, as \cite[I.4.2.2]{FPR94} means. \emph{Verdict:} correct.
+
+\emph{Why this definition.} At a prime $p\ne\ell$ the Bloch-Kato local condition on $M\otimes\Ql$ is the unramified one. For the lattice $M$ there are two candidate conditions:
+classes that are unramified integrally, and classes whose image in $H^1(\Q_p,M\otimes\Ql)$ is unramified. Their difference is measured by the classes that become trivial on $I_p$
+after inverting $\ell$, that is, by the torsion of $H^1(I_p,M)$; and the restriction map $H^1(\Q_p,M)\to H^1(I_p,M)^{G_{\Q_p}/I_p}$ is onto (inflation-restriction, $G_{\Q_p}/I_p\simeq\widehat\Z$
+having cohomological dimension one), so the part of the torsion fixed by Frobenius is exactly what classes over $\Q_p$ can produce. The ideal $\Tam_p(M)$ is the size
+of that discrepancy. Two cases fix the intuition. If $M$ is unramified at $p$, then $H^1(I_p,M)=\Hom(I_p,M)$ is torsion-free and $\Tam_p(M)=\Zl$. If $M=T$ and $E$ has split
+multiplicative reduction of type $\kod{I}_n$ at $p$, then $\Tam_p(T)=\ell^{v_\ell(n)}\Zl$, the $\ell$-part of the Tamagawa number $c_p(E)=n$ (step (7) of the proof of
+Lemma lem:tamfactor below); this is why the ideal carries the name.
 
 \begin{theorem}[the paper's Theorem thm:main]\label{thm:paper:main}
 Let $E$ be $X_0(N)$-optimal and $\ell$ an odd prime, $\ell\nmid2N$, such that $\bar\rho_{E,\ell}$ is absolutely irreducible on $\Gal(\Qbar/\Q(\sqrt{\ell^*}))$. Then
@@ -297,6 +320,14 @@ theorems of Diamond, Flach and Guo (stated with references) and the identificati
 maximal ideal, which the paper takes from a sketch and the book also only sketches (\Cref{def:paper:dfg-objects}, erratum~\ref{err:paper:integral-structure}). The first
 version stated (eq:identity) as an inequality, with equality ``when $H^1(X_0(N),\Zl)$, localised \dots, is free over the localised Hecke algebra''; the
 equality without that hypothesis is due to Proposition prop:pullback (\Cref{prop:paper:pullback}).
+
+\emph{Reading the identity.} All three terms on the right of (eq:identity) are nonnegative integers: a length, the valuation of an ideal of $\Zl$, and the integers of
+\Cref{def:paper:terms}. The global term $\len H^1_f$ is not computable from local data; the other two are, by the lemmas of Section 2 of the paper. So (eq:thm) is
+obtained by dropping the Selmer length and bounding each Tamagawa term from below: $v_\ell(\Tam_q(\ad T))\ge t_\ell(E,q)$ at a potentially multiplicative $q$ (Lemma lem:tamfactor),
+and $t_\ell(E,q)=0$ at the other primes. An example where every term is visible: \curve{791a1} has type $\kod{I}_3$ at $7$ and $\kod{I}_2$ at $113$, $\degphi=144$, and surjective mod $3$
+image (Cremona's \texttt{galrep} lists only $2\mathrm B$), so the theorem applies at $\ell=3$. Both primes are multiplicative, so $e_3=0$ at both; at $113$, $v_3(2)=0$ and the Tamagawa
+term is $0$; at $7$, $v_3(3)=1$, $v_3(7-1)=1$ and the unit part of the Tate parameter reduces to $\bar u=6=(-1)^3$, a cube in $\F_7^\times$, so Lemma lem:tamfactor gives
+$v_3(\Tam_7(\ad T))=1+\min(1,1,1)=2$. Then (eq:identity) reads $v_3(144)=2=\len H^1_f+2+0$, so the Selmer group vanishes, while (eq:thm) gives only $2\ge t_3(E,7)=1$.
 
 The paragraph after the theorem says that the hypothesis is $\ell\notin S_f$ in the notation of \cite[(31)]{DFG04} (the set $S_f$ is defined in
 \Cref{def:paper:selmer-setup} below), the one under which they prove the
@@ -321,6 +352,13 @@ curves''). (iv) The weights $w_3$ are empirical; the book's observations on them
 conjecture states (i) correctly with $\bar\chi_\ell$; the first version used $\chi_{\ell^*}$, which is wrong for $\ell\ge5$. \emph{Verdict:} the conjecture is a conjecture;
 every theoretical claim made about it in the revised Section 1.3 is correct.
 
+\emph{The shape of the right side.} The first two sums are the right side of (eq:thm), with the term $e_\ell(E,\ell)$ omitted because it is not defined at $q=\ell$. The weight
+$w_3(E)$ stands in for the missing local term at $q=\ell=3$ (it is read off the Kodaira type at $3$, and is $0$ when $3\nmid N$). The correction $h_\ell(E)$ is the length of
+$H^0(\Q,W^D)$, the last term of the four-term sequence of Lemma lem:dfg21: when that term is nonzero, the Selmer group $H^1_\Sigma$ is shorter by $h_\ell(E)$ than the sum of its
+local pieces (\Cref{prop:paper:ns-conditional}), and the conjecture subtracts exactly that. A worked instance at a curve outside the theorem: \curve{726a1}, with the local
+terms computed after \Cref{def:paper:terms}, has image $\Ns$ at $\ell=3$, so $h_3(E)=1$; its reduction at $3$ is multiplicative, so $w_3(E)=0$. The right side of (eq:rule) is
+$e_3(E,11)+t_3(E,2)+t_3(E,3)+0-1=1+1+1-1=2$, and $v_3(\degphi)=v_3(144)=2$: equality. Without the correction the bound would be $3$, and the inequality would fail.
+
 \section[Paper 1.4 to 1.6: the other statements]{Sections 1.4 to 1.6 of the paper: component groups, history, the other statements}\label{sec:paper:forms-history}
 
 This section reads the two component-group inequalities, Proposition prop:forms, the historical paragraph, and the statements of Theorems thm:qual
@@ -336,7 +374,10 @@ otherwise. The two inequalities are
 \end{definition}
 
 \noindent\emph{Where proved.} The orders of $\Phig_q$: \Cref{ch:reduction}. The paper's identity $w_\ell(E,q)=\max\bigl(v_\ell(\#\Phig_q(E)),v_\ell(\#\Phig_q(E^{(q)}))\bigr)$ for $q\ge5$
-follows from the type exchanges of Lemma lem:twist(ii) by inspection (for instance $\kod{II}\leftrightarrow\kod{IV}^*$ gives $\max(0,v_\ell(3))$). \Cref{ch:reduction} proves the
+follows from the type exchanges of Lemma lem:twist(ii) by inspection. Written out, with $\ell$ odd and the orders of the component groups listed above: $\kod{I}_n\leftrightarrow\kod{I}_n^*$ gives
+$\max(v_\ell(n),v_\ell(4))=v_\ell(n)$; $\kod{I}_0\leftrightarrow\kod{I}_0^*$ gives $\max(0,v_\ell(4))=0$; $\kod{II}\leftrightarrow\kod{IV}^*$ and $\kod{IV}\leftrightarrow\kod{II}^*$ give $\max(0,v_\ell(3))=v_\ell(3)$, which is $1$ for $\ell=3$ and $0$
+otherwise; $\kod{III}\leftrightarrow\kod{III}^*$ gives $\max(v_\ell(2),v_\ell(2))=0$. These are the values of the definition, case by case. The point of $w_\ell$ is that it does not change under the
+twist by $\chi_{q^*}$, whereas $v_\ell(\#\Phig_q)$ does (\curve{121a1}, of type $\kod{II}$ at $11$, has $\#\Phig_{11}=1$, and its twist \curve{121c2}, of type $\kod{IV}^*$, has $\#\Phig_{11}=3$). \Cref{ch:reduction} proves the
 exchanges $\kod{II}\leftrightarrow\kod{IV}^*$, $\kod{III}\leftrightarrow\kod{III}^*$, $\kod{IV}\leftrightarrow\kod{II}^*$ also at $q=3$, with the conductor exponent unchanged, given the formula of Ogg and
 Saito; so the identity holds at $q=3$ too (\Cref{lem:paper:twist}, erratum~\ref{err:paper:twist-at-3}). Since $w_\ell\ge v_\ell(\#\Phig_q)$ termwise, (eq:twist) implies (eq:main).
 \emph{Verdict:} correct (strengthened at $q=3$).
@@ -348,7 +389,8 @@ Under the hypothesis of Theorem thm:main, (eq:main) and (eq:twist) hold; the sam
 \begin{proof}
 It suffices to bound $\sum_qw_\ell(E,q)$ by the right side of (eq:thm), respectively (eq:rule), prime by prime; every term of those right sides is
 nonnegative. Type $\kod{I}_n$: $w_\ell=v_\ell(n)=t_\ell$. Type $\kod{I}_n^*$, $q$ odd: $w_\ell=v_\ell(n)=t_\ell$ ($v_q(j)=-n$). Type $\kod{I}_n^*$, $q=2$: $w_\ell=0$. Types $\kod{II},\kod{II}^*,\kod{IV},\kod{IV}^*$ at
-$q\ge5$: for $\ell\ge5$, $w_\ell=0$; for $\ell=3$, $e_3(E,q)=v_3(q-\chi_{-3}(q))\ge1=w_3$, because $\chi_{-3}(q)\equiv q\pmod3$ (\Cref{lem:paper:euler}). The same types at $q=3$ occur only
+$q\ge5$: for $\ell\ge5$, $w_\ell=0$; for $\ell=3$, $e_3(E,q)=v_3(q-\chi_{-3}(q))\ge1=w_3$, because $\chi_{-3}(q)\equiv q\pmod3$ ($\chi_{-3}(q)=(\frac q3)$ is $1$ for $q\equiv1$ and $-1$ for
+$q\equiv2\pmod3$; values of $e_3$ from \Cref{lem:paper:euler}). The same types at $q=3$ occur only
 under (eq:rule) (under Theorem thm:main $3\nmid N$ when $\ell=3$, and $w_\ell=0$ when $\ell\ge5$), and there $w_3(E)\ge1=w_3(E,3)$. Types $\kod{II},\kod{II}^*$ at $q=2$: $w_\ell=0$. Types
 $\kod{IV},\kod{IV}^*$ at $q=2$, $\ell=3$: $w_3(E,2)=1=e_3(E,2)$ by Lemma lem:IV (\Cref{lem:paper:IV}). Types $\kod{III},\kod{III}^*,\kod{I}_0^*$: $w_\ell=0$.
 \end{proof}
@@ -401,9 +443,11 @@ split and for nonsplit reduction.
 Let $K$ be the unramified quadratic extension of $\Q_q$ ($K=\Q_q$ if the reduction is split). Over $K$, $E$ is isomorphic to the Tate curve $\overline K^\times/q_E^{\Z}$ with
 $v_q(q_E)=n_q$, and $I_K=I_q$ since $K/\Q_q$ is unramified. The group $E[\ell^t](\overline K)$ is generated by $\mu_{\ell^t}$ and one $\ell^t$-th root $\theta$ of $q_E$. As $\ell\ne q$,
 $\mu_{\ell^t}\subset\Q_q^{\ur}$, so $I_q$ fixes $\mu_{\ell^t}$ and sends $\theta$ to $\zeta(\sigma)\theta$ with $\zeta(\sigma)\in\mu_{\ell^t}$; inertia acts trivially exactly when every $\ell^t$-th root of
-$q_E$ lies in $\Q_q^{\ur}$, that is, when $q_E\in(\Q_q^{\ur\times})^{\ell^t}$ (Kummer theory over $\Q_q^{\ur}$, which contains $\mu_{\ell^t}$). Write $q_E=q^{n_q}u$ with $u$ a unit. Units of the
-valuation ring of $\Q_q^{\ur}$ are $\ell^t$-th powers: their reductions are, $\Fbar_q^\times$ being divisible, and Hensel's lemma lifts roots since $\ell\ne q$. And $q$, a
-uniformiser, is not an $\ell$-th power. So $q_E$ is an $\ell^t$-th power iff $\ell^t\mid n_q$.
+$q_E$ lies in $\Q_q^{\ur}$, that is, when $q_E\in(\Q_q^{\ur\times})^{\ell^t}$ (Kummer theory over $\Q_q^{\ur}$, which contains $\mu_{\ell^t}$: one root lies in $\Q_q^{\ur}$ iff all do, since
+they differ by elements of $\mu_{\ell^t}$; and the fixed field of $I_q$ in $\overline\Q_q$ is $\Q_q^{\ur}$, so $I_q$ fixes $\theta$ iff $\theta\in\Q_q^{\ur}$). Write $q_E=q^{n_q}u$ with $u$ a unit. Units of the
+valuation ring of $\Q_q^{\ur}$ are $\ell^t$-th powers: their reductions are, $\Fbar_q^\times$ being divisible, and Hensel's lemma lifts roots since the derivative $\ell^tX^{\ell^t-1}$ of $X^{\ell^t}-u$ is a
+unit at a root when $\ell\ne q$. So $q_E$ is an $\ell^t$-th power iff $q^{n_q}$ is. The valuation of $\Q_q^{\ur}$ takes the value $1$ on $q$ (the extension is unramified), so an $\ell^t$-th power
+has valuation divisible by $\ell^t$; hence $q^{n_q}$ is not an $\ell^t$-th power unless $\ell^t\mid n_q$, and if $n_q=\ell^tm$ it is $(q^m)^{\ell^t}$. So $q_E$ is an $\ell^t$-th power iff $\ell^t\mid n_q$.
 \end{proof}
 
 \noindent\emph{Verdict:} correct. (The first version called the Tate parameter $u$, a letter Lemma lem:tamfactor uses for its unit part; the revision writes $q_E$.)
@@ -415,11 +459,16 @@ Let $q\ne\ell$ be a prime of additive reduction. Then $E[\ell^k]^{I_q}\simeq\Phi
 \noindent\emph{Where proved.} The N\'eron model and the filtration $E_1\subset E_0\subset E$: \Cref{ch:reduction}; the argument: \Cref{ch:galrep}.
 
 \begin{proof}[Expanded proof]
-$E[\ell^k]^{I_q}=E(\Q_q^{\ur})[\ell^k]$. Let $\mathcal O$ be the valuation ring of $\Q_q^{\ur}$ (or of its completion; torsion is the same). The N\'eron model gives exact sequences
+$E[\ell^k]^{I_q}=E(\Q_q^{\ur})[\ell^k]$, since $\Q_q^{\ur}$ is the fixed field of $I_q$ in $\overline\Q_q$. Let $\mathcal O$ be the valuation ring of $\Q_q^{\ur}$ (or of its completion; torsion is the same). The N\'eron model gives exact sequences
 $0\to E_0(\Q_q^{\ur})\to E(\Q_q^{\ur})\to\Phig_q\to0$ and $0\to E_1(\Q_q^{\ur})\to E_0(\Q_q^{\ur})\to\tilde E_{\mathrm{ns}}(\Fbar_q)\to0$, and for additive reduction
 $\tilde E_{\mathrm{ns}}(\Fbar_q)\simeq\Fbar_q^+$. The kernel of reduction $E_1$ is the formal group, a pro-$q$ group; $\Fbar_q^+$ has exponent $q$. Both are uniquely $\ell$-divisible ($\ell\ne q$),
-hence so is $E_0(\Q_q^{\ur})$. Apply the snake lemma to multiplication by $\ell^k$ on the first sequence: the kernel and cokernel of $\ell^k$ on $E_0$ vanish, so
-$E(\Q_q^{\ur})[\ell^k]\to\Phig_q[\ell^k]$ is an isomorphism.
+hence so is $E_0(\Q_q^{\ur})$ (apply the snake lemma to $\ell^k$ on the second sequence: kernels and cokernels vanish on both ends, so they vanish in the middle). Apply the snake
+lemma to multiplication by $\ell^k$ on the first sequence; it gives the exact sequence
+\[
+0\to E_0(\Q_q^{\ur})[\ell^k]\to E(\Q_q^{\ur})[\ell^k]\to\Phig_q[\ell^k]\to E_0(\Q_q^{\ur})/\ell^k,
+\]
+whose two outer terms vanish, so $E(\Q_q^{\ur})[\ell^k]\to\Phig_q[\ell^k]$ is an isomorphism. (The component group over $\Q_q^{\ur}$ is the geometric one, $\Phig_q$, since the residue field
+$\Fbar_q$ is algebraically closed.)
 \end{proof}
 
 \noindent\emph{Verdict:} correct (the revision adds it; the first version used it implicitly).
@@ -440,8 +489,9 @@ otherwise $\Phig_q[3]$ would have order $9$.
 
 \emph{Step 2: potentially good.} If $v_q(j)<0$, over $\Q_q$ the curve is the twist of a Tate curve by a quadratic character $\chi$, ramified as the reduction is additive
 (\Cref{ch:reduction}). On $I_q$, in a suitable basis, $\rho_{E,3}(\sigma)=\chi(\sigma)\sm1{n\theta(\sigma)}01$ with $\theta$ the $3$-adic tame character and $n=-v_q(j)$. The subgroup $H\subseteq I_q$
-on which $n\theta\equiv0\pmod3$ has index $1$ or $3$, so it is not contained in $\ker\chi$, of index $2$; an element $\sigma\in H\smallsetminus\ker\chi$ has $\bar\rho_{E,3}(\sigma)=-1$, which fixes
-no line, contradicting Step 1. So the reduction is potentially good and $\rho_{E,3}(I_q)$ is finite \cite[Section 2]{SerreTate68}.
+on which $n\theta\equiv0\pmod3$ has index $1$ or $3$ (it is the kernel of the homomorphism $n\theta\bmod3$ to $\Z/3$), so it is not contained in $\ker\chi$, of index $2$ (if $H\subseteq\ker\chi$,
+then $2=[I_q:\ker\chi]$ would divide $[I_q:H]\in\{1,3\}$); an element $\sigma\in H\smallsetminus\ker\chi$ has $\bar\rho_{E,3}(\sigma)=\chi(\sigma)\sm1001=-1$, which fixes no nonzero vector of $E[3]$, contradicting
+Step 1. So the reduction is potentially good and $\rho_{E,3}(I_q)$ is finite \cite[Section 2]{SerreTate68}.
 
 \emph{Step 3: the image.} $\det\rho_{E,3}=\chi_3^{\mathrm{cyc}}$ is unramified at $q\ne3$, so $\rho_{E,3}(I_q)\subset\SL_2(\Z_3)$. The kernel of $\GL_2(\Z_3)\to\GL_2(\F_3)$ is $1+3\Mat_2(\Z_3)$,
 torsion-free (if $g=1+3^aX$ with $a\ge1$ and $X\not\equiv0\pmod3$, then $g^p\equiv1+p3^aX\pmod{3^{a+1}}$ for a prime $p\ne3$, and $g^3\equiv1+3^{a+1}X\pmod{3^{a+2}}$, so
@@ -543,8 +593,10 @@ odd $q\ne\ell$, and the row $\kod{I}_n$ at every $q\ne\ell$.
 In every case $L_q(A_f,s)^{-1}=\prod(1-\lambda q^{-s})$ over the eigenvalues $\lambda$ of $\Frob_q^{-1}$ on $(\ad V)^{I_q}$ (\Cref{conv:paper:frobenius}).
 
 \emph{Type $\kod{I}_n$, any $q\ne\ell$.} In a basis $e_1,e_2$ of $T$, $\rho|_{G_{\Q_q}}=\sm{\chi_\ell\eps}{\eps\kappa}0{\eps}$ (\Cref{lem:paper:tamfactor}), and a generator $t$ of tame $\ell$-inertia acts by
-$te_1=e_1$, $te_2=e_2+n'e_1$, $n'\ne0$. In the basis $e=e_1\otimes e_2^\vee$, $h=e_1\otimes e_1^\vee-e_2\otimes e_2^\vee$, $f=e_2\otimes e_1^\vee$ of $\ad V$, $(t-1)e=0$, $(t-1)h=-2n'e$,
-$(t-1)f=n'h-n'^2e$, so $(\ad V)^{I_q}=\Ql e$. The arithmetic Frobenius sends $e$ to $(\eps q)\eps^{-1}e=qe$, so the geometric one acts by $q^{-1}$ and $L_q(A_f,s)^{-1}=1-q^{-1-s}$.
+$te_1=e_1$, $te_2=e_2+n'e_1$, $n'\ne0$. In the basis $e=e_1\otimes e_2^\vee$, $h=e_1\otimes e_1^\vee-e_2\otimes e_2^\vee$, $f=e_2\otimes e_1^\vee$ of $\ad V$ (as matrices, $e=\sm0100$, $h=\sm100{-1}$,
+$f=\sm0010$), $t$ acts by conjugation $X\mapsto tXt^{-1}$ with $t=\sm1{n'}01$, $t^{-1}=\sm1{-n'}01$. Multiplying out, $tet^{-1}=e$, $tht^{-1}=\sm1{-2n'}0{-1}=h-2n'e$ and
+$tft^{-1}=\sm{n'}{-n'^2}1{-n'}=f+n'h-n'^2e$; so $(t-1)e=0$, $(t-1)h=-2n'e$, $(t-1)f=n'h-n'^2e$. A vector $xe+yh+zf$ is fixed iff $-2n'y-n'^2z=0$ and $n'z=0$, that is $y=z=0$:
+$(\ad V)^{I_q}=\Ql e$. The arithmetic Frobenius sends $e$ to $(\eps q)\eps^{-1}e=qe$, so the geometric one acts by $q^{-1}$ and $L_q(A_f,s)^{-1}=1-q^{-1-s}$.
 This is also the naive factor ($\delta_q=1$), so $e_\ell=0$.
 
 \emph{Type $\kod{I}_n^*$, $q$ odd.} By \Cref{lem:paper:twist}(ii), $V=V'\otimes\chi_{q^*}$ with $V'=V_\ell E^{(q)}$ multiplicative; $\ad V=\ad V'$, so the true factor is $1-q^{-1-s}$; the
@@ -582,7 +634,9 @@ then $e_\ell(E,q)=v_\ell(q-c)$; (iv) $1$ if the reduction is potentially good an
 
 \begin{proof}[Expanded proof]
 The cases are exhaustive: if $v_q(j)<0$ we are in (i); otherwise $\rho(I_q)$ is a finite subgroup of $\SL_2(\Zl)$ ($\det=\chi_\ell$ is trivial on $I_q$) whose elements have
-characteristic polynomials in $\Z[X]$ independent of $\ell$ \cite[Section 2]{SerreTate68}, so their orders are in $\{1,2,3,4,6\}$. A finite abelian subgroup of $\SL_2$ over a field of
+characteristic polynomials in $\Z[X]$ independent of $\ell$ \cite[Section 2]{SerreTate68}, so their orders are in $\{1,2,3,4,6\}$. (An element $g$ of finite order $m$ is diagonalisable over
+$\Qlbar$ with root-of-unity eigenvalues $\zeta,\zeta^{-1}$, of the same order, and $m$ is that order. A primitive $m$-th root of unity has degree $\varphi(m)$ over $\Q$, and $\zeta$ is a root of the
+characteristic polynomial, of degree $2$ in $\Z[X]$; so $\varphi(m)\le2$, and $m\in\{1,2,3,4,6\}$.) A finite abelian subgroup of $\SL_2$ over a field of
 characteristic $0$ is cyclic (simultaneously diagonalisable over the algebraic closure, and $\mathrm{diag}(x,x^{-1})\mapsto x$ embeds it in the multiplicative group). Order $1$ is good
 reduction; order $2$ is $\{\pm1\}$, case (ii); orders $3,4,6$ are case (iii); otherwise (iv).
 

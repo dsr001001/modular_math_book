@@ -391,7 +391,11 @@ Everything except the last display is the paper's Lemma lem:crit, which \Cref{ch
 we do not repeat it. For the display: the forms killed by $\wp$ are $\Z f$ and those killed by $I$ are $L$ (\Cref{ch:modgalrep}, in the proof of Lemma lem:crit), and for a
 perfect pairing $S\times\T\to\Z$ with $\T$ acting compatibly, ideals $\mf a,\mf b$ with $\mf a\cap\mf b=0$, $\T/\mf a$ and $\T/\mf b$ torsion-free of complementary ranks, one has
 $S/(S[\mf a]\oplus S[\mf b])\simeq(\T/(\mf a+\mf b))^*$ (\Cref{ch:modules}, the duality between an algebra and a module). Take $\mf a=\wp$, $\mf b=I$; $\wp\cap I=0$ by
-\Cref{prop:congruence:newform-ideal} and \Cref{prop:congruence:congruence-module}(ii), $\T/\wp\simeq\Z$ has rank $1$ and $\T/I$ embeds in $\T'$, of rank $\rank\T-1$.
+\Cref{prop:congruence:newform-ideal} and \Cref{prop:congruence:congruence-module}(ii), $\T/\wp\simeq\Z$ has rank $1$ and $\T/I$ embeds in $\T'$, of rank $\rank\T-1$. (Concretely: by the proof of
+\Cref{prop:congruence:congruence-module}, $I=\T\cap\Q e_\pi$ with $e_\pi$ the idempotent of the factor $\Q$; so $t\mapsto(1-e_\pi)t$ maps $\T$ to $\T'$ with kernel $\T\cap\Q e_\pi=I$, and $\T/I$ is a
+subgroup of the free group $\T'\cap(1-e_\pi)(\T\otimes\Q)$-lattice spanned by the image, torsion-free of rank $\rank\T-1$.) In words: a form in $S$ is determined by the values $a_1(t\,\cdot)$, a form
+killed by $\wp$ is one whose functional factors through $\T/\wp$, a form killed by $I$ one whose functional factors through $\T/I$, and the forms of $S$ that split are those whose functional on $\T$
+extends from the image of $\T$ in $\T/\wp\times\T/I$; the obstruction to extending is measured by the cokernel $\T/(\wp+I)$ of $\T\to\T/\wp\times\T/I$.
 \end{proof}
 
 \begin{paperlink}
@@ -557,8 +561,10 @@ congruence ideal of $\pi$ on $\T_\ell$ is the one computed on $\T_{\mf m}$.
 
 \begin{example}[the lemma on test cases]\label{ex:congruence:ddt417-checks}
 (a) $L=\T_r$ (\Cref{ex:congruence:toy}(a)) with $\langle s,u\rangle=\lambda_0(su)$, $\lambda_0(a,b)=(a-b)/\varpi^r$, a perfect pairing for which $\T_r$ is self-adjoint: $L[\wp]=I=\mathcal O(\varpi^r,0)$,
-$d=1$, $\Delta=\lambda_0((\varpi^r,0)^2)=\varpi^r$; equality, $L$ being free. (b) $L=\mathcal O^2$ with $\T_r$ acting diagonally and the standard pairing: $L[\wp]=\mathcal Oe_1$, $\Delta=1$, so $0=v(\Delta)<r=v(\eta)$;
-strict, and $L$ is not free over $\T_r$. (c) $L=\T_r^2$ with $\langle x,y\rangle=\lambda_0(x_1y_2-x_2y_1)$, alternating: $d=2$, $\Delta=\varpi^{2r}=\eta^2$. This is the shape of Step 2 of the proof
+$d=1$, $\Delta=\lambda_0((\varpi^r,0)^2)=\lambda_0(\varpi^{2r},0)=\varpi^r$; equality, $L$ being free. (Perfectness: in the basis $u_1=(1,1)$, $u_2=(0,\varpi^r)$ of $\T_r$ one has $u_1^2=u_1$, $u_1u_2=u_2$,
+$u_2^2=\varpi^ru_2$, so the Gram matrix is $\sm0{-1}{-1}{-\varpi^r}$, of determinant $-1$, a unit. Self-adjointness: $\langle ts,u\rangle=\lambda_0(tsu)=\langle s,tu\rangle$, the algebra being commutative.) (b) $L=\mathcal O^2$ with $\T_r$ acting diagonally and the standard pairing: $L[\wp]=\mathcal Oe_1$, $\Delta=1$, so $0=v(\Delta)<r=v(\eta)$;
+strict, and $L$ is not free over $\T_r$. (c) $L=\T_r^2$ with $\langle x,y\rangle=\lambda_0(x_1y_2-x_2y_1)$, alternating: $d=2$, $\Delta=\varpi^{2r}=\eta^2$. (Here $L[\wp]=I^2$ has basis $(\tau,0)$, $(0,\tau)$ with $\tau=(\varpi^r,0)$, and
+$\langle(\tau,0),(0,\tau)\rangle=\lambda_0(\tau^2)=\varpi^r$, so the Gram matrix is $\sm0{\varpi^r}{-\varpi^r}0$; the pairing on $L$ is perfect because its Gram matrix is built from the unimodular one of (a).) This is the shape of Step 2 of the proof
 of Theorem thm:quant. (These computations are in \Cref{ch:modules}.) (d) The modular case outside the hypotheses: for \curve{99a1} and $\ell=3$, $L=H^1(X_0(99),\Z_3)_{\mf m}$, $d=2$,
 $v_3(\eta^{\mathrm{Hecke}})=v_3(r_E)=1$ and the ideal of values on $L[\wp]$ is $4\Z_3=\Z_3$, so $v_3(\Delta)=0<2$: $L$ is not free over $\T_{\mf m}$ (\Cref{rem:congruence:two-ideals}).
 \end{example}
@@ -721,7 +727,9 @@ By \Cref{thm:congruence:lem-hecke}, $v_\ell(\eta^\emptyset_{f,\ell})=v_\ell(\deg
 $3\nmid N$; degrees from PARI/GP and Cremona's tables): \curve{11a1}, $\degphi=1$, $v_3=0$; \curve{77c1}, $6$, $v_3=1$; \curve{121a1}, $6$, $v_3=1$; \curve{121d1}, $24$, $v_3=1$; \curve{539c1},
 $288$, $v_3=2$; \curve{539d1}, $72$, $v_3=2$. For the depleted forms of \Cref{ex:congruence:level-539}, \Cref{thm:congruence:dfg14} below gives
 $v_3(\eta^{\{7\}}_{\text{77c},3})=v_3(\eta^\emptyset_{\text{77c},3})+v_3(1-7^{-2})=1+1=2$ and $v_3(\eta^{\{7\}}_{\text{11a},3})=0+v_3\bigl(\frac67\cdot\frac{64-4}{49}\bigr)=0+2=2$, equal to $v_3(288)$ and $v_3(504)$:
-this is Theorem thm:quant read backwards (\Cref{thm:congruence:quant}).
+this is Theorem thm:quant read backwards (\Cref{thm:congruence:quant}). The two factors are those of \Cref{prop:congruence:three-cases}: \curve{77c1} is multiplicative at $7$, so the factor is
+$1-7^{-2}=\frac{48}{49}$ and $v_3(48)=1$; \curve{11a1} is good at $7$ with $a_7=-2$, so the factor is $\frac{7-1}7\cdot\frac{(7+1)^2-(-2)^2}{7^2}=\frac67\cdot\frac{60}{49}$, and $v_3(6)+v_3(60)=1+1=2$. In the second case both
+parts of Wiles's factor contribute, $7\equiv1\pmod3$ and $a_7\equiv-(7+1)\pmod3$.
 \end{example}
 
 \section{The variation of the congruence ideal with $\Sigma$}\label{sec:congruence:dfg14}
@@ -741,6 +749,12 @@ cohomology at level $M$ which is multiplicative in coprime $m$ with $\phi_1=1$, 
 and let $\gamma^t$ be its adjoint for the pairings $\hat\delta_!$ at the two levels. On $q$-expansions $\gamma(f)=\prod_{p\in\Sigma,\,\delta_p=2}(1-a_pV_p+pV_p^2)\prod_{p\in\Sigma,\,\delta_p=1}(1-a_pV_p)\,f=f^\Sigma$,
 with $V_p\colon h(z)\mapsto h(pz)$ (\Cref{ch:hecke}, depletion).
 \end{definition}
+
+The $q$-expansion formula is a direct check, which also shows why the coefficients $\phi_m$ are the right ones. As $V_p$ sends $\sum a_nq^n$ to $\sum a_nq^{pn}$, the $n$-th coefficient of
+$(1-a_pV_p+pV_p^2)f$ is $a_n-a_pa_{n/p}+p\,a_{n/p^2}$ (terms with non-integral index read as $0$). For $p\nmid n$ this is $a_n$. For $n=pm$ it is $a_{pm}-a_pa_m+p\,a_{m/p}$, which vanishes by the Hecke
+recursion $a_{pm}=a_pa_m-p\,a_{m/p}$ at a good prime. At a multiplicative prime the recursion is $a_{pm}=a_pa_m$, and $(1-a_pV_p)f$ has $n$-th coefficient $a_n-a_pa_{n/p}$, again $0$ for $p\mid n$. So
+the operator kills exactly the coefficients at multiples of $p$, which is depletion at $p$; on cohomology, $V_p$ is $\epsilon_p$, the scalar $a_p$ is $-\phi_p=T_p$ acting on $f$, and $p$ is $\phi_{p^2}$.
+For example, for $f=f_{\text{11a}}$ and $p=7$ ($a_7=-2$) one gets $f^{\{7\}}=(1+2V_7+7V_7^2)f$ at level $11\cdot7^2=539$, the depleted form of \Cref{ex:congruence:level-539}.
 
 \begin{theorem}[Diamond, Flach and Guo, Proposition 1.4; the paper's Theorem thm:dfg14]\label{thm:congruence:dfg14}
 Let $f$ be a newform of weight $2$ on $\Gamma_0(M)$ with rational coefficients, $\ell$ a prime with $\ell\nmid2M$, and $\Sigma$ a finite set of primes with $\ell\notin\Sigma$.
@@ -856,6 +870,13 @@ residual representation $M_{f,\lambda}/\lambda M_{f,\lambda}$ is not absolutely 
 definition is repeated as the display \cite[(31)]{DFG04} at the start of their Section 2 (p.~695), which is the number the paper cites. For $k=2$ and $K=\Q$: $\ell\in S_f$ iff $\ell\mid2N$ or $\bar\rho|_{\Gal(\Qbar/\Q(\sqrt{\ell^*}))}$ is not absolutely irreducible.
 \end{definition}
 
+Why this particular field. Write $\ell^*=(-1)^{(\ell-1)/2}\ell$, so $\ell^*=-3,5,-7,-11,13$ for $\ell=3,5,7,11,13$; the sign is chosen so that $\ell^*\equiv1\pmod4$, and then $F=\Q(\sqrt{\ell^*})$ is the unique
+quadratic field ramified only at $\ell$, the quadratic subfield of $\Q(\mu_\ell)$ (for $\ell=3$, $F=\Q(\sqrt{-3})=\Q(\mu_3)$). The Taylor-Wiles method needs auxiliary primes found inside
+$\Q(\mu_{\ell^n})$ (\Cref{rem:congruence:where-hypothesis}(c)), so what matters is irreducibility after restriction to $G_{\Q(\mu_\ell)}$, and for an absolutely irreducible $\bar\rho$ of $G_\Q$ the
+condition in the definition is the one the method needs \cite[Section 3.1]{DFG04}. An absolutely irreducible representation of $G_\Q$ that becomes reducible on the index-two subgroup $G_F$ is induced
+from a character of $G_F$ (Clifford theory for a subgroup of index $2$, \Cref{ch:reps}), so its projective image is dihedral; for elliptic curves with $\ell\nmid N$ this happens only at $\ell=3$, for the normaliser of split Cartan
+image $\Ns$ of \Cref{prop:congruence:exceptional-set}.
+
 \begin{proposition}[the paper's Proposition prop:Sf]\label{prop:congruence:exceptional-set}
 Let $E/\Q$ have conductor $N$, $f=f_E$, and $\ell$ an odd prime with $\ell\nmid N$. Then $\ell\notin S_f$ if and only if $E[\ell]$ is irreducible and, when $\ell=3$, the mod $3$ image is not conjugate to
 $N_s(\F_3)$ (Sutherland's label $\Ns$); equivalently, $E[\ell]$ is irreducible and $h_\ell(E)=0$. In particular, for $\ell\ge5$ with $\ell\nmid N$, $\ell\notin S_f$ as soon as $E[\ell]$ is irreducible.
@@ -888,6 +909,12 @@ whether $\ell$ divides $\#\rho_0(I_p)$.) $M_{f,\lambda}$ is \emph{minimally rami
 If $\Sigma$ contains every prime $p\ne\ell$ at which $\rho_f$ is ramified, then $M_{f,\lambda}$ is minimally ramified outside $\Sigma$: at $p\notin\Sigma\cup\set{\ell}$, $\rho_f(I_p)=1=\rho_0(I_p)$. For $f=f_E$ and
 $\Sigma=\set{p\mid N}$, $\rho_{E,\ell}$ is unramified outside $N\ell$ (\Cref{ch:galrep}), so the paper's choice qualifies. Diamond, Flach and Guo also use smaller sets $\Sigma$ internally (the minimal
 deformation problem at the twist-minimal level); the paper never needs them.
+
+An example shows what the condition says at a prime that is kept out of $\Sigma$. Let $E$ have multiplicative reduction at $p\ne\ell$ with $n=-v_p(j_E)$. By the Tate parametrisation a
+generator of tame inertia acts on $T_\ell E$ by a matrix $\sm1{n\cdot c}01$ with $c\in\Zl^\times$ (\Cref{ch:galrep}), so on $E[\ell]$ it acts trivially if $\ell\mid n$ and with order exactly $\ell$ if
+$\ell\nmid n$. For \curve{11a1}, $p=11$, $n=5$ and $\ell=3$, we are in the second case, $\#\rho_0(I_{11})=3=\ell$, and the condition asks that $(V_3E)^{I_{11}}$ be a line, which it is. So $M_{f,3}$ is
+minimally ramified at $11$, and the empty set already satisfies the hypothesis of \Cref{thm:congruence:dfg37} for this curve. When $\ell\mid n$ the first clause asks that the lift be unramified at $p$,
+because $\rho_0(I_p)=1$, and $\rho_{E,\ell}$ is not; so $p$ must then be put into $\Sigma$. Taking $\Sigma=\set{p\mid N}$ avoids the case distinction altogether.
 
 \begin{theorem}[Diamond, Flach and Guo, Theorem 3.7; the paper's Theorem thm:dfg37]\label{thm:congruence:dfg37}
 Let $f$ be a newform of weight $k\ge2$ and level $N$ with coefficients in $K$, $\lambda\notin S_f$, and $\Sigma$ a finite set of primes not containing $\ell$ such that $M_{f,\lambda}$ is minimally
@@ -989,7 +1016,12 @@ the Selmer group with the local conditions of type $\Sigma$.
 \begin{proof}[Sketch of proof]
 Representability follows from Schlessinger's criteria, using absolute irreducibility (so that the deformations have only scalar automorphisms) and the finiteness of
 $H^1(G_{\Q,S},\ad\rho_0)$. Infinitesimal deformations of $\rho$ to the ring $(\mathcal O/\varpi^n)[\varepsilon]$, $\varepsilon^2=0$, correspond to cohomology classes in $H^1(\Q,\ad M_\rho/\varpi^n)$, a lift $(1+\varepsilon c)\rho$ being determined by a
-cocycle $c$; the conditions of type $\Sigma$ become the local conditions defining $H^1_\Sigma$, and passing to the limit over $n$ gives the isomorphism. We do not give the details; see
+cocycle $c$. The computation behind this is short. Write a lift as $\rho'(g)=(1+\varepsilon c(g))\rho(g)$ with $c(g)$ a $2\times2$ matrix over $\mathcal O/\varpi^n$. Since $\varepsilon^2=0$,
+\[
+\rho'(g)\rho'(h)=\bigl(1+\varepsilon\,(c(g)+\rho(g)c(h)\rho(g)^{-1})\bigr)\rho(g)\rho(h),
+\]
+so $\rho'$ is a homomorphism iff $c(gh)=c(g)+g\cdot c(h)$, the cocycle condition for the adjoint action $g\cdot X=\rho(g)X\rho(g)^{-1}$; the determinant is $(1+\varepsilon\operatorname{tr}c(g))\det\rho(g)$, so
+fixing it forces $\operatorname{tr}c=0$; and conjugating $\rho'$ by $1+\varepsilon X$ replaces $c(g)$ by $c(g)+X-g\cdot X$, a coboundary, so strict equivalence classes of lifts are classes in $H^1$. The conditions of type $\Sigma$ become the local conditions defining $H^1_\Sigma$, and passing to the limit over $n$ gives the isomorphism. We do not give the details; see
 \cite[Sections 2.2 to 2.8]{DDT}.
 \end{proof}
 
@@ -1087,7 +1119,12 @@ lem:fpr at every $q\in\Sigma$, Lemma lem:h0 in the form $h_\ell(E)=0$ for $\ell\
 \]
 The term at $\infty$ vanishes because $H^1(\R,T^D)$ is killed by $2$ and $\ell$ is odd, and the term $H^0(\Q,W^D)^*$ of Lemma lem:dfg21 vanishes because $h_\ell(E)=0$.
 
-\emph{Step 5 (cancellation of the naive factors; Definition def:terms).} Combining Steps 1 to 4,
+\emph{Step 5 (cancellation of the naive factors; Definition def:terms).} Substituting Step 3 into Step 2 and then Step 4 into the result,
+\begin{align*}
+v_\ell(\degphi)&=\len H^1_\Sigma(\Q,W)-\sum_{q\in\Sigma}v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr)\\
+&=\len H^1_f(\Q,W)+\sum_{q\in\Sigma}v_\ell\bigl(\Tam_q(\ad T)\bigr)+\sum_{q\in\Sigma}\Bigl(v_\ell\bigl(L_q(A_f,1)^{-1}\bigr)-v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr)\Bigr).
+\end{align*}
+The true Euler factor enters through the Selmer side (Step 4) and the naive one through the Hecke side (Step 2), so what survives is their ratio. With $\Sigma=\set{q\mid N}$ this reads
 \[
 v_\ell(\degphi)=\len H^1_f(\Q,W)+\sum_{q\mid N}v_\ell\bigl(\Tam_q(\ad T)\bigr)+\sum_{q\mid N}v_\ell\Bigl(\frac{L_q(A_f,1)^{-1}}{L^{\nv}_q(A_f,1)^{-1}}\Bigr).
 \]
@@ -1146,7 +1183,7 @@ therefore \emph{computed}. Data from PARI/GP.
 (b) \curve{121a1}: type $\kod{II}$ at $11$ (potentially good), $\degphi=6$. PARI's symmetric square Euler factor at $11$ is $(1+11X)^{-1}$, so $L_{11}(A_f,1)^{-1}=1+\frac{11}{121}=\frac{12}{11}$ and
 $e_3(E,11)=v_3(12)=1$; $\Tam_{11}(\ad T)=\Z_3$ (Lemma lem:tamadd). So $1=v_3(6)=\len H^1_f(\Q,W)+0+1$ and $H^1_f(\Q,\ad T_3E\otimes\Q_3/\Z_3)=0$.
 (c) \curve{539c1}: type $\kod{I}_3^*$ at $7$ ($v_7(j)=-3$) and $\kod{I}_2$ at $11$, $\degphi=288$, $v_3=2$. At $7$: $e_3=v_3(1-7^{-2})=v_3(48)=1$, $t_3=v_3(3)=1$, and the Tate parameter of the
-multiplicative twist \curve{77c1} is $q_E=5\cdot7^3+O(7^4)$, so $\bar u=5$, which is not a cube in $\F_7^\times$ (the cubes are $\pm1$): $\min(1,v_3(6),v_3(c(u)))=0$ and $v_3(\Tam_7(\ad T))=1$. At $11$: $t_3=v_3(2)=0$,
+multiplicative twist \curve{77c1} is $q_E=5\cdot7^3+O(7^4)$, so $\bar u=5$, which is not a cube in $\F_7^\times$ (the cubes are $\pm1$: $1^3=2^3=4^3=1$ and $3^3=5^3=6^3=-1$ in $\F_7$): $\min(1,v_3(6),v_3(c(u)))=0$ and $v_3(\Tam_7(\ad T))=1$. At $11$: $t_3=v_3(2)=0$,
 $e_3=0$. So $2=\len H^1_f(\Q,W)+1+1$, and the Selmer group vanishes again. Had $\bar u$ been a cube, the identity would have forced $v_3(\degphi)\ge3$.
 Further examples with nonzero Selmer groups are in \Cref{ch:blochkato}.
 \end{example}
@@ -1330,7 +1367,9 @@ primes, so their twists differ from that of $g$, by strong multiplicity one). \C
 $h\in g^c\cap S_2(\Gamma_0(N);\Zl)$, $g^c$ the $\T$-stable complement of $\C g^S$, with $g^S\equiv h\pmod{\ell^t}$. Since $\pi$ factors through $\T_{\mf m}$, $e_{\mf m}g^S=g^S$; the idempotent $e_{\mf m}\in\T_\ell$ preserves
 $S_2(\Gamma_0(N);\Zl)$ and $g^c$, so $h'=e_{\mf m}h\in g^c\cap S_2(\Gamma_0(N);\Zl)$ and $g^S-h'=e_{\mf m}(g^S-h)\in\ell^tS_2(\Gamma_0(N);\Zl)$. By \Cref{prop:congruence:hecke-local}(iii), $h'$ lies in the sum of the generalised
 eigenspaces $V(\phi)$ with $\phi\ne\pi$ and $\phi\equiv\pi$ modulo the maximal ideal of $\overline\Z_\ell$. For such $\phi$ and $q\in S$, $\phi(U_q)\equiv\pi(U_q)=0$; every eigenvalue of $U_q$ on $S_2(\Gamma_0(N))$ is $0$ or a unit at every
-prime not above $q$ (\Cref{ch:hecke}: it is $0$, $\pm1$ or a root of $X^2-a_q(h)X+q$ for a newform $h$), and $\ell\ne q$, so $\phi(U_q)=0$. Each $V(\phi)$ lies in the old space $V_h$ of a newform $h$ of level dividing $N$.
+prime not above $q$ (\Cref{ch:hecke}: it is $0$, $\pm1$ or a root of $X^2-a_q(h)X+q$ for a newform $h$), and $\ell\ne q$, so $\phi(U_q)=0$. (The unit claim for the roots: they are
+algebraic integers $\alpha,\beta$ with $\alpha\beta=q$, so at a prime not above $q$ neither can have positive valuation. A nonzero eigenvalue is therefore an $\ell$-adic unit, and cannot be
+$\equiv0$ modulo the maximal ideal; the congruence $\phi(U_q)\equiv0$ forces $\phi(U_q)=0$. This is where the hypothesis $\ell\notin S$ enters.) Each $V(\phi)$ lies in the old space $V_h$ of a newform $h$ of level dividing $N$.
 If $h=g$, then $\phi$ agrees with $\pi$ on the $T_p$, $p\nmid N$, and on the $U_q$, $q\in S$; the operators $U_p$ for $p\mid N_S$, $p\notin S$, act on $V_g$ by the scalar $a_p(g)$ (no oldforms at those primes,
 $v_p(N)=v_p(N_S)$); so $\phi=\pi$, which is excluded. Hence $h\ne g$. The twist $\iota(V(\phi))$ lies in $S_2(\Gamma_0(N))$, because the level of a twist by $\chi_S$ divides $\lcm(N,D^2)=N$, and in the generalised
 eigenspace of the $T_p$, $p\nmid N$, for the system $\chi_S(p)a_p(h)$; this differs from the system $\chi_S(p)a_p(g)$ of $f$ at infinitely many $p$ (otherwise $h=g$ by strong multiplicity one), so
