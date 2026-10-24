@@ -599,6 +599,10 @@ generator would have norm $a^2+5b^2\in\{2,3\}$, which is impossible. This is the
 the one predicted by \Cref{thm:ant:dedekindkummer}: $X^2+5\equiv(X+1)^2\pmod2$ and $\equiv(X-1)(X+1)\pmod3$.
 \end{example}
 
+The example already shows the three ways a rational prime can behave in a quadratic ring: $2$ becomes a square of a prime, $3$ a product of two distinct primes,
+and $11$ stays prime (as $X^2+5$ is irreducible modulo $11$: $-5\equiv6$ is not among the squares $1,3,4,5,9$ modulo $11$). The next section turns this into a general theory:
+how $p\mathcal O_K$ factors, how to read the factorisation off a polynomial, which primes ramify, and how a Galois group acts on the primes above $p$.
+
 \section{Splitting of primes, ramification and Frobenius}\label{sec:ant:splitting}
 
 This section explains how a prime of $K$ factors in an extension $L$, defines the decomposition and inertia groups and the Frobenius element,
@@ -778,17 +782,21 @@ written with the geometric Frobenius:
 \[
 L_p(V,s)=\det\bigl(1-\Frob_p^{-1}p^{-s}\bigm|V^{I_p}\bigr)^{-1}\qquad(p\ne\ell),
 \]
-so that $L_p(\Q_\ell(1),s)=(1-p^{-1-s})^{-1}$ and $L_p(V(1),s)=L_p(V,s+1)$, as $\chi_\ell(\Frob_p^{-1})=p^{-1}$. In detail: on $V(1)=V\otimes\chi_\ell$ the
-geometric Frobenius acts as $p^{-1}\Frob_p^{-1}$, so $\det(1-p^{-1}\Frob_p^{-1}p^{-s}\mid V^{I_p})=\det(1-\Frob_p^{-1}p^{-(s+1)}\mid V^{I_p})$ (the twist by the
-unramified $\chi_\ell$ does not change the inertia invariants). On $V_\ell E$ the geometric Frobenius has the
-eigenvalues $\alpha^{-1},\beta^{-1}$ (with $\alpha+\beta=a_p$, $\alpha\beta=p$, the eigenvalues of $\rho_{E,\ell}(\Frob_p)$), and on the dual $V_\ell E^\vee$, where
-$g$ acts by the inverse transpose of $\rho(g)$, the geometric Frobenius acts by the transpose of $\rho(\Frob_p)$ and has the eigenvalues $\alpha,\beta$; so
-$\det(1-\Frob_p^{-1}p^{-s}\mid V_\ell E^\vee)=(1-\alpha p^{-s})(1-\beta p^{-s})=1-a_pp^{-s}+p^{1-2s}$, and $L_p(V_\ell E^\vee,s)$ is the Euler factor of $L(E,s)$. \emph{Dictionary.} When the multiset of Frobenius eigenvalues on
+so that $L_p(\Q_\ell(1),s)=(1-p^{-1-s})^{-1}$ and $L_p(V(1),s)=L_p(V,s+1)$, as $\chi_\ell(\Frob_p^{-1})=p^{-1}$. On $V_\ell E$ the geometric Frobenius has the
+eigenvalues $\alpha^{-1},\beta^{-1}$ (with $\alpha+\beta=a_p$, $\alpha\beta=p$), and on the dual $V_\ell E^\vee$ it has $\alpha,\beta$, so
+$L_p(V_\ell E^\vee,s)=(1-a_pp^{-s}+p^{1-2s})^{-1}$ is the Euler factor of $L(E,s)$. \emph{Dictionary.} When the multiset of Frobenius eigenvalues on
 $V^{I_p}$ is stable under inversion, the two conventions give the same factor: this is the case for $\ad V$ at a good prime (eigenvalues
 $\alpha/\beta,1,\beta/\alpha$) and on the lines on which Frobenius acts by $\pm1$ (types $\kod{II}$, $\kod{III}$, $\kod{IV}$ and their duals). When it is not
 stable they differ: if $E$ has multiplicative reduction at $q$, $(\ad V)^{I_q}$ is a line on which the arithmetic Frobenius acts by $q$ and the geometric one by
 $q^{-1}$ (\Cref{ex:ant:multiplicative}), and the factor $1-q^{-1-s}$ of the paper's table requires the geometric one.
 \end{convention}
+
+The two identities in the convention are short computations. On $V(1)=V\otimes\chi_\ell$ the geometric Frobenius acts as $p^{-1}\Frob_p^{-1}$, and twisting by the
+character $\chi_\ell$, unramified at $p\ne\ell$, does not change the inertia invariants; so
+$\det(1-p^{-1}\Frob_p^{-1}p^{-s}\mid V^{I_p})=\det(1-\Frob_p^{-1}p^{-(s+1)}\mid V^{I_p})$, which is $L_p(V(1),s)=L_p(V,s+1)$. On the dual $V_\ell E^\vee$ an element $g$
+acts by the inverse transpose of $\rho(g)$; so $\Frob_p^{-1}$ acts by the transpose of $\rho(\Frob_p)$, whose eigenvalues are $\alpha,\beta$, and
+$\det(1-\Frob_p^{-1}p^{-s}\mid V_\ell E^\vee)=(1-\alpha p^{-s})(1-\beta p^{-s})=1-a_pp^{-s}+p^{1-2s}$. With the arithmetic Frobenius on $V_\ell E^\vee$ one would get
+$(1-\alpha^{-1}p^{-s})(1-\beta^{-1}p^{-s})=1-\frac{a_p}pp^{-s}+p^{-1-2s}$ instead, which is not the Euler factor of $L(E,s)$: this is why the choice matters.
 
 \begin{example}[the multiplicative case]\label{ex:ant:multiplicative}
 Let $E$ have split multiplicative reduction at $q\ne\ell$. In a suitable basis $e_1,e_2$ of $T_\ell E$ (\Cref{ch:reduction}), inertia acts through
@@ -980,6 +988,9 @@ prime to $2$); $\sigma^{\chi_{-3}(q)}=\sigma^q$ because $\chi_{-3}(q)=1$ iff $q\
 centralises $\sigma$ if $q\equiv1\pmod3$ and inverts it if $q\equiv2$, for either choice of Frobenius'' is the same corollary, and the types
 $\kod{III}$, $\kod{III}^*$ use its order-$4$ case. The action on the invariant line of the adjoint is \Cref{prop:ant:commutant}.
 \end{paperlink}
+
+The general theory is now in place. The next section applies it to the quadratic fields, where everything can be computed by hand, and then passes
+from $\Z[\zeta_3]$ and $\Z[i]$ to their $\ell$-adic versions, the rings that the image of inertia generates in the paper's lemmas on additive reduction.
 
 \section{Quadratic fields, \texorpdfstring{$\Z[i]$}{Z[i]}, \texorpdfstring{$\Z[\zeta_3]$}{Z[zeta3]} and the rings \texorpdfstring{$\Z_\ell[\zeta_3]$}{Zl[zeta3]}}\label{sec:ant:quadratic}
 
@@ -1295,6 +1306,10 @@ $1-\chi_{-3}(q)q^{-s}$ and $1-\chi_{-4}(q)q^{-s}$ follow with either Frobenius (
 $\Z_\ell\otimes\Z[\zeta_3]$ is the endomorphism ring $\End_{I_q}(T)$ of the lattice.
 \end{paperlink}
 
+The quadratic characters met so far were defined through quadratic fields. The next section places them, together with the cyclotomic characters
+$\chi_\ell$ and $\bar\chi_\ell$, inside the cyclotomic fields, and proves that the two descriptions of a character of finite order, as a Dirichlet character and as a
+character of $G_\Q$, are the same.
+
 \section{Cyclotomic fields and class field theory over \texorpdfstring{$\Q$}{Q}}\label{sec:ant:cyclotomic}
 
 The cyclotomic fields are where the characters of the paper live: $\chi_\ell$ and $\bar\chi_\ell$ describe the action on $\mu_{\ell^\infty}$, the quadratic
@@ -1522,6 +1537,9 @@ equal to the Galois values at $\Frob_q$ (\Cref{prop:ant:quadchar}(iii)), which i
 $q\equiv\chi_{-3}(q)\pmod3$, which holds for every prime $q\ne3$ by \Cref{prop:ant:quadchar}(iii).
 \end{paperlink}
 
+Up to now every statement about Frobenius elements has concerned one prime at a time. The next section asks how the Frobenius classes are distributed as $p$
+varies; the answer, Chebotarev's theorem, is what allows a representation to be recognised from its traces of Frobenius.
+
 \section[Densities, Chebotarev, complex multiplication]{Densities, the Chebotarev density theorem, complex multiplication}\label{sec:ant:chebotarev}
 
 The paper uses Chebotarev's theorem to compare Galois representations through their Frobenius traces (Lemma lem:old, ``by Chebotarev and
@@ -1553,8 +1571,10 @@ products $\prod_{N\mathfrak p\le x}(1-N\mathfrak p^{-s})^{-1}$ contains each $N\
 $s=\sigma>1$, at most $n$ primes lie above each rational $p$, each with $N\mathfrak p\ge p$ (\Cref{thm:ant:efg}), so
 $\prod_{\mathfrak p}(1-N\mathfrak p^{-\sigma})^{-1}\le\prod_p(1-p^{-\sigma})^{-n}=\zeta(\sigma)^n<\infty$; this bounds all partial sums of the series of positive terms.
 (ii) We do not prove this; see \cite[Chapter VII, Section 5]{Neukirch} or \cite[Chapter VIII]{LangANT}. (iii) $\log\zeta_K(s)=\sum_{\mathfrak p}\sum_{m\ge1}
-N\mathfrak p^{-ms}/m$, and the terms with $m\ge2$ are bounded by $n\sum_p\sum_{m\ge2}p^{-m}\le n\sum_p\frac{2}{p^2}<\infty$ near $s=1$; by (ii)
-$\log\zeta_K(s)=\log\frac1{s-1}+O(1)$. The primes with $f\ge2$ have $N\mathfrak p\ge p^2$, and $\sum_{f(\mathfrak p)\ge2}N\mathfrak p^{-s}\le n\sum_pp^{-2}$ stays
+N\mathfrak p^{-ms}/m$ (take logarithms in the Euler product, $-\log(1-x)=\sum_mx^m/m$), and for real $s>1$ the terms with $m\ge2$ are bounded by
+$n\sum_p\sum_{m\ge2}p^{-m}=n\sum_p\frac{p^{-2}}{1-p^{-1}}\le n\sum_p\frac{2}{p^2}<\infty$; so $\log\zeta_K(s)=\sum_{\mathfrak p}N\mathfrak p^{-s}+O(1)$. By (ii)
+$\zeta_K(s)=\frac{c}{s-1}(1+o(1))$ as $s\to1^+$ with $c>0$ the residue (positive, as $\zeta_K(s)>0$ for real $s>1$), so $\log\zeta_K(s)=\log\frac1{s-1}+\log c+o(1)$,
+which gives the asymptotic. The primes with $f\ge2$ have $N\mathfrak p\ge p^2$, and $\sum_{f(\mathfrak p)\ge2}N\mathfrak p^{-s}\le n\sum_pp^{-2}$ stays
 bounded.
 \end{proof}
 
@@ -1683,6 +1703,9 @@ $\Gal(\Qbar/\Q(\sqrt{-3}))$, by Frobenius reciprocity and $\Ind\psi\otimes\chi_{
 paper. Section sec:anomaly no longer needs the original numerical argument for $h_3(E)\le1$ (that some prime $p<1223$
 inert in $\Q(\sqrt{-3})$ has $9\nmid a_p$); $h_3(E)\le1$ now follows from Lemma lem:h0.
 \end{paperlink}
+
+The last section returns from Galois groups to rings: the coefficients of an eigenform, the primes $\lambda$ above $\ell$ in its coefficient ring, and the
+maximal ideals of a Hecke algebra that congruences between eigenforms produce.
 
 \section{Coefficient fields and primes above \texorpdfstring{$\ell$}{l}}\label{sec:ant:coefficients}
 
