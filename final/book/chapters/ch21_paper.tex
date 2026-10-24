@@ -152,8 +152,9 @@ paper's labels are quoted as text, for instance Lemma lem:tamfactor). After the 
 ingredient, and then the expansion of the paper's argument, with guidance where a step is hard. Where the book proves more than the paper needs, a one-line
 remark says so. Sentences of the paper are quoted verbatim, between quotation marks, with the paper's own symbols; everything else is paraphrase.
 
-\paragraph{What the tour does not claim.} The paper's large-range counts (conductor up to $500000$ and the curves outside the tables) were not
-recomputed for this book; the tour reads the paper's tables from their printed rows and quotes their entries as printed. The book's own computations cover conductor below $10{,}000$ ($38{,}042$ optimal curves,
+\paragraph{What the tour does not claim.} The paper's large-range counts (conductor up to $500000$ and the curves outside the tables) are not
+computed by the book's own scripts; the paper's pipeline was rerun in full in the book's repository and reproduced them (\Cref{ch:computation}, in its
+section on reproducibility), and the tour reads the paper's tables from their printed rows and quotes their entries as printed. The book's own computations cover conductor below $10{,}000$ ($38{,}042$ optimal curves,
 Cremona's files \cite{ecdata}, PARI/GP \cite{PARI} version 2.17.2 through the Python interface \texttt{cypari2}); they are always labelled as the book's, with their
 range, and they were made with the paper in hand, so they are checks, not blind tests. A theorem number of another author's paper is said to be \emph{verified}
 only when it was compared with the published text; otherwise it is given \emph{as cited} by the paper.
@@ -1731,7 +1732,10 @@ $1$ for $\kod{I}_0$ and $-1$ for $\kod{I}_0^*$, $\pm2$, $\pm3$, $\pm4$ for $\kod
 correction cancelling, as the paper says.
 
 \paragraph{Reproducibility and the statement on AI.} The repository named in the appendix holds the scripts it names and the result files from which the six
-data tables are generated; the book compared the printed tables with those files (\Cref{ch:computation}, in its section on reproducibility) but did not rerun the large-range computations. The
+data tables are generated; the book compared the printed tables with those files, and the pipeline was rerun in full from the pinned data in the book's
+repository, reproducing every committed summary and table (\Cref{ch:computation}, in its section on reproducibility). The appendix says so: ``The whole pipeline was rerun from the pinned data with PARI/GP 2.17.2 and reproduced every committed result summary and Tables tab:uniform, tab:iso, tab:counts, tab:ns, tab:isolated and~tab:oot byte for byte.'' A
+third stage of that run recomputed the numbers that the paper states without a committed result file; it led to two corrections of wording, in Section
+sec:two ($19$ exceptions on the extension) and Section sec:eis (the $18$ curves with a point of order $9$, ``optimal or not''). The
 book's own reproduction is in
 \Cref{ch:computation} (Lemma lem:twist checked on twists of the book's range, Lemma lem:euler on $67{,}745$ pairs, \texttt{ellmoddegree} against Cremona's \texttt{degphi} on all $38{,}042$ optimal curves below
 $10{,}000$, no mismatch). The statement on the use of an AI system is part of the paper; Section~\ref{sec:paper:reading} summarises it.
@@ -1994,7 +1998,8 @@ the module, so the Selmer groups coincide; the degrees differ by the omitted fac
 
 \paragraph{What was read.} The paper in full, as it accompanies this book, including the printed rows of its tables; the entries quoted in
 Section~\ref{sec:paper:data} are copied from them. The repository named in its appendix was read for the result files behind the six data tables
-(\Cref{ch:computation}, in its section on reproducibility); its large-range computations were not rerun.
+(\Cref{ch:computation}, in its section on reproducibility); its large-range computations were rerun in full by its own pipeline in the book's
+repository, not by the book's scripts.
 
 \paragraph{Sources for the imported statements.} The theorems of Diamond, Flach and Guo are cited from the published version \cite{DFG04}; their numbers were compared with it (\Cref{ch:congruence}),
 and a later arXiv version (arXiv:2512.02348) numbers them differently. Agashe-Ribet-Stein \cite{ARS12}, Ribet-Takahashi \cite{RibetTakahashi97} and Takahashi \cite{Takahashi01}, Pollack-Weston

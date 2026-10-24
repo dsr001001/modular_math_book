@@ -1,0 +1,100 @@
+[repro] 17:27:12 pipeline directory: /home/claude/modular_math_book/final/pipeline
+[repro] 17:27:12 log: /home/claude/modular_math_book/final/pipeline/logs/repro_run_20261024T172712Z/repro_run.log
+[repro] 17:27:12 gp version: PARI stack size set to 256000000 bytes, maximum size set to 256000000
+[2, 17, 2]
+[repro] python 3.13.16 numpy 2.5.3 pandas 3.0.5 pyarrow 26.0.0
+[repro] 17:27:13 download (pinned ecdata 25cec5ecfec8b9f016eb1631ac633194c2bed39f)
+[repro] download failures: 35 iwasawa (expected), 0 other
+[repro] 17:27:31 download done: allcurves rows 3064705
+[repro] 17:27:31 PARI features (2 parallel gp processes)
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+PARI stack size set to 256000000 bytes, maximum size set to 256000000
+[repro] 17:38:24 PARI features done: 3064705 curves, 2164260 classes
+[repro] 17:38:24 build_features.py
+allcurves 3064705
+optimal           140309
+two_adic_index      5892
+two_adic_level      5892
+curves.parquet (3064705, 41)
+ap.parquet (2164260, 178)
+[repro] data/curves.parquet rows 3064705, data/ap.parquet rows 2164260
+[repro] optimal work: 1311066 (expected 1311066)
+[repro] optimal holdout: 429936 (expected 429936)
+[repro] optimal ext: 359009 (expected 359009)
+[repro] 17:41:40 conj_check.py work
+table: results/optimal_work.parquet  curves: 1311066  galrep available: True
+ l  curves  non_eis  non_eis_with_bound  non_eis_with_bound2  viol_conj1  viol_conj2    eis  eis_with_bound  viol_conj3  viol_conj3_tw  viol_obs4
+ 2 1311066   964432              805742               805742         NaN         NaN 344727          343940         NaN            NaN        0.0
+ 3 1311066  1233729              598833               705563         0.0         0.0  75430           67845         0.0         1148.0        NaN
+ 5 1311066  1303224              235510               262531         0.0         0.0   5935            4454         0.0          141.0        NaN
+ 7 1311066  1307753              121947               136707         0.0         0.0   1406             759         0.0           30.0        NaN
+11 1311066  1309103               42334                47040         0.0         0.0     56               0         0.0            0.0        NaN
+13 1311066  1308945               27215                29943         0.0         0.0    214              26         0.0            0.0        NaN
+17 1311066  1309147               12496                13551         0.0         0.0     12               4         0.0            0.0        NaN
+19 1311066  1309159                8619                 9300         0.0         0.0      0               0         0.0            0.0        NaN
+23 1311066  1309159                4588                 4870         0.0         0.0      0               0         0.0            0.0        NaN
+29 1311066  1309159                1872                 1959         0.0         0.0      0               0         0.0            0.0        NaN
+31 1311066  1309159                1411                 1459         0.0         0.0      0               0         0.0            0.0        NaN
+37 1311066  1309127                 582                  606         0.0         0.0     32               0         0.0            0.0        NaN
+41 1311066  1309159                 337                  346         0.0         0.0      0               0         0.0            0.0        NaN
+43 1311066  1309159                 293                  297         0.0         0.0      0               0         0.0            0.0        NaN
+47 1311066  1309159                 139                  139         0.0         0.0      0               0         0.0            0.0        NaN
+53 1311066  1309159                  80                   80         0.0         0.0      0               0         0.0            0.0        NaN
+59 1311066  1309159                  39                   39         0.0         0.0      0               0         0.0            0.0        NaN
+61 1311066  1309159                  30                   30         0.0         0.0      0               0         0.0            0.0        NaN
+67 1311066  1309159                  25                   25         0.0         0.0      0               0         0.0            0.0        NaN
+71 1311066  1309159                   6                    6         0.0         0.0      0               0         0.0            0.0        NaN
+73 1311066  1309159                   6                    6         0.0         0.0      0               0         0.0            0.0        NaN
+79 1311066  1309159                   4                    4         0.0         0.0      0               0         0.0            0.0        NaN
+83 1311066  1309159                   3                    3         0.0         0.0      0               0         0.0            0.0        NaN
+97 1311066  1309159                   1                    1         0.0         0.0      0               0         0.0            0.0        NaN
+scripts/repro_run.sh: line 97:  5317 Killed                  "$PYTHON" scripts/conj_check.py "results/optimal_$s.parquet" --out "results/check_$s" 2>&1
+      5318 Done                    | sed '/Warning/d'

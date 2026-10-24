@@ -112,7 +112,7 @@ cases (a) and (b). \emph{(proved here, by computation)}
 \item \textbf{A twist relation at $q=\ell$.} Below $10{,}000$, for $\ell\le13$: a curve of type $\kod{II}^*$, $\kod{III}^*$ or $\kod{IV}^*$ at $\ell$ has $v_\ell$ of its degree exactly one more than its
 twist by $\chi_{\ell^*}$ ($4{,}412$ cases); type $\kod{I}_n^*$ gives $0$; type $\kod{I}_0^*$ gives $v_\ell((\ell+1)^2-a_\ell^2)$ when $E[\ell]$ is irreducible. \emph{(an observation, by
 computation; no proof)} \Cref{ex:computation:twist-at-ell}.
-\item \textbf{Reproducibility.} The paper's repository (its scripts and result files, with which the printed tables were compared; nothing in it was rerun); the book's scripts \texttt{sessions.gp}, \texttt{table\_small.gp} and the Python
+\item \textbf{Reproducibility.} The paper's repository (its scripts and result files, with which the printed tables were compared, and the full rerun of its pipeline from the pinned data, which reproduced every committed summary and table); the book's scripts \texttt{sessions.gp}, \texttt{table\_small.gp} and the Python
 scripts; a checklist: pin the data, record versions, separate data and results, rerun, cross-check, state what was not checked. \emph{(construction;
 convention)} \Cref{rem:computation:paper-repository,con:computation:sessions,con:computation:table-small,rem:computation:book-scripts,conv:computation:checklist}.
 \end{enumerate}
@@ -164,7 +164,8 @@ and \ref{sec:computation:reproducibility}).
 
 Two kinds of numbers appear. Numbers the book computed are printed with the range they cover and were produced by the code printed or
 described here; numbers the paper reports for its large ranges are quoted as the paper's and marked as such: they cannot be rerun from the
-data used in this book. The book's ranges were not blind (every statement was known before the book's data were looked at), so the book's
+data used in this book. The paper's own pipeline was rerun in full in this book's repository and reproduced them
+(\Cref{rem:computation:paper-repository}); that run is the pipeline's and is separate from the book's computations below conductor $10{,}000$. The book's ranges were not blind (every statement was known before the book's data were looked at), so the book's
 counts are reproductions, not tests.
 
 \begin{convention}[software, data and outputs]\label{conv:computation:versions}
@@ -183,7 +184,8 @@ All eleven files are fetched from that commit, by its full hash, into the direct
 script \texttt{tools/setup\_env.sh}, which checks them against the SHA-256 sums of \texttt{tools/ecdata.sha256}; the directory itself is not
 under version control.
 \item \emph{Outputs.} A listing that shows output shows it exactly as PARI 2.17.2 prints it; inputs are preceded by \texttt{?} as in a
-\texttt{gp} session. Where PARI 2.15 might behave differently we say so (\Cref{warn:computation:rule-pitfalls}(f)); we have not run 2.15.
+\texttt{gp} session. Where PARI 2.15 might behave differently we say so (\Cref{warn:computation:rule-pitfalls}(f)); the book has not run 2.15 (the
+pipeline's comparison of 2.15.4 with 2.17.2 below $10{,}000$ is described in \Cref{rem:computation:paper-repository}).
 \item \emph{Models and labels.} Curves are given by Cremona's reduced global minimal models $[a_1,a_2,a_3,a_4,a_6]$ and named by Cremona's
 labels, \curve{121a1}; ``optimal'' means $X_0(N)$-optimal (\Cref{ch:moddeg}). The LMFDB's labels appear only in
 \Cref{conv:computation:labels}.
@@ -1664,7 +1666,7 @@ Below conductor $10{,}000$, on the optimal curves:
 factor at $2$ is $1+2X$ for every one of them, as Lemma lem:IV requires.'' The data check a theorem.
 \item Section sec:two: for the $25{,}086$ optimal curves without CM and without a label \texttt{2B} or \texttt{2Cs} (no rational $2$-isogeny), the inequality
 $v_2(\degphi)\ge\sum_{q\,\|\,N}v_2(n_q)+\#\{q:\ \text{type }\kod{III},\kod{III}^*,\kod{I}_0^*\text{ or }\kod{I}_n^*\}$ holds with no exception, while counting $\kod{I}_0^*$ with weight $2$ fails
-$6$ times (\curve{99d1}, \curve{931b1}, \curve{2299d1}, \curve{2475h1}, \curve{5819a1}, \curve{5931b1}), as the paper's $123$, $26$ and $20$ exceptions on its ranges lead one to expect.
+$6$ times (\curve{99d1}, \curve{931b1}, \curve{2299d1}, \curve{2475h1}, \curve{5819a1}, \curve{5931b1}), as the paper's $123$, $26$ and $19$ exceptions on its ranges lead one to expect.
 \item The optimal CM curves of odd modular degree are \curve{27a1}, \curve{32a1}, \curve{36a1}, \curve{49a1} (degree $1$) and \curve{243b1} (degree $9$); \curve{27a1} and
 \curve{243b1} have torsion $\Z/3$, no rational point of order $2$ and non-prime conductor, so they fall under the CM case of the theorem of Calegari and Emerton
 quoted in Section sec:two (\Cref{ch:moddeg} states it).
@@ -1692,8 +1694,7 @@ The appendix says: ``All scripts, the pinned data commit, the result files and t
 symmetric-square Euler factors, \texttt{scripts/step10\_rule.py} and \texttt{scripts/step11\_tw\_boundary.py} for the rule on the whole ranges
 (``correction term, image statistics''), \texttt{scripts/step12\_tamagawa.py} for the Tamagawa factors, \texttt{scripts/conj\_check.py} for the two
 corollary forms, \texttt{scripts/euler\_rule.gp} for the functions of \Cref{con:computation:rule-listing}, and \texttt{twist\_lemma\_check.gp}; it adds
-that ``each runs on the full tables in minutes to hours'' and that ``The pipeline was rerun from a clean clone and reproduced every count of Table
-tab:counts.''
+that ``each runs on the full tables in minutes to hours'' and that ``The whole pipeline was rerun from the pinned data with PARI/GP 2.17.2 and reproduced every committed result summary and Tables tab:uniform, tab:iso, tab:counts, tab:ns, tab:isolated and~tab:oot byte for byte.''
 
 The directory \texttt{final/\allowbreak pipeline} holds these scripts, the result files and, in \texttt{tables}, the six table files that the paper prints;
 its \texttt{README.md} maps each table to the script that writes it, \texttt{scripts/repro\_run.sh} and \texttt{scripts/reproduce\_tables.sh} rerun the
@@ -1707,16 +1708,35 @@ Tables tab:counts, tab:isolated and tab:oot come from \texttt{scripts/make\_tabl
 \texttt{results/step7\_twist2\_*.parquet} (twisted rows), the third from \texttt{results/oot\_table.parquet}, which \texttt{scripts/oot\_convert.py} builds from
 \texttt{results/oot\_1.tsv} and \texttt{results/oot\_2.tsv}. Table tab:iso was copied, as the repository's notes say, from \texttt{results/step9\_euler\_l3.txt}.
 
-For this book the printed tables were compared with these files, by reading them; no script of the repository was run, and no large-range count was
-recomputed. This is a consistency check of the tables against the repository's output files, not a reproduction. The result: the six files in
-\texttt{tables} agree character for character with the tables printed in the paper. Every entry of Table tab:uniform agrees with
+For this book the printed tables were compared with these files by reading them, and the pipeline was rerun in full in the book's repository on
+24 October 2026, on a machine with two cores and 7 GB of memory, with PARI/GP 2.17.2 through \texttt{cypari2}; a small cypari2-backed stand-in,
+\texttt{scripts/gp\_cypari2\_standin.py}, took the place of the \texttt{gp} binary (the pipeline's \texttt{README.md} names a real \texttt{gp} as the
+normal route). The first stage (\texttt{scripts/repro\_run.sh}) took the pinned commit ($3{,}064{,}705$ curves), recomputed the local data of every curve
+with PARI, rebuilt the feature table, found $1{,}311{,}066$, $429{,}936$ and $359{,}009$ optimal curves on the three ranges and ran
+\texttt{scripts/conj\_check.py}; the script ran out of memory while writing the per-curve file of the working set, so the checker was run on each range
+separately, and the three summaries \texttt{results/check\_\{work,holdout,ext\}\_summary.csv} agree byte for byte with the committed ones. The second stage
+(\texttt{scripts/reproduce\_tables.sh}) regenerated every other committed summary and every table file byte for byte, the four twisted rows of Table
+tab:isolated included, and \texttt{scripts/selftest.py} passed. A third stage (\texttt{scripts/stage3\_*.py}, summarised in
+\texttt{results/stage3\_summary.md}) recomputed from the pinned data the numbers that the paper states without a committed result file. Of its $23$
+numbers, $21$ agree with the paper as stated, and two led to corrections of wording, which the paper's text carries: on the extension the weight-$2$ count of
+$\kod{I}_0^*$ in Section sec:two has $19$ exceptions, not $20$ (the twentieth, \curve{401291a1}, lies in a class whose optimal curve the tables do not
+determine), and the $18$ curves of conductor at most $400000$ with a point of order $9$ in Section sec:eis are all such curves of the tables, optimal or
+not ($14$ of them optimal). The same stage compared PARI/GP 2.15.4 with 2.17.2 on all $38{,}042$ optimal curves below $10{,}000$ (identical degrees,
+values of \texttt{ns3} and bounds) and checked Lemma lem:euler against \texttt{lfunsympow} on all $5{,}102{,}273$ pairs (optimal curve, bad prime $q\ge5$)
+of the three ranges. The pipeline's \texttt{README.md} records two caveats: above conductor $400000$ the \texttt{galrep} labels are written without dots
+(\texttt{3Cs11}), so \texttt{conj\_check.py} gives the split-Cartan term of Conjecture conj:eis the value $0$ for the one optimal curve so labelled on the
+extension, which only weakens the bound tested; and the Euler factors of the working set were computed in two shards, the committed logs describing
+three. The logs are in \texttt{results/rerun\_20261024} and \texttt{results/stage3.log}. These runs belong to the paper's pipeline: the book's own counts
+below conductor $10{,}000$ in this chapter come from the book's scripts and do not depend on them.
+
+The comparison by reading gave the following. The six files in \texttt{tables} agree character for character with the tables printed in the paper. Every entry of Table tab:uniform agrees with
 \texttt{results/step11\_summary.csv}, whose rates are rounded to four decimals (two of them, $0.9155$ and $0.5395$, lie on a rounding boundary and are printed
 $91.6\%$ and $54.0\%$); its columns of curves, positive bounds, violations without $h$ and the III-free counts agree with \texttt{results/step10\_rule\_*\_summary.csv} as well. All eighteen rows of
 Table tab:counts agree with \texttt{results/check\_*\_summary.csv}, and all four rows of Table tab:ns with \texttt{results/step11\_ns3.csv}, which also records,
 in a column the table does not print, that each of the $364$, $68$ and $43$ failing curves has a potentially multiplicative prime $p\equiv2\pmod3$ with $3\mid v_p(j_E)$,
 the paper's observation on $t_3(E,p)\ge1$. Every cell of Table tab:iso agrees with \texttt{results/step9\_euler\_l3.txt}. The five untwisted rows of
-Table tab:isolated agree with \texttt{results/step6\_u1\_fit\_work.txt}; its four twisted rows could not be compared, because the per-curve \texttt{.parquet}
-files are build products that are not committed. Table tab:oot was recounted from \texttt{results/oot\_1.tsv} and \texttt{results/oot\_2.tsv}
+Table tab:isolated agree with \texttt{results/step6\_u1\_fit\_work.txt}; its four twisted rows cannot be compared by reading, because the per-curve
+\texttt{.parquet} files behind them are build products that are not committed (the rerun regenerated them and the table file). Table tab:oot was recounted from \texttt{results/oot\_1.tsv} and \texttt{results/oot\_2.tsv}
 ($1{,}261$ lines, $893$ curves after removing repeated curves as \texttt{oot\_convert.py} does), and every family's count, largest conductor and median time
 agrees. The scripts below are the book's own.
 \end{remark}
@@ -1913,9 +1933,9 @@ bytes unless stated; random seed $0$ for the permutations, with the orders of cu
 \item \emph{Rerun from a clean copy} and compare the counts.
 \item \emph{Cross-check independently.} Here: the GP loop against the Python bounds; \texttt{ellmoddegree} against \texttt{degphi}; \texttt{ns3} against
 \texttt{galrep}; PARI's Euler factors against Lemma lem:euler; \texttt{ellglobalred} against \texttt{curvedata}; optimality flags against \texttt{degphi}.
-\item \emph{State what was not checked.} Here: everything above conductor $10{,}000$, where the paper's printed tables were only compared with the result
-files of its repository (\Cref{rem:computation:paper-repository}); the paper's out-of-table curves, whose modular degrees were not recomputed; PARI 2.15; the
-scripts of the paper's repository, none of which was run.
+\item \emph{State what was not checked.} Here, for the book's own runs: everything above conductor $10{,}000$, which the book's scripts do not reach
+(the paper's pipeline was rerun there, \Cref{rem:computation:paper-repository}); the paper's out-of-table curves, whose modular degrees were not
+recomputed; PARI 2.15, which the book did not run (the pipeline's third stage compared it with 2.17.2 below $10{,}000$).
 \end{enumerate}
 \end{convention}
 
@@ -1925,7 +1945,8 @@ can be rerun''. Below conductor $10{,}000$ the pinned commit is the one used her
 rerun from it: the Tamagawa counts of Section sec:tam (\Cref{ex:computation:repro-tam}), the two readings of the $\Ns$ violations
 (\Cref{ex:computation:repro-ns}), the odd-part statistic (\Cref{ex:computation:odd-part}), the twist comparisons after Theorem thm:twist in their one-prime form
 (\Cref{ex:computation:repro-twist}), the twist relation at $q=\ell$ of Remark rem:oq1 (\Cref{ex:computation:twist-at-ell}) and the data quoted in Remark
-rem:wild and Section sec:boundary (\Cref{sec:computation:populations,ex:computation:wild-two}).
+rem:wild and Section sec:boundary (\Cref{sec:computation:populations,ex:computation:wild-two}). Above conductor $10{,}000$ the counts were rerun by the
+paper's own pipeline, in full, in this book's repository (\Cref{rem:computation:paper-repository}).
 \end{paperlink}
 \section{Exercises}\label{sec:computation:exercises}
 
@@ -2076,9 +2097,10 @@ reader's background. Chapter titles are cited from memory and are pointers we ha
 \emph{What was verified, and how.} Every number marked as the book's was produced with PARI/GP 2.17.2 through \texttt{cypari2} 2.2.4 and Python 3.13 on
 Linux, from the files of commit \texttt{25cec5e} of \texttt{ecdata} listed in \Cref{conv:computation:checklist}; the printed GP code was loaded with
 \texttt{read} and run as printed, and every printed output was copied from the run. The paper's numbers for its large ranges are quoted from its text
-and its printed tables and were not reproduced; the printed tables were compared with the result files of the paper's repository, a consistency check of
-the tables against those files, not a recomputation (\Cref{rem:computation:paper-repository}). Not checked: PARI 2.15; the scripts of the paper's repository,
-which were not run; the out-of-table curves; anything above conductor $10{,}000$.
+and its printed tables; the book's scripts do not reproduce them. The paper's pipeline was rerun in full in this book's repository and reproduced every
+committed result summary and table byte for byte, and its third stage recomputed the numbers that the paper states without a committed result file, with
+two corrections of wording (\Cref{rem:computation:paper-repository}). Not checked by the book's own runs: PARI 2.15 (compared with 2.17.2 below
+$10{,}000$ by the pipeline's third stage); the generation of the out-of-table curves; anything above conductor $10{,}000$.
 
 \emph{Questions of protocol.} The text of Section sec:data leaves two questions of protocol open: whether the modular degrees of the out-of-table
 curves were examined while the terms at $2$ and $3$ were being fixed, and whether (eq:twist) was written down before the hold-out counts of (eq:main) were

@@ -1,0 +1,70 @@
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.150000-159999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.180000-189999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.160000-169999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.170000-179999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.190000-199999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.200000-209999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.240000-249999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.230000-239999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.210000-219999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.250000-259999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.270000-279999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.280000-289999
+curl: (22) The requested URL returned error: 404
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.330000-339999
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.290000-299999
+curl: (22) The requested URL returned error: 404
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.370000-379999
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.220000-229999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.260000-269999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.320000-329999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.350000-359999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.340000-349999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.300000-309999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.390000-399999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.410000-419999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.420000-429999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.400000-409999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.450000-459999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.480000-489999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.440000-449999
+curl: (22) The requested URL returned error: 404
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.310000-319999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.490000-499999
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.360000-369999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.460000-469999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.470000-479999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.380000-389999
+curl: (22) The requested URL returned error: 404
+FAIL https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/iwasawa/iwasawa.430000-439999

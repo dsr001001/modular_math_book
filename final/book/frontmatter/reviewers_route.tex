@@ -124,12 +124,18 @@ No computation enters the proof of Theorem thm:main or Theorem thm:quant. The da
 conj:eis, the sharpness of the hypothesis, and checks of the local lemmas. They rest on three kinds of evidence.
 \begin{itemize}[leftmargin=*]
 \item \emph{Large ranges} (conductor up to $500000$, and the $893$ curves outside the tables): computed by the scripts in
-\texttt{final/pipeline}. The book did not rerun them. It compared the printed tables with the committed result files
-(\texttt{scripts/selftest.py}, output in \texttt{results/selftest.log}; \texttt{MANIFEST.sha256} fixes every file), which
-is a consistency check, not a reproduction; the four twisted rows of Table tab:isolated could not be compared, their source
-files not being committed. The full rerun from the pinned data is \texttt{scripts/repro\_run.sh} followed by
-\texttt{scripts/reproduce\_tables.sh}, described in the pipeline's \texttt{README.md}, which also describes the logs of the
-earlier clean-clone runs; a referee should read those logs before relying on the appendix's sentence on the clean clone.
+\texttt{final/pipeline}. The pipeline was rerun in full in this repository from the pinned data, with PARI/GP 2.17.2
+(\texttt{scripts/\allowbreak repro\_run.sh}, then \texttt{scripts/\allowbreak reproduce\_tables.sh}), and reproduced every committed result
+summary and every table file byte for byte, the four twisted rows of Table tab:isolated included; the out-of-table curves
+were not drawn again, their table being regenerated from the committed curve files. A third stage
+(\texttt{scripts/stage3\_*.py}) recomputed the numbers that the paper states without a committed result file: $21$ of $23$
+agree as stated, and two sentences of the paper were corrected in wording (Section sec:two: $19$ exceptions on the
+extension, not $20$; Section sec:eis: the $18$ curves with a point of order $9$ are all such curves, optimal or not). The
+logs, the timings and two caveats (\texttt{galrep} labels written without dots above conductor $400000$, which only weaken
+one term of the test of Conjecture conj:eis, and a different number of shards) are in the pipeline's \texttt{README.md},
+section ``Full rerun''; \Cref{ch:computation} summarises them. The printed tables were also compared with the committed
+result files (\texttt{scripts/selftest.py}, output in \texttt{results/selftest.log}; \texttt{MANIFEST.sha256} fixes every
+file). The book's own scripts do not reach this range.
 \item \emph{Conductor below $10{,}000$} ($38{,}042$ optimal curves): recomputed for the book with PARI/GP 2.17.2 from the
 same pinned commit, including Table tab:excess (\Cref{ch:blochkato}), the check of Lemma lem:euler against PARI's factors,
 and the counts of Sections sec:tam, sec:anomaly and sec:wild that fall in this range (\Cref{ch:computation}). These runs were

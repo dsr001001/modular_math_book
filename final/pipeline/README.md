@@ -146,8 +146,9 @@ every table file (`euler_uniform.tex`, `ns3.tex`, `counts.tex`, `isolated3.tex` 
 files (see "Inputs that are not committed"), are therefore reproduced from the pinned data.
 
 After the runs, every file listed in `MANIFEST.sha256` has its committed content. The regenerated
-`results/step6_u1_fit_work.txt` differs from the committed one only in the pandas warning lines that the committed file
-holds (its configuration lines are identical), and the committed file was put back.
+`results/step6_u1_fit_work.txt` lacks the pandas warning lines that the committed file holds (the script sends standard
+error to the run directory; the configuration lines, which it compares, are identical), and the committed file was put
+back.
 
 Two findings of the rerun:
 - **Spelling of the galrep labels.** Above conductor 400,000 the mod 3 labels of the tables are written without dots
