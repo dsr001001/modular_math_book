@@ -11,3 +11,5 @@ build/
 *.pdf
 !docs/*.pdf
 data/
+!final/paper/note.pdf
+!final/book/build/main/main.pdf
