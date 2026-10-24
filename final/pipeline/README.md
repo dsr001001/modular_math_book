@@ -192,6 +192,10 @@ Other checks
 Statement numbers in the docstrings of some scripts (for instance "Lemma 2.7", "Proposition 1.4", "Conjecture 1, 2, 3")
 refer to earlier drafts of the note; the paper's labels are authoritative.
 
+## samples/
+
+`samples/wild_euler_q23.csv`: P_q, e_l and the PARI commands at the wild primes q = 2, 3 for the curves named in the paper and all optimal non-CM curves with N < 2,000 and additive reduction at 2 or 3 (`scripts/wild_euler_samples.py`; see `samples/README.md`).
+
 ## docs/
 
 `KNOWN_RELATIONS.md` (the list of known relations excluded from the search), `NULL_DESIGN.md` (the pre-registration of
@@ -200,7 +204,7 @@ Their statement numbers and file paths refer to earlier drafts of the note and t
 
 ## Verification of this directory
 
-`MANIFEST.sha256` holds the SHA-256 of every file under `scripts/`, `results/` and `tables/`. From this directory:
+`MANIFEST.sha256` holds the SHA-256 of every file under `scripts/`, `results/`, `samples/` and `tables/`. From this directory:
 
 ```
 sha256sum -c MANIFEST.sha256
