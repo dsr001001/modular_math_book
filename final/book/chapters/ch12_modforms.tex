@@ -117,7 +117,7 @@ $\End S_2(\Gamma_0(N))$): \Cref{prop:modforms:q-expansion}, \Cref{def:modforms:i
 \item \textbf{Section 4.1} (the operator $w=W_{M^\Sigma}$, ``the Atkin-Lehner involution $w_{M^\Sigma}$ with no scalar factor''; $H^1(X_0(M^\Sigma),\Z_\ell)$; the step on $w_N$ in Proposition prop:pullback):
 \Cref{def:modforms:atkin-lehner}, \Cref{prop:modforms:atkin-lehner}, \Cref{prop:modforms:atkin-lehner-petersson}, \Cref{pl:modforms:wN}.
 \item \textbf{Remark rem:degree} ($\degphi\cdot\vol(\Lambda_E)=4\pi^2c_E^2\langle f,f\rangle$, unnormalised product): \Cref{conv:modforms:petersson-normalisations}, \Cref{ex:modforms:petersson-numerics}.
-\item \textbf{Theorem thm:twist and Step 1 of the proof of Theorem thm:quant} (integrality of twists, $S_2(\Gamma_0(N);\Z_\ell)$, ``the congruence survives''): \Cref{def:modforms:integral-forms},
+\item \textbf{Theorem thm:twist, the set-up of the proof of Theorem thm:quant and Lemma lem:step1} (integrality of twists, $S_2(\Gamma_0(N);\Z_\ell)$, the projection by the idempotent $e_{\mathfrak m}$): \Cref{def:modforms:integral-forms},
 \Cref{cor:modforms:integral-lattice}, \Cref{pl:modforms:crit}, \Cref{pl:modforms:petersson}.
 \item \textbf{Lemma lem:euler and Theorem thm:dfg14} ($\abs{\alpha/\beta}=1$ at good primes): \Cref{thm:modforms:ramanujan-petersson}, \Cref{pl:modforms:ramanujan}.
 \item \textbf{Conjecture conj:eis and Section sec:eis} (the Eisenstein case): \Cref{prop:modforms:eisenstein-weight-two}, \Cref{ex:modforms:eisenstein-congruence}, \Cref{pl:modforms:eisenstein}.
@@ -711,7 +711,7 @@ Let $\Gamma$ be a congruence subgroup and $k\in\Z$. A \emph{modular form of weig
 \item $f$ is \emph{holomorphic at the cusps}: for every $\sigma\in\SL_2(\Z)$ the function $f|_k\sigma$ is bounded on $\{\operatorname{Im}z\ge1\}$.
 \end{enumerate}
 It is a \emph{cusp form} if moreover $(f|_k\sigma)(z)\to0$ as $\operatorname{Im}z\to\infty$, for every $\sigma\in\SL_2(\Z)$. The modular forms form a complex vector space $M_k(\Gamma)$,
-the cusp forms a subspace $S_k(\Gamma)$. The \emph{level} of a form for $\Gamma_0(N)$ is $N$; the paper's ``cusp form of level $N$'' is an element of $S_2(\Gamma_0(N))$.
+the cusp forms a subspace $S_k(\Gamma)$. The \emph{level} of a form for $\Gamma_0(N)$ is $N$; a cusp form of level $N$ in the paper is an element of $S_2(\Gamma_0(N))$.
 \end{definition}
 
 Condition (a) says that $f(z)\,(dz)^{k/2}$ is invariant under $\Gamma$ (for $k=2$ this is \Cref{lem:modforms:slash}(iii) below), so that $f$ lives on the quotient $Y(\Gamma)$ in this twisted
@@ -1515,14 +1515,14 @@ period lattice of $E$ (Zagier \cite{Zagier85}, Watkins \cite{Watkins02})''. Rema
 unnormalised Petersson product and the Manin constant $c_E>0$ in the numerator''. Both the normalisation and the place of $c_E$ are those checked in
 \Cref{ex:modforms:petersson-numerics}. The orthogonality in the definition of $r_E$, in Lemma lem:crit ($f^\perp$) and in Lemma lem:old is that of
 \Cref{prop:modforms:orthogonal-complement}; in the proof of Theorem thm:twist the paper uses instead ``the $\T$-stable complement of the $g$-line'', which coincides with the Petersson
-complement for a newform $g$ (\Cref{ch:hecke}), and in Step 1 of the proof of Theorem thm:quant it insists on the $\T$-stable complement ``(not the Petersson complement, which is not
-$\T$-stable when the $U_p$ are involved)'', because there the form $g^S$ is not a newform.
+complement for a newform $g$ (\Cref{ch:hecke}), and in the set-up of the proof of Theorem thm:quant it insists on the $\T$-stable complement of the line of $g^S$, ``not the Petersson complement, which is not
+$\T$-stable when the $U_p$ are involved'', because there the form $g^S$ is not a newform.
 \end{paperlink}
 
 \section{Integral forms, the Sturm bound and congruences}\label{sec:modforms:integral}
 
 The paper's congruences live in $S_2(\Gamma_0(N);\Z)$ and $S_2(\Gamma_0(N);\Z_\ell)$: the congruence number is defined with an ``integral cusp form'', Lemma lem:crit uses the pairing
-``$S_2(\Gamma_0(N);\Z)\times\T\to\Z$'' and its version over $\Z_\ell$, Theorem thm:twist needs a twist map that ``preserves integrality'', and Step 1 of the proof of Theorem thm:quant
+``$S_2(\Gamma_0(N);\Z)\times\T\to\Z$'' and its version over $\Z_\ell$, Theorem thm:twist needs a twist map that ``preserves integrality'', and Lemma lem:step1
 projects a congruence inside $S_2(\Gamma_0(N);\Z_\ell)$. This section defines these modules, states Shimura's theorem that they are lattices of full rank, proves Sturm's bound in
 the form needed, and deduces that a congruence between two forms of the same level can be decided on finitely many coefficients. It then proves the congruences of the
 paper's Example for all $n$. The perfect pairing with the Hecke algebra is \Cref{ch:hecke}'s.
@@ -1566,7 +1566,7 @@ that of $f$; then the level-one case in weight $k\mu$, with bound $k\mu/12$, app
 \end{proof}
 
 The values $B_2(N)$ at the levels of the paper's congruences are $B_2(11)=2$, $B_2(20)=6$, $B_2(37)=6$, $B_2(52)=14$, $B_2(99)=24$, $B_2(121)=22$, $B_2(539)=112$,
-$B_2(980)=336$; they agree with PARI's \texttt{mfsturm}. The paper's ``Sturm's bound $\frac16N\prod_{p\mid N}(1+\frac1p)$'' is $\mu(N)/6$, whose integer part is $B_2(N)$.
+$B_2(980)=336$; they agree with PARI's \texttt{mfsturm}. The bound $\frac16N\prod_{p\mid N}(1+\frac1p)$ that the paper's Example calls Sturm's bound is $\mu(N)/6$, whose integer part is $B_2(N)$.
 
 \begin{corollary}[the integral lattice and its $q$-expansions]\label{cor:modforms:integral-lattice}
 Let $d=\dim S_2(\Gamma_0(N))$, $B=B_2(N)$ and $L=S_2(\Gamma_0(N);\Z)$.
@@ -1603,9 +1603,9 @@ $F\in L\otimes\Z_\ell$. The statement for $\F_\ell$ is injectivity of the trunca
 \begin{paperlink}\label{pl:modforms:crit}
 Lemma lem:crit ends: ``Every step holds verbatim over $\Z_\ell$, the pairing being perfect after tensoring with $\Z_\ell$.'' On the side of forms, the module there is
 $S_2(\Gamma_0(N);\Z_\ell)=S_2(\Gamma_0(N);\Z)\otimes\Z_\ell$ (\Cref{def:modforms:integral-forms}); \Cref{cor:modforms:integral-lattice}(iii) says that it embeds in $\Z_\ell[[q]]$, so that congruences modulo $\ell^t$
-coefficientwise make sense for its elements, and that it consists exactly of the $\ell$-integral forms. Step 1 of the proof of Theorem thm:quant uses the same module: it speaks of
-``$g^S\equiv h\pmod{\ell^t}$ coefficientwise with $h\in S_2(\Gamma_0(N);\Z_\ell)$'', and continues ``projecting
-$h$ to the $\mathfrak m$-component (an idempotent of $\T_\ell$, so the projection stays in the complement and the congruence survives)''. Here the idempotent $e_{\mathfrak m}\in\T_\ell$
+coefficientwise make sense for its elements, and that it consists exactly of the $\ell$-integral forms. The set-up of the proof of Theorem thm:quant uses the same module: it speaks of
+``$g^S\equiv h\pmod{\ell^t}$ coefficientwise with $h\in C\cap S_2(\Gamma_0(N);\Z_\ell)$'', $C$ the $\T$-stable complement of the line of $g^S$, and the proof of Lemma lem:step1 continues: ``The idempotent
+$e_{\mathfrak m}$ of $\T_\ell$ fixes $g^S$ (as $\pi$ factors through $\T_{\mathfrak m}$) and preserves $C$ and the integral forms, so $h'=e_{\mathfrak m}h$ lies in $C\cap S_2(\Gamma_0(N);\Z_\ell)$ and $g^S\equiv h'\pmod{\ell^t}$.'' Here the idempotent $e_{\mathfrak m}\in\T_\ell$
 acts on $S_2(\Gamma_0(N);\Z_\ell)$ (the Hecke operators preserve $S_2(\Gamma_0(N);\Z)$, \Cref{ch:hecke}), and if $g^S-h\in\ell^tS_2(\Gamma_0(N);\Z_\ell)$ then $e_{\mathfrak m}(g^S-h)=g^S-e_{\mathfrak m}h\in\ell^tS_2(\Gamma_0(N);\Z_\ell)$ because $e_{\mathfrak m}g^S=g^S$; by
 the injectivity of (iii) this is a congruence of $q$-expansions. In Theorem thm:twist the twist map $h\mapsto h\otimes\chi_S=\sum\chi_S(n)a_n(h)q^n$ ``maps $S_2(\Gamma_0(N_S))$ into
 $S_2(\Gamma_0(\operatorname{lcm}(N_S,D^2)))\subset S_2(\Gamma_0(N))$, preserves integrality'': the inclusion of spaces is \Cref{ch:hecke}'s, and integrality is clear on $q$-expansions because $\chi_S(n)\in\{0,\pm1\}$.
@@ -1616,8 +1616,8 @@ The paper's Example after the proof of Theorem thm:qual lists four congruences. 
 uses the level of a twist, \Cref{ch:hecke}), so by \Cref{cor:modforms:integral-lattice}(iv) a check of $a_n$ for $n\le B_2(N)$ proves the congruence for every $n$.
 \begin{enumerate}[label=(\alph*)]
 \item $f_{\curve{52a}}\equiv f_{\curve{26b}}(z)-f_{\curve{26b}}(2z)\pmod3$ in $S_2(\Gamma_0(52);\Z)$ (the second form by \Cref{prop:modforms:mf-basic}(e)), $B_2(52)=14$; here $a_2(\curve{26b1})=1$.
-\item $f_{\curve{121a}}\equiv f_{\curve{11a}}\otimes\chi_{-11}=f_{\curve{121d}}\pmod3$ in $S_2(\Gamma_0(121);\Z)$, $B_2(121)=22$. At the primes $3$ and $11$, excluded in the original version of
-the paper: $a_3=2$ and $-1$, $a_{11}=0$ and $0$.
+\item $f_{\curve{121a}}\equiv f_{\curve{11a}}\otimes\chi_{-11}=f_{\curve{121d}}\pmod3$ in $S_2(\Gamma_0(121);\Z)$, $B_2(121)=22$. At the primes $3=\ell$ and $11\mid N$:
+$a_3=2$ and $-1$, $a_{11}=0$ and $0$.
 \item $f_{\curve{539c}}\equiv f_{\curve{11a}}\otimes\chi_{-7}=f_{\curve{539d}}\pmod3$ in $S_2(\Gamma_0(539);\Z)$, $B_2(539)=112$. Here $a_3=-2$ and $1$, $a_7=0$ and $0$, $a_{11}=1$ and $1$.
 \item $f_{\curve{980i}}\equiv f_{\curve{20a}}\otimes\chi_{-7}=f_{\curve{980g}}\pmod5$ in $S_2(\Gamma_0(980);\Z)$, $B_2(980)=336$. Here $a_2=0$ and $0$, $a_5=1$ and $1$, $a_7=0$ and $0$.
 \end{enumerate}
@@ -1627,22 +1627,21 @@ $B_2(N)$ proves it once the twist is known to lie there). The Eisenstein congrue
 \end{example}
 
 \begin{paperlink}\label{pl:modforms:example}
-The revised paper says, at the start of its Example: ``in each case the two forms lie in the same space $S_2(\Gamma_0(N))$ and have integer coefficients, so a check up to Sturm's bound
+The paper says, at the start of its Example: ``in each case the two forms lie in the same space $S_2(\Gamma_0(N))$ and have integer coefficients, so a check up to Sturm's bound
 \cite{Sturm87}, $\frac16N\prod_{p\mid N}(1+\frac1p)$, proves the congruence for all $n$.'' This is \Cref{cor:modforms:integral-lattice}(iv), and \Cref{ex:modforms:paper-congruences}
-supplies the numbers. The version of 10 October 2026 stated the congruences only at the primes away from a finite set, with the checks ``for $p<500$'' and ``for $p<1000$''; such
-checks already contain a proof once the excluded $a_p$ are compared as well, because the $a_n$ with $n\le B_2(N)$ are determined by the $a_p$ with $p\le B_2(N)$ through the Hecke recursion
-(\Cref{ch:hecke}). In Lemma lem:old the paper passes from the $a_p$ to all $a_n$ by that recursion, not by Sturm's bound.
+supplies the numbers. A check of the $a_p$ alone would also suffice, provided the $a_p$ with $p\mid\ell N$ are compared as well, because the $a_n$ with $n\le B_2(N)$ are determined by the $a_p$ with $p\le B_2(N)$ through the Hecke recursion
+(\Cref{ch:hecke}; \Cref{ex:modforms:ex-primes-to-n}). In Lemma lem:old the paper passes from the $a_p$ to all $a_n$ by that recursion, not by Sturm's bound.
 \end{paperlink}
 
 \section{The Atkin-Lehner involutions}\label{sec:modforms:atkin-lehner}
 
 The Atkin-Lehner involutions are the symmetries of $X_0(N)$ that do not come from $\SL_2(\Z)$. The paper meets the most important one, $w_N$, in Section 4.1: the pairing $\hat\delta_!$
-of Diamond, Flach and Guo is the cup product composed with ``the operator $[UwU]\omega$, $w=\begin{psmallmatrix}0&-1\\M^\Sigma&0\end{psmallmatrix}$ \cite[(13), (14)]{DFG04},
-which for weight $2$ and trivial character is the Atkin-Lehner involution $w_{M^\Sigma}$ with no scalar factor''. (In \cite[Section 1.5.3]{DFG04} the operator is written $[UwU]_\omega$, $w$ being the element with these entries of $\prod_{p\mid N}\GL_2(\Z_p)$
-at level $N$, and $[UwU]_\omega$ ``coincides with $\psi(-1_\infty)N^{k-2}[Uw^{-1}U]_\omega$''; for $k=2$ and trivial character that scalar is $1$, as the paper says; checked.) Through $\hat\delta_!$ the involution enters Proposition prop:pullback,
+of Diamond, Flach and Guo is the cup product composed with ``the operator $[UwU]_\omega$ attached to $w=\begin{psmallmatrix}0&-1\\M^\Sigma&0\end{psmallmatrix}$ \cite[\S1.5.3, (13), (14)]{DFG04},
+which for weight $2$ and trivial character is the Atkin-Lehner involution $w_{M^\Sigma}$ with no scalar factor''. (In \cite[Section 1.5.3]{DFG04}, $w$ is the element with these entries of $\prod_{p\mid N}\GL_2(\Z_p)$
+at level $N$, and $[UwU]_\omega$ ``coincides with $\psi(-1_\infty)N^{k-2}[Uw^{-1}U]_\omega$''; for $k=2$ and trivial character that scalar is $1$; checked.) Through $\hat\delta_!$ the involution enters Proposition prop:pullback,
 Lemma lem:hecke and Step 2 of the proof of Theorem thm:quant. This section defines $W_d$ for every exact divisor $d$ of $N$, proves that the $w_d$ are commuting involutions of
 $X_0(N)$ and of the spaces of forms, that they are isometries for the Petersson product and the cup product, computes their action on cusps, and explains why their action
-on $q$-expansions is not simple. The identity ``the adjoint of $T_n$ for the cup product is $w_NT_nw_N$'' and the pairing $\hat\delta_!$ itself are \Cref{ch:moddeg}'s.
+on $q$-expansions is not simple. The fact that ``$w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup product'' and the pairing $\hat\delta_!$ itself are \Cref{ch:moddeg}'s.
 
 \begin{definition}[Atkin-Lehner matrices]\label{def:modforms:atkin-lehner}
 Let $d\,\|\,N$, that is, $d\mid N$ and $\gcd(d,N/d)=1$. An \emph{Atkin-Lehner matrix} for $d$ is an integer matrix
@@ -1883,7 +1882,7 @@ $a_{p^{r+1}}=a_pa_{p^r}-p\,a_{p^{r-1}}$ for $p\nmid N$, and $a_{p^r}=a_p^r$ for 
 coefficientwise.
 \emph{Hint:} the recursions express $a_n$, $n\le B_2(N)$, through the $a_p$ with $p\le n$, by polynomials with integer coefficients; then use \Cref{cor:modforms:integral-lattice}(iv). The
 hypothesis includes the primes $p\mid N$, whose $a_p$ are not determined by the others, and the prime $p=\ell$. For the congruence modulo $3$ at level $121$ these are the primes
-excluded in the original version of the paper ($p=\ell=3$, and $p=11$ dividing $N$), which is why \Cref{ex:modforms:paper-congruences}(b) lists $a_3$ and $a_{11}$ separately.
+$p=\ell=3$ and $p=11$ dividing $N$, which is why \Cref{ex:modforms:paper-congruences}(b) lists $a_3$ and $a_{11}$ separately.
 \end{exercise}
 
 \begin{exercise}\label{ex:modforms:ex-al-existence}

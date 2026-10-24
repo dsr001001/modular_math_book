@@ -153,7 +153,7 @@ $E^{(q^*)}$): \Cref{def:ellcurves:twist}(c), \Cref{prop:ellcurves:twistinv}(iii)
 \Cref{cor:ellcurves:twistap}.
 \item \textbf{Theorem thm:qual and the Example of Section 3} (ex:qual: twists of \curve{121a1}, \curve{539c1}, \curve{980i1}; labels; $a_p$): \Cref{cor:ellcurves:twistap}, \Cref{warn:ellcurves:twists},
 \Cref{ex:ellcurves:aptable}, \Cref{ex:ellcurves:running}.
-\item \textbf{Lemma lem:h0} (complex conjugation with eigenvalues $\pm1$, $\det\rho=\chi_\ell$, $\bar\chi_3=\chi_{-3}$; in the original version, CM): \Cref{cor:ellcurves:complex-conj}, \Cref{prop:ellcurves:rho},
+\item \textbf{Lemma lem:h0} (complex conjugation with eigenvalues $\pm1$, $\det\rho=\chi_\ell$, $\bar\chi_3=\chi_{-3}$): \Cref{cor:ellcurves:complex-conj}, \Cref{prop:ellcurves:rho},
 \Cref{thm:ellcurves:cm-ap}, \Cref{warn:ellcurves:chi-l}.
 \item \textbf{Proposition prop:ns} (the $3$-division polynomial, $\det\bar\rho_{E,3}=\chi_{-3}$, complex conjugation): \Cref{prop:ellcurves:psi3}, \Cref{ex:ellcurves:psi3-examples}, \Cref{cor:ellcurves:det},
 \Cref{cor:ellcurves:complex-conj}, \Cref{pl:ellcurves:ns}.
@@ -165,7 +165,7 @@ $E^{(q^*)}$): \Cref{def:ellcurves:twist}(c), \Cref{prop:ellcurves:twistinv}(iii)
 \Cref{pl:ellcurves:section11}.
 \item \textbf{Lemma lem:old} ($X^2-a_p(h)X+p$, multiplicativity and recursion of the coefficients): \Cref{thm:ellcurves:frobQ}, \Cref{prop:ellcurves:Lfunction}.
 \item \textbf{Section sec:two} (Calegari-Emerton; CM curves with $N\in\{27,32,49,243\}$): \Cref{thm:ellcurves:13j}, \Cref{pl:ellcurves:cm}.
-\item \textbf{The appendix and Section sec:anomaly} (\texttt{ellinit}, \texttt{elldivpol}, \texttt{ns3}, \texttt{valuation(E.j, q)}, \curve{121a1}, \curve{726a1}): \Cref{def:ellcurves:weierstrass},
+\item \textbf{The appendix and Section sec:anomaly} (\texttt{ellinit}, \texttt{elldivpol}, \texttt{ns3}, \texttt{valuation(j, q)} with \texttt{j = E.j}, \curve{121a1}, \curve{726a1}): \Cref{def:ellcurves:weierstrass},
 \Cref{prop:ellcurves:psi3}, \Cref{ex:ellcurves:psi3-examples}, \Cref{conv:ellcurves:labels}, \Cref{ex:ellcurves:running}.
 \end{itemize}
 
@@ -475,7 +475,7 @@ $t_\ell(\curve{121a1},11)=0$. Curves with the same $j$ in the table (\curve{539c
 
 \begin{paperlink}\label{pl:ellcurves:terms}
 Definition def:terms of the paper defines $t_\ell(E,q)=v_\ell(-v_q(j_E))$ when $v_q(j_E)<0$. That this is a property of $E$ and not of the
-chosen equation is \Cref{prop:ellcurves:coordchange}(iii); the appendix computes it as \texttt{valuation(E.j, q)}. In the proof of Lemma
+chosen equation is \Cref{prop:ellcurves:coordchange}(iii); the appendix computes it from \texttt{vj = valuation(j, q)} with \texttt{j = E.j}. In the proof of Lemma
 lem:twist (ii) the twisted model ``is minimal exactly when the result is less than $12$, otherwise $12$ is subtracted'': that $v_q(\Delta)$ can
 only change by multiples of $12$ is \Cref{prop:ellcurves:coordchange}(iii), and the minimality criterion itself is \Cref{ch:reduction}.
 \end{paperlink}
@@ -1205,7 +1205,7 @@ $L_2(E,s+1)$, a shift that is invisible in the adjoint factor at good primes but
 \begin{paperlink}\label{pl:ellcurves:section11}
 Section 1.1 of the paper (``Let $V=V_\ell E$, $T=T_\ell E$, $\rho=\rho_{E,\ell}$, $\bar\rho$ its reduction'') uses \Cref{def:ellcurves:tate,def:ellcurves:rho} and
 \Cref{prop:ellcurves:tate,prop:ellcurves:rho}; the paper states the same Frobenius conventions as \Cref{conv:ellcurves:frobenius}. In Section 4.2 and after
-Proposition prop:pullback the paper identifies the lattice $M_{f,\lambda}$ of Diamond, Flach and Guo with $H^1(E,\Z_\ell)$. That module is
+Proposition prop:pullback the paper identifies the lattice $M_{f,\lambda}$ of Diamond, Flach and Guo with $H^1(E,\Z_\ell)$ (given its Proposition prop:integral). That module is
 $\Hom(T_\ell E,\Z_\ell)=(T_\ell E)^\vee$, which by \Cref{cor:ellcurves:dual-T} is $T_\ell E(-1)$: the dual of $T_\ell E$, not $T_\ell E$ itself. Since the adjoint is insensitive to
 duals and twists, $\ad M_{f,\lambda}=\ad T_\ell E$, which is all the paper uses. Lemma lem:h0 uses that complex conjugation has distinct eigenvalues $\pm1$
 (\Cref{cor:ellcurves:complex-conj}), which makes an irreducible $\bar\rho$ absolutely irreducible (\Cref{ch:galrep}), and $\det\rho=\chi_\ell$ (\Cref{prop:ellcurves:rho}(ii)) in the
@@ -1324,8 +1324,7 @@ discriminant of $F$ divides the conductor, as (iv) says.
 \begin{warning}[the cyclotomic character is not a quadratic character]\label{warn:ellcurves:chi-l}
 The CM condition of \Cref{thm:ellcurves:cm-ap}(i) involves the quadratic character $\chi_F$; for $F=\Q(\sqrt{\ell^*})$ this is $\chi_{\ell^*}=\bar\chi_\ell^{(\ell-1)/2}$. The cyclotomic
 character $\chi_\ell$ is not quadratic, and $\rho_{E,\ell}\simeq\rho_{E,\ell}\otimes\chi_\ell$ is impossible for every $E$ (determinants give $\chi_\ell^2=1$). Only for $\ell=3$ do $\bar\chi_\ell$
-and $\chi_{\ell^*}$ coincide: $\bar\chi_3=\chi_{-3}$. The original version of the paper's Lemma lem:h0 confused the two; the revised version works with $\bar\chi_\ell$ and needs no
-CM argument. By \Cref{thm:ellcurves:cm-ap}(iv) the CM alternative ``$E$ has CM by $\Q(\sqrt{\ell^*})$'' cannot occur when $\ell\nmid N$.
+and $\chi_{\ell^*}$ coincide: $\bar\chi_3=\chi_{-3}$. The paper's Lemma lem:h0 works with $\bar\chi_\ell$. By \Cref{thm:ellcurves:cm-ap}(iv) a curve $E/\Q$ with $\ell\nmid N$ has no CM by $\Q(\sqrt{\ell^*})$.
 \end{warning}
 
 \begin{paperlink}\label{pl:ellcurves:cm}
@@ -1891,10 +1890,9 @@ order $9$ (\curve{54b3}, \curve{714i1}, \curve{1482l1}, \curve{1554n1}, \curve{1
 
 \begin{paperlink}\label{pl:ellcurves:eis}
 \Cref{prop:ellcurves:no27} is the paper's Proposition prop:no9, with every step expanded; it turns the bound ``$D\le2$ for $\ell=3$'' of Conjecture conj:eis into a consequence of the first bound
-$D\le v_\ell(\#E(\Q)_{\mathrm{tors}})+[E[3]\simeq\Z/3\oplus\mu_3]$, and gives ``$D\le1$ for $\ell\ge5$'' in the same way. The paper cites \cite{Ligozat75} and \cite{Kenku} for the fact that a rational cyclic
-$27$-isogeny forces complex multiplication (\Cref{thm:ellcurves:mazurkenku}(iii)). The source is Ligozat's study of $X_0(27)$, a curve of genus one.
-\cite{Kenku} is Kenku's paper on the number of curves in an isogeny class; its Theorem 1 lists $27$ among the levels $N$ with $Y_0(N)(\Q)\ne\emptyset$ and credits the levels of genus one to
-Ligozat, Ogg and Joly, but it says nothing about complex multiplication, so it supports only the existence of the rational point, not the fact cited. In Section sec:eis, ``a rational $\ell$-isogeny'' and ``Borel type'' refer to \Cref{prop:ellcurves:isogline},
+$D\le v_\ell(\#E(\Q)_{\mathrm{tors}})+[E[3]\simeq\Z/3\oplus\mu_3]$, and gives ``$D\le1$ for $\ell\ge5$'' in the same way. The paper cites \cite{Ligozat75}, Ligozat's study of $X_0(27)$, a curve of genus one, for the fact that a rational cyclic
+$27$-isogeny forces complex multiplication (\Cref{thm:ellcurves:mazurkenku}(iii)), and \cite[Theorem 1]{Kenku} for the list of the levels $N$ with $Y_0(N)(\Q)\ne\emptyset$, which contains $27$;
+Kenku credits the levels of genus one to Ligozat, Ogg and Joly. In Section sec:eis, ``a rational $\ell$-isogeny'' and ``Borel type'' refer to \Cref{prop:ellcurves:isogline},
 and the condition $E[3]\simeq\Z/3\oplus\mu_3$, which the paper identifies with the image \texttt{3Cs.1.1} (the subgroup of order $2$ of a split Cartan subgroup fixing a nonzero vector), is
 \Cref{prop:ellcurves:zlmul}(ii).
 The second bound of Conjecture conj:eis counts the curves of the isogeny class with a rational point of order $\ell$; in the class \curve{11a} at $\ell=5$ these are \curve{11a1} and \curve{11a3}.
@@ -2227,7 +2225,7 @@ curve & $N$ & rank, torsion & class (degrees) & $\degphi$ & images & types\\
 The column ``class'' gives the first row of Cremona's isogeny matrix without the diagonal entry, that is, the degrees of the cyclic isogenies from the curve to the
 other curves of its class. \curve{11a1} is the middle curve of its class, $5$-isogenous to both others (which are $25$-isogenous to each other). \curve{121d1} and \curve{539d1},
 the twists of \curve{11a3}, are at an end: the class matrices of \curve{121d} and \curve{539d} are
-$\left(\begin{smallmatrix}1&5&25\\5&1&5\\25&5&1\end{smallmatrix}\right)$, and the middle curves are \curve{121d2} and \curve{539d2}, the twists of \curve{11a1}. Roles in the paper: \curve{121a1}, \curve{539c1} and \curve{980i1} illustrate the three cases of Theorem thm:qual in the Example of Section 3, with
+$\left(\begin{smallmatrix}1&5&25\\5&1&5\\25&5&1\end{smallmatrix}\right)$, and the middle curves are \curve{121d2} and \curve{539d2}, the twists of \curve{11a1}. Roles in the paper: \curve{121a1}, \curve{539c1} and \curve{980i1} illustrate cases (b) and (c) of Theorem thm:qual in the Example of Section 3 (case (a) is illustrated there by \curve{52a1}), with
 the congruent forms coming from \curve{11a1} (twisted by $\chi_{-11}$, giving the class \curve{121d}, and by $\chi_{-7}$, giving \curve{539d}) and \curve{20a1} (twisted by $\chi_{-7}$); \curve{121c2} is
 $\curve{121a1}^{(-11)}$, \curve{77c1} is $\curve{539c1}^{(-7)}$, \curve{140b1} is $\curve{980i1}^{(-7)}$, and \curve{539d1} is $\curve{11a3}^{(-7)}$ (\Cref{warn:ellcurves:twists}); \curve{726a1} is the paper's
 example with image $N_s(\F_3)$ (Section sec:anomaly and the appendix); \curve{99A1} is the curve of \cite{ARS12} with modular degree $4$ and congruence number $12$ (Remark after Theorem
@@ -2368,7 +2366,7 @@ complete list of cyclic degrees is \cite[Theorem 1]{Kenku} and the bound on the 
 \cite{WashingtonEC}, \cite{Cox}, \cite{Cohen93}, \cite{Cremona97} and \cite{DiamondShurman} given above are pointers recalled from those books; they have not been checked against the printed
 editions. The table of rational cyclic isogenies in \cite{LozanoRobledo13} was not checked either.
 
-\paragraph{The proposition on points of order $9$.} \Cref{prop:ellcurves:no27} is Proposition prop:no9 of the revised paper; the argument through the cyclic $27$-isogeny of $E/\mu_3$ is
+\paragraph{The proposition on points of order $9$.} \Cref{prop:ellcurves:no27} is Proposition prop:no9 of the paper; the argument through the cyclic $27$-isogeny of $E/\mu_3$ is
 elementary once \Cref{thm:ellcurves:mazurkenku}(iii) is known. The data of Cremona's tables below conductor $10{,}000$ agree with it, as recorded after the proof.
 
 \paragraph{Computations.} All numbers in the chapter were computed with PARI/GP \cite{PARI} through \texttt{cypari2}, on Cremona's tables \cite{ecdata} for conductor below $10{,}000$: the invariants
