@@ -1,0 +1,43 @@
+PARI stack size set to 400000000 bytes, maximum size set to 400003072
+PARI version: 2.17.2 | cypari2 2.2.4 | pandas 3.0.5
+
+(a) scripts/euler_rule.gp on curves of the paper
+[PASS] rule(121a1, l=3) = [1, 1], expected [1, 1]  (app:repro: rule(ellinit([1,1,1,-30,-76]),3) returns [1, 1])
+[PASS] ellmoddegree(121a1) = 6, paper 6
+[PASS] rule(539c1, l=3) = [2, 2], expected [2, 2]  (thm:qual examples (c): deg = 2^5 3^2, e_3(E,7) = t_3(E,7) = 1, both attained)
+[PASS] ellmoddegree(539c1) = 288, paper 288
+[PASS] rule(539d1, l=3) = [2, 2], expected [2, 2]  (sec:quant: deg 72, type I_0* at 7 with e_3(E,7) = 2; no violation, so bound = 2)
+[PASS] ellmoddegree(539d1) = 72, paper 72
+[PASS] rule(1232l1, l=3) = [2, 2], expected [2, 2]  (rem:wild: e_3(E,2) = 2, deg 288, bound attained by the prime 2 alone)
+[PASS] ellmoddegree(1232l1) = 288, paper 288
+[PASS] rule(592c1, l=5) = [1, 1], expected [1, 1]  (rem:wild: e_5(E,2) = 1, deg 80 = 2^4 5; no violation, so bound = 1)
+[PASS] ellmoddegree(592c1) = 80, paper 80
+[PASS] rule(726a1, l=3) = [2, 2], expected [2, 2]  (app:repro: rule(E,3) returns [2, 2])
+[PASS] ellmoddegree(726a1) = 144, paper 144
+[PASS] rule(726a1, l=3, iii=1) = [2, 2], expected [2, 2]  (app:repro: rule(E,3,1) returns [2, 2])
+[PASS] rule(990h1, l=3) = [4, 3], expected [4, 3]  (app:repro: 990h1 (not optimal) returns [4, 3])
+[PASS] rule(990h3, l=3) = [3, 3], expected [3, 3]  (app:repro: the optimal curve 990h3 returns [3, 3])
+[PASS] rule(11a1, l=5) = [0, 1], expected [0, 1]  (app:repro: 11a1 at the Eisenstein prime 5 returns [0, 1])
+[PASS] ellmoddegree(11a1) = 1, paper 1
+[PASS] P_2(336f1) = 2*x + 1, paper 1+2*x
+[PASS] P_2(1232l1) = -8*x^3 - 4*x^2 + 2*x + 1, paper (1-2*x)*(1+2*x)^2
+[PASS] P_2(592c1) = -8*x^3 + 4*x^2 - 2*x + 1, paper (1-2*x)*(1+4*x^2)
+
+(b) tables/ against results/
+[PASS] tab:uniform  tables/euler_uniform.tex vs results/step11_summary.csv: 20 of 20 rows agree
+[PASS] tab:counts   tables/counts.tex vs results/check_*_summary.csv: 18 of 18 rows agree
+[PASS] tab:ns       tables/ns3.tex vs results/step11_ns3.csv: 4 of 4 rows agree
+[PASS] tab:iso      tables/euler_iso3.tex vs results/step9_euler_l3.txt: 32 of 32 cells agree
+[PASS] tab:isolated tables/isolated3.tex untwisted rows vs results/step6_u1_fit_work.txt: 15 of 15 cells agree
+[SKIP] tab:isolated 4 twisted rows  (computed from results/step7_twist2_work_l3.parquet, git-ignored and not committed)
+[PASS] tab:oot      tables/oot.tex vs results/oot_*.tsv: 893 unique curves, 7 of 7 rows agree
+
+(c) tables/ against ../paper/note.tex
+[PASS] tab:uniform  tables/euler_uniform.tex appears verbatim in ../paper/note.tex
+[PASS] tab:iso      tables/euler_iso3.tex appears verbatim in ../paper/note.tex
+[PASS] tab:counts   tables/counts.tex appears verbatim in ../paper/note.tex
+[PASS] tab:ns       tables/ns3.tex appears verbatim in ../paper/note.tex
+[PASS] tab:isolated tables/isolated3.tex appears verbatim in ../paper/note.tex
+[PASS] tab:oot      tables/oot.tex appears verbatim in ../paper/note.tex
+
+selftest: ALL CHECKS PASSED

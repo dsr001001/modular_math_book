@@ -1,0 +1,59 @@
+PARI stack size set to 600000000 bytes, maximum size set to 600002560
+Named examples of the paper (Remark rem:wild, Lemma lem:IV, Example ex:qual, Proposition prop:ns-structure, Sections sec:boundary, sec:anomaly, sec:data)
+ok   336f1 q=2: type II, P_q = 1+2X, P_q(q^-2) = 3/2, e_3,e_5,e_7 = 1,0,0, v_q(j) = 14, shape (iii)
+ok   1232l1 q=2: type II*, P_q = 1+2X-4X^2-8X^3, P_q(q^-2) = 9/8, e_3,e_5,e_7 = 2,0,0, v_q(j) = 15, shape (ii)
+ok   592c1 q=2: type II*, P_q = 1-2X+4X^2-8X^3, P_q(q^-2) = 5/8, e_3,e_5,e_7 = 0,1,0, v_q(j) = 12, shape (ii)
+ok   52a1 q=2: type IV*, P_q = 1+2X, P_q(q^-2) = 3/2, e_3,e_5,e_7 = 1,0,0, v_q(j) = 4, shape (iii)
+ok   256a1 q=2: type III, P_q = 1+2X, P_q(q^-2) = 3/2, e_3,e_5,e_7 = 1,0,0, v_q(j) = 6, shape (iii)
+ok   256d1 q=2: type III, P_q = 1+2X, P_q(q^-2) = 3/2, e_3,e_5,e_7 = 1,0,0, v_q(j) = 6, shape (iii)
+ok   2304c1 q=2: type III, P_q = 1+2X, P_q(q^-2) = 3/2, e_3,e_5,e_7 = 1,0,0, v_q(j) = 6, shape (iii)
+ok   2304k1 q=2: type III, P_q = 1+2X, P_q(q^-2) = 3/2, e_3,e_5,e_7 = 1,0,0, v_q(j) = 6, shape (iii)
+ok   6400f1 q=2: type III, P_q = 1+2X, P_q(q^-2) = 3/2, e_3,e_5,e_7 = 1,0,0, v_q(j) = 6, shape (iii)
+ok   6400r1 q=2: type III, P_q = 1+2X, P_q(q^-2) = 3/2, e_3,e_5,e_7 = 1,0,0, v_q(j) = 6, shape (iii)
+ok   2178b1 q=3: type I3*, P_q = 1-X, P_q(q^-2) = 8/9, e_3,e_5,e_7 = ,0,0, v_q(j) = -3, shape (i)
+ok   2178h1 q=3: type I3*, P_q = 1-X, P_q(q^-2) = 8/9, e_3,e_5,e_7 = ,0,0, v_q(j) = -3, shape (i)
+ok   54a: types at 3 [('54a1', 'IV*'), ('54a2', 'II*'), ('54a3', 'II')], paper IV*, II*, II; P_3: [('54a1', '1'), ('54a2', '1'), ('54a3', '1')]
+info 121a1: N = 121, no additive reduction at 2 or 3 (no row)
+info 726a1: N = 726, no additive reduction at 2 or 3 (no row)
+ok   type IV/IV* at 2 has P_2 = 1+2X (Lemma lem:IV): 498 of 498 rows
+
+rows: 3305 (curves: 2905; q=2: 1971, q=3: 1334); rule sample 2882 curves; paper-named curves with a row: 36
+shape mismatches: 0
+
+rule sample, count by (q, Kodaira type, shape, P_q):
+  q=2  I0*   (iii)  1+2X         55
+  q=2  I0*   ( iv)  1            112
+  q=2  II    ( ii)  cubic        4
+  q=2  II    (iii)  1+2X         55
+  q=2  II    ( iv)  1            170
+  q=2  II*   ( ii)  cubic        22
+  q=2  II*   (iii)  1+2X         4
+  q=2  II*   ( iv)  1            60
+  q=2  III   (iii)  1+2X         4
+  q=2  III   (iii)  1-2X         4
+  q=2  III   ( iv)  1            319
+  q=2  III*  ( iv)  1            146
+  q=2  IV    (iii)  1+2X         290
+  q=2  IV*   (iii)  1+2X         208
+  q=2  In*   (  i)  1-X          172
+  q=2  In*   ( ii)  cubic        36
+  q=2  In*   (iii)  1+2X         4
+  q=2  In*   ( iv)  1            291
+  q=3  I0*   ( ii)  cubic        185
+  q=3  II    (iii)  1+3X         23
+  q=3  II    (iii)  1-3X         16
+  q=3  II    ( iv)  1            153
+  q=3  II*   (iii)  1+3X         1
+  q=3  II*   (iii)  1-3X         2
+  q=3  II*   ( iv)  1            66
+  q=3  III   (iii)  1+3X         138
+  q=3  III*  (iii)  1+3X         100
+  q=3  IV    (iii)  1+3X         13
+  q=3  IV    (iii)  1-3X         12
+  q=3  IV    ( iv)  1            68
+  q=3  IV*   (iii)  1+3X         11
+  q=3  IV*   (iii)  1-3X         6
+  q=3  IV*   ( iv)  1            97
+  q=3  In*   (  i)  1-X          433
+
+checks failed: 0

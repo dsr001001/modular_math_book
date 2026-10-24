@@ -13,3 +13,4 @@ build/
 data/
 !final/paper/note.pdf
 !final/book/build/main/main.pdf
+!final/pipeline/**/*.log
