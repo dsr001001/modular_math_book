@@ -146,7 +146,7 @@ on $H^1(X,\Zl)$, every $t\in\T$ is self-adjoint for it, and $H^1(X,\Zl)=\bigoplu
 \section*{Where the paper uses this chapter}
 
 \begin{itemize}
-\item \textbf{Abstract and Section 1} (the modular parametrisation $\varphi_E\colon X_0(N)\to E$, the $X_0(N)$-optimal curve ``for which the modular parametrisation has minimal degree'', the modular
+\item \textbf{Abstract and Section 1} (the modular parametrisation $\varphi_E\colon X_0(N)\to E$, the $X_0(N)$-optimal curve ``for which the modular parametrisation $\varphi_E\colon X_0(N)\to E$ has minimal degree'', the modular
 degree $\degphi$): morphisms and their degree in every sense, \Cref{def:curves:degree}, \Cref{thm:curves:degree-formula}, \Cref{cor:curves:degree-three-ways}, \Cref{tab:curves:degree},
 \Cref{thm:curves:riemann-existence}; Riemann-Hurwitz checks of the quoted degrees, \Cref{cor:curves:rh-consequences}(e); why the optimal curve has minimal degree,
 \Cref{prop:curves:degree-cup-product}(iv), (v) and \Cref{pl:curves:pullback}.
@@ -154,7 +154,7 @@ degree $\degphi$): morphisms and their degree in every sense, \Cref{def:curves:d
 \Cref{ex:curves:torus}.
 \item \textbf{Section 1.1 and Proposition prop:ns} ($\rho_{E,\ell}$ and the action of $G_\Q$ on $E[3]$ and on the roots of the $3$-division polynomial): the Galois action on points,
 \Cref{prop:curves:galois-action}, \Cref{pl:curves:galois}.
-\item \textbf{Section 1 and the Appendix} (curves given by Weierstrass equations, \texttt{ellinit}): \Cref{thm:curves:genus-one-weierstrass}, \Cref{prop:curves:genus-one-pic},
+\item \textbf{Appendix app:repro} (curves given by Weierstrass coefficients, \texttt{ellinit}): \Cref{thm:curves:genus-one-weierstrass}, \Cref{prop:curves:genus-one-pic},
 \Cref{pl:curves:weierstrass}.
 \item \textbf{Section 4.1 (sec:dfg)} (``perfect and alternating on $H^1(X_0(M^\Sigma),\Zl)$, and the Hecke operators, $U_p$ included, are self-adjoint for it, because $w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of
 $T_n$ for the cup product''): \Cref{thm:curves:cup-product}, \Cref{def:curves:correspondence-actions}, \Cref{thm:curves:adjoint-transpose}, \Cref{cor:curves:twisted-pairing},
@@ -427,7 +427,7 @@ points over $\bar k$ correspond bijectively to the discrete valuations of $\bar 
 We do not prove this; it follows from \Cref{thm:curves:equivalence}, see \cite[Chapter I, Section 6]{Hartshorne} and \cite[Chapter 7]{Fulton}.
 Example (proved): the nodal cubic $y^2=x^3+x^2$ is birational to $\PP^1$ through $t=y/x$, with inverse $x=t^2-1$, $y=t(t^2-1)$: substituting $y=tx$
 in the equation gives $x^2(t^2-x-1)=0$. The two branches through the node correspond to $t=\pm1$: the smooth model separates them. In the paper
-``the curve given by an equation'' always means the smooth projective model.
+a curve given by an equation always means the smooth projective model.
 
 \section{Function fields, points over extensions, the Galois action}\label{sec:curves:function-fields}
 
@@ -662,8 +662,8 @@ differential is $dx/(2y+a_1x+a_3)$, with the same divisor (\Cref{ex:curves:genus
 Riemann-Roch is the one deep theorem of the algebraic side; it is stated with a reference and the shape of its proof, and everything after
 it in this section is proved. Its consequences give the genus as the number of independent regular differentials, show that a genus-one curve
 with a rational point is a Weierstrass cubic (\Cref{thm:curves:genus-one-weierstrass}), and identify such a curve with its own $\Pic^0$
-(\Cref{prop:curves:genus-one-pic}). In the paper these are the facts that ``an elliptic curve over $\Q$ is a Weierstrass equation'' (Section 1 and
-the Appendix) and that $E=\Pic^0(E)$ is its own Jacobian, which underlies the factorisation $X_0(N)\to J_0(N)\to E$ used in Proposition prop:pullback.
+(\Cref{prop:curves:genus-one-pic}). In the paper these are the facts that an elliptic curve over $\Q$ is given by a Weierstrass equation (as in the
+Appendix app:repro) and that $E=\Pic^0(E)$ is its own Jacobian, which underlies the factorisation $X_0(N)\to J_0(N)\to E$ used in Proposition prop:pullback.
 
 \begin{definition}[Riemann-Roch spaces]\label{def:curves:riemann-roch-space}
 For $D\in\Div(C)$, $\mathcal L(D)=\{f\in\bar k(C)^\times:\operatorname{div}(f)+D\ge0\}\cup\{0\}$, the functions whose poles are bounded by $D$ and which vanish where $D$
@@ -867,7 +867,7 @@ $L=0$ with $E$, then $(P)+(Q)+(R)-3(O)=\operatorname{div}(L/Z)$, so $\kappa(P)+\
 directly, is then automatic.
 
 \begin{paperlink}\label{pl:curves:weierstrass}
-Section 1 and the Appendix of the paper: every elliptic curve is given by a Weierstrass equation, as \texttt{ellinit([1,1,1,-30,-76])} for
+Appendix app:repro of the paper: every elliptic curve is given by a Weierstrass equation, as \texttt{ellinit([1,1,1,-30,-76])} for
 \curve{121a1}; \Cref{thm:curves:genus-one-weierstrass} is why this loses nothing. \Cref{prop:curves:genus-one-pic} says $E=\Pic^0(E)=J(E)$: an elliptic curve
 is its own Jacobian (\Cref{def:curves:jacobian}), which is what makes $\varphi_E$ factor through $J_0(N)$ (\Cref{prop:curves:jacobian-functoriality}(iv)) and
 lets the proof of Proposition prop:pullback speak of ``the map $J_0(N)\to E$ induced by $\varphi$''.
@@ -878,8 +878,8 @@ lets the proof of Proposition prop:pullback speak of ``the map $J_0(N)\to E$ ind
 The modular degree of the paper is the degree of the morphism $\varphi_E\colon X_0(N)\to E$. This section defines the degree of a nonconstant
 morphism of curves and proves that its descriptions agree: the degree of the extension of function fields, the number of preimages of a general
 point, the factor by which pullback multiplies degrees of divisors, and (over $\C$, in \Cref{sec:curves:riemann-surfaces,sec:curves:cohomology}) the
-topological degree on $H^2$. It also proves $\varphi_*\varphi^*=[\deg\varphi]$ on divisor classes, the identity behind ``$E\to J_0(N)\to E$ is multiplication by
-$\deg\varphi_E$'' (\Cref{ch:moddeg}), and introduces the Frobenius morphism used in \Cref{ch:ellcurves,ch:moddeg}.
+topological degree on $H^2$. It also proves $\varphi_*\varphi^*=[\deg\varphi]$ on divisor classes, the identity behind the fact that $E\to J_0(N)\to E$ is multiplication by
+$\deg\varphi_E$ (\Cref{ch:moddeg}), and introduces the Frobenius morphism used in \Cref{ch:ellcurves,ch:moddeg}.
 
 \begin{theorem}[nonconstant morphisms]\label{thm:curves:constant-or-surjective}
 A morphism $\varphi\colon C_1\to C_2$ of curves is constant or surjective. If it is nonconstant, $\varphi^*\colon\bar k(C_2)\to\bar k(C_1)$, $f\mapsto f\circ\varphi$, is a
@@ -1027,7 +1027,7 @@ the convention behind the book's form $\det(1-\Frob_p^{-1}p^{-s}\mid H^1)$ of th
 
 \begin{paperlink}\label{pl:curves:modular-degree}
 Section 1 of the paper: ``the $X_0(N)$-optimal curve, for which the modular parametrisation $\varphi_E\colon X_0(N)\to E$ has minimal degree'' and
-``$\degphi$, its modular degree''. The degree is that of \Cref{def:curves:degree}, and by \Cref{cor:curves:degree-three-ways} and
+``$\degphi$ its \emph{modular degree}''. The degree is that of \Cref{def:curves:degree}, and by \Cref{cor:curves:degree-three-ways} and
 \Cref{tab:curves:degree} it is at once $[\Q(X_0(N)):\varphi_E^*\Q(E)]$ (degrees of field extensions do not change under $\otimes_\Q\Qbar$ for function fields
 of curves defined over $\Q$), the number of points of $X_0(N)(\C)$ over a general point of $E(\C)$, and the factor $\deg\varphi_E$ in
 $\varphi_{E*}\varphi_E^*=[\deg\varphi_E]$ on $E=\Pic^0(E)$. The proof of Proposition prop:pullback uses the cohomological form, ``$\varphi^*$ multiplies the fundamental
@@ -1593,7 +1593,7 @@ Section 4.1 of the paper (sec:dfg): the pairing $\hat\delta_!$ ``is perfect and 
 $w_{M^\Sigma}$ on classes from $X_0(M^\Sigma)$. The cup product is perfect and alternating on $H^1(X_0(M^\Sigma),\Zl)$ by \Cref{thm:curves:cup-product} with $R=\Zl$; the factor $\frac12$
 is a unit for odd $\ell$; composing with the automorphism $w_{M^\Sigma}^*$ preserves perfectness, and alternation needs $w^*$ to be an isometric involution
 (\Cref{cor:curves:twisted-pairing}). Proposition prop:pullback: ``$\varphi^*(a\cup b)=\varphi^*a\cup\varphi^*b$ and $\varphi^*$ multiplies the fundamental class of $H^2$ by $\degphi$; so
-$\langle\varphi^*a,\varphi^*b\rangle_{X_0(N)}=\degphi\,\langle a,b\rangle_E$, the projection formula'' is \Cref{prop:curves:transfer}(iv); ``the cup product on $H^1(E,\Z)$ is unimodular''
+$\langle\varphi^*a,\varphi^*b\rangle_{X_0(N)}=\degphi\,\langle a,b\rangle_E$, the projection formula'' is \Cref{prop:curves:transfer}(iv); ``The cup product on $H^1(E,\Z)$ is unimodular''
 is \Cref{thm:curves:cup-product} for $g=1$ (\Cref{ex:curves:torus}).
 \end{paperlink}
 
@@ -1678,7 +1678,7 @@ $\operatorname{AJ}_X(\varphi^*D)(\omega)=\int_c\Tr\omega=\operatorname{AJ}_Y(D)(
 \end{proof}
 
 This is the universal property of \Cref{thm:curves:jacobian-variety}(iii) made explicit: $\varphi$ factors through $J(X)$, and for $X=X_0(N)$, $P_0=\infty$, the factor
-$\varphi_*\colon J_0(N)\to E$ is ``the map $J_0(N)\to E$ induced by $\varphi$'' of the paper. $E$ is its own dual, so ``$E^\vee\to J_0(N)\to E$ is multiplication by $\deg\varphi_E$''
+$\varphi_*\colon J_0(N)\to E$ is ``the map $J_0(N)\to E$ induced by $\varphi$'' of the paper. $E$ is its own dual, so the statement that $E^\vee\to J_0(N)\to E$ is multiplication by $\deg\varphi_E$
 (\Cref{ch:moddeg}) is (iv).
 
 \begin{lemma}[homomorphisms of complex tori]\label{lem:curves:tori}
@@ -1843,19 +1843,18 @@ $(\mathcal C^t)_*$, not $\mathcal C_*$.
 Proposition prop:pullback of the paper is \Cref{prop:curves:degree-cup-product} applied to $\varphi=\varphi_E\colon X_0(N)\to E$, with two inputs from
 \Cref{ch:moddeg}. Step by step:
 \begin{enumerate}[label=(\alph*)]
-\item ``By optimality the kernel $B$ of the map $J_0(N)\to E$ induced by $\varphi$ is connected; the exact sequence $H_1(J_0(N),\Z)\to H_1(E,\Z)\to\pi_0(B)=0$ shows that $\varphi_*$ is surjective,
-so its dual $\varphi^*$ is injective with torsion-free cokernel'': \Cref{prop:curves:degree-cup-product}(iii), (c)$\Rightarrow$(b)$\Rightarrow$(a), with \Cref{lem:curves:tori}(a) for the exact
+\item ``By optimality the kernel $B$ of the map $J_0(N)\to E$ induced by $\varphi$ is connected; the exact sequence $H_1(J_0(N),\Z)\to H_1(E,\Z)\to\pi_0(B)=0$ shows that $\varphi_*\colon H_1(X_0(N),\Z)=H_1(J_0(N),\Z)\to H_1(E,\Z)$ is surjective,
+so its dual $\varphi^*\colon H^1(E,\Z)\to H^1(X_0(N),\Z)$ is injective with torsion-free cokernel'': \Cref{prop:curves:degree-cup-product}(iii), (c)$\Rightarrow$(b)$\Rightarrow$(a), with \Cref{lem:curves:tori}(a) for the exact
 sequence and \Cref{prop:curves:jacobian-functoriality}(iv) for the factorisation; ``the same holds after tensoring with $\Zl$'' because a saturated sublattice is a direct summand.
 \item ``$\varphi^*H^1(E,\C)$, which is spanned by $\varphi^*\omega_E$ and its conjugate, is $\C f\,dz\oplus\C\overline{f\,dz}$'': \Cref{prop:curves:cohomology}(iii) for $E$, and
-$\varphi_E^*\omega_E=c_E\cdot2\pi if(z)\,dz$ (\Cref{ch:moddeg}). ``The image of $\varphi^*$ is a saturated lattice of the same rank in the same plane; so the two coincide'': two saturated
-sublattices with the same rational span are equal. The book reads this step over $\Q$: the Hecke operators act on $H^1(X_0(N),\Z)$, so $H^1(X_0(N),\Q)[I_f]$ is a $\Q$-form of the plane
-$H^1(X_0(N),\C)[I_f]$ (kernels commute with field extension), of dimension two; it contains $\varphi^*H^1(E,\Q)$, also of dimension two; and $H^1(X_0(N),\Zl)[I_f]=H^1(X_0(N),\Z)[I_f]\otimes\Zl$
-(kernels commute with the flat extension $\Z\to\Zl$). The paper's ``intersection with $H^1(X_0(N),\Z_\ell)$'' of a complex plane should be read this way.
-\item ``$\varphi^*$ multiplies the fundamental class of $H^2$ by $\degphi$; so $\langle\varphi^*a,\varphi^*b\rangle=\degphi\langle a,b\rangle_E$'': \Cref{prop:curves:transfer}(iv).
-\item ``$w_N$ \dots preserves the plane, on which it acts by $\varepsilon_N(f)$'': the plane is also the eigenspace of the anemic Hecke algebra for the eigenvalues of $f$ (strong multiplicity one
+$\varphi_E^*\omega_E=c_E\cdot2\pi if(z)\,dz$ (\Cref{ch:moddeg}). ``It is defined over $\Q$: $H^1(X_0(N),\Q)[I_f]$ is a two-dimensional $\Q$-form of it, and by flatness $H^1(X_0(N),\Z_\ell)[I_f]=H^1(X_0(N),\Z)[I_f]\otimes\Z_\ell$ is a saturated
+lattice of rank two in $H^1(X_0(N),\Q_\ell)[I_f]$. The image of $\varphi^*$ is a saturated lattice of rank two in the same $\Q_\ell$-plane; so the two coincide'': the Hecke operators act on
+$H^1(X_0(N),\Z)$, so kernels commute with the field extension $\Q\to\C$ and with the flat extension $\Z\to\Zl$; and two saturated sublattices with the same rational span are equal.
+\item ``$\varphi^*$ multiplies the fundamental class of $H^2$ by $\degphi$; so $\langle\varphi^*a,\varphi^*b\rangle_{X_0(N)}=\degphi\,\langle a,b\rangle_E$'': \Cref{prop:curves:transfer}(iv).
+\item ``$w_N$ preserves the plane, on which it acts by $\varepsilon_N(f)$'': the plane is also the eigenspace of the anemic Hecke algebra for the eigenvalues of $f$ (strong multiplicity one
 for the newform $f$, \Cref{ch:hecke}), which $w_N$ preserves; then $w_N^*(f\,dz)=(f|_2W_N)\,dz=\varepsilon_N(f)f\,dz$ (\Cref{ch:modforms}), and likewise on the conjugate since
 $\varepsilon_N(f)=\pm1$ is real. Hence $\langle\varphi^*a,w_N^*\varphi^*b\rangle=\varepsilon_N(f)\degphi\langle a,b\rangle_E$.
-\item ``The Gram determinant of a rank-two alternating form is the square of its ideal of values'': \Cref{ch:modules}; this is \Cref{prop:curves:degree-cup-product}(iv).
+\item ``the Gram determinant of a rank-two alternating form is the square of its ideal of values'': \Cref{ch:modules}; this is \Cref{prop:curves:degree-cup-product}(iv).
 \end{enumerate}
 \Cref{prop:curves:degree-cup-product}(iv), (v) also explain ``minimal degree'' in the definition of the optimal curve: for a non-optimal parametrisation the image of $\varphi^*$ is not saturated, and the
 ideal of values on its saturation is $(n/m_0)\Z$, with $m_0$ the order of the component group of \Cref{prop:curves:degree-cup-product}(iv). Writing $\varphi=\psi\circ\varphi_{\mathrm{opt}}$ with $\psi$ an isogeny, the kernel of $\varphi_{\mathrm{opt},*}$
@@ -1864,11 +1863,11 @@ when $E[\ell]$ is irreducible, the choice of curve in the class does not change 
 \end{paperlink}
 
 \begin{paperlink}\label{pl:curves:free}
-The paragraph after Proposition prop:pullback: ``The lattice $M_{f,\lambda}$ of DFG04 is therefore $H^1(E,\Zl)=\Hom(T_\ell E,\Zl)\simeq T_\ell E(-1)$, by Galois-equivariance of $\varphi^*$ in etale
+The paragraph after Proposition prop:pullback: ``The lattice $M_{f,\lambda}$ of \cite{DFG04} is therefore $H^1(E,\Zl)=\Hom(T_\ell E,\Zl)\simeq T_\ell E(-1)$, by Galois-equivariance of $\varphi^*$ in \'etale
 cohomology, and its adjoint is $\ad T_\ell E$''. This is \Cref{prop:curves:tate-module}(ii) and \Cref{thm:curves:weil-pairing-etale}(b), (c): the comparison isomorphism is compatible with
 $\varphi_E^*$, and $\varphi_E$ is defined over $\Q$. Remark rem:free: ``$J_0(N)[\mf m]$ is two-dimensional'' is a statement about the $\T/\mf m$-vector space of
-\Cref{prop:curves:torsion}(iii); ``the Tate module is free of rank two'' concerns $T_\ell J_0(N)_{\mf m}$ with the action $t_*$; and ``the identification of $T_\ell J_0(N)$ with $H^1(X_0(N),\Zl)$ as Hecke
-modules uses Poincare duality composed with $w_N$, which is not Galois equivariant'' is \Cref{prop:curves:tate-module}(iii) and \Cref{warn:curves:not-galois}: $\operatorname{PD}$ turns $t^*$ into
+\Cref{prop:curves:torsion}(iii); ``the Tate module is free of rank two'' concerns $T_\ell J_0(N)_{\mf m}$ with the action $t_*$; and ``The identification of $T_\ell J_0(N)$ with $H^1(X_0(N),\Zl)$ as Hecke
+modules uses Poincar\'e duality composed with $w_N$, which is not Galois equivariant'' is \Cref{prop:curves:tate-module}(iii) and \Cref{warn:curves:not-galois}: $\operatorname{PD}$ turns $t^*$ into
 $(t^t)_*=(w_Ntw_N)_*$ (\Cref{thm:curves:adjoint-transpose}(c) and \Cref{ch:moddeg}), so $x\mapsto w_{N*}\operatorname{PD}(x)$ is Hecke-equivariant.
 \end{paperlink}
 
@@ -1999,7 +1998,7 @@ cup product with $w$: by \Cref{cor:curves:twisted-pairing} every $t$ is self-adj
 
 \begin{paperlink}\label{pl:curves:hecke}
 In Section 4.1 of the paper, the pairing $\hat\delta_!$ ``is perfect and alternating on $H^1(X_0(M^\Sigma),\Zl)$, and the Hecke operators, $U_p$ included, are self-adjoint for it, because
-$w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup product (this is what the composition with $w$ is for)''. With the input
+$w_{M^\Sigma}T_nw_{M^\Sigma}^{-1}$ is the adjoint of $T_n$ for the cup product'', which is what the composition with $w$ is for. With the input
 $T_n^t=w_{M^\Sigma}T_nw_{M^\Sigma}$ from
 \Cref{ch:moddeg}, \Cref{thm:curves:adjoint-transpose} says that $w^*T_n^*w^*$ is the adjoint of $T_n^*$, and \Cref{cor:curves:twisted-pairing}(i), (ii) is the sentence, with $X=X_0(M^\Sigma)$,
 $w=w_{M^\Sigma}$ and $\T$ the image of the Hecke algebra tensored with $\Zl$ in $\End_{\Zl}(H^1(X_0(M^\Sigma),\Zl))$, a commutative $\Zl$-subalgebra. Every element of
@@ -2082,7 +2081,7 @@ $ds'$, $dt'$ and show $\langle ds',dt'\rangle=\det\gamma\cdot\langle ds,dt\rangl
 \begin{exercise}\label{ex:curves:ex-weil}
 Let $T$ be a free $\Zl$-module of rank two with a continuous action of a group $G$ and a perfect alternating $G$-equivariant pairing $e\colon T\times T\to\Zl(1)$. Show that $\det T=\chi_\ell$ (as a
 character of $G$), that $x\mapsto e(x,-)$ is a $G$-isomorphism $T\to T^\vee(1)$, and hence $T^\vee\simeq T(-1)$ with $\det T^\vee=\chi_\ell^{-1}$. Apply this to $T=T_\ell E$ and explain why the
-paper's lattice $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)$ is ``homothetic to the dual of $T_\ell E$'' and not to $T_\ell E$ as a Galois module, and why $\ad M_{f,\lambda}\simeq\ad T_\ell E$ anyway.
+paper's lattice $M_{f,\lambda}=\varphi_E^*H^1(E,\Zl)$ is isomorphic to the dual of $T_\ell E$, and not to $T_\ell E$, as a Galois module, and why $\ad M_{f,\lambda}\simeq\ad T_\ell E$ anyway.
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-zeta3}

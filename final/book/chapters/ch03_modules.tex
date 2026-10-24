@@ -199,7 +199,7 @@ $\rank L=d\rank\T$, then $L\simeq\T^d$ and $\T$ is Gorenstein. \emph{(proved her
 \item \textbf{Lemma lem:h0} ($W^D$, its $\ell^k$-torsion, cyclicity, Nakayama): \Cref{prop:modules:t-and-w,cor:modules:cyclic-l-primary}, \Cref{thm:modules:nakayama}.
 \item \textbf{Lemma lem:crit} (congruence criterion): $\T/(I+J)\simeq\Z/\phi_f(J)$ (\Cref{thm:modules:isomorphism}); $\T\into\T/I\times\T/J$ (\Cref{prop:modules:two-submodules}); dualising
 it (\Cref{prop:modules:dual-inclusion,prop:modules:algebra-duality}); the congruence module of $S_2=\Z f+L$ (\Cref{prop:modules:congruence-decomposition}); $\T\otimes\Q=\Q\times\T'$ and
-$I\cap J=0$ (\Cref{thm:modules:artinian-algebras}, \Cref{prop:modules:congruence-ideal}); ``the same over $\Zl$'' (\Cref{prop:modules:flat}). The lemma
+$I\cap J=0$ (\Cref{thm:modules:artinian-algebras}, \Cref{prop:modules:congruence-ideal}); the passage to $\Zl$ (\Cref{prop:modules:flat}). The lemma
 itself is proved in full in \Cref{ch:modgalrep}.
 \item \textbf{Lemma lem:old} (oldforms): the non-semisimple $U_p$ and its eigenvectors (\Cref{ex:modules:shift}); common eigenforms in a tensor product
 (\Cref{lem:modules:common-eigenvector}).
@@ -211,7 +211,7 @@ prop:pullback}: \Cref{prop:modules:adjoint,prop:modules:alternating}.
 \item \textbf{Lemma lem:hecke} and the paragraph after it ($\T_{\mf m}$, the congruence ideal computed in $\T_{\mf m}$, $e_{\mf m}$ self-adjoint): \Cref{conv:modules:tm},
 \Cref{thm:modules:idempotent-lifting,cor:modules:hecke-type}, \Cref{prop:modules:congruence-ideal}(v), \Cref{prop:modules:adjoint}(iii).
 \item \textbf{Remark rem:free} (Gorenstein, freeness): \Cref{prop:modules:gorenstein,thm:modules:mazur-freeness}, \Cref{thm:modules:nakayama}.
-\item \textbf{Theorem thm:twist} ($g^\perp$ as a sum of generalised eigenspaces) and \textbf{Theorem thm:quant}, Steps 1 and 2 (idempotents of $\T_\ell$, generalised
+\item \textbf{Theorem thm:twist} ($g^\perp$ as a sum of generalised eigenspaces) and \textbf{Lemma lem:step1} and \textbf{Theorem thm:quant}, Steps 1 and 2 (idempotents of $\T_\ell$, generalised
 eigenspaces, projecting a congruence, the $\Zl$-version of Lemma lem:crit, Lemma lem:ddt417 without freeness): \Cref{thm:modules:generalised-eigenspaces},
 \Cref{prop:modules:idempotent-congruence}, \Cref{thm:modules:idempotent-lifting}, \Cref{prop:modules:flat}.
 \end{itemize}
@@ -361,7 +361,7 @@ Exact sequences are the bookkeeping device of the whole book. The paper's identi
 adding lengths along the four-term exact sequence of Lemma lem:dfg21, and every connecting map of \Cref{ch:cohomology} is
 built from the snake lemma proved here. The sequence of two submodules (\Cref{prop:modules:two-submodules}) is the exact
 form of two sentences of the paper: ``the inclusion $\T\subset\T/I\times\T/J$, whose cokernel is $\T/(I+J)$'' in Lemma
-lem:crit, and ``the sum $L[\wp]+L[I]$ is direct'' in Lemma lem:ddt417. Projective modules enter because the local factors
+lem:crit, and the directness of the sum $L[\wp]+L[I]$ in Lemma lem:ddt417. Projective modules enter because the local factors
 $e\T$ of a finite free $\Zl$-algebra are again free over $\Zl$.
 
 \begin{definition}[exact sequences]\label{def:modules:exact}
@@ -582,8 +582,8 @@ Theorem thm:quant are again finite free $\Zl$-algebras, to which Lemma lem:ddt41
 \section{Hom and tensor product; flatness}\label{sec:modules:tensor}
 
 The paper changes coefficients constantly: $\T\otimes\Zl$ and $\T\otimes\Q$ in Lemmas lem:crit and lem:hecke and in Theorem
-thm:quant, $W=\ad T\otimes\Qlmod$ in Theorem thm:main and Lemma lem:h0, and the sentence ``the same statements hold with $\Z$
-replaced by $\Zl$'' at the end of Lemma lem:crit. This section proves what makes such changes harmless: $\Hom$ is left exact,
+thm:quant, $W=\ad T\otimes\Qlmod$ in Theorem thm:main and Lemma lem:h0, and the sentence ``The same statements hold with $\Z$
+replaced by $\Zl$ and $r$ by its $\ell$-part'' at the end of Lemma lem:crit. This section proves what makes such changes harmless: $\Hom$ is left exact,
 the tensor product is right exact, and tensoring with a flat module such as $\Zl$ or $\Q$ (over $\Z$) commutes with kernels,
 annihilators and saturation.
 
@@ -729,19 +729,19 @@ $C$, hence torsion. A saturated submodule containing $L'\otimes S$ with torsion 
 \end{proof}
 
 \begin{paperlink}\label{pl:modules:flat}
-``The same statements hold with $\Z$ replaced by $\Zl$'' (Lemma lem:crit) and ``every step holds verbatim over $\Zl$'' are
+``The same statements hold with $\Z$ replaced by $\Zl$ and $r$ by its $\ell$-part'' (Lemma lem:crit) and ``Every step holds verbatim over $\Zl$'' (the end of its proof) are
 \Cref{prop:modules:flat}: $\Zl$ is flat over $\Z$, so $\ker\phi_f\otimes\Zl$ is the kernel of $\phi_f\otimes\Zl$, the annihilator
 $\Ann_\T(\ker\phi_f)\otimes\Zl$ is the annihilator in $\T\otimes\Zl$, and the congruence ideal $\phi_f(\Ann_\T\ker\phi_f)$ becomes
-$\phi_f(\Ann_\T\ker\phi_f)\Zl$, whose generator is the $\ell$-part of $r$. The same proposition is used in Step 1 of the proof of
-Theorem thm:quant, which works over $\Zl$ from the start.
+$\phi_f(\Ann_\T\ker\phi_f)\Zl$, whose generator is the $\ell$-part of $r$. The same proposition is used in Lemma lem:step1 and in the proof of
+Theorem thm:quant, which work over $\Zl$ from the start.
 \end{paperlink}
 
 \section[Noetherian rings, Nakayama, localisation]{Noetherian rings, Nakayama's lemma, local rings and localisation}\label{sec:modules:local}
 
 Every ring in the paper is Noetherian: $\Z$, $\Zl$, the Hecke algebra $\T$ (a finitely generated $\Z$-module) and its
-completions $\T_{\mf m}$. Nakayama's lemma is used twice in the paper: in Remark rem:free, where ``$J_0(N)[\mf m]$ is
-two-dimensional'' becomes ``the Tate module is generated by two elements over $\T_{\mf m}$'' (\Cref{thm:modules:mazur-freeness}),
-and in Lemma lem:h0, where a homomorphism $T/\ell^k\to(T/\ell^k)(1)$ that is nonzero modulo $\ell$ is an isomorphism. Local rings
+completions $\T_{\mf m}$. Nakayama's lemma enters the paper twice: in Remark rem:free, where the two-dimensionality of $J_0(N)[\mf m]$
+gives two generators of the Tate module over $\T_{\mf m}$ (\Cref{thm:modules:mazur-freeness}),
+and in Lemma lem:h0, by name, where a homomorphism $T/\ell^k\to(T/\ell^k)(1)$ that is nonzero modulo $\ell$ is an isomorphism. Local rings
 and localisation give the meaning of $\T_{\mf m}$.
 
 \begin{proposition}[Noetherian modules]\label{prop:modules:noetherian}
@@ -866,7 +866,7 @@ reduction modulo $\ell$ is invertible is invertible (apply (iv) over the local r
 The hypothesis ``finitely generated'' cannot be dropped: $\Q$ is a module over the local ring $\Z_{(p)}$ with $p\Q=\Q$, and $\Q\ne0$. In
 (iii) the point is that one reduction suffices: over $\Zl$, to know that $M$ is cyclic it is enough to know that $M/\ell M$ is a line,
 while over $\Z$ one would have to look at $M/pM$ for every prime $p$ (and over a general ring even that is not enough). This is how
-the paper passes from ``$J_0(N)[\mf m]$ is two-dimensional'' to ``two generators'' (\Cref{pl:modules:nakayama}).
+the two-dimensionality of $J_0(N)[\mf m]$ in Remark rem:free yields two generators (\Cref{pl:modules:nakayama}).
 
 \begin{paperlink}\label{pl:modules:nakayama}
 In the proof of Lemma lem:h0 the paper writes: ``An element of exact order $\ell^k$ is a map $\phi\colon T/\ell^k\to(T/\ell^k)(1)$ whose
@@ -1068,8 +1068,8 @@ $0\ne\delta\in R$, so $x=0$. By (ii) over the principal ideal domain $R'$, $X\si
 \end{proof}
 
 \begin{paperlink}\label{pl:modules:IV}
-The remark after Lemma lem:IV says: ``$T_3E$ is then free of rank one over $\Z_3[X]/(X^2+X+1)\simeq\Z_3[\zeta_3]$, with $X$ acting as
-$\sigma$''. Apply \Cref{prop:modules:torsion}(iii) with $R=\Z_3$, $R'=\Z_3[\zeta_3]$ (a discrete valuation ring, hence a principal ideal
+The paragraph after the proof of Lemma lem:IV says that ``$T_3E$ is a torsion-free module of $\Z_3$-rank $2$ over the discrete valuation ring
+$\Z_3[X]/(X^2+X+1)\simeq\Z_3[\zeta_3]$, with $X$ acting as $\sigma$, hence free of rank one over it''. Apply \Cref{prop:modules:torsion}(iii) with $R=\Z_3$, $R'=\Z_3[\zeta_3]$ (a discrete valuation ring, hence a principal ideal
 domain, by \Cref{ch:ant}), $e=2$, and $X=T_3E$, which is a free $\Z_3$-module of rank $2$ and an $R'$-module through $\sigma$
 (\Cref{ex:modules:running}(c)): it is free of rank $2/2=1$ over $R'$. Lemma lem:tamadd uses the same statement. Exercise
 \ref{ex:modules:ex-IV} works out the consequences for $T/3T$.
@@ -1203,7 +1203,7 @@ This is the pattern of the second paragraph of the proof of Lemma lem:crit, with
 The second paragraph of the proof of Lemma lem:crit is \Cref{prop:modules:dual-inclusion,prop:modules:congruence-decomposition} with
 $M=S_2(\Gamma_0(N);\Z)$, $V_1=\Q f$, $V_2=f^\perp$, $L_1=\Z f$ (as $a_1(f)=1$, $f$ is primitive) and $L_2=L=f^\perp\cap S_2(\Gamma_0(N);\Z)$.
 ``Dualising the inclusion $\T\subset\T/I\times\T/J$, whose cokernel is $\T/(I+J)$, shows that $\Z f\oplus L$ has index $r'$'' is
-\Cref{prop:modules:algebra-duality}(iii), which rests on \Cref{prop:modules:dual-inclusion}. ``The quotient embeds in $\Q f/\Z f$ by
+\Cref{prop:modules:algebra-duality}(iii), which rests on \Cref{prop:modules:dual-inclusion}. That the quotient $S_2(\Gamma_0(N);\Z)/(\Z f\oplus L)$ ``embeds in $\Q f/\Z f$ by
 projection onto $\Q f$ along $f^\perp$, so it is cyclic, generated by the class of a form $h$ with projection $f/r'$; then $r'h=f+g_0$ with
 $g_0\in L$'' is \Cref{prop:modules:congruence-decomposition}(ii), whose last clause is the paper's ``$r'\le r$'' and ``$r\mid r'$'' in one
 statement: the congruence number is the congruence modulus. Lemma lem:ddt417 uses the same structure, with
@@ -1662,7 +1662,7 @@ Section 1.2 defines $\Tam_p(M)=\Fitt_{\Zl}\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{
 B-C10). This is a finite $\Zl$-module, so by
 \Cref{thm:modules:fitting-dvr}(ii) $v_\ell(\Tam_p(M))$ is its length. In Lemma lem:tamfactor the invariants are the $x\bar e+y\bar h$ in
 $(\Z/\ell^{v_\ell(n)})\bar e\oplus(\Z/\ell^{v_\ell(n)})\bar h$ with $(q-1)y\equiv0$ and $c'y\equiv0$, a module isomorphic to $\Z/\ell^{v_\ell(n)}\oplus\Z/\ell^{\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))}$, of
-length $v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$: this is the paper's formula, and the Fitting ideal of $\Z/\ell^v\oplus\Z/\ell^m$ is
+length $v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c'))$: this is the count in the paper's proof, where $v_\ell(c')$ may be replaced by $v_\ell(c(u))$, and the Fitting ideal of $\Z/\ell^v\oplus\Z/\ell^m$ is
 $\ell^{v+m}\Zl$ by the last rows of \Cref{ex:modules:fitting-examples}. In Lemma lem:fpr the identity of Fitting ideals is an identity of
 lengths, $\len H^1_f(\Q_p,T^D)=v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(T^D))$, which is how the proof of Theorem thm:main uses it. The definitions of
 $\Tam_p$ and $H^1_f$ are \Cref{ch:blochkato}.
@@ -1813,10 +1813,10 @@ of the paper, $L\mapsto L^\vee=\Hom(L,\mathcal O)$ for lattices, realised by a b
 
 \section[Pairings]{Pairings: Gram determinants, saturated sublattices, alternating pairings, adjoints}\label{sec:modules:pairings}
 
-The heart of Lemma lem:ddt417 is a statement about a perfect pairing on a lattice $L$ and a saturated sublattice $L[\wp]$: ``the pairing
+The heart of Lemma lem:ddt417 is a statement about a perfect pairing on a lattice $L$ and a saturated sublattice $L[\wp]$: ``The pairing
 identifies $L/L[\wp]^\perp$ with $\Hom(L[\wp],\mathcal O)$, because $L[\wp]$ is saturated'', and ``$Q$ is the cokernel of $L[\wp]\to\Hom(L[\wp],\mathcal O)$, of
 order $\#\mathcal O/\Delta$''. Section 4.1 of the paper adds that the pairing $\hat\delta_!$ is perfect and alternating, that the Hecke operators are
-self-adjoint for it, and that on the rank-two lattice $M_{f^\Sigma,\lambda}$ ``the Gram determinant is $(\eta^\Sigma_{f,\lambda})^2$ up to a unit''. Lemma lem:crit
+self-adjoint for it, and that ``the Gram determinant of the pairing on $M_{f^\Sigma,\lambda}$ is $(\eta^\Sigma_{f,\lambda})^2$ up to a unit''. Lemma lem:crit
 uses the pairing $S_2(\Gamma_0(N);\Z)\times\T\to\Z$. This section proves each of these statements in the abstract. Throughout, except in \Cref{prop:modules:gram}, which holds over any commutative ring, $R$ is a principal
 ideal domain (in practice $\Z$, $\Zl$ or $\mathcal O$) with fraction field $K$, and pairings follow \Cref{conv:modules:rings}(e). To a reader of Riley,
 Hobson and Bence a Gram matrix is a metric tensor $g_{ij}=\langle e_i,e_j\rangle$; the novelty is that over $\Z$ or $\Zl$ the determinant is meaningful
@@ -1922,11 +1922,11 @@ the standard pairing and the non-saturated $L'=\Z\cdot3e_1$ the Gram determinant
 \end{example}
 
 \begin{paperlink}\label{pl:modules:gram}
-In Lemma lem:ddt417, ``the pairing identifies $L/L[\wp]^\perp$ with $\Hom(L[\wp],\mathcal O)$, because $L[\wp]$ is saturated'' is
+In the proof of Lemma lem:ddt417, ``The pairing identifies $L/L[\wp]^\perp$ with $\Hom(L[\wp],\mathcal O)$, because $L[\wp]$ is saturated'' is
 \Cref{thm:modules:gram-cokernel}(i) with $L'=L[\wp]$, saturated by \Cref{prop:modules:saturated}(iii); ``$Q$ is the cokernel of $L[\wp]\to\Hom(L[\wp],\mathcal O)$,
 of order $\#\mathcal O/\Delta$'' is part (ii), once $L[\wp]^\perp=L[I]$ is known (\Cref{prop:modules:ddt-ingredients}). Part (iv) shows that the word
 ``saturated'' cannot be dropped. For a residue field that is not finite the order must be read as the length $v(\Delta)$
-(\Cref{conv:modules:rings}(f)); the revised paper assumes $k$ finite.
+(\Cref{conv:modules:rings}(f)); the paper assumes $k$ finite.
 \end{paperlink}
 
 \begin{proposition}[alternating pairings]\label{prop:modules:alternating}
@@ -1961,8 +1961,8 @@ $\{x,y\}$, giving $L=(Rx\oplus Ry)\oplus\{x,y\}^\perp$; induct, noting that the 
 \end{proof}
 
 \begin{paperlink}\label{pl:modules:alternating}
-Section 4.1: ``the restriction of $\hat\delta_!$ to the rank-two lattice $M_{f^\Sigma,\lambda}$ takes its values in an ideal of $\Zl$, \dots, which is
-$\eta^\Sigma_{f,\lambda}$; equivalently the Gram determinant of the pairing on $M_{f^\Sigma,\lambda}$ is $(\eta^\Sigma_{f,\lambda})^2$ up to a unit''. This is
+Section 4.1: ``The restriction of $\hat\delta_!$ to the rank-two lattice $M_{f^\Sigma,\lambda}$ takes its values in an ideal of $\Zl$, the image of
+$\wedge^2M_{f^\Sigma,\lambda}$, which is $\eta^\Sigma_{f,\lambda}$, \dots; equivalently the Gram determinant of the pairing on $M_{f^\Sigma,\lambda}$ is $(\eta^\Sigma_{f,\lambda})^2$ up to a unit''. This is
 \Cref{prop:modules:alternating}(ii), as $\hat\delta_!$ is alternating. The same proposition is behind ``the Gram determinant of a rank-two alternating
 form is the square of its ideal of values'' in the proof of Proposition prop:pullback, and behind $d=2$, $\Delta=(\eta^\emptyset_{f,\lambda})^2$ when Lemma
 lem:ddt417 is applied in Step 2 of the proof of Theorem thm:quant.
@@ -2048,7 +2048,7 @@ $\langle tg,u\rangle=a_1(utg)=\langle g,tu\rangle$. Take $\mf a=\ker\phi_f$ and 
 $\Ann_\T(I)$ because $\T\otimes\Q=\Q\times\T'$ with $\T'$ acting faithfully on $f^\perp$). Then $S[\mf a]=\Z f$ ($f$ is the primitive form killed by $\mf a$), and
 $S[\mf b]=L$ is the orthogonal complement lattice. By \Cref{prop:modules:congruence-ideal}(iii), $\mf a=\T\cap(0\times\T')$ and $\mf b=\T\cap(\Q\times0)$, so
 $\T/\mf a$ and $\T/\mf b$ are torsion-free (\Cref{prop:modules:saturated}(iii)), and $\mf b$ is a lattice in $\Q\times0$, so $\rank\T/\mf b=\rank\T-1$ and the
-ranks are complementary. So the paper's dualising step (\Cref{pl:modules:crit-second}) is \Cref{prop:modules:algebra-duality}(iii). The paper does not state these hypotheses, but its assertion that
+ranks are complementary. So the paper's dualising step (\Cref{pl:modules:crit-second}) is \Cref{prop:modules:algebra-duality}(iii). The paper leaves these hypotheses implicit; its assertion that
 $\T/(I+J)\simeq\Z/\phi_f(J)$ is cyclic \emph{of order} $r'$ presupposes them: as $I\cap J=0$, the quotient is finite iff $\phi_f(J)\ne0$, iff $J\ne0$, which is
 the rank condition.
 \end{paperlink}
@@ -2059,7 +2059,7 @@ The Hecke algebra $\T$ is a commutative ring that is free of finite rank over $\
 tensoring with $\Q$ it is a product of local Artinian algebras, one of which is $\Q$, the factor of $f$ (``$\T\otimes\Q=\Q\times\T'$'', Lemma lem:crit).
 After tensoring with $\Zl$ it is a product of local rings $\T_{\mf m}$ cut out by idempotents (Lemma lem:hecke, Remark rem:free, Theorem thm:quant).
 And its action on forms decomposes into generalised eigenspaces, on which the operators need not be semisimple (Lemma lem:old, Theorem
-thm:twist, Step 1 of Theorem thm:quant). In the language of linear algebra this section is the Jordan decomposition of a commuting family of
+thm:twist, Lemma lem:step1). In the language of linear algebra this section is the Jordan decomposition of a commuting family of
 matrices, done over $\Z$ and $\Zl$ rather than over $\C$.
 
 \begin{theorem}[finite-dimensional commutative algebras]\label{thm:modules:artinian-algebras}
@@ -2208,10 +2208,10 @@ factormod(x^2+x-1, 5)              \\ (x+3)^2, that is (x-2)^2
 \end{example}
 
 \begin{paperlink}\label{pl:modules:tm}
-``$\mf m$ the maximal ideal of $\T\otimes\Zl$ containing $\ell$ and $\ker\phi_f$'' (Lemma lem:hecke) is $\mf m_{\phi_f}$ of
+In the paragraph after Lemma lem:hecke, $\mf m$ is ``the maximal ideal of $\T\otimes\Zl$ containing $\ell$ and $\ker\phi_f$''; it is $\mf m_{\phi_f}$ of
 \Cref{thm:modules:finite-algebra-dvr}(iii), for $\phi_f\otimes\Zl\colon\T\otimes\Zl\to\Zl$. By \Cref{thm:modules:idempotent-lifting}(iv), $\phi_f$ factors through
-$\T_{\mf m}$ and kills the other local factors; in Step 1 of the proof of Theorem thm:quant, ``projecting $h$ to the $\mf m$-component (an idempotent of
-$\T_\ell$\dots)'' uses the idempotent $e_{\mf m}$ of (ii). Remark rem:free is about $H^1(X_0(N),\Zl)_{\mf m}=e_{\mf m}H^1(X_0(N),\Zl)$, a free $\Zl$-module by (iii).
+$\T_{\mf m}$ and kills the other local factors; in the proof of Lemma lem:step1, ``The idempotent $e_{\mf m}$ of $\T_\ell$ fixes $g^S$ (as $\pi$ factors through
+$\T_{\mf m}$)'' uses the idempotent $e_{\mf m}$ of (ii). Remark rem:free is about $H^1(X_0(N),\Zl)_{\mf m}=e_{\mf m}H^1(X_0(N),\Zl)$, a free $\Zl$-module by (iii).
 \end{paperlink}
 
 \begin{theorem}[generalised eigenspaces]\label{thm:modules:generalised-eigenspaces}
@@ -2270,8 +2270,8 @@ In Lemma lem:crit, ``$\T\otimes\Q=\Q\times\T'$ with $\T'$ acting faithfully on $
 that the local factor through which $\phi_f$ factors is $\Q$ itself, which is multiplicity one for the newform $f$ (\Cref{ch:hecke}; compare
 \Cref{prop:modules:congruence-ideal}(ii)). In Theorem thm:twist, ``$g^\perp$, the $\T$-stable complement of the $g$-line (the sum of the generalised eigenspaces
 of the other systems of eigenvalues)'' is $\bigoplus_{\phi\ne\phi_g}V(\phi)$ of \Cref{thm:modules:generalised-eigenspaces}(i), applied to the algebra generated by the $T_p$,
-$p\nmid N_S$, over $\overline\Q$. In Step 1 of the proof of Theorem thm:quant, ``the $\mf m$-component of $S_2(\Gamma_0(N);\Zl)$ is the sum of the line of $g^S$ and of
-generalised eigenspaces of systems of eigenvalues with $U_q=0$'' is part (ii).
+$p\nmid N_S$, over $\overline\Q$. In the proof of Lemma lem:step1, ``The form $h'$ lies in the sum of the generalised eigenspaces of the eigencharacters $\phi\ne\pi$ of $\T$
+congruent to $\pi$ modulo the maximal ideal above $\ell$'' is part (ii).
 \end{paperlink}
 
 \begin{proposition}[projecting a congruence to a local component]\label{prop:modules:idempotent-congruence}
@@ -2287,9 +2287,9 @@ In \Cref{thm:modules:generalised-eigenspaces}(ii) let $\mf m$ be a maximal ideal
 \end{proof}
 
 \begin{paperlink}\label{pl:modules:projection}
-Step 1 of the proof of Theorem thm:quant: ``projecting $h$ to the $\mf m$-component (an idempotent of $\T_\ell$, so the projection stays in the complement and the
-congruence survives) we may take $h$ in the sum of the generalised eigenspaces above''. This is \Cref{prop:modules:idempotent-congruence}(ii) with $x=g^S$, $W$ the
-complement of the line of $g^S$, and $y=h$.
+The proof of Lemma lem:step1 (the inequality $\ge$): ``The idempotent $e_{\mf m}$ of $\T_\ell$ fixes $g^S$ (as $\pi$ factors through $\T_{\mf m}$) and preserves
+$C$ and the integral forms, so $h'=e_{\mf m}h$ lies in $C\cap S_2(\Gamma_0(N);\Zl)$ and $g^S\equiv h'\pmod{\ell^t}$''. This is \Cref{prop:modules:idempotent-congruence}(ii) with
+$x=g^S$, $W=C$ the complement of the line of $g^S$, and $y=h$.
 \end{paperlink}
 
 \begin{proposition}[semisimple and non-semisimple operators]\label{prop:modules:semisimple-operators}
@@ -2428,9 +2428,9 @@ $\Ann(\wp\otimes\mathcal O')=I\otimes\mathcal O'$ (\Cref{prop:modules:flat}(iii)
 \begin{paperlink}\label{pl:modules:congruence-ideal}
 Lemma lem:crit: ``$I=\T\cap(0\times\T')$ and $J=\T\cap(\Q\times0)$, so $I\cap J=0$ and $\T/(I+J)\simeq\Z/\phi_f(J)$'' is \Cref{prop:modules:congruence-ideal}(iii) over $\mathcal O=\Z_{(\ell)}$
 (or over $\Z$ verbatim, the proofs using only that $\Z$ is a principal ideal domain), with $\pi=\phi_f$, $\wp=\ker\phi_f$ (the paper's $I$ there) and $\Ann(\wp)$ (the paper's
-$J$); Appendix B, convention B-C13(c), explains the clash of letters between Lemmas lem:crit and lem:ddt417. In Lemma lem:ddt417 the paper now proves $\wp\cap I=0$ by
-the argument of (ii), and remarks that reducedness would not do. The paragraph after Lemma lem:hecke, and Step 1 of the proof of Theorem thm:quant, say that
-``the congruence ideal is computed in $\T_{\mf m}$: the other local factors of $\T\otimes\Zl$ lie in the kernel $\wp$, $\phi_f$ factors through $\T_{\mf m}$, and $\Ann(\wp)$
+$J$); Appendix B, convention B-C13(c), explains the clash of letters between Lemmas lem:crit and lem:ddt417. In Lemma lem:ddt417 the paper proves $\wp\cap I=0$ by
+the argument of (ii), and remarks that reducedness would not do. The paragraph after Lemma lem:hecke says (and Step 1 of the proof of Theorem thm:quant
+says the same with $\ker\pi$) that ``the congruence ideal is computed in $\T_{\mf m}$: the other local factors of $\T\otimes\Zl$ lie in the kernel $\wp$, $\phi_f$ factors through $\T_{\mf m}$, and $\Ann(\wp)$
 decomposes along the idempotents'': this is (v).
 \end{paperlink}
 
@@ -2552,7 +2552,7 @@ Remark rem:free: ``Freeness of $H^1(X_0(N),\Zl)_{\mf m}$ over $\T_{\mf m}$ holds
 Tate module is free of rank two''. In \Cref{thm:modules:mazur-freeness} take $\mathcal O=\Zl$, $\T=\T_{\mf m}$, $L=H^1(X_0(N),\Zl)_{\mf m}$ with the pairing $\hat\delta_!$ (perfect on the
 $\mf m$-component by \Cref{prop:modules:adjoint}(iii)), and $d=2$. Hypothesis (a) is the two-dimensionality of $J_0(N)[\mf m]$, transported to $L/\mf mL$ by duality, and (b) is a
 rank count from the Eichler-Shimura isomorphism; both are \Cref{ch:moddeg}. The conclusion $L\simeq\T_{\mf m}^2$ is the hypothesis of the equality clause of Lemma
-lem:ddt417. After Proposition prop:pullback the paper no longer needs this for Theorems thm:main and thm:quant.
+lem:ddt417. After Proposition prop:pullback the paper does not need this for Theorems thm:main and thm:quant.
 \end{paperlink}
 
 \begin{remark}[the statement of Lemma lem:ddt417, and where each step is proved]\label{rem:modules:ddt417-preview}
@@ -2586,13 +2586,11 @@ $\T_r$ self-adjoint), $L[\wp]=I^2$ has basis $(u,0)$, $(0,u)$ with $u=(\varpi^r,
 proof of Theorem thm:quant. Finally, when $\eta=0$ the inequality is empty, and if moreover $L\simeq\T^r$, then $I\subseteq\wp$ gives $I\cdot I=0$, so the pairing vanishes on
 $L[\wp]=I^r$ ($\langle\sum a_ie_i,\sum b_je_j\rangle=\sum\langle b_ja_ie_i,e_j\rangle=0$) and $\Delta=0$: the hypothesis $\Delta\ne0$ excludes this case.
 
-\emph{The paper's proof.} The Commentary on this lemma (the paper counts orders over a finite residue field, the
-book states lengths over any discrete valuation ring) is given with its proof in \Cref{ch:congruence}. Two remarks concern steps proved here.
-The converse inclusion ``if $y\perp L[\wp]$ then \dots\ $ty=0$'' shows only that the single element $t$ kills $y$; this suffices because $I=\mathcal Ot$
-(\Cref{prop:modules:congruence-ideal}(iii)), which the paper does not say, and \Cref{prop:modules:ddt-ingredients}(iii) uses every $s\in I$ instead. In
-``since $L$ is torsion-free and $\wp\cap I=0$, the sum $L[\wp]+L[I]$ is direct'' the operative reason is $\pi(t)\in\wp+I$
-(\Cref{prop:modules:ddt-ingredients}(ii)); $\wp\cap I=0$ gives it only after an unstated rank argument ($I\ne0$ embeds in $\T/\wp\simeq\mathcal O$, so
-$\wp+I$ has finite index in $\T$ and contains a nonzero scalar).
+\emph{The paper's proof.} The paper works over a discrete valuation ring with finite residue field and counts orders; the book's lengths make sense over any
+discrete valuation ring (\Cref{conv:modules:rings}(f)), and the lemma is proved in that form in \Cref{ch:congruence}. In the converse inclusion ``if $y\perp L[\wp]$
+then \dots\ $ty=0$, and $y\in L[I]$ because $I=\mathcal{O}t$'', the single element $t$ suffices because $I=\mathcal Ot$ (\Cref{prop:modules:congruence-ideal}(iii));
+\Cref{prop:modules:ddt-ingredients}(iii) uses every $s\in I$ instead. The directness of $L[\wp]+L[I]$ rests, in the paper as in
+\Cref{prop:modules:ddt-ingredients}(ii), on the nonzero scalar $\pi(t)\in\wp+I$.
 \end{remark}
 
 \section{Exercises}\label{sec:modules:exercises}
