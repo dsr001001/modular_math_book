@@ -318,8 +318,16 @@ with $\mathcal U_{p'}$, $V_{p'}$ and $V_d$.
 \end{lemma}
 
 \begin{proof}
-Compare $n$-th coefficients: $\mathcal U_pV_p$ sends $(a_n)$ to $(a_{pn/p})=(a_n)$; $V_p\mathcal U_p$ to $(a_{p\cdot n/p})$ for $p\mid n$ and $0$ otherwise; $\mathcal U_pV_d$ and $V_d\mathcal U_p$ both have
-$n$-th coefficient $a_{pn/d}$ (read as $0$ if $d\nmid n$, which for $(d,p)=1$ is the same condition as $d\nmid pn$); the other cases are similar.
+Compare $n$-th coefficients, with the convention that $a_x=0$ when $x$ is not an integer. By definition the $n$-th coefficient of $\mathcal U_ph$ is $a_{pn}$ and that of
+$V_dh$ is $a_{n/d}$. So $\mathcal U_pV_p$ sends $(a_n)$ to $(a_{pn/p})=(a_n)$, and $V_p\mathcal U_p$ sends it to $(a_{p\cdot n/p})=(a_n)$ for $p\mid n$ and to $0$ otherwise. For the
+commutation relations, with $p'\ne p$ prime and $(d,p)=1$:
+\begin{itemize}
+\item $\mathcal U_p\mathcal U_{p'}$ and $\mathcal U_{p'}\mathcal U_p$ both have $n$-th coefficient $a_{pp'n}$;
+\item $\mathcal U_pV_d$ has $n$-th coefficient $a_{pn/d}$ and $V_d\mathcal U_p$ has $a_{p(n/d)}$; both vanish unless $d\mid pn$, and since $(d,p)=1$ this is the condition
+$d\mid n$, under which they are equal; taking $d=p'$ gives $\mathcal U_pV_{p'}=V_{p'}\mathcal U_p$;
+\item $V_pV_d$ and $V_dV_p$ both have $n$-th coefficient $a_{n/(pd)}$; taking $d=p'$ gives $V_pV_{p'}=V_{p'}V_p$.
+\end{itemize}
+The remaining relation, $V_p\mathcal U_{p'}=\mathcal U_{p'}V_p$, is the second item with the roles of $p$ and $p'$ exchanged.
 \end{proof}
 
 \begin{theorem}[the operators $T_n$]\label{thm:hecke:Tn}
@@ -370,7 +378,8 @@ the series is geometric.
 
 \begin{remark}[Chebyshev polynomials and Clebsch-Gordan]\label{rem:hecke:chebyshev}
 Let $U_r$ be the Chebyshev polynomial of the second kind, $U_r(\cos\theta)=\sin((r+1)\theta)/\sin\theta$, with generating function $\sum_rU_r(x)X^r=(1-2xX+X^2)^{-1}$. Comparing with
-\Cref{thm:hecke:Tn}(v), $T_{p^r}=p^{r(k-1)/2}U_r\bigl(T_p/(2p^{(k-1)/2})\bigr)$ for $p\nmid N$. If $T_p$ has the eigenvalue $2p^{(k-1)/2}\cos\theta$ (the Ramanujan-Petersson bound, \Cref{ch:modforms},
+\Cref{thm:hecke:Tn}(v), $T_{p^r}=p^{r(k-1)/2}U_r\bigl(T_p/(2p^{(k-1)/2})\bigr)$ for $p\nmid N$. Indeed, put $c=p^{(k-1)/2}$ and replace $X$ by $cX$ in the
+generating function: $\sum_rc^rU_r(x)X^r=(1-2xcX+c^2X^2)^{-1}$, and with $2xc=T_p$ the right side is $(1-T_pX+p^{k-1}X^2)^{-1}=\sum_rT_{p^r}X^r$; compare coefficients of $X^r$. If $T_p$ has the eigenvalue $2p^{(k-1)/2}\cos\theta$ (the Ramanujan-Petersson bound, \Cref{ch:modforms},
 says $\theta$ can be taken real), then $T_{p^r}$ has the eigenvalue $p^{r(k-1)/2}\sin((r+1)\theta)/\sin\theta$: the character of the spin-$r/2$ representation of $\mathrm{SU}(2)$ at the rotation by
 $2\theta$. The product formula $T_{p^a}T_{p^b}=\sum_ip^{i(k-1)}T_{p^{a+b-2i}}$ of \Cref{thm:hecke:Tn}(iv) is then the Clebsch-Gordan rule $V_{a/2}\otimes V_{b/2}=\bigoplus_iV_{(a+b)/2-i}$ for
 these characters.
@@ -379,7 +388,12 @@ these characters.
 \begin{example}[Eisenstein series and $\Delta$]\label{ex:hecke:eisenstein-and-delta}
 (i) Level one. The Eisenstein series $E_k=1+c_k\sum_{n\ge1}\sigma_{k-1}(n)q^n$ ($k\ge4$) satisfies $T_pE_k=\sigma_{k-1}(p)E_k$. Indeed the constant term of $T_pE_k$ is $1+p^{k-1}=\sigma_{k-1}(p)$,
 and for $n\ge1$ one needs $\sigma_{k-1}(pn)+p^{k-1}\sigma_{k-1}(n/p)=\sigma_{k-1}(p)\sigma_{k-1}(n)$. Write $n=p^am$ with $p\nmid m$; by multiplicativity of $\sigma_{k-1}$ both sides are $\sigma_{k-1}(m)$
-times $\sigma_{k-1}(p^{a+1})+p^{k-1}\sigma_{k-1}(p^{a-1})$, respectively $\sigma_{k-1}(p)\sigma_{k-1}(p^a)$, which agree (for $a=0$ read $\sigma_{k-1}(p^{-1})=0$; for $a\ge1$ expand the geometric sums).
+times $\sigma_{k-1}(p^{a+1})+p^{k-1}\sigma_{k-1}(p^{a-1})$, respectively $\sigma_{k-1}(p)\sigma_{k-1}(p^a)$, which agree. To see this put $c=p^{k-1}$, so that
+$\sigma_{k-1}(p^b)=\sum_{i=0}^bc^i$; then
+\[
+\sigma_{k-1}(p)\sigma_{k-1}(p^a)=(1+c)\sum_{i=0}^ac^i=\sum_{i=0}^{a+1}c^i+\sum_{i=1}^ac^i=\sigma_{k-1}(p^{a+1})+c\,\sigma_{k-1}(p^{a-1}),
+\]
+where for $a=0$ the middle sum is empty and $\sigma_{k-1}(p^{-1})$ is read as $0$, matching the convention $a_{n/p}=0$ for $p\nmid n$.
 Since $\dim S_{12}(1)=1$ (\Cref{ch:modforms}), every $T_n$ preserves the line of $\Delta=\sum\tau(n)q^n$, so $T_n\Delta=\tau(n)\Delta$ by \Cref{thm:hecke:Tn}(iii), and $\tau$ is multiplicative
 and satisfies $\tau(p^{r+1})=\tau(p)\tau(p^r)-p^{11}\tau(p^{r-1})$: Mordell's theorem.
 
@@ -456,8 +470,13 @@ eigenforms are linearly independent.
 \begin{proof}
 (i) $a_n(f)=a_1(T_nf)=\lambda_na_1(f)$ by \Cref{thm:hecke:Tn}(iii); if $a_1(f)=0$ all coefficients vanish and $f=0$. (ii) Apply $\phi_f$ to \Cref{thm:hecke:Tn}(iv) and use
 $\phi_f(T_n)=a_n$. (iii) $\phi_f(tu)f=tuf=\phi_f(u)tf=\phi_f(t)\phi_f(u)f$, and similarly for sums and $1$. A normalised eigenform is $\sum\phi_f(T_n)q^n$, so it is determined by $\phi_f$.
-If $\sum_{i=1}^sc_if_i=0$ is a shortest nontrivial relation among normalised eigenforms with distinct characters, pick $t$ with $\phi_{f_1}(t)\ne\phi_{f_2}(t)$; then
-$\sum_ic_i(\phi_{f_i}(t)-\phi_{f_1}(t))f_i=0$ is shorter and nontrivial, a contradiction.
+Distinct normalised eigenforms therefore have distinct characters. Suppose they were linearly dependent, and let $\sum_{i=1}^sc_if_i=0$ be a nontrivial relation with $s$ as
+small as possible; then every $c_i\ne0$, and $s\ge2$ because each $f_i\ne0$. Pick $t$ with $\phi_{f_1}(t)\ne\phi_{f_2}(t)$. Applying $t$ to the relation gives $\sum_ic_i\phi_{f_i}(t)f_i=0$,
+and subtracting $\phi_{f_1}(t)$ times the relation gives
+\[
+\sum_{i=2}^sc_i\bigl(\phi_{f_i}(t)-\phi_{f_1}(t)\bigr)f_i=0,
+\]
+a relation with at most $s-1$ terms whose coefficient of $f_2$ is $c_2(\phi_{f_2}(t)-\phi_{f_1}(t))\ne0$. This contradicts the minimality of $s$.
 \end{proof}
 
 \begin{lemma}[eigenform criterion]\label{lem:hecke:eigen-criterion}
