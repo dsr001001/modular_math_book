@@ -13,11 +13,7 @@ The book takes a reader who has none of this, but who has the background listed 
 point where every definition, every proof and every table of the paper can be read with
 understanding. It also serves a second reader: the specialist who has seen all of this, has
 forgotten the exact form of one statement, and opens one chapter to find it at the top.
-
-The note exists in two versions with the same labels. The book follows the revised version, dated
-15 October 2026, which proves more than the first; it also records the first version, dated
-10 October 2026, and where the two differ it follows the revision and says what changed.
-``The paper'' means the revised version unless the first version is named.
+Throughout, ``the paper'' means this note, and its results are named by the labels of its source.
 
 \section*{What the paper proves}
 
@@ -65,9 +61,7 @@ v_\ell(\degphi)\ =\ \len_{\Zl}\Hf(\Q,\ad T\otimes\Qlmod)
 Here $T=\Tl E$ is the Tate module, $\Hf$ is the Bloch-Kato Selmer group of the adjoint, and
 $\Tam_q$ is the Tamagawa factor of Fontaine and Perrin-Riou. The hypothesis says that $\ell$ is not
 in the exceptional set $S_f$ of Diamond, Flach and Guo; for $\ell\ge5$ it only asks that $E[\ell]$
-be irreducible (\paperref{Proposition prop:Sf}). The first version of the note proved only the
-inequality $\ge$, with equality under a multiplicity one hypothesis; the revision removes that
-hypothesis. The Tamagawa factors are trivial at the potentially good primes
+be irreducible (\paperref{Proposition prop:Sf}). The Tamagawa factors are trivial at the potentially good primes
 (\paperref{Lemma lem:tamadd}) and explicit at the potentially multiplicative ones
 (\paperref{Lemma lem:tamfactor}): there their valuation is
 $v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))$, where $n=-v_q(j_E)$ and $v_\ell(c(u))$ is
@@ -131,43 +125,8 @@ a positive bound; and a calibration argument shows that the absence of violation
 independence of the two sides would predict. That shows that the statement is strong, not that it
 is true; \Cref{ch:computation} explains the difference and which statements were tested blind.
 
-\section*{What the book adds to the paper}
-
-The book reads the paper as a careful referee would, and \Cref{ch:paper} ends with a consolidated,
-numbered list of $38$ corrections and suggestions for the revised version. None of them
-invalidates a theorem: every theorem of the revised paper is correct as stated, given the inputs
-it names. The items fall into a few kinds.
-\begin{itemize}
-\item \emph{Missing hypotheses and unproved inputs.} The hypothesis $\ell\notin\Sigma$ is missing
-from the paper's statements of Proposition 1.4(c) and Lemma 2.1 of Diamond, Flach and Guo; it holds
-in every use, since $\ell\nmid N$. The identification of integral structures described above is an
-input of the main theorem that should be stated as such, with a proof or a precise reference.
-\item \emph{Data and counts.} The abstract's claim that the corrected inequality has no exception
-needs the hypotheses of the conjecture ($E[\ell]$ irreducible, no complex multiplication): without
-them it fails in the Eisenstein case, for instance for \curve{11a1} at $\ell=5$. Several counts
-have a population that is not named or not the one stated; PARI/GP 2.17.2 returns a wrong Tate
-parameter at $q=2$ when $v_2(j_E)=-1$, which changes no count; and two facts about the protocol are not
-stated.
-\item \emph{Results the book proves in a stronger form.} Step 1 of the proof of
-\paperref{Theorem thm:quant} is an equality at every prime $\ell$ outside the set $S$ of the
-theorem, with no further hypothesis; the paper calls this open. The exchange of Kodaira types under
-a quadratic twist holds at $q=3$ as well as at $q\ge5$, given the conductor formula of Ogg and
-Saito, so the paper's identity for the weights $w_\ell(E,q)$ holds at $q=3$ too. These two results
-answer the first two items of the paper's Open question 6. The structure of the curves with image
-$\Ns$ (\paperref{Proposition prop:ns-structure}) is proved in a stronger form, with complex
-multiplication allowed.
-\item \emph{Citations.} A few references are corrected or made precise (the hypotheses of the
-theorems of Ribet and Takahashi and of Pollack and Weston, the source of a fact attributed to
-Kenku, a notation of Diamond, Flach and Guo), and the citations the book could not check against
-their sources are listed.
-\item \emph{Exposition.} Compressed steps are expanded and a dozen sentences are reworded.
-\item \emph{The open questions.} For several of the paper's open questions the book records new
-observations from its own data, the optimal curves of conductor below $10{,}000$. These are data
-only: they were made with the paper in hand, they were not tested blind, and none of them is
-proved.
-\end{itemize}
-\Cref{ch:paper} gives the location, the issue, a suggested fix, a confidence level and the chapter
-where the point is justified for every item.
+In several places the book proves a statement in greater generality than the paper needs; where it
+does, the chapter says so, and the paper's statement is recovered as a special case.
 
 \section*{Who the book is for, and the two ways to read it}
 
@@ -276,11 +235,10 @@ prop:shapes at every bad prime, and what PARI computes.
 of congruence ideals: Hecke algebras and their localisations, Wiles's numerical criterion and the
 paper's Lemma lem:ddt417, the theorems of Diamond, Flach and Guo, the Taylor-Wiles method in
 outline, the assembly of the paper's main theorem as an identity, the twist monotonicity theorem,
-and the proof of the paper's Theorem thm:quant with Step 1 as an equality. \Cref{ch:paper} is the
+and the proof of the paper's Theorem thm:quant with Step 1 as an equality. \Cref{ch:paper} is a
 guided reading of the paper, section by section in the paper's order: each result stated, each
-ingredient located in the book, each compressed step expanded, and a verdict; then a map of the
-paper (dependencies, hypotheses, imported statements), worked verifications on curves, and the
-list of corrections described above. \Cref{ch:computation} is PARI/GP from zero, Cremona's tables
+ingredient located in the book and each compressed step expanded; then a map of the paper
+(dependencies, hypotheses, imported statements) and worked verifications on curves. \Cref{ch:computation} is PARI/GP from zero, Cremona's tables
 and the \texttt{ecdata} files, the paper's function \texttt{rule(E, l, iii)} explained line by
 line, the paper's protocol and its statistics with the calibration argument, and the reproduction
 of the paper's tables on the curves of conductor below $10{,}000$.
@@ -361,7 +319,7 @@ hints. Some of them read ``check the paper's claim that \ldots''; these are the 
 theorem numbers it cited, and which of them were checked against the source.
 \end{enumerate}
 Chapters refer to one another only by chapter number, never by the number of a theorem in another
-chapter, so that each chapter can be revised on its own. The running examples are the curves of
+chapter, so that each chapter stands on its own. The running examples are the curves of
 the paper, in Cremona's labels: \curve{11a1}, \curve{20a1}, \curve{121a1}, \curve{121c},
 \curve{121d}, \curve{539c1}, \curve{980i1}, \curve{726a1} and \curve{99A1}. They recur wherever a
 chapter's topic allows, and \Cref{ch:computation} shows how to reproduce every number quoted about
@@ -420,7 +378,7 @@ extended to $\Q$ and to the fraction field of a discrete valuation ring; ``lengt
 $\Zl$-length (or $\mathcal{O}$-length when a ring $\mathcal{O}$ is named).
 
 \emph{Frobenius.} Arithmetic and geometric Frobenius are inverse to each other, and the literature
-uses both. In the book, as in the revised paper, $\Frob_p$ is an arithmetic Frobenius and the
+uses both. In the book, as in the paper, $\Frob_p$ is an arithmetic Frobenius and the
 local $L$-factors use the geometric one:
 $L_p(M,s)=\det(1-\Frob_p^{-1}\,p^{-s}\mid M^{I_p})^{-1}$. A good prime has Frobenius eigenvalues
 $\alpha/\beta$, $1$, $\beta/\alpha$ on $\ad V$, and $L_p(\Sym f,s)=L_p(A_f,s-1)$ relates the
@@ -491,15 +449,15 @@ formula for the Petersson norm, and what PARI's \texttt{lfunsympow} returns, ope
 determinants, open \Cref{ch:modules}; for Chebotarev's theorem and $\Q(\sqrt{\ell^*})$ as the
 quadratic subfield of $\Q(\zeta_\ell)$, open \Cref{ch:galois}; for $\Z_3[\zeta_3]$ as a discrete
 valuation ring and the Frobenius of $\Q(\sqrt{-3})$, open \Cref{ch:ant}.
-\item For the paper section by section, the verdict on each of its results, the table
-``hypothesis, where it is used, what fails without it'', and the list of corrections, open
+\item For a guided reading of the paper section by section, with each result traced to its
+ingredients, and the table ``hypothesis, where it is used, what fails without it'', open
 \Cref{ch:paper}; for the data protocol, the calibration argument and the PARI function
 \texttt{rule(E, l, iii)}, open \Cref{ch:computation}.
 \end{itemize}
 
 \section*{Acknowledgement}
 
-The book was planned and directed by the author of the note. It was written by an AI system,
+The book was planned and directed by the author of the note, D. Soni. It was written by an AI system,
 Claude, made by Anthropic: the drafting of every chapter, the adversarial reviews, the fixes and
 the computations were all done by it. The mathematics has been checked by the reviews and the
 computations described above, but it has not yet been read line by line by a human expert.

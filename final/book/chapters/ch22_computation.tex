@@ -1640,10 +1640,11 @@ In (b) and (c) the difference is what the numerator form of the $e_\ell$ column 
 $v_\ell(q^2-1)$ and $v_\ell(q-1)+v_\ell\bigl((q+1)^2-a'^2\bigr)$, gives at $q=\ell$ ($v_\ell(\ell^2-1)=0$ and $v_\ell(\ell-1)=0$); the rational forms
 $1-q^{-2}$ and $(q-1)((q+1)^2-a'^2)/q^3$ would give negative valuations at $q=\ell$. In (a) it is not, since at $q\ne\ell$ a potentially good pair has difference $0$
 (\Cref{ex:computation:repro-twist}). All counts are over the curves whose twist has conductor below $10{,}000$, so that its degree is in the tables. At $\ell\ge5$, (a) suggests a
-weight $1$ for the types $\kod{II}^*$, $\kod{III}^*$, $\kod{IV}^*$ at $q=\ell$, which the paper does not use (``at $q=\ell\ge5$ no term is needed''); added to (eq:rule), it gives no
+weight $1$ for the types $\kod{II}^*$, $\kod{III}^*$, $\kod{IV}^*$ at $q=\ell$; added to (eq:rule), it gives no
 violation below $10{,}000$ at $\ell=5,7,11,13$ and is attained by most of these curves. These are observations made on the whole of the book's range at
-once, with no hold-out, and no explanation is offered here; they bear on the paper's first open question, which asks for the weights at
-$q=\ell$.
+once, with no hold-out, and no explanation is offered here. The paper records the same observations, with the same counts, in Remark rem:oq1 (``That
+no term is needed at $q=\ell\ge5$ is true but not sharp, by the following observation''), and they bear on its first open question, which asks for the
+weights at $q=\ell$.
 \end{example}
 
 \begin{example}[further checks]\label{ex:computation:repro-further}
@@ -1651,9 +1652,8 @@ Below conductor $10{,}000$, on the optimal curves:
 \begin{enumerate}[label=(\alph*)]
 \item Lemma lem:euler and Lemma lem:twist: \Cref{ex:computation:euler-by-hand,ex:computation:twists}.
 \item Proposition prop:shapes at $q=2,3$: the cubic factors, \Cref{ex:computation:wild-two}.
-\item Proposition prop:forms: all $3{,}226$ optimal curves with type $\kod{IV}$ or $\kod{IV}^*$ at $2$ ($3{,}194$ of them without CM) have $P_2(X)=1+2X$. The paper: ``The
-previous version excepted the types $\mathrm{IV}$, $\mathrm{IV}^*$ at $2$ and checked $e_3(E,2)\ge1$ on the $92{,}812$ such curves of the working set, where PARI's
-factor at $2$ is $1+2X$ for every one of them; Lemma lem:IV shows that it must be.'' The data check a theorem.
+\item Proposition prop:forms: all $3{,}226$ optimal curves with type $\kod{IV}$ or $\kod{IV}^*$ at $2$ ($3{,}194$ of them without CM) have $P_2(X)=1+2X$. The paper, after Proposition prop:forms: ``On the $92{,}812$ working-set curves with type $\mathrm{IV}$ or $\mathrm{IV}^*$ at $2$, PARI's
+factor at $2$ is $1+2X$ for every one of them, as Lemma lem:IV requires.'' The data check a theorem.
 \item Section sec:two: for the $25{,}086$ optimal curves without CM and without a label \texttt{2B} or \texttt{2Cs} (no rational $2$-isogeny), the inequality
 $v_2(\degphi)\ge\sum_{q\,\|\,N}v_2(n_q)+\#\{q:\ \text{type }\kod{III},\kod{III}^*,\kod{I}_0^*\text{ or }\kod{I}_n^*\}$ holds with no exception, while counting $\kod{I}_0^*$ with weight $2$ fails
 $6$ times (\curve{99d1}, \curve{931b1}, \curve{2299d1}, \curve{2475h1}, \curve{5819a1}, \curve{5931b1}), as the paper's $123$, $26$ and $20$ exceptions on its ranges lead one to expect.
@@ -1669,8 +1669,8 @@ the share of $\Ns$ curves that fail without the correction, the odd-part statist
 already, in the direction of the paper's values. Every qualitative claim of Section sec:data reproduces: no violation of (eq:rule), (eq:main),
 (eq:twist) or of Conjecture conj:eis; the uncorrected failures are exactly $\Ns$ curves and fail by exactly one; the minima equal $e_\ell$ cell by cell; the
 weights $w_3$ are the minima at $q=3$; the Tamagawa refinement has no exception and its counts below $10{,}000$ are the paper's; the strict twist
-inequalities occur in cases (a) and (b). The sentences that do not reproduce as written are the data corrections recorded in
-\Cref{sec:computation:populations} and \Cref{ex:computation:wild-two,ex:computation:repro-ns}.
+inequalities occur in cases (a) and (b). The paper's own counts below conductor $10{,}000$ (\Cref{sec:computation:populations},
+\Cref{ex:computation:wild-two,ex:computation:repro-ns,ex:computation:odd-part,ex:computation:repro-tam,ex:computation:twist-at-ell}) are reproduced exactly.
 \end{remark}
 
 \section{Reproducibility}\label{sec:computation:reproducibility}
@@ -1890,8 +1890,8 @@ The AI statement: ``The scripts, the result files and the pinned data commit are
 can be rerun''. Below conductor $10{,}000$ the pinned commit is the one used here, and every count of the paper that falls in this range has been
 rerun from it: the Tamagawa counts of Section sec:tam (\Cref{ex:computation:repro-tam}), the two readings of the $\Ns$ violations
 (\Cref{ex:computation:repro-ns}), the odd-part statistic (\Cref{ex:computation:odd-part}), the twist comparisons after Theorem thm:twist in their one-prime form
-(\Cref{ex:computation:repro-twist}) and the data quoted in Remark rem:wild and Section sec:boundary, two of them with a different population than stated
-(\Cref{sec:computation:populations,ex:computation:wild-two}).
+(\Cref{ex:computation:repro-twist}), the twist relation at $q=\ell$ of Remark rem:oq1 (\Cref{ex:computation:twist-at-ell}) and the data quoted in Remark
+rem:wild and Section sec:boundary (\Cref{sec:computation:populations,ex:computation:wild-two}).
 \end{paperlink}
 \section{Exercises}\label{sec:computation:exercises}
 
@@ -1987,7 +1987,7 @@ $q=3$ and compare with \Cref{ex:computation:twists}.
 \begin{exercise}\label{exer:computation:fresh-holdout}
 The paper's correction term $h_3$ was never blind-tested. Using the paper's numbers ($68$ violations without the correction on the hold-out, $23\%$ of
 the $\Ns$ curves there), estimate how many $\Ns$ curves a fresh range of the same size would contain, and how many failures of the uncorrected bound it
-would produce. Is that enough for a convincing test of ``the correction is exactly one on exactly these curves''? What else would the test need to
+would produce. Is that enough for a convincing test of ``the correction of Conjecture conj:euler is exactly one on exactly these curves''? What else would the test need to
 contain? (Answer: about $300$ $\Ns$ curves and $60$ to $70$ failures; the test would also need curves with image $\Ns$ and $3\nmid N$, where Theorem thm:main
 does not apply only because of the image.)
 \end{exercise}
@@ -2006,7 +2006,7 @@ have $B^{\mathrm{main}}_5=1$ and $\degphi=20$, so $D=0$. The conjecture is an up
 \begin{exercise}[the protocol at $\ell=5$]\label{exer:computation:toy5}
 Repeat \Cref{ex:computation:toy-protocol} at $\ell=5$: on $N<5000$, read off the minimum of $v_5(\degphi)$ over the curves of the base population with $5\mid N$,
 potentially good reduction at $5$ and no other contribution, by the type at $5$; freeze the result; test it once on $5000\le N<10000$; and report honestly
-whether it survived. Compare with the paper's ``at $q=\ell\ge5$ no term is needed''. (Answer: minimum $1$ for $\kod{II}^*$, $\kod{III}^*$, $\kod{IV}^*$ ($99$, $156$, $212$ curves) and
+whether it survived. Compare with the paper's ``That no term is needed at $q=\ell\ge5$ is true but not sharp'' (Section sec:wild). (Answer: minimum $1$ for $\kod{II}^*$, $\kod{III}^*$, $\kod{IV}^*$ ($99$, $156$, $212$ curves) and
 $0$ for $\kod{II}$, $\kod{III}$, $\kod{IV}$, $\kod{I}_0^*$; the same on the hold-out ($144$, $172$, $248$ curves for the starred types); see \Cref{ex:computation:twist-at-ell}.)
 \end{exercise}
 
@@ -2044,11 +2044,7 @@ Linux, from the files of commit \texttt{25cec5e} of \texttt{ecdata} listed in \C
 \texttt{read} and run as printed, and every printed output was copied from the run. The paper's numbers for its large ranges are quoted from its text
 and were not reproduced. Not checked: PARI 2.15; the paper's repository; the out-of-table curves; anything above conductor $10{,}000$.
 
-\emph{Corrections to the paper recorded here.} Remark rem:wild: the counts $1{,}143$ and $2{,}283$ of cubic factors are over all curves, not optimal curves
-without CM ($534$ and $1{,}308$), and its $58\%$ is a share among optimal curves ($61\%$ over all curves) (\Cref{ex:computation:wild-two}). Section sec:boundary:
-$44$, not $28$, of the $90$ optimal $\Ns$ curves have $3\mid N$, and $13$ optimal CM curves with image $N_s(\F_3)$ are left out. Section sec:forms: the
-$1{,}170$ failures of the hypothesis at $\ell=3$ are those without CM; $20$ CM curves below $10{,}000$ also fail ($10$ optimal)
-(\Cref{sec:computation:populations}). Section sec:anomaly: its parenthesis should read ``For the curves with $3\mid N$ the count depends on whether the terms at $q=3$ are
-included (the term $t_3(E,3)$; the weights $w_3$ change nothing): below conductor $10{,}000$, $36$ with them, as (eq:thm) is written, and $24$ without''
-(\Cref{ex:computation:repro-ns}). The text of Section sec:data leaves two questions of protocol open (\Cref{rem:computation:test-status}).
+\emph{Questions of protocol.} The text of Section sec:data leaves two questions of protocol open: whether the modular degrees of the out-of-table
+curves were examined while the terms at $2$ and $3$ were being fixed, and whether (eq:twist) was written down before the hold-out counts of (eq:main) were
+seen (\Cref{rem:computation:test-status}).
 \end{sloppypar}

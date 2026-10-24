@@ -619,9 +619,9 @@ is proved in the cited sources for the Shimura covering; for general congruence 
 \end{proof}
 
 \begin{paperlink}
-The paper (Section 4.1) says that the integral structure ``contains the pull-back of $H^1(X_0(M^\Sigma),\Zl)$ with finite index, and we use it only after localisation at a maximal ideal
-$\mf m$ of the Hecke algebra whose residual representation is irreducible, where we take it, as in the version of 10 October 2026, to agree with $H^1(X_0(M^\Sigma),\Zl)_{\mf m}$''. That
-is \Cref{prop:congruence:integral-structure}; the word ``take'' marks it, correctly, as the one input of Section 4.1 that the paper sketches rather than proves.
+\Cref{prop:congruence:integral-structure} is the paper's Proposition prop:integral (Section 4.1), which the paper also proves only in a sketch along the same lines; the paper says of the
+Eisenstein property of the cokernel: ``for general congruence coverings we have only the argument just sketched, and we use the proposition as an input''. It is the one input of Section 4.1
+that is sketched rather than proved, and the paper names it as an input of Proposition prop:pullback and of Step 2 of the proof of Theorem thm:quant.
 \end{paperlink}
 
 \begin{definition}[the pairing $\hat\delta_!$]\label{def:congruence:dfg-pairing}
@@ -683,9 +683,9 @@ and the comparison of \'etale and Betti cohomology.
 \end{proof}
 
 \begin{paperlink}
-The paper's Section 4.2 wrote, in the version of 10 October 2026, that $M_{f,\lambda}$ and $T_\ell E$ are homothetic; the revised paper says that $\varphi_E^*$ identifies $M_{f,\lambda}$ with
+The paper's Section 4.2 says that, by Proposition prop:pullback, $\varphi_E^*$ identifies $M_{f,\lambda}$ with
 $H^1(E,\Zl)\simeq T_\ell E(-1)$, the dual of $T_\ell E$, ``so its adjoint is $\ad T$''. \Cref{prop:congruence:eta-sigma}(iii) is that sentence; the adjoint is insensitive to dualising and twisting
-(\Cref{ch:blochkato}), so nothing in the assembly depends on the difference.
+(\Cref{ch:blochkato}), so nothing in the assembly depends on the difference between $M_{f,\lambda}$ and $T_\ell E$.
 \end{paperlink}
 
 \begin{theorem}[Lemma lem:hecke, with Proposition prop:pullback]\label{thm:congruence:lem-hecke}
@@ -709,9 +709,9 @@ $\eta^\emptyset_{f,\lambda}=\degphi\,\Zl$.
 \end{proof}
 
 \begin{paperlink}
-The revised paper's proof of Lemma lem:hecke is these two sentences. The version of 10 October 2026 proved only $v_\ell(r_E)\ge v_\lambda(\eta^\emptyset_{f,\lambda})$, by \Cref{lem:congruence:ddt417} applied
-to $L=H^1(X_0(N),\Zl)_{\mf m}$ and $\pi=\phi_f$, with $d=2$ and $\Delta=(\eta^\emptyset_{f,\lambda})^2$, and equality when $L$ is free over $\T_{\mf m}$; the paragraph after the lemma in the revised paper
-records this argument and the two points that make it correct: the congruence ideal is computed in $\T_{\mf m}$, the other local factors lying in the \emph{kernel} $\wp$ (not in its
+The paper's proof of Lemma lem:hecke is these two sentences. The paragraph after the lemma records the other route: \Cref{lem:congruence:ddt417} applied
+to $L=H^1(X_0(N),\Zl)_{\mf m}$ and $\pi=\phi_f$, with $d=2$ and $\Delta=(\eta^\emptyset_{f,\lambda})^2$, gives without the projection formula only $v_\ell(r_E)\ge v_\lambda(\eta^\emptyset_{f,\lambda})$, with equality when $L$ is free over $\T_{\mf m}$;
+it is the argument of Step 2 of the proof of Theorem thm:quant, and the paragraph names the two points that make it correct: the congruence ideal is computed in $\T_{\mf m}$, the other local factors lying in the \emph{kernel} $\wp$ (not in its
 annihilator, \Cref{prop:congruence:congruence-module}(iv)); and $\hat\delta_!$ is perfect on the $\mf m$-component (\Cref{prop:congruence:hecke-local}(iv)).
 \end{paperlink}
 
@@ -802,7 +802,7 @@ so the ideal of values on $M_{f^\Sigma,\lambda}=\gamma(M_{f,\lambda})$ is $\eta^
 
 \begin{remark}[status of the statement]\label{rem:congruence:dfg14-status}
 The paper cites only part (c), as ``\cite[Proposition 1.4(c)]{DFG04}'', under the standing assumptions of its Section 4.1: $f$ with rational coefficients, $\lambda=\ell\nmid2M$, $\Sigma$ a finite set of
-primes. It does not say $\ell\notin\Sigma$, and the hypothesis is needed: for $\ell\in\Sigma$ the statement of (c) is false. Take $f=f_{\text{11a}}$, $\ell=3$ (so $\ell\nmid2M=22$) and
+primes; and it states the theorem with $\ell\notin\Sigma$. The hypothesis is needed: for $\ell\in\Sigma$ the statement of (c) is false, by the example that the paragraph after the paper's theorem gives, which we write out. Take $f=f_{\text{11a}}$, $\ell=3$ (so $\ell\nmid2M=22$) and
 $\Sigma=\set3$. Here $\delta_3=2$ and $a_3=-1$, so by \Cref{prop:congruence:three-cases}(ii)
 \[
 L^{\nv}_3(A_f,1)^{-1}=\frac23\cdot\frac{16-1}{9}=\frac{2\cdot15}{27}=\frac{10}9,\qquad v_3\Bigl(\frac{10}9\Bigr)=-2
@@ -1158,8 +1158,7 @@ The paper's proof of Theorem thm:main (Section 4.3), sentence by sentence. ``By 
 ``By Theorem thm:dfg37, $v_\lambda(\eta^\Sigma_{f,\lambda})=\len H^1_\Sigma(\Q,W)$'': Step 3. ``By Theorem thm:dfg27 the hypotheses of Lemma lem:dfg21 hold, and $H^0(\Q,W^D)=0$ by Lemma lem:h0'', with
 the display and ``by Lemma lem:fpr each local term is \dots'': Step 4. The display of $v_\ell(\degphi)$ and ``the last sum is $\sum_{p\mid N}e_\ell(E,p)$ by Definition def:terms'': Step 5. ``For
 (eq:thm), the Selmer length is nonnegative, $v_\ell(\Tam_p(\ad T))\ge t_\ell(E,p)$ at every potentially multiplicative prime $p$, multiplicative or additive, $p=2$ included, by Lemma
-lem:tamfactor'': Step 6. The version of 10 October 2026 stated (eq:identity) as an inequality with equality under freeness, and argued at additive potentially multiplicative primes
-through the global twist $E_{\{p\}}$ of Lemma lem:twist, which exists only for odd $p$; the revised paper, like Step 6, argues locally.
+lem:tamfactor'': Step 6. Like Step 6, the paper argues locally at the additive potentially multiplicative primes, so that $p=2$ needs no separate treatment.
 \end{paperlink}
 
 \begin{remark}[the hypotheses, and what fails without each]\label{rem:congruence:hypothesis-table}
@@ -1308,19 +1307,18 @@ there are $14{,}880$ pairs ($42$ with image $\Ns$ at $\ell=3$), and $v_\ell(\deg
 \end{example}
 
 \begin{paperlink}
-The paragraph after Theorem thm:twist in the revised paper reports, on the working set, the pairs (curve, prime of type $\kod{I}_n^*$) and (curve, prime of potentially good additive type) with
-$v_\ell(\degphi)\ge v_\ell(\deg\varphi_{E_q})$ and ``equality in every pair of case (c)'', and then: ``In cases (a) and (b) Theorem thm:quant predicts a difference equal to the Euler term, which is
+The paragraph after Theorem thm:twist in the paper reports, on the working set, the pairs (curve, prime of type $\kod{I}_n^*$) and (curve, prime of potentially good additive type) with
+$v_\ell(\degphi)\ge v_\ell(\deg\varphi_{E^{(q)}_0})$, $E^{(q)}_0$ the optimal curve of the isogeny class of $E^{(q)}$, and ``equality in every pair of case (c)'', and then: ``In cases (a) and (b) Theorem thm:quant predicts a difference equal to the Euler term, which is
 positive in case (a) at $\ell=3$ for every $q\ne3$, as $3\mid q^2-1$''; and ``Below conductor $10{,}000$ the difference equals the Euler term in all $25{,}477$ pairs''. The count $25{,}477$ agrees with
-\Cref{ex:congruence:twist-cases}; the working-set counts are the paper's and were not recomputed here. The version of 10 October 2026 said ``strict inequality only in case (b)'', which
-case (a) contradicts (\curve{539c1}, \curve{980i1}, \curve{121d1}).
+\Cref{ex:congruence:twist-cases}; the working-set counts are the paper's and were not recomputed here. The difference is positive in case (a) as well as in case (b): \curve{539c1}, \curve{980i1}, \curve{121d1}.
 \end{paperlink}
 
 \section{Theorem thm:quant}\label{sec:congruence:quant}
 
 This section proves the paper's Theorem thm:quant: at the odd primes of type $\kod{I}_0^*$ and $\kod{I}_n^*$ the omitted Euler factor divides the modular degree, under the sole
 hypothesis that $E[\ell]$ is irreducible, and with equality (after removing the congruence number of the twist) when $\ell\notin S_f$. The proof raises the level from $N_S$ to $N$ by
-depleting the newform of the twist, and moves congruences between levels with $\iota$. We prove, in addition, that Step 1 of the paper's proof is an equality at every prime $\ell\notin S$
-(\Cref{lem:congruence:quant-step1}), which the paper's Remark rem:afterquant (2) leaves open.
+depleting the newform of the twist, and moves congruences between levels with $\iota$. Step 1 of the proof is an equality at every prime $\ell\notin S$
+(\Cref{lem:congruence:quant-step1}, the paper's Lemma lem:step1), with no other hypothesis on $\ell$.
 
 \begin{theorem}[the paper's Theorem thm:quant]\label{thm:congruence:quant}
 Let $E$ be $X_0(N)$-optimal and let $\ell$ be an odd prime with $\ell\nmid N$ and $E[\ell]$ irreducible. Let $S$ be the set of odd primes $q$ at which $E$ has type $\kod{I}_0^*$ or $\kod{I}_n^*$ ($n\ge1$), $\chi_S=\prod_{q\in S}\chi_{q^*}$,
@@ -1366,7 +1364,7 @@ No hypothesis on $\ell$ other than $\ell\notin S$ is needed: neither $\ell$ odd,
 $g^S=\iota(f)\equiv\iota(h)\pmod{r_E}$, because $\iota\circ\iota(g)=g^S$ and $\iota(f)=\iota(\iota(g))$; and $\iota(f^\perp)$ lies in the $\T$-stable complement of $\C g^S$ (the systems in $f^\perp$ differ from that of $f$ at infinitely many
 primes, so their twists differ from that of $g$, by strong multiplicity one). \Cref{prop:congruence:crit-general} gives $r_E\mid r_\pi$. So $v_\ell(r_E)\le v_\ell(r_\pi)$ for every $\ell$.
 
-\emph{$v_\ell(r_E)\ge v_\ell(r_\pi)$ for $\ell\notin S$ (the paper's Step 1).} Let $t=v_\ell(r_\pi)$ and $\mf m$ the maximal ideal of $\T_\ell$ attached to $\pi$. By \Cref{prop:congruence:crit-general} over $\Zl$ there is
+\emph{$v_\ell(r_E)\ge v_\ell(r_\pi)$ for $\ell\notin S$ (the inequality used in Step 1).} Let $t=v_\ell(r_\pi)$ and $\mf m$ the maximal ideal of $\T_\ell$ attached to $\pi$. By \Cref{prop:congruence:crit-general} over $\Zl$ there is
 $h\in g^c\cap S_2(\Gamma_0(N);\Zl)$, $g^c$ the $\T$-stable complement of $\C g^S$, with $g^S\equiv h\pmod{\ell^t}$. Since $\pi$ factors through $\T_{\mf m}$, $e_{\mf m}g^S=g^S$; the idempotent $e_{\mf m}\in\T_\ell$ preserves
 $S_2(\Gamma_0(N);\Zl)$ and $g^c$, so $h'=e_{\mf m}h\in g^c\cap S_2(\Gamma_0(N);\Zl)$ and $g^S-h'=e_{\mf m}(g^S-h)\in\ell^tS_2(\Gamma_0(N);\Zl)$. By \Cref{prop:congruence:hecke-local}(iii), $h'$ lies in the sum of the generalised
 eigenspaces $V(\phi)$ with $\phi\ne\pi$ and $\phi\equiv\pi$ modulo the maximal ideal of $\overline\Z_\ell$. For such $\phi$ and $q\in S$, $\phi(U_q)\equiv\pi(U_q)=0$; every eigenvalue of $U_q$ on $S_2(\Gamma_0(N))$ is $0$ or a unit at every
@@ -1383,15 +1381,12 @@ f=\iota(g^S)\equiv\iota(h')\pmod{\ell^t}.
 By Lemma lem:crit over $\Zl$ (\Cref{thm:congruence:crit}), $t\le v_\ell(r_E)$.
 \end{proof}
 
-\begin{remark}[Commentary: Remark rem:afterquant (2) and Open question 6]\label{rem:congruence:step1-commentary}
-The paper proves, in its Step 1, the inequality $v_\ell(r_E)\ge v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ under the hypotheses of Theorem thm:quant, and says in Remark rem:afterquant (2): ``When $\ell\notin S_f$
-every inequality of the proof is an equality, in particular those of Steps 1 and 2; no multiplicity one at level $N$ or $N_S$ is used. Whether Step 1 is an equality without that hypothesis is
-open; the Hecke congruence modules at level $539$ (of orders $288$ and $504$) are consistent with it.'' Its Open question 6 lists ``whether Step 1 of the proof of Theorem thm:quant is an
-equality when $\ell\in S_f$''. \Cref{lem:congruence:quant-step1} answers both, and goes beyond the hypotheses of Theorem thm:quant: Step 1 is an equality at \emph{every} prime $\ell\notin S$,
-with no hypothesis on $\ell$ at all: $\ell=2$ is allowed, $\ell$ may divide $N$, $E[\ell]$ may be reducible, and $\ell$ may lie in $S_f$. The reason is that the transport along $\iota$ works in both
-directions (\Cref{ch:hecke} supplies the direction from $f$ to $g^S$), and the proof of the paper's direction above uses only $\ell\ne q$ for $q\in S$. This supersedes, at $\ell=2$, the
-commentary of \Cref{ch:hecke}, which proves the equality under the hypotheses of Theorem thm:quant and records the equality at $\ell=2$ at level $539$ as observed, not proved: it is now
-proved. At level $539$, \Cref{ex:congruence:level-539} gives $r(\curve{539c1})=288$ and $r(\curve{539d1})=504$, equal to the two depleted modules as integers; the $2$-parts and $3$-parts are
+\begin{remark}[Commentary: Lemma lem:step1 and Remark rem:afterquant (2)]\label{rem:congruence:step1-commentary}
+\Cref{lem:congruence:quant-step1} is the paper's Lemma lem:step1, with the same proof, and the paper's Remark rem:afterquant (2) records: ``Step 1 is an equality at every prime $\ell\notin S$, with no
+hypothesis on $\ell$ at all (Lemma lem:step1): the twist map sends $f$ to $g^S$ and $f^\perp$ into the $\T$-stable complement of $g^S$.'' So the lemma goes beyond the hypotheses of Theorem thm:quant:
+$\ell=2$ is allowed, $\ell$ may divide $N$, $E[\ell]$ may be reducible, and $\ell$ may lie in $S_f$. The reason is that the transport along $\iota$ works in both
+directions (\Cref{ch:hecke} supplies the direction from $f$ to $g^S$), and the proof of the direction from $g^S$ to $f$ above uses only $\ell\ne q$ for $q\in S$. This settles, at $\ell=2$, the
+point left by \Cref{ch:hecke}, which proves the equality under the hypotheses of Theorem thm:quant and records the equality at $\ell=2$ at level $539$ as observed: the lemma proves it. At level $539$, \Cref{ex:congruence:level-539} gives $r(\curve{539c1})=288$ and $r(\curve{539d1})=504$, equal to the two depleted modules as integers; the $2$-parts and $3$-parts are
 covered by the lemma, while the $7$-parts ($7\in S$) are not, and there the equality ($7^0$ and $7^1$) is observed, not proved.
 \end{remark}
 
@@ -1457,8 +1452,8 @@ equality.
 
 \begin{remark}[the outer inequality, and the word ``elementary'']\label{rem:congruence:outer-inequality}
 The outer inequality, $v_\ell(\degphi)$ at least $\sum_{q\in S}e_\ell(E,q)$, needs only Step 1 (the paper's direction), Steps 2 and 3, and the integrality of $\eta^\emptyset_{g,\ell}$; neither Agashe-Ribet-Stein at level $N_S$ nor
-any multiplicity-one theorem. It is still not elementary: Step 3 is the proposition of Diamond, Flach and Guo and Step 2 is Lemma lem:ddt417. The revised paper's abstract says ``by a twisting
-argument and the level-raising formula of Diamond, Flach and Guo'', which is accurate; the version of 10 October 2026 said ``by an elementary twisting argument''.
+any multiplicity-one theorem. It is still not elementary: Step 3 is the proposition of Diamond, Flach and Guo and Step 2 is Lemma lem:ddt417. The paper's abstract says ``by a twisting
+argument and the level-raising formula of Diamond, Flach and Guo'', and the paper calls elementary only the transport of congruences along the twist, that is Step 1, which is.
 \end{remark}
 
 \begin{remark}[Remark rem:afterquant (1) and (3)]\label{rem:congruence:after-quant}
@@ -1483,7 +1478,7 @@ $H^0(\Q,V^D)=0$ is automatic. Then Lemma lem:dfg21 gives, with $h_3(E)=1$ (Lemma
 \len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\bigl(v_3(L_p(A_f,1)^{-1})+v_3(\Tam_p(\ad T))\bigr)-h_3(E)
 \]
 (\Cref{ch:blochkato} proves this, conditionally). If in addition $v_3(\eta^\Sigma_{f,3})=\len H^1_\Sigma(\Q,W)$ held, as in \Cref{thm:congruence:dfg37}, Steps 1, 2 and 5 would give (eq:identity) with $h_3(E)$
-subtracted on the right, which is the shape of Conjecture conj:euler. The paper now states the assumption $H^1_f(\Q,V^D)=0$ explicitly (``we assume it here''); Diamond, Flach and Guo's Theorem 2.7 does
+subtracted on the right, which is the shape of Conjecture conj:euler. The paper states the assumption $H^1_f(\Q,V^D)=0$ explicitly (``we assume it here''); Diamond, Flach and Guo's Theorem 2.7 does
 not supply it for these curves, because it is proved only for $\lambda\notin S_f$.
 \end{remark}
 
@@ -1491,7 +1486,7 @@ not supply it for these curves, because it is proved only for $\lambda\notin S_f
 For the curves with image $\Ns$ at $\ell=3$ two inputs are missing. (a) On the Hecke side, $v_3(\eta^\Sigma_{f,3})=\len H^1_\Sigma(\Q,W)$ would need the Taylor-Wiles method for a residual representation induced
 from $\Q(\sqrt{-3})=\Q(\mu_3)$, where the auxiliary primes cannot kill the dual Selmer group (\Cref{rem:congruence:where-hypothesis}(c)). (b) On the Selmer side, $H^1_f(\Q,\ad V_3E)=0$. The paper's data
 (failures of (eq:thm) by exactly one, never more, for these curves) and the equality in all $8$ pairs with image $\Ns$ in \Cref{ex:congruence:twist-cases}, which lie outside
-\Cref{thm:congruence:quant}'s equality clause, are consistent with the corrected identity. We do not survey later work on residually dihedral representations, which we have not checked
+\Cref{thm:congruence:quant}'s equality clause (the paper's Open question 2 records the same $8$ pairs), are consistent with the corrected identity. We do not survey later work on residually dihedral representations, which we have not checked
 against these questions.
 \end{remark}
 
@@ -1521,7 +1516,7 @@ Theorem 3.7 & as Theorem 0.2, with ``minimally ramified outside $\Sigma$'', $\el
 Proposition 1.4(c) & $\eta^\Sigma=\eta^\emptyset\prod L^{\nv}_p(A_f,1)^{-1}$ if $\bar{\mathcal M}_{f,\lambda}$ is irreducible; proved by homothety and $\gamma_{\mathrm{dR}}(f)=f^\Sigma$ & thm:dfg14 & p.~687\\
 Theorem 2.7 & $H^0=H^1_f=0$ for $A_f$ and $A_f(1)$ & thm:dfg27 & p.~699\\
 Lemma 2.1 & the exact sequence of Lemma lem:dfg21, for $\Sigma$ nonempty & lem:dfg21 & p.~696\\
-Lemma 2.12 & $(f,f)_{\Gamma_1(N)}$ as a naive adjoint $L$-value; $N/(8\pi^3)$ on $\Gamma_0(N)$ for $k=2$ & Section 1 & p.~706\\
+Lemma 2.12 & $(f,f)_{\Gamma_1(N)}$ as a naive adjoint $L$-value; $N/(8\pi^3)$ on $\Gamma_0(N)$ for $k=2$ & Section 1, rem:degree & p.~706\\
 (57), p.~708 & $\Tam_p(M)=\Tam_p(M^D)$; definition of $\Tam_p$ & lem:fpr, Section 1.2 & p.~708\\
 Sections 1.5.3, 1.6.2, 1.7.2, 1.7.3; (13), (14) & $\hat\delta_!$ through $[UwU]_\omega$, $M_f=M(N,\psi)_![I_f]$, $\delta_p$, $L^{\nv}_p$, $\eta^\Sigma_f$ & Section 4.1 & pp.~682 to 687\\
 Sections 1.6.1, 1.8.2 & Hecke action compatible with $\hat\delta_!$ (Proposition 1.3); self-adjoint for the pairing (25) & Section 4.1 & pp.~682, 689\\
@@ -1629,7 +1624,7 @@ For \curve{539d1} and $\ell=3$ compute each term of the chain of \Cref{cor:congr
 \end{exercise}
 
 \begin{exercise}\label{ex:congruence:ex-step1-prime}
-Explain where the proof of the paper's inequality (the second half of the proof of \Cref{lem:congruence:quant-step1}) breaks down for $\ell=q\in S$, when $E$ has type $\kod{I}_0^*$ at $q$ and $E_S$ is ordinary at $q$
+Explain where the proof of the inequality $v_\ell(r_E)\ge v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ (the second half of the proof of \Cref{lem:congruence:quant-step1}) breaks down for $\ell=q\in S$, when $E$ has type $\kod{I}_0^*$ at $q$ and $E_S$ is ordinary at $q$
 ($q\nmid a_q(g)$). (Answer: the roots $\alpha,\beta$ of $X^2-a_q(g)X+q$ satisfy $\alpha\beta=q$ with $\alpha$ a $q$-adic unit, so $\beta$ is not a unit; the stabilisation $g(z)-\alpha g(qz)$, with $U_q$-eigenvalue $\beta\equiv0$, lies in the same
 maximal ideal as $g^S$ at $\ell=q$. It belongs to the old space of $g$ itself, and $\iota$ sends it to a form with the system of $f$, which is not in $f^\perp$: the transport fails. Congruences between
 $g^S$ and this stabilisation contribute to $\eta^{\mathrm{Hecke}}(g^S)$ but not to $r_E$.)
