@@ -639,7 +639,37 @@ We used Cremona's tables \cite{Cremona97} in the form of the \texttt{ecdata} rep
 Table~\ref{tab:uniform} checks \eqref{eq:rule}, with PARI's Euler factors at every bad prime $q\ne\ell$, the terms $t_\ell$, $w_3$ as defined, and $h_3(E)=1$ for the curves with image $\Ns$ (and $h_\ell=0$ otherwise, Lemma~\ref{lem:h0}), on the four ranges at $\ell=3,5,7,11,13$: no violation at any $\ell$. It also reports the number of violations when the correction term is dropped (all are curves with image $\Ns$, Section~\ref{sec:anomaly}) and the behaviour of the rule with the terms of the types $\mathrm{III}$, $\mathrm{III}^*$ left out, which is the form that holds for every curve of the tables without any correction; the weights $w_3$ at $q=\ell=3$ only sharpen the bound, and at $\ell\ge5$ nothing is needed at $q=\ell$.
 
 \begin{table}[ht]\centering\footnotesize
-\emph{[Table: the data files are in the repository named in Appendix~\ref{app:repro}.]}
+{\footnotesize
+\begin{tabular}{llrrrrrr}
+\toprule
+set & $\ell$ & curves & \eqref{eq:rule} $>0$ & viol. & equality & viol.\ without $h$ & III-free: $>0$ / viol. / equality\\
+\midrule
+working set & 3 & 1,233,729 & 867,578 & 0 & 57.5\% & 364 & 861,074 / 0 / 56.8\% \\
+ & 5 & 1,303,224 & 332,771 & 0 & 75.6\% & 0 & 330,477 / 0 / 75.5\% \\
+ & 7 & 1,307,753 & 174,266 & 0 & 84.1\% & 0 & 173,488 / 0 / 84.1\% \\
+ & 11 & 1,309,103 & 59,849 & 0 & 91.6\% & 0 & 59,495 / 0 / 91.6\% \\
+ & 13 & 1,308,945 & 35,817 & 0 & 92.4\% & 0 & 35,635 / 0 / 92.4\% \\
+\midrule
+hold-out & 3 & 409,577 & 298,435 & 0 & 54.6\% & 68 & 295,973 / 0 / 53.9\% \\
+ & 5 & 428,251 & 115,702 & 0 & 74.2\% & 0 & 114,860 / 0 / 74.0\% \\
+ & 7 & 429,280 & 60,868 & 0 & 83.2\% & 0 & 60,580 / 0 / 83.2\% \\
+ & 11 & 429,502 & 21,271 & 0 & 90.6\% & 0 & 21,097 / 0 / 90.6\% \\
+ & 13 & 429,498 & 12,751 & 0 & 92.4\% & 0 & 12,681 / 0 / 92.3\% \\
+\midrule
+extension & 3 & 348,227 & 257,165 & 0 & 54.0\% & 43 & 255,507 / 0 / 53.2\% \\
+ & 5 & 358,244 & 100,034 & 0 & 73.3\% & 0 & 99,401 / 0 / 73.2\% \\
+ & 7 & 358,717 & 53,034 & 0 & 82.7\% & 0 & 52,766 / 0 / 82.7\% \\
+ & 11 & 358,830 & 19,235 & 0 & 90.6\% & 0 & 19,136 / 0 / 90.6\% \\
+ & 13 & 358,816 & 11,561 & 0 & 91.9\% & 0 & 11,484 / 0 / 91.9\% \\
+\midrule
+out of table & 3 & 893 & 828 & 0 & 52.5\% & 0 & 827 / 0 / 51.6\% \\
+ & 5 & 893 & 112 & 0 & 82.1\% & 0 & 111 / 0 / 82.0\% \\
+ & 7 & 893 & 52 & 0 & 90.4\% & 0 & 52 / 0 / 90.4\% \\
+ & 11 & 893 & 19 & 0 & 94.7\% & 0 & 19 / 0 / 94.7\% \\
+ & 13 & 893 & 12 & 0 & 100.0\% & 0 & 12 / 0 / 100.0\% \\
+\bottomrule
+\end{tabular}
+}
 \caption{Conjecture~\ref{conj:euler} with PARI's factors at all primes: curves with $E[\ell]$ irreducible, not CM, with a positive bound in \eqref{eq:rule}; violations; equality rate among them; violations when the correction term $h_\ell$ is dropped; and the rule without the type $\mathrm{III}$ terms (``III-free'': positive bounds, violations, equality rate).}\label{tab:uniform}
 \end{table}
 
@@ -653,7 +683,23 @@ Lemma~\ref{lem:tamfactor} and the identity \eqref{eq:identity} predict that the 
 For working-set curves with exactly one additive prime $q\ge5$, $q\ne\ell$, and no multiplicative prime with $\ell\mid n$, Table~\ref{tab:iso} gives the minimum of $v_\ell(\degphi)$ by Kodaira type and by $e_\ell(E,q)$. In every cell, for $\ell=3,5,7$, the minimum equals $e_\ell$ and every curve has $v_\ell(\degphi)\ge e_\ell$; for $\mathrm{I}_n^*$ the excess over $e_\ell$ has minimum exactly $v_\ell(n)$ in every cell. The cells with $e=0$ ($\mathrm{III}$: $5{,}534$ curves, $\mathrm{I}_0^*$: $5{,}394$) have minimum $0$, and for $\mathrm{I}_0^*$ the term runs up to $e=6$ (minimum $6$). Multiplicative primes show no Euler term: for curves with a single multiplicative prime $q$ with $\ell\mid n$ and no additive prime, $\min(v_\ell(\degphi)-v_\ell(n))=0$ for every value of $v_\ell(q^2-1)$ up to $6$ (at $\ell=3$ the value $0$ occurs only for $q=\ell=3$, since $3\mid q^2-1$ for every other $q$). For two primes of potentially good type the terms add: for the $2{,}502$ working-set curves with exactly two odd primes of type $\mathrm{II}$ or $\mathrm{II}^*$ and no other contribution, $9\mid\degphi$ always, and the mechanism is not a congruence between $f$ and its own quadratic twist by the character ramified at both primes, which never occurs ($0$ of $2{,}502$).
 
 \begin{table}[ht]\centering\footnotesize
-\emph{[Table: the data files are in the repository named in Appendix~\ref{app:repro}.]}
+{\footnotesize
+\begin{tabular}{l rr rr rr rr}
+\toprule
+ & \multicolumn{2}{c}{$e=1$} & \multicolumn{2}{c}{$e=2$} & \multicolumn{2}{c}{$e=3$} & \multicolumn{2}{c}{$e=4$}\\
+type ($\ell=3$) & min & $n$ & min & $n$ & min & $n$ & min & $n$\\
+\midrule
+$\mathrm{II}$ & 1 & 8,327 & 2 & 821 & 3 & 59 & 4 & 2\\
+$\mathrm{II}^*$ & 1 & 4,184 & 2 & 296 & 3 & 12 & 4 & 1\\
+$\mathrm{IV}$ & 1 & 4,290 & 2 & 296 & 3 & 12 & 4 & 1\\
+$\mathrm{IV}^*$ & 1 & 8,221 & 2 & 821 & 3 & 59 & 4 & 2\\
+$\mathrm{III}$ & 1 & 1,271 & 2 & 76 & 3 & 9 & -- & --\\
+$\mathrm{III}^*$ & 1 & 1,271 & 2 & 76 & 3 & 9 & -- & --\\
+$\mathrm{I}_0^*$ & 1 & 1,370 & 2 & 4,432 & 3 & 2,737 & 4 & 247\\
+$\mathrm{I}_n^*$ & 1 & 30,497 & 2 & 2,589 & 3 & 145 & 4 & 13\\
+\bottomrule
+\end{tabular}
+}
 \caption{Working set, $\ell=3$: minimum of $v_3(\degphi)$ (number of curves) over curves with $E[3]$ irreducible whose only additive prime is a single $q\ge5$ of the given type with $e_3(E,q)=e$, and no multiplicative $3$-contribution. The same holds at $\ell=5$ and $7$.}\label{tab:iso}
 \end{table}
 
@@ -662,7 +708,35 @@ Table~\ref{tab:counts} gives, for each range and each small prime $\ell$, the nu
 
 \begin{table}[ht]
 \centering\footnotesize
-\emph{[Table: the data files are in the repository named in Appendix~\ref{app:repro}.]}
+{\footnotesize
+\begin{tabular}{llrrrrrr}
+\hline
+set & $\ell$ & curves & \eqref{eq:main} $>0$ & \eqref{eq:twist} $>0$ & viol.\ \eqref{eq:main} & viol.\ \eqref{eq:twist} & Eis.\ $>0$ / viol. \\
+\hline
+working set, $N \le 300000$ & 3 & 1,311,066 & 598,833 & 705,563 & 0 & 0 & 67,845 / 0 \\
+ & 5 & 1,311,066 & 235,510 & 262,531 & 0 & 0 & 4,454 / 0 \\
+ & 7 & 1,311,066 & 121,947 & 136,707 & 0 & 0 & 759 / 0 \\
+ & 11 & 1,311,066 & 42,334 & 47,040 & 0 & 0 & 0 / 0 \\
+ & 13 & 1,311,066 & 27,215 & 29,943 & 0 & 0 & 26 / 0 \\
+\hline
+hold-out, $300000 < N \le 400000$ & 3 & 429,936 & 206,749 & 242,691 & 0 & 0 & 18,225 / 0 \\
+ & 5 & 429,936 & 79,550 & 89,164 & 0 & 0 & 989 / 0 \\
+ & 7 & 429,936 & 41,387 & 46,767 & 0 & 0 & 137 / 0 \\
+ & 11 & 429,936 & 14,244 & 15,970 & 0 & 0 & 0 / 0 \\
+ & 13 & 429,936 & 9,212 & 10,280 & 0 & 0 & 2 / 0 \\
+\hline
+extension, $400000 < N \le 500000$ & 3 & 359,009 & 181,075 & 214,033 & 0 & 0 & 9,894 / 0 \\
+ & 5 & 359,009 & 70,514 & 78,650 & 0 & 0 & 474 / 0 \\
+ & 7 & 359,009 & 36,734 & 41,317 & 0 & 0 & 70 / 0 \\
+ & 11 & 359,009 & 13,347 & 14,975 & 0 & 0 & 0 / 0 \\
+ & 13 & 359,009 & 8,467 & 9,465 & 0 & 0 & 5 / 0 \\
+\hline
+out of table, $500000 < N \le 4\cdot 10^6$ & 3 & 893 & 561 & 718 & 0 & 0 & 0 / 0 \\
+ & 5 & 893 & 6 & 7 & 0 & 0 & 0 / 0 \\
+ & 7 & 893 & 0 & 1 & 0 & 0 & 0 / 0 \\
+\hline
+\end{tabular}
+}
 \caption{Verification counts for the two corollary forms. ``\eqref{eq:main} $>0$'' is the number of curves with $E[\ell]$ irreducible, not CM, for which the right-hand side of \eqref{eq:main} is positive, and ``viol.'' the number of violations; likewise for \eqref{eq:twist}. The last column counts the Eisenstein curves with a positive bound in \eqref{eq:main} and the violations of Conjecture~\ref{conj:eis}.}\label{tab:counts}
 \end{table}
 
@@ -670,7 +744,18 @@ Table~\ref{tab:counts} gives, for each range and each small prime $\ell$, the nu
 Table~\ref{tab:ns} records what happens to the inequality \eqref{eq:thm}, with all types included and no correction, on the curves for which the hypothesis of Theorem~\ref{thm:main} fails at $\ell=3$. There are $364$, $68$, $43$ and $0$ violations on the four ranges, all at $\ell=3$; every one of them is a curve with image $\Ns$ in the tables, and the $3$-division polynomial of every one of them factors as two quadratics, as Proposition~\ref{prop:ns} requires; no curve with image $\GL_2(\F_3)$ or $N_{ns}(\F_3)$ violates \eqref{eq:thm}. (For the curves with $3\mid N$ the count depends on whether the terms at $q=3$ are included, that is, the term $t_3(E,3)$; the weights $w_3$ change nothing. Below conductor $10{,}000$ there are $36$ violations with them, as \eqref{eq:thm} is written, and $24$ without; the twelve curves that differ, 726a1, 726f1, 2178b1, 2178h1, 3840h1, 3840k1, 3840o1, 3840r1, 5070h1, 5070p1, 5808y1 and 5808z1, all have $t_3(E,3)=1$ from a type $\mathrm{I}_n$ or $\mathrm{I}_n^*$ at $3$.) Conversely every $\Ns$ curve of the tables has a prime of type $\mathrm{III}$ or $\mathrm{III}^*$ with a positive term $e_3$, and the inequality fails for $31\%$, $23\%$ and $18\%$ of them, always by exactly one; the violation involves a prime $p\equiv-1\pmod3$ with $t_3(E,p)\ge1$ in every case (an observation, not proved). Proposition~\ref{prop:ns-structure} proves most of the rest: every $\Ns$ curve has a prime $p\ne3$ with $e_3(E,p)\ge1$, of type $\mathrm{III}$ or $\mathrm{III}^*$ and $p\equiv\pm1\pmod{12}$ when $p\ge5$, every prime $p\ge5$ of type $\mathrm{III}$ or $\mathrm{III}^*$ is such a prime, and $t_3(E,p)\ge1$ at every potentially multiplicative prime $p\ne3$. For every $\Ns$ curve $h_3(E)=1$, and $h_3(E)=0$ for the other curves, by Lemma~\ref{lem:h0} and Proposition~\ref{prop:ns}. So the correction of Conjecture~\ref{conj:euler} is exactly one on exactly these curves, and with it there is no exception. The residue classes of the type $\mathrm{III}$ primes of the violating curves are $q\equiv1$ and $q\equiv11\pmod{12}$ in comparable numbers, with some $q=2$; what the violations have in common is the image, not the prime.
 
 \begin{table}[ht]\centering\scriptsize\setlength{\tabcolsep}{3pt}
-\emph{[Table: the data files are in the repository named in Appendix~\ref{app:repro}.]}
+{\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+set & $\Ns$ & with III term & failing & others failing & $h_3=1$ & $q\equiv1$ / $11\ (12)$ / $q=2$ & shortfall $1$\\
+\midrule
+working set & 1,170 & 1,170 & 364 (31\%) & 0 & 1,170 of 1,170 & 140 / 160 / 72 & 364 of 364\\
+hold-out & 290 & 290 & 68 (23\%) & 0 & 290 of 290 & 34 / 30 / 4 & 68 of 68\\
+extension & 237 & 237 & 43 (18\%) & 0 & 237 of 237 & 16 / 25 / 2 & 43 of 43\\
+out of table & 0 & 0 & 0 (0\%) & 0 & 0 of 0 & 0 / 0 / 0 & 0 of 0\\
+\bottomrule
+\end{tabular}
+}
 \caption{The curves with image $\Ns$ (mod $3$ image the normaliser of a split Cartan subgroup), with $E[3]$ irreducible, not CM, optimal: how many have a positive type $\mathrm{III}$ term, how many violate \eqref{eq:thm} (all types, no correction), how many other curves do, how many have $h_3(E)=1$, the residue classes mod $12$ of the type $\mathrm{III}$ primes of the violating curves (or $q=2$), and the shortfall.}\label{tab:ns}
 \end{table}
 
@@ -683,7 +768,23 @@ For each optimal curve $E$ without complex multiplication of conductor below $10
 
 \begin{table}[ht]
 \centering\small
-\emph{[Table: the data files are in the repository named in Appendix~\ref{app:repro}.]}
+{\small
+\begin{tabular}{lccc}
+\hline
+type & weight 1 & weight 2 & weight 3 \\
+\hline
+IV (any $q$) & 1 (25,414) & 2 (969) & 3 (11) \\
+IV$^*$ (any $q$) & 1 (30,168) & 2 (2,268) & 3 (45) \\
+III (any $q$) & 0 (34,904) & 0 (2,208) & 0 (34) \\
+III$^*$ (any $q$) & 0 (25,574) & 0 (1,307) & 0 (29) \\
+$\mathrm{I}_0^*$ (any $q$) & 0 (42,924) & 0 (3,093) & 0 (53) \\
+II, II$^*$ at odd $q$ & 1 (56,509) & 2 (2,502) & 3 (12) \\
+$\mathrm{I}_n^*$ at odd $q$, weight $v_3(n)$ & 1 (28,175) & 2 (3,453) & 3 (89) \\
+II, II$^*$ at $q=2$ & 0 (44,672) & -- & -- \\
+$\mathrm{I}_n^*$ at $q=2$, weight $v_3(n)$ & 0 (21,176) & 1 (5,329) & 1 (342) \\
+\hline
+\end{tabular}
+}
 \caption{Minimum of $v_3(\degphi)$ (number of curves) over working-set curves with $E[3]$ irreducible whose only possible contributions at $3$ come from the primes named in the row, with the given number of primes (untwisted rows) or total weight of \eqref{eq:twist} (twisted rows).}\label{tab:isolated}
 \end{table}
 
@@ -692,7 +793,21 @@ To test the statements beyond the tables, we generated curves with prescribed lo
 
 \begin{table}[ht]
 \centering\small
-\emph{[Table: the data files are in the repository named in Appendix~\ref{app:repro}.]}
+{\small
+\begin{tabular}{lrrr}
+\hline
+family & curves & largest conductor & median seconds per degree \\
+\hline
+II,II & 98 & 3,968,800 & 0.4 \\
+II,II,II & 1 & 2,832,200 & 0.2 \\
+IV & 334 & 3,988,012 & 1.1 \\
+IV* & 104 & 3,994,600 & 4.9 \\
+IVmixed & 266 & 3,983,504 & 1.3 \\
+random & 90 & 2,710,716 & 32.1 \\
+all & 893 & 3,994,600 & 1.5 \\
+\hline
+\end{tabular}
+}
 \caption{Curves outside the tables, with modular degrees computed independently.}\label{tab:oot}
 \end{table}
 
