@@ -64,14 +64,14 @@ $q_E$ & Tate parameter of $E$ at a prime with $v_q(j_E)<0$ & \Cref{ch:reduction,
 $v_\ell$ is the $\ell$-adic valuation on $\Q$ (and on $\Q_\ell$), normalised by $v_\ell(\ell)=1$, with $v_\ell(0)=+\infty$; for a
 nonzero ideal $\ell^a\Zl$, $v_\ell(\ell^a\Zl)=a$; for a discrete valuation ring $\mathcal O$ with uniformiser $\varpi$, $v(\varpi)=1$,
 and the paper's $v_\lambda$ for $\lambda=\ell$ is $v_\ell$. For a class $c\in\Z/\ell^m$, $v_\ell(c):=\min(v_\ell(\tilde c),m)$ for any
-lift $\tilde c\in\Z$ (so the paper's ``$v_\ell(0)$'' in Lemma lem:tamfactor reads $v_\ell(q-1)$). ``Length'' without subscript
+lift $\tilde c\in\Z$ (so, as in the paper's Lemma lem:tamfactor, ``$v_\ell(0)$ is read as $v$'', $v=v_\ell(q-1)$). ``Length'' without subscript
 means $\Zl$-length, $\len=\len_{\Zl}$, and $\len(\Zl/\ell^a)=a$; for finite $\Zl$-modules $\#X=\ell^{\len X}$. Orders $\#\mathcal O/\Delta$
 are used only for $\mathcal O$ with finite residue field; otherwise lengths. $\Fitt_{\Zl}(X)=\ell^{\len X}\Zl$ for finite $X$.
 $\Tam_p(M)=\Fitt_{\Zl}\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$: the Fitting ideal \emph{of the invariants}.
 \end{convention}
 
-\noindent\emph{Reason.} The paper's Lemma lem:tamfactor evaluates $v_\ell$ at a class that may be $0$, and its $\Tam_p$ must be
-read with the invariants inside the Fitting ideal. \emph{Binds:} every chapter from \Cref{ch:rings} on. \emph{Where proved:}
+\noindent\emph{Reason.} The paper's Lemma lem:tamfactor evaluates $v_\ell$ at a class that may be $0$, and its $\Tam_p$ is the
+Fitting ideal of the invariants, not the invariants of a Fitting ideal. \emph{Binds:} every chapter from \Cref{ch:rings} on. \emph{Where proved:}
 the independence of the lift is in \Cref{ch:rings}; lengths and Fitting ideals are in \Cref{ch:modules}; $\Tam_p$ is defined in
 \Cref{ch:blochkato}.
 
@@ -79,7 +79,7 @@ the independence of the lift is in \Cref{ch:rings}; lengths and Fitting ideals a
 
 The paper uses the arithmetic Frobenius in group theory and cohomology (the proof of Lemma lem:tamfactor) and the geometric
 Frobenius in local $L$-factors (Section 1.1, its table, Lemma lem:euler, the sentence after Lemma lem:dfg21, Lemma lem:fpr). The
-revised version of the paper says so in Section 1.1: ``Throughout, $\Frob_p$ is an arithmetic Frobenius at $p$ and
+paper says so in Section 1.1: ``Throughout, $\Frob_p$ is an arithmetic Frobenius at $p$ and
 $\Frob_p^{-1}$ a geometric one''. B-C2 fixes the symbols, B-C3 the eigenvalues.
 
 \begin{convention}[B-C2: arithmetic $\Frob$, geometric $\Frob^{-1}$]\label{conv:notation:bc2}
@@ -122,8 +122,8 @@ cited.
 \end{enumerate}
 \end{convention}
 
-\noindent\emph{Reason.} The original version of the paper wrote $\Frob_p$ in Section 1.1 where its table, Lemma lem:euler and
-Lemma lem:fpr need the geometric Frobenius, and used the arithmetic one, correctly, in Lemma lem:tamfactor. A clash rule is
+\noindent\emph{Reason.} The paper uses both: the geometric Frobenius in Section 1.1, its table, Lemma lem:euler and
+Lemma lem:fpr, and the arithmetic one in Lemma lem:tamfactor; the factor at a multiplicative prime depends on which. A clash rule is
 needed because the paper's $\Phi_q$ is a component group. \emph{Binds:} \Cref{ch:reps} to \Cref{ch:reduction},
 \Cref{ch:galrep}, \Cref{ch:moddeg} to \Cref{ch:computation}. \emph{In the chapters:} the geometric Frobenius is written $\Phi$,
 $\Phi_p$ in \Cref{ch:local} ($\Phi$ alone), \Cref{ch:galcoh} and \Cref{ch:lfunctions} (no component groups there), and
@@ -159,9 +159,8 @@ of the $p$-stabilisations $h-\beta_ph(pz)$, $h-\alpha_ph(pz)$.
 
 \begin{warning}[where the paper uses which Frobenius]\label{warn:notation:which-frobenius}
 Geometric: Section 1.1 ($L_p(A_f,s)$, $\delta_p$), the table of Section 1, Definition def:terms ($P_q$, $e_\ell$), Lemma lem:euler,
-Proposition prop:shapes, the sentence after Lemma lem:dfg21 (``$\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}$'' in the revised
-version), Lemma lem:fpr. Arithmetic: the proof of Lemma lem:tamfactor (the matrices, $c'=\varepsilon\kappa(\Frob)$, the action
-``$q^{-1}\rho(\Frob)$''), unramified cohomology, the tame relation. Either: every statement about the lines
+Proposition prop:shapes, the sentence after Lemma lem:dfg21 (``$\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}$''), Lemma lem:fpr. Arithmetic: the proof of Lemma lem:tamfactor (the matrices, $c'=\varepsilon\kappa(\Frob)$, the action
+``$q^{-1}\operatorname{Ad}(\rho(\Frob))$''), unramified cohomology, the tame relation. Either: every statement about the lines
 of $(\ad V)^{I_q}$ at the potentially good primes, where Frobenius acts by $\pm1$.
 \end{warning}
 
@@ -244,7 +243,7 @@ $T_\ell E\simeq(T_\ell E)^\vee(1)$, and $H^1(E,\Zl)=(T_\ell E)^\vee\simeq T_\ell
 $V^D=\ad V(1)$ has $\{0,1,2\}$, $V_\ell E^\vee$ has $\{-1,0\}$. Sources with the opposite sign are flagged where cited.
 \item Other fixed signs: the cup product $\langle\alpha,\beta\rangle=\int_X\alpha\wedge\beta$ with the complex orientation (the paper
 needs only sign-invariant properties); the Kummer map $\delta(a)(\sigma)=\sigma(\alpha)/\alpha$, $\alpha^n=a$; the conjugation action
-$(\sigma\cdot c)(h)=\sigma\,c(\sigma^{-1}h\sigma)$ of $G/H$ on $H^n(H,M)$, verbatim the paper's; the slash operator
+$(\sigma\cdot c)(h)=\sigma\,c(\sigma^{-1}h\sigma)$ of $G/H$ on $H^n(H,M)$, the paper's (written there for a cocycle $z$ of $I$); the slash operator
 $(f|_k\gamma)(z)=(\det\gamma)^{k/2}(cz+d)^{-k}f(\gamma z)$; and $W_N=\sm0{-1}N0$.
 \end{enumerate}
 \end{convention}
@@ -258,10 +257,9 @@ $(\det\gamma)^{k-1}$, which agrees in weight $2$. \emph{Where proved:} (a) in \C
 
 \section{Characters}\label{sec:notation:characters}
 
-The paper uses $\chi_\ell$ for the cyclotomic character and (in its original version) $\chi_q$ for a quadratic character, so
-that $\chi_3$ is ambiguous; it also names one character both $\chi_{11}$ and $\chi_{-11}$. B-C6 names every quadratic character
-by its discriminant and reserves a letter subscript for the cyclotomic character. The revised version of the paper follows the
-same rule.
+The paper uses $\chi_\ell$ for the cyclotomic character and names its quadratic characters by their discriminants
+($\chi_{-3}$, $\chi_{-11}$, $\chi_{q^*}$). B-C6 makes this a rule for the whole book: every quadratic character is named by its
+discriminant, and a letter subscript is reserved for the cyclotomic character.
 
 \begin{convention}[B-C6: characters]\label{conv:notation:bc6}
 \leavevmode
@@ -283,7 +281,7 @@ $\Q(\sqrt{\ell^*})$, and $\chi_{\ell^*}=\bar\chi_\ell$ if and only if $\ell=3$, 
 $G_{\Q_q}$ of order at most $2$ in the Tate shape (B-C14): at a multiplicative prime it is unramified, with $\varepsilon(\Frob_q)=a_q(E)$; at an
 additive prime with $v_q(j)<0$ (type $\mathrm I_n^*$ for odd $q$) it is a ramified quadratic character, so that $\rho$ is the multiplicative shape
 twisted by a ramified quadratic character, which $\ad\rho$ does not see.
-$\psi$ is the character of order $4$ of $C_4=\langle J\rangle$ with $\psi(J)=i\in\F_9^\times$ (Proposition prop:ns).
+$\psi$ is the character of order $4$ of $C_4=\langle J\rangle$ with $\psi(J)=i\in\F_9^\times$ (the character of order $4$ of Proposition prop:ns).
 \item A Dirichlet character $\chi$ is also the Galois character with $\chi(\Frob_p)=\chi(p)$ for $p\nmid\cond\chi$ (arithmetic Frobenius).
 The principal character modulo $n$ is $\chi_0$; the $p$-component of a Dirichlet character $\chi$ is $\chi^{(p)}$ (superscript, never
 $\chi_p$); the primitive character inducing $\chi$ is $\chi^{\mathrm{prim}}$.
@@ -384,7 +382,7 @@ with $c^2$ \emph{in the numerator} of $\degphi=4\pi^2c_E^2\langle f,f\rangle/\vo
 never written as a bare $c$.
 \end{convention}
 
-\noindent\emph{Reason.} A bare $c$ is the paper's class in Lemma lem:tamfactor (B-C14), and $c_q$ is a Tamagawa number. Only
+\noindent\emph{Reason.} The letter $c$ already names the class $c(u)$ of Lemma lem:tamfactor (B-C14), cocycles and complex conjugation, and $c_q$ is a Tamagawa number. Only
 $c_E^2$ enters a formula, so the sign normalisation changes no statement. \emph{Binds:}
 \Cref{ch:ellcurves,ch:modforms,ch:moddeg,ch:blochkato,ch:lfunctions,ch:paper,ch:computation}. \emph{In the chapters:}
 \Cref{ch:ellcurves} writes $c_\varphi$ also for the constant of an isogeny, $\varphi^*\omega'=c_\varphi\omega$; \Cref{ch:curves} writes
@@ -420,8 +418,7 @@ $\dim V^{I_p}$.
 \end{convention}
 
 \noindent\emph{Reason.} The paper's statements are about $\#\Phig_q$, not about $c_q$ (\curve{121c1} at $11$ has $\#\Phig=3$ and
-$c=1$), and $\Phi$ is also the geometric Frobenius and the cyclotomic polynomial. The appendix of the original version of the paper states
-the code ``$n+4$'' without the condition $n\ge1$; the revised version adds it. \emph{Binds:} \Cref{ch:reduction,ch:galrep,ch:moddeg,ch:modgalrep,ch:blochkato,ch:lfunctions,ch:paper,ch:computation}.
+$c=1$), and $\Phi$ is also the geometric Frobenius and the cyclotomic polynomial. \emph{Binds:} \Cref{ch:reduction,ch:galrep,ch:moddeg,ch:modgalrep,ch:blochkato,ch:lfunctions,ch:paper,ch:computation}.
 \emph{In the chapters:} over a general local field \Cref{ch:reduction} writes $\Phi_E(k)$ and $\Phig=\Phi_E(\bar k)$.
 \emph{Where proved:} \Cref{ch:reduction}, which also gives the order of $\Phig_q$ for every type.
 
@@ -439,7 +436,7 @@ $\#\Phig_q$ & $1$ & $n$ & $1$ & $2$ & $3$ & $4$ & $4$ & $3$ & $2$ & $1$\\
 \begin{convention}[B-C14: the Tate data at a prime with $v_q(j)<0$]\label{conv:notation:bc14}
 $q\ne\ell$; $q_E\in\Q_q^\times$ the Tate parameter (never $u$); $\nu=v_q(q_E)=-v_q(j_E)$, equal to $n=n_q=v_q(\Delta_E)$ at a
 multiplicative prime; $u=q_Eq^{-\nu}\in\Z_q^\times$ its unit part, $\bar u\in\F_q^\times$ its reduction; $c(u)$ the class of $\bar u$ in
-$\F_q^\times/(\F_q^\times)^{\ell^{v_\ell(q-1)}}$ (the paper's $c$ in Lemma lem:tamfactor), with $v_\ell(c(u))$ read as in B-C10.
+$\F_q^\times/(\F_q^\times)^{\ell^{v_\ell(q-1)}}$ (as in the paper's Lemma lem:tamfactor), with $v_\ell(c(u))$ read as in B-C10.
 $\kappa=\kappa_{q_E}$ is the Kummer cocycle of $q_E$, $\kappa=\nu\kappa_q+\kappa_u$; $\varepsilon$ is a character of order at most $2$, unramified with
 $\varepsilon(\Frob_q)=a_q(E)$ at a multiplicative prime and ramified quadratic at an additive prime (type $\mathrm I_n^*$ for odd $q$; B-C6(d)). At
 a multiplicative prime, $t$ is a topological generator of the pro-$\ell$ tame inertia quotient, acting by $te_1=e_1$, $te_2=e_2+n'e_1$ with
@@ -451,8 +448,8 @@ $v_\ell(n')=v_\ell(n)$; at type $\mathrm I_n^*$ the same holds for $\Ad\rho$, wh
 $\ell^{\min(v_\ell(n),v_\ell(q-1))}$.
 \end{convention}
 
-\noindent\emph{Reason.} Only $\varepsilon\kappa$ satisfies the cocycle relation for these matrices when $\varepsilon\ne1$; the original
-version of the paper called the Tate parameter $u$ in one lemma. \emph{Binds:}
+\noindent\emph{Reason.} Only $\varepsilon\kappa$ satisfies the cocycle relation for these matrices when $\varepsilon\ne1$; the letter $u$ is
+the unit part, so the Tate parameter needs its own name. \emph{Binds:}
 \Cref{ch:rings,ch:local,ch:reduction,ch:galrep,ch:cohomology,ch:galcoh,ch:blochkato,ch:congruence,ch:paper,ch:computation}. \emph{In the
 chapters:} \Cref{ch:cohomology} writes $w=v_\ell(n')$ in its model computation (the letter $v$ being the paper's $v_\ell(q-1)$)
 and $\rho_M$ for the action of $G$ on a module $M$ (so $\rho_M=\Ad\rho$ on $M=\ad T$). \emph{Where proved:} the Tate shape in
@@ -558,7 +555,7 @@ $\zeta_n$, $\zeta_3$, $\sqrt{-3}$ & $e^{2\pi i/n}$; $\zeta_3=(-1+\sqrt{-3})/2$, 
 $\Phi_n(x)$ & $n$-th cyclotomic polynomial & \Cref{ch:rings} & \hyperref[conv:notation:bc2]{B-C2(b)}, \hyperref[conv:notation:bc11]{B-C11(b)}\\
 $\theta_d$ & $(1+\sqrt d)/2$ for $d\equiv1\pmod4$ & \Cref{ch:ant} & $\theta_m$ (tame characters)\\
 $\Z[i]$, $\Z[\zeta_3]$, $\Z_3[\zeta_3]$ & Gaussian and Eisenstein integers; a discrete valuation ring & \Cref{ch:rings,ch:ant} & \\
-$\pi=1-\zeta_3$ & uniformiser of $\Z_3[\zeta_3]$ in Lemma lem:IV (local name) & \Cref{ch:ant} & \hyperref[conv:notation:bc15]{B-C15(a)}\\
+$\pi=1-\zeta_3$ & uniformiser of $\Z_3[\zeta_3]$ (local name of \Cref{ch:ant}; the paper writes $1-\zeta_3$) & \Cref{ch:ant} & \hyperref[conv:notation:bc15]{B-C15(a)}\\
 $v_p$, $v_\ell$, $\abs x_p$ & $p$-adic valuation, $v_\ell(\ell)=1$; $\abs x_p=p^{-v_p(x)}$ & \Cref{ch:rings} & \hyperref[conv:notation:bc10]{B-C10}\\
 $v_\ell(c)$, $c\in\Z/\ell^m$ & $\min(v_\ell(\tilde c),m)$ & \Cref{ch:rings} & \hyperref[conv:notation:bc10]{B-C10}\\
 $\bigl(\frac ap\bigr)$, $\bigl(\frac an\bigr)$ & Legendre, Jacobi and Kronecker symbols & \Cref{ch:rings} & \\
@@ -634,7 +631,7 @@ $\omega_\ell$ & Dirichlet character $a\mapsto a\bmod\ell$ & \Cref{ch:rings} & fu
 $\chi_0$, $\chi^{(p)}$, $\chi^{\mathrm{prim}}$ & principal character; $p$-component; primitive character inducing $\chi$ & \Cref{ch:rings} & \hyperref[conv:notation:bc6]{B-C6(e)}\\
 $\chi_d$, $\chi_D$ & quadratic character of $\Q(\sqrt d)$, indexed by a fundamental discriminant & \Cref{ch:rings,ch:galois} & \hyperref[conv:notation:bc6]{B-C6(b)}\\
 $\chi_{-3}$, $\chi_{-4}$, $\chi_8$ & characters of $\Q(\sqrt{-3})$, $\Q(i)$, $\Q(\sqrt2)$ & \Cref{ch:rings,ch:ant} & $\chi_{-3}=\bar\chi_3$\\
-$\chi_{q^*}$ & quadratic character of conductor $q$ (the original paper's $\chi_q$) & \Cref{ch:rings,ch:galois} & \hyperref[conv:notation:bc6]{B-C6(c)}\\
+$\chi_{q^*}$ & quadratic character of conductor $q$, never $\chi_q$ & \Cref{ch:rings,ch:galois} & \hyperref[conv:notation:bc6]{B-C6(c)}\\
 $\chi_{\ell^*}$ & character of $\Q(\sqrt{\ell^*})$, $=\bar\chi_\ell^{(\ell-1)/2}$ & \Cref{ch:galois} & $=\bar\chi_\ell$ iff $\ell=3$\\
 $\chi_S$, $D$ & $\prod_{q\in S}\chi_{q^*}$, its conductor $\prod_{q\in S}q$ & \Cref{ch:rings,ch:hecke} & \hyperref[conv:notation:bc6]{B-C6(d)}; $D$, \Cref{sec:notation:letters}\\
 $\varepsilon$ & character of order $\le2$ of $G_{\Q_q}$ in the Tate shape; unramified at a multiplicative $q$, ramified at type $\mathrm I_n^*$ & \Cref{ch:local,ch:galrep} & \hyperref[conv:notation:bc14]{B-C14}, \hyperref[conv:notation:bc15]{B-C15(k)}\\
@@ -703,7 +700,7 @@ $\pi$, $\pi_{\mathfrak q}$ & Frobenius endomorphism of $E/\F_{\mathfrak q}$ & \C
 $a_p(E)$ & $p+1-\#\tilde E(\F_p)$ & \Cref{ch:ellcurves} & $a(V)$ conductor\\
 $\alpha$, $\beta$, $\alpha_p$, $\beta_p$ & roots of $X^2-a_pX+p$; arithmetic eigenvalues on $V_\ell E$ & \Cref{ch:ellcurves} & \hyperref[conv:notation:bc3]{B-C3}\\
 $E^{(d)}$, $E^{(q)}$ & quadratic twist by $\Q(\sqrt d)$; by $\Q(\sqrt{q^*})$ & \Cref{ch:ellcurves,ch:reduction} & \hyperref[conv:notation:bc13]{B-C13(d)}\\
-$E_S$, $N_S$ & $E\otimes\chi_S$, its conductor (the original paper's $E_{\{p\}}$ is $E^{(p)}$) & \Cref{ch:ellcurves,ch:modgalrep} & \hyperref[conv:notation:bc13]{B-C13(d)}\\
+$E_S$, $N_S$ & $E\otimes\chi_S$, its conductor & \Cref{ch:ellcurves,ch:modgalrep} & \hyperref[conv:notation:bc13]{B-C13(d)}\\
 $L(E,s)$, $L_p(E,s)$ & Hasse-Weil $L$-function and its factors & \Cref{ch:ellcurves,ch:lfunctions} & $L_p(E,s)=L_p(V_\ell E^\vee,s)$, \hyperref[conv:notation:bc3]{B-C3}\\
 CM & complex multiplication; the thirteen CM $j$-invariants & \Cref{ch:ellcurves} & \\
 11a1, 121c, 99A1, 11.a2 & Cremona, Cremona's book and Agashe-Ribet-Stein, LMFDB labels & \Cref{ch:ellcurves} & \hyperref[conv:notation:bc16]{B-C16}\\
@@ -719,7 +716,7 @@ $G_{\mathrm{ss}}$, $e$ & semistability group, semistability defect $\#G_{\mathrm
 $E_{\mathsf q}$, $\mathsf q$ & Tate curve, the variable of its parameter & \Cref{ch:reduction} & \hyperref[conv:notation:bc1]{B-C1}\\
 $q_E$ & Tate parameter of $E$ & \Cref{ch:reduction} & \hyperref[conv:notation:bc14]{B-C14}\\
 $n$, $n_q$, $\nu$ & $v_q(\Delta_E)$ at a multiplicative prime; $\nu=v_q(q_E)=-v_q(j_E)$ & \Cref{ch:reduction} & \hyperref[conv:notation:bc14]{B-C14}\\
-$u$, $\bar u$, $c(u)$ & unit part $q_Eq^{-\nu}$, its reduction, its class in $\F_q^\times/(\F_q^\times)^{\ell^{v_\ell(q-1)}}$ & \Cref{ch:reduction,ch:rings} & \hyperref[conv:notation:bc14]{B-C14} (the paper's $c$)\\
+$u$, $\bar u$, $c(u)$ & unit part $q_Eq^{-\nu}$, its reduction, its class in $\F_q^\times/(\F_q^\times)^{\ell^{v_\ell(q-1)}}$ & \Cref{ch:reduction,ch:rings} & \hyperref[conv:notation:bc14]{B-C14} (the paper's $c(u)$)\\
 $w_\ell(E,q)$ & twist-symmetrised weight $\max(v_\ell\#\Phig_q(E),v_\ell\#\Phig_q(E^{(q)}))$ for odd $q$; $w_\ell(E,2)=v_\ell\#\Phig_2(E)$ & \Cref{ch:reduction} & $w$, \Cref{sec:notation:letters}\\
 \end{longtable}\endgroup
 
@@ -861,7 +858,7 @@ $\eta^{\mathrm{Hecke}}$ & congruence ideal in the Hecke algebra (of $g^S$ in The
 $\eta_f$, $\eta^{\mathrm{Hecke}}_f$, $\eta_f(N)$ & one ideal, $\phi_f(\Ann_\T\ker\phi_f)=r_E\Z$ for rational $f$: the names in \Cref{ch:moddeg}, in \Cref{ch:congruence}, and Kim and Ota's (\Cref{ch:modgalrep}) & \Cref{ch:moddeg,ch:congruence} & $\eta^\Sigma_{f,\lambda}$\\
 $M(M,1)_{!,\lambda}$ & the integral structure of Diamond, Flach and Guo at level $M$ (in the paper $M=M^\Sigma$), $=H^1(X_0(M),\Zl)$ on non-Eisenstein components & \Cref{ch:congruence} & \\
 $R_\Sigma$, $\T_\Sigma$ & deformation ring, Hecke algebra of Taylor-Wiles & \Cref{ch:modgalrep,ch:congruence} & \\
-$g$, $g^S$, $N_S^S$ & $f_{E_S}$, its $S$-depletion, $N_S\prod_{q\in S}q^{\delta_q(g)}=N$ (the paper's $N_S^\Sigma$ with $\Sigma=S$) & \Cref{ch:modgalrep,ch:congruence} & genus $g$\\
+$g$, $g^S$, $N_S^S$ & $f_{E_S}$, its $S$-depletion, $N_S\prod_{q\in S}q^{\delta_q(g)}=N$ & \Cref{ch:modgalrep,ch:congruence} & genus $g$\\
 \end{longtable}\endgroup
 
 \subsection{The paper's named quantities, statements and data}\label{sec:notation:index-paper}
@@ -931,8 +928,8 @@ the named chapter or lemma, which says so in its convention box.
 \begin{convention}[B-C15: letters with several meanings]\label{conv:notation:bc15}
 \leavevmode
 \begin{enumerate}[label=(\alph*)]
-\item The uniformisers of local fields and of discrete valuation rings are written $\varpi$; the paper's $\pi=1-\zeta_3$ (Lemma lem:IV) and
-$\pi\colon\T\to\mathcal O$ (Lemma lem:ddt417) keep their names inside those lemmas; $\pi_f$ is the quotient map to $J_f$; $\pi_q$ the
+\item The uniformisers of local fields and of discrete valuation rings are written $\varpi$; the paper's $\pi\colon\T\to\mathcal O$ (Lemma lem:ddt417) keeps its name inside that lemma,
+and $\pi=1-\zeta_3$ is a local name of \Cref{ch:ant}; $\pi_f$ is the quotient map to $J_f$; $\pi_q$ the
 Frobenius endomorphism (B-C2(g)).
 \item $\zeta_n=e^{2\pi i/n}$; a primitive cube root of unity is always $\zeta_3$, never $\omega$ or $\rho$. $\omega$ is a differential:
 $\omega_E$ (N\'eron or invariant differential), $\omega_f=f(z)\,dz$; $\omega_1,\omega_2$ are periods; the fundamental characters of
@@ -989,11 +986,9 @@ $B$ & Bernoulli numbers $B_k$ (no argument); the Sturm bound $B_k(N)$ (with the 
 (superscript); the Borel subgroup $\mathrm B$; coboundaries $B^1$ & \Cref{ch:modforms,ch:lfunctions,ch:computation,ch:groups,ch:cohomology}\\
 $C$ & cyclic groups $C_n$; Cartan subgroups $C_s$, $C_{ns}$; cochains $C^n$; a curve $C$ and its twist $C^{[r]}$; correspondences $\mathcal C$;
 the congruence module $\mathcal C(\pi)$; the cuspidal subgroup $C_N$ & \Cref{ch:groups,ch:cohomology,ch:curves,ch:congruence,ch:moddeg}\\
-$c$ & complex conjugation; a cocycle or cohomology class $c$ (B-C5(d)); the paper's class in Lemma lem:tamfactor, written $c(u)$ in
-the book; $c_q$ Tamagawa number; $c'$ the corner of $\rho(\Frob)$; $c_E$, $c_\varphi$ Manin constants; $c_4,c_6$ Weierstrass invariants &
-B-C9, B-C11, B-C14; bare only for complex conjugation (\Cref{ch:galois,ch:galcoh}), for cocycles and auxiliary
-elements inside proofs (\Cref{ch:cohomology,ch:galcoh,ch:blochkato,ch:congruence}) and for the paper's class where Lemma lem:tamfactor is
-quoted (\Cref{ch:rings,ch:local,ch:galcoh})\\
+$c$ & complex conjugation; a cocycle or cohomology class $c$ (B-C5(d)); the class $c(u)$ of Lemma lem:tamfactor; $c_q$ Tamagawa number; $c'$ the corner of $\rho(\Frob)$; $c_E$, $c_\varphi$ Manin constants; $c_4,c_6$ Weierstrass invariants &
+B-C9, B-C11, B-C14; bare only for complex conjugation (\Cref{ch:galois,ch:galcoh}), and for cocycles and auxiliary
+elements inside proofs (\Cref{ch:cohomology,ch:galcoh,ch:blochkato,ch:congruence})\\
 $\chi$ & characters (B-C6): $\chi_\ell$ cyclotomic, $\chi_d$ quadratic, $\chi_S$, $\chi_0$, $\chi^{(p)}$; Kummer characters $\chi_a$; never the
 trace function of a representation & \Cref{ch:rings,ch:galois,ch:ellcurves}\\
 $D$ & see B-C15(d); also the dihedral groups $D_n$ (of order $2n$) & \Cref{ch:groups,ch:rings,ch:ant,ch:curves,ch:moddeg,ch:lfunctions,ch:computation,ch:paper}\\

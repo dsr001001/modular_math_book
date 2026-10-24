@@ -12,7 +12,7 @@ factors of \Cref{ch:lfunctions}, these three threads give the paper's Theorem th
 
 The chapter assembles; it does not re-derive what other chapters prove. Its own full proofs are: Lemma lem:ddt417 (\Cref{lem:congruence:ddt417}); the assembly of Theorem thm:main
 (\Cref{thm:congruence:main}); Theorem thm:twist (\Cref{thm:congruence:twist}); Theorem thm:quant with its equality clause (\Cref{thm:congruence:quant}); and
-the equality $v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ in Step 1 of the proof of Theorem thm:quant, which the paper's Remark rem:afterquant (2) calls open
+the equality $v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ in Step 1 of the proof of Theorem thm:quant, which is the paper's Lemma lem:step1
 (\Cref{lem:congruence:quant-step1}). The deep theorems (the Taylor-Wiles method, the theorems of Diamond, Flach and Guo, Hida's theorem, the formula of
 Kim and Ota) are stated precisely, with an outline of their proofs and the references; for part (c) of the proposition of Diamond, Flach and Guo we sketch the
 deduction from parts (a) and (b) along the lines of their published proof, given the integral comparison isomorphism of their integral structures, which we cite (\Cref{thm:congruence:dfg14}).
@@ -58,7 +58,7 @@ $\mf m$-component, Gram determinant $(\eta^\Sigma_{f,\lambda})^2$; for $\Sigma=\
 \item \textbf{Lemma lem:hecke.} For optimal $E$, $\ell$ odd, $\ell\nmid N$, $E[\ell]$ irreducible: $v_\ell(\degphi)=v_\ell(r_E)=v_\lambda(\eta^\emptyset_{f,\lambda})$, with no freeness hypothesis. \emph{(proved here, given
 \cite[Theorem 2.2]{ARS12}, \Cref{ch:moddeg} and \Cref{prop:congruence:integral-structure}; the definitions of \cite{DFG04} it uses are checked against the published text)}
 \Cref{thm:congruence:lem-hecke}; values \Cref{ex:congruence:eta-values}.
-\item \textbf{Remark rem:free.} Multiplicity one gives $H^1(X_0(N),\Zl)_{\mf m}\simeq\T_{\mf m}^2$; no longer needed for Theorems thm:main and thm:quant. \emph{(stated; proved in \Cref{ch:moddeg} given multiplicity one)}
+\item \textbf{Remark rem:free.} Multiplicity one gives $H^1(X_0(N),\Zl)_{\mf m}\simeq\T_{\mf m}^2$; not needed for Theorems thm:main and thm:quant. \emph{(stated; proved in \Cref{ch:moddeg} given multiplicity one)}
 \Cref{rem:congruence:rem-free}.
 \item \textbf{The map $\gamma$} (definition): $\gamma=\sum_m\epsilon_m\phi_m$, $\gamma(f)=f^\Sigma$. \Cref{def:congruence:gamma}.
 \item \textbf{Theorem thm:dfg14} (Diamond, Flach and Guo, Proposition 1.4). For $\ell\nmid2M$, $\ell\notin\Sigma$: $\gamma^t\gamma=u\prod_pL^{\nv}_p(A_f,1)^{-1}$ on $M_f$; if $\bar\rho_f$ is irreducible,
@@ -104,7 +104,7 @@ an equality with no multiplicity-one hypothesis. \emph{(proved here, given the t
 equality if $\ell\notin S_f$. \emph{(proved here, given \Cref{thm:congruence:dfg14}, \Cref{thm:congruence:main} and the cited chapters)} \Cref{thm:congruence:quant}.
 \item \textbf{The set-up.} $g^S$ lives at level $N$ with generalised eigenspace $\C g^S$, and $\iota(g^S)=f$. \emph{(proved here, given \Cref{ch:hecke,ch:reduction})} \Cref{lem:congruence:quant-setup}.
 \item \textbf{Step 1 is an equality.} For every $E$ of conductor $N$, with $S$ and $g^S$ as in the set-up: $r_E\mid r_\pi$ and $v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S))$ for every prime $\ell\notin S$, $\ell=2$ included, with no other hypothesis. \emph{(proved here, given \Cref{ch:hecke})}
-\Cref{lem:congruence:quant-step1}; Commentary on Remark rem:afterquant (2) and Open question 6 \Cref{rem:congruence:step1-commentary}.
+\Cref{lem:congruence:quant-step1} (the paper's Lemma lem:step1); Commentary \Cref{rem:congruence:step1-commentary}.
 \item \textbf{Steps 2 to 4.} $v_\ell(\eta^{\mathrm{Hecke}}(g^S))\ge v_\ell(\eta^S_{g,\ell})=v_\ell(\eta^\emptyset_{g,\ell})+\sum_{q\in S}e_\ell(E,q)$ and $v_\ell(\eta^\emptyset_{g,\ell})=v_\ell(r_{E_S})$. \emph{(proved here, given \Cref{thm:congruence:dfg14})}
 \Cref{lem:congruence:quant-steps234}.
 \item \textbf{All equalities.} For $\ell\notin S_f$: $v_\ell(r_E)=v_\ell(\eta^{\mathrm{Hecke}}(g^S))=v_\ell(\eta^S_{g,\ell})=v_\ell(r_{E_S})+\sum_{q\in S}e_\ell(E,q)$. \emph{(proved here)} \Cref{cor:congruence:quant-equality}; remarks
@@ -117,7 +117,7 @@ equality if $\ell\notin S_f$. \emph{(proved here, given \Cref{thm:congruence:dfg
 \section*{Where the paper uses this chapter}
 
 \begin{itemize}
-\item \textbf{Section 1} (``The congruence number is the congruence ideal of $f$ in the full Hecke algebra \dots\ from Hida to Diamond, Flach and Guo''; the hypothesis of Theorem thm:main and
+\item \textbf{Section 1} (``The congruence number is the congruence ideal of $f$ in the full Hecke algebra \dots\ from Hida \dots\ to Diamond, Flach and Guo''; the hypothesis of Theorem thm:main and
 \cite[Theorem 0.1]{DFG04}): \Cref{thm:congruence:crit}, \Cref{thm:congruence:hida}, \Cref{thm:congruence:dfg01}, \Cref{def:congruence:exceptional-set}.
 \item \textbf{Lemma lem:crit}, restated as a statement about congruence modules: \Cref{thm:congruence:crit}, \Cref{prop:congruence:crit-general}.
 \item \textbf{Section 4.1} ($M^\Sigma$, $f^\Sigma$, the integral structure, $M_{f^\Sigma,\lambda}$, $\hat\delta_!$, $\eta^\Sigma_{f,\lambda}$): \Cref{def:congruence:depletion-recall} to \Cref{prop:congruence:eta-sigma}.
@@ -130,7 +130,8 @@ equality if $\ell\notin S_f$. \emph{(proved here, given \Cref{thm:congruence:dfg
 \item \textbf{Remark rem:ko}: \Cref{rem:congruence:rem-ko-1}, \Cref{prop:congruence:kim-ota}.
 \item \textbf{Theorem thm:twist and the paragraph after it}: \Cref{thm:congruence:twist}, \Cref{ex:congruence:twist-cases}.
 \item \textbf{Theorem thm:quant, its proof and Remark rem:afterquant}: \Cref{thm:congruence:quant} to \Cref{rem:congruence:after-quant}.
-\item \textbf{Remark rem:ns, Open questions 1, 2 and 6}: \Cref{rem:congruence:rem-ns}, \Cref{rem:congruence:open-question-2}, \Cref{rem:congruence:open-question-1}, \Cref{rem:congruence:step1-commentary}.
+\item \textbf{Lemma lem:step1}: \Cref{lem:congruence:quant-step1}, \Cref{rem:congruence:step1-commentary}.
+\item \textbf{Remark rem:ns, Open questions 1 and 2}: \Cref{rem:congruence:rem-ns}, \Cref{rem:congruence:open-question-2}, \Cref{rem:congruence:open-question-1}.
 \item \textbf{Every citation of \cite{DFG04}}: \Cref{rem:congruence:imported-table}.
 \end{itemize}
 
@@ -218,8 +219,8 @@ exactly in the most rigid (complete intersection) case.
 \section{Hecke algebras over $\Zl$ and their local components}\label{sec:congruence:hecke-local}
 
 This section recalls, with references, the structure of the Hecke algebra over $\Zl$ that every later section uses: the splitting into local
-components, the maximal ideal attached to a newform, and which forms live in a given component. The paper uses these facts in Lemma lem:hecke
-(``$\mf m$ the maximal ideal of $\T\otimes\Zl$ containing $\ell$ and $\ker\phi_f$''), in Remark rem:free and in Steps 1 and 2 of the proof of Theorem thm:quant.
+components, the maximal ideal attached to a newform, and which forms live in a given component. The paper uses these facts in the paragraph after Lemma lem:hecke
+(``Let $\mf m$ be the maximal ideal of $\T\otimes\Zl$ containing $\ell$ and $\ker\phi_f$''), in Remark rem:free and in Steps 1 and 2 of the proof of Theorem thm:quant.
 Nothing here is new; the point is to have the statements in one place, in the form in which they are used.
 
 \begin{proposition}[local components, recollection]\label{prop:congruence:hecke-local}
@@ -287,8 +288,8 @@ $a_1,\dots,a_{51}$ as $288$, $504$, $1440$, $2520$; with $a_1,\dots,a_{112}$ the
 This section defines the congruence ideal of a surjection from a finite free algebra, records its basic properties (proved in \Cref{ch:modules}),
 and reads the paper's Lemma lem:crit in this language: the congruence number $r_E$ is the congruence ideal of $\phi_f$ in the full Hecke algebra, and
 the same holds for the depleted form $g^S$ of Theorem thm:quant once the right complement is used. In the paper this is the sentence of Section 1
-``The congruence number is the congruence ideal of $f$ in the full Hecke algebra of level $N$ (Lemma lem:crit), and the theory of such ideals, from Hida to
-Diamond, Flach and Guo, expresses them through the adjoint Selmer group and the adjoint $L$-value'', and it underlies Lemma lem:hecke and Step 1 of the proof
+``The congruence number is the congruence ideal of $f$ in the full Hecke algebra of level $N$ (Lemma lem:crit), and the theory of such ideals, from Hida \dots\ to
+Diamond, Flach and Guo \dots, expresses them through the adjoint Selmer group and the adjoint $L$-value'', and it underlies Lemma lem:hecke and Step 1 of the proof
 of Theorem thm:quant. Hida's theorem, which started the subject, is stated at the end as context; the paper does not use it in a proof.
 
 Before the definition, the idea in the smallest case. Suppose two eigenforms have integer coefficients and are congruent modulo $5$ but not modulo $25$, and nothing else is around. The Hecke
@@ -419,9 +420,9 @@ This is the proposition on the congruence module of a rational eigencharacter in
 
 \begin{warning}[the complement must be $\T$-stable]\label{warn:congruence:complement}
 For $g$ not a newform at level $N$ (for instance a depleted form), the Petersson orthogonal complement of $\C g$ need not be $\T$-stable, because the operators $U_p$, $p\mid N$, are
-not normal (\Cref{ch:hecke} gives an example at level $44$). \Cref{prop:congruence:crit-general} is false with the Petersson complement in general. The paper's Step 1 of the
-proof of Theorem thm:quant says ``in the $\T$-stable complement of the $g^S$-line (not the Petersson complement, which is not $\T$-stable when the $U_p$ are involved)'', which is
-right; Theorem thm:twist uses $g^\perp$ for a newform $g$ at its own level, where the two complements agree.
+not normal (\Cref{ch:hecke} gives an example at level $44$). \Cref{prop:congruence:crit-general} is false with the Petersson complement in general. The set-up paragraph before the paper's
+Lemma lem:step1 accordingly uses ``the $\T$-stable complement $C$ of the line of $g^S$ (the sum of the generalised eigenspaces of the other eigencharacters; not the Petersson complement, which is
+not $\T$-stable when the $U_p$ are involved)''; Theorem thm:twist uses $g^\perp$ for a newform $g$ at its own level, where the two complements agree.
 \end{warning}
 
 \begin{theorem}[Hida]\label{thm:congruence:hida}
@@ -465,8 +466,8 @@ recomputed with PARI/GP).
 \section{Wiles's numerical criterion and Lemma lem:ddt417}\label{sec:congruence:ddt417}
 
 This section proves the paper's Lemma lem:ddt417, the piece of commutative algebra that compares the Hecke congruence ideal with the Gram determinant
-of a pairing on a module. The paper uses it in Step 2 of the proof of Theorem thm:quant (with $d=2$, for a depleted form) and, in the version of 10 October
-2026, in the proof of Lemma lem:hecke. To put it in context we first state Wiles's numerical criterion, of which the lemma is the half that survives in the
+of a pairing on a module. The paper uses it in Step 2 of the proof of Theorem thm:quant (with $d=2$, for a depleted form) and, in the paragraph after Lemma lem:hecke,
+for the newform itself, where without the projection formula it gives only an inequality. To put it in context we first state Wiles's numerical criterion, of which the lemma is the half that survives in the
 presence of a module; the criterion itself is used in this book only in the outline of the Taylor-Wiles method (Section \ref{sec:congruence:taylor-wiles}).
 
 \begin{theorem}[Wiles's numerical criterion; Lenstra]\label{thm:congruence:numerical-criterion}
@@ -544,11 +545,10 @@ $I\simeq\eta$ is free of rank one over $\mathcal O$, so $d=r$. Then $Q\simeq(\T/
 \end{proof}
 
 \begin{remark}[Commentary: the paper's statement of Lemma lem:ddt417]\label{rem:congruence:ddt417-commentary}
-The paper states the lemma for $\mathcal O$ ``a discrete valuation ring with finite residue field'' and concludes ``$\#\mathcal O/\Delta\le\#(\mathcal O/\eta)^d$''. The book's \Cref{lem:congruence:ddt417} is stated with
+The paper states the lemma for $\mathcal O$ ``a discrete valuation ring with finite residue field'', and its proof concludes ``$\#\mathcal O/\Delta\le\#(\mathcal O/\eta)^d$''. The book's \Cref{lem:congruence:ddt417} is stated with
 lengths over any discrete valuation ring; for a finite residue field of order $\kappa$ the two forms agree, since $\#X=\kappa^{\len X}$. Three steps that the paper's proof compresses are
-expanded above. (a) The paper's ``First $\wp\cap I=0$: \dots\ $\T$ being torsion-free'' is Step 0; the paper rightly adds that this does not follow from reducedness, since the
-full Hecke algebra can have nilpotents (\Cref{ex:congruence:toy}(c)). (b) The paper's ``Since $L$ is torsion-free and $\wp\cap I=0$, the sum $L[\wp]+L[I]$ is direct'' is Step 2; the operative
-reason is that the nonzero scalar $\pi(t)$ lies in $\wp+I$. (c) In the paper's proof of $L[\wp]^\perp=L[I]$, the converse inclusion shows that the single element $t$ kills $y$; this suffices
+expanded above. (a) The paper's ``First $\wp\cap I=0$: \dots\ $\T$ being torsion-free'' is Step 0; the paper adds that this does not follow from reducedness, since the
+full Hecke algebra can have nilpotents (\Cref{ex:congruence:toy}(c)). (b) The paper's ``The sum $L[\wp]+L[I]$ is direct: $\pi(t)=t+(\pi(t)-t)$ lies in $I+\wp$ and is a nonzero scalar'' is Step 2. (c) In the paper's proof of $L[\wp]^\perp=L[I]$, the converse inclusion shows that the single element $t$ kills $y$; this suffices
 because $I=\mathcal O t$ (\Cref{prop:congruence:congruence-module}(iii)), and Step 3 above uses every $s\in I$ instead. In the paper's direct inclusion the identity
 ``$\pi(t)\langle x,y\rangle=\langle tx,y\rangle=\langle x,ty\rangle=0$'' uses $(\pi(t)-t)x=0$ for $x\in L[\wp]$, which is how Step 3 reads it.
 \end{remark}

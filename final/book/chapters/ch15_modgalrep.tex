@@ -160,7 +160,7 @@ surjective, ramified at two primes or more and at every $r\mid qb$ with $r\equiv
 \item \textbf{Section 3, the Example and the remark after it} (\curve{52a1}, \curve{121a1}, \curve{539c1}, \curve{980i1}; 99A1): \Cref{ex:modgalrep:paper-example,rem:modgalrep:l-divides-N,ex:modgalrep:level-lowering}.
 \item \textbf{Section 4.1} ($M^\Sigma$, $f^\Sigma$) and \textbf{Theorem thm:dfg14} with the paragraph after it (Wiles's level-raising factor):
 \Cref{thm:modgalrep:dfg14,prop:modgalrep:level-raising-factor,thm:modgalrep:level-raising}.
-\item \textbf{Section 4.2} (the lattice $M_{f,\lambda}$ of DFG04 is $H^1(E,\Z_\ell)$; $A=\ad T$): \Cref{thm:modgalrep:comparison-E}.
+\item \textbf{Section 4.1, Proposition prop:pullback and the paragraph after it} (the lattice $M_{f,\lambda}$ of DFG04 is $H^1(E,\Z_\ell)$; $A=\ad T$): \Cref{thm:modgalrep:comparison-E}.
 \item \textbf{Theorem thm:twist} and the data paragraph after it: \Cref{prop:modgalrep:twist-map,prop:modgalrep:twist-levels,thm:modgalrep:twist-monotonicity}.
 \item \textbf{Theorem thm:quant}, its proof (Steps 1 and 3) and Remark rem:afterquant: \Cref{prop:modgalrep:twist-levels}(iii), \Cref{lem:modgalrep:Up-oldspace},
 \Cref{thm:modgalrep:quant}, \Cref{rem:modgalrep:quant-level-raising}.
@@ -172,8 +172,8 @@ surjective, ramified at two primes or more and at every $r\mid qb$ with $r\equiv
 
 This section fixes the notation for newforms, Hecke algebras, Frobenius elements, characters and twists, and recalls from
 \Cref{ch:hecke} the facts about newforms that every later proof uses. The one convention that matters for the paper is the distinction
-between the naive twist $f\otimes\chi$ of a $q$-expansion and the newform twist $f^\chi$: the paper writes $f\otimes\chi$ for both, and its proof of
-Theorem thm:qual is correct only when the two agree or when the difference is handled by strong multiplicity one.
+between the naive twist $f\otimes\chi$ of a $q$-expansion and the newform twist $f^\chi$: the paper writes $f\otimes\chi$ for the naive twist, and its proof of
+Theorem thm:qual passes between the two either where they agree or by strong multiplicity one.
 
 \begin{convention}[newforms, Hecke algebras, Frobenius, characters]\label{conv:modgalrep:notation}
 \begin{enumerate}[label=(\alph*)]
@@ -276,7 +276,7 @@ $f$''), and (i) and (ii) in its last paragraph and in the case $p^2\mid N$. Lemm
 This section attaches to a newform $f$ of weight $2$ and a prime $\lambda$ of its coefficient field a two-dimensional $\lambda$-adic representation
 $\rho_{f,\lambda}$ of $G_\Q$, its lattices and its reduction $\bar\rho_{f,\lambda}$, and compares it with $\rho_{E,\ell}$ when $f=f_E$. The paper uses these objects
 everywhere in Section 3: the residual representation $\bar\rho_h$ of a newform $h$ in Lemma lem:old, the phrase ``arises from a newform'' in the
-optimal-level theorem, and ``$\bar\rho_g\simeq\bar\rho$, that is, $a_p(g)\equiv a_p(f)\pmod\lambda$'' in cases (a), (b), (c); and in Section 4.2 the lattice
+optimal-level theorem, and ``$\bar\rho_g\simeq\bar\rho$, that is, $a_p(g)\equiv a_p(f)\pmod\lambda$'' in cases (a), (b), (c); and in Section 4.1 the lattice
 $M_{f,\lambda}$ of Diamond, Flach and Guo is compared with $T_\ell E$. \Cref{ch:galois} used the representations of newforms as a black box
 (its corollary on congruent traces, part (d)); \Cref{thm:modgalrep:eichler-shimura} discharges it.
 
@@ -438,12 +438,11 @@ $T_\ell E\simeq T_\ell E_0$ given by an isogeny of degree prime to $\ell$ when $
 \end{proof}
 
 \begin{paperlink}
-Section 4.2 of the revised paper, in the paragraph after Proposition prop:pullback: ``The lattice $M_{f,\lambda}$ of \cite{DFG04} is therefore
+Section 4.1 of the paper, in the paragraph after Proposition prop:pullback: ``The lattice $M_{f,\lambda}$ of \cite{DFG04} is therefore
 $H^1(E,\Z_\ell)=\operatorname{Hom}(T_\ell E,\Z_\ell)\simeq T_\ell E(-1)$, by Galois-equivariance of $\varphi^*$ in \'etale cohomology, and its adjoint is $\ad T_\ell E$, the adjoint
-being insensitive to dualising and twisting.'' This is \Cref{thm:modgalrep:comparison-E}(ii) and (iv) for the optimal curve $E=E_0$. The original
-version of the paper said instead that $M_{f,\lambda}$ and $T_\ell E$ are homothetic; by (iii) that is right only after replacing $T_\ell E$ by its dual
-$T_\ell E(-1)$, and only when $\bar\rho$ is irreducible. Only the adjoint enters the paper's arguments (Theorem thm:main, with $A=\ad T$), and it is the same in
-every reading.
+being insensitive to dualising and twisting.'' This is \Cref{thm:modgalrep:comparison-E}(ii) and (iv) for the optimal curve $E=E_0$. By (iii), $M_{f,\lambda}$ is homothetic to $T_\ell E$ itself only after replacing $T_\ell E$ by its dual
+$T_\ell E(-1)$, and only when $\bar\rho$ is irreducible. Only the adjoint enters the paper's arguments (Theorem thm:main, with $A=\ad T$), and it is the same for
+every one of these lattices.
 \end{paperlink}
 
 The Hecke-algebra side of the same objects is the residual representation of a maximal ideal of $\T$. \Cref{ch:moddeg} uses it (multiplicity one,
@@ -975,7 +974,8 @@ theorem of Khare and Wintenberger.
 A mod $\ell$ representation that arises from a newform of level $N$ may also arise at a smaller level. This section states the theorems that
 lower the level (Mazur's principle, Ribet's theorem, and the optimal-level theorem of Ribet, Carayol and Diamond in the form of
 \cite[Theorem 3.15]{DDT}), proves the specialisation to $\bar\rho_{E',\ell}$ that the paper uses (level exactly $N(\bar\rho)$, trivial character), and works the
-paper's examples. This is the step ``lower the level of $\bar\rho$, or of its twist $\bar\rho\otimes\chi_{q^*}$'' of the proof of Theorem thm:qual.
+paper's examples. This is the step of the proof of Theorem thm:qual that, in the words of the paragraph after that theorem, ``lowers the level of $\bar\rho$, or of its twist
+$\bar\rho\otimes\chi_{q^*}$, and twists back'' (the first half of that sentence).
 
 \begin{theorem}[Mazur's principle]\label{thm:modgalrep:mazur-principle}
 Let $\ell$ be odd, $f$ a newform of weight $2$ on $\Gamma_0(N)$ with $\ell\nmid N$, $\lambda\mid\ell$ with $\bar\rho=\bar\rho_{f,\lambda}$ irreducible, and $q\,\|\,N$ a prime such that $\bar\rho$ is
@@ -1164,9 +1164,9 @@ set of primes with $\ell\notin\Sigma$. Let $M^\Sigma=M\prod_{p\in\Sigma}p^{\delt
 
 We do not prove this here; it is \cite[Proposition 1.4(c)]{DFG04} (checked against the published text), and \Cref{ch:congruence} sketches the proof as Diamond, Flach and Guo give it
 (the degeneracy maps, the homothety of $G_\Q$-stable lattices when $\bar\rho_f$ is irreducible, and the primitivity $\gamma(f)=f^\Sigma$ read through the integral comparison isomorphism; Ihara's
-lemma is not used). The paper does not state the hypothesis
-$\ell\notin\Sigma$; without it the statement is false (for $f=f_{\text{11a}}$, $\ell=3$, $\Sigma=\set3$ the right side is $3^{-2}\Z_3$, which is not integral; see \Cref{ch:congruence}; in \cite{DFG04} it is a standing assumption of Section 1.7.3), and
-every use in the paper has $\ell\notin\Sigma$. By \Cref{prop:modgalrep:level-raising-factor} and \Cref{cor:modgalrep:delta-naive}, adding to $\Sigma$ a prime with $\delta_p=0$ changes neither the level nor
+lemma is not used). The hypothesis
+$\ell\notin\Sigma$ cannot be dropped (for $f=f_{\text{11a}}$, $\ell=3$, $\Sigma=\set3$ the right side is $3^{-2}\Z_3$, which is not integral; see \Cref{ch:congruence}; in \cite{DFG04} it is a standing assumption of Section 1.7.3), and
+every use in the paper has $\ell\notin\Sigma$, as the paper notes after the theorem. By \Cref{prop:modgalrep:level-raising-factor} and \Cref{cor:modgalrep:delta-naive}, adding to $\Sigma$ a prime with $\delta_p=0$ changes neither the level nor
 the ideal, a good prime contributes $\frac{p-1}p\cdot\frac{(p+1)^2-a_p^2}{p^2}$, and a multiplicative prime $1-p^{-2}$. The reading for this chapter: $f^\Sigma$ is ``$f$ with its level
 raised at $\Sigma$'' (at a good $p$ it is the eigenform of level $Mp^2$ in the span of $f(z)$, $f(pz)$, $f(p^2z)$ with $U_p$-eigenvalue $0$), and the change of the
 congruence ideal is the level-raising factor.
@@ -1440,8 +1440,8 @@ for both forms. \Cref{lem:modgalrep:crit}(ii) now gives $\ell\mid r$.
 \begin{paperlink}
 The paper's proof of Lemma lem:old follows the same plan and the same case division; the eigenvalue lists and eigenvectors are those of
 \Cref{lem:modgalrep:Up-oldspace}. Two of its sentences are expanded here. ``$\bar\rho_h\simeq\bar\rho$ over a common finite extension of $\F_\ell$, by Chebotarev and
-Brauer-Nesbitt, $\bar\rho$ being irreducible, hence absolutely irreducible'' is Step 2 (the original version of the paper had only ``$\bar\rho$ being irreducible'',
-which gives only the semisimplifications). ``A non-split extension of two characters has a unique stable line'' is \Cref{thm:modgalrep:local-types}(b) with
+Brauer-Nesbitt, $\bar\rho$ being irreducible, hence absolutely irreducible'' is Step 2 (irreducibility alone, without absolute irreducibility, would match only
+the semisimplifications over $\F_\ell$). ``A non-split extension of two characters has a unique stable line'' is \Cref{thm:modgalrep:local-types}(b) with
 \Cref{ch:reps}. The weight-two fact that $\alpha_p\ne\beta_p$ (Coleman and Edixhoven \cite{ColemanEdixhoven}) is not needed: the argument uses only that each listed
 eigenvalue has an eigenvector.
 \end{paperlink}
@@ -1540,15 +1540,15 @@ The paper's proof (Section sec:proof) is the one above. Three remarks on its wor
 \Cref{conv:modgalrep:twists}. (1) Case (b): ``its newform is $f'=f\otimes\chi$, a newform of weight $2$ on $\Gamma_0(N)$ (both have $a_q=0$)''. The naive twist is the newform
 twist here because $a_q(f^\chi)=0$, which holds since $q^2\mid N$ (\Cref{thm:modgalrep:local-types}); Atkin and Li's theorem does not apply at this level ($q^2\mid N$), and is
 used only for $h=g\otimes\chi$, where $q\,\|\,M$ (``As $q\,\|\,M$, Lemma lem:twist(iii) says that $h=g\otimes\chi$ is a newform on $\Gamma_0(Mq)$''). (2) The proof of $h\ne f$: the
-revised paper argues by strong multiplicity one and notes ``Note that $h\otimes\chi$ is the $q$-depletion of $g$, not $g$, as $a_q(g)=\pm1$''; the original version wrote
-$g=h\otimes\chi=f\otimes\chi=f'$, which is false as an identity of $q$-series. Steps (b6), (c6) give the argument with newform twists. (3) Case (c): the revised paper sets
-``$f'=f_{E'}$ be its newform, of weight $2$ on $\Gamma_0(N/q)$ with $q\,\|\,N/q$, $a_q(f')=\pm1$ and $a_p(f')=\chi(p)a_p(f)$ for $p\ne q$ (so $f\otimes\chi$ is the $q$-depletion of $f'$ ...)''; the
-original version called $f\otimes\chi$ itself a newform on $\Gamma_0(N/q)$, which is false, since its $q$-th coefficient vanishes while $a_q(f_{E'})=\pm1$
+paper argues by strong multiplicity one and notes ``Note that $h\otimes\chi$ is the $q$-depletion of $g$, not $g$, as $a_q(g)=\pm1$''; the identity
+$g=h\otimes\chi$ fails as an identity of $q$-series, which is why the argument compares $a_p$ only for $p\nmid qN$. Steps (b6), (c6) give the argument with newform twists. (3) Case (c): the paper writes
+``let $f'=f_{E'}$ be its newform, of weight $2$ on $\Gamma_0(N/q)$ with $q\,\|\,N/q$, $a_q(f')=\pm1$ and $a_p(f')=\chi(p)a_p(f)$ for $p\ne q$'' and notes that $f\otimes\chi$ is the $q$-depletion of $f'$; the
+naive twist $f\otimes\chi$ is not itself a newform on $\Gamma_0(N/q)$, since its $q$-th coefficient vanishes while $a_q(f_{E'})=\pm1$
 (\Cref{ex:modgalrep:twist-dictionary}(b)).
 \end{paperlink}
 
 \begin{remark}[case (a) at $q=2$, and the range of the hypotheses]\label{rem:modgalrep:qual-q2}
-Case (a) at $q=2$ was added in the revised paper; the only input specific to $q=2$ is that for type $\kod{IV}$ or $\kod{IV}^*$ at $2$ the image of inertia on $T_3E$ is
+In case (a) at $q=2$ the only input specific to $q=2$ is that for type $\kod{IV}$ or $\kod{IV}^*$ at $2$ the image of inertia on $T_3E$ is
 cyclic of order $3$, so that the Serre exponent of $\bar\rho_{E,3}$ at $2$ is $1$ (\Cref{ch:galrep}). Case (b) is not claimed at $q=2$: there the Kodaira type does not
 determine the image of inertia, and the twist by $\Q(\sqrt{q^*})$ is not available. In case (a) the hypothesis $3\nmid N$ excludes $q=3$. Below conductor $10{,}000$ there
 are $1{,}051$ optimal curves with type $\kod{IV}$ or $\kod{IV}^*$ at $2$ (PARI codes $\pm4$), $3\nmid N$ and mod $3$ image neither reducible (labels \texttt{3B}, \texttt{3Cs}) nor $\Ns$, and
@@ -1591,7 +1591,7 @@ $E$ & case, $\ell$ & type at $q$ & twist & $M$, $g$ & $h$ & $\deg\varphi$\\
 \end{tabular}
 \end{center}
 \begin{enumerate}[label=(\roman*)]
-\item \emph{Every $n$.} Each congruence $f_E\equiv g'$ produced by Lemma lem:old holds for every $n$, not only at the primes the paper first listed: both sides lie in
+\item \emph{Every $n$.} Each congruence $f_E\equiv g'$ produced by Lemma lem:old holds for every $n$, not only at the primes $p\nmid\ell N$: both sides lie in
 $S_2(\Gamma_0(N))$ with integral coefficients, so a check up to Sturm's bound $\frac16N\prod_{p\mid N}(1+\frac1p)$ suffices (\Cref{ch:modforms}); the bounds are $14$, $22$, $22$, $112$, $336$
 for $N=52$, $121$, $121$, $539$, $980$, and the congruences were checked with PARI/GP for all $n\le3000$. For the last three rows $M_h=N$, so $V_h=\C h$ and $g'=h$; for the first
 two $g'=h-h(qz)$, the $q$-depletion of $h$ (\Cref{ex:modgalrep:old-examples}(b), (c)).
@@ -1691,12 +1691,11 @@ The proof is in \Cref{ch:congruence}; in two lines: a congruence $g\equiv h\pmod
 symmetric. \Cref{prop:modgalrep:twist-levels}(i) shows that the hypotheses hold in the three cases listed after the theorem in the paper.
 
 \begin{paperlink}
-The paragraph after Theorem thm:twist (revised paper): ``In cases (a) and (b) Theorem thm:quant predicts a difference equal to the Euler term, which is positive in
+The paragraph after Theorem thm:twist: ``In cases (a) and (b) Theorem thm:quant predicts a difference equal to the Euler term, which is positive in
 case (a) at $\ell=3$ for every $q\ne3$, as $3\mid q^2-1$: for instance $v_3$ of the degrees is $2$ against $1$ for 539c1 and 77c1, $2$ against $1$ for 980i1 and 140b1, $1$ against
 $0$ for 121d1 and 11a1, and $2$ against $0$ for 539d1 (type $\mathrm{I}_0^*$, $e_3(E,7)=2$) and 11a1.'' Recomputed from Cremona's \texttt{degphi} file: $\deg\varphi=288$, $6$, $2880$, $60$,
 $24$, $1$, $72$ for \curve{539c1}, \curve{77c1}, \curve{980i1}, \curve{140b1}, \curve{121d1}, \curve{11a1}, \curve{539d1}, so the $3$-adic valuations are $2$, $1$, $2$, $1$, $1$, $0$, $2$, as stated, and each difference
-is $e_3(E,q)$: $v_3(7^2-1)=1$, $v_3(7^2-1)=1$, $v_3(11^2-1)=1$, and $v_3(7-1)+v_3(8^2-(-2)^2)=2$ (\Cref{prop:modgalrep:level-raising-factor} with $a_7(f_{11a})=-2$). The original version
-of the paper had claimed strict inequality ``only in case (b)'', which these pairs contradict.
+is $e_3(E,q)$: $v_3(7^2-1)=1$, $v_3(7^2-1)=1$, $v_3(11^2-1)=1$, and $v_3(7-1)+v_3(8^2-(-2)^2)=2$ (\Cref{prop:modgalrep:level-raising-factor} with $a_7(f_{11a})=-2$).
 \end{paperlink}
 
 \begin{theorem}[the paper's Theorem thm:quant]\label{thm:modgalrep:quant}
@@ -1772,7 +1771,7 @@ published version). There $p$ is our $\ell$, the assumptions on $\bar\rho$ other
 $\bar\rho$ surjective, and ramified at every prime dividing $bq$ that is $\equiv\pm1\pmod p$), and the level is prime to $p$ by their standing assumptions (Notation). The identity
 for all $f$ of weight $2$ and square-free level, with no hypothesis on $\bar\rho$, is the formula they propose in Section 6.6 and in display (2) of their introduction (it is not
 numbered as a conjecture; their Conjecture 6.1 is the anticyclotomic main conjecture). Their Definition 3.3 of the Tamagawa exponent is \Cref{def:modgalrep:tamagawa-exponent}.
-The paper's summary (Section 1.5) mentions only the condition on two ramified primes; the surjectivity and the condition at the primes $r\equiv\pm1\pmod\ell$ are also needed.
+The paper's summary (Section 1.5) records both conditions, the two ramified primes and hypothesis CR.
 
 \begin{theorem}[Kim and Ota]\label{thm:modgalrep:kim-ota}
 Let $N=N^+N^-$ with $N^-$ square-free, $\ell\ge5$, $\ell\nmid N$, $\ell\notin S_f$, and $\bar\rho$ ramified at every $q\mid N^-$ with $q\equiv\pm1\pmod\ell$. Then
@@ -1965,15 +1964,7 @@ dual of $\rho_{f,\lambda}$; this chapter avoids the issue by stating everything 
 Our $\rho_{f,\lambda}$ has arithmetic Frobenius trace $a_p$ and determinant $\chi_\ell$, as $\rho_{E,\ell}$ does; DFG04 work with cohomology, where the geometric Frobenius has
 trace $a_p$ (\Cref{thm:modgalrep:eichler-shimura}(iii)).
 
-\paragraph{The two versions of the paper.} The book follows the revised version. The original version of 10 October 2026 differed in this chapter's area
-in four places, all corrected in the revision and discussed in the paperlinks above: the lattice $M_{f,\lambda}$ was said to be homothetic to $T_\ell E$ rather
-than to its dual (\Cref{thm:modgalrep:comparison-E}); Lemma lem:old said ``$\bar\rho$ being irreducible'' without ``hence absolutely irreducible''
-(\Cref{lem:modgalrep:old}, Step 2); the proof of Theorem thm:qual treated the naive twists $f\otimes\chi$ and $h\otimes\chi$ as newforms in cases (b) and (c)
-(\Cref{sec:modgalrep:proof-qual}); and the sentence after Theorem thm:twist claimed strict inequality only in case (b). The revised version also adds case (a) at $q=2$ and
-the example \curve{52a1}, proves that the Example's congruences hold for every $n$ by Sturm's bound, and gives the reason for excluding $q=3$ in the remark after the
-Example as $q=\ell$.
-
-\paragraph{Quotations and computations.} Quotations of the paper are verbatim from the revised version, except that its internal cross-references are
+\paragraph{Quotations and computations.} Quotations of the paper are verbatim, except that its internal cross-references are
 printed as label names (``Lemma lem:twist(iii)''). Every number in this chapter (coefficients, Kodaira types, twists, Serre conductors, congruences, Sturm bounds,
 congruence numbers, modular degrees, the level-raising tables and the count of $1{,}051$ curves) was recomputed with PARI/GP 2.17.2 \cite{PARI} through the Python package
 \texttt{cypari2} and Cremona's tables \cite{Cremona97} for conductors below $10{,}000$. The congruence numbers were computed as indices $[S_2(\Gamma_0(N);\Z):\Z f\oplus L]$

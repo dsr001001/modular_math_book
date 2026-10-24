@@ -431,8 +431,8 @@ $(\rho(g)x\rho(g)^{-1})^\vee=\rho^\vee(g)x^\vee\rho^\vee(g)^{-1}$ with $\rho^\ve
 \begin{paperlink}
 Section 4.2 writes ``$T^D=\operatorname{Hom}(A,\Z_\ell(1))\simeq A(1)$ (via the trace form)'': this is (i), and it is one of the places where $\ell$ odd is
 used. In the same paragraph the paper says that, by Proposition prop:pullback, $\varphi_E^*$ identifies the lattice $M_{f,\lambda}$ of Diamond,
-Flach and Guo with $H^1(E,\Zl)\simeq T_\ell E(-1)$, so that its adjoint is $\ad T$: this is (iii). The original version said instead that $M_{f,\lambda}$ and $T_\ell E$ are homothetic;
-they are not (one is the dual of the other), but their adjoints agree, which is all that is used. The step at the primes of type
+Flach and Guo with $H^1(E,\Zl)\simeq T_\ell E(-1)$, so that its adjoint is $\ad T$: this is (iii). The lattices $M_{f,\lambda}$ and $T_\ell E$ are not
+homothetic (one is the dual of the other), but their adjoints agree, which is all that is used. The step at the primes of type
 $\kod{I}_n^*$ in the proof of Theorem thm:main and the statement of Lemma lem:tamfactor at additive potentially multiplicative primes use the
 last assertion of (iii).
 \end{paperlink}
@@ -517,11 +517,11 @@ geometric Frobenius has eigenvalues $\alpha,\beta$ and gives $1-a_pp^{-s}+p^{1-2
 \end{proof}
 
 \begin{paperlink}
-The paper's Section 1.1 now defines ``$L_p(A_f,s)=\det(1-\Frob_p^{-1}p^{-s}\mid A_f^{I_p})^{-1}$ is the true local factor, defined with the geometric
+The paper's Section 1.1 defines ``$L_p(A_f,s)=\det(1-\Frob_p^{-1}p^{-s}\mid A_f^{I_p})^{-1}$ is the true local factor, defined with the geometric
 Frobenius as in \cite[\S1.1.1]{DFG04}'', and Lemma lem:fpr writes ``$L_p(A_f,1)^{-1}=L_p(A_f(1),0)^{-1}$'', which is (a) and holds only with the
 geometric Frobenius. The paragraph after Lemma lem:dfg21 writes $(V^D)^{I_p}/(\Frob_p-1)$, an arithmetic expression, next to
-$\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}$, a geometric one; (b) and (c) show that the two are compatible. The original version wrote
-$\Frob_p$ in the definition of $L_p(A_f,s)$; with the arithmetic Frobenius the multiplicative factor at $s=1$ would be $1-p^2$, not $1-p^{-2}$.
+$\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})=L_p(A_f,1)^{-1}$, a geometric one; (b) and (c) show that the two are compatible. With the arithmetic Frobenius in the
+definition of $L_p(A_f,s)$ the multiplicative factor at $s=1$ would be $1-p^2$, not $1-p^{-2}$.
 \end{paperlink}
 
 \begin{proposition}[the adjoint at $p\ne\ell$]\label{prop:blochkato:local-adjoint}
@@ -980,8 +980,7 @@ $H^1_\Sigma(\Q,W)$ is \Cref{def:blochkato:sigma-selmer} with $\Sigma$ the set of
 \end{definition}
 
 The Selmer group with $\Ql$ coefficients $H^1_f(\Q,A_f)$ vanishes under the hypothesis of Theorem thm:main (\Cref{thm:blochkato:dfg27}), so the length in
-(eq:identity) is that of $H^1_f(\Q,W)$ with discrete coefficients; the revised abstract writes $\len_{\Zl}H^1_f(\Q,\ad T_\ell E\otimes\Q_\ell/\Z_\ell)$, while the original
-spoke of the Selmer group ``of $\ad V_\ell E$''.
+(eq:identity) is that of $H^1_f(\Q,W)$ with discrete coefficients, as the paper writes it: $\len_{\Zl}H^1_f(\Q,\ad T\otimes\Q_\ell/\Z_\ell)$.
 
 \begin{proposition}[Euler characteristic]\label{prop:blochkato:euler-characteristic}
 Let $V$ be a geometric representation of $G_\Q$. Then
@@ -1050,9 +1049,9 @@ $v_\ell(\Tam_p(T_\ell E))=v_\ell(n)$, which is $v_\ell(c_p)$ because the Tamagaw
 $v_\ell(\Tam_p(T_\ell E))=v_\ell(c_p)$ at every $p\ne\ell$.
 
 \begin{paperlink}
-\sloppy Section 1.2 of the revised paper defines ``$\Tam_p(M)=\Fitt_{\Z_\ell}\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$, an ideal of $\Z_\ell$ \cite[p.~708]{DFG04},
-\cite[I.4.2.2]{FPR94}''. The original version wrote $\Fitt_{\Z_\ell}\bigl(H^1(I_p,M)_{\mathrm{tor}}\bigr)^{G_{\Q_p}}$, with the invariants outside the Fitting ideal, which has no
-meaning (an ideal of $\Zl$ has no Galois action); the computation in Lemma lem:tamfactor has always used the invariants inside.
+\sloppy Section 1.2 of the paper defines ``$\Tam_p(M)=\Fitt_{\Z_\ell}\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$, an ideal of $\Z_\ell$ \cite[p.~708]{DFG04},
+\cite[I.4.2.2]{FPR94}''. This is \Cref{def:blochkato:tamagawa}: the invariants are taken inside the Fitting ideal, as they must be (an ideal of $\Zl$ has no
+Galois action), and the computation in Lemma lem:tamfactor uses them so.
 \end{paperlink}
 
 \begin{proposition}[the index description]\label{prop:blochkato:tam-index}
@@ -1263,14 +1262,11 @@ $q^{-1}\cdot\varepsilon q=\varepsilon$; the invariants have length $v_\ell(n)$ i
 \end{proof}
 
 \begin{paperlink}
-The proof of Lemma lem:tamfactor in the paper is Steps 1 to 6 in compressed form. Three points are corrected or made precise above, and the revised
-version of the paper has adopted all three. The corner of the matrices is $\varepsilon\kappa$ (Step 1; the original wrote $\kappa$). The Frobenius in the matrices is
-arithmetic (Steps 2 to 4; the paper now says so). The original identified $c'$ with ``the image of $\kappa$ in $H^1(G/I,\Z_\ell(1)^I)$ \dots, well defined modulo $q-1$''; the image
-exists only through the splitting attached to the uniformiser $q$, $c'$ equals $\varepsilon$ times that image only for the lift fixing a compatible system of $\ell$-power roots of $q$, and the indeterminacy is
-$(n,q-1)$ (Step 5). The revised proof reads: ``it is $\varepsilon$ times the class of $u$ for the Frobenius lift fixing a compatible system of $\ell$-power roots of $q$, and in
-general it is well defined only modulo $\ell^{\min(v_\ell(n),v_\ell(q-1))}$''. None of this changes the formula. One wording slip remains in the revised proof: it
-says ``so $\Frob$ acts on $M/(t-1)M$ as $q^{-1}\rho(\Frob)$''; the action on $M=\ad T$ is $q^{-1}\Ad\rho(\Frob)$, conjugation by $\rho(\Frob)$, as in Steps 2 to 4, and the
-paper's next sentence (``the adjoint action sends $e$ to $qe$'') computes with the adjoint action, so the result is unaffected. The identification of $\Tam_q$ with the Fitting ideal of the
+The proof of Lemma lem:tamfactor in the paper is Steps 1 to 6 in compressed form. The corner of the matrices is $\varepsilon\kappa$, not $\kappa$ (Step 1); the Frobenius
+in the matrices is arithmetic (Steps 2 to 4), and it acts on $M/(t-1)M$ by $q^{-1}\Ad\rho(\Frob)$, so that ``the adjoint action sends $e$ to $qe$''. The value $c'$ is
+handled in Step 5: the unramified projection of $\kappa$ exists only through the splitting attached to the uniformiser $q$, and the indeterminacy of $c'$ is $(n,q-1)$.
+The paper's proof says the same: ``it is $\varepsilon$ times the class of $u$ for the Frobenius lift fixing a compatible system of $\ell$-power roots of $q$, and in
+general it is well defined only modulo $\ell^{\min(v_\ell(n),v_\ell(q-1))}$''. The identification of $\Tam_q$ with the Fitting ideal of the
 invariants of the torsion is \Cref{def:blochkato:tamagawa}.
 \end{paperlink}
 
@@ -1291,8 +1287,8 @@ In the situation of \Cref{lem:blochkato:tamfactor}:
 \begin{paperlink}
 Remark rem:ko(1) says that at a potentially multiplicative prime $q\equiv1\pmod\ell$ with $\ell\mid n$ whose Tate parameter has an $\ell$-th power as unit part,
 Lemma lem:tamfactor gives $v_\ell(\Tam_q)\ge t_\ell(E,q)+1$, and that (eq:identity) raises the bound accordingly. This is (iii), and \Cref{prop:blochkato:tam-potmult} covers the potentially
-multiplicative primes. The revised abstract now says ``by at least one'' and includes the condition $\ell\mid n_q$; the original abstract said ``by one'' and omitted
-$\ell\mid n_q$, without which the excess is $0$ whatever the unit part.
+multiplicative primes. The abstract's sentence on the Tamagawa factor (``by at least one'', with the condition $\ell\mid n_q$) is (ii) and (iii): without
+$\ell\mid n_q$ the excess is $0$ whatever the unit part.
 \end{paperlink}
 
 \begin{proposition}[potentially multiplicative additive primes]\label{prop:blochkato:tam-potmult}
@@ -1311,9 +1307,8 @@ results of \Cref{ch:cohomology,ch:galcoh} quoted in Steps 2 to 5 are stated ther
 $G_{\Q_q}$-module and the Kummer cocycle of the Tate parameter. So they apply verbatim to the Tate curve $E_{q_E}$ over $\Q_q$, and the formula holds with $n=\nu$. At $q=2$, $v_\ell(q-1)=0$ and the value is $t_\ell(E,2)=v_\ell(-v_2(j_E))$.
 \end{proof}
 
-For odd $q$ one may instead twist globally, by $\chi_{q^*}$, as the original proof of Theorem thm:main did with the curve $E_{\{p\}}$ of Lemma lem:twist; for $q=2$ that lemma
-does not apply, and the local twist is needed. The revised paper states the formula at additive potentially multiplicative primes in Lemma lem:tamfactor itself,
-with the local argument. At $q=2$ the index of a Kodaira symbol $\kod{I}_m^*$ need not be $-v_2(j)$, and the reduction may be potentially good (\Cref{ch:reduction}); the
+For odd $q$ one may instead twist globally, by $\chi_{q^*}$, using Lemma lem:twist; for $q=2$ that lemma does not apply, and the local twist is needed. The paper
+states the formula at additive potentially multiplicative primes in Lemma lem:tamfactor itself, with the local argument. At $q=2$ the index of a Kodaira symbol $\kod{I}_m^*$ need not be $-v_2(j)$, and the reduction may be potentially good (\Cref{ch:reduction}); the
 proposition uses $\nu=-v_2(j_E)$.
 
 \begin{example}[Tate data and Tamagawa factors]\label{ex:blochkato:tamfactor-examples}
@@ -1349,10 +1344,9 @@ $19$. The curves \curve{791a1}, \curve{1184f1}, \curve{1748e1} have $3\nmid N$, 
 
 \section[Additive primes and Open question 3]{Tamagawa factors at additive primes, and Open question 3}\label{sec:blochkato:additive}
 
-The original version of the paper left the Tamagawa factors of $\ad T$ at the additive primes uncomputed (``$v_\ell(\Tam_p(\ad T))\ge0$ at an additive prime'') and
-asked for them in Open question 3. This section computes them: they are trivial at every potentially good additive prime, for every odd $\ell$, and given by
-\Cref{prop:blochkato:tam-potmult} at the potentially multiplicative ones. The revised paper contains the first statement as Lemma lem:tamadd and the resulting
-explicit identity as Corollary cor:explicit.
+This section computes the Tamagawa factors of $\ad T$ at the additive primes: they are trivial at every potentially good additive prime, for every odd $\ell$, and given by
+\Cref{prop:blochkato:tam-potmult} at the potentially multiplicative ones. These are the paper's Lemma lem:tamadd and, with Lemma lem:tamfactor, its Corollary
+cor:explicit; Open question 3 of the paper starts from them.
 
 \begin{lemma}[finite inertia image]\label{lem:blochkato:finite-inertia-image}
 Let $q\ne\ell$ and let $M$ be a free $\Zl$-module of finite rank on which $I=I_q$ acts continuously through a finite quotient $\Delta=I/K$. Then inflation identifies
@@ -1409,9 +1403,8 @@ So $\Tam_q(\ad T)$ is trivial at every potentially good additive prime, of every
 $\kod{II}^*$, $\kod{IV}$, $\kod{IV}^*$, where $\Tam_q(T)$ can be divisible by $3$ (\Cref{prop:blochkato:tam-of-E}).
 
 \begin{paperlink}
-Lemma lem:tamadd of the revised paper is (i), with the same proof: inflation-restriction through the finite image of inertia, element orders $1,2,3,4,6$, and the
-freeness of $\ad T$ over $\Z_3[P]$ shown by the same three coordinate vectors. The original proof of Theorem thm:main said only ``$v_\ell(\Tam_p(\ad T))\ge0$'' at the
-additive primes.
+Lemma lem:tamadd of the paper is (i), with the same proof: inflation-restriction through the finite image of inertia, element orders $1,2,3,4,6$, and the
+freeness of $\ad T$ over $\Z_3[P]$ shown by the same three coordinate vectors.
 \end{paperlink}
 
 \begin{corollary}[the explicit identity]\label{cor:blochkato:explicit-identity}
@@ -1504,11 +1497,10 @@ $\bar\chi_3=\chi_{-3}$.
 \end{proof}
 
 \begin{paperlink}
-Lemma lem:h0 in the revised paper states (ii) with the criterion over $\Q(\sqrt{-3})$ (``if and only if $\bar\rho_{E,3}$ is not absolutely irreducible on
+Lemma lem:h0 in the paper states (ii) with the criterion over $\Q(\sqrt{-3})$ (``if and only if $\bar\rho_{E,3}$ is not absolutely irreducible on
 $\Gal(\overline\Q/\Q(\sqrt{-3}))$'') and proves it by the determinant argument; the equivalence with the image being $N_s(\F_3)$ is the paper's Proposition prop:ns
-(\Cref{ch:galrep}). The original version asserted finiteness ``for $E$ without complex
-multiplication'', by an argument with $a_p=0$ at inert primes that confused the cyclotomic $\chi_\ell$ with the quadratic $\chi_{\ell^*}$; it also stated the criterion for
-$h_\ell(E)>0$ with $\chi_{\ell^*}$ instead of $\bar\chi_\ell$. The two agree only for $\ell=3$. Conjecture conj:euler defines $h_\ell(E)$ as the length of
+(\Cref{ch:galrep}), and the lemma adds that it holds with or without complex multiplication. The criterion for $h_\ell(E)>0$ involves the cyclotomic $\bar\chi_\ell$,
+not the quadratic $\chi_{\ell^*}$; the two agree only for $\ell=3$. Conjecture conj:euler defines $h_\ell(E)$ as the length of
 $H^0(\Q,\ad T(1)\otimes\Q_\ell/\Z_\ell)$, which is $\len H^1_f(\Q,T^D)$ by (i) whenever $H^1_f(\Q,V^D)=0$.
 \end{paperlink}
 
@@ -1546,10 +1538,10 @@ The term at $\infty$ is $H^1(\R,T^D)^*=0$, a group killed by $2$ and by a power 
 \end{proof}
 
 \begin{paperlink}
-The paper's Lemma lem:dfg21 does not state $\ell\notin\Sigma$. It is needed: $H^1_\Sigma(\Q,W)$ keeps the Bloch-Kato condition at $\ell$, and the paragraph after the lemma
-(``For $p\in\Sigma$ the group $H^1_f(\Q_p,V^D)=H^1_{\mathrm{ur}}(\Q_p,V^D)=(V^D)^{I_p}/(\Frob_p-1)$ vanishes'') is false at $p=\ell$, where $H^1_f(\Q_\ell,V^D)$ is not the
-unramified group and has dimension $2$ when $\ell\nmid N$ (\Cref{prop:blochkato:dimension-formula}). In the paper's application $\Sigma$ is the set of primes dividing $N$ and
-$\ell\nmid N$, so nothing is affected; the lemma above includes the hypothesis.
+The paper's Lemma lem:dfg21 includes the hypothesis $\ell\notin\Sigma$, as the lemma above does. It is needed: $H^1_\Sigma(\Q,W)$ keeps the Bloch-Kato condition at $\ell$, and
+the computation of the paragraph after the lemma (``For $p\in\Sigma$ the group $H^1_f(\Q_p,V^D)=H^1_{\mathrm{ur}}(\Q_p,V^D)=(V^D)^{I_p}/(\Frob_p-1)$ vanishes'') would fail at
+$p=\ell$, where $H^1_f(\Q_\ell,V^D)$ is not the unramified group and has dimension $2$ when $\ell\nmid N$ (\Cref{prop:blochkato:dimension-formula}), as that paragraph says.
+In the paper's application $\Sigma$ is the set of primes dividing $N$ and $\ell\nmid N$.
 \end{paperlink}
 
 What each hypothesis does, in the abstract proof of \Cref{ch:galcoh}: $H^1_f(\Q,V^D)=0$ makes the dual Selmer group $H^1_f(\Q,T^D)$ torsion, hence equal to
@@ -1616,8 +1608,8 @@ follows from $\len H^1_f(\Q,W)\ge0$ and $\min(\dots)\ge0$, including the primes 
 
 \begin{paperlink}
 The proof of Theorem thm:main, from the sentence that invokes Theorem thm:dfg27 for the hypotheses of Lemma lem:dfg21 to the display of $v_\ell(\degphi)$, is \Cref{thm:blochkato:selmer-identity}. The final step, at the potentially multiplicative primes of additive
-reduction, uses \Cref{prop:blochkato:tam-potmult}: the revised paper applies Lemma lem:tamfactor to the local twist, as here; the original applied it to the global twist
-$E_{\{p\}}$ of Lemma lem:twist, which does not exist at $p=2$.
+reduction, uses \Cref{prop:blochkato:tam-potmult}: the paper applies Lemma lem:tamfactor, whose last sentence covers these primes through the local twist, as here; a global
+quadratic twist lowering the level does not exist at $p=2$.
 \end{paperlink}
 
 \begin{example}[four curves at $\ell=3$]\label{ex:blochkato:selmer-examples}
@@ -1667,9 +1659,9 @@ $\bar\rho$ is irreducible (the image $N_s(\F_3)$ fixes no line), $H^0(\Q,V^D)=0$
 $\Sigma\ne\emptyset$. The equivalence is \Cref{prop:blochkato:euler-characteristic}. Under the condition, \Cref{lem:blochkato:dfg21} and \Cref{cor:blochkato:length-identity} apply.
 \end{proof}
 
-Theorem thm:dfg27 does not supply the vanishing of $H^1_f(\Q,V^D)$ here, since $3\in S_f$; the proposition states it as a hypothesis, as Remark rem:ns of the revised
-paper does (``we assume it here''). It is predicted by the Bloch-Kato conjecture (\Cref{conj:blochkato:tnc}), since $L(\ad f,1)\ne0$; we know of no proof for these
-curves and have not searched the literature after Diamond, Flach and Guo for one. Section 1.3 of the revised paper also states the condition.
+Theorem thm:dfg27 does not supply the vanishing of $H^1_f(\Q,V^D)$ here, since $3\in S_f$; the proposition states it as a hypothesis, as Remark rem:ns of the paper
+does (``we assume it here''). It is predicted by the Bloch-Kato conjecture (\Cref{conj:blochkato:tnc}), since $L(\ad f,1)\ne0$; we know of no proof for these
+curves and have not searched the literature after Diamond, Flach and Guo for one. Section 1.3 of the paper also states the condition.
 
 \begin{remark}[the correction term of Conjecture conj:euler]\label{rem:blochkato:conj-euler-h}
 In Conjecture conj:euler the correction is $h_\ell(E)=\len H^0(\Q,\ad T(1)\otimes\Qlmod)$: by \Cref{prop:blochkato:h0-selmer} it is $0$ for $\ell\ge5$ and is $1$ exactly for the curves
@@ -1711,16 +1703,15 @@ here & $7$ & $18$ & $1$ & $17$ & $18$\\
 \end{tabular}
 \end{center}
 No curve violates the refined inequality, in these populations or in the full populations of \Cref{rem:blochkato:open-question-3} ($13{,}203$, $23{,}361$ and $28{,}134$ curves). The
-rates are not comparable with the paper's (smaller conductors; $\kod{I}_n^*$ primes included); the revised paper also reports our figures at $\ell=3,5$.
+rates are not comparable with the paper's (smaller conductors; $\kod{I}_n^*$ primes included); the paper also reports these figures below conductor $10{,}000$ at $\ell=3,5$.
 \end{example}
 
 \begin{remark}[what Section sec:tam tests]\label{rem:blochkato:what-sec-tam-tests}
 Given \Cref{thm:blochkato:selmer-identity} and its assembly with the equality $v_\ell(\degphi)=v_\lambda(\eta^\emptyset_{f,\lambda})$ (\Cref{ch:moddeg}, \Cref{ch:congruence}), a violation of the
 refined inequality is impossible, and the proportion of equality is the proportion of curves with $H^1_f(\Q,W)=0$. So Section sec:tam is a consistency check of the
-Tamagawa term of (eq:identity) and of the computation of Tate parameters, not an independent test of a conjecture. The revised paper's phrasing (``the extra
-divisibility of the modular degree predicted by the Tamagawa factor of the adjoint is always present, the Selmer length accounting for the rest'') says this; the
-original said that the extra divisibility occurs ``exactly where the Tamagawa factor of the adjoint exceeds $\ell^{t_\ell}$'', which is too strong, since extra
-divisibility also comes from the Selmer group.
+Tamagawa term of (eq:identity) and of the computation of Tate parameters, not an independent test of a conjecture. The paper's phrasing (``the extra
+divisibility of the modular degree predicted by the Tamagawa factor of the adjoint is always present, the Selmer length accounting for the rest'') says this:
+extra divisibility also comes from the Selmer group.
 \end{remark}
 
 \section[The Tamagawa number conjecture]{The Tamagawa number conjecture and the adjoint motive}\label{sec:blochkato:motive}
@@ -1998,7 +1989,7 @@ explain why the sequence cannot be exact with $\Sigma=\emptyset$ and the Bloch-K
 
 \begin{exercise}[$h_\ell(E)$]\label{ex:blochkato:ex-h0}
 Show by the determinant argument that $H^0(\Q,W^D)=0$ for $\ell\ge5$ and has order at most $3$ for $\ell=3$, for every $E$ with $\bar\rho$ irreducible. For \curve{726a1}, use the factorisation
-of its $3$-division polynomial to show $h_3=1$. Why is the original argument, which used $a_p=0$ at the primes inert in $\Q(\sqrt{\ell^*})$, not the right one?
+of its $3$-division polynomial to show $h_3=1$. Why does an argument with $a_p=0$ at the primes inert in $\Q(\sqrt{\ell^*})$ not give this?
 \emph{Hint:} $\rho\simeq\rho\otimes\chi_\ell$ would give $pa_p=a_p$ at good $p$; the relevant twist is by the cyclotomic character, not by the quadratic character $\chi_{\ell^*}$.
 \end{exercise}
 
@@ -2046,9 +2037,8 @@ Diamond, Flach and Guo proved the $\ell$-part of the conjecture for adjoint moti
 
 \paragraph{What the book adds.} \Cref{prop:blochkato:tam-dual} proves $\Tam_p(T^D)=\Tam_p(A)$ for the adjoint of an elliptic curve in every case, where the paper cites \cite[(57)]{DFG04};
 \Cref{prop:blochkato:tam-of-E} gives a proof that $\Tam_p(T_\ell E)$ is the $\ell$-part of $c_p$ at every $p\ne\ell$; \Cref{prop:blochkato:selmer-relations}(iii) and
-\Cref{prop:blochkato:euler-characteristic} make explicit the step from Theorem thm:dfg27 to the finiteness of $H^1_f(\Q,W)$ and the equivalence used in Remark rem:ns. Lemma
-lem:tamadd and Corollary cor:explicit, which answer the first half of the original Open question 3, are in the revised paper; \Cref{thm:blochkato:tam-additive} proves them
-with the same argument.
+\Cref{prop:blochkato:euler-characteristic} make explicit the step from Theorem thm:dfg27 to the finiteness of $H^1_f(\Q,W)$ and the equivalence used in Remark rem:ns. For the paper's Lemma
+lem:tamadd and Corollary cor:explicit, \Cref{thm:blochkato:tam-additive} and \Cref{cor:blochkato:explicit-identity} give the same argument with every step expanded.
 
 \paragraph{Computations.} All numbers were computed with PARI/GP 2.17.2 \cite{PARI} through \texttt{cypari2}, on Cremona's files \texttt{allcurves}, \texttt{degphi} and
 \texttt{galrep} \cite{ecdata} for conductors below $10{,}000$. Curves with CM were recognised by their $j$-invariant among the $13$ rational CM $j$-invariants and removed. The

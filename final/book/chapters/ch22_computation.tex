@@ -724,10 +724,11 @@ $38{,}042$ equations of \texttt{degphi}, exactly one is not curve number $1$ of 
 (\Cref{ch:ellcurves}). The consequence for computation: \texttt{ellmoddegree} gives $1728$ on \curve{990h3} and $5184$ on \curve{990h1}, and
 \texttt{rule} gives \texttt{[3, 3]} and \texttt{[4, 3]} at $\ell=3$ (\Cref{warn:computation:rule-pitfalls}).
 \item The paper: ``Optimality is determined in the tables for every class of conductor at most $400000$ and for $359{,}009$ further classes
-up to $500000$'' (Section sec:data). What ``determined'' means, and how Cremona certifies it, is in \Cref{ch:moddeg}. The paper does not say
-whether its extension-range counts use only the classes with determined optimality. For $E[\ell]$ irreducible the question does not affect
-$v_\ell$ of the degree, by (iv), nor the terms $e_\ell$, $t_\ell$, $h_\ell$; but the weight $w_3$ is only observed, not proved, to be the same for all
-curves of a class (\Cref{ch:ellcurves}).
+up to $500000$'' (Section sec:data). What ``determined'' means, and how Cremona certifies it, is in \Cref{ch:moddeg}. For $E[\ell]$ irreducible
+the choice of curve in a class does not affect $v_\ell$ of the degree, by (iv), nor the terms $e_\ell$, $t_\ell$, $h_\ell$; but the weight $w_3$ is not
+proved to be the same for all curves of a class (\Cref{ch:ellcurves}). The paper says so for its extension range: ``for a class whose optimal curve is
+not determined, the right side of (eq:rule) at $\ell=3$ depends on the class invariance of $w_3$, which is not proved and fails in the presence of a
+$3$-isogeny''.
 \item \texttt{ellweilcurve} identifies the optimal curve inside PARI for moderate conductors (\Cref{rem:computation:ellmoddegree}(ii)), and
 \texttt{opt\_man} records it (\Cref{ex:computation:curvedata}).
 \item When $E[\ell]$ is irreducible, every isogeny in the class has degree prime to $\ell$, so $v_\ell$ of the degree of the minimal
@@ -867,7 +868,7 @@ irreducible, $\psi_3$ has no rational root. Indeed, if $x_0\in\Q$ is a root and 
 $\sigma\in G_\Q$ the point $\sigma(P)$ has order $3$ and $x$-coordinate $\sigma(x_0)=x_0$, so $\sigma(P)=\pm P$; the subgroup $\{0,P,-P\}$ of order $3$ is
 then Galois-stable and $E[3]$ is reducible. So the possible patterns are $4$ and $2+2$, and the pattern is $2+2$ exactly when the image is $N_s(\F_3)$ (Proposition prop:ns;
 \Cref{ch:galrep}). For $E[3]$ irreducible, $h_3(E)\le1$, with equality exactly when $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$, which happens exactly for image
-$N_s(\F_3)$, with or without CM (\Cref{ch:galrep}, where the strengthened Lemma lem:h0 and Proposition prop:ns are proved).
+$N_s(\F_3)$, with or without CM (\Cref{ch:galrep}, where Lemma lem:h0 and Proposition prop:ns are proved).
 
 (iii) By (i) the sum accumulated in \texttt{b} by line 12 is $B^{\mathrm{nc}}_\ell(E)$ when \texttt{iii} $=1$ and $B^{\mathrm{III}}_\ell(E)$ when \texttt{iii} $=0$. Line 13
 subtracts \texttt{ns3(E)} $=h_3(E)$ in the first case at $\ell=3$, by (ii), giving $B^{\mathrm{rule}}_3(E)$; at $\ell\ge5$, $h_\ell(E)=0$ (\Cref{ch:galrep}), so
@@ -1030,12 +1031,11 @@ the product of the listed factors is $-P_2$, the sign being part of the content 
 type $\kod{II}^*$ at $2$, $P_2=(1-2X)(1+4X^2)$, so $P_2(\frac14)=\frac12\cdot\frac54=\frac58$ and $e_5(E,2)=v_5(5/8)=1$, bound $1$ at $\ell=5$, $\degphi=80=2^4\cdot5$: the prime $2$ contributes at $\ell=5$. At $2$ the
 Kodaira type does not determine $P_2$; the four possible shapes are proved in \Cref{ch:lfunctions} (Proposition prop:shapes). Among the optimal
 curves without CM below conductor $10{,}000$, type $\kod{II}$ at $2$ gives $P_2=1$ for $1{,}092$ curves, $1+2X$ for $371$ and a cubic for $74$; type $\kod{II}^*$
-gives $514$, $74$ and $191$. \emph{A data correction.} Remark rem:wild says: ``Among optimal non-CM curves of conductor below $10{,}000$, every cubic factor
-at $2$ ($1{,}143$) and at $3$ ($2{,}283$) is of shape (ii).'' The two counts are over all $64{,}687$ curves of the tables, not over the optimal curves
-without CM, among which there are $534$ cubic factors at $2$ and $1{,}308$ at $3$ (recomputed here with \texttt{lfunsympow}; \Cref{ch:lfunctions} found the
-same). Likewise the remark's ``$58\%$'' of potentially good types $\kod{I}_n^*$ at $2$ is the share among optimal curves ($2{,}340$ of $4{,}037$); over all
-curves it is $61\%$ ($5{,}935$ of $9{,}667$). And ``of shape (ii)'' is automatic, a cubic $P_q$ having no other shape; the empirical content is that each
-cubic equals the formula of (ii) for a twist of good reduction found independently, which \Cref{ch:lfunctions} checks.
+gives $514$, $74$ and $191$. Remark rem:wild counts the cubic factors: ``Among all curves of conductor below $10{,}000$, every cubic factor at $2$
+($1{,}143$) and at $3$ ($2{,}283$) equals the formula of (ii) for a twist of good reduction found independently ($534$ and $1{,}308$ among the optimal non-CM
+curves)''. The book recomputed both pairs of counts with \texttt{lfunsympow} (\Cref{ch:lfunctions} found the same), and also the remark's shares of
+potentially good types $\kod{I}_n^*$ at $2$: $58\%$ among the optimal curves ($2{,}340$ of $4{,}037$) and $61\%$ over all curves ($5{,}935$ of $9{,}667$). As the
+remark says, that a cubic factor has shape (ii) is automatic; the empirical content is the agreement with the twist, which \Cref{ch:lfunctions} checks.
 \end{example}
 
 \begin{example}[\curve{11a1} at an Eisenstein prime]\label{ex:computation:11a1-eisenstein}
@@ -1101,8 +1101,8 @@ lines of \texttt{degphi} and compares with the degree written there, in two proc
 All $38{,}042$ curves were checked ($19{,}021$ in each process), with $0$ mismatches and $0$ errors; each process took about $42$ minutes on a
 two-core machine (PARI/GP 2.17.2).
 The paper's sentence ``fifteen modular degrees spanning the configurations were recomputed with \texttt{ellmoddegree}, all agreeing with the
-tables'' (Section sec:data) is thereby extended, in the book's range, to every optimal curve; the paper's revised version says the same of its
-own check below $10{,}000$.
+tables'' (Section sec:data) is thereby extended, in the book's range, to every optimal curve, as the paper's own check below $10{,}000$ also
+states (``\texttt{ellmoddegree} agrees with the tables on all of them'').
 \end{example}
 
 \begin{remark}[the congruence number]\label{rem:computation:congruence-number}
@@ -1133,15 +1133,14 @@ one newform several times. For $E[\ell]$ irreducible, $v_\ell$ of the degree and
 \end{enumerate}
 \end{definition}
 
-\emph{Two data corrections on the populations.} (a) Section sec:forms: ``The hypothesis of Theorem thm:main fails on the working set for the $1{,}170$
-curves with image $\Ns$ at $\ell=3$ \dots; by Proposition prop:Sf there are no other failures among the curves with $E[\ell]$ irreducible''. This holds
-for the population without CM. A CM curve with $j=-32768$ or $8000$ and $3\nmid N$ has image $N_s(\F_3)$ and fails the hypothesis at $\ell=3$ too, and
-\texttt{galrep} gives it no $3$-adic label: below conductor $10{,}000$ there are $20$ such curves in the tables, $10$ of them optimal. The sentence needs
-``without CM'', as Table tab:counts already has. (b) Section sec:boundary, after Proposition prop:ns-structure: ``Among the $90$ optimal curves with
-image $\Ns$ of conductor below $10{,}000$ ($28$ of them with $3\mid N$), $74$ have such a prime $p\ge5$ \dots\ and $16$ have it only at $p=2$''. The $90$,
-$74$ and $16$ are right for the optimal curves without CM (\Cref{ex:computation:repro-ns}), but $44$ of the $90$ have $3\mid N$ ($14$ with $3\,\|\,N$, $6$
-with $9\,\|\,N$, $24$ with $27\mid N$), not $28$; and the proposition allows CM, while the count leaves out the $13$ optimal CM curves with image
-$N_s(\F_3)$ of \Cref{ex:computation:mod3-image}.
+\emph{CM and the hypothesis population.} Section sec:forms: ``The hypothesis of Theorem thm:main fails on the working set for the $1{,}170$ non-CM
+curves with image $\Ns$ at $\ell=3$'' and for the curves with $\ell\mid N$, with no other failures among the non-CM curves with $E[\ell]$ irreducible
+(Proposition prop:Sf). A CM curve with $j=-32768$ or $8000$ and $3\nmid N$ has image $N_s(\F_3)$ and fails the hypothesis at $\ell=3$ too, and
+\texttt{galrep} gives it no $3$-adic label: below conductor $10{,}000$ there are $20$ such curves in the tables, $10$ of them optimal; the paper's
+parenthesis in Section sec:forms gives the $20$. Likewise the count after Proposition prop:ns-structure, ``Among the $90$ optimal curves without complex
+multiplication with image $\Ns$ of conductor below $10{,}000$ ($44$ of them with $3\mid N$)'', is over the population without CM ($14$ of the $44$ with
+$3\,\|\,N$, $6$ with $9\,\|\,N$, $24$ with $27\mid N$), and the paper lists separately the $13$ optimal CM curves with image $N_s(\F_3)$ of
+\Cref{ex:computation:mod3-image}, which the proposition also covers.
 
 \begin{definition}[rates]\label{def:computation:rates}
 For a population and a bound $B$: the number of curves with $B>0$; the number of violations; the \emph{equality rate}, the number of equalities
@@ -1206,8 +1205,8 @@ In the paper it is the protocol paragraph of Section sec:data, with Sections sec
 
 \begin{remark}[the four ranges]\label{rem:computation:protocol}
 The paper's ranges (\Cref{conv:computation:populations}) are: the working set, $N\le300000$, where every class has determined optimality; the
-hold-out, $300000<N\le400000$, the same; the extension, $400000<N\le500000$, where optimality is determined for $359{,}009$ classes only (whether the
-extension counts are restricted to those classes is not stated, \Cref{rem:computation:optimality-data}); and the out-of-table curves: $893$ curves (the abstract)
+hold-out, $300000<N\le400000$, the same; the extension, $400000<N\le500000$, where optimality is determined for $359{,}009$ classes only (for the other classes
+the bound at $\ell=3$ depends on the class invariance of $w_3$, \Cref{rem:computation:optimality-data}); and the out-of-table curves: $893$ curves (the abstract)
 with $500000<N\le4\cdot10^6$; ``we generated curves with prescribed local types'' (``families with a type $\mathrm{IV}$ or $\mathrm{IV}^*$ prime, with two
 or three type $\mathrm{II}$ primes, with mixed types, and random curves''), kept when the isogeny class is trivial ``so that the curve is optimal and
 $E[\ell]$ is irreducible for every $\ell$'', not CM, and with modular degrees computed by \texttt{ellmoddegree} (Section sec:oot). The vocabulary
@@ -1228,7 +1227,7 @@ statement & formulated on & blind test & confirmed only & remark\\
 Conjecture conj:eis & working set & hold-out (once), then extension & & $D\le2$ is a theorem (Proposition prop:no9)\\
 (eq:twist) & working set, replacing a weaker form & hold-out and extension, ``tested once'' & & blind only if fixed before the hold-out counts of (eq:main) were seen: the order is not stated; the paper does not count the out-of-table curves as a blind test of it\\
 Conjecture conj:euler, Euler terms & working set (minima by type) & out-of-table & hold-out, extension & the terms at $2$ and $3$ ``were fixed afterwards by PARI's Euler factors''\\
-weights $w_3$ & working set (minima at $q=3$) & out-of-table, only if it contains curves with $3\mid N$ and potentially good reduction at $3$ & hold-out, extension & ``empirical'' (Section sec:wild)\\
+weights $w_3$ & working set (minima at $q=3$) & none & hold-out, extension & ``empirical'' (Section sec:wild); the paper does not count the out-of-table curves as a blind test of them\\
 correction $h_3$ & from the exceptions & none & all ranges & ``fitted on, and only confirmed by, data already seen''; $h_3=1$ on $\Ns$ curves is a theorem, the repaired inequality is not\\
 III-free form & after the $\Ns$ exceptions & none & all ranges & chosen so as to have no exceptions\\
 Tamagawa refinement & from Lemma lem:tamfactor & not stated & & a prediction of a theorem; the order of formulation and computation is not stated; tests the Tamagawa term of (eq:identity)\\
@@ -1237,15 +1236,16 @@ Lemmas lem:euler, lem:twist; Prop.\ prop:forms; $h_3=1$ & & & & theorems: the da
 \end{tabular}
 \end{center}
 Two of these entries need a qualification that the text does not settle. The out-of-table curves, ``generated before the rule was formulated'',
-are a blind test of the Euler terms only if their modular degrees were not examined while the terms at $2$ and $3$ and the weights $w_3$ were
-being fixed; the paper does not say. And for (eq:twist), ``then tested once on the hold-out and the extension'' is a blind test only if
+are a blind test of the Euler terms only if their modular degrees were not examined while the terms at $2$ and $3$ were being fixed; the
+paper does not say. And for (eq:twist), ``then tested once on the hold-out and the extension'' is a blind test only if
 (eq:twist) was written down before the hold-out counts of (eq:main) were seen.
 \end{remark}
 
 The decisive sentences are these (Section sec:data): ``Since the hold-out and the extension had already been used for (eq:main) and (eq:twist),
 they are a confirmation and not a blind test for Conjecture conj:euler; the out-of-table curves, generated before the rule was formulated, are.
 They contain no curve with image $\Ns$, so the correction term $h_3$ was fitted on, and only confirmed by, data already seen; and we do not count
-the out-of-table curves as a blind test of (eq:twist).''
+the out-of-table curves as a blind test of (eq:twist). Nor do we count them as a blind test of the weights $w_3$, which they could test only
+through curves with $3\mid N$ and potentially good reduction at $3$.''
 
 \begin{remark}[what a blind test of an inequality establishes]\label{rem:computation:what-is-tested}
 A single violation refutes a universal inequality. Zero violations on $n$ fresh curves is evidence whose weight depends on two things: how many
@@ -1256,7 +1256,7 @@ out-of-table curves this is $0.99^{893}\approx1.3\cdot10^{-4}$, while with $p=0.
 against a statement that would fail often and weak evidence against one that would fail rarely, and the calibration is what says which case one
 is in. The out-of-table families were built around the types $\kod{IV}$, $\kod{IV}^*$, two or three $\kod{II}$ primes,
 mixed types and random curves; they contain no $\Ns$ curve, so they cannot test the correction term, and they test the $\kod{III}$ terms only if such
-primes occur among them. ``Nothing was adjusted after the hold-out test'' means that no term, weight or population filter of (eq:main) and
+primes occur among them. The paper's ``nothing was adjusted after the hold-out test'' means that no term, weight or population filter of (eq:main) and
 Conjecture conj:eis was changed after their hold-out counts were seen; it does not cover the statements formulated later.
 \end{remark}
 
@@ -1429,8 +1429,9 @@ involved, but they include primes above $13$ that the tables of \Cref{sec:comput
 $18{,}471$ on $5000\le N<10000$). The most common quotients are $3$ ($5{,}926$ curves), $1$, $5$ ($2{,}978$), $9$ ($2{,}532$), $15$ ($2{,}024$), $7$ ($1{,}918$), $21$
 ($1{,}088$) and $11$ ($967$). Among the nontrivial quotients, the smallest prime factor is $3$ in $58.7\%$ of the cases ($27{,}462$ curves). The paper (working
 set, $1{,}226{,}216$ curves): equality in $1.85\%$ (``the proportion is range dependent: it is $17.1\%$ below conductor $10{,}000$''), quotients ``most often $9$, $3$,
-$15$, $45$, $27$ or $21$'', ``its smallest prime factor is $3$ in $63\%$ of the cases and divides $N$ in $52\%$''. The text does not decide what ``divides $N$'' refers to. If it is
-the smallest prime factor of the quotient, the book's share is $47.5\%$; if it is some prime factor of the quotient, $51.8\%$. The local terms account for a sharp part of $\degphi$ and for less and less of the rest as $N$ grows; the rest is the
+$15$, $45$, $27$ or $21$'', ``its smallest prime factor is $3$ in $63\%$ of the cases ($58.7\%$ below conductor $10{,}000$)''. Below $10{,}000$ the paper
+also gives the shares of nontrivial quotients whose smallest prime factor divides $N$, $47.5\%$, and with some prime factor dividing $N$, $51.8\%$; the
+book's records give the same two numbers. The local terms account for a sharp part of $\degphi$ and for less and less of the rest as $N$ grows; the rest is the
 adjoint Selmer group together with the size of the Petersson norm (\Cref{ch:lfunctions}).
 \end{example}
 \section{Reproducing the paper's tables below conductor \texorpdfstring{$10{,}000$}{10,000}}\label{sec:computation:repro}
@@ -1531,11 +1532,10 @@ correction''. The book counts violations of $B^{\mathrm{nc}}_3$, the rule with e
 and the terms $t_\ell(E,q)$ at every bad $q$, $q=\ell$ included, since Definition def:terms defines $t_\ell$ there; its right side is
 $B^{\mathrm{thm}}_3=B^{\mathrm{nc}}_3-w_3$ (\Cref{conv:computation:bounds}), and it has the same $36$ violators ($16$ and $20$ on the two ranges): dropping the
 weights $w_3$ changes nothing. Only if the terms at $q=3$ are dropped altogether, $t_3(E,3)$ included, are there $24$ violators ($8$ and $16$), and still no
-curve without image $\Ns$ violates. The revised paper records the two counts (``below conductor $10{,}000$ the two readings give $36$ and $24$ violations'')
-and attributes the difference to ``whether the weights at $q=3$ are included''. In fact, below $10{,}000$ all twelve curves counted by one reading and
-not the other (\curve{726a1}, \curve{726f1}, \curve{2178b1}, \curve{2178h1}, \curve{3840h1}, \curve{3840k1}, \curve{3840o1}, \curve{3840r1}, \curve{5070h1}, \curve{5070p1},
-\curve{5808y1}, \curve{5808z1}) differ by the Tamagawa term $t_3(E,3)=1$ of a type $\kod{I}_n$ (codes $7$, $10$) or $\kod{I}_n^*$ (code $-7$) at $3$, and none by a
-weight $w_3$; (eq:thm) as printed gives $36$. The paper (D): $364$, $68$, $43$ and $0$ violations on its four ranges,
+curve without image $\Ns$ violates. The paper records the same: ``Below conductor $10{,}000$ there are $36$ violations with them, as (eq:thm) is
+written, and $24$ without'', the twelve curves that differ (\curve{726a1}, \curve{726f1}, \curve{2178b1}, \curve{2178h1}, \curve{3840h1}, \curve{3840k1},
+\curve{3840o1}, \curve{3840r1}, \curve{5070h1}, \curve{5070p1}, \curve{5808y1}, \curve{5808z1}) all having $t_3(E,3)=1$ from a type $\kod{I}_n$ (codes $7$, $10$) or
+$\kod{I}_n^*$ (code $-7$) at $3$, and ``the weights $w_3$ change nothing''. The paper (D): $364$, $68$, $43$ and $0$ violations on its four ranges,
 $31\%$, $23\%$, $18\%$ of the $\Ns$ curves. The falling rate with $N$ is visible inside the book's range already ($53\%$, then $33\%$).
 \end{example}
 
@@ -1562,8 +1562,8 @@ $\ell\mid n$, $\min(v_\ell(\degphi)-v_\ell(n))=0$ for every value of $v_\ell(q^2
 curves and $q=3=\ell$ for $966$; at $\ell=5$, $2{,}588$ curves. \emph{Two primes:} the curves of the base population at $\ell=3$ whose only contributions are two odd
 primes of type $\kod{II}$ or $\kod{II}^*$ are $8$ (\curve{2450d1}, \curve{3675k1}, \curve{6050bg1}, \curve{7350e1}, \curve{7350ba1}, \curve{7350bw1}, \curve{8281h1}, \curve{9800bj1}), and
 $9\mid\degphi$ for all $8$. The paper (D, working set): the same pattern in every cell; the cells with $e=0$ have $5{,}534$ ($\kod{III}$) and $5{,}394$ ($\kod{I}_0^*$)
-curves; $\kod{I}_0^*$ runs up to $e=6$; $2{,}502$ curves with two primes of type $\kod{II}$ or $\kod{II}^*$. One small point of wording: the paper's ``for every value of
-$v_\ell(q^2-1)$ up to $6$'' includes, at $\ell=3$, the value $0$ only through $q=\ell=3$, where $v_3(q^2-1)$ is not the relevant quantity.
+curves; $\kod{I}_0^*$ runs up to $e=6$; $2{,}502$ curves with two primes of type $\kod{II}$ or $\kod{II}^*$. In the multiplicative statement, ``for every value of
+$v_\ell(q^2-1)$ up to $6$'', the paper notes that ``at $\ell=3$ the value $0$ occurs only for $q=\ell=3$'', as in the book's count above.
 \end{example}
 
 \begin{example}[Section sec:tam in small]\label{ex:computation:repro-tam}
@@ -1603,7 +1603,7 @@ order $9$ (\curve{714i1}, \curve{1482l1}, \curve{1554n1}, \curve{6942n1}) have i
 deficit $B^{\mathrm{tw}}_\ell-v$ exceeds the torsion bound for $180$ curves at $\ell=3$, $35$ at $\ell=5$ and $10$ at $\ell=7$. The paper (D, working set): $75{,}430$
 Eisenstein curves, $67{,}845$ with a positive bound, $2{,}777$ with $D>0$, $D=2$ for $22$ (``seventeen curves, all of rank $0$, with torsion $\Z/3$ or $\Z/6$, for
 instance 14a1'', and five with a point of order $9$); the deficit against (eq:twist) exceeds the bound for $1{,}148$ curves at $\ell=3$ and $141$ at $\ell=5$. The
-book's data agree with the revised wording; the original version's ``all of rank $0$ and torsion $\Z/3$'' was contradicted by \curve{14a1}.
+book's twelve \texttt{3Cs.1.1} curves with $D=2$ fit this description, \curve{14a1} being the one with torsion $\Z/6$.
 \end{example}
 
 \begin{example}[the twist pairs after Theorem thm:twist]\label{ex:computation:repro-twist}
@@ -1619,8 +1619,8 @@ and all $6{,}701$ of case (b), as Theorem thm:quant predicts (\Cref{ch:congruenc
 odd primes of type $\kod{I}_0^*$ or $\kod{I}_n^*$ at once, $\ell\in\{3,5,7,11,13\}$, $\ell\nmid N$ and $E[\ell]$ irreducible: $25{,}477$ such pairs ($15{,}607$ with $3$ in
 the twisting set, $8$ with $\ell=3$ and image $\Ns$), with the difference equal to the sum of the Euler terms in every one, and $14{,}880$ pairs of case (c)
 ($42$ with image $\Ns$ at $\ell=3$), all with equal valuations; the numbers of pairs were recounted here from the book's records, the equalities are checked there. The paper (D, working set): $157{,}938$ and $292{,}580$ pairs, ``with no exception,
-with equality in every pair of case (c)''; its revised text also notes the strict inequalities in case (a). The original version's ``strict inequality
-only in case (b)'' is contradicted already below $10{,}000$.
+with equality in every pair of case (c)''; it notes that in case (a) at $\ell=3$ the predicted difference, the Euler term, is positive for every
+$q\ne3$, and that ``Below conductor $10{,}000$ the difference equals the Euler term in all $25{,}477$ pairs (curve, $\ell$)'' of the twisting-set form.
 \end{example}
 
 \begin{example}[a twist relation at $q=\ell$, observed]\label{ex:computation:twist-at-ell}
@@ -1636,7 +1636,7 @@ $\ell=3,5,7,11,13$; $4{,}251$ of them with $E[\ell]$ irreducible);
 \item if $E$ has type $\kod{I}_0^*$ at $\ell$ and $E[\ell]$ is irreducible, the difference is $v_\ell\bigl((\ell+1)^2-a_\ell(E^{(\ell)})^2\bigr)$ in all $1{,}915$ cases (it fails in $13$ of
 the cases with $E[\ell]$ reducible, for instance \curve{126a1} at $\ell=3$ and \curve{275b1} at $\ell=5$).
 \end{enumerate}
-In (b) and (c) the difference is what the numerator form of the $e_\ell$ column of the table of Section 1 (to which Lemma lem:euler refers),
+In (b) and (c) the difference is what the numerator form of the $e_\ell$ column of the table of Section sec:localterms (to which Lemma lem:euler refers),
 $v_\ell(q^2-1)$ and $v_\ell(q-1)+v_\ell\bigl((q+1)^2-a'^2\bigr)$, gives at $q=\ell$ ($v_\ell(\ell^2-1)=0$ and $v_\ell(\ell-1)=0$); the rational forms
 $1-q^{-2}$ and $(q-1)((q+1)^2-a'^2)/q^3$ would give negative valuations at $q=\ell$. In (a) it is not, since at $q\ne\ell$ a potentially good pair has difference $0$
 (\Cref{ex:computation:repro-twist}). All counts are over the curves whose twist has conductor below $10{,}000$, so that its degree is in the tables. At $\ell\ge5$, (a) suggests a
