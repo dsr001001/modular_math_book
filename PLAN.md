@@ -1181,7 +1181,7 @@ above that disagrees with them.
 | **Chapters 20, 22, Appendix B (Part VI)** | **written**: 1,568, 1,965, 1,096 lines; 42, 48, 30 pages; compile (0 overfull boxes), lint clean. Drafted together, ONE planned review each, one fix pass; build and lint verified by the orchestrator |
 | **Full-book pass** | **done**: 1,045 pages, clean build; 21 cross-chapter items fixed (automorphic Pi_p, Pi_f in Ch15; epsilon_N(f); internal-planning references removed; thm:dfg14 needs l not in Sigma) |
 | **Chapter 21 (the paper)** | **written last**: 1,983 lines, 59 pages, 0 overfull, lint clean; one review (1 blocking, 7 major, 6 minor), one fix pass; errata list E1 to E38 for note_v2 |
-| Preface update, final build | not yet done |
+| **Expansion pass, preface, final build** | **done**: every chapter expanded (statements, cards and labels byte-identical to the reviewed text, checked by script); preface rewritten (revised note, what the book adds, how it was checked, honest acknowledgement); full book 1,187 pages, no errors, no undefined references, 0 overfull boxes |
 
 **What the pilot taught.**
 * Length: 2,344 lines against a plan average of about 2,200 per chapter; the outline is a good predictor.

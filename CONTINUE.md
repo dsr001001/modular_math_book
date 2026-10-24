@@ -33,7 +33,7 @@ This file tells a new Claude Code conversation (or a human) how to pick up the t
 | Full-book pass (step 4) | done: full book builds (1,045 pages, Chapter 21 a placeholder), no undefined references, no duplicate labels or BibTeX warnings, 12 overfull boxes only in the preface; all 21 cross-chapter items fixed | `important/fullbook_pass_list.txt` |
 | Step 5 (sources) | done for DFG04, RT97, Takahashi01 (note B42); remaining flags listed there | `important/important_notes.md` |
 | Chapter 21 (the paper) | done: draft, one review, one fix pass; errata E1 to E38 | `chapters/ch21_paper.tex` |
-| Remaining | step 7: preface rewrite (12 overfull boxes there), final full build, records, full PDF | `frontmatter/preface.tex` |
+| Book status | **complete**: 22 chapters, Appendices A and B, preface; 1,187 pages; final build clean. Open items: a published proof of Sha(11a1)[5] = 0; Ligozat75 (CM at 27) unchecked; Pollack-Weston journal pages; arXiv long-version numbering of DFG04; human expert reading not yet done | `build/main/main.pdf` |
 
 The original paper is `note_Oct10_7pm.tex`. Labels in the revised paper are the same.
 
