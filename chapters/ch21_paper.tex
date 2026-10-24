@@ -47,7 +47,7 @@ given the inertia images of \Cref{ch:galrep}.) Verdict: correct.} \Cref{lem:pape
 \item \textbf{Proposition prop:shapes.} At every bad $q\ne\ell$, $P_q$ is $1-X$, the $\kod{I}_0^*$ cubic $(1-qX)(1-(a^2-2q)X+q^2X^2)$, $1-cqX$ ($c=\pm1$), or $1$ (nonabelian inertia, $q=2,3$ only).
 \emph{(proved here, given \Cref{ch:galrep,ch:lfunctions}.) Verdict: correct.} \Cref{prop:paper:shapes}.
 \item \textbf{Lemma lem:tamfactor.} At potentially multiplicative $q\ne\ell$ ($q=2$ included): $v_\ell(\Tam_q(\ad T))=v_\ell(n)+\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))\ge t_\ell(E,q)$. \emph{(proved here, given
-\Cref{ch:cohomology,ch:galcoh}.) Verdict: correct; one formula of the proof to fix.} \Cref{lem:paper:tamfactor}.
+\Cref{ch:cohomology,ch:galcoh}.) Verdict: correct; one formula of the proof to write out.} \Cref{lem:paper:tamfactor}.
 \item \textbf{Lemma lem:tamadd.} At potentially good additive $q\ne\ell$: $H^1(I_q,\ad T)_{\mathrm{tor}}=0$, so $v_\ell(\Tam_q(\ad T))=0$. \emph{(proved here, given \Cref{ch:cohomology,ch:ant}.) Verdict: correct.}
 \Cref{lem:paper:tamadd}.
 \item \textbf{Congruence number} (definition) and Agashe-Ribet-Stein: $\degphi\mid r_E$, equal $p$-parts for $p^2\nmid N$. \emph{(the theorem stated; reference \cite[Theorem 2.2]{ARS12}.)}
@@ -78,7 +78,7 @@ $v_\lambda(\eta^\emptyset_{f,\lambda})=v_\ell(\degphi)$. \emph{(proved here, giv
 \item \textbf{Lemma lem:fpr.} $\Fitt H^1_f(\Q_p,T^D)=L_p(A_f,1)^{-1}\Tam_p(T^D)$ and $\Tam_p(T^D)=\Tam_p(A)$. \emph{(first identity proved here; second stated, reference \cite[(57)]{DFG04}, and checked for the
 elliptic adjoint.) Verdict: correct.} \Cref{lem:paper:fpr}.
 \item \textbf{Lemma lem:h0.} $H^0(\Q,W^D)$ finite cyclic of length $h_\ell(E)$; $h_\ell=0$ for $\ell\ge5$; $h_3\le1$, with equality iff $\bar\rho\simeq\bar\rho\otimes\chi_{-3}$ iff image $N_s(\F_3)$; CM allowed.
-\emph{(proved here, given \Cref{ch:reps,ch:ant}.) Verdict: correct; one sentence to reorder.} \Cref{lem:paper:h0}.
+\emph{(proved here, given \Cref{ch:reps,ch:ant}.) Verdict: correct; one sentence of the proof to reorder (the last equivalence is the paper's Proposition prop:ns).} \Cref{lem:paper:h0}.
 \item \textbf{Corollary cor:explicit.} $v_\ell(\degphi)=\len H^1_f+\sum e_\ell+\sum_{v_q(j)<0}(t_\ell+\min(t_\ell,v_\ell(q-1),v_\ell(c(u_q))))$. \emph{(proved here, given \Cref{thm:paper:main}.) Verdict: correct.}
 \Cref{cor:paper:explicit}.
 \item \textbf{The degree formula} (Remark rem:degree). $\degphi=c_E^2N\,L^{\nv}(\ad f,1)/(2\pi\vol(\Lambda_E))=B_E\prod_{q^2\mid N}L_q(A_f,1)^{-1}$; $v_\ell(\degphi)=v_\ell(B_E)+\sum e_\ell$ for $\ell\nmid N$.
@@ -170,7 +170,7 @@ compared with the published text; otherwise it is given \emph{as cited} by the p
 
 \paragraph{How the paper was produced.} The paper ends with a statement on the use of an AI system, which says that the work was carried out
 with an AI system at every stage, under the author's direction, that the revision read here was prepared with the same system while this book was
-being written, and that the author takes responsibility for all statements. This book was itself drafted with the assistance of an AI system,
+being written, with the qualifier ``the author has to review it before it is circulated'', and that the author takes full responsibility for all statements. This book was itself drafted with the assistance of an AI system,
 under human direction (see the preface). Neither fact changes what is proved: every argument below is meant to be checked line by line, and every
 count can be rerun.
 
@@ -192,10 +192,12 @@ are trivial at potentially good primes (Lemma lem:tamadd) and at least $t_\ell(E
 proof is an assembly of four inputs and the projection formula, as described. (5) The Tamagawa factor ``raises the bound by at least one whenever a
 Steinberg prime $q\equiv1\pmod\ell$ with $\ell\mid n_q$ has a Tate parameter whose unit part is an $\ell$-th power'': correct (the first version omitted the
 condition $\ell\mid n_q$ and said ``by one''). (6) The $\kod{I}_0^*$ and $\kod{I}_n^*$ terms hold without the hypothesis over $\Q(\sqrt{\ell^*})$: Theorem thm:quant,
-which still needs $E[\ell]$ irreducible and $\ell\nmid2N$. (7) and (8) are data statements (Section~\ref{sec:paper:data}). (9) The list of changes
+which still needs $E[\ell]$ irreducible and $\ell\nmid2N$. (7) and (8) are data statements (Section~\ref{sec:paper:data}); (8), the sentence beginning ``With that correction
+term the inequality holds with no exception'', omits the hypotheses of Conjecture conj:euler, $E[\ell]$ irreducible and no complex multiplication, without which it is false
+(\curve{11a1} at $\ell=5$; erratum~\ref{err:paper:abstract-scope}). (9) The list of changes
 from the first version is accurate except for one phrase, which says that ``the structure of the exceptional curves at $\ell=3$ and the bound for the
 deficit in the Eisenstein case at $\ell=3$ are proved''. Only the bound $D\le2$ \emph{given} the first bound of Conjecture conj:eis is proved
-(Proposition prop:no9); the first bound itself is conjectural, as Section 1.4 and Section 6.10 of the paper say correctly (erratum~\ref{err:paper:abstract-eis}).
+(Proposition prop:no9); the first bound itself is conjectural, as Sections 1.5 and 1.6 and Section 6.10 of the paper say correctly (erratum~\ref{err:paper:abstract-eis}).
 
 \paragraph{The first paragraph of the introduction.} ``When $E[\ell]$ is irreducible, every curve of the class is linked to $E$ by a cyclic isogeny of
 degree prime to $\ell$, so $v_\ell$ of the degree of its minimal parametrisation is $v_\ell(\degphi)$''. This is proved in \Cref{ch:ellcurves} (an isogeny of
@@ -296,7 +298,8 @@ maximal ideal, which the paper takes from a sketch and the book also only sketch
 version stated (eq:identity) as an inequality, with equality ``when $H^1(X_0(N),\Zl)$, localised \dots, is free over the localised Hecke algebra''; the
 equality without that hypothesis is due to Proposition prop:pullback (\Cref{prop:paper:pullback}).
 
-The paragraph after the theorem says that the hypothesis is $\ell\notin S_f$ in the notation of \cite[(31)]{DFG04}, the one under which they prove the
+The paragraph after the theorem says that the hypothesis is $\ell\notin S_f$ in the notation of \cite[(31)]{DFG04} (the set $S_f$ is defined in
+\Cref{def:paper:selmer-setup} below), the one under which they prove the
 Tamagawa number conjecture for the adjoint motive \cite[Theorem 0.1]{DFG04} (both verified against the published text, \Cref{ch:congruence}), and that for
 $\ell\nmid2N$ it means: $E[\ell]$ irreducible and, if $\ell=3$, mod $3$ image not $N_s(\F_3)$ (Proposition prop:Sf, \Cref{prop:paper:Sf}). It then lists what the
 paper adds to \cite{DFG04}; the list is accurate.
@@ -488,8 +491,10 @@ Let $q$ be odd, $\chi=\chi_{q^*}$, $E^{(q)}$ the twist of $E$ by $\chi$.
 \begin{enumerate}[label=(\roman*)]
 \item At every $p\ne q$, $E$ and $E^{(q)}$ have the same Kodaira type, the same $\Phig_p$ and the same conductor exponent.
 \item If $E$ has type $\kod{I}_n$ at $q$ ($n\ge0$), $E^{(q)}$ has type $\kod{I}_n^*$, and conversely. If $E$ has type $\kod{II}$, $\kod{III}$, $\kod{IV}$ at $q$, then $E^{(q)}$ has type $\kod{IV}^*$,
-$\kod{III}^*$, $\kod{II}^*$, and conversely; the paper states this for $q\ge5$, and it also holds at $q=3$, with $f_3(E^{(q)})=f_3(E)$. The conductor exponent of $E^{(q)}$ at $q$ is $2$ when
-its reduction is additive and $1$ when it is of type $\kod{I}_n$, $n\ge1$ (for the exchanges listed).
+$\kod{III}^*$, $\kod{II}^*$, and conversely; the paper states this for $q\ge5$, and it also holds at $q=3$, with $f_3(E^{(q)})=f_3(E)$. For the exchanges
+$\kod{I}_n\leftrightarrow\kod{I}_n^*$, $\kod{I}_0\leftrightarrow\kod{I}_0^*$ at every odd $q$ and for all the exchanges at $q\ge5$, the conductor exponent of $E^{(q)}$ at $q$ is $2$ when its reduction is
+additive and $1$ when it is of type $\kod{I}_n$, $n\ge1$. At $q=3$ the exchanges $\kod{II}\leftrightarrow\kod{IV}^*$, $\kod{III}\leftrightarrow\kod{III}^*$, $\kod{IV}\leftrightarrow\kod{II}^*$ keep $f_3$
+unchanged, and $f_3$ can exceed $2$ (wild ramification).
 \item (Atkin and Li) If $g$ is a newform of weight $2$ on $\Gamma_0(M)$ with $q^2\nmid M$, then $g\otimes\chi$ is a newform on $\Gamma_0(\lcm(M,q^2))$.
 \end{enumerate}
 \end{lemma}
@@ -511,6 +516,15 @@ image of inertia is not contained in $\{\pm1\}$, so it contains an element of or
 by $6$ modulo $12$; by Ogg's formula $v_3(\Delta_{\min})=f_3+m-1$ with $m$ the number of components of the minimal regular model, $1\le m\le9$ for the potentially good types
 other than $\kod{I}_0^*$, which forces the exchange $m\mapsto m\pm6$, that is the three exchanges listed (\Cref{ch:reduction}).
 \end{proof}
+
+\begin{warning}[Commentary: the paper's Lemma lem:twist(ii)]\label{warn:paper:twist}
+The paper's (ii) reads: ``If $E$ has type $\mathrm{I}_n$ at $q$ ($n\ge0$) then $E^{(q)}$ has type $\mathrm{I}_n^*$ at $q$, and conversely, with the same $n$. If $q\ge5$ and $E$ has type
+$\mathrm{II}$, $\mathrm{III}$, $\mathrm{IV}$ at $q$ then $E^{(q)}$ has type $\mathrm{IV}^*$, $\mathrm{III}^*$, $\mathrm{II}^*$ respectively, and conversely. The conductor exponent of $E^{(q)}$ at $q$ is $2$ when its
+reduction is additive and $1$ when it is of type $\mathrm{I}_n$, $n\ge1$.'' The book's (ii) differs in two ways. It adds the three exchanges at $q=3$ (a strengthening, by the
+convention that the stronger statement is the one stated). And it restricts the last sentence, which in the paper is meant for the exchanges it lists (its proof says
+``the statement is only about the exchanges listed''), so that it is not read at $q=3$: there the exchanges keep $f_3$, which can be $3$ or more. For example \curve{54a1}, of type
+$\kod{IV}^*$ at $3$, and its twist by $\chi_{-3}$, \curve{54b1}, of type $\kod{II}$ at $3$, both have $f_3=3$ (recomputed).
+\end{warning}
 
 \noindent\emph{Verdict:} (i), (iii) correct; (ii) correct, and strengthened at $q=3$ by the book. The revised proof writes the invariants with $q^*$ and the cubic
 with $\epsilon$ (the first version had $q^2c_4$, $q^3c_6$ and no sign), and restricts ``tame'' to the exchanges listed. The paper's Open question 6 asks
@@ -553,9 +567,9 @@ since $\alpha/\beta+\beta/\alpha=(\alpha^2+\beta^2)/q=(a^2-2q)/q$ and $q^2+1-a^2
 $\kod{I}_0\leftrightarrow\kod{I}_0^*$ were used in the last two cases, valid at every odd $q$; at $q=3$ the values are $L_3(A_f,1)^{-1}=\frac89$ ($\kod{I}_n^*$) and $\frac23\cdot\frac{16-a_3(E')^2}9$ ($\kod{I}_0^*$).
 \end{proof}
 
-\noindent\emph{Verdict:} correct. (The first version wrote ``$\Z_\ell[\zeta_3]=\End_{I_q}(V)$'' and ``the diagonal element'', and did not name the Frobenius; the
+\noindent\emph{Verdict:} correct. (The first version wrote ``$\Z_\ell[\zeta_3]\simeq\operatorname{End}_{I_q}(V)$'' and ``the diagonal element'', and did not name the Frobenius; the
 revision fixes all three.) The closing sentence of the paper's proof, that the values agree with PARI's \texttt{lfunsympow} on every curve of the tables, was
-reproduced by the book on all $67{,}745$ pairs (optimal curve, bad $q\ge5$) below conductor $10{,}000$ (\Cref{ch:lfunctions,ch:computation}).
+reproduced by the book on all $67{,}745$ pairs (optimal curve, bad $q\ge5$) below conductor $10{,}000$ (\Cref{ch:computation}).
 
 \begin{proposition}[the paper's Proposition prop:shapes]\label{prop:paper:shapes}
 Let $q$ be a bad prime and $\ell\ne q$ odd. Then $P_q(X)$ is (i) $1-X$ if $v_q(j)<0$, and then $e_\ell(E,q)=0$ or $v_\ell(q^2-1)$ according as the reduction is multiplicative or
@@ -660,7 +674,7 @@ $v_\ell(c(u))$ (\Cref{ch:galcoh}).
 computation used only that module, with $n=v_q(q_E)=-v_q(j_E)$ (not the index of the Kodaira symbol at $q=2$).
 \end{proof}
 
-\noindent\emph{Verdict:} correct, with the wording of step (4) fixed. (The first version had the corner $\kappa$, did not say how $c'$ is determined, and treated the
+\noindent\emph{Verdict:} correct, with the action in step (4) written out. (The first version had the corner $\kappa$, did not say how $c'$ is determined, and treated the
 additive primes through a global twist that does not exist at $q=2$; the revision fixes all three.) Worked values, recomputed for the book with PARI's $q$-adic
 Tate parameter: \curve{791a1} at $7$ ($\kod{I}_3$, $\bar u=6$, a cube): $v_3(\Tam_7(\ad T))=2$, $t_3=1$; \curve{539c1} at $7$ ($\kod{I}_3^*$, the same $q_E$ as \curve{77c1}, $\bar u=5$, not a
 cube): $1$; \curve{1577a1} at $19$ ($\bar u=8$, a cube but not a ninth power): extra term $1$; \curve{11a1} at $11$, $\ell=5$ ($\bar u=10$, a fifth power): $v_5(\Tam)=2$, although $E[5]$ is
@@ -849,7 +863,7 @@ that the comparison holds: medium-high).
 \end{warning}
 
 The paper's text calls the operator ``$[UwU]\omega$''; in \cite{DFG04} it is $[UwU]_\omega$, with $w\in\prod_{p\mid N}\GL_2(\Z_p)$ (erratum~\ref{err:paper:dfg-wording}). Self-adjointness of the Hecke
-operators for $\hat\delta_!$ is stated in \cite[Section 1.8.2, (25)]{DFG04}; the paper's ``see Sections 1.6.1, 1.8.2'' is acceptable.
+operators for $\hat\delta_!$ is stated in \cite[Section 1.8.2, (25)]{DFG04}; the paper's pointer to Sections 1.6.1 and 1.8.2 of \cite{DFG04} is acceptable.
 
 \begin{theorem}[Diamond, Flach and Guo, Proposition 1.4(c); the paper's Theorem thm:dfg14, with $\ell\notin\Sigma$]\label{thm:paper:dfg14}
 Let $\ell\nmid2M$ and $\ell\notin\Sigma$. If $\bar\rho_f$ is irreducible, then $\eta^\Sigma_{f,\lambda}=\eta^\emptyset_{f,\lambda}\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}$.
@@ -944,7 +958,8 @@ strict ($2>0$) and $H^1(X_0(99),\Z_3)_{\mf m}$ is not free (\Cref{ch:moddeg}).
 
 \begin{remark}[the paper's Remark rem:free]\label{rem:paper:free}
 For $\ell\nmid2N$ and $\bar\rho$ irreducible, $J_0(N)[\mf m]$ is two-dimensional (\cite[Theorem 3.5]{RibetStein} for $J_1(N)$, as cited; the exceptional Serre weight $\ell$ does not occur
-in weight $2$ with $\ell\nmid N$; the kernel of $J_0(N)\to J_1(N)$ is the Shimura subgroup, which is Eisenstein \cite{LingOesterle,Ribet88}); then $\T_{\mf m}$ is Gorenstein and the Tate module
+in weight $2$ with $\ell\nmid N$; the kernel of the pullback $J_0(N)\to J_1(N)$ is the Shimura subgroup, which is Eisenstein; the references \cite{LingOesterle,Ribet88} for
+it are the book's, the paper citing them in Section 4.1, for the integral structure); then $\T_{\mf m}$ is Gorenstein and the Tate module
 is free of rank two \cite{Tilouine97}. The identification of $T_\ell J_0(N)$ with $H^1(X_0(N),\Zl)$ uses Poincar\'e duality composed with $w_N$, not Galois equivariant, but freeness
 transfers. After \Cref{prop:paper:pullback} this is not used by Theorems thm:main or thm:quant; it gives a second proof of $v_\ell(r_E)=v_\ell(\degphi)$ in this range and explains
 why the Hecke and the cohomological congruence ideals agree there (\Cref{ch:moddeg}). \emph{Verdict:} correct, as cited; no longer load-bearing.
@@ -1049,7 +1064,15 @@ Frobenius reciprocity, a nonzero map $\Ind\psi\to\bar\rho\otimes\Fbar_3$, an iso
 Hom spaces commuting with extension of scalars. (7) The last equivalence is \Cref{prop:paper:ns}.
 \end{proof}
 
-\noindent\emph{Verdict:} correct, with one sentence to reword; the book adds the last equivalence from Proposition prop:ns (the paper has it there). The proof says that
+\begin{warning}[Commentary: the paper's statement of Lemma lem:h0]\label{warn:paper:h0}
+The paper's statement ends: ``with equality if and only if $\bar\rho_{E,3}\simeq\bar\rho_{E,3}\otimes\chi_{-3}$, if and only if $\bar\rho_{E,3}$ is not absolutely irreducible on
+$\Gal(\overline\Q/\Q(\sqrt{-3}))$. This holds for every $E$, with or without complex multiplication; in particular $H^0(\Q,W^D)=0$ if $\ell\notin S_f$.'' The book's form adds one more
+equivalence, ``iff the image of $\bar\rho_{E,3}$ is conjugate to $N_s(\F_3)$'', which is the paper's own Proposition prop:ns combined with the lemma; it is the form in which the lemma is
+used in Sections 1.3 and 6.7. Nothing beyond the paper is proved here, so the verdict is \emph{correct}, not \emph{strengthened}; the last clause of the paper (``in particular \dots'') is
+step (4) of the proof of Theorem thm:main below, through \Cref{prop:paper:Sf} (erratum~\ref{err:paper:h0-iff}).
+\end{warning}
+
+\noindent\emph{Verdict:} correct, with one sentence of the proof to reorder; the book adds the last equivalence from Proposition prop:ns (the paper has it there). The proof says that
 $H^0(\Q,W^D)$, ``a submodule of $(\Q_\ell/\Z_\ell)^3$ with $\ell$-torsion of rank at most one, is cyclic'' before finiteness is known; such a module may be $\Qlmod$, which is not cyclic,
 and it is step (5) that excludes this (erratum~\ref{err:paper:h0-cyclic}). The first version's finiteness argument (``$\rho\simeq\rho\otimes\chi_\ell$ would force $a_p=0$ at all primes inert in
 $\Q(\sqrt{\ell^*})$'') confused $\chi_\ell$ with $\chi_{\ell^*}$ and assumed no complex multiplication; the revision replaces it by the determinant argument.
@@ -1245,8 +1268,8 @@ determinant, acts irreducibly on $\F_3^2$, and contains $\bar\rho(c)$ of determi
 (order $48$), $N_{ns}(\F_3)$ (order $16$) and $N_s(\F_3)$ (order $8$); the nonsplit Cartan subgroup $\F_9^\times$ is excluded, its elements of determinant $-1$ having order $8$ and nonzero
 trace. Complex multiplication plays no role (the paper's statement has dropped the first version's ``without complex multiplication'', and cites \cite{Zywina15} only for context).
 (3) The determinant-one subgroups are $\SL_2(\F_3)$, $Q_8$ and $C_4=\langle J\rangle$, $J=\sm01{-1}0$. (4) The first two act absolutely irreducibly: a subgroup of $\GL_2(\Fbar_3)$ fixing a line lies
-in a Borel subgroup, whose commutator subgroup is unipotent, so abelian of exponent $3$; the commutator subgroups $\{\pm1\}$ of $Q_8$ and $Q_8$ of $\SL_2(\F_3)$ are not. (``Non-abelian and
-faithful'', the first version's reason, is not enough: a Borel subgroup is both.) (5) $C_4$ is abelian; $J$ has characteristic polynomial $X^2+1$, irreducible over $\F_3$, so the
+in a Borel subgroup, whose commutator subgroup is unipotent, so abelian of exponent $3$; the commutator subgroups $\{\pm1\}$ of $Q_8$ and $Q_8$ of $\SL_2(\F_3)$ are not. (The first
+version's reason, ``they are non-abelian and act faithfully'', is not enough: a Borel subgroup is both.) (5) $C_4$ is abelian; $J$ has characteristic polynomial $X^2+1$, irreducible over $\F_3$, so the
 restriction is irreducible over $\F_3$ and splits over $\F_9$ as $\psi\oplus\psi^{-1}$, $\psi(J)=i$ of order $4$. (6) Frobenius reciprocity gives a nonzero, hence bijective, map
 $\Ind\psi\to\bar\rho\otimes\F_9$; an induced representation from an index-two subgroup is invariant under twisting by that subgroup's character, so $\bar\rho\otimes\F_9\simeq(\bar\rho\otimes\chi_{-3})\otimes\F_9$,
 and the isomorphism descends to $\F_3$ (Hom spaces commute with extension of scalars). Then $H^0(\Q,\ad\bar\rho(1))\ne0$ and $h_3=1$ by \Cref{lem:paper:h0}. (7) The four roots of $\psi_3$ are the
@@ -1297,6 +1320,16 @@ the line by $\chi_{-3}(p)$; the Euler factor and $e_3$ follow as in \Cref{prop:p
 $\rho(\Frob_p)\tau\rho(\Frob_p)^{-1}=\tau^p$, which equals $\tau^{\chi_{-3}(p)}$; so $p\equiv\chi_{-3}(p)\pmod4$, i.e. $\chi_{-4}(p)=\chi_{-3}(p)$. At $p=2$, $\chi_{-3}(2)=-1$. (v) For $p\equiv2\pmod3$, $p\nmid3N$,
 $\det\bar\rho(\Frob_p)=-1$, so $\bar\rho(\Frob_p)\in hC_4=\{\pm h,\pm w\}$, all of trace $0$; and $a_p\equiv\tr\bar\rho(\Frob_p)$. (vi) is in \Cref{prop:paper:Sf}. (vii) is \Cref{prop:paper:ns}.
 \end{proof}
+
+\begin{warning}[Commentary: the paper's statement of Proposition prop:ns-structure]\label{warn:paper:ns-structure}
+The paper states: ``Let $E/\Q$ have mod $3$ image conjugate to $N_s(\F_3)$. (i) For every prime $p\ne3$, $\bar\rho_{E,3}(I_p)$ lies in the cyclic group $C_4=N_s(\F_3)\cap\SL_2(\F_3)$.
+Consequently every prime $p\ne3$ with $v_p(j_E)<0$ has $3\mid v_p(j_E)$, so $t_3(E,p)\ge1$; no prime $p\ne3$ has type $\mathrm{IV}$ or $\mathrm{IV}^*$; and no prime $p\ge5$ has type $\mathrm{II}$ or
+$\mathrm{II}^*$. (ii) There is a prime $p\ne3$ at which the image of $I_p$ in $\operatorname{Aut}(T_3E)$ is cyclic of order $4$. At every such prime, $(\ad V_3E)^{I_p}$ is a line on which Frobenius
+acts by $\chi_{-3}(p)$, $P_p(X)=1-\chi_{-3}(p)pX$ and $e_3(E,p)=v_3(p-\chi_{-3}(p))\ge1$. (iii) If such a prime $p$ is at least $5$, then $E$ has type $\mathrm{III}$ or $\mathrm{III}^*$ at $p$ and
+$p\equiv\pm1\pmod{12}$.'' The paper's (i) is the book's (ii); its (ii) is the book's (iii) and (iv) without the description of $R$ through $K_1$, $K_2$ and without the converse; its (iii) is in the
+book's (iii) and (iv). The book adds (i), (v), (vi), (vii), the description of $R$, the converse, and the remark that complex multiplication is allowed (the paper's statement does not exclude
+it either). Every part of the paper's statement is correct; the additions are optional (erratum~\ref{err:paper:ns-structure}).
+\end{warning}
 
 \noindent\emph{Verdict:} strengthened (the paper's parts are correct; the book adds (i), (v) to (vii), the description of $R$ and the converse).
 
@@ -1362,11 +1395,13 @@ revision's sentences on the PARI versions are accurate: the paper used PARI/GP 2
 
 \paragraph{6.2 The rule on whole ranges (Table tab:uniform).} The caption describes, for each range and $\ell\in\{3,5,7,11,13\}$: the curves with $E[\ell]$ irreducible, not CM, with a positive
 bound in (eq:rule); violations (none); the equality rate; violations when $h_\ell$ is dropped (all $\Ns$ curves at $\ell=3$); and the ``III-free'' rule (the type $\kod{III}$, $\kod{III}^*$ terms left out,
-no correction). The III-free rule has no exception because every $\Ns$ failure goes through a type $\kod{III}$ term, a theorem by \Cref{prop:paper:ns-structure}. Book's range ($\ell=3$): $33{,}851$
-curves, no violation of (eq:rule) or of the III-free rule (\Cref{ch:computation}).
+no correction). The III-free rule has no exception because every $\Ns$ failure goes through a type $\kod{III}$ term, a theorem by \Cref{prop:paper:ns-structure}. Book's range ($\ell=3$): in the base
+population of $33{,}851$ optimal non-CM curves below $10{,}000$ with $E[3]$ irreducible, of which $20{,}317$ have a positive bound, there is no violation of (eq:rule) or of the
+III-free rule (\Cref{ch:computation}).
 
 \paragraph{6.3 Calibration and sharpness.} The argument: among working-set curves with bound $0$, $53.2\%$ have $3\nmid\degphi$; if $v_3(\degphi)$ were independent of the local data, the
-$867{,}578$ curves with a positive bound would give about $605{,}000$ violations; there are none. The $v=0$ part alone predicts at least $0.532\times867{,}578\approx461{,}551$. The revision
+$867{,}578$ curves with a positive bound would give about $605{,}000$ violations; there are none. (A check of the order of magnitude, the book's arithmetic: the share $53.2\%$ alone, applied to
+the $867{,}578$ curves, already predicts $0.532\times867{,}578\approx461{,}551$.) The revision
 adds the right reading: ``This shows that the statement is strong, far from vacuous, not that it is valid; the figure depends on the reference population.'' On the book's range
 the same calculation gives about $14{,}275$ expected violations, with a stratified permutation null of about $7{,}600$ (\Cref{ch:computation}): the number changes by a factor of two with the
 reference population, the conclusion not at all. Under the hypothesis of Theorem thm:main the excess over the rule is the Selmer length plus the Tamagawa excess
@@ -1406,7 +1441,7 @@ paper's ``$h_3(E)=1$ for every $\Ns$ curve'' is \Cref{lem:paper:h0}; the first v
 
 \paragraph{6.8 The wild primes (Table tab:isolated).} The table isolates the additive types at $\ell=3$ with the weights of (eq:twist). Its explanation in the revision is correct:
 Definition def:terms with PARI's factor explains every minimum, the factor having one of the four shapes of \Cref{prop:paper:shapes}; a type $\kod{II}$ or $\kod{II}^*$ at $2$ \emph{usually} has
-$P_2=1$ (below $10{,}000$, $1{,}092$ of $1{,}537$ type $\kod{II}$ curves and $514$ of $779$ type $\kod{II}^*$; \Cref{ch:lfunctions}); a type $\kod{IV}$ or $\kod{IV}^*$ at $2$ has $e_3=1$ by Lemma lem:IV; and at
+$P_2=1$ (among the optimal non-CM curves below $10{,}000$, $1{,}092$ of the $1{,}537$ with type $\kod{II}$ at $2$ and $514$ of the $779$ with type $\kod{II}^*$; \Cref{ch:computation}); a type $\kod{IV}$ or $\kod{IV}^*$ at $2$ has $e_3=1$ by Lemma lem:IV; and at
 $q=2$ the right invariant of a type $\kod{I}_n^*$ is $-v_2(j)$, not the index $n$. The weights $w_3$ at $q=3$ are the observed minima ($1$ for $\kod{II},\kod{IV},\kod{III}^*$; $2$ for $\kod{II}^*,\kod{IV}^*$; $0$ for
 $\kod{III},\kod{I}_0^*$), reproduced exactly on the book's range (\Cref{ch:computation}). The sentence ``For $\ell=5,7$ no term is needed at $q=\ell$ or at $q=2,3$ beyond Definition def:terms''
 now adds that the term at $2$ can be positive (\curve{592c1}). It is true but not sharp at $q=\ell$: see Open question 1 below.
@@ -1663,26 +1698,16 @@ and $16$, $13$ CM; $36$ and $24$ violations).
 This section is the consolidated list that the tour has referred to. It concerns the revised version (15 October 2026) only; the first version's errors that the
 revision has already corrected are recorded at the results above, not here. Each item gives the location in the revised paper (section, label, and the sentence when
 it helps), the issue, a suggested fix, the confidence, and the chapter of the book where it is justified. The items are grouped as (a) mathematical errors, (b) missing
-hypotheses and unproved inputs, (c) corrections of data and counts, (d) results the book proves in a stronger form, (e) citations, (f) exposition, (g) open questions
-with the book's observations. None of the items invalidates a theorem of the paper; items (a) and (b) are the ones to fix first. ``Recomputed'' means recomputed for this
-chapter with PARI/GP 2.17.2 on Cremona's files below conductor $10{,}000$; data statements of the book are observations on that range, made with the paper in hand.
+hypotheses and unproved inputs, (c) corrections of data and counts, (d) results the book proves in a stronger form, (e) citations, (f) exposition (including compressed
+justifications), (g) open questions with the book's observations. Group (a) is empty: none of the items invalidates a theorem of the paper. The items of (b) are the ones to
+fix first. ``Recomputed'' means recomputed for this chapter with PARI/GP 2.17.2 on Cremona's files below conductor $10{,}000$; data statements of the book are observations on
+that range, made with the paper in hand.
 
 \subsection*{(a) Mathematical errors}
-\begin{enumerate}[label=\textbf{E\arabic*},ref=E\arabic*,series=errata]
-\item\label{err:paper:ad-frob} \emph{Location:} Section 2, proof of Lemma lem:tamfactor, ``so $\Frob$ acts on $M/(t-1)M$ as $q^{-1}\rho(\Frob)$''. \emph{Issue:} on $M=\ad T$ the action is by conjugation,
-$q^{-1}\Ad(\rho(\Frob))$; the next sentence of the proof computes with the adjoint action, so nothing downstream changes. \emph{Fix:} write $q^{-1}\Ad(\rho(\Frob))$, ``conjugation by $\rho(\Frob)$
-followed by multiplication by $q^{-1}$''. \emph{Confidence:} high. \emph{Book:} \Cref{ch:blochkato,ch:cohomology}.
-\item\label{err:paper:h0-cyclic} \emph{Location:} Section 4.2, proof of Lemma lem:h0, ``so $H^0(\Q,W^D)$, a submodule of $(\Q_\ell/\Z_\ell)^3$ with $\ell$-torsion of rank at most one, is cyclic''. \emph{Issue:}
-before finiteness is known such a module is finite cyclic or isomorphic to $\Qlmod$, which is not cyclic; the determinant step that follows excludes the second case, so the proof is
-complete once reordered. \emph{Fix:} ``is finite cyclic or isomorphic to $\Q_\ell/\Z_\ell$; the determinant argument below shows that it is finite''. \emph{Confidence:} high. \emph{Book:}
-\Cref{ch:galrep,ch:reps}.
-\item\label{err:paper:plane} \emph{Location:} Section 4.1, proof of Proposition prop:pullback, ``$H^1(X_0(N),\Z_\ell)[I_f]$, a saturated lattice, is its intersection with $H^1(X_0(N),\Z_\ell)$''. \emph{Issue:}
-this intersects a complex plane with an $\ell$-adic lattice, which share no ambient space. \emph{Fix:} ``$H^1(X_0(N),\Q)[I_f]$ is a two-dimensional $\Q$-form of this plane, and by flatness
-$H^1(X_0(N),\Z_\ell)[I_f]=H^1(X_0(N),\Z)[I_f]\otimes\Z_\ell$ is a saturated lattice of rank two in $H^1(X_0(N),\Q_\ell)[I_f]$''. \emph{Confidence:} high. \emph{Book:} \Cref{ch:moddeg,ch:curves}.
-\end{enumerate}
+None. Every theorem of the revised paper is correct as stated, given the inputs it names; the items below concern hypotheses, inputs, data, citations and wording.
 
 \subsection*{(b) Missing hypotheses and unproved inputs}
-\begin{enumerate}[resume*=errata]
+\begin{enumerate}[label=\textbf{E\arabic*},ref=E\arabic*,series=errata]
 \item\label{err:paper:dfg14} \emph{Location:} Section 4.1, Theorem thm:dfg14 (``If $\bar\rho_f$ is irreducible then''), for an arbitrary finite $\Sigma$. \emph{Issue:} false for $\ell\in\Sigma$: for $f=f_{11a}$, $\ell=3$,
 $\Sigma=\{3\}$, $L^{\nv}_3(A_f,1)^{-1}=10/9$ has $v_3=-2$, so the right side is not in $\Zl$. $\ell\notin\Sigma$ is a standing assumption of \cite[Section 1.7.3]{DFG04}, and every use in the paper has it.
 \emph{Fix:} ``Let $\ell\notin\Sigma$. If $\bar\rho_f$ is irreducible then''. \emph{Confidence:} high (recomputed). \emph{Book:} \Cref{ch:congruence}.
@@ -1694,17 +1719,15 @@ $H^1(X_0(M^\Sigma),\Z_\ell)_{\mathfrak m}$''), used in Proposition prop:pullback
 \cite{DFG04} with $H^1(X_0(M^\Sigma),\Zl)$ at a non-Eisenstein maximal ideal is an input of Theorem thm:main (both the identity and the inequality), supported only by a sketch. \emph{Fix:}
 state it as an explicit proposition before Proposition prop:pullback, with a proof or a precise reference, and list it among the inputs of Theorem thm:main. \emph{Confidence:} high that it is
 an unproved input; medium-high that it holds (the book also only sketches it). \emph{Book:} \Cref{ch:congruence}.
-\item\label{err:paper:wn} \emph{Location:} Section 4.1, proof of Proposition prop:pullback, ``The involution $w_N$ commutes with the $T_n$, $(n,N)=1$, so it preserves the plane''. \emph{Issue:} the plane is the
-kernel of $I_f$ in the full Hecke algebra, $U_p$ included, and $w_N$ does not commute with $U_p$ for $p\mid N$; the inference needs multiplicity one for newforms (the eigenspace of the $T_n$,
-$(n,N)=1$, for the eigenvalues of $f$ is already the plane). \emph{Fix:} ``by multiplicity one for newforms the plane is also the eigenspace of the $T_n$, $(n,N)=1$, with which $w_N$ commutes''.
-\emph{Confidence:} high. \emph{Book:} \Cref{ch:moddeg,ch:hecke}.
-\item\label{err:paper:ddt417-steps} \emph{Location:} Section 4.1, proof of Lemma lem:ddt417. \emph{Issue:} two compressed steps. ``Since $L$ is torsion-free and $\wp\cap I=0$, the sum $L[\wp]+L[I]$ is direct'' needs the
-observation that $\pi(t)=t+(\pi(t)-t)$ is a nonzero scalar in $I+\wp$; and the converse inclusion $L[\wp]^\perp\subseteq L[I]$ shows only $ty=0$ for one $t$, which suffices because $I=\mc Ot$ ($\pi|_I$ is
-injective with image $\eta$). \emph{Fix:} add the two sentences (steps (2) and (3) of the proof of \Cref{lem:paper:ddt417}). \emph{Confidence:} high. \emph{Book:} \Cref{ch:congruence,ch:modules}.
 \end{enumerate}
 
 \subsection*{(c) Data and counts}
 \begin{enumerate}[resume*=errata]
+\item\label{err:paper:abstract-scope} \emph{Location:} the abstract, ``With that correction term the inequality holds with no exception, with Euler factors computed by PARI
+at every bad prime, for every curve of conductor at most $500000$ that the tables determine to be optimal''. \emph{Issue:} the hypotheses of Conjecture conj:euler, $E[\ell]$ irreducible
+and no complex multiplication, are missing, and without them the sentence is false: in the Eisenstein case \texttt{rule(E, l, 1)} returns \texttt{[0, 1]}, a violation, for the optimal
+curves \curve{11a1} at $\ell=5$ and \curve{539a1}, \curve{98a1} at $\ell=3$ (recomputed). The caption of Table tab:uniform states the hypotheses. \emph{Fix:} insert ``with $E[\ell]$
+irreducible and without complex multiplication'' after ``optimal''. \emph{Confidence:} high (recomputed). \emph{Book:} \Cref{ch:computation}.
 \item\label{err:paper:28} \emph{Location:} Section 5, the paragraph after Proposition prop:ns-structure, ``($28$ of them with $3\mid N$)''. \emph{Issue:} $44$ of the $90$ non-CM optimal curves with image $\Ns$ below
 $10{,}000$ have $3\mid N$; and the count omits the $13$ optimal CM curves with image $N_s(\F_3)$ ($j=-32768$ or $8000$), which the proposition covers. \emph{Fix:} ``Among the $90$ non-CM optimal
 curves \dots\ ($44$ of them with $3\mid N$)'', or count all $103$. \emph{Confidence:} high (recomputed). \emph{Book:} \Cref{ch:galrep}.
@@ -1726,8 +1749,8 @@ when $v_2(j)=-1$ ($1{,}262$ of $1{,}262$ pairs below conductor $3{,}000$). No co
 (the $q$-expansion of $j$ gives $q_E$ directly). \emph{Confidence:} high for the behaviour in 2.17.2; not checked in 2.15. \emph{Book:} \Cref{ch:reduction,ch:computation}.
 \item\label{err:paper:protocol} \emph{Location:} Section 6.1, the protocol paragraph. \emph{Issue:} two facts are not stated: whether the out-of-table set contains curves with $3\mid N$ and potentially good
 reduction at $3$ (if not, the weights $w_3$ were never blind-tested); and whether the test of (eq:rule) on the extension range used only the $359{,}009$ classes with determined optimality (if
-not, it relies on the class-invariance of $w_3$, which is not proved; below $10{,}000$ it holds in all $1{,}295$ classes with no $3$-isogeny and fails in $828$ of the $1{,}293$ with one, for instance
-\curve{54a}). \emph{Fix:} one sentence on each. \emph{Confidence:} medium-high (the facts are recomputed; whether the paper's runs did so is unknown). \emph{Book:} \Cref{ch:computation,ch:ellcurves}.
+not, it relies on the class-invariance of $w_3$, which is not proved; below $10{,}000$, among the classes with $3\mid N$, at least two curves and potentially good reduction at $3$, it holds in all $1{,}295$ classes with no $3$-isogeny and fails in
+$828$ of the $1{,}293$ with one, for instance \curve{54a}). \emph{Fix:} one sentence on each. \emph{Confidence:} medium-high (the facts are recomputed; whether the paper's runs did so is unknown). \emph{Book:} \Cref{ch:computation,ch:ellcurves}.
 \item\label{err:paper:wording-data} \emph{Location:} Section 6.5 (``for every value of $v_\ell(q^2-1)$ up to $6$'') and Section 6.3 (``its smallest prime factor is $3$ in $63\%$ of the cases and divides $N$ in $52\%$'').
 \emph{Issue:} at $\ell=3$ the value $v_3(q^2-1)=0$ occurs only for $q=\ell=3$; and ``divides $N$'' can refer to the smallest prime factor of the quotient or to some prime factor (below $10{,}000$:
 $47.5\%$ and $51.8\%$). \emph{Fix:} say so. \emph{Confidence:} medium. \emph{Book:} \Cref{ch:computation}.
@@ -1748,9 +1771,6 @@ the item from Open question 6. \emph{Confidence:} high, given the Ogg-Saito form
 subfields $K_1$, $K_2$, $\Q(\sqrt{-3})$; the order-four primes are exactly the primes $p\ne3$ ramified in $K_1$ (equivalently in $K_2$); every $p\ge5$ of type $\kod{III}$ or $\kod{III}^*$ is one of them;
 $a_p\equiv0\pmod3$ for $p\equiv2\pmod3$, $p\nmid3N$; $E$ is ordinary at $3$ when $3\nmid N$; $h_3(E)=1$; and complex multiplication is allowed. \emph{Fix:} optional; state the stronger form
 (\Cref{prop:paper:ns-structure}). \emph{Confidence:} high. \emph{Book:} \Cref{ch:galrep}.
-\item\label{err:paper:h0-iff} \emph{Location:} Section 4.2, Lemma lem:h0. \emph{Issue:} the statement ends with ``not absolutely irreducible on $\Gal(\overline\Q/\Q(\sqrt{-3}))$''; with Proposition prop:ns this
-is ``the image is $N_s(\F_3)$'', the form in which the lemma is used in Sections 1.3 and 6.7. \emph{Fix:} optional; add the equivalence with a pointer to Proposition prop:ns. \emph{Confidence:} high.
-\emph{Book:} \Cref{ch:galrep}.
 \end{enumerate}
 
 \subsection*{(e) Citations}
@@ -1767,9 +1787,6 @@ against the sources). \emph{Book:} \Cref{ch:moddeg}.
 \emph{Fix:} add ``and under their hypothesis CR''; check the theorem number in the published version. \emph{Confidence:} high (arXiv version checked). \emph{Book:} \Cref{ch:modgalrep,ch:congruence}.
 \item\label{err:paper:dfg-wording} \emph{Location:} Section 4.1, ``the operator $[UwU]\omega$''. \emph{Issue:} in \cite{DFG04} the operator is $[UwU]_\omega$, with $w\in\prod_{p\mid N}\GL_2(\Z_p)$. \emph{Fix:} write $[UwU]_\omega$.
 \emph{Confidence:} high (checked against the published text). \emph{Book:} \Cref{ch:congruence}.
-\item\label{err:paper:dfg-version} \emph{Location:} the bibliography entry for \cite{DFG04}. \emph{Issue:} a longer arXiv version (arXiv:2512.02348) numbers sections and results differently; every number cited in the
-paper (Theorems 0.1, 0.2, 2.7, 2.15, 3.7, Proposition 1.4(c), Lemmas 2.1, 2.12, displays (13), (14), (31), (57), p.~708) refers to the published version, where it was verified. \emph{Fix:} say in the
-bibliography that the published version is meant. \emph{Confidence:} high. \emph{Book:} \Cref{ch:congruence}.
 \item\label{err:paper:labels} \emph{Location:} Sections 1.3, 6.7, 6.10 (labels 3Ns, 3Cs.1.1, 3B.1.1). \emph{Issue:} the labels are used as in Cremona's \texttt{galrep} file and agree with the intrinsic
 descriptions (3Ns: $\psi_3$ a product of two quadratics; 3Cs.1.1 and 3B.1.1: rational $3$-torsion), but were not compared with the tables of \cite{Sutherland16}, whose row and column conventions
 matter for the B labels. \emph{Fix:} give the intrinsic description beside each label (the revision mostly does). \emph{Confidence:} medium. \emph{Book:} \Cref{ch:groups,ch:galrep}.
@@ -1784,13 +1801,33 @@ cite by section. \emph{Confidence:} not applicable. \emph{Book:} \Cref{ch:modgal
 \subsection*{(f) Exposition}
 \begin{enumerate}[resume*=errata]
 \item\label{err:paper:abstract-eis} \emph{Location:} the abstract, last sentence, ``and the structure of the exceptional curves at $\ell=3$ and the bound for the deficit in the Eisenstein case at $\ell=3$ are
-proved''. \emph{Issue:} only the bound $D\le2$ \emph{given} the first bound of Conjecture conj:eis is proved (Proposition prop:no9); Section 1.4 and Section 6.10 say this correctly. \emph{Fix:} ``\dots\ and that
+proved''. \emph{Issue:} only the bound $D\le2$ \emph{given} the first bound of Conjecture conj:eis is proved (Proposition prop:no9); Sections 1.5 and 1.6 and Section 6.10 say this correctly. \emph{Fix:} ``\dots\ and that
 the bound $D\le2$ for the deficit in the Eisenstein case at $\ell=3$ follows from the first bound of Conjecture conj:eis''. \emph{Confidence:} high. \emph{Book:} \Cref{ch:ellcurves}.
 \item\label{err:paper:rows} \emph{Location:} Section 1.1, after the table, ``The rows $\mathrm{I}_n$, $\mathrm{I}_n^*$ and $\mathrm{I}_0^*$ hold at every odd $q\ne\ell$''. \emph{Issue:} Lemma lem:euler proves the row $\kod{I}_n$ at every $q\ne\ell$,
 $q=2$ included. \emph{Fix:} ``the row $\mathrm{I}_n$ at every $q\ne\ell$, the rows $\mathrm{I}_n^*$ and $\mathrm{I}_0^*$ at every odd $q\ne\ell$''. \emph{Confidence:} high. \emph{Book:} \Cref{ch:lfunctions,ch:rings}.
 \item\label{err:paper:freeness} \emph{Location:} Section 2, the paragraph after Lemma lem:IV. \emph{Issue:} ``For $q\ge5$ \dots\ and $T_3E$ is then free of rank one over $\Z_3[X]/(X^2+X+1)$'' reads as if freeness needed
 $q\ge5$; it holds at every $q\ne3$ where $\rho_{E,3}(I_q)$ is cyclic of order $3$, $q=2$ included, and Lemma lem:tamadd uses it at $q=2$. \emph{Fix:} move the freeness out of the $q\ge5$ sentence;
 only the identification with Kraus's semistability defect needs $q\ge5$. \emph{Confidence:} high. \emph{Book:} \Cref{ch:ant,ch:galrep}.
+\item\label{err:paper:ad-frob} \emph{Location:} Section 2, proof of Lemma lem:tamfactor, ``so $\Frob$ acts on $M/(t-1)M$ as $q^{-1}\rho(\Frob)$''. \emph{Issue:} on $M=\ad T$, $\rho(\Frob)$ can only mean the adjoint action, conjugation,
+$q^{-1}\Ad(\rho(\Frob))$, and the next sentence of the proof computes with it; so this is not an error, but writing the action out avoids a misreading. \emph{Fix:} write $q^{-1}\Ad(\rho(\Frob))$, ``conjugation by $\rho(\Frob)$
+followed by multiplication by $q^{-1}$''. \emph{Confidence:} high. \emph{Book:} \Cref{ch:blochkato,ch:cohomology}.
+\item\label{err:paper:h0-cyclic} \emph{Location:} Section 4.2, proof of Lemma lem:h0, ``so $H^0(\Q,W^D)$, a submodule of $(\Q_\ell/\Z_\ell)^3$ with $\ell$-torsion of rank at most one, is cyclic''. \emph{Issue:}
+before finiteness is known such a module is finite cyclic or isomorphic to $\Qlmod$, which is not cyclic; the determinant step that follows excludes the second case, so the proof is
+complete once reordered. \emph{Fix:} ``is finite cyclic or isomorphic to $\Q_\ell/\Z_\ell$; the determinant argument below shows that it is finite''. \emph{Confidence:} high. \emph{Book:}
+\Cref{ch:galrep,ch:reps}.
+\item\label{err:paper:h0-iff} \emph{Location:} Section 4.2, Lemma lem:h0. \emph{Issue:} the statement ends with ``not absolutely irreducible on $\Gal(\overline\Q/\Q(\sqrt{-3}))$''; with Proposition prop:ns this
+is ``the image is $N_s(\F_3)$'', the form in which the lemma is used in Sections 1.3 and 6.7. \emph{Fix:} optional; it is a combination of two of the paper's own results, not a strengthening; add the equivalence with a pointer to Proposition prop:ns. \emph{Confidence:} high.
+\emph{Book:} \Cref{ch:galrep}.
+\item\label{err:paper:plane} \emph{Location:} Section 4.1, proof of Proposition prop:pullback, ``$H^1(X_0(N),\Z_\ell)[I_f]$, a saturated lattice, is its intersection with $H^1(X_0(N),\Z_\ell)$''. \emph{Issue:}
+this intersects a complex plane with an $\ell$-adic lattice, which share no ambient space. \emph{Fix:} ``$H^1(X_0(N),\Q)[I_f]$ is a two-dimensional $\Q$-form of this plane, and by flatness
+$H^1(X_0(N),\Z_\ell)[I_f]=H^1(X_0(N),\Z)[I_f]\otimes\Z_\ell$ is a saturated lattice of rank two in $H^1(X_0(N),\Q_\ell)[I_f]$''. \emph{Confidence:} high. \emph{Book:} \Cref{ch:moddeg,ch:curves}.
+\item\label{err:paper:wn} \emph{Location:} Section 4.1, proof of Proposition prop:pullback, ``The involution $w_N$ commutes with the $T_n$, $(n,N)=1$, so it preserves the plane''. \emph{Issue:} the plane is the
+kernel of $I_f$ in the full Hecke algebra, $U_p$ included, and $w_N$ does not commute with $U_p$ for $p\mid N$; the inference needs multiplicity one for newforms (the eigenspace of the $T_n$,
+$(n,N)=1$, for the eigenvalues of $f$ is already the plane). \emph{Fix:} ``by multiplicity one for newforms the plane is also the eigenspace of the $T_n$, $(n,N)=1$, with which $w_N$ commutes''.
+\emph{Confidence:} high. \emph{Book:} \Cref{ch:moddeg,ch:hecke,ch:curves}.
+\item\label{err:paper:ddt417-steps} \emph{Location:} Section 4.1, proof of Lemma lem:ddt417. \emph{Issue:} two compressed steps. ``Since $L$ is torsion-free and $\wp\cap I=0$, the sum $L[\wp]+L[I]$ is direct'' needs the
+observation that $\pi(t)=t+(\pi(t)-t)$ is a nonzero scalar in $I+\wp$; and the converse inclusion $L[\wp]^\perp\subseteq L[I]$ shows only $ty=0$ for one $t$, which suffices because $I=\mc Ot$ ($\pi|_I$ is
+injective with image $\eta$). \emph{Fix:} add the two sentences (steps (2) and (3) of the proof of \Cref{lem:paper:ddt417}). \emph{Confidence:} high. \emph{Book:} \Cref{ch:congruence,ch:modules}.
 \item\label{err:paper:hecke-m} \emph{Location:} Section 4.1, Lemma lem:hecke. \emph{Issue:} the statement introduces the maximal ideal $\mf m$, which neither the statement nor the proof uses since the
 revision. \emph{Fix:} move $\mf m$ to the paragraph after the lemma, where it is used. \emph{Confidence:} high. \emph{Book:} \Cref{ch:congruence}.
 \item\label{err:paper:Eq} \emph{Location:} Section 4.4, the paragraph after Theorem thm:twist, ``$v_\ell(\degphi)\ge v_\ell(\deg\varphi_{E_q})$''. \emph{Issue:} $E_q$ is not defined. \emph{Fix:} write $E^{(q)}$ (or the optimal curve of
@@ -1827,9 +1864,13 @@ surjective).
 \end{exercise}
 
 \begin{exercise}\label{ex:paper:twist-e}
-(a) Show that $e_3(\curve{11a1},11)=0$ while $e_3(\curve{121d2},11)=1$, and explain why this does not contradict the invariance of $\ad V$ under twists. (b) For the class \curve{539d} (type $\kod{I}_0^*$ at
-$7$, the twist of \curve{11a} by $\chi_{-7}$) compute $e_3$ and $e_5$ at $7$ from $a_7(\curve{11a1})=-2$, compare with $\degphi=72$, and explain the behaviour at $\ell=5$.
-\emph{Hint.} (a) The true factor $1-11^{-2}$ is the same; the naive factor is $1-11^{-2}$ for \curve{11a1} and $1$ for \curve{121d2}. (b) $e_\ell=v_\ell(6)+v_\ell(64-4)$: $e_3=2=v_3(72)$, $e_5=1$ but $v_5(72)=0$; the
+(a) The curve \curve{37a1} has type $\kod{I}_1$ at $37$ and $\degphi=2$; its twist by $\chi_{37}$ is \curve{1369d1}, of type $\kod{I}_1^*$ at $37$, alone in its class. Compute $e_3$ and
+$e_{19}$ at $37$ for both curves, explain why they differ although $\ad V$ does not change, and use \Cref{thm:paper:quant}(ii) to predict $v_3$ and $v_{19}$ of $\deg\varphi_{\curve{1369d1}}$; check
+against $\deg\varphi_{\curve{1369d1}}=2736$. (b) For the class \curve{539d} (type $\kod{I}_0^*$ at $7$, the twist of \curve{11a} by $\chi_{-7}$) compute $e_3$ and $e_5$ at $7$ from $a_7(\curve{11a1})=-2$,
+compare with $\degphi=72$, and explain the behaviour at $\ell=5$.
+\emph{Hint.} (a) For \curve{37a1} the naive and true factors are both $1-37^{-2}$, so $e_\ell=0$; for \curve{1369d1} the naive factor is $1$ and $e_\ell=v_\ell(37^2-1)=v_\ell(2^3\cdot3^2\cdot19)$: $e_3=2$,
+$e_{19}=1$. The hypotheses of (ii) hold for $\ell=3,19$ (the mod $\ell$ images of \curve{37a1} are surjective, $\ell\nmid2\cdot1369$, and $\ell\notin S_f$ by \Cref{prop:paper:Sf}, the image at $3$ not being
+$\Ns$), with $S=\{37\}$ and $E'_S=\curve{37a1}$; so $v_3=0+2$ and $v_{19}=0+1$, as $2736=2^4\cdot3^2\cdot19$. (b) $e_\ell=v_\ell(6)+v_\ell(64-4)$: $e_3=2=v_3(72)$, $e_5=1$ but $v_5(72)=0$; the
 mod $5$ image of \curve{539d1} is reducible (5B.4.1), outside Theorem thm:quant.
 \end{exercise}
 
@@ -1868,10 +1909,13 @@ that the Gram determinant of $\frac12\langle x,w_N^*y\rangle$ on $\varphi_E^*H^1
 \end{exercise}
 
 \begin{exercise}\label{ex:paper:726a1}
-For \curve{726a1} (types $\kod{I}_6$ at $2$, $\kod{I}_3$ at $3$, $\kod{III}$ at $11$ with $P_{11}=1+11X$, image $\Ns$, $\degphi=144$) compute: the right side of (eq:thm) as written; the same without the terms at $q=3$;
-the outputs of \texttt{rule(E, 3)} and \texttt{rule(E, 3, 1)}. Which single term accounts for the difference between the first two, and why is the paper's parenthesis in Section 6.7 about the
-weights $w_3$ wrong for this curve?
-\emph{Answer.} $1+1+1=3$; $2$; \texttt{[2, 2]} twice. The term $t_3(E,3)=1$; $w_3(E)=0$ for type $\kod{I}_3$ at $3$.
+The curve \curve{3840h1} has types $\kod{III}$ at $2$ (with $P_2=1+2X$), $\kod{I}_3$ at $3$ and $\kod{I}_6$ at $5$, mod $3$ image $\Ns$, and $\degphi=1152=2^7\cdot3^2$. (a) Compute the right side of
+(eq:thm) at $\ell=3$ as written, and the same without the terms at $q=3$; which prime $p\equiv-1\pmod3$ carries the failure, and by how much? (b) Compute \texttt{rule(E, 3)} and
+\texttt{rule(E, 3, 1)} by hand. (c) Identify the order-four prime of \Cref{prop:paper:ns-structure} and check part (iv) there. (d) Why is $w_3(E)=0$?
+\emph{Answer.} (a) $e_3(E,2)=v_3(P_2(1/4))=v_3(3/2)=1$, $t_3(E,3)=1$, $t_3(E,5)=v_3(6)=1$: the bound is $3>2$, a failure by one, carried by $p=5$ with $t_3(E,5)=1$; without $t_3(E,3)$ the
+bound is $2$. (b) Without \texttt{iii} the type $\kod{III}$ term at $2$ is left out: $0+1+1=2$; with it, $1+1+1-\texttt{ns3}(E)=2$; both return \texttt{[2, 2]}. (c) The prime $2$, of type $\kod{III}$: $5$
+is potentially multiplicative, so $\bar\rho(I_5)$ consists of $\pm$ unipotents, while $R\ne\emptyset$; by (iv), $P_2=1-\chi_{-3}(2)2X=1+2X$ and $e_3(E,2)=1$, as computed. (d) The reduction at $3$ is
+multiplicative.
 \end{exercise}
 
 \begin{exercise}\label{ex:paper:rankin}
@@ -1881,9 +1925,11 @@ multiplicative and additive primes separately.
 \end{exercise}
 
 \begin{exercise}\label{ex:paper:deficits}
-Compute the deficit $D$ of Conjecture conj:eis at $\ell=3$ for \curve{14a1}, \curve{714i1} and \curve{20a1} from the data of Section~\ref{sec:paper:verifications}, and say which of the two summands of the
-first bound is responsible in each case.
-\emph{Answer.} \curve{14a1}: $D=v_3(6)+v_3(3)-0=2=v_3(6)+[E[3]\simeq\Z/3\oplus\mu_3]$; \curve{714i1}: $D=5-3=2=v_3(9)$; \curve{20a1}: $D=1-0=1=v_3(6)$.
+Compute the deficit $D$ of Conjecture conj:eis at $\ell=3$ for the optimal curves \curve{26a1} (types $\kod{I}_3$ at $2$ and $13$, torsion $\Z/3$, image 3Cs.1.1, $\degphi=2$), \curve{30a1}
+($\kod{I}_4$ at $2$, $\kod{I}_3$ at $3$, $\kod{I}_1$ at $5$, torsion $\Z/6$, image 3B.1.1, $\degphi=2$) and \curve{6942n1} ($\kod{I}_{18}$ at $2$, $\kod{I}_9$ at $3$, $\kod{I}_3$ at $13$, $\kod{I}_1$ at $89$,
+torsion $\Z/9$, image 3B.1.1, $\degphi=65664$), and say which summand of the first bound is responsible in each case. Is \curve{6942n1} consistent with \Cref{prop:paper:no9}?
+\emph{Answer.} \curve{26a1}: $D=1+1-0=2=v_3(3)+[E[3]\simeq\Z/3\oplus\mu_3]$, both summands. \curve{30a1}: $D=1-0=1=v_3(6)$, the torsion. \curve{6942n1}: $65664=2^7\cdot3^3\cdot19$, so
+$D=(2+2+1+0)-3=2=v_3(9)$, the torsion. Yes: its image 3B.1.1 means $E[3]\not\simeq\Z/3\oplus\mu_3$, and the proposition excludes a point of order $9$ only when $E[3]\simeq\Z/3\oplus\mu_3$.
 \end{exercise}
 
 \begin{exercise}\label{ex:paper:ns-ap}
@@ -1895,17 +1941,22 @@ $\bar\rho(\Frob_p)$.
 \end{exercise}
 
 \begin{exercise}\label{ex:paper:wild-two}
-From $a_2(\curve{77a1})=0$ and $a_2(\curve{37a1})=-2$, and \Cref{prop:paper:shapes}(ii), derive $P_2$ for \curve{1232l1} and \curve{592c1}, compute $e_3(E,2)$ and $e_5(E,2)$, and compare with the degrees $288$
-and $80$. Why does the Kodaira type $\kod{II}^*$ at $2$ not determine $P_2$?
-\emph{Answer.} $(1-2X)(1+4X+4X^2)=(1-2X)(1+2X)^2$, $P_2(1/4)=9/8$, $e_3=2=v_3(288)$; $(1-2X)(1+4X^2)$, $P_2(1/4)=5/8$, $e_5=1=v_5(80)$. The type records the special fibre of the minimal regular model,
-while $P_2$ depends on the image of inertia and on Frobenius.
+The curves \curve{848e1} and \curve{1072a1} are the twists by $\chi_{-4}$ of \curve{53a1} and \curve{67a1}, with $a_2(\curve{53a1})=-1$ and $a_2(\curve{67a1})=2$. PARI gives \curve{848e1} the symbol
+$\kod{I}_4^*$ at $2$, with $v_2(j)=0$, and \curve{1072a1} the type $\kod{II}^*$ at $2$. (a) Using \Cref{prop:paper:shapes}(ii), derive $P_2$ for both curves. (b) Show that $e_\ell(\curve{848e1},2)=0$
+for every odd $\ell$ and $t_\ell(\curve{848e1},2)=0$, although the symbol at $2$ is $\kod{I}_4^*$. (c) Compute $e_5(\curve{1072a1},2)$ and compare with $\degphi=200$.
+\emph{Answer.} (a) $(1-2X)(1-(a^2-4)X+4X^2)$: for \curve{848e1}, $a^2=1$, $P_2=(1-2X)(1+3X+4X^2)$; for \curve{1072a1}, $a^2=4$, $P_2=(1-2X)(1+4X^2)$. (b) $P_2(1/4)=\frac12(1+\frac34+\frac14)=1$, so
+$e_\ell=0$; $v_2(j)\ge0$, so the reduction is potentially good and $t_\ell=0$: at $q=2$ a symbol $\kod{I}_m^*$ does not imply potentially multiplicative reduction. (c) $P_2(1/4)=\frac12\cdot\frac54=\frac58$,
+$e_5=1$, while $v_5(200)=2$: the bound is not attained (see \Cref{ex:paper:selmer-examples}).
 \end{exercise}
 
 \begin{exercise}\label{ex:paper:selmer-examples}
-Using \Cref{cor:paper:explicit} and the Tate data of Section~\ref{sec:paper:verifications}, compute the explicit bound and the Selmer length at $\ell=3$ for \curve{791a1}, \curve{1184f1} and \curve{1748e1}
-(all with $3\nmid N$ and image neither reducible nor $\Ns$).
-\emph{Answer.} \curve{791a1}: $t_3(7)=1$, excess $\min(1,1,1)=1$ at $7$, bound $2=v_3(144)$, Selmer $0$. \curve{1184f1}: $t_3(37)=1$, excess $1$, bound $2$, $v_3(1728)=3$, Selmer $1$. \curve{1748e1}: $e_3(2)=1$,
-$t_3(19)=1$, excess $1$, bound $3$, $v_3(3240)=4$, Selmer $1$.
+Using \Cref{cor:paper:explicit}, compute the explicit bound and the Selmer length $\len H^1_f(\Q,\ad T\otimes\Qlmod)$: (a) for \curve{1577a1} at $\ell=3$ and at $\ell=5$ (types $\kod{I}_3$ at $19$ with
+$\bar u=8$, and $\kod{I}_2$ at $83$; $\degphi=720$; mod $\ell$ images surjective for every $\ell$); (b) for \curve{1072a1} and \curve{67a1} at $\ell=5$ (\Cref{ex:paper:wild-two}; \curve{67a1} has type
+$\kod{I}_1$ at $67$ and $\degphi=5$; both have surjective mod $5$ image). Explain why the two Selmer lengths in (b) must agree.
+\emph{Answer.} (a) At $\ell=3$: $t_3(19)=1$, $v_3(18)=2$, and $8$ is a cube but not a ninth power in $\F_{19}^\times$, so the Tamagawa excess is $\min(1,2,1)=1$; $t_3(83)=0$; bound $2=v_3(720)$,
+Selmer length $0$. At $\ell=5$: $t_5=0$ at both primes and $v_5(18)=v_5(82)=0$; bound $0$, $v_5(720)=1$, Selmer length $1$. (b) \curve{1072a1}: bound $e_5(2)=1$, $v_5(200)=2$, Selmer length $1$;
+\curve{67a1}: bound $0$, $v_5(5)=1$, Selmer length $1$. The modules $\ad T_5E$ of a curve and of its quadratic twist are isomorphic as $G_\Q$-modules, and the Bloch-Kato conditions depend only on
+the module, so the Selmer groups coincide; the degrees differ by the omitted factor $e_5(\curve{1072a1},2)$.
 \end{exercise}
 
 \section{Notes and references}\label{sec:paper:notes}
@@ -1926,6 +1977,7 @@ of $w_3$) were recomputed for this chapter; the others are taken from the chapte
 
 \paragraph{What is new here.} Relative to the revised paper, the book contributes: the equality in Step 1 of Theorem thm:quant at every $\ell\notin S$ (\Cref{ch:congruence}); the type exchanges at $q=3$
 (\Cref{ch:reduction}); the stronger form of Proposition prop:ns-structure (\Cref{ch:galrep}); the twist relation at $q=\ell$ observed below $10{,}000$ (\Cref{ch:computation}); and the corrections of
-Section~\ref{sec:paper:errata}. Found while writing this chapter: the abstract's overstatement about the Eisenstein bound (\ref{err:paper:abstract-eis}) and the small expository
+Section~\ref{sec:paper:errata}. Found while writing this chapter: the abstract's overstatement about the Eisenstein bound (\ref{err:paper:abstract-eis}), the missing hypotheses in the abstract's data
+sentence (\ref{err:paper:abstract-scope}) and the small expository
 points \ref{err:paper:hecke-m}, \ref{err:paper:Eq} and \ref{err:paper:c-letter}. The others were found while writing the earlier chapters, which justify them.
 \end{sloppypar}
