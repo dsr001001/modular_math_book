@@ -335,12 +335,20 @@ A finitely generated $\mathcal O$-module is finite iff it is killed by $\otimes 
 
 \begin{example}[three toy algebras]\label{ex:congruence:toy}
 (a) For $r\ge1$ let $\T_r=\set{(a,b)\in\mathcal O^2:a\equiv b\pmod{\varpi^r}}$ and $\pi(a,b)=a$. Then $\wp=0\times\varpi^r\mathcal O$, $I=\varpi^r\mathcal O\times0$, $\eta=\varpi^r\mathcal O$, $\mathcal C(\pi)\simeq\mathcal O/\varpi^r$,
-and $\wp^2=0\times\varpi^{2r}\mathcal O$, so $\mathrm{Cot}(\pi)\simeq\mathcal O/\varpi^r$: $\len\mathrm{Cot}(\pi)=v(\eta)=r$. This is the algebra of two eigenforms congruent modulo $\varpi^r$, and
-$\T_r\simeq\mathcal O[x]/(x(x-\varpi^r))$ by $x\mapsto(0,\varpi^r)$ is a complete intersection.
+and $\wp^2=0\times\varpi^{2r}\mathcal O$, so $\mathrm{Cot}(\pi)\simeq\mathcal O/\varpi^r$: $\len\mathrm{Cot}(\pi)=v(\eta)=r$. In detail: $(a,b)\in\T_r$ has $\pi(a,b)=0$ iff $a=0$, and then $b\equiv0\pmod{\varpi^r}$, which gives
+$\wp$; an element $(a,b)$ kills $(0,\varpi^r)$ iff $b\varpi^r=0$, that is $b=0$, and $(a,0)\in\T_r$ iff $\varpi^r\mid a$, which gives $I$. As an $\mathcal O$-module $\T_r$ has basis $(1,1)$, $(0,\varpi^r)$, so
+$\T_r=\mathcal O\oplus\wp$ and $\T_r/(\wp+I)=\mathcal O/\varpi^r$ as in \Cref{prop:congruence:congruence-module}(i). This is the algebra of two eigenforms congruent modulo $\varpi^r$, and
+$\T_r\simeq\mathcal O[x]/(x(x-\varpi^r))$ by $x\mapsto(0,\varpi^r)$ is a complete intersection: the map $\mathcal O[x]\to\T_r$ is onto because $1\mapsto(1,1)$ and $x\mapsto(0,\varpi^r)$ are the basis above, it kills
+$x(x-\varpi^r)$, whose image is $(0,\varpi^r)\bigl((0,\varpi^r)-\varpi^r(1,1)\bigr)=(0,\varpi^r)(-\varpi^r,0)=0$, and both $\mathcal O[x]/(x(x-\varpi^r))$ and $\T_r$ are free of rank $2$, so the surjection is an
+isomorphism. One equation in one variable: a complete intersection.
 (b) Let $\T_3^\flat=\set{(a,b,c)\in\mathcal O^3:a\equiv b\equiv c\pmod\varpi}$ and $\pi(a,b,c)=a$. Then $\wp=0\times\varpi\mathcal O\times\varpi\mathcal O$, $I=\varpi\mathcal O\times0\times0$, $\eta=\varpi\mathcal O$, but
-$\wp^2=0\times\varpi^2\mathcal O\times\varpi^2\mathcal O$ and $\mathrm{Cot}(\pi)\simeq(\mathcal O/\varpi)^2$: $\len\mathrm{Cot}(\pi)=2>1=v(\eta)$. Three pairwise congruent forms; $\T_3^\flat$ is not a complete
+$\wp^2=0\times\varpi^2\mathcal O\times\varpi^2\mathcal O$ and $\mathrm{Cot}(\pi)\simeq(\mathcal O/\varpi)^2$: $\len\mathrm{Cot}(\pi)=2>1=v(\eta)$. (Here $I$ consists of the $(a,b,c)\in\T_3^\flat$ killing
+$(0,\varpi,0)$ and $(0,0,\varpi)$, so $b=c=0$ and then $\varpi\mid a$; and $\wp^2$ is spanned by the products $(0,\varpi y,\varpi z)(0,\varpi y',\varpi z')=(0,\varpi^2yy',\varpi^2zz')$, which fill
+$0\times\varpi^2\mathcal O\times\varpi^2\mathcal O$. The defect comes from the two directions $(0,\varpi,0)$, $(0,0,\varpi)$ of $\wp$: the cotangent module sees both congruent partners of the
+first form, while $\eta$ only sees the single worst congruence.) Three pairwise congruent forms; $\T_3^\flat$ is not a complete
 intersection (it is not even Gorenstein, \Cref{ch:modules}).
-(c) Let $\T=\mathcal O[x]/(x^2)$ and $\pi(x)=0$. Then $\wp=\mathcal Ox=I$, $\eta=0$ and $\mathrm{Cot}(\pi)=\mathcal Ox$ is infinite: the factor of $\T_K$ at $\pi$ is $K[x]/(x^2)$, not $K$. This is
+(c) Let $\T=\mathcal O[x]/(x^2)$ and $\pi(x)=0$. Then $\wp=\mathcal Ox=I$, $\eta=0$ and $\mathrm{Cot}(\pi)=\mathcal Ox$ is infinite (indeed $(a+bx)x=ax$ vanishes iff $a=0$, so $I=\mathcal Ox$, which $\pi$ kills;
+and $\wp^2=\mathcal Ox^2=0$, so $\mathrm{Cot}(\pi)=\wp\simeq\mathcal O$): the factor of $\T_K$ at $\pi$ is $K[x]/(x^2)$, not $K$. This is
 the shape of a Jordan block of a Hecke operator, such as $U_2$ at level $88$ on the forms $f_{\text{11a}}(dz)$, $d\mid8$ (\Cref{ch:hecke}).
 These three cases are the whole content of Wiles's numerical criterion (\Cref{thm:congruence:numerical-criterion}) in miniature: $\len\mathrm{Cot}\ge v(\eta)$, with equality for
 the complete intersection (a), strict inequality for (b), and both sides degenerate in (c).
@@ -360,8 +368,11 @@ in particular for $\pi$ the eigencharacter of a depleted form $f^\Sigma$ at leve
 
 \begin{proof}
 $S_2(\Gamma_0(M))\otimes\C$ is free of rank one over $\T\otimes\C$ (\Cref{ch:hecke}, the structure of $\T$), so the local factor of $\T\otimes\overline K$ at $\pi$ has the dimension of the
-generalised eigenspace of $\pi$. If that is a line, the factor is $\overline K$, so the factor of $\T_K$ through which $\pi$ factors is $K$, and $\eta(\pi)\ne0$ by
-\Cref{prop:congruence:congruence-module}(ii). For a newform the generalised eigenspace is the line $\C f$ (multiplicity one and strong multiplicity one, \Cref{ch:hecke}); for
+generalised eigenspace of $\pi$ (a local artinian factor $A$ of $\T\otimes\C$ acts on the corresponding piece of $S_2$, which is free of rank one over $A$, so the two have the same
+dimension). If that is a line, the factor is $\overline K$, so the factor of $\T_K$ through which $\pi$ factors is $K$, and $\eta(\pi)\ne0$ by
+\Cref{prop:congruence:congruence-module}(ii). The descent from $\overline K$ to $K$ goes as follows. Let $A_K$ be the local factor of $\T_K$ through which $\pi_K$ factors; its residue field is $K$,
+because $\pi_K\colon A_K\to K$ is onto. Then $A_K\otimes_K\overline K$ has the single residue field $\overline K$, so it is local, hence it is the factor of $\T\otimes\overline K$ at $\pi$, of dimension $1$ by
+hypothesis. So $\dim_KA_K=1$ and $A_K=K$. For a newform the generalised eigenspace is the line $\C f$ (multiplicity one and strong multiplicity one, \Cref{ch:hecke}); for
 a depleted form at level $M^\Sigma$ it is the line $\C f^\Sigma$ (\Cref{ch:hecke}, depletion).
 \end{proof}
 
@@ -512,14 +523,17 @@ $L[I]\subseteq L[\wp]^\perp$. Conversely let $y\perp L[\wp]$. For $s\in I$ and $
 $sy=0$. So $y\in L[I]$. (This step is the only one that uses self-adjointness.)
 
 \emph{Step 4: $Q$ is the cokernel of the Gram map.} The map $L\to L[\wp]^\vee=\Hom_{\mathcal O}(L[\wp],\mathcal O)$, $y\mapsto\langle-,y\rangle$, is surjective because $L[\wp]$ is saturated and the
-pairing is perfect, and its kernel is $L[\wp]^\perp=L[I]$ (\Cref{ch:modules}, the Gram cokernel theorem). So $L/L[I]\simeq L[\wp]^\vee$, and under this isomorphism the image of $L[\wp]$
+pairing is perfect: a saturated submodule of a finitely generated free module over a principal ideal domain is a direct summand ($L/L[\wp]$ is torsion-free, hence free, so the
+projection splits), so every $\lambda\in L[\wp]^\vee$ extends to some $\tilde\lambda\in L^\vee$, and perfectness writes $\tilde\lambda=\langle-,y\rangle$ for some $y\in L$. Its kernel is $L[\wp]^\perp=L[I]$ (\Cref{ch:modules}, the Gram cokernel theorem). So $L/L[I]\simeq L[\wp]^\vee$, and under this isomorphism the image of $L[\wp]$
 is the image of the Gram map $L[\wp]\to L[\wp]^\vee$. Hence $Q\simeq\coker(L[\wp]\to L[\wp]^\vee)$, a module of length $v(\Delta)$ (the cokernel of a square matrix over a discrete
-valuation ring has length the valuation of its determinant).
+valuation ring has length the valuation of its determinant: by the elementary divisor theorem the matrix is $U\,\mathrm{diag}(\varpi^{a_1},\dots,\varpi^{a_d})\,V$ with $U,V$ invertible, the cokernel is
+$\bigoplus\mathcal O/\varpi^{a_i}$, of length $\sum a_i=v(\det)$). The nonvanishing $\Delta\ne0$ is what makes $Q$ finite.
 
 \emph{Step 5: the inequality.} $L[\wp]^\vee\simeq\mathcal O^d$ surjects onto $Q$, so $Q$ is generated by $d$ elements; by Step 1 it is killed by $\eta$. So $Q$ is a quotient of $(\mathcal O/\eta)^d$
 and $v(\Delta)=\len Q\le d\,v(\eta)$.
 
-\emph{Step 6: equality for free $L$.} Let $L\simeq\T^r$ as $\T$-modules. Then $L[\wp]\simeq(\T[\wp])^r=I^r$ and $L[I]\simeq\Ann_\T(I)^r=\wp^r$ (\Cref{prop:congruence:congruence-module}(iii)), and
+\emph{Step 6: equality for free $L$.} Let $L\simeq\T^r$ as $\T$-modules. Then $L[\wp]\simeq(\T[\wp])^r=I^r$ (an element of $\T^r$ is killed by $\wp$ iff each coordinate is, and
+$\T[\wp]=\Ann_\T(\wp)=I$ by definition) and $L[I]\simeq\Ann_\T(I)^r=\wp^r$ (\Cref{prop:congruence:congruence-module}(iii)), and
 $I\simeq\eta$ is free of rank one over $\mathcal O$, so $d=r$. Then $Q\simeq(\T/(\wp+I))^r\simeq(\mathcal O/\eta)^d$ by \Cref{prop:congruence:congruence-module}(i), of length $d\,v(\eta)$.
 \end{proof}
 

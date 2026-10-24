@@ -456,7 +456,7 @@ is $\zeta(s)\prod_{p\mid m}(1-p^{-s})$, which has a pole at $1$.) (iv)(a) For $0
 \[
 \sum_{k<K}\frac{(-1)^k}{2k+1}=\int_0^1\frac{dx}{1+x^2}\mp\int_0^1\frac{x^{2K}}{1+x^2}dx,
 \]
-with the sign $(-1)^K$, and the last integral is at most $\int_0^1x^{2K}dx=\frac1{2K+1}$ since $1+x^2\ge1$; so $L(1,\chi_{-4})=\int_0^1\frac{dx}{1+x^2}=\arctan1=\frac\pi4$ (the
+where the sign $\mp$ is $-(-1)^K$, and the last integral is at most $\int_0^1x^{2K}dx=\frac1{2K+1}$ since $1+x^2\ge1$; so $L(1,\chi_{-4})=\int_0^1\frac{dx}{1+x^2}=\arctan1=\frac\pi4$ (the
 series converges by (ii)). Likewise, since $\chi_{-3}(n)$ is $1$, $-1$, $0$ for $n\equiv1,2,0\pmod3$, the series for $L(1,\chi_{-3})$ grouped in pairs is $\sum_k\bigl(\frac1{3k+1}-\frac1{3k+2}\bigr)$, and
 $\frac1{3k+1}-\frac1{3k+2}=\int_0^1(x^{3k}-x^{3k+1})dx$. The geometric sum is $\sum_{k<K}(x^{3k}-x^{3k+1})=\frac{(1-x)(1-x^{3K})}{1-x^3}$, and $\frac{1-x}{1-x^3}=\frac1{1+x+x^2}$; integrating, and
 completing the square $1+x+x^2=(x+\frac12)^2+\frac34$ to find the primitive,
@@ -523,6 +523,16 @@ $\Dcris(\Q_\ell(1))$ has $\varphi=\ell^{-1}$ (then $L_\ell(M(n),s)=L_\ell(M,s+n)
 \end{enumerate}
 \end{definition}
 
+Two features of (a) deserve a word. First, why inertia invariants: a Frobenius element is only defined up to multiplication by $I_p$, so the operator $\Phi_p$ is well defined
+only on a space on which $I_p$ acts trivially; $M^{I_p}$ is the largest such subspace, and it is stable under $\Phi_p$ because $I_p$ is normal in $G_{\Q_p}$. When $M$ is unramified
+at $p$ nothing is lost, and the factor is the reciprocal characteristic polynomial of $\Phi_p$ on all of $M$, of degree $\dim M$; ramification lowers the degree. Second, the
+factor is the reciprocal of a polynomial in $p^{-s}$ with constant term $1$, so it expands as a power series in $p^{-s}$ and the product over $p$ is a Dirichlet series. The
+smallest examples are $M=\Q_\ell$ (trivial action), with $L_p=(1-p^{-s})^{-1}$ and $L(\Q_\ell,s)=\zeta(s)$, and $M=\Q_\ell(\chi)$ for a Dirichlet character $\chi$ of conductor $m$
+viewed as a Galois character, $\chi$ primitive. With $\chi(\Frob_p)=\chi(p)$ (\Cref{conv:lfunctions:standing}(c)), $\Phi_p$ acts on the line by $\chi(p)^{-1}=\bar\chi(p)$ for
+$p\nmid m$, while for $p\mid m$ inertia acts nontrivially on the line (primitivity) and the invariants are $0$; so $L(\Q_\ell(\chi),s)=L(s,\bar\chi)$. For a quadratic character,
+the only case this chapter needs, $\bar\chi=\chi$ and the choice of Frobenius is invisible; for $\Q_\ell(1)$, which is not of finite order, it is not
+(\Cref{conv:lfunctions:frobenius}).
+
 \begin{proposition}[properties of local factors]\label{prop:lfunctions:local-factor}
 Let $p\ne\ell$.
 \begin{enumerate}[label=(\roman*)]
@@ -552,6 +562,11 @@ factors at $p=\ell$ (section numbers unverified).
 
 The paper uses $L_p$ only at $p\ne\ell$, and says so (``At $p=\ell$ the definitions use $D_{\mathrm{cris}}$; we need them only for $p\ne\ell$''); every local factor
 in the rest of the chapter is at a prime $p\ne\ell$, or is computed with an auxiliary prime $\ell'\ne p$, which is legitimate by the next theorem.
+
+The issue is this. A single $\ell$-adic representation $M_\ell$ gives factors $L_p(M_\ell,s)$ at all $p\ne\ell$ but not, by the recipe of \Cref{def:lfunctions:local-factor}(a), at
+$p=\ell$. To get a full Euler product from the representations themselves one uses the whole family $(V_\ell E)_\ell$: the factor at $p$ is taken from any $M_{\ell'}$ with
+$\ell'\ne p$, and this makes sense only if the answer does not depend on $\ell'$. At a good prime of $E$ this is the statement that $X^2-a_pX+p$ does not involve $\ell'$; at the
+bad primes it is a genuine theorem. The next definition and theorem make this precise.
 
 \begin{definition}[compatible systems]\label{def:lfunctions:compatible-system}
 A \emph{weakly compatible system} of $\ell$-adic representations of $G_\Q$ is a family $(M_\ell)_\ell$, $M_\ell$ a continuous representation of $G_\Q$ on a
@@ -595,9 +610,12 @@ $p^{w/2}$. Then the Euler product $L(M,s)$ converges absolutely, and is nonzero,
 \end{proposition}
 
 \begin{proof}
-Write $L_p(M,s)^{-1}=\prod_{i=1}^{d_p}(1-\lambda_ip^{-s})$ with $d_p\le d$ and $\abs{\lambda_i}\le p^{w/2}$. Expanding each factor as a geometric series, the coefficient of $p^{-ks}$ in
-$L_p(M,s)$ is the complete symmetric polynomial $h_k(\lambda_1,\dots,\lambda_{d_p})$, of absolute value at most $\binom{k+d-1}{d-1}p^{kw/2}$, which is the coefficient of $p^{-ks}$
-in $(1-p^{w/2-s})^{-d}$. Multiplying over $p$, the Dirichlet series $L(M,s)=\sum c_nn^{-s}$ has $\abs{c_n}\le r_d(n)n^{w/2}$, where $\sum r_d(n)n^{-s}=\zeta(s)^d$; so $\sum\abs{c_n}n^{-\sigma}\le
+Write $L_p(M,s)^{-1}=\prod_{i=1}^{d_p}(1-\lambda_ip^{-s})$ with $d_p\le d$ and $\abs{\lambda_i}\le p^{w/2}$. Expanding each factor as a geometric series,
+$\prod_i(1-\lambda_iX)^{-1}=\prod_i\sum_{j\ge0}\lambda_i^jX^j$, the coefficient of $X^k=p^{-ks}$ in $L_p(M,s)$ is the complete symmetric polynomial
+$h_k(\lambda_1,\dots,\lambda_{d_p})=\sum_{j_1+\dots+j_{d_p}=k}\lambda_1^{j_1}\cdots\lambda_{d_p}^{j_{d_p}}$. It has $\binom{k+d_p-1}{d_p-1}\le\binom{k+d-1}{d-1}$ monomials, each of absolute value at most
+$p^{kw/2}$, so $\abs{h_k}\le\binom{k+d-1}{d-1}p^{kw/2}$; and $\binom{k+d-1}{d-1}p^{kw/2}$ is exactly the coefficient of $p^{-ks}$ in $(1-p^{w/2-s})^{-d}$, by the same expansion with all
+$\lambda_i=p^{w/2}$. Multiplying over $p$ (the coefficients of $L(M,s)$ are multiplicative, $c_n=\prod_{p^k\| n}h_k$), the Dirichlet series $L(M,s)=\sum c_nn^{-s}$ has
+$\abs{c_n}\le r_d(n)n^{w/2}$, where $r_d(n)=\prod_{p^k\|n}\binom{k+d-1}{d-1}$ is the number of ordered factorisations $n=n_1\cdots n_d$ and $\sum r_d(n)n^{-s}=\zeta(s)^d$; so $\sum\abs{c_n}n^{-\sigma}\le
 \zeta(\sigma-w/2)^d<\infty$ for $\sigma>1+w/2$, and \Cref{prop:lfunctions:euler-product} applies, every factor being nonzero there (a factor $1-\lambda p^{-s}$ vanishes only when
 $\abs{p^{s}}=\abs\lambda\le p^{w/2}$). (a) At a good $p$ the eigenvalues of $\Phi_p$ on $V_\ell E^\vee$ are $\alpha,\beta$, of absolute value $\sqrt p$ by the Hasse bound
 (\Cref{ch:ellcurves}); at a bad $p$ the eigenvalue is $a_p=\pm1$ or there is none (\Cref{prop:lfunctions:LE}). (b) At a good $p$ the eigenvalues on $A_f$ are
