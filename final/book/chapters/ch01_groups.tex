@@ -183,7 +183,7 @@ finite subgroup of $\GL_2(\Z_\ell)$ maps isomorphically into $\GL_2(\F_\ell)$ fo
 \item \textbf{Proposition prop:ns} (the mod $3$ image when the hypothesis on $\Q(\sqrt{-3})$ fails), and its proof:
 the determinant-one subgroup as the image of $\Gal(\Qbar/\Q(\sqrt{-3}))$, \Cref{lem:groups:index2}; the list of three images,
 \Cref{thm:groups:threeimages}, built on \Cref{prop:groups:sl23}, \Cref{prop:groups:ns3}, \Cref{prop:groups:nns3}, \Cref{prop:groups:cc};
-``the first two act absolutely irreducibly'', \Cref{lem:groups:borelcommutator}; the orbits on the four lines and the factorisation of
+``The first two act absolutely irreducibly on $\F_3^2$'', \Cref{lem:groups:borelcommutator}; the orbits on the four lines and the factorisation of
 the $3$-division polynomial, \Cref{cor:groups:orbitdichotomy}, \Cref{prop:groups:suborbits}, \Cref{thm:groups:smallpgl}(ii).
 \item \textbf{Lemma lem:IV} (types $\kod{IV}$, $\kod{IV}^*$): the stabiliser of a vector in $\SL_2(\F_3)$ is a group of order $3$ of unipotents,
 \Cref{prop:groups:unipotent}; the kernel of $\GL_2(\Z_3)\to\GL_2(\F_3)$ is torsion-free, \Cref{prop:groups:gl2zl}.
@@ -199,10 +199,10 @@ forces $\ell=3$, \Cref{thm:groups:cyclic}(iv), \Cref{cor:groups:cyclic}; $\rho\b
 Tamagawa number, the count of Frobenius-fixed points in $(\Z/\ell^{v_\ell(n)})^2$): \Cref{prop:groups:lprimary},
 \Cref{thm:groups:finiteabelian}, \Cref{prop:groups:torsioncount}, \Cref{thm:groups:cyclic}(ii); for Lemma lem:crit ($\T/(I+J)$ cyclic):
 \Cref{thm:groups:cyclic}; for Lemma lem:tamagawa-exp ($\rho\bmod\ell^t$): \Cref{prop:groups:gl2zl}.
-\item \textbf{Proposition prop:shapes} (the shapes of the image of inertia at an additive prime): ``for $q\ge5$ the image is tame, hence cyclic'',
+\item \textbf{Proposition prop:shapes} (the shapes of the image of inertia at an additive prime): ``For $q\ge5$ the image is tame, hence cyclic'',
 \Cref{ex:groups:galoisprofinite}, \Cref{prop:groups:profinite}(vi).
 \item \textbf{Theorem thm:main} at $\ell=3$ (the hypothesis on the mod $3$ image, through Proposition prop:ns): \Cref{cor:groups:orbitdichotomy}.
-\item \textbf{Section sec:data} (the test \texttt{ns3}, a factorisation of the $3$-division polynomial as two quadratics): \Cref{cor:groups:orbitdichotomy}.
+\item \textbf{Section sec:data} (the intrinsic description of the image $\Ns$: a $3$-division polynomial that is a product of two quadratics): \Cref{cor:groups:orbitdichotomy}.
 \end{itemize}
 
 \section{Groups, subgroups, cosets, quotients and cyclic groups}\label{sec:groups:basics}
@@ -419,10 +419,11 @@ dividing $e$ divides $\#A$, as $e\mid\#A$. For example $A=\Z/2\oplus\Z/4$ has or
 \end{proof}
 
 \begin{paperlink}
-Definition def:terms and Section 1.4 of the paper speak of ``the $\ell$-part of the Tamagawa number'' and use $v_\ell(\#\Phig_q)$; by
+Section 1.4 of the paper and the rule built on Definition def:terms use $v_\ell(\#\Phig_q)$, the valuation of the order of a finite abelian group; by
 \Cref{prop:groups:lprimary}(iii) the $\ell$-part of a finite abelian group $\Phi$ is $\Phi[\ell^\infty]$, of order $\ell^{v_\ell(\#\Phi)}$. The proof
-of Lemma lem:tamfactor computes a finite abelian $\ell$-group $H^1(I_q,M)_{\mathrm{tor}}$ and then ``the $\ell$-part of $c_q(E)$''; the
-dictionary between the two is the same statement, with \Cref{prop:groups:torsioncount} for the count of fixed points.
+of Lemma lem:tamfactor computes a finite abelian $\ell$-group, the torsion $(\Z/\ell^{v_\ell(n)})^2$ of $H^1(I_q,M)$, takes its Frobenius-fixed points and
+identifies them with ``the $\ell$-part of the Tamagawa number $c_q(E)$''; the dictionary between the two is the same statement, with
+\Cref{prop:groups:torsioncount} for the count of fixed points.
 \end{paperlink}
 
 \section[Products and the small groups]{Direct and semidirect products; dihedral, quaternion and semidihedral groups}\label{sec:groups:products}
@@ -673,8 +674,8 @@ non-isomorphic: the three abelian ones are distinguished by $\#G[2]$, and $D_4\n
 \end{proof}
 
 \begin{paperlink}
-The words ``dihedral'' and ``quaternion'' in the proof of Proposition prop:ns name isomorphism types. In
-\Cref{sec:groups:gl23} they are identified by the recognition criteria: $N_s(\F_3)\simeq D_4$ by \Cref{prop:groups:dihedral}(i), the
+The proof of Proposition prop:ns names an isomorphism type, ``the quaternion group $Q_8$'', and Section sec:open of the paper calls the case of
+image $N_s(\F_3)$ the dihedral case. In \Cref{sec:groups:gl23} these types are identified by the recognition criteria: $N_s(\F_3)\simeq D_4$ by \Cref{prop:groups:dihedral}(i), the
 determinant-one subgroup of $N_{ns}(\F_3)$ is $Q_8$ by \Cref{prop:groups:quaternion}(v), and $N_{ns}(\F_3)\simeq SD_{16}$ by
 \Cref{prop:groups:semidihedral}(iv). \Cref{thm:groups:order8} is context; nothing in the paper depends on it.
 \end{paperlink}
@@ -926,7 +927,7 @@ The geometric component groups of an elliptic curve (\Cref{ch:reduction}) are $\
 (types $\kod{III}$, $\kod{III}^*$), $\Z/3$ (types $\kod{IV}$, $\kod{IV}^*$), and $(\Z/2)^2$ or $\Z/4$ (types $\kod{I}_n^*$, according to the parity of $n$).
 Their $\ell$-parts are, by \Cref{prop:groups:lprimary}, of order $\ell^{v_\ell(n)}$ for $\Z/n$; for odd $\ell$ only $\Z/n$ and $\Z/3$ (when $\ell=3$) can
 contribute. The groups $(\Z/2)^2$ and $\Z/4$ have the same order but are not isomorphic, since $\#(\Z/2)^2[2]=4$ and $\#(\Z/4)[2]=2$. The paper's Section 1.4 and
-Definition def:terms use only the numbers $v_\ell(\#\Phig_q)$.
+the rule built on Definition def:terms use the component groups only through the numbers $v_\ell(\#\Phig_q)$.
 \end{example}
 
 \section[Matrix groups over a field]{The groups \texorpdfstring{$\GL_2$, $\SL_2$, $\PGL_2$, $\PSL_2$}{GL2, SL2, PGL2, PSL2}; Borel, unipotent and Cartan subgroups}\label{sec:groups:matrix}
@@ -1160,8 +1161,7 @@ whose order divides $\#H$, so it is trivial, and $[H,H]\le H\cap\mathrm U(K)=1$.
 In the proof of Proposition prop:ns the determinant-one subgroups $\SL_2(\F_3)$ and $Q_8$ are shown to act absolutely irreducibly on $\F_3^2$: ``a subgroup
 of $\GL_2(\Fbar_3)$ fixing a line lies in a Borel subgroup, so its commutator subgroup is abelian of exponent $3$, whereas the commutator subgroups $\{\pm1\}$ of
 $Q_8$ and $Q_8$ of $\SL_2(\F_3)$ are not.'' This is \Cref{lem:groups:borelcommutator}(ii) with $K=\Fbar_3$ and $p=3$; the commutator subgroups are computed in
-\Cref{prop:groups:quaternion}(ii) and \Cref{prop:groups:sl23}(iv). (The version of 10 October argued ``they are non-abelian and act faithfully'', which is not
-enough: $\mathrm B(\F_3)$ is non-abelian and acts faithfully, yet stabilises a line.) That ``stabilises no line of $\Fbar_3^2$'' is the same as ``absolutely
+\Cref{prop:groups:quaternion}(ii) and \Cref{prop:groups:sl23}(iv). Non-abelian and faithful would not be enough here: $\mathrm B(\F_3)$ is non-abelian and acts faithfully, yet stabilises a line. That ``stabilises no line of $\Fbar_3^2$'' is the same as ``absolutely
 irreducible'' is the definition of \Cref{ch:reps}.
 \end{paperlink}
 
@@ -1594,17 +1594,18 @@ fail because they are transitive, (iv) fails because $\SL_2(\F_3)$ and $Q_8$ are
 \end{proof}
 
 \begin{paperlink}
-The proof of Proposition prop:ns states that when $E[3]$ is irreducible the image $H$ of $\bar\rho_{E,3}$ is conjugate to $\GL_2(\F_3)$, $N_{ns}(\F_3)$ or $N_s(\F_3)$, citing
-\cite{Zywina15}, and that ``these are the subgroups with surjective determinant acting irreducibly on $\F_3^2$ that contain an element of determinant $-1$ and trace
+The proof of Proposition prop:ns states that when $E[3]$ is irreducible the image $H$ of $\bar\rho_{E,3}$ is conjugate to $\GL_2(\F_3)$, $N_{ns}(\F_3)$ or $N_s(\F_3)$, notes that
+the list is in \cite{Zywina15}, and derives it directly: ``these are the subgroups with surjective determinant acting irreducibly on $\F_3^2$ that contain an element of determinant $-1$ and trace
 $0$ (complex conjugation), the nonsplit Cartan subgroup itself being excluded by the last condition, and the list follows from these three properties by
 inspection of the subgroups of $\GL_2(\F_3)$''. \Cref{thm:groups:threeimages} is that inspection, carried out. The three hypotheses hold for $H=\bar\rho_{E,3}(G_\Q)$:
 (a) because $\det\bar\rho_{E,3}=\bar\chi_3$ is surjective onto $\F_3^\times$; (b) because irreducibility of $E[3]$ means that no line is stable; (c) because the image of complex
-conjugation $c$ satisfies $\bar\rho(c)^2=I$ and $\det\bar\rho(c)=\bar\chi_3(c)=-1$, so its eigenvalues are $1$ and $-1$ and its trace is $0$ (\Cref{ch:galrep}). In particular no
-appeal to the classification of Zywina is needed for this list, and the argument does not use whether $E$ has complex multiplication. The determinant-one
+conjugation $c$ satisfies $\bar\rho(c)^2=I$ and $\det\bar\rho(c)=\bar\chi_3(c)=-1$, so its eigenvalues are $1$ and $-1$ and its trace is $0$ (\Cref{ch:galrep}). As the paper says, the
+list holds with or without complex multiplication: none of (a), (b), (c) refers to it. The determinant-one
 subgroups are the paper's ``$\SL_2(\F_3)$, the quaternion group $Q_8$ and the cyclic group $C_4$ of order $4$''. The paper's final sentence on the $3$-division polynomial
 is \Cref{cor:groups:orbitdichotomy}(i)$\Leftrightarrow$(ii)$\Leftrightarrow$(iii): its four roots correspond to the four lines, the factors over $\Q$ correspond to the orbits of $H$
 (\Cref{ch:galois}), and so it factors as two irreducible quadratics exactly in the $N_s(\F_3)$ case and is irreducible otherwise. The equivalence (i)$\Leftrightarrow$(v) is the
-group-theoretic half of ``$\bar\rho_{E,3}$ is absolutely irreducible on $\Gal(\Qbar/\Q(\sqrt{-3}))$ unless its image is conjugate to $N_s(\F_3)$''; the image of
+group-theoretic half of ``$\bar\rho_{E,3}$ is absolutely irreducible on $\Gal(\Qbar/\Q(\sqrt{-3}))$ unless its image is conjugate to the normaliser $N_s(\F_3)$ of a split
+Cartan subgroup of $\GL_2(\F_3)$''; the image of
 $\Gal(\Qbar/\Q(\sqrt{-3}))$ is $H\cap\SL_2(\F_3)$ by \Cref{lem:groups:index2}(ii). The consequences $\bar\rho_{E,3}\otimes\F_9\simeq\Ind\psi$ and
 $\bar\rho_{E,3}\simeq\bar\rho_{E,3}\otimes\chi_{-3}$ are representation theory (\Cref{ch:reps}), and $h_3(E)=1$ is Lemma lem:h0, proved in \Cref{ch:galrep}.
 \end{paperlink}
@@ -1647,7 +1648,7 @@ elliptic curves over $\Q$ is \cite{Zywina15}; see \Cref{ch:galrep}.
 
 \begin{paperlink}
 Section sec:anomaly and Remark rem:ns concern the curves with image $\Ns$, that is, $H$ conjugate to $N_s(\F_3)$. By \Cref{cor:groups:orbitdichotomy} these are exactly
-the curves (with $E[3]$ irreducible) whose $3$-division polynomial factors as two quadratics, which is the test \texttt{ns3} of the paper's computations
+the curves (with $E[3]$ irreducible) whose $3$-division polynomial factors as two quadratics, which is the intrinsic description of the label $\Ns$ that Section sec:data of the paper uses
 (\Cref{ch:computation}). Section sec:eis and Conjecture conj:eis use the Borel-type labels: a rational $3$-isogeny means image in a Borel subgroup
 (\Cref{prop:groups:borel}(iii)); a rational point of order $3$ means image in 3B.1.1; and $E[3]\simeq\Z/3\oplus\mu_3$ means image 3Cs.1.1, the subgroup of order $2$ of the split
 Cartan subgroup that fixes a nonzero vector.
@@ -1971,7 +1972,7 @@ $\PSL_2(\F_q)$. The uniqueness of the simple group of order $168$ is in \cite[Se
 The tables of \Cref{sec:groups:gl23} were computed by hand and checked by a complete enumeration of the elements and subgroups of $\GL_2(\F_3)$; the orders for
 $q=5,7$ and the subgroup of order $96$ of $\GL_2(\F_5)$ were checked in the same way. Sutherland's labels are defined in \cite{Sutherland16}, and the list of mod $\ell$
 images of elliptic curves over $\Q$ is \cite{Zywina15}; both are discussed in \Cref{ch:galrep}. The paper cites \cite{Zywina15} for the list of three images in
-Proposition prop:ns; \Cref{thm:groups:threeimages} shows that this list follows from the three properties stated in the paper alone.
+Proposition prop:ns and derives it from three properties by inspection; \Cref{thm:groups:threeimages} carries out that inspection.
 
 For profinite groups we follow \cite[Chapter IV, Sections 1 and 2]{Neukirch} and \cite[Chapter I, Section 1]{NSW}; Tychonoff's theorem is \cite[Theorem 37.3]{Munkres00}.
 The torsion-freeness of the congruence subgroup $\Gamma(\ell)$ for odd $\ell$ is elementary; for its role in the study of $\ell$-adic images see \cite[Section 4]{Serre72}.
