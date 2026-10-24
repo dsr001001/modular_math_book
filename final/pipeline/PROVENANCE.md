@@ -53,6 +53,8 @@ Reproduction scripts:
 New files:
 - `scripts/selftest.py`, and its output `results/selftest.log`.
 - `README.md`, `ENVIRONMENT.md`, `PROVENANCE.md`, `requirements.txt`, `MANIFEST.sha256`.
+- From the full rerun of 2026-10-24 in this repository (`README.md`, section "Full rerun"): `results/rerun_20261024/`
+  (run logs), `scripts/gp_cypari2_standin.py`, `scripts/stage3_*.py` and their outputs `results/stage3_*`, `results/stage3.log`.
 
 Other:
 - `.gitignore`: the entries for `paper/*.aux`, `paper/*.bbl`, `paper/*.blg`, `paper/*.log`, `paper/*.out` removed (no

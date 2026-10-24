@@ -44,7 +44,9 @@ Verified on 2026-10-24 with Python 3.13, numpy 2.5.3, pandas 3.0.5, pyarrow 26.0
   `step10_sym2_euler.py oot`, `step10_rule.py oot`), which need no ecdata download, regenerate
   `results/check_oot_summary.csv` and `results/step10_rule_oot_summary.csv` byte for byte.
 
-The full pipeline (`scripts/repro_run.sh`, `scripts/reproduce_tables.sh`) was not rerun in that environment.
+The full pipeline (`scripts/repro_run.sh`, `scripts/reproduce_tables.sh`) was rerun in the same environment on 2026-10-24
+(2 cores, 7 GB of memory, a cypari2-backed stand-in for `gp`) and reproduced every committed summary and table byte for
+byte; see the section "Full rerun" of `README.md`, which also records the timings of that run.
 
 ## Shell and resources
 

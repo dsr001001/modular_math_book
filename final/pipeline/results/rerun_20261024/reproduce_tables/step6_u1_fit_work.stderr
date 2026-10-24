@@ -1,0 +1,4 @@
+/home/claude/modular_math_book/final/pipeline/scripts/step6_u1_fit.py:32: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  d["n_add"] = d[types].sum(1)
+/home/claude/modular_math_book/final/pipeline/scripts/step6_u1_fit.py:32: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  d["n_add"] = d[types].sum(1)

@@ -94,7 +94,83 @@ Both scripts write their outputs in place in `results/` and `tables/` (as the in
 committed versions to `logs/<script>_<UTC time>/ref/`; the run log is in the same directory (`logs/` is git-ignored).
 After a run, `sha256sum -c MANIFEST.sha256` lists the files that changed (logs with timestamps always do).
 
-After the download, stage 1 takes about half an hour and stage 2 a few hours (`ENVIRONMENT.md`).
+After the download, stage 1 takes about half an hour and stage 2 a few hours on the original setup (`ENVIRONMENT.md`); the
+full rerun below took about 40 minutes for both stages together.
+
+## Full rerun (2026-10-24)
+
+Both stages were rerun in this repository on 24 October 2026 from the pinned data (ecdata commit `25cec5e`), on a machine
+with 2 cores and 7 GB of memory, with PARI 2.17.2 (through cypari2 2.2.4), Python 3.13.16, numpy 2.5.3, pandas 3.0.5 and
+pyarrow 26.0.0. They reproduced every committed result summary and every table file byte for byte. The run logs (all
+small) are copied from the git-ignored `logs/` to `results/rerun_20261024/repro_run/` and
+`results/rerun_20261024/reproduce_tables/`.
+
+**The `gp` binary.** No `gp` binary was installed on that machine. `scripts/repro_run.sh` therefore called
+`scripts/gp_cypari2_standin.py`, installed as an executable named `gp` on the `PATH`: a 16-line Python stand-in that reads
+GP code from standard input and evaluates it with the PARI 2.17.2 library through cypari2. It implements only what
+`repro_run.sh` uses (`gp -q`, `gp -q -s SIZE`, code on standard input); other options such as `-D` are ignored, and it is
+not a general replacement for gp. A real `gp` binary (PARI/GP 2.15 or later) is the normal route; the stand-in is
+committed so that this run can be repeated as it was made (`GP=$PWD/scripts/gp_cypari2_standin.py bash scripts/repro_run.sh`).
+Stage 2 calls PARI only through cypari2 and needs no `gp`.
+
+**Stage 1** (`bash scripts/repro_run.sh`, log `repro_run/repro_run.log`; times UTC):
+- 17:27 (19 s): download step; the pinned files were already present and were kept (35 iwasawa files fail as expected,
+  `repro_run/download.log`); 3,064,705 allcurves rows.
+- 17:27 to 17:38 (11 min): `scripts/pari_features.gp` on every allcurves file with two gp processes: 3,064,705 curves,
+  2,164,260 isogeny classes.
+- 17:38 to 17:41 (3 min): `scripts/build_features.py`; optimal curves 1,311,066 / 429,936 / 359,009, as expected.
+- 17:41 to about 17:44: `conj_check.py` on the working set printed its summary (in the log) and was then killed by the
+  kernel for lack of memory while writing the per-curve file `results/check_work_perl.parquet`. `conj_check.py` writes the
+  summary CSV after that file, so the script ended there, before its comparison step.
+- The hold-out and the extension were then checked by running `conj_check.py` separately on each range
+  (`repro_run/conj_check_{holdout,ext}.out`, about a minute each): the regenerated `results/check_holdout_summary.csv`
+  and `results/check_ext_summary.csv` are byte-identical to the committed ones.
+- The working-set summary was computed again by `conj_check.py` without `--out` (so without the per-curve file; 174 s,
+  peak memory about 4.3 GB) and written with the same `to_csv` call: byte-identical to the committed
+  `results/check_work_summary.csv` (`repro_run/conj_check_work_summary_only.out`). The summary printed before the kill
+  agrees with it row by row.
+
+To avoid the kill on a machine of this size, run step 5 of `repro_run.sh` by hand, one range per process with nothing else
+running: `python3 scripts/conj_check.py results/optimal_<set>.parquet --out results/check_<set>` for the hold-out and the
+extension, and for the working set either more memory or the run without `--out` (summary only), then compare the
+summaries with copies of the committed ones. The per-curve file `results/check_work_perl.parquet` was not regenerated; no
+printed number depends on it.
+
+**Stage 2** (`SHARDS_WORK=2 bash scripts/reproduce_tables.sh`, 17:46 to 18:05, about 18 minutes, log
+`reproduce_tables/reproduce_tables.log`): every regenerated summary (`check_oot_summary.csv`,
+`step10_rule_{work,holdout,ext,oot}_summary.csv`, `step11_summary.csv`, `step11_ns3.csv`, `step12_work.csv`,
+`step9_euler_l3.txt`, `step7_twist2_{work,holdout,ext}.txt`, and the configuration lines of `step6_u1_fit_work.txt`) and
+every table file (`euler_uniform.tex`, `ns3.tex`, `counts.tex`, `isolated3.tex` including its four twisted rows, `oot.tex`,
+`twist.tex`, `euler_iso3.tex`) is identical to the committed version, and `scripts/selftest.py` passed
+(`reproduce_tables/selftest.log`). The four twisted rows of `tables/isolated3.tex`, which cannot be checked from committed
+files (see "Inputs that are not committed"), are therefore reproduced from the pinned data.
+
+After the runs, every file listed in `MANIFEST.sha256` has its committed content. The regenerated
+`results/step6_u1_fit_work.txt` differs from the committed one only in the pandas warning lines that the committed file
+holds (its configuration lines are identical), and the committed file was put back.
+
+Two findings of the rerun:
+- **Spelling of the galrep labels.** Above conductor 400,000 the mod 3 labels of the tables are written without dots
+  (`3Cs11`, `3B11`), below with dots (`3Cs.1.1`, `3B.1.1`). `scripts/conj_check.py` matches `3Cs.1.1` only, so on the
+  extension the split-Cartan term of Conjecture `conj:eis` is 0 for the one optimal curve labelled `3Cs11`. This makes the
+  bound smaller, so it only weakens the test; the committed results (no violation on the extension) are unaffected. The
+  labels `3Ns` and `3Nn` have no dots in either range, so step 11 is unaffected. `scripts/stage3_eis.py` matches both
+  spellings.
+- **Shards of step 10.** The committed `results/sym2_work_{0,1,2}.log` are the logs of the original run with three shards
+  of the working set (437,022 curves each); the rerun used two (`SHARDS_WORK=2`, 655,533 curves each,
+  `reproduce_tables/sym2_work_{0,1}.log`). The total number of Euler-factor rows is the same (5,007,579); the shards only
+  split the curves.
+
+**Stage 3** (`scripts/stage3_*.py`, summary `results/stage3_summary.md`, every command and its exit status in
+`results/stage3.log`): the numbers that `../paper/note.tex` states without a committed source were recomputed from the
+pinned data after stages 1 and 2. Of the 23 numbers checked, 21 were reproduced as stated; the other two were wording
+errors, corrected in `../paper/note.tex` afterwards: in Section `sec:two` the extension has 19, not 20, exceptions to the
+weight-2 count of I0* (the 20th, 401291a1, lies in a class whose optimal curve is not determined in the tables), and in
+Section `sec:eis` the 18 curves with a point of order 9 up to conductor 400,000 are all curves, not optimal ones (14 of
+them are optimal). PARI 2.15.4 (cypari2 2.2.0 in a Python 3.12 environment) and 2.17.2 agree on all 38,042 optimal curves
+below 10,000 (`ellmoddegree`, `ns3`, both forms of the rule for l = 3 to 13; `results/stage3_versions.txt`), and Lemma
+`lem:euler` was checked against `lfunsympow` on all 5,102,273 pairs (optimal curve, bad prime q >= 5) of the three
+in-table ranges (`results/stage3_euler_lemma.txt`).
 
 ## Printed tables
 
@@ -138,6 +214,30 @@ Reproducibility runs of stage 1 (older version of `repro_run.sh`, 2026-10-06)
 - `repro.log`: first run on a clean clone; download, PARI pass, feature table and optimal-curve counts completed (3,064,705 curves; 1,311,066 / 429,936 / 359,009), but the checker step failed because the clone predated `scripts/conj_check.py`, so no summaries were compared.
 - `repro_check.log`: checker rerun with the clone's version of `conj_check.py`, whose summary had fewer columns; the script reported DIFFERS for that reason, and the columns common to both versions agree in every row shown.
 - `repro_check2.log`: checker rerun with the current `conj_check.py`; the three summaries were identical to the committed ones.
+
+Full rerun of stages 1 and 2 (2026-10-24, section "Full rerun" above)
+- `rerun_20261024/repro_run/`: `repro_run.log`, `download.log`, `conj_check_{holdout,ext}.out` (the two ranges run
+  separately after the memory kill), `conj_check_work_summary_only.out` (the working-set summary, without the per-curve file).
+- `rerun_20261024/reproduce_tables/`: `reproduce_tables.log`, `selftest.log`, `sym2_{work_0,work_1,holdout_0,ext_0,oot_0}.log`
+  and the standard error of steps 6, 7 and 9 (`*.stderr`, empty except for pandas warnings).
+
+Stage 3 (numbers of the paper without a committed source, recomputed after the full rerun; `results/stage3_summary.md`)
+- `stage3_summary.md`: the 23 numbers, the paper's value, the recomputed value, verdict, script and output; findings.
+- `stage3.log`: every command with exit status and run time, failed attempts included.
+- `stage3_eis.txt`, `stage3_eis_D2.csv`: Section `sec:eis` (deficits D, the 22 curves with D = 2, 3Cs.1.1 and 9-torsion
+  curves, 6942n1).
+- `stage3_twist_degree.txt`, `stage3_twist_degree_viol.csv`: Theorem `thm:twist` (157,938 and 292,580 pairs; 25,477 pairs
+  below 10,000; the violation file has a header only).
+- `stage3_two.txt`: Section `sec:two` (weight 1 and weight 2 counts on the three ranges).
+- `stage3_w3.txt`: Section `sec:wild`, minima of v_3(deg phi) at q = 3 defining w_3.
+- `stage3_euler_lemma.txt`, `stage3_euler_lemma_mismatch.csv`: Lemma `lem:euler` against `lfunsympow` (header only: no mismatch).
+- `stage3_moddeg_sample.txt`, `stage3_moddeg_sample.csv`: `ellmoddegree` on 63 optimal curves (60 sampled with seed
+  20261024, 20 per range, plus 14a1, 714i1, 6942n1), all agreeing with the tables.
+- `stage3_ns3.txt`, `stage3_ns3_disagree.csv`: mod 3 image labels against the factorisation of the 3-division polynomial
+  on 2,097,505 optimal non-CM curves (header only: no disagreement).
+- `stage3_petersson.txt`: Remark `rem:degree`, the Petersson formula with c_E = 1 for five curves.
+- `stage3_rule_v215.txt`, `stage3_rule_v217.txt`, `stage3_versions.txt`: the checks below 10,000 under PARI 2.15.4 and
+  2.17.2 and their comparison (the per-curve CSV files are not committed).
 
 Step 5 (pre-registered search of the exploratory stage; `step5.py`, `step5_cells.py`, `step5_report.py`)
 - `step5_results.csv`, `step5_local.csv`, `step5_log.txt`: nested-model tests with permutation null, local gains, log.
@@ -186,6 +286,14 @@ Other checks
 - Printed tables: `oot_convert.py`, `step10_sym2_euler.py`, `step10_rule.py`, `step11_tw_boundary.py`, `step12_tamagawa.py`,
   `step6_local.py`, `step6_u1_fit.py`, `step7_twist2.py`, `step9_euler.py`, `make_tables.py`, `reproduce_tables.sh`.
 - Single curves and checks: `euler_rule.gp`, `selftest.py`, `twist_lemma_check.gp`, `out_of_table.gp`.
+- Stage 3 (each writes the `results/stage3_*` files named in its docstring): `stage3_eis.py` (reads
+  `data/curves.parquet`, `results/optimal_<set>.parquet`), `stage3_twist_degree.py` (also `results/sym2_work_*.parquet`),
+  `stage3_two.py`, `stage3_w3.py` (`results/local_primes.parquet`, `results/step10_rule_work_l3.parquet`,
+  `results/step7_twist2_work_l3.parquet`), `stage3_euler_lemma.py` (`results/sym2_<set>_*.parquet`),
+  `stage3_moddeg_sample.py`, `stage3_ns3.py`, `stage3_petersson.py`, `stage3_rule_versions.py` (run once per PARI version,
+  writes a per-curve CSV given as argument) and `stage3_rule_versions_compare.py`. They need the outputs of stages 1 and 2.
+- `gp_cypari2_standin.py`: the cypari2-backed stand-in for `gp` used in the full rerun (section "Full rerun"); a real `gp`
+  binary is the normal route.
 - Exploratory stage: `load.py`, `add_columns.py`, `pari_periods.gp`, `sanity_checks.py`, `verify_known.py`, `step5*.py`,
   the other `step6_*.py`, `step7_*.py` and `step9_*.py`, `step10_make_table.py`.
 
@@ -204,7 +312,8 @@ Their statement numbers and file paths refer to earlier drafts of the note and t
 
 ## Verification of this directory
 
-`MANIFEST.sha256` holds the SHA-256 of every file under `scripts/`, `results/`, `samples/` and `tables/`. From this directory:
+`MANIFEST.sha256` holds the SHA-256 of every file under `scripts/`, `results/`, `samples/` and `tables/` (git-ignored
+`*.parquet` files and `__pycache__/` excepted), sorted by path. From this directory:
 
 ```
 sha256sum -c MANIFEST.sha256
