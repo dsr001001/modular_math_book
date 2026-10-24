@@ -318,6 +318,12 @@ so that $\Gamma(N)\subseteq\Gamma_1(N)\subseteq\Gamma_0(N)\subseteq\SL_2(\Z)$. A
 \emph{level} being the least such $N$.
 \end{definition}
 
+Why these three groups? Each is the stabiliser of a piece of level-$N$ structure on the lattice $\Lambda_\tau=\Z+\Z\tau$, as \Cref{thm:modforms:moduli} makes precise:
+$\Gamma(N)$ fixes the basis $(\frac1N,\frac\tau N)$ of $\frac1N\Lambda_\tau/\Lambda_\tau$ (a full level structure), $\Gamma_1(N)$ fixes the point $\frac1N$, and $\Gamma_0(N)$ only the
+cyclic subgroup $\langle\frac1N\rangle$ it generates. The weakest structure gives the largest group and the smallest curve, and it is the one the paper needs. A small example:
+for $N=2$ the units modulo $2$ are trivial, so $\Gamma_0(2)=\Gamma_1(2)$. At $N=3$ the matrix $\sm1031$ lies in $\Gamma_1(3)$, while $\sm{-1}03{-1}$ lies in
+$\Gamma_0(3)$ but not in $\Gamma_1(3)$ ($d=-1\not\equiv1\pmod3$); neither lies in $\Gamma(3)$, whose elements are $\equiv I$ entrywise.
+
 \begin{proposition}[indices]\label{prop:modforms:indices}
 Let $N\ge1$.
 \begin{enumerate}[label=(\roman*)]
@@ -336,8 +342,8 @@ $\gcd(c,d,N)=1$ modulo multiplication by $(\Z/N)^\times$. Hence
 (i) Let $\bar\gamma=\sm{\bar a}{\bar b}{\bar c}{\bar d}\in\SL_2(\Z/N)$. Lift $\bar c,\bar d$ to integers $c,d$ with $c\ne0$ (take $c=N$ if $\bar c=0$). Since $\gcd(c,d,N)=1$, we can
 replace $d$ by $d+tN$ with $\gcd(c,d+tN)=1$: let $t$ be the product of the primes dividing $c$ but not $d$; a prime $p\mid c$ that divides $d$ does not divide $N$
 or $t$, so $p\nmid d+tN$, and a prime $p\mid c$ not dividing $d$ divides $t$, so again $p\nmid d+tN$. Now choose $a',b'\in\Z$ with $a'd-b'c=1$. The solutions
-$(x,y)\in(\Z/N)^2$ of $xd-yc=1$ are $(a',b')+k(c,d)$, $k\in\Z/N$, because $(c,d)$ is unimodular modulo $N$ (the Chinese remainder theorem of \Cref{ch:rings} reduces
-this to prime powers, where it is linear algebra over a local ring). So $(\bar a,\bar b)=(a'+kc,b'+kd)\bmod N$ for some $k\in\Z$, and $\sm{a'+kc}{b'+kd}cd\in\SL_2(\Z)$
+$(x,y)\in(\Z/N)^2$ of $xd-yc=1$ are $(a',b')+k(c,d)$, $k\in\Z/N$. Indeed the matrix $g=\sm{a'}{b'}cd$ has determinant $1$, so its rows $(a',b')$ and $(c,d)$ form a basis
+of $(\Z/N)^2$, and every $(x,y)$ is $s(a',b')+k(c,d)$ with $s,k\in\Z/N$; then $xd-yc=s(a'd-b'c)+k(cd-dc)=s$, so $xd-yc=1$ exactly when $s=1$. So $(\bar a,\bar b)=(a'+kc,b'+kd)\bmod N$ for some $k\in\Z$, and $\sm{a'+kc}{b'+kd}cd\in\SL_2(\Z)$
 lifts $\bar\gamma$. For the order: by the Chinese remainder theorem $\SL_2(\Z/N)=\prod\SL_2(\Z/p^e)$; reduction $\GL_2(\Z/p^e)\to\GL_2(\F_p)$ is onto with kernel
 $I+pM_2(\Z/p^e)$ of order $p^{4(e-1)}$, $\#\GL_2(\F_p)=(p^2-1)(p^2-p)$, and $\det\colon\GL_2(\Z/p^e)\to(\Z/p^e)^\times$ is onto, so
 $\#\SL_2(\Z/p^e)=p^{4(e-1)}(p^2-1)(p^2-p)/(p^{e-1}(p-1))=p^{3e}(1-p^{-2})$.
@@ -347,7 +353,10 @@ $\sm{d^{-1}}00d$, with kernel $\Gamma_1(N)$ (if $c\equiv0$ and $d\equiv1$ then $
 (iii) $\Gamma_0(N)$ is the preimage of the upper triangular group $B\subseteq\SL_2(\Z/N)$, so $\Gamma_0(N)\backslash\SL_2(\Z)=B\backslash\SL_2(\Z/N)$ by (i). Left multiplication by
 $\sm{u}{b}0{u^{-1}}$ multiplies the bottom row by $u^{-1}$; conversely if $g,g'\in\SL_2(\Z/N)$ have bottom rows $(c,d)$ and $u(c,d)$ then $g'g^{-1}$ has bottom row
 $(0,u)$ and lies in $B$. Every row with $\gcd(c,d,N)=1$ is the bottom row of an element of $\SL_2(\Z/N)$ (complete it as in (i)). So
-$\Gamma_0(N)\backslash\SL_2(\Z)\simeq\PP^1(\Z/N)$, and $\#\PP^1(\Z/N)=\prod_{p^e\|N}\#\PP^1(\Z/p^e)$ with $\#\PP^1(\Z/p^e)=p^e+p^{e-1}$ (the points $(1:d)$, and the points $(pc':1)$).
+$\Gamma_0(N)\backslash\SL_2(\Z)\simeq\PP^1(\Z/N)$, and $\#\PP^1(\Z/N)=\prod_{p^e\|N}\#\PP^1(\Z/p^e)$ by the Chinese remainder theorem. To count $\PP^1(\Z/p^e)$: in a pair
+$(c,d)$ with $\gcd(c,d,p)=1$ at least one entry is a unit. If $c$ is a unit, scaling by $c^{-1}$ gives a unique representative $(1:d)$, $d\in\Z/p^e$: $p^e$ points. If $c$ is not a
+unit, then $d$ is, and scaling by $d^{-1}$ gives a unique representative $(c:1)$ with $p\mid c$: $p^{e-1}$ points. So $\#\PP^1(\Z/p^e)=p^e+p^{e-1}=p^e(1+\frac1p)$, and the product
+over $p^e\,\|\,N$ is the stated formula. For example $\mu(20)=\#\PP^1(\Z/4)\cdot\#\PP^1(\Z/5)=6\cdot6=36$.
 (iv) $-I$ is upper triangular, and $-I\equiv I\bmod N$ iff $N\mid2$.
 \end{proof}
 
@@ -410,6 +419,11 @@ $\Gamma\sigma\infty=\Gamma\sigma'\infty$ iff $\sigma'\infty=\gamma\sigma\infty$ 
 $\Gamma\sigma'$ lies in the $\langle T\rangle$-orbit of $\Gamma\sigma$ ($-I\in\Gamma$). The orbit of $\Gamma\sigma$ has length the least $h\ge1$ with $\Gamma\sigma T^h=\Gamma\sigma$, that is,
 $\sigma T^h\sigma^{-1}\in\Gamma$. The right action of $T$ on bottom rows is $(c,d)\mapsto(c,c+d)$.
 \end{proof}
+
+The simplest case shows how the bookkeeping works. For $\Gamma_0(p)$, $p$ prime, $\PP^1(\F_p)$ has the $p+1$ points $(0:1)$ and $(1:d)$, $d\in\F_p$. The map $(c:d)\mapsto(c:c+d)$
+fixes $(0:1)$, which is the coset of $I$, so the cusp $\infty=I\infty$ has width $1$; and it sends $(1:d)$ to $(1:d+1)$, so the $p$ points $(1:d)$ form a single orbit of length $p$,
+containing $(1:0)$, the coset of $S$, whose cusp is $S\infty=0$. Hence $\Gamma_0(p)$ has the two cusps $\infty$ and $0$, of widths $1$ and $p$, and $1+p=\mu(p)$. Geometrically: of the
+$p+1$ translates of $\mathcal F$ making up the fundamental domain of \Cref{prop:modforms:coset-domains}, one touches $\infty$ and $p$ touch $0$.
 
 \begin{warning}[irregular cusps]\label{warn:modforms:irregular}
 If $-I\notin\Gamma$, \Cref{prop:modforms:cusps-orbits} holds with $\PSL_2$ in place of $\SL_2$, and some cusps can be irregular: for $\Gamma_1(4)$ and $\sigma=\sm1021$
@@ -486,8 +500,12 @@ $\Gamma_0(N)\gamma i=\Gamma_0(N)\gamma'i$ iff $\gamma'\in\Gamma_0(N)\gamma\langl
 $\Gamma_0(N)\backslash\SL_2(\Z)=\PP^1(\Z/N)$. The point $\gamma i$ is elliptic for $\Gamma_0(N)$ iff $\gamma S\gamma^{-1}\in\Gamma_0(N)$ iff $\Gamma_0(N)\gamma S=\Gamma_0(N)\gamma$: the elliptic points
 are the fixed points of $S$, and the other points form orbits of length $2$; this gives the count of the fibre. Now $(c,d)S=(d,-c)$, and $(d:-c)=(c:d)$ means
 $d=uc$, $-c=ud$ for a unit $u$; then $\gcd(c,N)=\gcd(c,d,N)=1$, so $c$ is a unit and we may take $c=1$: the fixed points are the $(1:u)$ with $u^2+1\equiv0$,
-distinct for distinct $u$. Likewise $(c,d)ST=(d,d-c)$, and $(d:d-c)=(c:d)$ leads to the points $(1:u)$ with $u^2-u+1\equiv0$; the fibre over $\zeta_3$ is
-counted in the same way with orbits of length $3$.
+distinct for distinct $u$. (Explicitly: $d=uc$ and $-c=ud=u^2c$ give $c(u^2+1)=0$ with $c$ a unit, so $u^2+1=0$; conversely $(1,u)S=(u,-1)=u\cdot(1,u)$ when $u^2=-1$.)
+Likewise $\langle ST\rangle$ has order $3$ in $\PSL_2(\Z)$, $ST=\sm0{-1}11$ and $(c,d)ST=(d,d-c)$. The equation $(d:d-c)=(c:d)$ means $d=uc$ and $d-c=ud$ for a unit $u$, so
+$uc-c=u^2c$, that is, $c(u^2-u+1)=0$; as before $c$ is a unit, we may take $c=1$, and the fixed points are the $(1:u)$ with $u^2-u+1\equiv0$ (conversely
+$(1,u)ST=(u,u-1)=(u,u^2)=u\cdot(1,u)$ for such $u$). The points that are not fixed fall into orbits of length $3$, which gives the count of the fibre over $\zeta_3$. For instance, modulo $13$
+the roots of $u^2+1$ are $5,8$ and those of $u^2-u+1$ are $4,10$, so the elliptic points of $\Gamma_0(13)$ are the classes of $(1:5)$, $(1:8)$ (order $2$) and $(1:4)$, $(1:10)$
+(order $3$), and $\nu_2(13)=\nu_3(13)=2$.
 
 The number of roots is multiplicative in $N$ (Chinese remainder theorem). For $p$ odd, $u^2+1$ has $1+(\frac{-1}p)=1+(\frac{-4}p)$ roots modulo $p$, simple, which lift
 uniquely modulo $p^e$ by Hensel's lemma (\Cref{ch:rings}); modulo $2$ there is one root, and modulo $4$ none. For $p\ne3$, $u^2-u+1$ has discriminant $-3$ and
@@ -567,12 +585,16 @@ $q=e^{2\pi i\sigma^{-1}(z)}=q_h^h$, so the ramification index is $h$. By \Cref{c
 unramified over the rest of $Y(1)$, and the degree is the number of points over a generic point, which is $[\PSL_2(\Z):\bar\Gamma_0(N)]=\mu(N)$ (cosets of
 $\Gamma_0(N)$ act simply on the orbit of a point with trivial stabiliser). The fibres over $i$ and $\zeta_3$ were counted in \Cref{prop:modforms:elliptic-gamma0}, and
 the widths add up to $\mu(N)$ (\Cref{prop:modforms:cusps-orbits}). Now $g(X(1))=0$ by \Cref{cor:modforms:level-one-quotient}, and the Riemann-Hurwitz formula of
-\Cref{ch:curves} gives
+\Cref{ch:curves}, $2g-2=\deg\pi\cdot(2g(X(1))-2)+\sum_P(e_P-1)$, gives the following. Over $i$ the $(\mu-\nu_2)/2$ points with $e=2$ contribute $1$ each; over $\zeta_3$ the
+$(\mu-\nu_3)/3$ points with $e=3$ contribute $2$ each; over $\infty$ the cusps contribute $\sum_s(h_s-1)=\mu-\nu_\infty$; all other points have $e=1$. So
 \[
 2g-2=\mu\cdot(-2)+\frac{\mu-\nu_2}2+\frac{2(\mu-\nu_3)}3+(\mu-\nu_\infty)=\frac\mu6-\frac{\nu_2}2-\frac{2\nu_3}3-\nu_\infty,
 \]
-which is the formula.
+since $-2+\frac12+\frac23+1=\frac16$; dividing by $2$ and adding $1$ gives the formula.
 \end{proof}
+
+Two instances. For $N=11$: $g=1+\frac{12}{12}-0-0-\frac22=1$. For $N=37$, where $u^2+1$ and $u^2-u+1$ both have two roots modulo $37$ ($37\equiv1\pmod{12}$):
+$g=1+\frac{38}{12}-\frac24-\frac23-\frac22=\frac{12+38-6-8-12}{12}=2$.
 
 \begin{center}
 \begin{tabular}{@{}rrrrrr@{\qquad}rrrrrr@{}}
@@ -620,8 +642,11 @@ action of $\Gal(\Qbar/\Q)$ on pairs $(E,C)$ defined over $\Qbar$. The cusps $\in
 (i) By \Cref{ch:ellcurves} every $E/\C$ is isomorphic to some $E_\tau$, every isomorphism $E_\tau\to E_{\tau'}$ is $z\mapsto\alpha z$ with $\alpha\Lambda_\tau=\Lambda_{\tau'}$, and for every such $\alpha$
 there is $\gamma=\sm abcd\in\SL_2(\Z)$ with $\tau'=\gamma\tau$ and $\alpha=\pm(c\tau+d)^{-1}$. A cyclic subgroup of order $N$ of $\frac1N\Lambda_\tau/\Lambda_\tau\simeq(\Z/N)^2$ is generated by
 $(c\tau+d)/N$ with $\gcd(c,d,N)=1$; by \Cref{prop:modforms:indices}(i) we may take $\sm abcd\in\SL_2(\Z)$, and then $z\mapsto z/(c\tau+d)$ maps $(E_\tau,\langle\frac{c\tau+d}N\rangle)$
-to $(E_{\gamma\tau},\langle\frac1N\rangle)$. So every pair has the stated form. For injectivity, let $\tau'=\gamma\tau$ as above. From $\tau=\gamma^{-1}\tau'$ one computes
-$c\tau+d=(a-c\tau')^{-1}$, so the isomorphism $z\mapsto z/(c\tau+d)$ sends $\frac1N$ to $\frac{a-c\tau'}N$, which generates $\langle\frac1N+\Lambda_{\tau'}\rangle$ iff $N\mid c$ (and then $a$ is a
+to $(E_{\gamma\tau},\langle\frac1N\rangle)$. So every pair has the stated form. For injectivity, let $\tau'=\gamma\tau$ as above. From $\tau=\gamma^{-1}\tau'=\frac{d\tau'-b}{-c\tau'+a}$,
+\[
+c\tau+d=\frac{c(d\tau'-b)+d(a-c\tau')}{a-c\tau'}=\frac{ad-bc}{a-c\tau'}=(a-c\tau')^{-1},
+\]
+so the isomorphism $z\mapsto z/(c\tau+d)$ sends $\frac1N$ to $\frac{a-c\tau'}N$, which generates $\langle\frac1N+\Lambda_{\tau'}\rangle$ iff $N\mid c$ (and then $a$ is a
 unit modulo $N$). So $(E_\tau,\langle\frac1N\rangle)\simeq(E_{\tau'},\langle\frac1N\rangle)$ iff $\tau'\in\Gamma_0(N)\tau$; the sign $\pm$ does not matter since $-I\in\Gamma_0(N)$.
 (ii) The same computation: $\frac{a-c\tau'}N\equiv\pm\frac1N\pmod{\Lambda_{\tau'}}$ iff $N\mid c$ and $a\equiv\pm1\pmod N$, that is, $\gamma\in\pm\Gamma_1(N)$, which acts on $\HH$ as $\Gamma_1(N)$.
 For $Y(N)$: if $(P,Q)$ is a basis of $E_\tau[N]$, write $P=\frac{a+b\tau}N$, $Q=\frac{c+d\tau}N$ modulo $\Lambda_\tau$; bilinearity gives $e_N(P,Q)=\zeta_N^{ad-bc}$, so $e_N(P,Q)=\zeta_N$ iff
@@ -631,7 +656,7 @@ $z\mapsto\alpha z$ from $(E_\tau,(\frac1N,\frac\tau N))$ to $(E_{\tau'},(\frac1N
 determinant $1$ (it maps the oriented basis $(1,\tau)$ to an oriented basis of $\Lambda_{\tau'}$), so $\tau=\frac{m_{22}\tau'+m_{21}}{m_{12}\tau'+m_{11}}$ with $\sm{m_{22}}{m_{21}}{m_{12}}{m_{11}}\in\Gamma(N)$: this is injectivity.
 That $\zeta_N$ does not depend on $\tau$ is part (iv) of the proposition on isogenies of complex tori in \Cref{ch:ellcurves} ($e_N=\zeta^{\det}$ on $\frac1N\Lambda/\Lambda$ for an
 oriented basis).
-(iii) The first statement is clear. For the second, $E_\tau/\langle\frac1N\rangle=\C/(\frac1N\Z+\Z\tau)$, and multiplication by $N$ identifies it with $\C/\Lambda_{N\tau}$, sending $E_\tau[N]/C$ to the
+(iii) The point $\pi(\Gamma_0(N)\tau)=\SL_2(\Z)\tau$ of $Y(1)$ corresponds to the isomorphism class of $E_\tau$ alone (the case $N=1$ of (i)), so $\pi$ forgets $C$. For the second statement, $E_\tau/\langle\frac1N\rangle=\C/(\frac1N\Z+\Z\tau)$, and multiplication by $N$ identifies it with $\C/\Lambda_{N\tau}$, sending $E_\tau[N]/C$ to the
 subgroup generated by $\tau=\frac{N\tau}N$. Multiplication by $(N\tau)^{-1}$ identifies $(\C/\Lambda_{N\tau},\langle\frac{N\tau}N\rangle)$ with $(\C/\Lambda_{-1/(N\tau)},\langle\frac1N\rangle)$,
 since $(N\tau)^{-1}\Lambda_{N\tau}=\Z(N\tau)^{-1}+\Z=\Lambda_{-1/(N\tau)}$.
 (iv), (v) We do not prove these; see \cite{DeligneRapoport73} and \cite{KatzMazur85} for the moduli problem over $\Z$ and its compactification,
@@ -689,6 +714,12 @@ It is a \emph{cusp form} if moreover $(f|_k\sigma)(z)\to0$ as $\operatorname{Im}
 the cusp forms a subspace $S_k(\Gamma)$. The \emph{level} of a form for $\Gamma_0(N)$ is $N$; the paper's ``cusp form of level $N$'' is an element of $S_2(\Gamma_0(N))$.
 \end{definition}
 
+Condition (a) says that $f(z)\,(dz)^{k/2}$ is invariant under $\Gamma$ (for $k=2$ this is \Cref{lem:modforms:slash}(iii) below), so that $f$ lives on the quotient $Y(\Gamma)$ in this twisted
+sense. Condition (b) is the analogue of ``holomorphic'' at the points that $Y(\Gamma)$ is missing. A cusp $s=\sigma\infty$ is moved to $\infty$ by $\sigma^{-1}$, and the behaviour of $f$
+near $s$ is the behaviour of $f|_k\sigma$ near $\infty$; so the condition must be imposed for every $\sigma$, not only for $\sigma=I$. It is not automatic: after
+\Cref{thm:modforms:level-eleven} we exhibit a holomorphic function of weight $12$ for $\Gamma_0(11)$ that vanishes at $\infty$ to order $21$ but has a pole at the cusp $0$. Since
+$\SL_2(\Z)$ has the single cusp $\infty$, at level one only $\sigma=I$ matters.
+
 \begin{proposition}[first properties]\label{prop:modforms:mf-basic}
 Let $\Gamma\subseteq\SL_2(\Z)$ be a congruence subgroup.
 \begin{enumerate}[label=(\alph*)]
@@ -705,7 +736,9 @@ Let $\Gamma\subseteq\SL_2(\Z)$ be a congruence subgroup.
 $\{\operatorname{Im}z\ge1\}$. (b) $f=f|_k(-I)=(-1)^kf$ by \Cref{lem:modforms:slash}(ii). (c) is clear. (d) $(fg)|_{k+l}\gamma=(f|_k\gamma)(g|_l\gamma)$, and products of bounded
 functions are bounded. (e) Let $\alpha=\sm d001$. For $\gamma=\sm abce\in\Gamma_0(Md)$, $\alpha\gamma=\gamma'\alpha$ with $\gamma'=\sm a{db}{c/d}e\in\Gamma_0(M)$, so
 $f|_k\alpha|_k\gamma=f|_k\gamma'|_k\alpha=f|_k\alpha$. For $\sigma\in\SL_2(\Z)$ write $\alpha\sigma=\sigma'\beta$ with $\sigma'\in\SL_2(\Z)$ and $\beta=\sm{a'}{b'}0{d'}$ upper triangular with
-integer entries (take for the first column of $\sigma'$ the primitive vector on the line of the first column of $\alpha\sigma$). Then $f|_k\alpha\sigma=(f|_k\sigma')|_k\beta$, and
+integer entries. To find them, write the first column of the integer matrix $\alpha\sigma$ as $a'v$ with $a'\ge1$ and $v\in\Z^2$ primitive, complete $v$ to a matrix
+$\sigma'\in\SL_2(\Z)$ with first column $v$ (possible because $v$ is primitive), and put $\beta=\sigma'^{-1}\alpha\sigma$. It has integer entries, its first column is
+$\sigma'^{-1}(a'v)=(a',0)^{\mathsf T}$, and $\det\beta=\det\alpha=d$, so $\beta=\sm{a'}{b'}0{d'}$ with $a'd'=d$ and $d'\ge1$. Then $f|_k\alpha\sigma=(f|_k\sigma')|_k\beta$, and
 $f|_k\sigma'=\sum_{n\ge0}b_nq_h^n$ (\Cref{prop:modforms:q-expansion}(iii) below) is bounded on every half plane $\{\operatorname{Im}z\ge C\}$, $C>0$, and tends to $b_0$; since $\beta$ maps
 $\{\operatorname{Im}z\ge1\}$ to $\{\operatorname{Im}z\ge a'/d'\}$, $f|_k\alpha\sigma$ is bounded there, and tends to $0$ if $b_0=0$.
 \end{proof}
@@ -768,7 +801,9 @@ The function $\phi=y^{k/2}\abs f$ is continuous and $\Gamma_0(N)$-invariant (\Cr
 $\bigcup_i\gamma_i\mathcal F$ of \Cref{prop:modforms:coset-domains}. For $w\in\mathcal F$, $\phi(\gamma_iw)=\operatorname{Im}(w)^{k/2}\abs{(f|_k\gamma_i)(w)}$ by \Cref{lem:modforms:slash}(iv). On $\mathcal F$,
 $\operatorname{Im}w\ge\sqrt3/2$, and $f|_k\gamma_i=\sum_{n\ge1}b_nq_h^n$ without constant term, so $\abs{(f|_k\gamma_i)(w)}\le\abs{q_h}\sum_{n\ge1}\abs{b_n}r_0^{n-1}=C_ie^{-2\pi\operatorname{Im}w/h}$ with
 $r_0=e^{-\pi\sqrt3/h}<1$. Since $y^{k/2}e^{-2\pi y/h}$ is bounded, $\phi$ is bounded, say by $C$. Then by \Cref{prop:modforms:q-expansion}(i) at height $y=1/n$:
-$\abs{a_n(f)}\le\int_0^1\abs{f(x+i/n)}e^{2\pi}\,dx\le Cn^{k/2}e^{2\pi}$. The last statement follows by comparison with $\sum n^{k/2-\operatorname{Re}s}$.
+$\abs{a_n(f)}\le\int_0^1\abs{f(x+i/n)}e^{2\pi}\,dx\le Cn^{k/2}e^{2\pi}$. Here $\abs{e^{-2\pi in(x+i/n)}}=e^{2\pi n\cdot(1/n)}=e^{2\pi}$, and $\abs{f(x+iy)}\le Cy^{-k/2}=Cn^{k/2}$ at
+$y=1/n$. The choice $y=1/n$ balances the two factors: a larger $y$ makes $e^{2\pi ny}$ grow exponentially in $n$, a smaller one makes $y^{-k/2}$ worse. The last statement
+follows by comparison with $\sum n^{k/2-\operatorname{Re}s}$, which converges for $\operatorname{Re}s-\frac k2>1$.
 \end{proof}
 
 For forms that are not cuspidal the bound fails: the Eisenstein series $E_k$ of \Cref{prop:modforms:eisenstein-level-one} has $\abs{a_n}=\frac{2k}{\abs{B_k}}\sigma_{k-1}(n)\ge\frac{2k}{\abs{B_k}}n^{k-1}$.
@@ -788,7 +823,8 @@ are complex conjugate of absolute value $p^{(k-1)/2}$ iff the discriminant $a_p^
 \begin{paperlink}\label{pl:modforms:ramanujan}
 Lemma lem:euler and Theorem thm:dfg14 use the roots $\alpha,\beta$ of $X^2-a_pX+p$ at a good prime $p$ ($k=2$). Wiles's
 level-raising factor $(1-\frac\alpha\beta p^{-1})(1-p^{-1})(1-\frac\beta\alpha p^{-1})$ of the paragraph after Theorem thm:dfg14 is a nonzero real number because $\beta=\bar\alpha$ and
-$\abs{\alpha/\beta}=1$: it equals $(1-p^{-1})\abs{1-\frac\alpha\beta p^{-1}}^2$.
+$\abs{\alpha/\beta}=1$: then $\frac\beta\alpha=(\frac\alpha\beta)^{-1}=\overline{\alpha/\beta}$, so the third factor is the complex conjugate of the first, and the product equals
+$(1-p^{-1})\abs{1-\frac\alpha\beta p^{-1}}^2$, which is positive because $\abs{\frac\alpha\beta p^{-1}}=p^{-1}<1$.
 \end{paperlink}
 
 \begin{definition}[nebentypus]\label{def:modforms:nebentypus}
@@ -799,6 +835,11 @@ M_k(\Gamma_0(N),\chi)=\Bigl\{f\in M_k(\Gamma_1(N)):f|_k\gamma=\chi(d)f\ \text{fo
 and $S_k(\Gamma_0(N),\chi)$ is its subspace of cusp forms. For $d\in(\Z/N)^\times$ the \emph{diamond operator} $\langle d\rangle$ on $M_k(\Gamma_1(N))$ is $f\mapsto f|_k\gamma$ for any
 $\gamma\in\Gamma_0(N)$ with lower right entry $\equiv d\pmod N$.
 \end{definition}
+
+The reason for this definition is that $\Gamma_1(N)$, not $\Gamma_0(N)$, is the natural group for many constructions, and $\Gamma_0(N)$ acts on $M_k(\Gamma_1(N))$ through the finite
+abelian quotient $\Gamma_0(N)/\Gamma_1(N)\simeq(\Z/N)^\times$. Decomposing under a finite abelian group means decomposing by characters, and $M_k(\Gamma_0(N),\chi)$ is the
+$\chi$-isotypic piece; the trivial character gives back $M_k(\Gamma_0(N))$. Nontrivial characters genuinely occur: PARI gives $\dim S_2(\Gamma_1(13))=2$ while
+$S_2(\Gamma_0(13))=0$ (the genus of $X_0(13)$ is $0$), the two dimensions coming from a character of order $6$ modulo $13$ and its complex conjugate, one dimension each.
 
 \begin{proposition}[decomposition by characters]\label{prop:modforms:nebentypus}
 \begin{enumerate}[label=(\roman*)]
@@ -814,8 +855,13 @@ $M_k(\Gamma_1(N))=\bigoplus_\chi M_k(\Gamma_0(N),\chi)$, the sum over all Dirich
 (\Cref{prop:modforms:indices}(ii)). For $f\in M_k(\Gamma_1(N))$ and $\gamma\in\Gamma_0(N)$, $f|_k\gamma$ is again invariant under $\Gamma_1(N)=\gamma\Gamma_1(N)\gamma^{-1}$ and holomorphic at the cusps
 ($f|_k\gamma|_k\sigma=f|_k(\gamma\sigma)$ with $\gamma\sigma\in\SL_2(\Z)$), and depends only on $\gamma\Gamma_1(N)$; so the finite abelian group $(\Z/N)^\times$ acts linearly on
 $M_k(\Gamma_1(N))$. The operators $e_\chi=\frac1{\varphi(N)}\sum_{d\in(\Z/N)^\times}\overline{\chi(d)}\langle d\rangle$ are orthogonal idempotents with $\sum_\chi e_\chi=1$ and
-$\langle d\rangle e_\chi=\chi(d)e_\chi$ (orthogonality of characters, \Cref{ch:reps}), so $M_k(\Gamma_1(N))$ is the direct sum of the images $e_\chi M_k(\Gamma_1(N))=M_k(\Gamma_0(N),\chi)$. The
-operators preserve cusp forms.
+$\langle d\rangle e_\chi=\chi(d)e_\chi$ (orthogonality of characters, \Cref{ch:reps}). In detail: substituting $d'\mapsto d^{-1}d'$,
+\[
+\langle d\rangle e_\chi=\frac1{\varphi(N)}\sum_{d'}\overline{\chi(d')}\langle dd'\rangle=\frac{\chi(d)}{\varphi(N)}\sum_{d'}\overline{\chi(dd')}\langle dd'\rangle=\chi(d)e_\chi ;
+\]
+hence $e_\psi e_\chi=\frac1{\varphi(N)}\sum_d\overline{\psi(d)}\chi(d)e_\chi$, which is $e_\chi$ if $\psi=\chi$ and $0$ otherwise; and $\sum_\chi e_\chi=\frac1{\varphi(N)}\sum_d\bigl(\sum_\chi\overline{\chi(d)}\bigr)\langle d\rangle=\langle1\rangle=1$.
+So $M_k(\Gamma_1(N))$ is the direct sum of the images $e_\chi M_k(\Gamma_1(N))$. Each image is $M_k(\Gamma_0(N),\chi)$: the image consists of $\chi$-eigenvectors of every $\langle d\rangle$, which is
+the defining condition $f|_k\gamma=\chi(d)f$, and conversely $e_\chi f=f$ for such $f$. The operators preserve cusp forms.
 \end{proof}
 
 The twist of $f\in S_k(\Gamma_0(M))$ by a primitive Dirichlet character $\chi$ of conductor $r$ is a form of character $\chi^2$ and level dividing $\operatorname{lcm}(M,r^2)$
@@ -859,14 +905,19 @@ which is $(cz+d)^kG_k(z)$ since $(m,n)\mapsto(ma+nc,mb+nd)$ permutes $\Z^2\small
 \sum_{n\in\Z}(z+n)^{-k}=\frac{(-2\pi i)^k}{(k-1)!}\sum_{r\ge1}r^{k-1}q^r .
 \]
 It follows from the partial fraction expansion $\pi\cot\pi z=\frac1z+\sum_{n\ne0}\bigl(\frac1{z+n}-\frac1n\bigr)$ and $\pi\cot\pi z=\pi i\frac{q+1}{q-1}=-\pi i-2\pi i\sum_{r\ge1}q^r$ (for $\abs q<1$), by
-differentiating both $k-1$ times. Separate the terms $m=0$, which give $2\zeta(k)$, and use the symmetry $(m,n)\mapsto(-m,-n)$ ($k$ even):
+differentiating both $k-1$ times. In detail: $\pi\cot\pi z=\pi i\frac{e^{\pi iz}+e^{-\pi iz}}{e^{\pi iz}-e^{-\pi iz}}=\pi i\frac{q+1}{q-1}$ (multiply numerator and denominator by $e^{\pi iz}$), and
+$\frac{q+1}{q-1}=-(1+q)\sum_{r\ge0}q^r=-1-2\sum_{r\ge1}q^r$. Both expansions converge locally uniformly, so they may be differentiated termwise. The $(k-1)$-st derivative of
+$\frac1{z+n}$ is $(-1)^{k-1}(k-1)!\,(z+n)^{-k}$, the constants $-\frac1n$ disappear, and that of $q^r=e^{2\pi irz}$ is $(2\pi ir)^{k-1}q^r$. Hence
+$(-1)^{k-1}(k-1)!\sum_n(z+n)^{-k}=-2\pi i\sum_r(2\pi ir)^{k-1}q^r=-(2\pi i)^k\sum_rr^{k-1}q^r$, which is the Lipschitz formula. Separate the terms $m=0$, which give $2\zeta(k)$, and use the symmetry $(m,n)\mapsto(-m,-n)$ ($k$ even):
 \[
 \begin{aligned}
 G_k(z)&=2\zeta(k)+2\sum_{m\ge1}\sum_{n\in\Z}(mz+n)^{-k}=2\zeta(k)+\frac{2(2\pi i)^k}{(k-1)!}\sum_{m\ge1}\sum_{r\ge1}r^{k-1}q^{mr}\\
 &=2\zeta(k)+\frac{2(2\pi i)^k}{(k-1)!}\sum_{n\ge1}\sigma_{k-1}(n)q^n.
 \end{aligned}
 \]
-With Euler's $\zeta(k)=-\frac{(2\pi i)^kB_k}{2\,k!}$ this is $2\zeta(k)E_k$. So $G_k$ is bounded on $\{\operatorname{Im}z\ge1\}$, and since $G_k|_k\sigma=G_k$ for every $\sigma\in\SL_2(\Z)$, it is holomorphic at the cusp;
+(In the first line, the inner sum for fixed $m$ is the Lipschitz formula at the point $mz$, with $e^{2\pi irmz}=q^{mr}$ and $(-2\pi i)^k=(2\pi i)^k$ as $k$ is even; in the second, the
+pairs $(m,r)$ with $mr=n$ contribute $\sum_{r\mid n}r^{k-1}=\sigma_{k-1}(n)$.) With Euler's $\zeta(k)=-\frac{(2\pi i)^kB_k}{2\,k!}$ we get
+$2\zeta(k)\cdot\bigl(-\frac{2k}{B_k}\bigr)=\frac{2k(2\pi i)^k}{k!}=\frac{2(2\pi i)^k}{(k-1)!}$, so the displayed expansion is $2\zeta(k)E_k$. So $G_k$ is bounded on $\{\operatorname{Im}z\ge1\}$, and since $G_k|_k\sigma=G_k$ for every $\sigma\in\SL_2(\Z)$, it is holomorphic at the cusp;
 $B_4=-\frac1{30}$ and $B_6=\frac1{42}$ give $240$ and $-504$. The transformation law of $E_2$ is \Cref{prop:modforms:eta} below, combined with
 $\frac{\eta'}\eta=\frac{\pi i}{12}E_2$: differentiating $\log\eta(-1/z)=\frac12\log\frac zi+\log\eta(z)$ gives $z^{-2}\frac{\eta'}\eta(-1/z)=\frac1{2z}+\frac{\eta'}\eta(z)$, which is the stated
 identity. Then $\operatorname{Im}(-1/z)=y/\abs z^2$ gives $E_2^*(-1/z)=z^2E_2^*(z)+\frac{6z}{\pi i}+\frac{3(z^2-\abs z^2)}{\pi y}=z^2E_2^*(z)$, because $z^2-\abs z^2=z(z-\bar z)=2iyz$; and
@@ -903,7 +954,8 @@ $g_2=\frac43\pi^4E_4$, $g_3=\frac8{27}\pi^6E_6$ and $g_2^3-27g_3^2=\frac{64}{27}
 (ii) $\Delta$ has no zero on $\HH$ (\Cref{cor:modforms:level-one-structure}(ii), which uses only the valence formula), so $j$ is holomorphic and, as a quotient of two forms of
 weight $12$, invariant. $j(\Lambda_z)=1728g_2^3/\Delta(\Lambda_z)=1728\cdot\frac{64}{27}\pi^{12}E_4^3/((2\pi)^{12}\Delta)=E_4^3/\Delta$. Since $\Delta=q(1-24q+\cdots)$ has integer coefficients and leading
 coefficient $1$, $1/\Delta\in q^{-1}\Z[[q]]$, so $j\in q^{-1}\Z[[q]]$; the coefficients shown were computed with PARI. $E_6(i)=0$ because $E_6(-1/z)=z^6E_6(z)$ at $z=i$ gives $E_6(i)=-E_6(i)$;
-so $j(i)=1728E_4(i)^3/E_4(i)^3=1728$, as $E_4(i)\ne0$ (\Cref{cor:modforms:level-one-structure}(ii)). Likewise $E_4(\zeta_3)=0$ and $j(\zeta_3)=0$.
+so $j(i)=1728E_4(i)^3/E_4(i)^3=1728$, as $E_4(i)\ne0$ (\Cref{cor:modforms:level-one-structure}(ii)). Likewise $E_4(\zeta_3)=0$: the element $ST=\sm0{-1}11$ fixes $\zeta_3$, so
+$E_4(\zeta_3)=(\zeta_3+1)^4E_4(\zeta_3)$, and $\zeta_3+1=e^{\pi i/3}$ has $(\zeta_3+1)^4=e^{4\pi i/3}\ne1$. As $\Delta(\zeta_3)\ne0$, $j(\zeta_3)=E_4(\zeta_3)^3/\Delta(\zeta_3)=0$.
 (iii) Given the transformation law of $\eta$ (\Cref{prop:modforms:eta}), $\eta^{24}(z+1)=\eta^{24}(z)$ and $\eta^{24}(-1/z)=(z/i)^{12}\eta^{24}(z)=z^{12}\eta^{24}(z)$, so $\eta^{24}\in M_{12}(\SL_2(\Z))$ (as $S,T$
 generate); its expansion $q\prod(1-q^n)^{24}=q-24q^2+\cdots$ has no constant term, so $\eta^{24}\in S_{12}(\SL_2(\Z))=\C\Delta$ (\Cref{cor:modforms:level-one-structure}(iii)), and comparing $a_1$ gives
 $\eta^{24}=\Delta$.
@@ -1116,6 +1168,10 @@ which exceeds $2g-2$, so Riemann-Roch gives its dimension $\deg-g+1$, and simila
 \end{proof}
 
 The formulas were checked against PARI's \texttt{mfdim([N,k],1)} and \texttt{mfdim([N,k],4)} for all $N\le60$ and $N\in\{77,99,121,539\}$, $k\in\{2,4,\dots,14\}$.
+Two instances by hand. At level one ($g=0$, $\nu_2=\nu_3=\nu_\infty=1$) and $k=12$: $11\cdot(-1)+5+3+4=1$, the line $\C\Delta$ of \Cref{cor:modforms:level-one-structure}. At level $11$
+($g=1$, $\nu_2=\nu_3=0$, $\nu_\infty=2$) and $k=4$: $3\cdot0+1\cdot2=2$, so $\dim S_4(\Gamma_0(11))=2$ and $\dim M_4(\Gamma_0(11))=4$. The floors $\lfloor\frac k4\rfloor$ and
+$\lfloor\frac k3\rfloor$ are the elliptic corrections: a form of weight $k$ is forced to vanish at an elliptic point of order $e$ to an order that depends on $k$ modulo $2e$, as
+the case $E_6(i)=0$ of \Cref{prop:modforms:delta-j} illustrates.
 
 \begin{proposition}[the weight-two Eisenstein series of level $N$]\label{prop:modforms:eisenstein-weight-two}
 For $N>1$ the function $E_2^{(N)}(z)=E_2(z)-NE_2(Nz)$ lies in $M_2(\Gamma_0(N))$, is not a cusp form, and
@@ -1131,8 +1187,10 @@ $\alpha=\sm N001$ (\Cref{def:modforms:slash}: $(\det\alpha)^{1}\cdot1^{-2}=N$). 
 invariance of $E_2^*$; hence $E_2^{(N)}|_2\gamma=E_2^{(N)}$. At a cusp, for $\sigma\in\SL_2(\Z)$ write $\alpha\sigma=\sigma'\beta$ with $\sigma'\in\SL_2(\Z)$ and $\beta=\sm{a'}{b'}0{d'}$, $a'd'=N$, as in
 \Cref{prop:modforms:mf-basic}(e). Then $E_2^{(N)}|_2\sigma=E_2^*-E_2^*|_2\beta$, and
 $(E_2^*|_2\beta)(z)=\frac{a'}{d'}E_2\bigl(\frac{a'z+b'}{d'}\bigr)-\frac{a'}{d'}\cdot\frac{3d'}{\pi a'y}$, so the non-holomorphic terms cancel and
-$E_2^{(N)}|_2\sigma=E_2(z)-\frac{a'}{d'}E_2\bigl(\frac{a'z+b'}{d'}\bigr)$, a power series in $q^{1/d'}$ without negative powers, bounded on $\{\operatorname{Im}z\ge1\}$. The expansion is immediate,
-and $a_0=1-N\ne0$. For $N=p$, $\nu_\infty=2$, so $\dim M_2=g+1$ (\Cref{thm:modforms:weight-two-differentials}), and $E_2^{(p)}\notin S_2$.
+$E_2^{(N)}|_2\sigma=E_2(z)-\frac{a'}{d'}E_2\bigl(\frac{a'z+b'}{d'}\bigr)$, a power series in $q^{1/d'}$ without negative powers, bounded on $\{\operatorname{Im}z\ge1\}$. This is the step where
+$E_2^*$ earns its place: $E_2^*$ is modular but not holomorphic, $E_2$ is holomorphic but not modular, and the combination $E_2^*-E_2^*|_2\alpha$ is both, because the two
+correction terms $\frac3{\pi y}$ and $N\cdot\frac3{\pi Ny}$ cancel. The expansion comes from substituting $Nz$ for $z$ in that of $E_2$:
+$NE_2(Nz)=N-24N\sum_{m\ge1}\sigma(m)q^{Nm}$, and the term $q^{Nm}$ is $q^n$ with $m=n/N$. So $a_0=1-N\ne0$. For $N=p$, $\nu_\infty=2$, so $\dim M_2=g+1$ (\Cref{thm:modforms:weight-two-differentials}), and $E_2^{(p)}\notin S_2$.
 \end{proof}
 
 At the two cusps of $\Gamma_0(p)$ the constant terms are $1-p$ at $\infty$ (width $1$) and $1-\frac1p$ at $0$ (width $p$; here $\sigma=S$, $\beta=\sm100p$), and $1\cdot(1-p)+p(1-\frac1p)=0$,
@@ -1144,7 +1202,9 @@ Let $f_{11}$ be the normalised generator of $S_2(\Gamma_0(11))$ (\Cref{thm:modfo
 a_n(f_{11})\equiv\sigma(n)-11\sigma(n/11)\pmod5,
 \]
 and in particular $a_\ell(\curve{11a1})\equiv1+\ell\pmod5$ for every prime $\ell\ne11$, and $a_{11}=1$. Indeed
-$h=12\bigl(f_{11}+\frac1{24}E_2^{(11)}\bigr)=-5+12\sum_{n\ge1}\bigl(a_n(f_{11})-\sigma(n)+11\sigma(n/11)\bigr)q^n$ lies in $M_2(\Gamma_0(11);\Z)$. Its coefficients at $n=0,1,2$ are $-5$,
+$h=12\bigl(f_{11}+\frac1{24}E_2^{(11)}\bigr)=-5+12\sum_{n\ge1}\bigl(a_n(f_{11})-\sigma(n)+11\sigma(n/11)\bigr)q^n$ lies in $M_2(\Gamma_0(11);\Z)$: the constant term is
+$\frac{12}{24}(1-11)=-5$, and the $n$-th coefficient is $12a_n(f_{11})+\frac{12}{24}\cdot(-24)(\sigma(n)-11\sigma(n/11))$. The multiple $\frac1{24}E_2^{(11)}$ is chosen so that
+the first coefficients cancel ($a_1=1-1=0$), and the factor $12$ makes the constant term $\frac{1-11}{24}=-\frac5{12}$ an integer. Its coefficients at $n=0,1,2$ are $-5$,
 $12(1-1)=0$ and $12(-2-3)=-60$, all divisible by $5$. The Sturm bound is $B_2(11)=\lfloor12/6\rfloor=2$, so by \Cref{thm:modforms:sturm} every coefficient of $h$ is divisible by $5$, and
 $12\bigl(a_n-\sigma(n)+11\sigma(n/11)\bigr)\equiv0$ gives the claim since $5\nmid12$. (Checked directly for $n\le5000$; the identification of $f_{11}$ with the form of \curve{11a1} at
 every $n$ is \Cref{thm:modforms:level-eleven}(iv).) This congruence is the modular face of the rational point of order $5$ on \curve{11a1} (\Cref{ch:ellcurves}): if
@@ -1228,6 +1288,13 @@ and the $a_p$ for $p=2,3,5,7,11,13,17,19,23,29,31,37$ are $-2,-1,1,-2,1,4,-2,0,-
 \Cref{ex:modforms:eisenstein-congruence}. Physically $f_{11}$ is a Fourier series on the half cylinder (\Cref{sec:modforms:forms}) whose modes are dictated by the arithmetic of
 a cubic curve.
 
+The computation in the proof of (i) also gives the example promised after \Cref{def:modforms:modular-form}, of why holomorphy must be checked at every cusp. Let
+$g(z)=\Delta(11z)^2/\Delta(z)$. It is holomorphic on $\HH$ ($\Delta$ has no zeros there), and $g|_{12}\gamma=g$ for $\gamma\in\Gamma_0(11)$, since $\Delta(11z)^2$ has weight $24$, $\Delta$ has
+weight $12$, and the slash operator is multiplicative in the sense $(F/G)|_{a-b}\gamma=(F|_a\gamma)/(G|_b\gamma)$. At $\infty$ its expansion is $q^{22-1}(1+\cdots)$, so $g$ is bounded on
+$\{\operatorname{Im}z\ge1\}$ and even vanishes to order $21$. But at the cusp $0$, by the formula $\Delta(11z)|_{12}S=11^{-12}\Delta(z/11)$ of the proof,
+$g|_{12}S=11^{-24}\Delta(z/11)^2/\Delta(z)$, and in the local parameter $q_{11}=e^{2\pi iz/11}$ the numerator has order $2$ and the denominator $\Delta(z)=q_{11}^{11}+\cdots$ order $11$: $g$ has a pole
+of order $9$ at $0$, and $g\notin M_{12}(\Gamma_0(11))$. The valence count is consistent: $21-9=12=\frac{12\cdot12}{12}$ (\Cref{thm:modforms:valence-gamma0}; its sketch of proof applies to meromorphic forms, since \Cref{thm:modforms:valence-level-one} does).
+
 \begin{example}[small levels]\label{ex:modforms:small-levels}
 \begin{enumerate}[label=(\alph*)]
 \item For the twelve levels $N=11$, $14$, $15$, $17$, $19$, $20$, $21$, $24$, $27$, $32$, $36$, $49$ of genus $1$, $S_2(\Gamma_0(N))$ is one-dimensional, spanned by the newform of the optimal curve of conductor $N$ (\Cref{ch:moddeg}). Eight of these are $\eta$-products, each checked against Cremona's curve for $n\le300$:
@@ -1286,7 +1353,8 @@ by elements of $\Gamma_0(N)$, give the same integral.
 (ii) The same identity with $\gamma=\gamma_i$ and the change of variables $z=\gamma_iw$ give the formula. On $\mathcal F$, $\operatorname{Im}w\ge\sqrt3/2$, $\abs{(f|_k\gamma_i)(w)}\le C_ie^{-2\pi\operatorname{Im}w/h_i}$
 (no constant term, as in \Cref{prop:modforms:hecke-bound}) and $\abs{(g|_k\gamma_i)(w)}\le C_i'$ (holomorphy at the cusp); and $\int_{\mathcal F}e^{-2\pi y/h}y^{k-2}\,dx\,dy<\infty$.
 (iii) Sesquilinearity and $\langle g,f\rangle=\overline{\langle f,g\rangle}$ are clear; $\langle f,f\rangle=\int\abs f^2y^k\,d\mu>0$ unless $f$ vanishes on an open set, hence everywhere.
-(iv) $y^2\cdot y^{-2}=1$, and $\frac i2\,dz\wedge d\bar z=dx\wedge dy$; the integral over $X_0(N)$ is the integral over a fundamental domain, the cusps and elliptic points having measure
+(iv) $y^2\cdot y^{-2}=1$, and $\frac i2\,dz\wedge d\bar z=dx\wedge dy$, because $dz\wedge d\bar z=(dx+i\,dy)\wedge(dx-i\,dy)=-2i\,dx\wedge dy$; also
+$\omega_f\wedge\overline{\omega_g}=f\bar g\,dz\wedge d\bar z$. The integral over $X_0(N)$ is the integral over a fundamental domain, the cusps and elliptic points having measure
 zero (\Cref{ch:curves}).
 \end{proof}
 
@@ -1384,8 +1452,16 @@ $g\mapsto\frac{\langle g,f\rangle}{\langle f,f\rangle}f$.
 \end{proposition}
 
 \begin{proof}
-$\langle f,f\rangle>0$, so $g-\frac{\langle g,f\rangle}{\langle f,f\rangle}f\in f^\perp$, and $\C f\cap f^\perp=0$.
+$\langle f,f\rangle>0$, so $g-\frac{\langle g,f\rangle}{\langle f,f\rangle}f\in f^\perp$: its product with $f$ is $\langle g,f\rangle-\frac{\langle g,f\rangle}{\langle f,f\rangle}\langle f,f\rangle=0$. So
+$g=\frac{\langle g,f\rangle}{\langle f,f\rangle}f+\bigl(g-\frac{\langle g,f\rangle}{\langle f,f\rangle}f\bigr)$ is a decomposition, and it is unique because $\C f\cap f^\perp=0$ (if $cf\in f^\perp$ then
+$c\langle f,f\rangle=0$, so $c=0$).
 \end{proof}
+
+Equivalently, $f^\perp$ is the kernel of the nonzero linear functional $g\mapsto\langle g,f\rangle$, so it has codimension $1$. For $N=22$, with $f=f_{11}$ and $S_2(\Gamma_0(22))$
+spanned by $f_{11}(z)$ and $f_{11}(2z)$ (\Cref{ex:modforms:atkin-lehner-q-expansions}(b)), the line $f^\perp$ is spanned by $f_{11}(2z)-\frac{\langle f_{11}(2z),f_{11}\rangle_{\Gamma_0(22)}}{\langle f_{11},f_{11}\rangle_{\Gamma_0(22)}}f_{11}(z)$; with the
+values of Exercise \ref{ex:modforms:ex-level22} (where $\langle f_{11}(z),f_{11}(2z)\rangle_{\Gamma_0(22)}=-\langle f_{11},f_{11}\rangle_{\Gamma_0(11)}$ and $\langle f_{11},f_{11}\rangle_{\Gamma_0(22)}=3\langle f_{11},f_{11}\rangle_{\Gamma_0(11)}$),
+the ratio is $-\frac13$ and $f^\perp=\C\bigl(f_{11}(2z)+\frac13f_{11}(z)\bigr)$. Its $q$-expansion has non-integral coefficients, and $3f_{11}(2z)+f_{11}(z)$ spans $f^\perp\cap S_2(\Gamma_0(22);\Z)$:
+this is the kind of lattice on which the paper's congruence questions are posed (here $f_{11}$ is not a newform of level $22$, so the example only illustrates the definition).
 
 By itself $f^\perp$ is defined transcendentally. \Cref{ch:hecke} shows, for a newform $f$ with rational coefficients, that $f^\perp$ is stable under all Hecke operators,
 $U_p$ included (the adjoint of $U_p$ is $w_NU_pw_N$, and $f$ is an eigenvector of $w_N$), that it is spanned by forms with rational coefficients, and that
@@ -1603,8 +1679,11 @@ $dx'w-\frac Ndy'z$, $xy'-x'y$, $N(z'w-w'z)$, $dxw'-\frac Ndyz'$: integers, with 
 $W'\in W\Gamma_0(N)$. Then $W_d\gamma W_d^{-1}\in\mathcal W_dW_d^{-1}\subseteq\Gamma_0(N)$.
 (ii) Multiply out: $W_d^2=\sm{d^2x^2+Nyz}{d(x+w)y}{dN(x+w)z}{Nyz+d^2w^2}$, which is $d$ times the displayed matrix; that matrix is integral with lower left entry divisible by $N$ and
 determinant $\det(W_d)^2/d^2=1$.
-(iii) If $\gcd(d,d')=1$ then $dd'\,\|\,N$, and multiplying out $W_dW_{d'}$ shows, as in (i), that the upper left and lower right entries are divisible by $dd'$ (using $dd'\mid N$), the
-lower left by $N$, and the determinant is $dd'$: so $W_dW_{d'}\in\mathcal W_{dd'}$. In general write $g=\gcd(d,d')$, $d=ge$, $d'=ge'$. For a prime $p\mid g$, $v_p(d)=v_p(N)=v_p(d')$ (both are
+(iii) If $\gcd(d,d')=1$ then $dd'\,\|\,N$, and with $W_{d'}=\sm{d'x'}{y'}{Nz'}{d'w'}$,
+\[
+W_dW_{d'}=\begin{pmatrix}dd'xx'+Nyz'&dxy'+d'yw'\\N(d'zx'+dwz')&Nzy'+dd'ww'\end{pmatrix}.
+\]
+The upper left and lower right entries are divisible by $dd'$ because $dd'\mid N$, the lower left entry is divisible by $N$, and the determinant is $dd'$: so $W_dW_{d'}\in\mathcal W_{dd'}$. In general write $g=\gcd(d,d')$, $d=ge$, $d'=ge'$. For a prime $p\mid g$, $v_p(d)=v_p(N)=v_p(d')$ (both are
 exact divisors), so $v_p(g)=v_p(d)$ and $g$, $e$, $e'$ are pairwise coprime exact divisors of $N$. By the coprime case and (i), $\mathcal W_d=\mathcal W_g\mathcal W_e=\mathcal W_e\mathcal W_g$ and $\mathcal W_{d'}=\mathcal W_g\mathcal W_{e'}$, so by
 (ii) $W_dW_{d'}\in\mathcal W_e\mathcal W_g\mathcal W_g\mathcal W_{e'}=g\,\mathcal W_e\Gamma_0(N)\mathcal W_{e'}=g\,\mathcal W_{ee'}$, and $ee'=d*d'$.
 (iv) A matrix of $\GL_2^+(\Q)$ that normalises $\Gamma_0(N)$ induces a bijection of $\Gamma_0(N)\backslash\HH^*$ (it maps $\PP^1(\Q)$ to itself), holomorphic in the charts of

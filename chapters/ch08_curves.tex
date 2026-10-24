@@ -245,6 +245,15 @@ We do not prove this; see \cite[Chapter 1]{Fulton} and \cite[Chapter I, Section 
 \cite[Chapter I, Section 1]{SilvermanAEC} with its exercises for the Galois criterion. Examples: $\A^1$, with $\bar k[\A^1]=\bar k[x]$; the
 parabola $y=x^2$, with $\bar k[V]=\bar k[x,y]/(y-x^2)\simeq\bar k[x]$ and $\dim V=1$; the affine Weierstrass cubics of \Cref{ex:curves:plane-examples}.
 
+Why points over $\bar k$ and not over $k$? Over a field that is not algebraically closed a polynomial can have too few zeros to be
+recovered from them ($x^2+y^2+1$ has no zero in $\R^2$, and neither has $1$), so the dictionary between ideals and zero sets of the Nullstellensatz fails;
+over $\bar k$ it holds, and the arithmetic over $k$ is then recorded by the action of $G_k$. Two small examples over $k=\Q$ show how the
+definitions interact. The set $V(x^2-2)\subseteq\A^1$ is $\{\sqrt2,-\sqrt2\}$; its ideal $(x^2-2)\bar k[x]=(x-\sqrt2)(x+\sqrt2)\bar k[x]$ is not prime, so it is an
+algebraic set but not a variety, although $x^2-2$ is irreducible over $\Q$. Each of its two points is a variety, $V(x\mp\sqrt2)$, but neither is defined over
+$\Q$, and indeed $\sigma(\sqrt2)=-\sqrt2$ for some $\sigma\in G_\Q$, so the Galois criterion of the theorem fails for each point while the union is $G_\Q$-stable. In the
+same way $V(x^2+1)\subseteq\A^2$ is the union of the two lines $x=\pm i$, exchanged by complex conjugation: the polynomial $x^2+1$ is irreducible over $\Q$ but
+not over $\bar\Q$. This is why ``variety'' means ``irreducible over $\bar k$'' in this chapter (\Cref{conv:curves:conventions}(C2)).
+
 \begin{definition}[projective space and projective varieties]\label{def:curves:projective-space}
 $\PP^n=\PP^n(\bar k)=(\bar k^{n+1}\setminus\{0\})/\bar k^\times$, with homogeneous coordinates $[x_0:\dots:x_n]$; for $n=1$ this is the set of lines of
 \Cref{ch:groups}, on which $\PGL_2$ acts by Moebius transformations. $G_k$ acts coordinatewise, and $\PP^n(L)$ is the set of points with a
@@ -272,7 +281,10 @@ $V\cap U_i$, with the same value.
 \begin{proof}
 (i) A point with a representative in $L^{n+1}$ is fixed by $G_L$. Conversely let $P=[x_0:\dots:x_n]$ be fixed by $G_L$; choose $i$ with $x_i\ne0$ and
 scale so that $x_i=1$. For $\sigma\in G_L$, $\sigma P=P$ means $\sigma(x_j)=cx_j$ for all $j$ with one $c\in\bar k^\times$; the coordinate $j=i$ gives $c=1$. So
-every $x_j$ is fixed by $G_L$, hence lies in $L$ ($\bar k^{G_L}=L$ by Galois theory, \Cref{ch:galois}, $k$ being perfect). (ii) is clear. (iii) A quotient
+every $x_j$ is fixed by $G_L$, hence lies in $L$ ($\bar k^{G_L}=L$ by Galois theory, \Cref{ch:galois}, $k$ being perfect). (ii) A point $[x_0:\dots:x_n]$
+either has $x_0\ne0$, and then it has exactly one representative with $x_0=1$, namely $(1,x_1/x_0,\dots,x_n/x_0)$, which identifies $U_0$ with $\A^n$; or it has
+$x_0=0$, and then $[x_1:\dots:x_n]$ is a well-defined point of $\PP^{n-1}$ (not all $x_j$ vanish, and scaling acts on both sides in the same way). For $n=1$
+the second set is the single point $[0:1]$, which is called $\infty$. (iii) A quotient
 $F/G$ of forms of degree $d$ equals $(F/x_i^d)/(G/x_i^d)$, a quotient of polynomials in the affine coordinates $x_j/x_i$; conversely a quotient of
 polynomials in the affine coordinates is homogenised by multiplying numerator and denominator by a power of $x_i$. The two constructions are
 inverse, and both respect the ideals. If $G(P)\ne0$ then $(G/x_i^d)(P)\ne0$, as $x_i(P)\ne0$; conversely, if $f=g/h$ with $h(P)\ne0$ on $V\cap U_i$,
@@ -323,9 +335,18 @@ every common zero in $\PP^2$ of $F_X$, $F_Y$, $F_Z$ lies on $C$.
 \begin{proof}
 (i) Both sides of Euler's identity are additive in $F$, and for a monomial $X^iY^jZ^m$ with $i+j+m=d$ the left side is $(i+j+m)X^iY^jZ^m$. On the affine
 part $f_x(a,b)=F_X(a,b,1)$ and $f_y(a,b)=F_Y(a,b,1)$, and at a point of $C$, Euler gives $F_Z(a,b,1)=-aF_X(a,b,1)-bF_Y(a,b,1)$; so the three
-partials vanish iff $f_x$ and $f_y$ do. If $\operatorname{char}k\nmid d$ and the three partials vanish at $P$, Euler gives $dF(P)=0$, so $F(P)=0$. (ii) is
-a definition; on the affine part the two equations agree by the same use of Euler's identity.
+partials vanish iff $f_x$ and $f_y$ do. If $\operatorname{char}k\nmid d$ and the three partials vanish at $P$, Euler gives $dF(P)=0$, so $F(P)=0$. (ii) The
+projective equation is a definition. On the affine part put $Z=1$, $X=x$, $Y=y$ and $P=(a,b,1)$; using $F_Z(P)=-af_x(P)-bf_y(P)$ from (i), the
+projective equation becomes
+\[
+f_x(P)x+f_y(P)y-af_x(P)-bf_y(P)=f_x(P)(x-a)+f_y(P)(y-b)=0,
+\]
+the affine tangent line of calculus.
 \end{proof}
+
+So for an affine equation one never needs the homogenisation away from infinity: smoothness at $(a,b)$ is the familiar condition that the gradient
+$(f_x,f_y)$ does not vanish there, and (in the real picture) the tangent line is orthogonal to that gradient. Only the points at infinity require the projective partials, and
+\Cref{ex:curves:plane-examples} shows how they are handled.
 
 \begin{example}[the paper's curves are smooth; the node and the cusp are not]\label{ex:curves:plane-examples}
 \leavevmode
@@ -363,7 +384,9 @@ We prove the theorem for a point of an affine plane model $f(x,y)=0$, $f$ irredu
 Jacobian matrix gives the general case \cite[Chapter II, Proposition 1.1]{SilvermanAEC}. Translate so that $P=(0,0)$. Let $A=\bar k[x,y]$,
 $\mf M=(x,y)$, $R=\bar k[C]=A/(f)$ and $\mf m=\mf M/(f)$. The local ring $\bar k[C]_P$ is the localisation $R_{\mf m}$ (\Cref{ch:modules}; regularity may be tested on an affine chart by
 \Cref{prop:curves:projective-points}(iii)), with maximal ideal
-$\mf m_P=\mf mR_{\mf m}$. Since $\mf m/\mf m^2$ is killed by $\mf m$, the elements of $R\setminus\mf m$ act on it invertibly, and $\mf m_P/\mf m_P^2=\mf m/\mf m^2=\mf M/(\mf M^2+(f))$.
+$\mf m_P=\mf mR_{\mf m}$. Since $\mf m/\mf m^2$ is killed by $\mf m$, it is a vector space over $R/\mf m=\bar k$, and an element $s\in R\setminus\mf m$ acts on it as
+the nonzero scalar $s(P)$ (because $s-s(P)\in\mf m$), hence invertibly. So inverting the elements of $R\setminus\mf m$ changes nothing:
+$\mf m_P/\mf m_P^2=\mf m/\mf m^2=\mf M/(\mf M^2+(f))$.
 Now $\mf M/\mf M^2$ is the two-dimensional space with basis the classes of $x$, $y$, and by Taylor's formula $f\equiv f_x(P)x+f_y(P)y\pmod{\mf M^2}$ (as
 $f(P)=0$). So $\mf m_P/\mf m_P^2$ is the quotient of $\bar kx\oplus\bar ky$ by the span of $f_x(P)x+f_y(P)y$: of dimension $1$ if $P$ is smooth and $2$ if not
 (\Cref{prop:curves:euler}(i)). This proves (a)$\Leftrightarrow$(b) and shows that a linear form is nonzero in $\mf m_P/\mf m_P^2$ iff it is not proportional to the
@@ -377,6 +400,13 @@ $\mf m_P=(t)$ then $\mf m_P/\mf m_P^2$ is spanned by the class of $t$, and it is
 description of a discrete valuation ring by its valuation (\Cref{ch:modules}).
 \end{proof}
 
+Two computations show the theorem at work. On the smooth cubic $y^2=h(x)$, $h$ squarefree of degree $3$, $\operatorname{char}k\ne2$, take a root $e$ of $h$ and
+$P=(e,0)$. There $f_y=2y$ vanishes and $f_x=-h'(e)\ne0$, so the tangent line is the vertical line $x=e$, and $x-e$ is \emph{not} a uniformiser; $y$ is one.
+Indeed $x-e=y^2/q(x)$ with $q(x)=h(x)/(x-e)$, and $q(e)=h'(e)\ne0$, so $q(x)$ is a unit at $P$ and $\ord_P(x-e)=2$: the vertical tangent meets the curve
+doubly at $P$. At the node of $y^2=x^3+x^2$ the computation of the proof gives $\mf m_P/\mf m_P^2=\bar kx\oplus\bar ky$ (the gradient vanishes), of dimension two,
+so the local ring at the node is not a discrete valuation ring and no single order of vanishing can be attached to a function there; the smooth model of
+\Cref{thm:curves:smooth-model} replaces the node by two points, each with its own valuation.
+
 \begin{theorem}[Bezout; stated]\label{thm:curves:bezout}
 Two plane curves of degrees $m$ and $n$ without a common component meet in exactly $mn$ points of $\PP^2(\bar k)$ counted with intersection multiplicity.
 In particular a line not contained in a plane curve of degree $d$ meets it in $d$ points counted with multiplicity, and a line meets a cubic in three
@@ -385,7 +415,9 @@ points (the chord-tangent construction of \Cref{ch:ellcurves}).
 
 We do not prove this; see \cite[Chapter 5, Section 3]{Fulton} and \cite[Chapter I, Section 7]{Hartshorne}. On a smooth plane curve the
 intersection multiplicity of the curve with a line $L=0$ at $P$ is $\ord_P(L/M)$ for any linear form $M$ with $M(P)\ne0$ \cite[Chapter 3]{Fulton}, so
-the divisor of zeros of $L/M$ (\Cref{def:curves:divisor}) has degree $d$.
+the divisor of zeros of $L/M$ (\Cref{def:curves:divisor}) has degree $d$. For example, on a Weierstrass cubic the line at infinity $Z=0$ meets the curve
+only at $O=[0:1:0]$ (put $Z=0$ in the equation: $X^3=0$), and in the chart $Y=1$ the function $Z/Y=v$ has $\ord_Ov=3$ (computed for $y^2=h(x)$ in the proof of
+\Cref{prop:curves:differentials}(iv)): the line at infinity is a flex tangent, meeting the cubic at $O$ with multiplicity $3=d$, as Bezout requires.
 
 \begin{theorem}[smooth projective models; stated]\label{thm:curves:smooth-model}
 Every curve, possibly singular or affine, is birational over $k$ to a smooth projective curve, which is unique up to isomorphism over $k$. Its
@@ -408,6 +440,12 @@ of $G_\Q$ on $E[3]$ in Proposition prop:ns, are the action of $G_k$ on points of
 A \emph{function field of one variable over $k$} is a finitely generated field extension $F/k$ of transcendence degree one in which $k$ is
 algebraically closed. For a curve $C$ over $k$, $k(C)$ is one, and $\bar k(C)=\bar k\cdot k(C)$ is one over $\bar k$ \cite[Chapter II, Section 1]{SilvermanAEC}.
 \end{definition}
+
+The examples to keep in mind are $k(\PP^1)=k(x)$, and, for a Weierstrass cubic $E$, $k(E)=k(x)[y]/(y^2+a_1xy+a_3y-x^3-a_2x^2-a_4x-a_6)$, a quadratic
+extension of $k(x)$. ``Transcendence degree one'' says that the curve has dimension one. The condition that $k$ be algebraically closed in $F$ excludes, for
+$k=\Q$, a field such as $\Q(i)(y)$: it is finitely generated of transcendence degree one over $\Q$, and it is the function field over $\Q$ of the plane set
+$x^2+1=0$, which over $\bar\Q$ falls apart into the two conjugate lines $x=\pm i$ (the second example after \Cref{thm:curves:nullstellensatz}). A function field
+of one variable over $k$ is thus the function field of a curve that stays irreducible over $\bar k$.
 
 \begin{proposition}[valuations of a function field]\label{prop:curves:function-field}
 Let $C$ be a smooth curve.
@@ -437,6 +475,12 @@ Let $P\in C$, $t$ a uniformiser at $P$ (\Cref{thm:curves:smooth-dvr}) and $m=\mi
 regular at $P$, and for an index with $\ord_Pf_i=m$ the function $t^{-m}f_i$ is a unit at $P$, nonzero at $P$. So $g=t^{-m}$ shows that $\varphi$ is regular
 at $P$. For $f\in\bar k(C)$ nonconstant this applies to $[f:1]$; at a pole $m=\ord_Pf<0$ and $[t^{-m}f:t^{-m}](P)=[1:0]$.
 \end{proof}
+
+Smoothness of the source is essential. On the nodal cubic $y^2=x^3+x^2$ the rational map $t=y/x$ to $\PP^1$ is not regular at the node. The parametrisation
+$\psi(t)=(t^2-1,t(t^2-1))$ of the example after \Cref{thm:curves:smooth-model} is a morphism $\PP^1\to C$ (extended to $\infty$ by this theorem, since $\PP^1$ is smooth), and
+$(y/x)\circ\psi$ is the identity of $\PP^1$. If $y/x$ were regular at the node $S$ with some value $c$, then evaluating $(y/x)\circ\psi$ at $t=1$ and at $t=-1$,
+both of which map to $S$, would give $c=1$ and $c=-1$. The two branches through the node ask for two different values, which a single point cannot
+provide; the smooth model has two points there.
 
 \begin{theorem}[curves and function fields; stated]\label{thm:curves:equivalence}
 The functor $C\mapsto k(C)$, $(\varphi\colon C_1\to C_2)\mapsto(\varphi^*\colon k(C_2)\to k(C_1),\ f\mapsto f\circ\varphi)$ is a contravariant equivalence between the
@@ -524,6 +568,18 @@ function $t=1/x$ is one (in the chart $[1:t]$), and $x-a=t^{-1}(1-at)$ with $1-a
 by additivity.
 \end{proof}
 
+\emph{Example: divisors on a cubic.}
+Let $C$ be the smooth cubic $y^2=h(x)=(x-e_1)(x-e_2)(x-e_3)$, $e_i$ distinct, $\operatorname{char}k\ne2$, $O=[0:1:0]$ and $T_i=(e_i,0)$. The orders
+needed are computed in the remarks after \Cref{thm:curves:smooth-dvr} and in the proof of \Cref{prop:curves:differentials}(iv) below: $y$ is a uniformiser at
+each $T_i$, $\ord_O y=-3$, $\ord_O x=-2$, and at an affine point with $y\ne0$ the function $x-a$ is a uniformiser. Hence
+\[
+\operatorname{div}(y)=(T_1)+(T_2)+(T_3)-3(O),\qquad \operatorname{div}(x-e_1)=2(T_1)-2(O),\qquad \operatorname{div}(x-a)=(P)+(P')-2(O),
+\]
+the last for $a$ not a root of $h$, with $P,P'=(a,\pm b)$ and $b^2=h(a)\ne0$. All three have degree zero, as \Cref{prop:curves:principal}(ii) requires, and
+the degrees of the zero divisors, $3$ and $2$, are the field degrees $[\bar k(C):\bar k(y)]$ and $[\bar k(C):\bar k(x)]$ (the second because $y$ satisfies a
+quadratic equation over $\bar k(x)$ and is not in $\bar k(x)$, $h$ not being a square). Note also $\operatorname{div}(y^2)=2\operatorname{div}(y)=\sum_i\operatorname{div}(x-e_i)$,
+as it must be, since $y^2=\prod(x-e_i)$.
+
 \begin{definition}[linear equivalence; the Picard group]\label{def:curves:picard}
 $D\sim D'$ (\emph{linearly equivalent}) iff $D-D'$ is principal. $\Pic(C)=\Div(C)/\operatorname{Prin}(C)$. By \Cref{prop:curves:principal}(ii) the degree
 induces $\deg\colon\Pic(C)\to\Z$, with kernel $\Pic^0(C)=\Div^0(C)/\operatorname{Prin}(C)$, $\Div^0$ the divisors of degree zero.
@@ -557,6 +613,12 @@ $d(f+g)=df+dg$, $d(fg)=f\,dg+g\,df$ and $da=0$ for $a\in\bar k$. For a uniformis
 $g=\omega/dt\in\bar k(C)$, and $\ord_P\omega:=\ord_Pg$. Then $\operatorname{div}(\omega)=\sum_P\ord_P(\omega)(P)$; $\omega$ is \emph{regular} (or holomorphic) if
 $\operatorname{div}(\omega)\ge0$, and the regular differentials form a $\bar k$-vector space.
 \end{definition}
+
+The definition is the algebraic shadow of the expressions $g(z)\,dz$ of complex analysis: the rules are those of the differential calculus, and $\omega/dt$
+is ``the coefficient of $dt$'' in a local coordinate. Differentials are introduced because, unlike functions, they can be regular everywhere on a projective
+curve without being constant multiples of each other, and the number of independent regular ones turns out to be the genus (\Cref{cor:curves:rr-consequences}(a)).
+For instance on $\PP^1$, $d(x^2)=2x\,dx$, and at $a\ne0$ with uniformiser $x-a$, $d(x^2)/d(x-a)=2x$ has order $0$ (if $\operatorname{char}k\ne2$), while at $0$ it has
+order $1$.
 
 \begin{proposition}[differentials; the canonical class]\label{prop:curves:differentials}
 \leavevmode
@@ -688,9 +750,19 @@ Choose coordinates in general position: so that $f_y$ is not identically zero, t
 distinct points, by \Cref{thm:curves:bezout}), and $[0:1:0]\notin C$. On the affine part $f(x,y)=0$ put
 $\omega_0=dx/f_y=-dy/f_x$ (the two agree because $f_x\,dx+f_y\,dy=d(f)=0$ on $C$). At an affine point with $f_y\ne0$, $x-a$ is a uniformiser and
 $\ord\omega_0=0$; at an affine point with $f_y=0$, $f_x\ne0$ by smoothness, $y-b$ is a uniformiser and $\ord\omega_0=\ord(-dy/f_x)=0$. So $\omega_0$ is regular
-and nowhere zero on the affine part. A computation in the chart at each point at infinity (as in \Cref{prop:curves:differentials}(iv)) gives
-$\ord\omega_0=d-3$ there, so $\operatorname{div}(\omega_0)=(d-3)\cdot\operatorname{div}_0(Z/M)$ for a linear form $M$ not vanishing at those points, a divisor of degree
-$d(d-3)$ by Bezout (\Cref{thm:curves:bezout}). By \Cref{cor:curves:rr-consequences}(b), $2g-2=d(d-3)$, which is the formula. One also finds that the regular
+and nowhere zero on the affine part. At infinity we compute in a chart, as in \Cref{prop:curves:differentials}(iv). Since $[0:1:0]\notin C$, every point
+$P$ of $C$ on the line $Z=0$ has $X\ne0$, so it lies in the chart $X=1$, with affine coordinates $u=Y/X$, $v=Z/X$ and equation $g(u,v)=F(1,u,v)=0$. In
+these coordinates $x=X/Z=1/v$ and $y=Y/Z=u/v$. The line $Z=0$ is $v=0$; it is not the tangent at $P$, so $g_u(P)\ne0$ (the tangent is
+$g_u(P)(u-u(P))+g_v(P)v=0$, \Cref{prop:curves:euler}(ii)), and $v$ is a uniformiser at $P$ (\Cref{thm:curves:smooth-dvr}). Now $F_Y$ is homogeneous of degree
+$d-1$, so
+\[
+f_y=F_Y(x,y,1)=F_Y(v^{-1},uv^{-1},1)=v^{1-d}F_Y(1,u,v)=v^{1-d}g_u(u,v),
+\]
+and $g_u$ is a unit at $P$: $\ord_Pf_y=1-d$. Also $dx=d(v^{-1})=-v^{-2}dv$ has order $-2$. Hence $\ord_P\omega_0=-2-(1-d)=d-3$ at each of the $d$ points
+at infinity. As $Z/M$ (for a linear form $M$ not vanishing at these points) has a simple zero at each of them and no other zero, this reads
+$\operatorname{div}(\omega_0)=(d-3)\cdot\operatorname{div}_0(Z/M)$, a divisor of degree $d(d-3)$ (\Cref{thm:curves:bezout}). By \Cref{cor:curves:rr-consequences}(b),
+$2g-2=d(d-3)$, so $g=\frac{d^2-3d+2}2=\frac{(d-1)(d-2)}2$. For $d=3$ the form $\omega_0$ has no zeros or poles at all, as for $dx/(2y+a_1x+a_3)$ on a
+Weierstrass cubic. One also finds that the regular
 differentials are exactly the $h(x,y)\,\omega_0$ with $\deg h\le d-3$, a space of dimension $\binom{d-1}2$, in agreement with
 \Cref{cor:curves:rr-consequences}(a). See \cite[Chapter 8]{Fulton} and \cite[Chapter IV, Section 1, and Chapter I, Section 7]{Hartshorne} (sections not
 verified). The argument needs no hypothesis on the characteristic, because such coordinates always exist: the tangent lines of $C$ form at most a one-dimensional
@@ -707,10 +779,15 @@ $f\in k[x,y^p]$).
 substitution $y\mapsto y-\frac12(a_1x+a_3)$ turns $y^2+a_1xy+a_3y=x^3+\dots$ into $y^2=h(x)$ and $dx/(2y+a_1x+a_3)$ into $\frac12dx/y$; so the differential
 $\omega=dx/(2y+a_1x+a_3)$ has divisor $0$ by \Cref{prop:curves:differentials}(iv) (smoothness makes $h$ squarefree), and is regular and nowhere zero.
 This gives $g=1$ again, from \Cref{cor:curves:rr-consequences}(b).
-\item The Fermat quartic $X^4+Y^4+Z^4=0$ has genus $3$ ($\operatorname{char}k\ne2$).
+\item The Fermat quartic $X^4+Y^4+Z^4=0$ has genus $3$ ($\operatorname{char}k\ne2$): it is smooth by \Cref{ex:curves:plane-examples}(b), and
+$\frac{(4-1)(4-2)}2=3$.
 \item Hyperelliptic curves: the smooth projective model of $y^2=h(x)$, $h$ squarefree of degree $2g+1$ or $2g+2$, $\operatorname{char}k\ne2$, has genus $g$
-(\Cref{cor:curves:rh-consequences}(c)); for instance $y^2=x^5-x$ has genus $2$. For $g\ge2$ the projective closure in $\PP^2$ is singular at infinity, so
-\Cref{thm:curves:plane-genus} does not apply directly.
+(\Cref{cor:curves:rh-consequences}(c)); for instance $y^2=x^5-x$ has genus $2$, since $x^5-x=x(x-1)(x+1)(x^2+1)$ has degree $5=2\cdot2+1$ and
+discriminant $-2^8$, nonzero for $\operatorname{char}k\ne2$. For $g\ge2$ the projective closure in $\PP^2$ is singular at infinity, so
+\Cref{thm:curves:plane-genus} does not apply directly. Indeed, for $\deg h=n\ge4$ the homogenised equation $Y^2Z^{n-2}=Z^nh(X/Z)$ meets $Z=0$ only at
+$[0:1:0]$, and in the chart $Y=1$ it reads $Z^{n-2}=(\text{leading coefficient})X^n+(\text{terms divisible by }Z)$, whose lowest-degree part at the origin
+has degree $\min(n-2,n)=n-2\ge2$: all partial derivatives vanish there. Were the plane formula applicable it would give $\frac{(n-1)(n-2)}2$, which
+for $n=5$ is $6$, not $2$.
 \item Singular plane models have smaller genus: the nodal and cuspidal cubics are rational (\Cref{thm:curves:smooth-model} and
 \Cref{ex:curves:plane-examples}). In general $g=\frac{(d-1)(d-2)}2-\sum_P\delta_P$, with a positive local invariant $\delta_P$ at each singular point (stated;
 \cite[Chapter 7]{Fulton}, \cite[Chapter IV, Section 1]{Hartshorne}, sections not verified).
@@ -742,8 +819,14 @@ parts $\mathcal L(n(O))\cap k(C)$ have $k$-dimension $n$, so we can choose $x\in
 dimension $6$. They are linearly dependent over $k$. In a nontrivial relation the coefficients $A$ of $y^2$ and $B$ of $x^3$ are both nonzero: if one of them were
 zero, the other term would be the only one with a pole of order $6$, so its coefficient would vanish too, and then $1,x,y,x^2,xy$, which have
 distinct pole orders, would be linearly independent, forcing all coefficients to be zero. Write the relation as
-$Ay^2+b_1xy+b_3y=Bx^3+b_2x^2+b_4x+b_6$ and substitute $x=ABx'$, $y=AB^2y'$; dividing by $A^3B^4$ gives a Weierstrass equation in $x'$, $y'$ with coefficients
-in $k$.
+$Ay^2+b_1xy+b_3y=Bx^3+b_2x^2+b_4x+b_6$ and substitute $x=ABx'$, $y=AB^2y'$. Then $Ay^2=A^3B^4y'^2$ and $Bx^3=A^3B^4x'^3$, so after dividing by
+$A^3B^4$ both leading terms have coefficient $1$, and the relation becomes
+\[
+y'^2+\frac{b_1}{AB}x'y'+\frac{b_3}{A^2B^2}y'=x'^3+\frac{b_2}{AB^2}x'^2+\frac{b_4}{A^2B^3}x'+\frac{b_6}{A^3B^4},
+\]
+a Weierstrass equation with coefficients in $k$. The new functions $x'$, $y'$ still have poles of orders exactly $2$ and $3$ at $O$ and no other pole, so (i)
+holds for them; we rename them $x$, $y$. (A scaling $x=\alpha x'$, $y=\beta y'$ makes both leading coefficients equal exactly when $A\beta^2=B\alpha^3$;
+the choice $\alpha=AB$, $\beta=AB^2$ is one solution with $\alpha,\beta\in k^\times$.)
 
 (iii) $\varphi$ is a morphism (\Cref{thm:curves:extend-morphism}) defined over $k$, with image in $E$. Writing $\varphi=[x/y:1:1/y]$ and using $\ord_O(x/y)=1$,
 $\ord_O(1/y)=3$ gives $\varphi(O)=[0:1:0]$. The Weierstrass polynomial is irreducible over $\bar k$: it is monic of degree two in $y$, so no nonconstant polynomial in $x$ alone divides it, and a
@@ -839,6 +922,13 @@ dimensions $e_\varphi(P)$, because every residue field is $\bar k$ (all residue 
 \cite[Chapter II, Proposition 6.9]{Hartshorne}. In the language of physics: the number of sheets of a branched cover, counted with multiplicity, does not jump.
 \end{proof}
 
+The simplest example shows every feature. Let $\varphi\colon\PP^1\to\PP^1$, $z\mapsto z^n$, with $n\ge1$. Then $\varphi^*\bar k(w)=\bar k(z^n)$, and $z$ is a root of
+$T^n-z^n$, which is irreducible over $\bar k(z^n)$ (Eisenstein at the prime $z^n$ of $\bar k[z^n]$), so $\deg\varphi=n$. Suppose $\operatorname{char}k\nmid n$. Over
+$a\ne0,\infty$ the fibre is the $n$ distinct roots of $z^n=a$, and at each of them $\varphi^*(w-a)=z^n-a$ has a simple zero: $n$ points with $e=1$. Over $0$ the
+fibre is the single point $0$, with $e_\varphi(0)=\ord_0(z^n)=n$; over $\infty$, with uniformiser $1/w$, $e_\varphi(\infty)=\ord_\infty(z^{-n})=n$. In each case
+$\sum e_\varphi(P)=n$. If instead $n=p=\operatorname{char}k$, then $z^p-a=(z-a^{1/p})^p$, so every fibre is a single point with $e=p$: the map is a bijection on
+points, of degree $p$, and $\deg_s\varphi=1$; this is the Frobenius morphism of \Cref{prop:curves:separability-frobenius}.
+
 \begin{corollary}[the degree in three ways]\label{cor:curves:degree-three-ways}
 Let $\varphi\colon C_1\to C_2$ be a nonconstant morphism of smooth projective curves.
 \begin{enumerate}[label=(\roman*)]
@@ -923,6 +1013,15 @@ Section 1]{SilvermanAEC}), $\bar\F_q(C)=\bar\F_q(C)^q(t)$ and $t$ has minimal po
 $x_i=1$, is fixed iff $x_j^q=x_j$ for all $j$, that is, iff all $x_j\in\F_q$. Finally $\Frob_q$ acts on coordinates by $a\mapsto a^q$ (\Cref{conv:curves:conventions}(C7)).
 \end{proof}
 
+On $\PP^1$ over $\F_q$ the sketched degree computation is immediate: $\pi_q^*\bar\F_q(t)=\bar\F_q(t^q)$, and $t$ is a root of $X^q-t^q=(X-t)^q$, irreducible over
+$\bar\F_q(t^q)$ by Eisenstein, so $\deg\pi_q=q$, while $d(t^q)=0$ shows that the extension is purely inseparable. Two features of (c) matter later. First, the
+morphism $\pi_q$ and the Galois element $\Frob_q$ have the same effect on points but act differently on functions: $\pi_q^*f=f\circ\pi_q$ is
+$\bar\F_q$-linear in $f$, whereas $\Frob_q$ acts on $\bar\F_q(C)$ through the coefficients (\Cref{prop:curves:galois-action}(ii)), semilinearly. Second, because
+they agree on points, the arithmetic Frobenius is what $\pi_q$ induces on torsion points and on $T_\ell J$, and its inverse, the geometric Frobenius, is what
+appears on $H^1$ (\Cref{thm:curves:weil-pairing-etale}(d), \Cref{conv:curves:duality}(e)). Since $H^1$ is the dual of $T_\ell J$, at a prime $p$ of good reduction
+$\det(1-\Frob_p^{-1}X\mid H^1)=\det(1-\Frob_pX\mid T_\ell J)$; using $\Frob_p$ itself on $H^1$ would replace each eigenvalue $\alpha$ by $\alpha^{-1}$. This is
+the convention behind the book's form $\det(1-\Frob_p^{-1}p^{-s}\mid H^1)$ of the $L$-factors.
+
 \begin{paperlink}\label{pl:curves:modular-degree}
 Section 1 of the paper: ``the $X_0(N)$-optimal curve, for which the modular parametrisation $\varphi_E\colon X_0(N)\to E$ has minimal degree'' and
 ``$\degphi$, its modular degree''. The degree is that of \Cref{def:curves:degree}, and by \Cref{cor:curves:degree-three-ways} and
@@ -982,6 +1081,19 @@ holds at every $P$, that is, iff all ramification is tame.
 
 A topological proof over $\C$ is sketched in \Cref{thm:curves:topology}(c): triangulate $C_2$ with the branch points among the vertices, lift the triangulation and
 count $V-E+F$.
+
+For $z\mapsto z^n$ on $\PP^1$ with $\operatorname{char}k\nmid n$ (the example after \Cref{thm:curves:degree-formula}) the formula reads $-2=n(-2)+(n-1)+(n-1)$,
+with the two ramification points $0$ and $\infty$. Wild ramification is genuinely different. In characteristic $p$ let $\varphi\colon\PP^1\to\PP^1$ be
+$y\mapsto x=y^p-y$ (the Artin-Schreier map). It has degree $p$ ($y$ is a root of $T^p-T-x$, irreducible over $\bar k(x)$ because the map is totally ramified at
+$\infty$, as we now see) and is separable, because $d(y^p-y)=-dy\ne0$ (\Cref{prop:curves:separability-frobenius}(b)). At finite points $dx/dy=-1$ is a unit, so
+$\varphi$ is unramified there. At $\infty$, with uniformisers $t_P=1/y$ and $t_Q=1/x$,
+\[
+\varphi^*t_Q=\frac1{y^p-y}=\frac{t_P^p}{1-t_P^{p-1}},\qquad\frac{d(\varphi^*t_Q)}{dt_P}=\frac{pt_P^{p-1}}{1-t_P^{p-1}}+\frac{(p-1)t_P^{2p-2}}{(1-t_P^{p-1})^2}=\frac{-t_P^{2p-2}}{(1-t_P^{p-1})^2},
+\]
+so $e_\varphi(\infty)=p$, wild, and the order in \Cref{lem:curves:local-differential} is $2p-2$, strictly larger than $e-1=p-1$. With $2p-2$ the exact formula
+of the proof gives $-2=p(-2)+(2p-2)$, which is correct, while the tame count $\sum(e_\varphi(P)-1)=p-1$ gives the strict inequality $-2>-2p+(p-1)$ of the theorem.
+(The degree claim: the fibre over $\infty$ is one point with $e=p$, so $\deg\varphi=p$ by \Cref{thm:curves:degree-formula}, and $T^p-T-x$, having $y$ as a root and
+degree $p$, is the minimal polynomial.)
 
 \begin{corollary}[consequences and examples]\label{cor:curves:rh-consequences}
 Let $\varphi\colon C_1\to C_2$ be nonconstant and separable.
@@ -1159,6 +1271,11 @@ $\#F^{-1}(Q)=d-\sum_{F(P)=Q}(\operatorname{mult}_P(F)-1)$ lifts. Counting, $V_X-
 \Cref{thm:curves:riemann-hurwitz} over $\C$.
 \end{proof}
 
+For example, triangulate the sphere $Y=\PP^1(\C)$ as a double pyramid over a triangle, with apexes $0$ and $\infty$ and the equator $\abs w=1$ divided into three
+edges: $V=5$, $E=9$, $F=6$, $\chi=2$. The map $z\mapsto z^2$ is branched only over $0$ and $\infty$, each with one preimage of multiplicity $2$. The three
+equatorial vertices have two lifts each, every edge and face has two lifts, and the apexes have one lift each: $V=8$, $E=18$, $F=12$, so $\chi(X)=2=2\cdot2-(1+1)$,
+in agreement with (c) and with $X\simeq\PP^1$.
+
 \section{Holomorphic differentials, residues, periods}\label{sec:curves:differentials-analytic}
 
 Holomorphic $1$-forms are the analytic face of regular differentials. In the book they are the weight-two cusp forms ($f\mapsto f(z)\,dz$ identifies
@@ -1192,6 +1309,10 @@ $M=X\setminus\bigcup_j\operatorname{int}\Delta_j$, a compact surface with bounda
 boundary orientation of $M$). On $M$, $\omega$ is holomorphic, hence closed, so Stokes gives $0=\int_Md\omega=\int_{\partial M}\omega=-\sum_j\oint_{\partial\Delta_j}\omega=-2\pi i\sum_j\operatorname{res}_{P_j}\omega$,
 the circles $\partial\Delta_j$ now oriented counterclockwise.
 \end{proof}
+
+On $\PP^1$ the form $dz/z$ has residue $1$ at $0$, and in the chart $w=1/z$ at $\infty$ it is $-w^{-2}dw/w^{-1}=-dw/w$, with residue $-1$: the sum is $0$. Compactness is
+what makes the theorem work: on $\C$ alone, $dz/z$ has the single residue $1$. The point at infinity carries the missing residue, just as a closed surface
+admits no net flux out of it.
 
 \begin{corollary}[the argument principle]\label{cor:curves:argument-principle}
 For $f\in\mathcal M(X)^\times$, $\deg\operatorname{div}(f)=\sum_P\operatorname{res}_P(df/f)=0$.
@@ -1248,8 +1369,19 @@ $2g$ (\Cref{thm:curves:symplectic-basis}, \Cref{thm:curves:genus-dimension}), so
 \begin{proof}[Sketch of proof of (c)]
 Cut $X$ along loops representing the symplectic basis, all through one point; the result is a $4g$-gon $\Pi$ whose sides are identified in the pattern
 $a_1b_1a_1^{-1}b_1^{-1}\cdots a_gb_ga_g^{-1}b_g^{-1}$. On the simply connected $\Pi$, $\theta=dF$ for a smooth function $F$, and Stokes gives
-$\int_X\theta\wedge\eta=\int_\Pi d(F\eta)=\int_{\partial\Pi}F\eta$. On a pair of identified sides, say $a_j$ and $a_j^{-1}$, the values of $F$ at corresponding points differ by a
-constant period ($\pm B_j(\theta)$), and the two sides are traversed in opposite directions; summing over the pairs gives the formula. See \cite[Chapter VIII]{Miranda}
+$\int_X\theta\wedge\eta=\int_\Pi d(F\eta)=\int_{\partial\Pi}F\eta$, because $d(F\eta)=dF\wedge\eta+F\,d\eta=\theta\wedge\eta$ ($\eta$ is closed); here $\partial\Pi$ is traversed
+counterclockwise, which for the torus of \Cref{ex:curves:torus} is the word $aba^{-1}b^{-1}$ with $a\cdot b=+1$. Fix $j$ and label the vertices of the block
+$a_jb_ja_j^{-1}b_j^{-1}$ as $v_0\xrightarrow{a_j}v_1\xrightarrow{b_j}v_2\xrightarrow{a_j^{-1}}v_3\xrightarrow{b_j^{-1}}v_4$. A point $p(s)$ on the first side and the point $p'(s)$ on the
+third side that is glued to it lie over the same point of $a_j$, the third side running from $v_3$ ($s=0$) to $v_2$ ($s=1$). The difference $F(p'(s))-F(p(s))$ is
+constant in $s$: its derivative is $\theta$ evaluated on the same tangent vector of $a_j$, minus itself. At $s=1$ it is $F(v_2)-F(v_1)=\int_{v_1}^{v_2}dF=B_j(\theta)$. As
+the third side is traversed against $a_j$, the two sides contribute
+\[
+\int_{a_j}\bigl(F(p)-F(p')\bigr)\eta=-B_j(\theta)A_j(\eta).
+\]
+In the same way a point $q(s)$ of the second side and the glued point $q'(s)$ of the fourth (running from $v_4$ at $s=0$ to $v_3$ at $s=1$) have
+$F(q')-F(q)$ constant, equal at $s=1$ to $F(v_3)-F(v_2)=-A_j(\theta)$, and the two sides contribute $\int_{b_j}(F(q)-F(q'))\eta=A_j(\theta)B_j(\eta)$. Summing over
+$j$ gives (c). On the torus, with $\theta=ds$, $\eta=dt$ and $F=s$, the two contributions are $0$ and $1$. What is not proved here is that cutting along the
+loops of a symplectic basis gives such a polygon. See \cite[Chapter VIII]{Miranda}
 and \cite[Chapter 2, Section 2]{GriffithsHarris78} (sections not verified). On the torus (\Cref{ex:curves:torus}) the formula is checked directly.
 \end{proof}
 
@@ -1355,7 +1487,11 @@ for $\omega\ne0$.
 
 \begin{example}[the torus]\label{ex:curves:torus}
 Let $X=\C/\Lambda$, $\Lambda=\Z\omega_1+\Z\omega_2$ with $\operatorname{Im}(\omega_2/\omega_1)>0$, and real coordinates $z=s\omega_1+t\omega_2$, $s,t\in\R/\Z$. From
-$dz=\omega_1ds+\omega_2dt$ one computes $dx\wedge dy=\frac i2dz\wedge d\bar z=\operatorname{Im}(\bar\omega_1\omega_2)\,ds\wedge dt$, and $\operatorname{Im}(\bar\omega_1\omega_2)=\abs{\omega_1}^2\operatorname{Im}(\omega_2/\omega_1)>0$;
+$dz=\omega_1ds+\omega_2dt$ one computes
+\[
+dz\wedge d\bar z=(\omega_1ds+\omega_2dt)\wedge(\bar\omega_1ds+\bar\omega_2dt)=(\omega_1\bar\omega_2-\omega_2\bar\omega_1)\,ds\wedge dt=-2i\operatorname{Im}(\bar\omega_1\omega_2)\,ds\wedge dt,
+\]
+so $dx\wedge dy=\frac i2dz\wedge d\bar z=\operatorname{Im}(\bar\omega_1\omega_2)\,ds\wedge dt$, and $\operatorname{Im}(\bar\omega_1\omega_2)=\abs{\omega_1}^2\operatorname{Im}(\omega_2/\omega_1)>0$ (as $\bar\omega_1\omega_2=\abs{\omega_1}^2\,\omega_2/\omega_1$);
 so $ds\wedge dt$ is positive and $\int_Xds\wedge dt=1$ (the unit square in $(s,t)$ is a fundamental domain).
 \begin{enumerate}[label=(\alph*)]
 \item $H_1(X,\Z)=\Lambda$ (a path from $0$ to $\lambda$ in $\C$ projects to a loop), with $a$ the image of $[0,\omega_1]$ and $b$ that of $[0,\omega_2]$. They meet only at $0$, with
@@ -1423,6 +1559,14 @@ $nH_1(Y,\Z)\subseteq\varphi_*H_1(X,\Z)$.
 (v) Functoriality of $\varphi_*$ on loops is clear, $\varphi^*$ is its transpose, and $\varphi^!$ is compatible with composition on loops avoiding the branch points of both maps.
 An automorphism $w$ is unramified of degree one, so $w^{-1}(\gamma)=(w^{-1})\circ\gamma$; transposing gives the last statement.
 \end{proof}
+
+The transfer is easiest to see on the torus $X=Y=\C/\Lambda$ with $\varphi=[m]$, $z\mapsto mz$, of degree $n=m^2$ (\Cref{ex:curves:torus}(d)), which is unramified, so no
+loop has to be moved. The loop $a$, the image of $s\mapsto s\omega_1$, $s\in[0,1]$, has the $m^2$ lifts $s\mapsto(s\omega_1+\lambda)/m$, one for each class
+$\lambda\in\Lambda/m\Lambda$. The lift indexed by $\lambda$ ends where the lift indexed by $\lambda+\omega_1$ begins, so the lifts link up in chains of $m$ (indexed by
+$\lambda,\lambda+\omega_1,\dots,\lambda+(m-1)\omega_1$), each chain forming a closed loop from $\lambda/m$ to $\lambda/m+\omega_1$, whose class in $H_1=\Lambda$ is $\omega_1$, that is $a$.
+There are $m^2/m=m$ such loops, so $\varphi^!a=m\,a$, and likewise $\varphi^!b=m\,b$. As $\varphi_*=m$ on $H_1$, $\varphi_*\varphi^!=m^2=n$, as (ii) says; on $H^1$,
+$\varphi^*=m$ and $\varphi_*$ (the transpose of $\varphi^!$) is also $m$, and $\varphi_*\varphi^*=m^2$ as in (iv). For a general $\varphi$ the transfer is not a multiple of
+the identity, and it is the transfer, not $\varphi_*$, that is injective on $H_1$.
 
 \begin{convention}[which is dual to which]\label{conv:curves:duality}
 \leavevmode
@@ -1611,6 +1755,13 @@ $\psi^*\colon H^1(E',\Z)\to H^1(E,\Z)$ has image of index $m$ (the determinant o
 $\varphi^*H^1(E,\Z)$, the image $\varphi^*\psi^*H^1(E',\Z)$ has index $m$ in it. If $\varphi^*H^1(E,\Z)$ is saturated and $m>1$, then $(\varphi')^*H^1(E',\Z)$ is a proper sublattice of finite index
 of a saturated lattice of the same rank, so it is not saturated.
 \end{proof}
+
+All the numbers of the proposition can be seen on the least saturated example, $\varphi=[m]\colon E\to E$, $m\ge2$, of degree $n=m^2$. Here $\varphi^*=m$ on
+$H^1(E,\Z)$, so $M=\varphi^*H^1(E,\Z)=mH^1(E,\Z)$, whose saturation is $H^1(E,\Z)$, of index $m^2$. On the other side, $\varphi_*=m$ on $H_1(E,\Z)\simeq\Z^2$ has cokernel
+$(\Z/m)^2$, of order $m^2$; the kernel of $[m]$ on $J(E)=E$ is $E[m]$, finite of order $m^2$ (\Cref{prop:curves:torsion}(i)), so it has $m^2$ components; and
+$\varphi^*=[m]$ on $J$ has the same kernel. All four quantities of (iii) are $m^2$, a divisor of $n^{2g_Y}=m^4$. In (iv), the Gram matrix on $M=mH^1$ is $m^2$ times the
+unimodular one, so the ideal of values is $m^2\Z=n\Z$ and the determinant $m^4=n^2$; here $m_0=m^2$ and the ideal of values on $\operatorname{sat}(M)=H^1(E,\Z)$ is
+$(n/m_0)\Z=\Z$. At the other extreme, a parametrisation of degree one ($X_0(11)\to\curve{11a1}$) is an isomorphism and every index is $1$.
 
 \begin{proposition}[torsion of Jacobians]\label{prop:curves:torsion}
 \leavevmode
@@ -1862,16 +2013,20 @@ a perfect $\Zl$-bilinear pairing for which $\T_{\mf m}$ is self-adjoint.
 (a) Show that $y^2=x^3+ax+b$ ($\operatorname{char}k\ne2,3$) is singular iff $4a^3+27b^2=0$, and that the singular point is then $(x_0,0)$ with $x_0$ the double root. (b) For the cusp
 $y^2=x^3$ show that $t\mapsto(t^2,t^3)$ is a bijection $\A^1\to C$ which is not an isomorphism, by computing $\dim\mf m_P/\mf m_P^2$ at $P=(0,0)$. (c) Show that the Fermat curve
 $X^d+Y^d+Z^d=0$ is singular at every point when $p=\operatorname{char}k$ divides $d$, and that for $d=2p$ it is not even irreducible.
+\emph{Hints.} (a) A singular point has $f_y=2y=0$, and then $x$ is a common root of $x^3+ax+b$ and $3x^2+a$; the discriminant of $x^3+ax+b$ is $-(4a^3+27b^2)$.
+(b) $f=y^2-x^3$ has no linear term at $(0,0)$. (c) $X^{2p}+Y^{2p}+Z^{2p}=(X^2+Y^2+Z^2)^p$.
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-smooth}
 For \curve{121a1} ($y^2+xy+y=x^3+x^2-30x-76$) and \curve{20a1} ($y^2=x^3+x^2+4x+4$) show that the three partial derivatives of the homogenised equation have no common zero on the curve over
 $\Qbar$. For which primes $p$ is the reduction of the model of \curve{20a1} modulo $p$ singular? (Answer: $2$ and $5$; at $2$ find the singular point.)
+\emph{Hint.} The discriminant of the model of \curve{20a1} is $-2^8\cdot5^2=-6400$. Modulo $2$ the equation is $y^2=x^3+x^2$, with $f_y\equiv0$ and $f_x\equiv x^2$,
+singular at $(0,0)$; modulo $5$, $x^3+x^2+4x+4\equiv(x+1)^2(x-1)$, singular at $(-1,0)$.
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-p1}
 On $\PP^1$ show that $l(D)=\deg D+1$ for every divisor of degree $\ge-1$, by reducing to $D=n(\infty)$ with \Cref{prop:curves:picard}(i). Deduce Riemann-Roch for $\PP^1$ with $g=0$ and
-$K=-2(\infty)$, including the cases $\deg D\le-2$.
+$K=-2(\infty)$, including the cases $\deg D\le-2$. \emph{Hint.} $\mathcal L(n(\infty))$ is the space of polynomials in $x$ of degree at most $n$.
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-quartic-model}
@@ -1898,12 +2053,15 @@ Riemann-Hurwitz. Show that $y\colon C\to\PP^1$ has degree $3$, that $e_y(O)=3$, 
 \begin{exercise}\label{ex:curves:ex-quartic}
 (a) Show that the plane quartic $y^3=x^4-1$ (projectively $X^4-Y^3Z-Z^4=0$) is smooth in characteristic $0$, and compute its genus twice: by \Cref{thm:curves:plane-genus}, and by
 Riemann-Hurwitz for $x\colon C\to\PP^1$ (degree $3$, totally ramified over the four roots of $x^4=1$ and over $\infty$). (b) For the Fermat quartic, show that $\omega_0$, $x\omega_0$, $y\omega_0$
-($\omega_0=dx/f_y$) are regular, by checking the order at the four points at infinity.
+($\omega_0=dx/f_y$) are regular, by checking the order at the four points at infinity. \emph{Answer to (a):} $g=3$ both times; Riemann-Hurwitz reads
+$2g-2=3(-2)+5\cdot(3-1)=4$.
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-genus2}
 Let $\varphi\colon X\to E$ be a nonconstant morphism over $\C$ from a curve of genus $2$ to a curve of genus $1$. Show that $\varphi$ has either two ramification points with $e=2$, or one with $e=3$,
 and give the possible ramification patterns over the branch points when $\deg\varphi=2$. Show that a nonconstant morphism from a genus-one curve to $\PP^1$ has degree at least $2$.
+\emph{Hint.} Riemann-Hurwitz gives $\sum(e_\varphi(P)-1)=2$. If $\deg\varphi=2$, a point with $e=2$ is its whole fibre, so there are exactly two branch points, each
+with a single preimage. A morphism of degree one is an isomorphism (\Cref{cor:curves:degree-three-ways}(v)).
 \end{exercise}
 
 \begin{exercise}\label{ex:curves:ex-degrees}

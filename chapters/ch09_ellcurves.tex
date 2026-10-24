@@ -239,6 +239,19 @@ $(2y+a_1x+a_3)\,dy=(3x^2+2a_2x+a_4-a_1y)\,dx$. These are the conventions of \cit
 \texttt{ellinit} returns $a_1,\dots,a_6,b_2,b_4,b_6,b_8,c_4,c_6,\Delta,j$ in this order (\Cref{ch:computation}).
 \end{definition}
 
+The invariants are less arbitrary than they look. The $b_i$ are what remains after completing the square in $y$: the equation becomes
+$(2y+a_1x+a_3)^2=4x^3+b_2x^2+2b_4x+b_6$ (\Cref{lem:ellcurves:identities}(ii) below), and $b_8=(b_2b_6-b_4^2)/4$, which is a polynomial in the $a_i$ with integer coefficients,
+is the combination needed to write $\frac1{16}$ of the discriminant of this cubic without denominators. The $c_4$ and $c_6$ are what remains after also removing the $x^2$ term, which gives the short form
+$Y^2=X^3-27c_4X-54c_6$ (\Cref{lem:ellcurves:identities}(iii)). The discriminant $\Delta$ vanishes exactly when the cubic has a repeated root, that is, when the curve is
+singular (\Cref{prop:ellcurves:smooth}), and $j$ is the combination of $c_4$ and $\Delta$ that does not change under any change of coordinates
+(\Cref{prop:ellcurves:coordchange}). The point of working with the general equation, and not only with short models, is that over $\Q$ the global minimal models of
+Cremona's tables, which the paper uses, often have $a_1,a_3\ne0$, and the short form is not available in characteristics $2$ and $3$, which matter for reduction
+modulo $2$ and $3$ (\Cref{ch:reduction}).
+
+For a first example take $y^2=x^3-x$, so $a_1=a_2=a_3=a_6=0$ and $a_4=-1$. Then $b_2=0$, $b_4=-2$, $b_6=0$, $b_8=-1$, so $c_4=-24b_4=48$, $c_6=0$,
+$\Delta=-8b_4^3=64$ and $j=48^3/64=1728$. The cubic $4x^3-4x$ has the three roots $0,\pm1$, and its discriminant is $16\cdot64=1024=4^4\cdot(0-1)^2(0+1)^2(1+1)^2$,
+in accordance with \Cref{lem:ellcurves:identities}(ii).
+
 \begin{lemma}[identities]\label{lem:ellcurves:identities}
 For every Weierstrass equation:
 \begin{enumerate}[label=(\roman*)]
@@ -266,8 +279,15 @@ which is $1728\Delta$ by the first identity. (ii) $\eta^2=4y^2+4a_1xy+4a_3y+(a_1
 $4x^3+(a_1^2+4a_2)x^2+(2a_1a_3+4a_4)x+(a_3^2+4a_6)$. Conversely, when $2$ is invertible, $y=(\eta-a_1x-a_3)/2$ recovers $y$. The
 discriminant of $4x^3+b_2x^2+2b_4x+b_6$ is, by the formula for the discriminant of a cubic (\Cref{ch:galois}),
 $b_2^2(2b_4)^2-4\cdot4(2b_4)^3-4b_2^3b_6-27\cdot16\,b_6^2+18\cdot4\,b_2(2b_4)b_6$, which equals $16\Delta$ after replacing $b_2^2b_4^2-b_2^3b_6$
-by $-4b_2^2b_8$. (iii) Substituting $x=(X-3b_2)/36$ into $108^2F(x)$ and expanding gives $X^3-27c_4X-54c_6$, and $108^2\eta^2=Y^2$.
-Each expansion was also checked by machine (PARI/GP, with $a_1,\dots,a_6$ as indeterminates).
+by $-4b_2^2b_8$. (iii) Here $2$ and $3$ are invertible, so $x=(X-3b_2)/36$ and $\eta=Y/108$ recover the old coordinates, and by (ii) the
+equation is equivalent to $Y^2=108^2F(x)$. Since $108^2=11664=4\cdot36^3/16$, one has $108^2\cdot4x^3=(X-3b_2)^3$, $108^2b_2x^2=9b_2(X-3b_2)^2$,
+$108^2\cdot2b_4x=648b_4(X-3b_2)$ and $108^2b_6=11664b_6$. Adding,
+\begin{align*}
+108^2F(x)&=\bigl(X^3-9b_2X^2+27b_2^2X-27b_2^3\bigr)+\bigl(9b_2X^2-54b_2^2X+81b_2^3\bigr)+648b_4X-1944b_2b_4+11664b_6\\
+&=X^3-27(b_2^2-24b_4)X+54\bigl(b_2^3-36b_2b_4+216b_6\bigr)=X^3-27c_4X-54c_6 .
+\end{align*}
+In the language of \Cref{prop:ellcurves:coordchange} this is the change of coordinates with $u=1/6$, $r=-b_2/12$ (and suitable $s$, $t$), since
+$x=\frac1{36}X-\frac{b_2}{12}$ and $Y=216y+\dots$. Each expansion was also checked by machine (PARI/GP, with $a_1,\dots,a_6$ as indeterminates).
 \end{proof}
 
 \begin{proposition}[smoothness]\label{prop:ellcurves:smooth}
@@ -285,7 +305,9 @@ origin going to $O$.
 (i) That $O$ is smooth is checked in \Cref{ch:curves} (the partial derivative of the homogeneous equation with respect to $Z$ is $1$ at $O$).
 Assume $\operatorname{char}K\ne2$. By \Cref{lem:ellcurves:identities}(ii) we may use the coordinates $(x,\eta)$, in which the equation is
 $G=\eta^2-F(x)=0$. A point $(x_0,\eta_0)$ is singular iff $G=\partial G/\partial\eta=\partial G/\partial x=0$ there, that is, iff $\eta_0=0$ and
-$F(x_0)=F'(x_0)=0$, iff $x_0$ is a double root of $F$. The cubic $F$ has a double root in $\bar K$ iff its discriminant $16\Delta$ vanishes. In
+$F(x_0)=F'(x_0)=0$, iff $x_0$ is a double root of $F$. The cubic $F$ has leading coefficient $4\ne0$, roots $r_1,r_2,r_3\in\bar K$, and discriminant
+$4^4\prod_{i<j}(r_i-r_j)^2$ (\Cref{ch:galois}); so it has a double root in $\bar K$ iff its discriminant $16\Delta$ vanishes, iff $\Delta=0$ (as $2\ne0$ in $K$). Every point
+other than $O$ is affine, since $O$ is the only point on $Z=0$, so this covers all points. In
 characteristic $2$ the statement is \cite[Section III.1]{SilvermanAEC}; we do not prove it.
 
 (ii) Let $S$ be a singular point; it is the only one, for a line through two singular points would meet the cubic with multiplicity at least
@@ -333,8 +355,13 @@ for the primed coefficients, one has $W(u^2x'+r,u^3y'+su^2x'+t)=u^6W'(x',y')$, w
 displayed. The formulas for the $b_i'$, $c_4'$, $c_6'$, $\Delta'$ follow by substitution into \Cref{def:ellcurves:weierstrass}; all were checked
 by machine with $a_i,u,r,s,t$ indeterminate. Then $j'=c_4'^3/\Delta'=u^{-12}c_4^3/(u^{-12}\Delta)=j$. Finally $dx=u^2dx'$ and
 $2y+a_1x+a_3=u^3(2y'+a_1'x'+a_3')$ (from the formulas for $a_1'$ and $a_3'$), so $\omega=u^{-1}\omega'$. The composite of two substitutions is
-the substitution with $u=u_1u_2$, $r=r_1+u_1^2r_2$, $s=s_1+u_1s_2$, $t=t_1+u_1^2s_1r_2+u_1^3t_2$, and $(u,r,s,t)$ has inverse
-$(u^{-1},-ru^{-2},-su^{-1},(rs-t)u^{-3})$, as one checks by composing.
+the substitution with $u=u_1u_2$, $r=r_1+u_1^2r_2$, $s=s_1+u_1s_2$, $t=t_1+u_1^2s_1r_2+u_1^3t_2$. Indeed, substituting
+$x'=u_2^2x''+r_2$, $y'=u_2^3y''+s_2u_2^2x''+t_2$ into $x=u_1^2x'+r_1$, $y=u_1^3y'+s_1u_1^2x'+t_1$ gives $x=(u_1u_2)^2x''+(r_1+u_1^2r_2)$ and
+\[
+y=(u_1u_2)^3y''+(s_1+u_1s_2)(u_1u_2)^2x''+\bigl(t_1+u_1^2s_1r_2+u_1^3t_2\bigr),
+\]
+which is of the same shape. With these formulas, composing $(u,r,s,t)$ with $(u^{-1},-ru^{-2},-su^{-1},(rs-t)u^{-3})$ gives $u=1$, $r+u^2(-ru^{-2})=0$,
+$s+u(-su^{-1})=0$ and $t+u^2s(-ru^{-2})+u^3(rs-t)u^{-3}=0$, the identity substitution; so every substitution has an inverse of the same kind.
 
 (ii) Let $\varphi\colon E\to E'$ be such an isomorphism, with coordinates $x,y$ on $E$ and $x',y'$ on $E'$. By \Cref{ch:curves}, $\mathcal L(2(O))$ has
 basis $1,x$ and $\mathcal L(3(O))$ has basis $1,x,y$, and likewise on $E'$. Since $\varphi$ is an isomorphism with $\varphi(O)=O$, $\varphi^*x'$ has a
@@ -346,8 +373,13 @@ equation of $E$ (\Cref{ch:curves}, proof of the Weierstrass form). Comparing the
 $u^3=\beta^{-1}$, so $x=u^2\varphi^*x'-u^2\rho$ and $y=u^3\varphi^*y'-u^3\gamma x-u^3\tau$, which after substituting $x$ is of the stated form.
 
 (iii) If both models have rational coefficients, $u\in\Q^\times$ and $v_q(\Delta')=v_q(\Delta)-12v_q(u)$, $v_q(c_4')=v_q(c_4)-4v_q(u)$; so
-$3v_q(c_4')-v_q(\Delta')=3v_q(c_4)-v_q(\Delta)$, which is $v_q(j)$ (with $v_q(0)=+\infty$ when $c_4=0$).
+$3v_q(c_4')-v_q(\Delta')=3v_q(c_4)-v_q(\Delta)$, which is $v_q(j)$ (with $v_q(0)=+\infty$ when $c_4=0$). Here $u\in\Q^\times$ because, by (ii), the
+isomorphism over $\Q$ between the two models is a substitution with coefficients in $\Q$.
 \end{proof}
+
+Part (iii) is what makes $v_q(j_E)$ usable as an invariant of $E$, while $v_q(\Delta)$ is an invariant only modulo $12$: a rescaling with $v_q(u)=-1$ keeps an
+integral model integral and raises $v_q(\Delta)$ by $12$. Choosing, among the integral models, one with the least $v_q(\Delta)$ is the minimal model problem
+of \Cref{ch:reduction}.
 
 \begin{theorem}[the $j$-invariant]\label{thm:ellcurves:jinv}
 \leavevmode
@@ -372,8 +404,14 @@ $c_4,c_6,c_4',c_6'$ are nonzero. Choose $u$ with $u^4=c_4/c_4'$. Then $j=j'$ giv
 $c_6^2=c_4^3-1728\Delta=u^{12}(c_4'^3-1728\Delta')=u^{12}c_6'^2$, so $c_6=\pm u^6c_6'$; if the sign is $-$, replace $u$ by $iu$ with $i^2=-1$, which keeps $u^4$
 and changes the sign of $u^6$.
 
-(ii) The first two curves have $(c_4,\Delta)=(0,-27)$ and $(-48,-64)$. For the third, $a_1=1$, $a_2=a_3=0$, $a_4=-36/(j_0-1728)$, $a_6=-1/(j_0-1728)$, and
-\Cref{def:ellcurves:weierstrass} gives the stated $c_4$ and $\Delta$, so $j=c_4^3/\Delta=j_0$; $\Delta\ne0$ because $j_0\ne0$.
+(ii) For $y^2+y=x^3$, $b_2=b_4=b_8=0$ and $b_6=1$, so $(c_4,\Delta)=(0,-27)$; for $y^2=x^3+x$, $b_2=b_6=0$, $b_4=2$, $b_8=-1$, so $(c_4,\Delta)=(-48,-64)$.
+Hence the first curve is smooth exactly when $\operatorname{char}K\ne3$ and the second exactly when $\operatorname{char}K\ne2$, with $j=0$ and $j=(-48)^3/(-64)=1728$. For the third,
+put $k=1/(j_0-1728)$, so $a_1=1$, $a_2=a_3=0$, $a_4=-36k$, $a_6=-k$. Then $b_2=1$, $b_4=-72k$, $b_6=-4k$, $b_8=a_1^2a_6-a_4^2=-k-1296k^2$, and
+\[
+c_4=1+1728k=\frac{j_0}{j_0-1728},\qquad\Delta=k+1296k^2-27\cdot16k^2+9\cdot288k^2+8\cdot72^3k^3=k(1+1728k)^2=\frac{j_0^2}{(j_0-1728)^3},
+\]
+using $72^3=373248$, $8\cdot373248=1728^2$ and $1296-432+2592=3456=2\cdot1728$. So $j=c_4^3/\Delta=j_0^3(j_0-1728)^{-3}\cdot(j_0-1728)^3j_0^{-2}=j_0$, and
+$\Delta\ne0$ because $j_0\ne0$.
 \end{proof}
 
 \begin{proposition}[automorphisms]\label{prop:ellcurves:aut}
@@ -385,8 +423,13 @@ $(x,y)\mapsto(u^2x,u^3y)$ with $u^4A=A$, $u^6B=B$; and $[-1](x,y)=(x,-y-a_1x-a_3
 \begin{proof}
 By \Cref{prop:ellcurves:coordchange}(ii) an automorphism of the short model is a substitution $(u,r,s,t)$ preserving the shape: $a_1'=0$
 forces $s=0$, then $a_2'=0$ forces $r=0$, and then $a_3'=0$ forces $t=0$. So it is $(u,0,0,0)$ with $A=u^4A$, $B=u^6B$ (here $x=u^2x'$, so the map
-$(x',y')\mapsto(x,y)$ is $(u^2x',u^3y')$). If $AB\ne0$ ($j\ne0,1728$) this means $u^2=1$; if $B=0$ ($j=1728$), $u^4=1$; if $A=0$ ($j=0$),
-$u^6=1$. Distinct $u$ give distinct maps. The formula for $[-1]$ is the substitution $(u,r,s,t)=(-1,0,-a_1,-a_3)$, which sends $(x,y)$ to the other point
+$(x',y')\mapsto(x,y)$ is $(u^2x',u^3y')$). On the short model $b_2=0$, $b_4=2A$, $b_6=4B$, so $c_4=-48A$, $c_6=-864B$, $\Delta=-16(4A^3+27B^2)$ and
+\[
+j=1728\,\frac{4A^3}{4A^3+27B^2};
+\]
+thus $j=0$ iff $A=0$, and $j=1728$ iff $B=0$. If $AB\ne0$ ($j\ne0,1728$) the conditions are $u^4=u^6=1$, which mean $u^2=u^6/u^4=1$; if $B=0$ ($j=1728$),
+$u^4=1$; if $A=0$ ($j=0$), $u^6=1$. Distinct $u$ give distinct maps, since $u=u^3/u^2$ is read off the map. So $\Aut_{\bar K}(E)\simeq\mu_n(\bar K)$ with $n=2,4,6$. Since
+$\operatorname{char}K\nmid n$, the polynomial $X^n-1$ is separable and $\mu_n(\bar K)$ has $n$ elements; a finite subgroup of $\bar K^\times$ is cyclic (\Cref{ch:rings}). The formula for $[-1]$ is the substitution $(u,r,s,t)=(-1,0,-a_1,-a_3)$, which sends $(x,y)$ to the other point
 with the same $x$.
 \end{proof}
 
@@ -472,16 +515,31 @@ $F(x)=4x^3+b_2x^2+2b_4x+b_6$, so $E[2]$ has four elements.
 \end{proposition}
 
 \begin{proof}
-(i) $P_2=-P_1$ by the formula for $-R$. (ii) The line $y=\lambda x+\nu$ passes through $P_1$ and $P_2$ (for $P_1=P_2$, $\lambda$ is the slope of the
-tangent, by implicit differentiation of \eqref{eq:ellcurves:weierstrass}, and $\nu=y_1-\lambda x_1$, which after using the equation of $E$ at $P_1$ is
-the displayed expression). Substituting $y=\lambda x+\nu$ into \eqref{eq:ellcurves:weierstrass} gives a monic cubic in $x$,
+(i) $P_2=-P_1$ by the formula for $-R$. (ii) The line $y=\lambda x+\nu$ passes through $P_1$ and $P_2$. For $x_1\ne x_2$ this is the two-point form of a line:
+$\lambda x_1+\nu=(y_2x_1-y_1x_1+y_1x_2-y_2x_1)/(x_2-x_1)=y_1$, and similarly at $P_2$. For $P_1=P_2$, write $\eta_1=2y_1+a_1x_1+a_3$ and
+$\xi_1=3x_1^2+2a_2x_1+a_4-a_1y_1$; implicit differentiation of \eqref{eq:ellcurves:weierstrass} gives $\eta\,dy=\xi\,dx$, so $\lambda=\xi_1/\eta_1$ is the slope of the
+tangent, and $\nu=y_1-\lambda x_1=(y_1\eta_1-x_1\xi_1)/\eta_1$. Here
+$y_1\eta_1-x_1\xi_1=2(y_1^2+a_1x_1y_1)+a_3y_1-3x_1^3-2a_2x_1^2-a_4x_1$, and replacing $y_1^2+a_1x_1y_1$ by $x_1^3+a_2x_1^2+a_4x_1+a_6-a_3y_1$ (the equation of $E$ at
+$P_1$) leaves $-x_1^3+a_4x_1+2a_6-a_3y_1$, the displayed numerator. Substituting $y=\lambda x+\nu$ into \eqref{eq:ellcurves:weierstrass} gives a monic cubic in $x$,
 \[
 x^3+(a_2-\lambda^2-a_1\lambda)x^2+\cdots=0,
 \]
 whose roots are $x_1,x_2,x_3$ (with multiplicity). Comparing the $x^2$-coefficients gives $x_1+x_2+x_3=\lambda^2+a_1\lambda-a_2$. The third point is
-$R=(x_3,\lambda x_3+\nu)$, and $P_1+P_2=-R$. (iii) Substitute the tangent slope into $x_3=\lambda^2+a_1\lambda-a_2-2x_1$; clearing the denominator
-$(2y_1+a_1x_1+a_3)^2=F(x_1)$ (\Cref{lem:ellcurves:identities}(ii)) and eliminating $y_1$ with the equation of $E$ leaves the stated quotient (an
-identity checked by machine; on \curve{11a1} at $P=(5,5)$ it gives $x(2P)=1936/121=16$). (iv) $2P=O$ means $P=-P$, i.e.\ $y=-y-a_1x-a_3$. In
+$R=(x_3,\lambda x_3+\nu)$, and $P_1+P_2=-R$. (iii) Substitute the tangent slope into $x_3=\lambda^2+a_1\lambda-a_2-2x_1$. When $\operatorname{char}K\ne2$ the
+computation is short. Write $x=x_1$, $\eta=\eta_1$, $\xi=\xi_1$; then $\lambda^2+a_1\lambda=(\lambda+\frac{a_1}2)^2-\frac{a_1^2}4$ and
+\[
+\eta\Bigl(\lambda+\frac{a_1}2\Bigr)=\xi+\frac{a_1}2\eta=3x^2+\Bigl(2a_2+\frac{a_1^2}2\Bigr)x+a_4+\frac{a_1a_3}2=\frac14F'(x),
+\]
+the term $a_1y$ cancelling. With $\eta^2=F(x)$ (\Cref{lem:ellcurves:identities}(ii)) and $a_1^2/4+a_2=b_2/4$,
+\[
+x(2P)=\frac{F'(x)^2}{16F(x)}-\frac{b_2}4-2x=\frac{F'(x)^2-4(b_2+8x)F(x)}{16F(x)} .
+\]
+Expanding, $F'(x)^2=144x^4+48b_2x^3+(4b_2^2+48b_4)x^2+8b_2b_4x+4b_4^2$ and
+$4(b_2+8x)F(x)=128x^4+48b_2x^3+(4b_2^2+64b_4)x^2+(8b_2b_4+32b_6)x+4b_2b_6$; the difference is
+$16x^4-16b_4x^2-32b_6x-4(b_2b_6-b_4^2)=16(x^4-b_4x^2-2b_6x-b_8)$, by \Cref{lem:ellcurves:identities}(i). In characteristic $2$ the same formula holds: the statement says
+$\xi^2+a_1\xi\eta-(a_2+2x)\eta^2=x^4-b_4x^2-2b_6x-b_8$ in $\Z[a_1,\dots,a_6][x,y]$ modulo the equation of $E$, a ring that is free with basis $1,y$ over
+$\Z[a_1,\dots,a_6][x]$; the computation just made proves it after tensoring with $\Q$, hence over $\Z$ (a free module over a torsion-free ring has no torsion), hence after
+any specialisation (it was also checked by machine). On \curve{11a1} at $P=(5,5)$ it gives $x(2P)=1936/121=16$. (iv) $2P=O$ means $P=-P$, i.e.\ $y=-y-a_1x-a_3$. In
 characteristic not $2$ this is $\eta=0$, so $F(x)=0$ by \Cref{lem:ellcurves:identities}(ii); conversely each root of $F$ gives exactly one point with
 $\eta=0$. The roots are distinct because $\operatorname{disc}F=16\Delta\ne0$.
 \end{proof}
@@ -597,8 +655,12 @@ $E\times E$; the explicit identity of Step 1 replaces that argument here.
 All computed with \Cref{prop:ellcurves:addition} (and checked with PARI).
 \begin{enumerate}[label=(\alph*)]
 \item On \curve{11a1}, $P=(5,5)$: $2P=(16,-61)$, $3P=(16,60)$, $4P=(5,-6)$, $5P=O$. Indeed $3P=-2P$ because $-(16,-61)=(16,61-1)=(16,60)$.
-\item On \curve{20a1} $=[0,1,0,4,4]$: $(-1,0)$ has order $2$ (it satisfies $2y=0$), $(0,2)$ has order $3$, and $(4,10)$ has order $6$, with $2(4,10)=(0,2)$ and
-$3(4,10)=(-1,0)$.
+In detail, with $a_1=0$, $a_2=-1$, $a_3=1$, $a_4=-10$: the tangent at $P$ has $\lambda=(3\cdot25-10-10)/(10+1)=5$ and $\nu=5-25=-20$, so
+$x(2P)=25+0+1-10=16$ and $y(2P)=-5\cdot16+20-1=-61$. The chord through $P$ and $2P$ has $\lambda=(-61-5)/(16-5)=-6$ and
+$\nu=(5\cdot16+61\cdot5)/11=35$, so $x(3P)=36+1-5-16=16$ and $y(3P)=6\cdot16-35-1=60$. Since $x(3P)=x(2P)$ and $3P\ne2P$, $3P=-2P$, so $5P=O$; and $4P=-P=(5,-5-1)$.
+\item On \curve{20a1} $=[0,1,0,4,4]$, that is $y^2=(x+1)(x^2+4)$: $(-1,0)$ has order $2$ (it satisfies $2y=0$), $(0,2)$ has order $3$, and $(4,10)$ has order $6$, with $2(4,10)=(0,2)$ and
+$3(4,10)=(-1,0)$. For the doubling, $\lambda=(48+8+4)/20=3$, $\nu=10-12=-2$, $x=9-1-8=0$ and $y=2$. For $(4,10)+(0,2)$, $\lambda=8/4=2$, $\nu=(0-8)/(-4)=2$,
+$x=4-1-4-0=-1$ and $y=2-2=0$.
 \item On \curve{14a1} $=[1,0,1,4,-6]$: $(2,-5)$ has order $3$ (with $2(2,-5)=(2,2)=-(2,-5)$), and $(9,23)$ has order $6$, with $2(9,23)=(2,2)$, $3(9,23)=(1,-1)$.
 \item On \curve{27a1} $=[0,0,1,0,-7]$: $(3,4)$ has order $3$, $2(3,4)=(3,-5)$.
 \item On \curve{99a1}, $(0,0)$ has infinite order: its multiples $(3,2)$, $(-8/9,13/27)$, $(105/64,-897/512)$ have growing denominators, which
@@ -708,7 +770,9 @@ $\varphi\circ\hat\varphi\circ\varphi=\varphi\circ[m]=[m]\circ\varphi$ and surjec
 (\Cref{cor:ellcurves:degm}(i), whose proof uses only $\widehat{[m]}=[m]$, itself a consequence of additivity and $\hat{[1]}=[1]$), so $\deg\hat\varphi=m$. For (iv),
 $[\deg(\varphi+\psi)]=\widehat{(\varphi+\psi)}\circ(\varphi+\psi)=[\deg\varphi]+[\deg\psi]+\hat\psi\circ\varphi+\hat\varphi\circ\psi$, so $\langle\varphi,\psi\rangle$ corresponds to
 $\hat\psi\circ\varphi+\hat\varphi\circ\psi$, which is visibly biadditive; and $\End(E_1)$ is torsion-free (\Cref{prop:ellcurves:isogeny-basic}(iii)), so the
-identification of integers with multiplication maps is injective.
+identification of integers with multiplication maps is injective ($[a]=[b]$ forces $a=b$). The remaining parts of (iv) are elementary: $\deg(n\varphi)=\deg([n]\circ\varphi)=\deg[n]\deg\varphi=n^2\deg\varphi$
+by multiplicativity and $\deg[n]=n^2$; and $\deg\varphi$ is a degree of a field extension, hence positive, for $\varphi\ne0$, while $\deg0=0$ by definition. A function
+$Q\colon A\to\Z$ on an abelian group with $Q(nx)=n^2Q(x)$ and $Q(x+y)-Q(x)-Q(y)$ biadditive is exactly a quadratic form.
 \end{proof}
 
 \begin{corollary}[multiplication by $m$ and the $m$-torsion]\label{cor:ellcurves:degm}
@@ -723,9 +787,11 @@ Let $m\ge1$.
 \begin{proof}
 (i) By \Cref{thm:ellcurves:dual}, $\widehat{[m]}=[m]$ and $\widehat{[m]}\circ[m]=[\deg[m]]$, so $[m^2]=[\deg[m]]$ and $[m^2-\deg[m]]=0$; as $\End(E)$ is torsion-free
 (\Cref{prop:ellcurves:isogeny-basic}(iii)), $\deg[m]=m^2$. (ii) By \Cref{prop:ellcurves:invdiff}(iii), $[m]^*\omega=m\omega\ne0$, so $[m]$ is separable (\Cref{ch:curves}:
-a morphism is separable iff it pulls back a nonzero differential to a nonzero one). By \Cref{thm:ellcurves:isog-hom}(iii), $\#E[d]=d^2$ for every $d\mid m$. Let
-$A=E[m]$; it is a finite abelian group killed by $m$. For each prime $p\mid m$, $A[p]=E[p]$ has $p^2$ elements, so the $p$-primary part of $A$ is
-$\Z/p^a\times\Z/p^b$ with exactly two factors (\Cref{ch:groups}, structure theorem), and $a,b\le v_p(m)$. Since $\#A=m^2$, $a+b=2v_p(m)$, so $a=b=v_p(m)$, and
+a morphism is separable iff it pulls back a nonzero differential to a nonzero one). The same holds for every $d\mid m$, as $\operatorname{char}K\nmid d$; so by
+\Cref{thm:ellcurves:isog-hom}(iii) and (i), $\#E[d]=\#\ker[d]=\deg[d]=d^2$ for every $d\mid m$. Let
+$A=E[m]$; it is a finite abelian group killed by $m$. For each prime $p\mid m$, $A[p]=E[p]$ has $p^2$ elements. By the structure theorem (\Cref{ch:groups}) the
+$p$-primary part of $A$ is a product $\Z/p^{a_1}\times\dots\times\Z/p^{a_k}$ with all $a_i\ge1$, whose $p$-torsion $(\Z/p)^k$ has $p^k$ elements; so $k=2$, the
+$p$-primary part is $\Z/p^a\times\Z/p^b$, and $a,b\le v_p(m)$ because $m$ kills $A$. Since $\#A=m^2$, $a+b=2v_p(m)$, so $a=b=v_p(m)$, and
 $A\simeq(\Z/m)^2$. (iii) We do not prove this; see \cite[Section III.6]{SilvermanAEC}. Over $\C$, \Cref{prop:ellcurves:cplxisog}(ii) gives a second proof of (i)
 and (ii).
 \end{proof}
@@ -745,7 +811,8 @@ then $E$ has a $K$-rational cyclic $\ell$-isogeny, with kernel $C_\ell$.
 (i) $H=\ker\varphi$ is a finite subgroup of $E[N]\simeq(\Z/N)^2$ for $N=\#H$ (\Cref{cor:ellcurves:degm}(ii)). For each prime $p$, $H[p]\subseteq E[p]\simeq(\Z/p)^2$,
 so the $p$-primary part of $H$ has at most two cyclic factors, and $H\simeq\Z/d_1\times\Z/d_2$ with $d_1\mid d_2$ (invariant factors, \Cref{ch:groups}); put $a=d_1$,
 $b=d_2/d_1$. Then $H[a]\simeq(\Z/a)^2$ has $a^2$ elements and lies in $E[a]$, which has $a^2$ elements, so $E[a]\subseteq H$; and if $E[a']\subseteq H$ then
-$(\Z/a')^2\hookrightarrow\Z/d_1\times\Z/d_2$, which forces $a'\mid d_1$.
+$E[a']\simeq(\Z/a')^2$ lies in $H[a']\simeq\Z/\gcd(a',d_1)\times\Z/\gcd(a',d_2)$, a group of order at most $\gcd(a',d_1)\cdot a'$; comparing orders,
+$\gcd(a',d_1)=a'$, that is, $a'\mid d_1$. The integers $a$, $b$ are unique because the invariant factors $d_1\mid d_2$ are.
 (ii) $[a]$ is separable with kernel $E[a]\subseteq\ker\varphi$, so \Cref{thm:ellcurves:quotient}(ii) gives $\psi$ with $\varphi=\psi\circ[a]$, unique, defined over $K$ if
 $\varphi$ is, and with kernel $[a](\ker\varphi)=a\cdot(\Z/a\times\Z/ab)\simeq\Z/b$.
 (iii) A cyclic group of order $n$ has exactly one subgroup of each order $d\mid n$. For $\sigma\in G_K$, $\sigma(C_d)$ is a subgroup of order $d$ of $\sigma(C)=C$, so
@@ -784,6 +851,13 @@ multiplication by $\psi_2$ is injective on $A$. On a curve $E$ we evaluate $\psi
 $\psi_2^2=F(x)$ on $E$ (\Cref{lem:ellcurves:identities}(ii)); so $\psi_m$ becomes a function on $E$. These are the conventions of \cite[Exercise 3.7]{SilvermanAEC}
 and of PARI; \cite[Section 3.2]{WashingtonEC} uses short models.
 \end{definition}
+
+The idea behind the definition: $[m]$ is a morphism $E\to E$, so $x(mP)$ is a rational function of the coordinates of $P$, and its denominator should vanish
+exactly at the points with $mP=O$. The polynomials $\psi_m$ are chosen to be these denominators (more precisely, $x(mP)=x-\psi_{m-1}\psi_{m+1}/\psi_m^2$,
+\Cref{thm:ellcurves:multm}), and the recursions express $\psi_{2m}$ and $\psi_{2m+1}$ through the addition of $mP$ and $(m+1)P$; the first cases are the
+duplication formula ($\psi_2$, $\psi_3$, \Cref{prop:ellcurves:psi3}(i)) and $\psi_4$. As an example, for \curve{11a1} $=[0,-1,1,-10,-20]$, with $b_2=-4$, $b_4=-20$,
+$b_6=-79$, $b_8=-21$ (\Cref{ex:ellcurves:running-invariants}), one gets $\psi_2^2=F(x)=4x^3-4x^2-40x-79$ and $\psi_3=3x^4-4x^3-60x^2-237x-21$, the polynomial
+listed in \Cref{ex:ellcurves:psi3-examples}.
 
 \begin{proposition}[degrees]\label{prop:ellcurves:divpol-deg}
 For odd $m\ge1$, $\psi_m\in R[x]$ is a polynomial of degree $(m^2-1)/2$ with leading coefficient $m$. For even $m\ge2$, $\psi_m=\psi_2f_m$ with $f_m\in R[x]$ of
@@ -871,9 +945,13 @@ $m=3$, $x$ gives a $G_K$-equivariant bijection from the lines onto the four dist
 correspond to the $G_K$-orbits on its roots (\Cref{ch:galois}); after a choice of basis, $G_K$ acts on the lines of $E[3]$ through $\bar\rho_{E,3}$ and the action of
 $\GL_2(\F_3)$ on $\PP^1(\F_3)$. A root in $K$ is a fixed root, that is, a $G_K$-stable line.
 (iii) The roots $r_1,\dots,r_4$ are distinct, so $\delta=\prod_{i<j}(r_i-r_j)\ne0$, $\disc\psi_3=3^6\delta^2$, and $\sigma(\delta)=\sgn(\pi_\sigma)\delta$ where $\pi_\sigma$ is the permutation of
-the roots induced by $\sigma\in G_\Q$. By (ii), $\pi_\sigma$ is the permutation of the four lines of $E[3]$ induced by $\bar\rho_{E,3}(\sigma)$, whose sign is $\det\bar\rho_{E,3}(\sigma)\in\{\pm1\}=\F_3^\times$
-(\Cref{ch:groups}); and $\det\bar\rho_{E,3}=\bar\chi_3=\chi_{-3}$ (\Cref{cor:ellcurves:det}). So $\sigma$ fixes $\delta$ iff $\sigma$ fixes $\sqrt{-3}$, which means
-$\Q(\delta)=\Q(\sqrt{-3})$ and $\delta^2\in-3(\Q^\times)^2$.
+the roots induced by $\sigma\in G_\Q$. (The factor $3^6=3^{2\cdot4-2}$ is the leading coefficient of $\psi_3$ to the power $2\deg-2$.) By (ii), $\pi_\sigma$ is the permutation of the four lines of $E[3]$ induced by $\bar\rho_{E,3}(\sigma)$, whose sign is $\det\bar\rho_{E,3}(\sigma)\in\{\pm1\}=\F_3^\times$
+(\Cref{ch:groups}). To see this directly, note that $g\mapsto\sgn(\pi_g)$ and $\det$ are both homomorphisms $\GL_2(\F_3)\to\{\pm1\}$, so it suffices to compare them on
+generators. The group $\SL_2(\F_3)$ is generated by the transvections $\sm1101$ and $\sm1011$; the first fixes the line $[1:0]$ and permutes $[0:1]\mapsto[1:1]\mapsto[2:1]\mapsto[0:1]$
+cyclically, an even permutation, and likewise for the second. And $\GL_2(\F_3)$ is generated by $\SL_2(\F_3)$ and $\operatorname{diag}(1,-1)$, which fixes $[1:0]$ and $[0:1]$ and swaps
+$[1:1]$ and $[1:-1]$, an odd permutation, with determinant $-1$. (A direct enumeration of the $48$ elements confirms this.) Finally $\det\bar\rho_{E,3}=\bar\chi_3=\chi_{-3}$
+(\Cref{cor:ellcurves:det}). So $\sigma$ fixes $\delta$ iff $\sigma$ fixes $\sqrt{-3}$; by Galois theory $\Q(\delta)=\Q(\sqrt{-3})$, and as the nontrivial automorphism of this field
+sends $\delta$ to $-\delta$, $\delta=b\sqrt{-3}$ with $b\in\Q^\times$, so $\delta^2=-3b^2\in-3(\Q^\times)^2$ and $\disc\psi_3=3^6\delta^2\in-3(\Q^\times)^2$.
 \end{proof}
 
 \begin{example}[factorisations of $\psi_3$]\label{ex:ellcurves:psi3-examples}
@@ -946,6 +1024,11 @@ proved in \cite[Section III.8]{SilvermanAEC}; (iv) is immediate because $\sigma$
 Over $\C$, \Cref{prop:ellcurves:cplxisog}(iv) gives an explicit formula.
 \end{proof}
 
+The properties already determine $e_2$ completely when $\operatorname{char}K\ne2$. Let $S\ne T$ be two points of order $2$. By (iii) applied to $T$, together with (ii),
+some $S'\in E[2]$ has $e_2(S',T)=-1$; since $e_2(O,T)=e_2(T,T)=1$, $S'$ is one of the two points $S$, $S+T$, and $e_2(S+T,T)=e_2(S,T)e_2(T,T)=e_2(S,T)$, so
+$e_2(S,T)=-1$. Thus $e_2(S,T)=-1$ for any two distinct points of order $2$, and $e_2=1$ whenever one argument is $O$ or the two arguments are equal. For larger $m$
+the pairing carries genuine information; its first use is that it computes the determinant of the Galois action.
+
 \begin{corollary}[the determinant]\label{cor:ellcurves:det}
 Let $m\ge1$ with $\operatorname{char}K\nmid m$.
 \begin{enumerate}[label=(\roman*)]
@@ -961,9 +1044,13 @@ $\eta_2$, then $\eta_1\eta_2=\bar\chi_\ell$. In particular a $K$-rational point 
 $kS=O$ by (iii) and (ii) of \Cref{thm:ellcurves:weil}, so $m\mid k$. If $\sigma S=aS+cT$ and $\sigma T=bS+dT$, bilinearity and the alternating property give
 $e_m(\sigma S,\sigma T)=e_m(S,T)^{ad}e_m(T,S)^{cb}=\zeta^{ad-bc}$, while Galois-equivariance gives $e_m(\sigma S,\sigma T)=\sigma(\zeta)=\zeta^{\chi_m^{\mathrm{cyc}}(\sigma)}$. So
 $\det g_\sigma\equiv\chi_m^{\mathrm{cyc}}(\sigma)\pmod m$. (ii) If $G_K$ fixes $E[m]$ pointwise then $\chi_m^{\mathrm{cyc}}(\sigma)=\det1=1$ for all $\sigma$, so $G_K$ fixes $\mu_m$.
-(iii) Consider $\theta\colon E[\ell]\to\Hom(L,\mu_\ell)$, $P\mapsto(Q\mapsto e_\ell(Q,P))$. Its kernel is $L^\perp=\{P:e_\ell(L,P)=1\}$, which contains $L$ (alternating) and has
-dimension $1$ (nondegenerate), so $\ker\theta=L$ and $\theta$ is onto by counting. With the action $(\sigma h)(Q)=\sigma(h(\sigma^{-1}Q))$ on $\Hom(L,\mu_\ell)$,
-$(\sigma\theta(P))(Q)=\sigma e_\ell(\sigma^{-1}Q,P)=e_\ell(Q,\sigma P)$, so $\theta$ is $G_K$-equivariant. $G_K$ acts on $\Hom(L,\mu_\ell)$ by $\bar\chi_\ell\eta_1^{-1}$, so $\eta_2=\bar\chi_\ell\eta_1^{-1}$. If
+(iii) Consider $\theta\colon E[\ell]\to\Hom(L,\mu_\ell)$, $P\mapsto(Q\mapsto e_\ell(Q,P))$, a homomorphism by bilinearity. Its kernel is $L^\perp=\{P:e_\ell(L,P)=1\}$, which
+contains $L$ because $e_\ell(Q,Q')=1$ for $Q,Q'$ in the line $L$ (write $Q'=kQ$ and use (i), (ii)). It is not all of $E[\ell]$: for a generator $Q_0$ of $L$,
+nondegeneracy and the alternating property give some $P$ with $e_\ell(Q_0,P)=e_\ell(P,Q_0)^{-1}\ne1$. So $L^\perp$ is a proper subspace containing the line $L$, hence $\ker\theta=L$,
+and $\theta$ is onto because both $E[\ell]/L$ and $\Hom(L,\mu_\ell)$ have $\ell$ elements. With the action $(\sigma h)(Q)=\sigma(h(\sigma^{-1}Q))$ on $\Hom(L,\mu_\ell)$,
+$(\sigma\theta(P))(Q)=\sigma e_\ell(\sigma^{-1}Q,P)=e_\ell(Q,\sigma P)$, so $\theta$ is $G_K$-equivariant. For $h\in\Hom(L,\mu_\ell)$ and $Q\in L$,
+$(\sigma h)(Q)=\sigma\bigl(h(\eta_1(\sigma)^{-1}Q)\bigr)=\sigma\bigl(h(Q)\bigr)^{\eta_1(\sigma)^{-1}}=h(Q)^{\bar\chi_\ell(\sigma)\eta_1(\sigma)^{-1}}$, so $G_K$ acts on
+$\Hom(L,\mu_\ell)$ by $\bar\chi_\ell\eta_1^{-1}$, and $\eta_2=\bar\chi_\ell\eta_1^{-1}$. If
 $L$ is spanned by a $K$-rational point, $\eta_1=1$ and $\Hom(L,\mu_\ell)\simeq\mu_\ell$.
 \end{proof}
 
@@ -994,8 +1081,10 @@ $T_\ell E\simeq\varprojlim(\Z/\ell^n)^2=\Z_\ell^2$ (\Cref{ch:groups}), and the p
 $t'=\ell^{n'-n}t$, whose $n'$-th component is $\ell^{n'-n}t_{n'}=t_n$; so the map is well defined. It is surjective by (i), and $\ell^{-n}t\mapsto0$ iff $t_n=0$ iff
 $t\in\ell^nT_\ell E$ iff $\ell^{-n}t\in T_\ell E$. (iii) Compatibility of the components: by \Cref{thm:ellcurves:weil}(v),
 $e_{\ell^{n+1}}(S_{n+1},T_{n+1})^\ell=e_{\ell^{n+1}}(S_{n+1},\ell T_{n+1})=e_{\ell^{n+1}}(S_{n+1},T_n)=e_{\ell^n}(\ell S_{n+1},T_n)=e_{\ell^n}(S_n,T_n)$, which is the transition map
-$\zeta\mapsto\zeta^\ell$ of $\Z_\ell(1)$. Bilinearity, the alternating property and equivariance pass to the limit. Modulo $\ell$ the pairing is $e_\ell$, which is
-nondegenerate, so the Gram matrix in a $\Z_\ell$-basis has unit determinant and $e$ is perfect. (iv) Given \Cref{cor:ellcurves:degm}(iii), the same argument as
+$\zeta\mapsto\zeta^\ell$ of $\Z_\ell(1)$. Bilinearity, the alternating property and equivariance pass to the limit. For perfectness, choose a generator of
+$\Z_\ell(1)\simeq\Z_\ell$ and a $\Z_\ell$-basis $s,t$ of $T_\ell E$. Since $e$ is alternating, its Gram matrix is $\sm0u{-u}0$ with $u=e(s,t)$, of determinant $u^2$. Modulo $\ell$
+the pairing is $e_\ell$ on the basis $s_1,t_1$ of $E[\ell]$, and $e_\ell(s_1,t_1)$ is a primitive $\ell$-th root of unity (proof of \Cref{cor:ellcurves:det}(i)); so $u\not\equiv0\pmod\ell$, $u\in\Z_\ell^\times$,
+and $e$ is perfect. (iv) Given \Cref{cor:ellcurves:degm}(iii), the same argument as
 (i) with one generator: either all $E[p^n]$ vanish, or $E[p^n]\simeq\Z/p^n$ with surjective transition maps $[p]$, and the limit is $\Z_p$.
 \end{proof}
 
@@ -1090,6 +1179,13 @@ multiplicative prime it does (on the invariant line the arithmetic Frobenius act
 the geometric one (\Cref{ch:local,ch:lfunctions}).
 \end{enumerate}
 \end{convention}
+
+A numerical illustration of (b) to (d). For \curve{11a1} at $p=2$, $a_2=-2$ (\Cref{ex:ellcurves:aptable}), so $X^2+2X+2$ has roots $\alpha_2=-1+i$, $\beta_2=-1-i$, with
+$\alpha_2\beta_2=2$ and $\abs{\alpha_2}=\sqrt2$. The arithmetic Frobenius has eigenvalues $-1\pm i$ on $V_\ell E$; the geometric Frobenius has eigenvalues
+$\alpha_2^{-1}=\frac{-1-i}2=\beta_2/2$ and $\beta_2^{-1}=\alpha_2/2$ on $V_\ell E$, and $-1\pm i$ on $V_\ell E^\vee$. So
+$L_2(E,s)=\bigl((1-\alpha_22^{-s})(1-\beta_22^{-s})\bigr)^{-1}=(1+2\cdot2^{-s}+2\cdot2^{-2s})^{-1}$, while $L_2(V_\ell E,s)$ has the eigenvalues divided by $2$, which is the shift
+$s\mapsto s+1$. On $\ad V_\ell E$ the eigenvalues are $\alpha_2/\beta_2=-i$, $1$ and $\beta_2/\alpha_2=i$ for either Frobenius. Mixing up the two conventions would replace $L_2(E,s)$ by
+$L_2(E,s+1)$, a shift that is invisible in the adjoint factor at good primes but not at multiplicative ones, where the paper's factor $1-q^{-1-s}$ is the geometric one.
 
 \begin{paperlink}\label{pl:ellcurves:section11}
 Section 1.1 of the paper (``Let $V=V_\ell E$, $T=T_\ell E$, $\rho=\rho_{E,\ell}$, $\bar\rho$ its reduction'') uses \Cref{def:ellcurves:tate,def:ellcurves:rho} and
@@ -1195,8 +1291,10 @@ Let $E/\Q$ have CM by an order in the imaginary quadratic field $F$, and let $\c
 
 \begin{proof}[Sketch of proof]
 (i), (ii) and (iv) are proved in \Cref{ch:ant} from \Cref{prop:ellcurves:normalised}(iii) and \Cref{thm:ellcurves:frobQ}; we recall the argument. Choose $0\ne c\in\mathcal O$ with
-$\bar c=-c$ (a suitable multiple of $\sqrt{D_{\mathcal O}}$). By \Cref{prop:ellcurves:normalised}(iii), $\rho(\sigma)[c]_\ell\rho(\sigma)^{-1}=\chi_F(\sigma)[c]_\ell$, so the invertible map $[c]_\ell$ on
-$V_\ell E$ is an isomorphism $\rho\to\rho\otimes\chi_F$. Taking traces, $\tr\rho(\sigma)=\chi_F(\sigma)\tr\rho(\sigma)$, and at a good $p\ne\ell$ inert in $F$, $\chi_F(\Frob_p)=-1$ gives
+$\bar c=-c$; for instance $c=\sqrt{D_{\mathcal O}}$, which lies in $\mathcal O=\Z\bigl[\frac{D_{\mathcal O}+\sqrt{D_{\mathcal O}}}2\bigr]$ as $2\cdot\frac{D_{\mathcal O}+\sqrt{D_{\mathcal O}}}2-D_{\mathcal O}$.
+For $\sigma\in G_\Q$, $\sigma(c)=c$ if $\sigma$ is trivial on $F$ and $\sigma(c)=\bar c=-c$ otherwise, that is, $\sigma(c)=\chi_F(\sigma)c$. By \Cref{prop:ellcurves:normalised}(iii),
+$\rho(\sigma)[c]_\ell\rho(\sigma)^{-1}=[\chi_F(\sigma)c]_\ell=\chi_F(\sigma)[c]_\ell$, so the map $[c]_\ell$ on $V_\ell E$, invertible because $[\bar c]\circ[c]=[c\bar c]$ is multiplication by the nonzero
+integer $c\bar c$, satisfies $[c]_\ell\rho(\sigma)=\chi_F(\sigma)\rho(\sigma)[c]_\ell$: it is an isomorphism $\rho\to\rho\otimes\chi_F$. Taking traces, $\tr\rho(\sigma)=\chi_F(\sigma)\tr\rho(\sigma)$, and at a good $p\ne\ell$ inert in $F$, $\chi_F(\Frob_p)=-1$ gives
 $a_p=\tr\rho(\Frob_p)=0$ (\Cref{thm:ellcurves:frobQ}). For (iv): if $p$ ramified in $F$ were a prime of good reduction, take $\ell\ne p$; $\rho$ is unramified at $p$
 (\Cref{thm:ellcurves:frobQ}), but some $\tau\in I_p$ has $\chi_F(\tau)=-1$, and then $[c]_\ell=\rho(\tau)[c]_\ell\rho(\tau)^{-1}=-[c]_\ell$, a contradiction. (iii) is Deuring's theorem
 \cite{Deuring41}: the reduction is ordinary, its endomorphism ring contains the reduction of $\mathcal O$ and is an order of $F$, and the Frobenius endomorphism $\pi_p$
@@ -1276,14 +1374,17 @@ $\wp(-z)=\wp(z)$. Differentiating termwise, $\wp'(z)=-2\sum_{\omega\in\Lambda}(z
 evaluating at $z=-\omega_i/2$ (not a pole) gives $C_i=\wp(\omega_i/2)-\wp(-\omega_i/2)=0$.
 (ii) For $\abs z<\min\abs\omega$, $(z-\omega)^{-2}-\omega^{-2}=\sum_{n\ge1}(n+1)z^n\omega^{-n-2}$; summing over $\omega$ (absolutely convergent) the odd powers cancel in pairs $\pm\omega$, and
 the coefficient of $z^{2k}$ is $(2k+1)G_{2k+2}$.
-(iii) From (ii), $\wp=z^{-2}+3G_4z^2+5G_6z^4+O(z^6)$, so
-$\wp'^2=4z^{-6}-24G_4z^{-2}-80G_6+O(z^2)$ and $4\wp^3=4z^{-6}+36G_4z^{-2}+60G_6+O(z^2)$. Hence $\wp'^2-4\wp^3+60G_4\wp+140G_6=O(z^2)$. The left side is $\Lambda$-periodic and
+(iii) From (ii), $\wp=z^{-2}+3G_4z^2+5G_6z^4+O(z^6)$ and $\wp'=-2z^{-3}+6G_4z+20G_6z^3+O(z^5)$, so
+$\wp'^2=4z^{-6}-24G_4z^{-2}-80G_6+O(z^2)$ and $4\wp^3=4\bigl(z^{-6}+9G_4z^{-2}+15G_6+O(z^2)\bigr)=4z^{-6}+36G_4z^{-2}+60G_6+O(z^2)$. Hence
+$\wp'^2-4\wp^3=-60G_4z^{-2}-140G_6+O(z^2)$, and adding $60G_4\wp=60G_4z^{-2}+O(z^2)$ gives $\wp'^2-4\wp^3+60G_4\wp+140G_6=O(z^2)$, that is,
+$\wp'^2-4\wp^3+g_2\wp+g_3=O(z^2)$; this is where the normalisations $g_2=60G_4$, $g_3=140G_6$ come from. The left side is $\Lambda$-periodic and
 holomorphic away from $\Lambda$, and by this expansion holomorphic at $0$ and vanishing there; a holomorphic doubly periodic function is bounded, hence constant (Liouville), and the
 constant is $0$.
 (iv) $\wp'$ is odd and periodic, so $\wp'(\omega_i/2)=-\wp'(-\omega_i/2)=-\wp'(\omega_i/2)$ vanishes at each half-period, and (iii) shows that the $e_i$ are roots of
 $4x^3-g_2x-g_3$. On the compact Riemann surface $\C/\Lambda$, $\wp-e_i$ has a single pole, of order $2$, so it has exactly two zeros counted with multiplicity (\Cref{ch:curves}); the
 half-period $h_i$ with $\wp(h_i)=e_i$ is a zero of order at least $2$ since $\wp'(h_i)=0$, so it is the only zero. As the three half-periods are distinct modulo $\Lambda$, the $e_i$ are
-distinct. The discriminant of $4x^3-g_2x-g_3$ is $16(g_2^3-27g_3^2)$ and also $4^4\prod_{i<j}(e_i-e_j)^2$.
+distinct. The discriminant of a cubic $ax^3+cx+d$ is $-4ac^3-27a^2d^2$, which for $4x^3-g_2x-g_3$ is $16g_2^3-432g_3^2=16(g_2^3-27g_3^2)$; it is also
+$a^4\prod_{i<j}(e_i-e_j)^2=4^4\prod_{i<j}(e_i-e_j)^2$. Dividing by $16$ gives the formula for $\Delta(\Lambda)$.
 (v) If $f$ has poles of order at most $2$ at the points of $\Lambda$, choose $a$ so that $f-a\wp$ has at most a simple pole at $0$. The residues of a periodic meromorphic function
 on $\C/\Lambda$ sum to $0$ (\Cref{ch:curves}, residue theorem), so $f-a\wp$ has no pole; it is holomorphic and doubly periodic, hence constant. The case of order $3$ is the same,
 subtracting first a multiple of $\wp'$, which has a triple pole at $0$.
@@ -1475,12 +1576,14 @@ $\abs{a_{\mathfrak q}}\le2\sqrt{\mathfrak q}$.
 \end{theorem}
 
 \begin{proof}
-By \Cref{thm:ellcurves:dual}(iv) the pairing $\langle\varphi,\psi\rangle=\deg(\varphi+\psi)-\deg\varphi-\deg\psi$ is bilinear on $\End(E)$, and $\deg(1-\pi)=1+\mathfrak q-\langle1,\pi\rangle$, so
-$\langle1,\pi\rangle=1+\mathfrak q-\#E(\F_{\mathfrak q})=a_{\mathfrak q}$. For $m,n\in\Z$,
+By \Cref{thm:ellcurves:dual}(iv) the pairing $\langle\varphi,\psi\rangle=\deg(\varphi+\psi)-\deg\varphi-\deg\psi$ is bilinear on $\End(E)$. Taking $\varphi=1$, $\psi=-\pi$, and using
+$\deg(-\pi)=\deg\pi=\mathfrak q$ (\Cref{prop:ellcurves:frobendo}(i)) and $\langle1,-\pi\rangle=-\langle1,\pi\rangle$, one gets $\deg(1-\pi)=1+\mathfrak q-\langle1,\pi\rangle$, so
+$\langle1,\pi\rangle=1+\mathfrak q-\#E(\F_{\mathfrak q})=a_{\mathfrak q}$ by \Cref{prop:ellcurves:frobendo}(iii). For $m,n\in\Z$, expanding in the same way,
 \[
 0\le\deg(m-n\pi)=m^2\deg1+n^2\deg\pi-mn\langle1,\pi\rangle=m^2-a_{\mathfrak q}mn+\mathfrak qn^2 .
 \]
-A binary quadratic form that is nonnegative on $\Z^2$ is nonnegative on $\Q^2$ (by homogeneity) and on $\R^2$ (by continuity), so its discriminant $a_{\mathfrak q}^2-4\mathfrak q$ is at most $0$.
+A binary quadratic form that is nonnegative on $\Z^2$ is nonnegative on $\Q^2$ (by homogeneity) and on $\R^2$ (by continuity). Taking $(m,n)=(a_{\mathfrak q}/2,1)$ gives
+$\mathfrak q-a_{\mathfrak q}^2/4\ge0$, that is, $a_{\mathfrak q}^2\le4\mathfrak q$.
 \end{proof}
 
 \begin{theorem}[the characteristic polynomial of Frobenius]\label{thm:ellcurves:charpoly}
@@ -1528,6 +1631,10 @@ An elliptic curve $E$ over $\F_{\mathfrak q}$ is \emph{supersingular} if $E[p]=0
 \begin{proof}
 (i) We do not prove this; see \cite[Section V.3]{SilvermanAEC}. (ii) By (i) supersingularity means $p\mid a_p$, and $\abs{a_p}\le2\sqrt p<p$ for $p\ge5$ (\Cref{thm:ellcurves:hasse}), so $p\mid a_p$ iff $a_p=0$.
 \end{proof}
+
+\noindent For example, by (i) the reduction of \curve{11a1} is supersingular at $p=19$ and $p=29$, where $a_p=0$, and also at $p=2$, where $a_2=-2$ is divisible by $2$
+(\Cref{ex:ellcurves:aptable}); it is ordinary at the other good primes $p<40$ (PARI's \texttt{ellissupersingular} agrees). The case $p=2$ shows why (ii) needs $p\ge5$: for
+$p=2,3$ one has $2\sqrt p\ge p$, so $a_p=\pm p$ is allowed by the Hasse bound.
 
 \begin{proposition}[point counts of a quadratic twist over $\F_{\mathfrak q}$]\label{prop:ellcurves:twistFq}
 Let $\mathfrak q$ be odd, $E\colon y^2=f(x)$ with $f$ a cubic over $\F_{\mathfrak q}$ with distinct roots (so that $E$ is smooth), $\theta\in\F_{\mathfrak q}^\times$ a non-square, and $E^{\mathrm{tw}}\colon\theta y^2=f(x)$, which is isomorphic to

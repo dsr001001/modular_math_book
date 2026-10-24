@@ -243,6 +243,13 @@ $\mathfrak m=\{\abs x<1\}$, and $k=\mathcal O/\mathfrak m$ the \emph{residue fie
 $\abs{F^\times}$ is a discrete subgroup of $\R_{>0}$.
 \end{definition}
 
+The definition abstracts the one example that matters here. On $\Q$, $\abs x_p=p^{-v_p(x)}$ (\Cref{ch:rings}) measures how divisible $x$ is
+by $p$: $\abs{12}_2=\frac14$, $\abs{1/12}_2=4$, $\abs{12}_3=\frac13$ and $\abs{12}_5=1$. It is nonarchimedean, because a sum of two multiples of $p^k$ is
+again a multiple of $p^k$, that is $v_p(x+y)\ge\min(v_p(x),v_p(y))$; and the inequality can be strict, as $\abs{2+6}_2=\frac18<\frac12$ shows. Its
+value group is $p^{\Z}$, so it is discrete; its valuation ring is $\Z_{(p)}$, the fractions $a/b$ with $p\nmid b$, with maximal ideal $p\Z_{(p)}$
+and residue field $\F_p$. Two numbers are $p$-adically close when their difference is divisible by a high power of $p$; completing $\Q$ for
+this notion of closeness is what produces $\Q_p$ below.
+
 \begin{proposition}\label{prop:local:absval}
 Let $\abs{\cdot}$ be an absolute value on a field $F$.
 \begin{enumerate}[label=(\roman*)]
@@ -263,19 +270,24 @@ for every $k\ge1$
 \[
 \abs{x+y}^k=\Bigl\lvert\sum_{i=0}^k\tbinom ki x^iy^{k-i}\Bigr\rvert\le(k+1)\max(\abs x,\abs y)^k,
 \]
-and taking $k$-th roots and letting $k\to\infty$ gives $\abs{x+y}\le\max(\abs x,\abs y)$.
+since each binomial coefficient is an integer, hence of absolute value at most $1$, and each $\abs{x^iy^{k-i}}$ is at most $\max(\abs x,\abs y)^k$.
+Taking $k$-th roots gives $\abs{x+y}\le(k+1)^{1/k}\max(\abs x,\abs y)$, and $(k+1)^{1/k}\to1$ as $k\to\infty$, so $\abs{x+y}\le\max(\abs x,\abs y)$.
 
 (ii) If $\abs x<\abs y$ then $\abs y=\abs{(x+y)-x}\le\max(\abs{x+y},\abs x)$ forces $\abs y\le\abs{x+y}$, and $\abs{x+y}\le\abs y$ always. The
 ultrametric inequality and multiplicativity show that $\mathcal O$ is a ring and $\mathfrak m$ an ideal; an element of $\mathcal O\setminus\mathfrak m$ has
 absolute value $1$, so its inverse lies in $\mathcal O$; hence $\mathfrak m$ is the set of nonunits, the unique maximal ideal. If
 $\abs{b-a}<r$ and $\abs{x-a}<r$ then $\abs{x-b}<r$, so $B(a,r)=B(b,r)$. If $c\notin B(a,r)$, then $B(c,r)\cap B(a,r)=\emptyset$ (a common point
 would make both balls equal), so the complement of $B(a,r)$ is open. Finally $\abs{\sum_{i=n+1}^ma_i}\le\max_{n<i\le m}\abs{a_i}$, so the partial
-sums are Cauchy iff $a_i\to0$.
+sums are Cauchy iff $a_i\to0$; in a complete field Cauchy sequences converge, and conversely if the partial sums $s_n$ converge then
+$a_n=s_n-s_{n-1}\to0$. (Over $\R$ the harmonic series shows that $a_n\to0$ is not enough; the ultrametric inequality is what makes it so.)
 
 (iii) A nontrivial discrete subgroup of $\R_{>0}$ (isomorphic by $\log$ to a discrete subgroup of $\R$) is infinite cyclic; let $c<1$ be
-its generator below $1$ and $v(x)$ the integer with $\abs x=c^{v(x)}$. Then $v$ is a valuation, $\mathcal O=\{v\ge0\}$, and every nonzero
-$x\in\mathcal O$ is $\varpi^{v(x)}u$ with $u$ a unit; so every nonzero ideal is $\varpi^n\mathcal O$, and $\mathcal O$ is a discrete
-valuation ring (\Cref{ch:modules}).
+its generator below $1$ and $v(x)$ the integer with $\abs x=c^{v(x)}$. Then $v$ is a valuation: $v(xy)=v(x)+v(y)$ is multiplicativity, and
+$v(x+y)\ge\min(v(x),v(y))$ is the ultrametric inequality, $c$ being less than $1$. Moreover $\mathcal O=\{v\ge0\}$, and every nonzero
+$x\in\mathcal O$ is $\varpi^{v(x)}u$ with $u=x\varpi^{-v(x)}$ of absolute value $1$, a unit. If $I\ne0$ is an ideal and $n$ the least value of
+$v$ on $I\setminus\{0\}$, then $I$ contains some $\varpi^nu$, hence $\varpi^n$; and every $x\in I$ is $\varpi^n\cdot x\varpi^{-n}$ with
+$x\varpi^{-n}\in\mathcal O$. So $I=\varpi^n\mathcal O$, and $\mathcal O$ is a principal ideal domain with the single nonzero prime ideal
+$\varpi\mathcal O$, a discrete valuation ring (\Cref{ch:modules}).
 
 (iv) If $\abs{\cdot}_1=\abs{\cdot}_2^s$ the open balls coincide. Conversely, in the topology of $\abs{\cdot}_i$ one has $\abs x_i<1$ iff
 $x^n\to0$; so equivalent absolute values have the same set $\{\abs x<1\}$. Fix $y$ with $\abs y_1>1$ (it exists, the absolute value being
@@ -328,7 +340,8 @@ $(x_n)\in C\setminus\mathfrak n$, then $\abs{x_n}$ is bounded below by some $\de
 does the Cauchy sequence); then $(x_n^{-1})_{n\ge n_0}$ is Cauchy, since $\abs{x_n^{-1}-x_m^{-1}}\le\delta^{-2}\abs{x_m-x_n}$. So $\mathfrak n$ is a
 maximal ideal and $\hat F=C/\mathfrak n$ is a field; $F$ embeds by constant sequences. Put $\abs{(x_n)}=\lim\abs{x_n}$, which exists since
 $\bigl\lvert\abs{x_n}-\abs{x_m}\bigr\rvert\le\abs{x_n-x_m}$, and depends only on the class modulo $\mathfrak n$. It is an absolute value extending
-$\abs{\cdot}$; the class of $(x_n)$ is the limit of the constants $x_n$, so $F$ is dense; and a Cauchy sequence of classes converges to the
+$\abs{\cdot}$: multiplicativity and the triangle inequality hold term by term, $\abs{x_ny_n}=\abs{x_n}\abs{y_n}$ and $\abs{x_n+y_n}\le\abs{x_n}+\abs{y_n}$,
+and survive the limit; $\lim\abs{x_n}=0$ means $(x_n)\in\mathfrak n$, the zero class; and a constant sequence has the absolute value of its term. The class of $(x_n)$ is the limit of the constants $x_n$, so $F$ is dense; and a Cauchy sequence of classes converges to the
 class of a diagonal sequence of approximating elements of $F$, so $\hat F$ is complete. If $F'$ is another such field, the identity of $F$
 extends uniquely to an isometry $\hat F\to F'$ by continuity (send $\lim x_n$ to $\lim x_n$), which is a field isomorphism.
 
@@ -378,7 +391,8 @@ for $a/b\in\Z_{(p)}$ and $n\ge1$, $b$ is invertible modulo $p^n$, and an integer
 For $x\ne0$, $u=xp^{-v_p(x)}$ has absolute value $1$. (iv) By (ii), $\Z_p$ is homeomorphic to a closed subset of the product
 $\prod_n\Z/p^n$ of finite discrete sets, which is compact (Tychonoff; \Cref{ch:groups}). $\Z_p$ is an open neighbourhood of $0$, and
 $x+\Z_p$ of $x$, so $\Q_p$ is locally compact. Balls are open and closed (\Cref{prop:local:absval}(ii)) and arbitrarily small, so
-the connected components are points. (v) $q$ is an integer not divisible by $p$.
+the connected components are points: if a subset $S$ contains $x\ne y$, the ball $B=B(x,\abs{x-y}_p)$ contains $x$ but not $y$, and
+$S=(S\cap B)\sqcup(S\setminus B)$ writes $S$ as a disjoint union of two nonempty relatively open sets. (v) $q$ is an integer not divisible by $p$.
 \end{proof}
 
 \begin{warning}\label{warn:local:analytic}
@@ -439,10 +453,14 @@ unique $a\in\mathcal O$ with $f(a)=0$ and $a\equiv a_0\pmod{\mathfrak m}$.
 \end{theorem}
 
 \begin{proof}
-(a) Taylor's formula in $\mathcal O[x,h]$ reads $f(x+h)=f(x)+f'(x)h+h^2g(x,h)$ and $f'(x+h)=f'(x)+hg_1(x,h)$ with $g,g_1\in\mathcal O[x,h]$. Put
+(a) Taylor's formula in $\mathcal O[x,h]$ reads $f(x+h)=f(x)+f'(x)h+h^2g(x,h)$ and $f'(x+h)=f'(x)+hg_1(x,h)$ with $g,g_1\in\mathcal O[x,h]$: for
+$f=\sum c_kX^k$, expand each $(x+h)^k=x^k+kx^{k-1}h+\sum_{j\ge2}\binom kjx^{k-j}h^j$ by the binomial theorem; the integer binomial coefficients keep all
+coefficients in $\mathcal O$, and no division by $j!$ occurs. The idea of the proof is the one of Newton's method over $\R$: the error is
+squared at each step. Put
 $c=\abs{f'(a_0)}$ and $\delta=\abs{f(a_0)}/c^2<1$. We show by induction that $a_n\in\mathcal O$, $\abs{f'(a_n)}=c$ and $\abs{f(a_n)}\le c^2\delta^{2^n}$. This
 holds for $n=0$. Given it for $n$, the step $h_n=-f(a_n)/f'(a_n)$ has $\abs{h_n}=\abs{f(a_n)}/c\le c\,\delta^{2^n}<c\le1$, so $a_{n+1}=a_n+h_n\in\mathcal O$;
-$\abs{f'(a_{n+1})-f'(a_n)}\le\abs{h_n}<c$ gives $\abs{f'(a_{n+1})}=c$ (\Cref{prop:local:absval}(ii)); and $f(a_{n+1})=h_n^2g(a_n,h_n)$ gives
+$\abs{f'(a_{n+1})-f'(a_n)}=\abs{h_ng_1(a_n,h_n)}\le\abs{h_n}<c$ gives $\abs{f'(a_{n+1})}=c$ (\Cref{prop:local:absval}(ii)); and since $h_n$ was chosen
+so that $f(a_n)+f'(a_n)h_n=0$, Taylor's formula leaves $f(a_{n+1})=h_n^2g(a_n,h_n)$, which gives
 $\abs{f(a_{n+1})}\le\abs{h_n}^2\le c^2\delta^{2^{n+1}}$. Hence $\abs{a_{n+1}-a_n}=\abs{h_n}\to0$, the sequence converges to some $a\in\mathcal O$, and
 $f(a)=\lim f(a_n)=0$, $\abs{f'(a)}=c$. If $f(a_0)=0$, every $h_n$ is $0$, $a=a_0$ and $\abs{a-a_0}=0=\abs{f(a_0)/f'(a_0)}$; so assume $\delta>0$. For $n\ge1$, $\abs{h_n}\le c\delta^{2^n}<c\delta=\abs{h_0}$, so $\abs{a-a_0}=\abs{h_0}=\abs{f(a_0)/f'(a_0)}<c$. If $b$ is a
 root with $\abs{b-a_0}<c$, then $h=b-a$ has $\abs h<c$, and $0=f(b)=f'(a)h+h^2g(a,h)$; if $h\ne0$ this gives $c=\abs{f'(a)}=\abs{hg(a,h)}\le\abs h<c$,
@@ -452,7 +470,10 @@ which is absurd. (b) is (a) with $\abs{f'(a_0)}=1$, since $\abs{f(a_0)}<1$ and $
 \begin{warning}\label{warn:local:hensel}
 The simple-root form needs $f'(a_0)$ to be a unit. $X^2-p$ has the root $0$ modulo $p$ but no root in $\Q_p$, since $v_p(x^2)$ is even. On the
 other hand $X^2+7$ has no simple root modulo $2$ (its derivative $2X$ vanishes there), yet $-7$ is a square in $\Z_2$: with $a_0=1$,
-$\abs{f(1)}_2=\abs8_2=\frac18<\frac14=\abs{f'(1)}_2^2$, so the Newton form applies, and the root is $\equiv1\pmod4$.
+$\abs{f(1)}_2=\abs8_2=\frac18<\frac14=\abs{f'(1)}_2^2$, so the Newton form applies, and the root is $\equiv1\pmod4$. The iteration can be followed by
+hand: $a_1=1-8/2=-3$ with $f(-3)=16$, then $a_2=-3-16/(-6)=-\frac13$ with $f(-\frac13)=\frac{64}9$. So $\abs{f(a_n)}_2=\frac18,\frac1{16},\frac1{64}$,
+exactly the bound $c^2\delta^{2^n}$ of the proof with $c=\frac12$, $\delta=\frac12$. The root is $\equiv181\pmod{2^8}$, and indeed
+$-\frac13\equiv85\pmod{2^8}$ agrees with it modulo $2^5$, as $\abs{a-a_2}_2=\abs{f(a_2)/f'(a_2)}_2=2^{-5}$ predicts.
 \end{warning}
 
 \begin{theorem}[Hensel's lemma, factorisation form]\label{thm:local:hensel-factor}
@@ -467,7 +488,8 @@ construct $g_k$ monic of degree $m$ and $h_k$ with $f\equiv g_kh_k\pmod{\varpi^k
 $h_k$, write $f-g_kh_k=\varpi^kr$. In $k[X]$, divide $\bar r\bar b$ by the monic $\bar g$: $\bar r\bar b=\bar s\bar g+\bar u$ with $\deg\bar u<m$; then
 $\bar r=\bar r(\bar a\bar g+\bar b\bar h)=\bar g(\bar r\bar a+\bar s\bar h)+\bar h\bar u$. Lift $\bar u$ to $u$ of degree $<m$ and $\bar r\bar a+\bar s\bar h$ to $w$,
 and put $g_{k+1}=g_k+\varpi^ku$, $h_{k+1}=h_k+\varpi^kw$. Then $g_{k+1}$ is monic of degree $m$ and
-$f-g_{k+1}h_{k+1}\equiv\varpi^k(r-g_kw-h_ku)\equiv0\pmod{\varpi^{k+1}}$, since $\bar g_k=\bar g$, $\bar h_k=\bar h$. The coefficients of $g_k$ converge, and
+$f-g_{k+1}h_{k+1}\equiv\varpi^k(r-g_kw-h_ku)\equiv0\pmod{\varpi^{k+1}}$, since $\bar g_k=\bar g$, $\bar h_k=\bar h$ and $\bar r=\bar g\bar w+\bar h\bar u$ (the
+term $\varpi^{2k}uw$ is divisible by $\varpi^{k+1}$). As $g_{k+1}\equiv g_k\pmod{\varpi^k}$, the coefficients of the $g_k$ are Cauchy sequences, so they converge, and
 $g=\lim g_k$ is monic of degree $m$. Divide $f$ by $g$ in $\mathcal O[X]$: $f=gh+\rho$ with $\deg\rho<m$. Since $g\equiv g_k\pmod{\varpi^k}$, we have
 $gh_k\equiv f\pmod{\varpi^k}$, so $f-gh_k=\varpi^kt$ for some $t\in\mathcal O[X]$; dividing $t$ by the monic $g$ shows that the remainder of $f$ on
 division by $g$, which is $\rho$, is $\equiv0\pmod{\varpi^k}$ (uniqueness of division by a monic polynomial). This holds for every $k$, so $\rho=0$
@@ -483,8 +505,14 @@ $\mathcal O[X]$.
 \begin{proof}
 Scale $f$ so that $\max_i\abs{a_i}=1$, and suppose $\abs{a_0}<1$ and $\abs{a_n}<1$. Let $r$ be the least index with $\abs{a_r}=1$; then $0<r<n$ and
 $\bar f=X^r\bar h$ with $\bar h(0)=\bar a_r\ne0$, so $X^r$ and $\bar h$ are coprime. \Cref{thm:local:hensel-factor} gives $f=gh$ with $g$ monic of
-degree $r$; then $\deg h=n-r\ge1$, contradicting irreducibility. For the last statement, $\abs{a_n}=1\ge\abs{a_0}$.
+degree $r$; then $\deg h=n-r\ge1$, contradicting irreducibility. For the last statement, $\abs{a_n}=1\ge\abs{a_0}$, so
+$\max_i\abs{a_i}=\max(\abs{a_0},1)=1$, that is, every coefficient lies in $\mathcal O$.
 \end{proof}
+
+Read in reverse, the corollary is a reducibility test. For $f=X^2+p^{-1}X+1$ over $\Q_p$ the middle coefficient has $\abs{p^{-1}}_p=p$, larger
+than $\abs{a_0}=\abs{a_2}=1$; so $f$ is reducible and has two roots in $\Q_p$. Directly: $pf=pX^2+X+p$ reduces to $X$ modulo $p$, and
+\Cref{thm:local:hensel-factor} splits off a linear factor. The roots have valuations $1$ and $-1$ (their product is $1$ and their sum $-p^{-1}$);
+for $p=3$, PARI's \texttt{polrootspadic} gives $2\cdot3+2\cdot3^2+\dots$ and $2\cdot3^{-1}+2+\dots$.
 
 \begin{example}[Hensel's lemma at work]\label{ex:local:hensel-examples}
 All residues below were computed by Newton's iteration and checked with PARI/GP (\texttt{polrootspadic}).
@@ -492,7 +520,9 @@ All residues below were computed by Newton's iteration and checked with PARI/GP 
 \item $X^2+1$ over $\Z_5$ has the simple roots $2,3$ modulo $5$; the two roots in $\Z_5$ are $\equiv182$ and $\equiv443\pmod{5^4}$, and
 $182^2+1=53\cdot5^4$.
 \item $\sqrt{-3}\in\Z_7$: the roots of $X^2+3$ are $\equiv37,306\pmod{7^3}$. $\sqrt2\in\Z_7$: the roots of $X^2-2$ are $\equiv108,235\pmod{7^3}$.
-\item $X^2+X+1$ has the simple roots $2,4$ modulo $7$, and its roots in $\Z_7$ are $\equiv30,18\pmod{49}$. Hence
+\item $X^2+X+1$ has the simple roots $2,4$ modulo $7$, and its roots in $\Z_7$ are $\equiv30,18\pmod{49}$. For instance, one Newton step from $a_0=2$,
+where $f(2)=7$ and $f'(2)=5$, gives $a_1=2-7\cdot5^{-1}\equiv2-7\cdot10=-68\equiv30\pmod{49}$, since $5\cdot10\equiv1\pmod{49}$; and
+$30^2+30+1=931=19\cdot49$. Hence
 $\Z_7[\zeta_3]:=\Z_7[X]/(X^2+X+1)\simeq\Z_7\times\Z_7$ by the Chinese remainder theorem, the two roots differing by a unit.
 \item (Squares in $\Z_2$.) $u\in\Z_2^\times$ is a square iff $u\equiv1\pmod8$. If $u\equiv1\pmod8$, apply \Cref{thm:local:hensel}(a) to $X^2-u$ with
 $a_0=1$: $\abs{1-u}_2\le\frac18<\frac14=\abs{2}_2^2$. Conversely an odd square is $\equiv1\pmod8$. So $-7$, $17$ are squares in $\Z_2$, and $-1$, $3$, $5$ are
@@ -688,10 +718,12 @@ $c\norm x_1\le\norm x_2\le C\norm x_1$ for constants $c,C>0$. In particular $V$ 
 
 \begin{proof}
 Fix a basis $e_1,\dots,e_n$ and the sup norm $\norm{\sum x_ie_i}_\infty=\max\abs{x_i}$; it suffices to compare a norm $\norm{\cdot}$ with it. Clearly
-$\norm x\le C\norm x_\infty$ with $C=\sum\norm{e_i}$. For the other inequality we argue by induction on $n$, the case $n=1$ being clear. If no $c>0$
-works, there are $v_k$ with $\norm{v_k}_\infty=1$ and $\norm{v_k}\to0$. Passing to a subsequence, some coordinate, say the last, has $\abs{x_n^{(k)}}=1$
-for all $k$; put $w_k=v_k/x_n^{(k)}=u_k+e_n$ with $u_k\in W=\langle e_1,\dots,e_{n-1}\rangle$. Then $\norm{w_k}\to0$, so $(u_k)$ is Cauchy for $\norm{\cdot}$ on
-$W$, hence for $\norm{\cdot}_\infty$ by induction, and converges in the sup norm (as $K$ is complete) to some $u\in W$, hence also for $\norm{\cdot}$.
+$\norm x\le C\norm x_\infty$ with $C=\sum\norm{e_i}$, since $\norm{\sum x_ie_i}\le\sum\abs{x_i}\norm{e_i}\le\max_i\abs{x_i}\cdot\sum_i\norm{e_i}$. For the other
+inequality we argue by induction on $n$; for $n=1$, $\norm{x_1e_1}=\abs{x_1}\norm{e_1}$, so $c=\norm{e_1}$ works. If no $c>0$
+works, there are $v_k=\sum_ix_i^{(k)}e_i$ with $\norm{v_k}_\infty=1$ and $\norm{v_k}\to0$. For each $k$ some coordinate has absolute value $1$, and one index occurs
+for infinitely many $k$; passing to a subsequence and renumbering, $\abs{x_n^{(k)}}=1$
+for all $k$. Put $w_k=v_k/x_n^{(k)}=u_k+e_n$ with $u_k\in W=\langle e_1,\dots,e_{n-1}\rangle$. Then $\norm{w_k}=\norm{v_k}\to0$, so $(u_k)$ is Cauchy for $\norm{\cdot}$ on
+$W$ (as $\norm{u_k-u_j}=\norm{w_k-w_j}\le\norm{w_k}+\norm{w_j}$), hence for $\norm{\cdot}_\infty$ by induction, and converges in the sup norm (as $K$ is complete) to some $u\in W$, hence also for $\norm{\cdot}$.
 Then $\norm{u+e_n}=\lim\norm{w_k}=0$, so $e_n=-u\in W$, which is absurd. Completeness follows: a $\norm{\cdot}$-Cauchy sequence is
 $\norm{\cdot}_\infty$-Cauchy, and converges coordinatewise.
 \end{proof}
@@ -711,9 +743,12 @@ Let $x\in L$ have minimal polynomial $m$ over $K$, of degree $d$; then the norm 
 $N_{L/K}(x)=((-1)^dm(0))^{n/d}$. We claim: $x$ is integral over $\mathcal O_K$ iff
 $m\in\mathcal O_K[X]$ iff $\abs{N_{L/K}(x)}\le1$. If $x$ is integral, so are its conjugates in a splitting field, and $m(0)$, a product of them up
 to sign, is an element of $K$ integral over the integrally closed $\mathcal O_K$, so $m(0)\in\mathcal O_K$, and $m\in\mathcal O_K[X]$ by
-\Cref{cor:local:irreducible}. The other implications are clear. So $\{\abs x_L\le1\}$ is the integral closure, a ring. Now $\abs{\cdot}_L$ is
-multiplicative, vanishes only at $0$, and extends $\abs{\cdot}$ since $N_{L/K}(x)=x^n$ for $x\in K$. For the ultrametric inequality it suffices
-to show $\abs{1+x}_L\le1$ when $\abs x_L\le1$ (divide by the larger of two elements), and this holds because the integral closure is a ring.
+\Cref{cor:local:irreducible}. If $m\in\mathcal O_K[X]$, then $x$ is integral (it is a root of the monic $m$), and
+$\abs{N_{L/K}(x)}=\abs{m(0)}^{n/d}\le1$. Finally, if $\abs{N_{L/K}(x)}\le1$, then $\abs{m(0)}\le1$, and the monic irreducible $m$ lies in
+$\mathcal O_K[X]$ by the last statement of \Cref{cor:local:irreducible}. So $\{\abs x_L\le1\}$ is the integral closure, a ring. Now $\abs{\cdot}_L$ is
+multiplicative (the norm is), vanishes only at $0$, and extends $\abs{\cdot}$ since $N_{L/K}(x)=x^n$ for $x\in K$. For the ultrametric inequality, let
+$x,y\in L$ with, say, $\abs y_L\le\abs x_L$ and $x\ne0$; then $\abs{x+y}_L=\abs x_L\abs{1+y/x}_L$, so it suffices
+to show $\abs{1+z}_L\le1$ when $\abs z_L\le1$; and this holds because $z$ and $1$ lie in the integral closure, which is a ring.
 The values lie in $\abs{K^\times}^{1/n}$, a discrete group. Uniqueness: two extensions are norms on the $K$-vector space $L$, hence equivalent
 by \Cref{lem:local:norms}: $c\abs x_1\le\abs x_2\le C\abs x_1$; applied to $x^k$ this gives $c^{1/k}\abs x_1\le\abs x_2\le C^{1/k}\abs x_1$ for all $k$, so
 $\abs x_1=\abs x_2$. Completeness is \Cref{lem:local:norms}. An algebraic extension is the union of its finite subextensions, on which the
@@ -745,8 +780,14 @@ $\mathfrak m_L^j/\mathfrak m_L^{j+1}$, $0\le j<e$, each a one-dimensional $k_L$-
 $\bar\alpha_i\varpi_L^j$. Iterating, $\mathcal O_L=M+\varpi_K^k\mathcal O_L$ for all $k$. Given $x\in\mathcal O_L$, write $x=m_k+\varpi_K^ky_k$ with $m_k\in M$;
 then $m_{k+1}-m_k\in M\cap\varpi_K^k\mathcal O_L$ has coefficients in $\varpi_K^k\mathcal O_K$, so the coefficients converge in the complete $\mathcal O_K$, and
 $m_k\to m\in M$ with $x-m\in\bigcap_k\varpi_K^k\mathcal O_L=0$. So $\mathcal O_L=M$ is free with the stated basis. Every $x\in L$ has $\varpi_K^kx\in\mathcal O_L$
-for $k$ large, so the basis is also a $K$-basis of $L$, and $ef=n$. Multiplicativity in towers is immediate from the definitions.
+for $k$ large, so the basis is also a $K$-basis of $L$, and $ef=n$. Multiplicativity in towers $K\subseteq L\subseteq M$: writing
+$\varpi_K=\varpi_L^{e(L/K)}u$ with $u\in\mathcal O_L^\times$ and applying $v_M$, which is $e(M/L)$ on $\varpi_L$ and $0$ on units, gives
+$e(M/K)=e(M/L)e(L/K)$; and $[k_M:k_K]=[k_M:k_L][k_L:k_K]$ is the tower law for the residue fields.
 \end{proof}
+
+The two numbers measure different things: $e$ counts how much the value group grows, $f$ how much the residue field grows. In the two
+extreme cases one of them is $1$: $\Q_3(\sqrt{-3})$ has $e=2$, $f=1$ (\Cref{prop:local:z3zeta3}(ii)), and $\Q_2(\sqrt5)$ has $e=1$, $f=2$
+(\Cref{prop:local:quadratic-ext}(iii)); the next definition names these cases.
 
 \begin{definition}\label{def:local:ram-types}
 A finite extension $L/K$ is \emph{unramified} if $e(L/K)=1$, \emph{totally ramified} if $f(L/K)=1$, \emph{tamely ramified} if $p\nmid e(L/K)$ and
@@ -763,7 +804,9 @@ Conversely the minimal polynomial over $K$ of any uniformiser of a totally ramif
 
 \begin{proof}
 Let $\pi$ be a root, $L=K(\pi)$, $d=[L:K]\le e$, and $w=v_L$. As $\pi$ is integral, $w(\pi)\ge0$; if $w(\pi)=0$, then $\pi^e=-\sum_{i<e}c_i\pi^i$ has positive
-valuation, which is absurd; so $w(\pi)\ge1$. Then $w(c_0)=e(L/K)$ and $w(c_i\pi^i)>e(L/K)$ for $i\ge1$, so $ew(\pi)=w(\pi^e)=e(L/K)\le d\le e$. Hence
+valuation, which is absurd; so $w(\pi)\ge1$. On $K$, $w=e(L/K)\,v_K$; as $v_K(c_0)=1$ and $v_K(c_i)\ge1$, we get $w(c_0)=e(L/K)$ and
+$w(c_i\pi^i)\ge e(L/K)+i>e(L/K)$ for $i\ge1$. In $\pi^e=-c_0-\sum_{1\le i<e}c_i\pi^i$ the term $c_0$ therefore has strictly the smallest valuation,
+so $ew(\pi)=w(\pi^e)=e(L/K)\le d\le e$ (\Cref{prop:local:absval}(ii) and \Cref{thm:local:ef}). Hence
 $w(\pi)=1$, $e(L/K)=d=e$, the polynomial is irreducible and $L/K$ is totally ramified; and by \Cref{thm:local:ef} (with $f=1$, $\alpha_1=1$)
 $1,\pi,\dots,\pi^{e-1}$ is a basis of $\mathcal O_L$. Conversely, if $L/K$ is totally ramified of degree $e$ and $\pi$ is a uniformiser, $1,\pi,\dots,\pi^{e-1}$
 is a basis (\Cref{thm:local:ef}), so $L=K(\pi)$ has degree $e$. The conjugates of $\pi$ in a normal closure have absolute value $\abs\pi<1$
@@ -789,11 +832,13 @@ and $\pi^2=-3\zeta_3$; it is the $\pi$-adic completion of $\Z[\zeta_3]$.
 its constant term is $\Phi_{p^n}(1)=p$. The root $\zeta_{p^n}-1$ is then a uniformiser and $\mathcal O=\Z_p[\zeta_{p^n}-1]$ by \Cref{thm:local:eisenstein}. The
 Galois group embeds in $(\Z/p^n)^\times$ (\Cref{ch:galois}) and has order $\varphi(p^n)$; as $f=1$ the residue field is $\F_p$, on which every automorphism is trivial (so, once \Cref{sec:local:ram} defines inertia,
 the whole group is the inertia group, \Cref{prop:local:ramgroups}(i)).
-(ii) $\Phi_3(X+1)=X^2+3X+3$ is Eisenstein at $3$, and $\sqrt{-3}=2\zeta_3+1$. So $\Q_3(\zeta_3)=\Q_3(\sqrt{-3})$, of degree $2$, $X^2+X+1$ is irreducible
+(ii) $\Phi_3(X+1)=(X+1)^2+(X+1)+1=X^2+3X+3$ is Eisenstein at $3$, and $\sqrt{-3}=2\zeta_3+1$, because
+$(2\zeta_3+1)^2=4(\zeta_3^2+\zeta_3)+1=-4+1=-3$. So $\Q_3(\zeta_3)=\Q_3(\sqrt{-3})$, of degree $2$, $X^2+X+1$ is irreducible
 over $\Q_3$, the ring of integers is $\Z_3[\zeta_3-1]=\Z_3[\zeta_3]\simeq\Z_3[X]/(X^2+X+1)$, with uniformiser $\zeta_3-1=-\pi$; and
 $\pi^2=1-2\zeta_3+\zeta_3^2=-3\zeta_3$. Right exactness of $\otimes$ gives $\Z_3\otimes\Z[\zeta_3]\simeq\Z_3[X]/(X^2+X+1)$, and
 \Cref{thm:local:completion-numberfield}(ii) identifies this with the $\pi$-adic completion of $\Z[\zeta_3]$, $(\pi)$ being the only prime above $3$.
-(iii), (iv) are \Cref{thm:local:eisenstein}.
+(iii), (iv) are \Cref{thm:local:eisenstein}: all non-leading coefficients of $X^m-p$ and of $X^2-p^*$ are divisible by $p$, and the constant
+terms $-p$ and $-p^*=\mp p$ are not divisible by $p^2$. In (iv) the ramification index $2$ is prime to the odd $p$, so the extension is tame.
 \end{proof}
 
 \begin{paperlink}\label{pl:local:z3zeta3}
@@ -836,7 +881,10 @@ the statement for $F\otimes\Q_p$.
 \end{proof}
 
 For example $\Z[\zeta_3]\otimes\Z_3=\Z_3[\zeta_3]$ (ramified), $\Z[\zeta_3]\otimes\Z_7\simeq\Z_7\times\Z_7$ (split, \Cref{ex:local:hensel-examples}(c)), and
-$\Z[\zeta_3]\otimes\Z_2$ is the ring of integers of the unramified quadratic extension of $\Q_2$ (inert). For the coefficient field of a newform
+$\Z[\zeta_3]\otimes\Z_2$ is the ring of integers of the unramified quadratic extension of $\Q_2$ (inert). In each case
+$\Z[\zeta_3]\otimes\Z_p=\Z_p[X]/(X^2+X+1)$, and the three behaviours are read off from the reduction of $X^2+X+1$ modulo $p$: it is $(X-1)^2$ for $p=3$
+(one prime, $e=2$, $f=1$), it has the two distinct roots $2$, $4$ for $p=7$ (two primes, $e=f=1$), and it is irreducible for $p=2$, having no root
+in $\F_2$ (one prime, $e=1$, $f=2$, by \Cref{ex:local:hensel-examples}(g)). In all three, $\sum e_{\mathfrak p}f_{\mathfrak p}=2$, as (iii) requires. For the coefficient field of a newform
 and a prime $\lambda\mid\ell$ the theorem gives the complete discrete valuation ring $\mathcal O_\lambda$ used in \Cref{ch:hecke,ch:modgalrep}. This is
 the result that \Cref{ch:ant} stated and deferred here.
 
@@ -853,8 +901,10 @@ those of $f$ by less than $\delta$ has a root $\beta$ with $K(\beta)=K(\alpha)$.
 (i) Let $\sigma\in\Gal(\overline K/K(\beta))$. Since $\sigma$ is an isometry (\Cref{thm:local:extension-absval}), $\abs{\sigma\alpha-\beta}=\abs{\sigma(\alpha-\beta)}=\abs{\alpha-\beta}$, so
 $\abs{\sigma\alpha-\alpha}\le\max(\abs{\sigma\alpha-\beta},\abs{\beta-\alpha})=\abs{\alpha-\beta}<\abs{\alpha-\alpha_i}$ for $i\ge2$; as $\sigma\alpha$ is a conjugate, $\sigma\alpha=\alpha$.
 So $\alpha$ is fixed by $\Gal(\overline K/K(\beta))$ and lies in $K(\beta)$ (characteristic $0$). (ii) If the coefficients of $g-f$ are smaller than $\delta$,
-then $\abs{g(\alpha)}=\abs{g(\alpha)-f(\alpha)}<\delta\max(1,\abs\alpha)^d$. Writing $g=\prod_j(X-\beta_j)$ we get $\abs{\alpha-\beta_j}\le\abs{g(\alpha)}^{1/d}$ for some $j$,
-which is less than $\min_{i\ge2}\abs{\alpha-\alpha_i}$ for $\delta$ small. By (i), $K(\alpha)\subseteq K(\beta_j)$, and $[K(\beta_j):K]\le d$ gives equality.
+then $\abs{g(\alpha)}=\abs{g(\alpha)-f(\alpha)}<\delta\max(1,\abs\alpha)^d$, because $g-f=\sum_{i<d}b_iX^i$ with $\abs{b_i}<\delta$ and each
+$\abs{b_i\alpha^i}$ is at most $\abs{b_i}\max(1,\abs\alpha)^d$. Writing $g=\prod_{j=1}^d(X-\beta_j)$ over $\overline K$ we have
+$\abs{g(\alpha)}=\prod_j\abs{\alpha-\beta_j}$, so the smallest factor satisfies $\abs{\alpha-\beta_j}\le\abs{g(\alpha)}^{1/d}<\bigl(\delta\max(1,\abs\alpha)^d\bigr)^{1/d}$,
+which is less than $\min_{i\ge2}\abs{\alpha-\alpha_i}$ once $\delta$ is small enough. By (i), $K(\alpha)\subseteq K(\beta_j)$, and $[K(\beta_j):K]\le d$ gives equality.
 \end{proof}
 
 (Here $\overline K$ denotes $\Qbar_p$, an algebraic closure of $K$.)
@@ -947,13 +997,21 @@ it maps $\zeta\in\mu_{q^f-1}$ to the root of unity reducing to $\bar\zeta^q$, wh
 (iii) If $L$ is unramified with $f(L/K)=f$, the argument for uniqueness in (i) shows $L=K_f$. Subextensions are unramified since $e$ is
 multiplicative; and $K_f,K_{f'}\subseteq K_{ff'}$, so composita are unramified. For any finite $L$, the Teichm\"uller lifts give
 $\mu_{q^{f(L/K)}-1}\subset L$, so $K_{f(L/K)}\subseteq L$; if $K_{f'}\subseteq L$ then $\F_{q^{f'}}\subseteq k_L$, so $f'\mid f(L/K)$ and
-$\mu_{q^{f'}-1}\subseteq\mu_{q^{f(L/K)}-1}$; hence $L_0=K_{f(L/K)}$, and $f(L/L_0)=1$. (iv) $[K(\alpha):K]\ge f(K(\alpha)/K)\ge[k_K(\bar\alpha):k_K]=f=[L:K]$.
+$\mu_{q^{f'}-1}\subseteq\mu_{q^{f(L/K)}-1}$; hence $L_0=K_{f(L/K)}$, and $f(L/L_0)=1$. (iv) Let $f=[L:K]=f(L/K)$. The residue field of $K(\alpha)$
+contains $\bar\alpha$, hence $k_K(\bar\alpha)=k_L$, so $[K(\alpha):K]\ge f(K(\alpha)/K)\ge[k_K(\bar\alpha):k_K]=f=[L:K]$ (the first inequality is $ef=n$);
+as $K(\alpha)\subseteq L$, equality holds and $K(\alpha)=L$.
 \end{proof}
 
 \begin{definition}[maximal unramified extension]\label{def:local:qpur}
 $K^{\ur}=\bigcup_{f\ge1}K_f\subseteq\Qbar_p$. Equivalently $K^{\ur}=K(\mu_m:p\nmid m)$, since $\mu_m\subset K_f$ when $m\mid q^f-1$, which holds for $f$ the
 order of $q$ modulo $m$. For $K=\Q_p$ we write $\Q_p^{\ur}$.
 \end{definition}
+
+The point of passing to $K^{\ur}$ is that it removes the residue field from the picture: in $K^{\ur}$ every unit is an $m$-th power for every $m$
+prime to $p$ (\Cref{prop:local:qpur}(iv) below), so the only obstruction left to extracting roots is the valuation, and what remains of the Galois
+group is inertia. For example $\Q_7^{\ur}$ contains $\sqrt3$, since $3$ is not a square modulo $7$ but is one in $\F_{49}$, so $\Q_7(\sqrt3)$ is the
+quadratic unramified extension $K_2$ of $\Q_7$; and $\Q_2^{\ur}$ contains $\zeta_3$, with $f=2$ the order of $2$ modulo $3$, so $\Q_2(\zeta_3)=\Q_2(\sqrt{-3})$ is
+the unramified quadratic extension of $\Q_2$ (\Cref{prop:local:quadratic-ext}(iii)).
 
 \begin{proposition}\label{prop:local:qpur}
 \begin{enumerate}[label=(\roman*)]
@@ -1030,7 +1088,12 @@ $\Q_p(\mu_{p^\infty})\cap\Q_p^{\ur}=\Q_p$.
 \end{proposition}
 
 \begin{proof}
-(i) $\mu_{\ell^k}\subset\Q_{p,f}$ iff $\ell^k\mid p^f-1$; the rest is \Cref{thm:local:unramified}(ii). (ii) \Cref{prop:local:z3zeta3}(i): the image of $I_p$ in
+(i) Write $\Q_{p,f}$ for the unramified extension of degree $f$. Its residue field is $\F_{p^f}$, so $\mu_{\ell^k}\subset\Q_{p,f}$ iff $\ell^k\mid p^f-1$
+(\Cref{cor:local:roots-of-unity}), that is iff $f$ is a multiple of the order $f_0$ of $p$ in $(\Z/\ell^k)^\times$. The field $\Q_p(\mu_{\ell^k})$ is contained in
+$\Q_{p,f_0}=\Q_p(\mu_{p^{f_0}-1})$, hence unramified (\Cref{thm:local:unramified}(iii)), so it is some $\Q_{p,f}$ with $f\mid f_0$; it contains $\mu_{\ell^k}$, so
+$f_0\mid f$, and $f=f_0$. By \Cref{thm:local:unramified}(ii) $\Frob$ acts on roots of unity of order prime to $p$ by $\zeta\mapsto\zeta^p$; as
+$\chi_\ell$ is defined by $\sigma(\zeta)=\zeta^{\chi_\ell(\sigma)}$ on $\mu_{\ell^\infty}$, $\chi_\ell(\Frob)=p$, and $\chi_\ell$ is trivial on $I_p$, which fixes
+$\Q_p^{\ur}\supset\mu_{\ell^\infty}$. For $K$ with residue field $\F_q$ the same argument gives $\zeta\mapsto\zeta^q$. (ii) \Cref{prop:local:z3zeta3}(i): the image of $I_p$ in
 $\Gal(\Q_p(\mu_{p^n})/\Q_p)$ is the inertia group, which is everything; so $\chi_p(I_p)$ is dense in $\Z_p^\times$, and closed. An extension that is both
 unramified and totally ramified is trivial. (iii) follows from (i).
 \end{proof}
@@ -1062,6 +1125,12 @@ G_i=\{\sigma\in G:\ v_L(\sigma(x)-x)\ge i+1\text{ for all }x\in\mathcal O_L\}.
 \]
 $G_0=I(L/K)$ is the \emph{inertia group} and $G_1=P(L/K)$ the \emph{wild inertia group} of $L/K$.
 \end{definition}
+
+The index $i$ measures how close $\sigma$ is to the identity: $\sigma\in G_i$ means that $\sigma$ moves every integer of $L$ by something divisible by
+$\pi^{i+1}$. Every $\sigma$ lies in $G_{-1}$; $\sigma\in G_0$ means that $\sigma$ acts trivially on the residue field $\mathcal O_L/\mathfrak m_L$; and the higher
+$G_i$ refine this. For $L=\Q_3(\sqrt{-3})$ and the nontrivial $\sigma$, the uniformiser $\pi=\sqrt{-3}$ is moved by $\sigma\pi-\pi=-2\sqrt{-3}$, of
+valuation $1$; by \Cref{prop:local:ramgroups}(i) below this places $\sigma$ in $G_0$ but not in $G_1$. Wild ramification is the case in which some
+$\sigma\ne1$ moves everything by at least $\pi^2$, and it can happen only when $p$ divides $e$.
 
 \begin{proposition}\label{prop:local:ramgroups}
 Let $L/K$ be finite Galois with group $G$, $\pi$ a uniformiser of $L$, $L_0$ the largest unramified subextension and $e=e(L/K)$.
@@ -1102,11 +1171,13 @@ $p$.
 
 \begin{example}[ramification groups of quadratic extensions]\label{ex:local:ramgroups}
 Let $L/K$ be a ramified quadratic extension with $\mathcal O_L=\mathcal O_K[\pi]$, $G=\{1,\sigma\}$. By \Cref{prop:local:ramgroups}(i), $\sigma\in G_i$ iff
-$v_L(\sigma\pi-\pi)\ge i+1$.
+$v_L(\sigma\pi-\pi)\ge i+1$. In (a) to (c), $K=\Q_2$ and $e=2$, so $v_L=2v_2$ on $\Q_2$; in particular $v_L(2)=2$, and
+$v_L(\sqrt d)=\frac12v_L(d)=v_2(d)$: $\sqrt d$ is a unit if $d$ is odd and a uniformiser if $v_2(d)=1$.
 \begin{enumerate}[label=(\alph*)]
-\item $\Q_2(i)$: $\pi=1+i$ (a root of the Eisenstein polynomial $X^2-2X+2$), $\sigma\pi-\pi=-2i$ has $v_L=2$; so $G_0=G_1=G$, $G_2=1$.
-\item $\Q_2(\sqrt3)=\Q_2(\sqrt{-5})$: $\pi=1+\sqrt3$ (root of $X^2-2X-2$), $\sigma\pi-\pi=-2\sqrt3$ has $v_L=2$; again $G_1=G$, $G_2=1$.
-\item $\Q_2(\sqrt d)$ for $d\in\{\pm2,\pm10\}$: $\pi=\sqrt d$ (root of $X^2-d$), $\sigma\pi-\pi=-2\sqrt d$ has $v_L=3$; so $G_0=G_1=G_2=G$, $G_3=1$.
+\item $\Q_2(i)$: $\pi=1+i$ (a root of the Eisenstein polynomial $(X-1)^2+1=X^2-2X+2$), $\sigma\pi-\pi=(1-i)-(1+i)=-2i$ has $v_L=v_L(2)=2$, $i$ being a unit; so $G_0=G_1=G$, $G_2=1$.
+\item $\Q_2(\sqrt3)=\Q_2(\sqrt{-5})$ (since $-5/3=-15/9$ and $-15\equiv1\pmod8$ is a square in $\Q_2$, \Cref{ex:local:hensel-examples}(d)): $\pi=1+\sqrt3$ (root of
+$(X-1)^2-3=X^2-2X-2$), $\sigma\pi-\pi=-2\sqrt3$ has $v_L=2$; again $G_1=G$, $G_2=1$.
+\item $\Q_2(\sqrt d)$ for $d\in\{\pm2,\pm10\}$: $\pi=\sqrt d$ (root of the Eisenstein polynomial $X^2-d$, as $v_2(d)=1$), $\sigma\pi-\pi=-2\sqrt d$ has $v_L=2+1=3$; so $G_0=G_1=G_2=G$, $G_3=1$.
 \item $\Q_p(\sqrt{p^*})$, $p$ odd, and $\Q_3(\sqrt{-3})$: $e=2$ is prime to $p$, so $G_1=1$. Likewise $\Q_p(\zeta_p)/\Q_p$ ($e=p-1$) is tame.
 \end{enumerate}
 These are the wildly ramified quadratic extensions of $\Q_2$ (\Cref{prop:local:quadratic-ext}(iii)); their conductor exponents are computed in
@@ -1327,14 +1398,18 @@ is wild at $p=3$, because $I_K/P_K$ has no quotient of order $3$, and tame at $p
 
 \begin{example}[the tame relation at a finite level]\label{ex:local:tame-explicit}
 Let $\ell\ne q$ be primes, $m=\ell^k$, and $L=\Q_q(\mu_m,q^{1/m})$. Fix a primitive $\zeta\in\mu_m$. An element $\sigma\in\Gal(L/\Q_q)$ is determined by $(a,b)$ with
-$\sigma(\zeta)=\zeta^a$, $\sigma(q^{1/m})=\zeta^bq^{1/m}$, and $\sigma_{a,b}\sigma_{a',b'}=\sigma_{aa',ab'+b}$: the group is a subgroup of the affine group of $\Z/m$
-(\Cref{ch:galois}). Since $\Q_q(\mu_m)$ is unramified with group generated by $\zeta\mapsto\zeta^q$, and $X^m-q$ is Eisenstein over it, the group is
-$\{(a,b):a\in\langle q\rangle\subseteq(\Z/m)^\times,\ b\in\Z/m\}$, of order $m\cdot\#\langle q\rangle$. The inertia group is $\{a=1\}$, generated by $t=\sigma_{1,1}$, and
-$t_\ell\bmod m$ is $\sigma_{1,b}\mapsto\zeta^b$. The element $\Frob=\sigma_{q,0}$ is a Frobenius fixing $q^{1/m}$. Then
+$\sigma(\zeta)=\zeta^a$, $\sigma(q^{1/m})=\zeta^bq^{1/m}$, and $\sigma_{a,b}\sigma_{a',b'}=\sigma_{aa',ab'+b}$, because
+$\sigma_{a,b}(\zeta^{b'}q^{1/m})=\zeta^{ab'}\zeta^bq^{1/m}$: the group is a subgroup of the affine group of $\Z/m$
+(\Cref{ch:galois}). Since $\Q_q(\mu_m)$ is unramified with group generated by $\zeta\mapsto\zeta^q$, the values of $a$ are exactly the powers of $q$; and
+$X^m-q$ is Eisenstein over $\Q_q(\mu_m)$, hence irreducible, so each automorphism of $\Q_q(\mu_m)$ has $m$ extensions to $L$, one for each value of $b$. So the group is
+$\{(a,b):a\in\langle q\rangle\subseteq(\Z/m)^\times,\ b\in\Z/m\}$, of order $m\cdot\#\langle q\rangle$. The inertia group fixes the unramified field
+$\Q_q(\mu_m)$, so it is contained in $\{a=1\}$, and it has order $e=m$ (\Cref{prop:local:ramgroups}(i)); so it is $\{a=1\}$, generated by $t=\sigma_{1,1}$, and
+$t_\ell\bmod m$ is $\sigma_{1,b}\mapsto\zeta^b$ (as $\sigma_{1,b}^n=\sigma_{1,nb}$). The element $\Frob=\sigma_{q,0}$ is a Frobenius fixing $q^{1/m}$. Then
 \[
 \Frob\,t\,\Frob^{-1}=\sigma_{q,q}\sigma_{q',0}=\sigma_{1,q}=t^q,\qquad\Frob^{-1}t\,\Frob=\sigma_{q',q'}\sigma_{q,0}=\sigma_{1,q'}=t^{q'},
 \]
-where $qq'\equiv1\pmod m$.
+where $qq'\equiv1\pmod m$; here $\Frob^{-1}=\sigma_{q',0}$, since $\sigma_{q,0}\sigma_{q',0}=\sigma_{1,0}$, and the first product is
+$\Frob\,t=\sigma_{q,0}\sigma_{1,1}=\sigma_{q,q}$ followed by $\sigma_{q,q}\sigma_{q',0}=\sigma_{qq',q\cdot0+q}=\sigma_{1,q}$.
 For $(q,\ell,k)=(7,3,2)$ these are $t^7$ and $t^4$; for $(13,3,2)$, $t^4$ and $t^7$; for $(2,3,2)$, $t^2$ and $t^5$ (all checked by composing the pairs).
 \end{example}
 
@@ -1423,6 +1498,11 @@ $\min(v_\ell(a),v,v_\ell(c'))$. Changing the identification $\Z_\ell(1)\simeq\Z_
 $t_\ell$ is surjective, the image of $I_K$ is the subgroup of $\mu_{\ell^k}$ generated by $\zeta^a$, of order $\ell^{k-\min(k,v_\ell(a))}$, which is trivial iff
 $\ell^k\mid a$. The last statement is also \Cref{prop:local:qpur}(iv).
 \end{proof}
+
+A small case shows (iii) at work. Take $K=\Q_7$, $\ell=3$, so $v=v_3(6)=1$ and $N=(q-1)/\ell^v=2$, and $x=u=2$. Then $\bar u^N=4$, a primitive cube root
+of unity in $\F_7$ ($4^3=64\equiv1$), so the class of $\kappa_2$ in $\Z_3(1)/(q-1)\Z_3(1)\simeq\mu_3$ is nontrivial: $\kappa_2$ is not a coboundary, and $2$ is not
+a cube in $\Q_7$, in agreement with \Cref{ex:local:powers-examples}(a). For $x=u=6$ instead, $\bar u^N=36\equiv1$, and $\kappa_6$ is a coboundary, matching
+the fact that $6\equiv-1=(-1)^3$ is a cube.
 
 \begin{paperlink}\label{pl:local:kummer}
 \emph{Lemma lem:tamagawa-exp.} Over $\Q_q^{\ur}$ (or already over the unramified quadratic extension, where the curve is a Tate curve) the
@@ -1670,9 +1750,17 @@ extension $F$ of $E_\lambda$, and $A$ is first defined on $V\otimes F$; it is de
 $\Gal(F/E_\lambda)$. This is possible: if $\gamma\in\Gal(F/E_\lambda)$ maps an orbit to itself, then $\gamma(\lambda_0)=\lambda_0q^{-kj}$ for some $j$, and since
 $\gamma$ has finite order $m$, $\lambda_0=\gamma^m(\lambda_0)=\lambda_0q^{-kjm}$, so $j=0$. Choosing one $\lambda_0$ in each $\Gal(F/E_\lambda)$-orbit of orbits and
 $\gamma(\lambda_0)$ for its transforms is therefore well defined, and then $\gamma$ maps $V_{\lambda_0q^{-kj}}\otimes F$ semilinearly onto
-$V_{\gamma(\lambda_0)q^{-kj}}\otimes F$, so $A$ commutes with $\Gal(F/E_\lambda)$ and descends to $E_\lambda$ (as $a\in\Z_\ell^\times\subseteq E_\lambda$). If $\Phi$ is replaced by $\Phi'=\Phi\sigma_0$, a direct computation
-gives $r'(w)=r(w)\exp\bigl(t_\zeta(\sigma_0)\frac{q^n-1}{q-1}N\bigr)$ for $w=\Phi'^n\sigma$, and $B=\exp\bigl(-\frac{t_\zeta(\sigma_0)}{q-1}N\bigr)$ satisfies $B^{-1}r(w)B=r'(w)$ and commutes with $N$
-(use $r(w)^{-1}Nr(w)=q^nN$); so $(r',N)\simeq(r,N)$. (iii), (iv) We do not prove these; see Deligne \cite[Section 8]{Deligne73}, Tate \cite[Section 4.2]{Tate79}
+$V_{\gamma(\lambda_0)q^{-kj}}\otimes F$, so $A$ commutes with $\Gal(F/E_\lambda)$ and descends to $E_\lambda$ (as $a\in\Z_\ell^\times\subseteq E_\lambda$). If $\Phi$ is replaced by $\Phi'=\Phi\sigma_0$ ($\sigma_0\in I_K$), write
+$\Phi'^n=\Phi^n\tau_n$ with $\tau_n\in I_K$ and put $c_n=t_\zeta(\tau_n)$. From $\Phi'^{n+1}=\Phi^n\tau_n\Phi\sigma_0=\Phi^{n+1}(\Phi^{-1}\tau_n\Phi)\sigma_0$ and
+$t_\zeta(\Phi^{-1}\tau_n\Phi)=\chi_\ell(\Phi^{-1})c_n=qc_n$ (\Cref{thm:local:tame-relation}(i)) we get $c_{n+1}=qc_n+t_\zeta(\sigma_0)$, with $c_0=0$; this recursion
+determines $c_n$ for all $n\in\Z$ (it can be run backwards), and $c_n=t_\zeta(\sigma_0)\frac{q^n-1}{q-1}$ satisfies it. For $w=\Phi'^n\sigma=\Phi^n\tau_n\sigma$ the two
+definitions give $r'(w)=\rho(w)\exp(-t_\zeta(\sigma)N)$ and $r(w)=\rho(w)\exp(-(c_n+t_\zeta(\sigma))N)$, so
+$r'(w)=r(w)\exp\bigl(t_\zeta(\sigma_0)\frac{q^n-1}{q-1}N\bigr)$. Put $c=t_\zeta(\sigma_0)/(q-1)\in\Q_\ell$ and $B=\exp(-cN)$, which commutes with $N$. Since
+$\norm w=q^{-n}$, $r(w)^{-1}Nr(w)=q^nN$, hence $r(w)^{-1}\exp(cN)r(w)=\exp(cq^nN)$ and
+\[
+B^{-1}r(w)B=r(w)\cdot r(w)^{-1}\exp(cN)r(w)\cdot\exp(-cN)=r(w)\exp\bigl(c(q^n-1)N\bigr)=r'(w);
+\]
+so $B$ is an isomorphism $(r',N)\simeq(r,N)$. (iii), (iv) We do not prove these; see Deligne \cite[Section 8]{Deligne73}, Tate \cite[Section 4.2]{Tate79}
 and Rohrlich \cite{Rohrlich94}; (iv) for elliptic curves follows from the description of $V_\ell E$ in \Cref{ch:reduction,ch:galrep}.
 \end{proof}
 
@@ -1712,7 +1800,8 @@ the twist by $\varepsilon$ of the Kummer representation $\sm{\chi_\ell}{\kappa_x
 corner $\kappa_x$ and diagonal $\chi_\ell\varepsilon,\varepsilon$ is not a homomorphism unless $\varepsilon=1$.)
 \begin{enumerate}[label=(\roman*)]
 \item On $I_K$, $\rho(\sigma)=\sm{1}{a\,t_\zeta(\sigma)}{0}{1}=\exp(t_\zeta(\sigma)N)$ with $N=aE_{12}$ ($Ne_2=ae_1$, $Ne_1=0$), by \Cref{thm:local:kummer-inertia}(ii); here $I_1=I_K$, and
-$N\ne0$ iff $a\ne0$. With $\rho(\Frob)=\sm{\varepsilon q}{c'}{0}{\varepsilon}$ one checks $\rho(\Frob)N\rho(\Frob)^{-1}=qN$.
+$N\ne0$ iff $a\ne0$. With $\rho(\Frob)=\sm{\varepsilon q}{c'}{0}{\varepsilon}$ one checks $\rho(\Frob)N\rho(\Frob)^{-1}=qN$: for an upper triangular
+$g=\sm{x}{y}{0}{z}$ one has $gE_{12}=xE_{12}$ and $E_{12}g=zE_{12}$, so $gE_{12}g^{-1}=(x/z)E_{12}$, and here $x/z=\varepsilon q/\varepsilon=q$.
 \item If $a\ne0$: $r$ is unramified, $r(\Phi)=\rho(\Frob)^{-1}$ has the distinct eigenvalues $\varepsilon q^{-1}$ (on $e_1$) and $\varepsilon$ (on the quotient), with $\varepsilon=\varepsilon(\Frob)$, so
 $\WD(\rho)\simeq\Sp(2)\otimes\mu_\varepsilon$ with $\mu_\varepsilon$ unramified, $\mu_\varepsilon(\Phi)=\varepsilon(\Frob)$ (\Cref{prop:local:sp}(ii)). Moreover $V^{I_K}=\Q_\ell e_1$, on which $\Phi$ acts by
 $\varepsilon q^{-1}$ and $\Frob$ by $\varepsilon q$.
@@ -1922,8 +2011,12 @@ the last formula when $\alpha+\beta=a$ and $\alpha\beta=q$.
 $N=0$ since $\rho(I_q)=1$ is finite, and $a=0$ by \Cref{prop:local:conductor}(ii). The eigenvalues of $\Phi$ on $V$ are $\alpha^{-1},\beta^{-1}$. If $\Frob$ has eigenvectors
 $v_1,v_2$ (over an extension of $\Omega$, or after triangularising), it acts on $v_i\otimes v_j^\vee$ by $\alpha_i/\alpha_j$; the trace-zero part has eigenvalues $\alpha/\beta$,
 $1$, $\beta/\alpha$, a set stable under inversion. For $s=1$, $(1-\frac\alpha{\beta q})(1-\frac\beta{\alpha q})=1-\frac{\alpha^2+\beta^2}{\alpha\beta q}+\frac1{q^2}=1-\frac{a^2-2q}{q^2}+\frac1{q^2}=\frac{(q+1)^2-a^2}{q^2}$
-(\Cref{ch:rings}).
+(\Cref{ch:rings}), using $\alpha^2+\beta^2=(\alpha+\beta)^2-2\alpha\beta=a^2-2q$; the middle factor contributes $1-q^{-1}=\frac{q-1}q$.
 \end{proof}
+
+For example, \curve{11a1} has good reduction at $2$ with $a_2=-2$ (PARI, \texttt{ellap}), so $L_2(A,1)^{-1}=\frac12\cdot\frac{9-4}4=\frac58$. Note that
+$(q+1)^2-a^2=(q+1-a)(q+1+a)$, and $q+1-a$ is the number of points of the reduced curve over $\F_q$ (\Cref{ch:ellcurves}); here
+$\#\tilde E(\F_2)=5$, and the factor $5$ in $\frac58$ is that count.
 
 \begin{proposition}[finite cyclic tame image of inertia]\label{prop:local:tame-cyclic-shape}
 Suppose $\rho(I_q)$ is cyclic of order $m\in\{2,3,4,6\}$ with $q\nmid m$, generated by $g$. Then $N=0$, the ramification is tame, and:
@@ -2082,7 +2175,9 @@ expansion $1+2\cdot7+1\cdot7^2+2\cdot7^3+\cdots$ (digits $1,2$ repeated)? (Answe
 \begin{exercise}\label{ex:local:ex-not-iso}
 (a) Show that $\Q_p$ is not algebraically closed. (b) Show that $u\in\Q_p^\times$ lies in $\Z_p^\times$ iff $u$ is an $m$-th power for infinitely many integers $m\ge1$
 (use \Cref{thm:local:powers} and \Cref{thm:local:units-structure}). (c) Deduce that every field isomorphism $\Q_p\to\Q_{p'}$ maps $\Z_p^\times$ onto $\Z_{p'}^\times$, and
-that $\Q_p\not\simeq\Q_{p'}$ as fields for $p\ne p'$.
+that $\Q_p\not\simeq\Q_{p'}$ as fields for $p\ne p'$. (Hints: (a) $X^2-p$. (b) A unit is $[\bar u]u_1$, and $u_1$ is an $m$-th power for every $m$ prime
+to $p$; an $m$-th power $x$ has $m\mid v_p(x)$. (c) The characterisation in (b) uses only the field structure. A field isomorphism is the identity on $\Q$, and
+$p\notin\Z_p^\times$ while $p\in\Z_{p'}^\times$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-hensel}
@@ -2093,17 +2188,23 @@ $324$.)
 
 \begin{exercise}\label{ex:local:ex-q2}
 For $d\in\{-7,6,14,-15,17,-3,13\}$ decide whether $\Q_2(\sqrt d)$ is $\Q_2$, the unramified quadratic extension, or ramified, and in the last case give the
-conductor exponent of its character. Compare with the $2$-adic valuation of the discriminant of $\Q(\sqrt d)$.
+conductor exponent of its character. Compare with the $2$-adic valuation of the discriminant of $\Q(\sqrt d)$. (Answer: $\Q_2$ for $-7$, $-15$, $17$
+($d\equiv1\pmod8$); unramified for $-3$, $13$ ($d\equiv5\pmod8$); ramified with conductor exponent $3$ for $6\in-10(\Q_2^\times)^2$ and
+$14\in-2(\Q_2^\times)^2$. The discriminants $-7,24,56,-15,17,-3,13$ have $2$-adic valuations $0,3,3,0,0,0,0$: in every case the conductor exponent.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-pth-powers}
 Let $p$ be odd. (a) Show that $(1+p\Z_p)^p=1+p^2\Z_p$ and that $\Q_p^\times/(\Q_p^\times)^p\simeq(\Z/p)^2$. (b) Compare with the formula
 $\#K^\times/(K^\times)^{\ell^k}=\ell^k\cdot\#\mu_{\ell^k}(K)$ of \Cref{thm:local:powers}(iv), valid for $\ell\ne p$; which factor is missing when $\ell=p$? (c) Show that $\log$ is not
-injective on $1+2\Z_2$, and explain why this does not contradict \Cref{thm:local:units-structure}(ii).
+injective on $1+2\Z_2$, and explain why this does not contradict \Cref{thm:local:units-structure}(ii). (Hints: (a) $\log$ carries $1+p\Z_p$ onto $p\Z_p$ and
+$p$-th powers to $p\Z_p\cdot p=p^2\Z_p$. (b) The factor coming from the $\Z_p$ in $\Z_p^\times\simeq\Z/(p-1)\times\Z_p$; for $\ell\ne p$ the corresponding $U^{(1)}$ is
+$\ell$-divisible. (c) $\log(-1)=\frac12\log((-1)^2)=0$; the theorem concerns $1+4\Z_2$ only.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-cubes13}
 Determine $\Q_{13}^\times/(\Q_{13}^\times)^3$ and $\Q_{13}^\times/(\Q_{13}^\times)^9$, and decide which of $2$, $3$, $5$, $8$, $65$ are cubes in $\Q_{13}$.
+(Answer: $\Z/3\times\Z/3$ and $\Z/9\times\Z/3$, as $v_3(12)=1$. The cubes of $\F_{13}^\times$ are $\{1,5,8,12\}$, so $5$ and $8$ are cubes; $2$ and $3$ are not;
+$65=13\cdot5$ is not, as $3\nmid v_{13}(65)$.)
 \end{exercise}
 
 \begin{exercise}\label{ex:local:ex-11a1}

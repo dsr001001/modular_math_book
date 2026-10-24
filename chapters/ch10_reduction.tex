@@ -257,6 +257,15 @@ $\Delta_{\min}$, well defined up to $\mathcal O^\times$. For a minimal model the
 $\omega=dx/(2y+a_1x+a_3)$ is the \emph{N\'eron differential}.
 \end{definition}
 
+The reason for minimising is that the reduction of a model modulo $\varpi$ depends on the model, and a careless choice
+of coordinates makes a perfectly good curve look singular. Let $p\ge5$ and take $y^2=x^3+x+1$ over $\Q_p$; its
+discriminant is $-16\cdot31=-496$, so for $p\ne31$ it reduces to a smooth cubic. The change $(p^{-1},0,0,0)$ multiplies
+$a_i$ by $p^i$ and gives the integral model $y^2=x^3+p^4x+p^6$ of the same curve, with discriminant $p^{12}\cdot(-496)$;
+it reduces to the cuspidal cubic $y^2=x^3$. Since $u^{12}\Delta'=\Delta$, the valuations $v(\Delta)$ of the integral
+models of $E$ all lie in one class modulo $12$, and a change of coordinates can only add multiples of $12$. Minimising
+removes these spurious factors $\varpi^{12}$, and \Cref{prop:reduction:minimal-basic} below shows that what is left (the
+reduction of a minimal model, up to a change of coordinates over $k$) depends only on $E$.
+
 \begin{proposition}[existence and uniqueness of minimal models]\label{prop:reduction:minimal-basic}
 Let $E/K$ be an elliptic curve.
 \begin{enumerate}[label=(\roman*)]
@@ -318,7 +327,10 @@ inequalities in the hypothesis contradicts one of these.
 
 (ii) By (i) the condition is sufficient. Conversely let $v(c_4)\ge4$ and $v(\Delta)\ge12$. From
 $c_6^2=c_4^3-1728\Delta$ we get $v(c_6^2)\ge12$, so $v(c_6)\ge6$. The curve has the model $y^2=x^3-27c_4x-54c_6$
-(\Cref{ch:ellcurves}), whose discriminant is $6^{12}\Delta$; applying $(\varpi,0,0,0)$ to it gives
+(\Cref{ch:ellcurves}), whose discriminant is $6^{12}\Delta$. (For a short model $y^2=x^3+Ax+B$ one has $b_2=0$, $b_4=2A$,
+$b_6=4B$, hence $c_4=-48A$ and $c_6=-864B$; with $A=-27c_4$, $B=-54c_6$ this gives the invariants $1296c_4=6^4c_4$ and
+$46656c_6=6^6c_6$, so the short model is obtained by a change $(u,r,s,t)$ with $u=1/6$, and its discriminant is
+$u^{-12}\Delta=6^{12}\Delta$.) Applying $(\varpi,0,0,0)$ to it gives
 $y^2=x^3-27\varpi^{-4}c_4x-54\varpi^{-6}c_6$, which is integral, with discriminant $6^{12}\varpi^{-12}\Delta$. As
 $p\ge5$, $6$ is a unit and the valuation is $v(\Delta)-12$. So the model was not minimal. Each step lowers
 $v(\Delta)$ by $12$, so the process stops.
@@ -333,6 +345,12 @@ We checked (iii) on the data: $20{,}000$ random integral models with coefficient
 Kraus's conditions, and in all $8{,}248$ pairs (curve, $p\in\{2,3\}$) of Cremona's tables below conductor
 $10{,}000$ whose minimal model has $p^4\mid c_4$, $p^6\mid c_6$, $p^{12}\mid\Delta$, the scaled invariants fail
 the condition at $p$, as they must.
+
+Part (i) is only a sufficient condition when $p\in\{2,3\}$, and (iii) is what replaces the converse of (ii) there. For
+example \curve{32a1} is $y^2=x^3+4x$, with $c_4=-48\cdot4=-2^6\cdot3$, $c_6=0$ and $\Delta=-16\cdot4\cdot4^3=-2^{12}$: all three
+valuations at $2$ reach the thresholds of (i), and yet the model is minimal at $2$. Indeed a model with smaller
+discriminant would come from $(2,r,s,t)$ and have invariants $c_4/2^4=-12$, $c_6/2^6=0$ and $\Delta/2^{12}=-1$; these fail
+Kraus's condition at $2$ ($0\not\equiv-1\pmod4$, and $v_2(-12)=2<4$), so no integral model has them.
 
 \begin{theorem}[global minimal models]\label{thm:reduction:global-minimal}
 Every elliptic curve $E/\Q$ has a model with coefficients in $\Z$ that is minimal at every prime $p$. It is
@@ -428,8 +446,16 @@ multiplicity at least $2$, hence in at most one further point. So the chord-tang
 a smooth cubic (\Cref{ch:ellcurves}), stays inside $\tilde E_{\mathrm{ns}}$; associativity can be checked as in the
 smooth case, and also follows from the isomorphisms below, which we now construct.
 
-(i) Translate $S$ to $(0,0)$; the cusp has a single tangent direction, which a further change of coordinates
-makes the line $y=0$, and the curve becomes $Y^2Z=X^3$ in projective coordinates. Its points other than
+In both cases we first translate $S$ to $(0,0)$ (a change $(1,r,0,t)$ over $k$; $S$ is $k$-rational). Then $\tilde a_6=0$
+because $(0,0)$ lies on the curve, and $\tilde a_4=\tilde a_3=0$ because the partial derivatives
+$\partial F/\partial x=a_1y-3x^2-2a_2x-a_4$ and $\partial F/\partial y=2y+a_1x+a_3$ of
+$F=y^2+a_1xy+a_3y-x^3-a_2x^2-a_4x-a_6$ vanish at $(0,0)$. So the equation is $y^2+a_1xy-a_2x^2=x^3$, and the quadratic
+form $y^2+a_1xy-a_2x^2$ is the tangent cone at $S$: a product of two distinct linear forms at a node, a square at a cusp.
+
+(i) At a cusp the quadratic part is $(y-\alpha x)^2$, with $\alpha=-a_1/2$ if $\operatorname{char}k\ne2$; if $\operatorname{char}k=2$
+then $a_1=0$ (the discriminant $a_1^2+4a_2=a_1^2$ vanishes) and $\alpha=\sqrt{a_2}$, which lies in $k$ because $k$ is perfect.
+The change $y\mapsto y+\alpha x$ makes the single tangent direction the line $y=0$, and the curve becomes $y^2=x^3$, that
+is, $Y^2Z=X^3$ in projective coordinates. Its points other than
 $S=[0:0:1]$ have $Y\ne0$ and are $[t:1:t^3]$, $t\in k$, with $\tilde O=[0:1:0]$ at $t=0$. A line
 $\alpha X+\beta Y+\gamma Z=0$ not through $S$ has $\gamma\ne0$ and meets the curve at the points with
 $\gamma t^3+\alpha t+\beta=0$, counted with multiplicity. The coefficient of $t^2$ is $0$, so the three values
@@ -437,17 +463,22 @@ of $t$ add up to $0$. Three points add up to $\tilde O$ in the group law exactly
 of a line with the curve, so $P\mapsto t(P)$ is a homomorphism $\tilde E_{\mathrm{ns}}(k)\to k^+$, and it is
 bijective.
 
-(ii) Translate $S$ to $(0,0)$. The equation becomes $y^2+a_1xy-a_2x^2=x^3$ (with $\tilde a_3=\tilde a_4=\tilde a_6=0$),
-and the quadratic part factors as $(y-\alpha x)(y-\beta x)$ with $\alpha\ne\beta$ the roots of $T^2+a_1T-a_2$; split
-means $\alpha,\beta\in k$. A nonsingular point $P\ne\tilde O$ lies on the line $y=\lambda x$ through $S$ with
-$\lambda=y/x$, and then $x=(\lambda-\alpha)(\lambda-\beta)$, $y=\lambda x$; so $P\mapsto\lambda$ is a bijection from
+(ii) With $S$ at $(0,0)$ as above, the quadratic part factors as $(y-\alpha x)(y-\beta x)$ with $\alpha\ne\beta$ the roots of
+$T^2+a_1T-a_2$; split means $\alpha,\beta\in k$. A nonsingular point $P\ne\tilde O$ has $x\ne0$ (the only point of the curve
+with $x=0$ is $S$, as $y^2=0$ there), so it lies on the line $y=\lambda x$ through $S$ with $\lambda=y/x$. Substituting
+$y=\lambda x$ in the equation gives $x^2(\lambda^2+a_1\lambda-a_2)=x^3$, so $x=(\lambda-\alpha)(\lambda-\beta)$ and $y=\lambda x$;
+conversely every $\lambda\in k\setminus\{\alpha,\beta\}$ gives such a point. So $P\mapsto\lambda$ is a bijection from
 $\tilde E_{\mathrm{ns}}(k)\setminus\{\tilde O\}$ to $k\setminus\{\alpha,\beta\}$, and $\tilde O$ corresponds to
 $\lambda=\infty$. Put $\phi(P)=(\lambda-\alpha)/(\lambda-\beta)$ and $\phi(\tilde O)=1$; this is a bijection onto
 $k^\times$. A line $y=mx+c_0$ with $c_0\ne0$ meets the curve at the points with $\lambda x=mx+c_0$, that is, at the
-roots of $(\lambda-\alpha)(\lambda-\beta)(\lambda-m)-c_0=\prod_{i=1}^3(\lambda-\lambda_i)$. Evaluating at $\lambda=\alpha$
-and at $\lambda=\beta$ gives $\prod(\alpha-\lambda_i)=-c_0=\prod(\beta-\lambda_i)$, so $\prod_i\phi(P_i)=1$. A vertical line
-$x=x_0$ meets the curve at $\tilde O$ and at the two roots of $(\lambda-\alpha)(\lambda-\beta)-x_0$, and the same
-evaluation gives $\phi(P_1)\phi(P_2)=1=\phi(\tilde O)^{-1}$. So $\phi$ is a homomorphism to $k^\times$.
+roots of $(\lambda-\alpha)(\lambda-\beta)(\lambda-m)-c_0=\prod_{i=1}^3(\lambda-\lambda_i)$ (the line does not pass through
+$S$, which is why $c_0\ne0$). Evaluating at $\lambda=\alpha$ and at $\lambda=\beta$ gives $\prod(\alpha-\lambda_i)=-c_0=\prod(\beta-\lambda_i)$,
+hence $\prod_i(\lambda_i-\alpha)=c_0=\prod_i(\lambda_i-\beta)$, and dividing, $\prod_i\phi(P_i)=1$. A vertical line
+$x=x_0$ ($x_0\ne0$) meets the curve at $\tilde O$ and at the two roots of $(\lambda-\alpha)(\lambda-\beta)-x_0$, and the same
+evaluation gives $\phi(P_1)\phi(P_2)=1=\phi(\tilde O)^{-1}$. So in all cases three collinear points have
+$\phi(P_1)\phi(P_2)\phi(P_3)=1$. Since $P$, $-P$, $\tilde O$ are collinear, $\phi(-P)=\phi(P)^{-1}$; and if $P,Q,R$ are collinear then
+$P+Q=-R$, so $\phi(P+Q)=\phi(R)^{-1}=\phi(P)\phi(Q)$. So $\phi$ is a homomorphism to $k^\times$. (The same two lines, with sums in
+place of products, turn ``the three values of $t$ add up to $0$'' into the homomorphism property in (i).)
 
 (iii) Apply (ii) over $l$, where $\alpha,\beta$ are conjugate under the generator $\sigma$ of $\Gal(l/k)$. For a point
 $P$ with slope $\lambda\in l$, the conjugate point has slope $\sigma(\lambda)$, and
@@ -515,6 +546,12 @@ E_0(K)=\{P\in E(K):\tilde P\in\tilde E_{\mathrm{ns}}(k)\},\qquad E_1(K)=\{P\in E
 \]
 \end{definition}
 
+The point of the definition is that reduction is a group homomorphism only where it lands in a group: $\tilde E(k)$ is not a
+group when $\tilde E$ is singular, but $\tilde E_{\mathrm{ns}}(k)$ is (\Cref{prop:reduction:Ens}). So $E_0(K)$, the set of points whose
+reduction avoids the singular point, is the natural domain of a reduction homomorphism, and $E_1(K)$, the points $p$-adically close to $O$ (in affine coordinates, those with
+$v(x)<0$), is its kernel. The three pieces $E_1(K)$, $E_0(K)/E_1(K)$ and $E(K)/E_0(K)$ are then studied separately: the first by the
+formal group, the second by \Cref{prop:reduction:Ens}, the third by the component group of \Cref{sec:reduction:neron}.
+
 \begin{proposition}[the reduction map]\label{prop:reduction:filtration}
 $E_0(K)$ is a subgroup of $E(K)$, $E_1(K)$ is a subgroup of $E_0(K)$, and reduction is a surjective homomorphism
 $E_0(K)\to\tilde E_{\mathrm{ns}}(k)$ with kernel $E_1(K)$:
@@ -564,11 +601,15 @@ has no nonzero torsion of order prime to $p$, and it is uniquely $m$-divisible.
 (i) and (ii) are \cite[IV.1 to IV.6 and VII.2]{SilvermanAEC}: one solves the equation of the curve for $w$ as a
 power series in $z$ by iteration, computes the third intersection of a line with the curve in these
 coordinates, and checks that the resulting series converge on $\mathfrak m$ and match the reduction filtration.
-(iii) is a complete argument given (i): the series $[m](z)$ of multiplication by $m$ on $\hat E$ is
-$mz+(\text{terms of degree}\ge2)$, with $m\in\mathcal O^\times$. A power series $f(z)=mz+\cdots$ with coefficients in
-$\mathcal O$ and $m$ a unit has a compositional inverse $g(z)=m^{-1}z+\cdots$ with coefficients in $\mathcal O$ (solve
-$g(f(z))=z$ coefficient by coefficient, dividing only by powers of $m$). So $[m]$ is a bijection of $\hat E(\mathfrak m)$,
-hence of $E_1(K)$.
+(iii) is a complete argument given (i): a formal group law has the form $F(z_1,z_2)=z_1+z_2+(\text{terms of degree}\ge2)$,
+so by induction $[m](z)=F([m-1](z),z)=(m-1)z+z+\cdots$ is $mz+(\text{terms of degree}\ge2)$ for $m\ge1$, and
+$[-1](z)=-z+\cdots$ handles negative $m$; here $m\in\mathcal O^\times$ because $p\nmid m$. A power series $f(z)=mz+\cdots$ with
+coefficients in $\mathcal O$ and $m$ a unit has a compositional inverse $g(z)=m^{-1}z+\cdots$ with coefficients in $\mathcal O$:
+writing $g=\sum_{n\ge1}g_nz^n$, the coefficient of $z^n$ in $g(f(z))$ is $g_nm^n$ plus a polynomial with integer coefficients in
+$g_1,\dots,g_{n-1}$ and the coefficients of $f$, so the equations $g(f(z))=z$ determine the $g_n$ recursively, dividing only by
+powers of $m$. As $f$ and $g$ have coefficients in $\mathcal O$ and no constant term, both converge on $\mathfrak m$ and map
+$\mathfrak m$ into $\mathfrak m$, and the identities $g\circ f=f\circ g=z$ of power series become identities of maps. So $[m]$ is a
+bijection of $\hat E(\mathfrak m)$, hence of $E_1(K)$; in particular its kernel $E_1(K)[m]$ is $0$.
 \end{proof}
 
 \begin{corollary}[torsion and reduction]\label{cor:reduction:torsion-injects}
@@ -600,11 +641,22 @@ number) is computed in \Cref{prop:reduction:component-group}, \Cref{thm:reductio
 
 \begin{proof}
 For good reduction $E_0(K)=E(K)$ by definition. In general $E_0(K)$ is open in the compact group $E(K)$ (reduction is locally constant on $E(K)$: two points whose primitive
-coordinates are congruent modulo $\mathfrak m$ have the same reduction), so its cosets form an open cover of the compact group $E(K)$ ($k$ is
-finite, so $K$ is locally compact), and the index is finite. The finer
+coordinates are congruent modulo $\mathfrak m$ have the same reduction), so its cosets form an open cover of the compact group $E(K)$, and the
+index is finite. Compactness: as $k$ is finite, $\mathcal O=\varprojlim\mathcal O/\mathfrak m^n$ is compact, so the set of primitive triples
+(those in $\mathcal O^3$ not all in $\mathfrak m$) is compact; it maps continuously onto $\mathbb P^2(K)$, which is therefore compact, and
+$E(K)$ is closed in it, being the zero set of a homogeneous polynomial. The finer
 statement that $E(K)/E_0(K)$ is the group of $k$-points of the component group of the N\'eron model is
 \Cref{prop:reduction:component-group}; see \cite[VII.6]{SilvermanAEC} and \cite[IV.9]{SilvermanATAEC}.
 \end{proof}
+
+\paragraph{An example: torsion outside $E_0$.} The curve \curve{11a1}, $y^2+y=x^3-x^2-10x-20$, has split multiplicative
+reduction of type $\kod{I}_5$ at $11$ with $c_{11}=5$ (\Cref{ex:reduction:running-table}), and $E(\Q)_{\mathrm{tors}}\simeq\Z/5$, with
+nonzero points $(5,5)$, $(16,-61)$, $(16,60)$, $(5,-6)$ (the multiples $P,2P,3P,4P$ of $P=(5,5)$, computed with PARI). Modulo $11$
+all four reduce to $(5,5)$, since $16\equiv5$, $-61\equiv60\equiv-6\equiv5$. With $F=y^2+y-x^3+x^2+10x+20$ one has $F(5,5)=0$,
+$\partial F/\partial y=2y+1=11$ and $\partial F/\partial x=-3x^2+2x+10=-55$ at $(5,5)$; both partials vanish modulo $11$, so $(5,5)$ is
+the node of $\tilde E$. Hence no nonzero torsion point lies in $E_0(\Q_{11})$, the subgroup $E(\Q)_{\mathrm{tors}}$ meets $E_0(\Q_{11})$
+trivially, and it maps isomorphically onto $E(\Q_{11})/E_0(\Q_{11})$, a group of order $c_{11}=5$. This does not contradict
+\Cref{cor:reduction:torsion-injects}(i), which constrains only torsion inside $E_0$.
 
 \begin{paperlink}
 Section 1.1 of the paper: $\delta_p=\dim V^{I_p}$ is $2$ at a good prime because $I_p$ acts trivially on $T_\ell E$
@@ -625,6 +677,14 @@ $E/K$ has \emph{potentially good} (resp.\ \emph{potentially multiplicative}) red
 extension $L/K$ such that $E/L$ has good (resp.\ multiplicative) reduction.
 \end{definition}
 
+The definition makes sense because a minimal model over $K$ need not stay minimal over an extension: the change
+$(u,0,0,0)$ with $u$ in the larger field can remove a factor of the discriminant that no $u\in K$ can remove. For
+example, let $p$ be odd and $E\colon y^2=x^3+px$ over $\Q_p$. Then $c_4=-48p$ and $\Delta=-16\cdot4p^3=-64p^3$, so $v(\Delta)=3<12$,
+the model is minimal (\Cref{prop:reduction:min-criterion}(i)) and the reduction is additive ($v(c_4)>0$); PARI gives type
+$\kod{III}$ at $p=3$ and $p=5$. Over $L=\Q_p(p^{1/4})$ the change $(u,0,0,0)$ with $u=p^{1/4}$, that is $x=p^{1/2}x'$, $y=p^{3/4}y'$,
+gives $p^{3/2}y'^2=p^{3/2}x'^3+p^{3/2}x'$, that is, $y'^2=x'^3+x'$, with discriminant $-64$, a unit: $E$ has good reduction over $L$.
+Accordingly $j=1728$ is integral, $v(j)\ge0$, as the criterion below requires.
+
 \begin{theorem}[the $j$-invariant criterion]\label{thm:reduction:potential-criterion}
 Let $E/K$ be an elliptic curve.
 \begin{enumerate}[label=(\roman*)]
@@ -641,15 +701,19 @@ reduction over every finite extension over which it is semistable, and never goo
 (i), the direction ``$\Rightarrow$'': if $E/L$ has good reduction, a minimal model over $L$ has $\Delta$ a unit and
 $c_4$ integral, so $j=c_4^3/\Delta$ is integral in $L$, hence $v(j)\ge0$.
 
-(i), the direction ``$\Leftarrow$'', for $p$ odd: over the finite extension $L=K(E[2])$ the curve has a model
-$y^2=(x-e_1)(x-e_2)(x-e_3)$, and after a further finite extension and a change of coordinates a Legendre model
-$y^2=x(x-1)(x-\lambda)$, for which
+(i), the direction ``$\Leftarrow$'', for $p$ odd: completing the square (\Cref{ch:ellcurves}) gives a model $y^2=g(x)$ with $g$
+a monic cubic with distinct roots $e_1,e_2,e_3$, and over the finite extension $L=K(E[2])=K(e_1,e_2,e_3)$ it reads
+$y^2=(x-e_1)(x-e_2)(x-e_3)$. Over $L'=L(\sqrt{e_2-e_1})$ the change $x=e_1+(e_2-e_1)x'$, $y=(e_2-e_1)^{3/2}y'$ turns the three
+factors into $(e_2-e_1)x'$, $(e_2-e_1)(x'-1)$ and $(e_2-e_1)(x'-\lambda)$ with $\lambda=(e_3-e_1)/(e_2-e_1)\ne0,1$; dividing by
+$(e_2-e_1)^3$ gives the Legendre model $y'^2=x'(x'-1)(x'-\lambda)$, for which
 \[
 j=2^8\frac{(\lambda^2-\lambda+1)^3}{\lambda^2(\lambda-1)^2},\qquad\Delta=16\lambda^2(\lambda-1)^2 .
 \]
+(Here $v$ denotes the valuation of $L'$ extending that of $K$; the sign of $v(j)$ does not depend on the normalisation, and $v(2)=0$.)
 If $v(\lambda)<0$ the numerator has valuation $6v(\lambda)$ and the denominator $4v(\lambda)$, so $v(j)=2v(\lambda)<0$. If
-$v(\lambda)>0$ then $v(j)=-2v(\lambda)<0$, and likewise if $v(\lambda-1)>0$. So $v(j)\ge0$ forces $\lambda$ and $\lambda-1$ to be
-units, and then the Legendre model has unit discriminant ($p$ odd): good reduction over the extension. For $p=2$
+$v(\lambda)>0$ then $\lambda^2-\lambda+1$ and $\lambda-1$ are units, so $v(j)=-2v(\lambda)<0$, and likewise if $v(\lambda-1)>0$. So $v(j)\ge0$ forces $\lambda$ and $\lambda-1$ to be
+units (if $v(\lambda)=0$ then $v(\lambda-1)\ge0$, and the remaining case is $v(\lambda-1)=0$), and then the Legendre model is
+integral with unit discriminant ($p$ odd): good reduction over $L'$. For $p=2$
 one uses a different cubic normal form; see \cite[VII.5.5]{SilvermanAEC}.
 
 (ii) If $v(j)<0$, $E$ never has good reduction, by (i). By the semistable reduction theorem
@@ -1078,9 +1142,10 @@ If $v(\Delta)=0$ the type is $\kod{I}_0$. If $v(\Delta)>0$ and $v(A)=0$ the redu
 $\kod{I}_n$ with $n=v(\Delta)$; then $v(B)=0$ too, since $4A^3\equiv-27B^2$. Otherwise $v(A)\ge1$, hence $v(B)\ge1$, the
 singular point is already at $(0,0)$ and $b_2=0$, so we pass to Step 3.
 \begin{itemize}
-\item Step 3: $\varpi^2\nmid a_6$ means $v(B)=1$: type $\kod{II}$; then $v(27B^2)=2<v(4A^3)$, so $v(\Delta)=2$.
-\item Step 4: $\varpi^3\nmid b_8=-A^2$ means $v(A)=1$ (with $v(B)\ge2$): type $\kod{III}$, $v(\Delta)=\min(3,2v(B))=3$.
-\item Step 5: $\varpi^3\nmid b_6=4B$ means $v(B)=2$ (with $v(A)\ge2$): type $\kod{IV}$, $v(\Delta)=4$.
+\item Step 3: $\varpi^2\nmid a_6$ means $v(B)=1$: type $\kod{II}$; then $v(27B^2)=2<3\le v(4A^3)$, so $v(\Delta)=2$.
+\item Step 4: $\varpi^3\nmid b_8=-A^2$ means $v(A)=1$ (with $v(B)\ge2$): type $\kod{III}$, $v(\Delta)=\min(3v(A),2v(B))=3$, as
+$2v(B)\ge4$. (Throughout, $v(\Delta)=v(4A^3+27B^2)$, which equals $\min(3v(A),2v(B))$ whenever $3v(A)\ne2v(B)$.)
+\item Step 5: $\varpi^3\nmid b_6=4B$ means $v(B)=2$ (with $v(A)\ge2$): type $\kod{IV}$, $v(\Delta)=4$, as $3v(A)\ge6>4$.
 \item Step 6: now $v(A)\ge2$, $v(B)\ge3$, and the conditions of Step 6 hold without change. $P(T)=T^3+aT+b$ with
 $a=A/\varpi^2$, $b=B/\varpi^3$, whose discriminant is $-(4a^3+27b^2)=\Delta/(16\varpi^6)$ up to a unit. So $\tilde P$ has distinct
 roots if and only if $v(\Delta)=6$: type $\kod{I}_0^*$.
@@ -1089,10 +1154,11 @@ $v(B)\ge4$. If $v(\Delta)>6$ and the root is not triple, then $v(A)=2$ or $v(B)=
 $v(A)\ge3$, $v(B)=3$ would give $v(\Delta)=6$. So Step 7 occurs exactly when $v(A)=2$, $v(B)=3$, $v(\Delta)>6$; then
 $v(j)=3v(c_4)-v(\Delta)=6-v(\Delta)<0$, and by \Cref{thm:reduction:potmult-additive} the type is $\kod{I}_n^*$ with
 $n=-v(j)=v(\Delta)-6$.
-\item Step 8: $v(A)\ge3$, $v(B)\ge4$, root already at $0$; $Y^2-a_{6,4}$ has distinct roots if and only if $v(B)=4$: type
-$\kod{IV}^*$, $v(\Delta)=8$.
-\item Step 9: $v(B)\ge5$, no translation needed; $\varpi^4\nmid a_4$ means $v(A)=3$: type $\kod{III}^*$, $v(\Delta)=9$.
-\item Step 10: $v(A)\ge4$; $\varpi^6\nmid a_6$ means $v(B)=5$: type $\kod{II}^*$, $v(\Delta)=10$.
+\item Step 8: $v(A)\ge3$, $v(B)\ge4$, root already at $0$; $Y^2-a_{6,4}$ has distinct roots if and only if $a_{6,4}=B/\varpi^4$ is a
+unit ($p$ is odd), that is $v(B)=4$: type $\kod{IV}^*$, and $v(\Delta)=\min(3v(A),2v(B))=8$ since $3v(A)\ge9$.
+\item Step 9: $v(B)\ge5$; the double root of $Y^2-a_{6,4}$ is already $0$, so no translation is needed; $\varpi^4\nmid a_4$ means
+$v(A)=3$: type $\kod{III}^*$, and $v(\Delta)=9$ since $3v(A)=9<10\le2v(B)$.
+\item Step 10: $v(A)\ge4$; $\varpi^6\nmid a_6$ means $v(B)=5$: type $\kod{II}^*$, and $v(\Delta)=10$ since $2v(B)=10<12\le3v(A)$.
 \item Step 11 would need $v(A)\ge4$, $v(B)\ge6$, impossible for a minimal model (\Cref{prop:reduction:min-criterion}(ii)).
 \end{itemize}
 This gives \Cref{tab:reduction:tame}. In (iii), $v(j)\ge0$ excludes $\kod{I}_n$ and $\kod{I}_n^*$ ($v(j)=-n$ there), and
@@ -1186,8 +1252,10 @@ $1$ never occurs in its output.
 \begin{example}[Tate's algorithm on the paper's curves]\label{ex:reduction:tate-running}
 All models are the global minimal models of Cremona's tables; every number below was recomputed with PARI.
 \begin{enumerate}[label=(\alph*)]
-\item \curve{121a1} $=[1,1,1,-30,-76]$ at $11$: $v(\Delta)=2$, $v(c_4)=1$. Step 2 with $(r,t)=(6,2)$ gives
-$[1,19,11,88,-22]$, with $11\mid b_2=77$; Step 3: $v(a_6)=1<2$. Type $\kod{II}$, $c=1$, $f=2$.
+\item \curve{121a1} $=[1,1,1,-30,-76]$ at $11$: $v(\Delta)=2$, $v(c_4)=1$. Here $b_2=a_1^2+4a_2=5$ and $11\mid c_4$, so the
+formula $r=-b_2/12$ of the theorem applies: $12r\equiv-5\pmod{11}$ gives $r\equiv6$, and $t=-(a_1r+a_3)/2=-7/2\equiv2\pmod{11}$. Step 2 with
+$(r,t)=(6,2)$ gives $[1,19,11,88,-22]$, with $11\mid a_3,a_4,a_6$ and $11\mid b_2=1+4\cdot19=77$; Step 3: $v(a_6)=1<2$. Type $\kod{II}$, $c=1$,
+$f=v(\Delta)=2$.
 \item \curve{121c2} $=[1,1,0,-3632,82757]$ at $11$: $v(\Delta)=8$. Step 2 with $(r,t)=(6,8)$ gives
 $[1,19,22,-3520,61105]$, with $v(a_6)=2$, $v(b_8)\ge3$, $v(b_6)\ge3$, so Steps 3 to 5 are passed. Step 6 with
 $(s,t)=(5,110)$ gives $[11,-11,242,-4840,46585]$ and $P(T)=T^3-T^2-40T+35\equiv(T-4)^3\pmod{11}$: a triple root, so
@@ -1205,7 +1273,9 @@ $\kod{I}_3^*$, $c=4$, and $f=v(\Delta)-4-n=9-7=2$.
 $v(b_8)=2<3$: type $\kod{III}$, $c=2$. At $2$: $v(\Delta)=6$, $v(c_4)=0$, and the tangent cone gives nonsplit reduction:
 $\kod{I}_6$, $c=2$. At $3$: $\kod{I}_3$ nonsplit, $c=1$.
 \item \curve{20a1} $=[0,1,0,4,4]$ at $2$: $v(\Delta)=8$, $v(c_4)=4$. The singular point is already at $(0,0)$, and Steps 3 to
-5 are passed ($v(a_6)=2$, $b_8=0$, $v(b_6)=4$). Step 6 with $(s,t)=(1,2)$ gives $[2,0,4,0,0]$ and $P(T)=T^3$, a triple
+5 are passed ($v(a_6)=2$, $b_8=0$, $v(b_6)=4$). Step 6 with $(s,t)=(1,2)$: for a change $(1,0,s,t)$ of a model with
+$a_1=a_3=0$ the formulas of \Cref{ch:ellcurves} reduce to $a_1'=2s$, $a_2'=a_2-s^2$, $a_3'=2t$, $a_4'=a_4-2st$, $a_6'=a_6-t^2$, which
+here give $[2,0,4,0,0]$, that is $y^2+2xy+4y=x^3$. Now $2\mid a_1,a_2$, $4\mid a_3,a_4$, $8\mid a_6$, and $P(T)=T^3$, a triple
 root; Step 8: $Y^2+a_{3,2}Y-a_{6,4}=Y^2+Y$ has the distinct roots $0,1\in\F_2$. Type $\kod{IV}^*$, $c=3$, $f=8+1-7=2$.
 \item \curve{99a1} $=[1,-1,1,-2,0]$ at $3$: Step 2 with $(r,t)=(2,0)$ gives $[1,5,3,6,0]$, $v(b_2)=1$, $a_6=0$, and
 $v(b_8)=2<3$: type $\kod{III}$, $c=2$, $f=v(\Delta)-1=2$.
@@ -1251,6 +1321,13 @@ f(E)=a(V)=\dim V-\dim V^{I_K}+\operatorname{sw}(V),
 where $\operatorname{sw}(V)\ge0$ is the Swan conductor, which vanishes if and only if the wild inertia group $P_K$ acts
 trivially on $V$. For $E/\Q$ and a prime $p$ we write $f_p=f_p(E)$ for the exponent of $E/\Q_p$.
 \end{definition}
+
+The conductor exponent measures how far $V_\ell E$ is from being unramified. The tame part $\dim V-\dim V^{I_K}$ counts
+the dimensions that inertia moves, which is $0$, $1$ or $2$; the Swan term is a weighted count of how deep in the
+ramification filtration the action of wild inertia reaches, and is nonzero exactly when the pro-$p$ group $P_K$ acts
+nontrivially, which forces $p$ to divide the order of the image of inertia. For \curve{11a1} at $11$ the action of inertia fixes a line (\Cref{prop:reduction:conductor-values}(ii)
+below), so $f_{11}=1$; for \curve{20a1} at $2$, of type $\kod{IV}^*$, inertia fixes no vector and acts through a group of order $3$, prime to $2$, so
+$f_2=2$ (\Cref{cor:reduction:IV-at-2}).
 
 That $f(E)$ does not depend on $\ell$ is a theorem of Ogg and of Serre and Tate \cite{Ogg,SerreTate68}; we do not prove it.
 The following values are proved here, given the criterion of N\'eron, Ogg and Shafarevich (\Cref{ch:galrep}: $E$ has
@@ -1438,14 +1515,22 @@ is a line.
 (i) Suppose $v_2(j)<0$. By \Cref{thm:reduction:tate-uniformisation}, $E$ is the twist of the Tate curve $E_{q_E}$ by a
 quadratic character $\chi$, ramified since the reduction is additive, and by \Cref{prop:reduction:tate-torsion} an element
 $\sigma\in I_2$ acts on $T_3E$ by $\chi(\sigma)\sm{1}{\kappa(\sigma)}{0}{1}$, where $\kappa(\sigma)=\nu\,t_3(\sigma)$ is $\nu$ times the $3$-adic tame
-character $t_3\colon I_2\to\Z_3(1)$ (\Cref{ch:local}; not the term $t_3(E,2)$). The set $H=\{\sigma\in I_2:\kappa(\sigma)\equiv0\pmod3\}$ is a subgroup of index $1$ or $3$, and
-$\ker\chi|_{I_2}$ has index $2$; so $H\not\subseteq\ker\chi$, and some $\sigma\in H$ acts on $E[3]$ by $-1$, which fixes no
-line. This contradicts $E[3]^{I_2}\ne0$. So $v_2(j)\ge0$.
+character $t_3\colon I_2\to\Z_3(1)$ (\Cref{ch:local}; not the term $t_3(E,2)$). On $I_2$ the cyclotomic character $\chi_3$ is
+trivial, so the cocycle relation $\kappa(gh)=\chi_3(g)\kappa(h)+\kappa(g)$ makes $\kappa|_{I_2}$ a homomorphism to $\Z_3$, and
+$H=\{\sigma\in I_2:\kappa(\sigma)\equiv0\pmod3\}$ is the kernel of its reduction $I_2\to\Z/3$, a subgroup of index $1$ or $3$. The
+subgroup $\ker\chi|_{I_2}$ has index $2$, because $\chi$ is ramified. If $H$ were contained in $\ker\chi$, the index $2$ would divide
+$[I_2:H]\in\{1,3\}$; so $H\not\subseteq\ker\chi$, and some $\sigma\in H$ has $\chi(\sigma)=-1$. It acts on $E[3]$ by
+$-\sm1001=-1$, which fixes no nonzero vector. This contradicts $E[3]^{I_2}\ne0$. So $v_2(j)\ge0$.
 
 (ii) By \Cref{thm:reduction:serre-tate} the image $\rho_3(I_2)$ is a finite subgroup of $\SL_2(\Z_3)$. Reduction modulo $3$ is
 injective on it: if $g=1+3^kA$ with $k\ge1$ and $A\not\equiv0\pmod3$ had finite order, a power of it would have prime order $r$
-and the same shape, and $g^r\equiv1+r3^kA\pmod{3^{k+1}}$ if $r\ne3$, $g^3\equiv1+3^{k+1}A\pmod{3^{k+2}}$ if $r=3$, neither
-equal to $1$. The image modulo $3$ is nontrivial (otherwise $\rho_3(I_2)=1$ and the reduction would be good) and fixes
+and the same shape (with possibly larger $k$), and the binomial theorem (valid as $1$ and $A$ commute) gives
+\[
+g^r=1+r3^kA+\tbinom r2 3^{2k}A^2+\cdots\equiv1+r3^kA\pmod{3^{k+1}}\quad(r\ne3),\qquad
+g^3=1+3^{k+1}A+3^{2k+1}A^2+3^{3k}A^3\equiv1+3^{k+1}A\pmod{3^{k+2}},
+\]
+using $2k\ge k+1$, $2k+1\ge k+2$ and $3k\ge k+2$ for $k\ge1$. As $r$ is then a unit and $A\not\equiv0\pmod 3$, neither power is
+$1$, a contradiction. The image modulo $3$ is nontrivial (otherwise $\rho_3(I_2)=1$ and the reduction would be good) and fixes
 the line $E[3]^{I_2}$ pointwise. In a basis $(v,w)$ of $E[3]$ with $v$ spanning that line, its elements are
 $\sm{1}{b}{0}{d}$ with determinant $d=1$: the group $\{\sm1b01\}$ of order $3$. So $\rho_3(I_2)$ is cyclic of order $3$,
 hence $G_{\mathrm{ss}}\simeq\Z/3$ and $\rho_\ell(I_2)\simeq\Z/3$ for every $\ell\ne2$ (\Cref{thm:reduction:serre-tate}(ii)). A generator
@@ -1539,7 +1624,12 @@ $5d^3+7d^5\equiv0\pmod{12}$ for every integer $d$: modulo $3$, $d^3(5+7d^2)\equi
 odd then $d^2\equiv1$ and $5+7=12$, and if $d$ is even then $8\mid d^3$. Power series with integer coefficients converge
 at $\mathsf q$ with $v(\mathsf q)>0$. For the model, $b_2=1$, $b_4=2a_4$, $b_6=4a_6$, so $c_4=1-48a_4=1+240s_3$ and
 $c_6=-1+72a_4-864a_6=-1+504s_5$. These are $E_4$ and $-E_6$, the normalised Eisenstein series of weights $4$ and $6$ in the
-variable $\mathsf q$ (\Cref{ch:modforms}), and the classical identity $E_4^3-E_6^2=1728\,\mathsf q\prod(1-\mathsf q^n)^{24}$ of power series with
+variable $\mathsf q$ (\Cref{ch:modforms}). In detail: $a_1=1$, $a_2=a_3=0$ give $b_2=a_1^2+4a_2=1$, $b_4=a_1a_3+2a_4=2a_4$,
+$b_6=a_3^2+4a_6=4a_6$; then $c_4=b_2^2-24b_4=1-48a_4=1+240s_3$, and
+\[
+c_6=-b_2^3+36b_2b_4-216b_6=-1+72a_4-864a_6=-1-360s_3+72(5s_3+7s_5)=-1+504s_5 ,
+\]
+which is where the denominator $12$ in $a_6$ comes from. The classical identity $E_4^3-E_6^2=1728\,\mathsf q\prod(1-\mathsf q^n)^{24}$ of power series with
 integer coefficients gives $\Delta$; $j=c_4^3/\Delta$ follows, and its coefficients are those of the $q$-expansion of the
 modular function $j$ (computed with PARI). As $v(\Delta)=v(\mathsf q)$ is finite, $\Delta\ne0$.
 
