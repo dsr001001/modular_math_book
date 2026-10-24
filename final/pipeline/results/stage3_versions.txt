@@ -1,0 +1,21 @@
+versions: 2.15.4 vs 2.17.2  curves: 38042 38042
+   deg      differing curves: 0
+   ns3      differing curves: 0
+   b3       differing curves: 0
+   b5       differing curves: 0
+   b7       differing curves: 0
+   b11      differing curves: 0
+   b13      differing curves: 0
+   b3_iii   differing curves: 0
+   b5_iii   differing curves: 0
+   b7_iii   differing curves: 0
+   b11_iii  differing curves: 0
+   b13_iii  differing curves: 0
+   ellmoddegree vs table: 38042 of 38042
+   l=3: curves 33851, rule(E,l,1) positive 20317 violations 0; rule(E,l) positive 20127 violations 0
+   l=5: curves 37319, rule(E,l,1) positive 7476 violations 0; rule(E,l) positive 7436 violations 0
+   l=7: curves 37691, rule(E,l,1) positive 3935 violations 0; rule(E,l) positive 3929 violations 0
+   l=11: curves 37839, rule(E,l,1) positive 1256 violations 0; rule(E,l) positive 1256 violations 0
+   l=13: curves 37823, rule(E,l,1) positive 728 violations 0; rule(E,l) positive 724 violations 0
+/tmp/claude-0/-home-claude/a484a8e3-6eb6-5780-af88-c6b17d0483fe/scratchpad/c215.tsv vs data/pari/curves.00000-09999.tsv: lines 64687 / 64687; byte-identical lines differ: 0; differing in a non-float field: 0
+/tmp/claude-0/-home-claude/a484a8e3-6eb6-5780-af88-c6b17d0483fe/scratchpad/a215.tsv vs data/pari/ap.00000-09999.tsv: lines 38042 / 38042; byte-identical lines differ: 0; differing in a non-float field: 0

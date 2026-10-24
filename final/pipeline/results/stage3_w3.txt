@@ -1,0 +1,21 @@
+working set, E[3] irreducible, not CM, single additive prime q = 3 (potentially good), no multiplicative 3-part
+(a)
+          n  min  n_at_min  paper_w3  rule_wl
+type                                         
+II     8309    1      3582         1        1
+II*    5791    2      2441         2        2
+III    7630    0      4481         0        0
+III*   7630    1      4481         1        1
+IV     5791    1      2441         1        1
+IV*    8309    2      3582         2        2
+I0*   12281    0      2402         0        0
+(b) other rule terms zero
+          n  min  n_at_min  paper_w3  rule_wl
+type                                         
+II     8309    1      3582         1        1
+II*    5791    2      2441         2        2
+III    7630    0      4481         0        0
+III*   7630    1      4481         1        1
+IV     5791    1      2441         1        1
+IV*    8309    2      3582         2        2
+I0*   12281    0      2402         0        0

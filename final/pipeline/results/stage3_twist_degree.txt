@@ -1,0 +1,27 @@
+PARI stack size set to 400000000 bytes, maximum size set to 400003072
+  ... 0 curves, 0 s
+  ... 200000 curves, 18 s
+  ... 400000 curves, 34 s
+  ... 600000 curves, 54 s
+  ... 800000 curves, 76 s
+  ... 1000000 curves, 96 s
+  ... 1200000 curves, 115 s
+(A) working set, pairs (curve, odd additive prime q); pairs_l = (curve, q, l) with l^2 not dividing N and the twist class found
+         pairs   found  pairs_l  viol_ge     neq
+a q=3   156462  156462   585118        0       0
+  q>=5  157938  157938   590818        0  157510
+b q=3    51407   51407   191606        0   19332
+  q>=5   64268   64268   239858        0   64449
+c q=3   184871  184871   687965        0       0
+  q>=5  228312  228312   845817        0       0
+  q>=5: I_n* pairs 157938; potentially good additive pairs (I0* + II..IV*) 292580; case (c) only 228312
+  q=3: I_n* pairs 156462; potentially good additive pairs (I0* + II..IV*) 236278; case (c) only 184871
+violations of v_l(deg E) >= v_l(deg E^(q)_0): 0
+
+(B) N < 10000, S nonempty: curves 8233, twist class not found: 0
+   E[l] irreducible, incl. CM: pairs 25647; diff == euler: 25647; diff != euler: 0
+      mismatches: []
+   E[l] irreducible, not CM: pairs 25477; diff == euler: 25477; diff != euler: 0
+      mismatches: []
+   all l not dividing N: pairs 26109; diff == euler: 26051; diff != euler: 58
+      mismatches: [{'label': '98a1', 'l': 3, 'irred': False, 'cm': False, 'diff': 0, 'euler': 1, 'twist_class': '14a'}, {'label': '99d1', 'l': 5, 'irred': False, 'cm': False, 'diff': 0, 'euler': 1, 'twist_class': '11a'}, {'label': '121d1', 'l': 5, 'irred': False, 'cm': False, 'diff': 0, 'euler': 1, 'twist_class': '11a'}, {'label': '175b1', 'l': 3, 'irred': False, 'cm': False, 'diff': 0, 'euler': 1, 'twist_class': '35a'}, {'label': '245c1', 'l': 3, 'irred': False, 'cm': False, 'diff': 0, 'euler': 1, 'twist_class': '35a'}, {'label': '338c1', 'l': 3, 'irred': False, 'cm': False, 'diff': 0, 'euler': 1, 'twist_class': '26a'}, {'label': '350d1', 'l': 3, 'irred': False, 'cm': False, 'diff': 1, 'euler': 2, 'twist_class': '14a'}, {'label': '361b1', 'l': 3, 'irred': False, 'cm': False, 'diff': 1, 'euler': 2, 'twist_class': '19a'}, {'label': '475a1', 'l': 3, 'irred': False, 'cm': False, 'diff': 2, 'euler': 3, 'twist_class': '19a'}, {'label': '539a1', 'l': 3, 'irred': False, 'cm': False, 'diff': 0, 'euler': 1, 'twist_class': '77b'}]

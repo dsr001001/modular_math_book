@@ -1,0 +1,6 @@
+work: curves 964432; (w1) positive 805742 violations 0; (w2, I0* weight 2) violations 123; (Ins weight 2) violations 0
+   (w2) exceptions by number of I0* primes: {1: 68, 2: 53, 3: 2}  first: ['99d1', '931b1', '2299d1', '2475h1', '5819a1', '5931b1', '10571a1', '10683a1']
+holdout: curves 325510; (w1) positive 279439 violations 0; (w2, I0* weight 2) violations 26; (Ins weight 2) violations 0
+   (w2) exceptions by number of I0* primes: {1: 11, 2: 15}  first: ['302283a1', '320166du1', '320166eo1', '326059a1', '330971a1', '337953cf1', '337953co1', '339219b1']
+ext: curves 313741; (w1) positive 270286 violations 0; (w2, I0* weight 2) violations 19; (Ins weight 2) violations 0
+   (w2) exceptions by number of I0* primes: {1: 8, 2: 11}  first: ['403803a1', '404667a1', '418411a1', '422731a1', '423729d1', '424107a1', '432666b1', '432666w1']

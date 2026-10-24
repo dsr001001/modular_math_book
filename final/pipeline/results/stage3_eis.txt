@@ -1,0 +1,102 @@
+dotted vs dotless 3Cs.1.1 labels: 3Cs.1.1 2065  3Cs11 250  (dotless labels only for N > 400000: 400007 )
+
+== work l=3: eis non-CM 75430; G>0 67845; D>0 2777; D distribution (D>0) {1: 2755, 2: 22}
+   violations of D <= vT + [Cs]: 0;  of D <= #class curves with l-torsion point: 0
+   D>0 without a rational l-torsion point: 0
+   torsion bound attained with D>0 (D == vT + [Cs] > 0): 2773;  class bound attained with D>0: 2555
+   point of order 3, not 3Cs.1.1, no point of order 9: 27384 curves, max D 1  (labels {'3B.1.1': 27384})
+   D = 2: 22;  with 3Cs.1.1: 17;  with a point of order 9: 5;  9-torsion curves' labels: {'3B.1.1': 5}
+   D = 2 and 3Cs.1.1: ranks {0: 17}, torsion {'[3]': 16, '[6]': 1}
+   D = 2 curves:
+                N     moddeg              kodaira torsion_structure     lab3  rank  G  V  D
+label                                                                                      
+14a1           14          1              [10, 7]               [6]  3Cs.1.1     0  2  0  2
+26a1           26          2               [7, 7]               [3]  3Cs.1.1     0  2  0  2
+35a1           35          2               [7, 7]               [3]  3Cs.1.1     0  2  0  2
+38a1           38          6              [13, 7]               [3]  3Cs.1.1     0  3  1  2
+77b1           77         20              [10, 7]               [3]  3Cs.1.1     0  2  0  2
+158d1         158         40              [10, 7]               [3]  3Cs.1.1     0  2  0  2
+278b1         278        272              [16, 7]               [3]  3Cs.1.1     0  2  0  2
+326c1         326        204              [13, 7]               [3]  3Cs.1.1     0  3  1  2
+485a1         485        140               [7, 7]               [3]  3Cs.1.1     0  2  0  2
+714i1         714       1080       [13, 13, 7, 5]               [9]   3B.1.1     0  5  3  2
+4385b1       4385       7600              [10, 7]               [3]  3Cs.1.1     0  2  0  2
+6942n1       6942      65664       [22, 13, 7, 5]               [9]   3B.1.1     0  5  3  2
+7094c1       7094      64992              [22, 7]               [3]  3Cs.1.1     0  3  1  2
+8027a1       8027       4712               [7, 7]               [3]  3Cs.1.1     0  2  0  2
+17603a1     17603      17768               [7, 7]               [3]  3Cs.1.1     0  2  0  2
+17670bb1    17670     427680   [13, 13, 13, 5, 7]               [9]   3B.1.1     0  7  5  2
+124973b1   124973     737624               [7, 7]               [3]  3Cs.1.1     0  2  0  2
+129162bh1  129162  100745856   [13, 22, 13, 5, 7]               [9]   3B.1.1     0  7  5  2
+135734d1   135734   18363904              [28, 7]               [3]  3Cs.1.1     0  2  0  2
+30518a1     30518     724640              [25, 7]               [3]  3Cs.1.1     0  2  0  2
+32741a1     32741      85316               [7, 7]               [3]  3Cs.1.1     0  2  0  2
+83370x1     83370   39424320  [31, 13, 13, 10, 5]               [9]   3B.1.1     0  8  6  2
+   14a1: deg 1 kodaira [10, 7] torsion [6] 3Cs.1.1 D=2
+   714i1: deg 1080 kodaira [13, 13, 7, 5] torsion [9] 3B.1.1 D=2
+   6942n1: deg 65664 kodaira [22, 13, 7, 5] torsion [9] 3B.1.1 D=2
+
+== work l=5: eis non-CM 5935; G>0 4454; D>0 192; D distribution (D>0) {1: 192}
+   violations of D <= vT + [Cs]: 0;  of D <= #class curves with l-torsion point: 0
+   D>0 without a rational l-torsion point: 0
+   torsion bound attained with D>0 (D == vT + [Cs] > 0): 192;  class bound attained with D>0: 187
+
+== work l=7: eis non-CM 1406; G>0 759; D>0 18; D distribution (D>0) {1: 18}
+   violations of D <= vT + [Cs]: 0;  of D <= #class curves with l-torsion point: 0
+   D>0 without a rational l-torsion point: 0
+   torsion bound attained with D>0 (D == vT + [Cs] > 0): 18;  class bound attained with D>0: 18
+
+== holdout l=3: eis non-CM 19937; G>0 18225; D>0 474; D distribution (D>0) {1: 474}
+   violations of D <= vT + [Cs]: 0;  of D <= #class curves with l-torsion point: 0
+   D>0 without a rational l-torsion point: 0
+   torsion bound attained with D>0 (D == vT + [Cs] > 0): 473;  class bound attained with D>0: 458
+   point of order 3, not 3Cs.1.1, no point of order 9: 6605 curves, max D 1  (labels {'3B.1.1': 6605})
+   D = 2: 0;  with 3Cs.1.1: 0;  with a point of order 9: 0;  9-torsion curves' labels: {}
+   D = 2 and 3Cs.1.1: ranks {}, torsion {}
+   D = 2 curves:
+Empty DataFrame
+Columns: [N, moddeg, kodaira, torsion_structure, lab3, rank, G, V, D]
+Index: []
+
+== holdout l=5: eis non-CM 1263; G>0 989; D>0 17; D distribution (D>0) {1: 17}
+   violations of D <= vT + [Cs]: 0;  of D <= #class curves with l-torsion point: 0
+   D>0 without a rational l-torsion point: 0
+   torsion bound attained with D>0 (D == vT + [Cs] > 0): 17;  class bound attained with D>0: 17
+
+== holdout l=7: eis non-CM 234; G>0 137; D>0 1; D distribution (D>0) {1: 1}
+   violations of D <= vT + [Cs]: 0;  of D <= #class curves with l-torsion point: 0
+   D>0 without a rational l-torsion point: 0
+   torsion bound attained with D>0 (D == vT + [Cs] > 0): 1;  class bound attained with D>0: 1
+
+== ext l=3: eis non-CM 10605; G>0 9894; D>0 439; D distribution (D>0) {1: 439}
+   violations of D <= vT + [Cs]: 0;  of D <= #class curves with l-torsion point: 0
+   D>0 without a rational l-torsion point: 0
+   torsion bound attained with D>0 (D == vT + [Cs] > 0): 439;  class bound attained with D>0: 426
+   point of order 3, not 3Cs.1.1, no point of order 9: 5928 curves, max D 1  (labels {'3B11': 5928})
+   D = 2: 0;  with 3Cs.1.1: 0;  with a point of order 9: 0;  9-torsion curves' labels: {}
+   D = 2 and 3Cs.1.1: ranks {}, torsion {}
+   D = 2 curves:
+Empty DataFrame
+Columns: [N, moddeg, kodaira, torsion_structure, lab3, rank, G, V, D]
+Index: []
+
+== ext l=5: eis non-CM 588; G>0 474; D>0 21; D distribution (D>0) {1: 21}
+   violations of D <= vT + [Cs]: 0;  of D <= #class curves with l-torsion point: 0
+   D>0 without a rational l-torsion point: 0
+   torsion bound attained with D>0 (D == vT + [Cs] > 0): 21;  class bound attained with D>0: 21
+
+== ext l=7: eis non-CM 115; G>0 70; D>0 1; D distribution (D>0) {1: 1}
+   violations of D <= vT + [Cs]: 0;  of D <= #class curves with l-torsion point: 0
+   D>0 without a rational l-torsion point: 0
+   torsion bound attained with D>0 (D == vT + [Cs] > 0): 1;  class bound attained with D>0: 1
+
+all curves with 3Cs.1.1 (either spelling), N <= 400000: 2065; with 9 | #torsion: 0; torsion structures {'[3]': 1997, '[6]': 68}; optimal: 259
+
+all curves with 3Cs.1.1 (either spelling), N <= 500000: 2315; with 9 | #torsion: 0; torsion structures {'[3]': 2243, '[6]': 72}; optimal: 260
+curves with a point of order 9, all curves N<500000: 20; non-CM 20; 3-labels {'3B.1.1': 18, '3B11': 2}
+curves with a point of order 9, optimal (flag) N<=300000: 13; non-CM 13; 3-labels {'3B.1.1': 13}
+curves with a point of order 9, optimal (flag) N<=400000: 14; non-CM 14; 3-labels {'3B.1.1': 14}
+curves with a point of order 9, optimal (flag) N<500000: 15; non-CM 15; 3-labels {'3B.1.1': 14, '3B11': 1}
+work l=5: D>0 192, all with vT>0: True, max D 1
+work l=7: D>0 18, all with vT>0: True, max D 1
+torsion bound attained with D>0, all three ranges, l = 3, 5, 7: 3935 {'work/l3': 2773, 'work/l5': 192, 'work/l7': 18, 'holdout/l3': 473, 'holdout/l5': 17, 'holdout/l7': 1, 'ext/l3': 439, 'ext/l5': 21, 'ext/l7': 1}

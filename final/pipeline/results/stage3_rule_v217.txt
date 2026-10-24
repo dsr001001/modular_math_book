@@ -1,0 +1,9 @@
+PARI stack size set to 800000000 bytes, maximum size set to 800002048
+  5000 curves, 112 s
+  10000 curves, 402 s
+  15000 curves, 833 s
+  20000 curves, 1425 s
+  25000 curves, 2229 s
+  30000 curves, 3124 s
+  35000 curves, 4175 s
+PARI 2.17.2: 38042 curves in 4901 s; ellmoddegree == table degree: 38042

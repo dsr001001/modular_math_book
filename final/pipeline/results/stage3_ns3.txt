@@ -1,0 +1,73 @@
+PARI stack size set to 400000000 bytes, maximum size set to 400003072
+work: 1309159 curves, 709 s
+holdout: 429514 curves, 239 s
+ext: 358832 curves, 205 s
+
+== ext: curves 358832
+   ns3 (two quadratics) vs label 3Ns:
+Ns_label   False  True 
+ns3                    
+False     358595      0
+True           0    237
+   psi_3 irreducible with Galois group of order 8 (D4) vs label 3Nn:
+Nn_label   False  True 
+D4                     
+False     358337      0
+True           0    495
+
+== holdout: curves 429514
+   ns3 (two quadratics) vs label 3Ns:
+Ns_label   False  True 
+ns3                    
+False     429224      0
+True           0    290
+   psi_3 irreducible with Galois group of order 8 (D4) vs label 3Nn:
+Nn_label   False  True 
+D4                     
+False     428950      0
+True           0    564
+
+== work: curves 1309159
+   ns3 (two quadratics) vs label 3Ns:
+Ns_label    False  True 
+ns3                     
+False     1307989      0
+True            0   1170
+   psi_3 irreducible with Galois group of order 8 (D4) vs label 3Nn:
+Nn_label    False  True 
+D4                      
+False     1306523      0
+True            0   2636
+
+== all: curves 2097505
+   ns3 (two quadratics) vs label 3Ns:
+Ns_label    False  True 
+ns3                     
+False     2095808      0
+True            0   1697
+   psi_3 irreducible with Galois group of order 8 (D4) vs label 3Nn:
+Nn_label    False  True 
+D4                      
+False     2093810      0
+True            0   3695
+
+factor-degree pattern by 3-label (all ranges):
+col_0    1+1+2/0  1+3/0  2+2/0     4/24   4/8
+lab3                                         
+(none)         0      0      0  1986103     0
+37B.8.1        0      0      0       36     0
+37B81          0      0      0        2     0
+3B             0  55419      0        0     0
+3B.1.1         0  34003      0        0     0
+3B.1.2         0   9919      0        0     0
+3B11           0   5929      0        0     0
+3Cs          443      0      0        0     0
+3Cs.1.1      258      0      0        0     0
+3Cs11          1      0      0        0     0
+3Nn            0      0      0        0  3695
+3Ns            0      0   1697        0     0
+
+disagreements (either test): 0
+Empty DataFrame
+Columns: [set, label, nfac, deg1, galord, degs, lab3, Ns_label, Nn_label, ns3, D4]
+Index: []
