@@ -275,8 +275,8 @@ sequences of finite $\Zl$-modules, and a finite group and its Pontryagin dual ha
 \[
 \len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\len H^1_f(\Q_p,T^D)-\len H^0(\Q,W^D).
 \]
-\item Lemma lem:fpr (\Cref{thm:blochkato:fpr-local}) computes each local length as $v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(T^D))$, and \Cref{prop:blochkato:tam-dual} replaces $T^D$ by $A$
-in the Tamagawa factor.
+\item Lemma lem:fpr (\Cref{thm:blochkato:fpr-local}) computes each local length: it is the sum $v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(T^D))$. Then
+\Cref{prop:blochkato:tam-dual} replaces $T^D$ by $A$ in the Tamagawa factor.
 \item Lemmas lem:tamfactor and lem:tamadd (\Cref{lem:blochkato:tamfactor}, \Cref{prop:blochkato:tam-potmult}, \Cref{thm:blochkato:tam-additive}) compute $v_\ell(\Tam_q(A))$
 prime by prime from the reduction type and the Tate parameter.
 \item Lemma lem:h0 (\Cref{prop:blochkato:h0-selmer}) gives $\len H^0(\Q,W^D)=h_\ell(E)$, which is $0$ when $\ell\notin S_f$.
@@ -603,8 +603,8 @@ is finite, and $H^1(\Q_p,W)\simeq H^1(\Q_p,T^D)^*$ is finite.
 
 \begin{proof}
 $H^1(\Q_p,T^D)$ is finitely generated over $\Zl$ and $H^1(\Q_p,T^D)\otimes\Ql=H^1(\Q_p,V^D)$ (\Cref{ch:galcoh}, the cohomology of $T$, $V$, $W$). For $p\ne\ell$ the local Euler
-characteristic of a $\Ql$-representation is $0$ (Tate's formula: $\dim H^0-\dim H^1+\dim H^2=0$ at $p\ne\ell$, \Cref{ch:galcoh}), so
-$\dim H^1(\Q_p,V^D)=\dim H^0(\Q_p,V^D)+\dim H^2(\Q_p,V^D)$, and Tate local duality gives
+characteristic of a $\Ql$-representation is $0$ (by Tate's formula, $\dim H^0-\dim H^1+\dim H^2=0$ at $p\ne\ell$; see \Cref{ch:galcoh}). So the dimension of
+$H^1(\Q_p,V^D)$ is $\dim H^0(\Q_p,V^D)+\dim H^2(\Q_p,V^D)$, and Tate local duality gives
 $H^2(\Q_p,V^D)\simeq H^0(\Q_p,(V^D)^D)^\vee=H^0(\Q_p,A_f)^\vee$ (\Cref{ch:galcoh}). With \Cref{lem:blochkato:no-local-invariants}(i) this is (i). In (ii) a finitely
 generated $\Zl$-module of rank $0$ is finite, and Tate local duality for the pair $(W,T^D)$ (\Cref{ch:galcoh}) gives the second statement. (iii) The torsion
 of a finitely generated $\Zl$-module is finite.

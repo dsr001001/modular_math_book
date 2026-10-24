@@ -376,24 +376,37 @@ residue $1$.
 \[
 \zeta(s)-\frac1{s-1}=\sum_{n\ge1}n^{-s}-\int_1^\infty x^{-s}\,dx=\sum_{n\ge1}\int_n^{n+1}\bigl(n^{-s}-x^{-s}\bigr)\,dx .
 \]
-For $n\le x\le n+1$, $\abs{n^{-s}-x^{-s}}=\abs{s\int_n^xu^{-s-1}du}\le\abs s\,n^{-\sigma-1}$, so the $n$-th term is bounded by $\abs sn^{-\sigma-1}$; the series of holomorphic
-functions converges locally uniformly on $\sigma>0$, and its sum is holomorphic there.
-(iii) The Fourier series of $x$ on $(-\pi,\pi)$ is $\sum_{n\ge1}\frac{2(-1)^{n+1}}n\sin nx$. Parseval's identity (\cite{RHB06}, Fourier series) gives
-$\frac1\pi\int_{-\pi}^\pi x^2dx=\sum_n\frac4{n^2}$, that is $\frac{2\pi^2}3=4\zeta(2)$.
+Here $\int_1^\infty x^{-s}dx=\frac1{s-1}$ for $\operatorname{Re}s>1$, and both the sum and the integral have been cut into the pieces $[n,n+1]$, the term $n^{-s}$ being
+$\int_n^{n+1}n^{-s}dx$. For $n\le x\le n+1$, $\abs{n^{-s}-x^{-s}}=\abs{s\int_n^xu^{-s-1}du}\le\abs s\int_n^xu^{-\sigma-1}du\le\abs s\,n^{-\sigma-1}$, so the $n$-th term is bounded by
+$\abs sn^{-\sigma-1}$. Each term $\int_n^{n+1}(n^{-s}-x^{-s})dx$ is an entire function of $s$, and on a compact set $K\subset\{\sigma>0\}$, with $\abs s\le R$ and $\sigma\ge\delta>0$ on
+$K$, the terms are bounded by $Rn^{-1-\delta}$, a convergent series; so the series converges uniformly on $K$ (M-test), its sum is holomorphic on $\sigma>0$, and it is the
+required continuation of $\zeta(s)-\frac1{s-1}$.
+(iii) The Fourier series of the odd function $x$ on $(-\pi,\pi)$ has only sine terms, with coefficients
+$b_n=\frac1\pi\int_{-\pi}^\pi x\sin nx\,dx=\frac2\pi\Bigl[-\frac{x\cos nx}n\Bigr]_0^\pi+\frac2{\pi n}\int_0^\pi\cos nx\,dx=\frac{2(-1)^{n+1}}n$ (integration by parts). Parseval's identity
+$\frac1\pi\int_{-\pi}^\pi f^2dx=\sum_nb_n^2$ for odd $f$ (\cite{RHB06}, Fourier series) gives $\frac1\pi\cdot\frac{2\pi^3}3=\sum_n\frac4{n^2}$, that is $\frac{2\pi^2}3=4\zeta(2)$.
 (iv) and (v) are sketched below and stated respectively.
 \end{proof}
 
 \begin{proof}[Sketch of proof of (iv)]
 Let $\theta(y)=\sum_{n\in\Z}e^{-\pi n^2y}$ for $y>0$. Poisson summation applied to the Gaussian $e^{-\pi x^2y}$, whose Fourier transform is $y^{-1/2}e^{-\pi\xi^2/y}$ (\cite{RHB06},
-Fourier transforms), gives $\theta(1/y)=\sqrt y\,\theta(y)$. By \Cref{lem:lfunctions:mellin}(iii) with $y\mapsto\pi n^2y$, for $\operatorname{Re}s>1$,
+Fourier transforms), gives $\theta(1/y)=\sqrt y\,\theta(y)$. For $n\ge1$ the substitution $u=\pi n^2y$ gives $\int_0^\infty e^{-\pi n^2y}y^{s/2}\frac{dy}y=(\pi n^2)^{-s/2}\Gamma(\frac s2)$,
+the integral of \Cref{lem:lfunctions:mellin}(i) at $s/2$. Summing over $n\ge1$ (Fubini, as in \Cref{lem:lfunctions:mellin}(iii)) and using $\sum_{n\ge1}e^{-\pi n^2y}=\frac12(\theta(y)-1)$,
+for $\operatorname{Re}s>1$,
 \[
-\xi(s)=\frac12\int_0^\infty\bigl(\theta(y)-1\bigr)\,y^{s/2}\,\frac{dy}y .
+\xi(s)=\pi^{-s/2}\Gamma(\tfrac s2)\sum_{n\ge1}n^{-s}=\frac12\int_0^\infty\bigl(\theta(y)-1\bigr)\,y^{s/2}\,\frac{dy}y .
 \]
-Split the integral at $y=1$ and substitute $y\mapsto1/y$ on $(0,1)$, using $\theta(1/y)-1=\sqrt y(\theta(y)-1)+\sqrt y-1$:
+Split the integral at $y=1$ and substitute $y\mapsto1/y$ on $(0,1)$, which turns $\int_0^1\phi(y)\frac{dy}y$ into $\int_1^\infty\phi(1/y)\frac{dy}y$. The functional equation of $\theta$ gives
+$\theta(1/y)-1=\sqrt y(\theta(y)-1)+\sqrt y-1$, so
+\[
+\int_0^1\bigl(\theta(y)-1\bigr)y^{s/2}\frac{dy}y=\int_1^\infty\bigl(\theta(y)-1\bigr)y^{(1-s)/2}\frac{dy}y+\int_1^\infty\bigl(y^{(1-s)/2}-y^{-s/2}\bigr)\frac{dy}y,
+\]
+and the last integral is $\frac2{s-1}-\frac2s$ for $\operatorname{Re}s>1$. Halving and adding the integral over $(1,\infty)$,
 \[
 \xi(s)=\frac12\int_1^\infty\bigl(\theta(y)-1\bigr)\bigl(y^{s/2}+y^{(1-s)/2}\bigr)\frac{dy}y-\frac1s-\frac1{1-s}.
 \]
-The integral converges for every $s$ (since $\theta(y)-1=O(e^{-\pi y})$) and is symmetric in $s\leftrightarrow1-s$; so is the rest. See \cite{Davenport00} and Exercise~\ref{ex:lfunctions:ex-theta}.
+The integral converges for every $s$ (since $\theta(y)-1=O(e^{-\pi y})$ as $y\to\infty$) and, being an integral of an entire function of $s$ with locally uniform bounds, is
+entire; it is symmetric in $s\leftrightarrow1-s$, and so is $-\frac1s-\frac1{1-s}$. So the right side is the meromorphic continuation of $\xi$, with simple poles at $s=0$ and $s=1$
+only, and it is invariant under $s\mapsto1-s$. See \cite{Davenport00} and Exercise~\ref{ex:lfunctions:ex-theta}.
 \end{proof}
 
 Part (v) is the key input of the prime number theorem; we do not prove it; see \cite{Davenport00}. It is not used in this book.
@@ -435,13 +448,18 @@ sums to $0$ over a period (orthogonality, \Cref{ch:rings}). Partial summation gi
 \[
 \sum_{M<n\le M'}\chi(n)n^{-s}=S(M')M'^{-s}-S(M)M^{-s}+s\int_M^{M'}S(x)x^{-s-1}dx,
 \]
-which is at most $2mM^{-\sigma}+\abs s\,m\,M^{-\sigma}/\sigma$ in absolute value; so the series is uniformly Cauchy on compact subsets of $\operatorname{Re}s>0$, and its sum is
-holomorphic. (iv)(a) For $0\le x<1$, $\sum_{k<K}(-1)^kx^{2k}=\frac{1-(-x^2)^K}{1+x^2}$; integrating over $[0,1]$,
+which is at most $2mM^{-\sigma}+\abs s\,m\,M^{-\sigma}/\sigma$ in absolute value: each boundary term is at most $mM^{-\sigma}$, and the integral is at most
+$\abs sm\int_M^\infty x^{-\sigma-1}dx=\abs smM^{-\sigma}/\sigma$. On a compact subset of $\operatorname{Re}s>0$, where $\abs s\le R$ and $\sigma\ge\delta>0$, this is at most
+$m(2+R/\delta)M^{-\delta}$, which tends to $0$ as $M\to\infty$ independently of $s$; so the series is uniformly Cauchy on compact subsets of $\operatorname{Re}s>0$, and its sum, a locally
+uniform limit of entire functions, is holomorphic. (For the principal character the partial sums $S(x)$ grow like $x\varphi(m)/m$, and the argument fails, as it must: $L(s,\chi_0)$
+is $\zeta(s)\prod_{p\mid m}(1-p^{-s})$, which has a pole at $1$.) (iv)(a) For $0\le x<1$, $\sum_{k<K}(-1)^kx^{2k}=\frac{1-(-x^2)^K}{1+x^2}$; integrating over $[0,1]$,
 \[
 \sum_{k<K}\frac{(-1)^k}{2k+1}=\int_0^1\frac{dx}{1+x^2}\mp\int_0^1\frac{x^{2K}}{1+x^2}dx,
 \]
-and the last integral is at most $\frac1{2K+1}$; so $L(1,\chi_{-4})=\int_0^1\frac{dx}{1+x^2}=\frac\pi4$ (the series converges by (ii)). Likewise
-$\sum_{k<K}(x^{3k}-x^{3k+1})=\frac{(1-x)(1-x^{3K})}{1-x^3}$, and integrating,
+with the sign $(-1)^K$, and the last integral is at most $\int_0^1x^{2K}dx=\frac1{2K+1}$ since $1+x^2\ge1$; so $L(1,\chi_{-4})=\int_0^1\frac{dx}{1+x^2}=\arctan1=\frac\pi4$ (the
+series converges by (ii)). Likewise, since $\chi_{-3}(n)$ is $1$, $-1$, $0$ for $n\equiv1,2,0\pmod3$, the series for $L(1,\chi_{-3})$ grouped in pairs is $\sum_k\bigl(\frac1{3k+1}-\frac1{3k+2}\bigr)$, and
+$\frac1{3k+1}-\frac1{3k+2}=\int_0^1(x^{3k}-x^{3k+1})dx$. The geometric sum is $\sum_{k<K}(x^{3k}-x^{3k+1})=\frac{(1-x)(1-x^{3K})}{1-x^3}$, and $\frac{1-x}{1-x^3}=\frac1{1+x+x^2}$; integrating, and
+completing the square $1+x+x^2=(x+\frac12)^2+\frac34$ to find the primitive,
 \begin{align*}
 \sum_{k<K}\Bigl(\frac1{3k+1}-\frac1{3k+2}\Bigr)&=\int_0^1\frac{dx}{1+x+x^2}-\int_0^1\frac{x^{3K}}{1+x+x^2}dx\\
 &\longrightarrow\Bigl[\frac2{\sqrt3}\arctan\frac{2x+1}{\sqrt3}\Bigr]_0^1=\frac2{\sqrt3}\Bigl(\frac\pi3-\frac\pi6\Bigr)=\frac\pi{3\sqrt3};

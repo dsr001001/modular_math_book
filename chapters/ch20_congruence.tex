@@ -200,6 +200,15 @@ Remark rem:afterquant & \Cref{lem:congruence:quant-step1}, \Cref{rem:congruence:
 \end{tabular}
 \end{center}
 
+It may help to see the whole proof of Theorem thm:main before its parts. With $\Sigma$ the set of primes dividing $N$, it is a chain of four equalities of $\ell$-adic valuations,
+\[
+v_\ell(\degphi)\ \overset{(1)}=\ v_\ell(\eta^\emptyset_{f,\ell})\ \overset{(2)}=\ v_\ell(\eta^\Sigma_{f,\ell})-\sum_{q\in\Sigma}v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr)\ \overset{(3)}=\ \len H^1_\Sigma(\Q,W)-\sum_{q\in\Sigma}v_\ell\bigl(L^{\nv}_q(A_f,1)^{-1}\bigr),
+\]
+followed by a purely Galois-cohomological step (4) that rewrites $\len H^1_\Sigma(\Q,W)$ as $\len H^1_f(\Q,W)$ plus local terms. Equality (1) says that the modular degree is a congruence ideal (Section
+\ref{sec:congruence:dfg-lattices}); (2) says how that ideal grows when the level is raised by depletion (Section \ref{sec:congruence:dfg14}); (3) is the theorem of Diamond, Flach and Guo that a congruence ideal
+measures a Selmer group (Sections \ref{sec:congruence:dfg-theorems} and \ref{sec:congruence:taylor-wiles}); and (4) is \Cref{ch:blochkato}. The sections below follow this order, after two sections of algebra that
+make the words ``congruence ideal'' precise. Theorem thm:quant (Section \ref{sec:congruence:quant}) runs a similar chain at a different pair of levels.
+
 For a reader with a physics background, two images may help, one sentence each. The congruence module measures how far a lattice fails to split as the
 direct sum of its intersections with two complementary eigenspaces, as the unit cell of a crystal need not be a product of cells of two sublattices. The
 numerical criterion of Wiles (\Cref{thm:congruence:numerical-criterion}) is an index theorem: the size of a tangent space bounds a defect, with equality
@@ -233,7 +242,9 @@ is an orthogonal decomposition on whose summands $\hat\delta_!$ is perfect.
 (i) The freeness of $\T$ is proved in \Cref{ch:hecke} (the perfect pairing with the integral forms); the splitting of a finite free algebra over the complete ring $\Zl$
 is the idempotent-lifting theorem of \Cref{ch:modules}, which also shows that the maximal ideals contain $\ell$. (ii) The eigenvalues of $T_n$ are algebraic integers
 (\Cref{ch:hecke}), so $\phi(\T)$ is a finitely generated $\Z$-module of integral elements and $\phi(\T_\ell)$ an order in a finite extension; its image in the residue field is
-a field, so $\mf m_\phi$ is maximal. If $\phi=\phi_f$ is $\Z$-valued, $\T_\ell/(\ell,T_n-a_n(f):n\ge1)$ is a quotient of $\Z/\ell$ (each $T_n$ becomes a scalar), and it is nonzero
+a field, so $\mf m_\phi$ is maximal. (In detail: $\phi(\T_\ell)$ is a $\Zl$-submodule of $\mathcal O$ spanned by the finitely many values $\phi(t_i)$ on a $\Z$-basis $t_i$ of $\T$; the
+composite $\T_\ell\to\mathcal O/\varpi$ has as image a subring of the finite field $\mathcal O/\varpi$, and a subring of a finite field is a finite integral domain, hence a field. A ring
+homomorphism onto a field has maximal kernel.) If $\phi=\phi_f$ is $\Z$-valued, $\T_\ell/(\ell,T_n-a_n(f):n\ge1)$ is a quotient of $\Z/\ell$ (each $T_n$ becomes a scalar), and it is nonzero
 because it maps onto $\F_\ell$ through $\phi_f$; so the ideal generated is $\mf m_{f,\ell}$. (iii) The first sentence is the theorem on generalised eigenspaces over a complete
 discrete valuation ring of \Cref{ch:modules}, applied to $L=S_2(\Gamma_0(M);\Zl)$, which is a faithful $\T_\ell$-module. For the second, $\phi(T_p)=a_p(h)$ for $p\nmid M$ on $V_h$
 (multiplicity one, \Cref{ch:hecke}), so $\mf m_\phi=\mf m_{f,\ell}$ gives $a_p(h)\equiv a_p(f)$ modulo the maximal ideal for $p\nmid M\ell$, and Brauer-Nesbitt with Chebotarev gives the
@@ -255,7 +266,8 @@ coefficients: the newforms $f_{\text{539c}}$ and $f_{\text{539d}}$, and the depl
 \curve{77c1} (multiplicative at $7$, so $77\cdot7=539$) and $\delta_7=2$ for \curve{11a1} (good at $7$, so $11\cdot49=539$). The curve \curve{539c1} has type $\kod{I}_3^*$ at $7$ and is the twist of
 \curve{77c1} by $\chi_{-7}$; \curve{539d1} has type $\kod{I}_0^*$ at $7$ and is the twist of \curve{11a1} by $\chi_{-7}$. So $\iota_{\{7\}}$ sends the two depleted forms to the two newforms.
 Computed with PARI/GP (all $n\le130$, beyond Sturm's bound $112$ for $\Gamma_0(539)$): $a_n(f_{\text{539c}})\equiv a_n(f_{\text{539d}})\pmod3$ for every $n$, and
-$a_n((f_{\text{77c}})^{\{7\}})\equiv a_n((f_{\text{11a}})^{\{7\}})\pmod3$ for every $n$; but $a_3(f_{\text{539c}})=-2$ while $a_3((f_{\text{77c}})^{\{7\}})=2$. So $\T_{539}\otimes\Z_3$ has a maximal ideal $\mf m_1$
+$a_n((f_{\text{77c}})^{\{7\}})\equiv a_n((f_{\text{11a}})^{\{7\}})\pmod3$ for every $n$; but $a_3(f_{\text{539c}})=-2$ while $a_3((f_{\text{77c}})^{\{7\}})=2$, and $-2\not\equiv2\pmod3$. (The sign is the twist at work: $a_3(f_{\text{539c}})=\chi_{-7}(3)\,a_3(f_{\text{77c}})$ with
+$\chi_{-7}(3)=\bigl(\frac{-7}3\bigr)=\bigl(\frac23\bigr)=-1$.) So $\T_{539}\otimes\Z_3$ has a maximal ideal $\mf m_1$
 containing the two newforms' systems and another, $\mf m_2$, containing the two depleted systems; $\iota$ exchanges them (it multiplies $T_p$ by $\chi_{-7}(p)$). The Hecke
 congruence modules, computed as the index $[S_2(539;\Z):\Z g\oplus(g^c\cap S_2(539;\Z))]$ with $g^c$ the $\T$-stable complement (\Cref{prop:congruence:crit-general}), are
 \[
@@ -277,6 +289,13 @@ the same holds for the depleted form $g^S$ of Theorem thm:quant once the right c
 ``The congruence number is the congruence ideal of $f$ in the full Hecke algebra of level $N$ (Lemma lem:crit), and the theory of such ideals, from Hida to
 Diamond, Flach and Guo, expresses them through the adjoint Selmer group and the adjoint $L$-value'', and it underlies Lemma lem:hecke and Step 1 of the proof
 of Theorem thm:quant. Hida's theorem, which started the subject, is stated at the end as context; the paper does not use it in a proof.
+
+Before the definition, the idea in the smallest case. Suppose two eigenforms have integer coefficients and are congruent modulo $5$ but not modulo $25$, and nothing else is around. The Hecke
+algebra they generate is then, up to isomorphism, $\T=\set{(a,b)\in\Z^2:a\equiv b\pmod5}$, the pair recording the eigenvalues of an operator on the two forms. Over $\Q$ the algebra splits as
+$\Q\times\Q$, with idempotent $e=(1,0)$ projecting onto the first form; but $e\notin\T$, and the least multiple of $e$ that lies in $\T$ is $5e=(5,0)$. So the integral algebra fails to split off the
+first factor, and the size of the failure is $5$, the modulus of the congruence. The definition below extracts this number intrinsically: $\wp=\ker\pi$ is $0\times5\Z$, its annihilator $I$ is the set
+of elements of $\T$ supported on the first factor, here $5\Z\times0$, and $\pi(I)=5\Z$. \Cref{prop:congruence:congruence-module}(iii) shows that this is always the ideal of denominators of the
+idempotent, and \Cref{ex:congruence:toy}(a) is the same example over any discrete valuation ring.
 
 \begin{definition}[congruence ideal, congruence module, cotangent module]\label{def:congruence:congruence-module}
 Let $\mathcal O$ be a discrete valuation ring (in practice complete) with fraction field $K$, $\T$ a commutative $\mathcal O$-algebra which is free of finite rank as an $\mathcal O$-module, and
