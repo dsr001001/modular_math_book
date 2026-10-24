@@ -234,7 +234,8 @@ $a_{ij}\in\Z$, so $(\alpha I-A)\underline m=0$ for $A=(a_{ij})$ and the column $
 $\det(\alpha I-A)m_i=0$ for all $i$; as $1\in M$ is a $\Z$-combination of the $m_i$, $\det(\alpha I-A)=0$, and $\det(XI-A)$ is monic in $\Z[X]$.
 
 If $\alpha,\beta$ are algebraic integers, roots of monic integer polynomials of degrees $a$ and $b$, the ring $\Z[\alpha,\beta]$ is generated
-as a $\Z$-module by the $\alpha^i\beta^j$, $i<a$, $j<b$; it contains $\alpha\pm\beta$ and $\alpha\beta$, which are therefore integral by (iii).
+as a $\Z$-module by the $\alpha^i\beta^j$, $i<a$, $j<b$ (every element is a $\Z$-combination of monomials $\alpha^r\beta^s$, and the monic equation of degree $a$
+rewrites $\alpha^a$, hence by induction every $\alpha^r$ with $r\ge a$, as a $\Z$-combination of $1,\alpha,\dots,\alpha^{a-1}$; likewise for $\beta$); it contains $\alpha\pm\beta$ and $\alpha\beta$, which are therefore integral by (iii).
 A rational root $x=u/v$ (in lowest terms) of a monic $X^d+c_{d-1}X^{d-1}+\dots+c_0\in\Z[X]$ satisfies $u^d=-v(c_{d-1}u^{d-1}+\dots+c_0v^{d-1})$, so
 $v\mid u^d$ and $v=\pm1$: hence $\mathcal O_K\cap\Q=\Z$. If $\alpha$ is a root of $a_dX^d+\dots+a_0\in\Z[X]$ with $a_d\ne0$, then $a_d\alpha$ is a root
 of the monic polynomial $X^d+a_{d-1}X^{d-1}+a_{d-2}a_dX^{d-2}+\dots+a_0a_d^{d-1}$. Finally, if $x\in K$ satisfies $x^d+c_{d-1}x^{d-1}+\dots+c_0=0$
@@ -247,6 +248,11 @@ For $\alpha\in K$ let $m_\alpha\colon K\to K$, $x\mapsto\alpha x$, a $\Q$-linear
 $\Tr_{K/\Q}(\alpha)=\tr(m_\alpha)$ and $N_{K/\Q}(\alpha)=\det(m_\alpha)$. For a tower $L\supseteq K$ of number fields, $\Tr_{L/K}$ and $N_{L/K}$ are
 defined in the same way with $L$ viewed as a $K$-vector space.
 \end{definition}
+
+The trace and the norm turn an element of $K$ into rational numbers by linear algebra, without choosing an embedding into $\C$; this is what makes them
+useful for integrality questions. For example, in $K=\Q(i)$ with basis $1,i$, multiplication by $\alpha=a+bi$ sends $1\mapsto a+bi$ and $i\mapsto-b+ai$, so its
+matrix is $\sm a{-b}ba$, with trace $2a$ and determinant $a^2+b^2$: $\Tr(a+bi)=(a+bi)+(a-bi)$ and $N(a+bi)=(a+bi)(a-bi)$, the sum and the product of the two
+conjugates, which is the general pattern of \Cref{prop:ant:tracenorm}(i).
 
 \begin{proposition}[trace and norm]\label{prop:ant:tracenorm}
 Let $K$ be a number field of degree $n$ with embeddings $\sigma_1,\dots,\sigma_n$, and $\alpha\in K$.
@@ -264,8 +270,11 @@ $\Tr(\alpha)=-c_{n-1}$ and $N(\alpha)=(-1)^nc_0$.
 (i) If $\beta_1,\dots,\beta_{n/d}$ is a basis of $K$ over $\Q(\alpha)$, the elements $\beta_j\alpha^i$ ($0\le i<d$) form a basis of $K$ over $\Q$ in which
 $m_\alpha$ is block diagonal with $n/d$ copies of the companion matrix of $m_\alpha(X)$; so its characteristic polynomial is $m_\alpha(X)^{n/d}$.
 Each of the $d$ embeddings of $\Q(\alpha)$, which send $\alpha$ to the $d$ distinct roots of $m_\alpha$, extends to exactly $n/d$ embeddings of
-$K$ (\Cref{ch:galois}), so $\prod_i(X-\sigma_i(\alpha))=m_\alpha(X)^{n/d}$ as well. The remaining statements are properties of the trace and
-the determinant ($m_{\alpha\beta}=m_\alpha m_\beta$, and $m_\alpha$ is invertible for $\alpha\ne0$).
+$K$ (\Cref{ch:galois}), so $\prod_i(X-\sigma_i(\alpha))=m_\alpha(X)^{n/d}$ as well. The trace of a matrix is the sum of the roots of its
+characteristic polynomial and the determinant their product, which gives the two formulas. The remaining statements are properties of the trace and
+the determinant: $m_{\alpha+\beta}=m_\alpha+m_\beta$ and $m_{c\alpha}=cm_\alpha$ for $c\in\Q$ give linearity of $\Tr$; $m_{\alpha\beta}=m_\alpha m_\beta$ gives
+multiplicativity of $N$; $m_\alpha$ is invertible for $\alpha\ne0$ (with inverse $m_{\alpha^{-1}}$) and $m_0=0$. If $K=\Q(\alpha)$, the characteristic polynomial is the
+minimal polynomial $X^n+c_{n-1}X^{n-1}+\dots+c_0$, so the sum of its roots is $-c_{n-1}$ and their product is $(-1)^nc_0$.
 (ii) By \Cref{prop:ant:integral}(i), $m_\alpha(X)\in\Z[X]$, so the characteristic polynomial has integer coefficients. If $\alpha\beta=1$ with
 $\beta\in\mathcal O_K$, then $N(\alpha)N(\beta)=1$ in $\Z$. Conversely, let $\chi(X)=X^n+\dots+c_1X+c_0$ be the characteristic polynomial of
 $m_\alpha$, with $c_0=(-1)^nN(\alpha)=\pm1$; by Cayley-Hamilton $\chi(\alpha)=0$, so $\alpha^{-1}=-c_0^{-1}(\alpha^{n-1}+\dots+c_1)\in\Z[\alpha]\subseteq\mathcal O_K$.
@@ -292,7 +301,8 @@ $\disc(\alpha_1,\dots,\alpha_n)=[\mathcal O_K:M]^2\,d_K$. In particular, if $\di
 \end{theorem}
 
 \begin{proof}
-(i) If $x\ne0$ then $\Tr(x\cdot x^{-1})=\Tr(1)=n\ne0$. (ii) By \Cref{prop:ant:integral} a $\Q$-basis of $K$ can be multiplied by integers to lie in
+(i) Symmetry and bilinearity come from the linearity of $\Tr$ (\Cref{prop:ant:tracenorm}(i)). Nondegeneracy means that no $x\ne0$ is orthogonal to
+all of $K$; and if $x\ne0$, the element $y=x^{-1}$ gives $\Tr(xy)=\Tr(1)=n\ne0$ ($m_1$ is the identity of an $n$-dimensional space). (ii) By \Cref{prop:ant:integral} a $\Q$-basis of $K$ can be multiplied by integers to lie in
 $\mathcal O_K$; let $\alpha_1,\dots,\alpha_n$ be such a basis and $\alpha_1^\vee,\dots,\alpha_n^\vee$ the dual basis for the trace form, which exists
 by (i). For $x\in\mathcal O_K$, $x=\sum_i\Tr(x\alpha_i)\alpha_i^\vee$ with $\Tr(x\alpha_i)\in\Z$ (\Cref{prop:ant:tracenorm}(ii)). So
 $\bigoplus_i\Z\alpha_i\subseteq\mathcal O_K\subseteq\bigoplus_i\Z\alpha_i^\vee$, and $\mathcal O_K$, a subgroup of a free abelian group of rank $n$
@@ -302,8 +312,11 @@ $C\in\GL_n(\Z)$, the Gram matrix becomes $C(\cdot)C^{\mathsf T}$ and the determi
 (iii) Write $\alpha=C\beta$ with $C\in\Mat_n(\Z)$; then $\disc(\alpha)=\det(C)^2d_K$, and $\abs{\det C}=[\mathcal O_K:M]$ by the elementary
 divisor theorem (\Cref{ch:modules}). If $\disc(\alpha)$ is squarefree, the square $[\mathcal O_K:M]^2$ dividing it is $1$.
 (iv) With $\sigma_k(\theta)=\theta_k$, the matrix $(\sigma_k(\theta^{j-1}))$ is the Vandermonde matrix of the $\theta_k$, of determinant
-$\prod_{i<j}(\theta_j-\theta_i)$. Writing $g(X)=\prod_k(X-\theta_k)$, $g'(\theta_i)=\prod_{k\ne i}(\theta_i-\theta_k)$, and the product of these over $i$
-is $(-1)^{n(n-1)/2}\prod_{i<j}(\theta_i-\theta_j)^2$; and $\prod_ig'(\theta_i)=\prod_i\sigma_i(g'(\theta))=N(g'(\theta))$.
+$\prod_{i<j}(\theta_j-\theta_i)$; its square is $\prod_{i<j}(\theta_i-\theta_j)^2$, which is $\disc(g)$ by definition. Writing $g(X)=\prod_k(X-\theta_k)$, the
+product rule gives $g'(\theta_i)=\prod_{k\ne i}(\theta_i-\theta_k)$. In the product $\prod_i\prod_{k\ne i}(\theta_i-\theta_k)$ each unordered pair $\{i,j\}$, $i<j$,
+contributes the two factors $(\theta_i-\theta_j)(\theta_j-\theta_i)=-(\theta_i-\theta_j)^2$; there are $n(n-1)/2$ pairs, so the product is
+$(-1)^{n(n-1)/2}\prod_{i<j}(\theta_i-\theta_j)^2$. Finally $\prod_ig'(\theta_i)=\prod_i\sigma_i(g'(\theta))=N(g'(\theta))$ by \Cref{prop:ant:tracenorm}(i). For example, for
+$g=X^2-d$ the formula gives $(-1)^1N(2\sqrt d)=-(2\sqrt d)(-2\sqrt d)=4d$, the discriminant of $1,\sqrt d$ found again in \Cref{prop:ant:quadraticintegers}.
 \end{proof}
 
 \begin{proposition}[quadratic fields]\label{prop:ant:quadraticintegers}
@@ -341,13 +354,18 @@ $\mu(\Q(\sqrt{-3}))=\{\pm1,\pm\zeta_3,\pm\zeta_3^2\}=\mu_6$. (iii) $\Z[\sqrt2]^\
 (\Cref{prop:ant:tracenorm}(ii)), and norms are $\ge0$ in an imaginary quadratic field, so units are the elements of norm $1$. For $d\equiv2,3\pmod4$,
 $d<0$: $a^2+\abs db^2=1$ has the solutions $(\pm1,0)$, and also $(0,\pm1)$ when $d=-1$. For $d\equiv1\pmod4$, $d<0$: with $\alpha=(A+B\sqrt d)/2$, $A\equiv B
 \pmod2$, the equation is $A^2+\abs dB^2=4$; for $\abs d\ge7$ only $B=0$, $A=\pm2$; for $d=-3$ also $A=\pm1$, $B=\pm1$, which are the six elements
-$\pm1,\pm\zeta_3,\pm\zeta_3^2$. (iii) Let $u_0=1+\sqrt2$, a unit of norm $-1$. If $u=a+b\sqrt2>1$ is a unit, its conjugate $\bar u=\pm u^{-1}$
-has $\abs{\bar u}<1$, so $a=(u+\bar u)/2>0$ and $b\sqrt2=(u-\bar u)/2>0$; hence $a,b\ge1$ and $u\ge u_0$. Given any unit $u>0$, choose $k$ with
+$\pm1,\pm\zeta_3,\pm\zeta_3^2$. (iii) Let $u_0=1+\sqrt2$, a unit of norm $1-2=-1$. If $u=a+b\sqrt2>1$ is a unit ($a,b\in\Z$), its conjugate
+$\bar u=a-b\sqrt2$ satisfies $u\bar u=N(u)=\pm1$, so $\bar u=\pm u^{-1}$ has $\abs{\bar u}<1$; hence $a=(u+\bar u)/2>(1-1)/2=0$ and $b\sqrt2=(u-\bar u)/2>0$.
+So $a$ and $b$ are positive integers, $a,b\ge1$, and $u\ge1+\sqrt2=u_0$: $u_0$ is the smallest unit greater than $1$. Given any unit $u>0$, choose $k$ with
 $u_0^k\le u<u_0^{k+1}$; then $u\,u_0^{-k}$ is a unit in $[1,u_0)$, so it is $1$. Units $u<0$ are $-1$ times positive ones.
 \end{proof}
 
 In the paper the units of $\Z[\zeta_3]$ appear in ``$\pi^2=-3$ up to a unit'' (Lemma lem:IV):
 $3=-\zeta_3^2(1-\zeta_3)^2$ and $\zeta_3^2\in\mu_6$ (\Cref{prop:ant:above3}).
+
+So far $\mathcal O_K$ is known as an abelian group ($\Z^n$) and through its units. What it lacks in general is unique factorisation of elements, and
+the next section replaces it by unique factorisation of ideals; that is the structure behind the primes $\lambda$, the valuations and the residue fields used
+everywhere later.
 
 \section{Dedekind domains, ideals, norms and class groups}\label{sec:ant:dedekind}
 
@@ -361,6 +379,14 @@ $\Z[i]$ and $\Z[\zeta_3]$ that the paper needs are principal ideal domains.
 A \emph{Dedekind domain} is a Noetherian integral domain $R$, not a field, which is integrally closed in its fraction field and in which every
 nonzero prime ideal is maximal.
 \end{definition}
+
+The three conditions are exactly what the proof of unique factorisation of ideals uses, and each can fail on its own. Noetherian guarantees that the
+inductions over ideals terminate. Integral closedness fails for $\Z[\sqrt{-3}]$, which misses the integral element $\zeta_3$, and
+\Cref{ex:ant:ex-sqrtminus3} shows that ideals cannot be cancelled there. ``Nonzero primes are maximal'' (dimension one) fails for $\Z[X]$, which is
+Noetherian and integrally closed (a UFD) but has the chain of primes $0\subsetneq(X)\subsetneq(2,X)$; and in $\Z[X]$ the ideal $(4,X)$ is not a product of
+primes at all: a prime factor would contain $(4,X)$, hence $2$ and $X$, hence be the maximal ideal $(2,X)$, but $(2,X)\ne(4,X)$ (as $2\notin(4,X)$) and
+$(2,X)^k\subseteq(4,2X,X^2)\not\ni X$ for $k\ge2$. The rings of the paper, $\mathcal O_K$, $\Z[i]$, $\Z[\zeta_3]$, $\Z_3[\zeta_3]$,
+satisfy all three.
 
 \begin{theorem}\label{thm:ant:dedekind}
 (i) For every number field $K$, $\mathcal O_K$ is a Dedekind domain; for a nonzero prime $\mathfrak p$ of $\mathcal O_K$, $\mathfrak p\cap\Z=p\Z$ for a
@@ -379,7 +405,9 @@ maximal. (ii) A PID is Noetherian, is a UFD and hence integrally closed (\Cref{c
 $(\varpi)\subseteq(a)$ then $\varpi=ab$, and $\varpi\mid a$ or $\varpi\mid b$, so $(a)=(\varpi)$ or $(a)=R$.
 (iii) ``Only if'' is \Cref{prop:ant:crt}(iv) below, whose proof uses only \Cref{thm:ant:idealfactorisation}. ``If'': a discrete valuation ring is
 integrally closed (\Cref{ch:modules}). If $x\in K$ lies in $R_{\mathfrak m}$ for every maximal ideal $\mathfrak m$, the ideal
-$\{r\in R:rx\in R\}$ is contained in no maximal ideal, so it is $R$ and $x\in R$; hence $R=\bigcap_{\mathfrak m}R_{\mathfrak m}$ is integrally
+$\{r\in R:rx\in R\}$ is contained in no maximal ideal (for each $\mathfrak m$ write $x=a/s$ with $a\in R$, $s\notin\mathfrak m$; then $s$ lies in the ideal but not in
+$\mathfrak m$), so it is $R$, it contains $1$, and $x\in R$. Hence $R=\bigcap_{\mathfrak m}R_{\mathfrak m}$. Now if $x\in K$ is a root of a monic polynomial with
+coefficients in $R$, it is integral over each $R_{\mathfrak m}\supseteq R$, so it lies in each $R_{\mathfrak m}$, hence in $R$: $R$ is integrally
 closed. If $0\ne\mathfrak q\subsetneq\mathfrak m$ were primes, $\mathfrak qR_{\mathfrak m}\subsetneq\mathfrak mR_{\mathfrak m}$ would be two distinct
 nonzero primes of the discrete valuation ring $R_{\mathfrak m}$, which has only one.
 \end{proof}
@@ -391,15 +419,22 @@ in particular $\mathfrak p^{-1}\ne R$. (iii) $\mathfrak p\mathfrak p^{-1}=R$.
 \end{lemma}
 
 \begin{proof}
-(i) If not, the set of nonzero ideals not containing such a product has a maximal element $\mathfrak a$ ($R$ is Noetherian). It is not
-prime, and not $R$, so there are $b,c\notin\mathfrak a$ with $bc\in\mathfrak a$; the ideals $\mathfrak a+(b)$ and $\mathfrak a+(c)$ are strictly larger,
-so contain products of primes, and their product, contained in $\mathfrak a$, is a product of primes: a contradiction.
+(i) If not, the set of nonzero ideals not containing such a product is nonempty and has a maximal element $\mathfrak a$ ($R$ is Noetherian). It is not
+prime (a nonzero prime contains the product of one prime, itself), and not $R$ (which contains every product), so there are $b,c\notin\mathfrak a$ with
+$bc\in\mathfrak a$; the ideals $\mathfrak a+(b)$ and $\mathfrak a+(c)$ are strictly larger, so by maximality they contain products of primes, and their product
+$(\mathfrak a+(b))(\mathfrak a+(c))\subseteq\mathfrak a+(bc)=\mathfrak a$ contains the product of these two products: a contradiction.
 (ii) First $\mathfrak p^{-1}\ne R$: take $0\ne a\in\mathfrak p$ and, by (i), primes with $\mathfrak p_1\cdots\mathfrak p_r\subseteq(a)\subseteq\mathfrak p$, $r$
-minimal. Some $\mathfrak p_i\subseteq\mathfrak p$ (as $\mathfrak p$ is prime), say $\mathfrak p_1$, and then $\mathfrak p_1=\mathfrak p$ (maximality). By
-minimality there is $b\in\mathfrak p_2\cdots\mathfrak p_r$ with $b\notin(a)$; then $b\mathfrak p\subseteq(a)$, so $b/a\in\mathfrak p^{-1}$ while $b/a\notin R$.
-Now let $\mathfrak a=(\alpha_1,\dots,\alpha_m)\ne0$ with $\mathfrak a\mathfrak p^{-1}=\mathfrak a$. For $x\in\mathfrak p^{-1}$, $x\alpha_i=\sum_ja_{ij}\alpha_j$ with
-$a_{ij}\in R$, so $\det(xI-(a_{ij}))=0$ as in \Cref{prop:ant:integral}, $x$ is integral over $R$, and $x\in R$. So $\mathfrak p^{-1}\subseteq R$, a
-contradiction. (iii) $\mathfrak p\subseteq\mathfrak p\mathfrak p^{-1}\subseteq R$ (as $1\in\mathfrak p^{-1}$), and $\mathfrak p\mathfrak p^{-1}\ne\mathfrak p$ by (ii); $\mathfrak p$ is maximal.
+minimal. Some $\mathfrak p_i\subseteq\mathfrak p$: otherwise choose $x_i\in\mathfrak p_i\setminus\mathfrak p$, and $x_1\cdots x_r\in\mathfrak p$ contradicts the
+primality of $\mathfrak p$. Say $\mathfrak p_1\subseteq\mathfrak p$; as $\mathfrak p_1$ is a nonzero prime, it is maximal, so $\mathfrak p_1=\mathfrak p$. By
+minimality of $r$, $\mathfrak p_2\cdots\mathfrak p_r\not\subseteq(a)$ (for $r=1$ read $\mathfrak p_2\cdots\mathfrak p_r=R$), so there is $b\in\mathfrak p_2\cdots\mathfrak p_r$
+with $b\notin(a)$. Then $b\mathfrak p\subseteq\mathfrak p_1\mathfrak p_2\cdots\mathfrak p_r\subseteq(a)$, so $(b/a)\mathfrak p\subseteq R$, that is
+$b/a\in\mathfrak p^{-1}$, while $b/a\notin R$ because $b\notin aR$.
+Now let $\mathfrak a=(\alpha_1,\dots,\alpha_m)\ne0$ with $\mathfrak a\mathfrak p^{-1}=\mathfrak a$. For $x\in\mathfrak p^{-1}$, $x\alpha_i\in\mathfrak a$, so
+$x\alpha_i=\sum_ja_{ij}\alpha_j$ with $a_{ij}\in R$, and the adjugate argument of \Cref{prop:ant:integral} gives $\det(xI-(a_{ij}))\alpha_j=0$ for all $j$, hence
+$\det(xI-(a_{ij}))=0$ (as $R$ is a domain and some $\alpha_j\ne0$): $x$ is a root of a monic polynomial over $R$, and $x\in R$ because $R$ is integrally closed. So
+$\mathfrak p^{-1}\subseteq R$, contradicting the first step. (iii) $\mathfrak p\mathfrak p^{-1}$ is an ideal of $R$ (by the definition of $\mathfrak p^{-1}$), it
+contains $\mathfrak p$ (as $1\in\mathfrak p^{-1}$), and $\mathfrak p\mathfrak p^{-1}\ne\mathfrak p$ by (ii) with $\mathfrak a=\mathfrak p$. Since $\mathfrak p$ is
+maximal, $\mathfrak p\mathfrak p^{-1}=R$.
 \end{proof}
 
 \begin{theorem}[unique factorisation of ideals]\label{thm:ant:idealfactorisation}
@@ -433,6 +468,12 @@ $\mathfrak a\supseteq\mathfrak b$ iff $v_{\mathfrak p}(\mathfrak a)\le v_{\mathf
 ideal containing both, $\mathfrak a\cap\mathfrak b$ the largest contained in both, whence the exponents. (iv) The first identity is (i); and
 $(\alpha+\beta)\subseteq(\alpha)+(\beta)$, whose exponent at $\mathfrak p$ is the minimum, by (iii) extended to fractional ideals by scaling.
 \end{proof}
+
+Fractional ideals are introduced so that ideals can be inverted, as rational numbers invert integers. For $R=\Z$ the fractional ideals are the groups
+$r\Z$, $r\in\Q_{>0}$, and $J_\Z\simeq\Q_{>0}^\times$, free on the primes: $\frac{12}5\Z=(2)^2(3)(5)^{-1}$. In $\Z[\sqrt{-5}]$, with the primes of
+\Cref{ex:ant:sqrtminus5}, $\mathfrak p_2^{-1}=\frac12\mathfrak p_2$ (because $\mathfrak p_2\cdot\frac12\mathfrak p_2=\frac12(2)=R$), a fractional ideal that is not
+of the form $xR$. The valuation $v_{\mathfrak p}$ of (iv) is the exponent of $\mathfrak p$ in $\alpha R$; for $\mathcal O_K=\Z[i]$ and $\mathfrak p=(1+i)$, for
+instance, $v_{\mathfrak p}(2)=2$ since $2=-i(1+i)^2$, and $v_{\mathfrak p}(3)=0$.
 
 \begin{proposition}[the norm of an ideal]\label{prop:ant:idealnorm}
 Let $K$ be a number field. For a nonzero ideal $\mathfrak a\subseteq\mathcal O_K$ the \emph{norm} $N\mathfrak a=\#(\mathcal O_K/\mathfrak a)$ is finite, and:
@@ -487,7 +528,10 @@ $R\supseteq\mathfrak p\supseteq\dots\supseteq\mathfrak p^a$ has the quotients of
 prime dividing $\mathfrak a$ divides $\alpha R$, so $\beta\in\mathfrak a$ (\Cref{thm:ant:idealfactorisation}(iii)), and $(\alpha,\beta)=\alpha R+\beta R$
 has exponent $\min(v_{\mathfrak p_i}(\alpha),e_i)=e_i$ at $\mathfrak p_i$ and $0$ elsewhere: it is $\mathfrak a$.
 (iii) If the primes are $\mathfrak p_1,\dots,\mathfrak p_r$, choose by (i) $\pi_i\equiv x_i\pmod{\mathfrak p_i^2}$ with $x_i\in\mathfrak p_i\setminus\mathfrak p_i^2$
-and $\pi_i\equiv1\pmod{\mathfrak p_j}$ for $j\ne i$; then $\pi_iR=\mathfrak p_i$, and every ideal, a product of primes, is principal. A PID is a UFD
+and $\pi_i\equiv1\pmod{\mathfrak p_j}$ for $j\ne i$ (the ideals $\mathfrak p_i^2$ and $\mathfrak p_j$, $j\ne i$, are pairwise coprime). Then $\pi_i\in\mathfrak p_i$,
+$\pi_i\notin\mathfrak p_i^2$ (since $\pi_i-x_i\in\mathfrak p_i^2$ and $x_i\notin\mathfrak p_i^2$) and $\pi_i\notin\mathfrak p_j$; so $v_{\mathfrak p_i}(\pi_i)=1$ and
+$v_{\mathfrak p_j}(\pi_i)=0$, and as there are no other primes, $\pi_iR=\mathfrak p_i$ by \Cref{thm:ant:idealfactorisation}(i). Every ideal, a product of primes, is
+then principal. A PID is a UFD
 (\Cref{ch:rings}). Conversely, in a UFD a nonzero prime $\mathfrak p$ contains a nonzero element, hence one of its irreducible factors $\varpi$, which
 is a prime element; $(\varpi)\subseteq\mathfrak p$ is a nonzero prime ideal, hence maximal, so $\mathfrak p=(\varpi)$, and all ideals are principal.
 (iv) A nonzero ideal $A$ of $R_{\mathfrak p}$ is $(A\cap R)R_{\mathfrak p}$, and for a prime $\mathfrak q\ne\mathfrak p$, $\mathfrak qR_{\mathfrak p}=R_{\mathfrak p}$
@@ -531,7 +575,9 @@ $h_K$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $2$\\
 \end{center}
 In the first five cases $M_K<2$, so every class contains the ideal of norm $1$, which is $\mathcal O_K$. For $\Q(\sqrt{-11})$, $M_K>2$, but there is
 no ideal of norm $2$, because $2$ is inert (\Cref{thm:ant:quadsplit}: $-11\equiv5\pmod8$); so again $h=1$. For $\Q(\sqrt{-5})$ the ideals of norm $\le2$ are
-$\mathcal O_K$ and $\mathfrak p_2$ of \Cref{ex:ant:sqrtminus5}, which is not principal, and $\mathfrak p_2^2=(2)$; so $h=2$. Also $h(\Q(\sqrt{-23}))=3$
+$\mathcal O_K$ and $\mathfrak p_2$ of \Cref{ex:ant:sqrtminus5} (the norm $2$ ideals are prime, \Cref{prop:ant:idealnorm}(iv), and $\mathfrak p_2$ is the only
+prime above the ramified prime $2$), which is not principal, and $\mathfrak p_2^2=(2)$. Every class contains one of these two ideals, and they lie in different
+classes, so there are exactly two classes, and $h=2$. Also $h(\Q(\sqrt{-23}))=3$
 (stated; PARI). For $\Z[i]$ and $\Z[\zeta_3]$ the class number one is also a consequence of the Euclidean algorithm (\Cref{ch:rings}).
 \end{example}
 
@@ -649,12 +695,18 @@ Let $\beta_1,\dots,\beta_n$ be an integral basis and $A=\mathcal O_K/p\mathcal O
 $\bar x$ on $A$ is the reduction of the matrix of $m_x$, so $\Tr_{A/\F_p}(\bar x)=\Tr_{K/\Q}(x)\bmod p$ and $d_K\bmod p=\det(\Tr_{A/\F_p}(\bar\beta_i
 \bar\beta_j))$. Thus $p\mid d_K$ iff the trace form of the $\F_p$-algebra $A$ is degenerate. By \Cref{prop:ant:crt}, $A\simeq\prod_iA_i$ with
 $A_i=\mathcal O_K/\mathfrak P_i^{e_i}$, and the trace form of $A$ is the orthogonal sum of those of the $A_i$. If some $e_i>1$, $A_i$ contains a
-nonzero nilpotent $x$ (the image of an element of $\mathfrak P_i\setminus\mathfrak P_i^{e_i}$); then $xy$ is nilpotent for all $y$, a nilpotent
-endomorphism has trace $0$, and $x$ lies in the kernel of the trace form. If all $e_i=1$, each $A_i=\F_{p^{f_i}}$ is a field, whose trace form over
+nonzero nilpotent $x$ (the image of an element $\xi\in\mathfrak P_i\setminus\mathfrak P_i^{e_i}$, nonzero in $A_i$, with $\xi^{e_i}\in\mathfrak P_i^{e_i}$); then $xy$
+is nilpotent for all $y$ ($A$ is commutative), multiplication by a nilpotent element is a nilpotent endomorphism, a nilpotent endomorphism has trace $0$
+(its only eigenvalue is $0$), and $x$ lies in the kernel of the trace form. If all $e_i=1$, each $A_i=\F_{p^{f_i}}$ is a field, whose trace form over
 $\F_p$ is nondegenerate: $\Tr(x)=x+x^p+\dots+x^{p^{f-1}}$ (the sum of the conjugates, as in \Cref{prop:ant:tracenorm}(i), the Galois group being
-generated by $x\mapsto x^p$, \Cref{ch:rings}) is a polynomial function of degree $p^{f-1}<p^f$, hence not identically zero, and if $\Tr(xy)=0$ for
-all $y$ with $x\ne0$ then $\Tr$ would vanish identically.
+generated by $x\mapsto x^p$, \Cref{ch:rings}) is a polynomial function of degree $p^{f-1}<p^f$, hence not identically zero (a nonzero polynomial of degree
+$<p^f$ cannot vanish at all $p^f$ elements of the field), and if $\Tr(xy)=0$ for all $y$ with $x\ne0$ then, as $xy$ runs over the whole field when $y$ does,
+$\Tr$ would vanish identically.
 \end{proof}
+
+For example, for $K=\Q(i)$ and $p=2$ the algebra is $A=\F_2[X]/(X+1)^2$, the nilpotent is $x=1+i$, and the Gram matrix of the trace form in the basis $1,i$ is
+$\sm200{-2}$, zero modulo $2$; for $p=3$, $A=\F_9$ and the same matrix is invertible modulo $3$. The theorem says that this mechanism, nilpotents killing the
+trace form, is the whole story.
 
 From now on in this section $L/K$ is a \emph{Galois} extension of number fields with group $G$, $\mathfrak p$ is a nonzero prime of $K$ and
 $\mathfrak P\mid\mathfrak p$. Write $\kappa(\mathfrak p)=\mathcal O_K/\mathfrak p$ and $\kappa(\mathfrak P)=\mathcal O_L/\mathfrak P$, finite fields with
@@ -681,6 +733,11 @@ $\mathfrak p\mathcal O_L=\prod\mathfrak P_i^{e_i}$ permutes the factors keeping 
 $\tau\in I_{\mathfrak P}$ iff $\tau x-x\in\mathfrak P$ for all $x$ iff $(\sigma\tau\sigma^{-1})(\sigma x)-\sigma x\in\sigma\mathfrak P$ for all $x$ iff
 $\sigma\tau\sigma^{-1}\in I_{\sigma\mathfrak P}$; the same for $D$. If $G$ is abelian, conjugation is trivial, and transitivity gives the last claim.
 \end{proof}
+
+The smallest example shows all three behaviours. Let $L=\Q(i)$, $K=\Q$, $G=\{1,c\}$ with $c$ complex conjugation (\Cref{ex:ant:dkexamples}(a)). At $p=5$,
+$5=(2+i)(2-i)$ and $c$ exchanges the two primes, so $g=2$ and $D_{\mathfrak P}=I_{\mathfrak P}=1$. At $p=3$, $(3)$ is prime with residue field $\F_9$, so
+$g=1$, $f=2$ and $D_{\mathfrak P}=G$; and $c$ induces the nontrivial automorphism of $\F_9=\F_3(i)$, as $c(i)=-i\ne i$ modulo $3$, so $I_{\mathfrak P}=1$. At
+$p=2$, $(2)=(1+i)^2$, so $e=2$, $D_{\mathfrak P}=G$, and $c$ acts trivially on $\Z[i]/(1+i)=\F_2$, so $I_{\mathfrak P}=G$. In each case $\#D_{\mathfrak P}=ef$.
 
 \begin{theorem}[the residue field extension]\label{thm:ant:residuegalois}
 In this situation:
@@ -721,9 +778,12 @@ written with the geometric Frobenius:
 \[
 L_p(V,s)=\det\bigl(1-\Frob_p^{-1}p^{-s}\bigm|V^{I_p}\bigr)^{-1}\qquad(p\ne\ell),
 \]
-so that $L_p(\Q_\ell(1),s)=(1-p^{-1-s})^{-1}$ and $L_p(V(1),s)=L_p(V,s+1)$, as $\chi_\ell(\Frob_p^{-1})=p^{-1}$. On $V_\ell E$ the geometric Frobenius has the
-eigenvalues $\alpha^{-1},\beta^{-1}$ (with $\alpha+\beta=a_p$, $\alpha\beta=p$), and on the dual $V_\ell E^\vee$ it has $\alpha,\beta$, so
-$L_p(V_\ell E^\vee,s)=(1-a_pp^{-s}+p^{1-2s})^{-1}$ is the Euler factor of $L(E,s)$. \emph{Dictionary.} When the multiset of Frobenius eigenvalues on
+so that $L_p(\Q_\ell(1),s)=(1-p^{-1-s})^{-1}$ and $L_p(V(1),s)=L_p(V,s+1)$, as $\chi_\ell(\Frob_p^{-1})=p^{-1}$. In detail: on $V(1)=V\otimes\chi_\ell$ the
+geometric Frobenius acts as $p^{-1}\Frob_p^{-1}$, so $\det(1-p^{-1}\Frob_p^{-1}p^{-s}\mid V^{I_p})=\det(1-\Frob_p^{-1}p^{-(s+1)}\mid V^{I_p})$ (the twist by the
+unramified $\chi_\ell$ does not change the inertia invariants). On $V_\ell E$ the geometric Frobenius has the
+eigenvalues $\alpha^{-1},\beta^{-1}$ (with $\alpha+\beta=a_p$, $\alpha\beta=p$, the eigenvalues of $\rho_{E,\ell}(\Frob_p)$), and on the dual $V_\ell E^\vee$, where
+$g$ acts by the inverse transpose of $\rho(g)$, the geometric Frobenius acts by the transpose of $\rho(\Frob_p)$ and has the eigenvalues $\alpha,\beta$; so
+$\det(1-\Frob_p^{-1}p^{-s}\mid V_\ell E^\vee)=(1-\alpha p^{-s})(1-\beta p^{-s})=1-a_pp^{-s}+p^{1-2s}$, and $L_p(V_\ell E^\vee,s)$ is the Euler factor of $L(E,s)$. \emph{Dictionary.} When the multiset of Frobenius eigenvalues on
 $V^{I_p}$ is stable under inversion, the two conventions give the same factor: this is the case for $\ad V$ at a good prime (eigenvalues
 $\alpha/\beta,1,\beta/\alpha$) and on the lines on which Frobenius acts by $\pm1$ (types $\kod{II}$, $\kod{III}$, $\kod{IV}$ and their duals). When it is not
 stable they differ: if $E$ has multiplicative reduction at $q$, $(\ad V)^{I_q}$ is a line on which the arithmetic Frobenius acts by $q$ and the geometric one by
@@ -733,8 +793,14 @@ $q^{-1}$ (\Cref{ex:ant:multiplicative}), and the factor $1-q^{-1-s}$ of the pape
 \begin{example}[the multiplicative case]\label{ex:ant:multiplicative}
 Let $E$ have split multiplicative reduction at $q\ne\ell$. In a suitable basis $e_1,e_2$ of $T_\ell E$ (\Cref{ch:reduction}), inertia acts through
 $\sm1{*}01$ with a nonzero corner, and an arithmetic Frobenius through $\rho(\Frob)=\sm q{c'}01$. On $\ad V$, with basis $e=e_1\otimes e_2^\vee$,
-$h$, $f$ (\Cref{ch:reps}), the invariants of a nontrivial unipotent $u=\sm1t01$ form the line $\Q_\ell e$ (as $u e u^{-1}=e$, while $h$ and $f$ are moved
-by $t$ times a nonzero vector), and $\rho(\Frob)\,e\,\rho(\Frob)^{-1}=qe$ (the matrix $e=\sm0100$ is scaled by $q\cdot1^{-1}$). So $\Frob$ acts on
+$h$, $f$ (\Cref{ch:reps}), the invariants of a nontrivial unipotent $u=\sm1t01$, $t\ne0$, form the line $\Q_\ell e$. Indeed, with $e=\sm0100$,
+$h=\sm100{-1}$, $f=\sm0010$, a direct multiplication gives
+\[
+ueu^{-1}=e,\qquad uhu^{-1}=h-2te,\qquad ufu^{-1}=f+th-t^2e,
+\]
+so $xe+yh+zf$ is sent to $(x-2ty-t^2z)e+(y+tz)h+zf$, and it is fixed iff $tz=0$ and $2ty+t^2z=0$, that is $z=y=0$ (as $t\ne0$ and $2$ is invertible). The
+image of inertia consists of such $u$, and contains one with $t\ne0$, so $(\ad V)^{I_q}=\Q_\ell e$. Next $\rho(\Frob)\,e\,\rho(\Frob)^{-1}=qe$: with
+$F=\sm q{c'}01$ and $F^{-1}=\sm{q^{-1}}{-c'q^{-1}}01$, $Fe=\sm0q00$ and $FeF^{-1}=\sm0q00=qe$ (in general conjugation by $\sm a*0d$ scales $e$ by $a/d$). So $\Frob$ acts on
 $(\ad V)^{I_q}$ by $q$, and $\Frob^{-1}$ by $q^{-1}$: $\det(1-\Frob_q^{-1}q^{-s}\mid(\ad V)^{I_q})=1-q^{-1-s}$, the entry of the paper's table, whereas the
 arithmetic Frobenius would give $1-q^{1-s}$. The nonsplit case is the same, the unramified quadratic character $\pm1$ cancelling in the adjoint.
 \end{example}
@@ -768,7 +834,10 @@ $D_{\mathfrak P}(L/K)\to\Gal(\kappa(\mathfrak P)/\kappa(\mathfrak p))$ is inject
 \end{proof}
 
 Examples, proved in \Cref{thm:ant:cyclotomicsplitting} and \Cref{prop:ant:quadchar}: in $\Q(\zeta_n)$, for $p\nmid n$, $\Frob_p=\sigma_p\colon\zeta_n\mapsto\zeta_n^p$;
-in $\Q(\sqrt d)$ of discriminant $D$, for $p\nmid D$, $\Frob_p(\sqrt d)=\bigl(\frac Dp\bigr)\sqrt d$.
+in $\Q(\sqrt d)$ of discriminant $D$, for $p\nmid D$, $\Frob_p(\sqrt d)=\bigl(\frac Dp\bigr)\sqrt d$. The defining congruence can be checked by hand in
+$\Q(i)$: for an odd prime $p$ and $x=a+bi\in\Z[i]$, $x^p\equiv a^p+b^pi^p\equiv a+b\,i^p\pmod p$ (binomial theorem modulo $p$ and Fermat), and $i^p=(-1)^{(p-1)/2}i$.
+So $\Frob_p$ is the identity for $p\equiv1\pmod4$ and complex conjugation for $p\equiv3\pmod4$, matching the decomposition groups found after
+\Cref{prop:ant:galoissplitting}.
 
 \begin{proposition}[Frobenius and subfields]\label{prop:ant:frobsubfield}
 Let $L/\Q$ be finite Galois with group $G$, $H\le G$, $M=L^H$, $p$ a prime unramified in $L$, $\mathfrak P\mid p$ and $F=\Frob_{\mathfrak P}$. The map
@@ -804,7 +873,10 @@ reductions as $x\mapsto x^p$, and the orbit of a root of $\bar f$ under $x\mapst
 
 For example, in $\Q(2^{1/3})$ (\Cref{ex:ant:dkexamples}(e)), $X^3-2\equiv(X+2)(X^2+3X+4)\pmod5$, so $\Frob_5$ in $\Gal(\Q(2^{1/3},\zeta_3)/\Q)\simeq S_3$ is a
 transposition: it fixes one root and swaps the other two, and the primes above $5$ in $\Q(2^{1/3})$ have residue degrees $1$ and $2$, the orbit
-lengths of \Cref{prop:ant:frobsubfield}.
+lengths of \Cref{prop:ant:frobsubfield}. To see the dictionary concretely, take $H=\Gal(L/\Q(2^{1/3}))$, the stabiliser of the real root; then $G/H$ is
+identified with the set of the three cube roots of $2$, and $\langle\Frob_{\mathfrak P}\rangle$-orbits on $G/H$ are orbits on the roots. At $p=31$, $X^3-2$ has
+three roots modulo $31$, $\Frob$ is trivial, there are three orbits of length $1$, and $31$ splits completely in $\Q(2^{1/3})$; at $p=7$ it is irreducible,
+$\Frob$ is a $3$-cycle, there is one orbit of length $3$, and $7$ is inert, in agreement with \Cref{ex:ant:dkexamples}(e).
 
 \begin{proposition}[Frobenius elements in $G_\Q$]\label{prop:ant:frobGQ}
 Let $p$ be a prime. A \emph{prime of $\bar\Z$ above $p$} is a maximal ideal $\bar{\mathfrak P}$ of $\bar\Z$ containing $p$.
@@ -859,13 +931,16 @@ Let $\varpi$ be a uniformiser of the discrete valuation ring $\mathcal O_{L,\mat
 $\tau\in I_{\mathfrak P}$, $\tau(\varpi)$ is again a uniformiser, so $\tau(\varpi)/\varpi$ is a unit; put $\theta(\tau)=\tau(\varpi)/\varpi\bmod\mathfrak P
 \in\kappa(\mathfrak P)^\times$. Since $\tau$ acts trivially modulo $\mathfrak P$ on $\mathcal O_{L,\mathfrak P}$ (the congruence $\tau x\equiv x$ extends from
 $\mathcal O_L$ to fractions with denominators prime to $\mathfrak P$), $\theta$ does not depend on $\varpi$ (replacing $\varpi$ by $u\varpi$ multiplies by
-$\tau(u)/u\equiv1$) and is a homomorphism: $\theta(\sigma\tau)=\sigma\bigl(\tau(\varpi)/\varpi\bigr)\cdot\sigma(\varpi)/\varpi\equiv\theta(\tau)\theta(\sigma)$. The kernel
+$\tau(u)/u\equiv1$) and is a homomorphism: for $\sigma,\tau\in I_{\mathfrak P}$,
+$\sigma\tau(\varpi)/\varpi=\sigma\bigl(\tau(\varpi)/\varpi\bigr)\cdot\sigma(\varpi)/\varpi$, and $\sigma$ fixes the unit $\tau(\varpi)/\varpi$ modulo $\mathfrak P$, so
+$\theta(\sigma\tau)\equiv\theta(\tau)\theta(\sigma)$. The kernel
 of $\theta$ is the first ramification group, which is a $p$-group; this is the step we do not prove (it uses the filtration of $I_{\mathfrak P}$ by the
 higher ramification groups, whose successive quotients embed in the additive groups $\mathfrak P^i/\mathfrak P^{i+1}$; \cite[Chapter IV, Section 2]{SerreLocalFields}).
 So when $\#I_{\mathfrak P}$ is prime to $p$, $\theta$ is injective and $I_{\mathfrak P}$, a subgroup of the cyclic group $\kappa(\mathfrak P)^\times$, is cyclic.
-For $F$ as stated, $\varpi'=F^{-1}(\varpi)$ is a uniformiser, and
-$\theta(F\tau F^{-1})=F\bigl(\tau(\varpi')/\varpi'\bigr)\bmod\mathfrak P=\theta(\tau)^{N\mathfrak p}=\theta(\tau^{N\mathfrak p})$, because $F$ acts on $\kappa(\mathfrak P)$ as
-$x\mapsto x^{N\mathfrak p}$. Injectivity of $\theta$ gives $F\tau F^{-1}=\tau^{N\mathfrak p}$. The profinite form, $\Frob\,t\,\Frob^{-1}=t^q$ on the tame inertia
+For $F$ as stated, $\varpi'=F^{-1}(\varpi)$ is a uniformiser ($F\in D_{\mathfrak P}$ preserves $\mathfrak P$ and its powers), and
+$F\tau F^{-1}(\varpi)/\varpi=F(\tau(\varpi'))/F(\varpi')=F\bigl(\tau(\varpi')/\varpi'\bigr)$. Reducing modulo $\mathfrak P$: the unit $\tau(\varpi')/\varpi'$ reduces to
+$\theta(\tau)$ (computed with the uniformiser $\varpi'$, which is allowed), and $F$ acts on $\kappa(\mathfrak P)$ as $x\mapsto x^{N\mathfrak p}$, so
+$\theta(F\tau F^{-1})=\theta(\tau)^{N\mathfrak p}=\theta(\tau^{N\mathfrak p})$. Injectivity of $\theta$ gives $F\tau F^{-1}=\tau^{N\mathfrak p}$. The profinite form, $\Frob\,t\,\Frob^{-1}=t^q$ on the tame inertia
 quotient of $G_{\Q_q}$, is proved in \Cref{ch:local}.
 \end{proof}
 
@@ -882,7 +957,12 @@ conjugates it to $\tau^{-1}$ if $q\equiv3\pmod4$. None of this depends on the ch
 \end{corollary}
 
 \begin{proof}
-The kernel $1+\ell\Mat_2(\Z_\ell)$ of reduction modulo $\ell$ contains no nontrivial element of finite order when $\ell$ is odd (\Cref{ch:groups,ch:reps}), so
+The kernel $1+\ell\Mat_2(\Z_\ell)$ of reduction modulo $\ell$ contains no nontrivial element of finite order when $\ell$ is odd (\Cref{ch:groups,ch:reps}).
+For the reader's convenience, the argument: write $g\ne1$ as $g=1+\ell^kx$ with $k\ge1$ and $x\not\equiv0\pmod\ell$. For $m$ prime to $\ell$,
+$g^m\equiv1+m\ell^kx\not\equiv1\pmod{\ell^{k+1}}$. For $m=\ell$, $g^\ell=1+\ell^{k+1}x+\binom\ell2\ell^{2k}x^2+\sum_{j\ge3}\binom\ell j\ell^{jk}x^j$, where
+$\ell\mid\binom\ell2$ ($\ell$ odd) and $jk\ge k+2$ for $j\ge3$; so $g^\ell=1+\ell^{k+1}x'$ with $x'\equiv x\not\equiv0\pmod\ell$, again of the same shape. By induction
+$g^{\ell^a}=1+\ell^{k+a}x_a$ with $x_a\not\equiv0$, and then $g^{\ell^am'}\ne1$ for $m'$ prime to $\ell$; so $g$ has infinite order. (For $\ell=2$ the step
+$m=\ell$ fails at $k=1$: $-1\in1+2\Mat_2(\Z_2)$.) Hence
 reduction $\rho\mapsto\bar\rho$ is injective on the finite group $\rho(I_q)$. Let $L$ be the field cut out by $\bar\rho$, a finite Galois extension of $\Q$
 with $\bar\rho\colon\Gal(L/\Q)\simeq\bar\rho(G_\Q)$, and $\mathfrak P=\bar{\mathfrak P}\cap\mathcal O_L$. By \Cref{prop:ant:frobGQ}(ii), $I_{\mathfrak P}$ is the
 image of $I_q$, so $\bar\rho(I_{\mathfrak P})=\bar\rho(I_q)\simeq\rho(I_q)$ has order prime to $q$, and $F|_L\in D_{\mathfrak P}$ induces $x\mapsto x^q$ on
@@ -1101,11 +1181,19 @@ eigenvalues being the primitive cube roots of unity, \Cref{ch:reps}). Make $T$ a
 \end{corollary}
 
 \begin{proof}
-(i) $\sigma$ is not a scalar (a scalar $s\in\Z_3$ with $s^2+s+1=0$ does not exist, \Cref{thm:ant:z3zeta3dvr}(i)), so $X^2+X+1$ is the minimal polynomial of
-$\sigma$ and $\Z_3[\sigma]\simeq\Z_3[X]/(X^2+X+1)$. $T$ is torsion-free over the domain $\Z_3[\zeta_3]$ by the norm argument of \Cref{lem:ant:quadraticZl}, hence
+(i) $\sigma$ is not a scalar: a scalar $s\in\Z_3$ with $s^2+s+1=0$ does not exist (\Cref{thm:ant:z3zeta3dvr}(i); directly, $s^2+s+1\equiv(s-1)^2\pmod3$ forces
+$s=1+3t$, and then $s^2+s+1=3+9t+9t^2\equiv3\pmod9$ is not $0$). So the polynomials over $\Z_3$ killing $\sigma$ are exactly the multiples of $X^2+X+1$ (division
+by the monic $X^2+X+1$ leaves a remainder $a+bX$ with $a+b\sigma=0$, and $b\ne0$ would make $\sigma=-a/b$ a scalar in $\Q_3$ satisfying $s^2+s+1=0$, hence in $\Z_3$ since $\Z_3$ is integrally closed, which was just excluded), and
+$\Z_3[\sigma]\simeq\Z_3[X]/(X^2+X+1)$. $T$ is torsion-free over the domain $\Z_3[\zeta_3]$ by the norm argument of \Cref{lem:ant:quadraticZl}, hence
 free, of rank $2/2=1$. (ii) $T\simeq\Z_3[\zeta_3]$ gives $T/3T\simeq\Z_3[\zeta_3]/(3)=\Z_3[\zeta_3]/(\pi^2)\simeq\Z[\zeta_3]/(\pi^2)$, and \Cref{prop:ant:above3}(iii)
-applies. (iii) In $\Z_3[\zeta_3]/(\pi^k)$, $\zeta_3x=x$ iff $\pi x\equiv0\pmod{\pi^k}$ iff $x\in(\pi^{k-1})$; and in $T$ itself $\pi x=0$ forces $x=0$.
+applies. (iii) In $\Z_3[\zeta_3]/(\pi^k)$, $\zeta_3x=x$ iff $\pi x\equiv0\pmod{\pi^k}$ iff $x\in(\pi^{k-1})$ (write $x=u\pi^j$ with $u$ a unit,
+\Cref{thm:ant:z3zeta3dvr}(ii)); and in $T$ itself $\pi x=0$ forces $x=0$, as $T$ is torsion-free over the domain $\Z_3[\zeta_3]$.
 \end{proof}
+
+A worked case: let $T=\Z_3^2$ and let $\sigma=\sm0{-1}1{-1}$ be the companion matrix of $X^2+X+1$ ($\sigma e_1=e_2$, $\sigma e_2=-e_1-e_2$). Then $e_1$ generates $T$
+over $\Z_3[\sigma]$, as $e_1,\sigma e_1=e_2$ is a basis, and the isomorphism $\Z_3[\zeta_3]\to T$, $z\mapsto z\cdot e_1$, sends $1,\zeta_3$ to $e_1,e_2$. Modulo $3$,
+$\sigma-1\equiv\sm2211$ has rank one and $(\sigma-1)^2\equiv\sm6633\equiv0$, so $\sigma$ is a nontrivial unipotent on $T/3T$; its fixed line is the kernel of
+$\sm2211$, spanned by $e_1-e_2=(1-\sigma)e_1=\pi e_1$, which is the line $\pi T/3T$ of (ii).
 
 \begin{proposition}[$\Z_\ell\lbrack\zeta_3\rbrack$ and $\Z_\ell\lbrack i\rbrack$]\label{prop:ant:zlzeta3}
 For a prime $\ell$ put $\Z_\ell[\zeta_3]:=\Z_\ell[X]/(X^2+X+1)\simeq\Z_\ell\otimes_\Z\Z[\zeta_3]$ and $\Z_\ell[i]:=\Z_\ell[X]/(X^2+1)\simeq\Z_\ell\otimes_\Z\Z[i]$. These are
@@ -1144,9 +1232,13 @@ For $\ell=3$ and $m=3$ this is \Cref{cor:ant:z3zeta3modules}.
 \begin{proof}
 $g$ is not a scalar (its characteristic polynomial has distinct roots), so $\Phi_m$ is its minimal polynomial and $\Z_\ell[g]\simeq\Z_\ell[X]/(\Phi_m)=:R$; and
 $\Phi_6(X)=\Phi_3(-X)$. By \Cref{prop:ant:zlzeta3}, $R$ is a discrete valuation ring or $\Z_\ell\times\Z_\ell$. Over $\Q_\ell$, $T\otimes\Q_\ell$ is a cyclic
-$\Q_\ell[g]$-module (a non-scalar endomorphism of a plane has a cyclic vector), so $T\otimes\Q_\ell\simeq R\otimes\Q_\ell$, and \Cref{lem:ant:quadraticZl} gives
-$T\simeq R$. Then the commutant of $g$ is $\End_R(T)=\End_R(R)=R$. (In the split case the idempotents are explicit: if $\zeta\in\Z_\ell$ is a root of $\Phi_m$,
-$e=(g-\zeta^{-1})/(\zeta-\zeta^{-1})$, whose denominator squares to $-3$ or $-4$, a unit.)
+$\Q_\ell[g]$-module (a non-scalar endomorphism of a plane has a cyclic vector: if every nonzero vector were an eigenvector, two independent eigenvectors and their
+sum would have to share one eigenvalue and $g$ would be a scalar; so some $v$ is not an eigenvector, and $v,gv$ is a basis), so $T\otimes\Q_\ell\simeq R\otimes\Q_\ell$
+via $z\mapsto zv$, and \Cref{lem:ant:quadraticZl} gives $T\simeq R$. Then the commutant of $g$ is $\End_R(T)=\End_R(R)=R$, since an $R$-linear endomorphism of
+$R$ is multiplication by the image of $1$. (In the split case the idempotents are explicit: if $\zeta\in\Z_\ell$ is a root of $\Phi_m$, the other root is
+$\zeta^{-1}$, and $e=(g-\zeta^{-1})/(\zeta-\zeta^{-1})$ is $1$ on the $\zeta$-eigenline and $0$ on the $\zeta^{-1}$-eigenline. It lies in $\Z_\ell[g]$ because its
+denominator is a unit: $(\zeta-\zeta^{-1})^2=(\zeta+\zeta^{-1})^2-4$ is $1-4=-3$ for $m=3,6$ and $0-4=-4$ for $m=4$, units for $\ell$ odd, $\ell\ne3$; and the split
+case requires $\ell\ne3$.)
 \end{proof}
 
 \begin{proposition}[the commutant and the invariant line of the adjoint]\label{prop:ant:commutant}
@@ -1233,15 +1325,22 @@ $n\in\{3,4,5,7,8,9,12,15,16,20\}$). (ii) $\Phi_{\ell^a}(X)=\sum_{j=0}^{\ell-1}X^
 $\ell\nmid b$, $(1-\zeta^b)/(1-\zeta)=1+\zeta+\dots+\zeta^{b-1}\in\Z[\zeta]$, and its inverse $(1-\zeta)/(1-\zeta^b)$ is of the same form since $\zeta=(\zeta^b)^{b'}$ with
 $bb'\equiv1$. So $\ell=u(1-\zeta)^{\varphi(\ell^a)}$ with $u$ a unit. Writing $(1-\zeta)=\prod\mathfrak P^{a_{\mathfrak P}}$, $\ell\mathcal O_K=\prod\mathfrak P^{\varphi(\ell^a)a_{\mathfrak P}}$
 and $\sum_{\mathfrak P}\varphi(\ell^a)a_{\mathfrak P}f_{\mathfrak P}=\varphi(\ell^a)$ (\Cref{thm:ant:efg}) forces a single $\mathfrak P$ with $a_{\mathfrak P}=f_{\mathfrak P}=1$.
-(i) for $n=\ell^a$: from $(X^{\ell^{a-1}}-1)\Phi_{\ell^a}(X)=X^{\ell^a}-1$, $(\xi-1)\Phi'_{\ell^a}(\zeta)=\ell^a\zeta^{-1}$ with $\xi=\zeta^{\ell^{a-1}}$ a primitive $\ell$-th
+(i) for $n=\ell^a$: differentiating $(X^{\ell^{a-1}}-1)\Phi_{\ell^a}(X)=X^{\ell^a}-1$ and evaluating at $\zeta$, where $\Phi_{\ell^a}(\zeta)=0$ kills the term
+containing $\Phi_{\ell^a}$, gives $(\xi-1)\Phi'_{\ell^a}(\zeta)=\ell^a\zeta^{\ell^a-1}=\ell^a\zeta^{-1}$ with $\xi=\zeta^{\ell^{a-1}}$ a primitive $\ell$-th
 root of unity, whose norm $N_{K/\Q}(\xi-1)$ is $\pm$ a power of $\ell$ by (ii). So $\disc(\Phi_{\ell^a})=\pm N(\Phi'_{\ell^a}(\zeta))$ is $\pm$ a power of $\ell$
 (\Cref{thm:ant:integralbasis}(iv)), and the index $[\mathcal O_K:\Z[\zeta]]$ is a power of $\ell$. Suppose $\ell$ divides it. Then some $x\in\mathcal O_K\setminus\Z[\zeta]$
 has $\ell x\in\Z[\zeta]$. With $\pi_\ell=1-\zeta$, the elements $1,\pi_\ell,\dots,\pi_\ell^{\varphi-1}$ ($\varphi=\varphi(\ell^a)$) form a $\Z$-basis of $\Z[\zeta]$; write
 $\ell x=\sum_ic_i\pi_\ell^i$ with not all $c_i$ divisible by $\ell$, and let $j$ be the least index with $\ell\nmid c_j$. Then $\sum_{i\ge j}c_i\pi_\ell^i=\ell x-\sum_{i<j}c_i\pi_\ell^i$
-lies in $\ell\mathcal O_K=\pi_\ell^\varphi\mathcal O_K$. But $v_{\pi_\ell}(c_j\pi_\ell^j)=j$, as $c_j$ is prime to $\ell$, while the other terms have valuation $>j$; so the
-left side has valuation $j<\varphi$: a contradiction. Hence $\mathcal O_K=\Z[\zeta]$.
+lies in $\ell\mathcal O_K=\pi_\ell^\varphi\mathcal O_K$ (the terms with $i<j$ have $c_i\in\ell\Z$, and $\ell x\in\ell\mathcal O_K$), so its valuation $v_{\pi_\ell}$,
+the valuation at the prime $(\pi_\ell)$, is at least $\varphi$. Here $j<\varphi$: otherwise all $c_i$ ($i<\varphi$) would be divisible by $\ell$. But
+$v_{\pi_\ell}(c_j\pi_\ell^j)=j$, because an integer prime to $\ell$ lies in no prime above $\ell$, and $(\pi_\ell)$ is the only such prime, so $v_{\pi_\ell}(c_j)=0$;
+while the terms with $i>j$ have valuation $\ge i>j$. If $v(a)<v(b)$ then $v(a+b)=v(a)$, since $v(a+b)\ge v(a)$ and $v(a)=v((a+b)-b)\ge\min(v(a+b),v(b))$ (\Cref{thm:ant:idealfactorisation}(iv)); so the sum
+has valuation exactly $j<\varphi$:
+a contradiction. Hence $\mathcal O_K=\Z[\zeta]$.
 (iii) for an odd prime $\ell$: with $a=1$, $(\zeta-1)\Phi_\ell'(\zeta)=\ell\zeta^{\ell-1}$, $N(\zeta-1)=\prod_b(\zeta^b-1)=\ell$ (as $\ell-1$ is even) and
-$N(\ell\zeta^{\ell-1})=\ell^{\ell-1}$, so $N(\Phi'_\ell(\zeta))=\ell^{\ell-2}$, and $d=(-1)^{(\ell-1)(\ell-2)/2}\ell^{\ell-2}=(-1)^{(\ell-1)/2}\ell^{\ell-2}$.
+$N(\ell\zeta^{\ell-1})=\ell^{\ell-1}N(\zeta)^{\ell-1}=\ell^{\ell-1}$ ($\zeta$ is a unit of norm $\prod_b\zeta^b=\zeta^{\ell(\ell-1)/2}=1$), so by multiplicativity
+$N(\Phi'_\ell(\zeta))=\ell^{\ell-1}/\ell=\ell^{\ell-2}$, and \Cref{thm:ant:integralbasis}(iv) with $n=\ell-1$ gives $d=(-1)^{(\ell-1)(\ell-2)/2}\ell^{\ell-2}$. Since
+$(\ell-1)(\ell-2)/2=\frac{\ell-1}2(\ell-2)$ with $\ell-2$ odd, the sign is $(-1)^{(\ell-1)/2}$. For $\ell=3,5,7$ this gives $-3$, $125$ and $-7^5=-16807$.
 \end{proof}
 
 \begin{theorem}[splitting in cyclotomic fields]\label{thm:ant:cyclotomicsplitting}
@@ -1260,8 +1359,10 @@ $\sigma_p(x)=\sum_ia_i\zeta_n^{pi}\equiv(\sum_ia_i\zeta_n^i)^p\pmod{p}$ (the bin
 for the index $k$, which is prime to $p$, and then $k\sigma_p(x)\equiv(kx)^p\equiv kx^p\pmod{\mathfrak P}$; so $\sigma_p(x)\equiv x^p\pmod{\mathfrak P}$ for every
 $\mathfrak P\mid p$, and $\sigma_p=\Frob_p$ (\Cref{prop:ant:frobenius}). It has order $f$; it is trivial iff $p\equiv1\pmod n$, and generates the group iff $p$ is
 inert. Now let $p\mid n$. In $\Q(\zeta_m)$, $p$ has $(e,f,g)=(1,f,\varphi(m)/f)$; in $\Q(\zeta_{p^a})$ it has $(\varphi(p^a),1,1)$ (\Cref{thm:ant:cyclotomicintegers}(ii)).
-In $\Q(\zeta_n)$, which contains both, $e$ is a multiple of $\varphi(p^a)$, $f$ a multiple of $f$, and $g\ge\varphi(m)/f$ (each prime of $\Q(\zeta_m)$ has a prime
-above it), by \Cref{thm:ant:efg}; as $efg=\varphi(n)=\varphi(p^a)\varphi(m)$, all three are equalities. The inertia group has order $\varphi(p^a)$, and its image
+Write $(e',f',g')$ for the invariants of $p$ in $\Q(\zeta_n)$, which contains both fields. By multiplicativity in towers (\Cref{thm:ant:efg}), $e'$ is a
+multiple of $\varphi(p^a)$ (pass through $\Q(\zeta_{p^a})$) and $f'$ a multiple of $f$ (pass through $\Q(\zeta_m)$), and $g'\ge\varphi(m)/f$ because each of the
+$\varphi(m)/f$ primes of $\Q(\zeta_m)$ above $p$ has at least one prime of $\Q(\zeta_n)$ above it, and these are distinct. As
+$e'f'g'=\varphi(n)=\varphi(p^a)\varphi(m)=\varphi(p^a)\cdot f\cdot\varphi(m)/f$, all three inequalities are equalities: $e'=\varphi(p^a)$, $f'=f$, $g'=\varphi(m)/f$. The inertia group has order $\varphi(p^a)$, and its image
 in $\Gal(\Q(\zeta_m)/\Q)$ is the inertia group there, which is trivial (\Cref{thm:ant:residuegalois}(ii)); so it is $\Gal(\Q(\zeta_n)/\Q(\zeta_m))$, of order
 $\varphi(p^a)$. The decomposition group contains it and maps onto the decomposition group $\langle p\rangle$ of $\Q(\zeta_m)$, so it is the full preimage
 $(\Z/p^a)^\times\times\langle p\rangle$.
@@ -1288,7 +1389,11 @@ $p$ is \emph{inert} iff $p$ is a non-square modulo $\ell$. The inert primes have
 \end{proposition}
 
 \begin{proof}
-(i) The discriminant is \Cref{prop:ant:ramonlyat}(i). (ii) In $\Gal(\Q(\zeta_\ell)/\Q)\simeq\F_\ell^\times$, $\Frob_p=\sigma_p$ corresponds to $p\bmod\ell$
+(i) $\Gal(\Q(\zeta_\ell)/\Q)\simeq\F_\ell^\times$ is cyclic of even order $\ell-1$, so it has a unique subgroup of index $2$ and $\Q(\zeta_\ell)$ has a unique quadratic
+subfield $M$ (\Cref{ch:galois}). A prime $p\ne\ell$ is unramified in $\Q(\zeta_\ell)$ (\Cref{thm:ant:cyclotomicintegers}(iv)), hence in $M$ (ramification indices
+multiply in towers, \Cref{thm:ant:efg}); and some prime ramifies in $M\ne\Q$ (\Cref{thm:ant:discram}). So $M$ is ramified exactly at $\ell$, and
+\Cref{prop:ant:ramonlyat}(i) gives $M=\Q(\sqrt{\ell^*})$, of discriminant $\ell^*$. For example $\Q(\zeta_5)\supset\Q(\sqrt5)$, as $\zeta_5+\zeta_5^{-1}=\frac{-1+\sqrt5}2$, and
+$\Q(\zeta_7)\supset\Q(\sqrt{-7})$. (ii) In $\Gal(\Q(\zeta_\ell)/\Q)\simeq\F_\ell^\times$, $\Frob_p=\sigma_p$ corresponds to $p\bmod\ell$
 (\Cref{thm:ant:cyclotomicsplitting}). Its restriction to $\Q(\sqrt{\ell^*})$ is $\Frob_p$ there (\Cref{prop:ant:frobenius}(v)), which is trivial iff $\sigma_p$ lies in
 the unique subgroup of index $2$ of the cyclic group $\F_\ell^\times$, the squares. (iii) $\zeta_3=(-1+\sqrt{-3})/2$. (iv) $\ell^*<0$ iff $(\ell-1)/2$ is odd.
 \end{proof}

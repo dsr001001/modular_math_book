@@ -283,8 +283,12 @@ composition, with an $R$-algebra structure $R\to\End_R(M)$, $r\mapsto(m\mapsto r
 \end{proposition}
 
 \begin{proof}
-(i) $rf$ is $R$-linear because $R$ is commutative: $(rf)(sm)=rsf(m)=s(rf)(m)$. The other axioms are routine, and
-$r\mapsto(m\mapsto rm)$ is a ring homomorphism into $\End_R(M)$ whose image is central.
+(i) $rf$ is $R$-linear because $R$ is commutative: $(rf)(sm)=rsf(m)=s(rf)(m)$. This is the only place where
+commutativity matters; over a noncommutative ring $rf$ would in general not be linear. The module axioms for $\Hom_R(M,N)$ are
+inherited pointwise from those of $N$: for instance $((r+r')f)(m)=(r+r')f(m)=rf(m)+r'f(m)=(rf+r'f)(m)$. Composition of linear maps
+is linear and distributes over the sum, so $\End_R(M)$ is a ring with unit $\id_M$. The map $r\mapsto(m\mapsto rm)$ preserves sums and
+products by the module axioms ($(rr')m=r(r'm)$), sends $1$ to $\id_M$, and its image is central: for $g\in\End_R(M)$,
+$g(rm)=rg(m)$ is exactly the statement that $g$ commutes with multiplication by $r$.
 (ii) The map $R\to Rm$, $r\mapsto rm$, is $R$-linear and surjective with kernel $\Ann_R(m)$; apply
 \Cref{thm:modules:isomorphism}(i) below (whose proof does not use this proposition).
 \end{proof}
@@ -334,13 +338,21 @@ $M/(K_0+A)\simeq N/f(A)$.
 (ii) Apply (i) to $A\to(A+B)/B$, $a\mapsto a+B$, which is surjective (every $a+b+B$ equals $a+B$) with kernel $A\cap B$.
 (iii) Apply (i) to $M/B\to M/A$, $m+B\mapsto m+A$, surjective with kernel $A/B$. A submodule $X\subseteq M/B$ is the image of
 its preimage, which contains $B$, and $A=\{m:m+B\in A/B\}$ for $A\supseteq B$.
-(iv) The composite $M\to N\to N/f(A)$ is surjective; its kernel is $f^{-1}(f(A))=A+K_0$. Apply (i).
+(iv) The composite $M\to N\to N/f(A)$ is surjective; its kernel is $f^{-1}(f(A))$. This equals $A+K_0$: if $f(m)=f(a)$ with
+$a\in A$, then $m-a\in K_0$, so $m\in A+K_0$; conversely $f(a+k)=f(a)$ for $k\in K_0$. Apply (i).
 \end{proof}
+
+Part (iii) is used constantly in the form ``a submodule of a quotient is the image of a submodule containing what was
+divided out''; for instance the subgroups of $\Z/n$ are the $d\Z/n\Z$ for $d\mid n$, the images of the subgroups $d\Z\supseteq n\Z$.
+Part (iv) says that dividing first by the kernel of $f$ and then by $f(A)$ is the same as dividing by $K_0+A$ at once.
 
 \begin{paperlink}\label{pl:modules:iso}
 Lemma lem:crit writes ``$\T/(I+J)\simeq\Z/\phi_f(J)$''. This is \Cref{thm:modules:isomorphism}(iv) for the surjection
 $\phi_f\colon\T\to\Z$ with kernel $I$ and the submodule $A=J$. In the same way the congruence module of
 \Cref{def:modules:congruence-ideal} is $\T/(\wp+I)\simeq\mathcal O/\pi(I)$ for $\pi\colon\T\onto\mathcal O$ with kernel $\wp$.
+A toy case: for $\T=\Z[x]/(x^2-4)$, $\phi(x)=2$, the kernel is $I=(x-2)$; take $J=(x+2)$. In $\T/(I+J)$ one has $x\equiv2$ and
+$x\equiv-2$, hence $4\equiv0$, and $\T/(I+J)\simeq\Z/4$; on the other side $\phi(J)=\phi(x+2)\phi(\T)=4\Z$, so $\Z/\phi(J)=\Z/4$ as
+(iv) predicts. This algebra returns in \Cref{ex:modules:toy-congruence}(b) as the smallest example of a congruence modulo $4$.
 \end{paperlink}
 
 \section[Exact sequences; free and projective modules]{Exact sequences, the snake lemma, sums, free and projective modules}\label{sec:modules:exact}
@@ -367,7 +379,9 @@ $\theta\colon M\to M'\oplus M''$ with $\theta i(x)=(x,0)$ and $p\theta^{-1}(x,y)
 
 \begin{proof}
 (a)$\Rightarrow$(c): for $m\in M$, $m-sp(m)\in\ker p=\im i$, so $m-sp(m)=i(r(m))$ for a unique $r(m)\in M'$; put
-$\theta(m)=(r(m),p(m))$, with inverse $(x,y)\mapsto i(x)+s(y)$. (b)$\Rightarrow$(c): put $\theta(m)=(r(m),p(m))$. It is injective:
+$\theta(m)=(r(m),p(m))$, with inverse $(x,y)\mapsto i(x)+s(y)$. Indeed $r$ is linear by the uniqueness of $r(m)$, and
+$i(r(m))+s(p(m))=m$ by construction; conversely, for $m=i(x)+s(y)$ one has $p(m)=ps(y)=y$ and $m-sp(m)=i(x)$, so $r(m)=x$. The two
+compatibilities hold: $\theta i(x)=(x,0)$ because $p i=0$ and $r(i(x))=x$, and $p\theta^{-1}(x,y)=p(i(x)+s(y))=y$. (b)$\Rightarrow$(c): put $\theta(m)=(r(m),p(m))$. It is injective:
 if $p(m)=0$ then $m=i(x)$ and $r(m)=x$, so $r(m)=0$ forces $m=0$. It is surjective: given $(x,y)$, choose $m$ with $p(m)=y$;
 then $m'=m+i(x-r(m))$ has $\theta(m')=(x,y)$. (c)$\Rightarrow$(a),(b): take $s(y)=\theta^{-1}(0,y)$ and $r$ the first component of
 $\theta$.
@@ -424,7 +438,9 @@ is exact. If $i$ is injective, so is $\ker f'\to\ker f$; if $q$ is surjective, s
 The restrictions of $i$, $p$ map kernels to kernels, and $j$, $q$ induce maps of cokernels, by commutativity.
 \emph{$\delta$ is well defined.} The element $y'$ is unique because $j$ is injective. If $x_1$ is another lift of $x''$, then
 $x_1-x=i(m')$ with $m'\in M'$, and $f(x_1)-f(x)=fi(m')=j(f'(m'))$, so $y'$ changes by $f'(m')$, which does not change its
-class. Linearity follows from the same uniqueness.
+class. Linearity follows from the same uniqueness: if $x$ lifts $x''$ and $\tilde x$ lifts $\tilde x''$, with $f(x)=j(y')$ and
+$f(\tilde x)=j(\tilde y')$, then $x+r\tilde x$ lifts $x''+r\tilde x''$ and $f(x+r\tilde x)=j(y'+r\tilde y')$, so
+$\delta(x''+r\tilde x'')=\delta(x'')+r\delta(\tilde x'')$.
 \emph{Exactness at $\ker f$.} $pi=0$. If $x\in\ker f$ and $p(x)=0$, then $x=i(m')$ and $jf'(m')=f(x)=0$, so $f'(m')=0$ as $j$ is
 injective: $m'\in\ker f'$.
 \emph{Exactness at $\ker f''$.} If $x''=p(x)$ with $x\in\ker f$, take this $x$ as the lift: $f(x)=0$, so $\delta(x'')=0$.
@@ -433,8 +449,14 @@ Conversely, if $\delta(x'')=0$ then $f(x)=j(f'(m'))=f(i(m'))$ for some $m'$, so 
 $j(y')=f(x)$ for some $x\in M$, then $x''=p(x)$ satisfies $f''(x'')=qf(x)=qj(y')=0$, and $\delta(x'')=[y']$ by construction.
 \emph{Exactness at $\coker f$.} $qj=0$. If $q(y)=f''(x'')$, write $x''=p(x)$; then $q(y-f(x))=0$, so $y-f(x)=j(y')$ and
 $[y]=\bar j[y']$.
-The last two assertions are immediate.
+The last two assertions: $\ker f'\to\ker f$ is a restriction of $i$, so it is injective when $i$ is; and if $q$ is surjective, every class
+$[z]\in\coker f''$ is $[q(y)]=\bar q[y]$.
 \end{proof}
+
+The way to remember $\delta$ is the path it follows through the diagram: up from $\ker f''$ to $M''$, back along $p$ to $M$, down by $f$
+to $N$, and back along $j$ to $N'$. Each backward step is possible only up to an ambiguity (the choice of a lift along $p$) or only
+because of an exactness property ($f(x)$ lands in $\ker q=\im j$), and the proof checks that the ambiguity dies in $\coker f'$. Every
+connecting homomorphism of group cohomology in \Cref{ch:cohomology} is built this way.
 
 \begin{corollary}\label{cor:modules:snake}
 \begin{enumerate}[label=(\alph*)]
@@ -448,9 +470,15 @@ The last two assertions are immediate.
 
 \begin{proof}
 (a) Apply \Cref{lem:modules:snake} to the diagram whose two rows are the given sequence and whose vertical maps are
-multiplication by $n$. Its kernels are the $n$-torsion and its cokernels the quotients mod $n$; both end maps behave as
-stated because $A\to B$ is injective and $B\to C$ surjective. (b) $\#A=\#\ker\phi\cdot\#\im\phi$ and $\#A=\#\im\phi\cdot\#\coker\phi$.
+multiplication by $n$. The squares commute because the maps of the sequence are $R$-linear. The kernel of multiplication by $n$
+on $A$ is $A[n]$ and its cokernel is $A/nA$, and likewise for $B$ and $C$; both end maps behave as
+stated because $A\to B$ is injective and $B\to C$ surjective. (b) By \Cref{thm:modules:isomorphism}(i), $A/\ker\phi\simeq\im\phi$, so
+$\#A=\#\ker\phi\cdot\#\im\phi$; and $\coker\phi=A/\im\phi$, so $\#A=\#\im\phi\cdot\#\coker\phi$. Compare the two.
 \end{proof}
+
+For example, multiplication by $2$ on $\Z/4$ has kernel $\{0,2\}$ and cokernel $(\Z/4)/(2\Z/4)\simeq\Z/2$, both of order $2$. Part (b)
+fails for infinite groups: multiplication by $2$ on $\Z$ has kernel $0$ and cokernel $\Z/2$. Part (a) with $n=\ell^k$ is how the
+$\ell^k$-torsion of the coefficient module $W$ is related to $T/\ell^kT$ in \Cref{prop:modules:t-and-w}(ii).
 
 \begin{lemma}[the five lemma]\label{lem:modules:five}
 Consider a commutative diagram with exact rows $M_1\to M_2\to M_3\to M_4\to M_5$ and $N_1\to N_2\to N_3\to N_4\to N_5$ and
@@ -484,7 +512,9 @@ an idempotent $e\in\End_R(M)$ with $eM=A$ and $(1-e)M=B$.
 \begin{proof}
 (i) A map out of $\bigoplus M_i$ is determined by its restrictions, which may be arbitrary because each element is a finite
 sum; a map into $\prod M_i$ is the family of its components. (ii) The first two conditions agree by
-\Cref{prop:modules:two-submodules}. If $M=A\oplus B$, let $e(a+b)=a$; then $e^2=e$, $eM=A$, $(1-e)M=B$. Conversely, given $e$,
+\Cref{prop:modules:two-submodules}. If $M=A\oplus B$, every $m$ is uniquely $a+b$, so $e(a+b)=a$ is well defined, and it is linear
+because the decomposition of $rm+m'$ is the corresponding combination of decompositions; then $e^2=e$, $eM=A$, and $(1-e)(a+b)=b$
+gives $(1-e)M=B$. Conversely, given $e$,
 every $m=em+(1-e)m$, and $x\in A\cap B$ gives $x=ex'$, $x=(1-e)x''$, so $x=ex=e(1-e)x''=0$.
 \end{proof}
 
@@ -603,7 +633,11 @@ isomorphism is the usual consequence of a universal property.
 directly: $r\otimes m\mapsto rm$ with inverse $m\mapsto1\otimes m$; $(m_i)\otimes n\mapsto(m_i\otimes n)$ with inverse given on each summand;
 $R^m\otimes R^n$ follows, with basis $e_i\otimes e_j$; for $R/\mf a$, the bilinear map $(\bar r,m)\mapsto rm+\mf aM$ gives
 $(R/\mf a)\otimes M\to M/\mf aM$, with inverse $m+\mf aM\mapsto\bar1\otimes m$, well defined because $\bar1\otimes am=\bar a\otimes m=0$ for $a\in\mf a$.
-Commutativity and associativity are proved in the same way.
+Commutativity and associativity are proved in the same way. The bilinear map $(m,n)\mapsto n\otimes m$ gives $M\otimes N\to N\otimes M$,
+and $(n,m)\mapsto m\otimes n$ its inverse. For associativity fix $p\in P$; then $(m,n)\mapsto m\otimes(n\otimes p)$ is bilinear, giving
+$\gamma_p\colon M\otimes N\to M\otimes(N\otimes P)$, and $(z,p)\mapsto\gamma_p(z)$ is bilinear on $(M\otimes N)\times P$, giving
+$(M\otimes N)\otimes P\to M\otimes(N\otimes P)$ with $(m\otimes n)\otimes p\mapsto m\otimes(n\otimes p)$; the inverse is built symmetrically, and the two
+composites are the identity on the generators, hence everywhere.
 (iii) Bilinear maps $M\times N\to P$ are exactly the linear maps $M\to\Hom(N,P)$.
 (iv) For fixed $s$, multiplication by $s$ on $S$ is $R$-linear and induces the action on $S\otimes M$; the rest follows from (ii).
 The product on $A\otimes B$ is induced by the $R$-multilinear map $(a,b,a',b')\mapsto aa'\otimes bb'$.
@@ -624,8 +658,12 @@ $\Qlmod\otimes\Qlmod$ & $0$\\
 \bottomrule
 \end{tabular}
 \end{center}
+The first row is $(R/\mf a)\otimes M\simeq M/\mf aM$ with $\mf a=m\Z$ and $M=\Z/n$: the quotient of $\Z/n$ by $m(\Z/n)=(m\Z+n\Z)/n\Z$ is
+$\Z/(m\Z+n\Z)$, and $m\Z+n\Z=\gcd(m,n)\Z$. The second is the same rule with the roles exchanged, $\Q\otimes\Z/n\simeq\Q/n\Q$, and $n\Q=\Q$.
 For the fourth row, if $na=0$ write $x=ny$ in the divisible group $\Qlmod$; then $x\otimes a=y\otimes na=0$. The fifth row is a
 case of the fourth. The same argument shows $D\otimes A=0$ whenever $D$ is divisible and $A$ is torsion.
+These rows also show that a tensor product can be much smaller than either factor, and that elements $m\otimes n$ can vanish
+without $m$ or $n$ vanishing: $1\otimes1=0$ in $\Z/2\otimes\Z/3$.
 \end{example}
 
 \begin{proposition}[right exactness]\label{prop:modules:right-exact}
@@ -641,9 +679,17 @@ $P=C$, the image of $\id_C$ in $\Hom(A,C)$ is $ba$, which is $0$ because the com
 $0$; with $P=B/a(A)$, the projection $B\to P$ kills $a(A)$, so it factors through $b$, and $\ker b\subseteq a(A)$.
 By the adjunction (\Cref{thm:modules:tensor}(iii)) the sequence $0\to\Hom(M''\otimes N,P)\to\Hom(M\otimes N,P)\to\Hom(M'\otimes N,P)$ is
 the sequence $0\to\Hom(M'',Q)\to\Hom(M,Q)\to\Hom(M',Q)$ with $Q=\Hom(N,P)$, which is exact by \Cref{prop:modules:hom}(ii).
-The criterion gives right exactness. $R\otimes-$ is the identity, a direct sum of injections is an injection, and a direct
-summand of a flat module is flat; so free and projective modules are flat.
+The criterion gives right exactness. For flatness of free modules: $M\otimes R\simeq M$ naturally, so $-\otimes R$ is exact, and for
+$F=R^{(I)}$ the isomorphism $M\otimes F\simeq\bigoplus_{i\in I}M$ of \Cref{thm:modules:tensor}(ii) turns $f\otimes\id_F$ into the map $\bigoplus f$, applied
+componentwise, which is injective when $f$ is. If $F=P\oplus Q$, then $M\otimes F=(M\otimes P)\oplus(M\otimes Q)$ and $f\otimes\id_F=(f\otimes\id_P)\oplus(f\otimes\id_Q)$;
+a direct sum of two maps is injective only if each is, so $f\otimes\id_P$ is injective. Hence projective modules, the direct summands of
+free ones, are flat.
 \end{proof}
+
+The failure of left exactness comes from torsion: under $\Z\otimes\Z/2\simeq\Z/2$ the map $2\otimes\id$ sends $1\otimes1$ to
+$2\otimes1=1\otimes2=0$, so multiplication by $2$, injective on $\Z$, becomes zero once the second factor is killed by $2$. Over a
+principal ideal domain, flatness means exactly torsion-freeness
+(\Cref{prop:modules:flat}(ii)), which is why tensoring with $\Zl$ or $\Q$ never loses information about kernels.
 
 \begin{proposition}[flatness]\label{prop:modules:flat}
 \begin{enumerate}[label=(\roman*)]
@@ -669,7 +715,9 @@ $M\otimes N$; these involve finitely many elements of $N$. Let $N_0\subseteq N$ 
 $n_i$. The same relations show that $z_0=\sum m'_i\otimes n_i\in M'\otimes N_0$ maps to $0$ in $M\otimes N_0$. As $N_0$ is finitely
 generated and torsion-free, it is flat, so $z_0=0$, and $z$, the image of $z_0$, is $0$.
 (iii) Kernels, images and cokernels: tensor the exact sequences $0\to\ker g\to M\to M''$ and $M\to M''\to\coker g\to0$ with
-$S$. Intersections: $A\cap B=\ker(M\to M/A\oplus M/B)$. Torsion: $M[\mf a]$ is the kernel of $M\to M^k$, $m\mapsto(a_im)$, and
+$S$. Intersections: $A\cap B=\ker(M\to M/A\oplus M/B)$; after tensoring, flatness identifies $A\otimes S$ with a submodule of $M\otimes S$,
+right exactness identifies $(M/A)\otimes S$ with $(M\otimes S)/(A\otimes S)$, and the kernel of $M\otimes S\to(M\otimes S)/(A\otimes S)\oplus(M\otimes S)/(B\otimes S)$ is
+$(A\otimes S)\cap(B\otimes S)$, while by exactness it is also $(A\cap B)\otimes S$. Torsion: $M[\mf a]$ is the kernel of $M\to M^k$, $m\mapsto(a_im)$, and
 after tensoring the kernel of the same map is $(M\otimes S)[\mf aS]$. Annihilators: for generators $m_1,\dots,m_n$,
 $\Ann_R(M)$ is the kernel of $R\to M^n$, $r\mapsto(rm_i)$, and after tensoring the kernel of $S\to(M\otimes S)^n$ is
 $\Ann_S(M\otimes S)$, because the $m_i\otimes1$ generate $M\otimes S$ over $S$.
@@ -719,7 +767,8 @@ generated and $N_1\subseteq N_2\subseteq\cdots$, then $\bigcup N_i$ is generated
 is constant from $k$ on.
 (ii) Submodules: by the third condition. Quotients: by the first, via \Cref{thm:modules:isomorphism}(iii). Extensions: if
 $N_1\subseteq N_2\subseteq\cdots$ in $M$, both $N_i\cap M'$ and the images of $N_i$ in $M''$ stabilise, and then so does $N_i$ (if
-$N\subseteq N'$ have the same intersection with $M'$ and the same image in $M''$, then $N=N'$). By induction $R^n$ is Noetherian,
+$N\subseteq N'$ have the same intersection with $M'$ and the same image in $M''$, then $N=N'$: for $x\in N'$ choose $y\in N$ with the same
+image in $M''$; then $x-y\in N'\cap M'=N\cap M'$, so $x\in N$). By induction $R^n$ is Noetherian,
 and a finitely generated module is a quotient of some $R^n$. The kernel of $R^n\onto M$ is then finitely generated.
 (iii) The set of proper ideals containing a given proper ideal is nonempty and has a maximal element by (i), which is a maximal
 ideal.
@@ -740,10 +789,15 @@ $\phi^n+a_1\phi^{n-1}+\cdots+a_n=0$ in $\End_R(M)$ for some $a_i\in\mf a^i$. Con
 \begin{proof}
 Let $m_1,\dots,m_n$ generate $M$ and write $\phi(m_i)=\sum_ja_{ij}m_j$ with $a_{ij}\in\mf a$. Work in the commutative ring $R[\phi]\subseteq\End_R(M)$
 and let $B=(\delta_{ij}\phi-a_{ij})$, a matrix over it. Then $B$ applied to the column $(m_j)$ is $0$. Multiplying by the adjugate of
-$B$ gives $\det(B)m_j=0$ for all $j$, so $\det B=0$ in $\End_R(M)$; expanding the determinant gives the stated polynomial with
-$a_i\in\mf a^i$. (a) Take $\phi=\id$: then $x=1+a_1+\cdots+a_n$ kills $M$. (b) Let $\phi$ be surjective and regard $M$ as an
-$R[X]$-module, $X$ acting as $\phi$; it is finitely generated over $R[X]$, and $(X)M=M$. By (a) there is $g\in R[X]$ with
-$(1-Xg(X))M=0$, that is, $\phi\circ g(\phi)=\id$; so $\phi$ is injective.
+$B$ gives $\det(B)m_j=0$ for all $j$, so $\det B=0$ in $\End_R(M)$. Expanding $\det(\delta_{ij}\phi-a_{ij})$ as a sum over permutations,
+each term is a product of $n$ entries; multiplying out the diagonal entries $\phi-a_{jj}$, every resulting monomial is $\pm\phi^{n-i}$ times
+a product of $i$ entries $a_{jk}$; so the coefficient $a_i$ of $\phi^{n-i}$ is a sum of products of $i$ elements of $\mf a$, which lies in $\mf a^i$, and the
+coefficient of $\phi^n$ is $1$ (from the identity permutation only). This is the stated polynomial; it is the characteristic
+polynomial of the matrix $(a_{ij})$, evaluated at $\phi$, and for $M=R^n$ free it is Cayley-Hamilton.
+(a) Take $\phi=\id$, which maps $M$ into $\mf aM=M$: then $x=1+a_1+\cdots+a_n$ kills $M$, and $x\equiv1\pmod{\mf a}$. (b) Let $\phi$ be
+surjective and regard $M$ as an $R[X]$-module, $X$ acting as $\phi$; it is finitely generated over $R[X]$ (by the same generators), and
+$(X)M=\phi(M)=M$. By (a) over the ring $R[X]$ with the ideal $(X)$ there is $x\equiv1\pmod X$, that is, $x=1-Xg(X)$ with $g\in R[X]$, with
+$xM=0$; that is, $\phi\circ g(\phi)=\id$. If $\phi(m)=0$ then $m=g(\phi)\phi(m)=0$ (the two commute); so $\phi$ is injective.
 \end{proof}
 
 \begin{definition}[local rings]\label{def:modules:local-ring}
@@ -767,9 +821,16 @@ maximal ideals (\Cref{thm:modules:idempotent-lifting}(v)).
 \Cref{prop:modules:noetherian}(iii)). If $R$ is local this ideal is $\mf m$, so the non-units are exactly $\mf m$. Conversely if
 the non-units form an ideal $\mf n$, every proper ideal consists of non-units and lies in $\mf n$, which is therefore the unique
 maximal ideal. (ii) If $1+x$ were not a unit it would lie in a maximal ideal $\mf m'$; so would $x$, and then $1\in\mf m'$.
-(iii) In $\Z/p^n$ and $k[x]/(x^2)$, $\Zl[x]/(x^2)$ the non-units are the multiples of $p$, of $x$, of $(\ell,x)$; these form
-ideals. The others are proved where cited.
+(iii) In $\Z/p^n$ an integer prime to $p$ is invertible modulo $p^n$, and a multiple of $p$ is nilpotent, so the non-units are the multiples
+of $p$. In $k[x]/(x^2)$ and $\Zl[x]/(x^2)$ write an element as $a+bx$; then $(a+bx)(a-bx)=a^2$, so $a+bx$ is a unit as soon as $a$ is a unit
+of $k$, respectively of $\Zl$, while if $a=0$ in $k$ (respectively $a\in\ell\Zl$) the element lies in the proper ideal $(x)$ (respectively
+$(\ell,x)$, with quotient $\Fl$). So the non-units are the multiples of $x$, respectively the ideal $(\ell,x)$; these form ideals. The others
+are proved where cited.
 \end{proof}
+
+The elements of the Jacobson radical are the ``small'' elements of $R$: in a local ring $\mf J(R)=\mf m$, and (ii) is the algebraic shadow
+of the geometric series $1/(1+x)=1-x+x^2-\cdots$. In $\Zl$, for example, $1+\ell y$ is a unit for every $y\in\Zl$. Nakayama's lemma, next,
+exploits exactly this.
 
 \begin{theorem}[Nakayama's lemma]\label{thm:modules:nakayama}
 Let $(R,\mf m,k)$ be a local ring and $M$ a finitely generated $R$-module.
@@ -787,7 +848,8 @@ modulo $\mf m$.
 
 \begin{proof}
 (i) By \Cref{lem:modules:determinant-trick}(a) some $x=1+a$ with $a\in\mf a$ kills $M$; $x$ is a unit by
-\Cref{prop:modules:local-ring}(ii), so $M=0$. (ii) Apply (i) to $M/N$, which satisfies $\mf m(M/N)=M/N$. (iii) Apply (ii) to
+\Cref{prop:modules:local-ring}(ii), so $M=0$. (In a local ring $\mf J(R)=\mf m$, so the two forms of (i) agree.) (ii) The quotient
+$M/N$ is finitely generated, and $\mf m(M/N)=(\mf mM+N)/N=M/N$; by (i), $M/N=0$. (iii) Apply (ii) to
 $N=\sum Rx_i$; conversely generators of $M$ span $M/\mf mM$. A minimal generating set therefore has $\dim_kM/\mf mM$ elements.
 (iv) The first statement is (ii) for $N=f(N')$. A matrix is invertible iff its determinant is a unit
 (\Cref{prop:modules:free}(iii)), iff the determinant is not in $\mf m$, iff the reduced determinant is nonzero.
@@ -800,6 +862,11 @@ so $Q/\mf mQ=0$ and $Q=0$ by (i).
 A finitely generated $\Zl$-module $M$ with $M/\ell M\simeq\Fl^2$ is generated by two elements. An endomorphism of $(\Z/\ell^k)^n$ whose
 reduction modulo $\ell$ is invertible is invertible (apply (iv) over the local ring $\Z/\ell^k$).
 \end{example}
+
+The hypothesis ``finitely generated'' cannot be dropped: $\Q$ is a module over the local ring $\Z_{(p)}$ with $p\Q=\Q$, and $\Q\ne0$. In
+(iii) the point is that one reduction suffices: over $\Zl$, to know that $M$ is cyclic it is enough to know that $M/\ell M$ is a line,
+while over $\Z$ one would have to look at $M/pM$ for every prime $p$ (and over a general ring even that is not enough). This is how
+the paper passes from ``$J_0(N)[\mf m]$ is two-dimensional'' to ``two generators'' (\Cref{pl:modules:nakayama}).
 
 \begin{paperlink}\label{pl:modules:nakayama}
 In the proof of Lemma lem:h0 the paper writes: ``An element of exact order $\ell^k$ is a map $\phi\colon T/\ell^k\to(T/\ell^k)(1)$ whose
@@ -832,14 +899,16 @@ $\mf p=\mf p_1\times R_2$, $R_{\mf p}\simeq(R_1)_{\mf p_1}$.
 \end{theorem}
 
 \begin{proof}
-The relation is an equivalence relation (transitivity uses the factor $u$ and that $S$ is closed under products), and the
-operations are well defined by the usual computations.
+The relation is an equivalence relation. Reflexivity and symmetry are clear. For transitivity, let $u(s'm-sm')=0$ and
+$u'(s''m'-s'm'')=0$. Multiply the first by $u's''$ and the second by $us$ and add: the terms in $m'$ cancel and $uu's'(s''m-sm'')=0$, with
+$uu's'\in S$. (The factor $u$ cannot be omitted: without it the relation need not be transitive when $M$ has elements killed by
+elements of $S$.) The operations $m/s+m'/s'=(s'm+sm')/ss'$ and $(r/t)(m/s)=rm/ts$ are well defined by computations of the same kind.
 (i) $s/1$ has inverse $1/s$. If $\phi\colon R\to A$ inverts $S$, put $\psi(r/s)=\phi(r)\phi(s)^{-1}$; if $u(s'r-sr')=0$ then
 $\phi(u)$ is a unit and $\phi(r)\phi(s)^{-1}=\phi(r')\phi(s')^{-1}$. Uniqueness is forced by $\psi(r/s)\psi(s/1)=\psi(r/1)$.
 (ii) The bilinear map $(a/s,m)\mapsto am/s$ gives $\alpha\colon S^{-1}R\otimes M\to S^{-1}M$. Every element of $S^{-1}R\otimes M$ has the form
 $(1/s)\otimes m$ (bring the finitely many fractions to a common denominator). Define $\beta(m/s)=(1/s)\otimes m$; it is well
-defined: if $u(s'm-sm')=0$ then $(1/s)\otimes m=(us'/uss')\otimes m=(1/uss')\otimes us'm=(1/uss')\otimes usm'=(1/s')\otimes m'$. Clearly
-$\alpha\beta=\id$ and $\beta\alpha=\id$. Exactness: let $M'\xrightarrow{f}M\xrightarrow{g}M''$ be exact at $M$ and $g(m)/s=0$. Then $ug(m)=0$ for some
+defined: if $u(s'm-sm')=0$ then $(1/s)\otimes m=(us'/uss')\otimes m=(1/uss')\otimes us'm=(1/uss')\otimes usm'=(1/s')\otimes m'$. The two
+composites are identities: $\alpha\beta(m/s)=\alpha((1/s)\otimes m)=m/s$, and $\beta\alpha((a/s)\otimes m)=\beta(am/s)=(1/s)\otimes am=(a/s)\otimes m$. Exactness: let $M'\xrightarrow{f}M\xrightarrow{g}M''$ be exact at $M$ and $g(m)/s=0$. Then $ug(m)=0$ for some
 $u\in S$, so $um=f(m')$ and $m/s=f(m')/us$.
 (iii) If $\mf b$ is prime in $S^{-1}R$, its preimage is prime and misses $S$ (it contains no unit), and $\mf b=S^{-1}(\mf b\cap R)$
 because $r/s\in\mf b$ iff $r/1\in\mf b$. If $\mf p$ is prime with $\mf p\cap S=\emptyset$, then $S^{-1}\mf p$ is a proper ideal, it is prime
@@ -861,6 +930,10 @@ localisation at a maximal ideal is a direct factor (\Cref{thm:modules:idempotent
 decomposition into a product, and localisation then picks out one factor. Without completeness there is in general no
 such decomposition (\Cref{thm:modules:idempotent-lifting}(v)), which is why the paper always works with $\T\otimes\Zl$ (\Cref{conv:modules:tm}).
 \end{remark}
+
+With the general machinery of exactness, tensor products, Nakayama and localisation in place, the next section specialises to
+principal ideal domains, where finitely generated modules can be classified completely. That classification is what turns
+statements about lattices of modular forms into statements about integers: indices, invariant factors and congruence moduli.
 
 \section[Modules over a principal ideal domain]{Finitely generated modules over a principal ideal domain; lattices and saturation}\label{sec:modules:pid}
 
@@ -923,7 +996,11 @@ matsnf([2,4,4;-6,6,12;10,-4,-16])       \\ [12, 6, 2]
 matsnf([3,6;9,3])                       \\ [15, 3]
 matsnf([6,0,2;0,4,2])                   \\ [2, 2] (transpose of the 3x2 matrix)
 \end{lstlisting}
-PARI lists the invariant factors in decreasing order.
+PARI lists the invariant factors in decreasing order. Transposing a matrix does not change its invariant factors, since $A$ and $A^{\mathsf T}$
+have the same $k\times k$ minors; so it does not matter that the book writes relations as rows (\Cref{conv:modules:rings}(g)).
+By hand, for the first matrix: subtracting $3$ times the first row from the second gives rows $(2,4)$, $(0,-4)$; subtracting $2$ times the first
+column from the second gives $\operatorname{diag}(2,-4)$; changing the sign of the second row gives $\operatorname{diag}(2,4)$. The invariance statement
+checks this: the gcd of the entries $2,4,6,8$ is $2=d_1$, and the determinant $-8$ gives $d_1d_2=8$ up to sign, so $d_2=4$.
 \end{example}
 
 \begin{theorem}[structure of finitely generated modules over a principal ideal domain]\label{thm:modules:structure-pid}
@@ -957,6 +1034,10 @@ powers for each prime, $d_{s-1}$ of the next ones, and so on), are unique too.
 The abelian group with relation rows $(2,4,4)$, $(-6,6,12)$, $(10,-4,-16)$ is $\Z/2\oplus\Z/6\oplus\Z/12$ by \Cref{ex:modules:smith}; its elementary
 divisors are $2,2,4$ and $3,3$, that is, it is $\Z/2\oplus\Z/2\oplus\Z/4\oplus\Z/3\oplus\Z/3$.
 \end{example}
+
+The uniqueness proof can be watched at work on $M=\Z/2\oplus\Z/4$ and $p=2$: $\dim_{\F_2}M/2M=2$ (both summands have exponent $\ge1$),
+$\dim_{\F_2}2M/4M=1$ (only $\Z/4$ has exponent $\ge2$), and $\dim_{\F_2}4M/8M=0$. So exactly two exponents are $\ge1$ and one is $\ge2$, which
+forces the exponents $1$ and $2$; no rearrangement such as $\Z/8$ or $(\Z/2)^3$ gives the same numbers.
 
 \begin{definition}[torsion]\label{def:modules:torsion}
 Let $R$ be a domain with fraction field $K$. An element $m\in M$ is \emph{torsion} if $rm=0$ for some $r\ne0$. The torsion elements
@@ -999,6 +1080,13 @@ Let $M$ be a lattice and $L\subseteq M$ a submodule. $L$ is \emph{saturated} in 
 $\operatorname{sat}(L)=M\cap KL$, computed inside $M\otimes K$ (where $KL$ is the $K$-span of $L$).
 \end{definition}
 
+The definition separates two ways in which a sublattice can be ``small''. A sublattice of smaller rank, such as $L=\Z(1,1)\subset\Z^2$, misses
+whole directions; a sublattice such as $\Z(2,2)$ misses in addition the points $(1,1)$ that lie on its own line. Saturation adds back exactly
+these points: $\operatorname{sat}(\Z(2,2))=\Z^2\cap\Q(1,1)=\Z(1,1)$. The submodules that occur naturally in the paper, such as the forms killed
+by an ideal of the Hecke algebra or the lattice of forms orthogonal to $f$, are cut out by linear conditions and are automatically saturated
+(\Cref{prop:modules:saturated}(iii)); a non-saturated sublattice would encode a congruence that is not visible in its own span, and the
+index $[\operatorname{sat}(L):L]$ measures it.
+
 \begin{proposition}\label{prop:modules:saturated}
 Let $M$ be a lattice and $L\subseteq M$ a submodule.
 \begin{enumerate}[label=(\roman*)]
@@ -1039,9 +1127,16 @@ $L$ is free of rank $d$ (\Cref{thm:modules:submodule-free}); let $B\in\Mat_{d\ti
 $M$. Its rows are independent, so in \Cref{thm:modules:smith}, $UBV=\operatorname{diag}(d_1,\dots,d_d)$ with all $d_i\ne0$. The rows of $UB$ form another
 basis of $L$, and in the basis $e=V^{-1}f$ of $M$ (that is, $e_i=\sum_j(V^{-1})_{ij}f_j$) their coordinates are the rows of $UBV$. So
 $d_ie_i$ is a basis of $L$. Then $M/L\simeq R^{n-d}\oplus\bigoplus R/(d_i)$, and uniqueness follows from \Cref{thm:modules:structure-pid}
-(the number of unit $d_i$ is $d$ minus the number of nonzero torsion summands). The other statements follow, with
-$\det B=\det(U^{-1})\det(V^{-1})\prod d_i$ and \Cref{prop:modules:length-dvr}.
+(the number of unit $d_i$ is $d$ minus the number of nonzero torsion summands). The other statements follow.
+$M/L\simeq R^{n-d}\oplus\bigoplus R/(d_i)$ is torsion-free iff no summand $R/(d_i)$ is nonzero, that is, iff every $d_i$ is a unit. If $d=n$,
+the free summand disappears and $M/L$ is torsion; from $UBV=\operatorname{diag}(d_1,\dots,d_n)$ we get $\det B=\det(U^{-1})\det(V^{-1})\prod d_i$, with
+$\det U$, $\det V$ units. Over $\Z$ the units are $\pm1$, so $\abs{\det B}=\prod\abs{d_i}=\#\bigoplus\Z/d_i$; over a discrete valuation ring
+$v(\det B)=\sum v(d_i)=\len\bigoplus\mathcal O/(d_i)$ by \Cref{prop:modules:length-dvr}.
 \end{proof}
+
+For example, in $M=\Z^2$ the sublattice $L$ spanned by $(2,0)$ and $(1,3)$ has $B=\Mtwo2013$, $\det B=6$, and $\gcd$ of the entries $1$;
+so its invariant factors are $1,6$ (PARI: \texttt{matsnf([2,0;1,3])} returns \texttt{[6,1]}), and $\Z^2/L\simeq\Z/6$, cyclic, although $L$ has
+no basis vector divisible by $6$ in the standard basis. The theorem says that in a suitable basis $e_1,e_2$ of $\Z^2$ it is $\Z e_1\oplus\Z\,6e_2$.
 
 \begin{proposition}[the dual of an inclusion of lattices]\label{prop:modules:dual-inclusion}
 Let $L\subseteq M$ be lattices of the same rank $n$, so $M/L$ is torsion. Then restriction $M^\vee\to L^\vee$ is injective and
@@ -1062,6 +1157,11 @@ $\varphi=\sum_ic_ie_i^\vee/d_i$ is integral on $L$ and maps to $\psi$. In these 
 the invariant factors. For a finite group, $\Hom(X,\Q/\Z)$ and, for an $\ell$-primary one, $\Hom(X,\Qlmod)$ are the Pontryagin duals, and
 $\#X^*=\#X$ (\Cref{thm:modules:pontryagin-finite}).
 \end{proof}
+
+The direction of the inclusion is reversed by duality: the smaller lattice has the larger dual. In rank one, $L=2\Z\subset M=\Z$; the functional
+$e^\vee$ ($1\mapsto1$) generates $M^\vee$, while $L^\vee$ is generated by the functional $2\mapsto1$, which is $\tfrac12e^\vee$ extended to $\Q$. So
+$L^\vee=\tfrac12\Z e^\vee\supset M^\vee=\Z e^\vee$, of index $2=[M:L]$, and the isomorphism of the proposition sends $\tfrac12e^\vee$ to the character
+$1+2\Z\mapsto\tfrac12+\Z$ of $\Z/2$.
 
 \begin{remark}\label{rem:modules:ext}
 In the language of \Cref{ch:cohomology}, $\Hom_R(M/L,K/R)\simeq\Ext^1_R(M/L,R)$, and \Cref{prop:modules:dual-inclusion} is the long exact
@@ -1092,6 +1192,12 @@ $f\equiv-g_0\pmod{rM}$ implies the congruence modulo every divisor $r'$ of $r$.
 (iii) $f$ and $g$ are primitive, so $L_1=\Z f$ and $L_2=\Z g$, and the index of $\Z f\oplus\Z g$ is $\abs{\det\Mtwo1a1b}=\abs{b-a}$ (\Cref{thm:modules:stacked-bases});
 the quotient is cyclic by (ii), and $f-g=(0,a-b)$.
 \end{proof}
+
+Here is (ii) in the case $a=0$, $b=4$ of (iii), so $f=(1,0)$, $g=(1,4)$ and $r=4$. To project $h=(0,-1)$ onto $\Q f$ along $\Q g$, solve
+$(0,-1)=\alpha(1,0)+\beta(1,4)$: $\beta=-\frac14$, $\alpha=\frac14$, so $p_1(h)=f/4$, and $h$ generates the quotient $\Z^2/(\Z f\oplus\Z g)\simeq\Z/4$.
+Then $4h=(0,-4)=f+g_0$ with $g_0=(-1,-4)=-g\in L_2$, and $f\equiv-g_0=g\pmod{4\Z^2}$, the congruence of the two vectors modulo $4$. No
+congruence modulo $8$ exists: $f-mg=(1-m,-4m)$ lies in $8\Z^2$ only if $m\equiv1\pmod8$ and $4m\equiv0\pmod8$, which is impossible.
+This is the pattern of the second paragraph of the proof of Lemma lem:crit, with $f$ a newform and $g$ ranging over the other forms.
 
 \begin{paperlink}\label{pl:modules:crit-second}
 The second paragraph of the proof of Lemma lem:crit is \Cref{prop:modules:dual-inclusion,prop:modules:congruence-decomposition} with
