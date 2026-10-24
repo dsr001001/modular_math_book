@@ -583,9 +583,10 @@ corresponds to $0$.
 \begin{proof}[Sketch of proof]
 Since $\pi(s(g)s(h))=\pi(s(gh))$, $\psi(g,h)$ lies in $M$. Write $\mathcal E$ multiplicatively, so that $s(g)s(h)=\psi(g,h)s(gh)$ and $s(g)\,m\,s(g)^{-1}=gm$ for
 $m\in M$. Expanding $s(g)s(h)s(k)$ in two ways,
-\[
-\bigl(s(g)s(h)\bigr)s(k)=\psi(g,h)\psi(gh,k)\,s(ghk),\qquad s(g)\bigl(s(h)s(k)\bigr)=s(g)\psi(h,k)s(g)^{-1}\cdot s(g)s(hk)=(g\psi(h,k))\,\psi(g,hk)\,s(ghk),
-\]
+\begin{align*}
+\bigl(s(g)s(h)\bigr)s(k)&=\psi(g,h)\psi(gh,k)\,s(ghk),\\
+s(g)\bigl(s(h)s(k)\bigr)&=s(g)\psi(h,k)s(g)^{-1}\cdot s(g)s(hk)=(g\psi(h,k))\,\psi(g,hk)\,s(ghk),
+\end{align*}
 and comparing, in additive notation in $M$, $g\psi(h,k)+\psi(g,hk)=\psi(g,h)+\psi(gh,k)$, which is $d^2\psi=0$. Another section is $s'(g)=\varphi(g)s(g)$ with
 $\varphi\colon G\to M$, and
 \[
@@ -1693,7 +1694,10 @@ is $n'(\Zl e+\Zl(h-n'e))=n'(\Zl e\oplus\Zl h)$. Since $e,h,f$ is a basis, $M/(t-
 
 (c) $\overline\Frob(x\bar e+y\bar h)-(x\bar e+y\bar h)=-2\varepsilon c'q^{-1}y\,\bar e+(q^{-1}-1)y\,\bar h$. This vanishes if and only if $c'y\equiv0$ and $(q-1)y\equiv0\pmod{\ell^w}$, because
 $2$, $\varepsilon$, $q$ are units and $\bar e,\bar h$ are independent generators of $(\Z/\ell^w)^2$. By \Cref{prop:cohomology:frob-h1}(c) these are the $G/I$-invariants. The
-condition on $y\in\Z/\ell^w$ is $\ell^{\min(w,v_\ell(q-1),v_\ell(c'))}y=0$, which cuts out the subgroup $\ell^{w-m}\Z/\ell^w\simeq\Z/\ell^m$; $x$ is free. The order and length follow,
+condition on $y\in\Z/\ell^w$ is $\ell^{\min(w,v_\ell(q-1),v_\ell(c'))}y=0$, which cuts out the subgroup $\ell^{w-m}\Z/\ell^w\simeq\Z/\ell^m$; $x$ is free. In detail: for
+$a\in\Zl$ with $\alpha=v_\ell(a)$ (and $\alpha=\infty$ if $a=0$), the condition $ay\equiv0\pmod{\ell^w}$ on $y\in\Z/\ell^w$ is $\ell^{\min(\alpha,w)}y=0$, because $a=\ell^\alpha\cdot$unit. Two
+such conditions, for $a=q-1$ and $a=c'$, hold together if and only if $\ell^{\mu}y=0$ with $\mu$ the smaller exponent, $\mu=\min(w,v_\ell(q-1),v_\ell(c'))=m$. The
+elements of $\Z/\ell^w$ killed by $\ell^m$ are the multiples of $\ell^{w-m}$, a cyclic group of order $\ell^m$. The order and length follow,
 and $\Fitt_{\Zl}(A)=\ell^{\len A}\Zl$ for finite $A$ (\Cref{ch:modules}).
 
 (d) If $c''=c'+\ell^\mu z$ with $\mu=\min(w,v_\ell(q-1))$ and $z\in\Zl$, then $\min(\mu,v_\ell(c''))=\min(\mu,v_\ell(c'))$, so $m$ is unchanged. The first change:
@@ -1704,6 +1708,12 @@ In both cases the change is a multiple of $n'$ or of $q-1$, hence lies in $(n',q
 (e) By \Cref{lem:cohomology:tate-shape}, $(t-1)T=n'\Zl e_1$, which gives $H^1(I,T)$ by \Cref{prop:cohomology:frob-h1}(a). Here $\rho_M=\rho$, and the action is $q^{-1}\rho(\Frob)\bar e_1=q^{-1}\varepsilon q\bar e_1$.
 If $\varepsilon=-1$ the invariants are the $x$ with $2x\equiv0\pmod{\ell^w}$, which is $x\equiv0$ for $\ell$ odd.
 \end{proof}
+
+A numerical instance, with every step visible. Take $\ell=3$, $q=7$, $n'=9$ and $c'=3$, so $w=2$, $v_3(q-1)=v_3(6)=1$, $v_3(c')=1$ and $m=1$. In the basis $e,h,f$ the
+matrix of $t-1$ has columns $0$, $(-18,0,0)$, $(-81,9,0)$; its elementary divisors over $\Z$ are $9,18,0$ (PARI/GP, \texttt{matsnf}), that is $9,9,0$ up to units of $\Z_3$, so
+$H^1(I,\ad T)_{\mathrm{tor}}\simeq(\Z/9)^2$. The invariance conditions on $x\bar e+y\bar h$ are $6y\equiv0$ and $3y\equiv0\pmod9$, satisfied by $y\in\{0,3,6\}$, and $x$
+is arbitrary: the invariants are $\Z/9\oplus3\Z/9\simeq\Z/9\oplus\Z/3$, of order $27=3^{w+m}$. Replacing $c'$ by a unit, say $c'=1$, gives $m=0$ and invariants
+$\Z/9$; replacing $q=7$ by $q=19$ ($v_3(18)=2$) and keeping $c'=3$ still gives $m=1$, now limited by $c'$.
 
 \begin{corollary}[the Fitting ideal of the invariants]\label{cor:cohomology:fitting}
 In the model setting with $\ell$ odd, the ideal $\Fitt_{\Zl}\bigl((H^1(I,M)_{\mathrm{tor}})^{G/I}\bigr)$ is defined (the module is finite), and equals $\ell^{w+m}\Zl$ for $M=\ad T$ and
@@ -1838,7 +1848,9 @@ and the term at $\infty$ is $0$ for $\ell$ odd (\Cref{pl:cohomology:real-place})
 
 \begin{proof}
 (i) is \Cref{ch:modules}. (ii) Length is additive on short exact sequences (Jordan-Holder, \Cref{ch:modules}). Split $0\to A\to B\to C\to D\to0$ at the image $X$ of $B\to C$:
-$0\to A\to B\to X\to0$ and $0\to X\to C\to D\to0$ give $\len B=\len A+\len X$ and $\len C=\len X+\len D$. The general case is the same induction. (iii) Apply (ii), then (i) to the
+$0\to A\to B\to X\to0$ and $0\to X\to C\to D\to0$ give $\len B=\len A+\len X$ and $\len C=\len X+\len D$; eliminating $\len X$ gives the formula. For a general exact
+sequence $0\to A_1\to\dots\to A_r\to0$, let $X_i$ be the image of $A_i\to A_{i+1}$; then $0\to X_{i-1}\to A_i\to X_i\to0$ is exact (with $X_0=X_r=0$), so
+$\len A_i=\len X_{i-1}+\len X_i$, and in $\sum_i(-1)^i\len A_i$ the terms $\len X_i$ cancel in pairs. (iii) Apply (ii), then (i) to the
 last two terms, and use that the length of a finite direct sum is the sum of the lengths.
 \end{proof}
 
@@ -1906,7 +1918,7 @@ Verify $d^3d^2=0$ on $C^2(G,M)$ by expanding $(d^3d^2\psi)(g_1,g_2,g_3,g_4)$; th
 \begin{exercise}\label{ex:cohomology:cyclic-ex}
 (a) For $G$ cyclic of order $m$ acting trivially on $\Z/n$, show $H^1(G,\Z/n)\simeq H^2(G,\Z/n)\simeq\Z/\gcd(m,n)$. (b) Let $t$ generate $G=\Z/4$ and act on $\Z[i]$ by multiplication by $i$.
 Compute $H^0$, $H^1$, $H^2$.
-\emph{Answer.} (a) $N=m$ and $t-1=0$. (b) $H^0=0$; $N=1+i+i^2+i^3=0$, so $H^1=\Z[i]/(i-1)\simeq\Z/2$ and $H^2=0/0=0$.
+\emph{Answer.} (a) $N=m$ and $t-1=0$, so $H^1=\ker(m\mid\Z/n)=(n/\gcd(m,n))\Z/n\Z$ and $H^2=(\Z/n)/m(\Z/n)=\Z/\gcd(m,n)$, both cyclic of order $\gcd(m,n)$. (b) $H^0=0$; $N=1+i+i^2+i^3=0$, so $H^1=\Z[i]/(i-1)\simeq\Z/2$ and $H^2=0/0=0$.
 \end{exercise}
 
 \begin{exercise}\label{ex:cohomology:real-place-ex}
@@ -1930,7 +1942,8 @@ Let $\widehat\Z$ act trivially on $T=\Zl$, $V=\Ql$, $W=\Qlmod$. Compute $H^0$ an
 \Cref{prop:cohomology:les-cont}(c), and check that the connecting map $H^0(\widehat\Z,W)\to H^1(\widehat\Z,T)$ is zero, in accordance with $H^1(\widehat\Z,T)_{\mathrm{tor}}=0$.
 Then do the same with $F$ acting on $T=\Zl(1)$ by $q$, $q\ne\ell$, and check that the connecting map is onto $H^1(\widehat\Z,\Zl(1))=\Z/\ell^{v_\ell(q-1)}$.
 \emph{Answer.} Trivial action: $\Zl,\Ql,\Qlmod$ in degree $0$ and $\Zl,\Ql,\Qlmod$ in degree $1$ (\Cref{thm:cohomology:procyclic-compact,thm:cohomology:procyclic-discrete}), and $H^0(V)\to H^0(W)$ is onto.
-Second case: $H^0(V)=0$, $H^0(W)=\mu_{\ell^\infty}^{\Frob}\simeq\Z/\ell^{v_\ell(q-1)}$, $H^1(V)=0$.
+Second case: $H^0(V)=0$, $H^0(W)=\mu_{\ell^\infty}^{\Frob}\simeq\Z/\ell^{v_\ell(q-1)}$, $H^1(V)=0$. So $\delta$ is injective (its kernel is the image of $H^0(V)=0$) between two
+groups of the same finite order $\ell^{v_\ell(q-1)}$, hence bijective.
 \end{exercise}
 
 \begin{exercise}\label{ex:cohomology:twists}
@@ -2000,6 +2013,10 @@ $H^1(\langle\sigma\rangle,T)=T/(1-\zeta_3)T\simeq\F_3$''.
 \begin{exercise}\label{ex:cohomology:h0-length}
 Let $\chi\colon G\to\Zl^\times$ be a character with $\chi(G)\subseteq1+\ell^h\Zl$ but $\chi(G)\not\subseteq1+\ell^{h+1}\Zl$, $T=\Zl(\chi)$ and $W=T\otimes\Qlmod$. Show that $H^0(G,T/\ell^kT)$ is all
 of $T/\ell^kT$ for $k\le h$ and has no element of order $\ell^k$ for $k>h$, so that $H^0(G,W)\simeq\Z/\ell^h$ by \Cref{lem:cohomology:h0-torsion}(d).
+\emph{Answer.} For $k\le h$, $g$ acts on $T/\ell^kT=\Z/\ell^k$ by $\chi(g)\equiv1\pmod{\ell^k}$, trivially. For $k>h$ pick $g$ with $v_\ell(\chi(g)-1)=h$; for $x\notin\ell T$,
+$(\chi(g)-1)x$ has valuation $h<k$, so $gx\ne x$ in $T/\ell^kT$. By \Cref{lem:cohomology:h0-torsion}(b), $H^0(G,W)[\ell^{h+1}]\simeq H^0(G,T/\ell^{h+1}T)$ has no element of
+order $\ell^{h+1}$, so $H^0(G,W)$ is killed by $\ell^h$ and lies in the finite group $W[\ell^h]$; and $\#H^0(G,T/\ell T)\le\#(T/\ell T)=\ell$. So (d) applies, with largest $k$
+equal to $h$.
 \end{exercise}
 
 \begin{exercise}\label{ex:cohomology:zp-not-zl}

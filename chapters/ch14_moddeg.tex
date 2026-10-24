@@ -1277,7 +1277,9 @@ $\ad M_{f,\lambda}\simeq\ad T_\ell E$.
 $\pi_f\circ t_*=\phi_f(t)\pi_f$ on $J_0(N)$ and on $H_1$. Transposing, with $t^*$ the transpose of $t_*$ and $\varphi^*$ that of $\varphi_*$ (\Cref{prop:moddeg:hecke-compatibility}(ii)), gives
 $t^*\varphi^*=\phi_f(t)\varphi^*$; for $t\in I_f$ this is $0$.
 (b) $\ker\varphi_*$ is connected (\Cref{thm:moddeg:optimal}(iii)(b)), so $\varphi_*$ is surjective on $H_1$ and $\varphi^*H^1(E,\Z)$ is saturated (\Cref{ch:curves}, the proposition on the degree
-and the cup product); $\varphi^*$ is injective because $\varphi_*\varphi^*=\deg\varphi\ne0$ and $H^1(E,\Z)$ is torsion-free.
+and the cup product). The mechanism is elementary: $H^1=\Hom(H_1,\Z)$ and $\varphi^*=\Hom(\varphi_*,\Z)$; a surjection $\varphi_*$ onto the free module $H_1(E,\Z)$ has a section
+$s$, and then $s^*\circ\varphi^*=\mathrm{id}$, so $\varphi^*H^1(E,\Z)$ is a direct summand of $H^1(X_0(N),\Z)$, hence saturated. (For the parametrisation $\psi$ of \curve{11a3}, $\psi_*H_1$
+has index $5$ and $\psi^*H^1(\curve{11a3},\Z)$ is not saturated: it contains $5x$ but not $x$ for a suitable class $x$.) $\varphi^*$ is injective because $\varphi_*\varphi^*=\deg\varphi\ne0$ and $H^1(E,\Z)$ is torsion-free.
 (c) $H^1(X_0(N),\Z)[I_f]$ has rank $2$ (\Cref{prop:moddeg:f-lattice}), as has $\varphi^*H^1(E,\Z)$, which it contains by (a). The quotient $H^1(X_0(N),\Z)[I_f]/\varphi^*H^1(E,\Z)$ is then finite, and it
 embeds in $H^1(X_0(N),\Z)/\varphi^*H^1(E,\Z)$, which is torsion-free by (b); so it is $0$. Tensoring with the flat $\Z$-module $\Zl$ and using \Cref{prop:moddeg:f-lattice}(ii) gives the statement
 over $\Zl$.
@@ -1329,6 +1331,11 @@ $\ell$.
 
 In the language of physics: a loop on $E$ lifts to $\degphi$ loops on $X_0(N)$, and their intersection numbers add up.
 
+Two checks. At level $11$, $\varphi_E$ is the identity, $\degphi=1$ and $\varepsilon_{11}(f)=-1$, and the identity reads $\hat\delta_!=-\langle\ ,\ \rangle$ on $H^1(X_0(11),\Zl)$, as computed after
+\Cref{cor:moddeg:delta-hat}: the ideal of values is $\Zl$. At level $37$, $\varphi_E$ is the quotient by $w_{37}$, $\degphi=2$ and $\varepsilon_{37}(f_{37a})=+1$, so $\hat\delta_!$ and the cup product
+agree on $M_{f,\lambda}$ and take the values $2\Zl$ there; for $\ell=2$ the cup product of the unimodular lattice $H^1(X_0(37),\Z_2)$ vanishes modulo $2$ on the saturated sublattice $M_{f,\lambda}$, and by
+\Cref{cor:moddeg:ars-divisibility} this forces $2\mid r_E$, which is the congruence $f_{37a}\equiv f_{37b}\pmod2$ (\Cref{ex:moddeg:ex-level37-hecke}).
+
 \noindent\emph{Commentary.} The revised paper states this as Proposition prop:pullback: ``Let $E$ be $X_0(N)$-optimal with newform $f$, $\varphi=\varphi_E$, $I_f$ the kernel of the eigencharacter
 $\phi_f\colon\T\to\Z$ of $f$ on the full Hecke algebra, and $\ell$ a prime. Then $\varphi^*\colon H^1(E,\Z_\ell)\to H^1(X_0(N),\Z_\ell)$ is injective, with image the kernel lattice
 $H^1(X_0(N),\Z_\ell)[I_f]$, and $\langle\varphi^*a,\,w_N^*\varphi^*b\rangle_{X_0(N)}=\varepsilon_N(f)\,\degphi\,\langle a,b\rangle_E$ \dots In particular, for $\ell$ odd, the ideal of values of
@@ -1359,6 +1366,13 @@ $Q=L/(L[\wp_{\mf m}]\oplus L[I_{\mf m}])$ is killed by $\eta$, and $Q\simeq\coke
 determinant, $2v_\ell(\degphi)$ by \Cref{thm:moddeg:degree-is-eta}. $Q$ is a quotient of $\Hom(M_{f,\lambda},\Zl)\simeq\Zl^2$ killed by $r_E$, hence a quotient of $(\Zl/r_E)^2$, and
 $2v_\ell(\degphi)=\len Q\le2v_\ell(r_E)$. If $L\simeq\T_{\mf m}^2$, then $Q\simeq(\T_{\mf m}/(\wp_{\mf m}+I_{\mf m}))^2\simeq(\Zl/\eta)^2$ (\Cref{ch:modules}), and equality holds.
 \end{proof}
+
+The two module facts used from \Cref{ch:modules} are short enough to see directly; write $M=M_{f,\lambda}$ and drop the subscript $\mf m$. \emph{$\eta$ kills $Q$:} for $t\in I$ and
+$x\in L$, $\pi(t)x=tx-(t-\pi(t))x$; here $tx\in L[\wp]$ because $\wp t=0$, and $(t-\pi(t))x\in\wp L\subseteq L[I]$ because $t-\pi(t)\in\wp$ and $I\wp=0$; so $\pi(t)x\in L[\wp]+L[I]$. \emph{$Q$ is the
+cokernel of the Gram map:} the map $L\to\Hom(M,\Zl)$, $x\mapsto\hat\delta_!(\,\cdot\,,x)|_M$, is onto, because $\hat\delta_!$ is perfect on $L$ and $M$ is saturated (so every functional on
+$M$ extends to $L$); its kernel is the orthogonal complement of $M$, which is $L[I]$ by the self-adjointness of $\T$ (\Cref{ch:modules}); so $L/(M\oplus L[I])\simeq\Hom(M,\Zl)/\{\hat\delta_!(\,\cdot\,,y)|_M:y\in M\}$.
+In a basis of $M$ the last group is $\Zl^2$ modulo the column span of the Gram matrix $\sm0{\pm d}{\mp d}0$, $d=\degphi$ (\Cref{thm:moddeg:degree-is-eta}), that is $(\Zl/d)^2$, of length
+$2v_\ell(d)$. So in fact $Q\simeq(\Zl/\degphi)^2$, and the inequality is the statement that $(\Zl/\degphi)^2$ is killed by $r_E$.
 
 This is the assembly of the inequality half of Lemma lem:ddt417 in the case at hand ($d=2$); \Cref{ch:congruence} proves the lemma in general. The paper cites \cite{ARS12} for the
 divisibility; the corollary derives it from \Cref{thm:moddeg:degree-is-eta}, so that the theorem of Agashe, Ribet and Stein is needed only for the reverse inequality.
@@ -1420,7 +1434,8 @@ If (3) or (5) differed by a unit nothing would change; if (1) or (4) differed, t
 Let $E=\curve{99a1}$ and $\ell=3$, so $3^2\mid N$ and the paper's theorems do not apply. By \Cref{thm:moddeg:degree-is-eta} the ideal of values of $\hat\delta_!$ on $M_{f,3}$ is $4\Z_3=\Z_3$, while
 $v_3(r_E)=1$ (\Cref{ex:moddeg:99a1-and-726a1}). So the inequality of \Cref{cor:moddeg:ars-divisibility} is strict, and $L=H^1(X_0(99),\Z_3)_{\mf m}$ is not free over $\T_{\mf m}$ for $\mf m=\mf m_{f,3}$.
 Since $\rank_{\Z_3}L=2\rank_{\Z_3}\T_{\mf m}$ (\Cref{thm:moddeg:gorenstein}, step (b) of the proof, which does not use $\ell\nmid N$), the freeness criterion of \Cref{ch:modules} shows
-$\dim_{\F_3}L/\mf mL\ne2$; it is not $1$ (a cyclic $\T_{\mf m}$-module has rank at most $\rank\T_{\mf m}$); so it is at least $3$, and by \Cref{prop:moddeg:tate-module-vs-h1}(iii) and duality
+$\dim_{\F_3}L/\mf mL\ne2$ (here $\T/\mf m=\F_3$, since $\phi_f$ takes values in $\Z$); it is not $1$, for then $L$ would be cyclic by Nakayama's lemma, a quotient of $\T_{\mf m}$, of
+$\Z_3$-rank at most $\rank\T_{\mf m}<2\rank\T_{\mf m}$; so it is at least $3$, and by \Cref{prop:moddeg:tate-module-vs-h1}(iii) and the duality $(W/\mf mW)^\vee\simeq W[\mf m]$ of step (a) of the proof of \Cref{thm:moddeg:gorenstein} (valid for every $\ell$)
 $\dim_{\F_3}J_0(99)[\mf m]\ge3$: multiplicity one fails at $\mf m$. Yet $\bar\rho_{\curve{99a1},3}$ is irreducible: the class \curve{99a} has only a $2$-isogeny (\texttt{allisog}), and Cremona's
 \texttt{galrep} file lists no non-surjective mod $3$ image for it. This is why the paper's Remark rem:free needs $\ell\nmid N$.
 \end{example}

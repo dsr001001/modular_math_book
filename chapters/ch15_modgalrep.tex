@@ -715,8 +715,11 @@ their naive factors at $11$ are $1-11^{-1-s}$ and $1$, while their true factors 
 \end{corollary}
 
 \begin{proof}
-The first sentence is \Cref{thm:modgalrep:local-types}. If $\delta_p=1$, $(\ad V)^{I_p}$ is the line spanned by $N$, on which the geometric Frobenius acts by
-$p^{-1}$ (because $r(w)Nr(w)^{-1}=\norm wN$), so $L_p(A_f,s)^{-1}=1-p^{-1-s}=1-a_p^2p^{-1-s}$; if $\delta_p=0$, $a_p=0$ and the naive factor is $1$ by definition. The
+The first sentence is \Cref{thm:modgalrep:local-types}. If $\delta_p=1$, $V=\Sp(2)\otimes\mu$ and $(\ad V)^{I_p}$ is the line spanned by $N$. Indeed, twisting by $\mu$ does not change
+$\ad V$, and $r(I_p)$ is trivial on $\Sp(2)$; so on the Galois side $\sigma\in I_p$ acts on $\Sp(2)$ by $\exp(t_\ell(\sigma)N)=1+t_\ell(\sigma)N$ (\Cref{ch:local}), where $t_\ell$ is the surjective $\ell$-adic tame character of $I_p$.
+An endomorphism commutes with all these if and only if it commutes with $N$, so the invariants in $\ad V$ (the trace-zero endomorphisms) are the trace-zero elements of the
+centraliser of $N$. For a nonzero nilpotent $2\times2$ matrix $N$ the centraliser is spanned by $1$ and $N$, and its trace-zero part is the line spanned by $N$. The arithmetic Frobenius acts on $N$ by conjugation, $r(\Frob)Nr(\Frob)^{-1}=\norm{\Frob}N=pN$, so the geometric Frobenius acts by
+$p^{-1}$, so $L_p(A_f,s)^{-1}=1-p^{-1-s}=1-a_p^2p^{-1-s}$; if $\delta_p=0$, $a_p=0$ and the naive factor is $1$ by definition. The
 twist-invariance of $\ad$ is \Cref{ch:reps}. The computation of $L_p(A_f,s)$ in every case is \Cref{ch:lfunctions}.
 \end{proof}
 
@@ -1598,6 +1601,11 @@ thm:main), as the paper says: ``As $5\mid980$, this last example illustrates the
 $N(\bar\rho_{140b1,5})\cdot5=20$, not $4$ (\Cref{ex:modgalrep:level-lowering}), and Lemma lem:old at $p=\ell$ and \Cref{thm:modgalrep:ars} at $\ell$ are not available.
 \item \emph{Twists of newforms.} In the rows (b), (c), $h=g^\chi=g\otimes\chi$ by \Cref{cor:modgalrep:atkin-li}; the newform twists of $f_E$ itself are $f_{121a}^{\chi_{-11}}=f_{121c}$,
 $f_{539c}^{\chi_{-7}}=f_{77c}$, $f_{980i}^{\chi_{-7}}=f_{140b}$, and only the first equals the naive twist (\Cref{ex:modgalrep:twist-levels}).
+\item \emph{Case (c) step by step for \curve{539c1}, $\ell=3$, $q=7$.} $N=7^2\cdot11$. (c1) $E'=E^{(7)}$ is \curve{77c1}, of type $\kod{I}_3$ at $7$ and conductor $77=N/7$. (c2) $3\mid n=3$, so
+$\bar\rho\otimes\chi_{-7}=\bar\rho_{77c1,3}$ is unramified at $7$. (c3) $M=N(\bar\rho_{77c1,3})=11$ (computed after \Cref{prop:modgalrep:serre-conductor-divides}), and indeed $11\mid N/7^2=11$. (c4) The
+newform of level $11$ is $g=f_{11a}$, and $a_p(f_{11a})\equiv\chi_{-7}(p)a_p(f_{539c})\pmod3$ for $p\nmid3\cdot539$. (c5) $7\nmid11$, so $h=f_{11a}\otimes\chi_{-7}=f_{539d}$, of level $11\cdot7^2=539$. (c6) $h=f_{539d}\ne
+f_{539c}$. (c7) The only prime exactly dividing $N$ is $11$, where $\bar\rho$ is ramified (type $\kod{I}_2$, $3\nmid2$), so (H2) is empty. Since $M_h=N$, Lemma lem:old takes $g'=h$ itself, and
+\Cref{lem:modgalrep:crit}(ii) gives $3\mid r(\curve{539c1})=288$.
 \end{enumerate}
 \end{example}
 

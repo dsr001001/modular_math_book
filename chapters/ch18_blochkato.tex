@@ -508,7 +508,9 @@ Let $p\ne\ell$, $F=\Frob_p$, and let $M$ be a finite-dimensional representation 
 (a) $M(1)^{I_p}=M^{I_p}(1)$ and $F^{-1}$ acts on it as $p^{-1}F^{-1}$ (\Cref{prop:blochkato:twists}(ii)), so $\det(1-F^{-1}p^{-s}\mid M(1)^{I_p})=\det(1-F^{-1}p^{-(s+1)}\mid M^{I_p})$.
 With $F$ the factor $p$ would appear instead: $\det(1-Fp^{-s}\mid M(1)^{I_p})=\det(1-Fp^{-(s-1)}\mid M^{I_p})$. (b) $F^{-1}-1=-F^{-1}(F-1)$ and $F^{-1}$ is an
 automorphism of $X$. (c) $F-1=F(1-F^{-1})$, so $\det(F-1)=\det F\cdot\det(1-F^{-1})\ne0$, and $\det F\in\Zl^\times$ because $F$ is an automorphism of $X$. The
-cokernel of an injective endomorphism $\phi$ of $\Zl^d$ has order $\ell^{v_\ell(\det\phi)}$ (Smith normal form, \Cref{ch:modules}). Similarly $1-F=-F(1-F^{-1})$. (d) The
+cokernel of an injective endomorphism $\phi$ of $\Zl^d$ has order $\ell^{v_\ell(\det\phi)}$ (Smith normal form, \Cref{ch:modules}: $\phi=UDU'$ with $U,U'\in\GL_d(\Zl)$ and
+$D=\operatorname{diag}(\ell^{a_1},\dots,\ell^{a_d})$, so $\operatorname{coker}\phi\simeq\bigoplus_i\Z/\ell^{a_i}$, while $v_\ell(\det\phi)=\sum_ia_i$ because $\det U$, $\det U'$ are units). Similarly $1-F=-F(1-F^{-1})$.
+For instance, if $X=\Zl$ and $F$ acts by $p$, then $X/(F-1)X=\Zl/(p-1)\Zl$ has order $\ell^{v_\ell(p-1)}$, and $\det(1-F^{-1})=(p-1)/p$ has the same valuation. (d) The
 eigenvalues of $F$ on $V_\ell E$ are $\alpha,\beta$ with $\alpha+\beta=a_p$, $\alpha\beta=p$, so those of $F^{-1}$ are $\alpha^{-1},\beta^{-1}$, with sum $a_p/p$ and product
 $1/p$, and $(1-\alpha^{-1}X)(1-\beta^{-1}X)=1-a_pp^{-1}X+p^{-1}X^2$; at $X=p^{-s}$ this is $1-a_pp^{-(s+1)}+p\cdot p^{-2(s+1)}=L_p(E,s+1)^{-1}$. On the dual the
 geometric Frobenius has eigenvalues $\alpha,\beta$ and gives $1-a_pp^{-s}+p^{1-2s}$ (\Cref{ch:local}, Appendix B, B-C3).
@@ -601,7 +603,8 @@ is finite, and $H^1(\Q_p,W)\simeq H^1(\Q_p,T^D)^*$ is finite.
 
 \begin{proof}
 $H^1(\Q_p,T^D)$ is finitely generated over $\Zl$ and $H^1(\Q_p,T^D)\otimes\Ql=H^1(\Q_p,V^D)$ (\Cref{ch:galcoh}, the cohomology of $T$, $V$, $W$). For $p\ne\ell$ the local Euler
-characteristic of a $\Ql$-representation is $0$, so $\dim H^1(\Q_p,V^D)=\dim H^0(\Q_p,V^D)+\dim H^2(\Q_p,V^D)$, and Tate local duality gives
+characteristic of a $\Ql$-representation is $0$ (Tate's formula: $\dim H^0-\dim H^1+\dim H^2=0$ at $p\ne\ell$, \Cref{ch:galcoh}), so
+$\dim H^1(\Q_p,V^D)=\dim H^0(\Q_p,V^D)+\dim H^2(\Q_p,V^D)$, and Tate local duality gives
 $H^2(\Q_p,V^D)\simeq H^0(\Q_p,(V^D)^D)^\vee=H^0(\Q_p,A_f)^\vee$ (\Cref{ch:galcoh}). With \Cref{lem:blochkato:no-local-invariants}(i) this is (i). In (ii) a finitely
 generated $\Zl$-module of rank $0$ is finite, and Tate local duality for the pair $(W,T^D)$ (\Cref{ch:galcoh}) gives the second statement. (iii) The torsion
 of a finitely generated $\Zl$-module is finite.
@@ -725,6 +728,15 @@ Euler characteristic formula at $\ell$ gives $\dim H^1(\Q_\ell,A_f)=\dim H^0(\Q_
 (\Cref{ch:galcoh}); so $\dim H^1(\Q_\ell,A_f)=\dim H^0(\Q_\ell,A_f)+3$.
 \end{proof}
 
+The two basic examples show what the formula selects. The whole group $H^1(\Q_\ell,\Ql)=\Hom_{\mathrm{cont}}(G_{\Q_\ell},\Ql)$ has dimension $2$: by local class field theory the
+abelianised group is the profinite completion of $\Q_\ell^\times\simeq\ell^{\Z}\times\mu_{\ell-1}\times(1+\ell\Z_\ell)$, and homomorphisms to $\Ql$ are determined by their values on $\ell$ and on
+$1+\ell\Z_\ell\simeq\Z_\ell$. The unramified line consists of the homomorphisms trivial on the units, and the formula gives $\dim H^1_f(\Q_\ell,\Ql)=1+0=1$: no positive weight, one
+invariant. Similarly $H^1(\Q_\ell,\Ql(1))=\bigl(\varprojlim_k\Q_\ell^\times/(\Q_\ell^\times)^{\ell^k}\bigr)\otimes\Ql$ (Kummer theory) has dimension $2$, spanned by the classes of $\ell$ and of a
+principal unit, and the formula gives $\dim H^1_f(\Q_\ell,\Ql(1))=0+1=1$, the line of the units. In both cases $H^1_f$ is half of $H^1$, as the duality between $\Ql$ and $\Ql(1)$
+requires, and in the second it is \emph{not} the unramified subspace, which is $0$ (inertia acts on $\Ql(1)$ through $\chi_\ell(I_\ell)=\Z_\ell^\times$, so $\Ql(1)^{I_\ell}=0$): the Kummer
+classes of units are ramified at $\ell$. This is why the condition at $\ell$ cannot simply be
+``unramified''.
+
 For $A_f$ the weights are symmetric about $0$, so the count ``one positive weight'' does not depend on the sign convention; for $V^D$ it does, and
 with the opposite convention the formula is stated with negative weights. This is the only place where the sign matters below.
 
@@ -734,6 +746,13 @@ This section defines the local conditions $H^1_f(\Q_p,-)$ of Bloch and Kato on $
 The paper uses them in Section 1.2 (``the Bloch-Kato Selmer group''), in the statement of Lemma lem:dfg21 (``$H^1_f(\Q_p,T^D)=\iota^{-1}H^1_f(\Q_p,V^D)$'') and
 in the paragraph after it; the difference between the Bloch-Kato and the unramified conditions on $W$, worked out in \Cref{ex:blochkato:ur-versus-f}, is the
 origin of Tamagawa factors.
+
+Why these conditions. A class in $H^1(\Q_p,V)$ is the same thing as an extension $0\to V\to X\to\Ql\to0$ of $\ell$-adic representations of $G_{\Q_p}$ (\Cref{ch:cohomology}). A
+Selmer group singles out the extensions that are as ``geometric'' at $p$ as $V$ itself. At $p\ne\ell$ the natural requirement is that inertia acts on $X$ no worse than
+on $V$; the unramified classes, inflated from $G_{\Q_p}/I_p$, are those for which the extension splits over $I_p$. At $p=\ell$ that requirement is wrong, as the Kummer
+classes of units show (the paragraphs after \Cref{prop:blochkato:dimension-formula}), and Bloch and Kato replace ``unramified'' by ``crystalline'', the $\ell$-adic
+analogue of good reduction (\Cref{thm:blochkato:crystalline-good-reduction}). A small example at $p\ne\ell$: $H^1(\Q_p,\Ql(1))=(\varprojlim\Q_p^\times/(\Q_p^\times)^{\ell^k})\otimes\Ql$ is
+the line of the Kummer class of $p$ (the units contribute only the finite group $\F_p^\times\otimes\Zl$), and $H^1_{\ur}(\Q_p,\Ql(1))=\Ql/(p-1)\Ql=0$; so $H^1_f(\Q_p,\Ql(1))=0$.
 
 \begin{definition}[Bloch-Kato local conditions]\label{def:blochkato:local-conditions}
 Let $V$ be an $\ell$-adic representation of $G_{\Q_p}$.
@@ -902,7 +921,9 @@ condition on $T$ is the preimage of the one on $V$, place by place; and the argu
 satisfy every local condition because they lie in $\ker\iota$. (ii) $H^1_f(\Q,W)[\ell]$ lies in $H^1(G_{\Q,S},W)[\ell]$, which is a quotient of the finite group
 $H^1(G_{\Q,S},W[\ell])$ (from $0\to W[\ell]\to W\xrightarrow{\ell}W\to0$, $W$ being divisible); a discrete $\ell$-primary module with finite $\ell$-torsion is cofinitely generated
 (\Cref{ch:modules}). (iii) $D_0=\pi(H^1_f(\Q,V))$ lies in $H^1_f(\Q,W)$ (the local conditions on $W$ are the images of those on $V$) and is divisible of corank
-$\dim H^1_f(\Q,V)$ (its kernel $\iota H^1_f(\Q,T)$ is a lattice, as in \Cref{prop:blochkato:propagation}). Conversely let $D$ be the maximal divisible subgroup of
+$\dim H^1_f(\Q,V)$ (its kernel $\iota H^1_f(\Q,T)$ is a lattice, as in \Cref{prop:blochkato:propagation}); so $D_0\subseteq D$. The converse inclusion is the real content: a
+class of $H^1_f(\Q,W)$ need not come from $H^1_f(\Q,V)$, and we show that the classes that do not form, modulo $D_0$, a finite group, which cannot contain a nonzero
+divisible subgroup. Let $D$ be the maximal divisible subgroup of
 $X=H^1_f(\Q,W)$. The cokernel of $\pi\colon H^1(G_{\Q,S},V)\to H^1(G_{\Q,S},W)$ injects into the finitely generated $\Zl$-module $H^2(G_{\Q,S},T)$, which has no nonzero divisible
 subgroup; so $D\subseteq\pi(H^1(G_{\Q,S},V))$. Let $Y=\{y\in H^1(G_{\Q,S},V):\pi(y)\in X\}$ and $\lambda\colon H^1(G_{\Q,S},V)\to Q=\bigoplus_{p\in S}H^1(\Q_p,V)/H^1_f(\Q_p,V)$ the
 localisation. For $y\in Y$ and $p\in S$, $\pi_p(\operatorname{loc}_py)\in H^1_f(\Q_p,W)=\pi_p(H^1_f(\Q_p,V))$, so $\operatorname{loc}_py\in H^1_f(\Q_p,V)+\iota_pH^1(\Q_p,T)$. Hence $\lambda(Y)$ lies in
@@ -923,6 +944,11 @@ $\Sigma$''.
 
 For the paper $\Sigma$ is the set of primes dividing $N$. It may contain primes at which $W$ is unramified, namely the primes with $\rho(I_p)=\{\pm1\}$ (type
 $\kod{I}_0^*$ for $p\ge5$); dropping the condition there is harmless.
+
+Why relax the conditions at $\Sigma$. The group that the Taylor-Wiles method of Diamond, Flach and Guo controls is $H^1_\Sigma(\Q,W)$, whose length is a congruence
+ideal for newforms allowed to vary at the primes of $\Sigma$ (\Cref{thm:blochkato:dfg-02}). The group in the paper's identity is the smaller $H^1_f(\Q,W)$. The price of
+passing from one to the other is a finite local term at each $p\in\Sigma$, and computing those terms (Lemma lem:fpr and the Tamagawa factors) is most of the work of
+this chapter.
 
 \begin{proposition}[finiteness of $H^1_\Sigma$]\label{prop:blochkato:sigma-finite}
 Let $\Sigma$ be as in \Cref{def:blochkato:sigma-selmer}, containing the primes $p\ne\ell$ at which $W$ is ramified, and suppose $H^1_f(\Q,V)=0$ and $H^0(\Q_p,V^D)=0$ for every
@@ -1016,6 +1042,13 @@ That the ideal is nonzero: $H^1(I_p,M)$ is a finitely generated $\Zl$-module (\C
 extension of $\Zl(1)$ by a finite group, the wild inertia and the prime-to-$\ell$ part of tame inertia contributing nothing), so its torsion is finite, and so are its
 invariants; the Fitting ideal of a finite $\Zl$-module $X$ is $\ell^{\len X}\Zl$ (\Cref{ch:modules}).
 
+Why the name, in the simplest case. Let $E$ have split multiplicative reduction at $p\ne\ell$, with $n=v_p(\Delta_E)$, and take $M=T_\ell E$. In the notation of
+\Cref{ex:blochkato:ur-versus-f}, inertia acts through $t$ with $te_1=e_1$, $te_2=e_2+n'e_1$, so $H^1(I_p,T)=T/(t-1)T=T/n'\Zl e_1=(\Zl/n')\bar e_1\oplus\Zl\bar e_2$ (the
+cohomology of the pro-$\ell$ part $\langle t\rangle$ of inertia, as in Steps 2 to 4 of \Cref{lem:blochkato:tamfactor}), with torsion $(\Z/\ell^{v_\ell(n)})\bar e_1$. Frobenius acts on
+it by $p^{-1}\cdot p=1$: the factor $p^{-1}$ comes from the tame relation $\Frob\,t\,\Frob^{-1}=t^p$, and $p$ is the upper-left entry of $\rho(\Frob_p)$ in the split case. So
+$v_\ell(\Tam_p(T_\ell E))=v_\ell(n)$, which is $v_\ell(c_p)$ because the Tamagawa number at a split multiplicative prime is $c_p=n$. \Cref{prop:blochkato:tam-of-E} proves
+$v_\ell(\Tam_p(T_\ell E))=v_\ell(c_p)$ at every $p\ne\ell$.
+
 \begin{paperlink}
 \sloppy Section 1.2 of the revised paper defines ``$\Tam_p(M)=\Fitt_{\Z_\ell}\bigl((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}}\bigr)$, an ideal of $\Z_\ell$ \cite[p.~708]{DFG04},
 \cite[I.4.2.2]{FPR94}''. The original version wrote $\Fitt_{\Z_\ell}\bigl(H^1(I_p,M)_{\mathrm{tor}}\bigr)^{G_{\Q_p}}$, with the invariants outside the Fitting ideal, which has no
@@ -1030,11 +1063,14 @@ For $p\ne\ell$ and $M$ as in \Cref{def:blochkato:tamagawa},
 \end{proposition}
 
 \begin{proof}
-\Cref{prop:blochkato:local-unramified}(iii), with $T=M$.
+The first equality holds because a finite $\Zl$-module $Y$ has order $\ell^{\len Y}$ and Fitting ideal $\ell^{\len Y}\Zl$. The second is
+\Cref{prop:blochkato:local-unramified}(iii), with $T=M$: it gives $H^1_f(\Q_p,M)/H^1_{\ur}(\Q_p,M)\simeq(H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}/I_p}$, and $I_p$ acts trivially on $H^1(I_p,M)$
+(inner automorphisms act trivially on cohomology, \Cref{ch:cohomology}), so invariants under $G_{\Q_p}/I_p$ and under $G_{\Q_p}$ are the same.
 \end{proof}
 
 So the Tamagawa factor measures how much larger the Bloch-Kato condition on the lattice is than the naive unramified condition. For $W$ the inclusion
-goes the other way (\Cref{prop:blochkato:local-unramified}(iv)); both reflect the same finite group.
+goes the other way (\Cref{prop:blochkato:local-unramified}(iv)): $H^1_f(\Q_p,W)$ is the maximal divisible subgroup of $H^1_{\ur}(\Q_p,W)$. In the example above both defects
+have order $\ell^{v_\ell(n)}$: $H^1_{\ur}(\Q_p,E[\ell^\infty])\simeq\Z/\ell^{v_\ell(n)}$ while $H^1_f(\Q_p,E[\ell^\infty])=0$ (\Cref{ex:blochkato:ur-versus-f}).
 
 \begin{proposition}[basic properties]\label{prop:blochkato:tam-basic}
 Let $p\ne\ell$.
