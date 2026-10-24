@@ -20,7 +20,7 @@ $M^\vee$, $X^*$, $M^D$, and $T^D\simeq A(1)$ for $\ell$ odd. \emph{(convention)}
 multiplicative $q$; $t_\ell$ is twist invariant, $e_\ell(E,q)$ invariant under twists unramified at $q$ only (\curve{11a1}, \curve{121d2}). \emph{(definition; properties proved here.)} \Cref{def:paper:terms}.
 \item \textbf{Tamagawa factor} (definition). $\Tam_p(M)=\Fitt_{\Zl}((H^1(I_p,M)_{\mathrm{tor}})^{G_{\Q_p}})$; $H^1_f(\Q,\ad T\otimes\Qlmod)$ the Bloch-Kato Selmer group. \emph{(definition.)} \Cref{def:paper:tamagawa}.
 \item \textbf{Theorem thm:main.} $E$ optimal, $\ell\nmid2N$ odd, $\ell\notin S_f$: $v_\ell(\degphi)=\len H^1_f(\Q,W)+\sum_{q\mid N}v_\ell(\Tam_q(\ad T))+\sum_{q\mid N}e_\ell(E,q)$, hence
-$v_\ell(\degphi)\ge\sum_q(e_\ell(E,q)+t_\ell(E,q))$. \emph{(proved here, given the theorems of Diamond, Flach and Guo, \cite[Theorem 2.2]{ARS12} and Proposition prop:integral, which is sketched.)}
+$v_\ell(\degphi)\ge\sum_q(e_\ell(E,q)+t_\ell(E,q))$. \emph{(proved here, given the theorems of Diamond, Flach and Guo, \cite[Theorem 2.2]{ARS12} and Proposition prop:integral, which is proved here.)}
 \Cref{thm:paper:main}.
 \item \textbf{Conjecture conj:euler.} For $E$ optimal, non-CM, $E[\ell]$ irreducible: $v_\ell(\degphi)\ge\sum_{q\ne\ell}e_\ell+\sum_qt_\ell+[\ell=3]w_3(E)-h_\ell(E)$; $h_\ell=0$ for $\ell\ge5$, $h_3\in\{0,1\}$ with $h_3=1$ iff
 image $\Ns$. \emph{(stated; the facts on $h_\ell$ proved here.)} \Cref{conj:paper:euler}.
@@ -55,8 +55,8 @@ here.)} \Cref{lem:paper:old}.
 \item \textbf{Theorem thm:qual.} $\ell\nmid N$ odd, $\bar\rho$ irreducible (absolutely over $\Q(\sqrt{-3})$ if $\ell=3$), and a prime of type $\kod{IV},\kod{IV}^*$ ($q\ge5$ or $q=2$, $\ell=3$), $\kod{II},\kod{II}^*$ ($q\ge5$, $\ell=3$) or
 $\kod{I}_n^*$ ($\ell\mid n$, $q$ odd): then $\ell\mid\deg\varphi_{E_0}$. \emph{(proved here, given \Cref{thm:paper:optimal-level} and \cite{ARS12}.)} \Cref{thm:paper:qual}.
 \item \textbf{Objects of Diamond, Flach and Guo} (definition): $M^\Sigma$, $f^\Sigma$, the integral structure, $M_{f^\Sigma,\lambda}$, $\hat\delta_!$, $\eta^\Sigma_{f,\lambda}$. \Cref{def:paper:dfg-objects}.
-\item \textbf{Proposition prop:integral.} For $\ell\nmid2M^\Sigma$ and $\mf m$ non-Eisenstein: $M(M^\Sigma,1)_{!,\lambda,\mf m}=H^1(X_0(M^\Sigma),\Zl)_{\mf m}$. \emph{(sketched here and in \Cref{ch:congruence}; used as an
-input.)} \Cref{prop:paper:integral}.
+\item \textbf{Proposition prop:integral.} For every prime $\ell$, pull-back identifies $H^1(X_0(M^\Sigma),\Z)$ with the Betti lattice $M(M^\Sigma,1)_{!,B}$, Hecke equivariantly, $U_p$ included; so
+$M(M^\Sigma,1)_{!,\lambda}=H^1(X_0(M^\Sigma),\Zl)$, with no localisation. \emph{(proved here; expanded proof in \Cref{ch:congruence}.)} \Cref{prop:paper:integral}.
 \item \textbf{Theorem thm:dfg14} (Diamond, Flach and Guo, Proposition 1.4(c)). For $\ell\nmid2M$, $\ell\notin\Sigma$, $\bar\rho_f$ irreducible: $\eta^\Sigma=\eta^\emptyset\prod_{p\in\Sigma}L^{\nv}_p(A_f,1)^{-1}$. \emph{(stated; reference.)}
 \Cref{thm:paper:dfg14}.
 \item \textbf{Proposition prop:pullback.} For optimal $E$: $\varphi^*H^1(E,\Zl)=H^1(X_0(N),\Zl)[I_f]$, $\langle\varphi^*a,w_N^*\varphi^*b\rangle=\varepsilon_N\degphi\langle a,b\rangle$; for $\ell\nmid2N$, $\bar\rho$ irreducible,
@@ -179,8 +179,8 @@ holds: this is Theorem thm:main, proved in Section~\ref{sec:paper:selmer} below 
 $E[\ell]$ be irreducible)'' is Proposition prop:Sf (\Cref{prop:paper:Sf}). (2) The values of $e_\ell(E,q)$ at a tame $q\ge5$ are Lemma lem:euler (\Cref{lem:paper:euler}). (3) The
 Tamagawa factors are trivial at potentially good primes (Lemma lem:tamadd) and at least $t_\ell(E,q)$ at potentially multiplicative ones (Lemma lem:tamfactor). (4) The
 proof is an assembly of four inputs from Diamond, Flach and Guo and Fontaine and Perrin-Riou, the local computations and the projection formula; the abstract
-names the one input that is only sketched, the identification of the integral structure of \cite{DFG04} with the cohomology of $X_0(N)$ at a non-Eisenstein
-maximal ideal (Proposition prop:integral, \Cref{prop:paper:integral}). (5) ``The Tamagawa factor raises the bound by at least one whenever a Steinberg prime
+adds that ``it also uses an identification of their integral structure with the cohomology of $X_0(N)$, which we prove'': that is Proposition prop:integral
+(\Cref{prop:paper:integral}), which holds integrally, for every prime $\ell$, with no localisation. (5) ``The Tamagawa factor raises the bound by at least one whenever a Steinberg prime
 $q\equiv1\pmod\ell$ with $\ell\mid n_q$ has a Tate parameter whose unit part is an $\ell$-th power'': a Steinberg prime is a prime of multiplicative reduction (the
 local representation is an unramified twist of the Steinberg representation), and the claim is the case $\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))\ge1$ of Lemma
 lem:tamfactor. (6) The $\kod{I}_0^*$ and $\kod{I}_n^*$ terms hold without the hypothesis over $\Q(\sqrt{\ell^*})$: Theorem thm:quant, which still needs $E[\ell]$ irreducible and
@@ -308,9 +308,9 @@ v_\ell(\degphi)\ge\sum_{q\mid N}e_\ell(E,q)+\sum_{q\mid N}t_\ell(E,q).
 \end{theorem}
 
 \noindent\emph{Where proved.} The assembly is \Cref{ch:congruence}; the proof is read in Section~\ref{sec:paper:selmer}. Its inputs are the theorems of Diamond,
-Flach and Guo (stated with references), \cite[Theorem 2.2]{ARS12}, and the identification of the integral structure of \cite{DFG04} with $H^1(X_0(N),\Zl)$ at a
-non-Eisenstein maximal ideal (Proposition prop:integral, \Cref{prop:paper:integral}). The paper says plainly that the theorem, ``the identity and the
-inequality, depends on it''; it gives only a sketch of that proposition, and so does the book. The equality in (eq:identity), rather than an inequality, comes
+Flach and Guo (stated with references), \cite[Theorem 2.2]{ARS12}, and the identification of the integral structure of \cite{DFG04} with $H^1(X_0(N),\Zl)$
+(Proposition prop:integral, \Cref{prop:paper:integral}). The introduction says of this identification that it is not a published statement in the form
+needed, and that the paper proves it: ``which we prove; it holds integrally, with no localisation''. The book proves it as well (\Cref{ch:congruence}). The equality in (eq:identity), rather than an inequality, comes
 from Proposition prop:pullback (\Cref{prop:paper:pullback}): no freeness or multiplicity-one hypothesis enters.
 
 \emph{Reading the identity.} All three terms on the right of (eq:identity) are nonnegative integers: a length, the valuation of an ideal of $\Zl$, and the integers of
