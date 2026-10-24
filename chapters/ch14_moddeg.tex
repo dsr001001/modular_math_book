@@ -205,6 +205,16 @@ Ribet-Takahashi, Calegari-Emerton, Deligne-Rapoport, Boston-Lenstra-Ribet, Jacqu
 curves), $I_f=\ker\phi_f$ (the paper's $I$ in Lemma lem:crit and its $\wp$ in Lemma lem:ddt417), and $f^\perp$ the Petersson orthogonal
 complement of $f$ in $S_2(\Gamma_0(N))$, which is $\T$-stable (\Cref{ch:hecke}). $\varepsilon_N(f)=\pm1$ is the eigenvalue of $w_N$ on $f$.
 
+\medskip\noindent\textbf{Three conventions that matter silently.} (1) The factor $(\det\gamma)^{k/2}$ in the slash operator is chosen so that
+scalar matrices act trivially in weight $2$: for $\gamma=-N\cdot1$ one gets $(N^2)^{1}(-N)^{-2}f=f$. Since $W_N^2=-N\cdot1$, this is what makes
+$f\mapsto f|_2W_N$ an involution of $S_2(\Gamma_0(N))$, so that its eigenvalues $\varepsilon_N(f)$ are $\pm1$ and not $\pm\sqrt{\text{something}}$. It also makes
+$(f|_2\gamma)(z)\,dz$ the pullback of $f(z)\,dz$ along $z\mapsto\gamma z$, because $d(\gamma z)/dz=\det\gamma/(cz+d)^2$; every comparison below between Hecke operators on forms and on
+cohomology rests on that identity. (2) The sign $\varepsilon_N(f)$ is the eigenvalue of $w_N$, not the root number: the root number of $L(f,s)$ is $-\varepsilon_N(f)$
+(\Cref{ch:hecke,ch:lfunctions}). For \curve{11a1}, of rank $0$ and root number $+1$, $\varepsilon_{11}(f)=-1$; for \curve{37a1}, of rank $1$ and root number $-1$, $\varepsilon_{37}(f)=+1$
+(PARI's \texttt{ellrootno}). (3) The Hecke algebra acts on two kinds of objects, covariantly (pushforward, on $J_0(N)$ and $H_1$) and contravariantly (pullback, on forms and $H^1$).
+The two actions are transposes of each other; for $T_n$ with $(n,N)=1$ the distinction is harmless, but for $U_p$, $p\mid N$, the transpose is a different operator
+(\Cref{thm:moddeg:transpose}), and this is the reason the pairing $\hat\delta_!$ of the paper contains $w_N$.
+
 \begin{center}\small
 \begin{tabular}{p{7.2cm}p{6.3cm}}
 \toprule
@@ -257,6 +267,15 @@ coefficients lies in $\Q(j,j_N)$); the smooth projective curve over $\Q$ with th
 coefficients because the conjugates $j(\gamma z)$, $\gamma$ running over $\SL_2(\Z)\backslash\{\alpha\in M_2(\Z):\det\alpha=N,\ \alpha\text{ primitive}\}$,
 are permuted by $\SL_2(\Z)$ and have $q$-expansions with coefficients in $\Z[\zeta_N]$, permuted by $\Gal(\Q(\zeta_N)/\Q)$ (Kronecker). From now on
 $X_0(N)$ also denotes the curve over $\Q$.
+
+Two words in (i) deserve comment. A \emph{coarse} moduli space has the right points over algebraically closed fields, but over a non-closed field $K$ a $K$-rational point need
+not come from a pair defined over $K$, and two pairs over $K$ with the same point need not be isomorphic over $K$; the obstruction is the automorphism group of the pair, which is
+$\{\pm1\}$ except for $j=0$ and $j=1728$. \Cref{prop:moddeg:rational-points} makes this precise. The simplest case is $N=1$: $Y_0(1)=\mathbb A^1_j$ and $X_0(1)=\PP^1_j$, and two
+elliptic curves over $\Q$ with the same $j$-invariant give the same rational point although they need not be isomorphic over $\Q$: for $j\ne0,1728$ they are quadratic
+twists of each other, and for example $y^2=x^3-x$ and its quadratic twist by $2$, $y^2=x^3-4x$, both with $j=1728$, are not isomorphic over $\Q$ (an isomorphism would have
+to be $x\mapsto u^2x$ with $u^4=4$). Part (iv) is needed in two places: good reduction at $p\nmid N$ gives the Eichler-Shimura relation
+(\Cref{thm:moddeg:eichler-shimura}) and the unramifiedness of $T_\ell J_0(N)$ at $p$; the semistable model at $p\,\|\,N$ is what makes $J_0(N)$ semistable there, which is used for
+$X_0(37)$ in \Cref{ex:moddeg:small-levels}(c).
 
 \begin{proposition}[cusps over $\Q$]\label{prop:moddeg:cusps-over-q}
 \leavevmode
@@ -316,7 +335,8 @@ lattice is the lattice of periods of $2\pi if_{11}(z)\,dz$, $f_{11}=\eta(z)^2\et
 ratio (\Cref{ch:ellcurves}), is $-122023936/161051$: $X_0(11)$ is the curve \curve{11a1} $=[0,-1,1,-10,-20]$ (the other two curves of the class have
 $j=-52893159101157376/11$ and $-4096/11$). The modular parametrisation of \curve{11a1} is the identity, of degree $1$.
 \item In the same way $X_0(14)$ and $X_0(20)$, of genus $1$, are the curves \curve{14a1} and \curve{20a1}, with parametrisations of degree $1$.
-\item $X_0(37)$ has genus $2$, and $w_{37}$ has $2$ fixed points (\Cref{ch:modforms}); by Riemann-Hurwitz, $2\cdot2-2=2(2g'-2)+2$, so $X_0(37)/w_{37}$ has genus
+\item $X_0(37)$ has genus $2$, and $w_{37}$ has $2$ fixed points (\Cref{ch:modforms}); by Riemann-Hurwitz for the quotient map of degree $2$, $2g-2=2(2g'-2)+\sum_P(e_P-1)$, and each fixed point of the involution is a ramification point with
+$e_P=2$ while all other points are unramified; so $2\cdot2-2=2(2g'-2)+2$, and $X_0(37)/w_{37}$ has genus
 $g'=1$. With origin the image of $\infty$, it is an elliptic curve over $\Q$ (the quotient map is defined over $\Q$ by \Cref{thm:moddeg:x0-over-q}(ii)), and the
 pullback of its holomorphic differential is $w_{37}$-invariant. $S_2(\Gamma_0(37))$ is spanned by the newforms $f_{37a}$ and $f_{37b}$ with $\varepsilon_{37}=+1$ and $-1$, so the
 pullback is a multiple of $f_{37a}\,dz$. The quotient has good reduction outside $37$ (it is a quotient of $J_0(37)$, \Cref{thm:moddeg:j0}), and multiplicative reduction at $37$: $J_0(37)$
@@ -345,7 +365,13 @@ Section 4.1: \emph{the adjoint of $T_n$ for the cup product is $w_NT_nw_N$}, wit
 their actions, the adjoint of a correspondence is its transpose); the input specific to $X_0(N)$ is a two-line matrix computation.
 
 For $\alpha\in M_2(\Z)$ with $\det\alpha=m>0$ put $\Gamma_\alpha=\Gamma\cap\alpha^{-1}\Gamma\alpha$. It has finite index in $\Gamma$: if $\gamma=1+NmX\in\Gamma(Nm)$, then
-$\alpha\gamma\alpha^{-1}=1+N\alpha X\alpha'$ with $\alpha'=m\alpha^{-1}\in M_2(\Z)$, an integral matrix of determinant $1$ congruent to $1$ modulo $N$; so $\Gamma(Nm)\subseteq\Gamma_\alpha$.
+$\alpha\gamma\alpha^{-1}=1+Nm\,\alpha X\alpha^{-1}=1+N\alpha X\alpha'$ with $\alpha'=m\alpha^{-1}\in M_2(\Z)$ (the adjugate of $\alpha$), an integral matrix of determinant $1$ congruent to $1$
+modulo $N$, hence in $\Gamma(N)\subseteq\Gamma$; so $\gamma\in\alpha^{-1}\Gamma\alpha$, and $\Gamma(Nm)\subseteq\Gamma_\alpha$. As $\Gamma(Nm)$ has finite index in $\SL_2(\Z)$, so has $\Gamma_\alpha$.
+
+Why correspondences? On the upper half plane the Hecke operator $T_p$ of \Cref{ch:hecke} is a sum over the $p+1$ matrices $\sm1j0p$, $\sm p001$: it sends a point to a formal sum of
+$p+1$ points, and on moduli it sends an elliptic curve to the sum of its $p+1$ quotients by subgroups of order $p$. Such a ``multivalued map'' of a curve to itself is a
+correspondence: a third curve $C$ with two maps to $X_0(N)$, one used to pull points back (giving the several values) and the other to push them forward. Here $C=X(\Gamma_\alpha)$:
+a point of $C$ is a point $\Gamma z$ of $X_0(N)$ together with a choice of one of the $p+1$ values, and $\pi_1$, $\pi_\alpha$ forget the choice and take the value.
 
 \begin{definition}[Hecke correspondences]\label{def:moddeg:hecke-correspondence}
 For $\alpha$ as above, the \emph{Hecke correspondence} of $\alpha$ is the correspondence $\mathcal C_\alpha=(X(\Gamma_\alpha),\pi_1,\pi_\alpha)$ from $X_0(N)$ to itself in the sense
@@ -389,7 +415,10 @@ $\pi_1(\Gamma_\beta\gamma'^{-1}z)=\Gamma z$ and $\pi_\beta(\Gamma_\beta\gamma'^{
 (ii) For $\gamma=\sm abcd\in\Gamma$, $\alpha\gamma\alpha^{-1}=\sm a{b/p}{pc}d$, which lies in $\Gamma$ iff $p\mid b$; so $\Gamma_\alpha=\Gamma\cap\Gamma^0(p)$, and its conjugate
 $\alpha\Gamma_\alpha\alpha^{-1}$ consists of the $\sm a{b'}{c'}d$ of determinant $1$ with $Np\mid c'$, which is $\Gamma_0(Np)$. The map $z\mapsto\alpha z=z/p$ therefore induces
 $X(\Gamma_\alpha)\simeq X_0(Np)$, and $\Gamma z=\Gamma p(z/p)$, $\Gamma\alpha z=\Gamma(z/p)$ give the two maps. The index $[\Gamma_0(N):\Gamma_0(N)\cap\Gamma^0(p)]$ is $p+1$ for $p\nmid N$ and
-$p$ for $p\mid N$, and the displayed matrices lie in $\Gamma\alpha\Gamma$ and represent distinct cosets; see \Cref{ch:hecke} and \cite[Section 5.2]{DiamondShurman}. For
+$p$ for $p\mid N$. To see this, reduce modulo $p$: the condition $p\mid b$ only depends on $\gamma\bmod p$, so the index is that of the subgroup $\{b=0\}$ in the image $G$ of $\Gamma_0(N)$ in
+$\SL_2(\Fp)$. If $p\nmid N$, then $G=\SL_2(\Fp)$ (already $\Gamma(N)$ surjects onto $\SL_2(\Fp)$, because $\SL_2(\Z)\to\SL_2(\Z/Np)=\SL_2(\Z/N)\times\SL_2(\Z/p)$ is onto), and $\{b=0\}$ is
+the lower triangular subgroup, of order $p(p-1)$ in a group of order $p(p^2-1)$: index $p+1$. If $p\mid N$, then $c\equiv0$ and $G$ is the upper triangular subgroup of order $p(p-1)$, in which
+$\{b=0\}$ is the diagonal subgroup of order $p-1$: index $p$. The displayed matrices lie in $\Gamma\alpha\Gamma$ ($\sm1j0p=\alpha\sm1j01$) and represent distinct cosets; see \Cref{ch:hecke} and \cite[Section 5.2]{DiamondShurman}. For
 $p\nmid N$ the matrix $\sm p001$ lies in $\Gamma\alpha\Gamma$ by the computation in the proof of \Cref{thm:moddeg:transpose}(iv).
 
 (iii) (Sketch.) The point $\Gamma z$ is $(\C/\Lambda_z,\langle\frac1N\rangle)$ with $\Lambda_z=\Z+\Z z$. The lattices $\Lambda_{(z+j)/p}$ ($0\le j<p$) and $\frac1p\Z+\Z z=\frac1p\Lambda_{pz}$ are the $p+1$
@@ -425,7 +454,11 @@ prove the statement differently.)
 (\Cref{conv:moddeg:setup}(C1)). The local sections of $\pi_1$ near a point $\Gamma z$ off the branch locus are $s_i\colon\Gamma z\mapsto\Gamma_\alpha\gamma_iz$, so
 $\Tr_{\pi_1}(g\,dz)=\sum_is_i^*(g\,dz)=\sum_i(g|_2\gamma_i)\,dz$ for a weight-two form $g$ on $\Gamma_\alpha$. With $g=f|_2\alpha$ and $\alpha_i=\alpha\gamma_i$ (part (i) of
 \Cref{prop:moddeg:hecke-correspondence}) the sum is $\sum_if|_2\alpha_i$. For $\alpha=\mathrm{diag}(1,p)$ and the representatives of
-\Cref{prop:moddeg:hecke-correspondence}(ii): $f|_2\sm1j0p=\frac1pf(\frac{z+j}p)$ and $f|_2\sm p001=pf(pz)$, and summing gives $\sum_n(a_{np}+pa_{n/p})q^n$ (the last term for
+\Cref{prop:moddeg:hecke-correspondence}(ii): $f|_2\sm1j0p=p\cdot p^{-2}f(\frac{z+j}p)=\frac1pf(\frac{z+j}p)$ and $f|_2\sm p001=p\cdot1^{-2}f(pz)=pf(pz)$. With $f=\sum_na_nq^n$,
+\[
+\sum_{j=0}^{p-1}\frac1pf\Bigl(\frac{z+j}p\Bigr)=\sum_na_ne^{2\pi inz/p}\cdot\frac1p\sum_{j=0}^{p-1}e^{2\pi inj/p}=\sum_{p\mid n}a_nq^{n/p}=\sum_ma_{mp}q^m,
+\]
+because the inner sum is $1$ if $p\mid n$ and $0$ otherwise, and $pf(pz)=\sum_npa_nq^{pn}=\sum_mpa_{m/p}q^m$ (with $a_{m/p}=0$ if $p\nmid m$). Summing gives $\sum_m(a_{mp}+pa_{m/p})q^m$ (the last term for
 $p\nmid N$ only), which is \Cref{ch:hecke}'s $T_pf$, respectively $U_pf$, in weight $2$, where the normalising factor $(\det\alpha)^{k/2-1}$ is $1$.
 
 The class of a holomorphic $\omega$ is mapped by $\mathcal C^*=\pi_{1*}\pi_\alpha^*$ on $H^1$ to the class of $\Tr_{\pi_1}\pi_\alpha^*\omega$: \Cref{ch:curves} computes $\pi_{1*}$ on a representative
@@ -443,6 +476,13 @@ $\Zl$ is flat over $\Z$.
 
 (iii) $\Hom_\Z(\T,\Z)$ is a lattice in $\Hom_\Z(\T,\C)=\Hom_\C(\T\otimes\C,\C)$, which the perfect pairing identifies with $S_2$; and $a_n(g_\psi)=a_1(T_ng_\psi)=\psi(T_n)$.
 \end{proof}
+
+Before the computation, the moduli picture shows what to expect. The transpose of a correspondence runs it backwards: $(T_p)^t$ sends $(E',C')$ to the sum of the pairs $(E,C)$ from
+which $T_p$ reaches $(E',C')$, that is, it goes back along the dual isogenies $E'=E/D\to E$. For $p\nmid N$ the kernel $E[p]/D$ of the dual is just another subgroup of order $p$ of $E'$,
+so going back is again of the form ``divide by a subgroup of order $p$'', and $T_p^t=T_p$. For $p\mid N$ the kernel of the dual of $E\to E/D$ with $D\cap C=0$ is $E[p]/D$, and since
+$C[p]+D=E[p]$ this is the subgroup of order $p$ of the level structure $(C+D)/D$: $U_p$ divides by subgroups meeting $C$ trivially, while its transpose divides by the subgroup
+contained in $C$. These are different operations, and $w_N$, which replaces $C$ by $E[N]/C$ on the quotient curve, exchanges ``contained in the level structure'' and ``meeting
+it trivially''. The theorem makes this precise with matrices.
 
 \begin{theorem}[the transpose of a Hecke correspondence]\label{thm:moddeg:transpose}
 \leavevmode
@@ -488,6 +528,11 @@ $\gamma_1\,\mathrm{diag}(1,p)=\sm p{bp}N{dp}=\mathrm{diag}(p,1)\,\gamma_2$, so $
 \Cref{prop:moddeg:hecke-correspondence}(i) and (i) above, $T_p^t\simeq\mathcal C_{\mathrm{diag}(p,1)}\simeq T_p$, so $(T_p^*)^\dagger=T_p^*$; with (iii), $T_p^*=w_N^*T_p^*w_N^*$.
 \end{proof}
 
+Why a twisted pairing is wanted. The congruence modules of \Cref{ch:modules} are built from a perfect pairing on a lattice for which the whole Hecke algebra is self-adjoint: then
+the idempotents of $\T_\ell$ are self-adjoint, the local components are orthogonal, and the orthogonal complement of the $f$-part is the part killed by the annihilator of $I_f$. The cup
+product is perfect but, by \Cref{thm:moddeg:transpose}, the $U_p^*$ are not self-adjoint for it. Composing with $w_N^*$ repairs this, at no cost: the new pairing is still perfect,
+and it stays alternating because $w_N^*$ is a self-adjoint isometry.
+
 \begin{corollary}[the pairing $\hat\delta_!$]\label{cor:moddeg:delta-hat}
 Let $R$ be $\Z$, $\Zl$ or $\Ql$ and $\langle\ ,\ \rangle$ the cup product on $H^1(X_0(N),R)$ (\Cref{ch:curves}).
 \begin{enumerate}[label=(\roman*)]
@@ -504,8 +549,11 @@ is perfect and alternating on $H^1(X_0(N),R)$, and every $t^*$, $t\in\T\otimes R
 \end{corollary}
 
 \begin{proof}
-(i) is \Cref{thm:moddeg:transpose}(iii), extended $R$-linearly. (ii) $w=w_N^*$ is an isometry of the cup product with $w^2=1$ (\Cref{ch:curves}), so $w^\dagger=w^{-1}=w$. The cup
-product is perfect, so $\hat\delta_!$, its composite with the automorphism $w$, is perfect. $\hat\delta_!(y,x)=\langle y,wx\rangle=-\langle wx,y\rangle=-\langle x,wy\rangle=-\hat\delta_!(x,y)$; so
+(i) is \Cref{thm:moddeg:transpose}(iii), extended $R$-linearly. (ii) $w=w_N^*$ is an isometry of the cup product with $w^2=1$ (\Cref{ch:curves}: an automorphism of a compact Riemann
+surface is holomorphic, hence orientation preserving of degree $1$, and $\langle w^*x,w^*y\rangle=\deg(w_N)\langle x,y\rangle$), so $w^\dagger=w^{-1}=w$. The cup
+product is perfect, so $\hat\delta_!$, its composite with the automorphism $w$, is perfect: in matrix terms, if $G$ is the Gram matrix of the cup product in a basis and $W$ the matrix of
+$w$, the Gram matrix of $\hat\delta_!$ is $GW$, and $\det(GW)=\det G\det W=\pm\det G$ is a unit. For the symmetry, use that the cup product on $H^1$ of a surface is antisymmetric and
+that $w$ is a self-adjoint isometry: $\hat\delta_!(y,x)=\langle y,wx\rangle=-\langle wx,y\rangle=-\langle x,w^\dagger y\rangle=-\langle x,wy\rangle=-\hat\delta_!(x,y)$; so
 $\hat\delta_!$ is antisymmetric, and alternating because $2\hat\delta_!(x,x)=0$ and $H^1(X_0(N),R)$ is torsion-free. For $t\in\T\otimes R$,
 $\hat\delta_!(t^*x,y)=\langle x,(t^*)^\dagger wy\rangle=\langle x,wt^*wwy\rangle=\langle x,wt^*y\rangle=\hat\delta_!(x,t^*y)$. (iii) $\T_\ell$ is a finite free $\Zl$-algebra
 (\Cref{prop:moddeg:hecke-compatibility}(ii)), so $\T_\ell=\prod_{\mf m}\T_{\mf m}$ with orthogonal idempotents $e_{\mf m}$ (\Cref{ch:modules}). An element of $\T_\ell$ is
@@ -513,6 +561,10 @@ self-adjoint by (ii); for an idempotent $e$, $\hat\delta_!(ex,(1-e)y)=\hat\delta
 summands of an orthogonal decomposition is perfect on each (\Cref{ch:modules}). This is \Cref{ch:curves}'s corollary on twisted pairings, whose hypothesis $t^t=w^*tw^*$ is
 (i).
 \end{proof}
+
+The smallest case shows the sign. At level $11$, $S_2(\Gamma_0(11))=\C f_{11}$ and $\varepsilon_{11}(f_{11})=-1$, so $w_{11}^*$ is $-1$ on $H^1(X_0(11),\Z)\simeq\Z^2$ (it is $-1$ on
+$\omega_f$ and on $\overline{\omega_f}$, which span $H^1(X_0(11),\C)$), and $\hat\delta_!=-\langle\ ,\ \rangle$: in a symplectic basis its Gram matrix is $\sm0{-1}10$, perfect and
+alternating, as it must be. The twist only becomes visible when $\T$ contains a $U_p$ that is not self-adjoint for the cup product (\Cref{ex:moddeg:ex-u2}).
 
 \begin{remark}[the Petersson side]\label{rem:moddeg:petersson-analogue}
 On $S_2(\Gamma_0(N))$, $T_n$ is self-adjoint for the Petersson product when $(n,N)=1$, and $U_p^\dagger=w_NU_pw_N$ for $p\mid N$ (\Cref{ch:hecke}); a newform is a $w_N$-eigenvector
@@ -561,6 +613,11 @@ $f\mapsto f\,dz$ identifies $S_2(\Gamma_0(N))$ with the holomorphic differential
 (\Cref{prop:moddeg:cusps-over-q}), so the universal property of \Cref{ch:curves} applies over $\Q$. (iv) is \texttt{mfdim([N,2],1)} in PARI, and equals the genus formula of
 \Cref{ch:modforms}.
 \end{proof}
+
+Two remarks on the statement. The choice of base point matters for (iii): a morphism $X_0(N)\to A$ factors through a homomorphism only after it has been normalised to send the base
+point to $0$, and the base point must be rational for this to work over $\Q$; this is why modular parametrisations are required to send $\infty$ to $O$. And in genus one (ii) is
+concrete: for $N=11$, $S_2(\Gamma_0(11))^\vee=\C$ by $\lambda\mapsto\lambda(f_{11})$, the lattice is $\{\int_\gamma f_{11}(z)\,dz:\gamma\in H_1\}$, and $\iota$ is an isomorphism
+$X_0(11)\to J_0(11)$, the Abel-Jacobi map of a curve of genus one with a rational point.
 
 \begin{proposition}[the Hecke action on $J_0(N)$ and $T_\ell J_0(N)$]\label{prop:moddeg:hecke-on-j0}
 \leavevmode
@@ -626,6 +683,12 @@ Let $f$ be a newform of level $N$ with rational coefficients and $\ell$ a prime.
 M_{f,\lambda}=H^1(X_0(N),\Zl)[I_f]=\{x:\ t^*x=\phi_f(t)x\ \text{for all }t\in\T\}.
 \]
 \end{definition}
+
+The plane $V_f$ is the part of the cohomology that ``belongs to $f$''; over $\Q$ it is a $2$-dimensional space, and the definition picks out a specific $\Zl$-lattice in it. There are
+two natural lattices in $V_f\otimes\Ql$: the intersection $M_{f,\lambda}$ with the integral cohomology, and the image of $H^1(X_0(N),\Zl)$ under the projection onto the $f$-component
+$e_fH^1(X_0(N),\Ql)$ (with $e_f$ the idempotent of $\T\otimes\Ql$ of \Cref{prop:moddeg:congruence-ideal}(i)). The first is contained in the second, with index measured by congruences
+between $f$ and the other forms; the paper and \cite{DFG04} use the first (\Cref{rem:moddeg:dfg-normalisation}(4)). At level $11$, where $\T=\Z$, the two agree and
+$M_{f,\lambda}=H^1(X_0(11),\Zl)$.
 
 \begin{proposition}[the $f$-lattice]\label{prop:moddeg:f-lattice}
 In the situation of \Cref{def:moddeg:f-lattice}:
@@ -714,7 +777,9 @@ the geometric Frobenius has the same characteristic polynomial.
 Kronecker's congruence $\Phi_p(X,Y)\equiv(X^p-Y)(X-Y^p)\pmod p$ read on moduli through \Cref{prop:moddeg:hecke-correspondence}(iii): over $\bar\F_p$, for an ordinary curve $E$
 the quotient of $E$ by its connected subgroup of order $p$ is the Frobenius twist $E^{[p]}$, and the quotients by the $p$ \'etale subgroups are the curves whose Frobenius twist is
 $E$; so modulo $p$ the correspondence $T_p$ is the graph of the Frobenius morphism plus its transpose, which act on the Jacobian as $\pi_p$ and $\hat\pi_p$.
-(ii) Reduction modulo $p$ is injective on $\ell$-power torsion and commutes with all endomorphisms; $\pi_p\hat\pi_p=p$, so (i) gives $\pi_p^2-(T_p)_*\pi_p+p=\pi_p(\pi_p+\hat\pi_p-T_p)=0$.
+(ii) As $J_0(N)$ has good reduction at $p$ and $\ell\ne p$, reduction modulo $p$ is injective on $\ell$-power torsion (the kernel of reduction is a pro-$p$ group, as for elliptic
+curves in \Cref{ch:reduction}), so it identifies $T_\ell J_0(N)$ with $T_\ell$ of the reduction, compatibly with all endomorphisms defined over $\Q$; under this identification the
+arithmetic Frobenius becomes $\pi_p$. Since $\pi_p\hat\pi_p=p$, (i) gives $\pi_p^2-(T_p)_*\pi_p+p=\pi_p^2-(\pi_p+\hat\pi_p)\pi_p+\hat\pi_p\pi_p=0$.
 On $W_\psi$, $(T_p)_*-\psi(T_p)$ is nilpotent and commutes with $\Frob_p$; so $\Frob_p^2-\psi(T_p)\Frob_p+p$ is nilpotent there, and every eigenvalue of $\Frob_p$ on $W_\psi$ is a
 root of $X^2-\psi(T_p)X+p$.
 (iii) $E_f$ is a quotient of $J_0(N)$, which has good reduction at $p$, so $E_f$ has good reduction at $p$ (N\'eron-Ogg-Shafarevich, \Cref{ch:galrep}: $T_\ell E_f$ is a quotient of
@@ -754,8 +819,11 @@ there numerically, is a theorem. The modular parametrisations of \curve{11a2} an
 (\Cref{thm:moddeg:optimal}(ii)).
 
 (b) $\dim S_2(\Gamma_0(99))=9$. The newforms of level $99$ with rational coefficients are those of the four classes \curve{99a}, \curve{99b}, \curve{99c}, \curve{99d}, and there
-are no others (\texttt{mfdim([99,2],0)} $=4$); level $33$ has one newform and level $11$ one. By the decomposition of \Cref{ch:hecke}, $9=4\cdot1+1\cdot2+1\cdot3$, the
-multiplicities being the numbers of divisors of $99/33$ and $99/11$.
+are no others (\texttt{mfdim([99,2],0)} $=4$); level $33$ has one newform and level $11$ one. By the decomposition of \Cref{ch:hecke}, a newform $g$ of level $M\mid N$ contributes the
+forms $g(dz)$, $d\mid N/M$, one for each divisor: the newforms of level $99$ contribute one each, $f_{33}$ contributes $f_{33}(z)$, $f_{33}(3z)$ ($99/33=3$ has two divisors), and $f_{11}$
+contributes $f_{11}(z)$, $f_{11}(3z)$, $f_{11}(9z)$ ($99/11=9$ has three). So $9=4\cdot1+1\cdot2+1\cdot3$. (Levels $1$, $3$ and $9$ have no cusp forms of weight $2$.) On the
+$3$-dimensional old space of $f_{11}$ every $T_p$ with $p\nmid99$ acts as the scalar $a_p(f_{11})$; this is why the anemic algebra alone cannot cut out the plane of an old form,
+while for a newform of level $99$ it can (\Cref{prop:moddeg:f-lattice}(i)).
 \end{example}
 
 \begin{paperlink}\label{pl:moddeg:modularity}
@@ -820,6 +888,12 @@ modular parametrisations of curves in $\mathcal I$ are the numbers $\deg\psi\cdo
 (iv) If $(E,\varphi)$ satisfies (a), then $\psi\colon E_f\to E$ is the unique isomorphism with $\varphi=\psi\circ\varphi_{E_f}$.
 \end{proof}
 
+The logic of (i) in one sentence: a homomorphism $J_0(N)\to E$ sees only the part of $J_0(N)$ whose Frobenius eigenvalues are those of $E$, the congruence relation says that on the
+$\psi$-part those eigenvalues are governed by $\psi(T_p)$, and strong multiplicity one says that only $\psi=\phi_f$ matches. The class \curve{11a} shows the characterisations at
+work. There $J_0(11)=X_0(11)=\curve{11a1}$ and $I_f=0$, so $E_f=\curve{11a1}$ with $\varphi_{E_f}$ the identity. The parametrisation of \curve{11a3} is a $5$-isogeny
+$\psi\colon\curve{11a1}\to\curve{11a3}$; the kernel of $\varphi_*=\psi$ is a group of order $5$, five points, not connected, so (b) fails; on $H_1$ the image of $\psi_*$ has index $5$ in
+$H_1(\curve{11a3},\Z)$ (the index of $\psi_*H_1$ in $H_1$ is $\#\ker\psi$ for an isogeny of complex tori), so (c) fails; and its degree $5$ is not minimal, so (f) fails.
+
 The paper's definition (Section 1: ``the $X_0(N)$-optimal curve, for which the modular parametrisation $\varphi_E\colon X_0(N)\to E$ has minimal degree'') is (f); the proof
 of Proposition prop:pullback uses (b) and (c); and Section sec:data speaks of optimality as a property ``determined in the tables'', which is (a) checked by computation
 (\Cref{conv:moddeg:cremona-optimal}).
@@ -838,7 +912,10 @@ which $\varphi_E^*$ multiplies degrees of divisors, and the topological degree (
 \begin{proof}
 (i) is \Cref{ch:curves}. (ii) is the functoriality of Jacobians (\Cref{ch:curves}): $\varphi_*\varphi^*=[\deg\varphi]$ on $J(E)=E$. (iii) $\varphi_E^*$ is injective by
 \Cref{thm:moddeg:optimal}(iii)(e), so $A\simeq E$. For $y\in E$, $\varphi_E^*y\in B$ iff $\varphi_{E*}\varphi_E^*y=dy=0$; so $A\cap B=\varphi_E^*(E[d])\simeq E[d]\simeq(\Z/d)^2$, whose exponent is $d$.
-(iv) is the projection formula and the unimodularity of the cup product on $H^1(E,\Z)$ (\Cref{ch:curves}).
+(iv) The projection formula (\Cref{ch:curves}) says $\langle\varphi^*x,\varphi^*y\rangle_{X_0(N)}=\langle x,\varphi_*\varphi^*y\rangle_E$, and $\varphi_*\varphi^*$ is multiplication by
+$\deg\varphi=d$ on $H^1(E,\Z)$ (dually, on $H_1$: the preimage of a loop on $E$ avoiding the branch points is a union of closed curves whose images cover the loop $d$ times). So the left side is $d\langle x,y\rangle_E$. The
+cup product on $H^1(E,\Z)\simeq\Z^2$ is unimodular: in a symplectic basis $a,b$ its Gram matrix is $\sm01{-1}0$, so its values are all of $\Z$ and its Gram determinant is $1$. Multiplying by $d$
+gives the Gram matrix $\sm0d{-d}0$ for the basis $\varphi^*a$, $\varphi^*b$: values $d\Z$ and determinant $d^2$.
 \end{proof}
 
 \begin{proposition}[the valuation of the degree along the class]\label{prop:moddeg:valuation-in-class}
@@ -848,8 +925,11 @@ degrees are $1$, $5$, $5$.
 \end{proposition}
 
 \begin{proof}
-If an isogeny $\psi\colon E\to E'$ has $E[m]\subseteq\ker\psi$ with $m>1$, it factors as $\psi'\circ[m]$ with $\deg\psi'=\deg\psi/m^2$; so an isogeny of minimal degree has cyclic kernel. A cyclic
-kernel of order divisible by $\ell$ contains a unique subgroup of order $\ell$, which is then $G_\Q$-stable, contradicting the irreducibility of $E[\ell]$ (\Cref{ch:ellcurves}). By
+If an isogeny $\psi\colon E\to E'$ has $E[m]\subseteq\ker\psi$ with $m>1$, it factors as $\psi'\circ[m]$ with $\deg\psi'=\deg\psi/m^2$ ($[m]$ is surjective with kernel $E[m]$, so
+$\psi$ factors through it, and $\deg[m]=m^2$); $\psi'$ is defined over $\Q$ because $\psi$ and $[m]$ are. So an isogeny of minimal degree has a kernel containing no $E[m]$, $m>1$,
+and a finite subgroup of $E\simeq(\R/\Z)^2$ with that property is cyclic (a finite abelian group with at most $2$ generators that is not cyclic contains some $(\Z/q)^2=E[q]$, $q$ prime). The
+kernel is $G_\Q$-stable, $\psi$ being defined over $\Q$. If its order were divisible by $\ell$, the unique subgroup of order $\ell$ of this cyclic group would be $G_\Q$-stable too, contradicting the
+irreducibility of $E[\ell]$ (\Cref{ch:ellcurves}). By
 \Cref{thm:moddeg:optimal}(ii) the modular parametrisations of $E'$ are the $\psi\circ\varphi_E$, so the minimal degree is $\min_\psi\deg\psi\cdot\degphi$, and $v_\ell(\min\deg\psi)=0$. For
 \curve{11a}: \curve{11a1} is optimal with $\degphi=1$ (\Cref{ex:moddeg:small-levels}), and the isogenies of minimal degree to \curve{11a2} and \curve{11a3} have degree $5$
 (\Cref{ex:moddeg:class-11a}); $E[5]$ is reducible (\curve{11a1} has a rational point of order $5$).
@@ -917,6 +997,12 @@ Let $\varphi$ be a modular parametrisation of $E$ (conductor $N$, newform $f$). 
 The \emph{Manin constant} of $E$ is $c_E=c_{\varphi_E}$ for the optimal curve, the sign of $\omega_E$ being chosen so that $c_E>0$ (Appendix B, B-C9).
 \end{definition}
 
+Why such a constant must appear. On $X_0(N)$ there is a distinguished differential, $2\pi if(z)\,dz=f(q)\,dq/q=(1+a_2q+\cdots)\,dq$, normalised by $a_1(f)=1$; on $E$ there is another,
+the N\'eron differential, normalised by the integral structure of $E$ (it is $dx/(2y+a_1x+a_3)$ on a global minimal model, determined up to sign). Pulling the second back gives a
+differential on $X_0(N)$ in the line of the first (\Cref{prop:moddeg:manin-rational}(i)), and nothing forces the two normalisations to agree; $c_\varphi$ is the ratio. The sign of
+$\omega_E$ is not determined by the minimal model (the change $y\mapsto-y-a_1x-a_3$ negates it), which is why one normalises $c_E>0$. Example: for the optimal curve \curve{11a1}
+the constant is $1$, and for the parametrisation of \curve{11a3} through the $5$-isogeny it is $5$ (\Cref{ex:moddeg:zw-numerics}).
+
 \begin{proposition}[the constant $c_\varphi$]\label{prop:moddeg:manin-rational}
 In \Cref{def:moddeg:manin-constant}:
 \begin{enumerate}[label=(\roman*)]
@@ -968,10 +1054,19 @@ In particular, for the optimal curve,
 \end{theorem}
 
 \begin{proof}
-For a nonconstant map $\varphi$ of compact Riemann surfaces and a smooth $2$-form $\rho$ on the target, $\int_{X_0(N)}\varphi^*\rho=\deg\varphi\int_E\rho$ (\Cref{ch:curves}). With
-$\rho=\frac i2\omega_E\wedge\bar\omega_E$ the right side is $\deg\varphi\cdot\vol(\Lambda_E)$. On the left, $\varphi^*\omega_E=2\pi ic_\varphi\,\omega_f$ with $c_\varphi$ real, so
-$\varphi^*\rho=\frac i2\cdot4\pi^2c_\varphi^2\,\omega_f\wedge\overline{\omega_f}$, whose integral is $4\pi^2c_\varphi^2\langle f,f\rangle$ (\Cref{conv:moddeg:setup}(C4); $\frac i2dz\wedge d\bar z=dx\wedge dy$).
+For a nonconstant map $\varphi$ of compact Riemann surfaces and a smooth $2$-form $\rho$ on the target, $\int_{X_0(N)}\varphi^*\rho=\deg\varphi\int_E\rho$ (\Cref{ch:curves}: off the
+finitely many branch points $\varphi$ is a $\deg\varphi$-sheeted covering, each sheet maps diffeomorphically and orientation-preservingly onto its image, and a finite set has measure zero).
+With $\rho=\frac i2\omega_E\wedge\bar\omega_E$ the right side is $\deg\varphi\cdot\vol(\Lambda_E)$: under $E(\C)\simeq\C/\Lambda_E$ the form $\omega_E$ becomes $du$, and
+$\frac i2du\wedge d\bar u$ is the Lebesgue measure on the fundamental parallelogram. On the left, $\varphi^*\omega_E=2\pi ic_\varphi\,\omega_f$ with $c_\varphi$ real
+(\Cref{prop:moddeg:manin-rational}(ii)), so $\overline{\varphi^*\omega_E}=-2\pi ic_\varphi\,\overline{\omega_f}$ and
+\[
+\varphi^*\rho=\frac i2(2\pi ic_\varphi)(-2\pi ic_\varphi)\,\omega_f\wedge\overline{\omega_f}=4\pi^2c_\varphi^2\cdot\frac i2\,\omega_f\wedge\overline{\omega_f}.
+\]
+Its integral over $X_0(N)$ is $4\pi^2c_\varphi^2\langle f,f\rangle$ by \Cref{conv:moddeg:setup}(C4): on a fundamental domain, $\frac i2\,f\,dz\wedge\overline{f\,dz}=\abs f^2\cdot\frac i2dz\wedge d\bar z=\abs f^2\,dx\wedge dy$,
+since $dz\wedge d\bar z=(dx+i\,dy)\wedge(dx-i\,dy)=-2i\,dx\wedge dy$.
 \end{proof}
+
+For example, for \curve{37a1}, with the numbers of \Cref{ex:moddeg:zw-numerics}, $4\pi^2\cdot0.37175\ldots/7.33813\ldots=2.0000\ldots$, the degree of the quotient map by $w_{37}$ (\Cref{ex:moddeg:37}).
 
 In the language of physics: the $L^2$ norm of a pulled-back one-form counts every sheet of the cover, so the area of a $d$-sheeted cover is $d$ times the area of the base.
 
@@ -1032,6 +1127,14 @@ Let $f=f_E$. The \emph{congruence number} $r_E$ is the largest integer $r$ such 
 \Cref{ch:hecke} for $f=f_E$; $r_E$ depends only on the isogeny class.)
 \end{definition}
 
+The two definitions measure the same phenomenon from the two sides of the duality between forms and Hecke operators. Over $\Q$ the space of cusp forms splits as $\Q f$ plus the
+complement $f^\perp$; over $\Z$ it does not, because an integral form can be congruent to $f$ modulo $r$ and to a form in $f^\perp$ at the same time. The congruence number is the
+largest such $r$, and $r_E>1$ exactly when some prime $\ell$ makes $f$ congruent modulo $\ell$ to a combination of the other forms (for an eigenform, typically, to another
+eigenform, as in Lemma lem:crit below). The Hecke version asks the same question inside $\T$: $\T\otimes\Q=\Q\times\T'$, and $\eta_f$ measures how far $\T$ is from the product of its two
+projections. At level $11$, $S_2(\Gamma_0(11))=\C f_{11}$, $f^\perp=0$ and $\T=\Z$, so $r_E=1$ and $\eta_f=\phi_f(\Ann_\Z0)=\Z$. The same holds for every conductor below $26$ (they are $11$, $14$, $15$, $17$, $19$, $20$, $21$, $24$, and $X_0(N)$ has genus one for each,
+so $f^\perp=0$). At $N=26$, where $X_0(26)$ has genus $2$ and the classes \curve{26a}, \curve{26b} share it, $r_E=2$ for both, as \Cref{thm:moddeg:ars} gives from $\degphi=2$ ($26$ is
+square-free); level $37$ is worked out by hand in \Cref{ex:moddeg:ex-level37-hecke}.
+
 \begin{proposition}[congruence ideals of a newform]\label{prop:moddeg:congruence-ideal}
 \leavevmode
 \begin{enumerate}[label=(\roman*)]
@@ -1050,6 +1153,13 @@ $\phi_f$, which is $\C f$ (\Cref{prop:moddeg:f-lattice}(i)); and $A\otimes\C$ ac
 $eS_2$, so $A\otimes\C$ embeds in $\C$ and $A=\Q$. The rest is \Cref{ch:modules} (the proposition on congruence ideals, parts (ii), (iii)). (ii) is part (v) of the same proposition,
 $\Zl$ being complete. (iii) is \Cref{ch:hecke}: both summands are saturated and their ranks add up, and a congruence modulo $r$ gives the element $(f-g)/r$ of order $r$ in the
 quotient.
+
+In more detail, (iii) also identifies $r_E$ with the index. Write $S=S_2(\Gamma_0(N);\Z)$ and $L=f^\perp\cap S$. With $e$ the idempotent of the factor $\Q$ in (i), $eS_2=\C f$ and
+$(1-e)S_2$ is the sum of the other generalised eigenspaces; as $f^\perp$ is $\T$-stable, $f^\perp=ef^\perp\oplus(1-e)f^\perp$ with $ef^\perp\subseteq\C f\cap f^\perp=0$, so $f^\perp=(1-e)S_2$
+by dimensions. Since $e$ has rational entries in a basis of $S$, $S\otimes\Q=\Q f\oplus(L\otimes\Q)$, and the coefficient of $f$ is a linear map $P\colon S\to\Q$ with $P(f)=1$ and kernel $L$. Its
+image is a finitely generated subgroup of $\Q$ containing $1$, so it is $\frac1{r'}\Z$ for a positive integer $r'$, and $P$ induces $S/(\Z f\oplus L)\simeq\frac1{r'}\Z/\Z\simeq\Z/r'$. If
+$f\equiv g\pmod r$ with $g\in L$, then $h=(f-g)/r\in S$ and $P(h)=1/r$, so $r\mid r'$; conversely, if $P(h)=1/r'$, then $g=f-r'h$ lies in $L$ and $f\equiv g\pmod{r'}$. Hence $r_E=r'$ is
+the index of $\Z f\oplus L$ in $S$, and the quotient is cyclic. This is the ``cyclic-quotient argument'' used in \Cref{ex:moddeg:99a1-and-726a1}.
 \end{proof}
 
 \begin{lemma}[the paper's Lemma lem:crit; stated, proved in \Cref{ch:modgalrep}]\label{lem:moddeg:crit}
@@ -1084,7 +1194,8 @@ $S_2(\Gamma_0(N);\Z)$ of forms with integral coefficients as the saturation of t
 rational form whose first $M$ coefficients are integers is integral by Sturm's theorem (\Cref{ch:modforms}). (2) Compute the matrices of $T_p$ ($U_p$ for $p\mid N$) on this lattice from
 $a_n(T_pg)=a_{np}(g)+pa_{n/p}(g)$ (the second term for $p\nmid N$ only). (3) Find the primitive integral functional $\theta$ on the lattice with $\theta\circ T_p=a_p(f)\theta$ for
 $p\le23$ (the common eigenline was already one-dimensional): its kernel is $f^\perp\cap S_2(\Gamma_0(N);\Z)$, because $f^\perp$ is the sum of the other generalised eigenspaces. (4) Then $\theta\colon S_2(\Gamma_0(N);\Z)\to\Z$ is onto with
-kernel $L=f^\perp\cap S_2(\Z)$, so $\Z f\oplus L$ has index $\abs{\theta(f)}$, and $r_E=\abs{\theta(f)}$ by the cyclic-quotient argument in the proof of Lemma lem:crit. The results, with
+kernel $L=f^\perp\cap S_2(\Z)$, so $\Z f\oplus L$ has index $\abs{\theta(f)}$ (indeed $\theta=\pm r'P$ for the map $P$ of the proof of \Cref{prop:moddeg:congruence-ideal}, both having kernel
+$L$ and $\theta$ being onto $\Z$), and $r_E=\abs{\theta(f)}$ by the cyclic-quotient argument given there. The results, with
 $\degphi$ from \texttt{ellmoddegree} and \texttt{degphi}:
 \begin{center}\small
 \begin{tabular}{lllll}
@@ -1113,7 +1224,20 @@ curve & $N$ & $\degphi$ & $r_E$ & primes $p$ with $p^2\mid N$\\
 \end{tabular}
 \end{center}
 So \curve{99a1} has $\degphi=4$ and $r_E=12$, as \cite[Table 1]{ARS12} and the remark after the paper's Example ex:qual say, and the discrepancy is at $3$, with $3^2\mid99$. The congruence behind
-$3\mid r_E$: $a_n(f_{99a})\equiv a_n(f_{99b})\equiv a_n(f_{99d})\pmod3$ for all $n\le60$, beyond Sturm's bound $24$ for $\Gamma_0(99)$, so for all $n$ (\Cref{ch:modforms}); the forms
+$3\mid r_E$: $a_n(f_{99a})\equiv a_n(f_{99b})\equiv a_n(f_{99d})\pmod3$ for all $n\le60$, beyond Sturm's bound $24$ for $\Gamma_0(99)$ (which has index $99\cdot\frac43\cdot\frac{12}{11}=144$
+in $\SL_2(\Z)$, and $2\cdot144/12=24$), so for all $n$ (\Cref{ch:modforms}). The first coefficients, from \texttt{ellan},
+\begin{center}\small
+\begin{tabular}{lrrrrrrrr}
+\toprule
+$n$ & $2$ & $4$ & $5$ & $7$ & $8$ & $10$ & $11$ & $13$\\
+\midrule
+$a_n(f_{99a})$ & $-1$ & $-1$ & $-4$ & $-2$ & $3$ & $4$ & $-1$ & $-2$\\
+$a_n(f_{99b})$ & $-1$ & $-1$ & $2$ & $4$ & $3$ & $-2$ & $-1$ & $-2$\\
+$a_n(f_{99d})$ & $2$ & $2$ & $-1$ & $-2$ & $0$ & $-2$ & $-1$ & $4$\\
+\bottomrule
+\end{tabular}
+\end{center}
+show the pattern (the coefficients $a_n$ with $3\mid n$ vanish for all three, $3^2$ dividing the level): the differences are $0$ or $\pm3$, $\pm6$. The forms
 $f_{99b}$, $f_{99d}$ are newforms of level $99$ different from $f_{99a}$, hence in $f^\perp$, and Lemma lem:crit gives $3\mid r_E$. ($f_{99c}$ is not congruent to $f_{99a}$ modulo $3$:
 $a_2=1$ against $-1$.) The paper's curves \curve{726a1} (ratio $11$, $11^2\mid726$) and \curve{539d1} (ratio $7$, $7^2\mid539$) are further examples, and \curve{88a1} (ratio $2$, $2^3\mid88$) a fourth (\Cref{ex:moddeg:ex-88}). In every other case of the table the two
 numbers agree, also at primes $p$ with $p^2\mid N$ (\curve{121a1}, \curve{539c1}, \curve{980i1}, \curve{99b1}, \curve{99d1}): the equality can hold there; only the guarantee is lost.

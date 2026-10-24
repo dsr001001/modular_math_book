@@ -232,9 +232,15 @@ $H^n(g\circ f)=H^n(g)\circ H^n(f)$, $H^n(\id)=\id$.
 \end{lemma}
 
 \begin{proof}
-(i) If $dx=0$ then $d(fx)=f(dx)=0$; and $f(dy)=d(fy)$. Functoriality is clear on representatives. (ii) For $x\in Z^n(C)$,
-$f(x)-g(x)=d(s^nx)+s^{n+1}(dx)=d(s^nx)\in B^n(D)$.
+(i) If $dx=0$ then $d(fx)=f(dx)=0$, so $f(Z^n(C))\subseteq Z^n(D)$; and $f(dy)=d(fy)$, so $f(B^n(C))\subseteq B^n(D)$. Hence $H^n(f)[x]=[fx]$ is well
+defined: if $x'=x+dy$ is another representative, $fx'=fx+d(fy)$ has the same class. On representatives, $H^n(g\circ f)[x]=[g(f(x))]=H^n(g)(H^n(f)[x])$ and
+$H^n(\id)[x]=[x]$. (ii) For $x\in Z^n(C)$,
+$f(x)-g(x)=d(s^nx)+s^{n+1}(dx)=d(s^nx)\in B^n(D)$, so $[f(x)]=[g(x)]$. Note that $s$ need not commute with $d$; only the combination $ds+sd$ enters.
 \end{proof}
+
+The definition of a homotopy may look unmotivated. Its role is exactly (ii): it is the weakest relation between $f$ and $g$ that forces equal maps on
+cohomology by the one-line argument above, and it is the relation that the comparison theorem (\Cref{prop:cohomology:resolutions}) produces between two
+lifts of the same map. This is why group cohomology, defined through a choice of resolution, does not depend on that choice.
 
 We recall the snake lemma, proved in \Cref{ch:modules}, because the construction of its connecting map is the template for every connecting map that
 follows.
@@ -279,21 +285,34 @@ exact sequences; in particular $\delta^n\circ H^n(\gamma)=H^{n+1}(\alpha)\circ\d
 \begin{proof}
 (i) Since $i$ is injective and $i(da)=d(i(a))=ddb=0$, $da=0$. Independence of the choices: another lift is $b+i(x)$ with $x\in A^n$, which changes $a$ to
 $a+dx$; another representative is $c+dy$ with $y\in C^{n-1}$; lift $y$ to $\tilde y\in B^{n-1}$, then $b+d\tilde y$ lifts $c+dy$ and has the same
-differential $db$. So $[a]$ depends only on $[c]$. Linearity is clear, since sums and multiples of choices are choices.
+differential $db$. So $[a]$ depends only on $[c]$. Linearity: if $(c_1,b_1,a_1)$ and $(c_2,b_2,a_2)$ are choices for $[c_1]$ and $[c_2]$, and
+$\lambda\in R$, then $(c_1+\lambda c_2,\,b_1+\lambda b_2,\,a_1+\lambda a_2)$ is a valid choice for $[c_1]+\lambda[c_2]$, because $p$, $i$ and $d$ are $R$-linear; by
+independence of the choices, $\delta^n([c_1]+\lambda[c_2])=[a_1]+\lambda[a_2]$.
 
 (ii) A clean route is the snake lemma. For each of the three complexes $X^\bullet\in\{A^\bullet,B^\bullet,C^\bullet\}$ the differential induces a map
-$\bar d\colon X^n/dX^{n-1}\to Z^{n+1}(X)$ with $\ker\bar d=H^n(X)$ and $\coker\bar d=H^{n+1}(X)$. The rows
-$A^n/dA^{n-1}\to B^n/dB^{n-1}\to C^n/dC^{n-1}\to0$ and $0\to Z^{n+1}(A)\to Z^{n+1}(B)\to Z^{n+1}(C)$ are exact. In the first row, surjectivity holds
-because $p$ is surjective; if $x\in B^n$ has $p(x)=dy$ with $y\in C^{n-1}$, lift $y$ to $\tilde y\in B^{n-1}$, so that $x-d\tilde y\in\ker p=i(A^n)$. In the
-second row, a cocycle $z$ of $B^\bullet$ with $p(z)=0$ is $i(a)$, and $da=0$ because $i$ is injective. The snake lemma applied to the three maps $\bar d$ gives the exact sequence
+$\bar d\colon X^n/dX^{n-1}\to Z^{n+1}(X)$, $x+dX^{n-1}\mapsto dx$ (well defined since $dd=0$, and landing in $Z^{n+1}$ for the same reason). Its kernel is
+$\{x:dx=0\}/dX^{n-1}=Z^n/B^n=H^n(X)$, and its cokernel is $Z^{n+1}(X)/dX^{n}=H^{n+1}(X)$. The rows
+$A^n/dA^{n-1}\to B^n/dB^{n-1}\to C^n/dC^{n-1}\to0$ and $0\to Z^{n+1}(A)\to Z^{n+1}(B)\to Z^{n+1}(C)$ are exact. In the first row, surjectivity at the right end holds
+because $p$ is surjective. For exactness in the middle, let $x\in B^n$ map to $0$ in $C^n/dC^{n-1}$, that is $p(x)=dy$ with $y\in C^{n-1}$; lift $y$ to $\tilde y\in B^{n-1}$, so
+that $x-d\tilde y\in\ker p=i(A^n)$, and $x$ has the same class as $x-d\tilde y$, which comes from $A^n$. (The composite of the two maps is $0$ because $pi=0$.) In the
+second row, injectivity is inherited from $i$; and a cocycle $z$ of $B^\bullet$ with $p(z)=0$ is $i(a)$, with $da=0$ because $i(da)=dz=0$ and $i$ is injective. The two
+rows and the three vertical maps $\bar d$ form a commutative diagram, because $i$ and $p$ commute with $d$. The snake lemma applied to it gives the exact sequence
 \[
 H^n(A)\to H^n(B)\to H^n(C)\xrightarrow{\ \delta\ }H^{n+1}(A)\to H^{n+1}(B)\to H^{n+1}(C),
 \]
 and the snake construction of $\delta$ is exactly (i). Splicing these six-term sequences for all $n$ gives (ii).
 
 (iii) The maps $i_*$, $p_*$ commute with $\alpha_*,\beta_*,\gamma_*$ by functoriality. For $\delta$: if $(c,b,a)$ are the choices in (i) for $[c]$, then
-$(\gamma c,\beta b,\alpha a)$ are valid choices for $[\gamma c]$, since $\tilde p\beta=\gamma p$ and $\tilde i\alpha=\beta i$ and $\beta$ commutes with $d$.
+$(\gamma c,\beta b,\alpha a)$ are valid choices for $[\gamma c]$, since $\tilde p\beta=\gamma p$ and $\tilde i\alpha=\beta i$ and $\beta$ commutes with $d$:
+indeed $\tilde p(\beta b)=\gamma(pb)=\gamma c$ and $d(\beta b)=\beta(db)=\beta(i(a))=\tilde i(\alpha a)$. So $\delta^n[\gamma c]=[\alpha a]=H^{n+1}(\alpha)\delta^n[c]$.
 \end{proof}
+
+The recipe of (i) is worth memorising in the form ``lift, differentiate, pull back'': every connecting map in the book, from the Kummer map of
+\Cref{ch:galcoh} to the map $\delta\colon H^0(G,W)\to H^1(G,T)$ of \Cref{prop:cohomology:les-cont}, is computed this way. The class $\delta[c]$ is nonzero
+exactly when the lift $b$ cannot be chosen to be a cocycle. \Cref{prop:cohomology:h0-h1}(iv) below is the first instance: there $\delta(m'')$ is the
+coboundary of a lift $m$ of $m''$, a coboundary in $M$ that takes values in $M'$, where it is a cocycle but in general not a coboundary. For example, for
+the group $G=\{1,\sigma\}$ acting on $M=\Z$ by $-1$ and the sequence $0\to2\Z\to\Z\to\Z/2\to0$, the element $1\in(\Z/2)^G$ lifts to $1\in\Z$, and
+$\delta(1)$ is the class of $g\mapsto g\cdot1-1$, which is $\sigma\mapsto-2$; this is not of the form $\sigma\mapsto\sigma x-x=-2x$ with $x\in2\Z$, so $\delta(1)\ne0$.
 
 \begin{example}\label{ex:cohomology:two-term}
 Let $M$ be an $R$-module and $u$ an $R$-linear endomorphism of $M$. The complex $0\to M\xrightarrow{u-1}M\to0$ (in degrees $0$ and $1$) has
@@ -366,6 +385,13 @@ long exact sequence of $\Hom_R(M,-)$.
 We do not prove this; see \cite[Section 3.4]{Weibel}. \Cref{prop:cohomology:corner} below proves by hand the case that the paper uses.
 \end{proof}
 
+A first example shows the bijection at work. By \Cref{prop:cohomology:ext-tor}(iv), $\Ext^1_\Z(\Z/2,\Z/2)=(\Z/2)/2(\Z/2)=\Z/2$ has two elements, and there are
+exactly two extensions $0\to\Z/2\to E\to\Z/2\to0$ up to equivalence: $E$ is a group of order $4$, so $E\simeq\Z/2\times\Z/2$ (the split extension, class $0$) or
+$E\simeq\Z/4$ (with the sub $2\Z/4\Z$, the nonzero class). The extension class records whether a lift of the generator of the quotient can be chosen to be
+killed by $2$. In the same way $\Ext^1_{\Zl}(\Z/\ell^a,\Z/\ell^b)=\Z/\ell^{\min(a,b)}$ counts the ways of gluing a cyclic group of order $\ell^a$ on top of one of
+order $\ell^b$ ($a,b\ge1$); the cyclic extensions $E\simeq\Z/\ell^{a+b}$ are those whose class is a generator. The case the paper needs is the
+equivariant analogue: the module is $\Zl^2$, the extension is one of Galois modules, and the class lives in a group cohomology $H^1$.
+
 \begin{remark}\label{rem:cohomology:dvr-degree-one}
 Over a discrete valuation ring such as $\Zl$ the homological algebra of modules stops in degree one. This is one reason why the cohomology of a
 procyclic group with $\ell$-adic coefficients is so simple: in \Cref{sec:cohomology:procyclic} the two-term complex of \Cref{ex:cohomology:two-term}
@@ -390,6 +416,12 @@ If $M$ is a $\Zl$-module and $G$ acts $\Zl$-linearly, $M$ is a $\Zl[G]$-module, 
 $\Zl$-linear.
 \end{definition}
 
+The invariants and the coinvariants are the largest submodule and the largest quotient on which $G$ acts trivially; group cohomology measures how far
+$M\mapsto M^G$ is from being exact. A first example: let $G=\langle\sigma\rangle$ have order $2$ and act on $\Z^2$ by swapping the coordinates. Then
+$M^G=\{(a,a)\}$, $I_GM=(\sigma-1)M=\{(b,-b)\}$, $M_G=\Z^2/\{(b,-b)\}\simeq\Z$ via $(x,y)\mapsto x+y$, and $N_GM=\{(a+b,a+b)\}=M^G$. For the sign module $\Z^-$ (with
+$\sigma$ acting by $-1$) instead, $M^G=0$, $M_G=\Z/2$ and $N_G=0$. The examples of the paper are $\Zl$-modules such as $T_\ell E$, $\ad T$ and $\Zl(1)$, with $G$ a
+Galois group acting through a representation.
+
 \begin{definition}[inhomogeneous cochains]\label{def:cohomology:cochains}
 For $n\ge0$ let $C^n(G,M)$ be the group of all maps $G^n\to M$ ($C^0(G,M)=M$), and define $d^n\colon C^n(G,M)\to C^{n+1}(G,M)$ by
 \begin{multline*}
@@ -405,6 +437,14 @@ In low degrees:
 The \emph{cohomology} of $G$ with coefficients in $M$ is $H^n(G,M)=H^n(C^\bullet(G,M))$ (with $C^n=0$ for $n<0$). Elements of $Z^n(G,M)=\ker d^n$ are
 \emph{$n$-cocycles}, of $B^n(G,M)=\im d^{n-1}$ \emph{$n$-coboundaries}.
 \end{definition}
+
+The formula for $d^n$ can be read off from the low degrees, which are the ones the book uses. In degree $0$, $d^0m=0$ says that $m$ is invariant. In degree $1$,
+$d^1\varphi=0$ says $\varphi(gh)=\varphi(g)+g\varphi(h)$: $\varphi$ is a homomorphism ``twisted by the action'', the rule satisfied by the corner entry of a triangular
+representation (\Cref{prop:cohomology:corner}) and by the function $g\mapsto gm-m$. In degree $2$, $d^2\psi=0$ is the associativity constraint on the factor set of a
+group extension (\Cref{thm:cohomology:h2-ext}). The general $d^n$ alternates between applying the action to the first variable, multiplying adjacent variables,
+and dropping the last variable; this pattern is what makes $d\circ d=0$, by a cancellation in pairs. The adjective ``inhomogeneous'' distinguishes these cochains
+from the homogeneous cochains, the $G$-equivariant maps $G^{n+1}\to M$, which compute the same groups (\Cref{thm:cohomology:as-ext}; the two are related by
+$\varphi(g_1,\dots,g_n)=\Phi(1,g_1,g_1g_2,\dots,g_1\cdots g_n)$).
 
 \begin{lemma}\label{lem:cohomology:dd}
 $d^{n+1}d^n=0$ for all $n$, so $C^\bullet(G,M)$ is a cochain complex. A map of $G$-modules $f\colon M\to N$ induces a morphism of complexes
@@ -455,6 +495,9 @@ $\varphi(1)=2\varphi(1)$, so $\varphi(1)=0$; putting $h=g^{-1}$ gives $0=\varphi
 identity reads $\varphi(gh)=\varphi(g)+\varphi(h)$; a homomorphism to an abelian group factors through $G^{\mathrm{ab}}$. If $G$ is finite every $g$ has finite
 order $k$, so $k\varphi(g)=\varphi(g^k)=0$ and $\varphi(g)=0$ when $M$ is torsion-free. (iv) is the beginning of the long exact sequence of
 \Cref{prop:cohomology:les-groups}; the formula for $\delta$ is the recipe of \Cref{thm:cohomology:les}(i): lift $m''$ to $m\in C^0(G,M)=M$ and apply $d^0$.
+Concretely, $p(gm-m)=gm''-m''=0$ because $m''$ is invariant, so $gm-m$ lies in $M'$; the cochain $g\mapsto gm-m$ is a cocycle (it is $d^0m$ in $M$, and $d^1d^0=0$);
+another lift $m+m'$ changes it by $d^0m'$, a coboundary in $M'$. The class $\delta(m'')$ is $0$ if and only if $gm-m=gm'-m'$ for some $m'\in M'$, that is, if and only if
+$m''$ has the invariant lift $m-m'$; this is exactness at $M''^G$.
 \end{proof}
 
 \begin{remark}\label{rem:cohomology:cocycle-words}
@@ -504,13 +547,17 @@ P^{-1}\rho(g)P=\Mtwo{\eta_1(g)}{\kappa(g)+r(\eta_1(g)-\eta_2(g))}{0}{\eta_2(g)},
 \]
 so $b$ becomes $b+r(\eta_1\eta_2^{-1}-1)$. Scaling is clear.
 
-(iii) A complement of $Re_1$ in $R^2$ that is free of rank one is spanned by a vector mapping to a generator of $R^2/Re_1$, which we may take to be
-$e_2+re_1$ after scaling. It is $G$-stable if and only if the corner vanishes in the basis $e_1,e_2+re_1$, that is, $b=-d^0r$ by (ii). So $\rho$ is split if
-and only if $b$ is a coboundary.
+(iii) A complement $L$ of $Re_1$ in $R^2$ maps isomorphically onto $R^2/Re_1\simeq R$, so it is free of rank one, spanned by the unique $v\in L$ mapping to
+the class of $e_2$; and $v=e_2+re_1$ for some $r\in R$. It is $G$-stable if and only if the corner vanishes in the basis $e_1,e_2+re_1$, that is, $b+d^0r=0$ by
+(ii). So $\rho$ is split if and only if $b$ is a coboundary.
 
-(iv) Given a cocycle $b$, put $\kappa=b\eta_2$; by (i), $\rho$ is a homomorphism. An extension $E$ as stated has a basis $e_1,e_2$ with $e_1$ spanning the
-sub (lift a generator of the free quotient), so it is given by a matrix of this shape; by (ii) the class of $b$ depends only on the isomorphism class of
-the extension, and two extensions with the same class are isomorphic by a change of basis as in (ii).
+(iv) Given a cocycle $b$, put $\kappa=b\eta_2$; by (i), $\rho$ is a homomorphism, and $E=R^2$ with this action is an extension of the stated kind with class $[b]$.
+Conversely, an extension $0\to R(\eta_1)\xrightarrow{\iota}E\to R(\eta_2)\to0$ has the basis $e_1=\iota(1)$, $e_2$ a lift of $1\in R(\eta_2)$. In this basis
+$g$ fixes the line $Re_1$, acting on it by $\eta_1(g)$, and acts on $E/Re_1$ by $\eta_2(g)$, so its matrix has the shape of (i). The only freedom is the lift $e_2$,
+which can be replaced by $e_2+re_1$; by (ii) this changes $b$ by the coboundary $d^0r$, so $[b]$ depends only on $E$. If $E$, $E'$ with such bases have cocycles
+$b$ and $b'=b+d^0r$, then in the basis $e_1,e_2+re_1$ of $E$ the cocycle is $b'$ by (ii), so the $R$-linear map $E'\to E$ with $e_1'\mapsto e_1$, $e_2'\mapsto e_2+re_1$
+has the same matrices on both sides: it is $G$-equivariant, and it induces the identity on the sub and on the quotient. An isomorphism inducing the identity on
+the sub and the quotient maps $e_1$ to $e'_1$ and $e_2$ to a lift of $1$, so it is of this form; hence the bijection.
 
 (v) Here $\eta_1=\chi_\ell\varepsilon$, $\eta_2=\varepsilon$, so $\eta_1\eta_2^{-1}=\chi_\ell$ and $b=\varepsilon\kappa\cdot\varepsilon^{-1}=\kappa$. On $I$ the action on $\Zl(\chi_\ell)$ is
 trivial, so the cocycle $\kappa|_I$ is a homomorphism by \Cref{prop:cohomology:h0-h1}(iii).
@@ -534,9 +581,17 @@ corresponds to $0$.
 \end{theorem}
 
 \begin{proof}[Sketch of proof]
-Since $\pi(s(g)s(h))=\pi(s(gh))$, $\psi(g,h)$ lies in $M$. Expanding $s(g)s(h)s(k)$ in two ways (first $s(g)s(h)$, or first $s(h)s(k)$) and using
-$s(g)ms(g)^{-1}=gm$ gives $g\psi(h,k)+\psi(g,hk)=\psi(g,h)+\psi(gh,k)$, which is $d^2\psi=0$. Another section is $s'(g)=\varphi(g)s(g)$ with
-$\varphi\colon G\to M$, and it changes $\psi$ by $d^1\varphi$. Conversely a cocycle $\psi$ (normalised so that $\psi(1,g)=\psi(g,1)=0$, which one can arrange by a
+Since $\pi(s(g)s(h))=\pi(s(gh))$, $\psi(g,h)$ lies in $M$. Write $\mathcal E$ multiplicatively, so that $s(g)s(h)=\psi(g,h)s(gh)$ and $s(g)\,m\,s(g)^{-1}=gm$ for
+$m\in M$. Expanding $s(g)s(h)s(k)$ in two ways,
+\[
+\bigl(s(g)s(h)\bigr)s(k)=\psi(g,h)\psi(gh,k)\,s(ghk),\qquad s(g)\bigl(s(h)s(k)\bigr)=s(g)\psi(h,k)s(g)^{-1}\cdot s(g)s(hk)=(g\psi(h,k))\,\psi(g,hk)\,s(ghk),
+\]
+and comparing, in additive notation in $M$, $g\psi(h,k)+\psi(g,hk)=\psi(g,h)+\psi(gh,k)$, which is $d^2\psi=0$. Another section is $s'(g)=\varphi(g)s(g)$ with
+$\varphi\colon G\to M$, and
+\[
+s'(g)s'(h)s'(gh)^{-1}=\varphi(g)\,s(g)\varphi(h)s(g)^{-1}\cdot s(g)s(h)s(gh)^{-1}\cdot\varphi(gh)^{-1},
+\]
+which is $\varphi(g)+g\varphi(h)+\psi(g,h)-\varphi(gh)$ additively (the factors lie in the abelian group $M$): it changes $\psi$ by $d^1\varphi$. Conversely a cocycle $\psi$ (normalised so that $\psi(1,g)=\psi(g,1)=0$, which one can arrange by a
 coboundary) defines a group law $(m,g)(m',g')=(m+gm'+\psi(g,g'),gg')$ on $M\times G$. Details are in \cite[Chapter IV, Section 3]{Brown}.
 \end{proof}
 
@@ -553,9 +608,9 @@ natural with respect to morphisms of short exact sequences. If the modules are $
 \begin{proof}
 For each $n$, $C^n(G,-)=\operatorname{Map}(G^n,-)$ takes the exact sequence to an exact sequence: injectivity and exactness in the middle are pointwise, and a
 map $G^n\to M''$ lifts pointwise because $p$ is surjective. The maps $i\circ-$, $p\circ-$ are morphisms of complexes (\Cref{lem:cohomology:dd}).
-Now apply \Cref{thm:cohomology:les}. Naturality is \Cref{thm:cohomology:les}(iii). $\Zl$-linearity: if $\lambda\in\Zl$ acts on each $C^n$ pointwise, all maps
-including the choices in the construction of $\delta$ can be taken compatibly, and $\delta$ is additive and commutes with $\lambda$ because $\lambda$ defines an
-endomorphism of the short exact sequence.
+Now apply \Cref{thm:cohomology:les}. Naturality is \Cref{thm:cohomology:les}(iii). $\Zl$-linearity: for $\lambda\in\Zl$, multiplication by $\lambda$ on $M'$, $M$,
+$M''$ is $G$-linear (the action is $\Zl$-linear) and commutes with $i$ and $p$, so it is an endomorphism of the short exact sequence. It induces multiplication
+by $\lambda$ on each $C^n$, hence on each $H^n$, and naturality gives $\delta\circ\lambda=\lambda\circ\delta$. The maps $i_*$, $p_*$ are $\Zl$-linear for the same reason.
 \end{proof}
 
 \begin{lemma}[$H^0$ and torsion]\label{lem:cohomology:h0-torsion}
@@ -586,10 +641,17 @@ and $\Z/\ell^h$ has an element of order $\ell^k$ exactly for $k\le h$.
 and only if its subgroup $H^0(G,W)[\ell^k]\simeq H^0(G,T/\ell^kT)$ does. An element $\bar x\in T/\ell^kT$ has order $\ell^k$ if and only if $\ell^{k-1}x\notin\ell^kT$, if and
 only if $x\notin\ell T$, because $T$ has no $\ell$-torsion.
 
-(e) $W\simeq(\Qlmod)^r$, and $X=H^0(G,W)$ is a submodule with $\#X[\ell]\le\ell$. By Pontryagin duality (\Cref{ch:modules}), $X^*$ is a quotient of
-$((\Qlmod)^r)^*=\Zl^r$, hence finitely generated, and $X^*/\ell X^*=(X[\ell])^*$ has order at most $\ell$. So $X^*$ is cyclic: $X^*\simeq\Zl$ or $\Z/\ell^h$, and
+(e) $W\simeq(\Qlmod)^r$, and $X=H^0(G,W)$ is a submodule with $\#X[\ell]\le\ell$ (by (a), (b), $X[\ell]=H^0(G,T/\ell T)$). By Pontryagin duality (\Cref{ch:modules}),
+dualising the inclusion $X\hookrightarrow W$ makes $X^*$ a quotient of $((\Qlmod)^r)^*=\Zl^r$, hence finitely generated. Dualising the exact sequence
+$0\to X[\ell]\to X\xrightarrow{\ell}X$ gives the exact sequence $X^*\xrightarrow{\ell}X^*\to X[\ell]^*\to0$ (the dual of multiplication by $\ell$ is multiplication by $\ell$),
+so $X^*/\ell X^*\simeq(X[\ell])^*$ has order at most $\ell$. By Nakayama's lemma $X^*$ is generated by one element: $X^*\simeq\Zl$ or $\Z/\ell^h$, and
 $X\simeq X^{**}$ is $\Qlmod$ or $\Z/\ell^h$.
 \end{proof}
+
+Two examples show the two cases of (e). If $G$ acts trivially on $T=\Zl$, then every $T/\ell^kT$ is invariant and $H^0(G,W)=W=\Qlmod$: infinite. If $G$ acts on
+$T=\Zl$ through a character $\chi$ with $\chi(G)\subseteq1+\ell^h\Zl$, $\chi(G)\not\subseteq1+\ell^{h+1}\Zl$, then the invariant elements of $T/\ell^kT$ are all of it for
+$k\le h$ and lie in $\ell T/\ell^kT$ for $k>h$, so $H^0(G,W)\simeq\Z/\ell^h$ (\Cref{ex:cohomology:h0-length}). Part (d) is the tool for reading off $h$: find the
+largest level $k$ at which a primitive vector of $T/\ell^kT$ is invariant.
 
 \begin{paperlink}\label{pl:cohomology:h0}
 \sloppy In the proof of Lemma lem:h0: ``The $\ell^k$-torsion of $H^0(\Q,W^D)$ is $H^0(\Q,\ad(T/\ell^k)(1))$'' is \Cref{lem:cohomology:h0-torsion}(b) for the lattice
@@ -620,9 +682,17 @@ maps of short exact sequences of compatible pairs, and $(f,\varphi)^*\circ(f_1,\
 \begin{proof}
 Write $c'=\varphi\circ c\circ f^{\times n}$. In $(d c')(g'_1,\dots,g'_{n+1})$ the first term is $g'_1\varphi(c(f(g'_2),\dots))=\varphi\bigl(f(g'_1)c(f(g'_2),\dots)\bigr)$ by
 compatibility; the middle terms are $\varphi(c(\dots,f(g'_i)f(g'_{i+1}),\dots))$ because $f$ is a homomorphism; the last is $\varphi(c(f(g'_1),\dots,f(g'_n)))$. The sum is
-$\varphi\bigl((dc)(f(g'_1),\dots,f(g'_{n+1}))\bigr)$, so $dc'=(dc)'$. Compatibility with connecting maps follows from \Cref{thm:cohomology:les}(iii), and the
-composition rule is clear on cochains.
+$\varphi\bigl((dc)(f(g'_1),\dots,f(g'_{n+1}))\bigr)$, so $dc'=(dc)'$. Compatibility with connecting maps follows from \Cref{thm:cohomology:les}(iii), applied to
+the morphism of short exact sequences of complexes given by the three pairs. For the composition rule, let $(f_1\colon G\to G_1,\varphi_1\colon M_1\to M)$ and
+$(f\colon G'\to G,\varphi\colon M\to M')$ be compatible. Then $(f_1\circ f,\varphi\circ\varphi_1)$ is compatible, since
+$\varphi\varphi_1(f_1f(g')m)=\varphi(f(g')\varphi_1(m))=g'\varphi\varphi_1(m)$, and on a cochain $c$ both sides send $c$ to
+$(g'_1,\dots)\mapsto\varphi(\varphi_1(c(f_1f(g'_1),\dots)))$.
 \end{proof}
+
+The definition of a compatible pair encodes the one requirement that makes ``compose with $f$, then apply $\varphi$'' commute with $d$: the first term of
+$d$ involves the action, so $\varphi$ must convert the action of $f(g')$ on $M$ into the action of $g'$ on $M'$. The variance is mixed (the group map goes from
+$G'$ to $G$, the module map from $M$ to $M'$), which is why restriction ($G'$ a subgroup) and inflation ($G$ a quotient, $M=M^H$ a submodule) both appear as
+special cases below.
 
 \begin{proposition}[restriction, inflation, corestriction]\label{prop:cohomology:res-inf-cor}
 Let $H\le G$ and $M$ a $G$-module.
@@ -643,7 +713,8 @@ conjugation action of \Cref{prop:cohomology:conjugation}.
 \begin{proof}
 (a), (b): the pairs are compatible: for (b), $m\in M^H$ and $\pi(g)m=gm$. Apply \Cref{prop:cohomology:compatible}.
 
-(c) Degree $0$: for $m\in M^H$, $g_ihm=g_im$, so $\sum g_im$ does not depend on the representatives; it is $G$-invariant because $g$ permutes the cosets.
+(c) Degree $0$: for $m\in M^H$, $g_ihm=g_im$, so $\sum g_im$ does not depend on the representatives; it is $G$-invariant because $g$ permutes the cosets:
+$g\sum_ig_im=\sum_ig_{\tau(i)}h_i(g)m=\sum_ig_{\tau(i)}m=\sum_jg_jm$.
 Degree $1$: first $h_i(gg')=h_{\tau_{g'}(i)}(g)h_i(g')$ and $\tau_{gg'}=\tau_g\tau_{g'}$, since $gg'g_i=gg_{\tau_{g'}(i)}h_i(g')=g_{\tau_g\tau_{g'}(i)}h_{\tau_{g'}(i)}(g)h_i(g')$. For
 $\varphi\in Z^1(H,M)$,
 \[
@@ -655,7 +726,8 @@ coboundary. So $\Cor$ is defined on $H^1$. In higher degrees we do not prove the
 \cite[Chapter III, Section 9]{Brown} and \cite[Chapter I, Section 5]{NSW}.
 
 (d) Degree $0$: $\Cor(\Res m)=\sum g_im=rm$ for $m\in M^G$. Degree $1$: for $c\in Z^1(G,M)$, $h_i(g)=g_{\tau(i)}^{-1}gg_i$, and the cocycle identity gives
-$g_{\tau(i)}c(g_{\tau(i)}^{-1}gg_i)=-c(g_{\tau(i)})+c(g)+gc(g_i)$. Summing over $i$ (and using that $\tau$ is a permutation),
+$g_{\tau(i)}c(g_{\tau(i)}^{-1}gg_i)=-c(g_{\tau(i)})+c(g)+gc(g_i)$: indeed $c(x^{-1}y)=c(x^{-1})+x^{-1}c(y)=x^{-1}(c(y)-c(x))$ for $x=g_{\tau(i)}$ and $y=gg_i$, by
+\Cref{prop:cohomology:h0-h1}(ii), and $c(gg_i)=c(g)+gc(g_i)$. Summing over $i$ (and using that $\tau$ is a permutation, so $\sum_ic(g_{\tau(i)})=\sum_ic(g_i)$),
 $(\Cor\Res c)(g)=rc(g)+gm-m$ with $m=\sum_ic(g_i)$: so $\Cor\Res c=rc+d^0m$. If $H$ is normal and $h\in H$, then $hg_iH=g_i(g_i^{-1}hg_i)H=g_iH$, so $\tau_h=\id$ and
 $h_i(h)=g_i^{-1}hg_i$; hence $(\Res\Cor\varphi)(h)=\sum_ig_i\varphi(g_i^{-1}hg_i)=\sum_i(g_i\cdot\varphi)(h)$. In degrees $n\ge2$ (d) is stated; see the references
 for (c).
@@ -681,7 +753,13 @@ Write the cocycle identity $(d^n\varphi)(g_1,\dots,g_n,g)=0$ and sum over $g\in 
 g_1\psi(g_2,\dots,g_n)+\sum_{i=1}^{n-1}(-1)^i\psi(\dots,g_ig_{i+1},\dots)\\
 +(-1)^n\sum_{g}\varphi(g_1,\dots,g_{n-1},g_ng)+(-1)^{n+1}N\varphi(g_1,\dots,g_n)=0.
 \end{multline*}
-As $g$ runs over $G$ so does $g_ng$, so the third sum is $(-1)^n\psi(g_1,\dots,g_{n-1})$. The first three terms add up to $(d^{n-1}\psi)(g_1,\dots,g_n)$, so
+Here the first term comes from $g_1\varphi(g_2,\dots,g_n,g)$; the middle sum from the products $g_ig_{i+1}$ with $i\le n-1$, in which the last variable $g$ is
+untouched; the third from the product $g_ng$ in position $n$; and the last from dropping the last variable $g$, which leaves $\varphi(g_1,\dots,g_n)$ for each of the
+$N$ values of $g$. As $g$ runs over $G$ so does $g_ng$, so the third sum is $(-1)^n\psi(g_1,\dots,g_{n-1})$. Comparing with the definition
+\[
+(d^{n-1}\psi)(g_1,\dots,g_n)=g_1\psi(g_2,\dots,g_n)+\sum_{i=1}^{n-1}(-1)^i\psi(\dots,g_ig_{i+1},\dots)+(-1)^n\psi(g_1,\dots,g_{n-1}),
+\]
+the first three terms add up to $(d^{n-1}\psi)(g_1,\dots,g_n)$, so $d^{n-1}\psi+(-1)^{n+1}N\varphi=0$, that is
 $N\varphi=(-1)^nd^{n-1}\psi$. (For $n=1$: with $m=\sum_g\varphi(g)$, summing $\varphi(\sigma g)=\varphi(\sigma)+\sigma\varphi(g)$ gives $m=N\varphi(\sigma)+\sigma m$.)
 
 (i) Multiplication by $N$ on $H^n(G,M)$ is induced by the automorphism $N$ of $M$ (functoriality), so it is bijective; it is also $0$. (ii) $C^n(G,M)=M^{G^n}$ is
@@ -750,7 +828,12 @@ $\Res\circ\Inf=0$: $(c\circ\pi)(h)=c(1)=0$.
 
 $\ker\Res\subseteq\im\Inf$. Let $c\in Z^1(G,M)$ with $c(h)=hm-m$ for $h\in H$. Then $c'=c-d^0m$ is cohomologous to $c$ and vanishes on $H$. For $g\in G$,
 $h\in H$: $c'(gh)=c'(g)+gc'(h)=c'(g)$, so $c'$ is constant on the cosets $gH$; and $c'(hg)=c'(h)+hc'(g)=hc'(g)$, while $hg=g(g^{-1}hg)$ gives
-$c'(hg)=c'(g)$. So $hc'(g)=c'(g)$: $c'$ takes values in $M^H$, and $c'=\bar c\circ\pi$ with $\bar c\colon G/H\to M^H$, which is a cocycle because $\pi$ is surjective.
+$c'(hg)=c'(g)$. So $hc'(g)=c'(g)$: $c'$ takes values in $M^H$, and $c'=\bar c\circ\pi$ with $\bar c\colon G/H\to M^H$, which is a cocycle because $\pi$ is surjective:
+for $g,g'\in G$, $\bar c(\pi(g)\pi(g'))=c'(gg')=c'(g)+gc'(g')=\bar c(\pi(g))+\pi(g)\bar c(\pi(g'))$, the action of $G/H$ on $M^H$ being that of any lift.
+
+In words: a class on $G$ that dies on $H$ can be normalised to vanish on $H$, and a cocycle vanishing on a normal subgroup is automatically constant on its cosets
+with values in $M^H$, so it comes from the quotient. The sequence does not continue with a surjection in general; the obstruction to extending an invariant class
+from $H$ to $G$ is the transgression of (b). When $G/H\simeq\widehat\Z$ there is no obstruction (\Cref{prop:cohomology:inf-res-zhat}).
 
 (d) follows from (a), since $H^1(H,M)=0$ makes the invariants $0$; with trivial action $M^H=M$ and $H^1(H,M)=\Hom(H,M)$ (\Cref{prop:cohomology:h0-h1}(iii)).
 
@@ -899,6 +982,14 @@ $\Zl$-linear action;
 cochain is continuous, and the definition agrees with \Cref{def:cohomology:cochains}.
 \end{definition}
 
+Why continuity? The Galois groups of the paper are profinite and its representations are continuous, and the cohomology must see exactly the continuous
+objects. The corner of a continuous triangular representation $\rho\colon G\to\GL_2(\Zl)$ is a continuous cocycle, and conversely a continuous cocycle gives a
+continuous $\rho$ by \Cref{prop:cohomology:corner}; so continuous $H^1$ classifies continuous extensions, which is what the paper's Kummer cocycle $\kappa$ is. Abstract
+cochains would also count discontinuous objects, which have no arithmetic meaning: for the profinite group $P=\prod_{n\ge1}\Z/2$ the continuous homomorphisms
+$P\to\Z/2$ are those factoring through finitely many coordinates, a countable set, while the abstract ones form the dual of an $\F_2$-vector space of
+uncountable dimension, a much larger set. The three types match the three modules that occur together in the paper: a lattice $T$ (type (C)), the vector space $V=T\otimes\Ql$ (type (V)) and the
+discrete module $W=V/T$ (type (D)).
+
 \begin{proposition}[basic properties]\label{prop:cohomology:continuous}
 Let $G$ be profinite.
 \begin{enumerate}[label=(\roman*)]
@@ -1041,8 +1132,11 @@ gives $H^1(\Gamma,T)=T/(F-1)T$ directly), for the inertia group $I_q$ at a prime
 (\Cref{prop:cohomology:les-cont}(d)), and its long exact sequence embeds $H^1(G,T)/\ell H^1(G,T)$ into the finite group $H^1(G,T/\ell T)$. By (i) $H^1(G,T)$ is
 compact, and a compact $\Zl$-module $A$ with $A/\ell A$ finite is finitely generated (\Cref{rem:cohomology:top-nakayama}). In general $T_{\mathrm{tor}}$ is
 finite and $T/T_{\mathrm{tor}}$ has no $\ell$-torsion; the sequence $0\to T_{\mathrm{tor}}\to T\to T/T_{\mathrm{tor}}\to0$ has a continuous section
-(\Cref{prop:cohomology:les-cont}(b)), and $H^1(G,T)$ is an extension of a submodule of the finitely generated $H^1(G,T/T_{\mathrm{tor}})$ by a quotient of the finite
-$H^1(G,T_{\mathrm{tor}})$. The statement about $V$ is \Cref{thm:cohomology:tate-limits}(iii), and the torsion of a finitely generated $\Zl$-module is finite.
+(\Cref{prop:cohomology:les-cont}(b)), and its long exact sequence contains $H^1(G,T_{\mathrm{tor}})\xrightarrow{\alpha}H^1(G,T)\xrightarrow{\beta}H^1(G,T/T_{\mathrm{tor}})$, exact
+at $H^1(G,T)$. The image of $\alpha$ is a quotient of the finite group $H^1(G,T_{\mathrm{tor}})$ (finite by hypothesis), and $H^1(G,T)/\im\alpha\simeq\im\beta$ is a submodule of
+the finitely generated module $H^1(G,T/T_{\mathrm{tor}})$ (by the first case), hence finitely generated since $\Zl$ is noetherian. An extension of a finitely
+generated module by a finite one is finitely generated (lift generators of the quotient and add the finitely many elements of the sub), so $H^1(G,T)$ is
+finitely generated. The statement about $V$ is \Cref{thm:cohomology:tate-limits}(iii), and the torsion of a finitely generated $\Zl$-module is finite.
 
 (iii) For a finite group, $H^1(G,A)$ is finite because the cochain groups are. For $I_q$, the proof of \Cref{prop:cohomology:tame-inertia}(iv) applies verbatim to a finite
 $\ell$-primary $A$, with \Cref{thm:cohomology:prime-to-l}(a) and \Cref{thm:cohomology:procyclic-discrete} for $I/K\simeq\Zl$, and gives $H^1(I_q,A)\simeq A^K/(t-1)A^K$, a finite group.
@@ -1229,8 +1323,14 @@ closure of $\langle F\rangle$, which is $\Gamma$.
 
 (ii) $(F-1)M$ is the image of a $\Zl$-linear endomorphism: a finitely generated, hence compact, submodule for type (C), a subspace for type (V). So
 $M/(F-1)M$ is Hausdorff, and both sides of the congruence are continuous functions of $\gamma$ into it. On $M/(F-1)M$ the element $F$ acts as $1$, so
-$S_k\equiv k$, and by (i) the two sides agree at $\gamma=F^k$ for all $k\in\Z$. These form a dense subset, so they agree everywhere.
+$S_k\equiv k$: explicitly $S_k-k=\sum_{i=0}^{k-1}(F^i-1)$ and each $F^i-1=(F-1)(1+F+\dots+F^{i-1})$ maps $M$ into $(F-1)M$. By (i) the two sides agree at
+$\gamma=F^k$ for all $k\ge0$, and for $k<0$ too: $c(F^{k})=-F^{k}c(F^{-k})\equiv-(-k)c(F)=k\,c(F)$, since $F^k$ also acts as $1$ on $M/(F-1)M$. The $F^k$, $k\in\Z$,
+form a dense subset of $\Gamma$, so the two sides agree everywhere.
 \end{proof}
+
+The congruence holds only modulo $(F-1)M$, and the paper needs no more. For $q^{-1}\in\Zl$, which is not an integer, there is no exact formula for
+$c(F^{q^{-1}})$ as a finite sum; what (ii) says is that its class in $M/(F-1)M$ is $q^{-1}$ times that of $c(F)$, as if $F$ were $1$. For instance, for $\ell=5$ and
+$q=11$ one has $q^{-1}\equiv91\pmod{125}$, so $c(F^{q^{-1}})\equiv91\,c(F)$ modulo $(F-1)M+125M$.
 
 \begin{theorem}[Serre: procyclic groups, discrete coefficients]\label{thm:cohomology:procyclic-discrete}
 Let either $\Gamma=\widehat\Z$ and $M$ a discrete torsion $\Gamma$-module, or $\Gamma=\Zl$ and $M$ a discrete $\ell$-primary torsion $\Gamma$-module; let $F$ be the
@@ -1250,10 +1350,11 @@ everywhere, being continuous into a discrete (Hausdorff) space. Coboundaries map
 Surjectivity. Let $m\in M$. Its stabiliser is open, so it contains $n\Gamma$ for some $n\ge1$ (an $\ell$-power if $\Gamma=\Zl$): $F^nm=m$. Let $e$ be the order of
 $m$ (an $\ell$-power in the second case). Then, with $S_k$ as in \Cref{lem:cohomology:powers},
 \[
-S_{ne}\,m=S_n\bigl(1+F^n+F^{2n}+\dots+F^{(e-1)n}\bigr)m=S_n(em)=0 .
+S_{ne}\,m=S_n\bigl(1+F^n+F^{2n}+\dots+F^{(e-1)n}\bigr)m=S_n(em)=0 ,
 \]
-Define $c(F^k)=S_km$ for $k\ge0$. Since $S_{k+j}=S_k+F^kS_j$, $c(F^{k+ne})=c(F^k)$, so $c$ is a well-defined function on $\Z/ne$, a quotient of $\Gamma$; composed
-with $\Gamma\to\Z/ne$ it is continuous. The cocycle identity holds on $\Z/ne$, by the identity for $S$, hence on $\Gamma$. And $c(F)=m$.
+using the factorisation $S_{ne}(F)=S_n(F)\,S_e(F^n)$ (group the $ne$ powers of $F$ into $e$ blocks of length $n$) and $F^{jn}m=m$. Define $c(F^k)=S_km$ for
+$k\ge0$. Since $S_{k+j}=S_k+F^kS_j$, $c(F^{k+ne})=S_km+F^kS_{ne}m=c(F^k)$, so $c$ is a well-defined function on $\Z/ne$, a quotient of $\Gamma$ (the quotient of $\widehat\Z$
+or of $\Zl$ by $ne$; in the second case $ne$ is a power of $\ell$); composed with $\Gamma\to\Z/ne$ it is continuous, since $\Z/ne$ is finite and discrete. The cocycle identity holds on $\Z/ne$, by the identity for $S$, hence on $\Gamma$. And $c(F)=m$.
 
 If $M$ is finite, the exact sequence $0\to M^{F=1}\to M\xrightarrow{F-1}M\to M/(F-1)M\to0$ gives $\#H^0=\#H^1$. The vanishing for $n\ge2$ is stated; see
 \cite[Chapter XIII, Section 1]{SerreLocalFields} and \cite[Chapter I, Sections 3 and 4]{SerreGaloisCoh} (the groups $\widehat\Z$ and $\Zl$ have cohomological dimension $1$).
@@ -1268,14 +1369,22 @@ $S_j(u)=1+u+\dots+u^{j-1}$. Then $S_j(u)M\subseteq\ell^NM$ for every $N\ge0$ and
 \end{lemma}
 
 \begin{proof}
-We use $S_{ab}(x)=S_a(x)\,S_b(x^a)$. First, if $v=1+Y$ with $YM\subseteq\ell M$, then $S_\ell(v)=\sum_{i=0}^{\ell-1}(1+Y)^i=\ell+YP(Y)$ for a polynomial $P$ with integer
-coefficients, so $S_\ell(v)$ maps $\ell^iM$ into $\ell^{i+1}M$ for every $i$; and $v^\ell$ again has the form $1+Y'$ with $Y'M\subseteq\ell M$. Now $w=u^{a_0}$ satisfies
-$(w-1)M\subseteq\ell M$, so
+We use $S_{ab}(x)=S_a(x)\,S_b(x^a)$, which holds because both sides are $\sum_{i<a,\,j<b}x^{i+aj}$. First, if $v=1+Y$ with $YM\subseteq\ell M$, then
+$(1+Y)^i=1+Y\cdot(\text{a polynomial in }Y)$, so $S_\ell(v)=\sum_{i=0}^{\ell-1}(1+Y)^i=\ell+YP(Y)$ for a polynomial $P$ with integer coefficients. Hence $S_\ell(v)$ maps
+$\ell^iM$ into $\ell^{i+1}M$ for every $i$: $\ell\cdot\ell^iM=\ell^{i+1}M$, and $YP(Y)\ell^iM=\ell^iYP(Y)M\subseteq\ell^iYM\subseteq\ell^{i+1}M$, since $Y$ is $\Zl$-linear. Also
+$v^\ell=1+Y'$ with $Y'=(1+Y)^\ell-1=Y\cdot(\ell+\dots)$, so again $Y'M\subseteq\ell M$. Now $w=u^{a_0}$ satisfies $(w-1)M\subseteq\ell M$, because $u^{a_0}$ is trivial on
+$M/\ell M$ by the definition of $a_0$; so
 \[
 S_{\ell^N}(w)=S_\ell(w)\,S_\ell(w^\ell)\,S_\ell(w^{\ell^2})\cdots S_\ell(w^{\ell^{N-1}})
 \]
-maps $M$ into $\ell^NM$. Hence so does $S_{a_0\ell^N}(u)=S_{a_0}(u)S_{\ell^N}(w)$, and so does $S_{a_0\ell^Nj'}(u)=S_{a_0\ell^N}(u)\,S_{j'}(u^{a_0\ell^N})$ for every $j'\ge1$.
+maps $M$ into $\ell^NM$ (each of the $N$ factors $S_\ell(w^{\ell^i})$ raises the level by one, by the first step applied to $v=w^{\ell^i}$). Hence so does
+$S_{a_0\ell^N}(u)=S_{a_0}(u)S_{\ell^N}(w)$, and so does $S_{a_0\ell^Nj'}(u)=S_{a_0\ell^N}(u)\,S_{j'}(u^{a_0\ell^N})$ for every $j'\ge1$ (all these operators are polynomials in $u$
+and commute).
 \end{proof}
+
+For $M=\Zl$ the lemma is a statement about numbers: $u\in\Zl^\times$, and for $u\ne1$, $S_j(u)=(u^j-1)/(u-1)$. Take $\ell=5$ and $u=2$. The order of $2$ modulo $5$ is
+$a_0=4$, and the lemma says $5^N\mid(2^j-1)/(2-1)$ whenever $4\cdot5^N\mid j$. In fact $v_5(2^{4\cdot5^N}-1)=N+1$ for $N=0,1,2,3$ (computed with PARI/GP), one more than the lemma
+guarantees, because $v_5(2^4-1)=v_5(15)=1$ already. The lemma needs $a_0$: for $j=5^N$ alone, $2^{5^N}\equiv2\pmod5$, so $2^{5^N}-1$ is prime to $5$.
 
 \begin{theorem}[procyclic groups, compact coefficients]\label{thm:cohomology:procyclic-compact}
 Let $\Gamma$ be a procyclic group admitting a continuous surjection $\pi$ onto $\Zl$ (in $\Gamma\simeq\prod_p\Z/p^{a_p}$: $a_\ell=\infty$; examples $\Zl$, $\Zl(1)$, $\widehat\Z$,
@@ -1302,7 +1411,9 @@ H^1(\Gamma,V)=V/(F-1)V=0\iff1\text{ is not an eigenvalue of }F\text{ on }V\iff\d
 continuous cocycle vanishing at $F$ vanishes on the dense subgroup $\langle F\rangle$, hence everywhere. Coboundaries $d^0m$ map onto $(F-1)M$. So we get an injection
 $H^1(\Gamma,M)\to M/(F-1)M$, and it remains to show that every $m\in M$ is $c(F)$ for some continuous cocycle $c$.
 
-(ii), surjectivity, type (C). Normalise $\pi(F)=1$ (\Cref{lem:cohomology:procyclic}(ii)); then $k\mapsto F^k$ is injective, and we may define
+(ii), surjectivity, type (C). The idea: on the dense subgroup $\langle F\rangle\simeq\Z$ there is only one candidate, $F^k\mapsto S_k(u)m$, and the work is to
+show that it is uniformly continuous for the topology induced from $\Gamma$, so that it extends to $\Gamma$. \Cref{lem:cohomology:geometric-sums} is exactly the
+needed estimate: $F^j$ close to $1$ forces $S_j(u)m$ close to $0$. Normalise $\pi(F)=1$ (\Cref{lem:cohomology:procyclic}(ii)); then $k\mapsto F^k$ is injective, and we may define
 $c_0\colon\langle F\rangle\to M$ by $c_0(F^k)=S_k(u)m$ for $k\ge0$ and $c_0(F^{-k})=-F^{-k}c_0(F^k)$, where $u=F|_M$. The identity $S_{k+j}=S_k+u^kS_j$ (for all $k,j\in\Z$, with
 $S_{-k}=-u^{-k}S_k$) says that $c_0$ is a cocycle on $\langle F\rangle$. Let $a_0=m_0\ell^s$ ($\ell\nmid m_0$) be as in \Cref{lem:cohomology:geometric-sums} and, for $N\ge1$,
 \[
@@ -1503,6 +1614,13 @@ closed subgroup of $G$. If it contains $\Frob$ it contains $I$ (which acts trivi
 because $\Frob$ generates $G/I$ topologically. Finally $q^{-1}\rho_M(\Frob)\bar m=\bar m$ if and only if $\rho_M(\Frob)\bar m=q\bar m$.
 \end{proof}
 
+The factor $q^{-1}$ is the point of (b), and two sanity checks show where it comes from. If $G$ acts trivially on $M=\Zl$, then $H^1(I,\Zl)=\Hom_{\mathrm{cont}}(I,\Zl)$,
+and $\Frob$ acts on a homomorphism $c$ by $c\mapsto c(\Frob^{-1}\cdot\Frob)$; since $\Frob^{-1}t\Frob\equiv t^{q^{-1}}$, the value at $t$ is multiplied by $q^{-1}$, in
+accordance with $q^{-1}\rho_M(\Frob)=q^{-1}$. So $H^1(I,\Zl)\simeq\Zl(-1)$ as a $G/I$-module: inertia's $\ell$-part is $\Zl(1)$, and homomorphisms out of it form its
+dual. If instead $M=\Zl(1)$, with $\Frob$ acting by $q$, the operator is $q^{-1}q=1$, and $H^1(I,\Zl(1))=\Hom(\Zl(1),\Zl(1))\simeq\Zl$ with trivial Frobenius action. Only
+the second module has nonzero Frobenius-invariants; the same effect, the eigenvalue $q$ of $\rho_M(\Frob)$ being the one that survives, drives the invariants
+in \Cref{prop:cohomology:model}.
+
 \begin{remark}[the other convention]\label{rem:cohomology:other-convention}
 Some texts let $\sigma$ act by $c\mapsto\sigma^{-1}c(\sigma\,\cdot\,\sigma^{-1})$. With that convention the computation of (b) gives $q\,\rho_M(\Frob)^{-1}$ instead of $q^{-1}\rho_M(\Frob)$.
 The invariants are the same, since one operator is the inverse of the other; the formulas are not. We use the paper's convention throughout.
@@ -1531,8 +1649,14 @@ Also $(t-1)^3=0$ on $\ad T$, and $(t-1)e_1=0$, $(t-1)e_2=n'e_1$ on $T$.
 $\rho(t)=1+n'e$, since $\chi$, $\varepsilon$ are trivial on $I$, and $\rho(t)^{-1}=1-n'e$ as $e^2=0$. The matrix units give $eh=-e$, $he=e$, $ehe=0$, $ef-fe=h$, $efe=e$.
 So $t\cdot x=(1+n'e)x(1-n'e)=x+n'(ex-xe)-n'^2exe$. For $x=e$: $e$. For $x=h$: $h+n'(-2e)$. For $x=f$: $f+n'h-n'^2e$.
 
-For $A=\sm\alpha\beta0\delta$, $A^{-1}=\sm{\alpha^{-1}}{-\beta\alpha^{-1}\delta^{-1}}0{\delta^{-1}}$, and a direct multiplication gives $AeA^{-1}=\alpha\delta^{-1}e$,
-$AhA^{-1}=h-2\beta\delta^{-1}e$ and $AfA^{-1}=\delta\alpha^{-1}f+\beta\alpha^{-1}h-\beta^2\alpha^{-1}\delta^{-1}e$. With $\alpha=\varepsilon q$, $\beta=c'$, $\delta=\varepsilon$ and $\varepsilon^{-1}=\varepsilon$:
+(Here $eh=E_{12}(E_{11}-E_{22})=-E_{12}$, $he=E_{12}$, $ef=E_{11}$, $fe=E_{22}$, using $E_{ij}E_{kl}=\delta_{jk}E_{il}$.)
+
+For $A=\sm\alpha\beta0\delta$, $A^{-1}=\sm{\alpha^{-1}}{-\beta\alpha^{-1}\delta^{-1}}0{\delta^{-1}}$, and a direct multiplication gives
+\begin{align*}
+AeA^{-1}&=\Mtwo0\alpha00A^{-1}=\Mtwo0{\alpha\delta^{-1}}00=\alpha\delta^{-1}e,\\
+AhA^{-1}&=\Mtwo\alpha{-\beta}0{-\delta}A^{-1}=\Mtwo1{-2\beta\delta^{-1}}0{-1}=h-2\beta\delta^{-1}e,\\
+AfA^{-1}&=\Mtwo\beta0\delta0A^{-1}=\Mtwo{\beta\alpha^{-1}}{-\beta^2\alpha^{-1}\delta^{-1}}{\delta\alpha^{-1}}{-\beta\alpha^{-1}}=\delta\alpha^{-1}f+\beta\alpha^{-1}h-\beta^2\alpha^{-1}\delta^{-1}e.
+\end{align*} With $\alpha=\varepsilon q$, $\beta=c'$, $\delta=\varepsilon$ and $\varepsilon^{-1}=\varepsilon$:
 $\alpha\delta^{-1}=q$, $\beta\delta^{-1}=\varepsilon c'$, $\delta\alpha^{-1}=q^{-1}$, $\beta\alpha^{-1}=\varepsilon c'q^{-1}$, $\beta^2\alpha^{-1}\delta^{-1}=c'^2q^{-1}$. Finally
 $(t-1)^2f=n'(t-1)h=-2n'^2e$ and $(t-1)^3f=0$. The symbolic computation was also checked with PARI/GP (\Cref{ex:cohomology:identities}).
 \end{proof}

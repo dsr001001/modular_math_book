@@ -268,6 +268,25 @@ Open question 3 & \Cref{thm:blochkato:tam-additive}, \Cref{rem:blochkato:open-qu
 \end{tabular}
 \end{center}
 
+\paragraph{How the pieces fit.} The Selmer half of Theorem thm:main is a chain of four length computations, and the chapter is organised along it.
+\begin{enumerate}[label=(\arabic*)]
+\item Lemma lem:dfg21 (\Cref{lem:blochkato:dfg21}) is an exact sequence of finite groups comparing $H^1_\Sigma(\Q,W)$ with $H^1_f(\Q,W)$. Lengths are additive along exact
+sequences of finite $\Zl$-modules, and a finite group and its Pontryagin dual have the same length, so it gives
+\[
+\len H^1_\Sigma(\Q,W)=\len H^1_f(\Q,W)+\sum_{p\in\Sigma}\len H^1_f(\Q_p,T^D)-\len H^0(\Q,W^D).
+\]
+\item Lemma lem:fpr (\Cref{thm:blochkato:fpr-local}) computes each local length as $v_\ell(L_p(A_f,1)^{-1})+v_\ell(\Tam_p(T^D))$, and \Cref{prop:blochkato:tam-dual} replaces $T^D$ by $A$
+in the Tamagawa factor.
+\item Lemmas lem:tamfactor and lem:tamadd (\Cref{lem:blochkato:tamfactor}, \Cref{prop:blochkato:tam-potmult}, \Cref{thm:blochkato:tam-additive}) compute $v_\ell(\Tam_q(A))$
+prime by prime from the reduction type and the Tate parameter.
+\item Lemma lem:h0 (\Cref{prop:blochkato:h0-selmer}) gives $\len H^0(\Q,W^D)=h_\ell(E)$, which is $0$ when $\ell\notin S_f$.
+\end{enumerate}
+Before any of this can be stated one needs the coefficient modules and their duals (\Cref{sec:blochkato:representations}), their local behaviour at $p\ne\ell$
+(\Cref{sec:blochkato:local}) and at $\ell$ (\Cref{sec:blochkato:hodge}), the local conditions (\Cref{sec:blochkato:conditions}) and the global Selmer groups
+(\Cref{sec:blochkato:selmer}). Steps (2) and (3) are \Cref{sec:blochkato:tamagawa,sec:blochkato:tamfactor,sec:blochkato:additive}; steps (1) and (4) are
+\Cref{sec:blochkato:comparison}; the chain is closed in \Cref{sec:blochkato:theorem}. The last three sections look beyond the hypothesis, at the numerical test of
+Section sec:tam, and at the conjecture of Bloch and Kato.
+
 \section[\texorpdfstring{$\ell$}{l}-adic representations and duals]{\texorpdfstring{$\ell$}{l}-adic representations, lattices, twists and duals}\label{sec:blochkato:representations}
 
 This section sets up the coefficient modules of all the cohomology in the paper: an $\ell$-adic representation $V$, a stable lattice
@@ -281,6 +300,13 @@ with a continuous homomorphism $\rho_V\colon G_K\to\GL(V)$. A \emph{lattice} in 
 (so $T\simeq\Zl^{\dim V}$); it is \emph{stable} if $\rho_V(G_K)T=T$. Given a stable lattice we put $W=V/T=T\otimes\Qlmod$, a discrete
 $\ell$-primary $G_K$-module.
 \end{definition}
+
+Two examples to keep in mind. For the trivial representation, $V=\Ql$, $T=\Zl$ and $W=\Qlmod$. For an elliptic curve, $T=T_\ell E=\varprojlim_kE[\ell^k]$ is a stable
+lattice in $V=V_\ell E$, and $W=T\otimes\Qlmod=\varinjlim_kT/\ell^kT=\varinjlim_kE[\ell^k]=E[\ell^\infty]$ (the transition maps of the direct limit being the inclusions
+$E[\ell^k]\subseteq E[\ell^{k+1}]$, which correspond to multiplication by $\ell$ on $T/\ell^kT\to T/\ell^{k+1}T$). The paper's lattice is $A=\ad T_\ell E$, of rank $3$. The three
+objects play different parts: $V$ is where dimensions are counted and linear algebra is done; $T$ carries the integral information (Fitting ideals, indices of
+lattices); and $W$ is discrete and torsion, so that its cohomology groups can be finite and have lengths. Every quantity in Theorem thm:main is the length of such a
+group.
 
 \begin{proposition}[lattices]\label{prop:blochkato:lattices}
 Let $V$ be an $\ell$-adic representation of $G_K$.
@@ -299,11 +325,19 @@ finite index. If $g_1,\dots,g_r$ are coset representatives of $G_K/H$, then $T=\
 and it is stable because $gg_iH=g_{\pi(i)}H$ for a permutation $\pi$. (ii) Exactness is the definition of $W$; $T\simeq\Zl^d$ gives $W\simeq(\Qlmod)^d$, and
 $x\mapsto\ell^{-k}x$ identifies $T/\ell^kT$ with $W[\ell^k]=\ell^{-k}T/T$ equivariantly. A section is given by choosing, in a basis of $T$, the representatives
 of $\Qlmod$ of the form $\sum_{i<0}a_i\ell^i$ with $0\le a_i<\ell$; it is continuous because $W$ is discrete (see \Cref{ch:cohomology} for the use of
-such sections in the long exact sequence of continuous cohomology). (iii) Both lattices are finitely generated and span $V$, so each is
-contained in a multiple of the other. If $T'$ is stable, replace it by $\ell^bT'$ with $b$ minimal such that $\ell^bT'\subseteq T$; then $\ell^bT'\not\subseteq\ell T$,
+such sections in the long exact sequence of continuous cohomology). (iii) Choose a $\Zl$-basis of $T$. Each of the finitely many generators of
+$T'$ has coordinates in $\Ql$ in this basis; if $\ell^{-a}$ bounds their denominators, then $T'\subseteq\ell^{-a}T$. Since $T'$ spans $V$, the same argument with the roles
+exchanged gives $T\subseteq\ell^{-a'}T'$, and the larger of $a,a'$ works for both inclusions. If $T'$ is stable, replace it by $\ell^bT'$ with $b$ minimal such that
+$\ell^bT'\subseteq T$; such a $b$ exists, because the inclusion holds for $b\ge a$ and fails for $b$ very negative ($T'\ne0$ and $\bigcap_k\ell^kT=0$). Then $\ell^bT'\not\subseteq\ell T$,
 so its image in $T/\ell T$ is a nonzero stable subspace, hence all of $T/\ell T$, and $\ell^bT'+\ell T=T$ gives $\ell^bT'=T$ by Nakayama's lemma
 (\Cref{ch:modules}).
 \end{proof}
+
+The irreducibility hypothesis in (iii) cannot be dropped. If $G_K$ acts trivially on $V=\Ql^2$, then $T=\Zl^2$ and $T'=\Zl\oplus\ell\Zl$ are both stable, and $T'$ is not
+$\ell^bT$ for any $b$ (it has index $\ell$ in $T$, while a lattice $\ell^bT\subseteq T$ has index $\ell^{2b}$); here $T/\ell T$ is the trivial two-dimensional module, which is
+reducible. An arithmetic instance: the curves \curve{11a1} and \curve{11a2} are linked by an isogeny of degree $5$ with cyclic kernel, which identifies $V_5$ of the two
+curves and maps one Tate module onto a stable sublattice of index $5$ in the other, so the two lattices are not homothetic; correspondingly $E[5]$ is reducible for these curves. This is one reason why the paper needs
+$\bar\rho$ irreducible: only then is $T$, up to scaling, determined by $V$.
 
 \begin{definition}[Tate twists]\label{def:blochkato:twists}
 $\Zl(1)=\varprojlim_k\mu_{\ell^k}$ (transition maps $\zeta\mapsto\zeta^\ell$), on which $G_K$ acts through the cyclotomic character $\chi_\ell$; $\Ql(1)=\Zl(1)\otimes\Ql$;
@@ -328,8 +362,11 @@ alternating and equivariant (\Cref{ch:ellcurves}); it identifies $\wedge^2T$ wit
 $T\to\Hom(T,\Zl(1))=T^D=T^\vee(1)$; twisting by $-1$ gives $T^\vee\simeq T(-1)$.
 \end{proof}
 
-A twist rescales every Frobenius eigenvalue at $p$ by the same power of $p$, in the way that multiplying a field by a character of the
-scaling group changes its weight without changing its shape.
+Two instances of (ii) and (iii). $\Ql(1)$ is unramified at $p\ne\ell$ with $\Frob_p$ acting by $p$, so with the geometric Frobenius
+$\det(1-\Frob_p^{-1}p^{-s}\mid\Ql(1))^{-1}=(1-p^{-(s+1)})^{-1}$, the Euler factor of $\zeta(s+1)$. And at a good prime $p\ne\ell$, where $\Frob_p$ has eigenvalues $\alpha,\beta$ on
+$V_\ell E$ with $\alpha\beta=p$, (iii) says that the eigenvalues on $(V_\ell E)^\vee\simeq V_\ell E(-1)$ are $\alpha/p=\beta^{-1}$ and $\beta/p=\alpha^{-1}$; this agrees with the fact that
+dualising inverts eigenvalues. A twist thus multiplies every Frobenius eigenvalue at $p$ by the same power of $p$ and leaves the action of inertia unchanged; it
+moves weights without changing the local shape.
 
 \begin{definition}[Kummer duals]\label{def:blochkato:duals}
 For a lattice $T$ in an $\ell$-adic representation $V$ put $V^D=\Hom_{\Ql}(V,\Ql(1))=V^\vee(1)$, $T^D=\Hom_{\Zl}(T,\Zl(1))=T^\vee(1)$, a stable lattice in $V^D$,
@@ -355,6 +392,11 @@ evaluation. The general statement is in \Cref{ch:galcoh}. (ii) $\Hom(\Hom(T,\Zl(
 a matter of notation \cite[Section 3]{BlochKato}, \cite{FPR94}, \cite[Section 2.1]{DFG04}.
 \end{proof}
 
+Examples. For $T=\Zl$ with trivial action, $T^D=\Zl(1)$ and $W^D=\mu_{\ell^\infty}$; for $T=\Zl(1)$, $T^D=\Zl$ and $W^D=\Qlmod$. For $T=T_\ell E$, the Weil pairing gives $T^D\simeq T$
+and $W^D\simeq E[\ell^\infty]$ (\Cref{prop:blochkato:twists}(iii)). The reason for twisting the linear dual by $\Zl(1)$ is Tate local duality: the cup product pairs
+$H^1(\Q_p,W)$ with $H^1(\Q_p,T^D)$ into $H^2(\Q_p,\mu_{\ell^\infty})\simeq\Qlmod$, and $\mu_{\ell^\infty}$, not $\Qlmod$, is the module whose $H^2$ is canonically $\Qlmod$ (\Cref{ch:galcoh}).
+So every local or global duality statement below pairs a module with its Kummer dual.
+
 \begin{proposition}[the adjoint is self-dual]\label{prop:blochkato:adjoint-self-dual}
 Let $T$ be a free $\Zl$-module of rank $2$ with a continuous action of a group $G$, $A=\ad T$ the trace-zero endomorphisms with $g\cdot x=\rho(g)x\rho(g)^{-1}$.
 \begin{enumerate}[label=(\roman*)]
@@ -376,7 +418,9 @@ quadratic twist $E'$ of $E$ (or any twist of $E$ over $\Q_q$ by a character of $
 \[
 \begin{pmatrix}0&0&1\\0&2&0\\1&0&0\end{pmatrix},
 \]
-of determinant $-2$, a unit of $\Zl$ exactly when $\ell$ is odd, and its cokernel has order $2$ for $\ell=2$. Twisting the isomorphism $A\to A^\vee$ by $\Zl(1)$
+of determinant $-2$, a unit of $\Zl$ exactly when $\ell$ is odd, and its cokernel has order $2$ for $\ell=2$. (The entries: $ef=\sm1000$ and $h^2=\sm1001$ have traces
+$1$ and $2$, while $e^2=f^2=0$, $eh=-e$ and $fh=f$ have trace $0$; and $\tr(xy)=\tr(yx)$.) The form is $G$-invariant because
+$\tr(gxg^{-1}\cdot gyg^{-1})=\tr(xy)$, so $x\mapsto\tr(x\,\cdot)$ is a $G$-equivariant map $A\to A^\vee$, an isomorphism when the Gram determinant is a unit. Twisting the isomorphism $A\to A^\vee$ by $\Zl(1)$
 gives $A(1)\simeq A^\vee(1)=T^D$; tensoring with $\Ql$ and $\Qlmod$ gives the other two. (ii) $\chi(g)$ is a scalar, so conjugation by $\chi(g)\rho(g)$ equals
 conjugation by $\rho(g)$; $\End(\ell^bT)=\End(T)$ inside $\End(V)$; and for $x\in\End(T)$ the dual map $x^\vee\in\End(T^\vee)$ satisfies
 $(\rho(g)x\rho(g)^{-1})^\vee=\rho^\vee(g)x^\vee\rho^\vee(g)^{-1}$ with $\rho^\vee(g)=(\rho(g)^{-1})^\vee$, and $\tr x^\vee=\tr x$ (\Cref{ch:reps}, the invariance of the adjoint).
@@ -507,14 +551,17 @@ This is the table of \Cref{ch:local} (the adjoint $L$-factors of the local shape
 proofs are in \Cref{ch:galrep} (the images of inertia) and \Cref{ch:lfunctions} (the factors; the value of $L_p(A_f,1)^{-1}$ is the $L$-part of Lemma lem:fpr proved
 there); we recall the reasons. At a good prime $A_f$ is unramified
 and \Cref{prop:blochkato:purity}(ii) gives the eigenvalues; the product formula is
-$(1-\frac\alpha{\beta p})(1-\frac\beta{\alpha p})=1-\frac{\alpha^2+\beta^2}{p^2}+\frac1{p^2}=\frac{(p+1)^2-a_p^2}{p^2}$. At a potentially multiplicative prime, over $\Q_p$, $\rho$ is a
+$(1-\frac\alpha{\beta p})(1-\frac\beta{\alpha p})=1-\frac{\alpha^2+\beta^2}{p^2}+\frac1{p^2}=\frac{(p+1)^2-a_p^2}{p^2}$, using $\frac\alpha\beta+\frac\beta\alpha=\frac{\alpha^2+\beta^2}{p}$ and
+$\alpha^2+\beta^2=a_p^2-2p$. At a potentially multiplicative prime, over $\Q_p$, $\rho$ is a
 twist by a character (unramified, $\varepsilon$, if the reduction is multiplicative; ramified quadratic if it is additive) of the representation of a Tate curve,
 $\sm{\chi_\ell}{\kappa}{0}{1}$, so by \Cref{prop:blochkato:adjoint-self-dual}(ii) $A_f$ is the adjoint of the Tate representation; inertia acts through
 $\sm1{*}01$ with $*\ne0$, the invariants are the line of $e=e_1\otimes e_2^\vee$, and $\Frob_p$ acts on $e$ by $\chi_\ell(\Frob_p)=p$ (the upper-left entry divided by the
 lower-right one), so $\Frob_p^{-1}$ acts by $p^{-1}$, and by $p^{-2}$ on $e\otimes\Zl(1)$. In the potentially good cases $\rho(I_p)$ is finite (\Cref{ch:galrep}); for
 $\rho(I_p)=\{\pm1\}$ the adjoint is unramified and equal to that of the twist $E'$ of good reduction; for a cyclic image generated by $g$ with eigenvalues
-$\zeta^{\pm1}$, $\zeta\ne\zeta^{-1}$, the trace-zero commutant of $g$ is the line spanned by $g-g^{-1}$, and Frobenius, which normalises $\langle g\rangle$, conjugates $g$
-to $g^{\pm1}$, so it acts on the line by a sign $c$, the same for $\Frob_p$ and $\Frob_p^{-1}$; for $p\ge5$ the tame relation identifies $c$ with $\chi_{-3}(p)$ or
+$\zeta^{\pm1}$, $\zeta\ne\zeta^{-1}$, the trace-zero commutant of $g$ is the line spanned by $g-g^{-1}$ (over $\overline\Q_\ell$ one may take $g=\operatorname{diag}(\zeta,\zeta^{-1})$; its
+commutant is the diagonal matrices, the trace-zero ones are the multiples of $\operatorname{diag}(1,-1)=(g-g^{-1})/(\zeta-\zeta^{-1})$, and $g-g^{-1}$ is defined over $\Ql$). Frobenius
+normalises $\rho(I_p)=\langle g\rangle$, because $I_p$ is normal in $G_{\Q_p}$, so it conjugates $g$ to a generator of $\langle g\rangle$; a cyclic group of order $3$, $4$ or $6$ has exactly
+the two generators $g^{\pm1}$. Hence conjugation by Frobenius sends $g-g^{-1}$ to $\pm(g-g^{-1})$: it acts on the line by a sign $c$, the same for $\Frob_p$ and $\Frob_p^{-1}$; for $p\ge5$ the tame relation identifies $c$ with $\chi_{-3}(p)$ or
 $\chi_{-4}(p)$ (\Cref{ch:galrep}); for a non-abelian image the faithful representation $\rho|_{I_p}$ is absolutely irreducible and the commutant consists of scalars. In each
 case the factor is $\prod(1-\lambda p^{-1})$ over the eigenvalues $\lambda$ of $\Frob_p^{-1}$ on $A_f^{I_p}$, that is, $\det(1-\Frob_p^{-1}\mid(V^D)^{I_p})$ by
 \Cref{prop:blochkato:frobenius-dictionary}(a).

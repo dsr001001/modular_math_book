@@ -14,6 +14,21 @@ operators \Cref{ch:hecke}, and the Jacobian $J_0(N)$, modularity and the modular
 (Deligne, Carayol, Khare and Wintenberger, Ribet, Diamond, Diamond, Flach and Guo) are stated precisely, with the idea of the proof and a
 reference.
 
+It helps to have the whole argument of Theorem thm:qual in view before the details. Start from $E$ of conductor $N$ and its newform $f=f_E$, and fix an
+odd prime $\ell\nmid N$. The reduction $\bar\rho=\bar\rho_{E,\ell}$ is a two-dimensional representation over $\F_\ell$ that remembers $a_p(f)\bmod\ell$ for almost all $p$, but not
+the level $N$; its own ``level'' is the Serre conductor $N(\bar\rho)$, which divides $N$ and can be strictly smaller. The chain has six links:
+\begin{enumerate}[label=(\arabic*)]
+\item reduce: from $f$ to $\bar\rho$, or to its twist $\bar\rho\otimes\chi_{q^*}$ (\Cref{sec:modgalrep:galrep});
+\item lower the level: find a newform $g$ of level $N(\bar\rho)$, resp.\ $N(\bar\rho\otimes\chi_{q^*})$, smaller than $N$, with the same reduction
+(\Cref{sec:modgalrep:lowering}, using the Serre conductor of \Cref{sec:modgalrep:serre} and the local description of $\rho_{f,\lambda}$ in \Cref{sec:modgalrep:local,sec:modgalrep:at-l});
+\item twist back: $h=g$, resp.\ $h=g^{\chi_{q^*}}$, a newform $h\ne f$ of level dividing $N$ (the levels of twists, \Cref{sec:modgalrep:local});
+\item choose an eigenform $g'$ in the span $V_h$ of the $h(dz)$ that is congruent to $f$ at \emph{every} coefficient (the oldform lemma, \Cref{sec:modgalrep:congruences});
+\item conclude $\ell\mid r_E$ (the congruence criterion, \Cref{sec:modgalrep:congruences});
+\item conclude $\ell\mid\deg\varphi_{E_0}$ (Agashe, Ribet and Stein).
+\end{enumerate}
+Each link loses or gains a specific piece of information (the level, the coefficients at $p\mid N\ell$, the sign of a twist), and most of
+the chapter is about keeping track of exactly that piece.
+
 \section*{Core results at a glance}
 
 Throughout, $f$ is a normalised newform of weight $2$ on $\Gamma_0(N)$ with coefficient field $K_f$, $\lambda\mid\ell$ a prime of $K_f$, $\T$ the full Hecke algebra of level $N$, and
@@ -208,6 +223,16 @@ g\otimes\chi=(g^\chi)^{\Sigma(r)},\qquad g\otimes\chi=g^\chi\iff a_q(g^\chi)=0\ 
 The last identity holds because $\chi(n)^2=1$ for $(n,r)=1$ and both sides vanish at $n$ with $(n,r)>1$.
 \end{convention}
 
+Where the choice of Frobenius matters, and where it does not. With the arithmetic Frobenius a Dirichlet character satisfies $\chi(\Frob_p)=\chi(p)$; with the
+geometric one it would be $\chi(p)^{-1}$. For the quadratic characters used in twisting, $\chi(p)^{-1}=\chi(p)$, so no statement about twists depends on the choice. For the
+cyclotomic character it does: $\chi_\ell(\Frob_p)=p$ but $\chi_\ell(\Frob_p^{-1})=p^{-1}$. This is why $\rho_{f,\lambda}$ (arithmetic Frobenius, characteristic polynomial $X^2-a_pX+p$) and its dual,
+the cohomological realisation (where the arithmetic Frobenius has characteristic polynomial $X^2-a_pp^{-1}X+p^{-1}$ and the \emph{geometric} one has $X^2-a_pX+p$), carry the same
+information, and why every $L$-factor below is written with $\Frob_p^{-1}$.
+
+To see the difference between the naive twist and the newform twist concretely, note that $g\otimes\chi$ has $a_n=0$ whenever $(n,r)>1$, because $\chi(n)=0$ there. A newform
+of level divisible by $q^2$ has $a_q=0$ anyway (\Cref{prop:modgalrep:newforms-recap}(ii)), so for it nothing is lost; but a newform with $q\,\|\,$level has $a_q=\pm1$, and a
+$q$-series with $a_q=0$ cannot be that newform. The example below shows both cases.
+
 \begin{example}[the twist dictionary on two curves]\label{ex:modgalrep:twist-dictionary}
 (a) The twist of \curve{11a1} by $\Q(\sqrt{-11})$ is \curve{121d2}, so $f_{11a}^{\chi_{-11}}=f_{121d}$, and $a_{11}(f_{121d})=0$ (type $\kod{I}_5^*$ at $11$). Hence
 $f_{11a}\otimes\chi_{-11}=f_{121d}$ exactly, as the paper says in its Example. (b) The twist of \curve{539c1} by $\Q(\sqrt{-7})$ is \curve{77c1}, so
@@ -307,9 +332,12 @@ For every newform $f$ of weight $2$ with trivial character and every $\lambda$, 
 Suppose that $\rho_{f,\lambda}\otimes\overline K_{f,\lambda}$ has a stable line, with character $\psi_1$ and quotient character $\psi_2$; both are continuous characters
 $G_\Q\to\overline\Q_\ell^\times$ unramified outside $N\ell$, with $\psi_1\psi_2=\chi_\ell$. They are subquotients of $V_\ell(J_f)$, which is Hodge-Tate with weights $0$
 and $1$ (Faltings; Tate for abelian varieties with good reduction), so they are Hodge-Tate, and an abelian Hodge-Tate character of $G_\Q$ is
-of the form $\theta\chi_\ell^k$ with $\theta$ of finite order and $k\in\Z$ (Serre \cite{SerreAbelian}). As $\psi_1\psi_2=\chi_\ell$, the exponents are $\{0,1\}$:
-$\{\psi_1,\psi_2\}=\{\theta_1,\theta_2\chi_\ell\}$. Then $a_p(f)=\theta_1(p)+\theta_2(p)p$ for all $p\nmid N\ell$ outside the conductors of the $\theta_i$, an identity between
-algebraic numbers, so under every complex embedding $\abs{a_p(f)}\ge p-1>2\sqrt p$ for $p\ge7$. This contradicts the bound $\abs{a_p(f)}\le2\sqrt p$ of
+of the form $\theta\chi_\ell^k$ with $\theta$ of finite order and $k\in\Z$ (Serre \cite{SerreAbelian}). Write $\psi_i=\theta_i\chi_\ell^{k_i}$. The Hodge-Tate weight of $\psi_i$ is
+$k_i$ up to the sign convention, and the Hodge-Tate weights of a subquotient are among those of $V_\ell(J_f)$, so $k_i\in\{0,1\}$; and $\psi_1\psi_2=\chi_\ell$ gives
+$\theta_1\theta_2\chi_\ell^{k_1+k_2}=\chi_\ell$, so $k_1+k_2=1$ ($\chi_\ell$ has infinite order, $\theta_1\theta_2$ finite order). Relabelling, $\{\psi_1,\psi_2\}=\{\theta_1,\theta_2\chi_\ell\}$. Evaluating the trace
+at $\Frob_p$ gives $a_p(f)=\theta_1(p)+\theta_2(p)p$ for all $p\nmid N\ell$ outside the conductors of the $\theta_i$, an identity between algebraic numbers. The $\theta_i(p)$ are roots
+of unity, so under every complex embedding $\abs{a_p(f)}\ge\abs{\theta_2(p)p}-\abs{\theta_1(p)}=p-1$. Now $p-1>2\sqrt p$ is $(\sqrt p-1)^2>2$, that is $\sqrt p>1+\sqrt2$, $p>3+2\sqrt2\approx5.83$, so it
+holds for every prime $p\ge7$, and there are infinitely many admissible $p$. This contradicts the bound $\abs{a_p(f)}\le2\sqrt p$ of
 Eichler, Shimura and Weil (\Cref{ch:modforms}). For the general case (any weight and character) see Ribet \cite{Ribet77}.
 \end{proof}
 
@@ -342,8 +370,15 @@ on continuous representations). The independence of the semisimplification is th
 \Cref{thm:modgalrep:eichler-shimura}(ii)(b). (ii) $\bar\rho_L(c)$ has order dividing $2$ and determinant $-1$, so for $\ell$ odd its eigenvalues are $1$
 and $-1$, which are distinct in $k_\lambda$. A line over $\bar k_\lambda$ stable under $\bar\rho_L(G_\Q)$ is stable under $\bar\rho_L(c)$, hence is one of the two
 eigenlines of $\bar\rho_L(c)$, which are defined over $k_\lambda$; it is then a $k_\lambda$-rational stable line. (iii) This is the homothety lemma of
-\Cref{ch:reps} (if $L'$ is stable, scale it so that $L'\subseteq L$, $L'\not\subseteq\lambda L$; its image in $L/\lambda L$ is a nonzero stable subspace, hence all of $L/\lambda L$,
-and Nakayama's lemma gives $L'=L$).
+\Cref{ch:reps}. In detail: let $L'$ be another stable lattice and $\varpi$ a uniformiser of $\mathcal{O}_\lambda$. Since $L'$ is finitely generated and $L$ spans $V$, $\varpi^aL'\subseteq L$
+for $a$ large, and $\varpi^aL'\not\subseteq\varpi L$ for $a$ small; take the largest $a$ with $\varpi^aL'\subseteq L$ and replace $L'$ by $\varpi^aL'$, so that $L'\subseteq L$, $L'\not\subseteq\lambda L$. The image of
+$L'$ in $L/\lambda L$ is a $G_\Q$-stable subspace (as $L'$ is stable) and nonzero, hence all of $L/\lambda L$ by irreducibility. So $L=L'+\lambda L$, and Nakayama's lemma for the
+finitely generated $\mathcal{O}_\lambda$-module $L/L'$ (which satisfies $\lambda(L/L')=L/L'$) gives $L=L'$. Hence every stable lattice is $\varpi^{-a}L$ for some $a$, and the reductions of
+$L$ and $\varpi^{-a}L$ are isomorphic via multiplication by $\varpi^{-a}$.
+
+Without irreducibility (iii) fails, and the semisimplification in (i) is the most one can say: for $f=f_{11a}$ and $\ell=5$ the lattices $T_5(\curve{11a1})$ and $T_5(\curve{11a3})$ are not
+homothetic, and their reductions have the same semisimplification but are not isomorphic: one is unramified at $11$ and the other is not
+(\Cref{exer:modgalrep:steinberg-unramified}).
 \end{proof}
 
 \begin{corollary}[congruent newforms]\label{cor:modgalrep:congruent-newforms}
@@ -483,6 +518,12 @@ for $E/\Q$ of conductor $N$ and every prime $\ell$, $\mathfrak m_{f_E,\ell}$ is 
 (\Cref{ch:moddeg}): it contains $T_p-1-p$ for $p\nmid N$, so a maximal ideal $\mathfrak m$ containing it has $\det(X-\bar\rho_{\mathfrak m}(\Frob_p))=(X-1)(X-p)$ for $p\nmid N\ell$, hence
 $\bar\rho_{\mathfrak m}\simeq\mathbf 1\oplus\bar\chi_\ell$ by Chebotarev and Brauer-Nesbitt, and $\mathfrak m$ is Eisenstein.
 
+The smallest example is $N=11$, $\ell=5$. The curve \curve{11a1} has a rational point of order $5$, so $E[5]$ contains the trivial character $\Z/5$ and, by the Weil
+pairing, has quotient $\mu_5$; hence $a_p(f_{11a})=\tr\bar\rho(\Frob_p)\equiv1+p\pmod5$ for $p\ne5,11$ (for instance $a_2=-2\equiv3$, $a_3=-1\equiv4$, $a_7=-2\equiv8$), and $\mathfrak m_{f_{11a},5}$
+is Eisenstein. The distinction matters because the good properties used later (multiplicity one, the Gorenstein property in \Cref{ch:moddeg}, Ihara's lemma
+\Cref{lem:modgalrep:ihara}) are proved only at non-Eisenstein maximal ideals, and the paper's hypothesis ``$E[\ell]$ irreducible'' is exactly the condition that
+$\mathfrak m_{f_E,\ell}$ be non-Eisenstein.
+
 \section[Local-global compatibility]{Local-global compatibility and local components}\label{sec:modgalrep:local}
 
 This section describes $\rho_{f,\lambda}|_{G_{\Q_p}}$ for every prime $p\ne\ell$. The paper uses this description in four places: $\delta_p=\dim V^{I_p}=2,1,0$ in Section
@@ -583,15 +624,16 @@ By \Cref{thm:modgalrep:carayol}(ii), $a(V)=v_p(N)$, and $\det V=\chi_\ell|_{G_{\
 
 \emph{$a(V)=0$.} Then $V$ is unramified, $N=0$, and $r(\Frob)$ has the eigenvalues $\alpha,\beta$ of \Cref{thm:modgalrep:carayol}(iii); this is (U).
 
-\emph{$a(V)=1$.} If $V^{I_p}=V$ then $a(V)=0$. So $\dim V^{I_p}\le1$, and $1=a(V)=2-\dim V^{I_p}+\operatorname{sw}(V)$ forces $\operatorname{sw}(V)=0$ and $\dim V^{I_p}=1$; so $V$ is tame. If $N=0$,
-then $r|_{I_p}$, a representation of a finite group in characteristic $0$, is semisimple with a fixed line: $r|_{I_p}\simeq1\oplus\psi$ with $\psi\ne1$ (as $\dim V^{I_p}=1$).
-But $\det r|_{I_p}=\psi$ must be trivial, because $\det V$ is unramified. So $N\ne0$, and $V\simeq\Sp(2)\otimes\mu$ for the character $\mu$ on $V/\ker N$
+\emph{$a(V)=1$.} If $V^{I_p}=V$ then $a(V)=0$. So $d=\dim V^{I_p}\le1$, and $1=a(V)=2-d+\operatorname{sw}(V)$ gives $\operatorname{sw}(V)=d-1\le0$; as the Swan conductor is $\ge0$, $\operatorname{sw}(V)=0$ and
+$d=1$, so $V$ is tame. If $N=0$, then $V^{I_p}=V^{r(I_p)}$ and $r|_{I_p}$, a representation of the finite group $r(I_p)$ in characteristic $0$, is semisimple (Maschke) with
+a fixed line: $r|_{I_p}\simeq1\oplus\psi$ with $\psi\ne1$ (as $\dim V^{I_p}=1$, not $2$).
+But $\det r|_{I_p}=1\cdot\psi=\psi$ must be trivial, because $\det V=\chi_\ell$ is unramified at $p\ne\ell$. So $N\ne0$, and $V\simeq\Sp(2)\otimes\mu$ for the character $\mu$ on $V/\ker N$
 (\Cref{rem:modgalrep:wd-recap}). As $a(\Sp(2)\otimes\mu)=2a(\mu)\ge2$ for ramified $\mu$, $\mu$ is unramified. Comparing determinants, $\norm{\cdot}\mu^2=\norm{\cdot}$, so $\mu^2=1$. Now
 $V^{I_p}=\ker N$ is the line on which $W_{\Q_p}$ acts by $\norm{\cdot}\mu$, so $\Frob_p$ acts on it by $p\,\mu(\Frob_p)$, and \Cref{thm:modgalrep:carayol}(iii) (first form:
 the eigenvalue is $p/a_p(f)$) gives $a_p(f)=\mu(\Frob_p)^{-1}=\mu(\Frob_p)=\pm1$. This is (St).
 
-\emph{$a(V)\ge2$.} $\dim V^{I_p}=2$ is impossible ($V$ would be unramified). Suppose $\dim V^{I_p}=1$. If $N=0$, the argument just given shows that
-$r|_{I_p}$ is trivial, so $V^{I_p}=V$, a contradiction. If $N\ne0$, $V\simeq\Sp(2)\otimes\mu$ and $V^{I_p}=(\ker N)^{r(I_p)}$ is a line only if $\mu$ is unramified,
+\emph{$a(V)\ge2$.} $\dim V^{I_p}=2$ is impossible ($V$ would be unramified). Suppose $\dim V^{I_p}=1$. If $N=0$, the argument just given applies verbatim (it used
+only $N=0$ and $\dim V^{I_p}=1$): $r|_{I_p}\simeq1\oplus\psi$ with $\psi=\det r|_{I_p}=1$, so $r|_{I_p}$ is trivial and $V^{I_p}=V$, a contradiction. If $N\ne0$, $V\simeq\Sp(2)\otimes\mu$ and $V^{I_p}=(\ker N)^{r(I_p)}$ is a line only if $\mu$ is unramified,
 and then $a(V)=1$, a contradiction. Hence $V^{I_p}=0$, $\delta_p=0$, $L(V,s)=1$, and $a_p(f)=0$ by \Cref{thm:modgalrep:carayol}(iii). If $N\ne0$,
 $V\simeq\Sp(2)\otimes\nu$ with $\nu$ ramified and $\nu^2=1$ (determinants again); writing $\nu=\mu\chi$ with $\chi$ a ramified character and $\mu$ unramified gives (RSt), with
 $a(V)=2a(\nu)=2a(\chi)$. If $N=0$, $r$ is Frobenius-semisimple of dimension $2$, so it is a sum of two characters, both ramified as $V^{I_p}=0$, with product
@@ -602,7 +644,8 @@ and the last three, which proves the statements on $a_p$ and $\delta_p$.
 
 (a) In case (St), $V$ is the representation $\sm{\varepsilon\chi_\ell}{*}{0}{\varepsilon}$ of \Cref{rem:modgalrep:wd-recap} with $\mu=\varepsilon$. The stable line $\ker N$ meets $L$ in
 a saturated rank-one submodule $L_1$, which is a direct summand of $L$; a basis $e_1$ of $L_1$ extended by $e_2$ to a basis of $L$ gives the matrix
-form, with entries in $\mathcal{O}_\lambda$. (b) Reduce modulo $\lambda$; the corner restricted to $I_p$ is a homomorphism (the diagonal is trivial on $I_p$), so the
+form, with entries in $\mathcal{O}_\lambda$: the first basis vector spans a stable line, so the first column of every $\rho(\sigma)$ is $(\varepsilon\chi_\ell(\sigma),0)^{\mathsf T}$, and the
+determinant $\chi_\ell$ forces the lower right entry to be $\varepsilon(\sigma)$ (as $\varepsilon^2=1$). The corner is nonzero on $I_p$ because $V$ is ramified. (b) Reduce modulo $\lambda$; the corner restricted to $I_p$ is a homomorphism (the diagonal is trivial on $I_p$), so the
 reduction is unramified exactly when it vanishes on $I_p$ modulo $\lambda$. If the reduction is ramified it is non-split (a split extension of two
 unramified characters is unramified), and a non-split extension of two characters has a unique stable line (\Cref{ch:reps}; this holds also
 when the two characters coincide, which happens when $p\equiv1\pmod\ell$). (c) Read off the diagonal: $\bar\varepsilon\bar\chi_\ell(\Frob_p)=a_p(f)p$ and $\bar\varepsilon(\Frob_p)=a_p(f)$.
@@ -641,10 +684,12 @@ theorem on additive potentially good reduction at $q\ge5$, from Kraus's theorem)
 Types $\kod{I}_n^*$ and $\kod{I}_0^*$: $E^{(q)}$ has type $\kod{I}_n$, resp.\ good reduction (the paper's Lemma lem:twist(ii), proved in \Cref{ch:reduction}), and
 $V_\ell E\simeq V_\ell E^{(q)}\otimes\chi_{q^*}$ (\Cref{ch:ellcurves}); so $\WD_q(f)$ is $(\Sp(2)\otimes\mu)\otimes\chi_{q^*}$, resp.\ $(\nu_{\alpha'}\oplus\nu_{\beta'})\otimes\chi_{q^*}$ with $\nu_x$ the
 unramified character sending $\Frob_q$ to $x$. The other rows: inertia acts through a finite cyclic group $\langle g\rangle$ of order $m\in\{3,4,6\}$, so $N=0$; for $q\ge5$
-the action is tame and $\Frob_qg\Frob_q^{-1}=g^q$ (the tame relation, \Cref{ch:local}). The eigenvalues of $g$ are two distinct primitive $m$-th roots of unity
-$\zeta,\zeta^{-1}$. As $q\ge5$ is prime to $m$ and the units modulo $3$, $4$, $6$ are $\pm1$, either $q\equiv1\pmod m$ or $q\equiv-1\pmod m$. In the first case $\Frob_q$
+the action is tame (the wild inertia group is pro-$q$ and its image has order dividing $m$, prime to $q$, so it is trivial) and $\Frob_qg\Frob_q^{-1}=g^q$ (the tame
+relation, \Cref{ch:local}). The eigenvalues of $g$ are two distinct primitive $m$-th roots of unity $\zeta,\zeta^{-1}$: $g$ has finite order, so it is diagonalisable with root-of-unity
+eigenvalues $\zeta_1,\zeta_2$; $\zeta_1\zeta_2=\det g=\chi_\ell(g)=1$ because $\chi_\ell$ is unramified at $q\ne\ell$; if $\zeta_1=1$ then $\zeta_2=1$ and $g=1$, which is absurd; so $\zeta_2=\zeta_1^{-1}$ has the same order as
+$\zeta_1$, which is therefore the order $m$ of $g$, and $\zeta_1\ne\zeta_1^{-1}$ since $m>2$. As $q\ge5$ is prime to $m$ and the units modulo $3$, $4$, $6$ are $\pm1$, either $q\equiv1\pmod m$ or $q\equiv-1\pmod m$. In the first case $\Frob_qg\Frob_q^{-1}=g^q=g$, so $\Frob_q$
 commutes with $g$, hence preserves its two eigenlines (over $\overline\Q_\ell$), and $\WD_q(f)$ is a sum of two characters, ramified since $\zeta\ne1$: (RPS). In
-the second case $\Frob_q$ conjugates $g$ to $g^{-1}$ and exchanges the two eigenlines, so no line is stable under $W_{\Q_q}$ (a stable line would be an
+the second case $\Frob_q$ conjugates $g$ to $g^{q}=g^{-1}$, so it carries the $\zeta$-eigenline of $g$ to the $\zeta$-eigenline of $g^{-1}$, which is the $\zeta^{-1}$-eigenline of $g$: it exchanges the two eigenlines, so no line is stable under $W_{\Q_q}$ (a stable line would be an
 eigenline of $g$), and $\WD_q(f)$ is irreducible: (SC). Finally $q\equiv1\pmod 6$ iff $q\equiv1\pmod3$ for odd $q$.
 \end{proof}
 
@@ -696,11 +741,14 @@ At a prime $p\ne q$ the twist by a character unramified at $p$ changes neither t
 
 \begin{proof}
 (U): $\WD\otimes\chi=\mu_1\chi\oplus\mu_2\chi$ with both characters ramified of conductor $1$, so $a=2$. (St): $\Sp(2)\otimes\mu\chi$ with $\mu\chi$ ramified: $a=2a(\chi)=2$. (RSt): for
-$q$ odd, every ramified character $\nu$ with $\nu^2=1$ agrees with $\chi$ on $I_q$ (the ramified quadratic characters of $\Q_q^\times$ differ by an unramified one), so
+$q$ odd, every ramified character $\nu$ with $\nu^2=1$ agrees with $\chi$ on $I_q$. Indeed, by local class field theory the image of $I_q$ in $G_{\Q_q}^{\mathrm{ab}}$ corresponds to $\Z_q^\times=\mu_{q-1}\times(1+q\Z_q)$;
+a character of order dividing $2$ is trivial on the pro-$q$ group $1+q\Z_q$ ($q$ odd), so it factors through $\Z_q^\times\to\F_q^\times$, a cyclic group of even order with exactly one
+character of order $2$, the Legendre symbol; hence all ramified quadratic characters of $\Q_q^\times$ restrict to the same character of $\Z_q^\times$, and differ by an unramified one. So
 $\WD=\Sp(2)\otimes\nu$ with $\nu\chi$ unramified and $\WD\otimes\chi=\Sp(2)\otimes\nu\chi$ has $a=1$; in particular $v_q(N)=2$ for type (RSt) at odd $q$. (RPS) with
 $\mu_i|_{I_q}=\chi|_{I_q}$: both $\mu_i\chi$ are unramified, $a=0$. Last row: inertia acts on $\WD$ through $\langle g\rangle$, $g$ of order $m\in\{3,4,6\}$ with eigenvalues $\zeta^{\pm1}$
-primitive $m$-th roots of unity, and on $\WD\otimes\chi$ through $\langle-g\rangle$ (with $\chi(t)=-1$ on a generator $t$ of tame inertia mapping to $g$); $-g$ has order $6$,
-$4$, $3$ and eigenvalues $-\zeta^{\pm1}\ne1$, so $(\WD\otimes\chi)^{I_q}=0$, the twist is tame, and $a=2$; its type is (RPS) or (SC) by the argument of
+primitive $m$-th roots of unity (as in the proof of \Cref{prop:modgalrep:kodaira-dictionary}), and on $\WD\otimes\chi$ through $\langle-g\rangle$: the tame inertia group is
+procyclic, $\chi$ is a nontrivial character of order $2$ of it, so $\chi(t)=-1$ for a topological generator $t$, which may be chosen to map to $g$. If $\zeta$ has order $3$, $4$, $6$, then
+$-\zeta$ has order $6$, $4$, $3$ (for $m=4$, $-\zeta=\zeta^{-1}=\pm i$); so $-g$ has order $6$, $4$, $3$ and eigenvalues $-\zeta^{\pm1}\ne1$, so $(\WD\otimes\chi)^{I_q}=0$, the twist is tame, and $a=2$; its type is (RPS) or (SC) by the argument of
 \Cref{prop:modgalrep:kodaira-dictionary}. At $p\ne q$: an unramified twist preserves $a$ and the shape (\Cref{rem:modgalrep:wd-recap}).
 \end{proof}
 
@@ -740,7 +788,8 @@ $g\otimes\chi=(g^\chi)^{\Sigma(r)}$.
 \end{proposition}
 
 \begin{proof}
-(i) is clear, $\chi$ being unramified outside $r$ with $\chi(\Frob_p)=\chi(p)$. (ii) Uniqueness: two such newforms have the same $a_p$ for almost all $p$, so
+(i) For $p\nmid Mr\ell$ both $\rho_{g,\lambda}$ (\Cref{thm:modgalrep:eichler-shimura}) and $\chi$ (whose conductor is $r$) are trivial on $I_p$, hence so is $\rho_{g,\lambda}\otimes\chi$; and
+$(\rho_{g,\lambda}\otimes\chi)(\Frob_p)=\chi(\Frob_p)\rho_{g,\lambda}(\Frob_p)=\chi(p)\rho_{g,\lambda}(\Frob_p)$, whose trace is $\chi(p)a_p(g)$. (ii) Uniqueness: two such newforms have the same $a_p$ for almost all $p$, so
 they are equal (\Cref{prop:modgalrep:newforms-recap}(iii)). Existence: by \Cref{ch:hecke} (for $\chi=\chi_S$, the case used in this book; for any quadratic $\chi$ see Atkin and Li \cite{AtkinLi78}) the naive
 twist $g\otimes\chi$ lies in $S_2(\Gamma_0(L))$, $L=\lcm(M,r^2)$ ($\chi^2$ is trivial on $(\Z/L)^\times$), and is an eigenform of $T_p$ with eigenvalue $\chi(p)a_p(g)$ for $p\nmid L$. Decompose it along
 \Cref{prop:modgalrep:newforms-recap}(iv); its nonzero components are eigenforms with the same eigenvalues, so it lies in a single $V_h$ with
@@ -837,6 +886,9 @@ $\mu(\bar a_\ell)$, on which $\Frob_\ell$ acts by $\bar a_\ell$. Applying this t
 \begin{example}\label{ex:modgalrep:deligne-fontaine}
 $a_3(f_{121c})=2$ and $a_3(f_{11a})=-1$, both nonzero modulo $3$ and congruent modulo $3$; this is the case $p=\ell=3$ of Lemma lem:old for the pair
 $(f,h)=(f_{121c},f_{11a})$ of \Cref{ex:modgalrep:old-examples}. Likewise $a_3(f_{121a})=2\equiv-1=a_3(f_{121d})\pmod3$, as the paper's Example needs.
+Both are instances of (i): $\bar\rho|_{D_3}$ is reducible with unramified quotient $\mu(\bar a_3)=\mu(-1)$, so $\Frob_3$ acts on that quotient by $-1$, and (iii) reads $a_3\equiv-1$ off it.
+For an instance of (ii), take $f=f_{11a}$ and $\ell=19$: $a_{19}(f_{11a})=0$ (\Cref{ex:modgalrep:level-raising}), so $\bar\rho_{11a,19}|_{D_{19}}$ is irreducible, $\bar\rho|_{I_{19}}$ is a sum of the two
+fundamental characters of level $2$, and \curve{11a1} has supersingular reduction at $19$.
 \end{example}
 
 \begin{paperlink}
@@ -893,7 +945,10 @@ does not depend on $L$ (\Cref{prop:modgalrep:lattices}(iii)), and multiplying ov
 \end{proof}
 
 For $f=f_E$ the exact value is $a_p(\bar\rho_{E,\ell})=f_p(E)-\dim_{\F_\ell}\Phig_p[\ell]$ (\Cref{ch:galrep}, with examples); Livn\'e \cite{Livne89} lists the possible
-exponents in general.
+exponents in general. To see the drop $\dim\bar\rho_L^{I_p}-\delta_p$ of the proposition at work, take \curve{77c1} and $\ell=3$. At $p=7$ the type is $\kod{I}_3$, so $\delta_7=1$; the
+component group has order $3$, $\bar\rho$ is unramified at $7$ and $\dim\bar\rho^{I_7}=2$, so the exponent drops from $v_7(77)=1$ to $1-(2-1)=0$. At $p=11$ the type is $\kod{I}_2$, the
+component group has order $2$, prime to $3$, so $\bar\rho$ is ramified, $\dim\bar\rho^{I_{11}}=1=\delta_{11}$, and the exponent stays $1$. Hence $N(\bar\rho_{77c1,3})=11$, the entry
+of \Cref{ex:modgalrep:level-lowering}.
 
 \begin{paperlink}
 The optimal-level paragraph of Section 3: ``Recall also that $N(\bar\rho_{E',\ell})$ divides the conductor of $E'$ \cite{Carayol89}, and that $N(\bar\sigma)$ is prime to
@@ -1057,6 +1112,15 @@ raising of levels by $q^2$. We have not checked the precise hypotheses on $\ell$
 only the necessity (i), proved above, and the level-raising factor of Theorem thm:dfg14).
 \end{proof}
 
+The condition has a transparent meaning. With $\alpha,\beta$ the eigenvalues of $\rho_{f,\lambda}(\Frob_q)$, so $\alpha+\beta=a_q$ and $\alpha\beta=q$,
+\[
+(1-\alpha)(1-\beta)=q+1-a_q,\qquad(1+\alpha)(1+\beta)=q+1+a_q,\qquad (q+1)^2-a_q^2=(1-\alpha)(1-\beta)(1+\alpha)(1+\beta).
+\]
+So $a_q^2\equiv(q+1)^2\pmod\lambda$ says exactly that $1$ or $-1$ is an eigenvalue of $\bar\rho(\Frob_q)$ (after enlarging $\mathcal{O}$); the other eigenvalue is then $q$, resp.\ $-q$, since the
+product is $q$. This is precisely the shape forced by part (c) of \Cref{thm:modgalrep:local-types} on a form of type (St) at $q$ with unramified reduction: eigenvalues
+$a_q(g)$ and $a_q(g)q$ with $a_q(g)=\pm1$. For example, for $f_{11a}$ at $q=7$: $X^2+2X+7\equiv X^2-X+1=(X+1)^2\pmod3$, so $\bar\rho(\Frob_7)$ has the double eigenvalue $-1$, and $-7\equiv-1$
+as well; the matching form is $f_{77c}$ with $a_7(f_{77c})=-1$ (\Cref{ex:modgalrep:level-raising}).
+
 \begin{proposition}[the level-raising factor]\label{prop:modgalrep:level-raising-factor}
 Let $p\nmid N$, and $\alpha$, $\beta$ the roots of $X^2-a_p(f)X+p$. Then
 \[
@@ -1077,6 +1141,10 @@ arithmetic Frobenius has eigenvalues $\alpha/\beta$, $1$, $\beta/\alpha$, an inv
 $L_p(A_f,s)^{-1}=(1-\frac\alpha\beta p^{-s})(1-p^{-s})(1-\frac\beta\alpha p^{-s})$; at $s=1$ this is the left side. The valuation follows since $p$ is a unit at $\lambda$. The factor at $p\,\|\,N$ is
 \Cref{cor:modgalrep:delta-naive} at $s=1$.
 \end{proof}
+
+A numerical instance, used several times below: for $f=f_{11a}$ and $p=7$, $a_7=-2$, so the factor is $\frac67\cdot\frac{64-4}{49}=\frac{360}{343}$, with $v_3(360/343)=v_3(6)+v_3(60)=1+1=2$. The two
+terms have different origins: $v_3(60)=1$ is the level-raising congruence $3\mid(7+1)^2-a_7^2$ just discussed, and $v_3(6)=1$ records $7\equiv1\pmod3$. At $p=3=\ell$ the same
+formula gives $\frac23\cdot\frac{16-1}{9}=\frac{10}{9}$, of $3$-adic valuation $-2$, which is why Theorem thm:dfg14 below needs $\ell\notin\Sigma$.
 
 The term $v_\lambda(p-1)$ has a similar meaning, which we do not use: it is positive only when $p\equiv1\pmod\ell$, and then $\bar\rho$ can also arise at level $Np^2$ from forms
 of type (RPS) at $p$ whose inertial characters have $\ell$-power order (they reduce to the trivial character); this is part of the theory of non-optimal
@@ -1216,8 +1284,13 @@ is killed by $I$ iff it is killed by $I\otimes\Q=0\times\T'$, iff its $W$-compon
 A form is killed by $J$ iff it is killed by $e_f$, iff it lies in $W$; so $S[J]=S\cap W=L$.
 
 \emph{Step 4: the index.} The sequence $0\to\T\to\T/I\times\T/J\to\T/(I+J)\to0$, with first map $t\mapsto(t\bmod I,t\bmod J)$ (injective as $I\cap J=0$) and second map $(x,y)\mapsto x-y$, is
-exact. Applying $\Hom(\cdot,\Z)$ and using $\Hom(\T/(I+J),\Z)=0$, $\operatorname{Ext}^1(\T/I\times\T/J,\Z)=0$ (free modules) and $\#\operatorname{Ext}^1(A,\Z)=\#A$ for finite $A$, we get
-that $\Hom(\T/I,\Z)\oplus\Hom(\T/J,\Z)\to\Hom(\T,\Z)$ is injective with cokernel of order $r'$ (\Cref{ch:modules}, dualising an inclusion of lattices). Under the
+exact. (The composite is $t\mapsto t-t=0$; the second map is onto; and if $x-y\in I+J$ with $x=t_1\bmod I$, $y=t_2\bmod J$, write $t_1-t_2=i+j$, $i\in I$, $j\in J$; then
+$t=t_1-i=t_2+j$ maps to $(x,y)$.) Applying $\Hom(\cdot,\Z)$ gives the exact sequence
+\[
+0\to\Hom(\T/(I+J),\Z)\to\Hom(\T/I,\Z)\oplus\Hom(\T/J,\Z)\to\Hom(\T,\Z)\to\operatorname{Ext}^1(\T/(I+J),\Z)\to\operatorname{Ext}^1(\T/I\times\T/J,\Z).
+\]
+Here $\Hom(\T/(I+J),\Z)=0$ (a finite group has no nonzero maps to $\Z$), $\operatorname{Ext}^1(\T/I\times\T/J,\Z)=0$ (free modules), and $\#\operatorname{Ext}^1(A,\Z)=\#A$ for finite $A$ (for $A=\Z/m$,
+apply $\Hom(\cdot,\Z)$ to $0\to\Z\xrightarrow{m}\Z\to\Z/m\to0$; in general decompose $A$). So $\Hom(\T/I,\Z)\oplus\Hom(\T/J,\Z)\to\Hom(\T,\Z)$ is injective with cokernel of order $r'$ (\Cref{ch:modules}, dualising an inclusion of lattices). Under the
 pairing this map is the sum map $\Z f\oplus L\to S$. So $[S:\Z f\oplus L]=r'$.
 
 \emph{Step 5: the congruences.} The map $S/(\Z f\oplus L)\to\Q f/\Z f$, $g\mapsto e_fg$, is well defined ($e_f$ kills $L$ and fixes $f$) and injective (if $e_fg=cf$ with $c\in\Z$ then
@@ -1247,6 +1320,18 @@ on that line); the finiteness of $\T/(I+J)$ is $\phi_f(J)\ne0$ (Step 2), which t
 eigenform of all of $\T$ and congruent to $f$ at every $n$, the operators $U_p$ ($p\mid N$) included, is used in Step 6 and cannot be weakened to the primes
 $p\nmid\ell N$: that weakening is what \Cref{lem:modgalrep:old} repairs.
 \end{paperlink}
+
+The smallest case in which every object of the lemma can be seen is $N=37$. Here $S_2(\Gamma_0(37))$ has dimension $2$, spanned by the two rational newforms $f=f_{37a}$ and
+$g=f_{37b}$, with
+\[
+f=q-2q^2-3q^3+2q^4-2q^5+6q^6-\cdots,\qquad g=q+q^3-2q^4-q^7-\cdots .
+\]
+Distinct newforms of the same level are orthogonal, so $W=\Q g$ and $L=S\cap\Q g=\Z g$ ($a_1(g)=1$). Every coefficient of $f-g$ is even (checked with PARI/GP for $n\le3000$, far beyond
+the Sturm bound $\frac16\cdot38<7$), so $(f-g)/2\in S$ and $f\equiv g\pmod2$. Conversely, if $f\equiv cg\pmod m$ with $c\in\Z$, then $a_1$ gives $c\equiv1$ and $a_2$ gives $-2\equiv0\pmod m$, so
+$m\mid2$. Hence $r=2$, which is the index
+$[S:\Z f\oplus\Z g]$ (computed as in the Notes). In the coordinates $t\mapsto(\phi_f(t),\phi_g(t))$, which embed $\T$ in $\Z\times\Z$, the lemma says $I=0\times2\Z$, $J=2\Z\times0$ and
+$\T/(I+J)\simeq\Z/2$, which forces $\T=\{(a,b):a\equiv b\pmod2\}$: this is the toy model of \Cref{exer:modgalrep:toy} with $r=2$. As $37$ is prime, \Cref{thm:modgalrep:ars} gives
+$\deg\varphi_{37a1}=2$, as Cremona's tables confirm.
 
 \begin{lemma}[the operators $U_p$ on the span of an oldform]\label{lem:modgalrep:Up-oldspace}
 Let $h$ be a newform of weight $2$ on $\Gamma_0(M)$, $M\mid N$, $V_h$ the span of the $h(dz)$, $d\mid N/M$, and for $p\mid N/M$ let $e_p=v_p(N/M)$ and $V_{h,p}$ the space with
@@ -1280,13 +1365,27 @@ $\mathcal{O}[\alpha_p,\beta_p:p\mid N/M]$ if those of $h$ lie in $\mathcal{O}$.
 $U_pF=h(p^{j-1}d'z)$ if $j\ge1$, and $(U_ph)(d'z)$ if $j=0$, so $U_p$ acts on the $p$-th factor only. For $j=0$: if $p\mid M$, $U_p$ at level $N$ and at level $M$ have the
 same effect on $q$-expansions, so $U_ph=a_p(h)h$; if $p\nmid M$, $a_n(T_ph)=a_{pn}(h)+p\,a_{n/p}(h)$ (the Hecke operator at level $M$), so $U_ph=T_ph-p\,h(pz)=a_p(h)h-p\,h(pz)$.
 The statements about $T_n$ and about $U_p$ with $e_p=0$ are \Cref{prop:modgalrep:newforms-recap}(iv) and \Cref{ch:hecke}. (ii) In the basis $h_0,\dots,h_{e}$ ($e=e_p$) the
-matrix of $U_p$ is a companion-type matrix; expanding $\det(X-U_p)$ along the last column gives the polynomials in the table. The eigenvectors are
-checked directly: $U_p(h_0-\beta h_1)=a_ph_0-p\,h_1-\beta h_0=\alpha h_0-\alpha\beta h_1=\alpha(h_0-\beta h_1)$, using $a_p=\alpha+\beta$, $p=\alpha\beta$; $U_p(h_0-a_ph_1+p\,h_2)=a_ph_0-p\,h_1-a_ph_0+p\,h_1=0$;
+matrix of $U_p$ is a companion-type matrix; expanding $\det(X-U_p)$ along the last row gives the polynomials in the table. The eigenvectors are
+checked directly. To see the characteristic polynomials, note that in this basis the matrix $A$ of $U_p$ has first column $(c_0,c_1,0,\dots,0)^{\mathsf T}$, with
+$(c_0,c_1)=(a_p,-p)$ if $p\nmid M$ and $(a_p,0)$ if $p\mid M$ (here $e\ge1$, as $p\mid N/M$), entries $1$ just above the diagonal (from $U_ph_j=h_{j-1}$), and zeros elsewhere. Expanding
+$\det(X-A)$ along the last row, whose only nonzero entries are $X$ in the last place and possibly $-c_e$ in the first, gives $P_e(X)=XP_{e-1}(X)-c_e$, with $c_k=0$ for $k\ge2$ and $P_0=X-c_0$ (the minor of the first entry is
+triangular with determinant $(-1)^e$, and its cofactor sign is $(-1)^e$); by induction, $\det(X-A)=X^{e+1}-c_0X^e-c_1X^{e-1}$. This is $X^{e-1}(X^2-a_pX+p)$ if $p\nmid M$, $X^e(X-a_p)$ if $p\,\|\,M$, and
+$X^{e+1}$ if $p^2\mid M$ (where $a_p=0$). For instance, for $p\nmid M$ and $e=2$,
+\[
+A=\begin{pmatrix}a_p&1&0\\-p&0&1\\0&0&0\end{pmatrix},\qquad \det(X-A)=X(X^2-a_pX+p).
+\]
+The eigenvectors: $U_p(h_0-\beta h_1)=a_ph_0-p\,h_1-\beta h_0=\alpha h_0-\alpha\beta h_1=\alpha(h_0-\beta h_1)$, using $a_p=\alpha+\beta$, $p=\alpha\beta$; $U_p(h_0-a_ph_1+p\,h_2)=a_ph_0-p\,h_1-a_ph_0+p\,h_1=0$;
 $U_p(h_0-a_ph_1)=a_ph_0-a_ph_0=0$ when $p\mid M$. If $0$ is a repeated root, the $0$-eigenspace is the line spanned by the listed eigenvector (the matrix has
 rank $e$), so $U_p$ is not diagonalisable. This is the shift-operator model of \Cref{ch:modules}; compare \Cref{ch:hecke}. (iii) A tensor product of
 eigenvectors of operators acting on separate factors is a common eigenvector; $\T$ is generated by the $T_n$, $(n,N)=1$, and the $U_p$, $p\mid N$, which act as
 stated. The coefficient of $h_0$ in each listed eigenvector is $1$, and $h(dz)$ with $d>1$ has $a_1=0$; so $a_1(g)=1$.
 \end{proof}
+
+The idea of the next lemma is that the congruence $a_p(h)\equiv a_p(f)$ is given only for $p\nmid\ell N$, while \Cref{lem:modgalrep:crit}(ii) needs it at every $n$. At $p=\ell$ the
+local theory at $\ell$ supplies it; at a prime $p\mid N$ one has the freedom to replace $h$ by another eigenform in $V_h$, and \Cref{lem:modgalrep:Up-oldspace} lists the
+$U_p$-eigenvalues available. That freedom exists only where $p\mid N/M$. Where $v_p(M)=v_p(N)$ the operator $U_p$ acts on $V_h$ by the scalar $a_p(h)$, and one needs
+$a_p(h)\equiv a_p(f)$ outright; the hypothesis of the lemma excludes the one situation, $p\,\|\,N$ with $\bar\rho$ unramified at $p$ and $p\,\|\,M$, where this can fail
+(\Cref{exer:modgalrep:old-hypothesis}: the signs may differ when $p\equiv-1\pmod\ell$).
 
 \begin{lemma}[oldforms; the paper's Lemma lem:old]\label{lem:modgalrep:old}
 Let $f=f_E$ be as in \Cref{def:modgalrep:congruence-number}, $\ell$ an odd prime with $\ell\nmid N$, and $\bar\rho=\bar\rho_{E,\ell}$ irreducible. Let $h\ne f$ be a newform of weight $2$
@@ -1327,7 +1426,9 @@ the quotients: $\bar\varepsilon_f=\bar\varepsilon_h$, and $a_p(h)\equiv a_p(f)$.
 
 \emph{Step 4: all $n$.} $f$ and $g$ are normalised eigenforms of all of $\T$, so both coefficient sequences satisfy $a_{mn}=a_ma_n$ for $(m,n)=1$, $a_{p^k}=a_p^k$ for $p\mid N$
 ($U_{p^k}=U_p^k$), and $a_{p^{k+1}}=a_pa_{p^k}-p\,a_{p^{k-1}}$ for $p\nmid N$, $p=\ell$ included (\Cref{prop:modgalrep:newforms-recap}(i)). Congruence at every prime therefore gives
-congruence at every $n$, by induction on $n$. \Cref{lem:modgalrep:crit}(ii) now gives $\ell\mid r$.
+congruence at every $n$. Indeed, for a prime $p$, $a_{p^k}$ is a polynomial in $a_p$ with integer coefficients ($a_p^k$ if $p\mid N$; for $p\nmid N$, by induction on $k$ from the
+recursion, starting with $a_1=1$), the same polynomial for $f$ and for $g$, so $a_p(g)\equiv a_p(f)$ gives $a_{p^k}(g)\equiv a_{p^k}(f)\pmod\lambda$; and for $n=\prod p^{k_p}$, $a_n=\prod a_{p^{k_p}}$
+for both forms. \Cref{lem:modgalrep:crit}(ii) now gives $\ell\mid r$.
 \end{proof}
 
 \begin{paperlink}

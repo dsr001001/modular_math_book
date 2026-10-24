@@ -227,14 +227,20 @@ $L^\times$ discrete).
 
 \begin{proof}
 (i) This is Hilbert's Theorem 90 of \Cref{ch:galois}; we recall the argument because it is short. Let $G=\Gal(L/K)$ and let $(a_\sigma)$ be a $1$-cocycle with
-values in $L^\times$, $a_{\sigma\tau}=a_\sigma\,\sigma(a_\tau)$. By Dedekind's independence of characters the map $c\mapsto\sum_{\tau\in G}a_\tau\tau(c)$ is not
-identically zero; choose $c$ with $b=\sum_\tau a_\tau\tau(c)\ne0$. Then
+values in $L^\times$, $a_{\sigma\tau}=a_\sigma\,\sigma(a_\tau)$. The distinct automorphisms $\tau\in G$ restrict to distinct homomorphisms $L^\times\to L^\times$, so by
+Dedekind's independence of characters (\Cref{ch:galois}) no nontrivial $L$-linear combination of them vanishes identically; as every coefficient $a_\tau$ is nonzero,
+the map $c\mapsto\sum_{\tau\in G}a_\tau\tau(c)$ is not identically zero. Choose $c$ with $b=\sum_\tau a_\tau\tau(c)\ne0$. The cocycle identity, rewritten as
+$\sigma(a_\tau)=a_\sigma^{-1}a_{\sigma\tau}$, gives
 \[
-\sigma(b)=\sum_\tau\sigma(a_\tau)\,\sigma\tau(c)=\sum_\tau a_\sigma^{-1}a_{\sigma\tau}\,\sigma\tau(c)=a_\sigma^{-1}b,
+\sigma(b)=\sum_\tau\sigma(a_\tau)\,\sigma\tau(c)=\sum_\tau a_\sigma^{-1}a_{\sigma\tau}\,\sigma\tau(c)=a_\sigma^{-1}\sum_\rho a_\rho\,\rho(c)=a_\sigma^{-1}b,
 \]
-so $a_\sigma=b/\sigma(b)=\sigma(b^{-1})/b^{-1}$ is a coboundary. In the additive case, $a_{\sigma\tau}=a_\sigma+\sigma(a_\tau)$; as $L/K$ is separable the trace is
-surjective, so there is $c$ with $\operatorname{Tr}_{L/K}(c)=1$, and $b=\sum_\tau a_\tau\tau(c)$ satisfies $\sigma(b)=\sum_\tau(a_{\sigma\tau}-a_\sigma)\sigma\tau(c)=b-a_\sigma$, so
-$a_\sigma=b-\sigma(b)$ is a coboundary.
+where the third step substitutes $\rho=\sigma\tau$, which runs over $G$ as $\tau$ does. So $a_\sigma=b/\sigma(b)=\sigma(b^{-1})/b^{-1}$ is a coboundary. In the additive case,
+$a_{\sigma\tau}=a_\sigma+\sigma(a_\tau)$. As $L/K$ is separable, the trace $\operatorname{Tr}_{L/K}=\sum_\tau\tau$ is not identically zero (Dedekind again, all coefficients being $1$), and
+it is $K$-linear with values in $K$, so it is surjective; choose $c$ with $\operatorname{Tr}_{L/K}(c)=1$ and put $b=\sum_\tau a_\tau\tau(c)$. Then
+\[
+\sigma(b)=\sum_\tau\sigma(a_\tau)\,\sigma\tau(c)=\sum_\tau(a_{\sigma\tau}-a_\sigma)\,\sigma\tau(c)=\sum_\rho a_\rho\,\rho(c)-a_\sigma\operatorname{Tr}_{L/K}(c)=b-a_\sigma,
+\]
+so $a_\sigma=b-\sigma(b)$ is a coboundary.
 
 (ii) $L^\times$ is a discrete $\Gal(L/K)$-module, and for a finite Galois subextension $L'/K$ of $L/K$ the invariants of $\Gal(L/L')$ in $L^\times$ are $L'^\times$. By
 \eqref{eq:galcoh:direct-limit} for the profinite group $\Gal(L/K)$, $H^1(\Gal(L/K),L^\times)=\varinjlim_{L'}H^1(\Gal(L'/K),L'^\times)$, a direct limit of zero groups by
@@ -243,6 +249,11 @@ $a_\sigma=b-\sigma(b)$ is a coboundary.
 (iv) For finite $G$ the additive group $L$ is an induced $G$-module by the normal basis theorem, hence has vanishing cohomology in positive degrees;
 the limit argument of (ii) applies. We do not use this; see \cite[Chapter X, Section 1]{SerreLocalFields} and \cite[Chapter II, Section 1]{SerreGaloisCoh}.
 \end{proof}
+
+\noindent For a cyclic group the theorem takes its classical form. If $\Gal(L/K)=\langle\sigma\rangle$ has order $m$, a cocycle is determined by $a=a_\sigma$, and the cocycle
+identity forces $a_{\sigma^j}=a\,\sigma(a)\cdots\sigma^{j-1}(a)$ and $a_{\sigma^m}=a_1=1$, that is, $\Nm_{L/K}(a)=1$; conversely every element of norm $1$ defines a cocycle in this
+way. So (i) says: \emph{an element of norm $1$ is of the form $b/\sigma(b)$}. For $L=\C$, $K=\R$, $\sigma$ complex conjugation, the elements of norm $1$ are the complex
+numbers of absolute value $1$, and for instance $(3+4i)/5=(2+i)/(2-i)$, with $b=2+i$.
 
 \begin{remark}
 Part (ii) applies to $L=\bar k(C)$, $K=k(C)$ for a curve $C$ over a perfect field $k$ (the extension $\bar k(C)/k(C)$ is Galois with group $G_k$): this is the
@@ -265,14 +276,17 @@ $\Cor\circ\delta_L=\delta_K\circ\Nm_{L/K}$.
 \end{theorem}
 
 \begin{proof}
-(i) Exactness at the left and in the middle is clear. For $a\in\overline K^\times$ the polynomial $X^n-a$ has derivative $nX^{n-1}$, which is prime to $X^n-a$ because $n$
+(i) The kernel of $x\mapsto x^n$ on $\overline K^\times$ is by definition $\mu_n$, which gives exactness at the left and in the middle; the three modules are discrete because
+each element of $\overline K$ lies in a finite extension of $K$ and so has an open stabiliser. For surjectivity, let $a\in\overline K^\times$: the polynomial $X^n-a$ has derivative $nX^{n-1}$, which is prime to $X^n-a$ because $n$
 is invertible in $K$ and $a\ne0$; so $X^n-a$ is separable and has a root in the separable closure $\overline K$, and $x\mapsto x^n$ is surjective. The long exact sequence
 (\Cref{ch:cohomology}) begins
 \begin{multline*}
 1\to\mu_n(K)\to K^\times\xrightarrow{\ n\ }K^\times\xrightarrow{\ \delta\ }H^1(K,\mu_n)\to H^1(K,\overline K^\times)\\
 \xrightarrow{\ n\ }H^1(K,\overline K^\times)\to H^2(K,\mu_n)\to H^2(K,\overline K^\times)\xrightarrow{\ n\ }H^2(K,\overline K^\times).
 \end{multline*}
-By \Cref{thm:galcoh:hilbert90}(iii) the fifth term is zero, so $\delta$ induces an isomorphism $K^\times/(K^\times)^n\simeq H^1(K,\mu_n)$. By
+Here $H^0(K,\overline K^\times)=K^\times$ because the fixed field of $G_K$ in the separable closure is $K$ (infinite Galois theory, \Cref{ch:galois}), and the map
+$K^\times\to K^\times$ is $x\mapsto x^n$, with image $(K^\times)^n$. By \Cref{thm:galcoh:hilbert90}(iii) the fifth term is zero, so $\delta$ is surjective with kernel
+$(K^\times)^n$, and induces an isomorphism $K^\times/(K^\times)^n\simeq H^1(K,\mu_n)$. By
 \Cref{conv:galcoh:signs} the class $\delta(a)$ is represented by $\sigma\mapsto\sigma(\alpha)/\alpha$ for any lift $\alpha$ of $a$, that is, any $n$-th root of $a$ in
 $\overline K$. (ii) The same sequence, with $H^1(K,\overline K^\times)=0$, identifies $H^2(K,\mu_n)$ with the kernel of multiplication by $n$ on $H^2(K,\overline K^\times)$.
 (iii) If $\mu_n\subset K$ the action on $\mu_n$ is trivial, a cocycle is a continuous homomorphism, and coboundaries are zero; $\sigma\mapsto\sigma(\alpha)/\alpha$ is
@@ -285,6 +299,11 @@ is the cocycle that defines $\delta_L(a)$ with the same root $\alpha$. The cores
 The connecting map measures the failure of the choice of an $n$-th root to be Galois equivariant: a root $\alpha$ is defined only up to $\mu_n$, and
 $\sigma(\alpha)/\alpha$ records how $\sigma$ moves it, much as a phase is defined only up to a constant and its variation is what is observed. Changing $\alpha$ to
 $\zeta\alpha$ changes the cocycle by $\sigma\mapsto\sigma(\zeta)/\zeta$, a coboundary.
+
+The simplest case is $K=\Q$, $n=2$. Then $\mu_2=\{\pm1\}$ has trivial action, $H^1(\Q,\mu_2)=\Hom_{\mathrm{cont}}(G_\Q,\{\pm1\})$, and $\delta(a)$ is the character
+$\sigma\mapsto\sigma(\sqrt a)/\sqrt a$, trivial exactly on $G_{\Q(\sqrt a)}$. The theorem says that the quadratic characters of $G_\Q$ (together with the trivial character)
+correspond bijectively to the square classes $\Q^\times/(\Q^\times)^2$, that is, to the quadratic fields $\Q(\sqrt a)$ together with $\Q$ itself, and that the product of
+characters corresponds to the product of square classes: the character of $\Q(\sqrt{ab})$ is the product of those of $\Q(\sqrt a)$ and $\Q(\sqrt b)$.
 \end{remark}
 
 \begin{definition}[Kummer map, Kummer class, Kummer cocycle]\label{def:galcoh:kummer-class}
@@ -332,6 +351,14 @@ H^1(\F_q,\Z_\ell(1))\;=\;\Z_\ell(1)/(q-1)\Z_\ell(1)\;\simeq\;\F_q^\times\otimes\
 The first equality is $c\mapsto c(\Frob_q)$; the second isomorphism is the Kummer isomorphism, canonical; the third depends on the choice of a generator. The
 class of $u$ has valuation at least $k$ (for $k\le v$) if and only if $u\in(\F_q^\times)^{\ell^k}$, where, as in Lemma lem:tamfactor, a class $c\in\Z/\ell^v$ has
 $v_\ell(c)=\min(v_\ell(\tilde c),v)$ for any lift $\tilde c\in\Z$; in particular $v_\ell(0)=v$.
+
+For instance, $q=7$, $\ell=3$, $k=v=1$: the map is $u\mapsto u^2$, from $\F_7^\times$ onto $\mu_3(\F_7)=\{1,2,4\}$, with kernel the cubes $\{1,6\}$; so $3\mapsto2$ and $5\mapsto4$,
+and the classes of $3$ and $5$ are the two nonzero elements of $H^1(\F_7,\mu_3)\simeq\Z/3$.
+
+The arithmetic Frobenius matters here, though only up to sign. Evaluating at the geometric Frobenius $\Phi=\Frob_q^{-1}$ instead, the cocycle identity
+$0=c(\Phi\Frob_q)=c(\Phi)+\Phi\,c(\Frob_q)$ gives $c(\Phi)=-\Phi\,c(\Frob_q)$ (additive notation in $\Z_\ell(1)$); as $\Phi$ acts by $q^{-1}$ and $q^{-1}\equiv1$ modulo $(q-1)\Z_\ell$, the
+class of $c(\Phi)$ is minus that of $c(\Frob_q)$. In multiplicative notation the value at $\Phi$ is the inverse class $u^{-(q-1)/\ell^k}$. The valuation of the class, the only
+thing Lemma lem:tamfactor uses, is the same for both.
 \end{example}
 
 \begin{theorem}[Brauer groups]\label{thm:galcoh:brauer}
@@ -362,6 +389,10 @@ cocycle itself is the $\ell$-adic Kummer cocycle of the same definition. The pro
 $\Q_q^{\mathrm{ur}}$, which contains $\mu_{\ell^t}$ as $q\ne\ell$''; that is \Cref{prop:galcoh:kummer-class}(i), (iii) with $L=\Q_q^{\mathrm{ur}}$, and
 \Cref{rem:galcoh:tamagawa-exp-cohomological} gives the cohomological reading.
 \end{paperlink}
+
+So far the coefficients have been finite or discrete. The paper's coefficients are $\ell$-adic: $\Z_\ell(1)$ in Lemma lem:tamfactor, and the lattice $T^D$ with its rational and
+divisible companions in Lemma lem:dfg21. The next section passes from the finite levels $\mu_{\ell^k}$, $T/\ell^kT$ to these modules by limits, and introduces the Kummer
+dual, which is the module that local and global duality will pair with $T$.
 \section{\texorpdfstring{$\ell$}{l}-adic coefficients: \texorpdfstring{$T$}{T}, \texorpdfstring{$V$}{V}, \texorpdfstring{$W$}{W} and Kummer duals}\label{sec:galcoh:ladic}
 
 The paper works with three modules built from one lattice: $T^D$, $V^D$ and $W^D$ in Section 4.2 and Lemma lem:dfg21, and $W=\ad T\otimes\Q_\ell/\Z_\ell$ in
@@ -448,10 +479,17 @@ are exact.
 
 \begin{proof}
 (iv) The sequences $0\to T\xrightarrow{\ell^k}T\to T/\ell^kT\to0$ and $0\to W[\ell^k]\to W\xrightarrow{\ell^k}W\to0$ (exact because $W$ is divisible) admit continuous sections
-(\Cref{ch:cohomology}), so they give long exact sequences, and the stated short exact sequences are the usual extraction of a long exact sequence at the
-two maps given by multiplication by $\ell^k$.
+(\Cref{ch:cohomology}), so they give long exact sequences. The first contains the segment
+\[
+H^{n-1}(G,T)\xrightarrow{\ \ell^k\ }H^{n-1}(G,T)\to H^{n-1}(G,T/\ell^kT)\to H^n(G,T)\xrightarrow{\ \ell^k\ }H^n(G,T),
+\]
+because the map induced on cohomology by multiplication by $\ell^k$ on $T$ is multiplication by $\ell^k$. At the middle term, the kernel of the map to $H^n(G,T)$ is the image of
+the first $\ell^k$, which is $\ell^kH^{n-1}(G,T)$, and its image is the kernel of the second $\ell^k$, which is $H^n(G,T)[\ell^k]$; this is the first short exact sequence. The second
+comes in the same way from the segment $H^{n-1}(G,W)\xrightarrow{\ell^k}H^{n-1}(G,W)\to H^n(G,W[\ell^k])\to H^n(G,W)\xrightarrow{\ell^k}H^n(G,W)$.
 
-(i) From the first sequence of (iv) with $k=1$ and induction on $k$ (the filtration $\ell^jT/\ell^kT$ has graded pieces $\simeq T/\ell T$), all $H^n(G,T/\ell^kT)$, $n\le2$, are finite.
+(i) First, all $H^n(G,T/\ell^kT)$, $n\le2$, are finite, by induction on $k$. For $k=1$ this is the hypothesis for $n=1,2$, and $H^0(G,T/\ell T)\subseteq T/\ell T$ is finite. For
+$k\ge2$, the exact sequence $0\to T/\ell^{k-1}T\xrightarrow{\ \ell\ }T/\ell^kT\to T/\ell T\to0$ gives an exact segment
+$H^n(G,T/\ell^{k-1}T)\to H^n(G,T/\ell^kT)\to H^n(G,T/\ell T)$, so $\#H^n(G,T/\ell^kT)\le\#H^n(G,T/\ell^{k-1}T)\cdot\#H^n(G,T/\ell T)$.
 By \Cref{ch:cohomology} (the theorem of Tate on limits) $H^n(G,T)=\varprojlim_kH^n(G,T/\ell^kT)$ for $n\le2$, a compact pro-$\ell$ $\Z_\ell$-module, and by (iv) its
 quotient by $\ell$ embeds in the finite group $H^n(G,T/\ell T)$. A compact pro-$\ell$ $\Z_\ell$-module $X$ with $X/\ell X$ finite is finitely generated, by the topological form of
 Nakayama's lemma (\Cref{ch:modules}; \cite[Appendix B]{Rubin}).
@@ -529,8 +567,11 @@ $\mathcal O_K^\times\otimes\Z_\ell\simeq\F_q^\times\otimes\Z_\ell\simeq\Z/\ell^v
 
 \begin{proof}
 (i) By \Cref{ch:local}, $K^\times=\varpi^{\Z}\times\mu_{q-1}\times U^{(1)}$ with $U^{(1)}=1+\varpi\mathcal O_K$ a pro-$p$ group, on which raising to an $\ell^k$-th power is
-bijective. So $K^\times/(K^\times)^{\ell^k}\simeq\Z/\ell^k\times\mu_{q-1}/\mu_{q-1}^{\ell^k}$, the first factor given by $v_K$, and the second has order $\ell^{\min(k,v)}$; the limit
-is $\Z_\ell\times\Z/\ell^v$, and the second factor is $\mathcal O_K^\times\otimes\Z_\ell\simeq\F_q^\times\otimes\Z_\ell$. Apply \Cref{thm:galcoh:kummer-ladic}(i).
+bijective (it is a $\Z_p$-module, $x\mapsto x^a$ making sense for $a\in\Z_p$, and $\ell^k$ is a unit of $\Z_p$, with inverse $x\mapsto x^{\ell^{-k}}$). So
+$K^\times/(K^\times)^{\ell^k}\simeq\Z/\ell^k\times\mu_{q-1}/\mu_{q-1}^{\ell^k}$, the first factor given by $v_K$. The second has order $\gcd(\ell^k,q-1)=\ell^{\min(k,v)}$: in a cyclic
+group of order $q-1$ the $\ell^k$-th powers form the subgroup of index $\gcd(\ell^k,q-1)$. The projections from level $k+1$ to level $k$ are the reductions
+$\Z/\ell^{k+1}\to\Z/\ell^k$ on the first factor and, on the second, surjections between cyclic groups of orders $\ell^{\min(k+1,v)}$ and $\ell^{\min(k,v)}$, which are isomorphisms once
+$k\ge v$. So the limit is $\Z_\ell\times\Z/\ell^v$, and the second factor is $\mathcal O_K^\times\otimes\Z_\ell\simeq\F_q^\times\otimes\Z_\ell$. Apply \Cref{thm:galcoh:kummer-ladic}(i).
 (ii) is the computation at level $k$, with \Cref{thm:galcoh:kummer}(i). (iii) In $K^\times\otimes\Q_\ell/\Z_\ell$ the finite group $\mu_{q-1}$ and the uniquely $\ell$-divisible
 group $U^{(1)}$ contribute nothing, and $\varpi^{\Z}\otimes\Q_\ell/\Z_\ell=\Q_\ell/\Z_\ell$. (iv) By \Cref{ch:cohomology}, $H^1(K,\Q_\ell(1))=H^1(K,\Z_\ell(1))\otimes\Q_\ell$, and the
 torsion dies.
@@ -538,6 +579,10 @@ torsion dies.
 
 \noindent Numerical instances (with $v_3(6)=1$, $v_3(18)=2$, $v_5(10)=1$, $v_3(4)=0$): $H^1(\Q_7,\Z_3(1))\simeq\Z_3\times\Z/3$; $H^1(\Q_{19},\Z_3(1))\simeq\Z_3\times\Z/9$;
 $H^1(\Q_{11},\Z_5(1))\simeq\Z_5\times\Z/5$; $H^1(\Q_5,\Z_3(1))\simeq\Z_3$, every unit of $\Z_5$ being a cube.
+
+With the $\ell$-adic modules and the Kummer groups in hand, the next step is to say what is special about \emph{local} fields: their cohomology groups with finite
+coefficients are finite, they satisfy an Euler characteristic formula, and they are paired with the cohomology of the Kummer dual. The computations just made for $\mu_{\ell^k}$
+and $\Z_\ell(1)$ will serve as checks of these general theorems.
 \section[Local Galois cohomology]{Local Galois cohomology: finiteness, Euler characteristic, Tate local duality}\label{sec:galcoh:local}
 
 The three theorems of this section are the deep input of the chapter, and they are stated with references. Finiteness is behind the words ``a finite group''
@@ -621,13 +666,15 @@ projection. No sign matters for any order or length in this book, and we do not 
 
 \begin{proof}
 (i) is \Cref{thm:galcoh:tate-local-duality}(i) with $i=2$; for $M=\mu_{\ell^k}$, $M^D=\Z/\ell^k$ with trivial action, and for $M=\Z/\ell^k$, $M^D=\mu_{\ell^k}$. (ii)
-\Cref{thm:galcoh:local-euler} gives $\#H^1=\#H^0\cdot\#H^2$, and (i) gives $\#H^2(K,M)=\#H^0(K,M^D)$. The dimension formula is the same argument with the $\ell$-adic
-forms of the two theorems. (iii) is \Cref{thm:galcoh:tate-local-duality}(ii) with $i=2$; if $H^0(K,V^D)=0$, then $H^0(K,W^D)$ is finite by \Cref{prop:galcoh:tvw}(ii)
+\Cref{thm:galcoh:local-euler} gives $\#H^1=\#H^0\cdot\#H^2$, since $|\#M|_K=1$ when $p\nmid\#M$, and (i) gives $\#H^2(K,M)=\#H^0(K,M^D)$. The dimension formula is
+the same argument with the $\ell$-adic forms of the two theorems: for $\ell\ne p$ the Euler characteristic gives $\dim H^1(K,V)=\dim H^0(K,V)+\dim H^2(K,V)$, and the
+third pairing of \Cref{thm:galcoh:tate-local-duality}(ii) with $i=2$ gives $\dim H^2(K,V)=\dim H^0(K,V^D)$. (iii) is \Cref{thm:galcoh:tate-local-duality}(ii) with $i=2$; if $H^0(K,V^D)=0$, then $H^0(K,W^D)$ is finite by \Cref{prop:galcoh:tvw}(ii)
 applied to $T^D$.
 \end{proof}
 
-\noindent For instance, if $p\ne\ell$: $\dim H^1(\Q_p,\Q_\ell)=1+0=1$ and $\dim H^1(\Q_p,\Q_\ell(1))=0+1=1$ (compare \Cref{prop:galcoh:kummer-local}(iv)); and for an
-elliptic curve $E/\Q_p$, $E[\ell]^D\simeq E[\ell]$ (\Cref{prop:galcoh:kummer-duals}(iv)) gives $\#H^1(\Q_p,E[\ell])=\#E(\Q_p)[\ell]^2$.
+\noindent For instance, if $p\ne\ell$: $\dim H^1(\Q_p,\Q_\ell)=1+0=1$, because $H^0(\Q_p,\Q_\ell)=\Q_\ell$ (trivial action) while $H^0(\Q_p,\Q_\ell(1))=0$ ($\Frob$ acts on $\Q_\ell(1)$
+by $p\ne1$); and, exchanging the roles, $\dim H^1(\Q_p,\Q_\ell(1))=0+1=1$ (compare \Cref{prop:galcoh:kummer-local}(iv)). For an elliptic curve $E/\Q_p$,
+$H^0(\Q_p,E[\ell])=E(\Q_p)[\ell]$ and $E[\ell]^D\simeq E[\ell]$ (\Cref{prop:galcoh:kummer-duals}(iv)), so (ii) gives $\#H^1(\Q_p,E[\ell])=\#E(\Q_p)[\ell]^2$.
 
 \begin{example}[orders of local cohomology groups]\label{ex:galcoh:local-orders}
 \begin{enumerate}[label=(\alph*)]
@@ -637,7 +684,8 @@ elliptic curve $E/\Q_p$, $E[\ell]^D\simeq E[\ell]$ (\Cref{prop:galcoh:kummer-dua
 \]
 For $\mu_{\ell^k}$ this needs no duality: $H^0$ is $\mu_{\ell^k}(\Q_p)$, $H^1$ is \Cref{prop:galcoh:kummer-local}(ii), and $H^2\simeq\operatorname{Br}(\Q_p)[\ell^k]=\Z/\ell^k$ by
 \Cref{thm:galcoh:kummer}(ii) and \Cref{thm:galcoh:brauer}(ii); the Euler characteristic $\ell^m\ell^k/\ell^{k+m}=1$ is visible. For $\Z/\ell^k$ the values come from
-\Cref{cor:galcoh:local-duality-consequences}(i), (ii). For $(p,\ell,k)=(7,3,1)$: $3,9,3$ and $3,9,3$; for $(19,3,2)$: $9,81,9$ and $9,81,9$; for $(5,3,2)$, where $m=0$:
+\Cref{cor:galcoh:local-duality-consequences}(i), (ii): the action is trivial, so $H^0=\Z/\ell^k$; $H^2\simeq H^0(\Q_p,\mu_{\ell^k})^*$ has order $\ell^m$; and
+$\#H^1=\#H^0(\Q_p,\Z/\ell^k)\cdot\#H^0(\Q_p,\mu_{\ell^k})=\ell^{k+m}$. For $(p,\ell,k)=(7,3,1)$: $3,9,3$ and $3,9,3$; for $(19,3,2)$: $9,81,9$ and $9,81,9$; for $(5,3,2)$, where $m=0$:
 $9,9,1$ and $1,9,9$.
 \item $p$ odd, $M=\mu_p$ over $\Q_p$: $H^0=\mu_p(\Q_p)=1$ (the roots of unity in $\Q_p$ have order dividing $p-1$); $H^1=\Q_p^\times/(\Q_p^\times)^p$ has order $p^2$,
 since $\Q_p^\times=p^{\Z}\times\mu_{p-1}\times(1+p\Z_p)$ and $1+p\Z_p\simeq\Z_p$; $H^2=\operatorname{Br}(\Q_p)[p]\simeq\Z/p$. The Euler characteristic is $1\cdot p/p^2=p^{-1}=|p|_p$, as
@@ -651,6 +699,10 @@ $\#H^1(\Q_{11},E[5])=\#E(\Q_{11})[5]^2=5^4$ by \Cref{cor:galcoh:local-duality-co
 only.
 \end{enumerate}
 \end{example}
+
+Local duality pairs all of $H^1(\Q_p,M)$ with all of $H^1(\Q_p,M^D)$. Selmer groups, however, are cut out by \emph{subgroups} of the local $H^1$, and what global duality
+needs is that the subgroups chosen for $M$ and for $M^D$ are each other's annihilators. The next section constructs the subgroups used at every prime $p\ne\ell$, the
+unramified classes, and proves exactly this.
 \section{Unramified cohomology}\label{sec:galcoh:unramified}
 
 Unramified classes are the local conditions at every prime $p\ne\ell$ in the Selmer groups of the paper. This section computes them
@@ -661,6 +713,12 @@ is the starting point of the Tamagawa factors of \Cref{ch:blochkato}.
 
 In this section $p$ is a prime, $G=G_{\Q_p}$, $I=I_p$, $\Frob$ an arithmetic Frobenius, and $M$ a $G$-module which is either discrete and torsion (type (D)), or of
 type (C), or of type (V). The parts that need $p\ne\ell$ say so.
+
+The definition below is modelled on characters. For $M=\Z/n$ with trivial action, the group $H^1(\Q_p,\Z/n)$ is the group of continuous homomorphisms
+$G\to\Z/n$, and such a character is \emph{unramified} if it kills $I$, that is, if the cyclic extension it cuts out is unramified; such characters are the same as homomorphisms $G/I\simeq\hat\Z\to\Z/n$, determined by their value at
+$\Frob$, so there are exactly $n$ of them. For a general $M$ one keeps the two descriptions, ``killed by restriction to $I$'' and ``coming from the quotient $G/I$'', and
+checks that they agree. A global class that is unramified at almost every prime is the cohomological form of an extension unramified almost everywhere, and Selmer
+groups impose this condition at all but finitely many primes.
 
 \begin{definition}[unramified classes]\label{def:galcoh:unramified}
 Let $K$ be a finite extension of $\Q_p$, with inertia group $I_K\trianglelefteq G_K$, and $M$ a $G_K$-module of type (D), (C) or (V). The group of \emph{unramified classes} is
@@ -692,7 +750,9 @@ conditions of (iii) hold, $\Hur(\Q_p,T)$ is finite of order
 (i) $G/I\simeq\hat\Z$ is procyclic with topological generator the image of $\Frob$, and $M^I$ is a $G/I$-module of the same type as $M$ ($M^I$ is closed in $M$ for types
 (C) and (V), being an intersection of kernels of continuous maps). By the procyclic computations of \Cref{ch:cohomology} (the discrete torsion case, and the compact
 case, which applies because $\hat\Z$ surjects onto $\Z_\ell$), $c\mapsto c(\Frob)$ is an isomorphism $H^1(G/I,M^I)\simeq M^I/(\Frob-1)M^I$. Compose with the inverse of
-inflation. (ii) For finite $M^I$ the endomorphism $\Frob-1$ has kernel and cokernel of the same order, and its kernel is $(M^I)^{\Frob=1}=M^G$. (iii) The same with
+inflation. (ii) For an endomorphism $f$ of a finite group $A$, $\#\ker f\cdot\#\operatorname{im}f=\#A=\#\operatorname{im}f\cdot\#\coker f$, so $\ker f$ and $\coker f$ have
+the same order. Apply this to $f=\Frob-1$ on $A=M^I$: its kernel is $(M^I)^{\Frob=1}=M^G$, because $G$ is topologically generated by $I$ and $\Frob$ and the
+stabiliser of an element is closed, and its cokernel is $\Hur(\Q_p,M)$ by (i). (iii) The same with
 dimensions; the kernel of $\Frob-1$ on $V^I$ is $V^G$. The equivalences of the last four conditions are linear algebra, and on $V^I$, of dimension $d$,
 \[
 \det(1-\Phi)=\det\bigl(\Frob^{-1}(\Frob-1)\bigr)=(-1)^d\det(\Phi)\det(1-\Frob),
@@ -700,7 +760,8 @@ dimensions; the kernel of $\Frob-1$ on $V^I$ is $V^G$. The equivalences of the l
 so one determinant vanishes if and only if the other does. (iv) $T^I=T\cap V^I$ is clear, and it is saturated in $T$ (if $\ell x\in T^I$ with $x\in T$, then $x$ is $I$-fixed, $T$
 being torsion-free); every $x\in V^I$ has $\ell^ax\in T\cap V^I$, so $T^I$ spans $V^I$. Part (i) for $M=T$ gives $\Hur(\Q_p,T)=T^I/(\Frob-1)T^I$. If $\det(1-\Frob\mid V^I)\ne0$,
 $\Frob-1$ is an injective endomorphism of the free $\Z_\ell$-module $T^I$, and its cokernel has order $\ell^{v_\ell(\det(\Frob-1))}$ by the elementary divisor theorem
-(\Cref{ch:modules}). Finally $\det(\Phi\mid T^I)$ is a unit of $\Z_\ell$ ($\Phi$ is an automorphism of the lattice $T^I$), so the two determinants have the same valuation by
+(\Cref{ch:modules}): in suitable bases of $T^I\simeq\Z_\ell^d$ the matrix of $\Frob-1$ is $\operatorname{diag}(\ell^{a_1},\dots,\ell^{a_d})$, the cokernel is
+$\bigoplus_i\Z/\ell^{a_i}$, of order $\ell^{\sum a_i}$, and the change of bases multiplies the determinant by a unit, so $\sum a_i=v_\ell(\det(\Frob-1))$. Finally $\det(\Phi\mid T^I)$ is a unit of $\Z_\ell$ ($\Phi$ is an automorphism of the lattice $T^I$), so the two determinants have the same valuation by
 the displayed identity.
 \end{proof}
 
@@ -777,6 +838,11 @@ symmetrically.
 finite-dimensional spaces finishes the proof.
 \end{proof}
 
+\noindent A numerical instance: $p=7$, $\ell=3$, $M=\Z/3$, $M^D=\mu_3$, with $\mu_3\subset\Q_7$. By \Cref{ex:galcoh:local-orders}(a) with $k=m=1$, $H^1(\Q_7,\Z/3)$ has order $9$.
+The unramified subgroup has order $\#H^0(\Q_7,\Z/3)=3$: it consists of the three characters of $G_{\Q_7}$ that factor through $\Gal(\Q_{7^3}/\Q_7)\simeq\Z/3$, where $\Q_{7^3}$ is
+the unramified extension of degree $3$. On the Kummer side $\Hur(\Q_7,\mu_3)$ has order $\#H^0(\Q_7,\mu_3)=3$ and is the image of the units (\Cref{prop:galcoh:unit-classes}(i)
+below). The theorem says that these two groups of order $3$ annihilate each other and that each is the full annihilator of the other: $3\cdot3=9$.
+
 \begin{warning}[the case $p=\ell$]\label{warn:galcoh:p-equals-l}
 Over $\Q_p$, $p$ odd: $\#\Hur(\Q_p,\Z/p)=\#H^0(\Q_p,\Z/p)=p$ and $\#\Hur(\Q_p,\mu_p)=\#H^0(\Q_p,\mu_p)=1$ (\Cref{prop:galcoh:unramified-computed}(ii), which holds for every
 $p$), while $\#H^1(\Q_p,\Z/p)=p\cdot\#H^2(\Q_p,\Z/p)\cdot p=p^2$ by \Cref{thm:galcoh:local-euler} with $\#H^2(\Q_p,\Z/p)=\#\mu_p(\Q_p)=1$. The annihilator of $\Hur(\Q_p,\Z/p)$ has
@@ -807,14 +873,16 @@ $H^1(K,W)\times H^1(K,T^D)\to\Q_\ell/\Z_\ell$; hence $\bigl(H^1(K,W)/L_W\bigr)^*
 \begin{proof}
 (i) $\ker\iota=H^1(K,T)_{\tors}$ by \Cref{prop:galcoh:tvw}(ii), and $\pi$ is $\Z_\ell$-linear on a $\Q_\ell$-vector space, so its image is divisible.
 (ii) Let $y\in L_{T^D}$ and $x\in L_V$. By \Cref{thm:galcoh:tate-local-duality}(iii), $\langle\pi x,y\rangle=\langle x,\iota y\rangle\bmod\Z_\ell=0$, since $\iota y\in L_{V^D}$ is orthogonal
-to $L_V$. So $L_{T^D}\subseteq L_W^\perp$. Conversely let $y\in H^1(K,T^D)$ be orthogonal to $L_W$. For $x\in L_V$ and $k\ge0$, $\ell^{-k}x\in L_V$, so
-$\ell^{-k}\langle x,\iota y\rangle\in\Z_\ell$ for every $k$, whence $\langle x,\iota y\rangle=0$. Thus $\iota y\in L_V^\perp=L_{V^D}$ and $y\in L_{T^D}$. This proves
+to $L_V$. So $L_{T^D}\subseteq L_W^\perp$. Conversely let $y\in H^1(K,T^D)$ be orthogonal to $L_W$. For $x\in L_V$ and $k\ge0$, $\ell^{-k}x\in L_V$ ($L_V$ is a
+$\Q_\ell$-subspace), so $\pi(\ell^{-k}x)\in L_W$ and, by the compatibility again, $0=\langle\pi(\ell^{-k}x),y\rangle=\ell^{-k}\langle x,\iota y\rangle\bmod\Z_\ell$. Thus the element
+$\langle x,\iota y\rangle$ of $\Q_\ell$ lies in $\ell^k\Z_\ell$ for every $k$, whence $\langle x,\iota y\rangle=0$. Thus $\iota y\in L_V^\perp=L_{V^D}$ and $y\in L_{T^D}$. This proves
 $L_W^\perp=L_{T^D}$. The pairing identifies the discrete group $H^1(K,W)$ with the Pontryagin dual of $H^1(K,T^D)$, and for a subgroup $A$ of a discrete group,
 $(A^\perp)^\perp=A$ (Pontryagin duality, \Cref{ch:modules}); so $L_{T^D}^\perp=L_W$ as well, and $(H^1(K,W)/L_W)^*=L_W^\perp=L_{T^D}$. The symmetric statement is the same
 argument with the second pairing of \Cref{thm:galcoh:tate-local-duality}(ii).
 (iii) As $I$ acts trivially, $H^1(I,T)=\Hom_{\mathrm{cont}}(I,T)$ and $H^1(I,V)=\Hom_{\mathrm{cont}}(I,V)$, and $\Hom(I,T)\to\Hom(I,V)$ is injective, $T$ being torsion-free. So
-for $x\in H^1(K,T)$, $\Res_I(\iota x)=0$ if and only if $\Res_Ix=0$: $L_T=\Hur(K,T)$. Inflation commutes with $\pi$, and $\pi\colon H^1(G/I,V)=V/(\Frob-1)V\to
-H^1(G/I,W)=W/(\Frob-1)W$ is surjective because $V\to W$ is; so $\pi(\Hur(K,V))=\Hur(K,W)$.
+for $x\in H^1(K,T)$, $\Res_I(\iota x)=0$ if and only if $\Res_Ix=0$: $L_T=\Hur(K,T)$. Inflation commutes with $\pi$, and, as $I$ acts trivially on $V$ and $W$, so that
+$V^I=V$ and $W^I=W$, \Cref{prop:galcoh:unramified-computed}(i) identifies $\pi$ on unramified classes with the map $H^1(G/I,V)=V/(\Frob-1)V\to
+H^1(G/I,W)=W/(\Frob-1)W$ induced by $V\to W$; it is surjective because $V\to W$ is. So $\pi(\Hur(K,V))=\Hur(K,W)$.
 \end{proof}
 
 \begin{warning}
@@ -857,12 +925,18 @@ Let $p\ne\ell$.
 \item $T=\Z_\ell(1)$: $\Hur(\Q_p,\Z_\ell(1))=\Z_\ell(1)/(p-1)\Z_\ell(1)$, cyclic of order $\ell^{v_\ell(p-1)}$; under \Cref{thm:galcoh:kummer-ladic} it is the image of
 $\Z_p^\times$ (\Cref{prop:galcoh:unit-classes}).
 \item $T=\Z_\ell$ with trivial action: every continuous homomorphism $\psi\colon G_{\Q_p}\to\Z_\ell$ is unramified. Indeed $\psi|_I$ factors through the tame character
-(\Cref{ch:local}), and $\psi(\Frob\,t\,\Frob^{-1})=\psi(t^p)$ gives $\psi(t)=p\psi(t)$, so $\psi(t)=0$. Hence $H^1(\Q_p,\Z_\ell)=\Hur(\Q_p,\Z_\ell)=\Z_\ell$, the dual
+(\Cref{ch:local}): $\psi$ kills the wild inertia group, a pro-$p$ group mapping to the pro-$\ell$ group $\Z_\ell$, and is then determined by its value on a topological
+generator $t$ of the $\ell$-part of tame inertia. The tame relation $\Frob\,t\,\Frob^{-1}=t^p$ holds in the tame quotient, and $\psi$, a homomorphism to an abelian
+group, takes the same value on conjugate elements; so $\psi(t)=\psi(t^p)=p\psi(t)$, that is, $(p-1)\psi(t)=0$, and $\psi(t)=0$ because $\Z_\ell$ is torsion-free. Hence $H^1(\Q_p,\Z_\ell)=\Hur(\Q_p,\Z_\ell)=\Z_\ell$, the dual
 $\Hur(\Q_p,\Q_\ell/\Z_\ell(1))=\mu_{\ell^\infty}/\mu_{\ell^\infty}^{p-1}=0$ (a divisible group), and \Cref{prop:galcoh:propagation}(ii), (iii) are consistent.
 \item The Tate curve: if $E$ has multiplicative reduction at $p$, $T=T_\ell E$ has a basis $e_1,e_2$ with $I$ acting through $e_2\mapsto e_2+n'e_1$, $n'\ne0$, and
 $\Frob e_1=\varepsilon pe_1$, $\varepsilon=\pm1$ (\Cref{ch:galrep}). So $V^I=\Q_\ell e_1$ with $\Frob$-eigenvalue $\varepsilon p\ne1$; $\Hur(\Q_p,V_\ell E)=0$ and
 $H^1(\Q_p,T_\ell E)_{\tors}\simeq H^0(\Q_p,E[\ell^\infty])=E(\Q_p)[\ell^\infty]$.
-\item $V=\ad V_\ell E$ at a multiplicative prime: $V^I=\Q_\ell e$, $e=e_1\otimes e_2^\vee$, with $\Frob e=pe$ (\Cref{ch:cohomology}, the model computation). For
+\item $V=\ad V_\ell E$ at a multiplicative prime: $V^I=\Q_\ell e$, $e=e_1\otimes e_2^\vee$, with $\Frob e=pe$ (\Cref{ch:cohomology}, the model computation). In matrix terms,
+$\ad V$ is the space of trace-zero endomorphisms of $V_\ell E$ with $g$ acting by $X\mapsto\rho(g)X\rho(g)^{-1}$, and $e$ is the matrix unit $E_{12}$ ($e_2\mapsto e_1$,
+$e_1\mapsto0$). A generator of the image of inertia is $\sm1{n'}01$ with $n'\ne0$; the matrices commuting with it are the combinations of $1$ and $E_{12}$, and the
+trace-zero ones are the multiples of $E_{12}$. For an upper triangular $B=\sm{b_{11}}{b_{12}}0{b_{22}}$ one has $BE_{12}B^{-1}=(b_{11}/b_{22})E_{12}$, and with
+$\rho(\Frob)=\sm{\varepsilon p}{*}0\varepsilon$ this gives $\Frob e=pe$, whatever the sign $\varepsilon$. For
 $V^D=V(1)$ the eigenvalue of $\Frob$ on $(V^D)^I$ is $p^2$ and that of $\Phi$ is $p^{-2}$. So $\det(1-\Phi\mid(V^D)^I)=1-p^{-2}$, the paper's $L_p(A_f,1)^{-1}$ at a
 multiplicative prime, while $\det(1-\Frob\mid(V^D)^I)=1-p^2$: different numbers, with the same $\ell$-adic valuation $v_\ell(p^2-1)$ and the same nonvanishing.
 By \Cref{prop:galcoh:unramified-computed}(iv), $\#\Hur(\Q_p,T^D)=\ell^{v_\ell(p^2-1)}$.
@@ -873,6 +947,9 @@ $\ell^{e_\ell(E,q)}$ in the notation of Definition def:terms.
 $\Hur(\Q_p,V_\ell E)=0$.
 \end{enumerate}
 \end{example}
+
+The examples (c) and (d) concern a prime of multiplicative reduction, where the matrix of $\rho(\Frob)$ has a corner entry $c'$ that the order of $\Hur$ does not see but
+the Tamagawa factor of Lemma lem:tamfactor does. To compute that corner one needs the Kummer class of the Tate parameter, which is the subject of the next section.
 \section{The Kummer class of the Tate parameter}\label{sec:galcoh:tate}
 
 This section proves the last sentences of the paper's proof of Lemma lem:tamfactor: the splitting of $H^1(\Q_q,\Z_\ell(1))$ given by the uniformiser $q$, the
@@ -1109,8 +1186,11 @@ Let $M$ be unramified outside $S$.
 $0\to H^1(G_{\Q,S},M)\to H^1(\Q,M)\to H^1(H_S,M)=\Hom_{\mathrm{cont}}(H_S,M)$. So $c$ is inflated from $G_{\Q,S}$ if and only if the homomorphism $c|_{H_S}$ is zero. The set of
 inertia groups $I_{\mathfrak p}$, $\mathfrak p$ above $p\notin S$, is stable under conjugation ($\sigma I_{\mathfrak p}\sigma^{-1}=I_{\sigma\mathfrak p}$), so the closed subgroup it generates is
 normal and equals $H_S$; and the kernel of a continuous homomorphism is a closed subgroup. Hence $c|_{H_S}=0$ if and only if $c|_{I_{\mathfrak p}}=0$ for every such $\mathfrak p$.
-For $i\in I_{\mathfrak p}$, which acts trivially on $M$, and $\sigma\in G_\Q$, the cocycle identity gives $c(\sigma i\sigma^{-1})=c(\sigma)+\sigma c(i)+\sigma i\,c(\sigma^{-1})=\sigma c(i)$,
-because $\sigma i\,c(\sigma^{-1})=\sigma c(\sigma^{-1})=-c(\sigma)$. So $c$ vanishes on $I_{\sigma\mathfrak p}$ if and only if it vanishes on $I_{\mathfrak p}$, and it suffices to take the
+For $i\in I_{\mathfrak p}$, which acts trivially on $M$, and $\sigma\in G_\Q$, two applications of the cocycle identity $c(gh)=c(g)+g\,c(h)$ give
+\[
+c(\sigma i\sigma^{-1})=c(\sigma)+\sigma\,c(i\sigma^{-1})=c(\sigma)+\sigma c(i)+\sigma i\,c(\sigma^{-1})=\sigma c(i),
+\]
+because $i$ acts trivially, so $\sigma i\,c(\sigma^{-1})=\sigma c(\sigma^{-1})$, and $0=c(1)=c(\sigma\sigma^{-1})=c(\sigma)+\sigma c(\sigma^{-1})$. So $c$ vanishes on $I_{\sigma\mathfrak p}$ if and only if it vanishes on $I_{\mathfrak p}$, and it suffices to take the
 prime $\mathfrak p$ of the fixed embedding, where the condition is $\Res_pc\in\Hur(\Q_p,M)$.
 (ii) Let $L$ be the finite Galois extension cut out by the action on $M$. The restriction of $c$ to $G_L$ is a continuous homomorphism to the finite group $M$; its kernel is
 an open subgroup of $G_L$, with fixed field $L'$ finite over $\Q$; let $L''$ be the Galois closure of $L'$. If $p$ is unramified in $L''$, every $I_{\mathfrak p}$ above $p$
@@ -1144,8 +1224,10 @@ local condition at $\infty$ is $0=H^1(\R,M)$, and $H^1_f(\R,T^D)\subseteq H^1(\R
 \end{proposition}
 
 \begin{proof}
-A finite group of order $2$ kills its cohomology in positive degrees (\Cref{ch:cohomology}; for continuous cochains with coefficients of type (C) as well). If $2$ is
-invertible on $M$, multiplication by $2$ is an isomorphism of $H^n(\R,M)$ that is also zero, so $H^n(\R,M)=0$. If $cm=m$ then $m=(1+c)(m/2)$, so $\hat H^0=0$; and
+A finite group of order $2$ kills its cohomology in positive degrees (\Cref{ch:cohomology}; for continuous cochains with coefficients of type (C) as well): the composite
+of restriction to the trivial subgroup and corestriction back is multiplication by the index $2$, and it factors through $H^n(\{1\},M)=0$ for $n\ge1$. If $2$ is
+invertible on $M$ (which is the case for $\ell$ odd and $M$ discrete $\ell$-primary, of type (C) or of type (V)), multiplication by $2$ on $M$ is an automorphism, so it
+induces an automorphism of $H^n(\R,M)$; that automorphism is also zero, so $H^n(\R,M)=0$. If $cm=m$ then $m=(1+c)(m/2)$, so $\hat H^0=0$; and
 $m=\frac{m+cm}2+\frac{m-cm}2$ gives the decomposition.
 \end{proof}
 
@@ -1166,12 +1248,19 @@ H^1(G_{\Q,S},\mu_n)=\{x\in\Q^\times:n\mid v_p(x)\ \forall p\notin S\}/(\Q^\times
 \]
 (Unique factorisation in $\Z$: an $x$ with $n\mid v_p(x)$ for $p\notin S$ is a unit of $\Z_S=\Z[1/p:p\in S]$ times an $n$-th power, and a unit of $\Z_S$ that is an $n$-th power in
 $\Q$ is an $n$-th power of a unit.) The group is finite, of order $n^{\#S-1}$ times $2$ or $1$ according as $n$ is even or odd: the model case of
-\Cref{thm:galcoh:gqs-finite}.
+\Cref{thm:galcoh:gqs-finite}. Indeed $\Z_S^\times\simeq\{\pm1\}\times\Z^{\#S-1}$, the free part generated by the primes of $S$, so
+$\Z_S^\times/(\Z_S^\times)^n\simeq\{\pm1\}/\{\pm1\}^n\times(\Z/n)^{\#S-1}$, and $\{\pm1\}^n$ is $\{1\}$ for $n$ even and $\{\pm1\}$ for $n$ odd. For example, for $n=3$ and
+$S=\{\infty,3\}$, $H^1(G_{\Q,S},\mu_3)$ has order $3$, represented by $1$, $3$, $9$.
 \end{example}
 
 \begin{example}\label{ex:galcoh:real-two}
-$H^1(\R,\Z_2(1))=\Z/2$: complex conjugation acts on $\Z_2(1)$ by $-1$, and for the group of order $2$, $H^1=\ker(1+c)/(c-1)M=M/2M$.
+$H^1(\R,\Z_2(1))=\Z/2$: complex conjugation acts on $\Z_2(1)$ by $-1$, and for the group of order $2$, $H^1=\ker(1+c)/(c-1)M=M/2M$. In detail, with $c=-1$ on
+$M=\Z_2(1)$, the map $1+c$ is zero, so its kernel is all of $M$, and $(c-1)M=-2M=2M$.
 \end{example}
+
+With the local conditions at every place understood (unramified at $p\ne\ell$, nothing at $\infty$ for $\ell$ odd) and the finiteness of $H^1(G_{\Q,S},M)$ available, one
+can define Selmer groups and prove that they are finite. The next section does this first for the classical Selmer group of an elliptic curve, the model for all the
+others.
 
 \section{Elliptic curves: the Kummer map, Selmer groups and Sha}\label{sec:galcoh:selmer-ec}
 
@@ -1249,10 +1338,19 @@ The sequence $0\to E(\Q)/nE(\Q)\xrightarrow{\ \delta\ }\Sel_n(E/\Q)\to\Sha(E/\Q)
 \end{proposition}
 
 \begin{proof}
-Compare the sequence of \Cref{prop:galcoh:ec-kummer} for $\Q$ with those for the $\Q_v$, through the localisation maps. A class $c\in H^1(\Q,E[n])$ lies in $\Sel_n$
-if and only if its image in each $H^1(\Q_v,E)[n]$ is zero, that is, if and only if its image $\bar c\in H^1(\Q,E)[n]$ lies in $\Sha$. So $\Sel_n$ is the preimage of
-$\Sha[n]$ under the surjection $H^1(\Q,E[n])\to H^1(\Q,E)[n]$, whose kernel $\delta(E(\Q)/n)$ lies in $\Sel_n$ (the localisation of a global Kummer class is a local
-Kummer class).
+Compare the sequence of \Cref{prop:galcoh:ec-kummer} for $\Q$ with those for the $\Q_v$, through the localisation maps; the connecting maps commute with
+localisation, so the diagram
+\[
+\begin{array}{ccc}
+H^1(\Q,E[n])&\to&H^1(\Q,E)[n]\\
+\downarrow\scriptstyle\Res_v&&\downarrow\scriptstyle\Res_v\\
+H^1(\Q_v,E[n])&\to&H^1(\Q_v,E)[n]
+\end{array}
+\]
+commutes, and the kernel of the lower map is $\delta_v(E(\Q_v)/nE(\Q_v))$ by \Cref{prop:galcoh:ec-kummer} over $\Q_v$. So a class $c\in H^1(\Q,E[n])$ satisfies the local
+condition at $v$ if and only if the image of $\Res_vc$ in $H^1(\Q_v,E)[n]$ is zero, that is, if and only if its image $\bar c\in H^1(\Q,E)[n]$ localises to zero at $v$. Hence
+$c\in\Sel_n$ if and only if $\bar c\in\Sha$. So $\Sel_n$ is the preimage of $\Sha[n]$ under the surjection $H^1(\Q,E[n])\to H^1(\Q,E)[n]$; it therefore maps onto $\Sha[n]$, and
+the kernel of this map is the kernel $\delta(E(\Q)/n)$ of the surjection, which lies in $\Sel_n$ (the localisation of a global Kummer class is a local Kummer class).
 \end{proof}
 
 \begin{theorem}[finiteness of the Selmer group; weak Mordell-Weil]\label{thm:galcoh:selmer-finite}
@@ -1288,6 +1386,10 @@ $E(\Q_{11})/5\simeq\Q_{11}^\times/(\Q_{11}^\times)^5$; the Kummer map of $E$ res
 condition is $H^1(\Q_{11},\mu_5)=\Hom(G_{\Q_{11}},\mu_5)\subset\Hom(G_{\Q_{11}},E[5])$ (the action on $E[5]$ is trivial), which contains the ramified class $\delta(11)$. Its
 intersection with the unramified subgroup has order $5$, in agreement with \Cref{prop:galcoh:ec-local-image}(iv) and $c_{11}=5$.
 \end{example}
+
+The definition of $\Sel_n(E/\Q)$ has a shape that recurs: a global cohomology group, a choice of subgroup of the local $H^1$ at every place, equal to the unramified
+subgroup at almost every place, and the classes whose localisations all lie in the chosen subgroups. The paper's Selmer groups have the same shape with other
+modules ($W$ built from $\ad T$, and $T^D$) and other local conditions. The next section isolates this shape and its dual.
 \section{Selmer structures and dual Selmer structures}\label{sec:galcoh:structures}
 
 The paper's Selmer groups $H^1_f(\Q,W)$ and $H^1_\Sigma(\Q,W)$ are defined by local conditions: the Bloch-Kato condition at $\ell$, the unramified condition at the
@@ -1324,6 +1426,11 @@ and of its relaxation at $\Sigma$, the latter described in Section 4.2 of the pa
 $\ell$ and the unramified condition elsewhere''.
 \end{example}
 
+Global duality does not compare a Selmer group with the Selmer group of the same module, but with a Selmer group of the Kummer dual, whose local conditions are
+forced by local duality: the condition at $v$ on $M^D$ must be the annihilator of the condition at $v$ on $M$. This is the content of the next definition. For example,
+the dual of the unramified structure on $\Z/\ell$ is, at every $p\ne\ell$, the unramified structure on $\mu_\ell$ (\Cref{thm:galcoh:ur-orthogonal}); and the dual of the
+structure ``everything at $p$'' is ``nothing at $p$''.
+
 \begin{definition}[dual Selmer structures]\label{def:galcoh:dual-structure}
 (a) Let $M$ be finite of $\ell$-power order and $\mathcal L$ a Selmer structure on $M$. The \emph{dual structure} $\mathcal L^*$ on $M^D$ is $\mathcal L^*_v=\mathcal L_v^\perp$, the
 annihilator under the local pairing of \Cref{thm:galcoh:tate-local-duality}(i) (at $v=\infty$ both sides are $0$).
@@ -1346,6 +1453,8 @@ $(L_{V^D,v})_v$.
 \Cref{prop:galcoh:propagation}(iii) $\Hur(\Q_p,W)$ and $\Hur(\Q_p,T^D)$ are propagated from $\Hur(\Q_p,V)$ and $\Hur(\Q_p,V^D)$, which are exact annihilators by
 \Cref{thm:galcoh:ur-orthogonal}(ii); apply \Cref{prop:galcoh:propagation}(ii).
 (ii) For a perfect pairing between a finite (or discrete) group and its dual, $(A^\perp)^\perp=A$ and $A\subseteq A'$ implies $A'^\perp\subseteq A^\perp$; and $H^1(\Q_p,M)^\perp=0$.
+The last fact gives the duality of relaxed and strict structures: at $p\in\Sigma$, $(\mathcal L^\Sigma_p)^\perp=H^1(\Q_p,M)^\perp=0=(\mathcal L^*)_{\Sigma,p}$, and at $v\notin\Sigma$ both
+structures are $\mathcal L_v^\perp=\mathcal L^*_v$.
 (iii) is \Cref{prop:galcoh:propagation}(ii) at each place.
 \end{proof}
 
@@ -1379,6 +1488,10 @@ $H^1_f(\Q_p,T^D)=\iota^{-1}H^1_f(\Q_p,V^D)$, the dual structure on $T^D$ in the 
 the hypothesis of \Cref{prop:galcoh:selmer-l-adic}(ii) for $T^D$; that proposition then says (as $H^0(\Q,V^D)=0$) that the Selmer group $H^1_f(\Q,T^D)$ is $H^0(\Q,W^D)$, the group whose dual is
 the last term of the lemma.
 \end{paperlink}
+
+What remains is to relate the Selmer group of a structure to that of its dual structure. Locally this is Tate duality; globally it needs a reciprocity law, which says
+that a global class of $M$ and a global class of $M^D$ are orthogonal under the \emph{sum} of the local pairings, and the deeper statement that, at the places of $S$, the
+global classes are as large as this orthogonality allows. These are the subject of the next section.
 \section[Global duality]{Global duality: Poitou-Tate and the formula of Greenberg and Wiles}\label{sec:galcoh:global-duality}
 
 Global duality relates a Selmer group to the Selmer group of the dual structure on the Kummer dual. In the paper it enters only through Lemma lem:dfg21, the
@@ -1433,6 +1546,12 @@ the product over all places including $\infty$; all but finitely many factors ar
 \cite[Section 2]{DDT}. The proof combines \Cref{thm:galcoh:poitou-tate} with Tate's global Euler characteristic formula
 $\#H^0(G_S,M)\,\#H^2(G_S,M)/\#H^1(G_S,M)=\#H^0(\R,M)/\abs{\#M}_\infty$ (stated; \cite[Chapter I, Section 5]{MilneADT}), which supplies the factor $1/\#H^0(\R,M)$ at
 infinity.
+
+\noindent How to read the formula: at a prime $v$, the factor $\#\mathcal L_v/\#H^0(\Q_v,M)$ compares the chosen local condition with the ``natural size'' of an unramified condition, which is
+$\#H^0(\Q_v,M)$ by \Cref{prop:galcoh:unramified-computed}(ii). Enlarging $\mathcal L_v$ by a factor $\ell^a$ either enlarges $H^1_{\mathcal L}(\Q,M)$ or shrinks
+$H^1_{\mathcal L^*}(\Q,M^D)$ (whose condition at $v$ shrinks by the same factor), and the formula says that the two effects together account for exactly $\ell^a$. The
+formula does not compute either Selmer group on its own; it computes their ratio, which is why it is used together with a separate vanishing statement for the dual
+group, as in the examples below and in \Cref{thm:galcoh:relaxing-sigma}.
 
 \begin{example}[the formula by hand]\label{ex:galcoh:gw-check}
 Let $M=\Z/\ell$, so $M^D=\mu_\ell$.
@@ -1503,8 +1622,9 @@ $B^\perp=B'$, and $A^\perp=\bigoplus_{v\in S}\mathcal L^*_v$. Hence
 (A+B)^\perp=A^\perp\cap B'=\operatorname{loc}\bigl(H^1_{\mathcal L^*}(\Q,M^D)\bigr),
 \]
 since a class of $H^1(G_S,M^D)$ with localisations in $\mathcal L^*_v$ for $v\in S$ is exactly a class of $H^1_{\mathcal L^*}$ (\Cref{prop:galcoh:unramified-almost-everywhere}(i)). Now let
-$(c_v)\in\bigoplus_v\mathcal L'_v/\mathcal L_v$ with $\theta((c_v))=0$, and lift it to $c=(c_v)_{v\in S}\in\bigoplus_{v\in S}\mathcal L'_v\subseteq P$. Then $c$ is orthogonal to
-$(A+B)^\perp$, so $c\in(A+B)^{\perp\perp}=A+B$: $c=a+\operatorname{loc}(x)$ with $a\in A$ and $x\in H^1(G_S,M)$. Then $\Res_vx=c_v-a_v\in\mathcal L'_v$ for $v\in S$, and $x$ is
+$(c_v)\in\bigoplus_v\mathcal L'_v/\mathcal L_v$ with $\theta((c_v))=0$, and lift it to $c=(c_v)_{v\in S}\in\bigoplus_{v\in S}\mathcal L'_v\subseteq P$. The condition $\theta((c_v))=0$
+says that $\sum_{v\in S}\operatorname{inv}_v(c_v\cup\Res_vy)=0$ for every $y\in H^1_{\mathcal L^*}(\Q,M^D)$, that is, that $c$ is orthogonal, under the sum of the local pairings, to
+$\operatorname{loc}(H^1_{\mathcal L^*}(\Q,M^D))=(A+B)^\perp$. As the sum of the local pairings is a perfect pairing of the finite groups $P$ and $P'$, $c\in(A+B)^{\perp\perp}=A+B$: $c=a+\operatorname{loc}(x)$ with $a\in A$ and $x\in H^1(G_S,M)$. Then $\Res_vx=c_v-a_v\in\mathcal L'_v$ for $v\in S$, and $x$ is
 unramified outside $S$, so $x\in H^1_{\mathcal L'}(\Q,M)$ and $\operatorname{loc}(x)\equiv(c_v)$ modulo $\bigoplus\mathcal L_v$.
 
 \emph{Exactness at $H^1_{\mathcal L^*}(\Q,M^D)^*$.} By exactness at the middle term and at $H^1_{\mathcal L'}$,
@@ -1512,7 +1632,10 @@ unramified outside $S$, so $x\in H^1_{\mathcal L'}(\Q,M)$ and $\operatorname{loc
 \#\operatorname{im}\theta=\frac{\prod_v\#(\mathcal L'_v/\mathcal L_v)}{\#\operatorname{im}(\operatorname{loc})}=\prod_v\frac{\#\mathcal L'_v}{\#\mathcal L_v}\cdot\frac{\#H^1_{\mathcal L}(\Q,M)}{\#H^1_{\mathcal L'}(\Q,M)}
 =\frac{\#H^1_{\mathcal L^*}(\Q,M^D)}{\#H^1_{\mathcal L'^*}(\Q,M^D)}=\#\ker\Res^*,
 \]
-the third equality by \Cref{cor:galcoh:gw-comparison}. As $\operatorname{im}\theta\subseteq\ker\Res^*$, they are equal.
+the third equality by \Cref{cor:galcoh:gw-comparison}. In detail: by exactness at the middle term, $\ker\theta=\operatorname{im}(\operatorname{loc})$, so
+$\#\operatorname{im}\theta$ is the order of the source divided by $\#\operatorname{im}(\operatorname{loc})$; by exactness at $H^1_{\mathcal L'}$, $\#\operatorname{im}(\operatorname{loc})=\#H^1_{\mathcal L'}/\#H^1_{\mathcal L}$; and
+$\#\ker\Res^*$ is the quotient of the orders of the two last terms, since $\Res^*$ is surjective and Pontryagin duality preserves orders. As $\operatorname{im}\theta\subseteq\ker\Res^*$
+by (i), they are equal.
 \end{proof}
 
 \noindent So the comparison sequence is proved here given \Cref{thm:galcoh:poitou-tate} (for the middle) and \Cref{thm:galcoh:greenberg-wiles} (for the fourth term); only the
@@ -1594,7 +1717,8 @@ finite, and the identity holds with all terms finite as soon as $H^1_{\mathcal L
 
 \begin{proof}
 In an exact sequence $0\to A\to B\to C\to D\to0$ of $\Z_\ell$-modules with $D$ finite, $B$ is finite if and only if $A$ and $C$ are (the image of $B$ in $C$ has finite index), and then
-$\len B=\len A+\len C-\len D$ (\Cref{ch:cohomology}, lengths in exact sequences). Pontryagin duality preserves lengths of finite modules (\Cref{ch:modules}), so
+$\len B=\len A+\len C-\len D$ (\Cref{ch:cohomology}, lengths in exact sequences). To see the formula, let $I$ be the image of $B\to C$; the sequence splits into
+$0\to A\to B\to I\to0$ and $0\to I\to C\to D\to0$, and additivity of length on short exact sequences gives $\len B=\len A+\len I$ and $\len C=\len I+\len D$. Pontryagin duality preserves lengths of finite modules (\Cref{ch:modules}), so
 $\len(\mathcal L^*_p)^*=\len\mathcal L^*_p$ and $\len H^0(\Q,W^D)^*=\len H^0(\Q,W^D)$. If $L_{V^D,p}=0$, $\mathcal L^*_p=\ker\iota=H^1(\Q_p,T^D)_{\tors}$, finite by \Cref{prop:galcoh:tvw}(ii) and
 \Cref{thm:galcoh:local-finiteness}.
 \end{proof}
