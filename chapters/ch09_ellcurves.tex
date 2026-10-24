@@ -283,7 +283,8 @@ by $-4b_2^2b_8$. (iii) Here $2$ and $3$ are invertible, so $x=(X-3b_2)/36$ and $
 equation is equivalent to $Y^2=108^2F(x)$. Since $108^2=11664=4\cdot36^3/16$, one has $108^2\cdot4x^3=(X-3b_2)^3$, $108^2b_2x^2=9b_2(X-3b_2)^2$,
 $108^2\cdot2b_4x=648b_4(X-3b_2)$ and $108^2b_6=11664b_6$. Adding,
 \begin{align*}
-108^2F(x)&=\bigl(X^3-9b_2X^2+27b_2^2X-27b_2^3\bigr)+\bigl(9b_2X^2-54b_2^2X+81b_2^3\bigr)+648b_4X-1944b_2b_4+11664b_6\\
+108^2F(x)&=\bigl(X^3-9b_2X^2+27b_2^2X-27b_2^3\bigr)+\bigl(9b_2X^2-54b_2^2X+81b_2^3\bigr)\\
+&\qquad+648b_4X-1944b_2b_4+11664b_6\\
 &=X^3-27(b_2^2-24b_4)X+54\bigl(b_2^3-36b_2b_4+216b_6\bigr)=X^3-27c_4X-54c_6 .
 \end{align*}
 In the language of \Cref{prop:ellcurves:coordchange} this is the change of coordinates with $u=1/6$, $r=-b_2/12$ (and suitable $s$, $t$), since
@@ -360,7 +361,11 @@ $x'=u_2^2x''+r_2$, $y'=u_2^3y''+s_2u_2^2x''+t_2$ into $x=u_1^2x'+r_1$, $y=u_1^3y
 \[
 y=(u_1u_2)^3y''+(s_1+u_1s_2)(u_1u_2)^2x''+\bigl(t_1+u_1^2s_1r_2+u_1^3t_2\bigr),
 \]
-which is of the same shape. With these formulas, composing $(u,r,s,t)$ with $(u^{-1},-ru^{-2},-su^{-1},(rs-t)u^{-3})$ gives $u=1$, $r+u^2(-ru^{-2})=0$,
+which is of the same shape. With these formulas, composing $(u,r,s,t)$ with the substitution
+\[
+(u^{-1},\,-ru^{-2},\,-su^{-1},\,(rs-t)u^{-3})
+\]
+gives $u=1$, $r+u^2(-ru^{-2})=0$,
 $s+u(-su^{-1})=0$ and $t+u^2s(-ru^{-2})+u^3(rs-t)u^{-3}=0$, the identity substitution; so every substitution has an inverse of the same kind.
 
 (ii) Let $\varphi\colon E\to E'$ be such an isomorphism, with coordinates $x,y$ on $E$ and $x',y'$ on $E'$. By \Cref{ch:curves}, $\mathcal L(2(O))$ has
@@ -408,7 +413,10 @@ and changes the sign of $u^6$.
 Hence the first curve is smooth exactly when $\operatorname{char}K\ne3$ and the second exactly when $\operatorname{char}K\ne2$, with $j=0$ and $j=(-48)^3/(-64)=1728$. For the third,
 put $k=1/(j_0-1728)$, so $a_1=1$, $a_2=a_3=0$, $a_4=-36k$, $a_6=-k$. Then $b_2=1$, $b_4=-72k$, $b_6=-4k$, $b_8=a_1^2a_6-a_4^2=-k-1296k^2$, and
 \[
-c_4=1+1728k=\frac{j_0}{j_0-1728},\qquad\Delta=k+1296k^2-27\cdot16k^2+9\cdot288k^2+8\cdot72^3k^3=k(1+1728k)^2=\frac{j_0^2}{(j_0-1728)^3},
+c_4=1+1728k=\frac{j_0}{j_0-1728},
+\]
+\[
+\Delta=k+1296k^2-27\cdot16k^2+9\cdot288k^2+8\cdot72^3k^3=k(1+1728k)^2=\frac{j_0^2}{(j_0-1728)^3},
 \]
 using $72^3=373248$, $8\cdot373248=1728^2$ and $1296-432+2592=3456=2\cdot1728$. So $j=c_4^3/\Delta=j_0^3(j_0-1728)^{-3}\cdot(j_0-1728)^3j_0^{-2}=j_0$, and
 $\Delta\ne0$ because $j_0\ne0$.
@@ -830,6 +838,9 @@ $\Qbar$ without being isogenous over $\Q$: a curve and its quadratic twist by $\
 (\Cref{def:ellcurves:twist}), but in general not isogenous over $\Q$: \curve{11a1} has $a_2=-2$, while its twist \curve{121d2} lies in the class of \curve{121d1}, which has
 $a_2=2$ (\Cref{ex:ellcurves:aptable}), so the two are not isogenous over $\Q$ (\Cref{thm:ellcurves:isogclass}(ii)).
 \end{warning}
+
+\noindent The finite groups $E[m]\simeq(\Z/m)^2$ are now in place, but nothing so far says where their points lie. The next section writes down polynomials whose roots are the
+$x$-coordinates of the points of $E[m]$; for $m=3$ this is the tool the paper uses to read off the mod $3$ image.
 
 \section{Division polynomials}\label{sec:ellcurves:divpol}
 
@@ -1617,7 +1628,7 @@ of $\F_{\mathfrak q^n}$, $\#E(\F_{\mathfrak q^n})=\deg(1-\pi^n)=\det(1-\pi_\ell^
 $\sum_n(1+\mathfrak q^n-\alpha^n-\beta^n)T^n/n=-\log(1-T)-\log(1-\mathfrak qT)+\log(1-\alpha T)+\log(1-\beta T)$.
 \end{proof}
 
-\noindent For \curve{11a1}, with $a_3=-1$, $a_5=1$, $a_7=-2$, $a_{13}=4$, the formula gives $\#E(\F_{p^2})=15,35,60,180$ for $p=3,5,7,13$, and a direct count over $\F_{p^2}$ with PARI
+\noindent For \curve{11a1}, with $a_3=-1$, $a_5=1$, $a_7=-2$, $a_{13}=4$, the formula gives $\#E(\F_{p^2})=15,35,60,180$ for $p=3,5,7,13$ (for instance $9+1-((-1)^2-6)=15$ and $49+1-(4-14)=60$), and a direct count over $\F_{p^2}$ with PARI
 gives the same numbers.
 
 \begin{definition}[supersingular and ordinary]\label{def:ellcurves:supersingular}
@@ -1708,6 +1719,10 @@ In the table of Section 1 and in Lemma lem:euler, $E'$ is the twist of good redu
 the reduction of $E'$ and of its unramified quadratic twist; so $v_\ell((q+1)^2-a_q(E')^2)$ is the sum of the $\ell$-adic valuations of two point counts. Lemma lem:old uses that the characteristic
 polynomial of $\bar\rho_h(\Frob_p)$ is $X^2-a_p(h)X+p$, the analogue of \Cref{thm:ellcurves:frobQ}(ii) for a newform $h$ (\Cref{ch:modgalrep}).
 \end{paperlink}
+
+\noindent With \Cref{thm:ellcurves:frobQ} the local information at the good primes is complete: $\rho_{E,\ell}$ is unramified there and its Frobenius traces are the point counts
+$a_p$. The next section turns to global questions over $\Q$, where the same representations, now reduced modulo $\ell$, decide whether $E$ has rational torsion or rational
+isogenies.
 \section[Curves over the rationals: torsion and isogenies]{Elliptic curves over the rationals: Mordell-Weil, torsion, isogenies}\label{sec:ellcurves:overQ}
 
 The paper's Eisenstein case (Conjecture conj:eis, Section sec:eis, Proposition prop:no9) is about rational torsion points and rational isogenies, and its

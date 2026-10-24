@@ -1680,7 +1680,10 @@ In the multiplicative case $n=v(\Delta_{\min})=-v(j)=v(q_E)$.
 As $v(j)<0$, $j\ne0,1728$, so $c_4c_6\ne0$. For $E_{\mathsf q}$, $\gamma(E_{\mathsf q})=(1+240s_3)/(1-504s_5)=1+24(10s_3+21s_5)/(1-504s_5)$ lies in
 $1+24\mathfrak m$, which consists of squares by Hensel's lemma (for $p$ odd, $1+\mathfrak m$ consists of squares; for $p=2$, $x^2=1+8m$ with
 $v(8m)>v(4)$ has a root near $1$). Two curves with the same $j\ne0,1728$ are twists of each other by
-$d=c_6(E)c_4(E_{\mathsf q})/(c_6(E_{\mathsf q})c_4(E))=\gamma(E_{\mathsf q})/\gamma(E)$ (\Cref{ch:ellcurves}), and $d\equiv\gamma(E)$ modulo squares. This proves
+$d=c_6(E)c_4(E_{\mathsf q})/(c_6(E_{\mathsf q})c_4(E))=\gamma(E_{\mathsf q})/\gamma(E)$ (\Cref{ch:ellcurves}), and $d\equiv\gamma(E)$ modulo squares.
+(Here is why: $j=1728c_4^3/(c_4^3-c_6^2)$ gives $c_4^3/c_6^2=j/(j-1728)$, so $a=c_4(E)/c_4(E_{\mathsf q})$ and $b=c_6(E)/c_6(E_{\mathsf q})$ satisfy
+$a^3=b^2$; for $d=b/a$ one gets $d^2=a$ and $d^3=b$, so $E$ and the twist of $E_{\mathsf q}$ by $d$ have the same $c_4$ and $c_6$, hence
+are isomorphic over $K$.) This proves
 the first statement. If $\gamma$ is a square, $E\simeq E_{q_E}$ has split multiplicative reduction by
 \Cref{thm:reduction:tate-curve}(ii). If $K(\sqrt\gamma)/K$ is unramified, $E$ acquires multiplicative reduction over it, hence has
 multiplicative reduction (\Cref{prop:reduction:etale-base-change}); for $p$ odd, computing $\gamma$ from a minimal model makes it a unit
