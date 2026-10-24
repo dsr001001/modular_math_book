@@ -164,3 +164,7 @@ The work so far ran in Claude Code on the web (claude.ai). To run it on Console 
 5. Commit and push after every chapter, so nothing is lost if the session ends.
 
 With USD 100, expect about 5 to 7 chapters in budget mode; start with Part I (Chapters 1 to 4).
+
+## final/ (2026-10-24)
+
+`final/paper/note.tex` (corrected note, 35 pp) and `final/book/` (book aligned with it as a single version: all chapters re-quoted verbatim against the note, version history and errata removed, Chapter 21 recast as a guided reading, preface rewritten). Final book: 1,179 pages, clean build, 0 overfull boxes, no undefined references; PDF at `final/book/build/main/main.pdf`. Still needed from the author: the six data tables of the note (placeholders), the sec:data extension-range fact, and answers to the two protocol questions in Chapter 22 (were out-of-table degrees seen while fixing the terms at 2 and 3; was eq:twist fixed before the hold-out counts of eq:main were seen).
