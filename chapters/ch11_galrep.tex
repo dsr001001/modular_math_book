@@ -242,6 +242,21 @@ The \emph{adjoint} is $A=\ad T$, the trace-zero endomorphisms of $T$ with $G_\Q$
 paper's notation). For a prime $p\ne\ell$, $\delta_p=\dim_{\Ql}V^{I_p}$.
 \end{definition}
 
+Why these objects. A single $E[\ell^k]$ is a finite Galois module, and it forgets how the torsion of different levels fits together; the Tate
+module packages all levels at once into a lattice $T$ over the complete discrete valuation ring $\Zl$, on which $G_\Q$ acts by $2\times2$
+matrices. Passing to $V=T\otimes\Ql$ gives a vector space, where semisimplicity and eigenvalues behave as in linear algebra over a field of
+characteristic $0$; the lattice $T$ itself keeps the integral information that the paper's divisibility statements are about. The adjoint
+$\ad V$ appears because the paper's $L$-function is $L(A_f,s)=L(\ad V,s)$, and the integer $\delta_p$ appears because the local factor of an
+$L$-function at $p$ only sees the inertia invariants (\Cref{conv:galrep:notation}(c)); \Cref{cor:galrep:delta} computes $\delta_p$ for every
+reduction type.
+
+A small example shows what the action looks like at the bottom level. Write $E$ as $y^2=g(x)$ with $g\in\Q[x]$ a separable cubic (possible for every
+$E/\Q$ after a change of coordinates). Then $E[2]=\{O,(e_1,0),(e_2,0),(e_3,0)\}$ with $e_1,e_2,e_3$ the roots of $g$, and $G_\Q$ acts on the three
+nonzero points by permuting the roots. Since $\GL_2(\F_2)$ is the group of all permutations of the three nonzero vectors of $\F_2^2$, the image of
+$\bar\rho_{E,2}$ is, as a permutation group, the Galois group of $g$: trivial if $g$ splits, of order $2$ if it has exactly one rational root, and
+$C_3$ or $S_3$ if it is irreducible. For $\ell$ odd the analogue of $g$ is the $\ell$-division polynomial, and for $\ell=3$ it is used throughout
+\Cref{sec:galrep:images}.
+
 \begin{proposition}[basic properties]\label{prop:galrep:rho-basic}
 Let $E/\Q$ and $\ell$ be as above.
 \begin{enumerate}[label=(\roman*)]
@@ -275,8 +290,10 @@ g(\zeta)=e_{\ell^k}(gP,gQ)=e_{\ell^k}(aP+cQ,bP+dQ)=\zeta^{ad-bc},
 so $\det(\rho(g)\bmod\ell^k)=\chi_\ell(g)\bmod\ell^k$ for every $k$, whence $\det\rho=\chi_\ell$. An element fixing $E[\ell]$ pointwise fixes $\zeta_\ell=e_\ell(P,Q)$,
 so $\Q(\zeta_\ell)\subseteq\Q(E[\ell])$. The reduction $\bar\chi_\ell$ is the character $G_\Q\to\Gal(\Q(\zeta_\ell)/\Q)\simeq\Fl^\times$, which is surjective. For $\ell$
 odd, $\Q(\sqrt{\ell^*})$ is the fixed field in $\Q(\zeta_\ell)$ of the squares of $\Fl^\times$ (\Cref{ch:galois}); so $g\in G_{\Q(\sqrt{\ell^*})}$ iff
-$\bar\chi_\ell(g)=\det\bar\rho(g)$ is a square. If $h=\bar\rho(g)$ has square determinant, then $g$ itself lies in $G_{\Q(\sqrt{\ell^*})}$; this gives the
-displayed equality. For $\ell=3$, $\F_3^\times=\{\pm1\}$, its squares are $\{1\}$, and $\bar\chi_3(g)=\pm1$ according as $g(\zeta_3)=\zeta_3^{\pm1}$, that is,
+$\bar\chi_\ell(g)=\det\bar\rho(g)$ is a square. Both inclusions of the displayed equality follow. If $g\in G_{\Q(\sqrt{\ell^*})}$, then $\bar\rho(g)$ is an
+element of $\bar\rho(G_\Q)$ with square determinant. Conversely, an element $h$ of $\bar\rho(G_\Q)$ is $\bar\rho(g)$ for some $g\in G_\Q$, and if $\det h$
+is a square, then $\bar\chi_\ell(g)=\det h$ is a square, so this very $g$ lies in $G_{\Q(\sqrt{\ell^*})}$ and $h\in\bar\rho(G_{\Q(\sqrt{\ell^*})})$. (The point is that
+membership of $g$ in $G_{\Q(\sqrt{\ell^*})}$ depends only on $\det\bar\rho(g)$, so it does not matter which preimage of $h$ is chosen.) For $\ell=3$, $\F_3^\times=\{\pm1\}$, its squares are $\{1\}$, and $\bar\chi_3(g)=\pm1$ according as $g(\zeta_3)=\zeta_3^{\pm1}$, that is,
 according as $g$ fixes $\sqrt{-3}=2\zeta_3+1$ or not: $\bar\chi_3=\chi_{-3}$.
 
 (iii) Since $c^2=1$, $\rho(c)^2=1$, and $\det\rho(c)=\chi_\ell(c)=-1$ because $c(\zeta)=\zeta^{-1}$ on all roots of unity. As $2\in\Zl^\times$, the
@@ -316,15 +333,21 @@ the same $\rho$, $\bar\rho$, image label at $\ell$, adjoint $\ad T$, and $h_\ell
 
 \begin{proof}
 (i) The first statement is proved in \Cref{ch:ellcurves}: an isomorphism $E\to E^{(d)}$ defined over $\Q(\sqrt d)$ transforms the action of
-$g\in G_\Q$ into $\chi_d(g)$ times it. Conjugation by $\chi_d(g)\rho(g)$ equals conjugation by $\rho(g)$, so the adjoint representations agree; and
+$g\in G_\Q$ into $\chi_d(g)$ times it. Concretely, take $E\colon y^2=x^3+ax+b$ and $E^{(d)}\colon dy^2=x^3+ax+b$, and $\phi(x,y)=(x,y/\sqrt d)$, an
+isomorphism $E\to E^{(d)}$ over $\Q(\sqrt d)$. For $P=(x,y)\in E(\Qbar)$ and $g\in G_\Q$,
+\[
+g\bigl(\phi(P)\bigr)=\Bigl(g(x),\frac{g(y)}{g(\sqrt d)}\Bigr)=\Bigl(g(x),\frac{g(y)}{\chi_d(g)\sqrt d}\Bigr)=[\chi_d(g)]\,\phi\bigl(g(P)\bigr),
+\]
+because $[-1](x,y)=(x,-y)$ on $E^{(d)}$. So, transported to $E$ by $\phi$, the action of $g$ on $E^{(d)}[\ell^k]$ is $\chi_d(g)\rho(g)$, compatibly in $k$. Conjugation by $\chi_d(g)\rho(g)$ equals conjugation by $\rho(g)$, so the adjoint representations agree; and
 $\chi_d(g)\bar\rho(g)$ and $\bar\rho(g)$ have the same image in $\PGL_2(\Fl)$. A line stable under $\bar\rho$ is stable under $\bar\rho\otimes\chi_d$, and conversely.
 
-(ii) Write $H$ for the image of $\bar\rho=\bar\rho_{E,3}$ and $H'$ for that of $\bar\rho\otimes\chi_d$; then $H'\subseteq H\cdot\{\pm1\}$ and $H\subseteq H'\cdot\{\pm1\}$.
+(ii) Write $H$ for the image of $\bar\rho=\bar\rho_{E,3}$ and $H'$ for that of $\bar\rho\otimes\chi_d$; then $H'\subseteq H\cdot\{\pm1\}$ and $H\subseteq H'\cdot\{\pm1\}$, because
+$(\bar\rho\otimes\chi_d)(s)=\chi_d(s)\bar\rho(s)$ with $\chi_d(s)=\pm1$ for every $s\in G_\Q$.
 If $H$ contains an element $g$ with $g^2=-1$, choose $s\in G_\Q$ with $\bar\rho(s)=g$: then $((\bar\rho\otimes\chi_d)(s))^2=g^2=-1$, so $-1\in H'$, hence
 $H'\subseteq H\{\pm1\}=H$ and $H\subseteq H'\{\pm1\}=H'$, and $H'=H$. The groups $\GL_2(\F_3)$, $N_{ns}(\F_3)$ and $N_s(\F_3)$ all contain $J$, with $J^2=-1$; so
 the surjective image, \texttt{3Nn} and \texttt{3Ns} are fixed by every twist. In the reducible cases write
 $\bar\rho\sim\sm{\eta_1}{*}{0}{\eta_2}$ with $\eta_1\eta_2=\chi_{-3}$ (\Cref{prop:galrep:rho-basic}(ii)); then $\bar\rho\otimes\chi_d\sim\sm{\eta_1\chi_d}{*}{0}{\eta_2\chi_d}$,
-and the twist is split iff $\bar\rho$ is. By \Cref{thm:galrep:mod3-images}, \texttt{3B.1.1} is the non-split case with $\eta_1=1$, \texttt{3B.1.2} the
+and the twist is split iff $\bar\rho$ is (by (i), the two representations have the same stable lines). By \Cref{thm:galrep:mod3-images}, \texttt{3B.1.1} is the non-split case with $\eta_1=1$, \texttt{3B.1.2} the
 non-split case with $\eta_1=\chi_{-3}$, \texttt{3B} the non-split case with $\eta_1\notin\{1,\chi_{-3}\}$, and \texttt{3Cs.1.1}, \texttt{3Cs} the split cases
 with $\{\eta_1,\eta_2\}=\{1,\chi_{-3}\}$, respectively $\{\eta_1,\eta_2\}\ne\{1,\chi_{-3}\}$. Twisting by $\chi_{-3}$ sends $\eta_1=1$ to $\chi_{-3}$ and $\chi_{-3}$ to $1$,
 and sends a character outside $\{1,\chi_{-3}\}$ to another such; twisting by $\chi_d$ with $\chi_d\notin\{1,\chi_{-3}\}$ sends both $1$ and $\chi_{-3}$ outside
@@ -334,7 +357,10 @@ $\{1,\chi_{-3}\}$. This gives every case.
 (\Cref{ch:ellcurves}). An isogeny of degree $\ell$ would have a $G_\Q$-stable kernel of order $\ell$ inside $E[\ell]$ (or inside $E''[\ell]$ for an
 intermediate curve $E''$, whose $\ell$-torsion is isomorphic to $E[\ell]$ by induction), contradicting irreducibility. So $E$ and $E'$ are linked
 by isogenies $\varphi$ of degree prime to $\ell$, and such a $\varphi$ induces a $G_\Q$-equivariant injection $T_\ell E\to T_\ell E'$ whose cokernel has order the
-$\ell$-part of $\deg\varphi$, which is $1$; so it is an isomorphism. The other objects are built from $T$ alone.
+$\ell$-part of $\deg\varphi$, which is $1$; so it is an isomorphism. In detail: $\varphi$ is defined over $\Q$, so the map $\varphi_*\colon T_\ell E\to T_\ell E'$ it induces on
+compatible systems of torsion points commutes with $G_\Q$; the dual isogeny satisfies $\hat\varphi\circ\varphi=[\deg\varphi]$ on $E$ and $\varphi\circ\hat\varphi=[\deg\varphi]$ on $E'$
+(\Cref{ch:ellcurves}); and multiplication by the integer $\deg\varphi$, a unit of $\Zl$, is an automorphism of both Tate modules. So $\hat\varphi_*\circ\varphi_*$ and
+$\varphi_*\circ\hat\varphi_*$ are invertible, and $\varphi_*$ is a $G_\Q$-isomorphism. The other objects are built from $T$ alone.
 \end{proof}
 
 \begin{proposition}[irreducibility]\label{prop:galrep:irreducibility}
@@ -364,7 +390,7 @@ $x$-coordinates of the four lines (\Cref{ch:ellcurves}).
 
 (iii) For $p\nmid N\ell$ the characteristic polynomial of $\bar\rho(\Frob_p)$ is $X^2-a_pX+p\bmod\ell$ (\Cref{prop:galrep:good} below). By
 Chebotarev's theorem every element of the finite group $\bar\rho(G_\Q)$ is $\bar\rho(\Frob_p)$ for a set of primes of positive density, which meets every
-set of density one; so the characteristic polynomials of all elements of the image are determined by the $a_p\bmod\ell$ on the given set,
+set of density one (the complement of a set of density one has density $0$, so it cannot contain a set of positive density); so the characteristic polynomials of all elements of the image are determined by the $a_p\bmod\ell$ on the given set,
 and by the Brauer-Nesbitt theorem so is the semisimplification (\Cref{ch:galois}, \Cref{ch:reps}). If $\bar\rho$ is irreducible it is
 semisimple and equal to $\bar\rho^{\mathrm{ss}}$. For the newform, $\bar\rho_{g,\lambda}$ (\Cref{ch:modgalrep}) has characteristic polynomial $X^2-a_p(g)X+p$ at
 $\Frob_p$ for $p$ prime to the level and $\ell$, so the same argument over $k$ gives $\bar\rho_{g,\lambda}^{\mathrm{ss}}\simeq(\bar\rho_{E,\ell}\otimes k)^{\mathrm{ss}}$
@@ -387,6 +413,14 @@ For \curve{11a1}, $y^2+y=x^3-x^2-10x-20$, the $3$-division polynomial is $\psi_3
 $-3^3\cdot11^{10}$ and Galois group $S_4$; so $E[3]$ is irreducible and, by \Cref{thm:galrep:mod3-images}, $\bar\rho_{\curve{11a1},3}$ is surjective. At $\ell=5$
 the label is \texttt{5Cs.1.1}: $E[5]\simeq\Z/5\oplus\mu_5$ (the rational point $(5,5)$ of order $5$ spans the first summand), so $E[5]$ is reducible
 and \curve{11a1} has two rational $5$-isogenies, to \curve{11a2} and \curve{11a3}. All of this was recomputed with PARI \cite{PARI}.
+
+Here is the work. The coefficients are $a_1=0$, $a_2=-1$, $a_3=1$, $a_4=-10$, $a_6=-20$, so $b_2=a_1^2+4a_2=-4$, $b_4=2a_4+a_1a_3=-20$, $b_6=a_3^2+4a_6=-79$ and
+$b_8=a_1^2a_6+4a_2a_6-a_1a_3a_4+a_2a_3^2-a_4^2=80-1-100=-21$, and $\psi_3=3x^4+b_2x^3+3b_4x^2+3b_6x+b_8$ is the quartic above; the discriminant of
+the curve is $-11^5$. To see the Galois group, factor $\psi_3$ modulo small primes of good reduction not dividing $3\disc(\psi_3)$: modulo $5$ it is
+irreducible, so Frobenius at $5$ acts on the roots as a $4$-cycle; modulo $7$ it is a linear factor times an irreducible cubic, so Frobenius at $7$
+acts as a $3$-cycle (\Cref{ch:galois}). A subgroup of $S_4$ containing a $4$-cycle and a $3$-cycle has order divisible by $12$ and contains an odd
+permutation, so it is $S_4$; in particular $\psi_3$ is irreducible, and no line of $E[3]$ is rational. For the point $P=(5,5)$: it lies on the
+curve ($5^2+5=30=5^3-5^2-10\cdot5-20$), and PARI gives $5P=O$ with $P\ne O$, so $P$ has order $5$.
 \end{example}
 
 \section[N\'eron-Ogg-Shafarevich and inertia invariants]{N\'eron-Ogg-Shafarevich, component groups and inertia invariants}\label{sec:galrep:nos}
@@ -435,7 +469,8 @@ $E$ has bad reduction over $K'$ and there are exact sequences
 where $\Phi_E(k')\subseteq\Phi_E(\bar k)$ is a subgroup of the geometric component group, a finite group whose order does not depend on $K'$
 (\Cref{ch:reduction}). The group $E_1(K')$ has no $m$-torsion, so $E_0(K')[m]$ injects into $\tilde E_{\mathrm{ns}}(k')[m]$. Here $\tilde E_{\mathrm{ns}}(k')$ is
 $k'^+$ (additive reduction), which has no $m$-torsion as $p\nmid m$, or $k'^\times$ or the kernel of the norm from the quadratic extension of $k'$
-(multiplicative reduction), subgroups of $\bar k^\times$, whose $m$-torsion is cyclic of order at most $m$. Hence $\#E_0(K')[m]\le m$ and
+(multiplicative reduction), subgroups of $\bar k^\times$, whose $m$-torsion is cyclic of order at most $m$ (it consists of roots of $X^m-1$, which has at
+most $m$ roots in a field, and a finite subgroup of the multiplicative group of a field is cyclic). Hence $\#E_0(K')[m]\le m$ and
 \[
 m^2=\#E[m]=\#E(K')[m]\le\#E_0(K')[m]\cdot\#\Phi_E(k')\le m\cdot\#\Phi_E(\bar k) .
 \]
@@ -509,7 +544,11 @@ classification \cite{Kraus90}, stated in \Cref{ch:reduction}.
 
 (ii) Finiteness is (i) (or \Cref{thm:galrep:nos}(e)). The determinant is $\chi_\ell$, which is trivial on $I_q$ because $\mu_{\ell^\infty}$ lies in the
 unramified extension $\Q_q^{\ur}$ ($q\ne\ell$); so the image lies in $\SL_2(\Zl)$. The kernel of $\GL_2(\Zl)\to\GL_2(\Fl)$ is $1+\ell M_2(\Zl)$, which for $\ell$ odd is
-torsion-free (\Cref{ch:groups}); a finite subgroup meets it trivially, so reduction is injective on it. Let $G\subseteq\SL_2(\Ql)$ be finite and $v\ne0$
+torsion-free (\Cref{ch:groups}); a finite subgroup meets it trivially, so reduction is injective on it. (The reason, in brief: write $g\ne1$ in the kernel as
+$g=1+\ell^rA$ with $r\ge1$ and $A\not\equiv0\pmod\ell$. For $m$ prime to $\ell$, $g^m\equiv1+m\ell^rA\not\equiv1\pmod{\ell^{r+1}}$; and the binomial expansion gives
+$g^\ell\equiv1+\ell^{r+1}A\pmod{\ell^{r+2}}$, because $\binom\ell k\ell^{kr}$ is divisible by $\ell^{2r+1}$ for $2\le k<\ell$ and $\ell^{r\ell}$ by $\ell^{r+2}$ when $\ell\ge3$. Iterating, $g^{\ell^j}=1+\ell^{r+j}A_j$ with
+$A_j\equiv A\not\equiv0\pmod\ell$, and then $g^{\ell^jm}\ne1$ for $m$ prime to $\ell$: no power of $g$ is $1$.
+For $\ell=2$ this fails: $-1=1+2\cdot(-1)$ has order $2$, which is why the injectivity is stated for $\ell$ odd.) Let $G\subseteq\SL_2(\Ql)$ be finite and $v\ne0$
 with $gv=v$ for all $g\in G$. Each $g\in G$ has finite order, hence is diagonalisable over $\Qbar_\ell$ (its minimal polynomial divides $X^r-1$,
 which has distinct roots in characteristic $0$); one eigenvalue is $1$ and the determinant is $1$, so both eigenvalues are $1$ and $g=1$. Hence
 $V^{I_q}\ne0$ forces $\rho(I_q)=1$, which is good reduction by \Cref{thm:galrep:nos}.
@@ -547,7 +586,9 @@ on the four lines of $E[3]$ have the lengths of the degrees of the irreducible f
 
 \begin{proof}
 Unramified: \Cref{thm:galrep:nos}. Reduction gives a $G_{\Q_p}$-equivariant isomorphism $T_\ell E\simeq T_\ell\tilde E$ (\Cref{thm:galrep:nos}, proof of
-(a)$\Rightarrow$(c), and \Cref{ch:reduction}), on which $\Frob_p$ acts as the Frobenius endomorphism $\pi_p$ of $\tilde E/\F_p$, and the
+(a)$\Rightarrow$(c), and \Cref{ch:reduction}): reduction $E[\ell^k]\to\tilde E[\ell^k]$ is injective because its kernel lies in the kernel of reduction $E_1$, which has no
+$\ell$-torsion, and it is then bijective because both groups have $\ell^{2k}$ elements; it commutes with $G_{\Q_p}$, which acts on $\tilde E(\Fbar_p)$ through
+$\Gal(\Fbar_p/\F_p)$. On $T_\ell\tilde E$ the element $\Frob_p$ acts as the Frobenius endomorphism $\pi_p$ of $\tilde E/\F_p$ (both raise coordinates to the $p$-th power), and the
 characteristic polynomial of $\pi_p$ on $T_\ell\tilde E$ is $X^2-a_pX+p$ (\Cref{ch:ellcurves}: $\deg(1-\pi_p)=\#\tilde E(\F_p)$ and $\deg\pi_p=p$). The inverse has
 the inverse eigenvalues. On $\ad V$, if $\rho(\Frob_p)$ has eigenvectors $v_\alpha$, $v_\beta$ (over $\Qbar_\ell$; when $\alpha=\beta$ the eigenvalues on
 $\ad V$ are $1,1,1$ in any case), conjugation by it multiplies $v_\alpha\otimes v_\beta^\vee$, $v_\alpha\otimes v_\alpha^\vee-v_\beta\otimes v_\beta^\vee$, $v_\beta\otimes v_\alpha^\vee$
@@ -578,7 +619,11 @@ through its maximal pro-$\ell$ quotient, and $\rho(I_q)$ is infinite;
 By \Cref{ch:reduction}, $E$ over $\Q_q$ is the twist by $\varepsilon$ of the Tate curve $E_{q_E}$ (trivial twist when the reduction is split), and on
 $T_\ell E_{q_E}$, with $e_1=(\zeta_{\ell^k})_k$ and $e_2=(q_E^{1/\ell^k})_k$ (compatible systems in $\Qbar_q^\times/q_E^{\Z}$), $g$ acts by $\sm{\chi_\ell(g)}{\kappa(g)}{0}{1}$: indeed
 $g\zeta_{\ell^k}=\zeta_{\ell^k}^{\chi_\ell(g)}$ and $g(q_E^{1/\ell^k})=\zeta_{\ell^k}^{\kappa(g)}q_E^{1/\ell^k}$. Twisting multiplies every matrix by the scalar $\varepsilon(g)$, which gives the
-displayed shape; the corner is $\varepsilon\kappa$, as the cocycle relation $c(gh)=\chi_\ell\varepsilon(g)c(h)+c(g)\varepsilon(h)$ requires. The equalities $\varepsilon(\Frob_q)=a_q(E)$ and
+displayed shape; the corner is $\varepsilon\kappa$, as the cocycle relation $c(gh)=\chi_\ell\varepsilon(g)c(h)+c(g)\varepsilon(h)$ requires. (The convention is that the
+columns of $\rho(g)$ are the images of the basis vectors: $ge_1=\chi_\ell\varepsilon(g)e_1$ and $ge_2=\varepsilon\kappa(g)e_1+\varepsilon(g)e_2$. The Kummer cocycle satisfies
+$\kappa(gh)=\kappa(g)+\chi_\ell(g)\kappa(h)$, since $gh(q_E^{1/\ell^k})=g(\zeta_{\ell^k}^{\kappa(h)}q_E^{1/\ell^k})=\zeta_{\ell^k}^{\chi_\ell(g)\kappa(h)+\kappa(g)}q_E^{1/\ell^k}$; multiplying by
+$\varepsilon(gh)=\varepsilon(g)\varepsilon(h)$ gives exactly the upper right entry $\chi_\ell\varepsilon(g)\cdot\varepsilon\kappa(h)+\varepsilon\kappa(g)\cdot\varepsilon(h)$ of the product
+$\rho(g)\rho(h)$, so the displayed formula is a homomorphism.) The equalities $\varepsilon(\Frob_q)=a_q(E)$ and
 $n_q=v_q(q_E)=-v_q(j)$ are in \Cref{ch:reduction}.
 
 (i) On $I_q$, $\varepsilon=1$ and $\chi_\ell=1$ ($q\ne\ell$). Write $q_E=q^{n_q}u$ with $u\in\Z_q^\times$; the Kummer cocycle is additive in its argument,
@@ -663,6 +708,17 @@ and (iv) in its two cases $p\,\|\,N$, and the optimal-level paragraph uses the c
 (\Cref{prop:galrep:serre-conductor-E}).
 \end{paperlink}
 
+A worked case. The curve \curve{14a1}, $y^2+xy+y=x^3+4x-6$, has $\Delta_{\min}=-2^6\cdot7^3$, so it has type $\kod{I}_6$ at $2$ and $\kod{I}_3$ at $7$, with $a_2=-1$ (nonsplit) and
+$a_7=1$ (split). Take $\ell=3$. Since $3\mid6$ and $3\mid3$, \Cref{lem:galrep:tamagawa-exp} says that $\bar\rho_{E,3}$ is unramified at $2$ and at $7$, while $\rho\bmod9$ is
+ramified at both ($v_3(6)=v_3(3)=1$, so $t_2=t_7=1$), and $\#E[3^t]^{I_q}=3^{t+1}$ for $q=2,7$ and every $t\ge1$. By (iv), $\bar\rho(\Frob_2)$ has eigenvalues
+$a_2\cdot2=-2\equiv1$ and $a_2=-1\equiv2\pmod3$, and $\bar\rho(\Frob_7)$ has eigenvalues $7\equiv1$ and $1$. All of this agrees with the global structure
+$E[3]\simeq\Z/3\oplus\mu_3$ of \curve{14a1} (image \texttt{3Cs.1.1}, \Cref{thm:galrep:mod3-images}): this module is unramified at every prime $q\ne3$, and $\Frob_q$
+acts on it with eigenvalues $1$ and $q\bmod3$. (Recomputed with PARI.) The reader can do the same for \curve{11a1} and \curve{11a3} at $\ell=5$ in
+\Cref{ex:galrep:eleven-five}.
+
+The next proposition treats the primes at which $E$ has additive reduction but $v_q(j)<0$. They look additive, but after a ramified quadratic twist they
+become multiplicative, so everything just proved applies to them up to a sign.
+
 \begin{proposition}[potentially multiplicative additive reduction]\label{prop:galrep:potmult}
 Let $q\ne\ell$ ($q=2$ allowed), $\ell$ odd, and let $E$ have additive reduction at $q$ with $v_q(j)<0$; put $\nu=-v_q(j)$. Then there is a ramified
 quadratic character $\chi$ of $G_{\Q_q}$ such that the twist of $E$ by $\chi$ has multiplicative reduction, and $\rho|_{G_{\Q_q}}\simeq\rho'\otimes\chi$ with
@@ -687,11 +743,15 @@ factor); the global twist $E^{(q)}$ has the local twist as its completion at $q$
 exchange of types (\Cref{ch:reduction}).
 
 (i) The formula follows from \Cref{thm:galrep:tate-shape}(i). The pair $(t_\ell,\chi)\colon I_q\to\Zl\times\{\pm1\}$ is onto: its image is a closed subgroup
-projecting onto both factors, and since $\Zl$ is pro-$\ell$ with $\ell$ odd while $\{\pm1\}$ has order $2$, such a subgroup is the whole product. So
+projecting onto both factors, and since $\Zl$ is pro-$\ell$ with $\ell$ odd while $\{\pm1\}$ has order $2$, such a subgroup is the whole product. (Explicitly: let
+$X$ be the image, and pick $(x,-1)\in X$. Its $\ell^k$-th power is $(\ell^kx,-1)$, as $\ell^k$ is odd; as $k\to\infty$ this tends to $(0,-1)$, which lies in $X$ because $X$
+is closed. For any $y\in\Zl$ some $(y,\pm1)$ lies in $X$, and multiplying by $(0,-1)$ if necessary gives both $(y,1)$ and $(y,-1)$.) So
 some $\sigma$ has $t_\ell(\sigma)=0$, $\chi(\sigma)=-1$, and $\rho(\sigma)=-1$, which fixes no nonzero vector: $V^{I_q}=0$. (ii) Conjugation by $\chi(g)\rho'(g)$ equals
 conjugation by $\rho'(g)$; then \Cref{thm:galrep:tate-shape}(v). (iii) $-1\in\rho(I_q)$ and $-1\not\equiv1\pmod{\ell^t}$ for $\ell$ odd; the second statement is
 \Cref{lem:galrep:tamagawa-exp} for $E_{q_E}$ (or its unramified twist), whose $\nu$ plays the role of $n_q$. (iv) The wild inertia group acts
-through $\chi$ only ($\rho'$ is tame on $I_q$, factoring through the pro-$\ell$ tame quotient), so $\operatorname{sw}(V)=2\operatorname{sw}(\chi)=2(a(\chi)-1)$ and
+through $\chi$ only ($\rho'$ is tame on $I_q$, factoring through the pro-$\ell$ tame quotient), so on the wild inertia group $V$ is the sum of two copies of
+the character $\chi$. The Swan conductor is additive and depends only on the wild inertia group, and $a(\chi)=1+\operatorname{sw}(\chi)$ for a ramified character
+(\Cref{ch:local}); so $\operatorname{sw}(V)=2\operatorname{sw}(\chi)=2(a(\chi)-1)$ and
 $f_q=\dim V-\dim V^{I_q}+\operatorname{sw}(V)=2+2(a(\chi)-1)=2a(\chi)$. For $q$ odd $\chi$ is tame, $a(\chi)=1$; for $q=2$ the ramified quadratic characters of
 $\Q_2$ have conductor exponent $2$ or $3$ (\Cref{ch:local}). The last sentence is \Cref{ch:reduction}.
 \end{proof}
@@ -765,7 +825,10 @@ Frobenius. The image of inertia has order prime to $q$, so it is a quotient of t
 generator $t$ of tame inertia. The tame relation $\Frob\,t\,\Frob^{-1}=t^q$ (\Cref{ch:local}) gives $\rho(\Frob_q)g\rho(\Frob_q)^{-1}=g^q$ for every Frobenius lift.
 Then conjugation by $\rho(\Frob_q)$ sends $g-g^{-1}$ to $g^q-g^{-q}$. For $m=3$: $g^q=g$ if $q\equiv1\pmod3$ and $g^q=g^2=g^{-1}$ if $q\equiv2\pmod3$, so the line is
 multiplied by $\chi_{-3}(q)$; for $m=6$: $q\equiv\pm1\pmod6$, and $q\equiv1\pmod6$ iff $q\equiv1\pmod3$, again $\chi_{-3}(q)$; for $m=4$: $g^q=g^{\pm1}$ according as
-$q\equiv\pm1\pmod4$, that is, $\chi_{-4}(q)$. A sign $c=\pm1$ is its own inverse, so the geometric Frobenius acts by the same sign. For $m=2$: the
+$q\equiv\pm1\pmod4$, that is, $\chi_{-4}(q)$. A sign $c=\pm1$ is its own inverse, so the geometric Frobenius acts by the same sign. (Here the choice of
+Frobenius could have mattered: for the geometric Frobenius the tame relation reads $\Frob^{-1}t\,\Frob=t^{q'}$ with $qq'=1$ in the relevant quotient, so it raises $g$
+to the power $q^{-1}\bmod m$. For $m\in\{3,4,6\}$ and $q$ prime to $m$ one has $q^2\equiv1\pmod m$, so $q^{-1}\equiv q\pmod m$ and the two Frobenii conjugate $g$ to the same
+power. At a multiplicative prime there is no such coincidence, \Cref{thm:galrep:tate-shape}(v).) For $m=2$: the
 restriction of $\rho$ to $I_q$ is the quadratic character $\sigma\mapsto\pm1$ of $I_q$; since $q$ is odd, $I_q$ has a unique continuous character of order
 $2$ (it factors through the tame quotient $\prod_{r\ne q}\Z_r(1)$, and only the factor $\Z_2(1)$ has a quotient of order $2$), namely
 $\chi_{q^*}|_{I_q}$. So $\rho\otimes\chi_{q^*}$ is unramified at $q$; it is $\rho_{E^{(q)},\ell}$ (\Cref{prop:galrep:twist-isogeny}), and $E^{(q)}$ has good
@@ -856,6 +919,12 @@ types $\kod{IV}$, $\kod{IV}^*$ at $2$ as an exception in Proposition prop:forms,
 wildly ramified (\Cref{ch:reduction}), and the lemma does not apply: an image of order $3$ at $q=3$ is not tame. Theorem thm:qual (a) uses
 part (ii): ``By Lemma~lem:IV the Serre conductor $M=N(\bar\rho)$ has exponent exactly $1$ at $q$, so $M\mid N/q$.''
 \end{paperlink}
+
+A worked case of \Cref{lem:galrep:IV}. The curve \curve{121c1}, $y^2+xy=x^3+x^2-2x-7$, has $\Delta_{\min}=-11^4$ and type $\kod{IV}$ at $q=11$. Kraus's formula gives an
+image of inertia of order $12/\gcd(4,12)=3$, as the lemma predicts. Since $11\equiv2\pmod3$, $\chi_{-3}(11)=-1$: Frobenius inverts $\sigma$ and acts on $(\ad V)^{I_{11}}$ by
+$-1$, so $L_{11}(A_f,s)^{-1}=1+11^{-s}$, $P_{11}(X)=1+11X$ (PARI's \texttt{lfuneuler(lfunsympow(E,2),11)} returns $1/(1+11X)$), and $e_\ell(E,11)=v_\ell(12)$, which is
+$1$ for $\ell=3$ and $0$ for $\ell\ge5$. The Serre exponent of $\bar\rho_{E,3}$ at $11$ is $2-1=1$, one less than $f_{11}=2$; this is why
+$N(\bar\rho_{\curve{121c1},3})=11$ in \Cref{ex:galrep:serre-conductor-examples}.
 
 \begin{corollary}[types $\kod{IV}$, $\kod{IV}^*$ at $2$]\label{cor:galrep:IV-at-2}
 Let $E/\Q$ have type $\kod{IV}$ or $\kod{IV}^*$ at $2$. Then $f_2(E)=2$ (so $4\,\|\,N$), $v_2(\Delta_{\min})=4$ for type $\kod{IV}$ and $8$ for type $\kod{IV}^*$, $\rho_{E,\ell}(I_2)$ is
@@ -997,6 +1066,13 @@ where $\sigma(\varpi_n)/\varpi_n\in\mu_{\ell^n-1}$ is reduced modulo the maximal
 write $\omega=\omega_1$ (the fundamental character of level $1$) and $\omega_2$ (level $2$).
 \end{definition}
 
+Why these characters. Any continuous character of $I_\ell$ with values in a finite field of characteristic $\ell$ has order prime to $\ell$, so it kills the
+pro-$\ell$ wild inertia group and factors through the tame quotient, which is procyclic. The characters $\omega_n$ are the standard generators of the
+characters of tame inertia with values in $\F_{\ell^n}^\times$: every such character is a power of $\omega_n$ (by (i) of the next proposition, $\omega_n$ maps the
+tame quotient onto the cyclic group $\F_{\ell^n}^\times$). They are the language in which \Cref{thm:galrep:deligne-fontaine} describes $\bar\rho|_{I_\ell}$: level $1$ in the
+ordinary case, level $2$ in the supersingular case. For example, at $\ell=3$, $\omega$ has order $2$ and is the restriction of $\chi_{-3}$ to $I_3$, while
+$\omega_2\colon I_3\to\F_9^\times$ has order $8$ and $\omega_2^4=\omega$.
+
 \begin{proposition}\label{prop:galrep:fundamental-characters}
 \begin{enumerate}[label=(\roman*)]
 \item $\omega_n$ is a well-defined continuous surjective homomorphism, independent of the choice of $\varpi_n$, and factors through the tame
@@ -1110,6 +1186,12 @@ representations (\Cref{ch:local}). The \emph{Serre conductor} is $N(\bar\sigma)=
 we use it only through \Cref{thm:galrep:good-at-l}(iii).
 \end{definition}
 
+The definition copies the conductor of an $\ell$-adic or complex representation, so that for $\bar\rho_{E,\ell}$ it can be compared term by term with the conductor
+exponent $f_p(E)$ of $V_\ell E$; the comparison is \Cref{prop:galrep:serre-conductor-E}. The prime $\ell$ is left out because ramification at $\ell$ is measured by
+the weight instead. Small examples, all one-dimensional: a quadratic character $\chi_d$ at an odd prime $p\mid d$ has $W^{I_p}=0$ and tame ramification, so
+$a_p(\chi_d)=1$; at $p=2$, $\chi_{-4}$ and $\chi_{\pm8}$ have conductors $4$ and $8$, so $a_2(\chi_{-4})=2$ and $a_2(\chi_{\pm8})=3$, the excess over $1$ being the Swan conductor.
+For instance, $\chi_{-3}$ viewed modulo $\ell\ne3$ has Serre conductor $3$.
+
 \begin{proposition}\label{prop:galrep:serre-conductor-basic}
 \begin{enumerate}[label=(\roman*)]
 \item $a_p(\bar\sigma)\ge0$, and $a_p(\bar\sigma)=0$ iff $\bar\sigma$ is unramified at $p$. So $N(\bar\sigma)$ is prime to every prime at which $\bar\sigma$ is unramified.
@@ -1139,7 +1221,12 @@ is $\kod{IV}$ or $\kod{IV}^*$, and $f_p$ otherwise. In particular $\bar\rho_{E,\
 The image $\rho(P_p)$ of the wild inertia group is a pro-$p$ subgroup of $\GL_2(\Zl)$; it meets the pro-$\ell$ group $1+\ell M_2(\Zl)$ trivially, so it injects
 into $\GL_2(\Fl)$ and is a finite $p$-group, of order prime to $\ell$. For a finite group $H$ of order prime to $\ell$ acting on $T$, taking invariants
 commutes with reduction: the averaging operator $e_H=\frac1{\#H}\sum_{h\in H}h$ is defined over $\Zl$, and $T^H=e_HT$, $(T/\ell T)^H=e_H(T/\ell T)=T^H/\ell T^H$, so
-$\dim_{\Fl}(T/\ell)^H=\rank_{\Zl}T^H=\dim_{\Ql}V^H$ (\Cref{ch:reps}). Applied to the ramification groups $G_i$, $i\ge1$, which lie in $P_p$, this gives
+$\dim_{\Fl}(T/\ell)^H=\rank_{\Zl}T^H=\dim_{\Ql}V^H$ (\Cref{ch:reps}). (In more detail: $e_H$ is an idempotent commuting with $H$, so $T=e_HT\oplus(1-e_H)T$; an element fixed
+by $H$ satisfies $e_Hx=x$, and conversely $he_H=e_H$ for $h\in H$; the same holds on $T/\ell T$, and reducing the decomposition of $T$ modulo $\ell$ shows
+$e_H(T/\ell T)=e_HT/\ell e_HT$, a free module over $\Fl$ of rank $\rank e_HT$.) The Swan conductor is $\sum_{i\ge1}\frac{\#G_i}{\#G_0}\dim(W/W^{G_i})$, where the $G_i$ are the ramification groups of a
+finite Galois extension $L/\Q_p$ whose own wild inertia group acts trivially on $T$ (\Cref{ch:local}); one such $L$ serves for $V$ and for $E[\ell]$ at once. For
+$i\ge1$ the group $G_i$ lies in $G_1$, the image of $P_p$, and acts on $T$ through $\rho(P_p)$, of order prime to $\ell$, so the codimension of its fixed space is the same on
+$E[\ell]$ and on $V$. This gives
 $\operatorname{sw}_p(\bar\rho)=\operatorname{sw}_p(V)$. Then, with \Cref{cor:galrep:delta},
 \[
 a_p(\bar\rho)=2-\dim E[\ell]^{I_p}+\operatorname{sw}_p(V)=f_p-\bigl(\dim E[\ell]^{I_p}-\delta_p\bigr).
@@ -1267,7 +1354,9 @@ label & order & subgroup $H$ & arithmetic meaning & degrees of factors of $\psi_
 By \Cref{prop:galrep:image-constraints}, $H$ has surjective determinant and contains an element of determinant $-1$ and trace $0$. By \Cref{ch:groups}
 the subgroups of $\GL_2(\F_3)$ with surjective determinant fall into nine conjugacy classes, namely the eight of the table and $C_{ns}(\F_3)$, cyclic of
 order $8$, and $C_{ns}(\F_3)$ is the only one of them without an element of determinant $-1$ and trace $0$ (its elements of determinant $-1$ are its
-generators, of order $8$, with nonzero trace). A subgroup of $\SL_2(\F_3)$ does not have surjective determinant. So $H$ is conjugate to one of the
+generators, of order $8$, with nonzero trace). To see the last point, identify $C_{ns}(\F_3)$ with $\F_9^\times$ acting on $\F_9\simeq\F_3^2$ by multiplication; then the
+determinant of multiplication by $x$ is the norm $x\cdot x^3=x^4$ and its trace is $x+x^3$. If $x$ has order $8$, then $x^4=-1$, and $x+x^3=x(1+x^2)\ne0$
+because $x^2$ has order $4$, so $x^2\ne-1$. If $x$ has order dividing $4$, then $x^4=1$. A subgroup of $\SL_2(\F_3)$ does not have surjective determinant. So $H$ is conjugate to one of the
 eight. The four lines of $E[3]$ correspond bijectively and Galois-equivariantly to the four roots of $\psi_3$ (\Cref{prop:galrep:irreducibility}(ii)), so
 the orbits of $H$ on lines are the sets of roots of the irreducible factors of $\psi_3$, and the permutation group induced by $H$ on the lines, which is
 $H/(H\cap\{\pm1\})$ ($\pm1$ are the only elements fixing every line), is the Galois group of $\psi_3$. The orbit structures and groups in the table are
@@ -1572,7 +1661,8 @@ irreducible quadratics in the first case and irreducible in the other two.
 \end{proof}
 
 \begin{example}\label{ex:galrep:ns-examples}
-For \curve{726a1}, $\psi_3=(x^2-x-74)(3x^2+8x+20)$; the discriminants $297=3^3\cdot11$ and $-176=-2^4\cdot11$ give the quadratic fields $\Q(\sqrt{33})$ and
+For \curve{726a1}, $\psi_3=(x^2-x-74)(3x^2+8x+20)$; the discriminants $1+4\cdot74=297=3^3\cdot11$ and $8^2-4\cdot3\cdot20=-176=-2^4\cdot11$ (a quadratic $ax^2+bx+c$
+has its roots in $\Q(\sqrt{b^2-4ac})$, and square factors can be dropped) give the quadratic fields $\Q(\sqrt{33})$ and
 $\Q(\sqrt{-11})$, which with $\Q(\sqrt{-3})$ are the three quadratic subfields of the biquadratic splitting field ($33\cdot(-11)=-3\cdot11^2$). For \curve{6912d1},
 $y^2=x^3-6x-8$ (the example of \Cref{ch:galois}), $\psi_3=3(x^2-4x-2)(x^2+4x+6)$, with fields $\Q(\sqrt6)$, $\Q(\sqrt{-2})$. For \curve{338d1},
 $\psi_3=(x^2+29x+1858)(3x^2-82x-172)$, with fields $\Q(\sqrt{-39})$, $\Q(\sqrt{13})$. For \curve{11a1}, $\psi_3$ is irreducible with Galois group $S_4$
@@ -1908,12 +1998,19 @@ Theorem thm:qual.
 Let $\ell$ be odd. (a) Show directly that $\rho_{E,\ell}(c)$ is conjugate in $\GL_2(\Zl)$ to $\operatorname{diag}(1,-1)$ for a complex conjugation $c$, and deduce that $\bar\rho_{E,\ell}$
 is irreducible iff it is absolutely irreducible. (b) Where does the argument fail for $\ell=2$? Show that $\bar\rho_{E,2}(c)$ is either trivial or a transvection,
 according as $E(\R)$ has two components or one (consider the real $2$-torsion points).
+
+\emph{Hint.} (b) The idempotents $\frac12(1\pm\rho(c))$ need $2$ to be invertible, and modulo $2$ the eigenvalues $1$ and $-1$ coincide. In a model $y^2=g(x)$,
+$E(\R)$ has two components iff $g$ has three real roots; then $c$ fixes $E[2]$ pointwise, and otherwise it fixes the one real point of order $2$ and swaps
+the other two, which on $\F_2^2$ is a transvection.
 \end{exercise}
 
 \begin{exercise}\label{ex:galrep:eleven-five}
 (The paper's Lemma lem:tamagawa-exp on \curve{11a1} and \curve{11a3}.) Both curves have multiplicative reduction at $11$, with $n_{11}=5$, resp.\ $1$. Show that
 $\bar\rho_{\curve{11a1},5}$ is unramified at $11$ and $\bar\rho_{\curve{11a3},5}$ is ramified there, compute $\#E[5^t]^{I_{11}}$ for both curves and every $t\ge1$, and explain why
 $E[5]\simeq\Z/5\oplus\mu_5$ for \curve{11a1} is consistent with the first statement.
+
+\emph{Answer.} By \Cref{lem:galrep:tamagawa-exp}(ii), $\#E[5^t]^{I_{11}}=5^{t+1}$ for \curve{11a1} and $5^t$ for \curve{11a3}. The module $\Z/5\oplus\mu_5$ is unramified at every
+prime other than $5$.
 \end{exercise}
 
 \begin{exercise}\label{ex:galrep:torsion-ur}
@@ -1934,6 +2031,9 @@ $\Phig_q[\ell^\infty]$ of $E[\ell^\infty]^{I_q}$, not from the sub $\mu_{\ell^\i
 (The paper's Lemma lem:IV for \curve{121c1}.) The curve \curve{121c1} has type $\kod{IV}$ at $11$. Show that $N(\bar\rho_{\curve{121c1},3})=11$ and check
 $a_p(\curve{121c1})\equiv a_p(\curve{11a1})\pmod3$ for all primes $p<100$, $p\ne11$, including $p=3$, where both curves are ordinary. Which statement of
 \Cref{thm:galrep:deligne-fontaine} does the case $p=3$ illustrate?
+
+\emph{Answer.} The exponent at $11$ is $f_{11}-\dim\Phig_{11}[3]=2-1=1$. At $p=3$ one has $a_3(\curve{121c1})=2$ and $a_3(\curve{11a1})=-1$; the congruence is part (iii) of
+\Cref{thm:galrep:deligne-fontaine}, since \Cref{prop:galrep:irreducibility}(iii) only covers primes not dividing $3N$.
 \end{exercise}
 
 \begin{exercise}\label{ex:galrep:IV-at-2}
@@ -1946,6 +2046,9 @@ result on \curve{20a1} and \curve{980i1} (type $\kod{IV}^*$ at $2$) with \texttt
 Carry out \Cref{rem:galrep:kraus-from-components}: for $q\ge5$ derive the orders $\kod{I}_0^*\mapsto2$, $\kod{IV},\kod{IV}^*\mapsto3$, $\kod{III},\kod{III}^*\mapsto4$, $\kod{II},\kod{II}^*\mapsto6$
 of the image of inertia from the component groups, \Cref{lem:galrep:component-invariants} at $\ell=2$ and $\ell=3$, and the independence of $\ell$. In particular
 prove that an element $\tau\in\SL_2(\Z_2)$ with $\tau^2=-1$ is not congruent to $1$ modulo $2$, and that its reduction fixes a line of $\F_2^2$.
+
+\emph{Hint.} The reduction $\bar\tau$ satisfies $\bar\tau^2=1$, so its characteristic polynomial is $X^2+1=(X+1)^2$ over $\F_2$; an element of $\GL_2(\F_2)$ with this
+characteristic polynomial is $1$ or a transvection, and it is not $1$ by the argument of \Cref{rem:galrep:kraus-from-components}.
 \end{exercise}
 
 \begin{exercise}\label{ex:galrep:types-rows}
@@ -1958,6 +2061,9 @@ than $E$?
 \begin{exercise}\label{ex:galrep:cns}
 Let $\ell$ be odd. Show that $\bar\rho_{E,\ell}(G_\Q)$ is never contained in $\SL_2(\Fl)$ and never conjugate to a subgroup of $C_{ns}(\Fl)$. Show that it can be contained in
 $C_s(\Fl)$, and characterise this case by the splitting of $E[\ell]$.
+
+\emph{Hint.} Use the determinant and complex conjugation (\Cref{prop:galrep:image-constraints}). The image lies in a conjugate of $C_s(\Fl)$ iff $E[\ell]$ is a direct
+sum of two $G_\Q$-stable lines; \curve{14a1} at $\ell=3$ is an example.
 \end{exercise}
 
 \begin{exercise}\label{ex:galrep:726a1}
@@ -1969,6 +2075,9 @@ its splitting field, deduce that the image is $N_s(\F_3)$, and check $a_p\equiv0
 (The paper's Section sec:anomaly.) Let $E$ have image \texttt{3Ns}. (a) Show $h_3(E)=1$ using \Cref{lem:galrep:h0} only. (b) Show without determinants that
 $\rho\bmod9\simeq(\rho\otimes\chi_3^{\mathrm{cyc}})\bmod9$ would give $a_p\equiv pa_p\pmod9$ for $p\nmid3N$, hence $9\mid a_p$ for every such $p\equiv2\pmod3$. (c) For \curve{726a1}, $a_{17}=6$: so the trace
 test of (b) also excludes $h_3\ge2$ for this curve. Why is such a test unnecessary?
+
+\emph{Hint.} (b) Take traces at $\Frob_p$: $\chi_3^{\mathrm{cyc}}(\Frob_p)=p$, and $1-p$ is a unit modulo $3$ when $p\equiv2\pmod3$. (c) $9\nmid6$; the test is unnecessary
+because the determinant argument in the proof of \Cref{lem:galrep:h0}(iii) gives $h_3(E)\le1$ for every curve.
 \end{exercise}
 
 \begin{exercise}\label{ex:galrep:R-examples}
@@ -1987,6 +2096,9 @@ quadratic fields of discriminant dividing $4N$, and check that $K\ne\Q(\sqrt5)$.
 \begin{exercise}\label{ex:galrep:eisenstein}
 Let $E$ be semistable, $\ell$ odd, $\ell\nmid N$, and $E[\ell]$ reducible. Prove that $a_p\equiv1+p\pmod\ell$ for every $p\nmid N\ell$ and that $E$ or an $\ell$-isogenous curve has a
 rational point of order $\ell$. Check both statements for \curve{14a1} and \curve{26a1} at $\ell=3$, and find the isogenous curve with a point of order $3$ for \curve{14a3}.
+
+\emph{Answer for the last part.} \curve{14a3} has image \texttt{3B.1.2}, its stable line is $\mu_3$, and its torsion group has order $2$. Its only
+$3$-isogenous neighbour is \curve{14a1} (the isogeny matrix in \texttt{allisog}), whose torsion group is $\Z/6$.
 \end{exercise}
 
 \begin{exercise}\label{ex:galrep:3cs11}
@@ -1998,12 +2110,19 @@ the paper's phrase ``the split Cartan image \texttt{3Cs.1.1}'' misdescribes \cur
 Compute $N(\bar\rho_{E,3})$ from \Cref{prop:galrep:serre-conductor-E} for \curve{539c1}, \curve{77c1}, \curve{726a1} and \curve{6912d1}, and $N(\bar\rho_{E,5})$ for \curve{980i1} and
 \curve{140b1}. Which of these curves occur in the paper's Example of Section 3, directly or as the twist of a curve there, and which are illustrations
 added here? Which congruences of that Example do the former explain, and why does the one at $\ell=5$ not fall under Theorem thm:qual?
+
+\emph{Answer for the conductors.} $7^2\cdot11$, $11$, $11^2$, $2^8$ at $\ell=3$, and $2^2\cdot7^2$, $2^2$ at $\ell=5$; compare \Cref{ex:galrep:serre-conductor-examples}. At
+$\ell=5$ both curves have $5\mid N$.
 \end{exercise}
 
 \begin{exercise}\label{ex:galrep:ns-ordinary}
 Let $E$ have image \texttt{3Ns} and $3\nmid N$. (a) Show that $\omega_2$ has order $8$ for $\ell=3$, so that in the supersingular case $\bar\rho_{E,3}(I_3)$ would contain an
 element of order $8$. (b) Show that $N_s(\F_3)$ has no element of order $8$, and deduce that $E$ is ordinary at $3$: a second proof of
 \Cref{prop:galrep:ns-structure}(vi). (c) Show that in the ordinary case $\bar\rho(I_3)$ has order $2$ or $6$, and use $N_s(\F_3)$ to show it has order $2$.
+
+\emph{Hint.} (a) $\omega_2$ maps onto $\F_9^\times$. (b) $N_s(\F_3)$ is dihedral of order $8$; its elements have orders $1$, $2$, $4$. (c) In the ordinary case
+$\bar\rho(I_3)$ lies in $\sm{\omega}{*}{0}{1}$ with $\omega$ of order $2$, a group of order $6$, and $\bar\rho(I_3)$ surjects onto the values of $\omega$; $N_s(\F_3)$ has no element
+of order $3$.
 \end{exercise}
 
 \section{Notes and references}\label{sec:galrep:notes}
