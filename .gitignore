@@ -14,3 +14,7 @@ data/
 !final/paper/note.pdf
 !final/book/build/main/main.pdf
 !final/pipeline/**/*.log
+final/process/*.aux
+final/process/*.fls
+final/process/*.fdb_latexmk
+final/process/*.out

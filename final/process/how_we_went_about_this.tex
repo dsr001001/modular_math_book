@@ -1,0 +1,98 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,enumitem,hyperref,url}
+\usepackage[T1]{fontenc}\usepackage{xcolor}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black}
+\setlist{itemsep=2pt,topsep=3pt}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{How we went about this\\[2pt]\large The companion book, the corrected note and the computational record}
+\author{Prepared by Claude (Anthropic) for D. Soni\\ from one working session and its repository}
+\date{25 October 2026}
+\begin{document}
+\maketitle\sloppy
+
+\begin{abstract}
+\noindent This is an account of how the companion book \emph{From First Courses to the Modular Degree}, the final version of the note \emph{Local factors of the adjoint $L$-function and the $\ell$-adic valuations of the modular degree}, and the computational pipeline behind the note's data were produced and checked in one long session. It records who decided what, how the work was divided, how each kind of claim was checked, what went wrong and how it was caught, and what is still open. Dates and counts are taken from the repository \url{https://github.com/dsr001001/modular_math_book} (branch \texttt{claude/textbook-paper-prerequisites-clhh5a}, about 210 commits from 12 to 25 October 2026).
+\end{abstract}
+
+\section{Roles}
+The author planned and directed the work: he set the goal (a book that lets a reader with first courses in analysis, linear algebra and complex analysis read the note, and lets a specialist referee it quickly), approved each stage before it started, supplied the source papers that could not be fetched, obtained three outside reviews, and took every decision that could not be undone or could reasonably go either way (for example the scope of corrections to the note, the location of the final versions, and the wording of the data protocol). Claude (Anthropic) wrote the book, drafted the corrections and the new proofs of the note, ran the computations, and organised the checking. Much of the writing and checking was delegated by the main session to sub-agents (separate Claude instances with a written brief and no memory of the conversation); the main session read their reports, checked their output and committed it. No human expert has yet read the book or the new proofs line by line; the preface of the book and the statement on AI at the end of the note say so.
+
+\section{Principles that governed the work}
+\begin{enumerate}
+\item \emph{One planned review per piece of writing.} Each chapter went through a writer, one planned review against a common checklist, and one fix pass; the main session then checked the build and the lint. Stray second reviews were avoided at the author's request.
+\item \emph{Check against the source, not against memory.} Imported theorems were checked against the original papers (Diamond--Flach--Guo, Ribet--Takahashi, Takahashi, Flach, Deligne--Serre, Carayol, Cremona's Table 4 and errata, Pollack--Weston, Kenku, Langer, Pasten and others), most supplied as PDFs by the author. Every quotation of the note in the book is matched verbatim against the note's source by script.
+\item \emph{Separate kinds of evidence.} A statement is proved in the note, proved in the book, imported (with exact citation), conjectural, empirical, or computed; a computation is quoted, checked against a saved output, regenerated, or independently recomputed. The claim ledger records this for 124 claims.
+\item \emph{High-stakes steps get an independent check.} The new proof of the comparison of integral structures was checked by a separate agent that had not seen the reasoning behind it, instructed to break it.
+\item \emph{No invented content.} Numbers, tables and citations enter only from a source or a run in the repository. Suggestions that would have added unsupported numbers were rejected (Section~\ref{sec:reviews}).
+\item \emph{Honest framing.} The book and the note state who directed the work and what an AI system did, and say what has not been checked. The final versions read the note as a single text; the history of corrections is kept in the repository, not in front of the reader.
+\end{enumerate}
+
+\section{The sequence of work}
+\subsection{Plan and outlines (12--13 October)}
+A master plan fixed the audience, the table of contents, the scope of each chapter, a map from each statement of the note to the chapters that prepare it, and the writing conventions. Each chapter began as an outline listing its core results. While outlining, every difficulty found in the note was recorded as a numbered point; there were 112 by the end.
+
+\subsection{Writing the book (13--22 October)}
+Twenty-two chapters and two appendices (prerequisites; notation and conventions) were written in the writer, review, fix cycle, a few chapters at a time. Each chapter opens with a card of core results tagged by level of rigour (proved here, sketched here, stated with reference). Computations in the book use PARI/GP 2.17.2 through \texttt{cypari2} on Cremona's tables below conductor $10{,}000$, pinned to a commit and checked by SHA-256 sums; they were made with the note in hand, so they are checks, not blind tests. When the sources the author supplied were read, several statements of the book were corrected (for example the exact hypothesis of Flach's theorem, the proof route of Diamond--Flach--Guo Proposition 1.4(c), and a bibliographic entry). A later pass added explanations wherever the text was terse, with a script confirming that no numbered statement or label changed.
+
+\subsection{Reading the note (the last chapter)}
+Chapter 21, a guided reading of the note, was written last, when the book was complete. At that stage it listed 38 points on which the note needed correction or completion, none of which invalidated a theorem, and a memo for the author.
+
+\subsection{Final versions (24 October)}
+At the author's request a folder \texttt{final/} was made with the corrected note and a copy of the book that reads it as a single text, with all version history removed. Every chapter was realigned by an agent following one written set of rules (re-match each quotation, remove version language, keep statements and labels); a script compared every numbered statement with the root copy, and the main session reviewed each flagged change. Chapter 21 was recast as a straight guided reading.
+
+\subsection{Outside reviews (24 October)}\label{sec:reviews}
+The author obtained three reviews, all produced by AI systems. Each was checked claim by claim before anything was adopted.
+\begin{itemize}
+\item The first proposed replacement tables for the note's six missing tables, presented as ``the exact numbers already reported in the prose''. A script found that 108 of the 124 numbers were not in the note; one row was impossible. The tables were rejected. Its argument that the weight $w_3$ is constant on isogeny classes was correct but cited the wrong theorem; it was adopted with the correct citation (Dokchitser--Dokchitser, Theorem 5.4(1), checked against the paper). Its proposed proof of Proposition 4.1 was not a proof and was not used. Its editorial points were adopted.
+\item The second was a process review with accurate facts; its priorities agreed with ours.
+\item The third, a comprehensive audit, found one genuine statement error (Theorem 1.5(c) did not exclude $\mathrm{I}_0^*$; it now requires $n\ge1$), two repository problems, and fifteen clarity suggestions, all of which were then carried out.
+\end{itemize}
+
+\subsection{The comparison of integral structures (24 October)}
+The note's main theorem rested on Proposition 4.1, then only sketched. After a literature search found no statement in the needed form, a proof was found that is integral and needs no localisation: with compact support, taking invariants under the covering group loses nothing, because $H^0_c$ of the cover vanishes and $H^1$ of a finite stabiliser with coefficients in $\Z$ is $0$. A brute-force check confirmed, on 25 groups, the description of the obstruction for ordinary cohomology. An adversarial agent confirmed three of the four steps, found a gap in the Hecke step (including $U_p$), and supplied the fix; it also checked the comparison numerically on six levels. The pairing constant was shown to be $\frac12$ times an $\ell$-adic unit, which is all the argument needs. The book's Chapter 20 gives the proof at textbook level.
+
+\subsection{The data and the pipeline (24 October)}
+The author identified the repository named in the note's appendix. Its six table files were checked against the note's prose and printed. At the author's request the pipeline was copied, without modifying the original repository, into \texttt{final/pipeline}, and made usable by outsiders: paths fixed, the reproduction script made to stop on any error or count mismatch, a self-test that runs without the data, a checksum manifest, a provenance file and a README mapping each table to its script. The note now points to it. A machine-readable claim ledger (\texttt{final/claims}) and a four-page reviewer's route at the front of the book were added.
+
+\subsection{The full rerun (24--25 October)}
+With the author's approval the whole pipeline was rerun from the pinned data on a two-core machine with 7~GB of memory, PARI being called through \texttt{cypari2} because no \texttt{gp} binary was available.
+\begin{itemize}
+\item Stage 1: download of $3{,}064{,}705$ curves, PARI features for all of them, the feature table and the checker. Every count and the three checker summaries agreed with the committed ones.
+\item Stage 2: the Euler factors, the rule on all ranges, the correction term, the Tamagawa test and the inputs of the tables. Every committed summary and all seven table files were reproduced byte for byte, including four rows that could not be checked before.
+\item Stage 3: the thirteen numbers stated in the note with no committed output. 21 of 23 figures matched; two were wording errors and were corrected in the note (19, not 20, exceptions on one range; 18 curves ``optimal or not'', not 18 optimal curves). The lemma on local factors was checked on all $5{,}102{,}273$ (optimal curve, prime) pairs, the mod $3$ images on all $2{,}097{,}505$ optimal non-CM curves, and PARI 2.15.4 was found to agree with 2.17.2 on all $38{,}042$ curves below $10{,}000$.
+\end{itemize}
+The computations took under two hours of machine time; model use was kept low by running everything as unattended background jobs.
+
+\subsection{The data protocol (25 October)}
+The commit history of the original repository showed that one inequality was formulated after the hold-out counts of another were known, and that the curves generated outside the tables were run through each version of the rule as it was written. The author chose neutral wording: the note now says exactly this, and calls those ranges confirmations rather than blind tests.
+
+\section{What went wrong, and how it was caught}
+\begin{itemize}
+\item \emph{An editing script damaged the note.} While restoring tables, a regular expression deleted about 180 lines. It was detected, and the note was rebuilt by replaying the 57 recorded edits of the agent that had corrected it, then compared word by word with its last good PDF.
+\item \emph{Claims stronger than the record.} Several sentences said more than the data or the logs supported: a clean-rerun claim, two counts, a population (455,707 pairs read as a subset they were not), and the blind-test wording. Each was found by checking against result files or the commit history, and corrected; the clean-rerun claim was replaced by the actual full rerun.
+\item \emph{Infrastructure.} The checker ran out of memory on the full working set (rerun per range); the repository's ignore rules had kept the pipeline's log files off GitHub, so a fresh clone would have failed its own checksum test (found by cloning afresh, fixed); labels in Cremona's image file are spelled differently above conductor $400{,}000$ (documented; no result affected).
+\item \emph{Unsupported outside material.} The fabricated tables of the first review were the clearest case of output that looked authoritative and was not.
+\end{itemize}
+
+\section{Status}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Note & 39 pages; main theorem with all inputs proved or imported with exact citation; six data tables printed and regenerated from the pinned data.\\
+Book & 1,191 pages; 22 chapters, two appendices, preface and reviewer's route; clean build.\\
+Pipeline & \texttt{final/pipeline}: scripts, results, logs of the full rerun, self-test, 172-file checksum manifest.\\
+Ledger & \texttt{final/claims}: 124 claims; 73 computational claims regenerated, 1 independently recomputed.\\
+Open & a sweep of references and page numbers; a specialist's reading of Proposition 4.1 and of the chain of Diamond--Flach--Guo results; the exact value of the pairing constant (not needed). The working list is \texttt{final/TODO.md}.\\
+\bottomrule
+\end{tabularx}
+
+\section{How to check any of this}
+Everything above can be verified from the repository.
+\begin{itemize}
+\item \texttt{final/README.md}: the layout of the final versions.
+\item \texttt{final/pipeline/README.md}: the pipeline and the full rerun; run \texttt{sha256sum -c MANIFEST.sha256} and \texttt{python3 scripts/selftest.py} in \texttt{final/pipeline}.
+\item \texttt{final/claims/scripts/check\_claims.py}: validates the ledger against the note, the book and the pipeline.
+\item The commit history records each step in order.
+\end{itemize}
+
+\end{document}
