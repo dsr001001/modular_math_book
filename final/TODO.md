@@ -33,7 +33,7 @@ A question to put to the session that did the work (if its transcript is availab
 - ecmine/README.md says paper/tables/euler_uniform.tex comes from step10_make_table.py; it comes from step11_tw_boundary.py (as HANDOFF.md says). euler_iso3.tex was copied by hand from step9_euler_l3.txt.
 
 ## 4. References to check against the originals
-Sweep done 25 October (process/reference_sweep_2026-10-25.md): metadata of all 51 works checked, DFG04 locators all checked against the Annales text, fixes applied to the note, the book and the ledger. Still to check against printed texts: DDT (Thm 3.1(e), Thm 3.15, Section 4.4, Lemma 4.17), Edixhoven92 Section 2 (may be Section 6), Ribet90 (hypotheses for the twisted step), RibetStein Thm 3.5, ARS12 printed numbering, SerreTate68, Serre72, Silverman IV.9, Carayol89, Kraus89/90, Tilouine97, Pasten, Ligozat75 (CM point), KimOta published numbering.
+Sweep done 25 October (process/reference_sweep_2026-10-25.md): metadata of all 51 works checked, DFG04 locators all checked against the Annales text, fixes applied to the note, the book and the ledger. DDT, Edixhoven92, Ribet90, RibetStein and ARS12 checked against texts supplied by the author (same day; see the follow-up section of the sweep record). Still to check: printed numbering of RibetStein and ARS12 (authors' versions used), SerreTate68, Serre72, Silverman IV.9, Carayol89, Kraus89/90, Tilouine97, Pasten, Ligozat75 (CM point), KimOta published numbering.
 Also: Brown, Cohomology of Groups, theorem numbers for Shapiro (III.6) and Hochschild-Serre (VII.6); Grothendieck 1957 Chapter V (equivariant Leray); a published proof of Sha(11a1)[5] = 0.
 
 ## 5. Mathematics to have checked by a specialist
