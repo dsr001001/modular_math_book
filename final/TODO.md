@@ -34,7 +34,7 @@ A question to put to the session that did the work (if its transcript is availab
 
 ## 4. References to check against the originals
 Sweep done 25 October (process/reference_sweep_2026-10-25.md): metadata of all 51 works checked, DFG04 locators all checked against the Annales text, fixes applied to the note, the book and the ledger. DDT, Edixhoven92, Ribet90, RibetStein and ARS12 checked against texts supplied by the author (same day; see the follow-up section of the sweep record). Decision (25 October): RibetStein, ARS12, DDT and KimOta are cited with the numbering of the online versions named in refs.bib. Still to check: SerreTate68, Serre72, Silverman IV.9, Carayol89, Kraus89/90, Tilouine97, Pasten, Ligozat75 (CM point), KimOta published numbering.
-Also: Brown, Cohomology of Groups, theorem numbers for Shapiro (III.6) and Hochschild-Serre (VII.6); Grothendieck 1957 Chapter V (equivariant Leray); a published proof of Sha(11a1)[5] = 0.
+Brown checked (25 October): Shapiro III.(6.2), Hochschild-Serre VII.(6.3); Step 1 of prop:integral now has a cellular version resting on Brown VII.(7.2), (7.7), so Grothendieck 1957 Chapter V is optional. Also still: a published proof of Sha(11a1)[5] = 0.
 
 ## 5. Mathematics to have checked by a specialist
 - The proof of Proposition prop:integral (integral comparison of the DFG integral structure with H^1(X_0(M),Z)): in particular the reading of DFG's definitions in Section 1.4.1, the Hecke action of their Proposition 1.3 including U_p, and the use of the statement before their Lemma 1.2.

@@ -607,7 +607,7 @@ the forgetful map $M(M,1)_{c,B}\to M(M,1)_{\mathrm{tf},B}$ \cite[Section 1.4.2]{
 \end{definition}
 
 The comparison with $X_0(M)$ uses cohomology with compact support of a space with an action of a finite group, and two spectral sequences. We recall what is needed; the
-general theory is in Chapter V of \cite{Grothendieck57}, and the group cohomology in \cite{Brown}.
+general theory is in Chapter V of \cite{Grothendieck57}, and the group cohomology in \cite{Brown}. For a space with a finite cell structure Brown gives both spectral sequences in cellular form \cite[Chapter VII, Section 7]{Brown}: for a $G$-CW complex $X$ the equivariant cohomology is $H^\bullet(G,C^\bullet(X))$, the first spectral sequence is the cohomological form of his (7.2), and the second, by Shapiro's lemma as in his (7.6), has $E_1^{p,q}=\prod_\sigma H^q(G_\sigma,\Z_\sigma)$ over representatives $\sigma$ of the orbits of $p$-cells, $\Z_\sigma$ being $\Z$ twisted by the orientation character, his (7.7). Applied to the relative complex of the compactified curve modulo its cusps, which computes cohomology with compact support of the open curve, and after a subdivision making every stabiliser fix its cell pointwise (so that all $\Z_\sigma=\Z$), this gives the same two conclusions as the sheaf-theoretic argument below.
 
 \emph{Equivariant cohomology with compact support.} Let a finite group $G$ act continuously on a locally compact Hausdorff space $X$. A \emph{$G$-sheaf} on $X$ is a sheaf $\mathcal F$ of abelian groups
 together with isomorphisms $g^*\mathcal F\simeq\mathcal F$ compatible with the group law; the constant sheaf $\Z$, with $g$ acting on sections by $s\mapsto s\circ g^{-1}$, is one. The $G$-sheaves form an
@@ -619,7 +619,7 @@ acyclic for $(-)^G$. The spectral sequence of a composite functor (Grothendieck,
 \[
 E_2^{p,q}=H^p\bigl(G,H^q_c(X,\mathcal F)\bigr)\ \Longrightarrow\ H^{p+q}_{G,c}(X,\mathcal F),
 \]
-with the edge map $H^n_{G,c}(X,\mathcal F)\to H^n_c(X,\mathcal F)^G$ forgetting the group action; compare \cite[Chapter VII, Section 6]{Brown} for the case of groups.
+with the edge map $H^n_{G,c}(X,\mathcal F)\to H^n_c(X,\mathcal F)^G$ forgetting the group action; compare \cite[Chapter VII, Section 6]{Brown} for the case of groups and \cite[Chapter VII, (5.1) and (7.2)]{Brown} for a group acting on a cochain complex.
 
 \emph{Equivariant Leray.} Let $\pi\colon X\to Y=X/G$ be the quotient map, $Y$ with the quotient topology. As $G$ is finite, $\pi$ is proper with finite fibres, and $G$ permutes each fibre transitively.
 For a $G$-sheaf $\mathcal F$ put $\pi^G_*\mathcal F=(\pi_*\mathcal F)^G$, a sheaf on $Y$. As $\pi$ is proper, $\Gamma_c(X,\mathcal F)^G=\Gamma_c(Y,\pi^G_*\mathcal F)$, and $\pi^G_*$ sends injective $G$-sheaves to flabby
