@@ -12,8 +12,9 @@
   statement, table and named example, its status (proved, imported, conjectural, empirical, computed), where the book
   treats it, the script and output behind it, and the level of computational evidence; `claims/scripts/check_claims.py`
   validates it against the paper, the book and the pipeline.
-* `process/`: how the work was done: `planning_session.pdf` (the planning session, 11 to 15 October: plan, outlines,
-  findings, version 2 of the note) and `how_we_went_about_this.pdf` (from 15 October: the book, the final note, the
+* `process/how_we_went_about_this.pdf`: how the work was done from the 15 October hand-over onwards; the planning
+  session (11 to 15 October: plan, outlines, findings, version 2 of the note) has its own report,
+  `../docs/how_we_went_about_this_planning_session.pdf`. Scope of this one (from 15 October: the book, the final note, the
   pipeline and its full rerun).
 * `TODO.md`: open items for the author (not part of the book or the paper).
 
