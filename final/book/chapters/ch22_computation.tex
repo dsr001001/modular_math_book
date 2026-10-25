@@ -85,8 +85,9 @@ curves below $10{,}000$. PARI does not compute $r_E$. \emph{(methods stated, ref
 \item \textbf{Base rates and pooling.} At $\ell=3$ below $10{,}000$, $3\mid\degphi$ for $76.1\%$ of the base population, for $100\%$ of the curves with a prime $q\ge5$ of type
 $\kod{II}$ to $\kod{IV}^*$, $\kod{I}_n^*$ or $\kod{I}_n$ with $3\mid n$, and for $73\%$ to $76\%$ for the other types; pooled rates mix ranges. \emph{(proved here, by computation)}
 \Cref{ex:computation:base-rates,rem:computation:simpson}.
-\item \textbf{The protocol.} The four ranges; the status of each statement: (eq:main), Conjecture conj:eis blind-tested on the hold-out; (eq:twist) blind-tested if
-fixed before the hold-out counts of (eq:main) were seen; the Euler terms blind-tested only on the out-of-table curves; the weights $w_3$, the correction $h_3$ and the III-free
+\item \textbf{The protocol.} The four ranges; the status of each statement: (eq:main), Conjecture conj:eis blind-tested on the hold-out; (eq:twist) formulated after the hold-out and
+extension counts of (eq:main) were known, so confirmed there; the Euler terms confirmed on the hold-out and the extension and independently on the out-of-table
+curves, without a strictly blind test; the weights $w_3$, the correction $h_3$ and the III-free
 form never blind-tested. \emph{(a reading of the paper's text)}
 \Cref{rem:computation:protocol,rem:computation:test-status,rem:computation:what-is-tested,pl:computation:protocol}.
 \item \textbf{Multiple comparisons.} $m$ false candidates surviving with probabilities $\pi$, $\pi'$ leave about $m\pi$ and $m\pi\pi'$; the risk sits in the choice of
@@ -1235,8 +1236,8 @@ statement & formulated on & blind test & confirmed only & remark\\
 \midrule
 (eq:main) & working set & hold-out (once), then extension & & ``nothing was adjusted after the hold-out test''\\
 Conjecture conj:eis & working set & hold-out (once), then extension & & $D\le2$ is a theorem (Proposition prop:no9)\\
-(eq:twist) & working set, replacing a weaker form & hold-out and extension, ``tested once'' & & blind only if fixed before the hold-out counts of (eq:main) were seen: the order is not stated; the paper does not count the out-of-table curves as a blind test of it\\
-Conjecture conj:euler, Euler terms & working set (minima by type) & out-of-table & hold-out, extension & the terms at $2$ and $3$ ``were fixed afterwards by PARI's Euler factors''\\
+(eq:twist) & working set, replacing a weaker form & none & hold-out, extension & formulated ``after the counts of (eq:main) on the hold-out and the extension were known, and evaluated on all three ranges''; the paper does not count the out-of-table curves as a blind test of it\\
+Conjecture conj:euler, Euler terms & working set (minima by type) & none & hold-out, extension, out-of-table & the terms at $2$ and $3$ ``were fixed afterwards by PARI's Euler factors''; the out-of-table curves ``were evaluated with each version of it; no version failed on them and none was changed because of them''\\
 weights $w_3$ & working set (minima at $q=3$) & none & hold-out, extension & ``empirical'' (Section sec:wild); the paper does not count the out-of-table curves as a blind test of them\\
 correction $h_3$ & from the exceptions & none & all ranges & ``fitted on, and only confirmed by, data already seen''; $h_3=1$ on $\Ns$ curves is a theorem, the repaired inequality is not\\
 III-free form & after the $\Ns$ exceptions & none & all ranges & chosen so as to have no exceptions\\
@@ -1245,15 +1246,15 @@ Lemmas lem:euler, lem:twist; Prop.\ prop:forms; $h_3=1$ & & & & theorems: the da
 \bottomrule
 \end{tabular}
 \end{center}
-Two of these entries need a qualification that the text does not settle. The out-of-table curves, ``generated before the rule was formulated'',
-are a blind test of the Euler terms only if their modular degrees were not examined while the terms at $2$ and $3$ were being fixed; the
-paper does not say. And for (eq:twist), ``then tested once on the hold-out and the extension'' is a blind test only if
-(eq:twist) was written down before the hold-out counts of (eq:main) were seen.
+Two entries are confirmations in the sense of this definition and not blind tests. The out-of-table curves were generated before the rule was
+formulated, but they were evaluated with each version of it, so their results were seen while the rule took its final form; since no version
+failed on them and none was changed because of them, they are an independent confirmation of the Euler terms, not a strictly blind test. And
+(eq:twist) was formulated after the counts of (eq:main) on the hold-out and the extension were known, so for it these ranges are a confirmation.
 \end{remark}
 
 The decisive sentences are these (Section sec:data): ``Since the hold-out and the extension had already been used for (eq:main) and (eq:twist),
-they are a confirmation and not a blind test for Conjecture conj:euler; the out-of-table curves, generated before the rule was formulated, are.
-They contain no curve with image $\Ns$, so the correction term $h_3$ was fitted on, and only confirmed by, data already seen; and we do not count
+they are a confirmation and not a blind test for Conjecture conj:euler. The out-of-table curves were generated before the rule was formulated
+and were evaluated with each version of it; no version failed on them and none was changed because of them. They contain no curve with image $\Ns$, so the correction term $h_3$ was fitted on, and only confirmed by, data already seen; and we do not count
 the out-of-table curves as a blind test of (eq:twist). Nor do we count them as a blind test of the weights $w_3$, which they could test only
 through curves with $3\mid N$ and potentially good reduction at $3$.''
 
@@ -1315,8 +1316,8 @@ and the small working set was not blind to the paper: the weights were known in 
 
 \begin{paperlink}\label{pl:computation:protocol}
 The protocol paragraph of Section sec:data and the AI statement (``a frozen snapshot of the tables, a working set, a range held back for
-one-time tests, and a list of tests fixed before any was run''). \Cref{rem:computation:test-status} classifies the statements; its two
-qualifications are questions to the author, not errors.
+one-time tests, and a list of tests fixed before any was run''). \Cref{rem:computation:test-status} classifies the statements as the
+paper describes them.
 \end{paperlink}
 
 A blind test with zero violations is only as informative as the number of violations one would have expected without the statement being true.
@@ -1409,7 +1410,7 @@ range and hundreds of thousands of times in the paper's. It does not show:
 \item that the inequality holds beyond the data; that is the business of Theorem thm:main under its hypotheses, and of the conjecture outside them;
 \item anything about validity on the working set: the rule was fitted there (weights read off minima, terms at $2$ and $3$ fixed after the minima
 were seen), so on the working set the calibration measures the \emph{strength} of the statement, as the paper says; its \emph{validity} rests on the
-blind tests of \Cref{rem:computation:test-status};
+other ranges, which for the rule are confirmations (\Cref{rem:computation:test-status});
 \item a precise level of significance: independence across curves is an idealisation (twists and congruent newforms tie curves together), so the
 standard deviations are indicative only;
 \item that the null is the right one: ``independent of the local data'' is crude, and conditioning on the conductor and the number of bad primes,

@@ -2,7 +2,8 @@
 
 Not for readers of the book: a working list for the author.
 
-## 1. Protocol paragraph of the note (Section sec:data), pending the author's check
+## 1. Protocol paragraph of the note (Section sec:data)
+Resolved (25 October): the note adopts neutral wording (eq:twist formulated after the hold-out/extension counts of eq:main, a confirmation there; out-of-table curves evaluated with each version of the rule, an independent confirmation), and Chapters 21, 22, A and the reviewers' route follow it.
 Evidence from the commit history of dsr001001/mcptrial (ecmine), UTC:
 - 4 Oct 19:16-19:25: eq:main found on the working set; first hold-out runs (incl. a twist check on the hold-out).
 - 6 Oct 18:41: checker on hold-out and the new extension range; 0 violations of eq:main and of the old twisted rule.
