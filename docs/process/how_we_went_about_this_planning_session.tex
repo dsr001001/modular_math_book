@@ -1,0 +1,268 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs,tabularx,xltabular,array,enumitem,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\setlist{itemsep=2pt,topsep=4pt}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\title{How we went about this\\[0.5ex]\large The planning session: a process report on planning a textbook for one research paper}
+\author{Prepared by Claude, Claude Code session\\ on branch \texttt{claude/textbook-paper-prerequisites-clhh5a}}
+\date{11 to 15 October 2026; report written 25 October 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The goal was a textbook that takes a reader with first courses in analysis, linear algebra, complex analysis,
+statistics and Riley-Hobson-Bence to the point of reading the note \emph{Local factors of the adjoint
+$L$-function and the $\ell$-adic valuations of the modular degree}, and that experts can open as a reference.
+Over five days one orchestrating session, working with the author and about forty sub-agents, produced a master
+plan, verified outlines of all 22 chapters and an appendix of conventions, a verified bibliography, a record of
+80 findings about the paper, a memo for the author, a revised version of the paper with stronger results, and
+the tools and instructions to write the full text in a new session. No chapter text has been written yet. This
+report describes how the work was organised, what each party did, what went wrong and how it was caught, what it
+cost, and what we would do differently.
+
+\emph{Scope of this report.} It covers only the planning session, up to the hand-over of 15 October 2026. After the hand-over, another session continued from \texttt{CONTINUE.md}: it wrote the book and finalised the paper, and its own report is \texttt{final/process/how\_we\_went\_about\_this.pdf} on the same branch. Statements below such as ``no chapter text has been written yet'' describe the state at the hand-over.
+\end{abstract}
+
+\section{At a glance}
+
+{\small
+\begin{xltabular}{\linewidth}{>{\bfseries}p{3.6cm}L}
+\toprule
+Goal & A modular textbook (about 22 chapters) from undergraduate background to a specific research paper, also
+usable as a reference by experts.\\
+Starting material & The paper's LaTeX source (547 lines) and an empty git repository.\\
+Approach & Plan centrally; outline every chapter with a separate agent, chapter by chapter at the author's pace;
+verify claims computationally and by independent re-derivation; keep a single running record of findings;
+write the full text later from the outlines.\\
+Agents & One orchestrator; about 40 sub-agents (23 outline agents, 4 housekeeping agents, 1 paper-revision agent,
+2 setup agents, and 22 line-up agents of a first attempt that was stopped by a usage limit).\\
+Human role & Set the goal and audience, chose the pace and order (usually one to three chapters at a time), took
+four binding decisions, and asked for the memo, the revised paper and this report.\\
+Verification & PARI/GP (via cypari2) on Cremona's tables to conductor 10{,}000 (and 30{,}000 for one question);
+the orchestrator re-derived every high-impact claim before recording it; the published DFG04 was read to settle
+the central open question.\\
+Main outputs & \texttt{PLAN.md}; 23 outlines (24{,}421 lines); \texttt{docs/book\_plan.pdf} (649 pages);
+\texttt{refs.bib} and chapter bib files (203 entries); \texttt{important/important\_notes.md} (80 points, 27
+book-internal notes); \texttt{important/paper\_memo.md}; \texttt{paper/note\_v2.tex} (32 pages);
+\texttt{CONTINUE.md}, setup script and writing workflow.\\
+Not done & Chapter text (all 22 chapters), Appendix B text, the rest of Appendix A, the integration pass.\\
+Main open risks & The new proofs in the revised paper need the author's review; one step of the main
+strengthening (DFG04's integral structure versus $H^1(X_0(N),\mathbb Z_\ell)$) is sketched, not proved; the
+paper's data tables in version 2 are placeholders.\\
+\bottomrule
+\end{xltabular}
+}
+
+\section{Timeline}
+
+{\small
+\begin{xltabular}{\linewidth}{p{2.4cm}L}
+\toprule
+Date & What happened\\
+\midrule
+11 Oct & Read the paper in full. Wrote the master plan (audience, 22 chapters in six Parts, scope and paper hooks
+of every chapter, dependency graph, paper-to-chapter map, writing conventions). Built the LaTeX skeleton, a
+lint script and a per-chapter build script. Launched six parallel workflows (one per Part) to outline, write,
+review and fix every chapter. Verified the bibliography seed online.\\
+11 to 12 Oct & All 22 line-up agents of the first attempt stopped at a session usage limit, having used about
+2.2 million tokens without finishing. Five partial outlines and a partial appendix survived. The model was
+switched and the author asked for a cost estimate, then chose to continue chapter by chapter.\\
+12 to 14 Oct & Completed the five partial outlines, then outlined the remaining chapters in batches of one to
+three agents running in parallel. Each finished outline was checked, its findings about the paper verified and
+recorded, and committed. A sub-agent installed PARI/GP on 13 October, after which agents checked claims on
+Cremona's tables.\\
+14 Oct & Appendix B fixed book-wide conventions and listed every inconsistency between outlines. The Chapter 20
+agent read the published DFG04 and settled the checklist behind the central strengthening. In parallel: a memo
+for the author, convention fixes across the outlines, a revision of the Chapter 21 outline, and bibliography
+consolidation.\\
+15 Oct & The author took decisions D1 to D4. A revised paper (version 2) was written and compiled. The plan
+and outlines were assembled into one PDF. Instructions, a setup script and a writing workflow were added for a
+new session.\\
+\bottomrule
+\end{xltabular}
+}
+
+\section{How the work was organised}
+
+\subsection{Planning first, centrally}
+The orchestrator read the paper in full before planning anything, then wrote \texttt{PLAN.md}: the audience and
+two reading modes (linear, and refresher through a ``Core results at a glance'' card at the head of each chapter);
+the design principles (one topic per chapter, every chapter linked to the exact places the paper uses it, three
+declared levels of rigour); the scope of each of the 22 chapters, written in enough detail that an agent could
+work from it alone; a dependency graph; a table mapping every notion of the paper to chapters; and strict
+conventions (file structure, labels, citations, typography). The plan was the single source of truth that every
+later agent was told to read first.
+
+\subsection{Infrastructure before content}
+A shared LaTeX preamble holds every macro, so chapters define none. A lint script rejects forbidden dashes,
+non-ASCII characters, undefined label prefixes and stray commands. A build script compiles one chapter alone
+with all other chapters' labels pre-registered, so cross-references resolve. A bibliography agent verified every
+seed entry online. This let any agent check its own output mechanically.
+
+\subsection{A first attempt that failed, and what replaced it}
+The first attempt ran six workflows at once, one per Part, each pipelining line-up, writing, two reviews and up to
+three fix rounds per chapter. All 22 line-up agents hit a session usage limit before finishing, after about 2.2
+million tokens. The lesson was that the full pipeline for 22 chapters at once is too large to run unsupervised in
+one sitting, and that the outline stage alone was already substantial.
+
+The replacement was incremental and human-paced: the author named the next chapter or batch (``finish chapter 1
+then stop'', ``do 7, 8, 9''), the orchestrator launched one agent per chapter, and each batch was checked and
+committed before the next. Outlines became the main deliverable of this phase; writing the text was deferred.
+
+\subsection{What each outline agent was asked to do}
+Every outline agent received the same brief, adapted to its chapter: read the plan, the paper and every outline
+already written; supply exactly what earlier outlines defer to this chapter and nothing they already cover; line
+up every result in teaching order with a precise statement, a rigour level, a reference and the paper location
+that uses it; give a section plan, a coverage table, exercises and notes for the writer; verify computations by
+hand or with Python and later PARI; and end with a section of \emph{new} problems found in the paper, with
+location, fix and confidence. Agents running at the same time were told about each other, and the orchestrator
+relayed coordination messages between running agents (for example, which chapter owns a lemma).
+
+\subsection{The running record of findings}
+At the author's request, a single file, \texttt{important/important\_notes.md}, collected every point about the
+paper as it was found, with source, argument and confidence. Book-internal inconsistencies were kept separately
+(B1 to B27). Before recording a high-impact claim the orchestrator re-derived it independently (for example the
+determinant argument bounding $h_\ell(E)$, the cyclic 27-isogeny argument, the equality coming from the projection
+formula, and every curve example by PARI). Corrections were made in place with a note saying what changed and
+why, so the file stayed an honest history.
+
+\subsection{Consolidation, then the paper}
+When all outlines existed, four agents ran in parallel with disjoint file ownership: a memo for the author
+reconciling the 80 points into their final state; application of the conventions of Appendix B to all outlines
+and to the plan; a revision of the Chapter 21 outline, which had been written first and was out of date; and a
+consolidation of the bibliography so that the full build and every standalone chapter build work. After the
+author's decisions, one agent wrote a revised paper incorporating the strengthenings with proofs and every
+correction, with a change log of what the author must check.
+
+\subsection{Handover}
+The plan and outlines were assembled into one PDF. \texttt{CONTINUE.md} gives the state of every component, the
+prompt to start a new conversation, the setup steps, the pilot, the writing order and the rules. A setup script
+installs the toolchain and data in a fresh container, and a workflow script runs the write, review and fix loop
+from the existing outlines.
+
+\section{Who did what}
+
+{\small
+\begin{xltabular}{\linewidth}{>{\bfseries}p{2.6cm}L}
+\toprule
+The author & Set the goal, the audience and the use as a reference; decided pace and order; asked to keep the
+important points in a separate file; took the binding decisions D1 (state the book's stronger results as
+theorems), D2 (length is a guideline, not a cap, since the book is for online reading), D3 (the better character
+convention, $\chi_{q^*}$, with the paper to be rewritten accordingly) and D4 (Manin constant positive); asked for
+the cost estimate, the memo, the revised paper, the plan PDF and this report.\\
+Orchestrator & Read the paper; wrote the plan, tools and instructions; wrote each agent's brief; checked every
+returned file (length, typography, structure); re-derived high-impact claims before recording them; relayed
+coordination between agents; fixed its own planning errors when agents found them; committed and pushed after
+every step; reported to the author and asked before steps the author wanted to control.\\
+Outline agents & Read the plan, the paper and all earlier outlines; produced the outlines; computed and checked
+examples; reported new findings and inconsistencies.\\
+Other agents & Bibliography verification and consolidation; convention fixes; Chapter 21 revision; the memo; the
+revised paper; the preface and partial Appendix A.\\
+\bottomrule
+\end{xltabular}
+}
+
+\section{What went wrong, and how it was caught}
+
+\begin{itemize}
+\item \textbf{Usage limit in the first attempt.} All parallel line-up agents stopped at once. Partial files were
+committed as work in progress and completed one by one.
+\item \textbf{Errors in the orchestrator's own plan and notes,} each caught by a later agent and corrected in place:
+the Manin constant on the wrong side of the Zagier-Watkins formula; the wrong zeta factor in the naive adjoint
+$L$-function; a wrong reason (``the Hecke algebra is reduced'') in note 19, since $U_p$ can have Jordan blocks;
+the wrong Kodaira type for a twist in note 15; the wrong linear factor of the $\mathrm I_0^*$ cubic in note 69;
+counts quoted for conductor below 10{,}000 that were for 5{,}000; and note 7, which overstated a problem that is
+only an imprecision.
+\item \textbf{Inconsistency between independently written outlines,} for example two incompatible Frobenius
+conventions, the same symbol for two objects, and the same theorem proved in two chapters. Handled by Appendix B,
+which fixed sixteen conventions and listed 48 disagreements, and a dedicated fixing pass.
+\item \textbf{Outlines written early became stale} as later outlines settled questions. Chapter 21, the first
+written, needed a full revision at the end.
+\item \textbf{A mechanical fix introduced new errors:} a regular-expression substitution glued two macros together
+(\verb|\ad^0M| became \verb|\adM|). Caught by compiling the plan PDF and fixed.
+\item \textbf{Minor rule slips by agents:} three agents ran a read-only \texttt{git status} despite being told not
+to use git; each reported it.
+\item \textbf{Two agents worked from different snapshots,} so one reported stale claims about another's files. The
+orchestrator checked the files before acting.
+\end{itemize}
+
+\section{What the outlining found in the paper}
+Outlining forced every statement of the paper to be restated precisely and checked against its sources and the
+data. The result, reconciled in the memo, is in five groups: 12 strengthenings (among them the equality in the main
+identity without a multiplicity-one hypothesis, confirmed against the published DFG04; the equality in the
+twisting theorem; the removal of an exception at the prime 2; trivial Tamagawa factors at potentially good primes,
+answering half of an open question), 10 errors (for example a false twist-invariance claim, a false statement about
+Euler factors at 2, a paraphrase of Calegari-Emerton that fails for CM curves, two factual slips about specific
+curves), 14 gaps in proofs, 17 expository fixes, and 9 items still open. Version 2 of the paper incorporates them.
+
+\section{Effort and cost indicators}
+The figures below are from the sub-agents' own usage reports and the git history; they are indicative, not an
+accounting.
+\begin{center}\small
+\begin{tabular}{lr}
+\toprule
+Elapsed time, first commit to handover & 11 to 15 October (about 4.5 days, with pauses)\\
+Commits & 46\\
+Sub-agent tokens per outline & about 240{,}000 to 620{,}000\\
+Sub-agent tokens, all outlines & roughly 10 million\\
+Sub-agent tokens, first attempt (unfinished) & about 2.2 million\\
+Typical outline agent run time & 15 to 60 minutes\\
+Outline size & 786 to 1{,}914 lines each; 24{,}421 in total\\
+Planned book size & about 49{,}000 lines of LaTeX; roughly 1{,}100 to 1{,}400 pages\\
+\bottomrule
+\end{tabular}
+\end{center}
+The orchestrator's own token use is not included. An outline turned out to hold most of a chapter's content:
+about half its planned length in lines and about three quarters in words.
+
+\section{Lessons}
+\begin{enumerate}
+\item \textbf{Plan centrally and in detail before delegating.} A precise scope per chapter, a paper-to-chapter map
+and binding conventions let independent agents produce compatible work.
+\item \textbf{Do not launch everything at once.} A staged, human-paced sequence with a commit after each step
+survived interruptions; the all-at-once attempt did not.
+\item \textbf{Make later agents read earlier output.} Each outline agent read every previous outline, which kept
+the split between chapters clean and let later agents correct earlier ones.
+\item \textbf{Keep one running record of findings, and correct it in place.} It turned scattered observations into
+a coherent memo and a revised paper.
+\item \textbf{Verify before recording.} Independent re-derivation and computation caught several confident but wrong
+claims, including some of the orchestrator's own.
+\item \textbf{Fix conventions early.} The Frobenius and notation conflicts would have been cheaper to prevent with a
+notation appendix written before the outlines rather than after.
+\item \textbf{Give the computational tools to agents from the start.} PARI arrived halfway; the outlines written
+after it are better checked.
+\item \textbf{Write the hand-over as you go.} The instructions, setup script and workflow make it possible to
+continue in a fresh session without this conversation.
+\end{enumerate}
+
+\section{State at hand-over and next steps}
+Everything is on the branch \texttt{claude/textbook-paper-prerequisites-clhh5a}. The next steps, in
+\texttt{CONTINUE.md}: run the setup script; do three small tasks (convert the remaining $\chi_q$ to $\chi_{q^*}$,
+update one hedge in the Chapter 18 outline, finish Appendix A); write one pilot chapter end to end with two reviews
+and fix rounds, and measure its length, quality and cost; then write the remaining chapters Part by Part, Chapters
+21 and 22 last; then the back matter and the integration pass. In parallel, the author reviews the revised paper.
+
+\appendix
+\section{Files}
+{\small
+\begin{xltabular}{\linewidth}{>{\ttfamily}p{5.2cm}L}
+\toprule
+PLAN.md & Master plan, conventions, binding decisions (Section 7.5).\\
+outlines/chNN\_*.md & Outlines of Chapters 1 to 22.\\
+outlines/chB\_notation.md & Book-wide conventions and symbol index.\\
+docs/book\_plan.pdf & Overview, plan and all outlines in one PDF.\\
+important/important\_notes.md & Full record of findings about the paper and the book.\\
+important/paper\_memo.md & Reconciled memo for the author.\\
+paper/note\_v2.tex, docs/note\_v2.pdf & Revised paper; change log in paper/CHANGES\_v2.md.\\
+refs.bib, bib/chNN.bib & Bibliography (shared and single-chapter).\\
+CONTINUE.md & How to continue in a new session.\\
+tools/ & Build, lint, setup, plan-PDF and chapter-writing workflow scripts.\\
+\bottomrule
+\end{xltabular}
+}
+\end{document}
