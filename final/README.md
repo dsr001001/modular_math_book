@@ -14,8 +14,8 @@
   validates it against the paper, the book and the pipeline.
 * `process/how_we_went_about_this.pdf`: how the work was done from the 15 October hand-over onwards; the planning
   session (11 to 15 October: plan, outlines, findings, version 2 of the note) has its own report,
-  `../docs/how_we_went_about_this_planning_session.pdf`. Scope of this one (from 15 October: the book, the final note, the
-  pipeline and its full rerun).
+  `../docs/how_we_went_about_this_planning_session.pdf`. This one covers the book, the final note, the pipeline and its
+  full rerun.
 * `TODO.md`: open items for the author (not part of the book or the paper).
 
 The working copies at the repository root (`paper/`, `chapters/`, `important/`) keep the full history of the review.
