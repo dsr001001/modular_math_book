@@ -171,7 +171,7 @@ counts are reproductions, not tests.
 
 \begin{convention}[software, data and outputs]\label{conv:computation:versions}
 \begin{enumerate}[label=(\alph*)]
-\item \emph{Software.} The paper used PARI/GP 2.15 \cite{PARI} on its large ranges and PARI/GP 2.17.2 \cite{PARI217} for its checks below
+\item \emph{Software.} The paper used PARI/GP 2.15.4 \cite{PARI} on its large ranges and PARI/GP 2.17.2 \cite{PARI217} for its checks below
 conductor $10{,}000$ (Section sec:data). Every output printed in this chapter was produced with PARI/GP 2.17.2
 (\texttt{version()} returns \texttt{[2, 17, 2]}) through the Python interface \texttt{cypari2} 2.2.4 \cite{cypari2}, under Python 3.13 on
 Linux; no stand-alone \texttt{gp} binary was used. Every GP function printed here was loaded with \texttt{read} and run as printed.
@@ -629,7 +629,7 @@ of \texttt{alldegphi} divided by the square of the Manin constant of \texttt{opt
 \end{remark}
 
 \begin{paperlink}\label{pl:computation:invariants}
-Section sec:data: ``The Kodaira types and discriminant exponents at the bad primes were recomputed with PARI/GP 2.15 \cite{PARI} from the
+Section sec:data: ``The Kodaira types and discriminant exponents at the bad primes were recomputed with PARI/GP 2.15.4 \cite{PARI} from the
 $a$-invariants, the Euler factors of $\Sym f$ at every bad prime were computed with \texttt{lfunsympow} and \texttt{lfuneuler}, the Tate
 parameters with \texttt{ellinit} over $\Q_q$'' (with a parenthesis on $q=2$, \Cref{ex:computation:tate-parameter}), ``and fifteen modular degrees
 spanning the configurations were recomputed with \texttt{ellmoddegree}, all agreeing with the tables.'' Each of these computations is one of the items above
@@ -2078,7 +2078,7 @@ the products $44.6\%$ and $34.9\%$ are close to the joint rates here, but nothin
 
 \emph{PARI/GP.} The functions are documented in the user's guide \cite{PARIusers}; the descriptions of \texttt{ellglobalred}, \texttt{elllocalred},
 \texttt{ellmoddegree}, \texttt{ellweilcurve}, \texttt{lfuneuler}, \texttt{readstr} and \texttt{strsplit} used here were read from the documentation strings that
-\texttt{cypari2} 2.2.4 carries for PARI 2.17.2, not from the printed manual of 2.15, and we cite no section numbers. The paper cites PARI/GP 2.15 \cite{PARI};
+\texttt{cypari2} 2.2.4 carries for PARI 2.17.2, not from the printed manual of 2.15, and we cite no section numbers. The paper cites PARI/GP 2.15.4 \cite{PARI};
 the book's runs are 2.17.2 \cite{PARI217} through \texttt{cypari2} \cite{cypari2}. Dokchitser's algorithm for $L$-values is \cite{Dokchitser04}; the method of
 \texttt{ellmoddegree} is Watkins's \cite{Watkins02}.
 

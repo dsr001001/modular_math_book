@@ -180,7 +180,7 @@ $E[\ell]$ be irreducible)'' is Proposition prop:Sf (\Cref{prop:paper:Sf}). (2) T
 Tamagawa factors are trivial at potentially good primes (Lemma lem:tamadd) and at least $t_\ell(E,q)$ at potentially multiplicative ones (Lemma lem:tamfactor). (4) The
 proof is an assembly of four inputs from Diamond, Flach and Guo and Fontaine and Perrin-Riou, the local computations and the projection formula; the abstract
 adds that ``it also uses an identification of their integral structure with the cohomology of $X_0(N)$, which we prove'': that is Proposition prop:integral
-(\Cref{prop:paper:integral}), which holds integrally, for every prime $\ell$, with no localisation. (5) ``The Tamagawa factor raises the bound by at least one whenever a Steinberg prime
+(\Cref{prop:paper:integral}), which holds integrally, for every prime $\ell\nmid2M^\Sigma$ (the Betti form for every $\ell$), with no localisation. (5) ``The Tamagawa factor raises the bound by at least one whenever a Steinberg prime
 $q\equiv1\pmod\ell$ with $\ell\mid n_q$ has a Tate parameter whose unit part is an $\ell$-th power'': a Steinberg prime is a prime of multiplicative reduction (the
 local representation is an unramified twist of the Steinberg representation), and the claim is the case $\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))\ge1$ of Lemma
 lem:tamfactor. (6) The $\kod{I}_0^*$ and $\kod{I}_n^*$ terms hold without the hypothesis over $\Q(\sqrt{\ell^*})$: Theorem thm:quant, which still needs $E[\ell]$ irreducible and
@@ -394,7 +394,7 @@ proof checks it on data (``On the $92{,}812$ working-set curves with type $\math
 degree of a Shimura-curve parametrisation, exactly when $E$ is alone in its isogeny class and otherwise up to primes where $E[\ell]$ is reducible
 (\cite{RibetTakahashi97,Takahashi01}; checked against the sources, \Cref{ch:moddeg}). (ii) Pollack and Weston, under their hypothesis CR (surjective $\bar\rho$,
 ramified at every prime of the relevant part of the level that is $\pm1$ modulo $\ell$; \cite[Section 1 and Theorem 6.11]{PollackWeston11}, numbering of the arXiv
-version). (iii) Kim and Ota \cite[Theorem 1.1]{KimOta}, as cited, under the hypotheses recalled in Remark rem:ko; the identification of their Tamagawa exponent with $t_\ell(E,q)$ is Lemma lem:tamagawa-exp (\Cref{lem:paper:tamagawa-exp}). The
+version). (iii) Kim and Ota \cite[Theorem 1.3]{KimOta}, as cited, under the hypotheses recalled in Remark rem:ko; the identification of their Tamagawa exponent with $t_\ell(E,q)$ is Lemma lem:tamagawa-exp (\Cref{lem:paper:tamagawa-exp}). The
 final sentence, that Theorem thm:main contains $v_\ell(\degphi)\ge\sum_{q\|N}t_\ell(E,q)$ including the primes $q\equiv\pm1\pmod\ell$ and $\ell=3$, is correct under its
 hypothesis.
 
@@ -900,9 +900,9 @@ displays (13), (14)); the cup product, $w_N$ and the Hecke adjoints in \Cref{ch:
 determinant is the square of a generator of its ideal of values (\Cref{ch:modules}).
 
 \begin{proposition}[the paper's Proposition prop:integral]\label{prop:paper:integral}
-Let $\ell$ be a prime. Pull-back along the covering of $X_0(M^\Sigma)$ by the modular curve of full level identifies $H^1(X_0(M^\Sigma),\Z)$ with the Betti lattice
-$M(M^\Sigma,1)_{!,B}$ of \cite[Section 1.4.2]{DFG04}, compatibly with the Hecke operators, $U_p$ included; in particular $M(M^\Sigma,1)_{!,\lambda}=H^1(X_0(M^\Sigma),\Zl)$, with no
-localisation.
+Pull-back along the covering of $X_0(M^\Sigma)$ by the modular curve of full level identifies $H^1(X_0(M^\Sigma),\Z)$ with the Betti lattice
+$M(M^\Sigma,1)_{!,B}$ of \cite[Section 1.4.2]{DFG04}, compatibly with the Hecke operators, $U_p$ included; in particular, for every prime $\ell\nmid2M^\Sigma$ (the primes for which \cite{DFG04} define the $\lambda$-adic realisation),
+$M(M^\Sigma,1)_{!,\lambda}=H^1(X_0(M^\Sigma),\Zl)$, with no localisation.
 \end{proposition}
 
 \noindent\emph{Where proved.} In the paper, in four steps; the book's expanded proof is the comparison proposition of \Cref{ch:congruence}, which
@@ -915,7 +915,7 @@ Write $M$ for $M^\Sigma$ and $U=U_0(M)$. In weight $2$ with trivial character th
 chooses an auxiliary $N\ge3$ with $M\mid N$ and every prime factor of $N$ in the set $S$ of \cite[Section 1.4.1]{DFG04}, for instance $N=4M$. Then $U_N\subseteq U$, and by
 \cite[Section 1.4.1]{DFG04} $M(M,1)_{?,B}=H^1_?(Y(N),\Z)^G$ for $?\in\{c,\mathrm{tf}\}$, where $Y(N)$ is the analytic modular curve of full level $N$, a disjoint union of copies of
 $\Gamma(N)\backslash\mathcal H$ indexed by $(\Z/N\Z)^\times$, and $G=U/U_N$, a finite group acting through its image in $\GL_2(\Z/N\Z)$; the lattice $M(M,1)_{!,B}$ is the image of the
-compactly supported invariants in the torsion-free invariants, and nothing depends on $N$ \cite[Lemma 1.1]{DFG04}. Since $\det U=\widehat\Z^\times$, $G$ permutes the
+compactly supported invariants in the torsion-free invariants, and $M(M,1)_{c,B}$ and $M(M,1)_{!,B}$ do not depend on $N$ \cite[Section 1.4.1, Lemma 1.1]{DFG04}. Since $\det U=\widehat\Z^\times$, $G$ permutes the
 components transitively, the stabiliser of one component acts on it through the image of $\Gamma_0(M)$, and the quotient map $\pi\colon Y(N)\to Y(N)/G=Y_0(M)$ is a finite map
 onto the coarse curve; point stabilisers are finite.
 
@@ -1234,7 +1234,7 @@ factors in one line: (eq:thm) is a statement about the true adjoint $L$-value.
 
 \begin{remark}[the paper's Remark rem:ko]\label{rem:paper:ko}
 (1) At a potentially multiplicative $q\equiv1\pmod\ell$ with $\ell\mid n$ and $\bar u$ an $\ell$-th power, \Cref{lem:paper:tamfactor} gives $v_\ell(\Tam_q)\ge t_\ell+1$, and (eq:identity) raises the bound by
-exactly $\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))$ when $\ell\notin S_f$ (\Cref{cor:paper:explicit}). (2) The formula of Kim and Ota \cite[Theorem 1.1, Definition 2.12]{KimOta} (as cited; their
+exactly $\min(v_\ell(n),v_\ell(q-1),v_\ell(c(u)))$ when $\ell\notin S_f$ (\Cref{cor:paper:explicit}). (2) The formula of Kim and Ota \cite[Theorem 1.3, Definition 1.15]{KimOta} (as cited; their
 hypotheses as the paper lists them) gives $v_\ell(r_E)\ge\sum_{q\mid N^-}t_\ell(E,q)$, contained in (eq:thm) under its hypothesis; the equality is theirs. Whether their $\eta_f(N)$ is the Hecke or
 the cohomological congruence ideal does not matter at $\ell\nmid N$ with $E[\ell]$ irreducible, since the two agree there (\Cref{lem:paper:hecke}, \Cref{ch:congruence}).
 \end{remark}
@@ -1504,7 +1504,7 @@ potentially good reduction'' \cite[Theorem 5.4(1)]{DokDok15}; so $w_3$, read off
 (\Cref{ch:ellcurves}). With a $3$-isogeny, where (eq:rule) does not apply at $\ell=3$, $w_3$ can vary; the paper's count below $10{,}000$ ($w_3$ constant on all $1{,}295$
 classes without a $3$-isogeny, ``as it must be'', varying in $828$ of the $1{,}293$ with one, for instance \curve{54a}, of types $\kod{IV}^*$, $\kod{II}^*$, $\kod{II}$ at $3$) was reproduced for
 the book. The other terms of (eq:rule) are invariant under isogenies of degree prime to $\ell$ (\Cref{ch:ellcurves}). And the PARI versions: the paper used
-PARI/GP 2.15 for the large ranges and 2.17.2 for the checks below $10{,}000$, and it records that 2.17.2 returns $q_E^5$ in place of $q_E$ for \texttt{ellinit(E, O(2\^{}k)).tate} when
+PARI/GP 2.15.4 for the large ranges and 2.17.2 for the checks below $10{,}000$, and it records that 2.17.2 returns $q_E^5$ in place of $q_E$ for \texttt{ellinit(E, O(2\^{}k)).tate} when
 $v_2(j_E)=-1$; no count is affected, as the Tate parameter at $2$ enters none (\Cref{ch:reduction,ch:computation}).
 
 \paragraph{6.2 The rule on whole ranges (Table tab:uniform).} The table has twenty rows, one for each of the four ranges (working set, hold-out, extension, out
@@ -1822,7 +1822,7 @@ citation & content used & status\\
 \cite[Theorem 3.1]{AtkinLi78}; \cite[Theorem 3]{AtkinLehner70} & level of a twist; $a_p=0$ for $p^2\mid M$ & as cited\\
 \cite[Theorem 2.2]{Ribet83}; \cite[Lemma 2.1]{AU96}; \cite[Section 2]{Edixhoven92} & perfect pairing; $a_\ell$ from $\bar\rho|_{D_\ell}$ & as cited (pairing proved in \Cref{ch:hecke})\\
 \cite[Theorem 3.5]{RibetStein}; \cite{Tilouine97} & multiplicity one; Gorenstein & as cited\\
-\cite[Theorem 1.1, Definition 2.12]{KimOta} & variation of congruence ideals; Tamagawa exponent & as cited\\
+\cite[Theorem 1.3, Definition 1.15]{KimOta} & variation of congruence ideals; Tamagawa exponent & as cited\\
 \cite[Theorem 6.11]{PollackWeston11} & their identity, under CR & checked (arXiv version)\\
 \cite{RibetTakahashi97,Takahashi01} & Shimura-curve degrees, semistable $E$ & checked in \Cref{ch:moddeg}\\
 \cite{Ligozat75}; \cite{Kenku} & rational points of $X_0(27)$; the list of levels & Kenku checked; Ligozat as cited\\

@@ -50,7 +50,7 @@ $d\,v(\eta)\ge v(\Delta)$, with equality if $L$ is free over $\T$. \emph{(proved
 \Cref{rem:congruence:ddt417-commentary}; hypotheses \Cref{rem:congruence:ddt417-hypotheses}; test cases \Cref{ex:congruence:ddt417-checks}.
 \item \textbf{Depletion} (definition, recalled): $\delta_p$, $M^\Sigma=M\prod_{p\in\Sigma}p^{\delta_p}$, $f^\Sigma$, the naive factor $L^{\nv}_p(A_f,s)$. \Cref{def:congruence:depletion-recall}.
 \item \textbf{Integral structure} (definition, after Diamond, Flach and Guo) and its comparison: pull-back identifies $H^1(X_0(M),\Z)$ with the Betti lattice, Hecke-equivariantly ($U_p$ included), so
-$M(M,1)_{!,\lambda}=H^1(X_0(M),\Zl)$ for every prime $\ell$, with no localisation; equivariant cohomology with compact support, Hochschild-Serre and equivariant Leray. \emph{(proved here)}
+$M(M,1)_{!,\lambda}=H^1(X_0(M),\Zl)$ for every prime $\ell\nmid2M$ (the Betti form for every $\ell$), with no localisation; equivariant cohomology with compact support, Hochschild-Serre and equivariant Leray. \emph{(proved here)}
 \Cref{def:congruence:integral-structure}, \Cref{prop:congruence:integral-structure}.
 \item \textbf{The pairing $\hat\delta_!$} (definition) and its properties: on pulled-back classes it is $\frac u2\langle x,w_M^*y\rangle$, $u$ an $\ell$-adic unit; perfect, alternating, $\T$ self-adjoint, perfect on components. \emph{(proved here, given
 \Cref{ch:moddeg}; the normalisation of Diamond, Flach and Guo as the paper describes it)} \Cref{def:congruence:dfg-pairing}, \Cref{prop:congruence:dfg-pairing}.
@@ -596,13 +596,13 @@ same number because $M_{f,\lambda}$ is dual to $T_\ell E$ up to homothety.
 Let $M\ge1$ and $U=U_0(M)\subset\GL_2(\widehat\Z)$. For weight $2$ and trivial character the coefficient sheaf of \cite[Section 1.2.2]{DFG04} is the constant sheaf $\Z$. Choose an
 auxiliary $N'\ge3$ with $M\mid N'$ and every prime factor of $N'$ in the set $S$ of \cite[Section 1.4.1]{DFG04} (for instance $N'=4M$); then $U_{N'}\subseteq U$. Let $Y(N')$ be the analytic
 modular curve of full level $N'$, a disjoint union of copies of $\Gamma(N')\backslash\HH$ indexed by $(\Z/N'\Z)^\times$, on which the finite group $G=U/U_{N'}$ acts through its image in
-$\GL_2(\Z/N'\Z)$ \cite[(5), Proposition 1.3]{DFG04}. Diamond, Flach and Guo put \cite[Section 1.4.1]{DFG04}
+$\GL_2(\Z/N'\Z)$ \cite[Sections 1.2.1, 1.3.2]{DFG04}. Diamond, Flach and Guo put \cite[Section 1.4.1]{DFG04}
 \[
 M(M,1)_{c,B}=H^1_c(Y(N'),\Z)^G,\qquad M(M,1)_{\mathrm{tf},B}=H^1(Y(N'),\Z)^G
 \]
 (the second is the torsion-free quotient of the invariants of ordinary cohomology; $H^1$ of an open surface is already torsion-free), and the \emph{Betti lattice} $M(M,1)_{!,B}$ is the image of
-the forgetful map $M(M,1)_{c,B}\to M(M,1)_{\mathrm{tf},B}$ \cite[Section 1.4.2]{DFG04}, with the Hecke operators, $U_p$ included, acting by double cosets. None of this depends on $N'$
-\cite[Lemma 1.1]{DFG04}. For a prime $\ell$ the $\lambda$-adic structure $M(M,1)_{!,\lambda}$ is defined in the same way from $\ell$-adic cohomology, and $\Zl\otimes M(M,1)_{?,B}\simeq M(M,1)_{?,\lambda}$
+the forgetful map $M(M,1)_{c,B}\to M(M,1)_{\mathrm{tf},B}$ \cite[Section 1.4.2]{DFG04}, with the Hecke operators, $U_p$ included, acting by double cosets. The lattices $M(M,1)_{c,B}$ and $M(M,1)_{!,B}$ do not depend on $N'$
+\cite[Section 1.4.1, Lemma 1.1]{DFG04} ($M(M,1)_{\mathrm{tf},B}$ may, but only its image is used). For a prime $\ell\nmid2M$ the $\lambda$-adic structure $M(M,1)_{!,\lambda}$ is defined in the same way from $\ell$-adic cohomology, and $\Zl\otimes M(M,1)_{?,B}\simeq M(M,1)_{?,\lambda}$
 \cite[Section 1.2.3]{DFG04}.
 \end{definition}
 
@@ -636,8 +636,8 @@ stabiliser $G_x$. By Shapiro's lemma \cite[Chapter III, Section 6]{Brown},
 \]
 
 \begin{proposition}[comparison with $H^1(X_0(M))$]\label{prop:congruence:integral-structure}
-Let $M\ge1$ and let $\ell$ be any prime. Pull-back along the covering $\pi\colon Y(N')\to Y_0(M)$ identifies $H^1(X_0(M),\Z)$, viewed inside $H^1(Y_0(M),\Z)$, with the Betti lattice $M(M,1)_{!,B}$
-of \Cref{def:congruence:integral-structure}, compatibly with the Hecke operators of $\T_M$, $U_p$ included. Consequently
+Let $M\ge1$. Pull-back along the covering $\pi\colon Y(N')\to Y_0(M)$ identifies $H^1(X_0(M),\Z)$, viewed inside $H^1(Y_0(M),\Z)$, with the Betti lattice $M(M,1)_{!,B}$
+of \Cref{def:congruence:integral-structure}, compatibly with the Hecke operators of $\T_M$, $U_p$ included. Consequently, for every prime $\ell\nmid2M$,
 \[
 M(M,1)_{!,\lambda}=H^1(X_0(M),\Zl)
 \]
@@ -1323,7 +1323,7 @@ $\ord_\lambda\eta_f(N)=v_\ell(\degphi)$: by \Cref{thm:congruence:crit} and Agash
 \begin{remark}[on the identification in (ii)]\label{rem:congruence:kim-ota-identification}
 We have not checked in \cite{KimOta} whether their $\eta_f(N)$ is defined as the congruence ideal of the full Hecke algebra (as the paper's Remark rem:ko(2) says: ``concerns the same
 congruence ideal'') or as a cohomological ideal; under the hypotheses of the proposition the two have the same valuation (\Cref{rem:congruence:two-ideals}), so (ii) holds in either reading.
-The theorem numbers \cite[Theorem 1.1, Definition 2.12]{KimOta} are cited as the paper cites them.
+The theorem numbers \cite[Theorem 1.3, Definition 1.15]{KimOta} are cited as the paper cites them.
 \end{remark}
 
 \section{Twist monotonicity: Theorem thm:twist}\label{sec:congruence:twist}
@@ -1740,7 +1740,7 @@ local formula of Fontaine and Perrin-Riou is \cite[I.4.2.2]{FPR94}, as recalled 
 
 \emph{The modular degree.} Agashe, Ribet and Stein \cite[Theorem 2.2]{ARS12} (theorem number as cited by the paper and checked in \Cref{ch:moddeg}); the multiplicity-one and Gorenstein results
 behind Remark rem:free are \cite{Mazur77}, \cite[Theorem 3.5]{RibetStein} (as cited by the paper) and \cite{Tilouine97}; the Shimura subgroup is \cite{LingOesterle,Ribet88}. The formula of Kim and Ota
-is \cite[Theorem 1.1]{KimOta}, and Pollack and Weston's earlier result is \cite[Theorem 6.11]{PollackWeston11} (numbering of the arXiv version; hypotheses in \Cref{ch:modgalrep}); Ribet and Takahashi's comparison with Shimura curves is \cite[Theorems 1 and 2]{RibetTakahashi97}, sharpened in \cite[Theorem 3.2, Corollary 3.5]{Takahashi01}
+is \cite[Theorem 1.3]{KimOta}, and Pollack and Weston's earlier result is \cite[Theorem 6.11]{PollackWeston11} (numbering of the arXiv version; hypotheses in \Cref{ch:modgalrep}); Ribet and Takahashi's comparison with Shimura curves is \cite[Theorems 1 and 2]{RibetTakahashi97}, sharpened in \cite[Theorem 3.2, Corollary 3.5]{Takahashi01}
 (checked against the sources in \Cref{ch:moddeg}).
 
 \emph{What is new here.} Relative to the paper: the length form of Lemma lem:ddt417 over any discrete valuation ring; and the recomputation of the data of the paragraph after Theorem thm:twist
