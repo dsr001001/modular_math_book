@@ -12,10 +12,12 @@
   statement, table and named example, its status (proved, imported, conjectural, empirical, computed), where the book
   treats it, the script and output behind it, and the level of computational evidence; `claims/scripts/check_claims.py`
   validates it against the paper, the book and the pipeline.
-* `process/how_we_went_about_this.pdf`: how the work was done from the 15 October hand-over onwards; the planning
-  session (11 to 15 October: plan, outlines, findings, version 2 of the note) has its own report,
-  `../docs/how_we_went_about_this_planning_session.pdf`. This one covers the book, the final note, the pipeline and its
-  full rerun.
+* How the work was done, in three reports, one per session and in order:
+  1. `../docs/how_we_went_about_this_core_paper.pdf`: the research, 4 to 15 October, in the data repository
+     `dsr001001/mcptrial` (pre-registered search, the conjectures, the Euler-factor rule, the note to version 1);
+  2. `../docs/how_we_went_about_this_planning_session.pdf`: planning the book, 11 to 15 October (plan, outlines,
+     findings, version 2 of the note);
+  3. `process/how_we_went_about_this.pdf`: from 15 October (the book, the final note, the pipeline and its full rerun).
 * `TODO.md`: open items for the author (not part of the book or the paper).
 
 The working copies at the repository root (`paper/`, `chapters/`, `important/`) keep the full history of the review.
