@@ -18,3 +18,5 @@ final/process/*.aux
 final/process/*.fls
 final/process/*.fdb_latexmk
 final/process/*.out
+final/process/*.log
+final/process/*.toc

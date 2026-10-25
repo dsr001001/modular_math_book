@@ -12,7 +12,7 @@
   statement, table and named example, its status (proved, imported, conjectural, empirical, computed), where the book
   treats it, the script and output behind it, and the level of computational evidence; `claims/scripts/check_claims.py`
   validates it against the paper, the book and the pipeline.
-* `process/how_we_went_about_this.pdf`: how the work was done, 4 to 25 October, consolidated from the three session
+* `process/Consolidated.pdf`: how the work was done, 4 to 25 October, consolidated from the three session
   reports and checked against both repositories; the session drafts are in `../docs/how_we_went_about_this_*.pdf`, and
   its Appendix A lists the statements in them that the record corrects.
 * `TODO.md`: open items for the author (not part of the book or the paper).
